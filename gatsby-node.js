@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: '.vtex-config',
+  path: 'vtex.env',
 })
 
 const path = require('path')
