@@ -4,6 +4,7 @@ require('dotenv').config({
 
 const path = require('path')
 const { join } = require('path')
+
 const { ensureDir, outputFile } = require('fs-extra')
 
 exports.createPages = async ({
@@ -43,6 +44,7 @@ exports.createPages = async ({
 
   if (errors) {
     console.log(errors)
+
     return
   }
 
@@ -72,12 +74,14 @@ exports.createPages = async ({
 
   // ensure dist folder
   const root = join(__dirname, '.cache/vtex-cms')
+
   await ensureDir(root)
 
   // Create page .tsx files as well as gatsby's node pages
   const cmsPages = allCmsPage.nodes.map(async (page) => {
     const { src, slug, name } = page
     const filepath = join(root, `${name}.tsx`)
+
     await outputFile(filepath, src)
 
     createPage({
@@ -85,6 +89,7 @@ exports.createPages = async ({
       component: filepath,
     })
   })
+
   await Promise.all(cmsPages)
 
   // Category Pages

@@ -26,14 +26,14 @@ module.exports = {
     },
     // Override for .ts components only
     {
-      files: ['packages/*/components/**/*'],
+      files: ['*.ts'],
       rules: {
         'no-console': 'off',
       },
     },
     // Override for node related code
     {
-      files: ['packages/gastby-source-*'],
+      files: ['gatsby-*.js'],
       rules: {
         'no-console': 'off',
         'import/no-nodejs-modules': 'off',
