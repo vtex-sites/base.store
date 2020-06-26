@@ -1,11 +1,16 @@
 {
   "ci": {
+    "collect": {
+      "numberOfRuns": 1,
+      "staticDistDir": "./public",
+      "url": [
+        "/",
+        "/unicorp-ms51575-6/p/",
+        "/wire-and-cable/"
+      ]
+    },
     "upload": {
       "target": "temporary-public-storage"
-    },
-    "collect": {
-      "staticDistDir": "./public",
-      "numberOfRuns": 1
     }
   }
 }
