@@ -4,27 +4,17 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'Store Theme - VTEX Base Store',
-    description: 'Store created with gatsby for a POC using VTEX API',
     author: 'Emerson Laurentino',
   },
   plugins: [
-    require.resolve('gatsby-plugin-react-helmet'),
-    require.resolve('gatsby-plugin-theme-ui'),
     require.resolve('gatsby-plugin-netlify'),
-    require.resolve('@vtex/gatsby-theme-vtex'),
-    require.resolve('@vtex/gatsby-transformer-vtex-cms'),
     {
-      resolve: require.resolve('@vtex/gatsby-source-vtex'),
+      resolve: require.resolve('@vtex/gatsby-theme-vtex'),
       options: {
+        title: 'Store Theme - VTEX Base Store',
+        description: 'A sample store using the best of Gatsby and VTEX',
         tenant: process.env.GATSBY_VTEX_TENANT,
         environment: process.env.GATSBY_VTEX_ENVIRONMENT,
-      },
-    },
-    {
-      resolve: require.resolve('gatsby-source-filesystem'),
-      options: {
-        path: `./src/cms/`,
       },
     },
     require.resolve('gatsby-plugin-loadable-components-ssr'),
@@ -38,12 +28,6 @@ module.exports = {
         theme_color: '#0a034e',
         display: 'minimal-ui',
       },
-    },
-  ],
-  proxy: [
-    {
-      prefix: '/api',
-      url: `https://${process.env.GATSBY_VTEX_TENANT}.${process.env.GATSBY_VTEX_ENVIRONMENT}.com.br`,
     },
   ],
 }
