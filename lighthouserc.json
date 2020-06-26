@@ -7,7 +7,7 @@
         "/wire-and-cable/",
         "/about/"
       ],
-      "numberOfRuns": 1,
+      "numberOfRuns": 3,
       "staticDistDir": "./public"
     },
     "assert": {
