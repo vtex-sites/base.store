@@ -11,8 +11,7 @@
       "staticDistDir": "./public"
     },
     "upload": {
-      "target": "lhci",
-      "serverBaseUrl": "https://vtex-lhci-server.herokuapp.com/"
+      "target": "temporary-public-storage"
     }
   }
 }

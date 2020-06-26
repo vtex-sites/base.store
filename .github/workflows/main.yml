@@ -23,5 +23,6 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
         with:
-          uploadArtifacts: true
+          serverBaseUrl: "https://vtex-lhci-server.herokuapp.com/"
+          serverToken: ${{ secrets.LHCI_TOKEN }}
           configPath: './lighthouserc.json'
