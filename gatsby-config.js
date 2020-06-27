@@ -17,6 +17,14 @@ module.exports = {
         environment: process.env.GATSBY_VTEX_ENVIRONMENT,
       },
     },
+    {
+      // This plugin works in conjunction with the
+      // '@vtex/gatsby-theme-vtex' and sources the cms's json files
+      resolve: require.resolve('gatsby-source-filesystem'),
+      options: {
+        path: './src/cms/',
+      },
+    },
     require.resolve('gatsby-plugin-loadable-components-ssr'),
     {
       resolve: 'gatsby-plugin-manifest',
