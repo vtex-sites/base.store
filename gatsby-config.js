@@ -1,33 +1,15 @@
-require('dotenv').config({
-  path: 'vtex.env',
-})
-
 module.exports = {
   siteMetadata: {
-    title: 'Store Theme - VTEX Base Store',
-    description: 'Store created with gatsby for a POC using VTEX API',
     author: 'Emerson Laurentino',
   },
   plugins: [
-    require.resolve('gatsby-plugin-react-helmet'),
-    require.resolve('gatsby-plugin-theme-ui'),
-    require.resolve('gatsby-plugin-netlify'),
-    require.resolve('@vtex/gatsby-theme-vtex'),
-    require.resolve('@vtex/gatsby-transformer-vtex-cms'),
     {
-      resolve: require.resolve('@vtex/gatsby-source-vtex'),
+      resolve: require.resolve('@vtex/gatsby-theme-vtex'),
       options: {
-        tenant: process.env.GATSBY_VTEX_TENANT,
-        environment: process.env.GATSBY_VTEX_ENVIRONMENT,
+        title: 'Store Theme - VTEX Base Store',
+        description: 'A sample store using the best of Gatsby and VTEX',
       },
     },
-    {
-      resolve: require.resolve('gatsby-source-filesystem'),
-      options: {
-        path: `./src/cms/`,
-      },
-    },
-    require.resolve('gatsby-plugin-loadable-components-ssr'),
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -39,11 +21,19 @@ module.exports = {
         display: 'minimal-ui',
       },
     },
-  ],
-  proxy: [
     {
-      prefix: '/api',
-      url: `https://${process.env.GATSBY_VTEX_TENANT}.${process.env.GATSBY_VTEX_ENVIRONMENT}.com.br`,
+      // This plugin works in conjunction with the
+      // '@vtex/gatsby-theme-vtex' and sources the cms's json files
+      resolve: require.resolve('gatsby-source-filesystem'),
+      options: {
+        path: './src/cms/',
+      },
+    },
+    {
+      resolve: require.resolve('gatsby-plugin-netlify'),
+    },
+    {
+      resolve: require.resolve('gatsby-plugin-loadable-components-ssr'),
     },
   ],
 }
