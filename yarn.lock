@@ -2030,10 +2030,34 @@
   dependencies:
     wonka "^4.0.14"
 
-"@vtex/gatsby-theme-vtex@^0.1.0-alpha.3":
+"@vtex/gatsby-source-vtex@^0.1.0-alpha.3":
   version "0.1.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.0-alpha.3.tgz#f98dff4e3cf15286fcdc08faf2a8dcc3ae57836a"
-  integrity sha512-oYVefM8+DivJ+zak9kdSInNyOKfHlJ50rjg5HPLyaNDSfNECOiJTwMvD1KpWljaJpBBgnTb+7Lb0I3R+5olveg==
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.1.0-alpha.3.tgz#7326ddf617e27552386233753ab07c4da4b8e641"
+  integrity sha512-QgFdI/Zwd6Eh3ylNKinCqcVus0Mmfan3bYSehUnKTg2AvOG9oZpEJcEF+z3/FgadhY0LC1O3sQUb/XkuULSeiw==
+  dependencies:
+    axios "^0.19.2"
+    pretty-error "^2.1.1"
+
+"@vtex/gatsby-theme-vtex@^0.1.0-alpha.3":
+  version "0.1.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.0-alpha.5.tgz#6a3bceb6404d9e053110411968d32d285176f11f"
+  integrity sha512-h96IzzkbPQQb3aDcJqrZmcMD4krSJfCloP3GHAgxI+GAZIB5wL3HfzA+iKMvW8akTCsqCo8W3iwgvxDyQk4jIw==
+  dependencies:
+    "@vtex/gatsby-source-vtex" "^0.1.0-alpha.3"
+    "@vtex/gatsby-transformer-vtex-cms" "^0.1.0-alpha.3"
+    dotenv "^8.2.0"
+    gatsby-plugin-react-helmet "^3.3.6"
+    gatsby-plugin-theme-ui "^0.3.0"
+    react-helmet "^6.1.0"
+    swr "^0.2.3"
+    theme-ui "^0.3.1"
+
+"@vtex/gatsby-transformer-vtex-cms@^0.1.0-alpha.3":
+  version "0.1.0-alpha.3"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.1.0-alpha.3.tgz#215d60a104e4796843e6cd8e43505deadfabc00f"
+  integrity sha512-IMiivUK8xYFJs6Ez0C3k+vuG0RH0JiGgOxZTr7YrjZlDAbpNBLBU7tascGsBCyc2Iyr04oFfiV9vBLIoYY/jBw==
+  dependencies:
+    pretty-error "^2.1.1"
 
 "@vtex/prettier-config@^0.3.1":
   version "0.3.1"
@@ -6062,6 +6086,18 @@ gatsby-plugin-page-creator@^2.3.12:
     glob "^7.1.6"
     lodash "^4.17.15"
     micromatch "^3.1.10"
+
+gatsby-plugin-react-helmet@^3.3.6:
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.3.6.tgz#824202bdb2e83f90956e4ca1c076fd4dbbf97e61"
+  integrity sha512-KEmgL5TxdMsMNm6p5jgz422p8qwogriDlm0WPgObFshR3fkAFtbqEX6FlZW0Vv8itt6tP3YbKHN4exxIA2Hc8g==
+  dependencies:
+    "@babel/runtime" "^7.10.3"
+
+gatsby-plugin-theme-ui@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.3.0.tgz#ab84216536ae45abe09a6edf24156b9dbf50d6a5"
+  integrity sha512-Q2tS8EeYMy7AAtt6hvDtEsd1uwrLMjkDNqabyXhAo38AFoWQ0oKtq9u1YqbiRvp1TK06pAMPQQ3to48LAqc9Cw==
 
 gatsby-plugin-typescript@^2.4.8:
   version "2.4.8"
