@@ -1,7 +1,3 @@
-require('dotenv').config({
-  path: 'vtex.env',
-})
-
 module.exports = {
   siteMetadata: {
     author: 'Emerson Laurentino',
@@ -12,8 +8,6 @@ module.exports = {
       options: {
         title: 'Store Theme - VTEX Base Store',
         description: 'A sample store using the best of Gatsby and VTEX',
-        tenant: process.env.GATSBY_VTEX_TENANT,
-        environment: process.env.GATSBY_VTEX_ENVIRONMENT,
       },
     },
     {
