@@ -7,7 +7,6 @@ module.exports = {
     author: 'Emerson Laurentino',
   },
   plugins: [
-    require.resolve('gatsby-plugin-netlify'),
     {
       resolve: require.resolve('@vtex/gatsby-theme-vtex'),
       options: {
@@ -18,15 +17,6 @@ module.exports = {
       },
     },
     {
-      // This plugin works in conjunction with the
-      // '@vtex/gatsby-theme-vtex' and sources the cms's json files
-      resolve: require.resolve('gatsby-source-filesystem'),
-      options: {
-        path: './src/cms/',
-      },
-    },
-    require.resolve('gatsby-plugin-loadable-components-ssr'),
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Store Theme - VTEX Base Store',
@@ -36,6 +26,20 @@ module.exports = {
         theme_color: '#0a034e',
         display: 'minimal-ui',
       },
+    },
+    {
+      // This plugin works in conjunction with the
+      // '@vtex/gatsby-theme-vtex' and sources the cms's json files
+      resolve: require.resolve('gatsby-source-filesystem'),
+      options: {
+        path: './src/cms/',
+      },
+    },
+    {
+      resolve: require.resolve('gatsby-plugin-netlify'),
+    },
+    {
+      resolve: require.resolve('gatsby-plugin-loadable-components-ssr'),
     },
   ],
 }
