@@ -949,10 +949,17 @@
     core-js-pure "^3.0.0"
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.7", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2", "@babel/runtime@^7.9.6":
   version "7.10.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.3.tgz#670d002655a7c366540c67f6fd3342cd09500364"
   integrity sha512-RzGO0RLSdokm9Ipe/YD+7ww8X2Ro79qiXZF3HU9ljrM+qnJmH1Vqth+hbiQZy761LnMJTMitHDuKVYTk3k4dLw==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
+"@babel/runtime@^7.10.3":
+  version "7.10.4"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.4.tgz#a6724f1a6b8d2f6ea5236dbfe58c7d7ea9c5eb99"
+  integrity sha512-UpTN5yUJr9b4EX2CnGNWIvER7Ab83ibv0pcvvHc4UOdrBI5jb8bj+32cCwPX6xu0mt2daFNjYhoi+X7beH0RSw==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -2030,32 +2037,33 @@
   dependencies:
     wonka "^4.0.14"
 
-"@vtex/gatsby-source-vtex@^0.1.0-alpha.3":
-  version "0.1.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.1.0-alpha.3.tgz#7326ddf617e27552386233753ab07c4da4b8e641"
-  integrity sha512-QgFdI/Zwd6Eh3ylNKinCqcVus0Mmfan3bYSehUnKTg2AvOG9oZpEJcEF+z3/FgadhY0LC1O3sQUb/XkuULSeiw==
+"@vtex/gatsby-source-vtex@^0.1.0-alpha.7":
+  version "0.1.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.1.0-alpha.7.tgz#26f27e3a03b2b3f1055e46038b23632a4c0c4427"
+  integrity sha512-ESsJ2GUTtNmiKFB7Aku/eCzFsDoLG1PERBmssA9E46Mg9gptNloKqSJtbSlbxHfsom7FN2vpRRKkyBzCoWT/3A==
   dependencies:
     axios "^0.19.2"
     pretty-error "^2.1.1"
 
 "@vtex/gatsby-theme-vtex@^0.1.0-alpha.3":
-  version "0.1.0-alpha.6"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.0-alpha.6.tgz#2cd58e74567d131d342f15a98e3ce7f8c7371849"
-  integrity sha512-E0dED5xwGUHr4OpFKCmHH3qBHmzTKlf/erbbHv7TwH19tnuQUtqVy9xkZ8AuXhPhTeIBuli7SkDiWlyh8Q4bqg==
+  version "0.1.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.0-alpha.7.tgz#90373e5c096c937e62867f9e953cf430b4be049b"
+  integrity sha512-KD2/x/JRV4b3tYfLCaLwO2+8GyQ7iDnDtexlVd8kjsOxH34pWndEL03yfcNpT1uf1lnmEAqMQAZhxCxfo0iEPg==
   dependencies:
-    "@vtex/gatsby-source-vtex" "^0.1.0-alpha.3"
-    "@vtex/gatsby-transformer-vtex-cms" "^0.1.0-alpha.3"
+    "@vtex/gatsby-source-vtex" "^0.1.0-alpha.7"
+    "@vtex/gatsby-transformer-vtex-cms" "^0.1.0-alpha.7"
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
     gatsby-plugin-theme-ui "^0.3.0"
     react-helmet "^6.1.0"
+    react-intersection-observer "^8.26.2"
     swr "^0.2.3"
     theme-ui "^0.3.1"
 
-"@vtex/gatsby-transformer-vtex-cms@^0.1.0-alpha.3":
-  version "0.1.0-alpha.3"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.1.0-alpha.3.tgz#215d60a104e4796843e6cd8e43505deadfabc00f"
-  integrity sha512-IMiivUK8xYFJs6Ez0C3k+vuG0RH0JiGgOxZTr7YrjZlDAbpNBLBU7tascGsBCyc2Iyr04oFfiV9vBLIoYY/jBw==
+"@vtex/gatsby-transformer-vtex-cms@^0.1.0-alpha.7":
+  version "0.1.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.1.0-alpha.7.tgz#a83c690dcf8a2e05f7dfe23528d161e006129365"
+  integrity sha512-S2FiGJZ9jJw8xOgT/Q/8ggPU2hjteMJvXZknjmzYmwSPjzUocWp1XamkpWxrPj85tOKC/AMUS/9qPM1EQC9NrA==
   dependencies:
     pretty-error "^2.1.1"
 
@@ -10606,6 +10614,13 @@ react-hot-loader@^4.12.21:
     shallowequal "^1.1.0"
     source-map "^0.7.3"
 
+react-intersection-observer@^8.26.2:
+  version "8.26.2"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.26.2.tgz#0562ff0c06b2b10e809190c2fa9b6ded656e6e16"
+  integrity sha512-GmSjLNK+oV7kS+BHfrJSaA4wF61ELA33gizKHmN+tk59UT6/aW8kkqvlrFGPwxGoaIzLKS2evfG5fgkw5MIIsg==
+  dependencies:
+    tiny-invariant "^1.1.0"
+
 react-is@^16.12.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -12373,6 +12388,11 @@ timsort@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
   integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+
+tiny-invariant@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.1.0.tgz#634c5f8efdc27714b7f386c35e6760991d230875"
+  integrity sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==
 
 tmp@^0.0.33:
   version "0.0.33"
