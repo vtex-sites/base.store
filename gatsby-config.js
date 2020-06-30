@@ -11,7 +11,7 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: require.resolve('gatsby-plugin-manifest'),
       options: {
         name: 'Store Theme - VTEX Base Store',
         short_name: 'Store Theme',
