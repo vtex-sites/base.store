@@ -2037,20 +2037,20 @@
   dependencies:
     wonka "^4.0.14"
 
-"@vtex/gatsby-source-vtex@^0.1.0-alpha.7":
-  version "0.1.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.1.0-alpha.7.tgz#26f27e3a03b2b3f1055e46038b23632a4c0c4427"
-  integrity sha512-ESsJ2GUTtNmiKFB7Aku/eCzFsDoLG1PERBmssA9E46Mg9gptNloKqSJtbSlbxHfsom7FN2vpRRKkyBzCoWT/3A==
+"@vtex/gatsby-source-vtex@^0.1.0-alpha.8":
+  version "0.1.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.1.0-alpha.8.tgz#05eeb32aa27d79406846494017ed92fc5c9398d6"
+  integrity sha512-tsR+ravqszlmCIG4oDXKx/+siGtWP9Jv4X5eKd8kaNVtLm2/ybZBmTvgrpjhw7Nr9qhvk8VOTzgYnbw55Bu28g==
   dependencies:
     axios "^0.19.2"
     pretty-error "^2.1.1"
 
 "@vtex/gatsby-theme-vtex@^0.1.0-alpha.3":
-  version "0.1.0-alpha.7"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.0-alpha.7.tgz#90373e5c096c937e62867f9e953cf430b4be049b"
-  integrity sha512-KD2/x/JRV4b3tYfLCaLwO2+8GyQ7iDnDtexlVd8kjsOxH34pWndEL03yfcNpT1uf1lnmEAqMQAZhxCxfo0iEPg==
+  version "0.1.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.0-alpha.8.tgz#601172f82ef2088b926e837fefc033a8c9d891b4"
+  integrity sha512-9gjyPMFMZNwq/Ink20LGAxl2n4zZNOEP/nZL+3iBMVpS77+WysH6W6ogsuO5GmD8PHPMAIL7+MFYvfGFodWwwg==
   dependencies:
-    "@vtex/gatsby-source-vtex" "^0.1.0-alpha.7"
+    "@vtex/gatsby-source-vtex" "^0.1.0-alpha.8"
     "@vtex/gatsby-transformer-vtex-cms" "^0.1.0-alpha.7"
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
