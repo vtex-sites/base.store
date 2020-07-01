@@ -32,7 +32,7 @@ module.exports = {
     {
       resolve: require.resolve('gatsby-plugin-netlify'),
       options: {
-        generateMatchPathRewrites: false,
+        generateMatchPathRewrites: true,
       },
     },
     {
