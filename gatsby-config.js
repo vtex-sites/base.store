@@ -35,8 +35,5 @@ module.exports = {
         generateMatchPathRewrites: true,
       },
     },
-    {
-      resolve: require.resolve('gatsby-plugin-loadable-components-ssr'),
-    },
   ],
 }

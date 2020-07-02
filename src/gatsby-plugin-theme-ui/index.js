@@ -24,7 +24,7 @@ export default {
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   fonts: {
     body:
-      'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+      'San Francisco, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif',
     heading: 'inherit',
     monospace: 'Menlo, monospace',
   },
@@ -39,10 +39,10 @@ export default {
     heading: 1.125,
   },
   colors: {
-    text: '#000',
+    text: '#3f3f40',
     textMuted: '#979899',
     background: '#fff',
-    primary: '#07c',
+    primary: '#0f3e99',
     muted: '#f6f6f6',
   },
   styles: {
