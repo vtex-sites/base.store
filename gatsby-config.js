@@ -34,10 +34,24 @@ module.exports = {
       options: {
         headers: {
           '/preview': [
-            'X-Frame-Options: ALLOW-FROM https://*.myvtex.com/',
             'Content-Security-Policy: frame-src https://*.myvtex.com/',
           ],
         },
+        transformHeaders: (headers, path) => {
+          if (path !== '/preview') {
+            return headers
+          }
+
+          const index = headers.findIndex((h) => h.includes('X-Frame-Options'))
+
+          if (index < 0) {
+            return headers
+          }
+          headers.splice(index, 1)
+
+          return headers
+        },
+        mergeSecurityHeaders: false,
         generateMatchPathRewrites: true,
       },
     },
