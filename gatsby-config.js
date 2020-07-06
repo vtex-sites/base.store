@@ -33,7 +33,9 @@ module.exports = {
       resolve: require.resolve('gatsby-plugin-netlify'),
       options: {
         headers: {
-          '/preview': ['X-Frame-Options: sameorigin'],
+          '/preview': [
+            'Content-Security-Policy: frame-src https://nardi--content.myvtex.com/',
+          ],
         },
         generateMatchPathRewrites: true,
       },
