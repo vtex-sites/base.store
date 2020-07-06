@@ -45,7 +45,7 @@ module.exports = {
         'unused-javascript': [
           'error',
           {
-            maxLength: 4,
+            maxLength: 10,
           },
         ],
         'largest-contentful-paint': [
