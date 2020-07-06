@@ -38,18 +38,23 @@ module.exports = {
           ],
         },
         transformHeaders: (headers, path) => {
-          if (path !== '/preview') {
-            return headers
+          const DEFAULT_SECURITY_HEADERS = [
+            'X-Frame-Options: DENY',
+            'X-XSS-Protection: 1; mode=block',
+            'X-Content-Type-Options: nosniff',
+            'Referrer-Policy: same-origin',
+          ]
+
+          const merged = [...headers, ...DEFAULT_SECURITY_HEADERS]
+          const index = merged.findIndex((h) => h.includes('X-Frame-Options'))
+
+          if (path !== '/preview' || index < 0) {
+            return merged
           }
 
-          const index = headers.findIndex((h) => h.includes('X-Frame-Options'))
+          merged.splice(index, 1)
 
-          if (index < 0) {
-            return headers
-          }
-          headers.splice(index, 1)
-
-          return headers
+          return merged
         },
         mergeSecurityHeaders: false,
         generateMatchPathRewrites: true,
