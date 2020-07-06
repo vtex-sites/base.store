@@ -34,6 +34,7 @@ module.exports = {
       options: {
         headers: {
           '/preview': [
+            'x-frame-options: ALLOW-FROM https://*.myvtex.com/',
             'Content-Security-Policy: frame-src https://*.myvtex.com/',
           ],
         },
