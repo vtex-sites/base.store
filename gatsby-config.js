@@ -48,7 +48,7 @@ module.exports = {
           const merged = [...headers, ...DEFAULT_SECURITY_HEADERS]
           const index = merged.findIndex((h) => h.includes('X-Frame-Options'))
 
-          if (path !== '/preview' || index < 0) {
+          if (path.includes('/preview') || index < 0) {
             return merged
           }
 
