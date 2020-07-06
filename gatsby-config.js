@@ -34,7 +34,7 @@ module.exports = {
       options: {
         headers: {
           '/preview': [
-            'Content-Security-Policy: frame-src https://nardi--content.myvtex.com/',
+            'Content-Security-Policy: frame-src https://*.myvtex.com/',
           ],
         },
         generateMatchPathRewrites: true,
