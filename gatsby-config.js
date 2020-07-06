@@ -33,7 +33,7 @@ module.exports = {
       resolve: require.resolve('gatsby-plugin-netlify'),
       options: {
         headers: {
-          '/preview': ['X-Frame-Options', 'SAMEORIGIN'],
+          '/preview': [['X-Frame-Options', 'sameorigin']],
         },
         generateMatchPathRewrites: true,
       },
