@@ -32,6 +32,23 @@ module.exports = {
     {
       resolve: require.resolve('gatsby-plugin-netlify'),
       options: {
+        headers: {
+          '/preview': [
+            'Content-Security-Policy: frame-src https://*.myvtex.com/',
+          ],
+        },
+        transformHeaders: (headers, path) => {
+          const DEFAULT_SECURITY_HEADERS = [
+            'X-XSS-Protection: 1; mode=block',
+            'X-Content-Type-Options: nosniff',
+            'Referrer-Policy: same-origin',
+          ]
+
+          return path.includes('/preview')
+            ? [...DEFAULT_SECURITY_HEADERS, ...headers]
+            : ['X-Frame-Options: DENY', ...DEFAULT_SECURITY_HEADERS, ...headers]
+        },
+        mergeSecurityHeaders: false,
         generateMatchPathRewrites: true,
       },
     },

@@ -1748,21 +1748,21 @@
   dependencies:
     wonka "^4.0.14"
 
-"@vtex/gatsby-source-vtex@^0.1.3-alpha.4":
-  version "0.1.3-alpha.4"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.1.3-alpha.4.tgz#adfe1cbeb2b4645bc3d4f3dd2da41586ee76f459"
-  integrity sha512-WmJryITY+5mixG9nh5/RHYKKhlRgIwc6lk1pI4R37bbqncqXcXxWuJYdiv5+LfTh0CyK0YxAaJ/mvVkvxYcFbw==
+"@vtex/gatsby-source-vtex@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.2.0.tgz#86a070da0aeacd49a8bf9f1f3884fb6f510dbe1a"
+  integrity sha512-oqYiLkMMAw8p/7uMRyvd4Z28S5kD/5sJto3VKiUBaHGoINVKF+/TQ0WuTqYcpxcFNwmY5RqcyvJO523ose95Tg==
   dependencies:
     isomorphic-unfetch "^3.0.0"
     pretty-error "^2.1.1"
 
-"@vtex/gatsby-theme-vtex@^0.1.3-alpha.4":
-  version "0.1.3-alpha.4"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.1.3-alpha.4.tgz#7a4aad1a118320e719ead9d9a26459a486df9ffd"
-  integrity sha512-XDRmYx+lW4vE//ZUhqtX4333yjL4aI/9dE/U8ZdFr0xB4LKfYmtUM+AtccKQu20FKEZ3qyekaBZVwUS/+cfelQ==
+"@vtex/gatsby-theme-vtex@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.2.0.tgz#8d05829a4b801f93a14b4d885b4bc4bbe072b259"
+  integrity sha512-Aw1T6/PhJ+3gnZU3WEa8BXYVGF8CDFrnWKsPpX0GL3d2sdHCP5TfJQiGCHqK2AD8XKBzLNo/KmBCz1fUKxD1Ig==
   dependencies:
-    "@vtex/gatsby-source-vtex" "^0.1.3-alpha.4"
-    "@vtex/gatsby-transformer-vtex-cms" "^0.1.0"
+    "@vtex/gatsby-source-vtex" "^0.2.0"
+    "@vtex/gatsby-transformer-vtex-cms" "^0.2.0"
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
     gatsby-plugin-theme-ui "^0.3.0"
@@ -1772,10 +1772,10 @@
     swr "^0.2.3"
     theme-ui "^0.3.1"
 
-"@vtex/gatsby-transformer-vtex-cms@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.1.0.tgz#cd598f00fc9d88baf03aae4b6ea91a36043774ff"
-  integrity sha512-pr8F04DC8TdTyY2qTIg4DRHL6031JBOXznEsztran29wmW0THz15E92kcQBvFuy6BRhq+QvhfTvIHw6uDjZF+Q==
+"@vtex/gatsby-transformer-vtex-cms@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.2.0.tgz#e02045b7a01511bb24b1a09c8d5631d2339c1df1"
+  integrity sha512-CkQvgvlDwtvx8wNVEbJwMhlY1zjOVhgOCHFOIiI+JPUlplR2/hjeMfPV66PViiEn38hnP1JowX8XnbGjnPuItg==
   dependencies:
     pretty-error "^2.1.1"
 
