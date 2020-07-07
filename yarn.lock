@@ -1748,21 +1748,21 @@
   dependencies:
     wonka "^4.0.14"
 
-"@vtex/gatsby-source-vtex@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.2.0.tgz#86a070da0aeacd49a8bf9f1f3884fb6f510dbe1a"
-  integrity sha512-oqYiLkMMAw8p/7uMRyvd4Z28S5kD/5sJto3VKiUBaHGoINVKF+/TQ0WuTqYcpxcFNwmY5RqcyvJO523ose95Tg==
+"@vtex/gatsby-source-vtex@^0.2.1-alpha.0":
+  version "0.2.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.2.1-alpha.0.tgz#909c71e0ddf79d343a2b831552baa3f6e5d1c10a"
+  integrity sha512-XrLwawnroVSSj6bOLBOd/ORHTptr6GdIUh8SCnZa6kfNIwiHjlaAHslS6jS3cWIIMSxYfsplGTrXozRajjx/Vg==
   dependencies:
     isomorphic-unfetch "^3.0.0"
     pretty-error "^2.1.1"
 
-"@vtex/gatsby-theme-vtex@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.2.0.tgz#8d05829a4b801f93a14b4d885b4bc4bbe072b259"
-  integrity sha512-Aw1T6/PhJ+3gnZU3WEa8BXYVGF8CDFrnWKsPpX0GL3d2sdHCP5TfJQiGCHqK2AD8XKBzLNo/KmBCz1fUKxD1Ig==
+"@vtex/gatsby-theme-vtex@^0.2.1-alpha.0":
+  version "0.2.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.2.1-alpha.0.tgz#50d9d678625d2fc19bfd68ce9e499802c213ddf9"
+  integrity sha512-o85rLFV2s5UF8QmdYrTQlJbeZRxLBHHGrL2BzL8Gtpy4mRITUSU691lxNz+9q3uLfrRkGfRhK11CAZz4F0tauA==
   dependencies:
-    "@vtex/gatsby-source-vtex" "^0.2.0"
-    "@vtex/gatsby-transformer-vtex-cms" "^0.2.0"
+    "@vtex/gatsby-source-vtex" "^0.2.1-alpha.0"
+    "@vtex/gatsby-transformer-vtex-cms" "^0.2.1-alpha.0"
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
     gatsby-plugin-theme-ui "^0.3.0"
@@ -1771,11 +1771,12 @@
     schema-dts "^0.6.0"
     swr "^0.2.3"
     theme-ui "^0.3.1"
+    use-async-resource "^2.1.0"
 
-"@vtex/gatsby-transformer-vtex-cms@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.2.0.tgz#e02045b7a01511bb24b1a09c8d5631d2339c1df1"
-  integrity sha512-CkQvgvlDwtvx8wNVEbJwMhlY1zjOVhgOCHFOIiI+JPUlplR2/hjeMfPV66PViiEn38hnP1JowX8XnbGjnPuItg==
+"@vtex/gatsby-transformer-vtex-cms@^0.2.1-alpha.0":
+  version "0.2.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.2.1-alpha.0.tgz#31aeb20cc4eba9fb1c4f075208fa49260591d6e0"
+  integrity sha512-VSQtvKArZjxmzKs2jHwxXTkpX6U4qgYpt33qNr6sMIJfIs8Fe/NsYfJTyHNJsbZfkJKmI/o6OlYCZRJFCf4VFg==
   dependencies:
     pretty-error "^2.1.1"
 
@@ -8601,6 +8602,11 @@ object-hash@^1.1.4:
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-1.3.1.tgz#fde452098a951cb145f039bb7d455449ddc126df"
   integrity sha512-OSuu/pU4ENM9kmREg0BdNrUDIl1heYa4mBZacJc+vVWz4GtAwu7jO8s4AIt2aGRUTqxykpWzI3Oqnsm13tTMDA==
 
+object-hash@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.0.3.tgz#d12db044e03cd2ca3d77c0570d87225b02e1e6ea"
+  integrity sha512-JPKn0GMu+Fa3zt3Bmr66JhokJU5BaNBIh4ZeTlaCBzrBsOeXzwcKKAK1tbLiPKgvwmPXsDvvLHoWh5Bm7ofIYg==
+
 object-inspect@^1.7.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/object-inspect/-/object-inspect-1.8.0.tgz#df807e5ecf53a609cc6bfe93eac3cc7be5b3a9d0"
@@ -12219,6 +12225,13 @@ urql@^1.9.8:
   dependencies:
     "@urql/core" "^1.12.0"
     wonka "^4.0.14"
+
+use-async-resource@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/use-async-resource/-/use-async-resource-2.1.0.tgz#270563e6860ec3fdd331f74538cdb922f633676d"
+  integrity sha512-qiJ6QMtraR6kuiKXQ5oclVBW3azSWzYE15rQTeUbJATL0iCBHH8sXCpL+qUFPE1P1rMro00DYgKZvUTe8Bbufg==
+  dependencies:
+    object-hash "^2.0.3"
 
 use@^3.1.0:
   version "3.1.1"
