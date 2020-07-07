@@ -4,7 +4,9 @@ const server = BASE_SITE_URL
   ? BASE_SITE_URL.replace('.com', '.app')
   : 'http://localhost:9000'
 
-const urls = ['/', '/vintage-phone/p/'].map((path) => `${server}${path}`)
+const urls = ['/', '/vintage-phone/p/', '/apparel---accessories/'].map(
+  (path) => `${server}${path}`
+)
 
 module.exports = {
   ci: {
