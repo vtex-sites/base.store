@@ -25,7 +25,7 @@ jobs:
         env:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
           LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
-          BASE_SITE_URL: https://faststore.netlify.app/
+          BASE_SITE_URL: https://faststore.netlify.app
         with:
           serverBaseUrl: "https://vtex-lhci-server.herokuapp.com/"
           serverToken: ${{ secrets.LHCI_TOKEN }}
