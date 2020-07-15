@@ -8,6 +8,9 @@ module.exports = {
       options: {
         title: 'Store Theme - VTEX Base Store',
         description: 'A sample store using the best of Gatsby and VTEX',
+        prerender: () => ({
+          categories: ['25'],
+        }),
       },
     },
     {
