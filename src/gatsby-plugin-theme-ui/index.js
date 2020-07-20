@@ -10,9 +10,10 @@ export default {
   'rich-text': {
     'default': {
       color: 'textBold',
-      fontSize: 5,
+      fontSize: 2,
       fontWeight: 'bold',
-      textAlign: 'center'
+      textAlign: 'center',
+      textTransform: 'uppercase',
     },
     'question': {
       color: 'textBold',
@@ -22,10 +23,10 @@ export default {
     },
     'link': {
       color: 'textBold',
-      fontSize: 2,
+      fontSize: 4,
       textAlign: 'center',
+      textTransform: 'uppercase',
       textDecoration: 'none',
-      textTransform: 'uppercase'
     }
   },
   'header-left': {
