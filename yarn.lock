@@ -1826,10 +1826,10 @@
     isomorphic-unfetch "^3.0.0"
     pretty-error "^2.1.1"
 
-"@vtex/gatsby-theme-vtex@^0.5.1-alpha.2":
-  version "0.5.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.5.1-alpha.2.tgz#c4adf5e5a24bf7b12aee0d8d2c21998ba1267c33"
-  integrity sha512-BclEPaUfnL7RzkNVR7MuJ/VlbRawSHY86EPx53S6EOXsm2/liUbxsG+Fw02IIiGOES5dfBcgBOtzY+xITm/c2Q==
+"@vtex/gatsby-theme-vtex@^0.5.1-alpha.3":
+  version "0.5.1-alpha.3"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.5.1-alpha.3.tgz#f04493c5d34bf97803969e696b75d741eb5558a7"
+  integrity sha512-eptlk0Zi7hVanYtATGegV/9+D/NkSBKipBhm+spZzbILsTIjj46fhEmal1Sxcsrd6Mx9PWePD+Wk7he+PQbhBw==
   dependencies:
     "@bit/vtex.poc.rich-text" "^0.0.1"
     "@vtex/gatsby-source-vtex" "^0.4.1"
@@ -1838,7 +1838,6 @@
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
     gatsby-plugin-theme-ui "^0.3.0"
-    insane "^2.6.2"
     p-queue "^6.5.0"
     react-helmet "^6.1.0"
     schema-dts "^0.6.0"
