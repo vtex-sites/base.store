@@ -1826,10 +1826,10 @@
     isomorphic-unfetch "^3.0.0"
     pretty-error "^2.1.1"
 
-"@vtex/gatsby-theme-vtex@^0.5.1-alpha.12":
-  version "0.5.1-alpha.12"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.5.1-alpha.12.tgz#b67fea1012978b3873e5f0666e90c814c888797d"
-  integrity sha512-zSBUFqvuydJZNBQ3VrpwRZvjbj+B3SmRSbVnt6L+GrrriWJfj5yNrXE7yaOq1JpCXuK16lbdLVLTdBIAi/KJKw==
+"@vtex/gatsby-theme-vtex@^0.5.1-alpha.13":
+  version "0.5.1-alpha.13"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.5.1-alpha.13.tgz#3c0db247d7ba70e995d19d449fbf2be865017c40"
+  integrity sha512-l31txSPr+xBqTHPA3+5nYb1rIN4Rzbet+afzKjfB+LcaO2fXokz/wDYjm/32KA8sl5nPA3I5qSBxJNQLtiPzFg==
   dependencies:
     "@bit/vtex.poc.rich-text" "^0.0.1"
     "@vtex/gatsby-source-vtex" "^0.4.1"
