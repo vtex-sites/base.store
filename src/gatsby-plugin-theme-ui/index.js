@@ -29,6 +29,13 @@ export default {
       textDecoration: 'none',
     },
   },
+  'notification-bar': {
+    textAlign: 'center',
+    background: '#e0efe0',
+    minHeight: '48px',
+    fontWeight: 'bold',
+    fontSize: 0,
+  },
   'header-left': {
     alignItems: 'center',
     justifyContent: 'center',
