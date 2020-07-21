@@ -68,6 +68,7 @@ export default {
     display: 'flex',
     justifyContent: 'center',
     px: '10px',
+    maxHeight: '540px',
     background: '#e0efe0',
     textAlign: 'center',
     alignItems: 'center',
