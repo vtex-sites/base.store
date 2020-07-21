@@ -8,26 +8,26 @@ export default {
     flexWrap: 'wrap',
   },
   'rich-text': {
-    'default': {
+    default: {
       color: 'textBold',
       fontSize: 2,
       fontWeight: 'bold',
       textAlign: 'center',
       textTransform: 'uppercase',
     },
-    'question': {
+    question: {
       color: 'textBold',
       fontSize: 5,
       fontWeight: 'bold',
-      textAlign: 'center'
+      textAlign: 'center',
     },
-    'link': {
+    link: {
       color: 'textBold',
       fontSize: 4,
       textAlign: 'center',
       textTransform: 'uppercase',
       textDecoration: 'none',
-    }
+    },
   },
   'header-left': {
     alignItems: 'center',
