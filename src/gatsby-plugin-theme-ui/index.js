@@ -7,6 +7,28 @@ export default {
     alignItems: 'center',
     flexWrap: 'wrap',
   },
+  'rich-text': {
+    default: {
+      color: 'textBold',
+      fontSize: 2,
+      fontWeight: 'bold',
+      textAlign: 'center',
+      textTransform: 'uppercase',
+    },
+    question: {
+      color: 'textBold',
+      fontSize: 5,
+      fontWeight: 'bold',
+      textAlign: 'center',
+    },
+    link: {
+      color: 'textBold',
+      fontSize: 4,
+      textAlign: 'center',
+      textTransform: 'uppercase',
+      textDecoration: 'none',
+    },
+  },
   'header-left': {
     alignItems: 'center',
     justifyContent: 'center',
@@ -87,6 +109,7 @@ export default {
   colors: {
     text: '#3f3f40',
     textMuted: '#979899',
+    textBold: '#03003d',
     background: '#fff',
     primary: '#0f3e99',
     muted: '#f0f0f0',
