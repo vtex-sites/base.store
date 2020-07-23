@@ -105,12 +105,15 @@ export default {
       borderColor: '#cacbcc',
     },
   },
-  loadMore: {
-    cursor: 'pointer',
-    '&:disabled': {
-      cursor: 'default',
-      background: '#fff',
-      color: 'text',
+  buttons: {
+    loadMore: {
+      width: '100%',
+      cursor: 'pointer',
+      '&:disabled': {
+        cursor: 'default',
+        background: '#fff',
+        color: 'text',
+      },
     },
   },
   'header-minicart': {
