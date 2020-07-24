@@ -1,4 +1,4 @@
-const prerender = () => require('./prerender.json')
+const getStaticPaths = () => require('./staticPaths.json')
 
 module.exports = {
   siteMetadata: {
@@ -10,7 +10,7 @@ module.exports = {
       options: {
         title: 'Store Theme - VTEX Base Store',
         description: 'A sample store using the best of Gatsby and VTEX',
-        prerender,
+        getStaticPaths,
       },
     },
     {
