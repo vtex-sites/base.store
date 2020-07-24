@@ -121,14 +121,17 @@ export default {
     fontWeight: 200,
     color: '#727273',
   },
-  shellProductName: {
+  'summary-name': {
     fontWeight: 600,
     fontSize: '18px',
     color: '#2e2e2e',
+    marginTop: '1rem',
+    marginBottom: '3rem'
   },
   'summary-listPrice': {
     textDecoration: 'line-through',
     fontSize: '.875rem',
+    minHeight: '21px',
     color: '#727273',
   },
   'summary-price': {
@@ -145,7 +148,8 @@ export default {
     alignItems: 'center',
     paddingLeft: '0.5rem',
     paddingRight: '0.5rem',
-    marginLeft: '0.5rem'
+    marginLeft: '0.5rem',
+    minWidth: '51px'
   },
   'summary-availability': {
     fontSize: '0.875',
