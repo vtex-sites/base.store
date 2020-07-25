@@ -1662,23 +1662,23 @@
   resolved "https://registry.yarnpkg.com/@vtex-components/drawer/-/drawer-0.1.3.tgz#fbe460bc02169ec3f164646818ae959b4cecb275"
   integrity sha512-sxvJ7DbanPrlb64sziThUKz9OpEUMXR8yJUS6nSElXAR2KZPW+wYYSiyEFRHwzTmen3Bu717nI2LGDUSfFLp1w==
 
-"@vtex/gatsby-source-vtex@^0.8.1-alpha.2":
-  version "0.8.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.8.1-alpha.2.tgz#881736782e4e8343947f8c533e7ecb8c135e3352"
-  integrity sha512-IToqq3Zp96V8jw//xWLsWjbyDxW6R+xea4YP2humjGTIa0KLIfA5SwvaceYimY0B68WgUyGvd9E9gxta3oLt1A==
+"@vtex/gatsby-source-vtex@^0.8.1-alpha.4":
+  version "0.8.1-alpha.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.8.1-alpha.4.tgz#948fff140cc8922abaf4b9806f9fb137071abb50"
+  integrity sha512-Fge0EKejggfGFyPSWF1hUg0PhtsKS2sTiZPT7XbCQKLXm9Z7vhkhrSpAhWrRvCSWFr63+4Za/taaw0SdPby42w==
   dependencies:
     isomorphic-unfetch "^3.0.0"
     p-map "^4.0.0"
 
-"@vtex/gatsby-theme-vtex@^0.8.1-alpha.3":
-  version "0.8.1-alpha.3"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.8.1-alpha.3.tgz#16f49d8503dee19a7d0320e53e133a50bd12af3e"
-  integrity sha512-zAxOZm9N1JbYHGYuSUZt8dUys8TubiVU+M6SLP9UHfqNWwclGIkulDErv3EwSsAGcaCr6e9288q2sFakuHnGGw==
+"@vtex/gatsby-theme-vtex@^0.8.1-alpha.4":
+  version "0.8.1-alpha.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.8.1-alpha.4.tgz#6e776f788ccc93ca84ec9a7067253dec88bf9c2e"
+  integrity sha512-wakb3z0JxAWJ4iEwt7rzhVCt+p1bgV8NdNWShh0xDCUO5CUSU71CiyUWkSYRSNhQOwnnG8Hud+YIU5/bgGPxMw==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex-components/drawer" "^0.1.3"
-    "@vtex/gatsby-source-vtex" "^0.8.1-alpha.2"
-    "@vtex/gatsby-transformer-vtex-cms" "^0.8.1-alpha.2"
+    "@vtex/gatsby-source-vtex" "^0.8.1-alpha.4"
+    "@vtex/gatsby-transformer-vtex-cms" "^0.8.1-alpha.4"
     common-tags "^1.8.0"
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
@@ -1692,10 +1692,10 @@
     theme-ui "^0.3.1"
     use-async-resource "^2.1.0"
 
-"@vtex/gatsby-transformer-vtex-cms@^0.8.1-alpha.2":
-  version "0.8.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.8.1-alpha.2.tgz#3a47898ea957add9e6c29033284a50fbed2f4f4e"
-  integrity sha512-vr5uy7SxPgWR+/DeTemvKtcBINj+QNUfhWxQVudZYLxPkF3AKpDqK0YF6uFg3LMbudGOSUPY4kNdY9m+XlQzYg==
+"@vtex/gatsby-transformer-vtex-cms@^0.8.1-alpha.4":
+  version "0.8.1-alpha.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-transformer-vtex-cms/-/gatsby-transformer-vtex-cms-0.8.1-alpha.4.tgz#b679fc3b3fe231bf47464f3b60e09c30a943d10f"
+  integrity sha512-f3eHD30UgIGO5r4zHBX5tmLQmNU1In7yIyKR/1V7zRUVH7pXTJUaFIiX5wB+JQqQYYGzwkhEaKdVizby3LnSQg==
 
 "@vtex/prettier-config@^0.3.1":
   version "0.3.1"
