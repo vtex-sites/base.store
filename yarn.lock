@@ -1680,10 +1680,10 @@
     isomorphic-unfetch "^3.0.0"
     p-map "^4.0.0"
 
-"@vtex/gatsby-theme-vtex@0.9.1-alpha.5":
-  version "0.9.1-alpha.5"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.9.1-alpha.5.tgz#154622f4c9797247098868e8ab8df9342e5d7566"
-  integrity sha512-k2sF5IEkmojWSP9rtl6YVey4UooV1qG5T/MCN3MHzYGblXzDtbxyy8h+F7Q+b+ZNIvrJnQC/1/pSqEFNSFBdjA==
+"@vtex/gatsby-theme-vtex@0.9.1-alpha.6":
+  version "0.9.1-alpha.6"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.9.1-alpha.6.tgz#6ed635dd79315f94f786d87eb35e5434ee59b755"
+  integrity sha512-7w4V+slgB3DC0NI0ONexFax/xVp7s0MQ7Sl8YyQ6JMSHrZPVMBtu8t9G830hWipWkEYipzKC/I0m174O8wQZUA==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex-components/drawer" "^0.1.3"
@@ -1693,6 +1693,7 @@
     dotenv "^8.2.0"
     gatsby-plugin-react-helmet "^3.3.6"
     gatsby-plugin-theme-ui "^0.3.0"
+    html-loader "^1.1.0"
     intl-format-cache "^4.3.0"
     markdown-loader "^5.1.0"
     p-queue "^6.5.0"
