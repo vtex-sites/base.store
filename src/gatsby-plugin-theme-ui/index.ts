@@ -11,6 +11,7 @@ export default {
     alignItems: 'center',
     flexWrap: 'wrap',
   },
+
   'rich-text': {
     default: {
       color: 'textBold',
@@ -20,18 +21,36 @@ export default {
       textTransform: 'uppercase',
     },
     question: {
+      maxWidth: '540px',
       color: 'textBold',
       fontSize: 5,
       fontWeight: 'bold',
       textAlign: 'center',
     },
     link: {
-      color: 'textBold',
-      fontSize: 4,
       textAlign: 'center',
-      textTransform: 'uppercase',
-      textDecoration: 'none',
+      strong: {
+        color: 'textBold',
+        fontSize: 4,
+        textAlign: 'center',
+        textTransform: 'uppercase',
+        textDecoration: 'none'
+      },
+      a: {
+        textDecoration: 'none',
+        fontSize: '2rem',
+        fontWeight: 300,
+        color: '#03034e',
+      }
     },
+    'deals-row': {
+      p: {
+        color: '#fff',
+        margin: '0 0 0 0',
+        lineHeight: 1.5,
+        textAlign: 'center',
+      }
+    }
   },
   'notification-bar': {
     display: ['none', 'none', 'none', 'flex'],
@@ -214,5 +233,5 @@ export default {
   },
   productTitle: {
     mb: 4,
-  },
+  }
 }
