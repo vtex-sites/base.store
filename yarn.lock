@@ -2195,10 +2195,10 @@
     p-map "^4.0.0"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-vtex@^0.13.1-alpha.21":
-  version "0.13.1-alpha.21"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.13.1-alpha.21.tgz#423fef95ddf9628432d9f87359f05b5f206c0dac"
-  integrity sha512-O3thF3AklV2rXwlPr2WwlPIkhjAycGE7Mq1MCMHzPYTTJUN09kLZrBKkpoYxK9IRFSX6TkM1diPfAXAr/YUUBA==
+"@vtex/gatsby-theme-vtex@^0.13.1-alpha.22":
+  version "0.13.1-alpha.22"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.13.1-alpha.22.tgz#d561d72e9b2149fbc95db006f854fee1bbdaf3c9"
+  integrity sha512-6eXojtBfOl/FUibpDgPx/EwvHIj8E/T1pH6ksl6zUfUQpR0pxE8CIWN0nFfUJPSgp02LGm6LsfZepIn4nrc79A==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex-components/drawer" "^0.1.3"
