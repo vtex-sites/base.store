@@ -27,7 +27,7 @@ jobs:
           LHCI_TOKEN: ${{ secrets.LHCI_TOKEN }}
           BASE_SITE_URL: https://faststore.netlify.app
         with:
-          serverBaseUrl: "https://vtex-lhci-server.herokuapp.com/"
+          serverBaseUrl: "http://lighthouse-ci.staging-2c.ingress.vtex.io/"
           serverToken: ${{ secrets.LHCI_TOKEN }}
           configPath: './lighthouserc.js'
           uploadArtifacts: true
