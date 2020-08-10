@@ -1,8 +1,8 @@
-import { baseTheme, cardTheme } from '@vtex/store-ui'
+import { baseTheme, infoCardTheme } from '@vtex/store-ui'
 
 export default {
   ...baseTheme,
-  ...cardTheme,
+  ...infoCardTheme,
   header: {
     bg: 'muted',
     px: [0, 2, 4],
