@@ -2101,6 +2101,18 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
+"@vtex/gatsby-plugin-graphql@^0.14.3":
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.14.3.tgz#aa4e3cc562c0b6286c93e1676f6e92998ff07719"
+  integrity sha512-QgNYLS4++Cn2YriQykM//LgUJ3ATBdAtshc/XnA9a4jdv6NkqNcxKR666l2L9zeqsopXrPwq8t9GnP3Zx4Xlrg==
+  dependencies:
+    "@graphql-codegen/core" "^1.17.7"
+    "@graphql-codegen/plugin-helpers" "^1.17.7"
+    "@graphql-codegen/typescript" "^1.17.7"
+    "@graphql-codegen/typescript-operations" "^1.17.7"
+    "@graphql-tools/relay-operation-optimizer" "^6.0.15"
+    fs-extra "^9.0.1"
+
 "@vtex/gatsby-source-vtex@^0.14.1":
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.14.1.tgz#665e7068c09ba5dbcd115a6023a0b899a6a99049"
@@ -2112,14 +2124,14 @@
     p-map "^4.0.0"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-vtex@^0.14.2":
-  version "0.14.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.14.2.tgz#b369a3a61e9eb78baa414a182fd3a62c84f10d5e"
-  integrity sha512-dgzgK+BjXozOA68Yir8IkkEM4Uo4fHr56bz8qw7l7XEPig/mdS8t9363CyH4w/hYEe28pVLGQV2jVGha49v+Zg==
+"@vtex/gatsby-theme-vtex@^0.14.3":
+  version "0.14.3"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.14.3.tgz#dc8f786dc0aafb762f197f56fe65e7cd90f7c23d"
+  integrity sha512-NBgAJD8VDHzHrMz/8ca9ettB8TlF/B46mthtcfWM5ey0fUq+/E4jbi++9t3ceCeKbKtldsVXTStXFawvYr6KOQ==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex-components/drawer" "^0.1.3"
-    "@vtex/gatsby-plugin-graphql" "^0.14.1"
+    "@vtex/gatsby-plugin-graphql" "^0.14.3"
     "@vtex/gatsby-source-vtex" "^0.14.1"
     "@vtex/gatsby-transformer-vtex-cms" "^0.14.1"
     babel-gql "^0.1.3"
