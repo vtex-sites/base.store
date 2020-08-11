@@ -84,7 +84,7 @@ module.exports = {
         'total-blocking-time': [
           'error',
           {
-            maxNumericValue: 200,
+            maxNumericValue: 250,
           },
         ],
       },
