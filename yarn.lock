@@ -2293,10 +2293,10 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-i18n@^0.34.1-alpha.1":
-  version "0.34.1-alpha.1"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.34.1-alpha.1.tgz#b7432041d7ba7d24b07a4644f581979bfa6c382b"
-  integrity sha512-UyM4Abe4kOHk8zXorQ6yGU5bS8A95Lfz03TQ2gFiaPvH8oHXIpQSok5PPP8V4S2VbuhczaXY1Sq74K/7GCCbcg==
+"@vtex/gatsby-plugin-i18n@^0.34.1-alpha.2":
+  version "0.34.1-alpha.2"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.34.1-alpha.2.tgz#ce6c25e2a5dcb45ffda22d5f62c7eea02a55e8a8"
+  integrity sha512-VEFG+B8Z42UfHT3k/m+mcNT3xypn6QAfi+voLsqdGqgxdCjaxkDuSpZeYL0pEhdX0YI9CESyNaH2tVOYDxGYhw==
   dependencies:
     "@formatjs/cli" "^2.7.7"
     react-intl "^5.7.1"
@@ -2325,14 +2325,14 @@
     p-map "^4.0.0"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-vtex@^0.34.1-alpha.1":
-  version "0.34.1-alpha.1"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.34.1-alpha.1.tgz#f65e4e6fbc76abeb1ede1db0cdd1d9f9ffc41319"
-  integrity sha512-jFNo7JCJt23NloT6yQYcKfjkame0F9+D4EcHQBjMMwBcsPtfGc28i5RVv+vO1ktMZ614YIYCczHcw5c5jIHrgw==
+"@vtex/gatsby-theme-vtex@^0.34.1-alpha.3":
+  version "0.34.1-alpha.3"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.34.1-alpha.3.tgz#c81e054443de76ad435b1b8043d0576e481b9983"
+  integrity sha512-werrLR7zwpXQAreBNf8MMFn6V0/1J/fWpbcY/3EBQAAWRtSuOakxVn+Mr+RxiyHSTBAQ13dHb0Jltm7udGeV+Q==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex/gatsby-plugin-graphql" "^0.34.1-alpha.0"
-    "@vtex/gatsby-plugin-i18n" "^0.34.1-alpha.1"
+    "@vtex/gatsby-plugin-i18n" "^0.34.1-alpha.2"
     "@vtex/gatsby-plugin-theme-ui" "^0.34.1-alpha.0"
     "@vtex/gatsby-source-vtex" "^0.34.1-alpha.0"
     "@vtex/gatsby-transformer-vtex-cms" "^0.34.1-alpha.0"
@@ -2362,15 +2362,15 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.1.tgz#c376999e826827aa11f4b0e08af9cf59ae9ee476"
   integrity sha512-B2tvaxrWXAzF2iSaRpQaw88kxq1lGC7/DSOBuGOn9225wNrF5g6D6NNky4/TZomv0NJTgO8tIT59ftbTHgMxXg==
 
-"@vtex/store-ui@^0.34.1-alpha.1":
-  version "0.34.1-alpha.1"
-  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.34.1-alpha.1.tgz#5286105ec6c65916e2ed0b2e060faddb12475329"
-  integrity sha512-CTdtveL5dRqhSJcgEGSxajK0z/qDNikZz/8mfv7UeIzXIRYmqFPG8Q928TJbyxDlpi+QJwdVIDAab6OA4h2M5A==
+"@vtex/store-ui@^0.34.1-alpha.2":
+  version "0.34.1-alpha.2"
+  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.34.1-alpha.2.tgz#57e278bb9cba0780e3aa124a961af016c3c530cb"
+  integrity sha512-X5dHmhaPOae47bE2fuNMwNvk8x8ntIVYVxaipk1GqEoKJAhkaXOIpkUFxmM/E7424+Z6iSTMABfA/SYKESke2Q==
   dependencies:
     "@theme-ui/preset-base" "^0.3.0"
     "@vtex-components/accordion" "^0.2.3"
     "@vtex-components/drawer" "^0.2.2"
-    "@vtex/gatsby-plugin-i18n" "^0.34.1-alpha.1"
+    "@vtex/gatsby-plugin-i18n" "^0.34.1-alpha.2"
     deepmerge "^4.2.2"
     gatsby-link "^2.4.13"
     reakit "^1.1.2"
