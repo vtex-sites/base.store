@@ -1,4 +1,4 @@
-import { SxStyleProp } from "@vtex/store-ui";
+import { SxStyleProp } from '@vtex/store-ui'
 
 export const custom: SxStyleProp = {
   'rich-text': {
@@ -121,5 +121,12 @@ export const custom: SxStyleProp = {
   },
   productTitle: {
     mb: 4,
+  },
+  productPage: {
+    container: {
+      my: 4,
+      mx: 0,
+      flexDirection: 'column',
+    },
   },
 }
