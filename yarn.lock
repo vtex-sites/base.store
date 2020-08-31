@@ -2293,18 +2293,6 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-graphql@^0.36.0-sc.0":
-  version "0.36.0-sc.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.36.0-sc.0.tgz#8ab107fd109465c51714d5c64bd1921e587f3932"
-  integrity sha512-3/l94ckCaW6+shNvcbez6d7sjA2vYGv0E5gVTDQU42OGkM13cod3CBO/Fv1ScHF7z4ICxsoR/usGHZ1SsUIB6g==
-  dependencies:
-    "@graphql-codegen/core" "^1.17.7"
-    "@graphql-codegen/plugin-helpers" "^1.17.7"
-    "@graphql-codegen/typescript" "^1.17.7"
-    "@graphql-codegen/typescript-operations" "^1.17.7"
-    "@graphql-tools/relay-operation-optimizer" "^6.0.15"
-    fs-extra "^9.0.1"
-
 "@vtex/gatsby-plugin-i18n@^0.36.0":
   version "0.36.0"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-i18n/-/gatsby-plugin-i18n-0.36.0.tgz#4bcf817d6222d25ac3f45bf7769601a917d29b07"
@@ -2337,10 +2325,10 @@
     p-map "^4.0.0"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-vtex@^0.36.1-alpha.2":
-  version "0.36.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.36.1-alpha.2.tgz#1474128d8197cc8a6cf881296568685fff7b548a"
-  integrity sha512-BAqN2cQh3Qc8ssxFYWwLjimODDzPSlLwpz652XH2/QalxMcGBRs5idKbZMuFxOThPqad25mOhQc047NDM8XQzA==
+"@vtex/gatsby-theme-vtex@^0.37.0":
+  version "0.37.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.37.0.tgz#93f100182c8fdef5f47d81f53c02a2f6cb185c77"
+  integrity sha512-J5RSI2MzRyYcS/wceMW4IN+lUo74pcwgfLFQnh/xsahPmOywbmckkYruh91ihltwNNCHv7zVuXP9c+WNfd8IwA==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex/gatsby-plugin-graphql" "^0.36.0"
@@ -2375,10 +2363,10 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.1.tgz#c376999e826827aa11f4b0e08af9cf59ae9ee476"
   integrity sha512-B2tvaxrWXAzF2iSaRpQaw88kxq1lGC7/DSOBuGOn9225wNrF5g6D6NNky4/TZomv0NJTgO8tIT59ftbTHgMxXg==
 
-"@vtex/store-ui@^0.36.1-alpha.2":
-  version "0.36.1-alpha.2"
-  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.36.1-alpha.2.tgz#7a806bfb482547eb5fc8c4bad56ad146a1722906"
-  integrity sha512-MznfNKVZbYk97bVHeRmwM26xaKspr/qpMclm7vJ4MXso35SE9ti6a/YJdcZ6ptVUzg+NxfKOdjz1xAM8E8MY/Q==
+"@vtex/store-ui@^0.37.0":
+  version "0.37.0"
+  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.37.0.tgz#02b242c92be9e7cc6fdbe41835d4c48c9c9cf5c9"
+  integrity sha512-snbTk/Ce5Qs2FBWLCsVP3zUdJk/W4NWw+zUMOG6Z4Tk0HMe6jCjwlpy4qrXmAZoOItckxAiVJ0D9JQd25zXc2g==
   dependencies:
     "@theme-ui/preset-base" "^0.3.0"
     "@vtex-components/accordion" "^0.2.3"
