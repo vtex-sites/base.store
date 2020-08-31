@@ -21,6 +21,12 @@ module.exports = {
         'is-crawlable': 'off', // preview pages are not crawlable
         'uses-rel-preconnect': 'warn', // somehow lighthouse ci can't find the dns-prefetch tags we are adding
         'categories:pwa': 'off',
+        'uses-text-compression': [
+          'warn',
+          {
+            maxLength: 1, // rc.js
+          },
+        ],
         'categories:seo': [
           'error',
           {
