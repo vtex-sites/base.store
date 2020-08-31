@@ -2325,10 +2325,10 @@
     p-map "^4.0.0"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-vtex@^0.36.0":
-  version "0.36.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.36.0.tgz#46dbfee20e0e5e9e14971a759548baff942bcc69"
-  integrity sha512-uBRlCBaYQEjtT6VCprTJ/9liMWVtZGDy9Tb+fy/7FsmpW2lJija1UzLX7OcrFWI6R6qur8dOzxXJ0tCZzt2pyg==
+"@vtex/gatsby-theme-vtex@^0.36.1-alpha.0":
+  version "0.36.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-vtex/-/gatsby-theme-vtex-0.36.1-alpha.0.tgz#e3936b7fda5eed01ea7094e596aba79029fb832d"
+  integrity sha512-fb3+yInfQR1OGN2zVo1ilTYjJADR9ACn7MBr8KbWrxCPNaINTvIPtUBYFWWpovVgi4WWnDfOHDpcDvxn8ST+tg==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex/gatsby-plugin-graphql" "^0.36.0"
@@ -2363,10 +2363,10 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.1.tgz#c376999e826827aa11f4b0e08af9cf59ae9ee476"
   integrity sha512-B2tvaxrWXAzF2iSaRpQaw88kxq1lGC7/DSOBuGOn9225wNrF5g6D6NNky4/TZomv0NJTgO8tIT59ftbTHgMxXg==
 
-"@vtex/store-ui@^0.36.0":
-  version "0.36.0"
-  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.36.0.tgz#26e8b925e160b048e6f674525b234de360a8e9d3"
-  integrity sha512-q2xlKDIkdefY77Y3MceO0bBssZwGaUK6RZzBndYb9UUJOTYOYVdodwp8k+m1geic349KRn0Lcb8gEc4fJDeR0w==
+"@vtex/store-ui@^0.36.1-alpha.0":
+  version "0.36.1-alpha.0"
+  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.36.1-alpha.0.tgz#7e212cd4c7758b93ebefcae46b6abf9538b8d9a3"
+  integrity sha512-Q7vJ/ZWASWnHLppCax+8dlvFFxR9npIzA8DejeErIOF5vh/OUabZbAjZeCy6nPWXtNkyg3TMfxMWDvw1nRehwg==
   dependencies:
     "@theme-ui/preset-base" "^0.3.0"
     "@vtex-components/accordion" "^0.2.3"
