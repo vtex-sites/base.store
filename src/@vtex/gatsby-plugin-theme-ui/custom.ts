@@ -73,6 +73,12 @@ export const custom: SxStyleProp = {
       },
     },
   },
+  grids: {
+    search: {
+      my: 4,
+      gap: 3,
+    },
+  },
   shelfTitle: {
     fontSize: '2.25rem',
     fontWeight: 200,
