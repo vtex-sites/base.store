@@ -1,7 +1,6 @@
 {
   "buy-button.add-to-cart": "ADICIONAR AO CARRINHO",
-  "carousel.previous": "Anterior",
-  "carousel.next": "Próximo",
+  "shelf.title.0": "Ofertas",
   "minicart.drawer.close": "Fechar",
   "minicart.drawer.count": "Contagem ({count})",
   "minicart.drawer.subtotal": "Subtotal",

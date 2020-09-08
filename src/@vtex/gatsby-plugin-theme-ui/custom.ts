@@ -1,5 +1,44 @@
 import { SxStyleProp } from '@vtex/store-ui'
 
+const paginationDots: SxStyleProp = {
+  container: {
+    marginTop: '0.5rem',
+    marginBottom: '0.5rem',
+    position: 'absolute',
+    justifyContent: 'center',
+    display: 'flex',
+    margin: 0,
+    padding: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  dot: {
+    bg: '#a8a8a8',
+    cursor: 'pointer',
+    display: 'inline-block',
+    borderRadius: '100%',
+    margin: '48px 12px 12px 12px',
+    padding: '0.25rem',
+    borderWidth: 0,
+    outline: '0',
+    height: `0.625rem`,
+    width: `0.625rem`,
+  },
+  activeDot: {
+    bg: '#f71963',
+    cursor: 'pointer',
+    display: 'inline-block',
+    borderRadius: '100%',
+    margin: '48px 12px 12px 12px',
+    padding: '0.25rem',
+    borderWidth: 0,
+    outline: '0',
+    height: `0.625rem`,
+    width: `0.625rem`,
+  },
+}
+
 export const custom: SxStyleProp = {
   'rich-text': {
     default: {
@@ -130,43 +169,23 @@ export const custom: SxStyleProp = {
     },
   },
   carousel: {
+    paginationDots,
+  },
+  shelf: {
     paginationDots: {
+      ...paginationDots,
       container: {
-        marginTop: '0.5rem',
-        marginBottom: '0.5rem',
-        position: 'absolute',
-        justifyContent: 'center',
-        display: 'flex',
-        margin: 0,
-        padding: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
+        ...paginationDots.container,
+        position: 'relative',
       },
       dot: {
-        bg: '#a8a8a8',
-        cursor: 'pointer',
-        display: 'inline-block',
-        borderRadius: '100%',
-        margin: '48px 12px 12px 12px',
-        padding: '0.25rem',
-        borderWidth: 0,
-        outline: '0',
-        height: `0.625rem`,
-        width: `0.625rem`,
+        ...paginationDots.dot,
+        margin: '24px 12px 12px 12px',
       },
       activeDot: {
-        bg: '#f71963',
-        cursor: 'pointer',
-        display: 'inline-block',
-        borderRadius: '100%',
-        margin: '48px 12px 12px 12px',
-        padding: '0.25rem',
-        borderWidth: 0,
-        outline: '0',
-        height: `0.625rem`,
-        width: `0.625rem`,
+        ...paginationDots.activeDot,
+        margin: '24px 12px 12px 12px',
       },
     },
-  }
+  },
 }
