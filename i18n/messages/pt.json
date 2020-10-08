@@ -14,7 +14,8 @@
   "facets.brand-selector.title": "Marcas",
   "facets.tree-selector.title": "Departamentos",
   "facets.filters": "Filtros",
-  "search.page-list.more": "Mais",
+  "search.page-list.more": "Mostrar Mais",
+  "search.page-list.more.loading": "Carregando...",
   "product-not-found": "Produto não encontrado",
   "loading": "Carregando...",
   "error-generic": "Erro",
@@ -30,5 +31,16 @@
   "suggestions.history.empty": "Nenhuma pesquisa encontrada",
   "suggestions.topSearches.title": "Termos mais buscados",
   "productDetails.reference": "Codigo",
-  "social.share": "Compartilhe"
+  "social.share": "Compartilhe",
+  "searchControls.totalCount": "{count,plural,=0{ PRODUTOS}one{ PRODUTO}other{ PRODUTOS}}",
+  "searchControls.filters": "FILTROS ",
+  "searchControls.select.scoreDesc": "Relevância",
+  "searchControls.select.priceDesc": "Preço: Menor ao Maior",
+  "searchControls.select.priceAsc": "Preço: Maior ao Menor",
+  "searchControls.select.topSaleDesc": "Mais vendidos",
+  "searchControls.select.reviewRateDesc": "Reviews",
+  "searchControls.select.nameDesc": "Nome, crescente",
+  "searchControls.select.nameAsc": "Nome, decrescente",
+  "searchControls.select.releaseDateDesc": "Lancamentos",
+  "searchControls.select.bestDiscountDesc": "Desconto"
 }

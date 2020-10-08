@@ -14,7 +14,8 @@
   "facets.brand-selector.title": "Brands",
   "facets.tree-selector.title": "Departments",
   "facets.filters": "Filters",
-  "search.page-list.more": "More",
+  "search.page-list.more": "Show More",
+  "search.page-list.more.loading": "Loading...",
   "product-not-found": "Product not found",
   "loading": "Loading...",
   "error-generic": "Error",
@@ -30,5 +31,16 @@
   "suggestions.history.empty": "No history yet",
   "suggestions.topSearches.title": "Top searches",
   "productDetails.reference": "Reference",
-  "social.share": "Share"
+  "social.share": "Share",
+  "searchControls.totalCount": "{count,plural,=0{ PRODUCTS}one{ PRODUCT}other{ PRODUCTS}}",
+  "searchControls.filters": "FILTERS ",
+  "searchControls.select.scoreDesc": "Relevance",
+  "searchControls.select.priceDesc": "Price: High to Low",
+  "searchControls.select.priceAsc": "Price: Low to High",
+  "searchControls.select.topSaleDesc": "Sales",
+  "searchControls.select.reviewRateDesc": "Reviews",
+  "searchControls.select.nameDesc": "Name, ascending",
+  "searchControls.select.nameAsc": "Name, descending",
+  "searchControls.select.releaseDateDesc": "Release date",
+  "searchControls.select.bestDiscountDesc": "Discount"
 }
