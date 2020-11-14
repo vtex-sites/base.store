@@ -30,7 +30,7 @@ const paginationDots: SxStyleProp = {
     width: `0.625rem`,
   },
   activeDot: {
-    bg: '#f71963',
+    bg: 'secondary',
     cursor: 'pointer',
     display: 'inline-block',
     borderRadius: '100%',
@@ -134,11 +134,43 @@ const carouselResponsivePicture = createTheme(responsivePictureTheme, {
 
 const theme: SxStyleProp = {
   productImageGallery: {
-    position: 'relative',
     mx: 2,
-    arrow: carouselArrows,
-    paginationDots: shelfPaginationDots,
-    img: { width: '100%' },
+    display: 'flex',
+    flexWrap: 'nowrap',
+    flexDirection: 'row',
+
+    miniature: {
+      container: {
+        mx: '15px',
+        width: '78px',
+        display: ['none', 'block'],
+      },
+
+      active: {
+        marginBottom: '5px',
+        borderStyle: 'solid',
+        borderColor: 'secondary',
+        borderWidth: '1px',
+      },
+
+      inactive: {
+        marginBottom: '5px',
+        borderStyle: 'solid',
+        borderColor: 'gray',
+        borderWidth: '1px',
+      },
+    },
+
+    featured: {
+      flexGrow: 1,
+      position: 'relative',
+
+      media: { width: '100%' },
+
+      arrow: carouselArrows,
+
+      paginationDots: shelfPaginationDots,
+    },
   },
 
   carousel: {
