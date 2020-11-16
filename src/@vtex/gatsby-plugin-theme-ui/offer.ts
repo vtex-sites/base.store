@@ -9,7 +9,7 @@ export default {
       },
 
       price: {
-        fontSize: '19px',
+        fontSize: '20px',
         fontWeight: 600,
         color: '#062e2e',
         height: '25px',
