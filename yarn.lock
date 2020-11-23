@@ -2333,6 +2333,14 @@
     "@formatjs/cli" "^2.7.7"
     react-intl "^5.7.1"
 
+"@vtex/gatsby-plugin-nginx@^0.201.0":
+  version "0.201.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.201.0.tgz#6c6210983511531f4f65c6c139a31349e9d815e3"
+  integrity sha512-NiTjuorZhEhPRidSnxtOYAET0Q8myTPVwRS/VOwMy560TVhc6oqB1VDzOkvXahg4FB7aJG11AAk2aRzlxSe44Q==
+  dependencies:
+    kebab-hash "^0.1.2"
+    webpack-assets-manifest "^3.1.1"
+
 "@vtex/gatsby-plugin-theme-ui@^0.120.1":
   version "0.120.1"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-theme-ui/-/gatsby-plugin-theme-ui-0.120.1.tgz#e4259d551d1b033f050bdf3dea5fe754eaf1c6bd"
