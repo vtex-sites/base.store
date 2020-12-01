@@ -19,7 +19,7 @@ const transformHeaders = (headers, path) => {
     'Set-Cookie: VtexStoreVersion=v2; Max-Age=86400',
   ]
 
-  if (path.includes('/preview')) {
+  if (path.includes('/cms/preview')) {
     outputHeaders.push(
       'Content-Security-Policy: frame-src https://*.myvtex.com/'
     )
@@ -39,7 +39,7 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: require.resolve('@vtex/gatsby-theme-store'),
+      resolve: '@vtex/gatsby-theme-store',
       options: {
         title: 'Store Theme - VTEX Base Store',
         description: 'A sample store using the best of Gatsby and VTEX',
@@ -52,7 +52,7 @@ module.exports = {
       },
     },
     {
-      resolve: require.resolve('gatsby-plugin-manifest'),
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Store Theme - VTEX Base Store',
         short_name: 'Store Theme',
@@ -64,15 +64,10 @@ module.exports = {
       },
     },
     {
-      // This plugin works in conjunction with the
-      // '@vtex/gatsby-theme-store' and sources the cms's json files
-      resolve: require.resolve('gatsby-source-filesystem'),
-      options: {
-        path: './src/cms/',
-      },
+      resolve: '@vtex/gatsby-plugin-cms',
     },
     {
-      resolve: require.resolve('gatsby-plugin-robots-txt'),
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
         resolveEnv: () => NETLIFY_ENV,
         env: {
@@ -93,7 +88,7 @@ module.exports = {
       },
     },
     {
-      resolve: require.resolve('gatsby-plugin-netlify'),
+      resolve: 'gatsby-plugin-netlify',
       options: {
         headers: {
           '/preview': [
@@ -106,7 +101,7 @@ module.exports = {
       },
     },
     {
-      resolve: require.resolve('@vtex/gatsby-plugin-nginx'),
+      resolve: '@vtex/gatsby-plugin-nginx',
       options: {
         transformHeaders,
       },
