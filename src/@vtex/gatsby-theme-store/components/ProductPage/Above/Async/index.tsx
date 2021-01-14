@@ -9,15 +9,33 @@ import BuyButton from '../../../BuyButton'
 import Offer from './Offer'
 import Social from './Social'
 
+type Item = {
+  itemId: string
+  sellers: Array<{
+    sellerId: string
+    commercialOffer: {
+      availableQuantity: number
+      price: number
+    }
+  }>
+}
+
 interface Props {
-  slug: string
+  slug?: string
+}
+
+type Product = {
+  product: {
+    productReference: string
+    items: Item[]
+  }
 }
 
 const variant = 'default'
 
 const Async: FC<Props> = ({ slug }) => {
-  const { product }: any = useAsyncProduct({ slug })
-  const [sku]: any = useSku(product)
+  const { product } = (useAsyncProduct({ slug }) as unknown) as Product
+  const [sku] = useSku<Item>(product)
   const { commercialOffer } = useBestSeller(sku)
   const { formatMessage } = useIntl()
   const { productReference } = product
