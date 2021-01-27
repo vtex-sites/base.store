@@ -1,0 +1,76 @@
+{
+  "name": "[SFJ] PLP",
+  "type": "plp",
+  "builderId": "faststore",
+  "author": {
+    "id": "0cc6d9e0-377d-4898-a907-350e4661c351",
+    "email": "tiago.gimenes@vtex.com.br"
+  },
+  "lastUpdatedAt": "2021-01-11T18:44:06.753Z",
+  "blocks": [
+    {
+      "name": "SearchBanner",
+      "props": {
+        "title": "Apparel",
+        "description": "All you need one click away",
+        "alt": "My awesome image description",
+        "desktop": {
+          "srcSet": "https://storecomponents.vtexassets.com/assets/faststore/images/apparel-desktop-resized___a0f94b37fc1374348a4bff0245b58b31.jpeg"
+        },
+        "mobile": {
+          "srcSet": "https://storecomponents.vtexassets.com/assets/faststore/images/apparel-mobile-resized___e3ebb67c189a6fcf3ce89140474259d4.jpeg"
+        }
+      }
+    }
+  ],
+  "afterBlocks": [
+    {
+      "name": "Footer",
+      "props": {
+        "headerSelection": "MAIN_FOOTER"
+      }
+    }
+  ],
+  "beforeBlocks": [
+    {
+      "name": "Header",
+      "props": {
+        "headerSelection": "MAIN_HEADER"
+      }
+    }
+  ],
+  "extraBlocks": [
+    {
+      "name": "SEO",
+      "blocks": [
+        {
+          "name": "siteMetadata",
+          "props": {
+            "title": "Store Theme - VTEX Base Store",
+            "description": "A sample store using the best of Gatsby and Store Framework Jamstack"
+          }
+        },
+        {
+          "name": "facebook",
+          "props": {
+            "description": "A sample store using the best of Gatsby and Store Framework Jamstack",
+            "title": "Store Theme - VTEX Base Store",
+            "thumbnail": "https://vtex.io/_v/public/assets/v1/published/vtex.io-landing@1.2.1/public/react/7d5b9e9f1886c9ef557362564d67ae61.svg"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Parameters",
+      "blocks": [
+        {
+          "name": "SearchIdSelector",
+          "props": {
+            "id": "/apparel---accessories",
+            "orderBy": "OrderByScoreDESC"
+          }
+        }
+      ]
+    }
+  ]
+}

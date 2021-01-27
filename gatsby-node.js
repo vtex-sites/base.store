@@ -9,14 +9,35 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig } }) => {
   })
 }
 
-let graphql
+const throwOnErrors = (errors, reporter) => {
+  if (Array.isArray(errors) && errors.length > 0) {
+    reporter.panicOnBuild(errors.toString())
 
-// Use this API to capture the graphql executor function
-exports.createPages = (args) => {
-  graphql = args.graphql
+    throw errors
+  }
 }
 
-// Add context from CMS to created pages
+let resolveGraphQL = null
+const graphqlPromise = new Promise((resolve) => {
+  resolveGraphQL = resolve
+})
+
+exports.createPages = async ({ graphql }) => {
+  resolveGraphQL(graphql)
+}
+
+// Use this API to capture the graphql executor function
+const nodesByIds = (nodes) =>
+  nodes.reduce((acc, node) => {
+    const { props } = node.extraBlocks
+      .find((block) => block.name === 'Parameters')
+      .blocks.find((block) => block.name === 'SearchIdSelector')
+
+    acc[props.id] = node
+
+    return acc
+  }, {})
+
 exports.onCreatePage = async (args) => {
   const {
     page,
@@ -24,48 +45,99 @@ exports.onCreatePage = async (args) => {
     actions: { createPage, deletePage },
   } = args
 
-  // Only add context to home page
+  const graphql = await graphqlPromise
+
+  /**
+   * Adds context to home page
+   */
   if (
-    page.path !== '/' &&
-    (page.context === undefined ||
-      typeof page.context.originalPath !== 'string' ||
-      page.context.originalPath !== '/')
+    page.path === '/' ||
+    (page.context !== undefined &&
+      typeof page.context.originalPath === 'string' &&
+      page.context.originalPath === '/')
   ) {
+    const home = await graphql(`
+      query CMSContent {
+        vtexCmsPageContent(type: { eq: "home" }) {
+          blocks {
+            name
+            props
+          }
+        }
+      }
+    `)
+
+    throwOnErrors(home.errors, reporter)
+
+    if (!home.data.vtexCmsPageContent) {
+      return
+    }
+
+    const {
+      data: {
+        vtexCmsPageContent: { blocks },
+      },
+    } = home
+
+    const {
+      props: { searchParams },
+    } = blocks.find((x) => x.name === 'DynamicShelf')
+
+    // Add context to home page
+
+    deletePage(page)
+    createPage({
+      ...page,
+      context: {
+        ...page.context,
+        ...searchParams,
+      },
+    })
+  }
+
+  /**
+   * Adds context to search pages
+   */
+  if (!page.component.endsWith('/templates/search.tsx')) {
     return
   }
 
-  const { data, errors } = await graphql(`
-    query CMSContent {
-      vtexCmsPageContent(type: { eq: "home" }) {
-        blocks {
-          name
-          props
+  const plps = await graphql(`
+    query CMSPageContent {
+      allVtexCmsPageContent(
+        filter: { extraBlocks: { elemMatch: { name: { eq: "Parameters" } } } }
+      ) {
+        nodes {
+          blocks {
+            name
+            props
+          }
+          extraBlocks {
+            name
+            blocks {
+              name
+              props
+            }
+          }
         }
       }
     }
   `)
 
-  if (Array.isArray(errors) && errors.length > 0) {
-    reporter.panicOnBuild(errors.toString())
+  throwOnErrors(plps.errors, reporter)
 
-    return
-  }
+  const nodeMap = nodesByIds(plps.data.allVtexCmsPageContent.nodes)
 
   const {
-    vtexCmsPageContent: { blocks },
-  } = data
+    context: { canonicalPath },
+  } = page
 
-  const { searchParams } = blocks.find((x) => x.name === 'DynamicShelf').props
-
-  // Add context to home page
-  const pageWithNewContext = {
+  deletePage(page)
+  createPage({
     ...page,
     context: {
       ...page.context,
-      ...searchParams,
+      vtexCmsPageContent: nodeMap[canonicalPath] || null,
     },
-  }
-
-  deletePage(page)
-  createPage(pageWithNewContext)
+  })
 }
