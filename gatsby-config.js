@@ -64,8 +64,8 @@ module.exports = {
   flags: {
     QUERY_ON_DEMAND: true,
     PRESERVE_WEBPACK_CACHE: true,
-    FAST_DEV: true,
-    DEV_SSR: true,
+    FAST_DEV: false,
+    DEV_SSR: false,
   },
   plugins: [
     {
@@ -116,7 +116,18 @@ module.exports = {
         resolveEnv: () => ENV,
         env: {
           production: {
-            policy: [{ userAgent: '*' }],
+            policy: [
+              {
+                userAgent: '*',
+                allow: '/',
+                disallow: [
+                  '/page-data/*',
+                  '/graphql/*',
+                  '/api/*',
+                  '/checkout/*',
+                ],
+              },
+            ],
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
