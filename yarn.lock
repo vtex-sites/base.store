@@ -3098,21 +3098,22 @@
     create-emotion-server "^10.0.27"
     theme-ui "^0.3.1"
 
-"@vtex/gatsby-source-vtex@^0.248.0":
-  version "0.248.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.248.0.tgz#eb6541e2e39054967f4fccd3fffcc0608fb65516"
-  integrity sha512-Dh7eVJYgwZbQOmGBFaOuqPJYCt1BxNPC5bB4kGA96gTUtRaC9mCIpNYpmqvTqyQnceMZ+etKjqryZ1+i4VQf8w==
+"@vtex/gatsby-source-vtex@^0.250.0":
+  version "0.250.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.250.0.tgz#41b1f4e53b938ad830277994a4d293d794d42e5a"
+  integrity sha512-WrCG4j5upOThH9LL4ZYNrgvjOU+EHrs4FjYN+edhg3/CCAf2Bv2l22uR6ux63BGrX7XoqsVFUJTfwg6IKrFa4g==
   dependencies:
     "@graphql-tools/delegate" "^6.0.15"
     "@graphql-tools/wrap" "^6.0.15"
     isomorphic-unfetch "^3.0.0"
     p-map "^4.0.0"
+    slugify "^1.4.6"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-store@^0.249.1":
-  version "0.249.1"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-store/-/gatsby-theme-store-0.249.1.tgz#5fed1bf89b2d0797eea745297bb22af452c5f1e8"
-  integrity sha512-Gb4vbQgnY3UvRLpQ9t3dWOTPwCpALNiYu06/RhQzSKSJqEpkqxJBCEna/WUkcD83icWtFRneGgU/9NKg3nGnwg==
+"@vtex/gatsby-theme-store@^0.250.0":
+  version "0.250.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-store/-/gatsby-theme-store-0.250.0.tgz#b3917ce1af2c3d81c2804c8032155c26078cfc79"
+  integrity sha512-O5bcXk0xpFxev5jg8xluB0t+UMngPEqt7x5DsSZqBkfUGAcjIEOPsEwXbtnFmodAirJjxsfTfHY5MpiZnDqujw==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex/gatsby-plugin-graphql" "^0.214.0-alpha.6"
@@ -10042,9 +10043,6 @@ minizlib@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-2.1.2.tgz#e90d3466ba209b932451508a11ce3d3632145931"
   integrity sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==
-  dependencies:
-    minipass "^3.0.0"
-    yallist "^4.0.0"
 
 mississippi@^3.0.0:
   version "3.0.0"
@@ -12869,7 +12867,7 @@ slice-ansi@^2.1.0:
     astral-regex "^1.0.0"
     is-fullwidth-code-point "^2.0.0"
 
-slugify@^1.4.4:
+slugify@^1.4.4, slugify@^1.4.6:
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.4.6.tgz#ef288d920a47fb01c2be56b3487b6722f5e34ace"
   integrity sha512-ZdJIgv9gdrYwhXqxsH9pv7nXxjUEyQ6nqhngRxoAAOlmMGA28FDq5O4/5US4G2/Nod7d1ovNcgURQJ7kHq50KQ==
