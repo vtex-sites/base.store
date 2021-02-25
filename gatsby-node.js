@@ -29,7 +29,7 @@ exports.onCreateNode = async ({ node, reporter }) => {
     desktop: [1280, 1440, 1920],
   }
 
-  reporter.info('[storecomponents.store]: Optimizing Images for', node.name)
+  reporter.info(`[storecomponents.store]: Optimizing Images for: ${node.name}`)
 
   if (node.type === 'home') {
     const carousel = node.blocks.find((block) => block.name === 'Carousel')
