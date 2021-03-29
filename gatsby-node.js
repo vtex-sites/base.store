@@ -3,28 +3,28 @@ const { optimize } = require('@vtex/gatsby-theme-store/sdk/img/fileManager')
 
 exports.onCreateWebpackConfig = ({
   actions: { replaceWebpackConfig },
+  stage,
   getConfig,
 }) => {
   const gatsbyConfig = getConfig()
 
-  const targetsWeb = gatsbyConfig.target.includes('web')
-
   // Use es6 module only on web-based targets
-  const moduleConfig = targetsWeb
-    ? {
-        output: {
-          module: true,
-        },
-        experiments: {
-          outputModule: true,
-        },
-      }
-    : {}
+  const moduleConfig =
+    stage === 'build-javascript'
+      ? {
+          output: {
+            module: true,
+          },
+          experiments: {
+            outputModule: true,
+          },
+        }
+      : {}
 
   const webpackConfig = merge(gatsbyConfig, moduleConfig)
 
   // Targets modern browsers
-  if (targetsWeb) {
+  if (stage === 'build-javascript') {
     webpackConfig.target = ['web', 'es2017']
   }
 
