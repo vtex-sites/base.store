@@ -2594,10 +2594,10 @@
     gatsby-graphql-source-toolkit "^0.6.3"
     p-map "^4.0.0"
 
-"@vtex/gatsby-plugin-google-tag-manager@0.303.0":
-  version "0.303.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-google-tag-manager/-/gatsby-plugin-google-tag-manager-0.303.0.tgz#176ec294d0f06b99543a96c160ed81b3f3aea501"
-  integrity sha512-1YnYzH3CF6IYpdDs/vrjFnvL8yHqZ4hcQfFRj66qRgnSRUNMbamruh0G/qdd+y7Zfg8E4byiJkXPvUbRyDGQIQ==
+"@vtex/gatsby-plugin-google-tag-manager@0.304.0":
+  version "0.304.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-google-tag-manager/-/gatsby-plugin-google-tag-manager-0.304.0.tgz#6da955838d2144e634210c14dc620acb6613e1dc"
+  integrity sha512-SNlZSLPFw5YOQXg5hIpAON77E/BMcjYKiCoNks1OpB8NTYRvtfyOkuRtMrh97APJMSdqoKqIoGJwCaOD/tBWMA==
 
 "@vtex/gatsby-plugin-graphql@0.300.0", "@vtex/gatsby-plugin-graphql@^0.300.0":
   version "0.300.0"
@@ -2658,10 +2658,10 @@
     slugify "^1.4.6"
     uuid "^8.3.0"
 
-"@vtex/gatsby-theme-store@0.303.0":
-  version "0.303.0"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-store/-/gatsby-theme-store-0.303.0.tgz#229062d62bbdcc8971bf6836848bfb0788428228"
-  integrity sha512-WfezFZEzPnLNMB9OO+zvwG08Py68PhzrEdHmCW8CxNnqvBzOa0NrabPAMjctm/9s9W630GOFeVVa2TAds+yNGA==
+"@vtex/gatsby-theme-store@0.304.0":
+  version "0.304.0"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-store/-/gatsby-theme-store-0.304.0.tgz#f1969c651b6403025d37a2cc51897d8bcf686ea9"
+  integrity sha512-KonRu9KL1wn2SbMDqCXgb9bTRgRSRoH3fg4kIvHcK7FCCj+oIPI8FBXv3RQHj8zF95LS3z2K1d/7Qp3msXo7pA==
   dependencies:
     "@theme-ui/match-media" "^0.3.1"
     "@vtex/gatsby-plugin-graphql" "^0.300.0"
@@ -9239,9 +9239,6 @@ minizlib@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/minizlib/-/minizlib-2.1.2.tgz#e90d3466ba209b932451508a11ce3d3632145931"
   integrity sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==
-  dependencies:
-    minipass "^3.0.0"
-    yallist "^4.0.0"
 
 mitt@^1.2.0:
   version "1.2.0"
