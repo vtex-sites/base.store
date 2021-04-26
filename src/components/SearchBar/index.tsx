@@ -1,8 +1,15 @@
-import type { FC } from 'react'
-import React from 'react'
-import { SearchBar as StoreUISearchBar } from '@vtex/store-ui'
 import { useSearch } from '@vtex/gatsby-theme-store'
-import SearchSuggestions from '@vtex/gatsby-theme-store/src/components/SearchSuggestions'
+import {
+  Center,
+  SearchBar as StoreUISearchBar,
+  SearchSuggestionsContainer,
+  Spinner,
+  Suspense,
+} from '@vtex/store-ui'
+import React, { lazy } from 'react'
+import type { FC } from 'react'
+
+const SearchSuggestions = lazy(() => import('../Suggestions'))
 
 const SearchBar: FC = () => {
   const onSearch = useSearch()
@@ -13,7 +20,17 @@ const SearchBar: FC = () => {
       placeholder="Olá, o que você procura hoje?"
       aria-label="Olá, o que você procura hoje?"
     >
-      <SearchSuggestions />
+      <SearchSuggestionsContainer>
+        <Suspense
+          fallback={
+            <Center>
+              <Spinner />
+            </Center>
+          }
+        >
+          <SearchSuggestions />
+        </Suspense>
+      </SearchSuggestionsContainer>
     </StoreUISearchBar>
   )
 }
