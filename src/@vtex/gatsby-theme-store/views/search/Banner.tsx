@@ -17,7 +17,7 @@ const useBanner = (blocks: any) =>
 export const Banner: FC<Props> = ({ blocks }) => {
   const props = useBanner(blocks)
 
-  if (props === null) {
+  if (props == null) {
     return null
   }
 
