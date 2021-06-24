@@ -1,16 +1,18 @@
-const { resolve } = require('path')
+require('dotenv').config({
+  // eslint-disable-next-line node/global-require
+  path: require('path').resolve('vtex.env'),
+})
 
 const csv2json = require('csvtojson')
 
-require('dotenv').config({
-  path: resolve('vtex.env'),
-})
+const images = require('./src/images.config')
 
 const {
   GATSBY_VTEX_ACCOUNT: STORE_ID,
   GATSBY_VTEX_ENVIRONMENT,
   GATSBY_VTEX_IO_WORKSPACE,
   GATSBY_STORE_PROFILING,
+  CI: isCI,
 } = process.env
 
 const {
@@ -23,6 +25,20 @@ const {
 const allowedHosts = [`${STORE_ID}.vtex.app`, 'storetheme.vtex.com']
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
+
+const unique = (x) => Array.from(new Set(x))
+
+const getSizes = (variants) =>
+  unique(
+    Object.values(variants)
+      .flatMap((variant) =>
+        variant.breakpoints.map((width) => [
+          `${width}x${Math.ceil(width / variant.aspectRatio)}`,
+          `${width}x${Math.floor(width / variant.aspectRatio)}`,
+        ])
+      )
+      .flat()
+  )
 
 module.exports = {
   siteMetadata: {
@@ -133,6 +149,15 @@ module.exports = {
     },
     {
       resolve: '@vtex/gatsby-plugin-nginx',
+      options: {
+        httpOptions: [
+          ['merge_slashes', 'off'],
+          ['proxy_http_version', '1.1'],
+        ],
+        serverOptions: isCI
+          ? [['resolver', '169.254.169.253']]
+          : [['resolver', '8.8.8.8']],
+      },
     },
     {
       resolve: 'gatsby-plugin-next-seo',
@@ -145,6 +170,21 @@ module.exports = {
       options: {
         enableServerRouting: true,
         enableNonBlockingStart: true,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-image',
+    },
+    {
+      resolve: '@vtex/gatsby-plugin-thumbor',
+      options: {
+        server: isCI
+          ? 'http://thumbor.vtex.internal'
+          : 'http://thumbor.thumborize.me',
+        ...(isProduction && {
+          basePath: '/assets',
+          sizes: getSizes(images),
+        }),
       },
     },
   ],
