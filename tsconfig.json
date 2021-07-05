@@ -2,7 +2,12 @@
   "extends": "@vtex/tsconfig",
   "compilerOptions": {
     "resolveJsonModule": true,
-    "module": "ESNext"
+    "module": "ESNext",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "src/*": ["src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "public"]
