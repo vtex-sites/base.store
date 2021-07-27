@@ -12,7 +12,9 @@ interface Props {
 
 const Seo: FC<Props> = ({ product }) => {
   const {
-    seo,
+    cmsSeo: {
+      seo: { siteMetadata },
+    },
     site: {
       siteMetadata: { siteUrl },
     },
@@ -24,19 +26,18 @@ const Seo: FC<Props> = ({ product }) => {
             siteUrl
           }
         }
-        seo: vtexCmsPageContent(type: { eq: "seo" }) {
-          extraBlocks {
-            blocks {
-              name
-              props
+        cmsSeo {
+          seo {
+            siteMetadata {
+              title
+              description
+              titleTemplate
             }
           }
         }
       }
     `
   )
-
-  const [siteMetadata] = seo.extraBlocks[0].blocks
 
   return (
     <ProductSEO

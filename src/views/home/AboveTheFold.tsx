@@ -11,13 +11,13 @@ import type { HomePageQueryQuery } from '../../__generated__/HomePageQuery.graph
 
 type Props = PageProps<HomePageQueryQuery>
 
-const Above: FC<Props> = ({ data: { content, vtex } }) => (
+const Above: FC<Props> = ({ data: { cmsHome, vtex } }) => (
   <>
-    <Carousel {...content?.blocks[0]?.props} showArrows showDots />
+    <Carousel {...cmsHome?.sections[0].props} showArrows showDots />
     <RichTextRow />
     <Container>
       <Shelf
-        {...content?.blocks[1]?.props}
+        {...cmsHome?.sections[1].props}
         products={vtex.products}
         showArrows
         showDots

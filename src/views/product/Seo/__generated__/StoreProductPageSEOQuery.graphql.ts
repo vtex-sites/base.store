@@ -20,14 +20,14 @@ type Scalars = {
 export type StoreProductPageSeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type StoreProductPageSeoQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ siteUrl: Maybe<string> }> }>, seo: Maybe<{ extraBlocks: Array<Maybe<{ blocks: Array<{ name: string, props: Maybe<any> }> }>> }> };
+export type StoreProductPageSeoQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ siteUrl: Maybe<string> }> }>, cmsSeo: Maybe<{ seo: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> }> };
 
 
 // Query Related Code
 
 export const StoreProductPageSEOQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query StoreProductPageSEOQuery {\n  site {\n    siteMetadata {\n      siteUrl\n    }\n  }\n  seo: vtexCmsPageContent(type: {eq: \"seo\"}) {\n    extraBlocks {\n      blocks {\n        name\n        props\n      }\n    }\n  }\n}\n",
-  sha256Hash: "095f72a5d82051da1bb8484949aa6b1ead93c72ec1123538dd211621a24d3a88",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query StoreProductPageSEOQuery {\n  site {\n    siteMetadata {\n      siteUrl\n    }\n  }\n  cmsSeo {\n    seo {\n      siteMetadata {\n        title\n        description\n        titleTemplate\n      }\n    }\n  }\n}\n",
+  sha256Hash: "9febc8e70a542d43e43537dc9863d8b8976c28aefda4cba4b8e6180c200915c9",
   operationName: "StoreProductPageSEOQuery",
 }
 

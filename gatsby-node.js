@@ -47,18 +47,6 @@ exports.createPages = async ({ graphql }) => {
   resolveGraphQL(graphql)
 }
 
-// Use this API to capture the graphql executor function
-const nodesByIds = (nodes) =>
-  nodes.reduce((acc, node) => {
-    const { props } = node.extraBlocks
-      .find((block) => block.name === 'Parameters')
-      .blocks.find((block) => block.name === 'SearchIdSelector')
-
-    acc[props.id] = node
-
-    return acc
-  }, {})
-
 exports.onCreatePage = async (args) => {
   const {
     page,
@@ -79,8 +67,8 @@ exports.onCreatePage = async (args) => {
   ) {
     const home = await graphql(`
       query CMSContent {
-        vtexCmsPageContent(type: { eq: "home" }) {
-          blocks {
+        cmsHome {
+          sections {
             name
             props
           }
@@ -90,19 +78,19 @@ exports.onCreatePage = async (args) => {
 
     throwOnErrors(home.errors, reporter)
 
-    if (!home.data.vtexCmsPageContent) {
+    if (!home.data.cmsHome) {
       return
     }
 
     const {
       data: {
-        vtexCmsPageContent: { blocks },
+        cmsHome: { sections },
       },
     } = home
 
     const {
       props: { searchParams },
-    } = blocks.find((x) => x.name === 'DynamicShelf')
+    } = sections.find((x) => x.name === 'DynamicShelf')
 
     // Add context to home page
 
@@ -119,46 +107,45 @@ exports.onCreatePage = async (args) => {
   /**
    * Adds context to search pages
    */
-  if (!page.component.includes('/templates/search.')) {
+  if (
+    !page.component.includes('/templates/search.') ||
+    !page.context.canonicalPath ||
+    page.context.vtexCmsPageContent !== undefined
+  ) {
     return
   }
-
-  const plps = await graphql(`
-    query CMSPageContent {
-      allVtexCmsPageContent(
-        filter: { extraBlocks: { elemMatch: { name: { eq: "Parameters" } } } }
-      ) {
-        nodes {
-          blocks {
-            name
-            props
-          }
-          extraBlocks {
-            name
-            blocks {
-              name
-              props
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  throwOnErrors(plps.errors, reporter)
-
-  const nodeMap = nodesByIds(plps.data.allVtexCmsPageContent.nodes)
 
   const {
     context: { canonicalPath },
   } = page
+
+  const content = await graphql(
+    `
+      query CMSPageContent($id: String!) {
+        cmsPlp(parameters: { searchIdSelector: { id: { eq: $id } } }) {
+          sections {
+            name
+            props
+          }
+          parameters {
+            searchIdSelector {
+              orderBy
+            }
+          }
+        }
+      }
+    `,
+    { id: canonicalPath }
+  )
+
+  throwOnErrors(content.errors, reporter)
 
   deletePage(page)
   createPage({
     ...page,
     context: {
       ...page.context,
-      vtexCmsPageContent: nodeMap[canonicalPath] || null,
+      vtexCmsPageContent: content.data.cmsPlp || null,
     },
   })
 }

@@ -54,16 +54,22 @@ export const query = graphql`
     $orderBy: String!
     $hideUnavailableItems: Boolean!
   ) {
-    seo: vtexCmsPageContent(type: { eq: "seo" }) {
-      extraBlocks {
-        blocks {
-          name
-          props
+    cmsSeo {
+      seo {
+        facebook {
+          title
+          description
+          thumbnail
+        }
+        siteMetadata {
+          title
+          description
+          titleTemplate
         }
       }
     }
-    content: vtexCmsPageContent(type: { eq: "home" }) {
-      blocks {
+    cmsHome {
+      sections {
         name
         props
       }

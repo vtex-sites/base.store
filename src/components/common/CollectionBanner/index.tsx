@@ -9,7 +9,7 @@ import styles from './styles.json'
 import imagesConf from '../../../images/config'
 
 interface Props {
-  blocks: any
+  sections: any
 }
 
 const useBanner = (blocks: any) => {
@@ -53,7 +53,7 @@ const useBanner = (blocks: any) => {
   }, [blocks, getImageData])
 }
 
-const SearchBanner: FC<Props> = ({ blocks }) => {
+const SearchBanner: FC<Props> = ({ sections: blocks }) => {
   const props = useBanner(blocks)
 
   if (props == null) {

@@ -13,17 +13,20 @@ export const useMetadata = (props: Options): Return => {
   const language = useLocale()
   const { pathname, host } = useLocation()
   const siteUrl = `https://${host}${pathname}`
-  const { seo } = props.data
-  const [siteMetadata, facebook] = seo!.extraBlocks[0]!.blocks
+  const {
+    cmsSeo: {
+      seo: { facebook, siteMetadata },
+    },
+  } = props.data
 
   return {
-    ...siteMetadata.props,
+    ...siteMetadata,
     language,
     canonical: siteUrl,
     openGraph: {
       type: 'website',
       url: siteUrl,
-      ...facebook.props,
+      ...facebook,
     },
   }
 }

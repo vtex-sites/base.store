@@ -18,14 +18,15 @@ const useCanonical = (canonicalPath: string | undefined) => {
 }
 
 const Seo: FC<SearchViewProps> = (props) => {
-  const { seo } = useStaticQuery<StoreSearchPageSeoQueryQuery>(
+  const { cmsSeo } = useStaticQuery<StoreSearchPageSeoQueryQuery>(
     graphql`
       query StoreSearchPageSEOQuery {
-        seo: vtexCmsPageContent(type: { eq: "seo" }) {
-          extraBlocks {
-            blocks {
-              name
-              props
+        cmsSeo {
+          seo {
+            siteMetadata {
+              title
+              description
+              titleTemplate
             }
           }
         }
@@ -33,7 +34,8 @@ const Seo: FC<SearchViewProps> = (props) => {
     `
   )
 
-  const [siteMetadata] = seo!.extraBlocks[0]!.blocks!
+  const { siteMetadata } = cmsSeo!.seo!
+
   const {
     data: {
       vtex: { searchMetadata, facets },
@@ -45,11 +47,10 @@ const Seo: FC<SearchViewProps> = (props) => {
 
   return (
     <SearchSEO
-      {...siteMetadata.props}
-      title={searchMetadata?.title || siteMetadata.props.title}
-      description={
-        searchMetadata?.description || siteMetadata.props.description
-      }
+      {...siteMetadata}
+      titleTemplate={siteMetadata!.titleTemplate!}
+      title={searchMetadata?.title || siteMetadata!.title!}
+      description={searchMetadata?.description || siteMetadata!.description!}
       canonical={canonical}
       breadcrumb={facets?.breadcrumb as any} // this can be removed once GraphQL types are correct
     />

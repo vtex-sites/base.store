@@ -1,12 +1,6 @@
 {
-  "name": "[SFJ] SEO",
+  "name": "Fixture: Seo",
   "type": "seo",
-  "builderId": "faststore",
-  "author": {
-    "id": "0cc6d9e0-377d-4898-a907-350e4661c351",
-    "email": "tiago.gimenes@vtex.com.br"
-  },
-  "lastUpdatedAt": "2021-01-11T18:44:06.753Z",
   "blocks": [],
   "afterBlocks": [],
   "beforeBlocks": [],
