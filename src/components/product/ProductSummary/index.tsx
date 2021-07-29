@@ -37,11 +37,13 @@ interface Props {
     productReference: string | null | undefined
     categoryTree: Array<{ name: string }>
     productName: string
+    linkText: string
     items: Item[]
   }
+  position?: number
 }
 
-const ProductSummary: FC<Props> = ({ product }) => {
+const ProductSummary: FC<Props> = ({ product, position }) => {
   const {
     items: [sku],
     productName,
@@ -52,7 +54,7 @@ const ProductSummary: FC<Props> = ({ product }) => {
     sellers,
   } = sku
 
-  const linkProps = useLink(product as any)
+  const linkProps = useLink(product, { pixelData: { position } })
   const image = useThumborImageData({
     ...imageConf['product.summary'],
     baseUrl: imageUrl,
@@ -93,7 +95,7 @@ const ProductSummary: FC<Props> = ({ product }) => {
         />
       ) : null}
 
-      <BuyButton sku={itemSku} product={product as Product} />
+      <BuyButton sku={itemSku} product={product} />
     </LocalizedLink>
   )
 }
