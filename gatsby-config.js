@@ -8,8 +8,8 @@ const images = require('./src/images/config')
 
 const {
   GATSBY_VTEX_ACCOUNT: STORE_ID,
-  GATSBY_VTEX_ENVIRONMENT,
-  GATSBY_VTEX_IO_WORKSPACE,
+  GATSBY_VTEX_ENVIRONMENT: environmet,
+  GATSBY_VTEX_IO_WORKSPACE: workspace,
   GATSBY_STORE_PROFILING,
   CI: isCI,
 } = process.env
@@ -64,8 +64,8 @@ module.exports = {
       resolve: `@vtex/gatsby-source-vtex`,
       options: {
         tenant: STORE_ID,
-        environment: GATSBY_VTEX_ENVIRONMENT,
-        workspace: GATSBY_VTEX_IO_WORKSPACE,
+        environment: environmet,
+        workspace,
         getRedirects: () =>
           csv2json({ delimiter: ';' })
             .fromFile('./redirects.csv')
@@ -122,7 +122,9 @@ module.exports = {
       resolve: '@vtex/gatsby-plugin-cms',
       options: {
         tenant: STORE_ID,
-        workspace: GATSBY_VTEX_IO_WORKSPACE,
+        workspace,
+        environment: environmet,
+        sourcingMode: 'catalog-first',
       },
     },
     {

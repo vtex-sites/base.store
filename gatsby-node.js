@@ -121,21 +121,20 @@ exports.onCreatePage = async (args) => {
 
   const content = await graphql(
     `
-      query CMSPageContent($id: String!) {
-        cmsPlp(parameters: { searchIdSelector: { id: { eq: $id } } }) {
-          sections {
-            name
-            props
-          }
-          parameters {
-            searchIdSelector {
-              orderBy
+      query CMSPageContent($slug: String!) {
+        storeCollection(slug: { eq: $slug }) {
+          fields {
+            plp {
+              sections {
+                name
+                props
+              }
             }
           }
         }
       }
     `,
-    { id: canonicalPath }
+    { slug: canonicalPath.slice(1) }
   )
 
   throwOnErrors(content.errors, reporter)
@@ -145,7 +144,7 @@ exports.onCreatePage = async (args) => {
     ...page,
     context: {
       ...page.context,
-      vtexCmsPageContent: content.data.cmsPlp || null,
+      vtexCmsPageContent: content.data.storeCollection.fields.plp || null,
     },
   })
 }

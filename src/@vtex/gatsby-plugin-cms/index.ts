@@ -4,6 +4,7 @@ import type {
   ContentTypes,
   BuilderConfig,
 } from '@vtex/gatsby-plugin-cms'
+import { PLP } from '@vtex/gatsby-plugin-cms'
 
 const widgets = {
   imageUploader: {
@@ -115,29 +116,14 @@ const orderByMap = {
   '': 'Default',
 }
 
-const orderBy = ({
+const orderBy = {
   title: 'Order By',
   description: 'Default search ordering',
   type: 'string',
   default: '',
   enum: Object.keys(orderByMap),
   enumNames: Object.values(orderByMap),
-} as unknown) as Schema
-
-const SearchIdSelector: Schema = {
-  title: 'Category ID Selector',
-  description: 'In which categories this banner will be shown',
-  type: 'object',
-  required: ['id'],
-  properties: {
-    id: {
-      title: 'Category Id',
-      description: 'The id of the category to show',
-      type: 'string',
-    },
-    orderBy,
-  },
-}
+} as unknown as Schema
 
 const SearchBanner: Schema = {
   title: 'Search Banner',
@@ -400,20 +386,14 @@ export const contentTypes: ContentTypes = {
       Footer,
     },
   },
-  plp: {
-    name: 'PLP',
-    extraBlocks: {
-      Parameters: {
-        SearchIdSelector,
-      },
-    },
+  ...PLP({
     beforeBlocks: {
       Header,
     },
     afterBlocks: {
       Footer,
     },
-  },
+  }),
   seo: {
     name: 'Global SEO Settings',
     extraBlocks: {
