@@ -20,14 +20,14 @@ type Scalars = {
 export type FooterQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FooterQueryQuery = { allDepartment: { nodes: Array<{ name: Maybe<string>, slug: Maybe<string> }> } };
+export type FooterQueryQuery = { allStoreCollection: { nodes: Array<{ slug: string, seo: { title: string } }> } };
 
 
 // Query Related Code
 
 export const FooterQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query FooterQuery {\n  allDepartment(sort: {order: ASC, fields: name}) {\n    nodes {\n      name\n      slug\n    }\n  }\n}\n",
-  sha256Hash: "710a5955f8eb20fb4d3015e76d050b41fac29fcf45c9edcbae750ecde0e51bf2",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query FooterQuery {\n  allStoreCollection(filter: {type: {eq: Department}}) {\n    nodes {\n      slug\n      seo {\n        title\n      }\n    }\n  }\n}\n",
+  sha256Hash: "1e602049cd4798bb0004d700e52d4be6894aa4f322aa937b2a8887d8b053a437",
   operationName: "FooterQuery",
 }
 

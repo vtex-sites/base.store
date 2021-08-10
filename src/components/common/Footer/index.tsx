@@ -11,36 +11,32 @@ import {
 } from '@vtex/store-ui'
 import type { FC } from 'react'
 
-import type { FooterQueryQuery } from '../../../@vtex/gatsby-theme-store/components/__generated__/FooterQuery.graphql'
-
-interface Item {
-  name: string | undefined | null
-  slug: string | undefined | null
-}
-
-const MenuLink: FC<Item> = ({ slug, name }) => (
-  <LocalizedLink to={slug!}>{name!.replace(/[,\s].*/, '')}</LocalizedLink>
-)
+import type { FooterQueryQuery } from './__generated__/FooterQuery.graphql'
 
 const Footer: FC = () => {
-  const { allDepartment } = useStaticQuery<FooterQueryQuery>(graphql`
-    query FooterQuery {
-      allDepartment(sort: { order: ASC, fields: name }) {
-        nodes {
-          name
-          slug
+  const { allStoreCollection: departments } =
+    useStaticQuery<FooterQueryQuery>(graphql`
+      query FooterQuery {
+        allStoreCollection(filter: { type: { eq: Department } }) {
+          nodes {
+            slug
+            seo {
+              title
+            }
+          }
         }
       }
-    }
-  `)
+    `)
 
   return (
     <Container>
       <Flex variant="footer" as="footer" sx={{ flexDirection: 'column' }}>
         <Flex sx={{ flexDirection: ['column', 'row'] }}>
           <Grid gap={2} columns={[2, 4]} my={3} sx={{ flex: 1 }}>
-            {allDepartment.nodes.map((item: Item) => (
-              <MenuLink {...item} key={item.slug!} />
+            {departments.nodes.map((item) => (
+              <LocalizedLink key={item.slug} to={`/${item.slug}`}>
+                {item.seo.title.replace(/[,\s].*/, '')}
+              </LocalizedLink>
             ))}
           </Grid>
           <Flex>

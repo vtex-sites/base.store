@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 const CustomMenu: FC<{ variant?: string }> = ({ variant }) => (
   <Flex as="nav" variant={variant}>
-    <LocalizedLink to="/apparel---accessories" activeClassName="active">
+    <LocalizedLink to="/apparel-accessories" activeClassName="active">
       Apparel
     </LocalizedLink>
     <LocalizedLink to="/electronics" activeClassName="active">

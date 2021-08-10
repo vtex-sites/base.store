@@ -44,11 +44,11 @@
           "name": "Collection",
           "props": {
             "sort": "orders:desc",
-            "clusterId": "1970",
+            "clusterId": "1182",
             "seo": {
-              "title": "Summer",
+              "title": "Top Deals",
               "description": "All essentials",
-              "slug": "/summer"
+              "slug": "/top-deals"
             }
           }
         }

@@ -107,44 +107,41 @@ exports.onCreatePage = async (args) => {
   /**
    * Adds context to search pages
    */
-  if (
-    !page.component.includes('/templates/search.') ||
-    !page.context.canonicalPath ||
-    page.context.vtexCmsPageContent !== undefined
-  ) {
+  if (!page.component.includes('/{StoreCollection.slug}/index.tsx')) {
     return
   }
 
   const {
-    context: { canonicalPath },
-  } = page
-
-  const content = await graphql(
+    data: {
+      storeCollection: {
+        fields: { searchParams },
+      },
+    },
+  } = await graphql(
     `
-      query CMSPageContent($slug: String!) {
-        storeCollection(slug: { eq: $slug }) {
+      query CollectionData {
+        storeCollection(id: { eq: "${page.context.id}" }) {
           fields {
-            plp {
-              sections {
-                name
-                props
+            searchParams {
+              sort
+              itemsPerPage
+              selectedFacets {
+                key
+                value
               }
             }
           }
         }
       }
-    `,
-    { slug: canonicalPath.slice(1) }
+    `
   )
-
-  throwOnErrors(content.errors, reporter)
 
   deletePage(page)
   createPage({
     ...page,
     context: {
       ...page.context,
-      vtexCmsPageContent: content.data.storeCollection.fields.plp || null,
+      ...searchParams,
     },
   })
 }

@@ -1,12 +1,11 @@
 import React, { lazy } from 'react'
 import { graphql } from 'gatsby'
 import { useProductPixelEffect } from '@vtex/gatsby-theme-store'
-import { SuspenseViewport } from '@vtex/store-ui'
+import { View } from 'src/components/ui/View'
 import type { FC } from 'react'
 
 import Seo from './Seo'
 import AboveTheFold from './components/AboveTheFold'
-import BelowTheFoldPreview from './components/BelowTheFoldPreview'
 import type { ProductViewFragment_ProductFragment } from './__generated__/ProductViewFragment_product.graphql'
 
 const loader = () => import('./components/BelowTheFold')
@@ -17,18 +16,19 @@ export interface ProductViewProps {
   product: ProductViewFragment_ProductFragment
 }
 
+const ViewComponents = {
+  seo: Seo,
+  above: AboveTheFold,
+  below: {
+    component: BelowTheFold,
+    preloader: loader,
+  },
+} as const
+
 const ProductView: FC<ProductViewProps> = (props) => {
   useProductPixelEffect(props as any)
 
-  return (
-    <>
-      <Seo {...props} />
-      <AboveTheFold {...props} />
-      <SuspenseViewport fallback={<BelowTheFoldPreview />}>
-        <BelowTheFold {...props} />
-      </SuspenseViewport>
-    </>
-  )
+  return <View {...ViewComponents} data={props} />
 }
 
 export const fragment = graphql`

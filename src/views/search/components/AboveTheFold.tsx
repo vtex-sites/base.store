@@ -8,13 +8,11 @@ import {
   SearchTemplateMain,
 } from '@vtex/gatsby-theme-store/src/components/Search/SearchTemplate'
 import SearchBanner from 'src/components/search/Banner'
-import CollectionBanner from 'src/components/common/CollectionBanner'
 import { lazy } from 'react'
 import type { FC } from 'react'
-import type { SearchViewProps } from '@vtex/gatsby-theme-store/src/views/search'
 import type { BreadcrumbItem } from '@vtex/store-ui'
 
-import type { BrowserSearchPageQueryQuery } from '../../templates/__generated__/BrowserSearchPageQuery.graphql'
+import type { SearchViewProps } from '..'
 
 const DesktopSearchFilters = lazy(
   () => import('@vtex/gatsby-theme-store/src/components/Search/Filters/Desktop')
@@ -22,26 +20,21 @@ const DesktopSearchFilters = lazy(
 
 const COLUMNS = [2, 3, 4]
 
-interface Props extends SearchViewProps {
-  pageContext: {
-    canonicalPath: string
-    vtexCmsPageContent: any
-  }
-}
+type Props = SearchViewProps
 
-const AboveTheFold: FC<Props> = ({ data, pageContext }) => {
-  const breadcrumb = (data.vtex.facets?.breadcrumb ?? []) as BreadcrumbItem[]
-  const { vtex } = data as BrowserSearchPageQueryQuery
+const AboveTheFold: FC<Props> = ({
+  data,
+  data: {
+    vtex: { facets, banners },
+  },
+}) => {
+  const breadcrumb = (facets?.breadcrumb ?? []) as BreadcrumbItem[]
 
   return (
     <Container>
-      {vtex.banners?.banners && <SearchBanner banners={vtex.banners.banners} />}
-
       <Breadcrumb breadcrumb={breadcrumb} type="SEARCH" />
 
-      {pageContext.vtexCmsPageContent != null && (
-        <CollectionBanner {...pageContext.vtexCmsPageContent} />
-      )}
+      <SearchBanner html={banners?.banners?.[0]?.html} />
 
       <SearchTemplateContainer>
         <SearchTemplateAside>

@@ -8,13 +8,11 @@ const images = require('./src/images/config')
 
 const {
   GATSBY_VTEX_ACCOUNT: STORE_ID,
-  GATSBY_VTEX_ENVIRONMENT: environmet,
+  GATSBY_VTEX_ENVIRONMENT: environment,
   GATSBY_VTEX_IO_WORKSPACE: workspace,
   GATSBY_STORE_PROFILING,
+  STORE_PLP_ITEMS_PER_PAGE: itemsPerPage,
   CI: isCI,
-} = process.env
-
-const {
   NODE_ENV,
   URL = `https://${STORE_ID}.vtex.app`,
   DEPLOY_PRIME_URL = URL,
@@ -64,7 +62,7 @@ module.exports = {
       resolve: `@vtex/gatsby-source-vtex`,
       options: {
         tenant: STORE_ID,
-        environment: environmet,
+        environment,
         workspace,
         getRedirects: () =>
           csv2json({ delimiter: ';' })
@@ -123,8 +121,8 @@ module.exports = {
       options: {
         tenant: STORE_ID,
         workspace,
-        environment: environmet,
-        sourcingMode: 'catalog-first',
+        environment,
+        itemsPerPage,
       },
     },
     {

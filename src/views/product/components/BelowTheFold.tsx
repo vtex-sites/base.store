@@ -1,5 +1,7 @@
 import type { FC } from 'react'
 
-const BelowTheFold: FC = () => null
+import type { ProductViewProps } from '..'
+
+const BelowTheFold: FC<ProductViewProps> = () => null
 
 export default BelowTheFold
