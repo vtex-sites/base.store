@@ -8,8 +8,8 @@ import {
   useOnLoginSuccessful,
   useProviders,
   useProfile,
-  AUTH_PROVIDERS,
 } from '@vtex/gatsby-theme-store'
+import { AUTH_PROVIDERS } from 'src/components/auth/Providers'
 import type { ProvidersResponse } from '@vtex/gatsby-theme-store'
 
 import Layout from '../@vtex/gatsby-theme-store/components/Layout'
