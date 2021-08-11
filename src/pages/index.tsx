@@ -5,7 +5,7 @@ import type { PageViewData } from '@vtex/gatsby-theme-store'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
 
-import Layout from '../@vtex/gatsby-theme-store/components/Layout'
+import Layout from '../components/common/Layout'
 import Seo from '../views/home/Seo'
 import AboveTheFold from '../views/home/AboveTheFold'
 import { View } from '../components/ui/View'

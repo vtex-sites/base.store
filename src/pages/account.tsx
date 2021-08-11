@@ -5,8 +5,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useEffect, useState } from 'react'
 import type { FC } from 'react'
 import { useProfile, RenderExtensionLoader } from '@vtex/gatsby-theme-store'
-
-import Layout from '../@vtex/gatsby-theme-store/components/Layout'
+import Layout from 'src/components/common/Layout'
 
 const MY_ACCOUNT_PATH = '/account'
 const MY_ACCOUNT_DIV_NAME = 'my-account'

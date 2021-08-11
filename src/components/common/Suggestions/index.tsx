@@ -7,31 +7,33 @@ import {
 import { SearchSuggestions, useSearchBarContext } from '@vtex/store-ui'
 import React, { useMemo } from 'react'
 import type { FC } from 'react'
-
-import ProductSummary from '../../../@vtex/gatsby-theme-store/components/ProductSummary'
+import ProductSummary from 'src/components/product/ProductSummary'
 
 const useHistory = () => {
   const history = useSearchHistory()
 
-  return useMemo(() => history?.get().map((term) => ({ term, key: term })), [
-    history,
-  ])
+  return useMemo(
+    () => history?.get().map((term) => ({ term, key: term })),
+    [history]
+  )
 }
 
 const useAutocomplete = (searchTerm: string) => {
   const suggestions = useAutocompleteSuggestions({ term: searchTerm })
 
-  return useMemo(() => suggestions.map(({ term }) => ({ term, key: term })), [
-    suggestions,
-  ])
+  return useMemo(
+    () => suggestions.map(({ term }) => ({ term, key: term })),
+    [suggestions]
+  )
 }
 
 const useTopSearchesSuggestions = () => {
   const topSearches = useTopSearches()
 
-  return useMemo(() => topSearches?.map(({ term }) => ({ term, key: term })), [
-    topSearches,
-  ])
+  return useMemo(
+    () => topSearches?.map(({ term }) => ({ term, key: term })),
+    [topSearches]
+  )
 }
 
 const useProductSuggestions = (term: string) => {

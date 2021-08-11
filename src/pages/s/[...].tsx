@@ -7,7 +7,7 @@ import {
   useQueryVariablesFromSearchParams,
   useSearchParamsFromUrl,
 } from '@vtex/gatsby-theme-store'
-import Layout from 'src/@vtex/gatsby-theme-store/components/Layout'
+import Layout from 'src/components/common/Layout'
 import AboveTheFoldPreview from 'src/views/search/components/AboveTheFoldPreview'
 import SearchView from 'src/views/search'
 import { BrowserSearchPageQuery } from 'src/s/__generated__/BrowserSearchPageQuery.graphql'

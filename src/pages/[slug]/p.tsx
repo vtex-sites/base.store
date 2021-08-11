@@ -3,16 +3,15 @@ import React from 'react'
 import type { PageProps } from 'gatsby'
 import type { FC } from 'react'
 import HybridWrapper from '@vtex/gatsby-theme-store/src/components/HybridWrapper'
-import Layout from '@vtex/gatsby-theme-store/src/components/Layout'
+import Layout from 'src/components/common/Layout'
 import { useQuery } from '@vtex/gatsby-theme-store'
 import { Card, Container, Flex, Grid, Skeleton } from '@vtex/store-ui'
-
-import DefaultProductView from '../../views/product'
-import { BrowserProductPageQuery } from '../../[slug]/__generated__/BrowserProductPageQuery.graphql'
+import DefaultProductView from 'src/views/product'
+import { BrowserProductPageQuery } from 'src/[slug]/__generated__/BrowserProductPageQuery.graphql'
 import type {
   BrowserProductPageQueryQuery,
   BrowserProductPageQueryQueryVariables,
-} from '../../[slug]/__generated__/BrowserProductPageQuery.graphql'
+} from 'src/[slug]/__generated__/BrowserProductPageQuery.graphql'
 
 export type BrowserProductPageProps = PageProps & { slug: string }
 

@@ -4,42 +4,16 @@ import { LocalizedLink, jsx } from '@vtex/store-ui'
 import { useThumborImageData } from '@vtex/gatsby-plugin-thumbor'
 import imageConf from 'src/images/config'
 import type { FC } from 'react'
+import { graphql } from 'gatsby'
+import BuyButton from 'src/components/ui/BuyButton'
 
 import Offer from './Offer'
 import OfferPreview from './OfferPreview'
-import BuyButton from '../../ui/BuyButton'
 import styles from './styles.json'
-
-export type Item = {
-  itemId: string
-  sellers: Array<{
-    sellerId: string
-    commercialOffer: {
-      availableQuantity: number
-      price: number
-      listPrice: number
-      maxInstallments: Array<{
-        value: number
-        numberOfInstallments: number
-      }>
-      teasers: Array<{ name?: string }>
-    }
-  }>
-  images: Array<{ imageUrl: string; imageText: string }>
-  referenceId: Array<{ value: string | null | undefined }> | null | undefined
-  name: string
-}
+import type { ProductSummary_ProductFragment } from './__generated__/ProductSummary_product.graphql'
 
 interface Props {
-  product: {
-    id: string
-    brand: string
-    productReference: string | null | undefined
-    categoryTree: Array<{ name: string }>
-    productName: string
-    linkText: string
-    items: Item[]
-  }
+  product: ProductSummary_ProductFragment
   position?: number
 }
 
@@ -99,5 +73,59 @@ const ProductSummary: FC<Props> = ({ product, position }) => {
     </LocalizedLink>
   )
 }
+
+export const fragment = graphql`
+  fragment ProductSummary_product on VTEX_Product {
+    id: productId
+    productName
+    linkText
+    brand
+    productReference
+    categoryTree {
+      name
+    }
+    productClusters {
+      id
+      name
+    }
+    properties {
+      name
+      originalName
+      values
+    }
+    items {
+      itemId
+      name
+      referenceId {
+        value: Value
+      }
+      images {
+        imageUrl
+        imageText
+      }
+      sellers {
+        sellerId
+        commercialOffer: commertialOffer {
+          maxInstallments: Installments(criteria: MAX_WITHOUT_INTEREST) {
+            value: Value
+            numberOfInstallments: NumberOfInstallments
+          }
+          installments: Installments(criteria: ALL) {
+            value: Value
+            numberOfInstallments: NumberOfInstallments
+            interestRate: InterestRate
+          }
+          availableQuantity: AvailableQuantity
+          price: Price
+          listPrice: ListPrice
+          spotPrice
+          teasers {
+            name
+          }
+        }
+      }
+    }
+  }
+`
 
 export default ProductSummary

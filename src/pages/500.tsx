@@ -5,8 +5,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from '@vtex/gatsby-theme-store'
-
-import Layout from '../@vtex/gatsby-theme-store/components/Layout'
+import Layout from 'src/components/common/Layout'
 
 type Props = PageProps
 

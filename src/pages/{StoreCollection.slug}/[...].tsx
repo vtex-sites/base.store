@@ -8,7 +8,7 @@ import {
   useQuery,
 } from '@vtex/gatsby-theme-store'
 import CollectionView from 'src/views/collection'
-import Layout from 'src/@vtex/gatsby-theme-store/components/Layout'
+import Layout from 'src/components/common/Layout'
 import type { FC } from 'react'
 import type { PageProps as GatsbyPageProps } from 'gatsby'
 import type {

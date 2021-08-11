@@ -7,12 +7,12 @@ import {
   useSearchParamsFromQueryVariables,
   usePersonalizedSearchRedirect,
 } from '@vtex/gatsby-theme-store'
-import Layout from 'src/@vtex/gatsby-theme-store/components/Layout'
 import CollectionView from 'src/views/collection'
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
 } from 'src/{StoreCollection.slug}/__generated__/CollectionPageQuery.graphql'
+import Layout from 'src/components/common/Layout'
 
 export type SearchPageProps = PageProps<
   CollectionPageQueryQuery,

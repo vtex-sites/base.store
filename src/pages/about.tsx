@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from '@vtex/gatsby-theme-store/src/components/Layout'
 import type { FC } from 'react'
 import { Box, Image, Heading, Container, YoutubeIframe } from '@vtex/store-ui'
+import Layout from 'src/components/common/Layout'
 
 const Page: FC = () => (
   <Layout>

@@ -2,13 +2,12 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import type { PageProps } from 'gatsby'
 import type { FC } from 'react'
-
-import Layout from '../../@vtex/gatsby-theme-store/components/Layout'
-import ProductView from '../../views/product'
+import Layout from 'src/components/common/Layout'
+import ProductView from 'src/views/product'
 import type {
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables,
-} from '../../{StoreProduct.slug}/__generated__/ServerProductPageQuery.graphql'
+} from 'src/{StoreProduct.slug}/__generated__/ServerProductPageQuery.graphql'
 
 export type ServerProductPageProps = PageProps<
   ServerProductPageQueryQuery,

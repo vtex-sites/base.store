@@ -2,8 +2,7 @@ import { Container } from '@vtex/store-ui'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import type { FC } from 'react'
-
-import Layout from '../@vtex/gatsby-theme-store/components/Layout'
+import Layout from 'src/components/common/Layout'
 
 const NotFoundPage: FC = () => (
   <Layout>
