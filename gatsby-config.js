@@ -1,13 +1,13 @@
 require('dotenv').config({ path: 'vtex.env' })
 
-const { resolve } = require('path')
+const { join, resolve } = require('path')
 
 const csv2json = require('csvtojson')
 
 const images = require('./src/images/config')
 
 const {
-  GATSBY_VTEX_ACCOUNT: STORE_ID,
+  GATSBY_STORE_ID: STORE_ID,
   GATSBY_VTEX_ENVIRONMENT: environment,
   GATSBY_VTEX_IO_WORKSPACE: workspace,
   GATSBY_STORE_PROFILING,
@@ -55,6 +55,34 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-bundle-stats',
+      options: {
+        compare: true,
+        baseline: true,
+        html: true,
+        json: true,
+        outDir: `.`,
+        stats: {
+          context: join(__dirname, 'src'),
+        },
+      },
+    },
+    {
+      resolve: '@vtex/gatsby-plugin-theme-ui',
+    },
+    {
+      // Makes it possible to share graphql queries between
+      // client/server side queries
+      resolve: `@vtex/gatsby-plugin-graphql`,
+    },
+    {
+      resolve: '@vtex/gatsby-plugin-i18n',
+      options: {
+        locales: ['en', 'pt'],
+        defaultLocale: 'en',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-root-import',
       options: {
         src: resolve('./src'),
@@ -83,9 +111,6 @@ module.exports = {
       resolve: '@vtex/gatsby-theme-store',
       options: {
         profiling: GATSBY_STORE_PROFILING,
-        storeId: STORE_ID,
-        defaultLocale: 'en',
-        locales: ['en', 'pt'],
       },
     },
     {
