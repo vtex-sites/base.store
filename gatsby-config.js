@@ -121,6 +121,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: '#0a034e',
+        showSpinner: false,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Store Theme - VTEX Base Store',
