@@ -48,8 +48,10 @@ module.exports = {
   flags: {
     DEV_SSR: true,
     FAST_DEV: true,
+    LMDB_STORE: false,
     PARALLEL_SOURCING: true,
-    PRESERVE_WEBPACK_CACHE: true,
+    PARALLEL_QUERY_RUNNING: false,
+    PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
     {
