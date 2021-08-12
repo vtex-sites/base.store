@@ -2789,9 +2789,10 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/gatsby-theme-store@https://pkg.csb.dev/vtex/faststore/commit/0fe72522/@vtex/gatsby-theme-store":
-  version "0.373.11"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/0fe72522/@vtex/gatsby-theme-store#5faedae184c21139d104a81f51825adb50fa75fc"
+"@vtex/gatsby-theme-store@^0.373.12":
+  version "0.373.12"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-theme-store/-/gatsby-theme-store-0.373.12.tgz#1faada5e5c130e01409f50a1ee6464fdb9697fee"
+  integrity sha512-RtrfR7hR7GDotCvwJ9ElKssKVsLhi6QABqb2TUBoKzQZZt5udhxlP8asL8D2tEvDP13krR6lpzY2f9lBe1MvDA==
   dependencies:
     "@vtex/order-items" "^0.6.3"
     "@vtex/order-manager" "^0.5.2"

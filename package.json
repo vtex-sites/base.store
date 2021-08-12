@@ -9,7 +9,7 @@
     "@vtex/gatsby-plugin-performance": "^0.373.12",
     "@vtex/gatsby-plugin-thumbor": "0.373.12",
     "@vtex/gatsby-source-vtex": "^0.373.12",
-    "@vtex/gatsby-theme-store": "https://pkg.csb.dev/vtex/faststore/commit/0fe72522/@vtex/gatsby-theme-store",
+    "@vtex/gatsby-theme-store": "^0.373.12",
     "@vtex/store-sdk": "0.373.12",
     "@vtex/store-ui": "^0.373.12",
     "babel-preset-gatsby": "^1.11.0",
