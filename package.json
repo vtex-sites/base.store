@@ -1,16 +1,12 @@
 {
-  "name": "storecomponents.store",
+  "name": "fashioneurope.store",
   "private": true,
   "version": "0.221.0",
   "dependencies": {
     "@vtex/gatsby-plugin-cms": "^0.373.12",
-    "@vtex/gatsby-plugin-google-tag-manager": "0.373.12",
     "@vtex/gatsby-plugin-graphql": "0.373.12",
-    "@vtex/gatsby-plugin-i18n": "0.373.12",
     "@vtex/gatsby-plugin-nginx": "^0.373.12",
     "@vtex/gatsby-plugin-performance": "^0.373.12",
-    "@vtex/gatsby-plugin-pixel-facebook": "0.373.12",
-    "@vtex/gatsby-plugin-theme-ui": "0.373.12",
     "@vtex/gatsby-plugin-thumbor": "0.373.12",
     "@vtex/gatsby-source-vtex": "^0.373.12",
     "@vtex/gatsby-theme-store": "https://pkg.csb.dev/vtex/faststore/commit/0fe72522/@vtex/gatsby-theme-store",
@@ -25,8 +21,8 @@
     "gatsby-plugin-offline": "^4.11.0",
     "gatsby-plugin-robots-txt": "^1.5.1",
     "gatsby-plugin-root-import": "^2.0.6",
-    "react": "^0.0.0-experimental-7f28234f8",
-    "react-dom": "^0.0.0-experimental-7f28234f8",
+    "react": "^18.0.0-alpha-82583617b-20210812",
+    "react-dom": "^18.0.0-alpha-82583617b-20210812",
     "react-helmet-async": "^1.0.9"
   },
   "devDependencies": {
@@ -42,7 +38,7 @@
     "is-ci": "^3.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.0",
-    "typescript": "^4.2.3",
+    "typescript": "^4.3.5",
     "webpack-merge": "^5.7.3"
   },
   "resolutions": {
