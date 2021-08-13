@@ -1,42 +1,40 @@
-import React, { lazy } from 'react'
-import { useLocation } from '@reach/router'
-import { usePlpPixelEffect, SearchProvider } from '@vtex/gatsby-theme-store'
-import { View } from 'src/components/ui/View'
+import React from 'react'
+import {
+  usePlpPixelEffect,
+  SearchProvider,
+  useSearchParamsFromUrl,
+  useQueryVariablesFromSearchParams,
+  useQuery,
+  SearchSEO,
+} from '@vtex/gatsby-theme-store'
+import { gql } from '@vtex/gatsby-plugin-graphql'
 import type { FC } from 'react'
-import type { SearchParamsState } from '@vtex/store-sdk'
-import type { ServerSearchPageQueryQuery } from 'src/s/__generated__/ServerSearchPageQuery.graphql'
 import type { BrowserSearchPageQueryQuery } from 'src/s/__generated__/BrowserSearchPageQuery.graphql'
+import type { Props } from 'src/pages/s/[...]'
 
-import Seo from './Seo'
-import AboveTheFold from './components/AboveTheFold'
+const pageInfo = { size: Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!) }
 
-const loader = () => import('./components/BelowTheFold')
-const BelowTheFold = lazy(loader)
+const View: FC<Props> = (props) => {
+  const { location, data: serverData } = props
 
-export interface SearchViewProps {
-  data: ServerSearchPageQueryQuery & BrowserSearchPageQueryQuery
-  searchParams: SearchParamsState
-  pageInfo: { size: number }
-}
+  const searchParams = useSearchParamsFromUrl(location)
+  const variables = useQueryVariablesFromSearchParams(searchParams, pageInfo)
 
-const ViewComponents = {
-  seo: Seo,
-  above: AboveTheFold,
-  below: {
-    component: BelowTheFold,
-    preloader: loader,
-  },
-} as const
+  const { data: browserData } = useQuery<
+    BrowserSearchPageQueryQuery,
+    BrowserSearchPageQueryQueryVariables
+  >({
+    ...BrowserSearchPageQuery,
+    variables,
+    suspense: true,
+  })
 
-const SearchView: FC<SearchViewProps> = (props) => {
-  const {
-    data,
-    searchParams,
-    pageInfo: { size },
-  } = props
+  if (browserData == null) {
+    throw new Error('Something went wrong while fetching the data')
+  }
 
+  const data = { ...browserData, ...serverData }
   const totalCount = data.vtex.productSearch!.recordsFiltered! ?? 0
-  const location = useLocation()
 
   usePlpPixelEffect({
     searchParams,
@@ -44,18 +42,103 @@ const SearchView: FC<SearchViewProps> = (props) => {
     location,
   })
 
+  const siteMetadata = data.cmsSeo!.seo!.siteMetadata!
+  const breadcrumb = (data.vtex.facets!.breadcrumb! as Breadcrumb[]) ?? []
+
   return (
-    <SearchProvider
-      searchParams={searchParams}
-      data={data}
-      pageInfo={{
-        size,
-        total: Math.ceil(totalCount / size),
-      }}
-    >
-      <View {...ViewComponents} data={props} />
-    </SearchProvider>
+    <>
+      {/* SEO Components */}
+      <SearchSEO
+        titleTemplate={siteMetadata.titleTemplate!}
+        title={siteMetadata.title!}
+        description={siteMetadata.description!}
+        breadcrumb={breadcrumb}
+      />
+
+      {/* UI Components */}
+      <SearchProvider
+        searchParams={searchParams}
+        data={data}
+        pageInfo={{
+          size: pageInfo.size,
+          total: Math.ceil(totalCount / pageInfo.size),
+        }}
+      >
+        <View />
+      </SearchProvider>
+    </>
   )
 }
 
-export default SearchView
+/**
+ * This query is run on the browser
+ * */
+export const query = gql`
+  query BrowserSearchPageQuery(
+    $from: Int!
+    $to: Int!
+    $fullText: String
+    $selectedFacets: [VTEX_SelectedFacetInput!]!
+    $sort: String!
+  ) {
+    vtex {
+      banners(fullText: $fullText, selectedFacets: $selectedFacets) {
+        banners {
+          html
+        }
+      }
+      productSearch(
+        from: $from
+        to: $to
+        orderBy: $sort
+        fullText: $fullText
+        selectedFacets: $selectedFacets
+        hideUnavailableItems: false
+        simulationBehavior: skip
+      ) {
+        products {
+          id: productId
+          productName
+          linkText
+          items {
+            itemId
+            images {
+              imageUrl
+              imageText
+            }
+          }
+        }
+        recordsFiltered
+      }
+      facets(
+        fullText: $fullText
+        selectedFacets: $selectedFacets
+        operator: or
+        behavior: "Static"
+        removeHiddenFacets: true
+      ) {
+        breadcrumb {
+          href
+          name
+        }
+        facets {
+          name
+          type
+          values {
+            key
+            name
+            value
+            selected
+            quantity
+            range {
+              from
+              to
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default View

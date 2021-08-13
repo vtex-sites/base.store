@@ -1,33 +1,37 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import View from 'src/views/product'
+import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
-import type { FC } from 'react'
-import Layout from 'src/components/common/Layout'
-import ProductView from 'src/views/product'
 import type {
-  ServerProductPageQueryQuery,
-  ServerProductPageQueryQueryVariables,
-} from 'src/{StoreProduct.slug}/__generated__/ServerProductPageQuery.graphql'
+  ProductPageQueryQuery,
+  ProductPageQueryQueryVariables,
+} from 'src/{StoreProduct.slug}/__generated__/ProductPageQuery.graphql'
 
-export type ServerProductPageProps = PageProps<
-  ServerProductPageQueryQuery,
-  ServerProductPageQueryQueryVariables
+export type Props = PageProps<
+  ProductPageQueryQuery,
+  ProductPageQueryQueryVariables
 >
 
-const Page: FC<ServerProductPageProps> = (props) => (
-  <Layout>
-    <ProductView
-      {...props}
-      product={props.data.product!}
-      slug={props.params.slug}
-    />
-  </Layout>
-)
+function Page(props: Props) {
+  return (
+    <Layout>
+      <View
+        {...props}
+        cmsSeo={props.data.cmsSeo}
+        product={props.data.product}
+      />
+    </Layout>
+  )
+}
 
 export const query = graphql`
-  query ServerProductPageQuery($id: String!) {
+  query ProductPageQuery($id: String!) {
+    cmsSeo {
+      ...ProductViewFragment_cmsSeo
+    }
+
     product: storeProduct(id: { eq: $id }) {
-      id: productId
       ...ProductViewFragment_product
     }
   }

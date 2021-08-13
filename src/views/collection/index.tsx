@@ -1,46 +1,50 @@
-import React, { lazy } from 'react'
-import { useLocation } from '@reach/router'
-import { usePlpPixelEffect, SearchProvider } from '@vtex/gatsby-theme-store'
-import type { FC } from 'react'
-import type { SearchParamsState } from '@vtex/store-sdk'
+import React from 'react'
+import {
+  usePlpPixelEffect,
+  SearchProvider,
+  SearchSEO,
+  useSearchParamsFromUrl,
+  useQueryVariablesFromSearchParams,
+  useQuery,
+} from '@vtex/gatsby-theme-store'
 import type { CollectionPageQueryQuery } from 'src/{StoreCollection.slug}/__generated__/CollectionPageQuery.graphql'
-import type { ServerCollectionPageQueryQuery } from 'src/{StoreCollection.slug}/__generated__/ServerCollectionPageQuery.graphql'
-import type { BrowserCollectionPageQueryQuery } from 'src/{StoreCollection.slug}/__generated__/BrowserCollectionPageQuery.graphql'
-import { View } from 'src/components/ui/View'
+import type {
+  BrowserCollectionPageQueryQuery,
+  BrowserCollectionPageQueryQueryVariables,
+} from 'src/{StoreCollection.slug}/__generated__/BrowserCollectionPageQuery.graphql'
+import { BrowserCollectionPageQuery } from 'src/{StoreCollection.slug}/__generated__/BrowserCollectionPageQuery.graphql'
+import type { PageProps } from 'gatsby'
+import { gql } from '@vtex/gatsby-plugin-graphql'
 
-import Seo from './Seo'
-import AboveTheFold from './components/AboveTheFold'
+export type CollectionViewProps = PageProps<CollectionPageQueryQuery>
 
-const loader = () => import('./components/BelowTheFold')
-const BelowTheFold = lazy(loader)
+const pageInfo = { size: Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!) }
 
-export interface CollectionViewProps {
-  data:
-    | CollectionPageQueryQuery
-    | (ServerCollectionPageQueryQuery & BrowserCollectionPageQueryQuery)
-  searchParams: SearchParamsState
-  pageInfo: { size: number }
-  params: Record<string, string>
-}
+function View(props: CollectionViewProps) {
+  const { params, data: staticData, location } = props
 
-const ViewComponents = {
-  seo: Seo,
-  above: AboveTheFold,
-  below: {
-    component: BelowTheFold,
-    preloader: loader,
-  },
-} as const
+  const searchParams = useSearchParamsFromUrl(location)
+  const variables = useQueryVariablesFromSearchParams(searchParams, pageInfo)
 
-const CollectionView: FC<CollectionViewProps> = (props) => {
-  const {
-    data,
-    searchParams,
-    pageInfo: { size },
-  } = props
+  const { data: dynamicData } = useQuery<
+    BrowserCollectionPageQueryQuery,
+    BrowserCollectionPageQueryQueryVariables
+  >({
+    ...BrowserCollectionPageQuery,
+    variables,
+    suspense: true,
+  })
+
+  if (dynamicData == null) {
+    throw new Error('Something went wrong while fetching the data')
+  }
+
+  const data = { ...dynamicData, ...staticData }
 
   const totalCount = data.vtex.productSearch!.recordsFiltered! ?? 0
-  const location = useLocation()
+  const siteMetadata = data.cmsSeo!.seo!.siteMetadata!
+  const { seo: collectionSeo } = data.storeCollection!
+  const breadcrumb = data.vtex.facets!.breadcrumb! as any
 
   usePlpPixelEffect({
     searchParams,
@@ -53,13 +57,84 @@ const CollectionView: FC<CollectionViewProps> = (props) => {
       searchParams={searchParams}
       data={data}
       pageInfo={{
-        size,
-        total: Math.ceil(totalCount / size),
+        size: pageInfo.size,
+        total: Math.ceil(totalCount / pageInfo.size),
       }}
     >
-      <View {...ViewComponents} data={props} />
+      <SearchSEO
+        titleTemplate={siteMetadata.titleTemplate!}
+        title={collectionSeo.title || siteMetadata.title!}
+        description={collectionSeo.description || siteMetadata.description!}
+        canonical={`/${params.slug}`}
+        breadcrumb={breadcrumb ?? []}
+      />
+      {/* <View {...ViewComponents} data={props} /> */}
     </SearchProvider>
   )
 }
 
-export default CollectionView
+/**
+ * This query is run on the browser and contains
+ * the current search state of the user
+ */
+export const clientSideQuery = gql`
+  query BrowserCollectionPageQuery(
+    $to: Int!
+    $from: Int!
+    $selectedFacets: [VTEX_SelectedFacetInput!]!
+    $sort: String!
+  ) {
+    vtex {
+      productSearch(
+        to: $to
+        from: $from
+        orderBy: $sort
+        selectedFacets: $selectedFacets
+        hideUnavailableItems: false
+        simulationBehavior: skip
+      ) {
+        products {
+          id: productId
+          productName
+          linkText
+          items {
+            itemId
+            images {
+              imageUrl
+              imageText
+            }
+          }
+        }
+        recordsFiltered
+      }
+      facets(
+        selectedFacets: $selectedFacets
+        operator: or
+        behavior: "Static"
+        removeHiddenFacets: true
+      ) {
+        breadcrumb {
+          href
+          name
+        }
+        facets {
+          name
+          type
+          values {
+            key
+            name
+            value
+            selected
+            quantity
+            range {
+              from
+              to
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+export default View

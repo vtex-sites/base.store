@@ -1,59 +1,24 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import { graphql } from 'gatsby'
-import { usePixelSendEvent } from '@vtex/gatsby-theme-store'
-import type { PageViewData } from '@vtex/gatsby-theme-store'
-import type { FC } from 'react'
+import View from 'src/views/home'
+import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
 
-import Layout from '../components/common/Layout'
-import Seo from '../views/home/Seo'
-import AboveTheFold from '../views/home/AboveTheFold'
-import { View } from '../components/ui/View'
 import type { HomePageQueryQuery } from '../__generated__/HomePageQuery.graphql'
 
 export type Props = PageProps<HomePageQueryQuery>
 
-const loader = () => import('../views/home/BelowTheFold')
-const BelowTheFold = lazy(loader)
-
-const ViewComponents = {
-  seo: Seo,
-  above: AboveTheFold,
-  below: {
-    component: BelowTheFold,
-    preloader: loader,
-  },
-} as const
-
-const Page: FC<Props> = (props) => {
-  usePixelSendEvent(() => {
-    const event: PageViewData = {
-      pageType: 'home',
-      pageUrl: window.location.href,
-      pageTitle: document.title,
-      referrer: '',
-      accountName: process.env.GATSBY_STORE_ID!,
-    }
-
-    return { type: 'vtex:pageView', data: event }
-  })
-
-  return (
-    <Layout>
-      <View {...ViewComponents} data={props} />
-    </Layout>
-  )
+function Page(props: Props) {
+  return <div>Hello World</div>
+  // return (
+  //   <Layout>
+  //     <View {...props} />
+  //   </Layout>
+  // )
 }
 
-// These variables are populated via CMS in gatsby-node's onCreatePage API
 export const query = graphql`
-  query HomePageQuery(
-    $from: Int!
-    $to: Int!
-    $collection: String!
-    $orderBy: String!
-    $hideUnavailableItems: Boolean!
-  ) {
+  query HomePageQuery {
     cmsSeo {
       seo {
         facebook {
@@ -72,17 +37,6 @@ export const query = graphql`
       sections {
         name
         props
-      }
-    }
-    vtex {
-      products(
-        from: $from
-        to: $to
-        collection: $collection
-        orderBy: $orderBy
-        hideUnavailableItems: $hideUnavailableItems
-      ) {
-        ...ProductSummary_product
       }
     }
   }

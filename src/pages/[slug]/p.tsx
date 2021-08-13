@@ -1,70 +1,71 @@
+import React, { Suspense } from 'react'
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import React from 'react'
-import type { PageProps } from 'gatsby'
-import type { FC } from 'react'
-import HybridWrapper from '@vtex/gatsby-theme-store/src/components/HybridWrapper'
-import Layout from 'src/components/common/Layout'
 import { useQuery } from '@vtex/gatsby-theme-store'
-import { Card, Container, Flex, Grid, Skeleton } from '@vtex/store-ui'
-import DefaultProductView from 'src/views/product'
+import View from 'src/views/product'
 import { BrowserProductPageQuery } from 'src/[slug]/__generated__/BrowserProductPageQuery.graphql'
+import { graphql } from 'gatsby'
+import type { FC } from 'react'
+import type { PageProps } from 'gatsby'
 import type {
   BrowserProductPageQueryQuery,
   BrowserProductPageQueryQueryVariables,
 } from 'src/[slug]/__generated__/BrowserProductPageQuery.graphql'
+import Layout from 'src/views/Layout'
+import type {
+  ServerProductPageQueryQuery,
+  ServerProductPageQueryQueryVariables,
+} from 'src/{StoreProduct.slug}/__generated__/ServerProductPageQuery.graphql'
 
-export type BrowserProductPageProps = PageProps & { slug: string }
+export type Props = PageProps<
+  ServerProductPageQueryQuery,
+  ServerProductPageQueryQueryVariables
+>
 
-const ProductPage: FC<BrowserProductPageProps> = (props) => {
-  const { data } = useQuery<
+const ProductPage: FC<Props> = (props) => {
+  const { data: browerData } = useQuery<
     BrowserProductPageQueryQuery,
     BrowserProductPageQueryQueryVariables
   >({
     ...BrowserProductPageQuery,
-    variables: { slug: props.slug },
+    variables: { slug: props.params.slug },
     suspense: true,
   })
 
+  if (!browerData) {
+    return null
+  }
+
   return (
-    <DefaultProductView
+    <View
       {...props}
-      product={data!.vtex.product}
-      slug={props.slug}
+      cmsSeo={props.data.cmsSeo}
+      product={browerData.vtex.product}
     />
   )
 }
 
-const Page: FC<BrowserProductPageProps> = (props) => (
-  <Layout>
-    <HybridWrapper
-      fallback={
-        <Container>
-          <Flex variant="productPage.container">
-            <Skeleton width="500px" height="45px" />
-            <Grid my={4} mx="auto" gap={[0, 3]} columns={[1, 2]}>
-              <Skeleton width="500px" height="500px" />
-              <Card>
-                <Skeleton width="500px" height="20px" />
-                <Skeleton width="500px" height="20px" />
-                <Skeleton width="500px" height="20px" />
-                <Skeleton width="500px" height="20px" />
-              </Card>
-            </Grid>
-          </Flex>
-        </Container>
-      }
-    >
-      <ProductPage {...props} />
-    </HybridWrapper>
-  </Layout>
-)
-
-export const query = gql`
+export const browserQuery = gql`
   query BrowserProductPageQuery($slug: String!) {
     vtex {
       product(slug: $slug) {
         ...ProductViewFragment_product
       }
+    }
+  }
+`
+
+const Page: FC<Props> = (props) => (
+  <Layout>
+    <Suspense fallback={<div>loading...</div>}>
+      <ProductPage {...props} />
+    </Suspense>
+  </Layout>
+)
+
+export const serverQuery = graphql`
+  query ServerProductPageQuery {
+    cmsSeo {
+      ...ProductViewFragment_cmsSeo
     }
   }
 `

@@ -2,8 +2,6 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
-const csv2json = require('csvtojson')
-
 const images = require('./src/images/config')
 
 const {
@@ -19,7 +17,6 @@ const {
   CONTEXT: ENV = NODE_ENV,
 } = process.env
 
-const allowedHosts = [`${STORE_ID}.vtex.app`, 'storetheme.vtex.com']
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
@@ -39,10 +36,10 @@ const getSizes = (variants) =>
 
 module.exports = {
   siteMetadata: {
-    title: 'Store Theme | VTEX Base Store',
-    description: 'A sample store using the best of Gatsby and VTEX',
-    titleTemplate: '%s | Store Theme',
-    author: 'Emerson Laurentino',
+    title: 'Fashion Store',
+    description: 'Fashion Demo Store',
+    titleTemplate: '%s | Fashion Store',
+    author: 'Store Framework',
     siteUrl,
   },
   flags: {
@@ -55,87 +52,14 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: 'gatsby-plugin-bundle-stats',
-      options: {
-        compare: true,
-        baseline: true,
-        html: true,
-        json: true,
-        outDir: `.`,
-        stats: {
-          context: join(__dirname, 'src'),
-        },
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-theme-ui',
-    },
-    {
-      // Makes it possible to share graphql queries between
-      // client/server side queries
-      resolve: `@vtex/gatsby-plugin-graphql`,
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-i18n',
-      options: {
-        locales: ['en', 'pt'],
-        defaultLocale: 'en',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-root-import',
-      options: {
-        src: resolve('./src'),
-      },
-    },
-    {
-      resolve: `@vtex/gatsby-source-vtex`,
-      options: {
-        tenant: STORE_ID,
-        environment,
-        workspace,
-        getRedirects: () =>
-          csv2json({ delimiter: ';' })
-            .fromFile('./redirects.csv')
-            .then((redirects) =>
-              redirects.map(({ fromPath, toPath, type }) => ({
-                fromPath,
-                toPath,
-                isPermanent: type === 'PERMANENT',
-                statusCode: type === 'PERMANENT' ? 301 : 302,
-              }))
-            ),
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-theme-store',
-      options: {
-        profiling: GATSBY_STORE_PROFILING,
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-google-tag-manager',
-      options: {
-        gtmId: 'GTM-TT2MDM3',
-        allowedHosts,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-nprogress',
-      options: {
-        color: '#0a034e',
-        showSpinner: false,
-      },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Store Theme - VTEX Base Store',
-        short_name: 'Store Theme',
+        name: 'Fashion Demo Store',
+        short_name: 'Fashion Store',
         start_url: '/',
         icon: 'src/images/icon.png',
-        background_color: '#0a034e',
-        theme_color: '#0a034e',
+        background_color: '#E31C58',
+        theme_color: '#E31C58',
         display: 'standalone',
         cache_busting_mode: 'none',
       },
@@ -148,15 +72,6 @@ module.exports = {
         workboxConfig: {
           globPatterns: ['**/offline/*'],
         },
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-cms',
-      options: {
-        tenant: STORE_ID,
-        workspace,
-        environment,
-        itemsPerPage,
       },
     },
     {
@@ -187,28 +102,9 @@ module.exports = {
       },
     },
     {
-      resolve: '@vtex/gatsby-plugin-nginx',
-      options: {
-        httpOptions: [
-          ['merge_slashes', 'off'],
-          ['proxy_http_version', '1.1'],
-        ],
-        serverOptions: isCI
-          ? [['resolver', '169.254.169.253']]
-          : [['resolver', '8.8.8.8']],
-      },
-    },
-    {
       resolve: 'gatsby-plugin-next-seo',
       options: {
         defer: true,
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-performance',
-      options: {
-        enableServerRouting: true,
-        enableNonBlockingStart: true,
       },
     },
     {
@@ -224,6 +120,85 @@ module.exports = {
           basePath: '/assets',
           sizes: getSizes(images),
         }),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: '#E31C58',
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: resolve('./src'),
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-bundle-stats',
+      options: {
+        compare: true,
+        baseline: true,
+        html: true,
+        json: true,
+        outDir: `.`,
+        stats: {
+          context: join(__dirname, 'src'),
+        },
+      },
+    },
+    {
+      resolve: `@vtex/gatsby-plugin-graphql`,
+    },
+    {
+      resolve: `@vtex/gatsby-source-vtex`,
+      options: {
+        tenant: STORE_ID,
+        environment,
+        workspace,
+      },
+    },
+    {
+      resolve: '@vtex/gatsby-theme-store',
+      options: {
+        profiling: GATSBY_STORE_PROFILING,
+      },
+    },
+    {
+      resolve: '@vtex/gatsby-plugin-cms',
+      options: {
+        tenant: STORE_ID,
+        workspace,
+        environment,
+        itemsPerPage,
+      },
+    },
+    {
+      resolve: '@vtex/gatsby-plugin-performance',
+      options: {
+        enableServerRouting: true,
+        enableNonBlockingStart: true,
+      },
+    },
+    {
+      // TODO, we should eventually remove it
+      resolve: '@vtex/gatsby-plugin-i18n',
+      options: {
+        locales: ['en'],
+        defaultLocale: 'en',
+      },
+    },
+    {
+      resolve: '@vtex/gatsby-plugin-nginx',
+      options: {
+        httpOptions: [
+          ['merge_slashes', 'off'],
+          ['proxy_http_version', '1.1'],
+        ],
+        serverOptions: isCI
+          ? [['resolver', '169.254.169.253']]
+          : [['resolver', '8.8.8.8']],
       },
     },
   ],
