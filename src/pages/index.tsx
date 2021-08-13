@@ -18,24 +18,11 @@ function Page(props: Props) {
 
 export const query = graphql`
   query HomePageQuery {
-    cmsSeo {
-      seo {
-        facebook {
-          title
-          description
-          thumbnail
-        }
-        siteMetadata {
-          title
-          description
-          titleTemplate
-        }
-      }
-    }
-    cmsHome {
-      sections {
-        name
-        props
+    site {
+      siteMetadata {
+        title
+        description
+        titleTemplate
       }
     }
   }

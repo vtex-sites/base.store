@@ -31,33 +31,23 @@ function Page(props: Props) {
  * */
 export const query = graphql`
   query CollectionPageQuery($id: String!) {
-    cmsSeo {
-      seo {
-        siteMetadata {
-          titleTemplate
-          title
-          description
-        }
+    site {
+      siteMetadata {
+        titleTemplate
+        title
+        description
       }
     }
+
     storeCollection(id: { eq: $id }) {
       seo {
         title
         description
       }
-      fields {
-        searchParams {
-          sort
-          selectedFacets {
-            key
-            value
-          }
-        }
-        plp {
-          sections {
-            name
-            props
-          }
+      meta {
+        selectedFacets {
+          key
+          value
         }
       }
     }

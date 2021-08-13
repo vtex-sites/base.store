@@ -20,14 +20,14 @@ type Scalars = {
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQueryQuery = { cmsSeo: Maybe<{ seo: Maybe<{ facebook: Maybe<{ title: Maybe<string>, description: Maybe<string>, thumbnail: Maybe<string> }>, siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> }>, cmsHome: Maybe<{ sections: Array<{ name: string, props: any }> }> };
+export type HomePageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> };
 
 
 // Query Related Code
 
 export const HomePageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query HomePageQuery {\n  cmsSeo {\n    seo {\n      facebook {\n        title\n        description\n        thumbnail\n      }\n      siteMetadata {\n        title\n        description\n        titleTemplate\n      }\n    }\n  }\n  cmsHome {\n    sections {\n      name\n      props\n    }\n  }\n}\n",
-  sha256Hash: "1033fc00b8245005af05253f1ac8fa9802708a9725833c7b5c058eae4f7bdc4f",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query HomePageQuery {\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n    }\n  }\n}\n",
+  sha256Hash: "6ae3b26ce68da0cd3253ab425e98500c26d9c33760ba847de8120a2b4dae50ed",
   operationName: "HomePageQuery",
 }
 

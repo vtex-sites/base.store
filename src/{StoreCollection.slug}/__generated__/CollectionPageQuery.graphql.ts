@@ -22,14 +22,14 @@ export type CollectionPageQueryQueryVariables = Exact<{
 }>;
 
 
-export type CollectionPageQueryQuery = { cmsSeo: Maybe<{ seo: Maybe<{ siteMetadata: Maybe<{ titleTemplate: Maybe<string>, title: Maybe<string>, description: Maybe<string> }> }> }>, storeCollection: Maybe<{ seo: { title: string, description: string }, fields: Maybe<{ searchParams: Maybe<{ sort: Maybe<string>, selectedFacets: Maybe<Array<Maybe<{ key: Maybe<string>, value: Maybe<string> }>>> }>, plp: Maybe<{ sections: Array<{ name: string, props: any }> }> }> }> };
+export type CollectionPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ titleTemplate: Maybe<string>, title: Maybe<string>, description: Maybe<string> }> }>, storeCollection: Maybe<{ seo: { title: string, description: string }, meta: { selectedFacets: Array<{ key: string, value: string }> } }> };
 
 
 // Query Related Code
 
 export const CollectionPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionPageQuery($id: String!) {\n  cmsSeo {\n    seo {\n      siteMetadata {\n        titleTemplate\n        title\n        description\n      }\n    }\n  }\n  storeCollection(id: {eq: $id}) {\n    seo {\n      title\n      description\n    }\n    fields {\n      searchParams {\n        sort\n        selectedFacets {\n          key\n          value\n        }\n      }\n      plp {\n        sections {\n          name\n          props\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "73223ae803c5e203703ce366bea438e3e5e8025ee078b7519d35db5370c1b343",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionPageQuery($id: String!) {\n  site {\n    siteMetadata {\n      titleTemplate\n      title\n      description\n    }\n  }\n  storeCollection(id: {eq: $id}) {\n    seo {\n      title\n      description\n    }\n    meta {\n      selectedFacets {\n        key\n        value\n      }\n    }\n  }\n}\n",
+  sha256Hash: "7b6cd17501b994d51192b5a1c358db7cb1bb3f577c6c0f9c9117c4671755feba",
   operationName: "CollectionPageQuery",
 }
 

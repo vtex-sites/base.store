@@ -9,7 +9,6 @@ const {
   GATSBY_VTEX_ENVIRONMENT: environment,
   GATSBY_VTEX_IO_WORKSPACE: workspace,
   GATSBY_STORE_PROFILING,
-  STORE_PLP_ITEMS_PER_PAGE: itemsPerPage,
   CI: isCI,
   NODE_ENV,
   URL = `https://${STORE_ID}.vtex.app`,
@@ -165,6 +164,7 @@ module.exports = {
         tenant: STORE_ID,
         environment,
         workspace,
+        minProducts: 1,
       },
     },
     {
@@ -173,22 +173,6 @@ module.exports = {
         profiling: GATSBY_STORE_PROFILING,
       },
     },
-    {
-      resolve: '@vtex/gatsby-plugin-cms',
-      options: {
-        tenant: STORE_ID,
-        workspace,
-        environment,
-        itemsPerPage,
-      },
-    },
-    // {
-    //   resolve: '@vtex/gatsby-plugin-performance',
-    //   options: {
-    //     enableServerRouting: true,
-    //     enableNonBlockingStart: false,
-    //   },
-    // }
     {
       resolve: '@vtex/gatsby-plugin-nginx',
       options: {

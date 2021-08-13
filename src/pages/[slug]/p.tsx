@@ -14,7 +14,7 @@ import Layout from 'src/views/Layout'
 import type {
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables,
-} from 'src/{StoreProduct.slug}/__generated__/ServerProductPageQuery.graphql'
+} from 'src/[slug]/__generated__/ServerProductPageQuery.graphql'
 
 export type Props = PageProps<
   ServerProductPageQueryQuery,
@@ -36,16 +36,12 @@ const ProductPage: FC<Props> = (props) => {
     suspense: true,
   })
 
-  if (browerData == null || serverData.cmsSeo == null) {
+  if (browerData == null || serverData.site == null) {
     throw new Error('Something went wrong while fetching data')
   }
 
   return (
-    <View
-      {...props}
-      cmsSeo={serverData.cmsSeo}
-      product={browerData.vtex.product}
-    />
+    <View {...props} site={serverData.site} product={browerData.vtex.product} />
   )
 }
 
@@ -69,8 +65,8 @@ const Page: FC<Props> = (props) => (
 
 export const serverQuery = graphql`
   query ServerProductPageQuery {
-    cmsSeo {
-      ...ProductViewFragment_cmsSeo
+    site {
+      ...ProductViewFragment_site
     }
   }
 `

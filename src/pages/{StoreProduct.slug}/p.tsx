@@ -15,24 +15,24 @@ export type Props = PageProps<
 
 function Page(props: Props) {
   const {
-    data: { product, cmsSeo },
+    data: { product, site },
   } = props
 
-  if (product == null || cmsSeo == null) {
+  if (product == null || site == null) {
     throw new Error('Something went wrong while fetching page data')
   }
 
   return (
     <Layout>
-      <View {...props} cmsSeo={cmsSeo} product={product} />
+      <View {...props} site={site} product={product} />
     </Layout>
   )
 }
 
 export const query = graphql`
   query ProductPageQuery($id: String!) {
-    cmsSeo {
-      ...ProductViewFragment_cmsSeo
+    site {
+      ...ProductViewFragment_site
     }
 
     product: storeProduct(id: { eq: $id }) {

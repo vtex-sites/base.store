@@ -48,8 +48,8 @@ function View(props: Props) {
 
   const data = { ...dynamicData, ...staticData }
 
-  const totalCount = data.vtex.productSearch!.recordsFiltered! ?? 0
-  const siteMetadata = data.cmsSeo!.seo!.siteMetadata!
+  const totalCount = data.vtex.productSearch!.totalCount! ?? 0
+  const siteMetadata = data.site!.siteMetadata!
   const { seo: collectionSeo } = data.storeCollection!
   const breadcrumb = data.vtex.facets!.breadcrumb! as any
 
@@ -111,7 +111,7 @@ export const clientSideQuery = gql`
           ...ProductSummary_product
         }
         ...ProductGallery_productSearch
-        recordsFiltered
+        totalCount: recordsFiltered
       }
       facets(
         selectedFacets: $selectedFacets

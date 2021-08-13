@@ -5,18 +5,6 @@ import type { Props } from 'src/pages/{StoreCollection.slug}/[...]'
 
 import { priceRange } from './search'
 
-// TODO: Move this to the backend once we have lambda functions
-const sortMap = {
-  'price:desc': 'price-desc',
-  'price:asc': 'price-asc',
-  'orders:desc': 'orders-desc',
-  'name:desc': 'name-desc',
-  'name:asc': 'name-asc',
-  'release:desc': 'release-desc',
-  'discount:desc': 'discount-desc',
-  '': 'score-desc',
-} as const
-
 export const useSearchParams = (props: Props): SearchParamsState =>
   useMemo(() => {
     const {
@@ -31,7 +19,7 @@ export const useSearchParams = (props: Props): SearchParamsState =>
     }
 
     // We are in a SSR page and we need to build the state from params
-    const { sort, selectedFacets } = storeCollection!.fields!.searchParams!
+    const selectedFacets = storeCollection!.meta!.selectedFacets!
     const [base] = pathname.split(selectedFacets![0]!.value!)
 
     // TODO: Remove this bit of code once we have a graphql layer
@@ -53,9 +41,6 @@ export const useSearchParams = (props: Props): SearchParamsState =>
       selectedFacets: facets,
       term: null,
       personalized: false,
-      sort:
-        typeof sort === 'string' && sort in sortMap
-          ? sortMap[sort as keyof typeof sortMap]
-          : 'score-desc',
+      sort: 'score-desc',
     }
   }, [props])

@@ -12,10 +12,10 @@ export const useMetadata = (props: Options): Return => {
   const language = useLocale()
   const {
     location: { pathname, host },
-    data: { cmsSeo },
+    data: { site },
   } = props
 
-  const { facebook, siteMetadata } = cmsSeo!.seo!
+  const { siteMetadata } = site!
   const siteUrl = `https://${host}${pathname}`
 
   return {
@@ -27,13 +27,8 @@ export const useMetadata = (props: Options): Return => {
     openGraph: {
       type: 'website',
       url: siteUrl,
-      title: facebook!.title!,
-      description: facebook!.description!,
-      images: [
-        {
-          url: facebook!.thumbnail!,
-        },
-      ],
+      title: siteMetadata!.title!,
+      description: siteMetadata!.description!,
     },
   }
 }

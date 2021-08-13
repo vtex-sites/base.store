@@ -41,8 +41,8 @@ const View: FC<Props> = (props) => {
 
   const data = { ...dynamicData, ...serverData }
   const totalCount = data.vtex.productSearch!.totalCount ?? 0
-  const siteMetadata = data.cmsSeo!.seo!.siteMetadata!
   const breadcrumb = (data.vtex.facets!.breadcrumb! as any) ?? []
+  const siteMetadata = data.site!.siteMetadata!
 
   usePlpPixelEffect({
     searchParams,

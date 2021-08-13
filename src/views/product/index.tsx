@@ -5,26 +5,23 @@ import {
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import type { ProductViewFragment_CmsSeoFragment } from './__generated__/ProductViewFragment_cmsSeo.graphql'
 import type { ProductViewFragment_ProductFragment } from './__generated__/ProductViewFragment_product.graphql'
+import type { ProductViewFragment_SiteFragment } from './__generated__/ProductViewFragment_site.graphql'
 
 interface Props {
-  cmsSeo: ProductViewFragment_CmsSeoFragment
+  site: ProductViewFragment_SiteFragment
   product: ProductViewFragment_ProductFragment
 }
 
 function View(props: Props) {
-  const {
-    product,
-    cmsSeo: { seo },
-  } = props
+  const { product, site } = props
 
   useProductPixelEffect({ product: { id: props.product.id! } })
 
   return (
     <>
       {/* Seo */}
-      <Seo product={product} siteMetadata={seo!.siteMetadata!} />
+      <Seo product={product} siteMetadata={site.siteMetadata} />
 
       {/* Visual Sections */}
       <div>TODO</div>
@@ -33,13 +30,12 @@ function View(props: Props) {
 }
 
 export const fragment = graphql`
-  fragment ProductViewFragment_cmsSeo on CmsSeo {
-    seo {
-      siteMetadata {
-        title
-        description
-        titleTemplate
-      }
+  fragment ProductViewFragment_site on Site {
+    siteMetadata {
+      title
+      description
+      titleTemplate
+      siteUrl
     }
   }
 
