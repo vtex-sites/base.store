@@ -22,14 +22,14 @@ export type ProductPageQueryQueryVariables = Exact<{
 }>;
 
 
-export type ProductPageQueryQuery = { cmsSeo: Maybe<{ seo: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> }>, product: Maybe<{ productName: Maybe<string>, id: Maybe<string>, categoryTree: Maybe<Array<Maybe<{ name: Maybe<string>, href: Maybe<string> }>>>, items: Maybe<Array<Maybe<{ name: Maybe<string>, itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, videos: Maybe<Array<Maybe<{ videoUrl: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ commercialOffer: Maybe<{ price: Maybe<number>, listPrice: Maybe<number>, availableQuantity: Maybe<number>, priceValidUntil: Maybe<string> }> }>>> }>>> }> };
+export type ProductPageQueryQuery = { cmsSeo: Maybe<{ seo: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> }>, product: Maybe<{ titleTag: Maybe<string>, metaTagDescription: Maybe<string>, brand: Maybe<string>, linkText: Maybe<string>, productName: Maybe<string>, description: Maybe<string>, id: Maybe<string>, categoryTree: Maybe<Array<Maybe<{ name: Maybe<string>, href: Maybe<string> }>>>, items: Maybe<Array<Maybe<{ name: Maybe<string>, itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, videos: Maybe<Array<Maybe<{ videoUrl: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ commercialOffer: Maybe<{ spotPrice: Maybe<number>, price: Maybe<number>, listPrice: Maybe<number>, availableQuantity: Maybe<number>, priceValidUntil: Maybe<string> }> }>>> }>>> }> };
 
 
 // Query Related Code
 
 export const ProductPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query ProductPageQuery($id: String!) {\n  cmsSeo {\n    seo {\n      siteMetadata {\n        title\n        description\n        titleTemplate\n      }\n    }\n  }\n  product: storeProduct(id: {eq: $id}) {\n    id: productId\n    productName\n    categoryTree {\n      name\n      href\n    }\n    items {\n      name\n      itemId\n      images {\n        imageUrl\n        imageText\n      }\n      videos {\n        videoUrl\n      }\n      sellers {\n        commercialOffer: commertialOffer {\n          price: Price\n          listPrice: ListPrice\n          availableQuantity: AvailableQuantity\n          priceValidUntil: PriceValidUntil\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "107fef8112b4843b1de924efd8167ce67ab52b08b6a98d0b654298a9800c899f",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query ProductPageQuery($id: String!) {\n  cmsSeo {\n    seo {\n      siteMetadata {\n        title\n        description\n        titleTemplate\n      }\n    }\n  }\n  product: storeProduct(id: {eq: $id}) {\n    id: productId\n    titleTag\n    metaTagDescription\n    brand\n    linkText\n    productName\n    description\n    categoryTree {\n      name\n      href\n    }\n    items {\n      name\n      itemId\n      images {\n        imageUrl\n        imageText\n      }\n      videos {\n        videoUrl\n      }\n      sellers {\n        commercialOffer: commertialOffer {\n          price: Price\n          listPrice: ListPrice\n          availableQuantity: AvailableQuantity\n          priceValidUntil: PriceValidUntil\n          spotPrice\n        }\n      }\n    }\n  }\n}\n",
+  sha256Hash: "c1fe5e4853c87ab8dc8e39f880194989aed3038f093dfb82f1acf82c02f0989c",
   operationName: "ProductPageQuery",
 }
 

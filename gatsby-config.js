@@ -52,6 +52,14 @@ module.exports = {
   },
   plugins: [
     {
+      // TODO, we should eventually remove it
+      resolve: '@vtex/gatsby-plugin-i18n',
+      options: {
+        locales: ['en'],
+        defaultLocale: 'en',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Fashion Demo Store',
@@ -174,21 +182,13 @@ module.exports = {
         itemsPerPage,
       },
     },
-    {
-      resolve: '@vtex/gatsby-plugin-performance',
-      options: {
-        enableServerRouting: true,
-        enableNonBlockingStart: true,
-      },
-    },
-    {
-      // TODO, we should eventually remove it
-      resolve: '@vtex/gatsby-plugin-i18n',
-      options: {
-        locales: ['en'],
-        defaultLocale: 'en',
-      },
-    },
+    // {
+    //   resolve: '@vtex/gatsby-plugin-performance',
+    //   options: {
+    //     enableServerRouting: true,
+    //     enableNonBlockingStart: false,
+    //   },
+    // }
     {
       resolve: '@vtex/gatsby-plugin-nginx',
       options: {

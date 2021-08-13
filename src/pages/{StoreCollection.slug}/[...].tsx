@@ -1,23 +1,26 @@
 import React, { Suspense } from 'react'
-import { graphql } from 'gatsby'
 import Layout from 'src/views/Layout'
 import View from 'src/views/collection'
-import type { PageProps as GatsbyPageProps } from 'gatsby'
+import { graphql } from 'gatsby'
+import { useSearchParams } from 'src/sdk/useSearchParams'
+import type { PageProps } from 'gatsby'
 import type {
-  ServerCollectionPageQueryQuery,
-  ServerCollectionPageQueryQueryVariables,
-} from 'src/{StoreCollection.slug}/__generated__/ServerCollectionPageQuery.graphql'
+  CollectionPageQueryQuery,
+  CollectionPageQueryQueryVariables,
+} from 'src/{StoreCollection.slug}/__generated__/CollectionPageQuery.graphql'
 
-type PageProps = GatsbyPageProps<
-  ServerCollectionPageQueryQuery,
-  ServerCollectionPageQueryQueryVariables
+export type Props = PageProps<
+  CollectionPageQueryQuery,
+  CollectionPageQueryQueryVariables
 >
 
-function Page(props: PageProps) {
+function Page(props: Props) {
+  const searchParams = useSearchParams(props)
+
   return (
     <Layout>
       <Suspense fallback={<div>...loading</div>}>
-        <View {...props} />
+        <View searchParams={searchParams} {...props} />
       </Suspense>
     </Layout>
   )
@@ -26,8 +29,8 @@ function Page(props: PageProps) {
 /**
  * This query is run during SSG
  * */
-export const serverSideQuery = graphql`
-  query ServerCollectionPageQuery($id: String!) {
+export const query = graphql`
+  query CollectionPageQuery($id: String!) {
     cmsSeo {
       seo {
         siteMetadata {
@@ -43,6 +46,13 @@ export const serverSideQuery = graphql`
         description
       }
       fields {
+        searchParams {
+          sort
+          selectedFacets {
+            key
+            value
+          }
+        }
         plp {
           sections {
             name

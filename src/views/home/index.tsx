@@ -1,8 +1,8 @@
 import React from 'react'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
+import { usePixelSendEvent } from '@vtex/gatsby-theme-store'
 import type { Props } from 'src/pages/index'
 import type { PageViewData } from '@vtex/gatsby-theme-store'
-import { usePixelSendEvent } from '@vtex/gatsby-theme-store'
 
 import { useMetadata } from './hooks/useMetadata'
 import { useSiteLinksSearchBoxJsonLd } from './hooks/useSiteLinksSearchBoxJsonLd'

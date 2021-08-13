@@ -2,35 +2,42 @@ import React from 'react'
 import {
   usePlpPixelEffect,
   SearchProvider,
-  SearchSEO,
-  useSearchParamsFromUrl,
-  useQueryVariablesFromSearchParams,
+  SearchSEO as Seo,
   useQuery,
 } from '@vtex/gatsby-theme-store'
-import type { CollectionPageQueryQuery } from 'src/{StoreCollection.slug}/__generated__/CollectionPageQuery.graphql'
-import type {
-  BrowserCollectionPageQueryQuery,
-  BrowserCollectionPageQueryQueryVariables,
-} from 'src/{StoreCollection.slug}/__generated__/BrowserCollectionPageQuery.graphql'
-import { BrowserCollectionPageQuery } from 'src/{StoreCollection.slug}/__generated__/BrowserCollectionPageQuery.graphql'
-import type { PageProps } from 'gatsby'
 import { gql } from '@vtex/gatsby-plugin-graphql'
+import type { SearchParamsState } from '@vtex/store-sdk'
+import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
+import ProductGallery from 'src/components/sections/ProductGallery'
+import { useQueryVariablesFromSearchParams } from 'src/sdk/useQueryVariablesFromSearchParams'
 
-export type CollectionViewProps = PageProps<CollectionPageQueryQuery>
+import type {
+  CollectionSearchQueryQuery,
+  CollectionSearchQueryQueryVariables,
+} from './__generated__/CollectionSearchQuery.graphql'
+import { CollectionSearchQuery } from './__generated__/CollectionSearchQuery.graphql'
 
-const pageInfo = { size: Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!) }
+const ITEMS_PER_PAGE = Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!)
 
-function View(props: CollectionViewProps) {
-  const { params, data: staticData, location } = props
+interface Props extends PageProps {
+  searchParams: SearchParamsState
+}
 
-  const searchParams = useSearchParamsFromUrl(location)
-  const variables = useQueryVariablesFromSearchParams(searchParams, pageInfo)
+function View(props: Props) {
+  const {
+    params: { slug },
+    data: staticData,
+    searchParams,
+    location,
+  } = props
+
+  const variables = useQueryVariablesFromSearchParams(searchParams)
 
   const { data: dynamicData } = useQuery<
-    BrowserCollectionPageQueryQuery,
-    BrowserCollectionPageQueryQueryVariables
+    CollectionSearchQueryQuery,
+    CollectionSearchQueryQueryVariables
   >({
-    ...BrowserCollectionPageQuery,
+    ...CollectionSearchQuery,
     variables,
     suspense: true,
   })
@@ -57,18 +64,25 @@ function View(props: CollectionViewProps) {
       searchParams={searchParams}
       data={data}
       pageInfo={{
-        size: pageInfo.size,
-        total: Math.ceil(totalCount / pageInfo.size),
+        size: ITEMS_PER_PAGE,
+        total: Math.ceil(totalCount / ITEMS_PER_PAGE),
       }}
     >
-      <SearchSEO
+      {/* Seo components */}
+      <Seo
         titleTemplate={siteMetadata.titleTemplate!}
         title={collectionSeo.title || siteMetadata.title!}
         description={collectionSeo.description || siteMetadata.description!}
-        canonical={`/${params.slug}`}
+        canonical={`/${slug}`}
         breadcrumb={breadcrumb ?? []}
       />
-      {/* <View {...ViewComponents} data={props} /> */}
+
+      {/* UI components */}
+      <ProductGallery
+        initialData={dynamicData}
+        facets={dynamicData.vtex.facets!.facets as any}
+        productSearch={dynamicData.vtex.productSearch!}
+      />
     </SearchProvider>
   )
 }
@@ -78,7 +92,7 @@ function View(props: CollectionViewProps) {
  * the current search state of the user
  */
 export const clientSideQuery = gql`
-  query BrowserCollectionPageQuery(
+  query CollectionSearchQuery(
     $to: Int!
     $from: Int!
     $selectedFacets: [VTEX_SelectedFacetInput!]!
@@ -94,17 +108,9 @@ export const clientSideQuery = gql`
         simulationBehavior: skip
       ) {
         products {
-          id: productId
-          productName
-          linkText
-          items {
-            itemId
-            images {
-              imageUrl
-              imageText
-            }
-          }
+          ...ProductSummary_product
         }
+        ...ProductGallery_productSearch
         recordsFiltered
       }
       facets(
@@ -118,19 +124,7 @@ export const clientSideQuery = gql`
           name
         }
         facets {
-          name
-          type
-          values {
-            key
-            name
-            value
-            selected
-            quantity
-            range {
-              from
-              to
-            }
-          }
+          ...ProductGallery_facets
         }
       }
     }

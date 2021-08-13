@@ -22,14 +22,14 @@ export type BrowserProductPageQueryQueryVariables = Exact<{
 }>;
 
 
-export type BrowserProductPageQueryQuery = { vtex: { product: { productName: Maybe<string>, id: Maybe<string>, categoryTree: Maybe<Array<Maybe<{ name: Maybe<string>, href: Maybe<string> }>>>, items: Maybe<Array<Maybe<{ name: Maybe<string>, itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, videos: Maybe<Array<Maybe<{ videoUrl: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ commercialOffer: Maybe<{ price: Maybe<number>, listPrice: Maybe<number>, availableQuantity: Maybe<number>, priceValidUntil: Maybe<string> }> }>>> }>>> } } };
+export type BrowserProductPageQueryQuery = { vtex: { product: { titleTag: Maybe<string>, metaTagDescription: Maybe<string>, brand: Maybe<string>, linkText: Maybe<string>, productName: Maybe<string>, description: Maybe<string>, id: Maybe<string>, categoryTree: Maybe<Array<Maybe<{ name: Maybe<string>, href: Maybe<string> }>>>, items: Maybe<Array<Maybe<{ name: Maybe<string>, itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, videos: Maybe<Array<Maybe<{ videoUrl: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ commercialOffer: Maybe<{ spotPrice: Maybe<number>, price: Maybe<number>, listPrice: Maybe<number>, availableQuantity: Maybe<number>, priceValidUntil: Maybe<string> }> }>>> }>>> } } };
 
 
 // Query Related Code
 
 export const BrowserProductPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($slug: String!) {\n  vtex {\n    product(slug: $slug) {\n      id: productId\n      productName\n      categoryTree {\n        name\n        href\n      }\n      items {\n        name\n        itemId\n        images {\n          imageUrl\n          imageText\n        }\n        videos {\n          videoUrl\n        }\n        sellers {\n          commercialOffer: commertialOffer {\n            price: Price\n            listPrice: ListPrice\n            availableQuantity: AvailableQuantity\n            priceValidUntil: PriceValidUntil\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "6581855ea34eb6c6833bfcabb27c932f18daa6f6189f8a60b47170eb2698af42",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($slug: String!) {\n  vtex {\n    product(slug: $slug) {\n      id: productId\n      titleTag\n      metaTagDescription\n      brand\n      linkText\n      productName\n      description\n      categoryTree {\n        name\n        href\n      }\n      items {\n        name\n        itemId\n        images {\n          imageUrl\n          imageText\n        }\n        videos {\n          videoUrl\n        }\n        sellers {\n          commercialOffer: commertialOffer {\n            price: Price\n            listPrice: ListPrice\n            availableQuantity: AvailableQuantity\n            priceValidUntil: PriceValidUntil\n            spotPrice\n          }\n        }\n      }\n    }\n  }\n}\n",
+  sha256Hash: "2d8aad59cca6489f78c70534a35c78fb62c0b868fc053c8825d53dbda9301905",
   operationName: "BrowserProductPageQuery",
 }
 

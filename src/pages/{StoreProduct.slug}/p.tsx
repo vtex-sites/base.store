@@ -14,13 +14,17 @@ export type Props = PageProps<
 >
 
 function Page(props: Props) {
+  const {
+    data: { product, cmsSeo },
+  } = props
+
+  if (product == null || cmsSeo == null) {
+    throw new Error('Something went wrong while fetching page data')
+  }
+
   return (
     <Layout>
-      <View
-        {...props}
-        cmsSeo={props.data.cmsSeo}
-        product={props.data.product}
-      />
+      <View {...props} cmsSeo={cmsSeo} product={product} />
     </Layout>
   )
 }

@@ -9,12 +9,11 @@ import type { HomePageQueryQuery } from '../__generated__/HomePageQuery.graphql'
 export type Props = PageProps<HomePageQueryQuery>
 
 function Page(props: Props) {
-  return <div>Hello World</div>
-  // return (
-  //   <Layout>
-  //     <View {...props} />
-  //   </Layout>
-  // )
+  return (
+    <Layout>
+      <View {...props} />
+    </Layout>
+  )
 }
 
 export const query = graphql`

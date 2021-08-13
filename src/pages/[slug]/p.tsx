@@ -22,23 +22,28 @@ export type Props = PageProps<
 >
 
 const ProductPage: FC<Props> = (props) => {
+  const {
+    params: { slug },
+    data: serverData,
+  } = props
+
   const { data: browerData } = useQuery<
     BrowserProductPageQueryQuery,
     BrowserProductPageQueryQueryVariables
   >({
     ...BrowserProductPageQuery,
-    variables: { slug: props.params.slug },
+    variables: { slug },
     suspense: true,
   })
 
-  if (!browerData) {
-    return null
+  if (browerData == null || serverData.cmsSeo == null) {
+    throw new Error('Something went wrong while fetching data')
   }
 
   return (
     <View
       {...props}
-      cmsSeo={props.data.cmsSeo}
+      cmsSeo={serverData.cmsSeo}
       product={browerData.vtex.product}
     />
   )

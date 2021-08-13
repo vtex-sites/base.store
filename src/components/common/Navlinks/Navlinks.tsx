@@ -1,7 +1,7 @@
 import React from 'react'
 
 function Navlinks() {
-  return <></>
+  return <nav>Navlinks</nav>
 }
 
 export default Navlinks

@@ -3,38 +3,46 @@ import {
   usePlpPixelEffect,
   SearchProvider,
   useSearchParamsFromUrl,
-  useQueryVariablesFromSearchParams,
   useQuery,
-  SearchSEO,
+  SearchSEO as Seo,
 } from '@vtex/gatsby-theme-store'
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import type { FC } from 'react'
-import type { BrowserSearchPageQueryQuery } from 'src/s/__generated__/BrowserSearchPageQuery.graphql'
 import type { Props } from 'src/pages/s/[...]'
+import ProductGallery from 'src/components/sections/ProductGallery'
+import { useQueryVariablesFromSearchParams } from 'src/sdk/useQueryVariablesFromSearchParams'
 
-const pageInfo = { size: Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!) }
+import type {
+  FullTextSearchQueryQuery,
+  FullTextSearchQueryQueryVariables,
+} from './__generated__/FullTextSearchQuery.graphql'
+import { FullTextSearchQuery } from './__generated__/FullTextSearchQuery.graphql'
+
+const ITEMS_PER_PAGE = Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!)
 
 const View: FC<Props> = (props) => {
   const { location, data: serverData } = props
 
   const searchParams = useSearchParamsFromUrl(location)
-  const variables = useQueryVariablesFromSearchParams(searchParams, pageInfo)
+  const variables = useQueryVariablesFromSearchParams(searchParams)
 
-  const { data: browserData } = useQuery<
-    BrowserSearchPageQueryQuery,
-    BrowserSearchPageQueryQueryVariables
+  const { data: dynamicData } = useQuery<
+    FullTextSearchQueryQuery,
+    FullTextSearchQueryQueryVariables
   >({
-    ...BrowserSearchPageQuery,
+    ...FullTextSearchQuery,
     variables,
     suspense: true,
   })
 
-  if (browserData == null) {
+  if (dynamicData == null) {
     throw new Error('Something went wrong while fetching the data')
   }
 
-  const data = { ...browserData, ...serverData }
-  const totalCount = data.vtex.productSearch!.recordsFiltered! ?? 0
+  const data = { ...dynamicData, ...serverData }
+  const totalCount = data.vtex.productSearch!.totalCount ?? 0
+  const siteMetadata = data.cmsSeo!.seo!.siteMetadata!
+  const breadcrumb = (data.vtex.facets!.breadcrumb! as any) ?? []
 
   usePlpPixelEffect({
     searchParams,
@@ -42,13 +50,17 @@ const View: FC<Props> = (props) => {
     location,
   })
 
-  const siteMetadata = data.cmsSeo!.seo!.siteMetadata!
-  const breadcrumb = (data.vtex.facets!.breadcrumb! as Breadcrumb[]) ?? []
-
   return (
-    <>
-      {/* SEO Components */}
-      <SearchSEO
+    <SearchProvider
+      searchParams={searchParams}
+      data={data}
+      pageInfo={{
+        size: ITEMS_PER_PAGE,
+        total: Math.ceil(totalCount / ITEMS_PER_PAGE),
+      }}
+    >
+      {/* Seo Components */}
+      <Seo
         titleTemplate={siteMetadata.titleTemplate!}
         title={siteMetadata.title!}
         description={siteMetadata.description!}
@@ -56,17 +68,12 @@ const View: FC<Props> = (props) => {
       />
 
       {/* UI Components */}
-      <SearchProvider
-        searchParams={searchParams}
-        data={data}
-        pageInfo={{
-          size: pageInfo.size,
-          total: Math.ceil(totalCount / pageInfo.size),
-        }}
-      >
-        <View />
-      </SearchProvider>
-    </>
+      <ProductGallery
+        initialData={dynamicData}
+        facets={dynamicData.vtex.facets!.facets as any}
+        productSearch={dynamicData.vtex.productSearch!}
+      />
+    </SearchProvider>
   )
 }
 
@@ -74,7 +81,7 @@ const View: FC<Props> = (props) => {
  * This query is run on the browser
  * */
 export const query = gql`
-  query BrowserSearchPageQuery(
+  query FullTextSearchQuery(
     $from: Int!
     $to: Int!
     $fullText: String
@@ -82,11 +89,6 @@ export const query = gql`
     $sort: String!
   ) {
     vtex {
-      banners(fullText: $fullText, selectedFacets: $selectedFacets) {
-        banners {
-          html
-        }
-      }
       productSearch(
         from: $from
         to: $to
@@ -97,18 +99,10 @@ export const query = gql`
         simulationBehavior: skip
       ) {
         products {
-          id: productId
-          productName
-          linkText
-          items {
-            itemId
-            images {
-              imageUrl
-              imageText
-            }
-          }
+          ...ProductSummary_product
         }
-        recordsFiltered
+        ...ProductGallery_productSearch
+        totalCount: recordsFiltered
       }
       facets(
         fullText: $fullText
@@ -122,19 +116,7 @@ export const query = gql`
           name
         }
         facets {
-          name
-          type
-          values {
-            key
-            name
-            value
-            selected
-            quantity
-            range {
-              from
-              to
-            }
-          }
+          ...ProductGallery_facets
         }
       }
     }
