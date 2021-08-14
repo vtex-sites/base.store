@@ -28,6 +28,7 @@
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.10",
     "@testing-library/cypress": "^8.0.0",
+    "@types/cypress": "^1.1.3",
     "@vtex/lighthouse-config": "0.373.12",
     "@vtex/prettier-config": "0.3.6",
     "@vtex/tsconfig": "0.5.6",
