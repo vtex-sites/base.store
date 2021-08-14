@@ -9,10 +9,10 @@ Cypress.on('window:before:load', (win) => {
   delete win.navigator.__proto__.ServiceWorker
 })
 
-describe('Home Page Seo tags', () => {
+describe('Home Page Seo', () => {
   const pathname = '/'
 
-  it('Has basic tags', () => {
+  it('has meta/canonical/link tags', () => {
     cy.visit(pathname)
 
     cy.title().should('exist')
@@ -22,11 +22,11 @@ describe('Home Page Seo tags', () => {
     cy.get('link[rel="canonical"]')
       .should('exist')
       .should(($link) => {
-        expect($link.attr('href')).to.eq(`https://${window.host}/`)
+        expect($link.attr('href')).to.eq(`https://${window.location.host}/`)
       })
   })
 
-  it('Has structured data', () => {
+  it('has structured data', () => {
     cy.visit(pathname)
 
     cy.get('script[type="application/ld+json"]')
@@ -39,7 +39,7 @@ describe('Home Page Seo tags', () => {
       })
   })
 
-  it('Has Open Graph tags', () => {
+  it('has OpenGraph tags', () => {
     cy.visit(pathname)
 
     cy.get('meta[property="og:type"][content="website"]').should('exist')
@@ -57,49 +57,80 @@ describe('Home Page Seo tags', () => {
   })
 })
 
-describe('Product Page Seo tags', () => {
-  it('Has basic tags', () => {
-    cy.visit('/')
+describe('Product Page Seo', () => {
+  const pathname = '/organza-sleeve-top/p'
+
+  it('has meta/canonical/link tags', () => {
+    cy.visit(pathname)
+
+    cy.title().should('exist')
+    cy.get('meta[name="description"]').should('exist')
+    cy.get('meta[name="robots"][content="index,follow"]').should('exist')
+    cy.get('meta[name="googlebot"][content="index,follow"]').should('exist')
+    cy.get('link[rel="canonical"]')
+      .should('exist')
+      .should(($link) => {
+        expect($link.attr('href')).to.eq(
+          `https://${window.location.host}${pathname}`
+        )
+      })
   })
 
-  it('Has structured data', () => {
-    cy.visit('/')
+  it('has structured data', () => {
+    cy.visit(pathname)
+
+    // Assert there is at least on Product and BreadcrumbList on structured data
+    cy.get('script[type="application/ld+json"]')
+      .should('exist')
+      .should(($el) => {
+        const [...jsons] = $el.map((idx) => JSON.parse($el[idx].innerHTML))
+
+        jsons.forEach((x) => {
+          expect(x['@context']).to.eq('https://schema.org')
+        })
+
+        expect(jsons.find((json) => json['@type'] === 'Product')).to.not.null
+        expect(jsons.find((json) => json['@type'] === 'BreadcrumbList')).to.not
+          .null
+      })
   })
 
-  it('Has Open Graph tags', () => {
-    cy.visit('/')
+  it('has OpenGraph tags', () => {
+    cy.visit(pathname)
   })
 })
 
-describe('Collection Page Seo tags', () => {
+describe('Collection Page Seo', () => {
   const pathname = '/women/'
 
-  it('Has basic tags', () => {
+  it('has meta/canonical/link tags', () => {
     cy.visit(pathname)
 
     cy.title().should('exist')
     // cy.get('name="description"').should('exist')
   })
 
-  it('Has structured data', () => {
+  it('has structured data', () => {
     cy.visit(pathname)
   })
 
-  it('Has Open Graph tags', () => {
+  it('has OpenGraph tags', () => {
     cy.visit(pathname)
   })
 })
 
-describe('Search Page Seo tags', () => {
-  it('Has basic tags', () => {
-    cy.visit('/')
+describe('Search Page Seo', () => {
+  const pathname = ''
+
+  it('has meta/canonical/link tags', () => {
+    cy.visit(pathname)
   })
 
-  it('Has structured data', () => {
-    cy.visit('/')
+  it('has structured data', () => {
+    cy.visit(pathname)
   })
 
-  it('Has Open Graph tags', () => {
-    cy.visit('/')
+  it('has OpenGraph tags', () => {
+    cy.visit(pathname)
   })
 })
