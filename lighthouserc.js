@@ -6,6 +6,6 @@ module.exports = VTEXLHConfig({
   urls,
   server: process.env.BASE_SITE_URL,
   assertions: {
-    'legacy-javascript': ['error', { maxNumericalValue: 1 }],
+    'legacy-javascript': ['error', { maxLength: 1 }],
   },
 })
