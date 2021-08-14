@@ -55,7 +55,12 @@ describe('Home Page Seo', () => {
   it('has OpenGraph tags', () => {
     cy.visit(pathname, options)
 
-    cy.get('meta[property="og:type"][content="website"]').should('exist')
+    cy.get('meta[property="og:type"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.eq('website')
+      })
+
     cy.get('meta[property="og:title"]')
       .should('exist')
       .should(($el) => {
@@ -118,6 +123,42 @@ describe('Product Page Seo', () => {
 
   it('has OpenGraph tags', () => {
     cy.visit(pathname, options)
+
+    cy.get('meta[property="og:url"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
+
+    cy.get('meta[property="og:type"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.eq('og:product')
+      })
+
+    cy.get('meta[property="og:title"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
+
+    cy.get('meta[property="og:image"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
+
+    cy.get('meta[property="og:image:alt"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
+
+    cy.get('meta[property="product:price:amount"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
   })
 })
 
@@ -139,7 +180,13 @@ describe('Collection Page Seo', () => {
       .should(($el) => {
         expect($el.attr('content')).to.eq('index,follow')
       })
-    cy.get('link[rel="canonical"]').should('exist')
+    cy.get('link[rel="canonical"]')
+      .should('exist')
+      .should(($link) => {
+        expect($link.attr('href')).to.eq(
+          `https://${window.location.host}${pathname.slice(0, -1)}`
+        )
+      })
   })
 
   it('has structured data', () => {
@@ -162,6 +209,24 @@ describe('Collection Page Seo', () => {
 
   it('has OpenGraph tags', () => {
     cy.visit(pathname, options)
+
+    cy.get('meta[property="og:type"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.eq('website')
+      })
+
+    cy.get('meta[property="og:title"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
+
+    cy.get('meta[property="og:description"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
   })
 })
 
@@ -188,5 +253,23 @@ describe('Search Page Seo', () => {
 
   it('has OpenGraph tags', () => {
     cy.visit(pathname, options)
+
+    cy.get('meta[property="og:type"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.eq('website')
+      })
+
+    cy.get('meta[property="og:title"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
+
+    cy.get('meta[property="og:description"]')
+      .should('exist')
+      .should(($el) => {
+        expect($el.attr('content')).to.be.a('string')
+      })
   })
 })
