@@ -20,11 +20,13 @@ const Footer = lazy(
 function Layout({ children }: PropsWithChildren<unknown>) {
   return (
     <SuspenseList revealOrder="together">
-      <Suspense fallback={<div>Suspense!</div>}>
+      <Suspense fallback={null}>
         <Navbar />
       </Suspense>
-      <Suspense fallback={<div>Suspense!</div>}>{children}</Suspense>
-      <Suspense fallback={<div>Suspense!</div>}>
+      <Suspense fallback={null}>
+        <main>{children}</main>
+      </Suspense>
+      <Suspense fallback={null}>
         <Footer />
       </Suspense>
     </SuspenseList>
