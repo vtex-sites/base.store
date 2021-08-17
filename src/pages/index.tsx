@@ -4,9 +4,13 @@ import View from 'src/views/home'
 import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
 
-import type { HomePageQueryQuery } from '../__generated__/HomePageQuery.graphql'
+import type { HomePageQueryQuery } from './__generated__/HomePageQuery.graphql'
 
 export type Props = PageProps<HomePageQueryQuery>
+
+if (typeof window !== 'undefined') {
+  performance.mark('Home beeing evaluated')
+}
 
 function Page(props: Props) {
   return (

@@ -8,7 +8,6 @@ const {
   GATSBY_STORE_ID: STORE_ID,
   GATSBY_VTEX_ENVIRONMENT: environment,
   GATSBY_VTEX_IO_WORKSPACE: workspace,
-  GATSBY_STORE_PROFILING,
   CI: isCI,
   NODE_ENV,
   URL = `https://${STORE_ID}.vtex.app`,
@@ -50,14 +49,6 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
-    {
-      // TODO, we should eventually remove it
-      resolve: '@vtex/gatsby-plugin-i18n',
-      options: {
-        locales: ['en'],
-        defaultLocale: 'en',
-      },
-    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -165,12 +156,6 @@ module.exports = {
         environment,
         workspace,
         minProducts: 1,
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-theme-store',
-      options: {
-        profiling: GATSBY_STORE_PROFILING,
       },
     },
     {

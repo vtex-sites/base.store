@@ -1,6 +1,6 @@
-import { gql } from '@vtex/gatsby-plugin-graphql'
-import { useSearch } from '@vtex/gatsby-theme-store'
 import React from 'react'
+import { gql } from '@vtex/gatsby-plugin-graphql'
+import { useSearch } from 'src/sdk/search/useSearch'
 
 import GalleryPage from './ProductGalleryPage'
 import type { GalleryQueryQuery } from './__generated__/GalleryQuery.graphql'

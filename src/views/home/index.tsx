@@ -1,38 +1,42 @@
-import React from 'react'
-import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import { usePixelSendEvent } from '@vtex/gatsby-theme-store'
-import type { Props } from 'src/pages/index'
-import type { PageViewData } from '@vtex/gatsby-theme-store'
+import React, { lazy, Suspense, SuspenseList } from 'react'
+import type { Props as PageProps } from 'src/pages/index'
 
-import { useMetadata } from './hooks/useMetadata'
-import { useSiteLinksSearchBoxJsonLd } from './hooks/useSiteLinksSearchBoxJsonLd'
+const Seo = lazy(
+  () =>
+    import(
+      /* webpackMode: "eager" */
+      './Seo'
+    )
+)
+
+export type Props = PageProps
 
 function View(props: Props) {
-  const metadata = useMetadata(props)
-  const siteLinksSearchBox = useSiteLinksSearchBoxJsonLd(props)
-
   // Send event to analytics
-  usePixelSendEvent(() => {
-    const event: PageViewData = {
-      pageType: 'home',
-      pageUrl: window.location.href,
-      pageTitle: document.title,
-      referrer: '',
-      accountName: process.env.GATSBY_STORE_ID!,
-    }
+  // usePixelSendEvent(() => {
+  //   const event: PageViewData = {
+  //     pageType: 'home',
+  //     pageUrl: window.location.href,
+  //     pageTitle: document.title,
+  //     referrer: '',
+  //     accountName: process.env.GATSBY_STORE_ID!,
+  //   }
 
-    return { type: 'vtex:pageView', data: event }
-  })
+  //   return { type: 'vtex:pageView', data: event }
+  // })
 
   return (
-    <>
+    <SuspenseList>
       {/* Seo Components */}
-      <GatsbySeo {...metadata} defer />
-      <JsonLd json={siteLinksSearchBox} defer />
+      <Suspense fallback={null}>
+        <Seo {...props} />
+      </Suspense>
 
       {/* Visual Sections */}
-      <div>TODO</div>
-    </>
+      <Suspense fallback={null}>
+        <div>TODO</div>
+      </Suspense>
+    </SuspenseList>
   )
 }
 

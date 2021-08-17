@@ -1,11 +1,9 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import {
-  useQuery,
-  useQueryVariablesFromSearchParams,
-  useSearch,
-} from '@vtex/gatsby-theme-store'
 import React from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
+import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
+import { useSearch } from 'src/sdk/search/useSearch'
+import { useQuery } from 'src/sdk/graphql/useQuery'
 
 import type {
   GalleryQueryQuery,
@@ -19,15 +17,12 @@ interface Props {
   initialData?: GalleryQueryQuery
 }
 
-function GalleryPage({ page, initialData, display }: Props) {
-  const { searchParams, pageInfo } = useSearch()
-  const variables = useQueryVariablesFromSearchParams(
-    {
-      ...searchParams,
-      page,
-    },
-    pageInfo
-  )
+const useProductList = (page: number, initialData?: GalleryQueryQuery) => {
+  const { searchParams } = useSearch()
+  const variables = useQueryVariablesFromSearchParams({
+    ...searchParams,
+    page,
+  })
 
   const { data } = useQuery<GalleryQueryQuery, GalleryQueryQueryVariables>({
     ...GalleryQuery,
@@ -36,7 +31,11 @@ function GalleryPage({ page, initialData, display }: Props) {
     revalidateOnMount: true,
   })
 
-  const products = data?.vtex.productSearch?.products as any
+  return data?.vtex.productSearch?.products as any
+}
+
+function GalleryPage({ page, initialData, display }: Props) {
+  const products = useProductList(page, initialData)
 
   if (display === false || products == null) {
     return null

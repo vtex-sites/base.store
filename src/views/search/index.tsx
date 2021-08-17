@@ -1,126 +1,72 @@
-import React from 'react'
-import {
-  usePlpPixelEffect,
-  SearchProvider,
-  useSearchParamsFromUrl,
-  useQuery,
-  SearchSEO as Seo,
-} from '@vtex/gatsby-theme-store'
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import React, { lazy, Suspense, SuspenseList } from 'react'
+import { ITEMS_PER_PAGE } from 'src/constants'
+import { SearchProvider } from 'src/sdk/search/Provider'
+import type { SearchParamsState } from '@vtex/store-sdk'
 import type { FC } from 'react'
-import type { Props } from 'src/pages/s/[...]'
-import ProductGallery from 'src/components/sections/ProductGallery'
-import { useQueryVariablesFromSearchParams } from 'src/sdk/useQueryVariablesFromSearchParams'
+import type { Props as PageProps } from 'src/pages/s/[...]'
 
-import type {
-  FullTextSearchQueryQuery,
-  FullTextSearchQueryQueryVariables,
-} from './__generated__/FullTextSearchQuery.graphql'
-import { FullTextSearchQuery } from './__generated__/FullTextSearchQuery.graphql'
+import { useSearch } from './hooks/useSearch'
 
-const ITEMS_PER_PAGE = Number(process.env.GATSBY_STORE_PLP_ITEMS_PER_PAGE!)
+const Seo = lazy(
+  () =>
+    import(
+      /* webpackMode: "eager" */
+      './Seo'
+    )
+)
+
+const ProductGallery = lazy(
+  () =>
+    import(
+      /* webpackMode: "eager" */
+      'src/components/sections/ProductGallery'
+    )
+)
+
+interface Props extends PageProps {
+  searchParams: SearchParamsState
+}
 
 const View: FC<Props> = (props) => {
-  const { location, data: serverData } = props
-
-  const searchParams = useSearchParamsFromUrl(location)
-  const variables = useQueryVariablesFromSearchParams(searchParams)
-
-  const { data: dynamicData } = useQuery<
-    FullTextSearchQueryQuery,
-    FullTextSearchQueryQueryVariables
-  >({
-    ...FullTextSearchQuery,
-    variables,
-    suspense: true,
-  })
-
-  if (dynamicData == null) {
-    throw new Error('Something went wrong while fetching the data')
-  }
+  const { searchParams, data: serverData } = props
+  const { data: dynamicData } = useSearch(searchParams)
 
   const data = { ...dynamicData, ...serverData }
-  const totalCount = data.vtex.productSearch!.totalCount ?? 0
-  const breadcrumb = (data.vtex.facets!.breadcrumb! as any) ?? []
-  const siteMetadata = data.site!.siteMetadata!
+  const { site, vtex } = data
+  const { productSearch, facets } = vtex!
+  const totalCount = productSearch!.totalCount ?? 0
 
-  usePlpPixelEffect({
-    searchParams,
-    totalCount,
-    location,
-  })
+  // usePlpPixelEffect({
+  //   searchParams,
+  //   totalCount,
+  //   location,
+  // })
 
   return (
     <SearchProvider
       searchParams={searchParams}
-      data={data}
       pageInfo={{
         size: ITEMS_PER_PAGE,
         total: Math.ceil(totalCount / ITEMS_PER_PAGE),
       }}
     >
-      {/* Seo Components */}
-      <Seo
-        titleTemplate={siteMetadata.titleTemplate!}
-        title={siteMetadata.title!}
-        description={siteMetadata.description!}
-        breadcrumb={breadcrumb}
-      />
+      <SuspenseList>
+        {/* Seo Components */}
+        <Suspense fallback={null}>
+          <Seo site={site!} />
+        </Suspense>
 
-      {/* UI Components */}
-      <ProductGallery
-        initialData={dynamicData}
-        facets={dynamicData.vtex.facets!.facets as any}
-        productSearch={dynamicData.vtex.productSearch!}
-      />
+        {/* UI Components */}
+        <Suspense fallback={null}>
+          <ProductGallery
+            initialData={dynamicData}
+            facets={facets!.facets as any}
+            productSearch={productSearch!}
+          />
+        </Suspense>
+      </SuspenseList>
     </SearchProvider>
   )
 }
-
-/**
- * This query is run on the browser
- * */
-export const query = gql`
-  query FullTextSearchQuery(
-    $from: Int!
-    $to: Int!
-    $fullText: String
-    $selectedFacets: [VTEX_SelectedFacetInput!]!
-    $sort: String!
-  ) {
-    vtex {
-      productSearch(
-        from: $from
-        to: $to
-        orderBy: $sort
-        fullText: $fullText
-        selectedFacets: $selectedFacets
-        hideUnavailableItems: false
-        simulationBehavior: skip
-      ) {
-        products {
-          ...ProductSummary_product
-        }
-        ...ProductGallery_productSearch
-        totalCount: recordsFiltered
-      }
-      facets(
-        fullText: $fullText
-        selectedFacets: $selectedFacets
-        operator: or
-        behavior: "Static"
-        removeHiddenFacets: true
-      ) {
-        breadcrumb {
-          href
-          name
-        }
-        facets {
-          ...ProductGallery_facets
-        }
-      }
-    }
-  }
-`
 
 export default View
