@@ -1,23 +1,30 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useMemo } from 'react'
 import { graphql } from 'gatsby'
 import View from 'src/views/search'
 import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
+import { parseSearchParamsState } from '@vtex/store-sdk'
+
 import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
-} from 'src/s/__generated__/SearchPageQuery.graphql'
+} from './__generated__/SearchPageQuery.graphql'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables
 >
 
+const useSearchParams = ({ href }: Location) =>
+  useMemo(() => href && parseSearchParamsState(new URL(href)), [href])
+
 function Page(props: Props) {
+  const searchParams = useSearchParams(props.location)
+
   return (
     <Layout>
       <Suspense fallback={<div>loading...</div>}>
-        <View {...props} />
+        {searchParams && <View {...props} searchParams={searchParams} />}
       </Suspense>
     </Layout>
   )
@@ -26,11 +33,7 @@ function Page(props: Props) {
 export const query = graphql`
   query SearchPageQuery {
     site {
-      siteMetadata {
-        titleTemplate
-        title
-        description
-      }
+      ...SearchSeoFragment_site
     }
   }
 `

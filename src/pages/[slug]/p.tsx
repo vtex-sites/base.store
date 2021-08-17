@@ -1,20 +1,21 @@
 import React, { Suspense } from 'react'
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import { useQuery } from '@vtex/gatsby-theme-store'
 import View from 'src/views/product'
-import { BrowserProductPageQuery } from 'src/[slug]/__generated__/BrowserProductPageQuery.graphql'
 import { graphql } from 'gatsby'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
+import Layout from 'src/views/Layout'
+import { useQuery } from 'src/sdk/graphql/useQuery'
+
 import type {
   BrowserProductPageQueryQuery,
   BrowserProductPageQueryQueryVariables,
-} from 'src/[slug]/__generated__/BrowserProductPageQuery.graphql'
-import Layout from 'src/views/Layout'
+} from './__generated__/BrowserProductPageQuery.graphql'
 import type {
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables,
-} from 'src/[slug]/__generated__/ServerProductPageQuery.graphql'
+} from './__generated__/ServerProductPageQuery.graphql'
+import { BrowserProductPageQuery } from './__generated__/BrowserProductPageQuery.graphql'
 
 export type Props = PageProps<
   ServerProductPageQueryQuery,
@@ -66,7 +67,7 @@ const Page: FC<Props> = (props) => (
 export const serverQuery = graphql`
   query ServerProductPageQuery {
     site {
-      ...ProductViewFragment_site
+      ...ProductSeoFragment_site
     }
   }
 `

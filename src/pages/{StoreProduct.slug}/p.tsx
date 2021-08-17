@@ -3,10 +3,11 @@ import { graphql } from 'gatsby'
 import View from 'src/views/product'
 import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
+
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
-} from 'src/{StoreProduct.slug}/__generated__/ProductPageQuery.graphql'
+} from './__generated__/ProductPageQuery.graphql'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -32,7 +33,7 @@ function Page(props: Props) {
 export const query = graphql`
   query ProductPageQuery($id: String!) {
     site {
-      ...ProductViewFragment_site
+      ...ProductSeoFragment_site
     }
 
     product: storeProduct(id: { eq: $id }) {

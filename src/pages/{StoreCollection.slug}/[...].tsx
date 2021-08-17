@@ -2,16 +2,17 @@ import React, { Suspense } from 'react'
 import Layout from 'src/views/Layout'
 import View from 'src/views/collection'
 import { graphql } from 'gatsby'
-import { useSearchParams } from 'src/sdk/useSearchParams'
+import { useSearchParams } from 'src/sdk/search/useSearchParams'
 import type { PageProps } from 'gatsby'
+
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
-} from 'src/{StoreCollection.slug}/__generated__/CollectionPageQuery.graphql'
+} from './__generated__/CollectionPageQuery.graphql'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables
+  CollectionPageQueryQueryVariables & { slug: string }
 >
 
 function Page(props: Props) {
@@ -20,7 +21,7 @@ function Page(props: Props) {
   return (
     <Layout>
       <Suspense fallback={<div>...loading</div>}>
-        <View searchParams={searchParams} {...props} />
+        <View {...props} searchParams={searchParams} />
       </Suspense>
     </Layout>
   )
@@ -32,18 +33,11 @@ function Page(props: Props) {
 export const query = graphql`
   query CollectionPageQuery($id: String!) {
     site {
-      siteMetadata {
-        titleTemplate
-        title
-        description
-      }
+      ...CollectionSeoFragment_site
     }
 
     storeCollection(id: { eq: $id }) {
-      seo {
-        title
-        description
-      }
+      ...CollectionSeoFragment_storeCollection
       meta {
         selectedFacets {
           key
