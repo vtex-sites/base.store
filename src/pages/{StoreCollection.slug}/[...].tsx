@@ -6,13 +6,13 @@ import { parseSearchParamsState } from '@vtex/store-sdk'
 import type { PageProps } from 'gatsby'
 
 import type {
-  CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables,
-} from './__generated__/CollectionPageQuery.graphql'
+  BrowserCollectionPageQueryQuery,
+  BrowserCollectionPageQueryQueryVariables,
+} from './__generated__/BrowserCollectionPageQuery.graphql'
 
 export type Props = PageProps<
-  CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables & { slug: string }
+  BrowserCollectionPageQueryQuery,
+  BrowserCollectionPageQueryQueryVariables & { slug: string }
 >
 
 const useSearchParams = ({ href }: Location) =>
