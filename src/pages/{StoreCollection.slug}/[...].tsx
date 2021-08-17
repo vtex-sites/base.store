@@ -16,7 +16,7 @@ export type Props = PageProps<
 >
 
 const useSearchParams = ({ href }: Location) =>
-  useMemo(() => parseSearchParamsState(new URL(href)), [href])
+  useMemo(() => href && parseSearchParamsState(new URL(href)), [href])
 
 function Page(props: Props) {
   const searchParams = useSearchParams(props.location)
@@ -24,7 +24,7 @@ function Page(props: Props) {
   return (
     <Layout>
       <Suspense fallback={<div>...loading</div>}>
-        <View {...props} searchParams={searchParams} />
+        {searchParams && <View {...props} searchParams={searchParams} />}
       </Suspense>
     </Layout>
   )
