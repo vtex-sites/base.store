@@ -2823,13 +2823,6 @@
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-nginx@https://pkg.csb.dev/vtex/faststore/commit/7f478c22/@vtex/gatsby-plugin-nginx":
-  version "0.373.16"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/7f478c22/@vtex/gatsby-plugin-nginx#828d9f0f21c0a7195395108602b0d7e7bed72603"
-  dependencies:
-    kebab-hash "^0.1.2"
-    webpack-assets-manifest "^5.0.6"
-
 "@vtex/gatsby-plugin-thumbor@0.373.16":
   version "0.373.16"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.16.tgz#9dc9beaf47dcc669ed1ccf9283a43ca6482c515f"

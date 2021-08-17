@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useMemo } from 'react'
 import Layout from 'src/views/Layout'
 import View from 'src/views/collection'
 import { graphql } from 'gatsby'
-import { useSearchParams } from 'src/sdk/search/useSearchParams'
+import { parseSearchParamsState } from '@vtex/store-sdk'
 import type { PageProps } from 'gatsby'
 
 import type {
@@ -15,8 +15,11 @@ export type Props = PageProps<
   CollectionPageQueryQueryVariables & { slug: string }
 >
 
+const useSearchParams = ({ href }: Location) =>
+  useMemo(() => parseSearchParamsState(new URL(href)), [href])
+
 function Page(props: Props) {
-  const searchParams = useSearchParams(props)
+  const searchParams = useSearchParams(props.location)
 
   return (
     <Layout>
@@ -31,7 +34,7 @@ function Page(props: Props) {
  * This query is run during SSG
  * */
 export const query = graphql`
-  query CollectionPageQuery($id: String!) {
+  query BrowserCollectionPageQuery($id: String!) {
     site {
       ...CollectionSeoFragment_site
     }
