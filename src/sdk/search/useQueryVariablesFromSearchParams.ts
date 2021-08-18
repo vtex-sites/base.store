@@ -1,5 +1,4 @@
 import { useMemo } from 'react'
-import { useSession } from '@vtex/store-sdk'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import { ITEMS_PER_PAGE } from 'src/constants'
 
@@ -16,12 +15,8 @@ const sortMap = {
   'score-desc': '',
 } as const
 
-export const useQueryVariablesFromSearchParams = (
-  params: SearchParamsState
-) => {
-  const { region } = useSession()
-
-  return useMemo(() => {
+export const useQueryVariablesFromSearchParams = (params: SearchParamsState) =>
+  useMemo(() => {
     const selectedFacets = params.selectedFacets.reduce((acc, facet) => {
       const { key } = facet
       const value =
@@ -43,13 +38,5 @@ export const useQueryVariablesFromSearchParams = (
       to: (params.page + 1) * ITEMS_PER_PAGE - 1,
     }
 
-    if (region != null) {
-      queryParams.selectedFacets.push({
-        key: 'region-id',
-        value: region,
-      })
-    }
-
     return queryParams
-  }, [params, region])
-}
+  }, [params])
