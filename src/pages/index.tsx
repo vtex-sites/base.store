@@ -8,10 +8,6 @@ import type { HomePageQueryQuery } from './__generated__/HomePageQuery.graphql'
 
 export type Props = PageProps<HomePageQueryQuery>
 
-if (typeof window !== 'undefined') {
-  performance.mark('Home beeing evaluated')
-}
-
 function Page(props: Props) {
   return (
     <Layout>
