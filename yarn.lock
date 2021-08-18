@@ -2203,7 +2203,7 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@^0.373.19":
+"@vtex/gatsby-plugin-graphql@0.373.19":
   version "0.373.19"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.19.tgz#e5d76b66ddf252eb65451a8ef9dd68014e3caabc"
   integrity sha512-MBB1jICL9dMH98VHnXr60CfVsvnjm3JWn2MuV32vh2AuY6MnsBHcWBW18pCOln0WSKrCOF1bR0a3pvcI2ICKrw==
@@ -2215,7 +2215,7 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@^0.373.19":
+"@vtex/gatsby-plugin-nginx@0.373.19":
   version "0.373.19"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.19.tgz#5f5bbff8eabd2b9634366a4ba2c0307a5feab5fc"
   integrity sha512-WpttOVcedExBAA3RjAfxZSdnCuTdbXW7SXx4pHS0vsBzst/XWBo+ZxVzbVoBEppV7EY3Clp1yBwFEi/4mdIDyw==
@@ -2228,7 +2228,7 @@
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.19.tgz#8f90291da45523e922969041970f1010a9997bd3"
   integrity sha512-qBx2c0G36pYwWyeOmaTG3uxEJvOvypKSlXXS6G/pnIug2B+xldtxhscr08S/NdyXjqomYsFaMbJfzFVDrZvgEg==
 
-"@vtex/gatsby-source-vtex@^0.373.19":
+"@vtex/gatsby-source-vtex@0.373.19":
   version "0.373.19"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.19.tgz#44fdfb6b37496091098b3550d972abd3ce5e062d"
   integrity sha512-PuT2ZDtZyYl9ePoDVglf4+1bbVx5y/ybpHOKe8afAv0Cc53WwRi3oN99ef28FRA6phrd3BPTKuYYR1d7EUYDWQ==
@@ -2249,7 +2249,7 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-sdk@^0.373.19":
+"@vtex/store-sdk@0.373.19":
   version "0.373.19"
   resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-0.373.19.tgz#8150645257d87bf190404628997133aae39d91e2"
   integrity sha512-UPvYVsLrLoWAYUoJoSdFSFII7IBqrgcjUu1OdlfgNXTEGHlQctP6YILGtHwneJibYhRAsc2iM8DnsKv3He1qaA==
