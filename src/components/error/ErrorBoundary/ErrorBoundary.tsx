@@ -11,7 +11,9 @@ const canRecover = () => getReloads() < 2
 
 const isFrameworkLevelError = (error: Error) => error?.name === 'ChunkLoadError'
 
-window.setInterval(() => setReloads(0), 30e3)
+if (typeof window !== 'undefined') {
+  window.setInterval(() => setReloads(0), 30e3)
+}
 
 class ErrorBoundary extends Component {
   public state = { hasError: false, error: null }
