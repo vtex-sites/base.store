@@ -29,7 +29,7 @@ export type BrowserProductPageQueryQuery = { vtex: { product: { titleTag: Maybe<
 
 export const BrowserProductPageQuery = {
   query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($slug: String!) {\n  vtex {\n    product(slug: $slug) {\n      id: productId\n      slug: linkText\n      titleTag\n      metaTagDescription\n      brand\n      linkText\n      productName\n      description\n      categoryTree {\n        name\n        href\n      }\n      items {\n        ean\n        name\n        itemId\n        images {\n          imageUrl\n          imageText\n        }\n        videos {\n          videoUrl\n        }\n        sellers {\n          commercialOffer: commertialOffer {\n            price: Price\n            listPrice: ListPrice\n            availableQuantity: AvailableQuantity\n            priceValidUntil: PriceValidUntil\n            spotPrice\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "0779d3e7c21e29d6e62ea62f8009c69a40897eeb3a450189d7d4cbd207406f17",
+  sha256Hash: "cbbea3b7465ff9a6446b0dfaf6318721103266ad6f41fe57ac2240c3bdfbb50d",
   operationName: "BrowserProductPageQuery",
 }
 
