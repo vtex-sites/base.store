@@ -13,6 +13,14 @@ const Seo = lazy(
     )
 )
 
+const ProductDetails = lazy(
+  () =>
+    import(
+      /* webpackMode: "eager" */
+      'src/components/sections/ProductDetails'
+    )
+)
+
 interface Props {
   site: ProductSeoFragment_SiteFragment
   product: ProductViewFragment_ProductFragment
@@ -46,8 +54,7 @@ function View({ product: serverData, site }: Props) {
 
       {/* Visual Sections */}
       <Suspense fallback={null}>
-        <h1>{product.productName}</h1>
-        <h2 dangerouslySetInnerHTML={{ __html: product.description! }} />
+        <ProductDetails product={product} />
       </Suspense>
     </SuspenseList>
   )
@@ -59,6 +66,7 @@ export const fragment = graphql`
     slug: linkText
 
     ...ProductSeoFragment_product
+    ...ProductDetailsFragment_product
   }
 `
 
