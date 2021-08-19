@@ -2203,10 +2203,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.19.tgz#e5d76b66ddf252eb65451a8ef9dd68014e3caabc"
-  integrity sha512-MBB1jICL9dMH98VHnXr60CfVsvnjm3JWn2MuV32vh2AuY6MnsBHcWBW18pCOln0WSKrCOF1bR0a3pvcI2ICKrw==
+"@vtex/gatsby-plugin-graphql@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.20.tgz#3815371e484018f62f7281c39d52bf84d38c7334"
+  integrity sha512-01yUCRx7pnMd6giOFERAYGS8XjNurLv9S41ZHlVgLlHi0ZdSGBCDyjWL5XAwpBghfjMaMkLEX8Kzuqd+OuOOgw==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2215,23 +2215,23 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.19.tgz#5f5bbff8eabd2b9634366a4ba2c0307a5feab5fc"
-  integrity sha512-WpttOVcedExBAA3RjAfxZSdnCuTdbXW7SXx4pHS0vsBzst/XWBo+ZxVzbVoBEppV7EY3Clp1yBwFEi/4mdIDyw==
+"@vtex/gatsby-plugin-nginx@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.20.tgz#55b8c0e45c4196310b8f544b0c8e35456dd845ab"
+  integrity sha512-Usj4EtcfvSYtKaaDhTjTZDYKH4MhLPW74xHNIxkAxt3fo7k8IstyoVA48gsI/Le0ZQriAyugv02ObjoZP94aEQ==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.19.tgz#8f90291da45523e922969041970f1010a9997bd3"
-  integrity sha512-qBx2c0G36pYwWyeOmaTG3uxEJvOvypKSlXXS6G/pnIug2B+xldtxhscr08S/NdyXjqomYsFaMbJfzFVDrZvgEg==
+"@vtex/gatsby-plugin-thumbor@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.20.tgz#af52b6e56093b4f8a7868a121727c8e89faa832d"
+  integrity sha512-uZR97dqFgRdX6QS3AhoHi5+fZ8v6GPlgwy6mJ7KWcX6eCYQo2R/LLTHebZamlyYASd+26bnrfurUhAVQ+Y+/Kg==
 
-"@vtex/gatsby-source-vtex@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.19.tgz#44fdfb6b37496091098b3550d972abd3ce5e062d"
-  integrity sha512-PuT2ZDtZyYl9ePoDVglf4+1bbVx5y/ybpHOKe8afAv0Cc53WwRi3oN99ef28FRA6phrd3BPTKuYYR1d7EUYDWQ==
+"@vtex/gatsby-source-vtex@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.20.tgz#5ab03c5dbb680d8138fcd1ff7c916714de7e8574"
+  integrity sha512-FNWoDWFIrO7bHWQxS4Drmnxc+MRzbga4O5N623QRnsw5BZmhMKfw+pv9SYOIwbz7l8MoGb1B++598uHXJq/xmw==
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2239,22 +2239,15 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/lighthouse-config@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.19.tgz#61ca68da1b6addccdbea37797c3ccb242f7ed094"
-  integrity sha512-qXNgLYCF7Hi4iEmsHDKt/CGzlZKEeE+KnPQzzx8OKQUDV03pm4leV4/3aOHAYJrFHt/v2QkI9eph9Z1HlB0+8Q==
+"@vtex/lighthouse-config@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.20.tgz#5f850a7e6e288420375142883afa28f427f53890"
+  integrity sha512-VyCZgkUXAhYWfsjlluxqR4a09N6O2RNsIBX7GCMG/el5Z2otG3jN3qoflVcvafKyxd1DsgLK1ZPNpfmc35loAg==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
-
-"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/3f1767ae/@vtex/store-sdk":
-  version "0.373.19"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/3f1767ae/@vtex/store-sdk#6c7e23fe9df47b34019caca715bfc7b46619ea9c"
-  dependencies:
-    idb-keyval "^5.1.3"
-    p-queue "^7.1.0"
 
 "@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/b24a1e9b/@vtex/store-sdk":
   version "0.373.19"
@@ -5825,7 +5818,7 @@ eventemitter3@^3.1.0:
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-3.1.2.tgz#2d3d48f9c346698fce83a85d7d664e98535df6e7"
   integrity sha512-tvtQIeLVHjDkJYnzf2dgVMxfuSGJeM/7UCG17TT4EumTfNtF+0nebF/4zWOIkCreAbtNqhGEboB6BWrwqNaw4Q==
 
-eventemitter3@^4.0.0, eventemitter3@^4.0.4, eventemitter3@^4.0.7:
+eventemitter3@^4.0.0, eventemitter3@^4.0.4:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/eventemitter3/-/eventemitter3-4.0.7.tgz#2de9b68f6528d5644ef5c59526a1b4a07306169f"
   integrity sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==
@@ -10452,14 +10445,6 @@ p-queue@^6.0.0, p-queue@^6.4.0:
     eventemitter3 "^4.0.4"
     p-timeout "^3.2.0"
 
-p-queue@^7.1.0:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/p-queue/-/p-queue-7.1.0.tgz#c2bb28f8dc0ebf3fadb985b8706cf2ce5fe5f275"
-  integrity sha512-V+0vPJbhYkBqknPp0qnaz+dWcj8cNepfXZcsVIVEHPbFQXMPwrzCNIiM4FoxGtwHXtPzVCPHDvqCr1YrOJX2Gw==
-  dependencies:
-    eventemitter3 "^4.0.7"
-    p-timeout "^5.0.0"
-
 p-retry@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/p-retry/-/p-retry-3.0.1.tgz#316b4c8893e2c8dc1cfa891f406c4b422bebf328"
@@ -10480,11 +10465,6 @@ p-timeout@^3.2.0:
   integrity sha512-rhIwUycgwwKcP9yTOOFK/AKsAopjjCakVqLHePO3CC6Mir1Z99xT+R63jZxAT5lFZLa2inS5h+ZS2GvR99/FBg==
   dependencies:
     p-finally "^1.0.0"
-
-p-timeout@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/p-timeout/-/p-timeout-5.0.0.tgz#0f5dc08422e7243f8317669c461734cd1257a8dc"
-  integrity sha512-z+bU/N7L1SABsqKnQzvAnINgPX7NHdzwUV+gHyJE7VGNDZSr03rhcPODCZSWiiT9k+gf74QPmzcZzqJRvxYZow==
 
 p-try@^1.0.0:
   version "1.0.0"
