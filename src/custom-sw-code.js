@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-restricted-globals */
 
 /**
@@ -12,10 +13,8 @@
 const OFFLINE_PAGE_HTML = '/offline/index.html'
 
 // `workbox` will be defined in the scope where this code is executed.
-// eslint-disable-next-line no-undef
-const offlinePageCacheKey = workbox.precaching.getCacheKeyForURL(
-  OFFLINE_PAGE_HTML
-)
+const offlinePageCacheKey =
+  workbox.precaching.getCacheKeyForURL(OFFLINE_PAGE_HTML)
 
 // This will handle failed network requests.
 // We're simply returning a cached offline page.
@@ -24,11 +23,9 @@ const catchHandler = async ({ event }) => {
 
   if (dest === 'document') {
     // Getting the offline page from cache.
-    const response = await caches.match(offlinePageCacheKey, {
+    return caches.match(offlinePageCacheKey, {
       ignoreSearch: true,
     })
-
-    return response
   }
 
   return Response.error()
