@@ -27,14 +27,14 @@ export type GalleryQueryQueryVariables = Exact<{
 }>;
 
 
-export type GalleryQueryQuery = { vtex: { productSearch: Maybe<{ products: Maybe<Array<Maybe<{ productId: Maybe<string>, productName: Maybe<string> }>>> }> } };
+export type GalleryQueryQuery = { vtex: { productSearch: Maybe<{ products: Maybe<Array<Maybe<{ productId: Maybe<string>, productName: Maybe<string>, slug: Maybe<string> }>>> }> } };
 
 
 // Query Related Code
 
 export const GalleryQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($fullText: String, $selectedFacets: [VTEX_SelectedFacetInput!], $from: Int, $to: Int, $sort: String, $hideUnavailableItems: Boolean = false) {\n  vtex {\n    productSearch(\n      hideUnavailableItems: $hideUnavailableItems\n      selectedFacets: $selectedFacets\n      fullText: $fullText\n      from: $from\n      to: $to\n      orderBy: $sort\n    ) {\n      products {\n        productId\n        productName\n      }\n    }\n  }\n}\n",
-  sha256Hash: "ee99fb017f57e8aaac5f4f78bd6598ce82de5f346a6f9f29c1da4101d731a57b",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($fullText: String, $selectedFacets: [VTEX_SelectedFacetInput!], $from: Int, $to: Int, $sort: String, $hideUnavailableItems: Boolean = false) {\n  vtex {\n    productSearch(\n      hideUnavailableItems: $hideUnavailableItems\n      selectedFacets: $selectedFacets\n      fullText: $fullText\n      from: $from\n      to: $to\n      orderBy: $sort\n    ) {\n      products {\n        slug: linkText\n        productId\n        productName\n      }\n    }\n  }\n}\n",
+  sha256Hash: "e406f3ee62aa48b1fc9b089656f2dac0152f841b4fc6ae1d7e8a5ab8c710742c",
   operationName: "GalleryQuery",
 }
 

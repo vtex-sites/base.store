@@ -17,7 +17,7 @@ type Scalars = {
 }
 
 // Operation related types
-export type ProductSummary_ProductFragment = { productId: Maybe<string>, productName: Maybe<string> };
+export type ProductSummary_ProductFragment = { productId: Maybe<string>, productName: Maybe<string>, slug: Maybe<string> };
 
 
 // Query Related Code

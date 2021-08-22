@@ -6,13 +6,17 @@ import type { PropsWithChildren } from 'react'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
+const style = {
+  main: { height: '80vh' },
+}
+
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart } = useGlobalUIState()
 
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      <main style={style.main}>{children}</main>
       <Footer />
       {displayMinicart && (
         <Suspense fallback={null}>

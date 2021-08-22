@@ -26,14 +26,14 @@ export type FullTextSearchQueryQueryVariables = Exact<{
 }>;
 
 
-export type FullTextSearchQueryQuery = { vtex: { productSearch: Maybe<{ totalCount: Maybe<number>, products: Maybe<Array<Maybe<{ productId: Maybe<string>, productName: Maybe<string> }>>> }>, facets: Maybe<{ facets: Maybe<Array<Maybe<{ name: Maybe<string>, type: Maybe<Vtex_FilterType>, values: Maybe<Array<Maybe<{ key: Maybe<string>, name: Maybe<string>, value: Maybe<string>, selected: Maybe<boolean>, quantity: number, range: Maybe<{ from: Maybe<number>, to: Maybe<number> }> }>>> }>>> }> } };
+export type FullTextSearchQueryQuery = { vtex: { productSearch: Maybe<{ totalCount: Maybe<number>, products: Maybe<Array<Maybe<{ productId: Maybe<string>, productName: Maybe<string>, slug: Maybe<string> }>>> }>, facets: Maybe<{ facets: Maybe<Array<Maybe<{ name: Maybe<string>, type: Maybe<Vtex_FilterType>, values: Maybe<Array<Maybe<{ key: Maybe<string>, name: Maybe<string>, value: Maybe<string>, selected: Maybe<boolean>, quantity: number, range: Maybe<{ from: Maybe<number>, to: Maybe<number> }> }>>> }>>> }> } };
 
 
 // Query Related Code
 
 export const FullTextSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($from: Int!, $to: Int!, $fullText: String, $selectedFacets: [VTEX_SelectedFacetInput!]!, $sort: String!) {\n  vtex {\n    productSearch(\n      from: $from\n      to: $to\n      orderBy: $sort\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      hideUnavailableItems: false\n      simulationBehavior: skip\n    ) {\n      products {\n        productId\n        productName\n      }\n      totalCount: recordsFiltered\n    }\n    facets(\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      operator: or\n      behavior: \"Static\"\n      removeHiddenFacets: true\n    ) {\n      facets {\n        name\n        type\n        values {\n          key\n          name\n          value\n          selected\n          quantity\n          range {\n            from\n            to\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "6fb19b2240a9ecef190b69a01ee85282156089f0685b1679d66a64869f0d6b81",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($from: Int!, $to: Int!, $fullText: String, $selectedFacets: [VTEX_SelectedFacetInput!]!, $sort: String!) {\n  vtex {\n    productSearch(\n      from: $from\n      to: $to\n      orderBy: $sort\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      hideUnavailableItems: false\n      simulationBehavior: skip\n    ) {\n      products {\n        slug: linkText\n        productId\n        productName\n      }\n      totalCount: recordsFiltered\n    }\n    facets(\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      operator: or\n      behavior: \"Static\"\n      removeHiddenFacets: true\n    ) {\n      facets {\n        name\n        type\n        values {\n          key\n          name\n          value\n          selected\n          quantity\n          range {\n            from\n            to\n          }\n        }\n      }\n    }\n  }\n}\n",
+  sha256Hash: "701b630d2af52e52895d63c8c99f6bac87f001897e98e748429f9ba2b3c703c9",
   operationName: "FullTextSearchQuery",
 }
 

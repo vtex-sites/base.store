@@ -1,3 +1,5 @@
+import './src/styles/global.css'
+
 import React from 'react'
 import {
   SessionProvider,
