@@ -3,6 +3,7 @@ module.exports = {
     sourceWidth: 480,
     aspectRatio: 1,
     breakpoints: [250, 360, 480],
+    layout: 'constrained',
     options: {
       fitIn: true,
     },

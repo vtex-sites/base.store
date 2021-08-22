@@ -7,9 +7,18 @@ interface Props {
   products: ProductSummary_ProductFragment[]
 }
 
+const styles = {
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    gridGap: '30px',
+    marginBottom: '30px',
+  },
+}
+
 function ProductGrid({ products }: Props) {
   return (
-    <div>
+    <div style={styles.grid}>
       {products.map((product, idx) => (
         <ProductSummary key={`${product.productId}-${idx}`} product={product} />
       ))}
