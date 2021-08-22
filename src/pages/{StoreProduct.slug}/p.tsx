@@ -19,13 +19,13 @@ function Page(props: Props) {
     data: { product, site },
   } = props
 
-  if (product == null || site == null) {
-    throw new Error('Something went wrong while fetching page data')
+  if (product == null) {
+    return <div>loading...</div>
   }
 
   return (
     <Layout>
-      <View {...props} site={site} product={product} />
+      <View {...props} site={site!} product={product} />
     </Layout>
   )
 }

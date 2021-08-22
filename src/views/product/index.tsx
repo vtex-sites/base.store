@@ -1,25 +1,11 @@
 import { graphql } from 'gatsby'
-import React, { lazy, Suspense, SuspenseList } from 'react'
+import React from 'react'
+import ProductDetails from 'src/components/sections/ProductDetails'
 
 import { useProduct } from './hooks/useProduct'
+import Seo from './Seo'
 import type { ProductSeoFragment_SiteFragment } from './Seo/__generated__/ProductSeoFragment_site.graphql'
 import type { ProductViewFragment_ProductFragment } from './__generated__/ProductViewFragment_product.graphql'
-
-const Seo = lazy(
-  () =>
-    import(
-      /* webpackMode: "eager" */
-      './Seo'
-    )
-)
-
-const ProductDetails = lazy(
-  () =>
-    import(
-      /* webpackMode: "eager" */
-      'src/components/sections/ProductDetails'
-    )
-)
 
 interface Props {
   site: ProductSeoFragment_SiteFragment
@@ -46,17 +32,13 @@ function View({ product: serverData, site }: Props) {
   }
 
   return (
-    <SuspenseList>
+    <>
       {/* Seo */}
-      <Suspense fallback={null}>
-        <Seo product={product} site={site} />
-      </Suspense>
+      <Seo product={product} site={site} />
 
       {/* Visual Sections */}
-      <Suspense fallback={null}>
-        <ProductDetails product={product} />
-      </Suspense>
-    </SuspenseList>
+      <ProductDetails product={product} />
+    </>
   )
 }
 

@@ -1,9 +1,9 @@
-import React, { Suspense, useMemo } from 'react'
-import { graphql } from 'gatsby'
-import View from 'src/views/search'
-import Layout from 'src/views/Layout'
-import type { PageProps } from 'gatsby'
 import { parseSearchParamsState } from '@vtex/store-sdk'
+import { graphql } from 'gatsby'
+import React, { useMemo } from 'react'
+import Layout from 'src/views/Layout'
+import View from 'src/views/search'
+import type { PageProps } from 'gatsby'
 
 import type {
   SearchPageQueryQuery,
@@ -23,9 +23,7 @@ function Page(props: Props) {
 
   return (
     <Layout>
-      <Suspense fallback={<div>loading...</div>}>
-        {searchParams && <View {...props} searchParams={searchParams} />}
-      </Suspense>
+      {searchParams && <View {...props} searchParams={searchParams} />}
     </Layout>
   )
 }

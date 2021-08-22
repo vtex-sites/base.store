@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import Layout from 'src/views/Layout'
 import View from 'src/views/collection'
 import { graphql } from 'gatsby'
@@ -55,9 +55,7 @@ function Page(props: Props) {
 
   return (
     <Layout>
-      <Suspense fallback={<div>...loading</div>}>
-        <View {...props} searchParams={searchParams} />
-      </Suspense>
+      <View {...props} searchParams={searchParams} />
     </Layout>
   )
 }

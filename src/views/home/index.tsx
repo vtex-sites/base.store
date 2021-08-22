@@ -1,13 +1,7 @@
-import React, { lazy, Suspense, SuspenseList } from 'react'
+import React from 'react'
 import type { Props as PageProps } from 'src/pages/index'
 
-const Seo = lazy(
-  () =>
-    import(
-      /* webpackMode: "eager" */
-      './Seo'
-    )
-)
+import Seo from './Seo'
 
 export type Props = PageProps
 
@@ -26,17 +20,13 @@ function View(props: Props) {
   // })
 
   return (
-    <SuspenseList>
+    <>
       {/* Seo Components */}
-      <Suspense fallback={null}>
-        <Seo {...props} />
-      </Suspense>
+      <Seo {...props} />
 
       {/* Visual Sections */}
-      <Suspense fallback={null}>
-        <div>TODO</div>
-      </Suspense>
-    </SuspenseList>
+      <div>TODO</div>
+    </>
   )
 }
 
