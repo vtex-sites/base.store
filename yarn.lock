@@ -2203,10 +2203,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.19.tgz#e5d76b66ddf252eb65451a8ef9dd68014e3caabc"
-  integrity sha512-MBB1jICL9dMH98VHnXr60CfVsvnjm3JWn2MuV32vh2AuY6MnsBHcWBW18pCOln0WSKrCOF1bR0a3pvcI2ICKrw==
+"@vtex/gatsby-plugin-graphql@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.20.tgz#3815371e484018f62f7281c39d52bf84d38c7334"
+  integrity sha512-01yUCRx7pnMd6giOFERAYGS8XjNurLv9S41ZHlVgLlHi0ZdSGBCDyjWL5XAwpBghfjMaMkLEX8Kzuqd+OuOOgw==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2215,23 +2215,23 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.19.tgz#5f5bbff8eabd2b9634366a4ba2c0307a5feab5fc"
-  integrity sha512-WpttOVcedExBAA3RjAfxZSdnCuTdbXW7SXx4pHS0vsBzst/XWBo+ZxVzbVoBEppV7EY3Clp1yBwFEi/4mdIDyw==
+"@vtex/gatsby-plugin-nginx@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.20.tgz#55b8c0e45c4196310b8f544b0c8e35456dd845ab"
+  integrity sha512-Usj4EtcfvSYtKaaDhTjTZDYKH4MhLPW74xHNIxkAxt3fo7k8IstyoVA48gsI/Le0ZQriAyugv02ObjoZP94aEQ==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.19.tgz#8f90291da45523e922969041970f1010a9997bd3"
-  integrity sha512-qBx2c0G36pYwWyeOmaTG3uxEJvOvypKSlXXS6G/pnIug2B+xldtxhscr08S/NdyXjqomYsFaMbJfzFVDrZvgEg==
+"@vtex/gatsby-plugin-thumbor@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.20.tgz#af52b6e56093b4f8a7868a121727c8e89faa832d"
+  integrity sha512-uZR97dqFgRdX6QS3AhoHi5+fZ8v6GPlgwy6mJ7KWcX6eCYQo2R/LLTHebZamlyYASd+26bnrfurUhAVQ+Y+/Kg==
 
-"@vtex/gatsby-source-vtex@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.19.tgz#44fdfb6b37496091098b3550d972abd3ce5e062d"
-  integrity sha512-PuT2ZDtZyYl9ePoDVglf4+1bbVx5y/ybpHOKe8afAv0Cc53WwRi3oN99ef28FRA6phrd3BPTKuYYR1d7EUYDWQ==
+"@vtex/gatsby-source-vtex@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.20.tgz#5ab03c5dbb680d8138fcd1ff7c916714de7e8574"
+  integrity sha512-FNWoDWFIrO7bHWQxS4Drmnxc+MRzbga4O5N623QRnsw5BZmhMKfw+pv9SYOIwbz7l8MoGb1B++598uHXJq/xmw==
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2239,10 +2239,10 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/lighthouse-config@0.373.19":
-  version "0.373.19"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.19.tgz#61ca68da1b6addccdbea37797c3ccb242f7ed094"
-  integrity sha512-qXNgLYCF7Hi4iEmsHDKt/CGzlZKEeE+KnPQzzx8OKQUDV03pm4leV4/3aOHAYJrFHt/v2QkI9eph9Z1HlB0+8Q==
+"@vtex/lighthouse-config@0.373.20":
+  version "0.373.20"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.20.tgz#5f850a7e6e288420375142883afa28f427f53890"
+  integrity sha512-VyCZgkUXAhYWfsjlluxqR4a09N6O2RNsIBX7GCMG/el5Z2otG3jN3qoflVcvafKyxd1DsgLK1ZPNpfmc35loAg==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
