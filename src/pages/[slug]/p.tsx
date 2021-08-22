@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react'
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import View from 'src/views/product'
 import { graphql } from 'gatsby'
+import React from 'react'
+import { useQuery } from 'src/sdk/graphql/useQuery'
+import View from 'src/views/product'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
-import Layout from 'src/views/Layout'
-import { useQuery } from 'src/sdk/graphql/useQuery'
 
+import { BrowserProductPageQuery } from './__generated__/BrowserProductPageQuery.graphql'
 import type {
   BrowserProductPageQueryQuery,
   BrowserProductPageQueryQueryVariables,
@@ -15,14 +15,13 @@ import type {
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables,
 } from './__generated__/ServerProductPageQuery.graphql'
-import { BrowserProductPageQuery } from './__generated__/BrowserProductPageQuery.graphql'
 
 export type Props = PageProps<
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables
 >
 
-const ProductPage: FC<Props> = (props) => {
+const Page: FC<Props> = (props) => {
   const {
     params: { slug },
     data: serverData,
@@ -34,15 +33,18 @@ const ProductPage: FC<Props> = (props) => {
   >({
     ...BrowserProductPageQuery,
     variables: { slug },
-    suspense: true,
   })
 
-  if (browerData == null || serverData.site == null) {
-    throw new Error('Something went wrong while fetching data')
+  if (browerData == null) {
+    return <div>loading...</div>
   }
 
   return (
-    <View {...props} site={serverData.site} product={browerData.vtex.product} />
+    <View
+      {...props}
+      site={serverData.site!}
+      product={browerData.vtex.product}
+    />
   )
 }
 
@@ -55,14 +57,6 @@ export const browserQuery = gql`
     }
   }
 `
-
-const Page: FC<Props> = (props) => (
-  <Layout>
-    <Suspense fallback={<div>loading...</div>}>
-      <ProductPage {...props} />
-    </Suspense>
-  </Layout>
-)
 
 export const serverQuery = graphql`
   query ServerProductPageQuery {

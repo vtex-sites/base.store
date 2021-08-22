@@ -1,10 +1,9 @@
-import React, { Suspense, useMemo } from 'react'
-import Layout from 'src/views/Layout'
-import View from 'src/views/collection'
 import { graphql } from 'gatsby'
+import React, { useMemo } from 'react'
+import { priceRange } from 'src/sdk/search/priceRange'
+import View from 'src/views/collection'
 import type { PageProps } from 'gatsby'
 import type { SearchParamsState } from '@vtex/store-sdk'
-import { priceRange } from 'src/sdk/search/priceRange'
 
 import type {
   CollectionPageQueryQuery,
@@ -53,13 +52,7 @@ export const useSearchParams = (props: Props): SearchParamsState =>
 function Page(props: Props) {
   const searchParams = useSearchParams(props)
 
-  return (
-    <Layout>
-      <Suspense fallback={<div>...loading</div>}>
-        <View {...props} searchParams={searchParams} />
-      </Suspense>
-    </Layout>
-  )
+  return <View {...props} searchParams={searchParams} />
 }
 
 /**

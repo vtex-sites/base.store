@@ -12,20 +12,13 @@ import { CollectionSearchQuery } from './__generated__/CollectionSearchQuery.gra
 export const useCollection = (searchParams: SearchParamsState) => {
   const variables = useQueryVariablesFromSearchParams(searchParams)
 
-  const collection = useQuery<
+  return useQuery<
     CollectionSearchQueryQuery,
     CollectionSearchQueryQueryVariables
   >({
     ...CollectionSearchQuery,
     variables,
-    suspense: true,
   })
-
-  if (collection.data == null) {
-    throw new Error('Something went wrong while fetching the data')
-  }
-
-  return collection
 }
 
 /**

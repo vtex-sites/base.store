@@ -7,8 +7,9 @@ import {
   CartValidator,
 } from '@vtex/store-sdk'
 
-import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import { validateCart } from './src/sdk/cart/validateCart'
+import ErrorBoundary from './src/sdk/error/ErrorBoundary'
+import Layout from './src/views/Layout'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
@@ -21,3 +22,5 @@ export const wrapRootElement = ({ element }) => (
     </UIProvider>
   </ErrorBoundary>
 )
+
+export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>

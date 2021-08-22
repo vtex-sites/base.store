@@ -1,26 +1,12 @@
-import React, { lazy, Suspense, SuspenseList } from 'react'
+import React from 'react'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { SearchProvider } from 'src/sdk/search/Provider'
+import ProductGallery from 'src/components/sections/ProductGallery'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
 
 import { useCollection } from './hooks/useCollection'
-
-const Seo = lazy(
-  () =>
-    import(
-      /* webpackMode: "eager" */
-      './Seo'
-    )
-)
-
-const ProductGallery = lazy(
-  () =>
-    import(
-      /* webpackMode: "eager" */
-      'src/components/sections/ProductGallery'
-    )
-)
+import Seo from './Seo'
 
 interface Props extends PageProps {
   searchParams: SearchParamsState
@@ -36,10 +22,13 @@ function View(props: Props) {
   const { data: dynamicData } = useCollection(searchParams)
 
   const data = { ...dynamicData, ...staticData }
-
   const { storeCollection, site, vtex } = data
-  const { facets, productSearch } = vtex!
-  const totalCount = productSearch!.totalCount ?? 0
+  const { facets, productSearch } = vtex ?? {}
+  const totalCount = productSearch?.totalCount ?? 0
+
+  if (dynamicData == null) {
+    return <div>loading...</div>
+  }
 
   // usePlpPixelEffect({
   //   searchParams,
@@ -55,26 +44,20 @@ function View(props: Props) {
         total: Math.ceil(totalCount / ITEMS_PER_PAGE),
       }}
     >
-      <SuspenseList>
-        {/* Seo components */}
-        <Suspense fallback={null}>
-          <Seo
-            slug={slug}
-            site={site!}
-            storeCollection={storeCollection!}
-            breadcrumb={facets!.breadcrumb! as any}
-          />
-        </Suspense>
+      {/* Seo components */}
+      <Seo
+        slug={slug}
+        site={site!}
+        storeCollection={storeCollection!}
+        breadcrumb={facets!.breadcrumb! as any}
+      />
 
-        {/* UI components */}
-        <Suspense fallback={null}>
-          <ProductGallery
-            initialData={dynamicData}
-            facets={facets!.facets as any}
-            productSearch={productSearch!}
-          />
-        </Suspense>
-      </SuspenseList>
+      {/* UI components */}
+      <ProductGallery
+        initialData={dynamicData}
+        facets={facets!.facets as any}
+        productSearch={productSearch!}
+      />
     </SearchProvider>
   )
 }

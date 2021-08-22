@@ -11,20 +11,11 @@ import { FullTextSearchQuery } from '../__generated__/FullTextSearchQuery.graphq
 
 export const useSearch = (searchParams: SearchParamsState) => {
   const variables = useQueryVariablesFromSearchParams(searchParams)
-  const search = useQuery<
-    FullTextSearchQueryQuery,
-    FullTextSearchQueryQueryVariables
-  >({
+
+  return useQuery<FullTextSearchQueryQuery, FullTextSearchQueryQueryVariables>({
     ...FullTextSearchQuery,
     variables,
-    suspense: true,
   })
-
-  if (search.data == null) {
-    throw new Error('Something went wrong while fetching the data')
-  }
-
-  return search
 }
 
 /**
