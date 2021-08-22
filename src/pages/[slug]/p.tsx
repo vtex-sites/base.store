@@ -2,7 +2,6 @@ import { gql } from '@vtex/gatsby-plugin-graphql'
 import { graphql } from 'gatsby'
 import React from 'react'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import Layout from 'src/views/Layout'
 import View from 'src/views/product'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
@@ -22,7 +21,7 @@ export type Props = PageProps<
   ServerProductPageQueryQueryVariables
 >
 
-const ProductPage: FC<Props> = (props) => {
+const Page: FC<Props> = (props) => {
   const {
     params: { slug },
     data: serverData,
@@ -58,12 +57,6 @@ export const browserQuery = gql`
     }
   }
 `
-
-const Page: FC<Props> = (props) => (
-  <Layout>
-    <ProductPage {...props} />
-  </Layout>
-)
 
 export const serverQuery = graphql`
   query ServerProductPageQuery {

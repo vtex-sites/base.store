@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
 
 type Props = PageProps
@@ -21,7 +20,7 @@ function Page({ location }: Props) {
   const { errorId, fromUrl } = useErrorState(location)
 
   return (
-    <Layout>
+    <>
       <GatsbySeo noindex nofollow />
 
       <h1>500</h1>
@@ -30,7 +29,7 @@ function Page({ location }: Props) {
       <div>
         The server errored with id {errorId} when visiting page {fromUrl}
       </div>
-    </Layout>
+    </>
   )
 }
 

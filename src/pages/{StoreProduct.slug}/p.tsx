@@ -1,7 +1,6 @@
-import React from 'react'
 import { graphql } from 'gatsby'
+import React from 'react'
 import View from 'src/views/product'
-import Layout from 'src/views/Layout'
 import type { PageProps } from 'gatsby'
 
 import type {
@@ -23,11 +22,7 @@ function Page(props: Props) {
     return <div>loading...</div>
   }
 
-  return (
-    <Layout>
-      <View {...props} site={site!} product={product} />
-    </Layout>
-  )
+  return <View {...props} site={site!} product={product} />
 }
 
 export const query = graphql`

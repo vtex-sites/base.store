@@ -1,8 +1,7 @@
-import React, { useMemo } from 'react'
-import Layout from 'src/views/Layout'
-import View from 'src/views/collection'
-import { graphql } from 'gatsby'
 import { parseSearchParamsState } from '@vtex/store-sdk'
+import { graphql } from 'gatsby'
+import React, { useMemo } from 'react'
+import View from 'src/views/collection'
 import type { PageProps } from 'gatsby'
 
 import type {
@@ -21,11 +20,11 @@ const useSearchParams = ({ href }: Location) =>
 function Page(props: Props) {
   const searchParams = useSearchParams(props.location)
 
-  return (
-    <Layout>
-      {searchParams && <View {...props} searchParams={searchParams} />}
-    </Layout>
-  )
+  if (!searchParams) {
+    return null
+  }
+
+  return <View {...props} searchParams={searchParams} />
 }
 
 /**

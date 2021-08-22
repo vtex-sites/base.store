@@ -1,7 +1,6 @@
 import { parseSearchParamsState } from '@vtex/store-sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
-import Layout from 'src/views/Layout'
 import View from 'src/views/search'
 import type { PageProps } from 'gatsby'
 
@@ -21,11 +20,11 @@ const useSearchParams = ({ href }: Location) =>
 function Page(props: Props) {
   const searchParams = useSearchParams(props.location)
 
-  return (
-    <Layout>
-      {searchParams && <View {...props} searchParams={searchParams} />}
-    </Layout>
-  )
+  if (!searchParams) {
+    return null
+  }
+
+  return <View {...props} searchParams={searchParams} />
 }
 
 export const query = graphql`
