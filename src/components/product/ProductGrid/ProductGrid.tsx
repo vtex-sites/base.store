@@ -20,7 +20,7 @@ function ProductGrid({ products }: Props) {
   return (
     <div style={styles.grid}>
       {products.map((product, idx) => (
-        <ProductSummary key={`${product.productId}-${idx}`} product={product} />
+        <ProductSummary key={`${product.id}-${idx}`} product={product} />
       ))}
     </div>
   )
