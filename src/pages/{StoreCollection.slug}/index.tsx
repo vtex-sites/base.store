@@ -23,11 +23,11 @@ export const useSearchParams = (props: Props): SearchParamsState =>
       data: { storeCollection },
     } = props
 
-    const selectedFacets = storeCollection!.meta!.selectedFacets!
-    const [base] = pathname.split(selectedFacets![0]!.value!)
+    const { selectedFacets } = storeCollection!.meta
+    const [base] = pathname.split(selectedFacets[0].value)
 
     // TODO: Remove this bit of code once we have a graphql layer
-    const facets = selectedFacets!.reduce((acc: any, facet: any) => {
+    const facets = selectedFacets.reduce((acc: any, facet: any) => {
       const { key } = facet
       const value =
         key === 'priceRange'
