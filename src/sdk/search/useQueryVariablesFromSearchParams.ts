@@ -29,7 +29,7 @@ export const useQueryVariablesFromSearchParams = (params: SearchParamsState) =>
       return acc
     }, [] as Array<{ key: string; value: string }>)
 
-    const queryParams = {
+    return {
       fullText: params.term ?? undefined,
       selectedFacets,
       sort: sortMap[params.sort],
@@ -37,6 +37,4 @@ export const useQueryVariablesFromSearchParams = (params: SearchParamsState) =>
       // Search API is inclusive. This removes the last product
       to: (params.page + 1) * ITEMS_PER_PAGE - 1,
     }
-
-    return queryParams
   }, [params])
