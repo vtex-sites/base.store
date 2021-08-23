@@ -26,8 +26,8 @@ export type NavlinksQueryQuery = { allStoreCollection: { nodes: Array<{ slug: st
 // Query Related Code
 
 export const NavlinksQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query NavlinksQuery {\n  allStoreCollection(limit: 2) {\n    nodes {\n      slug\n      seo {\n        title\n      }\n    }\n  }\n}\n",
-  sha256Hash: "f91bb8c3aa2f0578874f5cc19c61cb3215c9f29bfa44dccbdb4615fe77c63725",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query NavlinksQuery {\n  allStoreCollection(limit: 2, filter: {type: {eq: Department}}) {\n    nodes {\n      slug\n      seo {\n        title\n      }\n    }\n  }\n}\n",
+  sha256Hash: "df51ae0e0d119b93d0e027db4a407816a825bf67c7b5a37f77e8383ae3d7d832",
   operationName: "NavlinksQuery",
 }
 

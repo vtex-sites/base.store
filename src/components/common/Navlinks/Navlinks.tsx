@@ -11,7 +11,7 @@ const styles = {
 function Navlinks() {
   const links = useStaticQuery<NavlinksQueryQuery>(graphql`
     query NavlinksQuery {
-      allStoreCollection(limit: 2) {
+      allStoreCollection(limit: 2, filter: { type: { eq: Department } }) {
         nodes {
           slug
           seo {
