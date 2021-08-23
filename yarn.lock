@@ -1499,14 +1499,6 @@
     "@graphql-tools/utils" "^7.7.0"
     tslib "~2.2.0"
 
-"@graphql-tools/merge@8.0.0":
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.0.0.tgz#0d364a11172c6cfa2928a8f46a8984ac7cca0fe1"
-  integrity sha512-Hdhp3qwDeRwPGUVUkmRwTg5KX/bp1MNkplhI6szgQHeDPaC2l9a1iS6LznVP6xQjsyb8oRPqlVPKfiXemodwFw==
-  dependencies:
-    "@graphql-tools/utils" "8.1.0"
-    tslib "~2.3.0"
-
 "@graphql-tools/merge@^6.2.12", "@graphql-tools/merge@^6.2.14":
   version "6.2.17"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.17.tgz#4dedf87d8435a5e1091d7cc8d4f371ed1e029f1f"
@@ -1514,6 +1506,14 @@
   dependencies:
     "@graphql-tools/schema" "^8.0.2"
     "@graphql-tools/utils" "8.0.2"
+    tslib "~2.3.0"
+
+"@graphql-tools/merge@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.0.2.tgz#510d6a8da6a761853e18d36710a23791edbc2405"
+  integrity sha512-li/bl6RpcZCPA0LrSxMYMcyYk+brer8QYY25jCKLS7gvhJkgzEFpCDaX43V1+X13djEoAbgay2mCr3dtfJQQRQ==
+  dependencies:
+    "@graphql-tools/utils" "^8.1.1"
     tslib "~2.3.0"
 
 "@graphql-tools/optimize@^1.0.1":
@@ -1524,11 +1524,11 @@
     tslib "~2.0.1"
 
 "@graphql-tools/relay-operation-optimizer@^6.0.15", "@graphql-tools/relay-operation-optimizer@^6.3.0":
-  version "6.3.5"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/relay-operation-optimizer/-/relay-operation-optimizer-6.3.5.tgz#9998fa88376e51f9512291258945628cf26ff3c9"
-  integrity sha512-wH2hswjGzA5+9iLfPEFzdfpe+ND8s23ps4bPDuO9AHVXUCGtLgXazoBtwp47vNkWnsR7kTOyZ/0pCjeKPsXCyQ==
+  version "6.3.7"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/relay-operation-optimizer/-/relay-operation-optimizer-6.3.7.tgz#16c874a091a1a37bc308136d87277443cebe5056"
+  integrity sha512-7UYnxPvIUDrdEKFAYrNF/YsoVBYMj6l3rwwuNs1jZyzAVZh8uq3TdvaFIIlcYvRychj45BEsg1jvRBvmhTaj3Q==
   dependencies:
-    "@graphql-tools/utils" "8.1.0"
+    "@graphql-tools/utils" "^8.1.1"
     relay-compiler "11.0.2"
     tslib "~2.3.0"
 
@@ -1542,12 +1542,12 @@
     value-or-promise "1.0.6"
 
 "@graphql-tools/schema@^8.0.2":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.1.0.tgz#08a96c23bc8cb63e2f9fa1ea6c052a486d2c92e7"
-  integrity sha512-k6M877jFTKjlRU2f2YYjWx+FKXlhuQlCQQ8IdG5API4UL1qk57zYoNnYlT+CJfWxEfcMvEd6AlJ8wvmapzr53A==
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.1.2.tgz#913879da1a7889a9488e9b7dc189e7c83eff74be"
+  integrity sha512-rX2pg42a0w7JLVYT+f/yeEKpnoZL5PpLq68TxC3iZ8slnNBNjfVfvzzOn8Q8Q6Xw3t17KP9QespmJEDfuQe4Rg==
   dependencies:
-    "@graphql-tools/merge" "8.0.0"
-    "@graphql-tools/utils" "8.1.0"
+    "@graphql-tools/merge" "^8.0.2"
+    "@graphql-tools/utils" "^8.1.1"
     tslib "~2.3.0"
     value-or-promise "1.0.10"
 
@@ -1583,13 +1583,6 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/utils@8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.1.0.tgz#ea64fefa5c3bcb3dec06be765c128c1bf0cc829f"
-  integrity sha512-V5a7xAxZ6DHzrYYticmsLgWim+vGnC6ztbiOXrO5cGtOOk5NSK657SZXsyVOR7hNvdWiHSW0dlBZb6zkkfOnHA==
-  dependencies:
-    tslib "~2.3.0"
-
 "@graphql-tools/utils@^7.0.0", "@graphql-tools/utils@^7.0.2", "@graphql-tools/utils@^7.1.2", "@graphql-tools/utils@^7.5.0", "@graphql-tools/utils@^7.7.0", "@graphql-tools/utils@^7.7.1", "@graphql-tools/utils@^7.8.1", "@graphql-tools/utils@^7.9.0", "@graphql-tools/utils@^7.9.1":
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-7.10.0.tgz#07a4cb5d1bec1ff1dc1d47a935919ee6abd38699"
@@ -1598,6 +1591,13 @@
     "@ardatan/aggregate-error" "0.0.6"
     camel-case "4.1.2"
     tslib "~2.2.0"
+
+"@graphql-tools/utils@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.1.1.tgz#2ef056a1d6e1e909085e1115d3bb48f890c2a2b6"
+  integrity sha512-QbFNoBmBiZ+ej4y6mOv8Ba4lNhcrTEKXAhZ0f74AhdEXi7b9xbGUH/slO5JaSyp85sGQYIPmxjRPpXBjLklbmw==
+  dependencies:
+    tslib "~2.3.0"
 
 "@graphql-tools/wrap@^7.0.4", "@graphql-tools/wrap@^7.0.8":
   version "7.0.8"
@@ -2203,18 +2203,6 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@0.373.20":
-  version "0.373.20"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.20.tgz#3815371e484018f62f7281c39d52bf84d38c7334"
-  integrity sha512-01yUCRx7pnMd6giOFERAYGS8XjNurLv9S41ZHlVgLlHi0ZdSGBCDyjWL5XAwpBghfjMaMkLEX8Kzuqd+OuOOgw==
-  dependencies:
-    "@graphql-codegen/core" "^1.17.7"
-    "@graphql-codegen/plugin-helpers" "^1.17.7"
-    "@graphql-codegen/typescript" "^1.17.7"
-    "@graphql-codegen/typescript-operations" "^1.17.7"
-    "@graphql-tools/relay-operation-optimizer" "^6.0.15"
-    fs-extra "^9.0.1"
-
 "@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/1f2b94ce/@vtex/gatsby-plugin-graphql":
   version "0.373.23"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/1f2b94ce/@vtex/gatsby-plugin-graphql#24dc0718b9a0c0fefff8f5aabeae2a2e2fcf33db"
@@ -2226,23 +2214,23 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@0.373.20":
-  version "0.373.20"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.20.tgz#55b8c0e45c4196310b8f544b0c8e35456dd845ab"
-  integrity sha512-Usj4EtcfvSYtKaaDhTjTZDYKH4MhLPW74xHNIxkAxt3fo7k8IstyoVA48gsI/Le0ZQriAyugv02ObjoZP94aEQ==
+"@vtex/gatsby-plugin-nginx@0.373.24":
+  version "0.373.24"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.24.tgz#809020c91c2aeee2288c811aa67cfb81765889dc"
+  integrity sha512-KomsRth3w6lU+yl/oqSrJYNOHIC5CDzukrsSpu0D/nUUJTy8Y/vnKK2EdGXMAh84YuNg9Ohnr6e2I8ZaPeDM3A==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@0.373.20":
-  version "0.373.20"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.20.tgz#af52b6e56093b4f8a7868a121727c8e89faa832d"
-  integrity sha512-uZR97dqFgRdX6QS3AhoHi5+fZ8v6GPlgwy6mJ7KWcX6eCYQo2R/LLTHebZamlyYASd+26bnrfurUhAVQ+Y+/Kg==
+"@vtex/gatsby-plugin-thumbor@0.373.24":
+  version "0.373.24"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.24.tgz#e0595a43cd9ad387d94a10b71059256000e74f40"
+  integrity sha512-MjC5jcGmYJUdI2cbfx63JwqfrfrhckHmfDH5z7io5H1mVOCKiYaj1gaSScjOsTXwcdvQTIZu0xisGs2yPh+JZw==
 
-"@vtex/gatsby-source-vtex@0.373.20":
-  version "0.373.20"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.20.tgz#5ab03c5dbb680d8138fcd1ff7c916714de7e8574"
-  integrity sha512-FNWoDWFIrO7bHWQxS4Drmnxc+MRzbga4O5N623QRnsw5BZmhMKfw+pv9SYOIwbz7l8MoGb1B++598uHXJq/xmw==
+"@vtex/gatsby-source-vtex@0.373.24":
+  version "0.373.24"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.24.tgz#9f2b966707e2460dae798aa77b75c599b75f8b8e"
+  integrity sha512-MPjx9Fi2amQJUiz8uA0yoUVtsGCoaQpkDJ18bpwCb7oaOlF7F5NxAtJVqXijcl4agRsIR+Yx1i+ABmiW/Atzmg==
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2250,10 +2238,10 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/lighthouse-config@0.373.20":
-  version "0.373.20"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.20.tgz#5f850a7e6e288420375142883afa28f427f53890"
-  integrity sha512-VyCZgkUXAhYWfsjlluxqR4a09N6O2RNsIBX7GCMG/el5Z2otG3jN3qoflVcvafKyxd1DsgLK1ZPNpfmc35loAg==
+"@vtex/lighthouse-config@0.373.24":
+  version "0.373.24"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.24.tgz#ff06837c8a3247b3d97c74e7cb86386cb90f85e8"
+  integrity sha512-gAysxZ+xMmoew8jTlui57pju8zEC+QxD14FfvVkrT5uC3Y8Vip4ajWxmM9lUlkIlzbD0BjenwSzrfniTERu3Og==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
@@ -3521,7 +3509,7 @@ browserslist@4.14.2:
     escalade "^3.0.2"
     node-releases "^1.1.61"
 
-browserslist@^4.0.0, browserslist@^4.12.2, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.16.3, browserslist@^4.16.6, browserslist@^4.16.7, browserslist@^4.6.0:
+browserslist@^4.0.0, browserslist@^4.12.2, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.16.3, browserslist@^4.16.7, browserslist@^4.6.0:
   version "4.16.7"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.7.tgz#108b0d1ef33c4af1b587c54f390e7041178e4335"
   integrity sha512-7I4qVwqZltJ7j37wObBe3SoTz+nS8APaNcrBOlgoirb6/HbEU2XxW/LpUDTCngM6iauwFqmRTuOMfyKnFGY5JA==
@@ -3531,6 +3519,17 @@ browserslist@^4.0.0, browserslist@^4.12.2, browserslist@^4.14.5, browserslist@^4
     electron-to-chromium "^1.3.793"
     escalade "^3.1.1"
     node-releases "^1.1.73"
+
+browserslist@^4.16.6:
+  version "4.16.8"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.8.tgz#cb868b0b554f137ba6e33de0ecff2eda403c4fb0"
+  integrity sha512-sc2m9ohR/49sWEbPj14ZSSZqp+kbi16aLao42Hmn3Z8FpjuMaq2xCA2l4zl9ITfyzvnvyE0hcg62YkIGKxgaNQ==
+  dependencies:
+    caniuse-lite "^1.0.30001251"
+    colorette "^1.3.0"
+    electron-to-chromium "^1.3.811"
+    escalade "^3.1.1"
+    node-releases "^1.1.75"
 
 bser@2.1.1:
   version "2.1.1"
@@ -3728,7 +3727,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001243, caniuse-lite@^1.0.30001248:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001243, caniuse-lite@^1.0.30001248, caniuse-lite@^1.0.30001251:
   version "1.0.30001251"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001251.tgz#6853a606ec50893115db660f82c094d18f096d85"
   integrity sha512-HOe1r+9VkU4TFmnU70z+r7OLmtR+/chB1rdcJUeQlAinjEeb0cKL20tlAtOagNZhbrtLnCvV19B4FmF1rgzl6A==
@@ -4115,7 +4114,7 @@ colord@^2.0.1:
   resolved "https://registry.yarnpkg.com/colord/-/colord-2.7.0.tgz#706ea36fe0cd651b585eb142fe64b6480185270e"
   integrity sha512-pZJBqsHz+pYyw3zpX6ZRXWoCHM1/cvFikY9TV8G3zcejCaKE0lhankoj8iScyrrePA8C7yJ5FStfA9zbcOnw7Q==
 
-colorette@^1.2.2:
+colorette@^1.2.2, colorette@^1.3.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.3.0.tgz#ff45d2f0edb244069d3b772adeb04fed38d0a0af"
   integrity sha512-ecORCqbSFP7Wm8Y6lyqMJjexBQqXSF7SSeaTyGGphogUjBlFP9m9o08wy86HL2uB7fMTxtOUzLMk7ogKcxMg1w==
@@ -5212,10 +5211,15 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.793:
+electron-to-chromium@^1.3.564:
   version "1.3.805"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.805.tgz#a0873393a3b027ec60bdaf22a19c4946688cf941"
   integrity sha512-uUJF59M6pNSRHQaXwdkaNB4BhSQ9lldRdG1qCjlrAFkynPGDc5wPoUcYEQQeQGmKyAWJPvGkYAWmtVrxWmDAkg==
+
+electron-to-chromium@^1.3.793, electron-to-chromium@^1.3.811:
+  version "1.3.814"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.814.tgz#418fad80c3276a46103ca72a21a8290620d83c4a"
+  integrity sha512-0mH03cyjh6OzMlmjauGg0TLd87ErIJqWiYxMcOLKf5w6p0YEOl7DJAj7BDlXEFmCguY5CQaKVOiMjAMODO2XDw==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -10011,10 +10015,15 @@ node-preload@^0.2.1:
   dependencies:
     process-on-spawn "^1.0.0"
 
-node-releases@^1.1.61, node-releases@^1.1.73:
+node-releases@^1.1.61:
   version "1.1.74"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.74.tgz#e5866488080ebaa70a93b91144ccde06f3c3463e"
   integrity sha512-caJBVempXZPepZoZAPCWRTNxYQ+xtG/KAi4ozTA5A+nJ7IU+kLQCbqaUjb5Rwy14M9upBWiQ4NutcmW04LJSRw==
+
+node-releases@^1.1.73, node-releases@^1.1.75:
+  version "1.1.75"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.75.tgz#6dd8c876b9897a1b8e5a02de26afa79bb54ebbfe"
+  integrity sha512-Qe5OUajvqrqDSy6wrWFmMwfJ0jVgwiw4T3KqmbTcZ62qW0gQkheXYhcFM1+lOVcGUoRxcEcfyvFMAnDgaF1VWw==
 
 noms@0.0.0:
   version "0.0.0"
