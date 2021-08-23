@@ -35,7 +35,12 @@ function ProductSummary({ product }: Props) {
 
   return (
     <Link to={`/${product.slug}/p`}>
-      <GatsbyImage image={image} alt={alt ?? ''} />
+      <GatsbyImage
+        style={{ width: '100%' }}
+        image={image}
+        alt={alt ?? ''}
+        sizes="(max-width: 768px) 200px, 320px"
+      />
       <div>{product.productName}</div>
       <button {...buyProps}>Add to cart</button>
     </Link>
