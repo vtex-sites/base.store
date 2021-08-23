@@ -2,7 +2,11 @@ module.exports = {
   'product.summary': {
     sourceWidth: 480,
     aspectRatio: 1,
+    width: 360,
     breakpoints: [250, 360, 480],
+    layout: 'constrained',
+    fadeIn: false,
+    backgroundColor: '#f0f0f0',
     options: {
       fitIn: true,
     },
@@ -10,8 +14,10 @@ module.exports = {
   'product.details': {
     sourceWidth: 720,
     aspectRatio: 1,
+    width: 720,
     breakpoints: [250, 360, 480, 720],
     layout: 'constrained',
+    backgroundColor: '#f0f0f0',
     options: {
       fitIn: true,
     },
