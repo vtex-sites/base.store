@@ -37,7 +37,12 @@ function ProductGallery({
 
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
-        <a onClick={setPrevPage} href={prev.link} rel="prev">
+        <a
+          onClick={setPrevPage}
+          href={prev.link}
+          rel="prev"
+          style={{ padding: '30px', display: 'block', textAlign: 'center' }}
+        >
           Previous Page
         </a>
       )}
@@ -53,7 +58,12 @@ function ProductGallery({
 
       {/* Add link to next page. This helps on SEO */}
       {next !== false && (
-        <a onClick={setNextPage} href={next.link} rel="next">
+        <a
+          onClick={setNextPage}
+          href={next.link}
+          rel="next"
+          style={{ padding: '30px', display: 'block', textAlign: 'center' }}
+        >
           Show More
         </a>
       )}

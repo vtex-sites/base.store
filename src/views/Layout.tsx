@@ -7,7 +7,7 @@ import type { PropsWithChildren } from 'react'
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 const style = {
-  main: { minHeight: '80vh' },
+  main: { minHeight: '100vh' },
 }
 
 function Layout({ children }: PropsWithChildren<unknown>) {
