@@ -262,8 +262,6 @@ type DirectoryCtimeArgs = {
 type Site = Node & {
   buildTime: Maybe<Scalars['Date']>;
   siteMetadata: Maybe<SiteSiteMetadata>;
-  port: Maybe<Scalars['Int']>;
-  host: Maybe<Scalars['String']>;
   proxy: Maybe<Array<Maybe<SiteProxy>>>;
   flags: Maybe<SiteFlags>;
   polyfill: Maybe<Scalars['Boolean']>;
@@ -369,7 +367,7 @@ type StoreCollection = Node & {
   remoteId: Scalars['ID'];
   slug: Scalars['String'];
   seo: StoreCollectionSeo;
-  type: StoreCollectionType | `${StoreCollectionType}`;
+  type: StoreCollectionType;
   meta: StoreCollectionMeta;
   /** Returns all children nodes filtered by type StoreCollection */
   childrenStoreCollection: Maybe<Array<Maybe<StoreCollection>>>;
@@ -763,6 +761,8 @@ type SitePluginPluginOptions = {
   env: Maybe<SitePluginPluginOptionsEnv>;
   defer: Maybe<Scalars['Boolean']>;
   server: Maybe<Scalars['String']>;
+  basePath: Maybe<Scalars['String']>;
+  sizes: Maybe<Array<Maybe<Scalars['String']>>>;
   color: Maybe<Scalars['String']>;
   showSpinner: Maybe<Scalars['Boolean']>;
   src: Maybe<Scalars['String']>;
@@ -886,7 +886,7 @@ type Channel = Node & {
 };
 
 type Vtex_ProductUniqueIdentifier = {
-  field: Vtex_ProductUniqueIdentifierField | `${Vtex_ProductUniqueIdentifierField}`;
+  field: Vtex_ProductUniqueIdentifierField;
   value: Scalars['ID'];
 };
 
@@ -1304,7 +1304,7 @@ type Vtex_CompositionItem = {
 type Vtex_InputValue = {
   label: Maybe<Scalars['String']>;
   maxLength: Maybe<Scalars['Int']>;
-  type: Maybe<Vtex_InputValueType | `${Vtex_InputValueType}`>;
+  type: Maybe<Vtex_InputValueType>;
   defaultValue: Maybe<Scalars['VTEX_StringOrBoolean']>;
   domain: Maybe<Array<Maybe<Scalars['String']>>>;
 };
@@ -1422,7 +1422,7 @@ type Vtex_ProductSearch = {
   canonical: Maybe<Scalars['String']>;
   suggestion: Maybe<Vtex_SearchSuggestions>;
   correction: Maybe<Vtex_SearchCorrection>;
-  operator: Maybe<Vtex_Operator | `${Vtex_Operator}`>;
+  operator: Maybe<Vtex_Operator>;
   fuzzy: Maybe<Scalars['String']>;
   searchState: Maybe<Scalars['String']>;
   banners: Maybe<Array<Maybe<Vtex_SearchBanner>>>;
@@ -1544,7 +1544,7 @@ type Vtex_SelectedFacet = {
 type Vtex_Facet = {
   name: Maybe<Scalars['String']>;
   values: Maybe<Array<Maybe<Vtex_FacetValue>>>;
-  type: Maybe<Vtex_FilterType | `${Vtex_FilterType}`>;
+  type: Maybe<Vtex_FilterType>;
   hidden: Maybe<Scalars['Boolean']>;
   quantity: Maybe<Scalars['Int']>;
 };
@@ -1604,7 +1604,7 @@ type Vtex_ProductSuggestions = {
   /** If the term is misspelled or not */
   misspelled: Maybe<Scalars['Boolean']>;
   /** Indicates how the search-engine will deal with the fullText if there is more than one word. Set `and` if the returned products must have all the words in its metadata or `or` otherwise. */
-  operator: Maybe<Vtex_Operator | `${Vtex_Operator}`>;
+  operator: Maybe<Vtex_Operator>;
 };
 
 type Vtex_Sort =
@@ -1811,7 +1811,7 @@ type Vtex_OrderForm = {
   canEditData: Scalars['Boolean'];
   loggedIn: Scalars['Boolean'];
   userProfileId: Maybe<Scalars['String']>;
-  userType: Maybe<Vtex_UserType | `${Vtex_UserType}`>;
+  userType: Maybe<Vtex_UserType>;
   shipping: Vtex_Shipping;
   marketingData: Vtex_MarketingData;
   totalizers: Array<Vtex_Totalizer>;
@@ -1980,7 +1980,7 @@ type Vtex_PickupOption = {
 
 type Vtex_Address = {
   addressId: Maybe<Scalars['ID']>;
-  addressType: Maybe<Vtex_AddressType | `${Vtex_AddressType}`>;
+  addressType: Maybe<Vtex_AddressType>;
   city: Maybe<Scalars['String']>;
   complement: Maybe<Scalars['String']>;
   country: Maybe<Scalars['String']>;
@@ -2362,7 +2362,7 @@ type Vtex_BundleItemAttachmentInput = {
 
 type Vtex_AddressInput = {
   addressId: Maybe<Scalars['ID']>;
-  addressType: Maybe<Vtex_AddressType | `${Vtex_AddressType}`>;
+  addressType: Maybe<Vtex_AddressType>;
   addressQuery: Maybe<Scalars['String']>;
   city: Maybe<Scalars['String']>;
   complement: Maybe<Scalars['String']>;
@@ -2557,8 +2557,6 @@ type QueryAllDirectoryArgs = {
 type QuerySiteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   proxy: Maybe<SiteProxyFilterListInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -3050,8 +3048,8 @@ type FileFilterInput = {
 };
 
 type FileSortInput = {
-  fields: Maybe<Array<Maybe<FileFieldsEnum | `${FileFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<FileFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type SortOrderEnum =
@@ -3270,8 +3268,8 @@ type DirectoryFilterInput = {
 };
 
 type DirectorySortInput = {
-  fields: Maybe<Array<Maybe<DirectoryFieldsEnum | `${DirectoryFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<DirectoryFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type SiteSiteMetadataFilterInput = {
@@ -3352,8 +3350,6 @@ type SiteFieldsEnum =
   | 'siteMetadata___titleTemplate'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
-  | 'port'
-  | 'host'
   | 'proxy'
   | 'proxy___prefix'
   | 'proxy___url'
@@ -3464,8 +3460,6 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   proxy: Maybe<SiteProxyFilterListInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -3477,8 +3471,8 @@ type SiteFilterInput = {
 };
 
 type SiteSortInput = {
-  fields: Maybe<Array<Maybe<SiteFieldsEnum | `${SiteFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<SiteFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type SiteFunctionConnection = {
@@ -3645,8 +3639,8 @@ type SiteFunctionFilterInput = {
 };
 
 type SiteFunctionSortInput = {
-  fields: Maybe<Array<Maybe<SiteFunctionFieldsEnum | `${SiteFunctionFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<SiteFunctionFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type SitePageContextFilterInput = {
@@ -3694,6 +3688,8 @@ type SitePluginPluginOptionsFilterInput = {
   env: Maybe<SitePluginPluginOptionsEnvFilterInput>;
   defer: Maybe<BooleanQueryOperatorInput>;
   server: Maybe<StringQueryOperatorInput>;
+  basePath: Maybe<StringQueryOperatorInput>;
+  sizes: Maybe<StringQueryOperatorInput>;
   color: Maybe<StringQueryOperatorInput>;
   showSpinner: Maybe<BooleanQueryOperatorInput>;
   src: Maybe<StringQueryOperatorInput>;
@@ -4008,6 +4004,8 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
   | 'pluginCreator___pluginOptions___defer'
   | 'pluginCreator___pluginOptions___server'
+  | 'pluginCreator___pluginOptions___basePath'
+  | 'pluginCreator___pluginOptions___sizes'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
   | 'pluginCreator___pluginOptions___src'
@@ -4075,8 +4073,8 @@ type SitePageFilterInput = {
 };
 
 type SitePageSortInput = {
-  fields: Maybe<Array<Maybe<SitePageFieldsEnum | `${SitePageFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<SitePageFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type IdQueryOperatorInput = {
@@ -4092,10 +4090,10 @@ type StoreCollectionSeoFilterInput = {
 };
 
 type StoreCollectionTypeQueryOperatorInput = {
-  eq: Maybe<StoreCollectionType | `${StoreCollectionType}`>;
-  ne: Maybe<StoreCollectionType | `${StoreCollectionType}`>;
-  in: Maybe<Array<Maybe<StoreCollectionType | `${StoreCollectionType}`>>>;
-  nin: Maybe<Array<Maybe<StoreCollectionType | `${StoreCollectionType}`>>>;
+  eq: Maybe<StoreCollectionType>;
+  ne: Maybe<StoreCollectionType>;
+  in: Maybe<Array<Maybe<StoreCollectionType>>>;
+  nin: Maybe<Array<Maybe<StoreCollectionType>>>;
 };
 
 type StoreCollectionMetaFilterInput = {
@@ -4507,8 +4505,8 @@ type StoreCollectionGroupConnection = {
 };
 
 type StoreCollectionSortInput = {
-  fields: Maybe<Array<Maybe<StoreCollectionFieldsEnum | `${StoreCollectionFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<StoreCollectionFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type StoreCategoryFilterListInput = {
@@ -5645,8 +5643,8 @@ type StoreProductGroupConnection = {
 };
 
 type StoreProductSortInput = {
-  fields: Maybe<Array<Maybe<StoreProductFieldsEnum | `${StoreProductFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<StoreProductFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type SitePluginConnection = {
@@ -5804,6 +5802,8 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___env___deploy_preview___policy'
   | 'pluginOptions___defer'
   | 'pluginOptions___server'
+  | 'pluginOptions___basePath'
+  | 'pluginOptions___sizes'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
   | 'pluginOptions___src'
@@ -5854,8 +5854,8 @@ type SitePluginGroupConnection = {
 };
 
 type SitePluginSortInput = {
-  fields: Maybe<Array<Maybe<SitePluginFieldsEnum | `${SitePluginFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<SitePluginFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type SiteBuildMetadataConnection = {
@@ -6010,8 +6010,8 @@ type SiteBuildMetadataFilterInput = {
 };
 
 type SiteBuildMetadataSortInput = {
-  fields: Maybe<Array<Maybe<SiteBuildMetadataFieldsEnum | `${SiteBuildMetadataFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<SiteBuildMetadataFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
 type ChannelConnection = {
@@ -6180,6 +6180,6 @@ type ChannelFilterInput = {
 };
 
 type ChannelSortInput = {
-  fields: Maybe<Array<Maybe<ChannelFieldsEnum | `${ChannelFieldsEnum}`>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum | `${SortOrderEnum}`>>>;
+  fields: Maybe<Array<Maybe<ChannelFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
