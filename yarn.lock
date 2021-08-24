@@ -2203,9 +2203,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/1f2b94ce/@vtex/gatsby-plugin-graphql":
-  version "0.373.23"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/1f2b94ce/@vtex/gatsby-plugin-graphql#24dc0718b9a0c0fefff8f5aabeae2a2e2fcf33db"
+"@vtex/gatsby-plugin-graphql@^0.373.25":
+  version "0.373.25"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.25.tgz#b5dc49dc8c7a61cbd1645db8a80bf8bd246593bc"
+  integrity sha512-+FEF9x8OD+UwAaQaG69crrgpFnuGCcOCLtZHyDm6DUK4B8AUzlX0X1IziuGgpEfC2RCskALTpq/mhAPvWWstcA==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2214,34 +2215,23 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/a7957ba9/@vtex/gatsby-plugin-graphql":
-  version "0.373.23"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/a7957ba9/@vtex/gatsby-plugin-graphql#bcb09d301a2eae94afcce4032a579d8dc3e11ab2"
-  dependencies:
-    "@graphql-codegen/core" "^1.17.7"
-    "@graphql-codegen/plugin-helpers" "^1.17.7"
-    "@graphql-codegen/typescript" "^1.17.7"
-    "@graphql-codegen/typescript-operations" "^1.17.7"
-    "@graphql-tools/relay-operation-optimizer" "^6.0.15"
-    fs-extra "^9.0.1"
-
-"@vtex/gatsby-plugin-nginx@0.373.24":
-  version "0.373.24"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.24.tgz#809020c91c2aeee2288c811aa67cfb81765889dc"
-  integrity sha512-KomsRth3w6lU+yl/oqSrJYNOHIC5CDzukrsSpu0D/nUUJTy8Y/vnKK2EdGXMAh84YuNg9Ohnr6e2I8ZaPeDM3A==
+"@vtex/gatsby-plugin-nginx@0.373.25":
+  version "0.373.25"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.25.tgz#fe95c9dc1c1fc0e2612718e54f1db04a90c77a5c"
+  integrity sha512-WlaImJteEFdf8WMIzwkiI1o5xc1Ka64aUOeAyNIARmv5vTG1JzMd3GK7qYEpr7RidGimnORfp8fBvJDyesTi0w==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@0.373.24":
-  version "0.373.24"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.24.tgz#e0595a43cd9ad387d94a10b71059256000e74f40"
-  integrity sha512-MjC5jcGmYJUdI2cbfx63JwqfrfrhckHmfDH5z7io5H1mVOCKiYaj1gaSScjOsTXwcdvQTIZu0xisGs2yPh+JZw==
+"@vtex/gatsby-plugin-thumbor@0.373.25":
+  version "0.373.25"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.25.tgz#03aa000b0617a97198c108d49ff52a6bf653ab6c"
+  integrity sha512-I2/P3lIT1SVcnQdLPBJFQqJAH8hxM/waGQ+tEqQvMJqVldzPaZKQlqmtoWzZhBvQFVbd2kuEqHF4qLM31Q9Mpw==
 
-"@vtex/gatsby-source-vtex@0.373.24":
-  version "0.373.24"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.24.tgz#9f2b966707e2460dae798aa77b75c599b75f8b8e"
-  integrity sha512-MPjx9Fi2amQJUiz8uA0yoUVtsGCoaQpkDJ18bpwCb7oaOlF7F5NxAtJVqXijcl4agRsIR+Yx1i+ABmiW/Atzmg==
+"@vtex/gatsby-source-vtex@0.373.25":
+  version "0.373.25"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.25.tgz#f817930effa9b7b3f6226558e42708af13c75966"
+  integrity sha512-rujOtRJrJfRDeOurBuHXOOD79QvXHfXLIvDzawoDdYElndIi57cDpdLeIrbkN5N9j3dh3pJc2tTwBuBsJ3rAcA==
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2249,10 +2239,10 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/lighthouse-config@0.373.24":
-  version "0.373.24"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.24.tgz#ff06837c8a3247b3d97c74e7cb86386cb90f85e8"
-  integrity sha512-gAysxZ+xMmoew8jTlui57pju8zEC+QxD14FfvVkrT5uC3Y8Vip4ajWxmM9lUlkIlzbD0BjenwSzrfniTERu3Og==
+"@vtex/lighthouse-config@0.373.25":
+  version "0.373.25"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.25.tgz#cc49f351dfbc5ab04e24e7c1777b976b8b9463be"
+  integrity sha512-5UXY94Swmq+5rMdYMlHh/0w55Psyn2eUzkq059Wr8BJ/WfXZZNnJNnjlMR2A01bdkO/NSOGrJu6rEjHlALEIGg==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
