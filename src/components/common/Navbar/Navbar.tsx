@@ -8,6 +8,9 @@ const styles = {
     width: '100vw',
     height: '50px',
     backgroundColor: '#f0f0f0',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 }
 
