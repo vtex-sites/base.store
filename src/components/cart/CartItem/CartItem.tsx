@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react'
-import type { CartItem as ICartItem } from '@vtex/store-sdk'
-import { useCart } from '@vtex/store-sdk'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import React from 'react'
+import { useImage } from 'src/sdk/image/useImage'
 
 interface Props {
   item: ICartItem
@@ -27,9 +27,11 @@ const useRemoveButton = (item: ICartItem | null | undefined) => {
 
 function CartItem({ item }: Props) {
   const btnProps = useRemoveButton(item)
+  const image = useImage(item.image.src, 'product.miniature')
 
   return (
     <div>
+      <GatsbyImage image={image} alt={item.image.alt} />
       <div>id: {item.id}</div>
       <div>price: {item.price}</div>
       <div>listPrice: {item.listPrice}</div>
