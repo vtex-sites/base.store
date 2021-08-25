@@ -1,9 +1,8 @@
-import { useGetThumborImageData } from '@vtex/gatsby-plugin-thumbor'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { useMemo } from 'react'
-import imagesConf from 'src/images/config'
+import React from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
+import { useImage } from 'src/sdk/image/useImage'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 
 import type { ProductSummary_ProductFragment } from './__generated__/ProductSummary_product.graphql'
@@ -16,24 +15,13 @@ const styles = {
   image: { width: '100%' },
 }
 
-const useImage = (src: string) => {
-  const getImage = useGetThumborImageData()
-
-  return useMemo(
-    () =>
-      getImage({
-        baseUrl: src ?? '',
-        ...imagesConf['product.summary'],
-      }),
-    [getImage, src]
-  )
-}
-
 function ProductSummary({ product }: Props) {
   const { images, sellers, itemId } = product.items?.[0] ?? {}
   const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
   const offer = sellers?.[0]?.commercialOffer
-  const image = useImage(src ?? '')
+  const imageSrc = src ?? ''
+  const imageAlt = alt ?? ''
+  const image = useImage(imageSrc, 'product.summary')
   const linkProps = useProductLink({ slug: product.slug!, skuId: itemId! })
   const buyProps = useBuyButton(
     offer && {
@@ -52,7 +40,7 @@ function ProductSummary({ product }: Props) {
       <GatsbyImage
         style={styles.image}
         image={image}
-        alt={alt ?? ''}
+        alt={imageAlt}
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{product.productName}</div>
