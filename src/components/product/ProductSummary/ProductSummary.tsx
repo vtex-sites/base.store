@@ -4,6 +4,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
 import imagesConf from 'src/images/config'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
+import { useProductLink } from 'src/sdk/product/useProductLink'
 
 import type { ProductSummary_ProductFragment } from './__generated__/ProductSummary_product.graphql'
 
@@ -29,10 +30,11 @@ const useImage = (src: string) => {
 }
 
 function ProductSummary({ product }: Props) {
-  const { images, sellers } = product.items?.[0] ?? {}
+  const { images, sellers, itemId } = product.items?.[0] ?? {}
   const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
   const offer = sellers?.[0]?.commercialOffer
   const image = useImage(src ?? '')
+  const linkProps = useProductLink({ slug: product.slug!, skuId: itemId! })
   const buyProps = useBuyButton(
     offer && {
       id: product.id!,
@@ -46,7 +48,7 @@ function ProductSummary({ product }: Props) {
   )
 
   return (
-    <Link to={`/${product.slug}/p`}>
+    <Link {...linkProps}>
       <GatsbyImage
         style={styles.image}
         image={image}
@@ -66,6 +68,7 @@ export const fragment = graphql`
     productName
 
     items {
+      itemId
       images {
         imageUrl
         imageText
