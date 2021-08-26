@@ -1,10 +1,11 @@
-import { useCart, useGlobalUIState } from '@vtex/store-sdk'
+import { useCart } from '@vtex/store-sdk'
 import React from 'react'
+import { useUI } from 'src/sdk/ui'
 
 import CartItem from '../CartItem'
 
 function CartSidebar() {
-  const { closeMinicart } = useGlobalUIState()
+  const { closeMinicart } = useUI()
   const { items, total, subTotal, totalUniqueItems, totalItems } = useCart()
 
   return (

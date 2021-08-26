@@ -8,13 +8,18 @@ import {
   CartValidator,
 } from '@vtex/store-sdk'
 
-import { validateCart } from './src/sdk/cart/validateCart'
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import Layout from './src/views/Layout'
+import { validateCart } from './src/sdk/cart/validateCart'
+import { uiInitialState, uiActions, uiEffects } from './src/sdk/ui'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
-    <UIProvider>
+    <UIProvider
+      initialState={uiInitialState}
+      actions={uiActions}
+      effects={uiEffects}
+    >
       <SessionProvider>
         <CartProvider>
           <CartValidator onValidateCart={validateCart}>{element}</CartValidator>
