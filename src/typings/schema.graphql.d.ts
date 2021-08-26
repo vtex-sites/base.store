@@ -875,7 +875,7 @@ type Channel = Node & {
   parent: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  salesChannel: Maybe<Scalars['String']>;
+  salesChannel: Maybe<Scalars['Int']>;
   canonicalBaseAddress: Maybe<Scalars['String']>;
   alternateBaseAddresses: Maybe<Array<Maybe<Scalars['String']>>>;
   defaultLocale: Maybe<Scalars['String']>;
@@ -2739,7 +2739,7 @@ type QueryChannelArgs = {
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
-  salesChannel: Maybe<StringQueryOperatorInput>;
+  salesChannel: Maybe<IntQueryOperatorInput>;
   canonicalBaseAddress: Maybe<StringQueryOperatorInput>;
   alternateBaseAddresses: Maybe<StringQueryOperatorInput>;
   defaultLocale: Maybe<StringQueryOperatorInput>;
@@ -6169,7 +6169,7 @@ type ChannelFilterInput = {
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
-  salesChannel: Maybe<StringQueryOperatorInput>;
+  salesChannel: Maybe<IntQueryOperatorInput>;
   canonicalBaseAddress: Maybe<StringQueryOperatorInput>;
   alternateBaseAddresses: Maybe<StringQueryOperatorInput>;
   defaultLocale: Maybe<StringQueryOperatorInput>;

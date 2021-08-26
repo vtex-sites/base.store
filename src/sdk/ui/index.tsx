@@ -18,11 +18,11 @@ export const uiInitialState: InitialState = {
 export const uiActions: UIActions = {
   PUSH_TOAST: (state, data: Toast) => ({
     ...state,
-    toasts: [...state.toast, data],
+    toasts: [...state.toasts, data],
   }),
   POP_TOAST: (state) => ({
     ...state,
-    toasts: state.toast.slice(1),
+    toasts: state.toasts.slice(1),
   }),
 }
 
