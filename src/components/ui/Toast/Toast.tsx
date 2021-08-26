@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
-import type { Toast as UIToast } from 'src/sdk/ui'
 
 const styles = {
   error: {
@@ -21,23 +20,17 @@ const styles = {
 }
 
 function Toast() {
-  const [toast, setToast] = useState<UIToast | undefined>(undefined)
-  const closeToast = useCallback(() => setToast(undefined), [])
   const { toasts, popToast } = useUI()
-  const [nextToast] = toasts
+  const toast = toasts[toasts.length - 1]
+  const ref = useRef<NodeJS.Timeout[]>([])
 
   useEffect(() => {
-    setToast(nextToast)
-
     const id = setTimeout(() => {
       popToast()
-      closeToast()
     }, 2e3)
 
-    return () => {
-      clearTimeout(id)
-    }
-  }, [closeToast, popToast, nextToast])
+    ref.current.push(id)
+  }, [popToast])
 
   if (toast === undefined) {
     return null
@@ -45,7 +38,7 @@ function Toast() {
 
   return (
     <div>
-      <button onClick={closeToast}>Close</button>
+      <button onClick={popToast}>Close</button>
       <div style={styles[toast.status]}>message: {toast.message}</div>
     </div>
   )
