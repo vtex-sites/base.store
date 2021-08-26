@@ -1,17 +1,18 @@
 import React, { lazy, Suspense } from 'react'
-import { useGlobalUIState } from '@vtex/store-sdk'
-import Navbar from 'src/components/common/Navbar'
 import Footer from 'src/components/common/Footer'
+import Navbar from 'src/components/common/Navbar'
+import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
+const Toast = lazy(() => import('src/components/ui/Toast'))
 
 const style = {
   main: { minHeight: '100vh' },
 }
 
 function Layout({ children }: PropsWithChildren<unknown>) {
-  const { displayMinicart } = useGlobalUIState()
+  const { displayMinicart, toasts } = useUI()
 
   return (
     <>
@@ -21,6 +22,11 @@ function Layout({ children }: PropsWithChildren<unknown>) {
       {displayMinicart && (
         <Suspense fallback={null}>
           <CartSidebar />
+        </Suspense>
+      )}
+      {toasts.length > 0 && (
+        <Suspense fallback={null}>
+          <Toast />
         </Suspense>
       )}
     </>
