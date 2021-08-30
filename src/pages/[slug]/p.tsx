@@ -27,7 +27,7 @@ const Page: FC<Props> = (props) => {
     data: serverData,
   } = props
 
-  const { data: browerData } = useQuery<
+  const { data: browserData } = useQuery<
     BrowserProductPageQueryQuery,
     BrowserProductPageQueryQueryVariables
   >({
@@ -35,7 +35,7 @@ const Page: FC<Props> = (props) => {
     variables: { slug },
   })
 
-  if (browerData == null) {
+  if (browserData == null) {
     return <div>loading...</div>
   }
 
@@ -43,7 +43,7 @@ const Page: FC<Props> = (props) => {
     <View
       {...props}
       site={serverData.site!}
-      product={browerData.vtex.product}
+      product={browserData.vtex.product}
     />
   )
 }
