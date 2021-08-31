@@ -1,8 +1,8 @@
 export const pages = {
   pdp: '/camiseta-azul-marinho/p',
-  collection: '/women',
-  collection_filtered: '/women/red?map=c,color',
-  search: '/s/shirt?map=term',
+  collection: '/masculino',
+  collection_filtered: '/masculino/preta?map=c,cor',
+  search: '/s/camisa?map=term',
   home: '/',
 }
 
