@@ -1,6 +1,6 @@
 const VTEXLHConfig = require('@vtex/lighthouse-config').default
 
-const urls = ['/', '/women', '/organza-sleeve-top/p']
+const urls = ['/', '/women', '/camiseta-azul-marinho/p']
 
 module.exports = VTEXLHConfig({
   urls,
