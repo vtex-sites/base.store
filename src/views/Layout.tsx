@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
+import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
@@ -13,6 +14,8 @@ const style = {
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()
+
+  useCartNotificationEffect()
 
   return (
     <>

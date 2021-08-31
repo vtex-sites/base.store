@@ -1,12 +1,12 @@
-import { useCart } from '@vtex/store-sdk'
 import { useCallback } from 'react'
-import type { CartItem } from '@vtex/store-sdk'
 
 import { useUI } from '../ui'
+import { useCart } from './useCart'
+import type { CartItem } from './useCart'
 
-export const useBuyButton = (item: CartItem | null | undefined) => {
+export const useBuyButton = (item: Omit<CartItem, 'id'> | null) => {
   const { addItem } = useCart()
-  const { openMinicart, pushToast } = useUI()
+  const { openMinicart } = useUI()
 
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -18,10 +18,14 @@ export const useBuyButton = (item: CartItem | null | undefined) => {
 
       addItem(item)
       openMinicart()
-      pushToast({ message: `Item added to cart ${item.id}`, status: 'info' })
     },
-    [addItem, item, openMinicart, pushToast]
+    [addItem, item, openMinicart]
   )
 
-  return { onClick }
+  return {
+    onClick,
+    'data-testid': 'buy-button',
+    'data-sku': item!.skuId,
+    'data-seller': item!.seller,
+  }
 }

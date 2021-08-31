@@ -6,19 +6,16 @@
  * TODO: Improve structured data validaton by actually using schema.org's schemas
  */
 
-const options = {
-  onBeforeLoad: () => {
-    // @ts-ignore
-    // eslint-disable-next-line no-proto
-    delete window.navigator.__proto__.ServiceWorker
-  },
-}
+import { pages, options } from '../global'
 
 describe('Home Page Seo', () => {
-  const pathname = '/'
+  beforeEach(() => {
+    cy.clearIDB()
+  })
 
   it('has meta/canonical/link tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.home, options)
+    cy.waitForHydration()
 
     cy.title().should('exist')
     cy.get('meta[name="description"]').should('exist')
@@ -40,7 +37,8 @@ describe('Home Page Seo', () => {
   })
 
   it('has structured data', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.home, options)
+    cy.waitForHydration()
 
     cy.get('script[type="application/ld+json"]')
       .should('exist')
@@ -53,7 +51,8 @@ describe('Home Page Seo', () => {
   })
 
   it('has OpenGraph tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.home, options)
+    cy.waitForHydration()
 
     cy.get('meta[property="og:type"]')
       .should('exist')
@@ -76,10 +75,13 @@ describe('Home Page Seo', () => {
 })
 
 describe('Product Page Seo', () => {
-  const pathname = '/organza-sleeve-top/p'
+  beforeEach(() => {
+    cy.clearIDB()
+  })
 
   it('has meta/canonical/link tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.pdp, options)
+    cy.waitForHydration()
 
     cy.title().should('exist')
     cy.get('meta[name="description"]').should('exist')
@@ -97,13 +99,14 @@ describe('Product Page Seo', () => {
       .should('exist')
       .should(($link) => {
         expect($link.attr('href')).to.eq(
-          `https://${window.location.host}${pathname}`
+          `https://${window.location.host}${pages.pdp}`
         )
       })
   })
 
   it('has structured data', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.pdp, options)
+    cy.waitForHydration()
 
     // Assert there is at least one Product and BreadcrumbList on structured data tags
     cy.get('script[type="application/ld+json"]')
@@ -122,7 +125,8 @@ describe('Product Page Seo', () => {
   })
 
   it('has OpenGraph tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.pdp, options)
+    cy.waitForHydration()
 
     cy.get('meta[property="og:url"]')
       .should('exist')
@@ -163,10 +167,13 @@ describe('Product Page Seo', () => {
 })
 
 describe('Collection Page Seo', () => {
-  const pathname = '/women'
+  beforeEach(() => {
+    cy.clearIDB()
+  })
 
   it('has meta/canonical/link tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
 
     cy.title().should('exist')
     cy.get('meta[name="description"]').should('exist')
@@ -184,13 +191,14 @@ describe('Collection Page Seo', () => {
       .should('exist')
       .should(($link) => {
         expect($link.attr('href')).to.eq(
-          `https://${window.location.host}${pathname}`
+          `https://${window.location.host}${pages.collection}`
         )
       })
   })
 
   it('has structured data', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
 
     // Assert there is at least one BreadcrumbList on structured data tags
     cy.get('script[type="application/ld+json"]')
@@ -208,7 +216,8 @@ describe('Collection Page Seo', () => {
   })
 
   it('has OpenGraph tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
 
     cy.get('meta[property="og:type"]')
       .should('exist')
@@ -231,10 +240,9 @@ describe('Collection Page Seo', () => {
 })
 
 describe('Filtered Collection Page Seo', () => {
-  const pathname = '/women/red?map=c,color'
-
   it('has canonical pointing to parent url', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.collection_filtered, options)
+    cy.waitForHydration()
 
     cy.get('link[rel="canonical"]')
       .should('exist')
@@ -246,7 +254,8 @@ describe('Filtered Collection Page Seo', () => {
   })
 
   it('has structured data', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.collection_filtered, options)
+    cy.waitForHydration()
 
     // Assert there is at least one BreadcrumbList on structured data tags
     cy.get('script[type="application/ld+json"]')
@@ -264,7 +273,8 @@ describe('Filtered Collection Page Seo', () => {
   })
 
   it('has OpenGraph tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.collection_filtered, options)
+    cy.waitForHydration()
 
     cy.get('meta[property="og:type"]')
       .should('exist')
@@ -287,10 +297,9 @@ describe('Filtered Collection Page Seo', () => {
 })
 
 describe('Search Page Seo', () => {
-  const pathname = '/s/shirt?map=term'
-
   it('has meta/canonical/link tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.search, options)
+    cy.waitForHydration()
 
     cy.title().should('exist')
     cy.get('meta[name="description"]').should('exist')
@@ -308,7 +317,8 @@ describe('Search Page Seo', () => {
   })
 
   it('has OpenGraph tags', () => {
-    cy.visit(pathname, options)
+    cy.visit(pages.search, options)
+    cy.waitForHydration()
 
     cy.get('meta[property="og:type"]')
       .should('exist')

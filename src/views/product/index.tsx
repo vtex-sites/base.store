@@ -20,7 +20,7 @@ function View({ product: serverData, site }: Props) {
    */
   const { data } = useProduct(
     { slug: serverData.slug! },
-    { vtex: { product: serverData } }
+    { vtex: { product: serverData as any } }
   )
 
   const product = data?.vtex.product

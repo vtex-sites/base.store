@@ -1,16 +1,22 @@
-import { useCart } from '@vtex/store-sdk'
 import React from 'react'
-import { useUI } from 'src/sdk/ui'
+import { useCart } from 'src/sdk/cart/useCart'
+import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
+import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
+import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 
 import CartItem from '../CartItem'
 
 function CartSidebar() {
-  const { closeMinicart } = useUI()
-  const { items, total, subTotal, totalUniqueItems, totalItems } = useCart()
+  const btnProps = useCheckoutButton()
+  const cart = useCart()
+  const subTotal = useFormattedPrice(cart.subTotal)
+  const total = useFormattedPrice(cart.total)
+  const toggleProps = useCartToggleButton()
+  const { items, totalItems, totalUniqueItems, isValidating } = cart
 
   return (
-    <div>
-      <button onClick={closeMinicart}>Close</button>
+    <div data-testid="cart-sidebar">
+      <button {...toggleProps}>Close</button>
       <div>Cart Item Detais</div>
 
       {items.map((item) => (
@@ -23,6 +29,7 @@ function CartSidebar() {
       <div>items: {totalItems}</div>
       <div>subTotal: {subTotal}</div>
       <div>total: {total}</div>
+      <button {...btnProps}>{isValidating ? 'loading...' : 'Checkout'}</button>
     </div>
   )
 }

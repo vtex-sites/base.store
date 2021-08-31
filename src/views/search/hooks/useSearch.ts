@@ -6,8 +6,8 @@ import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   FullTextSearchQueryQuery,
   FullTextSearchQueryQueryVariables,
-} from '../__generated__/FullTextSearchQuery.graphql'
-import { FullTextSearchQuery } from '../__generated__/FullTextSearchQuery.graphql'
+} from './__generated__/FullTextSearchQuery.graphql'
+import { FullTextSearchQuery } from './__generated__/FullTextSearchQuery.graphql'
 
 export const useSearch = (searchParams: SearchParamsState) => {
   const variables = useQueryVariablesFromSearchParams(searchParams)
