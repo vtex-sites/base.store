@@ -2208,10 +2208,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@^0.373.36":
-  version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.36.tgz#9fc328d78af5102971c99e865b73560a2d9af830"
-  integrity sha512-3IwbA0r87cAZHixFrEwbdDztJzBcxph1+/sPfimi6EVeZ4AYqJtCQgJj4v2v49vEdsYnaR3ySyhhkmdNEoNL2w==
+"@vtex/gatsby-plugin-graphql@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.0.1.tgz#f08a98518cf32dfaa53af102dbd4c0bab49a93a0"
+  integrity sha512-DlRQT9AKB7otzg8fZ7gsWc9r/rcfN6Qu12ZXZhw2nHq6n063ziy4xOohmQIwPXzp0APHrdGs6cV7EtdrcKscbQ==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2220,23 +2220,23 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@0.373.36":
-  version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-0.373.36.tgz#26e18a060e29d3be13fa652e0accbda4a82e94da"
-  integrity sha512-DUPXe5mWWn4lTorMzSaBfA7PA6jBiRyAesGekdRlNC3dAJzj3TiB+zhtSgoMhcZE2RewcgmLvccuQ1wj6m7rWw==
+"@vtex/gatsby-plugin-nginx@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.0.1.tgz#11db6c72b61375748fa02b08eb975326a4a3bf94"
+  integrity sha512-LYU1Rn7DbZyidAG0aHaVJj/X2/Ibc1B0x9XbmYmH4lw1CQT7vvBss3qwF+1oq7xC7p4Qlpo3JL3jHXOKJk5pTw==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@0.373.36":
-  version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.36.tgz#add14876fbef19ad15fb09180d10f9afcce60498"
-  integrity sha512-IeHvyg/2Z2eULI+4RnUfUVx5RkS8L5oSD+gbQuL+eHniqkW1SMhCqQEBOdAgw1zihEOIWHCHUNSMvEZ5b3dAug==
+"@vtex/gatsby-plugin-thumbor@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.0.1.tgz#cb87410327e708ffd1fa678f947be07b5f41c136"
+  integrity sha512-nNbogVz2NjljSo61pv1RY4sfDCi4u+hjIkfwbXeE8d3jp9Hzubm0hFYe5kk8zmbcfyzBqfvoLj4BVgPokFrPrA==
 
-"@vtex/gatsby-source-vtex@0.373.36":
-  version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.36.tgz#fb05c8ab1de01a4c1122508e40d97859fe5c9cb4"
-  integrity sha512-Vt7FOdv1EyY4+4LrbnVBcReJUhXU+NF7jri+W7GoQEp4Jh/AV1Tcv3KGIu7NLnFXjct8YvCmr+XoqOZuAUmqNA==
+"@vtex/gatsby-source-vtex@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-1.0.1.tgz#36bc15fbb27ee31a7038edd3d9de9a901b38a0da"
+  integrity sha512-4FCycJFL6aXEDrJN9c4a2iVKtygrUQ7BNSFfXWc+ohGsAZSrSLF74Im5fRDSDWPnBtbcju8HHuj1vBX4gGa4UQ==
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2244,20 +2244,20 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/lighthouse-config@0.373.36":
-  version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-0.373.36.tgz#071a0fed16183feca86e8f123573771ad64fd069"
-  integrity sha512-02P3mvaVe+0WfcnhBxrhRU3aIDzj5afiLx+zNojJO/DbI3ET/k8qyhtpn/mEJ3Z1Cu93JuLwypYwx4PBagX0zw==
+"@vtex/lighthouse-config@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.0.1.tgz#1e0b0c4503c7df643d14aad89d1cbea12a68ed1a"
+  integrity sha512-pMYbKoh9aj5trwta/ce+Qy+vlzdarMLG592MbDtwaXGj39c0vwXbfM2eQ9DCiqmivrZFLLn9MWyopUjnGEdkzQ==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-sdk@^0.373.36":
-  version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-0.373.36.tgz#37c87735876819d9cc77dd27488bcdabf99461b4"
-  integrity sha512-Cg6LEF1/emXowlNm08u555yb0lOck6/mR/w2qt4gy6xhqr7cezve3xc92PXTkX4GtTfBq9/wvZE1OpRWPvd2Ew==
+"@vtex/store-sdk@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.0.1.tgz#89684155ee388fa46ed34ff89ac7cc3888fa9881"
+  integrity sha512-j71LxooQMZXDqJfaYnQwqNceV7UgZW77ox1qwg7pzV5T5gLtpPNFk7oiZOlTrnoADdXjsbj3pnJPTk5oz5oD9A==
   dependencies:
     idb-keyval "^5.1.3"
 
