@@ -32,8 +32,6 @@ const getSizes = (variants) =>
       .flat()
   )
 
-console.log({ cwd: process.cwd() })
-
 module.exports = {
   siteMetadata: {
     title: 'Fashion Store',
@@ -149,9 +147,9 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: `@vtex/gatsby-plugin-graphql`,
-    },
+    // {
+    //   resolve: `@vtex/gatsby-plugin-graphql`,
+    // },
     {
       resolve: `@vtex/gatsby-source-vtex`,
       options: {
