@@ -2208,10 +2208,9 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@^0.373.36":
+"@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-plugin-graphql":
   version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-0.373.36.tgz#9fc328d78af5102971c99e865b73560a2d9af830"
-  integrity sha512-3IwbA0r87cAZHixFrEwbdDztJzBcxph1+/sPfimi6EVeZ4AYqJtCQgJj4v2v49vEdsYnaR3ySyhhkmdNEoNL2w==
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-plugin-graphql#3da222e86dabe2cf29705abab1d512360c10a8c7"
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2228,15 +2227,20 @@
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@0.373.36":
+"@vtex/gatsby-plugin-nginx@https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-plugin-nginx":
   version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-0.373.36.tgz#add14876fbef19ad15fb09180d10f9afcce60498"
-  integrity sha512-IeHvyg/2Z2eULI+4RnUfUVx5RkS8L5oSD+gbQuL+eHniqkW1SMhCqQEBOdAgw1zihEOIWHCHUNSMvEZ5b3dAug==
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-plugin-nginx#f82f3a5e3f734289b65851776919c12b2df264c9"
+  dependencies:
+    kebab-hash "^0.1.2"
+    webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-source-vtex@0.373.36":
+"@vtex/gatsby-plugin-thumbor@https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-plugin-thumbor":
   version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-0.373.36.tgz#fb05c8ab1de01a4c1122508e40d97859fe5c9cb4"
-  integrity sha512-Vt7FOdv1EyY4+4LrbnVBcReJUhXU+NF7jri+W7GoQEp4Jh/AV1Tcv3KGIu7NLnFXjct8YvCmr+XoqOZuAUmqNA==
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-plugin-thumbor#e06e2cb14f285d2ec8fefbb8e9d191913d916209"
+
+"@vtex/gatsby-source-vtex@https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-source-vtex":
+  version "0.373.36"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/gatsby-source-vtex#a13bc11dbb02b43578dcd6edc9f94d7741ea6f2b"
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2254,10 +2258,9 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-sdk@^0.373.36":
+"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/store-sdk":
   version "0.373.36"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-0.373.36.tgz#37c87735876819d9cc77dd27488bcdabf99461b4"
-  integrity sha512-Cg6LEF1/emXowlNm08u555yb0lOck6/mR/w2qt4gy6xhqr7cezve3xc92PXTkX4GtTfBq9/wvZE1OpRWPvd2Ew==
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/850150e6/@vtex/store-sdk#a00424cc3ae29d0aa27d6973eeae4cc15728a26a"
   dependencies:
     idb-keyval "^5.1.3"
 
