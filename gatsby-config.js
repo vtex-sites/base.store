@@ -32,6 +32,8 @@ const getSizes = (variants) =>
       .flat()
   )
 
+console.log({ cwd: process.cwd() })
+
 module.exports = {
   siteMetadata: {
     title: 'Fashion Store',
