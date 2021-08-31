@@ -171,5 +171,8 @@ module.exports = {
           : [['resolver', '8.8.8.8']],
       },
     },
+    {
+      resolve: 'gatsby-plugin-gatsby-cloud',
+    },
   ],
 }
