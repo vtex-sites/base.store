@@ -147,9 +147,9 @@ module.exports = {
         },
       },
     },
-    // {
-    //   resolve: `@vtex/gatsby-plugin-graphql`,
-    // },
+    {
+      resolve: `@vtex/gatsby-plugin-graphql`,
+    },
     {
       resolve: `@vtex/gatsby-source-vtex`,
       options: {
