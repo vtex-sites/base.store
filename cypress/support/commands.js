@@ -23,3 +23,21 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('getById', (selector, ...args) => {
+  return cy.get(`[data-testid=${selector}]`, ...args)
+})
+
+Cypress.Commands.add('waitForHydration', () => {
+  return cy.get(`[data-testid=react-hydrated]`).should('exist')
+})
+
+Cypress.Commands.add('clearIDB', () => {
+  return indexedDB.deleteDatabase('keyval-store')
+})
+
+Cypress.Commands.add('itemsInCart', (count) => {
+  return cy.getById('cart-toggle').should(($toggle) => {
+    expect($toggle.attr('data-items')).to.eq(count.toString())
+  })
+})

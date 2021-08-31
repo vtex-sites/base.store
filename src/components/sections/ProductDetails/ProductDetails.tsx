@@ -4,7 +4,8 @@ import React, { useMemo } from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useSkuId } from 'src/sdk/product/useSkuId'
-import type { ProductDetailsFragment_ProductFragment } from 'src/views/product/__generated__/ProductViewFragment_product.graphql'
+
+import type { ProductDetailsFragment_ProductFragment } from './__generated__/ProductDetailsFragment_product.graphql'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -23,20 +24,25 @@ const useSku = (product: Props['product']) => {
 
 function ProductDetails({ product }: Props) {
   const sku = useSku(product)
-  const { images, sellers } = sku ?? {}
+  const { images, sellers, itemId } = sku ?? {}
   const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  const offer = sellers?.[0]?.commercialOffer
   const imageSrc = src ?? ''
   const imageAlt = alt ?? ''
+  const [seller] = sellers!
+  const offer = seller!.commercialOffer
   const image = useImage(imageSrc, 'product.details')
   const buyProps = useBuyButton(
     offer && {
-      id: product.id!,
+      name: product.productName!,
       price: offer.spotPrice!,
       listPrice: offer.listPrice!,
-      quantity: {
-        selling: 1,
-        gift: 0,
+      quantity: 1,
+      giftQuantity: 0,
+      seller: seller!.sellerId!,
+      skuId: itemId!,
+      image: {
+        src: imageSrc,
+        alt: imageAlt,
       },
     }
   )
@@ -62,6 +68,7 @@ export const fragment = graphql`
         imageText
       }
       sellers {
+        sellerId
         commercialOffer: commertialOffer {
           spotPrice
           listPrice: ListPrice

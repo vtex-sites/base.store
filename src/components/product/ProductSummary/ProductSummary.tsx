@@ -4,6 +4,7 @@ import React from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useProductLink } from 'src/sdk/product/useProductLink'
+import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 
 import type { ProductSummary_ProductFragment } from './__generated__/ProductSummary_product.graphql'
 
@@ -13,24 +14,33 @@ interface Props {
 
 const styles = {
   image: { width: '100%' },
+  listPrice: { textDecoration: 'line-through' },
+  offer: { display: 'flex', justifyContent: 'space-between' },
 }
 
 function ProductSummary({ product }: Props) {
   const { images, sellers, itemId } = product.items?.[0] ?? {}
   const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  const offer = sellers?.[0]?.commercialOffer
   const imageSrc = src ?? ''
   const imageAlt = alt ?? ''
-  const image = useImage(imageSrc, 'product.summary')
+  const [seller] = sellers!
+  const offer = seller!.commercialOffer
   const linkProps = useProductLink({ slug: product.slug!, skuId: itemId! })
+  const image = useImage(imageSrc, 'product.summary')
+  const price = useFormattedPrice(offer!.spotPrice!)
+  const listPrice = useFormattedPrice(offer!.listPrice!)
   const buyProps = useBuyButton(
     offer && {
-      id: product.id!,
+      name: product.productName!,
+      skuId: itemId!,
       price: offer.spotPrice!,
       listPrice: offer.listPrice!,
-      quantity: {
-        selling: 1,
-        gift: 0,
+      quantity: 1,
+      giftQuantity: 0,
+      seller: seller!.sellerId!,
+      image: {
+        src: imageSrc,
+        alt: imageAlt,
       },
     }
   )
@@ -44,6 +54,10 @@ function ProductSummary({ product }: Props) {
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{product.productName}</div>
+      <div style={styles.offer}>
+        <span style={styles.listPrice}>{listPrice}</span>
+        <span>{price}</span>
+      </div>
       <button {...buyProps}>Add to cart</button>
     </Link>
   )
@@ -62,6 +76,7 @@ export const fragment = graphql`
         imageText
       }
       sellers {
+        sellerId
         commercialOffer: commertialOffer {
           spotPrice
           listPrice: ListPrice

@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 
 export const useSkuId = () => {
   const { href, state } = useLocation()
-  const skuId = (state as any)?.skuId ?? null
+  const skuId: string | null = (state as any)?.skuId ?? null
 
   return useMemo(
     () =>

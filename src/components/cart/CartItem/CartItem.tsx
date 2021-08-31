@@ -1,40 +1,35 @@
-import React, { useCallback } from 'react'
-import type { CartItem as ICartItem } from '@vtex/store-sdk'
-import { useCart } from '@vtex/store-sdk'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import React from 'react'
+import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
+import { useImage } from 'src/sdk/image/useImage'
+import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import type { CartItem as ICartItem } from 'src/sdk/cart/useCart'
 
 interface Props {
   item: ICartItem
 }
 
-const useRemoveButton = (item: ICartItem | null | undefined) => {
-  const { removeItem } = useCart()
-
-  const onClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-      e.preventDefault()
-
-      if (!item) {
-        return
-      }
-
-      removeItem(item.id)
-    },
-    [item, removeItem]
-  )
-
-  return { onClick }
-}
-
 function CartItem({ item }: Props) {
   const btnProps = useRemoveButton(item)
+  const price = useFormattedPrice(item.price)
+  const listPrice = useFormattedPrice(item.listPrice)
+  const image = useImage(item.image.src, 'product.miniature')
 
   return (
-    <div>
+    <div
+      data-testid="cart-item"
+      data-sku={item.skuId}
+      data-seller={item.seller}
+    >
+      <GatsbyImage image={image} alt={item.image.alt} />
+      <div>name: {item.name}</div>
       <div>id: {item.id}</div>
-      <div>price: {item.price}</div>
-      <div>listPrice: {item.listPrice}</div>
-      <div>quantity: {item.quantity.selling}</div>
-      <div>gifts: {item.quantity.gift}</div>
+      <div>skuId: {item.skuId}</div>
+      <div>seller: {item.seller}</div>
+      <div>price: {price}</div>
+      <div>listPrice: {listPrice}</div>
+      <div>quantity: {item.quantity}</div>
+      <div>gifts: {item.giftQuantity}</div>
       <button {...btnProps}>Remove Item</button>
     </div>
   )

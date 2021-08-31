@@ -15,5 +15,6 @@ export const useProductLink = ({ slug, skuId }: Options) =>
       to: `/${slug}/p`,
       state: { skuId },
       onClick,
+      'data-testid': 'product-link',
     }
   }, [skuId, slug])

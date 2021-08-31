@@ -1,12 +1,12 @@
-import { useCart } from '@vtex/store-sdk'
 import React from 'react'
-import { useUI } from 'src/sdk/ui'
+import { useCart } from 'src/sdk/cart/useCart'
+import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
 function CartToggle() {
-  const { openMinicart } = useUI()
+  const btnProps = useCartToggleButton()
   const { totalUniqueItems } = useCart()
 
-  return <button onClick={openMinicart}>cart: {totalUniqueItems}</button>
+  return <button {...btnProps}>cart: {totalUniqueItems}</button>
 }
 
 export default CartToggle
