@@ -1,13 +1,12 @@
+import { CollectionSearchQuery } from '@generated/CollectionSearchQuery.graphql'
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import type { SearchParamsState } from '@vtex/store-sdk'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
-
+import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   CollectionSearchQueryQuery,
   CollectionSearchQueryQueryVariables,
-} from './__generated__/CollectionSearchQuery.graphql'
-import { CollectionSearchQuery } from './__generated__/CollectionSearchQuery.graphql'
+} from '@generated/CollectionSearchQuery.graphql'
 
 export const useCollection = (searchParams: SearchParamsState) => {
   const variables = useQueryVariablesFromSearchParams(searchParams)

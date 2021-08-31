@@ -131,6 +131,7 @@ module.exports = {
       resolve: 'gatsby-plugin-root-import',
       options: {
         src: resolve('./src'),
+        '@generated': resolve('./__generated__'),
       },
     },
     {

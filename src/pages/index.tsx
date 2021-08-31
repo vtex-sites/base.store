@@ -2,8 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import View from 'src/views/home'
 import type { PageProps } from 'gatsby'
-
-import type { HomePageQueryQuery } from './__generated__/HomePageQuery.graphql'
+import type { HomePageQueryQuery } from '@generated/HomePageQuery.graphql'
 
 export type Props = PageProps<HomePageQueryQuery>
 

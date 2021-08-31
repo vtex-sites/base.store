@@ -4,11 +4,10 @@ import { priceRange } from 'src/sdk/search/priceRange'
 import View from 'src/views/collection'
 import type { PageProps } from 'gatsby'
 import type { SearchParamsState } from '@vtex/store-sdk'
-
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
-} from './__generated__/CollectionPageQuery.graphql'
+} from '@generated/CollectionPageQuery.graphql'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,

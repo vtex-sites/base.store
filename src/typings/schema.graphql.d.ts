@@ -262,6 +262,8 @@ type DirectoryCtimeArgs = {
 type Site = Node & {
   buildTime: Maybe<Scalars['Date']>;
   siteMetadata: Maybe<SiteSiteMetadata>;
+  port: Maybe<Scalars['Int']>;
+  host: Maybe<Scalars['String']>;
   proxy: Maybe<Array<Maybe<SiteProxy>>>;
   flags: Maybe<SiteFlags>;
   polyfill: Maybe<Scalars['Boolean']>;
@@ -761,11 +763,10 @@ type SitePluginPluginOptions = {
   env: Maybe<SitePluginPluginOptionsEnv>;
   defer: Maybe<Scalars['Boolean']>;
   server: Maybe<Scalars['String']>;
-  basePath: Maybe<Scalars['String']>;
-  sizes: Maybe<Array<Maybe<Scalars['String']>>>;
   color: Maybe<Scalars['String']>;
   showSpinner: Maybe<Scalars['Boolean']>;
   src: Maybe<Scalars['String']>;
+  _generated: Maybe<Scalars['String']>;
   compare: Maybe<Scalars['Boolean']>;
   baseline: Maybe<Scalars['Boolean']>;
   html: Maybe<Scalars['Boolean']>;
@@ -2557,6 +2558,8 @@ type QueryAllDirectoryArgs = {
 type QuerySiteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   proxy: Maybe<SiteProxyFilterListInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -3350,6 +3353,8 @@ type SiteFieldsEnum =
   | 'siteMetadata___titleTemplate'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
+  | 'port'
+  | 'host'
   | 'proxy'
   | 'proxy___prefix'
   | 'proxy___url'
@@ -3460,6 +3465,8 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   proxy: Maybe<SiteProxyFilterListInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -3688,11 +3695,10 @@ type SitePluginPluginOptionsFilterInput = {
   env: Maybe<SitePluginPluginOptionsEnvFilterInput>;
   defer: Maybe<BooleanQueryOperatorInput>;
   server: Maybe<StringQueryOperatorInput>;
-  basePath: Maybe<StringQueryOperatorInput>;
-  sizes: Maybe<StringQueryOperatorInput>;
   color: Maybe<StringQueryOperatorInput>;
   showSpinner: Maybe<BooleanQueryOperatorInput>;
   src: Maybe<StringQueryOperatorInput>;
+  _generated: Maybe<StringQueryOperatorInput>;
   compare: Maybe<BooleanQueryOperatorInput>;
   baseline: Maybe<BooleanQueryOperatorInput>;
   html: Maybe<BooleanQueryOperatorInput>;
@@ -4004,11 +4010,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
   | 'pluginCreator___pluginOptions___defer'
   | 'pluginCreator___pluginOptions___server'
-  | 'pluginCreator___pluginOptions___basePath'
-  | 'pluginCreator___pluginOptions___sizes'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
   | 'pluginCreator___pluginOptions___src'
+  | 'pluginCreator___pluginOptions____generated'
   | 'pluginCreator___pluginOptions___compare'
   | 'pluginCreator___pluginOptions___baseline'
   | 'pluginCreator___pluginOptions___html'
@@ -5802,11 +5807,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___env___deploy_preview___policy'
   | 'pluginOptions___defer'
   | 'pluginOptions___server'
-  | 'pluginOptions___basePath'
-  | 'pluginOptions___sizes'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
   | 'pluginOptions___src'
+  | 'pluginOptions____generated'
   | 'pluginOptions___compare'
   | 'pluginOptions___baseline'
   | 'pluginOptions___html'

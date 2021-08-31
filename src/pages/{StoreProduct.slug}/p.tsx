@@ -2,11 +2,10 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import View from 'src/views/product'
 import type { PageProps } from 'gatsby'
-
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
-} from './__generated__/ProductPageQuery.graphql'
+} from '@generated/ProductPageQuery.graphql'
 
 export type Props = PageProps<
   ProductPageQueryQuery,

@@ -1,11 +1,11 @@
 import React from 'react'
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useSearch } from 'src/sdk/search/useSearch'
+import type { GalleryQueryQuery } from '@generated/GalleryQuery.graphql'
+import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
+import type { ProductGallery_ProductSearchFragment } from '@generated/ProductGallery_productSearch.graphql'
 
 import GalleryPage from './ProductGalleryPage'
-import type { GalleryQueryQuery } from './__generated__/GalleryQuery.graphql'
-import type { ProductGallery_FacetsFragment } from './__generated__/ProductGallery_facets.graphql'
-import type { ProductGallery_ProductSearchFragment } from './__generated__/ProductGallery_productSearch.graphql'
 
 interface Props {
   initialData?: GalleryQueryQuery

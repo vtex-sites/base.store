@@ -1,11 +1,11 @@
 import React from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 import ProductSummary from '../ProductSummary'
-import type { ProductSummary_ProductFragment } from '../ProductSummary/__generated__/ProductSummary_product.graphql'
 import * as styles from './ProductGrid.module.css'
 
 interface Props {
-  products: ProductSummary_ProductFragment[]
+  products: Array<ComponentPropsWithoutRef<typeof ProductSummary>['product']>
 }
 
 function ProductGrid({ products }: Props) {

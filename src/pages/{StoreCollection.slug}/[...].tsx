@@ -3,11 +3,10 @@ import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
 import View from 'src/views/collection'
 import type { PageProps } from 'gatsby'
-
 import type {
   BrowserCollectionPageQueryQuery,
   BrowserCollectionPageQueryQueryVariables,
-} from './__generated__/BrowserCollectionPageQuery.graphql'
+} from '@generated/BrowserCollectionPageQuery.graphql'
 
 export type Props = PageProps<
   BrowserCollectionPageQueryQuery,

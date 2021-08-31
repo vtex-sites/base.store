@@ -5,9 +5,9 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
+import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
+import type { ProductSeoFragment_ProductFragment } from '@generated/ProductSeoFragment_product.graphql'
 
-import type { ProductSeoFragment_SiteFragment } from './__generated__/ProductSeoFragment_site.graphql'
-import type { ProductSeoFragment_ProductFragment } from './__generated__/ProductSeoFragment_product.graphql'
 import { useMetadata } from './hooks/useMetadata'
 import { useBreadcrumbJsonLd } from './hooks/useBreadcrumbJsonLd'
 import { useProductJsonLd } from './hooks/useProductJsonLd'

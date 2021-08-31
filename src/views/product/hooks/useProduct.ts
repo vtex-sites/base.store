@@ -1,11 +1,10 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-
 import type {
   BrowserProductQueryQuery,
   BrowserProductQueryQueryVariables,
-} from './__generated__/BrowserProductQuery.graphql'
-import { BrowserProductQuery } from './__generated__/BrowserProductQuery.graphql'
+} from '@generated/BrowserProductQuery.graphql'
+import { BrowserProductQuery } from '@generated/BrowserProductQuery.graphql'
 
 export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   variables: BrowserProductQueryQueryVariables,
