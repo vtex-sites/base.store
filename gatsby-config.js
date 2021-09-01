@@ -163,6 +163,7 @@ module.exports = {
         httpOptions: [
           ['merge_slashes', 'off'],
           ['proxy_http_version', '1.1'],
+          ['absolute_redirect', 'off'],
         ],
         serverOptions: isCI
           ? [['resolver', '169.254.169.253']]
