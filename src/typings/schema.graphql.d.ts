@@ -766,6 +766,7 @@ type SitePluginPluginOptions = {
   color: Maybe<Scalars['String']>;
   showSpinner: Maybe<Scalars['Boolean']>;
   src: Maybe<Scalars['String']>;
+  _generated: Maybe<Scalars['String']>;
   compare: Maybe<Scalars['Boolean']>;
   baseline: Maybe<Scalars['Boolean']>;
   html: Maybe<Scalars['Boolean']>;
@@ -3693,6 +3694,7 @@ type SitePluginPluginOptionsFilterInput = {
   color: Maybe<StringQueryOperatorInput>;
   showSpinner: Maybe<BooleanQueryOperatorInput>;
   src: Maybe<StringQueryOperatorInput>;
+  _generated: Maybe<StringQueryOperatorInput>;
   compare: Maybe<BooleanQueryOperatorInput>;
   baseline: Maybe<BooleanQueryOperatorInput>;
   html: Maybe<BooleanQueryOperatorInput>;
@@ -4009,6 +4011,7 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
   | 'pluginCreator___pluginOptions___src'
+  | 'pluginCreator___pluginOptions____generated'
   | 'pluginCreator___pluginOptions___compare'
   | 'pluginCreator___pluginOptions___baseline'
   | 'pluginCreator___pluginOptions___html'
@@ -5807,6 +5810,7 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
   | 'pluginOptions___src'
+  | 'pluginOptions____generated'
   | 'pluginOptions___compare'
   | 'pluginOptions___baseline'
   | 'pluginOptions___html'

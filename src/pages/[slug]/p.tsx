@@ -5,16 +5,15 @@ import { useQuery } from 'src/sdk/graphql/useQuery'
 import View from 'src/views/product'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
-
-import { BrowserProductPageQuery } from './__generated__/BrowserProductPageQuery.graphql'
+import { BrowserProductPageQuery } from '@generated/BrowserProductPageQuery.graphql'
 import type {
   BrowserProductPageQueryQuery,
   BrowserProductPageQueryQueryVariables,
-} from './__generated__/BrowserProductPageQuery.graphql'
+} from '@generated/BrowserProductPageQuery.graphql'
 import type {
   ServerProductPageQueryQuery,
   ServerProductPageQueryQueryVariables,
-} from './__generated__/ServerProductPageQuery.graphql'
+} from '@generated/ServerProductPageQuery.graphql'
 
 export type Props = PageProps<
   ServerProductPageQueryQuery,

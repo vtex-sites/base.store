@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
+import type { ProductViewFragment_ProductFragment } from '@generated/ProductViewFragment_product.graphql'
+import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
 
 import { useProduct } from './hooks/useProduct'
 import Seo from './Seo'
-import type { ProductSeoFragment_SiteFragment } from './Seo/__generated__/ProductSeoFragment_site.graphql'
-import type { ProductViewFragment_ProductFragment } from './__generated__/ProductViewFragment_product.graphql'
 
 interface Props {
   site: ProductSeoFragment_SiteFragment

@@ -2,12 +2,11 @@ import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
 import type { SearchParamsState } from '@vtex/store-sdk'
-
 import type {
   FullTextSearchQueryQuery,
   FullTextSearchQueryQueryVariables,
-} from './__generated__/FullTextSearchQuery.graphql'
-import { FullTextSearchQuery } from './__generated__/FullTextSearchQuery.graphql'
+} from '@generated/FullTextSearchQuery.graphql'
+import { FullTextSearchQuery } from '@generated/FullTextSearchQuery.graphql'
 
 export const useSearch = (searchParams: SearchParamsState) => {
   const variables = useQueryVariablesFromSearchParams(searchParams)

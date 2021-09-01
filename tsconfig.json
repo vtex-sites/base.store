@@ -4,13 +4,14 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "module": "ESNext",
-    "rootDir": "src",
+    "rootDir": ".",
     "baseUrl": ".",
     "noEmit": true,
     "paths": {
-      "src/*": ["src/*"]
+      "src/*": ["src/*"],
+      "@generated/*": ["__generated__/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "__generated__/**/*.ts"],
   "exclude": ["node_modules", "public"]
 }

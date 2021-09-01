@@ -4,8 +4,7 @@ import React, { useMemo } from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useSkuId } from 'src/sdk/product/useSkuId'
-
-import type { ProductDetailsFragment_ProductFragment } from './__generated__/ProductDetailsFragment_product.graphql'
+import type { ProductDetailsFragment_ProductFragment } from '@generated/ProductDetailsFragment_product.graphql'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment

@@ -131,6 +131,7 @@ module.exports = {
       resolve: 'gatsby-plugin-root-import',
       options: {
         src: resolve('./src'),
+        '@generated': resolve('./__generated__'),
       },
     },
     {
@@ -169,6 +170,9 @@ module.exports = {
           ? [['resolver', '169.254.169.253']]
           : [['resolver', '8.8.8.8']],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-gatsby-cloud',
     },
   ],
 }

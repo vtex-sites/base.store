@@ -1,12 +1,12 @@
+import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
-import { graphql } from 'gatsby'
+import type { CollectionSeoFragment_StoreCollectionFragment } from '@generated/CollectionSeoFragment_storeCollection.graphql'
+import type { CollectionSeoFragment_SiteFragment } from '@generated/CollectionSeoFragment_site.graphql'
+import type { CollectionSeoFragment_BreadcrumbFragment } from '@generated/CollectionSeoFragment_breadcrumb.graphql'
 
-import { useBreadcrumb } from './hooks/useBreadcrumb'
 import { useMetadata } from './hooks/useMetadata'
-import type { CollectionSeoFragment_StoreCollectionFragment } from './__generated__/CollectionSeoFragment_storeCollection.graphql'
-import type { CollectionSeoFragment_SiteFragment } from './__generated__/CollectionSeoFragment_site.graphql'
-import type { CollectionSeoFragment_BreadcrumbFragment } from './__generated__/CollectionSeoFragment_breadcrumb.graphql'
+import { useBreadcrumb } from './hooks/useBreadcrumb'
 
 interface Props {
   slug: string

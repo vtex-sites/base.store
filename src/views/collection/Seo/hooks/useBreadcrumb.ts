@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
 import type { ComponentPropsWithoutRef } from 'react'
 import type { BreadcrumbJsonLd } from 'gatsby-plugin-next-seo'
-
-import type { CollectionSeoFragment_BreadcrumbFragment } from '../__generated__/CollectionSeoFragment_breadcrumb.graphql'
+import type { CollectionSeoFragment_BreadcrumbFragment } from '@generated/CollectionSeoFragment_breadcrumb.graphql'
 
 export interface Options {
   breadcrumb: CollectionSeoFragment_BreadcrumbFragment[]

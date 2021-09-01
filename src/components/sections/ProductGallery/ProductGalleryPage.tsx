@@ -1,15 +1,14 @@
+import { GalleryQuery } from '@generated/GalleryQuery.graphql'
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import React from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
 import { useSearch } from 'src/sdk/search/useSearch'
-
-import { GalleryQuery } from './__generated__/GalleryQuery.graphql'
 import type {
   GalleryQueryQuery,
   GalleryQueryQueryVariables,
-} from './__generated__/GalleryQuery.graphql'
+} from '@generated/GalleryQuery.graphql'
 
 interface Props {
   page: number

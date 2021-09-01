@@ -1,8 +1,7 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import React from 'react'
 import Logo from 'src/components/ui/Logo'
-
-import type { NavlinksQueryQuery } from './__generated__/NavlinksQuery.graphql'
+import type { NavlinksQueryQuery } from '@generated/NavlinksQuery.graphql'
 
 const styles = {
   link: { margin: '5px' },

@@ -3,11 +3,10 @@ import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
 import View from 'src/views/search'
 import type { PageProps } from 'gatsby'
-
 import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
-} from './__generated__/SearchPageQuery.graphql'
+} from '@generated/SearchPageQuery.graphql'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
