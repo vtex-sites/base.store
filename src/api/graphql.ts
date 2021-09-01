@@ -87,7 +87,8 @@ const handler = async (
       operationName,
     })
 
-    res.send(response)
+    res.setHeader('content-type', 'application/json')
+    res.send(JSON.stringify(response))
   } catch (err) {
     console.error(err)
   }
