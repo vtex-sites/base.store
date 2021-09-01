@@ -2232,17 +2232,6 @@
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.0.2.tgz#b37abcfdb348549b75099ba8ec5f9225cb09a40a"
   integrity sha512-qS9H42M8rZLjgA71HVcw4JcGP1uwB9l0Qfee++8fsyHShXadHp0eVoZpFouBccXmeylDdIsf+riMeF5E8ngZPQ==
 
-"@vtex/gatsby-source-vtex@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-1.1.1.tgz#702a643745abb923a2058cbbc71d97724aa21577"
-  integrity sha512-ruYgikCu3LlTXI4DPGMw2+BH9uzvLRzAQUI73F1oXQbt+SLMpTmDm2JDXzktEsEstGLsC/QQHfhyaaqW5jjzhQ==
-  dependencies:
-    "@graphql-tools/delegate" "^7.1.5"
-    "@graphql-tools/wrap" "^7.0.8"
-    gatsby-graphql-source-toolkit "^2.0.1"
-    isomorphic-unfetch "^3.0.0"
-    slugify "^1.4.6"
-
 "@vtex/gatsby-source-vtex@https://pkg.csb.dev/vtex/faststore/commit/6a2e2d25/@vtex/gatsby-source-vtex":
   version "1.1.1"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/6a2e2d25/@vtex/gatsby-source-vtex#f257216c5e9d763264974056a4f01af0fed6360b"
