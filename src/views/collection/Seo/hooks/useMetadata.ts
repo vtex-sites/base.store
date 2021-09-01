@@ -33,10 +33,8 @@ export const useMetadata = ({
     // We still don't support canonalizing other pagination rather then the first one
     if (typeof canonical === 'string' && searchParams.page === 0) {
       return {
-        canonical: (host !== undefined
-          ? `https://${host}${canonical}`
-          : canonical
-        ).replace(/\/$/, ''),
+        canonical:
+          host !== undefined ? `https://${host}${canonical}` : canonical,
         noindex: false,
         nofollow: false,
       }

@@ -28,7 +28,7 @@ function Seo({
     titleTemplate: siteMetadata.titleTemplate!,
     title: collectionSeo.title || siteMetadata.title!,
     description: collectionSeo.description || siteMetadata.description!,
-    canonical: `/${slug}`,
+    canonical: `/${slug}/`,
   })
 
   return (
