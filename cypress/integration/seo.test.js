@@ -191,7 +191,7 @@ describe('Collection Page Seo', () => {
       .should('exist')
       .should(($link) => {
         expect($link.attr('href')).to.eq(
-          `https://${window.location.host}${pages.collection}`
+          `https://${window.location.host}${pages.collection}/`
         )
       })
   })
@@ -248,7 +248,7 @@ describe('Filtered Collection Page Seo', () => {
       .should('exist')
       .should(($link) => {
         expect($link.attr('href')).to.eq(
-          `https://${window.location.host}/women`
+          `https://${window.location.host}${pages.collection}/`
         )
       })
   })
