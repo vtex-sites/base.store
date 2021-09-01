@@ -13,6 +13,7 @@ const {
   URL = `https://${STORE_ID}.vtex.app`,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
+  NETLIFY: isNetlify,
 } = process.env
 
 const isProduction = ENV === 'production'
@@ -88,13 +89,9 @@ module.exports = {
           },
           'branch-deploy': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null,
           },
           'deploy-preview': {
             policy: [{ userAgent: '*', disallow: ['/'] }],
-            sitemap: null,
-            host: null,
           },
         },
       },
@@ -111,10 +108,11 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server: isCI
-          ? 'http://thumbor.vtex.internal'
-          : 'http://thumbor.thumborize.me',
-        ...(isProduction && {
+        server:
+          isCI && !isNetlify
+            ? 'http://thumbor.vtex.internal'
+            : 'http://thumbor.thumborize.me',
+        ...((isProduction || isNetlify) && {
           basePath: '/assets',
           sizes: getSizes(images),
         }),
@@ -173,6 +171,9 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-gatsby-cloud',
+    },
+    {
+      resolve: 'gatsby-plugin-netlify',
     },
   ],
 }

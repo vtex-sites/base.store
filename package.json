@@ -14,6 +14,7 @@
     "gatsby-plugin-image": "^1.11.0",
     "gatsby-plugin-manifest": "^3.11.0",
     "gatsby-plugin-next-seo": "^1.8.0",
+    "gatsby-plugin-netlify": "^3.12.0",
     "gatsby-plugin-nprogress": "^3.11.0",
     "gatsby-plugin-offline": "^4.11.0",
     "gatsby-plugin-robots-txt": "^1.5.1",
