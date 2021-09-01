@@ -2232,9 +2232,13 @@
   version "1.0.1"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/325280f8/@vtex/gatsby-plugin-thumbor#8bd74b7e8131c8e902131b9c2232c0d95b01fe68"
 
-"@vtex/gatsby-source-vtex@https://pkg.csb.dev/vtex/faststore/commit/325280f8/@vtex/gatsby-source-vtex":
-  version "1.0.1"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/325280f8/@vtex/gatsby-source-vtex#dd55e7080499f2640a9d5d5eec565e81603825a2"
+"@vtex/gatsby-plugin-thumbor@https://pkg.csb.dev/vtex/faststore/commit/eba5b787/@vtex/gatsby-plugin-thumbor":
+  version "1.0.2"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/eba5b787/@vtex/gatsby-plugin-thumbor#758259988c53eab45b3aa3ea2ece78592d93852d"
+
+"@vtex/gatsby-source-vtex@https://pkg.csb.dev/vtex/faststore/commit/eba5b787/@vtex/gatsby-source-vtex":
+  version "1.0.2"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/eba5b787/@vtex/gatsby-source-vtex#7001ed2a69aaba554880595eefaa529aca8b1c6a"
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
