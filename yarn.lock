@@ -2244,6 +2244,16 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
+"@vtex/gatsby-source-vtex@https://pkg.csb.dev/vtex/faststore/commit/d20c0f2b/@vtex/gatsby-source-vtex":
+  version "1.0.1"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/d20c0f2b/@vtex/gatsby-source-vtex#dd55e7080499f2640a9d5d5eec565e81603825a2"
+  dependencies:
+    "@graphql-tools/delegate" "^7.1.5"
+    "@graphql-tools/wrap" "^7.0.8"
+    gatsby-graphql-source-toolkit "^2.0.1"
+    isomorphic-unfetch "^3.0.0"
+    slugify "^1.4.6"
+
 "@vtex/lighthouse-config@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.0.2.tgz#7cb99c73f5a49f13f6f767651dd27ed460d1b9aa"

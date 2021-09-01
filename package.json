@@ -6,7 +6,7 @@
     "@vtex/gatsby-plugin-graphql": "^1.0.2",
     "@vtex/gatsby-plugin-nginx": "^1.0.2",
     "@vtex/gatsby-plugin-thumbor": "^1.0.2",
-    "@vtex/gatsby-source-vtex": "^1.0.2",
+    "@vtex/gatsby-source-vtex": "https://pkg.csb.dev/vtex/faststore/commit/d20c0f2b/@vtex/gatsby-source-vtex",
     "@vtex/store-sdk": "^1.0.2",
     "babel-preset-gatsby": "^1.13.0",
     "gatsby": "^3.13.0",
