@@ -1,8 +1,8 @@
 import fetch from 'isomorphic-unfetch'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import { getItemId } from '../sdk/cart'
-import type { Cart, CartItem, CartMessages } from '../sdk/cart'
+import { getItemId } from '../sdk/cart/useCart'
+import type { Cart, CartItem, CartMessages } from '../sdk/cart/useCart'
 
 const store = process.env.GATSBY_STORE_ID
 const environment = process.env.GATSBY_VTEX_ENVIRONMENT

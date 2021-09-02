@@ -1,4 +1,4 @@
-import type { Cart } from '.'
+import type { Cart } from './useCart'
 
 export const validateCart = async (cart: Cart) => {
   const response = await fetch('/api/cart', {

@@ -4,7 +4,7 @@
 import { useCallback } from 'react'
 
 import { useCart } from './useCart'
-import type { CartItem } from '.'
+import type { CartItem } from './useCart'
 
 export const useRemoveButton = (item: CartItem | null | undefined) => {
   const { removeItem } = useCart()
