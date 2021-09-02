@@ -3,8 +3,7 @@ require('dotenv').config({ path: 'vtex.env' })
 const { join, resolve } = require('path')
 
 const getSchema = require('./src/server')
-
-// const images = require('./src/images/config')
+const images = require('./src/images/config')
 
 const {
   GATSBY_STORE_ID: STORE_ID,
@@ -21,19 +20,19 @@ const {
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
-// const unique = (x) => Array.from(new Set(x))
+const unique = (x) => Array.from(new Set(x))
 
-// const getSizes = (variants) =>
-//   unique(
-//     Object.values(variants)
-//       .flatMap((variant) =>
-//         variant.breakpoints.map((width) => [
-//           `${width}x${Math.ceil(width / variant.aspectRatio)}`,
-//           `${width}x${Math.floor(width / variant.aspectRatio)}`,
-//         ])
-//       )
-//       .flat()
-//   )
+const getSizes = (variants) =>
+  unique(
+    Object.values(variants)
+      .flatMap((variant) =>
+        variant.breakpoints.map((width) => [
+          `${width}x${Math.ceil(width / variant.aspectRatio)}`,
+          `${width}x${Math.floor(width / variant.aspectRatio)}`,
+        ])
+      )
+      .flat()
+  )
 
 module.exports = {
   siteMetadata: {
@@ -114,10 +113,10 @@ module.exports = {
           isCI && !isNetlify
             ? 'http://thumbor.vtex.internal'
             : 'http://thumbor.thumborize.me',
-        // ...((isProduction || isNetlify) && {
-        //   basePath: '/assets',
-        //   sizes: getSizes(images),
-        // }),
+        ...((isProduction || isNetlify) && {
+          basePath: '/assets',
+          sizes: getSizes(images),
+        }),
       },
     },
     {
