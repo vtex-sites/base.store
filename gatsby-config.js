@@ -2,6 +2,8 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
+const getSchema = require('./src/server')
+
 // const images = require('./src/images/config')
 
 const {
@@ -155,6 +157,7 @@ module.exports = {
         environment,
         workspace,
         minProducts: 1,
+        getSchema,
       },
     },
     {

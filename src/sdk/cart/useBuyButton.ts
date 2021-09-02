@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { useUI } from '../ui'
 import { useCart } from './useCart'
-import type { CartItem } from './useCart'
+import type { CartItem } from '.'
 
 export const useBuyButton = (item: Omit<CartItem, 'id'> | null) => {
   const { addItem } = useCart()

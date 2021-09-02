@@ -3,7 +3,7 @@ import React from 'react'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { CartItem as ICartItem } from 'src/sdk/cart/useCart'
+import type { CartItem as ICartItem } from 'src/sdk/cart'
 
 interface Props {
   item: ICartItem

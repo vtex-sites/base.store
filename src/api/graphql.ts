@@ -1,36 +1,8 @@
-import { introspectSchema, wrapSchema } from '@graphql-tools/wrap'
-import { execute, parse, print } from 'graphql'
-import fetch from 'isomorphic-unfetch'
-import type { AsyncExecutor } from '@graphql-tools/utils'
+import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
+import getSchema from '../server'
 import persistedQueries from '../../__generated__/persisted.graphql.json'
-
-const store = process.env.GATSBY_STORE_ID
-const workspace = process.env.GATSBY_VTEX_IO_WORKSPACE
-
-const executor: AsyncExecutor = async ({ document, variables }) => {
-  const query = print(document)
-  const response = await fetch(
-    `https://${workspace}--${store}.myvtex.com/graphql/`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query, variables }),
-    }
-  )
-
-  return response.json()
-}
-
-const schemaPromise = introspectSchema(executor).then((schema) =>
-  wrapSchema({
-    schema,
-    executor,
-  })
-)
 
 const parseProdRequest = (req: GatsbyFunctionRequest) => {
   const res =
@@ -81,7 +53,7 @@ const handler = async (
 
   try {
     const response = await execute({
-      schema: await schemaPromise,
+      schema: await getSchema(),
       document: parse(query),
       variableValues: variables,
       operationName,
@@ -91,6 +63,8 @@ const handler = async (
     res.send(JSON.stringify(response))
   } catch (err) {
     console.error(err)
+
+    res.status(500)
   }
 }
 
