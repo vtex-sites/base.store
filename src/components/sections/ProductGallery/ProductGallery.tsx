@@ -3,20 +3,22 @@ import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { GalleryQueryQuery } from '@generated/GalleryQuery.graphql'
 import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
-import type { ProductGallery_ProductSearchFragment } from '@generated/ProductGallery_productSearch.graphql'
+import type { ProductGallery_ProductsFragment } from '@generated/ProductGallery_products.graphql'
 
 import GalleryPage from './ProductGalleryPage'
 
 interface Props {
   initialData?: GalleryQueryQuery
   facets: ProductGallery_FacetsFragment[]
-  productSearch: ProductGallery_ProductSearchFragment
+  products: ProductGallery_ProductsFragment
 }
 
 function ProductGallery({
   initialData,
-  productSearch: { totalCount },
   facets,
+  products: {
+    pageInfo: { totalCount },
+  },
 }: Props) {
   const {
     searchParams,
@@ -76,22 +78,20 @@ function ProductGallery({
 }
 
 export const fragment = gql`
-  fragment ProductGallery_productSearch on VTEX_ProductSearch {
-    totalCount: recordsFiltered
+  fragment ProductGallery_products on BrowserStoreProductConnection {
+    pageInfo {
+      totalCount
+    }
   }
-  fragment ProductGallery_facets on VTEX_Facet {
-    name
+  fragment ProductGallery_facets on StoreFacet {
+    key
+    label
     type
     values {
-      key
-      name
+      label
       value
       selected
       quantity
-      range {
-        from
-        to
-      }
     }
   }
 `

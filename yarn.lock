@@ -2232,15 +2232,13 @@
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.1.1.tgz#17eb614548b6aaba60c56599fc96bd78d185d447"
   integrity sha512-C0Rq7o5vKfWJO9Ve/GkJDlkPk4fZR4WCFvjl0ydK0j0f/gdnD94bGVieR/z3ePAZ0+AT/PRsA/AEBPefqZ2R6A==
 
-"@vtex/gatsby-source-vtex@https://pkg.csb.dev/vtex/faststore/commit/0dc7294f/@vtex/gatsby-source-vtex":
+"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/19023e01/@vtex/gatsby-source-store":
   version "1.1.1"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/0dc7294f/@vtex/gatsby-source-vtex#d269e9644387432e79f9db8f4d3ee16aa805cfce"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/19023e01/@vtex/gatsby-source-store#dc61dfc927c9f848d0a3d76207029aeda0d2c73d"
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
     gatsby-graphql-source-toolkit "^2.0.1"
-    isomorphic-unfetch "^3.0.0"
-    slugify "^1.4.6"
 
 "@vtex/lighthouse-config@^1.0.2":
   version "1.0.2"
@@ -8318,7 +8316,7 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isomorphic-unfetch@^3.0.0, isomorphic-unfetch@^3.1.0:
+isomorphic-unfetch@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.1.0.tgz#87341d5f4f7b63843d468438128cb087b7c3e98f"
   integrity sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==
@@ -12253,7 +12251,7 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-slugify@^1.4.4, slugify@^1.4.6:
+slugify@^1.4.4:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.6.0.tgz#6bdf8ed01dabfdc46425b67e3320b698832ff893"
   integrity sha512-FkMq+MQc5hzYgM86nLuHI98Acwi3p4wX+a5BO9Hhw4JdK4L7WueIiZ4tXEobImPqBz2sVcV0+Mu3GRB30IGang==

@@ -6,6 +6,11 @@ import type {
 } from '@generated/BrowserProductQuery.graphql'
 import { BrowserProductQuery } from '@generated/BrowserProductQuery.graphql'
 
+/**
+ * serverProduct data is stale and incomplete (because we SSRed it).
+ * Let's use it's value as placeholder while we fetch the rest of the data
+ * on the browser
+ */
 export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   variables: BrowserProductQueryQueryVariables,
   initialData?: T
@@ -19,11 +24,9 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   })
 
 export const query = gql`
-  query BrowserProductQuery($slug: String!) {
-    vtex {
-      product(slug: $slug) {
-        ...ProductViewFragment_product
-      }
+  query BrowserProductQuery($locator: StoreProductID!) {
+    product(locator: $locator) {
+      ...ProductViewFragment_product
     }
   }
 `

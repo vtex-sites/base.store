@@ -18,70 +18,97 @@ const styles = {
 }
 
 function ProductSummary({ product }: Props) {
-  const { images, sellers, itemId } = product.items?.[0] ?? {}
-  const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  const imageSrc = src ?? ''
-  const imageAlt = alt ?? ''
-  const [seller] = sellers!
-  const offer = seller!.commercialOffer
-  const linkProps = useProductLink({ slug: product.slug!, skuId: itemId! })
-  const image = useImage(imageSrc, 'product.summary')
-  const price = useFormattedPrice(offer!.spotPrice!)
-  const listPrice = useFormattedPrice(offer!.listPrice!)
-  const buyProps = useBuyButton(
-    offer && {
-      name: product.productName!,
-      skuId: itemId!,
-      price: offer.spotPrice!,
-      listPrice: offer.listPrice!,
-      quantity: 1,
-      giftQuantity: 0,
-      seller: seller!.sellerId!,
-      image: {
-        src: imageSrc,
-        alt: imageAlt,
-      },
-    }
-  )
+  const {
+    sku,
+    slug,
+    name,
+    image: [img],
+  } = product
+
+  const linkProps = useProductLink({ slug, skuId: sku })
+  const image = useImage(img.url, 'product.summary')
 
   return (
     <Link {...linkProps}>
       <GatsbyImage
         style={styles.image}
         image={image}
-        alt={imageAlt}
+        alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />
-      <div>{product.productName}</div>
-      <div style={styles.offer}>
-        <span style={styles.listPrice}>{listPrice}</span>
-        <span>{price}</span>
-      </div>
-      <button {...buyProps}>Add to cart</button>
+      <div>{name}</div>
     </Link>
   )
+
+  // const { images, sellers, itemId } = product.items?.[0] ?? {}
+  // const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
+  // const imageSrc = src ?? ''
+  // const imageAlt = alt ?? ''
+  // const [seller] = sellers!
+  // const offer = seller!.commercialOffer
+  // const price = useFormattedPrice(offer!.spotPrice!)
+  // const listPrice = useFormattedPrice(offer!.listPrice!)
+  // const buyProps = useBuyButton(
+  //   offer && {
+  //     name: product.name,
+  //     skuId: itemId!,
+  //     price: offer.spotPrice!,
+  //     listPrice: offer.listPrice!,
+  //     quantity: 1,
+  //     giftQuantity: 0,
+  //     seller: seller!.sellerId!,
+  //     image: {
+  //       src: imageSrc,
+  //       alt: imageAlt,
+  //     },
+  //   }
+  // )
+
+  // return (
+  //   <Link {...linkProps}>
+  //     <GatsbyImage
+  //       style={styles.image}
+  //       image={image}
+  //       alt={imageAlt}
+  //       sizes="(max-width: 768px) 200px, 320px"
+  //     />
+  //     <div>{product.name}</div>
+  //     <div style={styles.offer}>
+  //       <span style={styles.listPrice}>{listPrice}</span>
+  //       <span>{price}</span>
+  //     </div>
+  //     <button {...buyProps}>Add to cart</button>
+  //   </Link>
+  // )
 }
 
 export const fragment = graphql`
-  fragment ProductSummary_product on VTEX_Product {
-    slug: linkText
-    id: productId
-    productName
+  fragment ProductSummary_product on StoreProduct {
+    id: productID
+    slug
+    name
 
-    items {
-      itemId
-      images {
-        imageUrl
-        imageText
-      }
-      sellers {
-        sellerId
-        commercialOffer: commertialOffer {
-          spotPrice
-          listPrice: ListPrice
-        }
-      }
+    sku
+
+    image {
+      url
+      alternateName
     }
+
+    # items {
+    #   itemId
+    #   images {
+    #     imageUrl
+    #     imageText
+    #   }
+    #   sellers {
+    #     sellerId
+    #     commercialOffer: commertialOffer {
+    #       spotPrice
+    #       listPrice: ListPrice
+    #     }
+    #   }
+    # }
   }
 `
 

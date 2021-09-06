@@ -5,13 +5,17 @@ import ProductSummary from '../ProductSummary'
 import * as styles from './ProductGrid.module.css'
 
 interface Props {
-  products: Array<ComponentPropsWithoutRef<typeof ProductSummary>['product']>
+  products: {
+    edges: Array<{
+      node: ComponentPropsWithoutRef<typeof ProductSummary>['product']
+    }>
+  }
 }
 
 function ProductGrid({ products }: Props) {
   return (
     <div className={styles.grid}>
-      {products.map((product, idx) => (
+      {products.edges.map(({ node: product }, idx) => (
         <ProductSummary key={`${product.id}-${idx}`} product={product} />
       ))}
     </div>

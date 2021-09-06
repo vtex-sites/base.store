@@ -18,13 +18,17 @@ const View: FC<Props> = (props) => {
   const { data: dynamicData } = useSearch(searchParams)
 
   const data = { ...dynamicData, ...serverData }
-  const { site, vtex } = data
-  const { productSearch, facets } = vtex ?? {}
-  const totalCount = productSearch?.totalCount ?? 0
+  const { site, search } = data
 
-  if (dynamicData == null) {
+  if (search == null || site == null) {
     return <div>loading...</div>
   }
+
+  const {
+    products: {
+      pageInfo: { totalCount },
+    },
+  } = search
 
   // usePlpPixelEffect({
   //   searchParams,
@@ -42,13 +46,13 @@ const View: FC<Props> = (props) => {
     >
       <>
         {/* Seo Components */}
-        <Seo site={site!} />
+        <Seo site={site} />
 
         {/* UI Components */}
         <ProductGallery
-          initialData={dynamicData as any}
-          facets={facets!.facets as any}
-          productSearch={productSearch as any}
+          initialData={dynamicData}
+          facets={search.facets}
+          products={search.products}
         />
       </>
     </SearchProvider>

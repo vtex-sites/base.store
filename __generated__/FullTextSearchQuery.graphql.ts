@@ -9,22 +9,22 @@
 
 // Operation related types
 export type FullTextSearchQueryQueryVariables = Exact<{
-  from: Scalars['Int'];
-  to: Scalars['Int'];
-  fullText: Maybe<Scalars['String']>;
-  selectedFacets: Array<Vtex_SelectedFacetInput> | Vtex_SelectedFacetInput;
-  sort: Scalars['String'];
+  first: Scalars['Int'];
+  after: Maybe<Scalars['String']>;
+  sort: Maybe<StoreSort>;
+  term: Scalars['String'];
+  selectedFacets: Array<StoreSelectedFacet> | StoreSelectedFacet;
 }>;
 
 
-export type FullTextSearchQueryQuery = { vtex: { productSearch: Maybe<{ totalCount: Maybe<number>, products: Maybe<Array<Maybe<{ productName: Maybe<string>, slug: Maybe<string>, id: Maybe<string>, items: Maybe<Array<Maybe<{ itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ sellerId: Maybe<string>, commercialOffer: Maybe<{ spotPrice: Maybe<number>, listPrice: Maybe<number> }> }>>> }>>> }>>> }>, facets: Maybe<{ facets: Maybe<Array<Maybe<{ name: Maybe<string>, type: Maybe<Vtex_FilterType>, values: Maybe<Array<Maybe<{ key: Maybe<string>, name: Maybe<string>, value: Maybe<string>, selected: Maybe<boolean>, quantity: number, range: Maybe<{ from: Maybe<number>, to: Maybe<number> }> }>>> }>>> }> } };
+export type FullTextSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }> } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
 
 
 // Query Related Code
 
 export const FullTextSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($from: Int!, $to: Int!, $fullText: String, $selectedFacets: [VTEX_SelectedFacetInput!]!, $sort: String!) {\n  vtex {\n    productSearch(\n      from: $from\n      to: $to\n      orderBy: $sort\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      hideUnavailableItems: false\n      simulationBehavior: skip\n    ) {\n      products {\n        slug: linkText\n        id: productId\n        productName\n        items {\n          itemId\n          images {\n            imageUrl\n            imageText\n          }\n          sellers {\n            sellerId\n            commercialOffer: commertialOffer {\n              spotPrice\n              listPrice: ListPrice\n            }\n          }\n        }\n      }\n      totalCount: recordsFiltered\n    }\n    facets(\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      operator: or\n      behavior: \"Static\"\n      removeHiddenFacets: true\n    ) {\n      facets {\n        name\n        type\n        values {\n          key\n          name\n          value\n          selected\n          quantity\n          range {\n            from\n            to\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "55f8ab5184f44890e779f6be64d0567de120281fdca310a8beadc99c6de13061",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($first: Int!, $after: String, $sort: StoreSort, $term: String!, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          name\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
+  sha256Hash: "f248a142657385f17eb0dfbc2a0a16766f2676626f0d107fc7c9dc0437fd087b",
   operationName: "FullTextSearchQuery",
 }
 

@@ -10,7 +10,7 @@ export const useProductJsonLd = (options: Props) => {
   const { product } = options
 
   return useMemo(() => {
-    const { productName: name, items, description, brand } = product
+    const { name, items, description, brand } = product
     const sku = items?.[0]
 
     const images = sku?.images?.map((i) => i!.imageUrl!)
@@ -33,13 +33,13 @@ export const useProductJsonLd = (options: Props) => {
     }
 
     return {
-      name,
       images,
       offers,
       sku: sku!.itemId!,
-      brand,
       gtin13: sku!.ean!,
-      description,
+      // name,
+      // description,
+      // brand: brand.name,
     }
   }, [currency, pathname, product])
 }

@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type ProductSummary_ProductFragment = { slug: string, name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }> };
+export type ProductGallery_ProductsFragment = { pageInfo: { totalCount: number } };
 
 
 // Query Related Code

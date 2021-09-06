@@ -9,8 +9,6 @@ import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragm
 import type { ProductSeoFragment_ProductFragment } from '@generated/ProductSeoFragment_product.graphql'
 
 import { useMetadata } from './hooks/useMetadata'
-import { useBreadcrumbJsonLd } from './hooks/useBreadcrumbJsonLd'
-import { useProductJsonLd } from './hooks/useProductJsonLd'
 
 export interface Props {
   site: ProductSeoFragment_SiteFragment
@@ -18,15 +16,33 @@ export interface Props {
 }
 
 function Seo(props: Props) {
+  const {
+    product: {
+      gtin,
+      sku,
+      image,
+      name,
+      description,
+      brand,
+      breadcrumbList: { itemListElement },
+    },
+  } = props
+
   const metadata = useMetadata(props)
-  const breadcrumbJson = useBreadcrumbJsonLd(props)
-  const productJson = useProductJsonLd(props)
 
   return (
     <>
       <GatsbySeo {...metadata} defer />
-      <BreadcrumbJsonLd {...breadcrumbJson} defer />
-      {productJson && <ProductJsonLd {...productJson} defer />}
+      <BreadcrumbJsonLd itemListElements={itemListElement} defer />
+      <ProductJsonLd
+        name={name}
+        description={description}
+        brand={brand.name}
+        sku={sku}
+        gtin={gtin}
+        images={image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
+        defer
+      />
     </>
   )
 }
@@ -42,40 +58,54 @@ export const fragment = graphql`
   }
 
   fragment ProductSeoFragment_product on StoreProduct {
-    titleTag
-    metaTagDescription
+    seo {
+      title
+      description
+    }
 
-    brand
-    linkText
-    productName
+    brand {
+      name
+    }
+
+    slug
+    name
     description
+    sku
+    gtin
 
-    categoryTree {
-      name
-      href
+    breadcrumbList {
+      itemListElement {
+        item
+        name
+        position
+      }
     }
 
-    items {
-      ean
-      name
-      itemId
-      images {
-        imageUrl
-        imageText
-      }
-      videos {
-        videoUrl
-      }
-      sellers {
-        commercialOffer: commertialOffer {
-          price: Price
-          listPrice: ListPrice
-          availableQuantity: AvailableQuantity
-          priceValidUntil: PriceValidUntil
-          spotPrice
-        }
-      }
+    image {
+      url
     }
+
+    # items {
+    #   ean
+    #   name
+    #   itemId
+    #   images {
+    #     imageUrl
+    #     imageText
+    #   }
+    #   videos {
+    #     videoUrl
+    #   }
+    #   sellers {
+    #     commercialOffer: commertialOffer {
+    #       price: Price
+    #       listPrice: ListPrice
+    #       availableQuantity: AvailableQuantity
+    #       priceValidUntil: PriceValidUntil
+    #       spotPrice
+    #     }
+    #   }
+    # }
   }
 `
 

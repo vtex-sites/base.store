@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type CollectionSeoFragment_BreadcrumbFragment = { href: Maybe<string>, name: Maybe<string> };
+export type CollectionSeoFragment_BreadcrumbFragment = { itemListElement: Array<{ item: string, name: string, position: number }> };
 
 
 // Query Related Code

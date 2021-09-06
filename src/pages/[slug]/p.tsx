@@ -39,20 +39,14 @@ const Page: FC<Props> = (props) => {
   }
 
   return (
-    <View
-      {...props}
-      site={serverData.site!}
-      product={browserData.vtex.product}
-    />
+    <View {...props} site={serverData.site!} product={browserData.product} />
   )
 }
 
 export const browserQuery = gql`
-  query BrowserProductPageQuery($slug: String!) {
-    vtex {
-      product(slug: $slug) {
-        ...ProductViewFragment_product
-      }
+  query BrowserProductPageQuery($locator: StoreProductID!) {
+    product(locator: $locator) {
+      ...ProductViewFragment_product
     }
   }
 `
