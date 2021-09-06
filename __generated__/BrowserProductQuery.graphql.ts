@@ -13,14 +13,14 @@ export type BrowserProductQueryQueryVariables = Exact<{
 }>;
 
 
-export type BrowserProductQueryQuery = { product: { sku: string, slug: string, name: string, description: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> } };
+export type BrowserProductQueryQuery = { product: { slug: string, name: string, description: string, sku: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> } };
 
 
 // Query Related Code
 
 export const BrowserProductQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    sku\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    id: productID\n  }\n}\n",
-  sha256Hash: "c3ef974e095201b5feef64254a49e8688b94a9cb83ea38160e6b766835b76108",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    sku\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n  }\n}\n",
+  sha256Hash: "125828ce6bf19b08ce2e051b36568e71240078401cb70f19c449a77e25beeddb",
   operationName: "BrowserProductQuery",
 }
 

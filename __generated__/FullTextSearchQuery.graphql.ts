@@ -17,14 +17,14 @@ export type FullTextSearchQueryQueryVariables = Exact<{
 }>;
 
 
-export type FullTextSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }> } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
+export type FullTextSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, sku: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }> } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
 
 
 // Query Related Code
 
 export const FullTextSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($first: Int!, $after: String, $sort: StoreSort, $term: String!, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          name\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
-  sha256Hash: "f248a142657385f17eb0dfbc2a0a16766f2676626f0d107fc7c9dc0437fd087b",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($first: Int!, $after: String, $sort: StoreSort, $term: String!, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          isVariantOf {\n            name\n          }\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
+  sha256Hash: "8c150436173fb86a600d484eea4cdfb488a988ee33be8bd5975aef85a8eb3aa3",
   operationName: "FullTextSearchQuery",
 }
 

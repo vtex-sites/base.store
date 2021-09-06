@@ -16,14 +16,14 @@ export type CollectionSearchQueryQueryVariables = Exact<{
 }>;
 
 
-export type CollectionSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }> } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
+export type CollectionSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, sku: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }> } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
 
 
 // Query Related Code
 
 export const CollectionSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          name\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
-  sha256Hash: "daf383ab241f3007921ff6be598bfb67098f37146de63b7fa3dc22fbf0786013",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          isVariantOf {\n            name\n          }\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
+  sha256Hash: "30ab9fcb6a009bd477b2b2af74f506d0695234ccc246b6fdd73b530960da9ff5",
   operationName: "CollectionSearchQuery",
 }
 

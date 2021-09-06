@@ -633,6 +633,7 @@ type QueryStoreProductArgs = {
   gtin: Maybe<StringQueryOperatorInput>;
   review: Maybe<StoreReviewFilterListInput>;
   aggregateRating: Maybe<StoreAggregateRatingFilterInput>;
+  isVariantOf: Maybe<StoreProductGroupFilterInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
@@ -2279,6 +2280,39 @@ type StoreAggregateRatingFilterInput = {
   remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
+type StoreProductGroupFilterInput = {
+  hasVariant: Maybe<StoreProductFilterListInput>;
+  productGroupID: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreProductFilterListInput = {
+  elemMatch: Maybe<StoreProductFilterInput>;
+};
+
+type StoreProductFilterInput = {
+  seo: Maybe<StoreSeoFilterInput>;
+  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>;
+  slug: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  productID: Maybe<StringQueryOperatorInput>;
+  brand: Maybe<StoreBrandFilterInput>;
+  description: Maybe<StringQueryOperatorInput>;
+  image: Maybe<StoreImageFilterListInput>;
+  offers: Maybe<StoreOfferFilterInput>;
+  sku: Maybe<StringQueryOperatorInput>;
+  gtin: Maybe<StringQueryOperatorInput>;
+  review: Maybe<StoreReviewFilterListInput>;
+  aggregateRating: Maybe<StoreAggregateRatingFilterInput>;
+  isVariantOf: Maybe<StoreProductGroupFilterInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
 type StoreProductConnection = {
   totalCount: Scalars['Int'];
   edges: Array<StoreProductEdge>;
@@ -2360,6 +2394,61 @@ type StoreProductFieldsEnum =
   | 'aggregateRating___ratingValue'
   | 'aggregateRating___reviewCount'
   | 'aggregateRating___remoteTypeName'
+  | 'isVariantOf___hasVariant'
+  | 'isVariantOf___hasVariant___seo___title'
+  | 'isVariantOf___hasVariant___seo___titleTemplate'
+  | 'isVariantOf___hasVariant___seo___description'
+  | 'isVariantOf___hasVariant___seo___canonical'
+  | 'isVariantOf___hasVariant___seo___remoteTypeName'
+  | 'isVariantOf___hasVariant___breadcrumbList___itemListElement'
+  | 'isVariantOf___hasVariant___breadcrumbList___numberOfItems'
+  | 'isVariantOf___hasVariant___breadcrumbList___remoteTypeName'
+  | 'isVariantOf___hasVariant___slug'
+  | 'isVariantOf___hasVariant___name'
+  | 'isVariantOf___hasVariant___productID'
+  | 'isVariantOf___hasVariant___brand___name'
+  | 'isVariantOf___hasVariant___brand___remoteTypeName'
+  | 'isVariantOf___hasVariant___description'
+  | 'isVariantOf___hasVariant___image'
+  | 'isVariantOf___hasVariant___image___url'
+  | 'isVariantOf___hasVariant___image___alternateName'
+  | 'isVariantOf___hasVariant___image___remoteTypeName'
+  | 'isVariantOf___hasVariant___offers___url'
+  | 'isVariantOf___hasVariant___offers___priceCurrency'
+  | 'isVariantOf___hasVariant___offers___price'
+  | 'isVariantOf___hasVariant___offers___priceValidUntil'
+  | 'isVariantOf___hasVariant___offers___itemCondition'
+  | 'isVariantOf___hasVariant___offers___availability'
+  | 'isVariantOf___hasVariant___offers___remoteTypeName'
+  | 'isVariantOf___hasVariant___sku'
+  | 'isVariantOf___hasVariant___gtin'
+  | 'isVariantOf___hasVariant___review'
+  | 'isVariantOf___hasVariant___review___remoteTypeName'
+  | 'isVariantOf___hasVariant___aggregateRating___ratingValue'
+  | 'isVariantOf___hasVariant___aggregateRating___reviewCount'
+  | 'isVariantOf___hasVariant___aggregateRating___remoteTypeName'
+  | 'isVariantOf___hasVariant___isVariantOf___hasVariant'
+  | 'isVariantOf___hasVariant___isVariantOf___productGroupID'
+  | 'isVariantOf___hasVariant___isVariantOf___name'
+  | 'isVariantOf___hasVariant___isVariantOf___remoteTypeName'
+  | 'isVariantOf___hasVariant___remoteTypeName'
+  | 'isVariantOf___hasVariant___id'
+  | 'isVariantOf___hasVariant___parent___id'
+  | 'isVariantOf___hasVariant___parent___children'
+  | 'isVariantOf___hasVariant___children'
+  | 'isVariantOf___hasVariant___children___id'
+  | 'isVariantOf___hasVariant___children___children'
+  | 'isVariantOf___hasVariant___internal___content'
+  | 'isVariantOf___hasVariant___internal___contentDigest'
+  | 'isVariantOf___hasVariant___internal___description'
+  | 'isVariantOf___hasVariant___internal___fieldOwners'
+  | 'isVariantOf___hasVariant___internal___ignoreType'
+  | 'isVariantOf___hasVariant___internal___mediaType'
+  | 'isVariantOf___hasVariant___internal___owner'
+  | 'isVariantOf___hasVariant___internal___type'
+  | 'isVariantOf___productGroupID'
+  | 'isVariantOf___name'
+  | 'isVariantOf___remoteTypeName'
   | 'remoteTypeName'
   | 'id'
   | 'parent___id'
@@ -2455,27 +2544,6 @@ type StoreProductGroupConnection = {
   pageInfo: PageInfo;
   field: Scalars['String'];
   fieldValue: Maybe<Scalars['String']>;
-};
-
-type StoreProductFilterInput = {
-  seo: Maybe<StoreSeoFilterInput>;
-  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  productID: Maybe<StringQueryOperatorInput>;
-  brand: Maybe<StoreBrandFilterInput>;
-  description: Maybe<StringQueryOperatorInput>;
-  image: Maybe<StoreImageFilterListInput>;
-  offers: Maybe<StoreOfferFilterInput>;
-  sku: Maybe<StringQueryOperatorInput>;
-  gtin: Maybe<StringQueryOperatorInput>;
-  review: Maybe<StoreReviewFilterListInput>;
-  aggregateRating: Maybe<StoreAggregateRatingFilterInput>;
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  internal: Maybe<InternalFilterInput>;
 };
 
 type StoreProductSortInput = {
@@ -2938,6 +3006,7 @@ type StoreProduct = Node & {
   gtin: Scalars['String'];
   review: Array<StoreReview>;
   aggregateRating: StoreAggregateRating;
+  isVariantOf: StoreProductGroup;
   remoteTypeName: Scalars['String'];
   id: Scalars['ID'];
   parent: Maybe<Node>;
@@ -2982,6 +3051,13 @@ type StoreReview = {
 };
 
 type StoreAuthor = {
+  name: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreProductGroup = {
+  hasVariant: Array<StoreProduct>;
+  productGroupID: Scalars['String'];
   name: Scalars['String'];
   remoteTypeName: Scalars['String'];
 };

@@ -41,7 +41,7 @@ function View({ product: serverData, site }: Props) {
 
 export const fragment = graphql`
   fragment ProductViewFragment_product on StoreProduct {
-    sku
+    id: productID
     slug
 
     ...ProductSeoFragment_product

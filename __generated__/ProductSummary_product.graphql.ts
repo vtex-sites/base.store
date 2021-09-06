@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type ProductSummary_ProductFragment = { slug: string, name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }> };
+export type ProductSummary_ProductFragment = { slug: string, sku: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }> };
 
 
 // Query Related Code

@@ -21,7 +21,7 @@ function ProductSummary({ product }: Props) {
   const {
     sku,
     slug,
-    name,
+    isVariantOf: { name },
     image: [img],
   } = product
 
@@ -86,7 +86,10 @@ export const fragment = graphql`
   fragment ProductSummary_product on StoreProduct {
     id: productID
     slug
-    name
+
+    isVariantOf {
+      name
+    }
 
     sku
 

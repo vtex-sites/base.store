@@ -9,14 +9,14 @@
 
 // Operation related types
 export type ProductViewFragment_ProductFragment = (
-  { sku: string, slug: string }
+  { slug: string, id: string }
   & ProductSeoFragment_ProductFragment
   & ProductDetailsFragment_ProductFragment
 );
 
 export type ProductSeoFragment_ProductFragment = { slug: string, name: string, description: string, sku: string, gtin: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string }> };
 
-export type ProductDetailsFragment_ProductFragment = { name: string, id: string, image: Array<{ url: string, alternateName: string }> };
+export type ProductDetailsFragment_ProductFragment = { name: string, image: Array<{ url: string, alternateName: string }> };
 
 
 // Query Related Code

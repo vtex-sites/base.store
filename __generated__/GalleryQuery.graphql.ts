@@ -17,14 +17,14 @@ export type GalleryQueryQueryVariables = Exact<{
 }>;
 
 
-export type GalleryQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }> } }> } } };
+export type GalleryQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, sku: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }> } }> } } };
 
 
 // Query Related Code
 
 export const GalleryQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($first: Int!, $after: String, $sort: StoreSort, $term: String, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          name\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "5071d3b7aff8dac3887598c3749c02a8921d31cc331f4ab275f218b94c364854",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($first: Int!, $after: String, $sort: StoreSort, $term: String, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          isVariantOf {\n            name\n          }\n          sku\n          image {\n            url\n            alternateName\n          }\n        }\n      }\n    }\n  }\n}\n",
+  sha256Hash: "830ea7f99340cb3845fdbc75d796607bbcf69fbfd70a6389845fb77156e30476",
   operationName: "GalleryQuery",
 }
 

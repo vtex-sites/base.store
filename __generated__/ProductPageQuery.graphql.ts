@@ -13,14 +13,14 @@ export type ProductPageQueryQueryVariables = Exact<{
 }>;
 
 
-export type ProductPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string>, siteUrl: Maybe<string> }> }>, product: Maybe<{ sku: string, slug: string, name: string, description: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> }> };
+export type ProductPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string>, siteUrl: Maybe<string> }> }>, product: Maybe<{ slug: string, name: string, description: string, sku: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> }> };
 
 
 // Query Related Code
 
 export const ProductPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query ProductPageQuery($id: String!) {\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n      siteUrl\n    }\n  }\n  product: storeProduct(id: {eq: $id}) {\n    sku\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    id: productID\n  }\n}\n",
-  sha256Hash: "25d5bb3a36e208cd35c17bcf6f11327aded9e961cd572969910c98a1cd4c4327",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query ProductPageQuery($id: String!) {\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n      siteUrl\n    }\n  }\n  product: storeProduct(id: {eq: $id}) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    sku\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n  }\n}\n",
+  sha256Hash: "3e7d6986ee8987409a906e3d5adb0991b4a5c685d235c5c9ce7d1e0acd926505",
   operationName: "ProductPageQuery",
 }
 

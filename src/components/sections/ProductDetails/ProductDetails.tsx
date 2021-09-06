@@ -66,7 +66,6 @@ function ProductDetails({ product }: Props) {
 
 export const fragment = graphql`
   fragment ProductDetailsFragment_product on StoreProduct {
-    id: productID
     name
 
     image {

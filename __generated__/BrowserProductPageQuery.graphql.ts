@@ -13,14 +13,14 @@ export type BrowserProductPageQueryQueryVariables = Exact<{
 }>;
 
 
-export type BrowserProductPageQueryQuery = { product: { sku: string, slug: string, name: string, description: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> } };
+export type BrowserProductPageQueryQuery = { product: { slug: string, name: string, description: string, sku: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> } };
 
 
 // Query Related Code
 
 export const BrowserProductPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    sku\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    id: productID\n  }\n}\n",
-  sha256Hash: "1f6a22bdd48fee0a2478885922e5a1c5969ecad8fe06f6c775cab8b6fb4725d0",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    sku\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n  }\n}\n",
+  sha256Hash: "8b8cb63c9315ab271eca8fd2e4f3adbeff2a41d83f8366554c5e0903e068d64b",
   operationName: "BrowserProductPageQuery",
 }
 
