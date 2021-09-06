@@ -171,6 +171,14 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // trackingId: 'G-SMYKGEVB22',
+        trackingId: 'UA-206509877-2',
+        enableWebVitalsTracking: true,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-gatsby-cloud',
     },
     {
