@@ -3,6 +3,7 @@ import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import type { ProductViewFragment_ProductFragment } from '@generated/ProductViewFragment_product.graphql'
 import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
+import type { BrowserProductQueryQuery } from '@generated/BrowserProductQuery.graphql'
 
 import { useProduct } from './hooks/useProduct'
 import Seo from './Seo'
@@ -17,7 +18,7 @@ function View({ product: serverData, site }: Props) {
     {
       locator: { value: serverData.id, field: 'id' },
     },
-    { product: serverData }
+    { product: serverData as unknown as BrowserProductQueryQuery['product'] } // TODO: Fix this typings
   )
 
   const product = data?.product
