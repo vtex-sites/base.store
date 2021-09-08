@@ -13,14 +13,14 @@ export type BrowserProductQueryQueryVariables = Exact<{
 }>;
 
 
-export type BrowserProductQueryQuery = { product: { slug: string, name: string, description: string, sku: string, gtin: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }> } };
+export type BrowserProductQueryQuery = { product: { slug: string, sku: string, gtin: string, name: string, description: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, highPrice: number, priceCurrency: string, offers: Array<{ price: number, priceValidUntil: string, priceCurrency: string, availability: string, itemCondition: string, listPrice: number, seller: { identifier: string } }> } } };
 
 
 // Query Related Code
 
 export const BrowserProductQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    name\n    description\n    sku\n    gtin\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n  }\n}\n",
-  sha256Hash: "125828ce6bf19b08ce2e051b36568e71240078401cb70f19c449a77e25beeddb",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
+  sha256Hash: "7d282910929087e8f7cca4414ed72c6cf49a0b8cbd2a42b3ff8aa87c64499049",
   operationName: "BrowserProductQuery",
 }
 

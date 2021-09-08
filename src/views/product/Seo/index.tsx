@@ -24,6 +24,7 @@ function Seo(props: Props) {
       name,
       description,
       brand,
+      offers,
       breadcrumbList: { itemListElement },
     },
   } = props
@@ -41,6 +42,8 @@ function Seo(props: Props) {
         sku={sku}
         gtin={gtin}
         images={image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
+        offersType="AggregateOffer"
+        offers={{ ...offers, price: offers.offers[0].price.toString() }}
         defer
       />
     </>
@@ -68,10 +71,10 @@ export const fragment = graphql`
     }
 
     slug
-    name
-    description
     sku
     gtin
+    name
+    description
 
     breadcrumbList {
       itemListElement {
@@ -83,29 +86,24 @@ export const fragment = graphql`
 
     image {
       url
+      alternateName
     }
 
-    # items {
-    #   ean
-    #   name
-    #   itemId
-    #   images {
-    #     imageUrl
-    #     imageText
-    #   }
-    #   videos {
-    #     videoUrl
-    #   }
-    #   sellers {
-    #     commercialOffer: commertialOffer {
-    #       price: Price
-    #       listPrice: ListPrice
-    #       availableQuantity: AvailableQuantity
-    #       priceValidUntil: PriceValidUntil
-    #       spotPrice
-    #     }
-    #   }
-    # }
+    offers {
+      lowPrice
+      highPrice
+      priceCurrency
+      offers {
+        price
+        priceValidUntil
+        priceCurrency
+        availability
+        itemCondition
+        seller {
+          identifier
+        }
+      }
+    }
   }
 `
 

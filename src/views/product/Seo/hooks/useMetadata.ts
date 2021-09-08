@@ -11,18 +11,20 @@ export const useMetadata = (options: Props) => {
   return useMemo(() => {
     const { product, site } = options
     const siteMetadata = site.siteMetadata!
-    const price =
-      product?.items?.[0]?.sellers?.[0]?.commercialOffer?.spotPrice?.toString()
+    const {
+      seo,
+      offers: { lowPrice },
+    } = product
 
-    const title = product?.seo.title ?? siteMetadata.title!
-    const description = product?.seo.description ?? siteMetadata.description!
+    const title = seo.title ?? siteMetadata.title!
+    const description = seo.description ?? siteMetadata.description!
     const pathname = path[path.length - 1] === '/' ? path.slice(0, -1) : path // remove trailing slashes from pathname
     const canonical =
       host !== undefined ? `https://${host}${pathname}` : pathname
 
-    const images = product?.items?.[0]?.images?.map((image) => ({
-      url: image!.imageUrl!,
-      alt: image!.imageText!,
+    const images = product.image.map((x) => ({
+      url: x.url,
+      alt: x.alternateName,
     }))
 
     return {
@@ -40,7 +42,7 @@ export const useMetadata = (options: Props) => {
       metaTags: [
         {
           property: 'product:price:amount',
-          content: price ?? undefined,
+          content: lowPrice?.toString() ?? undefined,
         },
         {
           property: 'product:price:currency',

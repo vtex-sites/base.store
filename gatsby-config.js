@@ -152,6 +152,8 @@ module.exports = {
       options: {
         sourceProducts: true,
         sourceCollections: true,
+        maxNumProducts: 100,
+        maxNumCollections: 2000,
         getSchema,
       },
     },

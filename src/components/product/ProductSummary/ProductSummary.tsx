@@ -1,10 +1,10 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
-import { useProductLink } from 'src/sdk/product/useProductLink'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
 
 interface Props {
@@ -19,14 +19,37 @@ const styles = {
 
 function ProductSummary({ product }: Props) {
   const {
-    sku,
+    id,
     slug,
+    name: productName,
     isVariantOf: { name },
     image: [img],
+    offers: { lowPrice, offers },
   } = product
 
-  const linkProps = useProductLink({ slug, skuId: sku })
+  const {
+    listPrice,
+    seller: { identifier },
+  } = useMemo(
+    () => offers.find((x) => x.price === lowPrice)!,
+    [lowPrice, offers]
+  )
+
+  const linkProps = useProductLink({ slug })
   const image = useImage(img.url, 'product.summary')
+  const buyProps = useBuyButton({
+    name: productName,
+    skuId: id,
+    price: lowPrice,
+    listPrice,
+    quantity: 1,
+    giftQuantity: 0,
+    seller: identifier,
+    image: {
+      src: img.url,
+      alt: img.alternateName,
+    },
+  })
 
   return (
     <Link {...linkProps}>
@@ -37,49 +60,13 @@ function ProductSummary({ product }: Props) {
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{name}</div>
+      <div style={styles.offer}>
+        <span style={styles.listPrice}>{useFormattedPrice(listPrice)}</span>
+        <span>{useFormattedPrice(lowPrice)}</span>
+      </div>
+      <button {...buyProps}>Add to cart</button>
     </Link>
   )
-
-  // const { images, sellers, itemId } = product.items?.[0] ?? {}
-  // const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  // const imageSrc = src ?? ''
-  // const imageAlt = alt ?? ''
-  // const [seller] = sellers!
-  // const offer = seller!.commercialOffer
-  // const price = useFormattedPrice(offer!.spotPrice!)
-  // const listPrice = useFormattedPrice(offer!.listPrice!)
-  // const buyProps = useBuyButton(
-  //   offer && {
-  //     name: product.name,
-  //     skuId: itemId!,
-  //     price: offer.spotPrice!,
-  //     listPrice: offer.listPrice!,
-  //     quantity: 1,
-  //     giftQuantity: 0,
-  //     seller: seller!.sellerId!,
-  //     image: {
-  //       src: imageSrc,
-  //       alt: imageAlt,
-  //     },
-  //   }
-  // )
-
-  // return (
-  //   <Link {...linkProps}>
-  //     <GatsbyImage
-  //       style={styles.image}
-  //       image={image}
-  //       alt={imageAlt}
-  //       sizes="(max-width: 768px) 200px, 320px"
-  //     />
-  //     <div>{product.name}</div>
-  //     <div style={styles.offer}>
-  //       <span style={styles.listPrice}>{listPrice}</span>
-  //       <span>{price}</span>
-  //     </div>
-  //     <button {...buyProps}>Add to cart</button>
-  //   </Link>
-  // )
 }
 
 export const fragment = graphql`
@@ -87,31 +74,27 @@ export const fragment = graphql`
     id: productID
     slug
 
+    name
+
     isVariantOf {
       name
     }
-
-    sku
 
     image {
       url
       alternateName
     }
 
-    # items {
-    #   itemId
-    #   images {
-    #     imageUrl
-    #     imageText
-    #   }
-    #   sellers {
-    #     sellerId
-    #     commercialOffer: commertialOffer {
-    #       spotPrice
-    #       listPrice: ListPrice
-    #     }
-    #   }
-    # }
+    offers {
+      lowPrice
+      offers {
+        price
+        listPrice
+        seller {
+          identifier
+        }
+      }
+    }
   }
 `
 

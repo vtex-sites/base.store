@@ -347,8 +347,7 @@ type BrowserStoreCollectionConnection = {
 
 type StoreProductIdField =
   | 'id'
-  | 'slug'
-  | 'sku';
+  | 'slug';
 
 type StoreProductId = {
   field: StoreProductIdField;
@@ -628,7 +627,7 @@ type QueryStoreProductArgs = {
   brand: Maybe<StoreBrandFilterInput>;
   description: Maybe<StringQueryOperatorInput>;
   image: Maybe<StoreImageFilterListInput>;
-  offers: Maybe<StoreOfferFilterInput>;
+  offers: Maybe<StoreAggregateOfferFilterInput>;
   sku: Maybe<StringQueryOperatorInput>;
   gtin: Maybe<StringQueryOperatorInput>;
   review: Maybe<StoreReviewFilterListInput>;
@@ -1627,6 +1626,8 @@ type SitePluginPluginOptionsFilterInput = {
   stats: Maybe<SitePluginPluginOptionsStatsFilterInput>;
   sourceProducts: Maybe<BooleanQueryOperatorInput>;
   sourceCollections: Maybe<BooleanQueryOperatorInput>;
+  maxNumProducts: Maybe<IntQueryOperatorInput>;
+  maxNumCollections: Maybe<IntQueryOperatorInput>;
   httpOptions: Maybe<StringQueryOperatorInput>;
   serverOptions: Maybe<StringQueryOperatorInput>;
   path: Maybe<StringQueryOperatorInput>;
@@ -1940,6 +1941,8 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___stats___context'
   | 'pluginCreator___pluginOptions___sourceProducts'
   | 'pluginCreator___pluginOptions___sourceCollections'
+  | 'pluginCreator___pluginOptions___maxNumProducts'
+  | 'pluginCreator___pluginOptions___maxNumCollections'
   | 'pluginCreator___pluginOptions___httpOptions'
   | 'pluginCreator___pluginOptions___serverOptions'
   | 'pluginCreator___pluginOptions___path'
@@ -2243,13 +2246,33 @@ type StoreImageFilterInput = {
   remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
-type StoreOfferFilterInput = {
-  url: Maybe<StringQueryOperatorInput>;
+type StoreAggregateOfferFilterInput = {
+  highPrice: Maybe<FloatQueryOperatorInput>;
+  lowPrice: Maybe<FloatQueryOperatorInput>;
+  offerCount: Maybe<IntQueryOperatorInput>;
   priceCurrency: Maybe<StringQueryOperatorInput>;
-  price: Maybe<StringQueryOperatorInput>;
+  offers: Maybe<StoreOfferFilterListInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreOfferFilterListInput = {
+  elemMatch: Maybe<StoreOfferFilterInput>;
+};
+
+type StoreOfferFilterInput = {
+  listPrice: Maybe<FloatQueryOperatorInput>;
+  sellingPrice: Maybe<FloatQueryOperatorInput>;
+  priceCurrency: Maybe<StringQueryOperatorInput>;
+  price: Maybe<FloatQueryOperatorInput>;
   priceValidUntil: Maybe<StringQueryOperatorInput>;
   itemCondition: Maybe<StringQueryOperatorInput>;
   availability: Maybe<StringQueryOperatorInput>;
+  seller: Maybe<StoreOrganizationFilterInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreOrganizationFilterInput = {
+  identifier: Maybe<StringQueryOperatorInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
@@ -2300,7 +2323,7 @@ type StoreProductFilterInput = {
   brand: Maybe<StoreBrandFilterInput>;
   description: Maybe<StringQueryOperatorInput>;
   image: Maybe<StoreImageFilterListInput>;
-  offers: Maybe<StoreOfferFilterInput>;
+  offers: Maybe<StoreAggregateOfferFilterInput>;
   sku: Maybe<StringQueryOperatorInput>;
   gtin: Maybe<StringQueryOperatorInput>;
   review: Maybe<StoreReviewFilterListInput>;
@@ -2375,12 +2398,21 @@ type StoreProductFieldsEnum =
   | 'image___url'
   | 'image___alternateName'
   | 'image___remoteTypeName'
-  | 'offers___url'
+  | 'offers___highPrice'
+  | 'offers___lowPrice'
+  | 'offers___offerCount'
   | 'offers___priceCurrency'
-  | 'offers___price'
-  | 'offers___priceValidUntil'
-  | 'offers___itemCondition'
-  | 'offers___availability'
+  | 'offers___offers'
+  | 'offers___offers___listPrice'
+  | 'offers___offers___sellingPrice'
+  | 'offers___offers___priceCurrency'
+  | 'offers___offers___price'
+  | 'offers___offers___priceValidUntil'
+  | 'offers___offers___itemCondition'
+  | 'offers___offers___availability'
+  | 'offers___offers___seller___identifier'
+  | 'offers___offers___seller___remoteTypeName'
+  | 'offers___offers___remoteTypeName'
   | 'offers___remoteTypeName'
   | 'sku'
   | 'gtin'
@@ -2413,12 +2445,11 @@ type StoreProductFieldsEnum =
   | 'isVariantOf___hasVariant___image___url'
   | 'isVariantOf___hasVariant___image___alternateName'
   | 'isVariantOf___hasVariant___image___remoteTypeName'
-  | 'isVariantOf___hasVariant___offers___url'
+  | 'isVariantOf___hasVariant___offers___highPrice'
+  | 'isVariantOf___hasVariant___offers___lowPrice'
+  | 'isVariantOf___hasVariant___offers___offerCount'
   | 'isVariantOf___hasVariant___offers___priceCurrency'
-  | 'isVariantOf___hasVariant___offers___price'
-  | 'isVariantOf___hasVariant___offers___priceValidUntil'
-  | 'isVariantOf___hasVariant___offers___itemCondition'
-  | 'isVariantOf___hasVariant___offers___availability'
+  | 'isVariantOf___hasVariant___offers___offers'
   | 'isVariantOf___hasVariant___offers___remoteTypeName'
   | 'isVariantOf___hasVariant___sku'
   | 'isVariantOf___hasVariant___gtin'
@@ -2718,6 +2749,8 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___stats___context'
   | 'pluginOptions___sourceProducts'
   | 'pluginOptions___sourceCollections'
+  | 'pluginOptions___maxNumProducts'
+  | 'pluginOptions___maxNumCollections'
   | 'pluginOptions___httpOptions'
   | 'pluginOptions___serverOptions'
   | 'pluginOptions___path'
@@ -3001,7 +3034,7 @@ type StoreProduct = Node & {
   brand: StoreBrand;
   description: Scalars['String'];
   image: Array<StoreImage>;
-  offers: StoreOffer;
+  offers: StoreAggregateOffer;
   sku: Scalars['String'];
   gtin: Scalars['String'];
   review: Array<StoreReview>;
@@ -3023,12 +3056,14 @@ type StoreSeo = {
 };
 
 type StoreOffer = {
-  url: Scalars['String'];
+  listPrice: Scalars['Float'];
+  sellingPrice: Scalars['Float'];
   priceCurrency: Scalars['String'];
-  price: Scalars['String'];
+  price: Scalars['Float'];
   priceValidUntil: Scalars['String'];
   itemCondition: Scalars['String'];
   availability: Scalars['String'];
+  seller: StoreOrganization;
   remoteTypeName: Scalars['String'];
 };
 
@@ -3059,6 +3094,20 @@ type StoreProductGroup = {
   hasVariant: Array<StoreProduct>;
   productGroupID: Scalars['String'];
   name: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreOrganization = {
+  identifier: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreAggregateOffer = {
+  highPrice: Scalars['Float'];
+  lowPrice: Scalars['Float'];
+  offerCount: Scalars['Int'];
+  priceCurrency: Scalars['String'];
+  offers: Array<StoreOffer>;
   remoteTypeName: Scalars['String'];
 };
 
@@ -3119,6 +3168,8 @@ type SitePluginPluginOptions = {
   stats: Maybe<SitePluginPluginOptionsStats>;
   sourceProducts: Maybe<Scalars['Boolean']>;
   sourceCollections: Maybe<Scalars['Boolean']>;
+  maxNumProducts: Maybe<Scalars['Int']>;
+  maxNumCollections: Maybe<Scalars['Int']>;
   httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
   serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
   path: Maybe<Scalars['String']>;

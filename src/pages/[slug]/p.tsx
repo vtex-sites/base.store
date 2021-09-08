@@ -1,3 +1,4 @@
+import { BrowserProductPageQuery } from '@generated/BrowserProductPageQuery.graphql'
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -5,7 +6,6 @@ import { useQuery } from 'src/sdk/graphql/useQuery'
 import View from 'src/views/product'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
-import { BrowserProductPageQuery } from '@generated/BrowserProductPageQuery.graphql'
 import type {
   BrowserProductPageQueryQuery,
   BrowserProductPageQueryQueryVariables,
@@ -31,7 +31,7 @@ const Page: FC<Props> = (props) => {
     BrowserProductPageQueryQueryVariables
   >({
     ...BrowserProductPageQuery,
-    variables: { slug },
+    variables: { locator: { value: slug, field: 'slug' } },
   })
 
   if (browserData == null) {
