@@ -6500,6 +6500,14 @@ gatsby-plugin-gatsby-cloud@^3.1.0:
     lodash "^4.17.21"
     webpack-assets-manifest "^5.0.6"
 
+gatsby-plugin-google-tagmanager@^3.13.0:
+  version "3.13.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-tagmanager/-/gatsby-plugin-google-tagmanager-3.13.0.tgz#70c1210a55b53a8e1624fdf498771d398e323836"
+  integrity sha512-TItPS6Mv+1XN0yyGN112Fy0Tq0YGaNYW20B9nu7j44nbmpEGeHHTzGtq4En/98lhVa3oW8lRaLHH0n4xWAg+bg==
+  dependencies:
+    "@babel/runtime" "^7.14.8"
+    web-vitals "^1.1.2"
+
 gatsby-plugin-image@^1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.11.0.tgz#c7d2ffa79c6476e1fdf305a183bc02e99f31ec12"
@@ -13779,6 +13787,11 @@ watchpack@^2.2.0:
   dependencies:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
+
+web-vitals@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/web-vitals/-/web-vitals-1.1.2.tgz#06535308168986096239aa84716e68b4c6ae6d1c"
+  integrity sha512-PFMKIY+bRSXlMxVAQ+m2aw9c/ioUYfDgrYot0YUa+/xa0sakubWhSDyxAKwzymvXVdF4CZI71g06W+mqhzu6ig==
 
 webpack-assets-manifest@^5.0.6:
   version "5.0.6"

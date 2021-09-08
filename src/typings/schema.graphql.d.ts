@@ -779,6 +779,10 @@ type SitePluginPluginOptions = {
   minProducts: Maybe<Scalars['Int']>;
   httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
   serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
+  id: Maybe<Scalars['String']>;
+  enableWebVitalsTracking: Maybe<Scalars['Boolean']>;
+  includeInDevelopment: Maybe<Scalars['Boolean']>;
+  routeChangeEventName: Maybe<Scalars['String']>;
   path: Maybe<Scalars['String']>;
   pathCheck: Maybe<Scalars['Boolean']>;
   allExtensions: Maybe<Scalars['Boolean']>;
@@ -3707,6 +3711,10 @@ type SitePluginPluginOptionsFilterInput = {
   minProducts: Maybe<IntQueryOperatorInput>;
   httpOptions: Maybe<StringQueryOperatorInput>;
   serverOptions: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  enableWebVitalsTracking: Maybe<BooleanQueryOperatorInput>;
+  includeInDevelopment: Maybe<BooleanQueryOperatorInput>;
+  routeChangeEventName: Maybe<StringQueryOperatorInput>;
   path: Maybe<StringQueryOperatorInput>;
   pathCheck: Maybe<BooleanQueryOperatorInput>;
   allExtensions: Maybe<BooleanQueryOperatorInput>;
@@ -4024,6 +4032,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___minProducts'
   | 'pluginCreator___pluginOptions___httpOptions'
   | 'pluginCreator___pluginOptions___serverOptions'
+  | 'pluginCreator___pluginOptions___id'
+  | 'pluginCreator___pluginOptions___enableWebVitalsTracking'
+  | 'pluginCreator___pluginOptions___includeInDevelopment'
+  | 'pluginCreator___pluginOptions___routeChangeEventName'
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___pluginOptions___allExtensions'
@@ -5823,6 +5835,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___minProducts'
   | 'pluginOptions___httpOptions'
   | 'pluginOptions___serverOptions'
+  | 'pluginOptions___id'
+  | 'pluginOptions___enableWebVitalsTracking'
+  | 'pluginOptions___includeInDevelopment'
+  | 'pluginOptions___routeChangeEventName'
   | 'pluginOptions___path'
   | 'pluginOptions___pathCheck'
   | 'pluginOptions___allExtensions'
