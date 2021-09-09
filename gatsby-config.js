@@ -154,8 +154,8 @@ module.exports = {
         sourceCollections: true,
         getSchema,
         // Source less products is development for better DX
-        maxNumProducts: isProduction ? undefined : 100,
-        maxNumCollections: isProduction ? undefined : 100,
+        maxNumProducts: isProduction ? 2500 : 100,
+        maxNumCollections: isProduction ? 2500 : 100,
       },
     },
     {
