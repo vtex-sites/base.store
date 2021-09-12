@@ -1335,6 +1335,18 @@
     ts-node "^9"
     tslib "^2"
 
+"@envelop/core@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@envelop/core/-/core-1.0.4.tgz#c5099fce98194598aecf7d81a87c1e3324e10ffa"
+  integrity sha512-+P2EZfQgyRuWqR8ErzHCO2kXj3wrHQJZC8IFxfiJh1H6PGJs3Fgary14E93gCNW7RLaXApeACRGhlrC/njk73Q==
+  dependencies:
+    "@envelop/types" "1.0.2"
+
+"@envelop/types@1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@envelop/types/-/types-1.0.2.tgz#c0eb58929209aa3c6563921a9fc58f63448c02fc"
+  integrity sha512-uL1Nn0aiDN72nEPvhJixH0DoCGxkPPW6/HZcl9lwnaVld1TDQhs72TVuX3vTsZQIvk2s62T5XsvrcdIbMkKfJw==
+
 "@eslint/eslintrc@^0.4.3":
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.4.3.tgz#9e42981ef035beb3dd49add17acb96e8ff6f394c"
@@ -1599,7 +1611,7 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/wrap@^7.0.4", "@graphql-tools/wrap@^7.0.8":
+"@graphql-tools/wrap@^7.0.4":
   version "7.0.8"
   resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-7.0.8.tgz#ad41e487135ca3ea1ae0ea04bb3f596177fb4f50"
   integrity sha512-1NDUymworsOlb53Qfh7fonDi2STvqCtbeE68ntKY9K/Ju/be2ZNxrFSbrBHwnxWcN9PjISNnLcAyJ1L5tCUyhg==
@@ -2232,20 +2244,17 @@
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.1.1.tgz#17eb614548b6aaba60c56599fc96bd78d185d447"
   integrity sha512-C0Rq7o5vKfWJO9Ve/GkJDlkPk4fZR4WCFvjl0ydK0j0f/gdnD94bGVieR/z3ePAZ0+AT/PRsA/AEBPefqZ2R6A==
 
-"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/27ae5028/@vtex/gatsby-source-store":
+"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/8624f867/@vtex/gatsby-source-store":
   version "1.1.1"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/27ae5028/@vtex/gatsby-source-store#e5784eddfb93ab4cbaabd560c4c23cbc2d41af89"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/8624f867/@vtex/gatsby-source-store#fd4059ed7d2ffa6d010d727867398b194bdcdfb5"
   dependencies:
-    "@graphql-tools/delegate" "^7.1.5"
-    "@graphql-tools/wrap" "^7.0.8"
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/5d2bc694/@vtex/gatsby-source-store":
+"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/9fceaca4/@vtex/gatsby-source-store":
   version "1.1.1"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/5d2bc694/@vtex/gatsby-source-store#288614fce4b0a15eee44de93cefcb170c4071e91"
+  uid fd4059ed7d2ffa6d010d727867398b194bdcdfb5
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/9fceaca4/@vtex/gatsby-source-store#fd4059ed7d2ffa6d010d727867398b194bdcdfb5"
   dependencies:
-    "@graphql-tools/delegate" "^7.1.5"
-    "@graphql-tools/wrap" "^7.0.8"
     gatsby-graphql-source-toolkit "^2.0.1"
 
 "@vtex/lighthouse-config@^1.0.2":
@@ -2258,33 +2267,32 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/27ae5028/@vtex/store-api":
+"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/8624f867/@vtex/store-api":
   version "0.1.0"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/27ae5028/@vtex/store-api#1c82d20c27648b9276818ea8f316c4c3f589e199"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/8624f867/@vtex/store-api#ba6c5cee0ac6eaa7c923b0660a54242dd71d90c7"
   dependencies:
     rollup-plugin-graphql "^0.1.0"
     slugify "^1.6.0"
     ts-jest "25.5.1"
 
-"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/5d2bc694/@vtex/store-api":
+"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/9fceaca4/@vtex/store-api":
   version "0.1.0"
-  uid "1c82d20c27648b9276818ea8f316c4c3f589e199"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/5d2bc694/@vtex/store-api#1c82d20c27648b9276818ea8f316c4c3f589e199"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/9fceaca4/@vtex/store-api#d953b3325203129404fe913b771c398e3b1bc6a9"
   dependencies:
     rollup-plugin-graphql "^0.1.0"
     slugify "^1.6.0"
     ts-jest "25.5.1"
 
-"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/27ae5028/@vtex/store-sdk":
+"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/8624f867/@vtex/store-sdk":
   version "1.1.3"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/27ae5028/@vtex/store-sdk#54652569c35dd8d0785c5e80662f812e91a2f61a"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/8624f867/@vtex/store-sdk#54652569c35dd8d0785c5e80662f812e91a2f61a"
   dependencies:
     idb-keyval "^5.1.3"
 
-"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/5d2bc694/@vtex/store-sdk":
+"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/9fceaca4/@vtex/store-sdk":
   version "1.1.3"
   uid "54652569c35dd8d0785c5e80662f812e91a2f61a"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/5d2bc694/@vtex/store-sdk#54652569c35dd8d0785c5e80662f812e91a2f61a"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/9fceaca4/@vtex/store-sdk#54652569c35dd8d0785c5e80662f812e91a2f61a"
   dependencies:
     idb-keyval "^5.1.3"
 

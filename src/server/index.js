@@ -1,4 +1,7 @@
-const { getSchema: storeApiGetSchema } = require('@vtex/store-api')
+const {
+  getSchema: storeApiGetSchema,
+  getContextFactory: storeApiGetContextFactory,
+} = require('@vtex/store-api')
 
 const options = {
   platform: process.env.GATSBY_COMMERCE_PLATFORM,
@@ -6,18 +9,13 @@ const options = {
   environment: process.env.GATSBY_VTEX_ENVIRONMENT,
 }
 
-const getSchema = () => storeApiGetSchema(options)
+const schema = storeApiGetSchema(options)
+const contextFactory = storeApiGetContextFactory(options)
 
-const memoize = (fn) => {
-  let memoized
+const getSchema = () => schema
+const getContextFactory = () => contextFactory
 
-  return () => {
-    if (memoized === undefined) {
-      memoized = fn()
-    }
-
-    return memoized
-  }
+module.exports = {
+  getSchema,
+  getContextFactory,
 }
-
-module.exports = memoize(getSchema)

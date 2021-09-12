@@ -2,7 +2,7 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
-const getSchema = require('./src/server')
+const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
 
 const {
@@ -153,6 +153,7 @@ module.exports = {
         sourceProducts: true,
         sourceCollections: true,
         getSchema,
+        getContextFactory,
         // Source less products is development for better DX
         maxNumProducts: isProduction ? 2500 : 100,
         maxNumCollections: isProduction ? 2500 : 100,

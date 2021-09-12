@@ -1,7 +1,7 @@
 import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import getSchema from '../server'
+import { getSchema, getContextFactory } from '../server'
 import persistedQueries from '../../__generated__/persisted.graphql.json'
 
 const parseProdRequest = (req: GatsbyFunctionRequest) => {
@@ -36,6 +36,8 @@ const parseDevRequest = (req: GatsbyFunctionRequest) => {
   throw new Error('No GET request during development is allowed')
 }
 
+const contextFactory = getContextFactory()
+
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
@@ -56,6 +58,7 @@ const handler = async (
       schema: await getSchema(),
       document: parse(query),
       variableValues: variables,
+      contextValue: contextFactory({}),
       operationName,
     })
 
