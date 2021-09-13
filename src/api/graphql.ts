@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { envelop, useExtendContext, useSchema } from '@envelop/core'
 import { useDisableIntrospection } from '@envelop/disable-introspection'
+import { useGraphQlJit } from '@envelop/graphql-jit'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
 import persistedQueries from '../../__generated__/persisted.graphql.json'
@@ -44,6 +45,7 @@ const createGetEnveloped = async () =>
       useSchema(await getSchema()),
       useExtendContext(getContextFactory()),
       useDisableIntrospection(),
+      useGraphQlJit(),
     ],
   })
 
