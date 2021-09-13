@@ -1,8 +1,10 @@
-import { execute, parse } from 'graphql'
+/* eslint-disable react-hooks/rules-of-hooks */
+import { envelop, useExtendContext, useSchema } from '@envelop/core'
+import { useDisableIntrospection } from '@envelop/disable-introspection'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import { getSchema, getContextFactory } from '../server'
 import persistedQueries from '../../__generated__/persisted.graphql.json'
+import { getContextFactory, getSchema } from '../server'
 
 const parseProdRequest = (req: GatsbyFunctionRequest) => {
   const res =
@@ -36,7 +38,16 @@ const parseDevRequest = (req: GatsbyFunctionRequest) => {
   throw new Error('No GET request during development is allowed')
 }
 
-const contextFactory = getContextFactory()
+const createGetEnveloped = async () =>
+  envelop({
+    plugins: [
+      useSchema(await getSchema()),
+      useExtendContext(getContextFactory()),
+      useDisableIntrospection(),
+    ],
+  })
+
+const getEnvelopedPromise = createGetEnveloped()
 
 const handler = async (
   req: GatsbyFunctionRequest,
@@ -53,17 +64,20 @@ const handler = async (
       ? parseProdRequest(req)
       : parseDevRequest(req)
 
+  const getEnveloped = await getEnvelopedPromise
+  const { parse, contextFactory, execute, schema } = getEnveloped({ req })
+
   try {
-    const response = await execute({
-      schema: await getSchema(),
+    const result = await execute({
+      schema,
       document: parse(query),
       variableValues: variables,
-      contextValue: contextFactory({}),
+      contextValue: await contextFactory(),
       operationName,
     })
 
     res.setHeader('content-type', 'application/json')
-    res.send(JSON.stringify(response))
+    res.send(JSON.stringify(result))
   } catch (err) {
     console.error(err)
 
