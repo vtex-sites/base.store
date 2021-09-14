@@ -28,7 +28,12 @@ function FacetedFilter({ facets }: Props) {
         .filter((facet) => facet.type === 'TEXT')
         .map(({ name, values }, it) => (
           <div key={`${name}-${it}`}>
-            <button onClick={() => setIndex(it)}>{name}</button>
+            <button
+              onClick={() => setIndex(it)}
+              data-testid="facet-filter-header"
+            >
+              {name}
+            </button>
             <ul style={{ display: index !== it ? 'none' : 'block' }}>
               {values?.map((item) => {
                 const id = `${name}-${item?.name}`
@@ -42,7 +47,7 @@ function FacetedFilter({ facets }: Props) {
                       onChange={() => toggleFacet(item as any)}
                       data-testid="facet-filter-checkbox"
                       data-value={item?.value}
-                      data-quatity={item?.quantity}
+                      data-quantity={item?.quantity}
                     />
                     <label htmlFor={id}>
                       {item?.name}({item?.quantity})
