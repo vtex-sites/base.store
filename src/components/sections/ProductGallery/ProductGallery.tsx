@@ -1,5 +1,6 @@
-import React from 'react'
 import { gql } from '@vtex/gatsby-plugin-graphql'
+import React from 'react'
+import FacetedFilter from 'src/components/search/FacetedFilter'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { GalleryQueryQuery } from '@generated/GalleryQuery.graphql'
 import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
@@ -32,8 +33,8 @@ function ProductGallery({
   return (
     <>
       {/* Controls */}
+      <FacetedFilter facets={facets} />
       <div>Total Products: {totalCount}</div>
-      <div>Number of Facets Found: {facets.length}</div>
 
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
@@ -80,19 +81,7 @@ export const fragment = gql`
     totalCount: recordsFiltered
   }
   fragment ProductGallery_facets on VTEX_Facet {
-    name
-    type
-    values {
-      key
-      name
-      value
-      selected
-      quantity
-      range {
-        from
-        to
-      }
-    }
+    ...FacetedFilter_facets
   }
 `
 
