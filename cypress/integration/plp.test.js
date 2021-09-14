@@ -36,7 +36,7 @@ describe('Search page Filters and Sorting options', () => {
       })
   })
 
-  it('Sort products', () => {
+  it('Sort products by price-asc', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -50,6 +50,24 @@ describe('Search page Filters and Sorting options', () => {
           )
 
           const sorted = Cypress._.sortBy(prices, Cypress._.identity)
+
+          expect(prices).to.have.length.gt(0)
+          expect(prices).to.deep.equal(sorted)
+        })
+      })
+  })
+
+  it('Sort products by price-desc', () => {
+    cy.getById('search-sort')
+      .should('exist')
+      .select('price-desc')
+      .then(() => {
+        cy.getById('price').should(($prices) => {
+          const prices = Cypress._.map($prices, (price) =>
+            Number(price.attributes['data-value'].value)
+          )
+
+          const sorted = Cypress._.sortBy(prices, (x) => -x)
 
           expect(prices).to.have.length.gt(0)
           expect(prices).to.deep.equal(sorted)
