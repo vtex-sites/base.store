@@ -3,32 +3,24 @@ import React, { useState } from 'react'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { FacetedFilter_FacetsFragment } from '@generated/FacetedFilter_facets.graphql'
 
+import * as styles from './FacetedFilter.module.css'
+
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
 }
-
-const styles = {
-  container: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    overflowX: 'hidden',
-    width: '100%',
-    justifyContent: 'space-around',
-  },
-} as const
 
 function FacetedFilter({ facets }: Props) {
   const [index, setIndex] = useState(-1)
   const { toggleFacet } = useSearch()
 
   return (
-    <div style={styles.container}>
+    <div className={styles.container}>
       {facets
         .filter((facet) => facet.type === 'TEXT')
         .map(({ name, values }, it) => (
           <div key={`${name}-${it}`}>
             <button
+              className={styles.button}
               onClick={() => setIndex(it)}
               data-testid="facet-filter-header"
             >

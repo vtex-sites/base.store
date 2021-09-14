@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  justify-content: space-around;
+}
+
+.button {
+  margin: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: hidden;
+    width: 100%;
+    justify-content: space-around;
+  }
+}
