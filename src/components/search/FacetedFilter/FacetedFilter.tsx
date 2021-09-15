@@ -10,44 +10,46 @@ interface Props {
 }
 
 function FacetedFilter({ facets }: Props) {
-  const [index, setIndex] = useState(-1)
+  const [selectedFilter, setSelectedFilter] = useState(-1)
   const { toggleFacet } = useSearch()
 
   return (
     <div className={styles.container}>
       {facets
         .filter((facet) => facet.type === 'TEXT')
-        .map(({ name, values }, it) => (
-          <div key={`${name}-${it}`}>
+        .map(({ name, values }, index) => (
+          <div key={`${name}-${index}`}>
             <button
               className={styles.button}
-              onClick={() => setIndex(it)}
+              onClick={() => setSelectedFilter(index)}
               data-testid="facet-filter-header"
             >
               {name}
             </button>
-            <ul style={{ display: index !== it ? 'none' : 'block' }}>
-              {values?.map((item) => {
-                const id = `${name}-${item?.name}`
+            {selectedFilter === index && (
+              <ul>
+                {values?.map((item) => {
+                  const id = `${name}-${item?.name}`
 
-                return (
-                  <li key={id}>
-                    <input
-                      id={id}
-                      type="checkbox"
-                      checked={!!item?.selected}
-                      onChange={() => toggleFacet(item as any)}
-                      data-testid="facet-filter-checkbox"
-                      data-value={item?.value}
-                      data-quantity={item?.quantity}
-                    />
-                    <label htmlFor={id}>
-                      {item?.name}({item?.quantity})
-                    </label>
-                  </li>
-                )
-              })}
-            </ul>
+                  return (
+                    <li key={id}>
+                      <input
+                        id={id}
+                        type="checkbox"
+                        checked={!!item?.selected}
+                        onChange={() => toggleFacet(item as any)}
+                        data-testid="facet-filter-checkbox"
+                        data-value={item?.value}
+                        data-quantity={item?.quantity}
+                      />
+                      <label htmlFor={id}>
+                        {item?.name}({item?.quantity})
+                      </label>
+                    </li>
+                  )
+                })}
+              </ul>
+            )}
           </div>
         ))}
     </div>
