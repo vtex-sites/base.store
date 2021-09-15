@@ -1,7 +1,7 @@
 // eslint-disable-next-line spaced-comment
 /// <reference types="cypress" />
 /**
- * Cypress tests for testing the Cart module
+ * Cypress tests for PLP
  */
 
 import { pages, options } from '../global'
@@ -36,12 +36,12 @@ describe('Search page Filters and Sorting options', () => {
         const quantity = $checkbox.attr('data-quantity')
         const value = $checkbox.attr('data-value')
 
-        // Check if filter applied actually endded up on the url
+        // Check if the filter applied actually ended up in the URL
         cy.location('pathname').should((loc) => {
           expect(loc).to.include(`${pages.collection}/${value}`)
         })
 
-        // Check if filter applied actually brought the number of products it said it would
+        // Check if the filter applied actually brought the number of products it said it would
         cy.getById('product-link').should('have.length', Number(quantity))
       })
   })
