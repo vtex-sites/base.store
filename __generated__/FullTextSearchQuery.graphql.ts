@@ -24,7 +24,7 @@ export type FullTextSearchQueryQuery = { vtex: { productSearch: Maybe<{ totalCou
 
 export const FullTextSearchQuery = {
   query: process.env.NODE_ENV === 'production' ? undefined : "query FullTextSearchQuery($from: Int!, $to: Int!, $fullText: String, $selectedFacets: [VTEX_SelectedFacetInput!]!, $sort: String!) {\n  vtex {\n    productSearch(\n      from: $from\n      to: $to\n      orderBy: $sort\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      hideUnavailableItems: false\n      simulationBehavior: skip\n    ) {\n      products {\n        slug: linkText\n        id: productId\n        productName\n        items {\n          itemId\n          images {\n            imageUrl\n            imageText\n          }\n          sellers {\n            sellerId\n            commercialOffer: commertialOffer {\n              spotPrice\n              listPrice: ListPrice\n            }\n          }\n        }\n      }\n      totalCount: recordsFiltered\n    }\n    facets(\n      fullText: $fullText\n      selectedFacets: $selectedFacets\n      operator: or\n      behavior: \"Static\"\n      removeHiddenFacets: true\n    ) {\n      facets {\n        name\n        type\n        values {\n          key\n          name\n          value\n          selected\n          quantity\n          range {\n            from\n            to\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "55f8ab5184f44890e779f6be64d0567de120281fdca310a8beadc99c6de13061",
+  sha256Hash: "0725afae268a9f505904aedefc2d71109669cf5375e3891850a1ebac6a55f734",
   operationName: "FullTextSearchQuery",
 }
 

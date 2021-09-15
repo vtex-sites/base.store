@@ -23,7 +23,7 @@ export type CollectionSearchQueryQuery = { vtex: { productSearch: Maybe<{ totalC
 
 export const CollectionSearchQuery = {
   query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($to: Int!, $from: Int!, $selectedFacets: [VTEX_SelectedFacetInput!]!, $sort: String!) {\n  vtex {\n    productSearch(\n      to: $to\n      from: $from\n      orderBy: $sort\n      selectedFacets: $selectedFacets\n      hideUnavailableItems: false\n      simulationBehavior: skip\n    ) {\n      products {\n        slug: linkText\n        id: productId\n        productName\n        items {\n          itemId\n          images {\n            imageUrl\n            imageText\n          }\n          sellers {\n            sellerId\n            commercialOffer: commertialOffer {\n              spotPrice\n              listPrice: ListPrice\n            }\n          }\n        }\n      }\n      totalCount: recordsFiltered\n    }\n    facets(\n      selectedFacets: $selectedFacets\n      operator: or\n      behavior: \"Static\"\n      removeHiddenFacets: true\n    ) {\n      breadcrumb {\n        href\n        name\n      }\n      facets {\n        name\n        type\n        values {\n          key\n          name\n          value\n          selected\n          quantity\n          range {\n            from\n            to\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "1bd0b0711d65c3772bef448926f67210a494d32ecf9a02cc52097e533cf8f171",
+  sha256Hash: "f8f1cf3bbffd5236e1e3f5d55f0b50be1b3e7f150f5d55c98361a14ac0ac5a09",
   operationName: "CollectionSearchQuery",
 }
 
