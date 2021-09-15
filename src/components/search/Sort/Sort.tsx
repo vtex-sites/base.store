@@ -22,11 +22,13 @@ function Sort() {
 
   return (
     <select
+      style={{ padding: '10px' }}
       data-testid="search-sort"
       onChange={(e) => setSort(keys[e.target.selectedIndex])}
+      value={sort}
     >
       {keys.map((key) => (
-        <option selected={sort === key} key={key} value={key}>
+        <option key={key} value={key}>
           {OptionsMap[key]}
         </option>
       ))}

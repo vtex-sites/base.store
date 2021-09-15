@@ -35,8 +35,16 @@ function ProductGallery({
     <>
       {/* Controls */}
       <FacetedFilter facets={facets} />
-      <div>Total Products: {totalCount}</div>
-      <Sort />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div>Total Products: {totalCount}</div>
+        <Sort />
+      </div>
 
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
