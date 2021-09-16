@@ -54,8 +54,16 @@ function ProductSummary({ product }: Props) {
       />
       <div>{product.productName}</div>
       <div style={styles.offer}>
-        <span style={styles.listPrice}>{listPrice}</span>
-        <span>{price}</span>
+        <span
+          data-testid="list-price"
+          data-value={offer!.listPrice!}
+          style={styles.listPrice}
+        >
+          {listPrice}
+        </span>
+        <span data-testid="price" data-value={offer!.spotPrice!}>
+          {price}
+        </span>
       </div>
       <button {...buyProps}>Add to cart</button>
     </Link>
