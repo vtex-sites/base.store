@@ -9,7 +9,6 @@
     "@vtex/gatsby-source-vtex": "^1.0.2",
     "@vtex/store-sdk": "^1.0.2",
     "@vtex/store-ui": "^1.1.11",
-    "@vtex/theme-b2c-tailwind": "^1.1.11",
     "babel-preset-gatsby": "^1.13.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-gatsby-cloud": "^3.1.0",
