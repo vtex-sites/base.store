@@ -1,36 +1,10 @@
-import { introspectSchema, wrapSchema } from '@graphql-tools/wrap'
-import { execute, parse, print } from 'graphql'
-import fetch from 'isomorphic-unfetch'
-import type { AsyncExecutor } from '@graphql-tools/utils'
+import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import persistedQueries from '../../__generated__/persisted.graphql.json'
+import { getSchema, getContextFactory } from '../server'
+import persisted from '../../__generated__/persisted.graphql.json'
 
-const store = process.env.GATSBY_STORE_ID
-const workspace = process.env.GATSBY_VTEX_IO_WORKSPACE
-
-const executor: AsyncExecutor = async ({ document, variables }) => {
-  const query = print(document)
-  const response = await fetch(
-    `https://${workspace}--${store}.myvtex.com/graphql/`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query, variables }),
-    }
-  )
-
-  return response.json()
-}
-
-const schemaPromise = introspectSchema(executor).then((schema) =>
-  wrapSchema({
-    schema,
-    executor,
-  })
-)
+const persistedQueries = new Map(Object.entries(persisted))
 
 const parseProdRequest = (req: GatsbyFunctionRequest) => {
   const res =
@@ -43,7 +17,7 @@ const parseProdRequest = (req: GatsbyFunctionRequest) => {
         }
 
   const hash = res.extensions.persistedQuery.sha256Hash
-  const query = (persistedQueries as any)[hash]
+  const query = persistedQueries.get(hash)
 
   if (query == null) {
     throw new Error(`No query found with hash: ${hash}`)
@@ -64,6 +38,8 @@ const parseDevRequest = (req: GatsbyFunctionRequest) => {
   throw new Error('No GET request during development is allowed')
 }
 
+const contextFactory = getContextFactory()
+
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
@@ -81,15 +57,26 @@ const handler = async (
 
   try {
     const response = await execute({
-      schema: await schemaPromise,
+      schema: await getSchema(),
       document: parse(query),
       variableValues: variables,
+      contextValue: contextFactory({}),
       operationName,
     })
 
-    res.send(response)
+    if (
+      process.env.NODE_ENV !== 'production' &&
+      Array.isArray(response.errors)
+    ) {
+      response.errors.forEach(console.error)
+    }
+
+    res.setHeader('content-type', 'application/json')
+    res.send(JSON.stringify(response))
   } catch (err) {
     console.error(err)
+
+    res.status(500)
   }
 }
 

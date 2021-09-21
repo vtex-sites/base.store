@@ -2,10 +2,9 @@ import { useMemo } from 'react'
 
 interface Options {
   slug: string
-  skuId: string
 }
 
-export const useProductLink = ({ slug, skuId }: Options) =>
+export const useProductLink = ({ slug }: Options) =>
   useMemo(() => {
     const onClick = () => {
       // TODO: Add onClick analytics event
@@ -13,8 +12,7 @@ export const useProductLink = ({ slug, skuId }: Options) =>
 
     return {
       to: `/${slug}/p`,
-      state: { skuId },
       onClick,
       'data-testid': 'product-link',
     }
-  }, [skuId, slug])
+  }, [slug])

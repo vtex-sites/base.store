@@ -3,20 +3,13 @@ import type { RequestOptions as GraphQLRequestOptions } from '@vtex/gatsby-plugi
 
 export type RequestOptions = GraphQLRequestOptions
 
-export const request = async <Query = any, Variables = any>(
+export const request = async <Query = unknown, Variables = unknown>(
   options: RequestOptions
 ) => {
-  const { data, errors } = await baseRequest<Variables, Query>('/api/graphql', {
-    ...options,
-    fetchOptions: {
-      credentials: 'include',
-      ...options.fetchOptions,
-      headers: {
-        'x-vtex-graphql-referer': window.location.host,
-        ...options.fetchOptions?.headers,
-      },
-    },
-  })
+  const { data, errors } = await baseRequest<Variables, Query>(
+    '/api/graphql',
+    options
+  )
 
   if (errors?.length) {
     throw errors[0]

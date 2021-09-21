@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
+/* eslint-disable react/prop-types */
 import React, { createContext, useMemo, useState } from 'react'
 import {
   formatSearchParamsState,
