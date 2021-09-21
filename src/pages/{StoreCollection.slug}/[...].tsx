@@ -50,7 +50,7 @@ const useSearchParams = (props: Props): SearchParamsState => {
       term: null,
       personalized: false,
       sort: 'score-desc',
-    }
+    } as any // TODO: remove this once functions are merged
   }, [props])
 }
 

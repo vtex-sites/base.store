@@ -2229,9 +2229,9 @@
     webpack-assets-manifest "^5.0.6"
 
 "@vtex/gatsby-plugin-thumbor@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.0.2.tgz#b37abcfdb348549b75099ba8ec5f9225cb09a40a"
-  integrity sha512-qS9H42M8rZLjgA71HVcw4JcGP1uwB9l0Qfee++8fsyHShXadHp0eVoZpFouBccXmeylDdIsf+riMeF5E8ngZPQ==
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.1.11.tgz#66bbc08c04b8d30bda014b206d230f1a1e5622b5"
+  integrity sha512-zetgYH5xePhoXWNf261YwvmFxI2YD5QCTvDm+efhLj13T/7hwwN4yAnkUzFy17rajGMirOFL64dezJUd3/fFcA==
 
 "@vtex/gatsby-source-vtex@^1.0.2":
   version "1.0.2"
@@ -2254,10 +2254,9 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-sdk@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.0.2.tgz#e16ce3c8a521b1a2f2a997c6ac8ddd1932e04996"
-  integrity sha512-JwrWX9QhrQKUz5w1uLa+awknikUyyxRLcZdDetmmGphxmEHIGHs2BGjkCLdNiV78fxz5Eezs/CtoTPCrTw5h/g==
+"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/29e9dd6f/@vtex/store-sdk":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/29e9dd6f/@vtex/store-sdk#517a5702b0077f702c5cd7ce5b12ac83aadb8999"
   dependencies:
     idb-keyval "^5.1.3"
 

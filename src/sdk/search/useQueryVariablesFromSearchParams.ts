@@ -13,7 +13,7 @@ const sortMap = {
   'release-desc': 'release:desc',
   'discount-desc': 'discount:desc',
   'score-desc': '',
-} as const
+} as any // TODO: remove this once functions are
 
 export const useQueryVariablesFromSearchParams = (params: SearchParamsState) =>
   useMemo(() => {

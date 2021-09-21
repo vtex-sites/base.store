@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-import React, { createContext, useMemo, useState } from 'react'
+/* eslint-disable react/prop-types */
+import React, { createContext, useMemo } from 'react'
 import {
   formatSearchParamsState,
   initSearchParamsState,
   removeSearchParam,
   setSearchParam,
+  useSessionStorage,
 } from '@vtex/store-sdk'
 import { navigate } from 'gatsby'
 import type { FC } from 'react'
@@ -64,14 +65,18 @@ const toggleFacet = (item: Facet, state: SearchParamsState) =>
 interface Props {
   searchParams: SearchParamsState
   pageInfo: PageInfo
+  location: Location
 }
 
 export const SearchProvider: FC<Props> = ({
   searchParams: initalState,
   children,
   pageInfo,
+  location,
 }) => {
-  const [pages, setPages] = useState([initalState.page])
+  const [pages, setPages] = useSessionStorage(`store::${location.href}`, [
+    initalState.page,
+  ])
 
   const value = useMemo(() => {
     const paramsState = initSearchParamsState(initalState)
@@ -120,7 +125,7 @@ export const SearchProvider: FC<Props> = ({
         addPreviousPage: (e: any) => setPage(e, 'prev'),
       },
     }
-  }, [initalState, pageInfo.size, pageInfo.total, pages])
+  }, [initalState, pageInfo.size, pageInfo.total, pages, setPages])
 
   return <Context.Provider value={value}>{children}</Context.Provider>
 }

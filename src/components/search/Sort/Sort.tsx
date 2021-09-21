@@ -24,7 +24,7 @@ function Sort() {
     <select
       style={{ padding: '10px' }}
       data-testid="search-sort"
-      onChange={(e) => setSort(keys[e.target.selectedIndex])}
+      onChange={(e) => setSort(keys[e.target.selectedIndex] as any)} // TODO: remove this once functions are merged
       value={sort}
     >
       {keys.map((key) => (

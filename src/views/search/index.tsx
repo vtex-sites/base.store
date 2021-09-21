@@ -14,7 +14,7 @@ interface Props extends PageProps {
 }
 
 const View: FC<Props> = (props) => {
-  const { searchParams, data: serverData } = props
+  const { searchParams, data: serverData, location } = props
   const { data: dynamicData } = useSearch(searchParams)
 
   const data = { ...dynamicData, ...serverData }
@@ -39,6 +39,7 @@ const View: FC<Props> = (props) => {
         size: ITEMS_PER_PAGE,
         total: Math.ceil(totalCount / ITEMS_PER_PAGE),
       }}
+      location={location}
     >
       <>
         {/* Seo Components */}
