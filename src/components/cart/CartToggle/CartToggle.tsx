@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'src/components/ui/Button'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
@@ -7,9 +8,9 @@ function CartToggle() {
   const { totalUniqueItems } = useCart()
 
   return (
-    <button className="mx-3" {...btnProps}>
+    <Button {...btnProps} className="mx-3">
       cart: {totalUniqueItems}
-    </button>
+    </Button>
   )
 }
 

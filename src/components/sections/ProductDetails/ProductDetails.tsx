@@ -5,6 +5,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useSkuId } from 'src/sdk/product/useSkuId'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/ProductDetailsFragment_product.graphql'
+import Button from 'src/components/ui/Button'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -50,7 +51,7 @@ function ProductDetails({ product }: Props) {
     <>
       <h1>{product.productName}</h1>
       <GatsbyImage image={image} alt={imageAlt} loading="eager" />
-      <button {...buyProps}>Add to cart</button>
+      <Button {...buyProps}>Add to cart</Button>
     </>
   )
 }

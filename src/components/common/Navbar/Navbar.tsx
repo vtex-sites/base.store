@@ -5,7 +5,7 @@ import Navlinks from '../Navlinks'
 
 function Navbar() {
   return (
-    <header className="w-screen flex justify-between items-center h-12 bg-primary-400">
+    <header className="flex justify-between items-center h-12 bg-primary-400">
       <Navlinks />
       <CartToggle />
     </header>
