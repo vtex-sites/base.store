@@ -8,6 +8,7 @@ import Layout from './src/views/Layout'
 import TestProvider from './src/sdk/tests'
 import { validateCart } from './src/sdk/cart/validate'
 import { uiInitialState, uiActions, uiEffects } from './src/sdk/ui'
+import '@vtex/theme-b2c-tailwind/dist/index.css'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
