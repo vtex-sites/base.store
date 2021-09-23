@@ -65,13 +65,6 @@ module.exports = {
     },
     {
       resolve: 'gatsby-plugin-offline',
-      options: {
-        precachePages: [`/offline`],
-        appendScript: 'src/custom-sw-code.js',
-        workboxConfig: {
-          globPatterns: ['**/offline/*'],
-        },
-      },
     },
     {
       resolve: 'gatsby-plugin-robots-txt',
