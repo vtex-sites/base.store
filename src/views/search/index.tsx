@@ -46,7 +46,7 @@ const View: FC<Props> = (props) => {
 
         {/* UI Components */}
         <ProductGallery
-          initialData={dynamicData as any}
+          fallbackData={dynamicData as any}
           facets={facets!.facets as any}
           productSearch={productSearch as any}
         />
