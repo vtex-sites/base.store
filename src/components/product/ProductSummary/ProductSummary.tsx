@@ -6,6 +6,8 @@ import { useImage } from 'src/sdk/image/useImage'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
+import { Badge } from '@vtex/store-ui'
+import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -44,6 +46,11 @@ function ProductSummary({ product }: Props) {
     }
   )
 
+  const discountPercent = useDiscountPercent(
+    Number(offer?.listPrice),
+    Number(offer?.spotPrice)
+  )
+
   return (
     <Link {...linkProps}>
       <GatsbyImage
@@ -64,6 +71,7 @@ function ProductSummary({ product }: Props) {
         <span data-testid="price" data-value={offer!.spotPrice!}>
           {price}
         </span>
+        {!!Number(discountPercent) && <Badge>{discountPercent}%</Badge>}
       </div>
       <button {...buyProps}>Add to cart</button>
     </Link>
