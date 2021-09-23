@@ -8,7 +8,7 @@ import { pages, options } from '../global'
 
 describe('React rendering performance', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('Renders pages once', () => {

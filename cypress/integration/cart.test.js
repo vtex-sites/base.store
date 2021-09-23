@@ -8,7 +8,7 @@ import { pages, options } from '../global'
 
 describe('Cart Sidebar', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('toggles cart sidebar', () => {
@@ -24,7 +24,7 @@ describe('Cart Sidebar', () => {
 
 describe('Cart on pdps', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('adds a product to cart', () => {
@@ -76,7 +76,7 @@ describe('Cart on pdps', () => {
 
 describe('Cart on collection pages', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('adds a product to cart', () => {

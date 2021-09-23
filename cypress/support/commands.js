@@ -32,8 +32,12 @@ Cypress.Commands.add('waitForHydration', () => {
   return cy.get(`[data-testid=react-hydrated]`).should('exist')
 })
 
-Cypress.Commands.add('clearIDB', () => {
-  return indexedDB.deleteDatabase('keyval-store')
+Cypress.Commands.add('clearStorage', () => {
+  cy.window()
+    .then((win) => {
+      win.sessionStorage.clear()
+    })
+    .then(() => indexedDB.deleteDatabase('keyval-store'))
 })
 
 Cypress.Commands.add('itemsInCart', (count) => {

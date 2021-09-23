@@ -10,7 +10,7 @@ import { pages, options } from '../global'
 
 describe('Home Page Seo', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('has meta/canonical/link tags', () => {
@@ -76,7 +76,7 @@ describe('Home Page Seo', () => {
 
 describe('Product Page Seo', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('has meta/canonical/link tags', () => {
@@ -168,7 +168,7 @@ describe('Product Page Seo', () => {
 
 describe('Collection Page Seo', () => {
   beforeEach(() => {
-    cy.clearIDB()
+    cy.clearStorage()
   })
 
   it('has meta/canonical/link tags', () => {

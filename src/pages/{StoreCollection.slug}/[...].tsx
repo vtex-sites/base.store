@@ -49,8 +49,8 @@ const useSearchParams = (props: Props): SearchParamsState => {
       selectedFacets: facets,
       term: null,
       personalized: false,
-      sort: 'score-desc',
-    } as any // TODO: remove this once functions are merged
+      sort: 'score_desc',
+    }
   }, [props])
 }
 

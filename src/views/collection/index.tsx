@@ -17,7 +17,6 @@ function View(props: Props) {
     pageContext: { slug },
     data: staticData,
     searchParams,
-    location,
   } = props
 
   const { data: dynamicData } = useCollection(searchParams)
@@ -44,7 +43,6 @@ function View(props: Props) {
         size: ITEMS_PER_PAGE,
         total: Math.ceil(totalCount / ITEMS_PER_PAGE),
       }}
-      location={location}
     >
       {/* Seo components */}
       <Seo
