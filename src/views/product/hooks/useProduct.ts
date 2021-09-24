@@ -8,12 +8,12 @@ import { BrowserProductQuery } from '@generated/BrowserProductQuery.graphql'
 
 export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   variables: BrowserProductQueryQueryVariables,
-  initialData?: T
+  fallbackData?: T
 ) =>
   useQuery<BrowserProductQueryQuery & T, BrowserProductQueryQueryVariables>({
     ...BrowserProductQuery,
     variables,
-    initialData,
+    fallbackData,
     revalidateOnMount: true,
     suspense: false,
   })

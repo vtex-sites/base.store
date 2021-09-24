@@ -54,7 +54,7 @@ function View(props: Props) {
 
       {/* UI components */}
       <ProductGallery
-        initialData={dynamicData}
+        fallbackData={dynamicData}
         facets={facets!.facets as any}
         productSearch={productSearch!}
       />
