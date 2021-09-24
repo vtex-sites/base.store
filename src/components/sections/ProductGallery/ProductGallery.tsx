@@ -64,7 +64,7 @@ function ProductGallery({
         <Fragment key={`gallery-page-${page}`}>
           <PageBreak page={page} />
           <GalleryPage
-            fallbackData={page === searchParams.page ? initialData : undefined}
+            fallbackData={page === searchParams.page ? fallbackData : undefined}
             page={page}
           />
         </Fragment>
