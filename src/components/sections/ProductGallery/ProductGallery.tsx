@@ -10,13 +10,13 @@ import type { ProductGallery_ProductsFragment } from '@generated/ProductGallery_
 import GalleryPage from './ProductGalleryPage'
 
 interface Props {
-  initialData?: GalleryQueryQuery
+  fallbackData?: GalleryQueryQuery
   facets: ProductGallery_FacetsFragment[]
   products: ProductGallery_ProductsFragment
 }
 
 function ProductGallery({
-  initialData,
+  fallbackData,
   facets,
   products: {
     pageInfo: { totalCount },
@@ -64,7 +64,7 @@ function ProductGallery({
       {pages.map((page) => (
         <GalleryPage
           key={`gallery-page-${page}`}
-          initialData={page === searchParams.page ? initialData : undefined}
+          fallbackData={page === searchParams.page ? fallbackData : undefined}
           page={page}
         />
       ))}
