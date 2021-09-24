@@ -1,4 +1,11 @@
 describe('Accessibility tests', () => {
+  beforeEach(() => {
+    cy.intercept('/graphql/?operationName=BrowserProductQuery*').as(
+      'productQuery'
+    )
+
+    cy.intercept('/graphql/?operationName=GalleryQuery*').as('galleryQuery')
+  })
   it('Test Home', () => {
     cy.visit('/')
     cy.waitForHydration()
@@ -8,7 +15,6 @@ describe('Accessibility tests', () => {
 
   it('Test Collections Page', () => {
     cy.visit('/women')
-    cy.intercept('/graphql/?operationName=GalleryQuery*').as('galleryQuery')
     cy.wait('@galleryQuery')
     cy.injectAxe()
     cy.checkA11y()
@@ -16,9 +22,6 @@ describe('Accessibility tests', () => {
 
   it('Test Product Page', () => {
     cy.visit('/small-messenger-bag-with-double-g/p')
-    cy.intercept('/graphql/?operationName=BrowserProductQuery*').as(
-      'productQuery'
-    )
     cy.wait('@productQuery')
     cy.injectAxe()
     cy.checkA11y()
