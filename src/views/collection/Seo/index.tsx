@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useEffect } from 'react'
 import type { CollectionSeoFragment_StoreCollectionFragment } from '@generated/CollectionSeoFragment_storeCollection.graphql'
 import type { CollectionSeoFragment_SiteFragment } from '@generated/CollectionSeoFragment_site.graphql'
 
@@ -24,6 +24,24 @@ function Seo({
     description: collectionSeo.description || siteMetadata.description!,
     canonical: `/${slug}/`,
   })
+
+  useEffect(() => {
+    // Add h1 with the title page to fix a11y page-has-heading-one error.
+    const h1 = document.createElement('h1')
+
+    h1.textContent = collectionSeo.title
+    // remove visually, but remain "visible" for screen readers.
+    h1.style.position = 'absolute'
+    h1.style.top = '-100px'
+
+    const main = document.querySelector('main')
+
+    main?.insertBefore(h1, main.childNodes[0])
+
+    return () => {
+      h1.remove()
+    }
+  }, [collectionSeo.title])
 
   return (
     <>
