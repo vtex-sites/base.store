@@ -5,15 +5,15 @@ import { ITEMS_PER_PAGE } from 'src/constants'
 import { priceRange } from './priceRange'
 
 const sortMap = {
-  'price-desc': 'price:desc',
-  'price-asc': 'price:asc',
-  'orders-desc': 'orders:desc',
-  'name-desc': 'name:desc',
-  'name-asc': 'name:asc',
-  'release-desc': 'release:desc',
-  'discount-desc': 'discount:desc',
-  'score-desc': '',
-} as const
+  price_desc: 'price:desc',
+  price_asc: 'price:asc',
+  orders_desc: 'orders:desc',
+  name_desc: 'name:desc',
+  name_asc: 'name:asc',
+  release_desc: 'release:desc',
+  discount_desc: 'discount:desc',
+  score_desc: '',
+}
 
 export const useQueryVariablesFromSearchParams = (params: SearchParamsState) =>
   useMemo(() => {
