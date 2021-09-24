@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-plus-operands */
-import React, { createContext, useMemo, useState } from 'react'
 import {
   formatSearchParamsState,
   initSearchParamsState,
@@ -7,7 +5,8 @@ import {
   setSearchParam,
 } from '@vtex/store-sdk'
 import { navigate } from 'gatsby'
-import type { FC } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
+import type { FC, ReactNode } from 'react'
 import type { SearchParamsState } from '@vtex/store-sdk'
 
 export interface PageInfo {
@@ -29,6 +28,7 @@ export interface SearchContext {
     pages: number[]
     addNextPage: (e: any) => void
     addPreviousPage: (e: any) => void
+    setCurrentPage: (page: number) => void
   }
   searchParams: SearchParamsState
   setFacet: (item: Facet) => void
@@ -47,7 +47,14 @@ export const getLink = (searchParams: SearchParamsState) => {
   return `${pathname}${search}`
 }
 
-const apply = (params: SearchParamsState) => navigate(getLink(params))
+const apply = (params: SearchParamsState, replace = false) => {
+  if (replace) {
+    window.history.replaceState(undefined, '', getLink(params))
+  } else {
+    // Reset page when navigating so we see the first results after applying the filters
+    navigate(getLink({ ...params, page: 0 }))
+  }
+}
 
 interface Facet {
   selected?: boolean
@@ -64,6 +71,7 @@ const toggleFacet = (item: Facet, state: SearchParamsState) =>
 interface Props {
   searchParams: SearchParamsState
   pageInfo: PageInfo
+  children: ReactNode
 }
 
 export const SearchProvider: FC<Props> = ({
@@ -71,7 +79,7 @@ export const SearchProvider: FC<Props> = ({
   children,
   pageInfo,
 }) => {
-  const [pages, setPages] = useState([initalState.page])
+  const [pages, setPages] = useState(() => [initalState.page])
 
   const value = useMemo(() => {
     const paramsState = initSearchParamsState(initalState)
@@ -80,7 +88,7 @@ export const SearchProvider: FC<Props> = ({
     const hasNextPage = pageInfo.total > pages[pages.length - 1] + 1
     const hasPreviousPage = pages[0] > 0
 
-    const setPage = (e: any, direction: 'next' | 'prev') => {
+    const pushPage = (e: any, direction: 'next' | 'prev') => {
       e.target.blur?.()
       e.preventDefault()
       if (direction === 'next' && hasNextPage) {
@@ -116,8 +124,9 @@ export const SearchProvider: FC<Props> = ({
           link: getLink({ ...paramsState, page: previousPage }),
         },
         pages,
-        addNextPage: (e: any) => setPage(e, 'next'),
-        addPreviousPage: (e: any) => setPage(e, 'prev'),
+        addNextPage: (e: any) => pushPage(e, 'next'),
+        addPreviousPage: (e: any) => pushPage(e, 'prev'),
+        setCurrentPage: (page: number) => apply({ ...paramsState, page }, true),
       },
     }
   }, [initalState, pageInfo.size, pageInfo.total, pages])

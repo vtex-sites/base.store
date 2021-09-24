@@ -1,7 +1,8 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import React from 'react'
+import React, { Fragment } from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
+import PageBreak from 'src/sdk/search/PageBreak'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { GalleryQueryQuery } from '@generated/GalleryQuery.graphql'
 import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
@@ -60,16 +61,19 @@ function ProductGallery({
 
       {/* Render ALL products */}
       {pages.map((page) => (
-        <GalleryPage
-          key={`gallery-page-${page}`}
-          fallbackData={page === searchParams.page ? fallbackData : undefined}
-          page={page}
-        />
+        <Fragment key={`gallery-page-${page}`}>
+          <PageBreak page={page} />
+          <GalleryPage
+            fallbackData={page === searchParams.page ? fallbackData : undefined}
+            page={page}
+          />
+        </Fragment>
       ))}
 
       {/* Add link to next page. This helps on SEO */}
       {next !== false && (
         <a
+          data-testid="show-more"
           onClick={setNextPage}
           href={next.link}
           rel="next"
