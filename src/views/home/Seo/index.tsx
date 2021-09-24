@@ -1,6 +1,6 @@
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import React from 'react'
-import useAddHead from 'src/utils/hooks/useAddHeadin'
+import useAddHead from 'src/utils/hooks/useAddHead'
 
 import type { Props as ViewProps } from '../index'
 import { useMetadata } from './hooks/useMetadata'

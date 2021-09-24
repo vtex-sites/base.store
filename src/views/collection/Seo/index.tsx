@@ -3,7 +3,7 @@ import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import type { CollectionSeoFragment_StoreCollectionFragment } from '@generated/CollectionSeoFragment_storeCollection.graphql'
 import type { CollectionSeoFragment_SiteFragment } from '@generated/CollectionSeoFragment_site.graphql'
-import useAddHead from 'src/utils/hooks/useAddHeadin'
+import useAddHead from 'src/utils/hooks/useAddHead'
 
 import { useMetadata } from './hooks/useMetadata'
 
