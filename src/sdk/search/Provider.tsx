@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import {
   formatSearchParamsState,
   initSearchParamsState,
@@ -7,7 +6,7 @@ import {
 } from '@vtex/store-sdk'
 import { navigate } from 'gatsby'
 import React, { createContext, useMemo, useState } from 'react'
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 import type { SearchParamsState } from '@vtex/store-sdk'
 
 export interface PageInfo {
@@ -72,6 +71,7 @@ const toggleFacet = (item: Facet, state: SearchParamsState) =>
 interface Props {
   searchParams: SearchParamsState
   pageInfo: PageInfo
+  children: ReactNode
 }
 
 export const SearchProvider: FC<Props> = ({
