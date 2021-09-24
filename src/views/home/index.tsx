@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Props as PageProps } from 'src/pages/index'
+import { Button, Modal } from '@vtex/store-ui'
 
 import Seo from './Seo'
 
@@ -19,6 +20,8 @@ function View(props: Props) {
   //   return { type: 'vtex:pageView', data: event }
   // })
 
+  const [isOpen, setModalOpen] = useState(false)
+
   return (
     <>
       {/* Seo Components */}
@@ -26,6 +29,10 @@ function View(props: Props) {
 
       {/* Visual Sections */}
       <div>TODO</div>
+      <Button onClick={() => setModalOpen(true)}>open modal</Button>
+      <Modal isOpen={isOpen} onDismiss={() => setModalOpen(false)}>
+        My content here
+      </Modal>
     </>
   )
 }
