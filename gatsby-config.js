@@ -51,6 +51,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: '@builder.io/gatsby',
+      options: {
+        publicAPIKey: '211eb255f6a5403bbfbc22ee47e64b03',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Fashion Demo Store',

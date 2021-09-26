@@ -1,11 +1,13 @@
 import React from 'react'
 import type { Props as PageProps } from 'src/pages/index'
+import { BuilderComponent } from '@builder.io/react'
 
 import Seo from './Seo'
 
 export type Props = PageProps
 
 function View(props: Props) {
+  const { data } = props
   // Send event to analytics
   // usePixelSendEvent(() => {
   //   const event: PageViewData = {
@@ -25,7 +27,10 @@ function View(props: Props) {
       <Seo {...props} />
 
       {/* Visual Sections */}
-      <div>TODO</div>
+      <BuilderComponent
+        model="home"
+        content={data?.allBuilderModels.oneHome?.content}
+      />
     </>
   )
 }

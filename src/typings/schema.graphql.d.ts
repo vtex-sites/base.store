@@ -36,6 +36,10 @@ type Scalars = {
   VTEX_ProductCategoriesObject: any;
   VTEX_MatchedParameters: any;
   VTEX_OfferingInfo: any;
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  builder_JSON: any;
+  /** The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  builder_JSONObject: any;
 };
 
 
@@ -262,6 +266,8 @@ type DirectoryCtimeArgs = {
 type Site = Node & {
   buildTime: Maybe<Scalars['Date']>;
   siteMetadata: Maybe<SiteSiteMetadata>;
+  port: Maybe<Scalars['Int']>;
+  host: Maybe<Scalars['String']>;
   proxy: Maybe<Array<Maybe<SiteProxy>>>;
   flags: Maybe<SiteFlags>;
   polyfill: Maybe<Scalars['Boolean']>;
@@ -743,6 +749,7 @@ type SitePlugin = Node & {
 };
 
 type SitePluginPluginOptions = {
+  publicAPIKey: Maybe<Scalars['String']>;
   name: Maybe<Scalars['String']>;
   short_name: Maybe<Scalars['String']>;
   start_url: Maybe<Scalars['String']>;
@@ -761,8 +768,6 @@ type SitePluginPluginOptions = {
   env: Maybe<SitePluginPluginOptionsEnv>;
   defer: Maybe<Scalars['Boolean']>;
   server: Maybe<Scalars['String']>;
-  basePath: Maybe<Scalars['String']>;
-  sizes: Maybe<Array<Maybe<Scalars['String']>>>;
   color: Maybe<Scalars['String']>;
   showSpinner: Maybe<Scalars['Boolean']>;
   src: Maybe<Scalars['String']>;
@@ -884,6 +889,15 @@ type Channel = Node & {
   defaultCurrency: Maybe<Scalars['String']>;
   supportedCurrencies: Maybe<Array<Maybe<Scalars['String']>>>;
   targetProduct: Maybe<Scalars['String']>;
+};
+
+type BuilderPlugin = Node & {
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  typeName: Maybe<Scalars['String']>;
+  fieldName: Maybe<Scalars['String']>;
 };
 
 type Vtex_ProductUniqueIdentifier = {
@@ -2438,6 +2452,135 @@ type Vtex_OrderFormOpenTextInput = {
   value: Maybe<Scalars['String']>;
 };
 
+type Builder_Home = {
+  id: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['ID']>;
+  ownerId: Maybe<Scalars['ID']>;
+  modelId: Maybe<Scalars['String']>;
+  published: Maybe<Scalars['String']>;
+  lastUpdated: Maybe<Scalars['Int']>;
+  testRatio: Maybe<Scalars['Int']>;
+  startDate: Maybe<Scalars['Int']>;
+  endDate: Maybe<Scalars['Int']>;
+  createdBy: Maybe<Scalars['String']>;
+  createdDate: Maybe<Scalars['Int']>;
+  lastUpdatedBy: Maybe<Scalars['String']>;
+  screenshot: Maybe<Scalars['String']>;
+  query: Maybe<Array<Maybe<Builder_Query>>>;
+  variations: Maybe<Scalars['builder_JSONObject']>;
+  content: Maybe<Scalars['builder_JSONObject']>;
+  everything: Maybe<Scalars['builder_JSONObject']>;
+  data: Maybe<Builder_HomeData>;
+};
+
+type Builder_Query = {
+  property: Maybe<Scalars['String']>;
+  operator: Maybe<Scalars['String']>;
+  value: Maybe<Scalars['builder_JSON']>;
+};
+
+
+
+type Builder_HomeData = {
+  html: Maybe<Scalars['String']>;
+  css: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
+  jsCode: Maybe<Scalars['String']>;
+  cssCode: Maybe<Scalars['String']>;
+  inputs: Maybe<Scalars['builder_JSON']>;
+  httpRequests: Maybe<Scalars['builder_JSON']>;
+  blocks: Maybe<Scalars['builder_JSON']>;
+  customFonts: Maybe<Scalars['builder_JSON']>;
+  state: Maybe<Scalars['builder_JSON']>;
+};
+
+type Builder_Page = {
+  id: Maybe<Scalars['ID']>;
+  name: Maybe<Scalars['ID']>;
+  ownerId: Maybe<Scalars['ID']>;
+  modelId: Maybe<Scalars['String']>;
+  published: Maybe<Scalars['String']>;
+  lastUpdated: Maybe<Scalars['Int']>;
+  testRatio: Maybe<Scalars['Int']>;
+  startDate: Maybe<Scalars['Int']>;
+  endDate: Maybe<Scalars['Int']>;
+  createdBy: Maybe<Scalars['String']>;
+  createdDate: Maybe<Scalars['Int']>;
+  lastUpdatedBy: Maybe<Scalars['String']>;
+  screenshot: Maybe<Scalars['String']>;
+  query: Maybe<Array<Maybe<Builder_Query>>>;
+  variations: Maybe<Scalars['builder_JSONObject']>;
+  content: Maybe<Scalars['builder_JSONObject']>;
+  everything: Maybe<Scalars['builder_JSONObject']>;
+  data: Maybe<Builder_PageData>;
+};
+
+type Builder_PageData = {
+  html: Maybe<Scalars['String']>;
+  css: Maybe<Scalars['String']>;
+  url: Maybe<Scalars['String']>;
+  jsCode: Maybe<Scalars['String']>;
+  cssCode: Maybe<Scalars['String']>;
+  inputs: Maybe<Scalars['builder_JSON']>;
+  httpRequests: Maybe<Scalars['builder_JSON']>;
+  blocks: Maybe<Scalars['builder_JSON']>;
+  customFonts: Maybe<Scalars['builder_JSON']>;
+  state: Maybe<Scalars['builder_JSON']>;
+  /** SEO page title */
+  title: Maybe<Scalars['String']>;
+  /** SEO page description */
+  description: Maybe<Scalars['String']>;
+};
+
+type Builder = {
+  /** Fetch home results */
+  home: Maybe<Array<Maybe<Builder_Home>>>;
+  /** Fetch just one home */
+  oneHome: Maybe<Builder_Home>;
+  /** Fetch page results */
+  page: Maybe<Array<Maybe<Builder_Page>>>;
+  /** Fetch just one page */
+  onePage: Maybe<Builder_Page>;
+};
+
+
+type BuilderHomeArgs = {
+  query: Maybe<Scalars['builder_JSONObject']>;
+  target: Maybe<Scalars['builder_JSONObject']>;
+  options: Maybe<Scalars['builder_JSONObject']>;
+  limit: Maybe<Scalars['Int']>;
+  offset: Maybe<Scalars['Int']>;
+  sort: Maybe<Scalars['builder_JSONObject']>;
+};
+
+
+type BuilderOneHomeArgs = {
+  query: Maybe<Scalars['builder_JSONObject']>;
+  target: Maybe<Scalars['builder_JSONObject']>;
+  options: Maybe<Scalars['builder_JSONObject']>;
+  offset: Maybe<Scalars['Int']>;
+  sort: Maybe<Scalars['builder_JSONObject']>;
+};
+
+
+type BuilderPageArgs = {
+  query: Maybe<Scalars['builder_JSONObject']>;
+  target: Maybe<Scalars['builder_JSONObject']>;
+  options: Maybe<Scalars['builder_JSONObject']>;
+  limit: Maybe<Scalars['Int']>;
+  offset: Maybe<Scalars['Int']>;
+  sort: Maybe<Scalars['builder_JSONObject']>;
+};
+
+
+type BuilderOnePageArgs = {
+  query: Maybe<Scalars['builder_JSONObject']>;
+  target: Maybe<Scalars['builder_JSONObject']>;
+  options: Maybe<Scalars['builder_JSONObject']>;
+  offset: Maybe<Scalars['Int']>;
+  sort: Maybe<Scalars['builder_JSONObject']>;
+};
+
 type Query = {
   file: Maybe<File>;
   allFile: FileConnection;
@@ -2459,7 +2602,10 @@ type Query = {
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   channel: Maybe<Channel>;
   allChannel: ChannelConnection;
+  builderPlugin: Maybe<BuilderPlugin>;
+  allBuilderPlugin: BuilderPluginConnection;
   vtex: Vtex;
+  allBuilderModels: Builder;
 };
 
 
@@ -2560,6 +2706,8 @@ type QueryAllDirectoryArgs = {
 type QuerySiteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   proxy: Maybe<SiteProxyFilterListInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -2754,6 +2902,24 @@ type QueryChannelArgs = {
 type QueryAllChannelArgs = {
   filter: Maybe<ChannelFilterInput>;
   sort: Maybe<ChannelSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type QueryBuilderPluginArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  typeName: Maybe<StringQueryOperatorInput>;
+  fieldName: Maybe<StringQueryOperatorInput>;
+};
+
+
+type QueryAllBuilderPluginArgs = {
+  filter: Maybe<BuilderPluginFilterInput>;
+  sort: Maybe<BuilderPluginSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -3353,6 +3519,8 @@ type SiteFieldsEnum =
   | 'siteMetadata___titleTemplate'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
+  | 'port'
+  | 'host'
   | 'proxy'
   | 'proxy___prefix'
   | 'proxy___url'
@@ -3463,6 +3631,8 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   proxy: Maybe<SiteProxyFilterListInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
@@ -3673,6 +3843,7 @@ type SitePluginFilterInput = {
 };
 
 type SitePluginPluginOptionsFilterInput = {
+  publicAPIKey: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   short_name: Maybe<StringQueryOperatorInput>;
   start_url: Maybe<StringQueryOperatorInput>;
@@ -3691,8 +3862,6 @@ type SitePluginPluginOptionsFilterInput = {
   env: Maybe<SitePluginPluginOptionsEnvFilterInput>;
   defer: Maybe<BooleanQueryOperatorInput>;
   server: Maybe<StringQueryOperatorInput>;
-  basePath: Maybe<StringQueryOperatorInput>;
-  sizes: Maybe<StringQueryOperatorInput>;
   color: Maybe<StringQueryOperatorInput>;
   showSpinner: Maybe<BooleanQueryOperatorInput>;
   src: Maybe<StringQueryOperatorInput>;
@@ -3991,6 +4160,7 @@ type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___publicAPIKey'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
@@ -4008,8 +4178,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
   | 'pluginCreator___pluginOptions___defer'
   | 'pluginCreator___pluginOptions___server'
-  | 'pluginCreator___pluginOptions___basePath'
-  | 'pluginCreator___pluginOptions___sizes'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
   | 'pluginCreator___pluginOptions___src'
@@ -5787,6 +5955,7 @@ type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___publicAPIKey'
   | 'pluginOptions___name'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -5807,8 +5976,6 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___env___deploy_preview___policy'
   | 'pluginOptions___defer'
   | 'pluginOptions___server'
-  | 'pluginOptions___basePath'
-  | 'pluginOptions___sizes'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
   | 'pluginOptions___src'
@@ -6187,5 +6354,163 @@ type ChannelFilterInput = {
 
 type ChannelSortInput = {
   fields: Maybe<Array<Maybe<ChannelFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+type BuilderPluginConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<BuilderPluginEdge>;
+  nodes: Array<BuilderPlugin>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max: Maybe<Scalars['Float']>;
+  min: Maybe<Scalars['Float']>;
+  sum: Maybe<Scalars['Float']>;
+  group: Array<BuilderPluginGroupConnection>;
+};
+
+
+type BuilderPluginConnectionDistinctArgs = {
+  field: BuilderPluginFieldsEnum;
+};
+
+
+type BuilderPluginConnectionMaxArgs = {
+  field: BuilderPluginFieldsEnum;
+};
+
+
+type BuilderPluginConnectionMinArgs = {
+  field: BuilderPluginFieldsEnum;
+};
+
+
+type BuilderPluginConnectionSumArgs = {
+  field: BuilderPluginFieldsEnum;
+};
+
+
+type BuilderPluginConnectionGroupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: BuilderPluginFieldsEnum;
+};
+
+type BuilderPluginEdge = {
+  next: Maybe<BuilderPlugin>;
+  node: BuilderPlugin;
+  previous: Maybe<BuilderPlugin>;
+};
+
+type BuilderPluginFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'typeName'
+  | 'fieldName';
+
+type BuilderPluginGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<BuilderPluginEdge>;
+  nodes: Array<BuilderPlugin>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+};
+
+type BuilderPluginFilterInput = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  typeName: Maybe<StringQueryOperatorInput>;
+  fieldName: Maybe<StringQueryOperatorInput>;
+};
+
+type BuilderPluginSortInput = {
+  fields: Maybe<Array<Maybe<BuilderPluginFieldsEnum>>>;
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };

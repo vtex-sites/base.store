@@ -12,6 +12,11 @@ function Page(props: Props) {
 
 export const query = graphql`
   query HomePageQuery {
+    allBuilderModels {
+      oneHome {
+        content
+      }
+    }
     site {
       siteMetadata {
         title
