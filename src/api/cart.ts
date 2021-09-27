@@ -1,16 +1,18 @@
-/**
- * TODO: Almost all code in this file can be moved to the backend
- * once we have a decent graphql layer
- */
+import fetch from 'isomorphic-unfetch'
+import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import type { Cart, CartItem, CartMessages } from '../useCart'
-import { getItemId } from '../useCart'
+import { getItemId } from '../sdk/cart/useCart'
+import type { Cart, CartItem, CartMessages } from '../sdk/cart/useCart'
 
+const store = process.env.GATSBY_STORE_ID
+const environment = process.env.GATSBY_VTEX_ENVIRONMENT
+
+const base = `https://${store}.${environment}.com.br`
 const api = {
   updateItems: (id: string) =>
-    `/api/checkout/pub/orderForm/${id}/items?allowOutdatedData=paymentData`,
+    `${base}/api/checkout/pub/orderForm/${id}/items?allowOutdatedData=paymentData`,
   getItems: (id: string) =>
-    `/api/checkout/pub/orderForm/${id}?refreshOutdatedData=false`,
+    `${base}/api/checkout/pub/orderForm/${id}?refreshOutdatedData=false`,
 }
 
 interface OrderForm {
@@ -50,7 +52,7 @@ const orderFormToCart = (orderForm: OrderForm) => {
   const { orderFormId: cartId, items: orderItems, messages } = orderForm
 
   const items = orderItems.reduce((acc, curr, index) => {
-    const { id: skuId, quantity, isGift, price, seller } = curr
+    const { id: skuId, quantity, isGift, price, listPrice, seller } = curr
     const id = getItemId({
       seller,
       skuId,
@@ -61,7 +63,7 @@ const orderFormToCart = (orderForm: OrderForm) => {
       seller,
       skuId,
       price: price / 100,
-      listPrice: price / 100,
+      listPrice: listPrice / 100,
       quantity: isGift ? acc[id]?.quantity ?? 0 : quantity,
       giftQuantity: isGift ? quantity : acc[id]?.giftQuantity ?? 0,
     }
@@ -182,4 +184,21 @@ const validateCart = async (cart: Cart): Promise<Cart | null> => {
   }
 }
 
-export default validateCart
+const handler = async (
+  req: GatsbyFunctionRequest,
+  res: GatsbyFunctionResponse
+) => {
+  if (req.method !== 'POST') {
+    res.status(405)
+
+    return
+  }
+
+  const cart: Cart = req.body
+  const validated = await validateCart(cart)
+
+  res.setHeader('content-type', 'application/json')
+  res.send(JSON.stringify(validated))
+}
+
+export default handler

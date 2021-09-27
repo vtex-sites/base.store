@@ -2,12 +2,11 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
+const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
 
 const {
   GATSBY_STORE_ID: STORE_ID,
-  GATSBY_VTEX_ENVIRONMENT: environment,
-  GATSBY_VTEX_IO_WORKSPACE: workspace,
   CI: isCI,
   NODE_ENV,
   URL = `https://${STORE_ID}.vtex.app`,
@@ -149,12 +148,15 @@ module.exports = {
       resolve: `@vtex/gatsby-plugin-graphql`,
     },
     {
-      resolve: `@vtex/gatsby-source-vtex`,
+      resolve: `@vtex/gatsby-source-store`,
       options: {
-        tenant: STORE_ID,
-        environment,
-        workspace,
-        minProducts: 1,
+        sourceProducts: true,
+        sourceCollections: true,
+        getSchema,
+        getContextFactory,
+        // Source less products is development for better DX
+        maxNumProducts: isProduction ? 2500 : 100,
+        maxNumCollections: isProduction ? 2500 : 100,
       },
     },
     {

@@ -9,8 +9,6 @@ import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragm
 import type { ProductSeoFragment_ProductFragment } from '@generated/ProductSeoFragment_product.graphql'
 
 import { useMetadata } from './hooks/useMetadata'
-import { useBreadcrumbJsonLd } from './hooks/useBreadcrumbJsonLd'
-import { useProductJsonLd } from './hooks/useProductJsonLd'
 
 export interface Props {
   site: ProductSeoFragment_SiteFragment
@@ -18,15 +16,36 @@ export interface Props {
 }
 
 function Seo(props: Props) {
+  const {
+    product: {
+      gtin,
+      sku,
+      image,
+      name,
+      description,
+      brand,
+      offers,
+      breadcrumbList: { itemListElement },
+    },
+  } = props
+
   const metadata = useMetadata(props)
-  const breadcrumbJson = useBreadcrumbJsonLd(props)
-  const productJson = useProductJsonLd(props)
 
   return (
     <>
       <GatsbySeo {...metadata} defer />
-      <BreadcrumbJsonLd {...breadcrumbJson} defer />
-      {productJson && <ProductJsonLd {...productJson} defer />}
+      <BreadcrumbJsonLd itemListElements={itemListElement} defer />
+      <ProductJsonLd
+        name={name}
+        description={description}
+        brand={brand.name}
+        sku={sku}
+        gtin={gtin}
+        images={image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
+        offersType="AggregateOffer"
+        offers={{ ...offers, price: offers.offers[0].price.toString() }}
+        defer
+      />
     </>
   )
 }
@@ -42,37 +61,46 @@ export const fragment = graphql`
   }
 
   fragment ProductSeoFragment_product on StoreProduct {
-    titleTag
-    metaTagDescription
-
-    brand
-    linkText
-    productName
-    description
-
-    categoryTree {
-      name
-      href
+    seo {
+      title
+      description
     }
 
-    items {
-      ean
+    brand {
       name
-      itemId
-      images {
-        imageUrl
-        imageText
+    }
+
+    slug
+    sku
+    gtin
+    name
+    description
+
+    breadcrumbList {
+      itemListElement {
+        item
+        name
+        position
       }
-      videos {
-        videoUrl
-      }
-      sellers {
-        commercialOffer: commertialOffer {
-          price: Price
-          listPrice: ListPrice
-          availableQuantity: AvailableQuantity
-          priceValidUntil: PriceValidUntil
-          spotPrice
+    }
+
+    image {
+      url
+      alternateName
+    }
+
+    offers {
+      lowPrice
+      highPrice
+      priceCurrency
+      offers {
+        price
+        priceValidUntil
+        priceCurrency
+        availability
+        itemCondition
+        seller {
+          identifier
         }
       }
     }
