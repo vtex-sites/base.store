@@ -2033,32 +2033,32 @@
   resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
   integrity sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==
 
-"@reach/popover@^0.15.0":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/popover/-/popover-0.15.3.tgz#62367efc81e1a86c670860e3975cc41d02489f59"
-  integrity sha512-T5A1gZGXfl4vDqK6kb7tyxgKWur4QsoKwHJ0LcJZ9JDYtiUDbdBDw+yRHwvuExx48Glc8BYcdy6X6BF2n21FuA==
+"@reach/popover@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/popover/-/popover-0.16.0.tgz#82c5ab96a88c49e2451a9c04b2d4392a9055f623"
+  integrity sha512-xmgiSyQwfshMkMNu6URbGrjjDTD3dnAITojvgEqfEtV1chDYqktKdDbIPrq+UGI54ey/IxbRpVzKcIjXiKoMmA==
   dependencies:
-    "@reach/portal" "0.15.3"
-    "@reach/rect" "0.15.3"
-    "@reach/utils" "0.15.3"
+    "@reach/portal" "0.16.0"
+    "@reach/rect" "0.16.0"
+    "@reach/utils" "0.16.0"
     tabbable "^4.0.0"
     tslib "^2.3.0"
 
-"@reach/portal@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.15.3.tgz#56fe4f6575ff07fc7d1a151481713171c7e37c88"
-  integrity sha512-9VkVEQIF9gK73uK1f9MYhrJivd0dpxhkBEb2zwVCIEGvKVxadmRNmCjgcWexGjA0UeCjIhEjQQehs/IZHNLPdw==
+"@reach/portal@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/portal/-/portal-0.16.0.tgz#1544531d978b770770b718b2872b35652a11e7e3"
+  integrity sha512-vXJ0O9T+72HiSEWHPs2cx7YbSO7pQsTMhgqPc5aaddIYpo2clJx1PnYuS0lSNlVaDO0IxQhwYq43evXaXnmviw==
   dependencies:
-    "@reach/utils" "0.15.3"
+    "@reach/utils" "0.16.0"
     tslib "^2.3.0"
 
-"@reach/rect@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/rect/-/rect-0.15.3.tgz#5cb37d0a5d3bd630920b34e2259a0197ee23d521"
-  integrity sha512-ZKakUC14DoCbccc7ymARXCzfpaRMTvbaAibBw64/sg/Vm7W+bi+P3mu5QMQkGNxFKXaKu/szx+r9RzM4ld/IfQ==
+"@reach/rect@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/rect/-/rect-0.16.0.tgz#78cf6acefe2e83d3957fa84f938f6e1fc5700f16"
+  integrity sha512-/qO9jQDzpOCdrSxVPR6l674mRHNTqfEjkaxZHluwJ/2qGUtYsA0GSZiF/+wX/yOWeBif1ycxJDa6HusAMJZC5Q==
   dependencies:
     "@reach/observe-rect" "1.2.0"
-    "@reach/utils" "0.15.3"
+    "@reach/utils" "0.16.0"
     prop-types "^15.7.2"
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
@@ -2073,10 +2073,10 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
-"@reach/utils@0.15.3":
-  version "0.15.3"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.15.3.tgz#200f42adba9d1463b1c6a75ee2aaf9f0cba84f9d"
-  integrity sha512-HFyjw8LZ4/RRk5bcMpDAeEc3aOeLR/vWRDsljlE3cHI5GfFlZcG3DDLSW8C2ba74RCFp/4X3Nz0nOrd4JdkZ1w==
+"@reach/utils@0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.16.0.tgz#5b0777cf16a7cab1ddd4728d5d02762df0ba84ce"
+  integrity sha512-PCggBet3qaQmwFNcmQ/GqHSefadAFyNCUekq9RrWoaU9hh/S4iaFgf2MBMdM47eQj5i/Bk0Mm07cP/XPFlkN+Q==
   dependencies:
     tiny-warning "^1.0.3"
     tslib "^2.3.0"
@@ -2871,33 +2871,20 @@
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-sdk@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.0.2.tgz#e16ce3c8a521b1a2f2a997c6ac8ddd1932e04996"
-  integrity sha512-JwrWX9QhrQKUz5w1uLa+awknikUyyxRLcZdDetmmGphxmEHIGHs2BGjkCLdNiV78fxz5Eezs/CtoTPCrTw5h/g==
+"@vtex/store-sdk@^1.1.13":
+  version "1.1.13"
+  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.1.13.tgz#b0e4e3915045177826dec1c826d6b05fa6e45623"
+  integrity sha512-yCdchjT5K7l+W1T9URwckhZepGRgs76ydlDJVnFNTBOCmnSC08DRJYMeUfMGiq8TQ4HOeRgm3YGt9SILrcokKg==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@vtex/store-ui@^0.373.40":
-  version "0.373.40"
-  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-0.373.40.tgz#1a64bc474088a9cce2378eaca94904e260c58d02"
-  integrity sha512-1eYbOxSoMdUxrlT71sPqxEOIFVI3s0SiFTKk1aswWy21ST2SppQjPGwgFyqZ3lzOw6bRQ2zw4uSNQZ7JCReZFA==
+"@vtex/store-ui@^1.1.11":
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-1.1.11.tgz#4b7ff9be17de3ad87fc207cc8b58d50c1e7de9ad"
+  integrity sha512-TrlZ1ZWhdeMfRv0dVwSdAhNUAiY+srj19EGw37gLtMKinXUMnm08b3ZEGQRKyLMpT28daJiJJ3KIbDoLOImtgw==
   dependencies:
-    "@reach/popover" "^0.15.0"
-    "@reach/router" "^1.3.4"
-    "@theme-ui/match-media" "^0.3.1"
-    "@theme-ui/preset-base" "^0.3.0"
-    "@types/react-modal" "^3.12.0"
-    "@types/theme-ui__components" "^0.2.6"
-    "@vtex-components/accordion" "^0.2.4"
-    "@vtex-components/drawer" "^0.2.4"
-    deepmerge "^4.2.2"
-    react-hook-inview "^4.3.9"
-    react-intl "^5.18.0"
+    "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
-    reakit "^1.3.0"
-    text-mask-core "^5.1.2"
-    theme-ui "^0.3.1"
 
 "@vtex/tsconfig@0.5.6":
   version "0.5.6"
@@ -11984,6 +11971,11 @@ react-intl@^5.18.0:
     intl-messageformat "9.9.2"
     tslib "^2.1.0"
 
+react-intersection-observer@^8.32.1:
+  version "8.32.1"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.32.1.tgz#9b949871eb35eb1fc730732bbf8fcfaaaf3f5b02"
+  integrity sha512-FOmMkMw7MeJ8FkuADpU8TRcvGuTvPB+DRkaikS1QXcWArYLCWC3mjRorq2XeRGBuqmaueOBd27PUazTu9AgInw==
+
 react-is@^16.12.0, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -13670,10 +13662,10 @@ swap-case@^2.0.2:
   dependencies:
     tslib "^2.0.3"
 
-swr@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/swr/-/swr-0.5.6.tgz#70bfe9bc9d7ac49a064be4a0f4acf57982e55a31"
-  integrity sha512-Bmx3L4geMZjYT5S2Z6EE6/5Cx6v1Ka0LhqZKq8d6WL2eu9y6gHWz3dUzfIK/ymZVHVfwT/EweFXiYGgfifei3w==
+swr@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/swr/-/swr-1.0.1.tgz#15f62846b87ee000e52fa07812bb65eb62d79483"
+  integrity sha512-EPQAxSjoD4IaM49rpRHK0q+/NzcwoT8c0/Ylu/u3/6mFj/CWnQVjNJ0MV2Iuw/U+EJSd2TX5czdAwKPYZIG0YA==
   dependencies:
     dequal "2.0.2"
 
@@ -14133,10 +14125,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.3.5:
-  version "4.3.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
-  integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
+typescript@^4.4.3:
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.4.3.tgz#bdc5407caa2b109efd4f82fe130656f977a29324"
+  integrity sha512-4xfscpisVgqqDfPaJo5vkd+Qd/ItkoagnHpufr+i2QCHBsNYp+G7UAoyFl8aPtx879u38wPV65rZ8qbGZijalA==
 
 ua-parser-js@^0.7.18:
   version "0.7.28"

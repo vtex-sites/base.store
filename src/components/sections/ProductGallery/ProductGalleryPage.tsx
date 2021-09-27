@@ -13,10 +13,10 @@ import type {
 interface Props {
   page: number
   display?: boolean
-  initialData?: GalleryQueryQuery
+  fallbackData?: GalleryQueryQuery
 }
 
-const useProductList = (page: number, initialData?: GalleryQueryQuery) => {
+const useProductList = (page: number, fallbackData?: GalleryQueryQuery) => {
   const { searchParams } = useSearch()
   const variables = useQueryVariablesFromSearchParams({
     ...searchParams,
@@ -26,15 +26,15 @@ const useProductList = (page: number, initialData?: GalleryQueryQuery) => {
   const { data } = useQuery<GalleryQueryQuery, GalleryQueryQueryVariables>({
     ...GalleryQuery,
     variables,
-    initialData,
+    fallbackData,
     revalidateOnMount: true,
   })
 
   return data?.vtex.productSearch?.products as any
 }
 
-function GalleryPage({ page, initialData, display }: Props) {
-  const products = useProductList(page, initialData)
+function GalleryPage({ page, fallbackData, display }: Props) {
+  const products = useProductList(page, fallbackData)
 
   if (display === false || products == null) {
     return null
