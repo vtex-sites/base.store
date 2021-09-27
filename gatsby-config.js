@@ -4,6 +4,7 @@ const { join, resolve } = require('path')
 
 const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
+const { linkResolver } = require('./src/utils/linkResolver')
 
 const {
   GATSBY_STORE_ID: STORE_ID,
@@ -49,6 +50,15 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
+    {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+        linkResolver,
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+        customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

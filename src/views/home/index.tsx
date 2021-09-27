@@ -1,9 +1,16 @@
 import React from 'react'
+import { PrismicRenderer } from 'src/components/cms/PrismicRenderer'
+import Carousel from 'src/components/sections/Carousel'
 import type { Props as PageProps } from 'src/pages/index'
 
 import Seo from './Seo'
 
 export type Props = PageProps
+
+const blocks = {
+  carousel: Carousel,
+  shelf: (x: any) => <div>todo</div>,
+}
 
 function View(props: Props) {
   // Send event to analytics
@@ -25,7 +32,10 @@ function View(props: Props) {
       <Seo {...props} />
 
       {/* Visual Sections */}
-      <div>TODO</div>
+      <PrismicRenderer
+        slices={props.data.prismicHome?.data?.body ?? []}
+        blocks={blocks}
+      />
     </>
   )
 }

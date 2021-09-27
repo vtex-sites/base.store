@@ -12,6 +12,17 @@ function Page(props: Props) {
 
 export const query = graphql`
   query HomePageQuery {
+    prismicHome {
+      data {
+        body {
+          ...data_CarouselFragment
+          ... on PrismicHomeDataBodyShelf {
+            id
+            slice_type
+          }
+        }
+      }
+    }
     site {
       siteMetadata {
         title
