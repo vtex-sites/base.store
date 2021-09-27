@@ -41,3 +41,17 @@ Cypress.Commands.add('itemsInCart', (count) => {
     expect($toggle.attr('data-items')).to.eq(count.toString())
   })
 })
+
+Cypress.Commands.add('dataLayerSize', (count) => {
+  return cy.window().then((window) => {
+    expect(window.dataLayer.length).to.eq(count)
+  })
+})
+
+Cypress.Commands.add('dataLayerHasEvent', (eventName) => {
+  return cy.window().then((window) => {
+    const allEvents = window.dataLayer.map((evt) => evt.type)
+
+    expect(allEvents).to.include(eventName)
+  })
+})
