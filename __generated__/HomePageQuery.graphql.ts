@@ -11,14 +11,14 @@
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQueryQuery = { prismicHome: Maybe<{ data: Maybe<{ body: Maybe<Array<Maybe<{ id: string, slice_type: string, primary: Maybe<{ display_arrows: Maybe<boolean>, display_dots: Maybe<boolean>, title: Maybe<{ text: Maybe<string> }> }>, items: Maybe<Array<Maybe<{ items: Maybe<{ alt: Maybe<string>, gatsbyImageData: Maybe<any> }> }>>> } | { id: string, slice_type: string }>>> }> }>, site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> };
+export type HomePageQueryQuery = { prismicHome: Maybe<{ _previewable: string, data: Maybe<{ body: Maybe<Array<Maybe<{ id: string, slice_type: string, primary: Maybe<{ display_arrows: Maybe<boolean>, display_dots: Maybe<boolean>, title: Maybe<{ text: Maybe<string> }> }>, items: Maybe<Array<Maybe<{ items: Maybe<{ alt: Maybe<string>, gatsbyImageData: Maybe<any> }> }>>> } | { id: string, slice_type: string }>>> }> }>, site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> };
 
 
 // Query Related Code
 
 export const HomePageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query HomePageQuery {\n  prismicHome {\n    data {\n      body {\n        ... on PrismicHomeDataBodyCarousel {\n          id\n          primary {\n            display_arrows\n            display_dots\n            title {\n              text\n            }\n          }\n          items {\n            items {\n              alt\n              gatsbyImageData(layout: FULL_WIDTH, breakpoints: [360, 720, 1024, 1920])\n            }\n          }\n          slice_type\n        }\n        ... on PrismicHomeDataBodyShelf {\n          id\n          slice_type\n        }\n      }\n    }\n  }\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n    }\n  }\n}\n",
-  sha256Hash: "c386036dfb6e180edfed599c5a6f993db485ca0529d7f1cf560d6f8f41f6f6bd",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query HomePageQuery {\n  prismicHome {\n    _previewable\n    data {\n      body {\n        ... on PrismicHomeDataBodyCarousel {\n          id\n          primary {\n            display_arrows\n            display_dots\n            title {\n              text\n            }\n          }\n          items {\n            items {\n              alt\n              gatsbyImageData(layout: FULL_WIDTH, breakpoints: [360, 720, 1024, 1920])\n            }\n          }\n          slice_type\n        }\n        ... on PrismicHomeDataBodyShelf {\n          id\n          slice_type\n        }\n      }\n    }\n  }\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n    }\n  }\n}\n",
+  sha256Hash: "d85193878268462a1b212060381bd3a12731191311bea2ee2376235658e02e87",
   operationName: "HomePageQuery",
 }
 

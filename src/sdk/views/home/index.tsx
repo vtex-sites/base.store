@@ -9,7 +9,7 @@ export type Props = PageProps
 
 const blocks = {
   carousel: Carousel,
-  shelf: (x: any) => <div>shelf</div>
+  shelf: (x: any) => <div>shelf</div>,
 }
 
 function View(props: Props) {

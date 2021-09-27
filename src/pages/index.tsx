@@ -13,6 +13,7 @@ function Page(props: Props) {
 export const query = graphql`
   query HomePageQuery {
     prismicHome {
+      _previewable
       data {
         body {
           ...data_CarouselFragment
