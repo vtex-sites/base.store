@@ -50,7 +50,7 @@ const View: FC<Props> = (props) => {
 
         {/* UI Components */}
         <ProductGallery
-          initialData={dynamicData}
+          fallbackData={dynamicData}
           facets={search.facets}
           products={search.products}
         />
