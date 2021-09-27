@@ -1620,6 +1620,9 @@ type SitePluginPluginOptionsFilterInput = {
   allExtensions: Maybe<BooleanQueryOperatorInput>;
   isTSX: Maybe<BooleanQueryOperatorInput>;
   jsxPragma: Maybe<StringQueryOperatorInput>;
+  server: Maybe<StringQueryOperatorInput>;
+  basePath: Maybe<StringQueryOperatorInput>;
+  sizes: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsWorkboxConfigFilterInput = {
@@ -1937,6 +1940,9 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
+  | 'pluginCreator___pluginOptions___server'
+  | 'pluginCreator___pluginOptions___basePath'
+  | 'pluginCreator___pluginOptions___sizes'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -2761,6 +2767,9 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
+  | 'pluginOptions___server'
+  | 'pluginOptions___basePath'
+  | 'pluginOptions___sizes'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'

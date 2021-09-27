@@ -32,10 +32,21 @@ function ProductDetails({ product }: Props) {
       name,
       sku,
     },
+    id: product.id,
+    name,
     price,
     listPrice,
     seller,
     quantity: 1,
+    giftQuantity: 0,
+    seller: identifier,
+    brand: product.brand,
+    categories: product.categoryTree,
+    skuId: id,
+    image: {
+      src: img.url,
+      alt: img.alternateName,
+    },
   })
 
   return (
@@ -54,6 +65,10 @@ export const fragment = graphql`
     id: productID
     name
     sku
+    brand
+    categoryTree {
+      name
+    }
 
     image {
       url

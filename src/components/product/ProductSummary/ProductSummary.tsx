@@ -36,10 +36,21 @@ function ProductSummary({ product }: Props) {
       image: [img],
       sku,
     },
+    id: product.id,
+    name: productName,
+    skuId: id,
     price: spotPrice,
     listPrice,
     seller,
     quantity: 1,
+    giftQuantity: 0,
+    seller: identifier,
+    brand: product.brand,
+    categories: product.categoryTree,
+    image: {
+      src: img.url,
+      alt: img.alternateName,
+    },
   })
 
   return (
@@ -73,9 +84,12 @@ export const fragment = graphql`
   fragment ProductSummary_product on StoreProduct {
     id: productID
     slug
-
     sku
     name
+    brand
+    categoryTree {
+      name
+    }
 
     isVariantOf {
       name
