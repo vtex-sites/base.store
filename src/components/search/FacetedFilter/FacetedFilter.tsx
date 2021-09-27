@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import React, { useState } from 'react'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { FacetedFilter_FacetsFragment } from '@generated/FacetedFilter_facets.graphql'
+import { Checkbox } from '@vtex/store-ui'
 
 import * as styles from './FacetedFilter.module.css'
 
@@ -33,9 +34,8 @@ function FacetedFilter({ facets }: Props) {
 
                   return (
                     <li key={id}>
-                      <input
+                      <Checkbox
                         id={id}
-                        type="checkbox"
                         checked={!!item?.selected}
                         onChange={() => toggleFacet(item as any)}
                         data-testid="facet-filter-checkbox"
