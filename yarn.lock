@@ -1781,6 +1781,14 @@
     "@graphql-tools/utils" "^8.1.1"
     tslib "~2.3.0"
 
+"@graphql-tools/merge@^8.1.0":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.1.2.tgz#50f5763927c51de764d09c5bfd20261671976e24"
+  integrity sha512-kFLd4kKNJXYXnKIhM8q9zgGAtbLmsy3WmGdDxYq3YHBJUogucAxnivQYyRIseUq37KGmSAIWu3pBQ23TKGsGOw==
+  dependencies:
+    "@graphql-tools/utils" "^8.2.2"
+    tslib "~2.3.0"
+
 "@graphql-tools/optimize@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/optimize/-/optimize-1.0.1.tgz#9933fffc5a3c63f95102b1cb6076fb16ac7bb22d"
@@ -1813,6 +1821,16 @@
   dependencies:
     "@graphql-tools/merge" "^8.0.2"
     "@graphql-tools/utils" "^8.1.1"
+    tslib "~2.3.0"
+    value-or-promise "1.0.10"
+
+"@graphql-tools/schema@^8.2.0":
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.2.0.tgz#ae75cbb2df6cee9ed6d89fce56be467ab23758dc"
+  integrity sha512-ufmI5mJQa8NJczzfkh0pUttKvspqDcT5LLakA3jUmOrrE4d4NVj6onZlazdTzF5sAepSNqanFnwhrxZpCAJMKg==
+  dependencies:
+    "@graphql-tools/merge" "^8.1.0"
+    "@graphql-tools/utils" "^8.2.0"
     tslib "~2.3.0"
     value-or-promise "1.0.10"
 
@@ -1864,7 +1882,14 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/wrap@^7.0.4", "@graphql-tools/wrap@^7.0.8":
+"@graphql-tools/utils@^8.2.0", "@graphql-tools/utils@^8.2.2":
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.2.tgz#d29420bf1003d2876cb30f373145be432c7f7c4b"
+  integrity sha512-29FFY5U4lpXuBiW9dRvuWnBVwGhWbGLa2leZcAMU/Pz47Cr/QLZGVgpLBV9rt+Gbs7wyIJM7t7EuksPs0RDm3g==
+  dependencies:
+    tslib "~2.3.0"
+
+"@graphql-tools/wrap@^7.0.4":
   version "7.0.8"
   resolved "https://registry.yarnpkg.com/@graphql-tools/wrap/-/wrap-7.0.8.tgz#ad41e487135ca3ea1ae0ea04bb3f596177fb4f50"
   integrity sha512-1NDUymworsOlb53Qfh7fonDi2STvqCtbeE68ntKY9K/Ju/be2ZNxrFSbrBHwnxWcN9PjISNnLcAyJ1L5tCUyhg==
@@ -2494,15 +2519,7 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/hoist-non-react-statics@^3.3.1":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
-  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
-  dependencies:
-    "@types/react" "*"
-    hoist-non-react-statics "^3.3.0"
-
-"@types/http-proxy@^1.17.4":
+"@types/http-proxy@^1.17.4", "@types/http-proxy@^1.17.5":
   version "1.17.7"
   resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.7.tgz#30ea85cc2c868368352a37f0d0d3581e24834c6f"
   integrity sha512-9hdj6iXH64tHSLTY+Vt2eYOGzSogC+JQ2H7bdPWkuh7KXP5qLllWx++t+K9Wk556c3dkDdPws/SpMRi0sdCT1w==
@@ -2815,20 +2832,9 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex-components/accordion@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@vtex-components/accordion/-/accordion-0.2.4.tgz#cf4bb890068a7b93302c74795784cb7654426142"
-  integrity sha512-JmMjhpCJoWTuHOick9+5SKqE3DGj/oI4xxLqtZqcBXBSsbdWwxgSkXw+CD/KkOyjSBki28Az9ZkOkM3SytkX2A==
-
-"@vtex-components/drawer@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@vtex-components/drawer/-/drawer-0.2.4.tgz#682e627135c8f6cb134ffcc6661206163de6d7e8"
-  integrity sha512-bv39LunQ9q+mtMN9eGzZSfRUx8VgJkOrMr5LDt8kdlA1+NemohiROTshj0RUwLGxCD6HcOOsQE25imIklKc1FQ==
-
-"@vtex/gatsby-plugin-graphql@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.0.2.tgz#db4e3783f8f185f67ecee9157b42452133652c17"
-  integrity sha512-xbWQknIb66OaTxolcLQZJZIsCsnOXZ3lGxcf6bbwxziLa55/zaXrFxD3U+69weYf6O18jDyFF+6cOeIaKJ+JcQ==
+"@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-plugin-graphql":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-plugin-graphql#38aae3ff66599008443202a01b542e6d5fa71ee8"
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2837,44 +2843,84 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.0.2.tgz#5ad47bed96f9b77ec16a6190960c4ecdfe2edf04"
-  integrity sha512-mvCdiBdTyC1vQ3h70eTw6t9TmqcH/XJohrD/sk5qHpc4ILzkxIb1RiuGUCM+DPDP6tBLEY70yxASbILRPlEzIQ==
+"@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-graphql":
+  version "1.1.9"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-graphql#ff1171d69c95d89d8e7521f9e2701a224a43dfef"
+  dependencies:
+    "@graphql-codegen/core" "^1.17.7"
+    "@graphql-codegen/plugin-helpers" "^1.17.7"
+    "@graphql-codegen/typescript" "^1.17.7"
+    "@graphql-codegen/typescript-operations" "^1.17.7"
+    "@graphql-tools/relay-operation-optimizer" "^6.0.15"
+    fs-extra "^9.0.1"
+
+"@vtex/gatsby-plugin-nginx@^1.1.1":
+  version "1.1.11"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.1.11.tgz#0a69cedb0902eb957f1205b373615d203cb58d11"
+  integrity sha512-VECKuVMe88gFbl2sWiqXLAwkePHg4zy/h13flWVcQyUF455TD5UzFM66Hv4XZd5hXPx6sVk2f6oHlUZQ19uk0g==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.0.2.tgz#b37abcfdb348549b75099ba8ec5f9225cb09a40a"
-  integrity sha512-qS9H42M8rZLjgA71HVcw4JcGP1uwB9l0Qfee++8fsyHShXadHp0eVoZpFouBccXmeylDdIsf+riMeF5E8ngZPQ==
+"@vtex/gatsby-plugin-thumbor@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-plugin-thumbor":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-plugin-thumbor#81fd3396d3066822cb9b4745f8798fe64ee10e1d"
 
-"@vtex/gatsby-source-vtex@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-1.0.2.tgz#4a00c4640612b7f6919649254d1b927be79d03d7"
-  integrity sha512-3Gu/5rvuzTPYIXbxTAyN51OF52jOkNRtZqfnIz+7h7NFv4SnBOZWJ2mTdhhZWamMxIR2elJInfn5EHnZ6243lg==
+"@vtex/gatsby-plugin-thumbor@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-thumbor":
+  version "1.1.9"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-thumbor#49a5a425627779c6f72d0c135afa1898c686c842"
+
+"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-source-store":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-source-store#e582e3cc9a1377fe2dc29fd912c82aba0c4fd208"
   dependencies:
-    "@graphql-tools/delegate" "^7.1.5"
-    "@graphql-tools/wrap" "^7.0.8"
     gatsby-graphql-source-toolkit "^2.0.1"
-    isomorphic-unfetch "^3.0.0"
-    slugify "^1.4.6"
 
-"@vtex/lighthouse-config@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.0.2.tgz#7cb99c73f5a49f13f6f767651dd27ed460d1b9aa"
-  integrity sha512-TIlPBkgyZP3wtetqNmSLlB2XVJXSfPFYRsvYP7iggiX83aDab2KLaM3lGEAWb2WsCb1nZNpFcCUvFavdLJ0icw==
+"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-source-store":
+  version "1.1.9"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-source-store#f570bb9994bdc0515a667623211ae6bf13a2b5af"
+  dependencies:
+    gatsby-graphql-source-toolkit "^2.0.1"
+
+"@vtex/lighthouse-config@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.1.4.tgz#b1c901c931ba28086e102ab454fe2fcb55b556a4"
+  integrity sha512-j4xActoLeRyU+wGBS0EaUHpftGT/+v2r6EnNbNTiF0WOn1cxJPoQpUQ7hijZb4N7kkTPrUD2dExNEtw1/LFdAw==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-sdk@^1.1.13":
-  version "1.1.13"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.1.13.tgz#b0e4e3915045177826dec1c826d6b05fa6e45623"
-  integrity sha512-yCdchjT5K7l+W1T9URwckhZepGRgs76ydlDJVnFNTBOCmnSC08DRJYMeUfMGiq8TQ4HOeRgm3YGt9SILrcokKg==
+"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-api":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-api#d88d37fa81dced1f26837ce9e595a44d592f7763"
+  dependencies:
+    "@graphql-tools/schema" "^8.2.0"
+    dataloader "^2.0.0"
+    isomorphic-unfetch "^3.1.0"
+    rollup-plugin-graphql "^0.1.0"
+    slugify "^1.6.0"
+
+"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-api":
+  version "1.1.9"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-api#d31fa3ecf63ae6845e92868fab0ca976da1cdb84"
+  dependencies:
+    "@graphql-tools/schema" "^8.2.0"
+    dataloader "^2.0.0"
+    isomorphic-unfetch "^3.1.0"
+    rollup-plugin-graphql "^0.1.0"
+    slugify "^1.6.0"
+
+"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-sdk":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-sdk#bd6bb17e23bd5e1bbd6fa029882aedb22c9a3412"
+  dependencies:
+    idb-keyval "^5.1.3"
+
+"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-sdk":
+  version "1.1.9"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-sdk#dbac4826641105b2655dab870af272265b1ac492"
   dependencies:
     idb-keyval "^5.1.3"
 
@@ -5317,7 +5363,7 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dataloader@2.0.0:
+dataloader@2.0.0, dataloader@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dataloader/-/dataloader-2.0.0.tgz#41eaf123db115987e21ca93c005cd7753c55fe6f"
   integrity sha512-YzhyDAwA4TaQIhM5go+vCLmU0UikghC/t9DTQYZR2M/UvZ1MdOhPezSDZcjj9uqQJOMqjLcpWtyW2iNINdlatQ==
@@ -6342,6 +6388,11 @@ estree-util-is-identifier-name@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/estree-util-is-identifier-name/-/estree-util-is-identifier-name-1.1.0.tgz#2e3488ea06d9ea2face116058864f6370b37456d"
   integrity sha512-OVJZ3fGGt9By77Ix9NhaRbzfbDV/2rx9EP7YIDJTmsZSEc5kYn2vWcNccYyahJL2uAQZK2a5Or2i0wtIKTPoRQ==
+
+estree-walker@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/estree-walker/-/estree-walker-0.6.1.tgz#53049143f40c6eb918b23671d1fe3219f3a1b362"
+  integrity sha512-SqmZANLWS0mnatqbSfRP5g8OXZC12Fgg1IwNtLsyHDzJizORW4khDfjPqJZsemPWBB2uqykUah5YpQ6epsqC/w==
 
 esutils@^2.0.2:
   version "2.0.3"
@@ -7884,7 +7935,7 @@ graphql-subscriptions@^1.1.0:
   dependencies:
     iterall "^1.3.0"
 
-graphql-tag@^2.11.0:
+graphql-tag@^2.11.0, graphql-tag@^2.2.2:
   version "2.12.5"
   resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.12.5.tgz#5cff974a67b417747d05c8d9f5f3cb4495d0db8f"
   integrity sha512-5xNhP4063d16Pz3HBtKprutsPrmHZi5IdUGOWRxA2B6VF7BIRGOHZ5WQvDmJXZuPcBg7rYwaFxvQYjqkSdR3TQ==
@@ -8207,6 +8258,17 @@ http-errors@1.8.0:
     setprototypeof "1.2.0"
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
+
+http-proxy-middleware@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.1.tgz#7ef3417a479fb7666a571e09966c66a39bd2c15f"
+  integrity sha512-cfaXRVoZxSed/BmkA7SwBVNI9Kj7HFltaE5rqYOub5kWzWZ+gofV2koVN1j2rMW7pEfSSlCHGJ31xmuyFyfLOg==
+  dependencies:
+    "@types/http-proxy" "^1.17.5"
+    http-proxy "^1.18.1"
+    is-glob "^4.0.1"
+    is-plain-obj "^3.0.0"
+    micromatch "^4.0.2"
 
 http-proxy@^1.18.1:
   version "1.18.1"
@@ -8799,6 +8861,11 @@ is-plain-obj@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
   integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
 
+is-plain-obj@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-3.0.0.tgz#af6f2ea14ac5a646183a5bbdb5baabbc156ad9d7"
+  integrity sha512-gwsOE28k+23GP1B6vFl1oVh/WOzmawBrKwo5Ev6wMKzPkaXaCDIQKzLnvsA42DRlbVTWorkgTKIviAKCWkfUwA==
+
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -8987,7 +9054,7 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isomorphic-unfetch@^3.0.0:
+isomorphic-unfetch@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.1.0.tgz#87341d5f4f7b63843d468438128cb087b7c3e98f"
   integrity sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==
@@ -12612,6 +12679,21 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
+rollup-plugin-graphql@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-graphql/-/rollup-plugin-graphql-0.1.0.tgz#cee3d7137133534f570826c00978eafe528069a9"
+  integrity sha512-zEAXAylBAkA489xk/KAzxtwQ5BcpcgEejsAbQ4gO19nZ8iin6+0TSogYfBhMSfZXtI4YXy3NEqwlT5E0E7rh2w==
+  dependencies:
+    graphql-tag "^2.2.2"
+    rollup-pluginutils "^2.0.1"
+
+rollup-pluginutils@^2.0.1:
+  version "2.8.2"
+  resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
+  integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
+  dependencies:
+    estree-walker "^0.6.1"
+
 run-async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
@@ -12983,7 +13065,7 @@ slice-ansi@^4.0.0:
     astral-regex "^2.0.0"
     is-fullwidth-code-point "^3.0.0"
 
-slugify@^1.4.4, slugify@^1.4.6:
+slugify@^1.4.4, slugify@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.6.0.tgz#6bdf8ed01dabfdc46425b67e3320b698832ff893"
   integrity sha512-FkMq+MQc5hzYgM86nLuHI98Acwi3p4wX+a5BO9Hhw4JdK4L7WueIiZ4tXEobImPqBz2sVcV0+Mu3GRB30IGang==

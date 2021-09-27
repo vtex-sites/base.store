@@ -4,7 +4,7 @@ import React from 'react'
 import { SessionProvider, UIProvider, CartProvider } from '@vtex/store-sdk'
 
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
-import Layout from './src/views/Layout'
+import Layout from './src/sdk/views/Layout'
 import TestProvider from './src/sdk/tests'
 import { validateCart } from './src/sdk/cart/validate'
 import { uiInitialState, uiActions, uiEffects } from './src/sdk/ui'

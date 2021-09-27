@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import View from 'src/views/product'
+import View from 'src/sdk/views/product'
 import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,

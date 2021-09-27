@@ -23,19 +23,6 @@ type Scalars = {
   Float: number;
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: any;
-  VTEX_StringOrBoolean: any;
-  VTEX_AttachmentSchema: any;
-  VTEX_AttachmentContent: any;
-  VTEX_InputValues: any;
-  /**
-   * ProductCategoriesObject is a Record<string, string>, in the following format:
-   * { '<categoryNumber>': '<categoryName>' }
-   */
-  VTEX_ProductCategoriesObject: any;
-  VTEX_MatchedParameters: any;
-  VTEX_OfferingInfo: any;
 };
 
 
@@ -280,11 +267,6 @@ type SiteBuildTimeArgs = {
   locale: Maybe<Scalars['String']>;
 };
 
-type SiteProxy = {
-  prefix: Maybe<Scalars['String']>;
-  url: Maybe<Scalars['String']>;
-};
-
 type SiteFlags = {
   DEV_SSR: Maybe<Scalars['Boolean']>;
   FAST_DEV: Maybe<Scalars['Boolean']>;
@@ -342,405 +324,265 @@ type SitePageContext_Xparams = {
   slug: Maybe<Scalars['String']>;
 };
 
-type StoreCollectionSeo = {
-  title: Scalars['String'];
-  description: Scalars['String'];
+type StoreProductEdge = {
+  node: StoreProduct;
+  cursor: Scalars['String'];
 };
 
-type StoreCollectionType =
-  | 'Department'
-  | 'Category'
-  | 'Brand'
-  | 'Cluster';
+type BrowserStoreProductConnection = {
+  pageInfo: StorePageInfo;
+  edges: Array<StoreProductEdge>;
+};
 
-type StoreCollectionFacet = {
+type StoreCollectionEdge = {
+  node: StoreCollection;
+  cursor: Scalars['String'];
+};
+
+type BrowserStoreCollectionConnection = {
+  pageInfo: StorePageInfo;
+  edges: Array<StoreCollectionEdge>;
+};
+
+type StoreProductIdField =
+  | 'id'
+  | 'slug';
+
+type StoreProductId = {
+  field: StoreProductIdField;
+  value: Scalars['ID'];
+};
+
+type StoreSort =
+  | 'price_desc'
+  | 'price_asc'
+  | 'orders_desc'
+  | 'name_desc'
+  | 'name_asc'
+  | 'release_desc'
+  | 'discount_desc'
+  | 'score_desc';
+
+type StoreSelectedFacet = {
   key: Scalars['String'];
   value: Scalars['String'];
 };
 
-type StoreCollectionMeta = {
-  selectedFacets: Array<StoreCollectionFacet>;
+type StoreFacetType =
+  | 'BOOLEAN'
+  | 'RANGE';
+
+type StoreSearchResult = {
+  products: BrowserStoreProductConnection;
+  facets: Array<StoreFacet>;
 };
 
-type StoreCollection = Node & {
-  id: Scalars['ID'];
-  remoteId: Scalars['ID'];
-  slug: Scalars['String'];
-  seo: StoreCollectionSeo;
-  type: StoreCollectionType;
-  meta: StoreCollectionMeta;
-  /** Returns all children nodes filtered by type StoreCollection */
-  childrenStoreCollection: Maybe<Array<Maybe<StoreCollection>>>;
-  /** Returns the first child node of type StoreCollection or null if there are no children of given type on this node */
-  childStoreCollection: Maybe<StoreCollection>;
-  parent: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-};
-
-type StoreVtex = {
-  productSearch: Maybe<StoreProductSearch>;
-};
-
-type StoreProductSearch = {
-  products: Maybe<Array<Maybe<StoreProduct>>>;
-};
-
-type StoreProduct = Node & {
-  remoteTypeName: Scalars['String'];
-  id: Scalars['ID'];
-  slug: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  productID: Maybe<Scalars['ID']>;
-  brand: Maybe<Scalars['String']>;
-  description: Maybe<Scalars['String']>;
-  categoryTree: Maybe<Array<Maybe<StoreCategory>>>;
-  clusterHighlights: Maybe<Array<Maybe<StoreClusterHighlight>>>;
-  productClusters: Maybe<Array<Maybe<StoreProductClusters>>>;
-  items: Maybe<Array<Maybe<StoreSku>>>;
-  skuSpecifications: Maybe<Array<Maybe<StoreSkuSpecification>>>;
-  link: Maybe<Scalars['String']>;
-  linkText: Maybe<Scalars['String']>;
-  productId: Maybe<Scalars['ID']>;
-  productName: Maybe<Scalars['String']>;
-  properties: Maybe<Array<Maybe<StoreProperty>>>;
-  propertyGroups: Maybe<Array<Maybe<StorePropertyGroup>>>;
-  productReference: Maybe<Scalars['String']>;
-  titleTag: Maybe<Scalars['String']>;
-  metaTagDescription: Maybe<Scalars['String']>;
-  recommendations: Maybe<StoreRecommendation>;
-  jsonSpecifications: Maybe<Scalars['String']>;
-  benefits: Maybe<Array<Maybe<StoreBenefit>>>;
-  specificationGroups: Maybe<Array<Maybe<StoreSpecificationGroup>>>;
-  priceRange: Maybe<StoreProductPriceRange>;
-  releaseDate: Maybe<Scalars['String']>;
-  selectedProperties: Maybe<Array<Maybe<StoreSelectedProperty>>>;
-  parent: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-};
-
-type StoreCategory = {
-  remoteTypeName: Scalars['String'];
-  cacheId: Maybe<Scalars['ID']>;
-  href: Maybe<Scalars['String']>;
-  slug: Maybe<Scalars['String']>;
-  id: Maybe<Scalars['Int']>;
-  name: Maybe<Scalars['String']>;
-  titleTag: Maybe<Scalars['String']>;
-  hasChildren: Maybe<Scalars['Boolean']>;
-  metaTagDescription: Maybe<Scalars['String']>;
-  children: Maybe<Array<Maybe<StoreCategory>>>;
-};
-
-type StoreClusterHighlight = {
-  remoteTypeName: Scalars['String'];
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-};
-
-type StoreProductClusters = {
-  remoteTypeName: Scalars['String'];
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-};
-
-type StoreSku = {
-  remoteTypeName: Scalars['String'];
-  itemId: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-  nameComplete: Maybe<Scalars['String']>;
-  complementName: Maybe<Scalars['String']>;
-  ean: Maybe<Scalars['String']>;
-  referenceId: Maybe<Array<Maybe<StoreReference>>>;
-  measurementUnit: Maybe<Scalars['String']>;
-  unitMultiplier: Maybe<Scalars['Float']>;
-  kitItems: Maybe<Array<Maybe<StoreKitItem>>>;
-  images: Maybe<Array<Maybe<StoreImage>>>;
-  videos: Maybe<Array<Maybe<StoreVideo>>>;
-  sellers: Maybe<Array<Maybe<StoreSeller>>>;
-  variations: Maybe<Array<Maybe<StoreProperty>>>;
-  attachments: Maybe<Array<Maybe<StoreAttachment>>>;
-  estimatedDateArrival: Maybe<Scalars['String']>;
-};
-
-type StoreReference = {
-  remoteTypeName: Scalars['String'];
-  Key: Maybe<Scalars['String']>;
-  Value: Maybe<Scalars['String']>;
-};
-
-type StoreKitItem = {
-  remoteTypeName: Scalars['String'];
-  itemId: Maybe<Scalars['ID']>;
-  amount: Maybe<Scalars['Int']>;
-  product: Maybe<StoreOnlyProduct>;
-  sku: Maybe<StoreSku>;
-};
-
-type StoreOnlyProduct = {
-  remoteTypeName: Scalars['String'];
-  brand: Maybe<Scalars['String']>;
-  categoryId: Maybe<Scalars['ID']>;
-  categoryTree: Maybe<Array<Maybe<StoreCategory>>>;
-  clusterHighlights: Maybe<Array<Maybe<StoreClusterHighlight>>>;
-  productClusters: Maybe<Array<Maybe<StoreProductClusters>>>;
-  description: Maybe<Scalars['String']>;
-  link: Maybe<Scalars['String']>;
-  linkText: Maybe<Scalars['String']>;
-  productId: Maybe<Scalars['ID']>;
-  productName: Maybe<Scalars['String']>;
-  properties: Maybe<Array<Maybe<StoreProperty>>>;
-  propertyGroups: Maybe<Array<Maybe<StorePropertyGroup>>>;
-  productReference: Maybe<Scalars['String']>;
-  recommendations: Maybe<StoreRecommendation>;
-  jsonSpecifications: Maybe<Scalars['String']>;
-};
-
-type StoreProperty = {
-  remoteTypeName: Scalars['String'];
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  values: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type StorePropertyGroup = {
-  remoteTypeName: Scalars['String'];
-  name: Maybe<Scalars['String']>;
-  properties: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type StoreRecommendation = {
-  remoteTypeName: Scalars['String'];
-  buy: Maybe<Array<Maybe<StoreProduct>>>;
-  view: Maybe<Array<Maybe<StoreProduct>>>;
-  similars: Maybe<Array<Maybe<StoreProduct>>>;
-};
-
-type StoreImage = {
-  remoteTypeName: Scalars['String'];
-  cacheId: Maybe<Scalars['ID']>;
-  imageId: Maybe<Scalars['ID']>;
-  imageLabel: Maybe<Scalars['String']>;
-  imageTag: Maybe<Scalars['String']>;
-  imageUrl: Maybe<Scalars['String']>;
-  imageText: Maybe<Scalars['String']>;
-};
-
-type StoreVideo = {
-  remoteTypeName: Scalars['String'];
-  videoUrl: Maybe<Scalars['String']>;
-};
-
-type StoreSeller = {
-  remoteTypeName: Scalars['String'];
-  sellerId: Maybe<Scalars['ID']>;
-  sellerName: Maybe<Scalars['String']>;
-  addToCartLink: Maybe<Scalars['String']>;
-  sellerDefault: Maybe<Scalars['Boolean']>;
-  commertialOffer: Maybe<StoreOffer>;
-};
-
-type StoreOffer = {
-  remoteTypeName: Scalars['String'];
-  Installments: Maybe<Array<Maybe<StoreInstallment>>>;
-  AvailableQuantity: Maybe<Scalars['Float']>;
-  Price: Maybe<Scalars['Float']>;
-  ListPrice: Maybe<Scalars['Float']>;
-  spotPrice: Maybe<Scalars['Float']>;
-  teasers: Array<Maybe<StoreTeaser>>;
-  PriceWithoutDiscount: Maybe<Scalars['Float']>;
-  RewardValue: Maybe<Scalars['Float']>;
-  PriceValidUntil: Maybe<Scalars['String']>;
-  Tax: Maybe<Scalars['Float']>;
-  taxPercentage: Maybe<Scalars['Float']>;
-  CacheVersionUsedToCallCheckout: Maybe<Scalars['String']>;
-  DeliverySlaSamples: Maybe<Array<Maybe<StoreDeliverySlaSamples>>>;
-  discountHighlights: Array<Maybe<StoreDiscount>>;
-  giftSkuIds: Maybe<Array<Maybe<Scalars['String']>>>;
-  gifts: Maybe<Array<Maybe<StoreGift>>>;
-};
-
-type StoreInstallment = {
-  remoteTypeName: Scalars['String'];
-  Name: Maybe<Scalars['String']>;
-  TotalValuePlusInterestRate: Maybe<Scalars['Float']>;
-  Value: Maybe<Scalars['Float']>;
-  NumberOfInstallments: Maybe<Scalars['Int']>;
-  InterestRate: Maybe<Scalars['Float']>;
-  PaymentSystemName: Maybe<Scalars['String']>;
-  PaymentSystemGroupName: Maybe<Scalars['String']>;
-};
-
-type StoreTeaser = {
-  remoteTypeName: Scalars['String'];
-  name: Maybe<Scalars['String']>;
-  conditions: Maybe<StoreTeaserCondition>;
-  effects: Maybe<StoreTeaserEffects>;
-};
-
-type StoreDeliverySlaSamples = {
-  remoteTypeName: Scalars['String'];
-  DeliverySlaPerTypes: Maybe<Array<Maybe<StoreDeliverySlaPerTypes>>>;
-  Region: Maybe<StoreRegion>;
-};
-
-type StoreDeliverySlaPerTypes = {
-  remoteTypeName: Scalars['String'];
-  TypeName: Maybe<Scalars['String']>;
-  Price: Maybe<Scalars['Float']>;
-  EstimatedTimeSpanToDelivery: Maybe<Scalars['String']>;
-};
-
-type StoreRegion = {
-  remoteTypeName: Scalars['String'];
-  IsPersisted: Maybe<Scalars['Boolean']>;
-  IsRemoved: Maybe<Scalars['Boolean']>;
-  Id: Maybe<Scalars['ID']>;
-  Name: Maybe<Scalars['String']>;
-  CountryCode: Maybe<Scalars['String']>;
-  ZipCode: Maybe<Scalars['String']>;
-  CultureInfoName: Maybe<Scalars['String']>;
-};
-
-type StoreDiscount = {
-  remoteTypeName: Scalars['String'];
-  name: Maybe<Scalars['String']>;
-};
-
-type StoreTeaserCondition = {
-  remoteTypeName: Scalars['String'];
-  minimumQuantity: Maybe<Scalars['Int']>;
-  parameters: Maybe<Array<Maybe<StoreTeaserValue>>>;
-};
-
-type StoreTeaserValue = {
-  remoteTypeName: Scalars['String'];
-  name: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
-};
-
-type StoreTeaserEffects = {
-  remoteTypeName: Scalars['String'];
-  parameters: Maybe<Array<Maybe<StoreTeaserValue>>>;
-};
-
-type StoreGift = {
-  remoteTypeName: Scalars['String'];
-  productName: Maybe<Scalars['String']>;
-  skuName: Maybe<Scalars['String']>;
-  brand: Maybe<Scalars['String']>;
-  linkText: Maybe<Scalars['String']>;
-  description: Maybe<Scalars['String']>;
-  images: Maybe<Array<Maybe<StoreGiftImage>>>;
-};
-
-type StoreGiftImage = {
-  remoteTypeName: Scalars['String'];
-  imageUrl: Maybe<Scalars['String']>;
-  imageLabel: Maybe<Scalars['String']>;
-  imageText: Maybe<Scalars['String']>;
-};
-
-type StoreAttachment = {
-  remoteTypeName: Scalars['String'];
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-  required: Maybe<Scalars['Boolean']>;
-  domainValues: Maybe<Array<Maybe<StoreDomainValues>>>;
-  content: Maybe<Scalars['JSON']>;
+type Query = {
+  product: StoreProduct;
+  search: StoreSearchResult;
+  allProducts: BrowserStoreProductConnection;
+  allCollections: BrowserStoreCollectionConnection;
+  file: Maybe<File>;
+  allFile: FileConnection;
+  directory: Maybe<Directory>;
+  allDirectory: DirectoryConnection;
+  site: Maybe<Site>;
+  allSite: SiteConnection;
+  siteFunction: Maybe<SiteFunction>;
+  allSiteFunction: SiteFunctionConnection;
+  sitePage: Maybe<SitePage>;
+  allSitePage: SitePageConnection;
+  storeCollection: Maybe<StoreCollection>;
+  allStoreCollection: StoreCollectionConnection;
+  storeProduct: Maybe<StoreProduct>;
+  allStoreProduct: StoreProductConnection;
+  sitePlugin: Maybe<SitePlugin>;
+  allSitePlugin: SitePluginConnection;
+  siteBuildMetadata: Maybe<SiteBuildMetadata>;
+  allSiteBuildMetadata: SiteBuildMetadataConnection;
 };
 
 
-type StoreDomainValues = {
-  remoteTypeName: Scalars['String'];
-  FieldName: Maybe<Scalars['String']>;
-  MaxCaracters: Maybe<Scalars['String']>;
-  DomainValues: Maybe<Scalars['String']>;
+type QueryProductArgs = {
+  locator: StoreProductId;
 };
 
-type StoreSkuSpecification = {
-  remoteTypeName: Scalars['String'];
-  field: Maybe<StoreSkuSpecificationField>;
-  values: Maybe<Array<Maybe<StoreSkuSpecificationValue>>>;
+
+type QuerySearchArgs = {
+  first: Scalars['Int'];
+  after: Maybe<Scalars['String']>;
+  sort?: Maybe<StoreSort>;
+  term?: Maybe<Scalars['String']>;
+  selectedFacets: Maybe<Array<StoreSelectedFacet>>;
 };
 
-type StoreSkuSpecificationField = {
-  remoteTypeName: Scalars['String'];
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
+
+type QueryAllProductsArgs = {
+  first: Scalars['Int'];
+  after: Maybe<Scalars['String']>;
 };
 
-type StoreSkuSpecificationValue = {
-  remoteTypeName: Scalars['String'];
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
+
+type QueryAllCollectionsArgs = {
+  first: Scalars['Int'];
+  after: Maybe<Scalars['String']>;
 };
 
-type StoreBenefit = {
-  remoteTypeName: Scalars['String'];
-  featured: Maybe<Scalars['Boolean']>;
-  id: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  items: Maybe<Array<Maybe<StoreBenefitItem>>>;
-  teaserType: Maybe<Scalars['String']>;
+
+type QueryFileArgs = {
+  sourceInstanceName: Maybe<StringQueryOperatorInput>;
+  absolutePath: Maybe<StringQueryOperatorInput>;
+  relativePath: Maybe<StringQueryOperatorInput>;
+  extension: Maybe<StringQueryOperatorInput>;
+  size: Maybe<IntQueryOperatorInput>;
+  prettySize: Maybe<StringQueryOperatorInput>;
+  modifiedTime: Maybe<DateQueryOperatorInput>;
+  accessTime: Maybe<DateQueryOperatorInput>;
+  changeTime: Maybe<DateQueryOperatorInput>;
+  birthTime: Maybe<DateQueryOperatorInput>;
+  root: Maybe<StringQueryOperatorInput>;
+  dir: Maybe<StringQueryOperatorInput>;
+  base: Maybe<StringQueryOperatorInput>;
+  ext: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  relativeDirectory: Maybe<StringQueryOperatorInput>;
+  dev: Maybe<IntQueryOperatorInput>;
+  mode: Maybe<IntQueryOperatorInput>;
+  nlink: Maybe<IntQueryOperatorInput>;
+  uid: Maybe<IntQueryOperatorInput>;
+  gid: Maybe<IntQueryOperatorInput>;
+  rdev: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
+  atimeMs: Maybe<FloatQueryOperatorInput>;
+  mtimeMs: Maybe<FloatQueryOperatorInput>;
+  ctimeMs: Maybe<FloatQueryOperatorInput>;
+  atime: Maybe<DateQueryOperatorInput>;
+  mtime: Maybe<DateQueryOperatorInput>;
+  ctime: Maybe<DateQueryOperatorInput>;
+  birthtime: Maybe<DateQueryOperatorInput>;
+  birthtimeMs: Maybe<FloatQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
-type StoreBenefitItem = {
-  remoteTypeName: Scalars['String'];
-  benefitProduct: Maybe<StoreProduct>;
-  benefitSKUIds: Maybe<Array<Maybe<Scalars['String']>>>;
-  discount: Maybe<Scalars['Float']>;
-  minQuantity: Maybe<Scalars['Int']>;
+
+type QueryAllFileArgs = {
+  filter: Maybe<FileFilterInput>;
+  sort: Maybe<FileSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
 };
 
-type StoreSpecificationGroup = {
-  remoteTypeName: Scalars['String'];
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  specifications: Maybe<Array<Maybe<StoreSpecificationGroupProperty>>>;
+
+type QueryDirectoryArgs = {
+  sourceInstanceName: Maybe<StringQueryOperatorInput>;
+  absolutePath: Maybe<StringQueryOperatorInput>;
+  relativePath: Maybe<StringQueryOperatorInput>;
+  extension: Maybe<StringQueryOperatorInput>;
+  size: Maybe<IntQueryOperatorInput>;
+  prettySize: Maybe<StringQueryOperatorInput>;
+  modifiedTime: Maybe<DateQueryOperatorInput>;
+  accessTime: Maybe<DateQueryOperatorInput>;
+  changeTime: Maybe<DateQueryOperatorInput>;
+  birthTime: Maybe<DateQueryOperatorInput>;
+  root: Maybe<StringQueryOperatorInput>;
+  dir: Maybe<StringQueryOperatorInput>;
+  base: Maybe<StringQueryOperatorInput>;
+  ext: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  relativeDirectory: Maybe<StringQueryOperatorInput>;
+  dev: Maybe<IntQueryOperatorInput>;
+  mode: Maybe<IntQueryOperatorInput>;
+  nlink: Maybe<IntQueryOperatorInput>;
+  uid: Maybe<IntQueryOperatorInput>;
+  gid: Maybe<IntQueryOperatorInput>;
+  rdev: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
+  atimeMs: Maybe<FloatQueryOperatorInput>;
+  mtimeMs: Maybe<FloatQueryOperatorInput>;
+  ctimeMs: Maybe<FloatQueryOperatorInput>;
+  atime: Maybe<DateQueryOperatorInput>;
+  mtime: Maybe<DateQueryOperatorInput>;
+  ctime: Maybe<DateQueryOperatorInput>;
+  birthtime: Maybe<DateQueryOperatorInput>;
+  birthtimeMs: Maybe<FloatQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
-type StoreSpecificationGroupProperty = {
-  remoteTypeName: Scalars['String'];
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  values: Maybe<Array<Maybe<Scalars['String']>>>;
+
+type QueryAllDirectoryArgs = {
+  filter: Maybe<DirectoryFilterInput>;
+  sort: Maybe<DirectorySortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
 };
 
-type StoreProductPriceRange = {
-  remoteTypeName: Scalars['String'];
-  sellingPrice: Maybe<StorePriceRange>;
-  listPrice: Maybe<StorePriceRange>;
+
+type QuerySiteArgs = {
+  buildTime: Maybe<DateQueryOperatorInput>;
+  siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  flags: Maybe<SiteFlagsFilterInput>;
+  polyfill: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
-type StorePriceRange = {
-  remoteTypeName: Scalars['String'];
-  highPrice: Maybe<Scalars['Float']>;
-  lowPrice: Maybe<Scalars['Float']>;
+
+type QueryAllSiteArgs = {
+  filter: Maybe<SiteFilterInput>;
+  sort: Maybe<SiteSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
 };
 
-type StoreSelectedProperty = {
-  remoteTypeName: Scalars['String'];
-  key: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
+
+type QuerySiteFunctionArgs = {
+  functionRoute: Maybe<StringQueryOperatorInput>;
+  pluginName: Maybe<StringQueryOperatorInput>;
+  originalAbsoluteFilePath: Maybe<StringQueryOperatorInput>;
+  originalRelativeFilePath: Maybe<StringQueryOperatorInput>;
+  relativeCompiledFilePath: Maybe<StringQueryOperatorInput>;
+  absoluteCompiledFilePath: Maybe<StringQueryOperatorInput>;
+  matchPath: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
-type SitePlugin = Node & {
-  id: Scalars['ID'];
-  parent: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  resolve: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  version: Maybe<Scalars['String']>;
-  pluginOptions: Maybe<SitePluginPluginOptions>;
-  nodeAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
-  browserAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
-  ssrAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
-  pluginFilepath: Maybe<Scalars['String']>;
-  packageJson: Maybe<SitePluginPackageJson>;
+
+type QueryAllSiteFunctionArgs = {
+  filter: Maybe<SiteFunctionFilterInput>;
+  sort: Maybe<SiteFunctionSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
 };
+
+
+type QuerySitePageArgs = {
+  path: Maybe<StringQueryOperatorInput>;
+  component: Maybe<StringQueryOperatorInput>;
+  internalComponentName: Maybe<StringQueryOperatorInput>;
+  componentChunkName: Maybe<StringQueryOperatorInput>;
+  matchPath: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>;
+  context: Maybe<SitePageContextFilterInput>;
+  pluginCreator: Maybe<SitePluginFilterInput>;
+  pluginCreatorId: Maybe<StringQueryOperatorInput>;
+};
+
 
 type SitePluginPluginOptions = {
   name: Maybe<Scalars['String']>;
@@ -786,808 +628,673 @@ type SitePluginPluginOptions = {
   jsxPragma: Maybe<Scalars['String']>;
 };
 
-type SitePluginPluginOptionsWorkboxConfig = {
-  globPatterns: Maybe<Array<Maybe<Scalars['String']>>>;
-};
 
-type SitePluginPluginOptionsEnv = {
-  production: Maybe<SitePluginPluginOptionsEnvProduction>;
-  branch_deploy: Maybe<SitePluginPluginOptionsEnvBranch_Deploy>;
-  deploy_preview: Maybe<SitePluginPluginOptionsEnvDeploy_Preview>;
-};
-
-type SitePluginPluginOptionsEnvProduction = {
-  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvProductionPolicy>>>;
-};
-
-type SitePluginPluginOptionsEnvProductionPolicy = {
-  userAgent: Maybe<Scalars['String']>;
-  allow: Maybe<Scalars['String']>;
-  disallow: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type SitePluginPluginOptionsEnvBranch_Deploy = {
-  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicy>>>;
-};
-
-type SitePluginPluginOptionsEnvBranch_DeployPolicy = {
-  userAgent: Maybe<Scalars['String']>;
-  disallow: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type SitePluginPluginOptionsEnvDeploy_Preview = {
-  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicy>>>;
-};
-
-type SitePluginPluginOptionsEnvDeploy_PreviewPolicy = {
-  userAgent: Maybe<Scalars['String']>;
-  disallow: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type SitePluginPluginOptionsStats = {
-  context: Maybe<Scalars['String']>;
-};
-
-type SitePluginPackageJson = {
-  name: Maybe<Scalars['String']>;
-  description: Maybe<Scalars['String']>;
-  version: Maybe<Scalars['String']>;
-  main: Maybe<Scalars['String']>;
-  license: Maybe<Scalars['String']>;
-  dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
-  devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
-  peerDependencies: Maybe<Array<Maybe<SitePluginPackageJsonPeerDependencies>>>;
-  keywords: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type SitePluginPackageJsonDependencies = {
-  name: Maybe<Scalars['String']>;
-  version: Maybe<Scalars['String']>;
-};
-
-type SitePluginPackageJsonDevDependencies = {
-  name: Maybe<Scalars['String']>;
-  version: Maybe<Scalars['String']>;
-};
-
-type SitePluginPackageJsonPeerDependencies = {
-  name: Maybe<Scalars['String']>;
-  version: Maybe<Scalars['String']>;
-};
-
-type SiteBuildMetadata = Node & {
-  id: Scalars['ID'];
-  parent: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  buildTime: Maybe<Scalars['Date']>;
+type QueryStoreCollectionArgs = {
+  seo: Maybe<StoreSeoFilterInput>;
+  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>;
+  meta: Maybe<StoreCollectionMetaFilterInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  slug: Maybe<StringQueryOperatorInput>;
+  type: Maybe<StoreCollectionTypeQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+  remoteId: Maybe<IdQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
 
-type SiteBuildMetadataBuildTimeArgs = {
-  formatString: Maybe<Scalars['String']>;
-  fromNow: Maybe<Scalars['Boolean']>;
-  difference: Maybe<Scalars['String']>;
-  locale: Maybe<Scalars['String']>;
+type QueryAllStoreCollectionArgs = {
+  filter: Maybe<StoreCollectionFilterInput>;
+  sort: Maybe<StoreCollectionSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
 };
 
-type Channel = Node & {
-  id: Scalars['ID'];
-  parent: Maybe<Node>;
-  children: Array<Node>;
-  internal: Internal;
-  salesChannel: Maybe<Scalars['Int']>;
-  canonicalBaseAddress: Maybe<Scalars['String']>;
-  alternateBaseAddresses: Maybe<Array<Maybe<Scalars['String']>>>;
-  defaultLocale: Maybe<Scalars['String']>;
-  supportedLocales: Maybe<Array<Maybe<Scalars['String']>>>;
-  defaultCurrency: Maybe<Scalars['String']>;
-  supportedCurrencies: Maybe<Array<Maybe<Scalars['String']>>>;
-  targetProduct: Maybe<Scalars['String']>;
+
+type QueryStoreProductArgs = {
+  seo: Maybe<StoreSeoFilterInput>;
+  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>;
+  slug: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  productID: Maybe<StringQueryOperatorInput>;
+  brand: Maybe<StoreBrandFilterInput>;
+  description: Maybe<StringQueryOperatorInput>;
+  image: Maybe<StoreImageFilterListInput>;
+  offers: Maybe<StoreAggregateOfferFilterInput>;
+  sku: Maybe<StringQueryOperatorInput>;
+  gtin: Maybe<StringQueryOperatorInput>;
+  review: Maybe<StoreReviewFilterListInput>;
+  aggregateRating: Maybe<StoreAggregateRatingFilterInput>;
+  isVariantOf: Maybe<StoreProductGroupFilterInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
-type Vtex_ProductUniqueIdentifier = {
-  field: Vtex_ProductUniqueIdentifierField;
-  value: Scalars['ID'];
+
+type QueryAllStoreProductArgs = {
+  filter: Maybe<StoreProductFilterInput>;
+  sort: Maybe<StoreProductSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
 };
 
-type Vtex_ProductUniqueIdentifierField =
+
+type QuerySitePluginArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  resolve: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  version: Maybe<StringQueryOperatorInput>;
+  pluginOptions: Maybe<SitePluginPluginOptionsFilterInput>;
+  nodeAPIs: Maybe<StringQueryOperatorInput>;
+  browserAPIs: Maybe<StringQueryOperatorInput>;
+  ssrAPIs: Maybe<StringQueryOperatorInput>;
+  pluginFilepath: Maybe<StringQueryOperatorInput>;
+  packageJson: Maybe<SitePluginPackageJsonFilterInput>;
+};
+
+
+type QueryAllSitePluginArgs = {
+  filter: Maybe<SitePluginFilterInput>;
+  sort: Maybe<SitePluginSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type QuerySiteBuildMetadataArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+  buildTime: Maybe<DateQueryOperatorInput>;
+};
+
+
+type QueryAllSiteBuildMetadataArgs = {
+  filter: Maybe<SiteBuildMetadataFilterInput>;
+  sort: Maybe<SiteBuildMetadataSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+type StringQueryOperatorInput = {
+  eq: Maybe<Scalars['String']>;
+  ne: Maybe<Scalars['String']>;
+  in: Maybe<Array<Maybe<Scalars['String']>>>;
+  nin: Maybe<Array<Maybe<Scalars['String']>>>;
+  regex: Maybe<Scalars['String']>;
+  glob: Maybe<Scalars['String']>;
+};
+
+type IntQueryOperatorInput = {
+  eq: Maybe<Scalars['Int']>;
+  ne: Maybe<Scalars['Int']>;
+  gt: Maybe<Scalars['Int']>;
+  gte: Maybe<Scalars['Int']>;
+  lt: Maybe<Scalars['Int']>;
+  lte: Maybe<Scalars['Int']>;
+  in: Maybe<Array<Maybe<Scalars['Int']>>>;
+  nin: Maybe<Array<Maybe<Scalars['Int']>>>;
+};
+
+type DateQueryOperatorInput = {
+  eq: Maybe<Scalars['Date']>;
+  ne: Maybe<Scalars['Date']>;
+  gt: Maybe<Scalars['Date']>;
+  gte: Maybe<Scalars['Date']>;
+  lt: Maybe<Scalars['Date']>;
+  lte: Maybe<Scalars['Date']>;
+  in: Maybe<Array<Maybe<Scalars['Date']>>>;
+  nin: Maybe<Array<Maybe<Scalars['Date']>>>;
+};
+
+type FloatQueryOperatorInput = {
+  eq: Maybe<Scalars['Float']>;
+  ne: Maybe<Scalars['Float']>;
+  gt: Maybe<Scalars['Float']>;
+  gte: Maybe<Scalars['Float']>;
+  lt: Maybe<Scalars['Float']>;
+  lte: Maybe<Scalars['Float']>;
+  in: Maybe<Array<Maybe<Scalars['Float']>>>;
+  nin: Maybe<Array<Maybe<Scalars['Float']>>>;
+};
+
+type NodeFilterInput = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+type NodeFilterListInput = {
+  elemMatch: Maybe<NodeFilterInput>;
+};
+
+type InternalFilterInput = {
+  content: Maybe<StringQueryOperatorInput>;
+  contentDigest: Maybe<StringQueryOperatorInput>;
+  description: Maybe<StringQueryOperatorInput>;
+  fieldOwners: Maybe<StringQueryOperatorInput>;
+  ignoreType: Maybe<BooleanQueryOperatorInput>;
+  mediaType: Maybe<StringQueryOperatorInput>;
+  owner: Maybe<StringQueryOperatorInput>;
+  type: Maybe<StringQueryOperatorInput>;
+};
+
+type BooleanQueryOperatorInput = {
+  eq: Maybe<Scalars['Boolean']>;
+  ne: Maybe<Scalars['Boolean']>;
+  in: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+  nin: Maybe<Array<Maybe<Scalars['Boolean']>>>;
+};
+
+type FileConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<FileEdge>;
+  nodes: Array<File>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max: Maybe<Scalars['Float']>;
+  min: Maybe<Scalars['Float']>;
+  sum: Maybe<Scalars['Float']>;
+  group: Array<FileGroupConnection>;
+};
+
+
+type FileConnectionDistinctArgs = {
+  field: FileFieldsEnum;
+};
+
+
+type FileConnectionMaxArgs = {
+  field: FileFieldsEnum;
+};
+
+
+type FileConnectionMinArgs = {
+  field: FileFieldsEnum;
+};
+
+
+type FileConnectionSumArgs = {
+  field: FileFieldsEnum;
+};
+
+
+type FileConnectionGroupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: FileFieldsEnum;
+};
+
+type FileEdge = {
+  next: Maybe<File>;
+  node: File;
+  previous: Maybe<File>;
+};
+
+type PageInfo = {
+  currentPage: Scalars['Int'];
+  hasPreviousPage: Scalars['Boolean'];
+  hasNextPage: Scalars['Boolean'];
+  itemCount: Scalars['Int'];
+  pageCount: Scalars['Int'];
+  perPage: Maybe<Scalars['Int']>;
+  totalCount: Scalars['Int'];
+};
+
+type FileFieldsEnum =
+  | 'sourceInstanceName'
+  | 'absolutePath'
+  | 'relativePath'
+  | 'extension'
+  | 'size'
+  | 'prettySize'
+  | 'modifiedTime'
+  | 'accessTime'
+  | 'changeTime'
+  | 'birthTime'
+  | 'root'
+  | 'dir'
+  | 'base'
+  | 'ext'
+  | 'name'
+  | 'relativeDirectory'
+  | 'dev'
+  | 'mode'
+  | 'nlink'
+  | 'uid'
+  | 'gid'
+  | 'rdev'
+  | 'ino'
+  | 'atimeMs'
+  | 'mtimeMs'
+  | 'ctimeMs'
+  | 'atime'
+  | 'mtime'
+  | 'ctime'
+  | 'birthtime'
+  | 'birthtimeMs'
   | 'id'
-  | 'slug'
-  | 'ean'
-  | 'reference'
-  | 'sku';
-
-type Vtex_Product = {
-  /** Brand of the product */
-  brand: Maybe<Scalars['String']>;
-  /** Id of the brand of the product */
-  brandId: Maybe<Scalars['Int']>;
-  /** linkText is used as cacheId */
-  cacheId: Maybe<Scalars['ID']>;
-  categoryId: Maybe<Scalars['ID']>;
-  /**
-   * Categories of the product
-   * @deprecated Use 'categoryTree' field for internationalization support
-   */
-  categories: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** Product's categories */
-  categoryTree: Maybe<Array<Maybe<Vtex_Category>>>;
-  /** List of related products */
-  clusterHighlights: Maybe<Array<Maybe<Vtex_ClusterHighlight>>>;
-  productClusters: Maybe<Array<Maybe<Vtex_ProductClusters>>>;
-  /** Product description */
-  description: Maybe<Scalars['String']>;
-  /** SKU objects of the product */
-  items: Maybe<Array<Maybe<Vtex_Sku>>>;
-  /** List of SKU Specifications */
-  skuSpecifications: Maybe<Array<Maybe<Vtex_SkuSpecification>>>;
-  /** Product URL */
-  link: Maybe<Scalars['String']>;
-  /** Product slug */
-  linkText: Maybe<Scalars['String']>;
-  /** Product ID */
-  productId: Maybe<Scalars['ID']>;
-  /** Product name */
-  productName: Maybe<Scalars['String']>;
-  /** Array of product properties */
-  properties: Maybe<Array<Maybe<Vtex_Property>>>;
-  /** Array of product properties */
-  propertyGroups: Maybe<Array<Maybe<Vtex_PropertyGroup>>>;
-  /** Product reference */
-  productReference: Maybe<Scalars['String']>;
-  /** Title used by html tag */
-  titleTag: Maybe<Scalars['String']>;
-  /** Description used by html tag */
-  metaTagDescription: Maybe<Scalars['String']>;
-  /** Related Products */
-  recommendations: Maybe<Vtex_Recommendation>;
-  /** JSON specification of the product */
-  jsonSpecifications: Maybe<Scalars['String']>;
-  /** List of benefits associated with this product */
-  benefits: Maybe<Array<Maybe<Vtex_Benefit>>>;
-  itemMetadata: Maybe<Vtex_ItemMetadata>;
-  /** Array of product SpecificationGroup */
-  specificationGroups: Maybe<Array<Maybe<Vtex_SpecificationGroup>>>;
-  /** Returns highest and lowest prices for available SKUs in product. */
-  priceRange: Maybe<Vtex_ProductPriceRange>;
-  /** Product Release Date, for list ordering and product cluster highlight */
-  releaseDate: Maybe<Scalars['String']>;
-  /** Product properties that will be selected by default. e.g: {key: "Color", value: "Blue"} */
-  selectedProperties: Maybe<Array<Maybe<Vtex_SelectedProperty>>>;
-};
-
-
-type Vtex_ProductItemsArgs = {
-  filter: Maybe<Vtex_ItemsFilter>;
-};
-
-type Vtex_Category = {
-  /**  id is used as cacheId  */
-  cacheId: Maybe<Scalars['ID']>;
-  /**  URI of category  */
-  href: Maybe<Scalars['String']>;
-  /**  Category text link  */
-  slug: Maybe<Scalars['String']>;
-  /**  Category ID  */
-  id: Maybe<Scalars['Int']>;
-  /**  Category name  */
-  name: Maybe<Scalars['String']>;
-  /**  Title used by html tag */
-  titleTag: Maybe<Scalars['String']>;
-  /**  Description used by html tag */
-  hasChildren: Maybe<Scalars['Boolean']>;
-  /**  Has children categories  */
-  metaTagDescription: Maybe<Scalars['String']>;
-  /**  Categories children  */
-  children: Maybe<Array<Maybe<Vtex_Category>>>;
-};
-
-type Vtex_ClusterHighlight = {
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-};
-
-type Vtex_ProductClusters = {
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-};
-
-type Vtex_ItemsFilter =
-  /** Returns all items, same as no filter. */
-  | 'ALL'
-  /** Returns only the first available item. Returns first if no item is available. */
-  | 'FIRST_AVAILABLE'
-  /** Returns all available items. Returns first if no item is available. */
-  | 'ALL_AVAILABLE';
-
-type Vtex_Sku = {
-  itemId: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-  nameComplete: Maybe<Scalars['String']>;
-  complementName: Maybe<Scalars['String']>;
-  ean: Maybe<Scalars['String']>;
-  referenceId: Maybe<Array<Maybe<Vtex_Reference>>>;
-  measurementUnit: Maybe<Scalars['String']>;
-  unitMultiplier: Maybe<Scalars['Float']>;
-  kitItems: Maybe<Array<Maybe<Vtex_KitItem>>>;
-  images: Maybe<Array<Maybe<Vtex_Image>>>;
-  videos: Maybe<Array<Maybe<Vtex_Video>>>;
-  sellers: Maybe<Array<Maybe<Vtex_Seller>>>;
-  variations: Maybe<Array<Maybe<Vtex_Property>>>;
-  /** @deprecated Use itemMetaData instead */
-  attachments: Maybe<Array<Maybe<Vtex_Attachment>>>;
-  estimatedDateArrival: Maybe<Scalars['String']>;
-};
-
-
-type Vtex_SkuImagesArgs = {
-  quantity: Maybe<Scalars['Int']>;
-};
-
-type Vtex_Reference = {
-  Key: Maybe<Scalars['String']>;
-  Value: Maybe<Scalars['String']>;
-};
-
-type Vtex_KitItem = {
-  itemId: Maybe<Scalars['ID']>;
-  amount: Maybe<Scalars['Int']>;
-  product: Maybe<Vtex_OnlyProduct>;
-  sku: Maybe<Vtex_Sku>;
-};
-
-type Vtex_OnlyProduct = {
-  brand: Maybe<Scalars['String']>;
-  categoryId: Maybe<Scalars['ID']>;
-  categoryTree: Maybe<Array<Maybe<Vtex_Category>>>;
-  clusterHighlights: Maybe<Array<Maybe<Vtex_ClusterHighlight>>>;
-  productClusters: Maybe<Array<Maybe<Vtex_ProductClusters>>>;
-  description: Maybe<Scalars['String']>;
-  link: Maybe<Scalars['String']>;
-  linkText: Maybe<Scalars['String']>;
-  productId: Maybe<Scalars['ID']>;
-  productName: Maybe<Scalars['String']>;
-  properties: Maybe<Array<Maybe<Vtex_Property>>>;
-  propertyGroups: Maybe<Array<Maybe<Vtex_PropertyGroup>>>;
-  productReference: Maybe<Scalars['String']>;
-  recommendations: Maybe<Vtex_Recommendation>;
-  jsonSpecifications: Maybe<Scalars['String']>;
-};
-
-type Vtex_Property = {
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  values: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type Vtex_PropertyGroup = {
-  name: Maybe<Scalars['String']>;
-  properties: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type Vtex_Recommendation = {
-  buy: Maybe<Array<Maybe<Vtex_Product>>>;
-  view: Maybe<Array<Maybe<Vtex_Product>>>;
-  similars: Maybe<Array<Maybe<Vtex_Product>>>;
-};
-
-type Vtex_Image = {
-  cacheId: Maybe<Scalars['ID']>;
-  imageId: Maybe<Scalars['ID']>;
-  imageLabel: Maybe<Scalars['String']>;
-  imageTag: Maybe<Scalars['String']>;
-  imageUrl: Maybe<Scalars['String']>;
-  imageText: Maybe<Scalars['String']>;
-};
-
-type Vtex_Video = {
-  videoUrl: Maybe<Scalars['String']>;
-};
-
-type Vtex_Seller = {
-  sellerId: Maybe<Scalars['ID']>;
-  sellerName: Maybe<Scalars['String']>;
-  addToCartLink: Maybe<Scalars['String']>;
-  sellerDefault: Maybe<Scalars['Boolean']>;
-  commertialOffer: Maybe<Vtex_Offer>;
-};
-
-type Vtex_Offer = {
-  Installments: Maybe<Array<Maybe<Vtex_Installment>>>;
-  Price: Maybe<Scalars['Float']>;
-  ListPrice: Maybe<Scalars['Float']>;
-  spotPrice: Maybe<Scalars['Float']>;
-  PriceWithoutDiscount: Maybe<Scalars['Float']>;
-  RewardValue: Maybe<Scalars['Float']>;
-  PriceValidUntil: Maybe<Scalars['String']>;
-  AvailableQuantity: Maybe<Scalars['Float']>;
-  Tax: Maybe<Scalars['Float']>;
-  taxPercentage: Maybe<Scalars['Float']>;
-  CacheVersionUsedToCallCheckout: Maybe<Scalars['String']>;
-  DeliverySlaSamples: Maybe<Array<Maybe<Vtex_DeliverySlaSamples>>>;
-  /** List of discount highlights */
-  discountHighlights: Maybe<Array<Vtex_Discount>>;
-  teasers: Maybe<Array<Vtex_Teaser>>;
-  /** List of SKUs for gifts associated with the product */
-  giftSkuIds: Maybe<Array<Maybe<Scalars['String']>>>;
-  /** List of gifts associated with the product */
-  gifts: Maybe<Array<Maybe<Vtex_Gift>>>;
-};
-
-
-type Vtex_OfferInstallmentsArgs = {
-  criteria?: Maybe<Vtex_InstallmentsCriteria>;
-  rates?: Maybe<Scalars['Boolean']>;
-  excludedPaymentSystems: Maybe<Array<Maybe<Scalars['String']>>>;
-  includedPaymentSystems: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type Vtex_InstallmentsCriteria =
-  | 'MAX_WITHOUT_INTEREST'
-  | 'MAX_WITH_INTEREST'
-  | 'MAX'
-  | 'MIN'
-  | 'ALL';
-
-type Vtex_Installment = {
-  Value: Maybe<Scalars['Float']>;
-  InterestRate: Maybe<Scalars['Float']>;
-  TotalValuePlusInterestRate: Maybe<Scalars['Float']>;
-  NumberOfInstallments: Maybe<Scalars['Int']>;
-  PaymentSystemName: Maybe<Scalars['String']>;
-  PaymentSystemGroupName: Maybe<Scalars['String']>;
-  Name: Maybe<Scalars['String']>;
-  count: Scalars['Int'];
-  hasInterestRate: Maybe<Scalars['Boolean']>;
-  interestRate: Maybe<Scalars['Int']>;
-  value: Maybe<Scalars['Float']>;
-  total: Scalars['Float'];
-};
-
-type Vtex_DeliverySlaSamples = {
-  DeliverySlaPerTypes: Maybe<Array<Maybe<Vtex_DeliverySlaPerTypes>>>;
-  Region: Maybe<Vtex_Region>;
-};
-
-type Vtex_DeliverySlaPerTypes = {
-  TypeName: Maybe<Scalars['String']>;
-  Price: Maybe<Scalars['Float']>;
-  EstimatedTimeSpanToDelivery: Maybe<Scalars['String']>;
-};
-
-type Vtex_Region = {
-  IsPersisted: Maybe<Scalars['Boolean']>;
-  IsRemoved: Maybe<Scalars['Boolean']>;
-  Id: Maybe<Scalars['ID']>;
-  Name: Maybe<Scalars['String']>;
-  CountryCode: Maybe<Scalars['String']>;
-  ZipCode: Maybe<Scalars['String']>;
-  CultureInfoName: Maybe<Scalars['String']>;
-};
-
-/** Discount object */
-type Vtex_Discount = {
-  /** Discount name */
-  name: Maybe<Scalars['String']>;
-};
-
-type Vtex_Teaser = {
-  name: Maybe<Scalars['String']>;
-  conditions: Maybe<Vtex_TeaserCondition>;
-  effects: Maybe<Vtex_TeaserEffects>;
-};
-
-type Vtex_TeaserCondition = {
-  minimumQuantity: Maybe<Scalars['Int']>;
-  parameters: Maybe<Array<Maybe<Vtex_TeaserValue>>>;
-};
-
-type Vtex_TeaserValue = {
-  name: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
-};
-
-type Vtex_TeaserEffects = {
-  parameters: Maybe<Array<Maybe<Vtex_TeaserValue>>>;
-};
-
-type Vtex_Gift = {
-  productName: Maybe<Scalars['String']>;
-  skuName: Maybe<Scalars['String']>;
-  brand: Maybe<Scalars['String']>;
-  linkText: Maybe<Scalars['String']>;
-  description: Maybe<Scalars['String']>;
-  images: Maybe<Array<Maybe<Vtex_GiftImage>>>;
-};
-
-type Vtex_GiftImage = {
-  imageUrl: Maybe<Scalars['String']>;
-  imageLabel: Maybe<Scalars['String']>;
-  imageText: Maybe<Scalars['String']>;
-};
-
-type Vtex_Attachment = {
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-  required: Maybe<Scalars['Boolean']>;
-  domainValues: Maybe<Array<Maybe<Vtex_DomainValues>>>;
-  content: Maybe<Scalars['VTEX_AttachmentContent']>;
-};
-
-type Vtex_DomainValues = {
-  FieldName: Maybe<Scalars['String']>;
-  MaxCaracters: Maybe<Scalars['String']>;
-  DomainValues: Maybe<Scalars['String']>;
-};
-
-type Vtex_SkuSpecification = {
-  field: Maybe<Vtex_SkuSpecificationField>;
-  values: Maybe<Array<Maybe<Vtex_SkuSpecificationValue>>>;
-};
-
-type Vtex_SkuSpecificationField = {
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-};
-
-type Vtex_SkuSpecificationValue = {
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-};
-
-/**  Benefit of a Product  */
-type Vtex_Benefit = {
-  /**  Flag which indicates if the benefit is featured or not  */
-  featured: Maybe<Scalars['Boolean']>;
-  /**  Id of the product which the benefit is associated  */
-  id: Maybe<Scalars['String']>;
-  /**  Name of the benefit  */
-  name: Maybe<Scalars['String']>;
-  /**  Items of the benefit  */
-  items: Maybe<Array<Maybe<Vtex_BenefitItem>>>;
-  /**  Type of benefit  */
-  teaserType: Maybe<Scalars['String']>;
-};
-
-type Vtex_BenefitItem = {
-  /**  Product itself  */
-  benefitProduct: Maybe<Vtex_Product>;
-  /**  IDs of the SKU Items that are taking part in the benefit  */
-  benefitSKUIds: Maybe<Array<Maybe<Scalars['String']>>>;
-  /**  Discount applied to the benefit product  */
-  discount: Maybe<Scalars['Float']>;
-  /**  Minimum quantity of the benefit product that is required to validate the benefit  */
-  minQuantity: Maybe<Scalars['Int']>;
-};
-
-type Vtex_ItemMetadata = {
-  items: Maybe<Array<Maybe<Vtex_ItemMetadataUnit>>>;
-  priceTable: Maybe<Array<Maybe<Vtex_ItemPriceTable>>>;
-};
-
-type Vtex_ItemMetadataUnit = {
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-  skuName: Maybe<Scalars['String']>;
-  productId: Maybe<Scalars['String']>;
-  refId: Maybe<Scalars['String']>;
-  ean: Maybe<Scalars['String']>;
-  imageUrl: Maybe<Scalars['String']>;
-  detailUrl: Maybe<Scalars['String']>;
-  seller: Maybe<Scalars['String']>;
-  assemblyOptions: Maybe<Array<Maybe<Vtex_AssemblyOption>>>;
-};
-
-type Vtex_AssemblyOption = {
-  id: Maybe<Scalars['ID']>;
-  name: Maybe<Scalars['String']>;
-  required: Maybe<Scalars['Boolean']>;
-  composition: Maybe<Vtex_CompositionType>;
-  inputValues: Maybe<Array<Maybe<Vtex_InputValue>>>;
-};
-
-type Vtex_CompositionType = {
-  minQuantity: Maybe<Scalars['Int']>;
-  maxQuantity: Maybe<Scalars['Int']>;
-  items: Maybe<Array<Maybe<Vtex_CompositionItem>>>;
-};
-
-type Vtex_CompositionItem = {
-  id: Maybe<Scalars['ID']>;
-  minQuantity: Maybe<Scalars['Int']>;
-  maxQuantity: Maybe<Scalars['Int']>;
-  initialQuantity: Maybe<Scalars['Int']>;
-  priceTable: Maybe<Scalars['String']>;
-  seller: Maybe<Scalars['String']>;
-};
-
-type Vtex_InputValue = {
-  label: Maybe<Scalars['String']>;
-  maxLength: Maybe<Scalars['Int']>;
-  type: Maybe<Vtex_InputValueType>;
-  defaultValue: Maybe<Scalars['VTEX_StringOrBoolean']>;
-  domain: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type Vtex_InputValueType =
-  | 'TEXT'
-  | 'BOOLEAN'
-  | 'OPTIONS';
-
-
-type Vtex_ItemPriceTable = {
-  type: Maybe<Scalars['String']>;
-  values: Maybe<Array<Maybe<Vtex_PriceTableItem>>>;
-};
-
-type Vtex_PriceTableItem = {
-  id: Maybe<Scalars['String']>;
-  assemblyId: Maybe<Scalars['String']>;
-  price: Maybe<Scalars['Int']>;
-};
-
-type Vtex_SpecificationGroup = {
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  specifications: Maybe<Array<Maybe<Vtex_SpecificationGroupProperty>>>;
-};
-
-type Vtex_SpecificationGroupProperty = {
-  originalName: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  values: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-type Vtex_ProductPriceRange = {
-  sellingPrice: Maybe<Vtex_PriceRange>;
-  listPrice: Maybe<Vtex_PriceRange>;
-};
-
-type Vtex_PriceRange = {
-  highPrice: Maybe<Scalars['Float']>;
-  lowPrice: Maybe<Scalars['Float']>;
-};
-
-type Vtex_SelectedProperty = {
-  key: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
-};
-
-type Vtex_SelectedFacetInput = {
-  key: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
-};
-
-type Vtex_Banners = {
-  banners: Maybe<Array<Maybe<Vtex_SearchBanner>>>;
-};
-
-type Vtex_SearchBanner = {
-  id: Maybe<Scalars['String']>;
-  name: Maybe<Scalars['String']>;
-  area: Maybe<Scalars['String']>;
-  html: Maybe<Scalars['String']>;
-};
-
-type Vtex_Correction = {
-  correction: Maybe<Vtex_SearchCorrection>;
-};
-
-type Vtex_SearchCorrection = {
-  text: Maybe<Scalars['String']>;
-  highlighted: Maybe<Scalars['String']>;
-  misspelled: Maybe<Scalars['Boolean']>;
-  correction: Maybe<Scalars['Boolean']>;
-};
-
-type Vtex_SearchSuggestions = {
-  searches: Maybe<Array<Maybe<Vtex_SearchSuggestion>>>;
-};
-
-type Vtex_SearchSuggestion = {
-  term: Scalars['String'];
-  count: Scalars['Int'];
-  attributes: Maybe<Array<Maybe<Vtex_SearchSuggestionAttribute>>>;
-};
-
-type Vtex_SearchSuggestionAttribute = {
-  key: Scalars['String'];
-  value: Scalars['String'];
-  labelValue: Scalars['String'];
-};
-
-type Vtex_SimulationBehavior =
-  /** Does simulation on catalog as usual */
-  | 'default'
-  /** Does simulation on catalog only for seller 1P */
-  | 'only1P'
-  /** Calls catalog passing a parameter to not simulate each SKU and get its most up to date price. */
-  | 'skip'
-  /** Does the simulation on the client side */
-  | 'async';
-
-type Vtex_Operator =
-  | 'and'
-  | 'or';
-
-type Vtex_Options = {
-  /** If the search has a redirect enabled, this allows (`true`) or not (`false`) the redirect to be used */
-  allowRedirect: Maybe<Scalars['Boolean']>;
-};
-
-type Vtex_ProductSearch = {
-  products: Maybe<Array<Maybe<Vtex_Product>>>;
-  recordsFiltered: Maybe<Scalars['Int']>;
-  titleTag: Maybe<Scalars['String']>;
-  metaTagDescription: Maybe<Scalars['String']>;
-  breadcrumb: Maybe<Array<Maybe<Vtex_SearchBreadcrumb>>>;
-  canonical: Maybe<Scalars['String']>;
-  suggestion: Maybe<Vtex_SearchSuggestions>;
-  correction: Maybe<Vtex_SearchCorrection>;
-  operator: Maybe<Vtex_Operator>;
-  fuzzy: Maybe<Scalars['String']>;
-  searchState: Maybe<Scalars['String']>;
-  banners: Maybe<Array<Maybe<Vtex_SearchBanner>>>;
-  redirect: Maybe<Scalars['String']>;
-};
-
-type Vtex_SearchBreadcrumb = {
-  name: Maybe<Scalars['String']>;
-  href: Maybe<Scalars['String']>;
-};
-
-type Vtex_SearchMetadata = {
-  titleTag: Maybe<Scalars['String']>;
-  metaTagDescription: Maybe<Scalars['String']>;
-};
-
-type Vtex_CrossSelingInputEnum =
-  | 'buy'
-  | 'similars'
-  | 'view'
-  | 'viewAndBought'
-  | 'accessories'
-  | 'suggestions';
-
-type Vtex_CategoryTreeBehavior =
-  /** Uses the default value set by the search provider */
-  | 'default'
-  /** Show the category tree when it is possible */
-  | 'show'
-  /** Hide the category tree in any situation */
-  | 'hide';
-
-type Vtex_Facets = {
-  departments: Maybe<Array<Maybe<Vtex_DepartmentFacet>>>;
-  brands: Maybe<Array<Maybe<Vtex_BrandFacet>>>;
-  specificationFilters: Maybe<Array<Maybe<Vtex_FilterFacets>>>;
-  categoriesTrees: Maybe<Array<Maybe<Vtex_CategoriesTreeFacet>>>;
-  priceRanges: Maybe<Array<Maybe<Vtex_PriceRangesFacet>>>;
-  recordsFiltered: Maybe<Scalars['Int']>;
-  queryArgs: Maybe<Vtex_QueryArgs>;
-  facets: Maybe<Array<Maybe<Vtex_Facet>>>;
-  sampling: Maybe<Scalars['Boolean']>;
-  breadcrumb: Maybe<Array<Maybe<Vtex_SearchBreadcrumb>>>;
-};
-
-type Vtex_DepartmentFacet = {
-  id: Scalars['ID'];
-  quantity: Scalars['Int'];
-  name: Maybe<Scalars['String']>;
-  link: Scalars['String'];
-  linkEncoded: Scalars['String'];
-  map: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-  selected: Scalars['Boolean'];
-};
-
-type Vtex_BrandFacet = {
-  id: Scalars['ID'];
-  quantity: Scalars['Int'];
-  name: Scalars['String'];
-  link: Scalars['String'];
-  linkEncoded: Scalars['String'];
-  map: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-  selected: Scalars['Boolean'];
-};
-
-type Vtex_FilterFacets = {
-  name: Maybe<Scalars['String']>;
-  facets: Maybe<Array<Maybe<Vtex_FilterFacet>>>;
-};
-
-type Vtex_FilterFacet = {
-  quantity: Scalars['Int'];
-  name: Maybe<Scalars['String']>;
-  link: Scalars['String'];
-  linkEncoded: Scalars['String'];
-  map: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-  selected: Scalars['Boolean'];
-};
-
-type Vtex_CategoriesTreeFacet = {
-  id: Scalars['ID'];
-  quantity: Scalars['Int'];
-  name: Maybe<Scalars['String']>;
-  link: Scalars['String'];
-  linkEncoded: Scalars['String'];
-  /** Contains slugified links according to the store structure. /:department/d, /:category/:subcategory, etc */
-  href: Scalars['String'];
-  map: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-  children: Maybe<Array<Maybe<Vtex_CategoriesTreeFacet>>>;
-  selected: Scalars['Boolean'];
-};
-
-type Vtex_PriceRangesFacet = {
-  quantity: Scalars['Int'];
-  name: Maybe<Scalars['String']>;
-  link: Scalars['String'];
-  linkEncoded: Scalars['String'];
-  map: Maybe<Scalars['String']>;
-  value: Scalars['String'];
-  selected: Scalars['Boolean'];
-  slug: Maybe<Scalars['String']>;
-};
-
-type Vtex_QueryArgs = {
-  map: Maybe<Scalars['String']>;
-  query: Maybe<Scalars['String']>;
-  selectedFacets: Maybe<Array<Maybe<Vtex_SelectedFacet>>>;
-};
-
-type Vtex_SelectedFacet = {
-  key: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
-};
-
-type Vtex_Facet = {
-  name: Maybe<Scalars['String']>;
-  values: Maybe<Array<Maybe<Vtex_FacetValue>>>;
-  type: Maybe<Vtex_FilterType>;
-  hidden: Maybe<Scalars['Boolean']>;
-  quantity: Maybe<Scalars['Int']>;
-};
-
-
-type Vtex_FacetValuesArgs = {
-  from: Maybe<Scalars['Int']>;
-  to: Maybe<Scalars['Int']>;
-};
-
-type Vtex_FacetValue = {
-  id: Maybe<Scalars['ID']>;
-  quantity: Scalars['Int'];
-  name: Maybe<Scalars['String']>;
-  key: Maybe<Scalars['String']>;
-  value: Maybe<Scalars['String']>;
-  selected: Maybe<Scalars['Boolean']>;
-  children: Maybe<Array<Maybe<Vtex_FacetValue>>>;
-  range: Maybe<Vtex_Range>;
-  link: Maybe<Scalars['String']>;
-  linkEncoded: Maybe<Scalars['String']>;
-  href: Maybe<Scalars['String']>;
-};
-
-type Vtex_Range = {
-  from: Maybe<Scalars['Float']>;
-  to: Maybe<Scalars['Float']>;
-};
-
-type Vtex_FilterType =
-  | 'TEXT'
-  | 'NUMBER'
-  | 'CATEGORYTREE'
-  | 'BRAND'
-  | 'PRICERANGE';
-
-type Vtex_Suggestions = {
-  /**  searchTerm from Query autocomplete is used as cacheId  */
-  cacheId: Maybe<Scalars['ID']>;
-  itemsReturned: Maybe<Array<Maybe<Vtex_Items>>>;
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+type FileGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<FileEdge>;
+  nodes: Array<File>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+};
+
+type FileFilterInput = {
+  sourceInstanceName: Maybe<StringQueryOperatorInput>;
+  absolutePath: Maybe<StringQueryOperatorInput>;
+  relativePath: Maybe<StringQueryOperatorInput>;
+  extension: Maybe<StringQueryOperatorInput>;
+  size: Maybe<IntQueryOperatorInput>;
+  prettySize: Maybe<StringQueryOperatorInput>;
+  modifiedTime: Maybe<DateQueryOperatorInput>;
+  accessTime: Maybe<DateQueryOperatorInput>;
+  changeTime: Maybe<DateQueryOperatorInput>;
+  birthTime: Maybe<DateQueryOperatorInput>;
+  root: Maybe<StringQueryOperatorInput>;
+  dir: Maybe<StringQueryOperatorInput>;
+  base: Maybe<StringQueryOperatorInput>;
+  ext: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  relativeDirectory: Maybe<StringQueryOperatorInput>;
+  dev: Maybe<IntQueryOperatorInput>;
+  mode: Maybe<IntQueryOperatorInput>;
+  nlink: Maybe<IntQueryOperatorInput>;
+  uid: Maybe<IntQueryOperatorInput>;
+  gid: Maybe<IntQueryOperatorInput>;
+  rdev: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
+  atimeMs: Maybe<FloatQueryOperatorInput>;
+  mtimeMs: Maybe<FloatQueryOperatorInput>;
+  ctimeMs: Maybe<FloatQueryOperatorInput>;
+  atime: Maybe<DateQueryOperatorInput>;
+  mtime: Maybe<DateQueryOperatorInput>;
+  ctime: Maybe<DateQueryOperatorInput>;
+  birthtime: Maybe<DateQueryOperatorInput>;
+  birthtimeMs: Maybe<FloatQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+type FileSortInput = {
+  fields: Maybe<Array<Maybe<FileFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+type SortOrderEnum =
+  | 'ASC'
+  | 'DESC';
+
+type DirectoryConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DirectoryEdge>;
+  nodes: Array<Directory>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max: Maybe<Scalars['Float']>;
+  min: Maybe<Scalars['Float']>;
+  sum: Maybe<Scalars['Float']>;
+  group: Array<DirectoryGroupConnection>;
+};
+
+
+type DirectoryConnectionDistinctArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+type DirectoryConnectionMaxArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+type DirectoryConnectionMinArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+type DirectoryConnectionSumArgs = {
+  field: DirectoryFieldsEnum;
+};
+
+
+type DirectoryConnectionGroupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: DirectoryFieldsEnum;
+};
+
+type DirectoryEdge = {
+  next: Maybe<Directory>;
+  node: Directory;
+  previous: Maybe<Directory>;
+};
+
+type DirectoryFieldsEnum =
+  | 'sourceInstanceName'
+  | 'absolutePath'
+  | 'relativePath'
+  | 'extension'
+  | 'size'
+  | 'prettySize'
+  | 'modifiedTime'
+  | 'accessTime'
+  | 'changeTime'
+  | 'birthTime'
+  | 'root'
+  | 'dir'
+  | 'base'
+  | 'ext'
+  | 'name'
+  | 'relativeDirectory'
+  | 'dev'
+  | 'mode'
+  | 'nlink'
+  | 'uid'
+  | 'gid'
+  | 'rdev'
+  | 'ino'
+  | 'atimeMs'
+  | 'mtimeMs'
+  | 'ctimeMs'
+  | 'atime'
+  | 'mtime'
+  | 'ctime'
+  | 'birthtime'
+  | 'birthtimeMs'
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+type DirectoryGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<DirectoryEdge>;
+  nodes: Array<Directory>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+};
+
+type DirectoryFilterInput = {
+  sourceInstanceName: Maybe<StringQueryOperatorInput>;
+  absolutePath: Maybe<StringQueryOperatorInput>;
+  relativePath: Maybe<StringQueryOperatorInput>;
+  extension: Maybe<StringQueryOperatorInput>;
+  size: Maybe<IntQueryOperatorInput>;
+  prettySize: Maybe<StringQueryOperatorInput>;
+  modifiedTime: Maybe<DateQueryOperatorInput>;
+  accessTime: Maybe<DateQueryOperatorInput>;
+  changeTime: Maybe<DateQueryOperatorInput>;
+  birthTime: Maybe<DateQueryOperatorInput>;
+  root: Maybe<StringQueryOperatorInput>;
+  dir: Maybe<StringQueryOperatorInput>;
+  base: Maybe<StringQueryOperatorInput>;
+  ext: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  relativeDirectory: Maybe<StringQueryOperatorInput>;
+  dev: Maybe<IntQueryOperatorInput>;
+  mode: Maybe<IntQueryOperatorInput>;
+  nlink: Maybe<IntQueryOperatorInput>;
+  uid: Maybe<IntQueryOperatorInput>;
+  gid: Maybe<IntQueryOperatorInput>;
+  rdev: Maybe<IntQueryOperatorInput>;
+  ino: Maybe<FloatQueryOperatorInput>;
+  atimeMs: Maybe<FloatQueryOperatorInput>;
+  mtimeMs: Maybe<FloatQueryOperatorInput>;
+  ctimeMs: Maybe<FloatQueryOperatorInput>;
+  atime: Maybe<DateQueryOperatorInput>;
+  mtime: Maybe<DateQueryOperatorInput>;
+  ctime: Maybe<DateQueryOperatorInput>;
+  birthtime: Maybe<DateQueryOperatorInput>;
+  birthtimeMs: Maybe<FloatQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+type DirectorySortInput = {
+  fields: Maybe<Array<Maybe<DirectoryFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
+type SiteSiteMetadataFilterInput = {
+  title: Maybe<StringQueryOperatorInput>;
+  description: Maybe<StringQueryOperatorInput>;
+  titleTemplate: Maybe<StringQueryOperatorInput>;
+  author: Maybe<StringQueryOperatorInput>;
+  siteUrl: Maybe<StringQueryOperatorInput>;
+};
+
+type SiteFlagsFilterInput = {
+  DEV_SSR: Maybe<BooleanQueryOperatorInput>;
+  FAST_DEV: Maybe<BooleanQueryOperatorInput>;
+  LMDB_STORE: Maybe<BooleanQueryOperatorInput>;
+  PARALLEL_SOURCING: Maybe<BooleanQueryOperatorInput>;
+  PARALLEL_QUERY_RUNNING: Maybe<BooleanQueryOperatorInput>;
+  PRESERVE_FILE_DOWNLOAD_CACHE: Maybe<BooleanQueryOperatorInput>;
+};
+
+type SiteConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<SiteEdge>;
+  nodes: Array<Site>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max: Maybe<Scalars['Float']>;
+  min: Maybe<Scalars['Float']>;
+  sum: Maybe<Scalars['Float']>;
+  group: Array<SiteGroupConnection>;
+};
+
+
+type SiteConnectionDistinctArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+type SiteConnectionMaxArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+type SiteConnectionMinArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+type SiteConnectionSumArgs = {
+  field: SiteFieldsEnum;
+};
+
+
+type SiteConnectionGroupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: SiteFieldsEnum;
 };
 
 type Vtex_Items = {
@@ -3703,10 +3410,10 @@ type SitePluginPluginOptionsFilterInput = {
   json: Maybe<BooleanQueryOperatorInput>;
   outDir: Maybe<StringQueryOperatorInput>;
   stats: Maybe<SitePluginPluginOptionsStatsFilterInput>;
-  tenant: Maybe<StringQueryOperatorInput>;
-  environment: Maybe<StringQueryOperatorInput>;
-  workspace: Maybe<StringQueryOperatorInput>;
-  minProducts: Maybe<IntQueryOperatorInput>;
+  sourceProducts: Maybe<BooleanQueryOperatorInput>;
+  sourceCollections: Maybe<BooleanQueryOperatorInput>;
+  maxNumProducts: Maybe<IntQueryOperatorInput>;
+  maxNumCollections: Maybe<IntQueryOperatorInput>;
   httpOptions: Maybe<StringQueryOperatorInput>;
   serverOptions: Maybe<StringQueryOperatorInput>;
   path: Maybe<StringQueryOperatorInput>;
@@ -4020,10 +3727,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___json'
   | 'pluginCreator___pluginOptions___outDir'
   | 'pluginCreator___pluginOptions___stats___context'
-  | 'pluginCreator___pluginOptions___tenant'
-  | 'pluginCreator___pluginOptions___environment'
-  | 'pluginCreator___pluginOptions___workspace'
-  | 'pluginCreator___pluginOptions___minProducts'
+  | 'pluginCreator___pluginOptions___sourceProducts'
+  | 'pluginCreator___pluginOptions___sourceCollections'
+  | 'pluginCreator___pluginOptions___maxNumProducts'
+  | 'pluginCreator___pluginOptions___maxNumCollections'
   | 'pluginCreator___pluginOptions___httpOptions'
   | 'pluginCreator___pluginOptions___serverOptions'
   | 'pluginCreator___pluginOptions___path'
@@ -4082,27 +3789,34 @@ type SitePageSortInput = {
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-type IdQueryOperatorInput = {
-  eq: Maybe<Scalars['ID']>;
-  ne: Maybe<Scalars['ID']>;
-  in: Maybe<Array<Maybe<Scalars['ID']>>>;
-  nin: Maybe<Array<Maybe<Scalars['ID']>>>;
-};
-
-type StoreCollectionSeoFilterInput = {
+type StoreSeoFilterInput = {
   title: Maybe<StringQueryOperatorInput>;
+  titleTemplate: Maybe<StringQueryOperatorInput>;
   description: Maybe<StringQueryOperatorInput>;
+  canonical: Maybe<StringQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
-type StoreCollectionTypeQueryOperatorInput = {
-  eq: Maybe<StoreCollectionType>;
-  ne: Maybe<StoreCollectionType>;
-  in: Maybe<Array<Maybe<StoreCollectionType>>>;
-  nin: Maybe<Array<Maybe<StoreCollectionType>>>;
+type StoreBreadcrumbListFilterInput = {
+  itemListElement: Maybe<StoreListItemFilterListInput>;
+  numberOfItems: Maybe<IntQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreListItemFilterListInput = {
+  elemMatch: Maybe<StoreListItemFilterInput>;
+};
+
+type StoreListItemFilterInput = {
+  item: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  position: Maybe<IntQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
 type StoreCollectionMetaFilterInput = {
   selectedFacets: Maybe<StoreCollectionFacetFilterListInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
 type StoreCollectionFacetFilterListInput = {
@@ -4112,24 +3826,21 @@ type StoreCollectionFacetFilterListInput = {
 type StoreCollectionFacetFilterInput = {
   key: Maybe<StringQueryOperatorInput>;
   value: Maybe<StringQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
 };
 
-type StoreCollectionFilterListInput = {
-  elemMatch: Maybe<StoreCollectionFilterInput>;
+type StoreCollectionTypeQueryOperatorInput = {
+  eq: Maybe<StoreCollectionType>;
+  ne: Maybe<StoreCollectionType>;
+  in: Maybe<Array<Maybe<StoreCollectionType>>>;
+  nin: Maybe<Array<Maybe<StoreCollectionType>>>;
 };
 
-type StoreCollectionFilterInput = {
-  id: Maybe<StringQueryOperatorInput>;
-  remoteId: Maybe<IdQueryOperatorInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  seo: Maybe<StoreCollectionSeoFilterInput>;
-  type: Maybe<StoreCollectionTypeQueryOperatorInput>;
-  meta: Maybe<StoreCollectionMetaFilterInput>;
-  childrenStoreCollection: Maybe<StoreCollectionFilterListInput>;
-  childStoreCollection: Maybe<StoreCollectionFilterInput>;
-  parent: Maybe<NodeFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  internal: Maybe<InternalFilterInput>;
+type IdQueryOperatorInput = {
+  eq: Maybe<Scalars['ID']>;
+  ne: Maybe<Scalars['ID']>;
+  in: Maybe<Array<Maybe<Scalars['ID']>>>;
+  nin: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 type StoreCollectionConnection = {
@@ -4171,249 +3882,29 @@ type StoreCollectionConnectionGroupArgs = {
   field: StoreCollectionFieldsEnum;
 };
 
-type StoreCollectionEdge = {
-  next: Maybe<StoreCollection>;
-  node: StoreCollection;
-  previous: Maybe<StoreCollection>;
-};
-
 type StoreCollectionFieldsEnum =
-  | 'id'
-  | 'remoteId'
-  | 'slug'
   | 'seo___title'
+  | 'seo___titleTemplate'
   | 'seo___description'
-  | 'type'
+  | 'seo___canonical'
+  | 'seo___remoteTypeName'
+  | 'breadcrumbList___itemListElement'
+  | 'breadcrumbList___itemListElement___item'
+  | 'breadcrumbList___itemListElement___name'
+  | 'breadcrumbList___itemListElement___position'
+  | 'breadcrumbList___itemListElement___remoteTypeName'
+  | 'breadcrumbList___numberOfItems'
+  | 'breadcrumbList___remoteTypeName'
   | 'meta___selectedFacets'
   | 'meta___selectedFacets___key'
   | 'meta___selectedFacets___value'
-  | 'childrenStoreCollection'
-  | 'childrenStoreCollection___id'
-  | 'childrenStoreCollection___remoteId'
-  | 'childrenStoreCollection___slug'
-  | 'childrenStoreCollection___seo___title'
-  | 'childrenStoreCollection___seo___description'
-  | 'childrenStoreCollection___type'
-  | 'childrenStoreCollection___meta___selectedFacets'
-  | 'childrenStoreCollection___meta___selectedFacets___key'
-  | 'childrenStoreCollection___meta___selectedFacets___value'
-  | 'childrenStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childrenStoreCollection___id'
-  | 'childrenStoreCollection___childrenStoreCollection___remoteId'
-  | 'childrenStoreCollection___childrenStoreCollection___slug'
-  | 'childrenStoreCollection___childrenStoreCollection___seo___title'
-  | 'childrenStoreCollection___childrenStoreCollection___seo___description'
-  | 'childrenStoreCollection___childrenStoreCollection___type'
-  | 'childrenStoreCollection___childrenStoreCollection___meta___selectedFacets'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection___id'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection___remoteId'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection___slug'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection___type'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childrenStoreCollection___childrenStoreCollection___children'
-  | 'childrenStoreCollection___childrenStoreCollection___childStoreCollection___id'
-  | 'childrenStoreCollection___childrenStoreCollection___childStoreCollection___remoteId'
-  | 'childrenStoreCollection___childrenStoreCollection___childStoreCollection___slug'
-  | 'childrenStoreCollection___childrenStoreCollection___childStoreCollection___type'
-  | 'childrenStoreCollection___childrenStoreCollection___childStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childrenStoreCollection___childStoreCollection___children'
-  | 'childrenStoreCollection___childrenStoreCollection___parent___id'
-  | 'childrenStoreCollection___childrenStoreCollection___parent___children'
-  | 'childrenStoreCollection___childrenStoreCollection___children'
-  | 'childrenStoreCollection___childrenStoreCollection___children___id'
-  | 'childrenStoreCollection___childrenStoreCollection___children___children'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___content'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___contentDigest'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___description'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___fieldOwners'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___ignoreType'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___mediaType'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___owner'
-  | 'childrenStoreCollection___childrenStoreCollection___internal___type'
-  | 'childrenStoreCollection___childStoreCollection___id'
-  | 'childrenStoreCollection___childStoreCollection___remoteId'
-  | 'childrenStoreCollection___childStoreCollection___slug'
-  | 'childrenStoreCollection___childStoreCollection___seo___title'
-  | 'childrenStoreCollection___childStoreCollection___seo___description'
-  | 'childrenStoreCollection___childStoreCollection___type'
-  | 'childrenStoreCollection___childStoreCollection___meta___selectedFacets'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection___id'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection___remoteId'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection___slug'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection___type'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childStoreCollection___childrenStoreCollection___children'
-  | 'childrenStoreCollection___childStoreCollection___childStoreCollection___id'
-  | 'childrenStoreCollection___childStoreCollection___childStoreCollection___remoteId'
-  | 'childrenStoreCollection___childStoreCollection___childStoreCollection___slug'
-  | 'childrenStoreCollection___childStoreCollection___childStoreCollection___type'
-  | 'childrenStoreCollection___childStoreCollection___childStoreCollection___childrenStoreCollection'
-  | 'childrenStoreCollection___childStoreCollection___childStoreCollection___children'
-  | 'childrenStoreCollection___childStoreCollection___parent___id'
-  | 'childrenStoreCollection___childStoreCollection___parent___children'
-  | 'childrenStoreCollection___childStoreCollection___children'
-  | 'childrenStoreCollection___childStoreCollection___children___id'
-  | 'childrenStoreCollection___childStoreCollection___children___children'
-  | 'childrenStoreCollection___childStoreCollection___internal___content'
-  | 'childrenStoreCollection___childStoreCollection___internal___contentDigest'
-  | 'childrenStoreCollection___childStoreCollection___internal___description'
-  | 'childrenStoreCollection___childStoreCollection___internal___fieldOwners'
-  | 'childrenStoreCollection___childStoreCollection___internal___ignoreType'
-  | 'childrenStoreCollection___childStoreCollection___internal___mediaType'
-  | 'childrenStoreCollection___childStoreCollection___internal___owner'
-  | 'childrenStoreCollection___childStoreCollection___internal___type'
-  | 'childrenStoreCollection___parent___id'
-  | 'childrenStoreCollection___parent___parent___id'
-  | 'childrenStoreCollection___parent___parent___children'
-  | 'childrenStoreCollection___parent___children'
-  | 'childrenStoreCollection___parent___children___id'
-  | 'childrenStoreCollection___parent___children___children'
-  | 'childrenStoreCollection___parent___internal___content'
-  | 'childrenStoreCollection___parent___internal___contentDigest'
-  | 'childrenStoreCollection___parent___internal___description'
-  | 'childrenStoreCollection___parent___internal___fieldOwners'
-  | 'childrenStoreCollection___parent___internal___ignoreType'
-  | 'childrenStoreCollection___parent___internal___mediaType'
-  | 'childrenStoreCollection___parent___internal___owner'
-  | 'childrenStoreCollection___parent___internal___type'
-  | 'childrenStoreCollection___children'
-  | 'childrenStoreCollection___children___id'
-  | 'childrenStoreCollection___children___parent___id'
-  | 'childrenStoreCollection___children___parent___children'
-  | 'childrenStoreCollection___children___children'
-  | 'childrenStoreCollection___children___children___id'
-  | 'childrenStoreCollection___children___children___children'
-  | 'childrenStoreCollection___children___internal___content'
-  | 'childrenStoreCollection___children___internal___contentDigest'
-  | 'childrenStoreCollection___children___internal___description'
-  | 'childrenStoreCollection___children___internal___fieldOwners'
-  | 'childrenStoreCollection___children___internal___ignoreType'
-  | 'childrenStoreCollection___children___internal___mediaType'
-  | 'childrenStoreCollection___children___internal___owner'
-  | 'childrenStoreCollection___children___internal___type'
-  | 'childrenStoreCollection___internal___content'
-  | 'childrenStoreCollection___internal___contentDigest'
-  | 'childrenStoreCollection___internal___description'
-  | 'childrenStoreCollection___internal___fieldOwners'
-  | 'childrenStoreCollection___internal___ignoreType'
-  | 'childrenStoreCollection___internal___mediaType'
-  | 'childrenStoreCollection___internal___owner'
-  | 'childrenStoreCollection___internal___type'
-  | 'childStoreCollection___id'
-  | 'childStoreCollection___remoteId'
-  | 'childStoreCollection___slug'
-  | 'childStoreCollection___seo___title'
-  | 'childStoreCollection___seo___description'
-  | 'childStoreCollection___type'
-  | 'childStoreCollection___meta___selectedFacets'
-  | 'childStoreCollection___meta___selectedFacets___key'
-  | 'childStoreCollection___meta___selectedFacets___value'
-  | 'childStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childrenStoreCollection___id'
-  | 'childStoreCollection___childrenStoreCollection___remoteId'
-  | 'childStoreCollection___childrenStoreCollection___slug'
-  | 'childStoreCollection___childrenStoreCollection___seo___title'
-  | 'childStoreCollection___childrenStoreCollection___seo___description'
-  | 'childStoreCollection___childrenStoreCollection___type'
-  | 'childStoreCollection___childrenStoreCollection___meta___selectedFacets'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection___id'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection___remoteId'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection___slug'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection___type'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childrenStoreCollection___childrenStoreCollection___children'
-  | 'childStoreCollection___childrenStoreCollection___childStoreCollection___id'
-  | 'childStoreCollection___childrenStoreCollection___childStoreCollection___remoteId'
-  | 'childStoreCollection___childrenStoreCollection___childStoreCollection___slug'
-  | 'childStoreCollection___childrenStoreCollection___childStoreCollection___type'
-  | 'childStoreCollection___childrenStoreCollection___childStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childrenStoreCollection___childStoreCollection___children'
-  | 'childStoreCollection___childrenStoreCollection___parent___id'
-  | 'childStoreCollection___childrenStoreCollection___parent___children'
-  | 'childStoreCollection___childrenStoreCollection___children'
-  | 'childStoreCollection___childrenStoreCollection___children___id'
-  | 'childStoreCollection___childrenStoreCollection___children___children'
-  | 'childStoreCollection___childrenStoreCollection___internal___content'
-  | 'childStoreCollection___childrenStoreCollection___internal___contentDigest'
-  | 'childStoreCollection___childrenStoreCollection___internal___description'
-  | 'childStoreCollection___childrenStoreCollection___internal___fieldOwners'
-  | 'childStoreCollection___childrenStoreCollection___internal___ignoreType'
-  | 'childStoreCollection___childrenStoreCollection___internal___mediaType'
-  | 'childStoreCollection___childrenStoreCollection___internal___owner'
-  | 'childStoreCollection___childrenStoreCollection___internal___type'
-  | 'childStoreCollection___childStoreCollection___id'
-  | 'childStoreCollection___childStoreCollection___remoteId'
-  | 'childStoreCollection___childStoreCollection___slug'
-  | 'childStoreCollection___childStoreCollection___seo___title'
-  | 'childStoreCollection___childStoreCollection___seo___description'
-  | 'childStoreCollection___childStoreCollection___type'
-  | 'childStoreCollection___childStoreCollection___meta___selectedFacets'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection___id'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection___remoteId'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection___slug'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection___type'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childStoreCollection___childrenStoreCollection___children'
-  | 'childStoreCollection___childStoreCollection___childStoreCollection___id'
-  | 'childStoreCollection___childStoreCollection___childStoreCollection___remoteId'
-  | 'childStoreCollection___childStoreCollection___childStoreCollection___slug'
-  | 'childStoreCollection___childStoreCollection___childStoreCollection___type'
-  | 'childStoreCollection___childStoreCollection___childStoreCollection___childrenStoreCollection'
-  | 'childStoreCollection___childStoreCollection___childStoreCollection___children'
-  | 'childStoreCollection___childStoreCollection___parent___id'
-  | 'childStoreCollection___childStoreCollection___parent___children'
-  | 'childStoreCollection___childStoreCollection___children'
-  | 'childStoreCollection___childStoreCollection___children___id'
-  | 'childStoreCollection___childStoreCollection___children___children'
-  | 'childStoreCollection___childStoreCollection___internal___content'
-  | 'childStoreCollection___childStoreCollection___internal___contentDigest'
-  | 'childStoreCollection___childStoreCollection___internal___description'
-  | 'childStoreCollection___childStoreCollection___internal___fieldOwners'
-  | 'childStoreCollection___childStoreCollection___internal___ignoreType'
-  | 'childStoreCollection___childStoreCollection___internal___mediaType'
-  | 'childStoreCollection___childStoreCollection___internal___owner'
-  | 'childStoreCollection___childStoreCollection___internal___type'
-  | 'childStoreCollection___parent___id'
-  | 'childStoreCollection___parent___parent___id'
-  | 'childStoreCollection___parent___parent___children'
-  | 'childStoreCollection___parent___children'
-  | 'childStoreCollection___parent___children___id'
-  | 'childStoreCollection___parent___children___children'
-  | 'childStoreCollection___parent___internal___content'
-  | 'childStoreCollection___parent___internal___contentDigest'
-  | 'childStoreCollection___parent___internal___description'
-  | 'childStoreCollection___parent___internal___fieldOwners'
-  | 'childStoreCollection___parent___internal___ignoreType'
-  | 'childStoreCollection___parent___internal___mediaType'
-  | 'childStoreCollection___parent___internal___owner'
-  | 'childStoreCollection___parent___internal___type'
-  | 'childStoreCollection___children'
-  | 'childStoreCollection___children___id'
-  | 'childStoreCollection___children___parent___id'
-  | 'childStoreCollection___children___parent___children'
-  | 'childStoreCollection___children___children'
-  | 'childStoreCollection___children___children___id'
-  | 'childStoreCollection___children___children___children'
-  | 'childStoreCollection___children___internal___content'
-  | 'childStoreCollection___children___internal___contentDigest'
-  | 'childStoreCollection___children___internal___description'
-  | 'childStoreCollection___children___internal___fieldOwners'
-  | 'childStoreCollection___children___internal___ignoreType'
-  | 'childStoreCollection___children___internal___mediaType'
-  | 'childStoreCollection___children___internal___owner'
-  | 'childStoreCollection___children___internal___type'
-  | 'childStoreCollection___internal___content'
-  | 'childStoreCollection___internal___contentDigest'
-  | 'childStoreCollection___internal___description'
-  | 'childStoreCollection___internal___fieldOwners'
-  | 'childStoreCollection___internal___ignoreType'
-  | 'childStoreCollection___internal___mediaType'
-  | 'childStoreCollection___internal___owner'
-  | 'childStoreCollection___internal___type'
+  | 'meta___selectedFacets___remoteTypeName'
+  | 'meta___remoteTypeName'
+  | 'id'
+  | 'slug'
+  | 'type'
+  | 'remoteTypeName'
+  | 'remoteId'
   | 'parent___id'
   | 'parent___parent___id'
   | 'parent___parent___parent___id'
@@ -4509,271 +4000,28 @@ type StoreCollectionGroupConnection = {
   fieldValue: Maybe<Scalars['String']>;
 };
 
-type StoreCollectionSortInput = {
-  fields: Maybe<Array<Maybe<StoreCollectionFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
-};
-
-type StoreCategoryFilterListInput = {
-  elemMatch: Maybe<StoreCategoryFilterInput>;
-};
-
-type StoreCategoryFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  cacheId: Maybe<IdQueryOperatorInput>;
-  href: Maybe<StringQueryOperatorInput>;
-  slug: Maybe<StringQueryOperatorInput>;
-  id: Maybe<IntQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  titleTag: Maybe<StringQueryOperatorInput>;
-  hasChildren: Maybe<BooleanQueryOperatorInput>;
-  metaTagDescription: Maybe<StringQueryOperatorInput>;
-  children: Maybe<StoreCategoryFilterListInput>;
-};
-
-type StoreClusterHighlightFilterListInput = {
-  elemMatch: Maybe<StoreClusterHighlightFilterInput>;
-};
-
-type StoreClusterHighlightFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  id: Maybe<IdQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreProductClustersFilterListInput = {
-  elemMatch: Maybe<StoreProductClustersFilterInput>;
-};
-
-type StoreProductClustersFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  id: Maybe<IdQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreSkuFilterListInput = {
-  elemMatch: Maybe<StoreSkuFilterInput>;
-};
-
-type StoreSkuFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  itemId: Maybe<IdQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  nameComplete: Maybe<StringQueryOperatorInput>;
-  complementName: Maybe<StringQueryOperatorInput>;
-  ean: Maybe<StringQueryOperatorInput>;
-  referenceId: Maybe<StoreReferenceFilterListInput>;
-  measurementUnit: Maybe<StringQueryOperatorInput>;
-  unitMultiplier: Maybe<FloatQueryOperatorInput>;
-  kitItems: Maybe<StoreKitItemFilterListInput>;
-  images: Maybe<StoreImageFilterListInput>;
-  videos: Maybe<StoreVideoFilterListInput>;
-  sellers: Maybe<StoreSellerFilterListInput>;
-  variations: Maybe<StorePropertyFilterListInput>;
-  attachments: Maybe<StoreAttachmentFilterListInput>;
-  estimatedDateArrival: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreReferenceFilterListInput = {
-  elemMatch: Maybe<StoreReferenceFilterInput>;
-};
-
-type StoreReferenceFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  Key: Maybe<StringQueryOperatorInput>;
-  Value: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreKitItemFilterListInput = {
-  elemMatch: Maybe<StoreKitItemFilterInput>;
-};
-
-type StoreKitItemFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  itemId: Maybe<IdQueryOperatorInput>;
-  amount: Maybe<IntQueryOperatorInput>;
-  product: Maybe<StoreOnlyProductFilterInput>;
-  sku: Maybe<StoreSkuFilterInput>;
-};
-
-type StoreOnlyProductFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  brand: Maybe<StringQueryOperatorInput>;
-  categoryId: Maybe<IdQueryOperatorInput>;
-  categoryTree: Maybe<StoreCategoryFilterListInput>;
-  clusterHighlights: Maybe<StoreClusterHighlightFilterListInput>;
-  productClusters: Maybe<StoreProductClustersFilterListInput>;
-  description: Maybe<StringQueryOperatorInput>;
-  link: Maybe<StringQueryOperatorInput>;
-  linkText: Maybe<StringQueryOperatorInput>;
-  productId: Maybe<IdQueryOperatorInput>;
-  productName: Maybe<StringQueryOperatorInput>;
-  properties: Maybe<StorePropertyFilterListInput>;
-  propertyGroups: Maybe<StorePropertyGroupFilterListInput>;
-  productReference: Maybe<StringQueryOperatorInput>;
-  recommendations: Maybe<StoreRecommendationFilterInput>;
-  jsonSpecifications: Maybe<StringQueryOperatorInput>;
-};
-
-type StorePropertyFilterListInput = {
-  elemMatch: Maybe<StorePropertyFilterInput>;
-};
-
-type StorePropertyFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  originalName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  values: Maybe<StringQueryOperatorInput>;
-};
-
-type StorePropertyGroupFilterListInput = {
-  elemMatch: Maybe<StorePropertyGroupFilterInput>;
-};
-
-type StorePropertyGroupFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  properties: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreRecommendationFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  buy: Maybe<StoreProductFilterListInput>;
-  view: Maybe<StoreProductFilterListInput>;
-  similars: Maybe<StoreProductFilterListInput>;
-};
-
-type StoreProductFilterListInput = {
-  elemMatch: Maybe<StoreProductFilterInput>;
-};
-
-type StoreProductFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
+type StoreCollectionFilterInput = {
+  seo: Maybe<StoreSeoFilterInput>;
+  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>;
+  meta: Maybe<StoreCollectionMetaFilterInput>;
   id: Maybe<StringQueryOperatorInput>;
   slug: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  productID: Maybe<IdQueryOperatorInput>;
-  brand: Maybe<StringQueryOperatorInput>;
-  description: Maybe<StringQueryOperatorInput>;
-  categoryTree: Maybe<StoreCategoryFilterListInput>;
-  clusterHighlights: Maybe<StoreClusterHighlightFilterListInput>;
-  productClusters: Maybe<StoreProductClustersFilterListInput>;
-  items: Maybe<StoreSkuFilterListInput>;
-  skuSpecifications: Maybe<StoreSkuSpecificationFilterListInput>;
-  link: Maybe<StringQueryOperatorInput>;
-  linkText: Maybe<StringQueryOperatorInput>;
-  productId: Maybe<IdQueryOperatorInput>;
-  productName: Maybe<StringQueryOperatorInput>;
-  properties: Maybe<StorePropertyFilterListInput>;
-  propertyGroups: Maybe<StorePropertyGroupFilterListInput>;
-  productReference: Maybe<StringQueryOperatorInput>;
-  titleTag: Maybe<StringQueryOperatorInput>;
-  metaTagDescription: Maybe<StringQueryOperatorInput>;
-  recommendations: Maybe<StoreRecommendationFilterInput>;
-  jsonSpecifications: Maybe<StringQueryOperatorInput>;
-  benefits: Maybe<StoreBenefitFilterListInput>;
-  specificationGroups: Maybe<StoreSpecificationGroupFilterListInput>;
-  priceRange: Maybe<StoreProductPriceRangeFilterInput>;
-  releaseDate: Maybe<StringQueryOperatorInput>;
-  selectedProperties: Maybe<StoreSelectedPropertyFilterListInput>;
+  type: Maybe<StoreCollectionTypeQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+  remoteId: Maybe<IdQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
   internal: Maybe<InternalFilterInput>;
 };
 
-type StoreSkuSpecificationFilterListInput = {
-  elemMatch: Maybe<StoreSkuSpecificationFilterInput>;
+type StoreCollectionSortInput = {
+  fields: Maybe<Array<Maybe<StoreCollectionFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-type StoreSkuSpecificationFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  field: Maybe<StoreSkuSpecificationFieldFilterInput>;
-  values: Maybe<StoreSkuSpecificationValueFilterListInput>;
-};
-
-type StoreSkuSpecificationFieldFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  originalName: Maybe<StringQueryOperatorInput>;
+type StoreBrandFilterInput = {
   name: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreSkuSpecificationValueFilterListInput = {
-  elemMatch: Maybe<StoreSkuSpecificationValueFilterInput>;
-};
-
-type StoreSkuSpecificationValueFilterInput = {
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  originalName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreBenefitFilterListInput = {
-  elemMatch: Maybe<StoreBenefitFilterInput>;
-};
-
-type StoreBenefitFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  featured: Maybe<BooleanQueryOperatorInput>;
-  id: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  items: Maybe<StoreBenefitItemFilterListInput>;
-  teaserType: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreBenefitItemFilterListInput = {
-  elemMatch: Maybe<StoreBenefitItemFilterInput>;
-};
-
-type StoreBenefitItemFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  benefitProduct: Maybe<StoreProductFilterInput>;
-  benefitSKUIds: Maybe<StringQueryOperatorInput>;
-  discount: Maybe<FloatQueryOperatorInput>;
-  minQuantity: Maybe<IntQueryOperatorInput>;
-};
-
-type StoreSpecificationGroupFilterListInput = {
-  elemMatch: Maybe<StoreSpecificationGroupFilterInput>;
-};
-
-type StoreSpecificationGroupFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  originalName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  specifications: Maybe<StoreSpecificationGroupPropertyFilterListInput>;
-};
-
-type StoreSpecificationGroupPropertyFilterListInput = {
-  elemMatch: Maybe<StoreSpecificationGroupPropertyFilterInput>;
-};
-
-type StoreSpecificationGroupPropertyFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  originalName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  values: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreProductPriceRangeFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  sellingPrice: Maybe<StorePriceRangeFilterInput>;
-  listPrice: Maybe<StorePriceRangeFilterInput>;
-};
-
-type StorePriceRangeFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  highPrice: Maybe<FloatQueryOperatorInput>;
-  lowPrice: Maybe<FloatQueryOperatorInput>;
-};
-
-type StoreSelectedPropertyFilterListInput = {
-  elemMatch: Maybe<StoreSelectedPropertyFilterInput>;
-};
-
-type StoreSelectedPropertyFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  key: Maybe<StringQueryOperatorInput>;
-  value: Maybe<StringQueryOperatorInput>;
 };
 
 type StoreImageFilterListInput = {
@@ -4781,201 +4029,101 @@ type StoreImageFilterListInput = {
 };
 
 type StoreImageFilterInput = {
+  url: Maybe<StringQueryOperatorInput>;
+  alternateName: Maybe<StringQueryOperatorInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  cacheId: Maybe<IdQueryOperatorInput>;
-  imageId: Maybe<IdQueryOperatorInput>;
-  imageLabel: Maybe<StringQueryOperatorInput>;
-  imageTag: Maybe<StringQueryOperatorInput>;
-  imageUrl: Maybe<StringQueryOperatorInput>;
-  imageText: Maybe<StringQueryOperatorInput>;
 };
 
-type StoreVideoFilterListInput = {
-  elemMatch: Maybe<StoreVideoFilterInput>;
-};
-
-type StoreVideoFilterInput = {
+type StoreAggregateOfferFilterInput = {
+  highPrice: Maybe<FloatQueryOperatorInput>;
+  lowPrice: Maybe<FloatQueryOperatorInput>;
+  offerCount: Maybe<IntQueryOperatorInput>;
+  priceCurrency: Maybe<StringQueryOperatorInput>;
+  offers: Maybe<StoreOfferFilterListInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  videoUrl: Maybe<StringQueryOperatorInput>;
 };
 
-type StoreSellerFilterListInput = {
-  elemMatch: Maybe<StoreSellerFilterInput>;
-};
-
-type StoreSellerFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  sellerId: Maybe<IdQueryOperatorInput>;
-  sellerName: Maybe<StringQueryOperatorInput>;
-  addToCartLink: Maybe<StringQueryOperatorInput>;
-  sellerDefault: Maybe<BooleanQueryOperatorInput>;
-  commertialOffer: Maybe<StoreOfferFilterInput>;
+type StoreOfferFilterListInput = {
+  elemMatch: Maybe<StoreOfferFilterInput>;
 };
 
 type StoreOfferFilterInput = {
+  listPrice: Maybe<FloatQueryOperatorInput>;
+  sellingPrice: Maybe<FloatQueryOperatorInput>;
+  priceCurrency: Maybe<StringQueryOperatorInput>;
+  price: Maybe<FloatQueryOperatorInput>;
+  priceValidUntil: Maybe<StringQueryOperatorInput>;
+  itemCondition: Maybe<StringQueryOperatorInput>;
+  availability: Maybe<StringQueryOperatorInput>;
+  seller: Maybe<StoreOrganizationFilterInput>;
+  itemOffered: Maybe<StoreProductFilterInput>;
+  quantity: Maybe<IntQueryOperatorInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  Installments: Maybe<StoreInstallmentFilterListInput>;
-  AvailableQuantity: Maybe<FloatQueryOperatorInput>;
-  Price: Maybe<FloatQueryOperatorInput>;
-  ListPrice: Maybe<FloatQueryOperatorInput>;
-  spotPrice: Maybe<FloatQueryOperatorInput>;
-  teasers: Maybe<StoreTeaserFilterListInput>;
-  PriceWithoutDiscount: Maybe<FloatQueryOperatorInput>;
-  RewardValue: Maybe<FloatQueryOperatorInput>;
-  PriceValidUntil: Maybe<StringQueryOperatorInput>;
-  Tax: Maybe<FloatQueryOperatorInput>;
-  taxPercentage: Maybe<FloatQueryOperatorInput>;
-  CacheVersionUsedToCallCheckout: Maybe<StringQueryOperatorInput>;
-  DeliverySlaSamples: Maybe<StoreDeliverySlaSamplesFilterListInput>;
-  discountHighlights: Maybe<StoreDiscountFilterListInput>;
-  giftSkuIds: Maybe<StringQueryOperatorInput>;
-  gifts: Maybe<StoreGiftFilterListInput>;
 };
 
-type StoreInstallmentFilterListInput = {
-  elemMatch: Maybe<StoreInstallmentFilterInput>;
-};
-
-type StoreInstallmentFilterInput = {
+type StoreOrganizationFilterInput = {
+  identifier: Maybe<StringQueryOperatorInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  Name: Maybe<StringQueryOperatorInput>;
-  TotalValuePlusInterestRate: Maybe<FloatQueryOperatorInput>;
-  Value: Maybe<FloatQueryOperatorInput>;
-  NumberOfInstallments: Maybe<IntQueryOperatorInput>;
-  InterestRate: Maybe<FloatQueryOperatorInput>;
-  PaymentSystemName: Maybe<StringQueryOperatorInput>;
-  PaymentSystemGroupName: Maybe<StringQueryOperatorInput>;
 };
 
-type StoreTeaserFilterListInput = {
-  elemMatch: Maybe<StoreTeaserFilterInput>;
-};
-
-type StoreTeaserFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
+type StoreProductFilterInput = {
+  seo: Maybe<StoreSeoFilterInput>;
+  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>;
+  slug: Maybe<StringQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
-  conditions: Maybe<StoreTeaserConditionFilterInput>;
-  effects: Maybe<StoreTeaserEffectsFilterInput>;
-};
-
-type StoreTeaserConditionFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  minimumQuantity: Maybe<IntQueryOperatorInput>;
-  parameters: Maybe<StoreTeaserValueFilterListInput>;
-};
-
-type StoreTeaserValueFilterListInput = {
-  elemMatch: Maybe<StoreTeaserValueFilterInput>;
-};
-
-type StoreTeaserValueFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-  value: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreTeaserEffectsFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  parameters: Maybe<StoreTeaserValueFilterListInput>;
-};
-
-type StoreDeliverySlaSamplesFilterListInput = {
-  elemMatch: Maybe<StoreDeliverySlaSamplesFilterInput>;
-};
-
-type StoreDeliverySlaSamplesFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  DeliverySlaPerTypes: Maybe<StoreDeliverySlaPerTypesFilterListInput>;
-  Region: Maybe<StoreRegionFilterInput>;
-};
-
-type StoreDeliverySlaPerTypesFilterListInput = {
-  elemMatch: Maybe<StoreDeliverySlaPerTypesFilterInput>;
-};
-
-type StoreDeliverySlaPerTypesFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  TypeName: Maybe<StringQueryOperatorInput>;
-  Price: Maybe<FloatQueryOperatorInput>;
-  EstimatedTimeSpanToDelivery: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreRegionFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  IsPersisted: Maybe<BooleanQueryOperatorInput>;
-  IsRemoved: Maybe<BooleanQueryOperatorInput>;
-  Id: Maybe<IdQueryOperatorInput>;
-  Name: Maybe<StringQueryOperatorInput>;
-  CountryCode: Maybe<StringQueryOperatorInput>;
-  ZipCode: Maybe<StringQueryOperatorInput>;
-  CultureInfoName: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreDiscountFilterListInput = {
-  elemMatch: Maybe<StoreDiscountFilterInput>;
-};
-
-type StoreDiscountFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  name: Maybe<StringQueryOperatorInput>;
-};
-
-type StoreGiftFilterListInput = {
-  elemMatch: Maybe<StoreGiftFilterInput>;
-};
-
-type StoreGiftFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>;
-  productName: Maybe<StringQueryOperatorInput>;
-  skuName: Maybe<StringQueryOperatorInput>;
-  brand: Maybe<StringQueryOperatorInput>;
-  linkText: Maybe<StringQueryOperatorInput>;
+  productID: Maybe<StringQueryOperatorInput>;
+  brand: Maybe<StoreBrandFilterInput>;
   description: Maybe<StringQueryOperatorInput>;
-  images: Maybe<StoreGiftImageFilterListInput>;
-};
-
-type StoreGiftImageFilterListInput = {
-  elemMatch: Maybe<StoreGiftImageFilterInput>;
-};
-
-type StoreGiftImageFilterInput = {
+  image: Maybe<StoreImageFilterListInput>;
+  offers: Maybe<StoreAggregateOfferFilterInput>;
+  sku: Maybe<StringQueryOperatorInput>;
+  gtin: Maybe<StringQueryOperatorInput>;
+  review: Maybe<StoreReviewFilterListInput>;
+  aggregateRating: Maybe<StoreAggregateRatingFilterInput>;
+  isVariantOf: Maybe<StoreProductGroupFilterInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  imageUrl: Maybe<StringQueryOperatorInput>;
-  imageLabel: Maybe<StringQueryOperatorInput>;
-  imageText: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
 };
 
-type StoreAttachmentFilterListInput = {
-  elemMatch: Maybe<StoreAttachmentFilterInput>;
+type StoreReviewFilterListInput = {
+  elemMatch: Maybe<StoreReviewFilterInput>;
 };
 
-type StoreAttachmentFilterInput = {
+type StoreReviewFilterInput = {
+  reviewRating: Maybe<StoreReviewRatingFilterInput>;
+  author: Maybe<StoreAuthorFilterInput>;
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  id: Maybe<IdQueryOperatorInput>;
+};
+
+type StoreReviewRatingFilterInput = {
+  ratingValue: Maybe<FloatQueryOperatorInput>;
+  bestRating: Maybe<FloatQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreAuthorFilterInput = {
   name: Maybe<StringQueryOperatorInput>;
-  required: Maybe<BooleanQueryOperatorInput>;
-  domainValues: Maybe<StoreDomainValuesFilterListInput>;
-  content: Maybe<JsonQueryOperatorInput>;
-};
-
-type StoreDomainValuesFilterListInput = {
-  elemMatch: Maybe<StoreDomainValuesFilterInput>;
-};
-
-type StoreDomainValuesFilterInput = {
   remoteTypeName: Maybe<StringQueryOperatorInput>;
-  FieldName: Maybe<StringQueryOperatorInput>;
-  MaxCaracters: Maybe<StringQueryOperatorInput>;
-  DomainValues: Maybe<StringQueryOperatorInput>;
 };
 
-type JsonQueryOperatorInput = {
-  eq: Maybe<Scalars['JSON']>;
-  ne: Maybe<Scalars['JSON']>;
-  in: Maybe<Array<Maybe<Scalars['JSON']>>>;
-  nin: Maybe<Array<Maybe<Scalars['JSON']>>>;
-  regex: Maybe<Scalars['JSON']>;
-  glob: Maybe<Scalars['JSON']>;
+type StoreAggregateRatingFilterInput = {
+  ratingValue: Maybe<FloatQueryOperatorInput>;
+  reviewCount: Maybe<IntQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreProductGroupFilterInput = {
+  hasVariant: Maybe<StoreProductFilterListInput>;
+  productGroupID: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  remoteTypeName: Maybe<StringQueryOperatorInput>;
+};
+
+type StoreProductFilterListInput = {
+  elemMatch: Maybe<StoreProductFilterInput>;
 };
 
 type StoreProductConnection = {
@@ -5017,541 +4165,125 @@ type StoreProductConnectionGroupArgs = {
   field: StoreProductFieldsEnum;
 };
 
-type StoreProductEdge = {
-  next: Maybe<StoreProduct>;
-  node: StoreProduct;
-  previous: Maybe<StoreProduct>;
-};
-
 type StoreProductFieldsEnum =
-  | 'remoteTypeName'
-  | 'id'
+  | 'seo___title'
+  | 'seo___titleTemplate'
+  | 'seo___description'
+  | 'seo___canonical'
+  | 'seo___remoteTypeName'
+  | 'breadcrumbList___itemListElement'
+  | 'breadcrumbList___itemListElement___item'
+  | 'breadcrumbList___itemListElement___name'
+  | 'breadcrumbList___itemListElement___position'
+  | 'breadcrumbList___itemListElement___remoteTypeName'
+  | 'breadcrumbList___numberOfItems'
+  | 'breadcrumbList___remoteTypeName'
   | 'slug'
   | 'name'
   | 'productID'
-  | 'brand'
+  | 'brand___name'
+  | 'brand___remoteTypeName'
   | 'description'
-  | 'categoryTree'
-  | 'categoryTree___remoteTypeName'
-  | 'categoryTree___cacheId'
-  | 'categoryTree___href'
-  | 'categoryTree___slug'
-  | 'categoryTree___id'
-  | 'categoryTree___name'
-  | 'categoryTree___titleTag'
-  | 'categoryTree___hasChildren'
-  | 'categoryTree___metaTagDescription'
-  | 'categoryTree___children'
-  | 'categoryTree___children___remoteTypeName'
-  | 'categoryTree___children___cacheId'
-  | 'categoryTree___children___href'
-  | 'categoryTree___children___slug'
-  | 'categoryTree___children___id'
-  | 'categoryTree___children___name'
-  | 'categoryTree___children___titleTag'
-  | 'categoryTree___children___hasChildren'
-  | 'categoryTree___children___metaTagDescription'
-  | 'categoryTree___children___children'
-  | 'categoryTree___children___children___remoteTypeName'
-  | 'categoryTree___children___children___cacheId'
-  | 'categoryTree___children___children___href'
-  | 'categoryTree___children___children___slug'
-  | 'categoryTree___children___children___id'
-  | 'categoryTree___children___children___name'
-  | 'categoryTree___children___children___titleTag'
-  | 'categoryTree___children___children___hasChildren'
-  | 'categoryTree___children___children___metaTagDescription'
-  | 'categoryTree___children___children___children'
-  | 'clusterHighlights'
-  | 'clusterHighlights___remoteTypeName'
-  | 'clusterHighlights___id'
-  | 'clusterHighlights___name'
-  | 'productClusters'
-  | 'productClusters___remoteTypeName'
-  | 'productClusters___id'
-  | 'productClusters___name'
-  | 'items'
-  | 'items___remoteTypeName'
-  | 'items___itemId'
-  | 'items___name'
-  | 'items___nameComplete'
-  | 'items___complementName'
-  | 'items___ean'
-  | 'items___referenceId'
-  | 'items___referenceId___remoteTypeName'
-  | 'items___referenceId___Key'
-  | 'items___referenceId___Value'
-  | 'items___measurementUnit'
-  | 'items___unitMultiplier'
-  | 'items___kitItems'
-  | 'items___kitItems___remoteTypeName'
-  | 'items___kitItems___itemId'
-  | 'items___kitItems___amount'
-  | 'items___kitItems___product___remoteTypeName'
-  | 'items___kitItems___product___brand'
-  | 'items___kitItems___product___categoryId'
-  | 'items___kitItems___product___categoryTree'
-  | 'items___kitItems___product___clusterHighlights'
-  | 'items___kitItems___product___productClusters'
-  | 'items___kitItems___product___description'
-  | 'items___kitItems___product___link'
-  | 'items___kitItems___product___linkText'
-  | 'items___kitItems___product___productId'
-  | 'items___kitItems___product___productName'
-  | 'items___kitItems___product___properties'
-  | 'items___kitItems___product___propertyGroups'
-  | 'items___kitItems___product___productReference'
-  | 'items___kitItems___product___jsonSpecifications'
-  | 'items___kitItems___sku___remoteTypeName'
-  | 'items___kitItems___sku___itemId'
-  | 'items___kitItems___sku___name'
-  | 'items___kitItems___sku___nameComplete'
-  | 'items___kitItems___sku___complementName'
-  | 'items___kitItems___sku___ean'
-  | 'items___kitItems___sku___referenceId'
-  | 'items___kitItems___sku___measurementUnit'
-  | 'items___kitItems___sku___unitMultiplier'
-  | 'items___kitItems___sku___kitItems'
-  | 'items___kitItems___sku___images'
-  | 'items___kitItems___sku___videos'
-  | 'items___kitItems___sku___sellers'
-  | 'items___kitItems___sku___variations'
-  | 'items___kitItems___sku___attachments'
-  | 'items___kitItems___sku___estimatedDateArrival'
-  | 'items___images'
-  | 'items___images___remoteTypeName'
-  | 'items___images___cacheId'
-  | 'items___images___imageId'
-  | 'items___images___imageLabel'
-  | 'items___images___imageTag'
-  | 'items___images___imageUrl'
-  | 'items___images___imageText'
-  | 'items___videos'
-  | 'items___videos___remoteTypeName'
-  | 'items___videos___videoUrl'
-  | 'items___sellers'
-  | 'items___sellers___remoteTypeName'
-  | 'items___sellers___sellerId'
-  | 'items___sellers___sellerName'
-  | 'items___sellers___addToCartLink'
-  | 'items___sellers___sellerDefault'
-  | 'items___sellers___commertialOffer___remoteTypeName'
-  | 'items___sellers___commertialOffer___Installments'
-  | 'items___sellers___commertialOffer___AvailableQuantity'
-  | 'items___sellers___commertialOffer___Price'
-  | 'items___sellers___commertialOffer___ListPrice'
-  | 'items___sellers___commertialOffer___spotPrice'
-  | 'items___sellers___commertialOffer___teasers'
-  | 'items___sellers___commertialOffer___PriceWithoutDiscount'
-  | 'items___sellers___commertialOffer___RewardValue'
-  | 'items___sellers___commertialOffer___PriceValidUntil'
-  | 'items___sellers___commertialOffer___Tax'
-  | 'items___sellers___commertialOffer___taxPercentage'
-  | 'items___sellers___commertialOffer___CacheVersionUsedToCallCheckout'
-  | 'items___sellers___commertialOffer___DeliverySlaSamples'
-  | 'items___sellers___commertialOffer___discountHighlights'
-  | 'items___sellers___commertialOffer___giftSkuIds'
-  | 'items___sellers___commertialOffer___gifts'
-  | 'items___variations'
-  | 'items___variations___remoteTypeName'
-  | 'items___variations___originalName'
-  | 'items___variations___name'
-  | 'items___variations___values'
-  | 'items___attachments'
-  | 'items___attachments___remoteTypeName'
-  | 'items___attachments___id'
-  | 'items___attachments___name'
-  | 'items___attachments___required'
-  | 'items___attachments___domainValues'
-  | 'items___attachments___domainValues___remoteTypeName'
-  | 'items___attachments___domainValues___FieldName'
-  | 'items___attachments___domainValues___MaxCaracters'
-  | 'items___attachments___domainValues___DomainValues'
-  | 'items___attachments___content'
-  | 'items___estimatedDateArrival'
-  | 'skuSpecifications'
-  | 'skuSpecifications___remoteTypeName'
-  | 'skuSpecifications___field___remoteTypeName'
-  | 'skuSpecifications___field___originalName'
-  | 'skuSpecifications___field___name'
-  | 'skuSpecifications___values'
-  | 'skuSpecifications___values___remoteTypeName'
-  | 'skuSpecifications___values___originalName'
-  | 'skuSpecifications___values___name'
-  | 'link'
-  | 'linkText'
-  | 'productId'
-  | 'productName'
-  | 'properties'
-  | 'properties___remoteTypeName'
-  | 'properties___originalName'
-  | 'properties___name'
-  | 'properties___values'
-  | 'propertyGroups'
-  | 'propertyGroups___remoteTypeName'
-  | 'propertyGroups___name'
-  | 'propertyGroups___properties'
-  | 'productReference'
-  | 'titleTag'
-  | 'metaTagDescription'
-  | 'recommendations___remoteTypeName'
-  | 'recommendations___buy'
-  | 'recommendations___buy___remoteTypeName'
-  | 'recommendations___buy___id'
-  | 'recommendations___buy___slug'
-  | 'recommendations___buy___name'
-  | 'recommendations___buy___productID'
-  | 'recommendations___buy___brand'
-  | 'recommendations___buy___description'
-  | 'recommendations___buy___categoryTree'
-  | 'recommendations___buy___categoryTree___remoteTypeName'
-  | 'recommendations___buy___categoryTree___cacheId'
-  | 'recommendations___buy___categoryTree___href'
-  | 'recommendations___buy___categoryTree___slug'
-  | 'recommendations___buy___categoryTree___id'
-  | 'recommendations___buy___categoryTree___name'
-  | 'recommendations___buy___categoryTree___titleTag'
-  | 'recommendations___buy___categoryTree___hasChildren'
-  | 'recommendations___buy___categoryTree___metaTagDescription'
-  | 'recommendations___buy___categoryTree___children'
-  | 'recommendations___buy___clusterHighlights'
-  | 'recommendations___buy___clusterHighlights___remoteTypeName'
-  | 'recommendations___buy___clusterHighlights___id'
-  | 'recommendations___buy___clusterHighlights___name'
-  | 'recommendations___buy___productClusters'
-  | 'recommendations___buy___productClusters___remoteTypeName'
-  | 'recommendations___buy___productClusters___id'
-  | 'recommendations___buy___productClusters___name'
-  | 'recommendations___buy___items'
-  | 'recommendations___buy___items___remoteTypeName'
-  | 'recommendations___buy___items___itemId'
-  | 'recommendations___buy___items___name'
-  | 'recommendations___buy___items___nameComplete'
-  | 'recommendations___buy___items___complementName'
-  | 'recommendations___buy___items___ean'
-  | 'recommendations___buy___items___referenceId'
-  | 'recommendations___buy___items___measurementUnit'
-  | 'recommendations___buy___items___unitMultiplier'
-  | 'recommendations___buy___items___kitItems'
-  | 'recommendations___buy___items___images'
-  | 'recommendations___buy___items___videos'
-  | 'recommendations___buy___items___sellers'
-  | 'recommendations___buy___items___variations'
-  | 'recommendations___buy___items___attachments'
-  | 'recommendations___buy___items___estimatedDateArrival'
-  | 'recommendations___buy___skuSpecifications'
-  | 'recommendations___buy___skuSpecifications___remoteTypeName'
-  | 'recommendations___buy___skuSpecifications___values'
-  | 'recommendations___buy___link'
-  | 'recommendations___buy___linkText'
-  | 'recommendations___buy___productId'
-  | 'recommendations___buy___productName'
-  | 'recommendations___buy___properties'
-  | 'recommendations___buy___properties___remoteTypeName'
-  | 'recommendations___buy___properties___originalName'
-  | 'recommendations___buy___properties___name'
-  | 'recommendations___buy___properties___values'
-  | 'recommendations___buy___propertyGroups'
-  | 'recommendations___buy___propertyGroups___remoteTypeName'
-  | 'recommendations___buy___propertyGroups___name'
-  | 'recommendations___buy___propertyGroups___properties'
-  | 'recommendations___buy___productReference'
-  | 'recommendations___buy___titleTag'
-  | 'recommendations___buy___metaTagDescription'
-  | 'recommendations___buy___recommendations___remoteTypeName'
-  | 'recommendations___buy___recommendations___buy'
-  | 'recommendations___buy___recommendations___view'
-  | 'recommendations___buy___recommendations___similars'
-  | 'recommendations___buy___jsonSpecifications'
-  | 'recommendations___buy___benefits'
-  | 'recommendations___buy___benefits___remoteTypeName'
-  | 'recommendations___buy___benefits___featured'
-  | 'recommendations___buy___benefits___id'
-  | 'recommendations___buy___benefits___name'
-  | 'recommendations___buy___benefits___items'
-  | 'recommendations___buy___benefits___teaserType'
-  | 'recommendations___buy___specificationGroups'
-  | 'recommendations___buy___specificationGroups___remoteTypeName'
-  | 'recommendations___buy___specificationGroups___originalName'
-  | 'recommendations___buy___specificationGroups___name'
-  | 'recommendations___buy___specificationGroups___specifications'
-  | 'recommendations___buy___priceRange___remoteTypeName'
-  | 'recommendations___buy___releaseDate'
-  | 'recommendations___buy___selectedProperties'
-  | 'recommendations___buy___selectedProperties___remoteTypeName'
-  | 'recommendations___buy___selectedProperties___key'
-  | 'recommendations___buy___selectedProperties___value'
-  | 'recommendations___buy___parent___id'
-  | 'recommendations___buy___parent___children'
-  | 'recommendations___buy___children'
-  | 'recommendations___buy___children___id'
-  | 'recommendations___buy___children___children'
-  | 'recommendations___buy___internal___content'
-  | 'recommendations___buy___internal___contentDigest'
-  | 'recommendations___buy___internal___description'
-  | 'recommendations___buy___internal___fieldOwners'
-  | 'recommendations___buy___internal___ignoreType'
-  | 'recommendations___buy___internal___mediaType'
-  | 'recommendations___buy___internal___owner'
-  | 'recommendations___buy___internal___type'
-  | 'recommendations___view'
-  | 'recommendations___view___remoteTypeName'
-  | 'recommendations___view___id'
-  | 'recommendations___view___slug'
-  | 'recommendations___view___name'
-  | 'recommendations___view___productID'
-  | 'recommendations___view___brand'
-  | 'recommendations___view___description'
-  | 'recommendations___view___categoryTree'
-  | 'recommendations___view___categoryTree___remoteTypeName'
-  | 'recommendations___view___categoryTree___cacheId'
-  | 'recommendations___view___categoryTree___href'
-  | 'recommendations___view___categoryTree___slug'
-  | 'recommendations___view___categoryTree___id'
-  | 'recommendations___view___categoryTree___name'
-  | 'recommendations___view___categoryTree___titleTag'
-  | 'recommendations___view___categoryTree___hasChildren'
-  | 'recommendations___view___categoryTree___metaTagDescription'
-  | 'recommendations___view___categoryTree___children'
-  | 'recommendations___view___clusterHighlights'
-  | 'recommendations___view___clusterHighlights___remoteTypeName'
-  | 'recommendations___view___clusterHighlights___id'
-  | 'recommendations___view___clusterHighlights___name'
-  | 'recommendations___view___productClusters'
-  | 'recommendations___view___productClusters___remoteTypeName'
-  | 'recommendations___view___productClusters___id'
-  | 'recommendations___view___productClusters___name'
-  | 'recommendations___view___items'
-  | 'recommendations___view___items___remoteTypeName'
-  | 'recommendations___view___items___itemId'
-  | 'recommendations___view___items___name'
-  | 'recommendations___view___items___nameComplete'
-  | 'recommendations___view___items___complementName'
-  | 'recommendations___view___items___ean'
-  | 'recommendations___view___items___referenceId'
-  | 'recommendations___view___items___measurementUnit'
-  | 'recommendations___view___items___unitMultiplier'
-  | 'recommendations___view___items___kitItems'
-  | 'recommendations___view___items___images'
-  | 'recommendations___view___items___videos'
-  | 'recommendations___view___items___sellers'
-  | 'recommendations___view___items___variations'
-  | 'recommendations___view___items___attachments'
-  | 'recommendations___view___items___estimatedDateArrival'
-  | 'recommendations___view___skuSpecifications'
-  | 'recommendations___view___skuSpecifications___remoteTypeName'
-  | 'recommendations___view___skuSpecifications___values'
-  | 'recommendations___view___link'
-  | 'recommendations___view___linkText'
-  | 'recommendations___view___productId'
-  | 'recommendations___view___productName'
-  | 'recommendations___view___properties'
-  | 'recommendations___view___properties___remoteTypeName'
-  | 'recommendations___view___properties___originalName'
-  | 'recommendations___view___properties___name'
-  | 'recommendations___view___properties___values'
-  | 'recommendations___view___propertyGroups'
-  | 'recommendations___view___propertyGroups___remoteTypeName'
-  | 'recommendations___view___propertyGroups___name'
-  | 'recommendations___view___propertyGroups___properties'
-  | 'recommendations___view___productReference'
-  | 'recommendations___view___titleTag'
-  | 'recommendations___view___metaTagDescription'
-  | 'recommendations___view___recommendations___remoteTypeName'
-  | 'recommendations___view___recommendations___buy'
-  | 'recommendations___view___recommendations___view'
-  | 'recommendations___view___recommendations___similars'
-  | 'recommendations___view___jsonSpecifications'
-  | 'recommendations___view___benefits'
-  | 'recommendations___view___benefits___remoteTypeName'
-  | 'recommendations___view___benefits___featured'
-  | 'recommendations___view___benefits___id'
-  | 'recommendations___view___benefits___name'
-  | 'recommendations___view___benefits___items'
-  | 'recommendations___view___benefits___teaserType'
-  | 'recommendations___view___specificationGroups'
-  | 'recommendations___view___specificationGroups___remoteTypeName'
-  | 'recommendations___view___specificationGroups___originalName'
-  | 'recommendations___view___specificationGroups___name'
-  | 'recommendations___view___specificationGroups___specifications'
-  | 'recommendations___view___priceRange___remoteTypeName'
-  | 'recommendations___view___releaseDate'
-  | 'recommendations___view___selectedProperties'
-  | 'recommendations___view___selectedProperties___remoteTypeName'
-  | 'recommendations___view___selectedProperties___key'
-  | 'recommendations___view___selectedProperties___value'
-  | 'recommendations___view___parent___id'
-  | 'recommendations___view___parent___children'
-  | 'recommendations___view___children'
-  | 'recommendations___view___children___id'
-  | 'recommendations___view___children___children'
-  | 'recommendations___view___internal___content'
-  | 'recommendations___view___internal___contentDigest'
-  | 'recommendations___view___internal___description'
-  | 'recommendations___view___internal___fieldOwners'
-  | 'recommendations___view___internal___ignoreType'
-  | 'recommendations___view___internal___mediaType'
-  | 'recommendations___view___internal___owner'
-  | 'recommendations___view___internal___type'
-  | 'recommendations___similars'
-  | 'recommendations___similars___remoteTypeName'
-  | 'recommendations___similars___id'
-  | 'recommendations___similars___slug'
-  | 'recommendations___similars___name'
-  | 'recommendations___similars___productID'
-  | 'recommendations___similars___brand'
-  | 'recommendations___similars___description'
-  | 'recommendations___similars___categoryTree'
-  | 'recommendations___similars___categoryTree___remoteTypeName'
-  | 'recommendations___similars___categoryTree___cacheId'
-  | 'recommendations___similars___categoryTree___href'
-  | 'recommendations___similars___categoryTree___slug'
-  | 'recommendations___similars___categoryTree___id'
-  | 'recommendations___similars___categoryTree___name'
-  | 'recommendations___similars___categoryTree___titleTag'
-  | 'recommendations___similars___categoryTree___hasChildren'
-  | 'recommendations___similars___categoryTree___metaTagDescription'
-  | 'recommendations___similars___categoryTree___children'
-  | 'recommendations___similars___clusterHighlights'
-  | 'recommendations___similars___clusterHighlights___remoteTypeName'
-  | 'recommendations___similars___clusterHighlights___id'
-  | 'recommendations___similars___clusterHighlights___name'
-  | 'recommendations___similars___productClusters'
-  | 'recommendations___similars___productClusters___remoteTypeName'
-  | 'recommendations___similars___productClusters___id'
-  | 'recommendations___similars___productClusters___name'
-  | 'recommendations___similars___items'
-  | 'recommendations___similars___items___remoteTypeName'
-  | 'recommendations___similars___items___itemId'
-  | 'recommendations___similars___items___name'
-  | 'recommendations___similars___items___nameComplete'
-  | 'recommendations___similars___items___complementName'
-  | 'recommendations___similars___items___ean'
-  | 'recommendations___similars___items___referenceId'
-  | 'recommendations___similars___items___measurementUnit'
-  | 'recommendations___similars___items___unitMultiplier'
-  | 'recommendations___similars___items___kitItems'
-  | 'recommendations___similars___items___images'
-  | 'recommendations___similars___items___videos'
-  | 'recommendations___similars___items___sellers'
-  | 'recommendations___similars___items___variations'
-  | 'recommendations___similars___items___attachments'
-  | 'recommendations___similars___items___estimatedDateArrival'
-  | 'recommendations___similars___skuSpecifications'
-  | 'recommendations___similars___skuSpecifications___remoteTypeName'
-  | 'recommendations___similars___skuSpecifications___values'
-  | 'recommendations___similars___link'
-  | 'recommendations___similars___linkText'
-  | 'recommendations___similars___productId'
-  | 'recommendations___similars___productName'
-  | 'recommendations___similars___properties'
-  | 'recommendations___similars___properties___remoteTypeName'
-  | 'recommendations___similars___properties___originalName'
-  | 'recommendations___similars___properties___name'
-  | 'recommendations___similars___properties___values'
-  | 'recommendations___similars___propertyGroups'
-  | 'recommendations___similars___propertyGroups___remoteTypeName'
-  | 'recommendations___similars___propertyGroups___name'
-  | 'recommendations___similars___propertyGroups___properties'
-  | 'recommendations___similars___productReference'
-  | 'recommendations___similars___titleTag'
-  | 'recommendations___similars___metaTagDescription'
-  | 'recommendations___similars___recommendations___remoteTypeName'
-  | 'recommendations___similars___recommendations___buy'
-  | 'recommendations___similars___recommendations___view'
-  | 'recommendations___similars___recommendations___similars'
-  | 'recommendations___similars___jsonSpecifications'
-  | 'recommendations___similars___benefits'
-  | 'recommendations___similars___benefits___remoteTypeName'
-  | 'recommendations___similars___benefits___featured'
-  | 'recommendations___similars___benefits___id'
-  | 'recommendations___similars___benefits___name'
-  | 'recommendations___similars___benefits___items'
-  | 'recommendations___similars___benefits___teaserType'
-  | 'recommendations___similars___specificationGroups'
-  | 'recommendations___similars___specificationGroups___remoteTypeName'
-  | 'recommendations___similars___specificationGroups___originalName'
-  | 'recommendations___similars___specificationGroups___name'
-  | 'recommendations___similars___specificationGroups___specifications'
-  | 'recommendations___similars___priceRange___remoteTypeName'
-  | 'recommendations___similars___releaseDate'
-  | 'recommendations___similars___selectedProperties'
-  | 'recommendations___similars___selectedProperties___remoteTypeName'
-  | 'recommendations___similars___selectedProperties___key'
-  | 'recommendations___similars___selectedProperties___value'
-  | 'recommendations___similars___parent___id'
-  | 'recommendations___similars___parent___children'
-  | 'recommendations___similars___children'
-  | 'recommendations___similars___children___id'
-  | 'recommendations___similars___children___children'
-  | 'recommendations___similars___internal___content'
-  | 'recommendations___similars___internal___contentDigest'
-  | 'recommendations___similars___internal___description'
-  | 'recommendations___similars___internal___fieldOwners'
-  | 'recommendations___similars___internal___ignoreType'
-  | 'recommendations___similars___internal___mediaType'
-  | 'recommendations___similars___internal___owner'
-  | 'recommendations___similars___internal___type'
-  | 'jsonSpecifications'
-  | 'benefits'
-  | 'benefits___remoteTypeName'
-  | 'benefits___featured'
-  | 'benefits___id'
-  | 'benefits___name'
-  | 'benefits___items'
-  | 'benefits___items___remoteTypeName'
-  | 'benefits___items___benefitProduct___remoteTypeName'
-  | 'benefits___items___benefitProduct___id'
-  | 'benefits___items___benefitProduct___slug'
-  | 'benefits___items___benefitProduct___name'
-  | 'benefits___items___benefitProduct___productID'
-  | 'benefits___items___benefitProduct___brand'
-  | 'benefits___items___benefitProduct___description'
-  | 'benefits___items___benefitProduct___categoryTree'
-  | 'benefits___items___benefitProduct___clusterHighlights'
-  | 'benefits___items___benefitProduct___productClusters'
-  | 'benefits___items___benefitProduct___items'
-  | 'benefits___items___benefitProduct___skuSpecifications'
-  | 'benefits___items___benefitProduct___link'
-  | 'benefits___items___benefitProduct___linkText'
-  | 'benefits___items___benefitProduct___productId'
-  | 'benefits___items___benefitProduct___productName'
-  | 'benefits___items___benefitProduct___properties'
-  | 'benefits___items___benefitProduct___propertyGroups'
-  | 'benefits___items___benefitProduct___productReference'
-  | 'benefits___items___benefitProduct___titleTag'
-  | 'benefits___items___benefitProduct___metaTagDescription'
-  | 'benefits___items___benefitProduct___jsonSpecifications'
-  | 'benefits___items___benefitProduct___benefits'
-  | 'benefits___items___benefitProduct___specificationGroups'
-  | 'benefits___items___benefitProduct___releaseDate'
-  | 'benefits___items___benefitProduct___selectedProperties'
-  | 'benefits___items___benefitProduct___children'
-  | 'benefits___items___benefitSKUIds'
-  | 'benefits___items___discount'
-  | 'benefits___items___minQuantity'
-  | 'benefits___teaserType'
-  | 'specificationGroups'
-  | 'specificationGroups___remoteTypeName'
-  | 'specificationGroups___originalName'
-  | 'specificationGroups___name'
-  | 'specificationGroups___specifications'
-  | 'specificationGroups___specifications___remoteTypeName'
-  | 'specificationGroups___specifications___originalName'
-  | 'specificationGroups___specifications___name'
-  | 'specificationGroups___specifications___values'
-  | 'priceRange___remoteTypeName'
-  | 'priceRange___sellingPrice___remoteTypeName'
-  | 'priceRange___sellingPrice___highPrice'
-  | 'priceRange___sellingPrice___lowPrice'
-  | 'priceRange___listPrice___remoteTypeName'
-  | 'priceRange___listPrice___highPrice'
-  | 'priceRange___listPrice___lowPrice'
-  | 'releaseDate'
-  | 'selectedProperties'
-  | 'selectedProperties___remoteTypeName'
-  | 'selectedProperties___key'
-  | 'selectedProperties___value'
+  | 'image'
+  | 'image___url'
+  | 'image___alternateName'
+  | 'image___remoteTypeName'
+  | 'offers___highPrice'
+  | 'offers___lowPrice'
+  | 'offers___offerCount'
+  | 'offers___priceCurrency'
+  | 'offers___offers'
+  | 'offers___offers___listPrice'
+  | 'offers___offers___sellingPrice'
+  | 'offers___offers___priceCurrency'
+  | 'offers___offers___price'
+  | 'offers___offers___priceValidUntil'
+  | 'offers___offers___itemCondition'
+  | 'offers___offers___availability'
+  | 'offers___offers___seller___identifier'
+  | 'offers___offers___seller___remoteTypeName'
+  | 'offers___offers___itemOffered___slug'
+  | 'offers___offers___itemOffered___name'
+  | 'offers___offers___itemOffered___productID'
+  | 'offers___offers___itemOffered___description'
+  | 'offers___offers___itemOffered___image'
+  | 'offers___offers___itemOffered___sku'
+  | 'offers___offers___itemOffered___gtin'
+  | 'offers___offers___itemOffered___review'
+  | 'offers___offers___itemOffered___remoteTypeName'
+  | 'offers___offers___itemOffered___id'
+  | 'offers___offers___itemOffered___children'
+  | 'offers___offers___quantity'
+  | 'offers___offers___remoteTypeName'
+  | 'offers___remoteTypeName'
+  | 'sku'
+  | 'gtin'
+  | 'review'
+  | 'review___reviewRating___ratingValue'
+  | 'review___reviewRating___bestRating'
+  | 'review___reviewRating___remoteTypeName'
+  | 'review___author___name'
+  | 'review___author___remoteTypeName'
+  | 'review___remoteTypeName'
+  | 'aggregateRating___ratingValue'
+  | 'aggregateRating___reviewCount'
+  | 'aggregateRating___remoteTypeName'
+  | 'isVariantOf___hasVariant'
+  | 'isVariantOf___hasVariant___seo___title'
+  | 'isVariantOf___hasVariant___seo___titleTemplate'
+  | 'isVariantOf___hasVariant___seo___description'
+  | 'isVariantOf___hasVariant___seo___canonical'
+  | 'isVariantOf___hasVariant___seo___remoteTypeName'
+  | 'isVariantOf___hasVariant___breadcrumbList___itemListElement'
+  | 'isVariantOf___hasVariant___breadcrumbList___numberOfItems'
+  | 'isVariantOf___hasVariant___breadcrumbList___remoteTypeName'
+  | 'isVariantOf___hasVariant___slug'
+  | 'isVariantOf___hasVariant___name'
+  | 'isVariantOf___hasVariant___productID'
+  | 'isVariantOf___hasVariant___brand___name'
+  | 'isVariantOf___hasVariant___brand___remoteTypeName'
+  | 'isVariantOf___hasVariant___description'
+  | 'isVariantOf___hasVariant___image'
+  | 'isVariantOf___hasVariant___image___url'
+  | 'isVariantOf___hasVariant___image___alternateName'
+  | 'isVariantOf___hasVariant___image___remoteTypeName'
+  | 'isVariantOf___hasVariant___offers___highPrice'
+  | 'isVariantOf___hasVariant___offers___lowPrice'
+  | 'isVariantOf___hasVariant___offers___offerCount'
+  | 'isVariantOf___hasVariant___offers___priceCurrency'
+  | 'isVariantOf___hasVariant___offers___offers'
+  | 'isVariantOf___hasVariant___offers___remoteTypeName'
+  | 'isVariantOf___hasVariant___sku'
+  | 'isVariantOf___hasVariant___gtin'
+  | 'isVariantOf___hasVariant___review'
+  | 'isVariantOf___hasVariant___review___remoteTypeName'
+  | 'isVariantOf___hasVariant___aggregateRating___ratingValue'
+  | 'isVariantOf___hasVariant___aggregateRating___reviewCount'
+  | 'isVariantOf___hasVariant___aggregateRating___remoteTypeName'
+  | 'isVariantOf___hasVariant___isVariantOf___hasVariant'
+  | 'isVariantOf___hasVariant___isVariantOf___productGroupID'
+  | 'isVariantOf___hasVariant___isVariantOf___name'
+  | 'isVariantOf___hasVariant___isVariantOf___remoteTypeName'
+  | 'isVariantOf___hasVariant___remoteTypeName'
+  | 'isVariantOf___hasVariant___id'
+  | 'isVariantOf___hasVariant___parent___id'
+  | 'isVariantOf___hasVariant___parent___children'
+  | 'isVariantOf___hasVariant___children'
+  | 'isVariantOf___hasVariant___children___id'
+  | 'isVariantOf___hasVariant___children___children'
+  | 'isVariantOf___hasVariant___internal___content'
+  | 'isVariantOf___hasVariant___internal___contentDigest'
+  | 'isVariantOf___hasVariant___internal___description'
+  | 'isVariantOf___hasVariant___internal___fieldOwners'
+  | 'isVariantOf___hasVariant___internal___ignoreType'
+  | 'isVariantOf___hasVariant___internal___mediaType'
+  | 'isVariantOf___hasVariant___internal___owner'
+  | 'isVariantOf___hasVariant___internal___type'
+  | 'isVariantOf___productGroupID'
+  | 'isVariantOf___name'
+  | 'isVariantOf___remoteTypeName'
+  | 'remoteTypeName'
+  | 'id'
   | 'parent___id'
   | 'parent___parent___id'
   | 'parent___parent___parent___id'
@@ -5819,10 +4551,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___json'
   | 'pluginOptions___outDir'
   | 'pluginOptions___stats___context'
-  | 'pluginOptions___tenant'
-  | 'pluginOptions___environment'
-  | 'pluginOptions___workspace'
-  | 'pluginOptions___minProducts'
+  | 'pluginOptions___sourceProducts'
+  | 'pluginOptions___sourceCollections'
+  | 'pluginOptions___maxNumProducts'
+  | 'pluginOptions___maxNumCollections'
   | 'pluginOptions___httpOptions'
   | 'pluginOptions___serverOptions'
   | 'pluginOptions___path'
@@ -6020,172 +4752,383 @@ type SiteBuildMetadataSortInput = {
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-type ChannelConnection = {
+type StoreBrand = {
+  name: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreListItem = {
+  item: Scalars['String'];
+  name: Scalars['String'];
+  position: Scalars['Int'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreBreadcrumbList = {
+  itemListElement: Array<StoreListItem>;
+  numberOfItems: Scalars['Int'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreCollectionType =
+  | 'Department'
+  | 'Category'
+  | 'Brand'
+  | 'Cluster';
+
+type StoreCollectionFacet = {
+  key: Scalars['String'];
+  value: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreCollectionMeta = {
+  selectedFacets: Array<StoreCollectionFacet>;
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreCollection = Node & {
+  seo: StoreSeo;
+  breadcrumbList: StoreBreadcrumbList;
+  meta: StoreCollectionMeta;
+  id: Scalars['ID'];
+  slug: Scalars['String'];
+  type: StoreCollectionType;
+  remoteTypeName: Scalars['String'];
+  remoteId: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+type StoreFacet = {
+  key: Scalars['String'];
+  label: Scalars['String'];
+  values: Array<StoreFacetValue>;
+  type: StoreFacetType;
+};
+
+type StoreFacetValue = {
+  value: Scalars['String'];
+  label: Scalars['String'];
+  selected: Scalars['Boolean'];
+  quantity: Scalars['Int'];
+};
+
+type StoreImage = {
+  url: Scalars['String'];
+  alternateName: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type IStoreImage = {
+  url: Scalars['String'];
+  alternateName: Scalars['String'];
+};
+
+type StorePageInfo = {
+  hasNextPage: Scalars['Boolean'];
+  hasPreviousPage: Scalars['Boolean'];
+  startCursor: Scalars['String'];
+  endCursor: Scalars['String'];
   totalCount: Scalars['Int'];
-  edges: Array<ChannelEdge>;
-  nodes: Array<Channel>;
-  pageInfo: PageInfo;
-  distinct: Array<Scalars['String']>;
-  max: Maybe<Scalars['Float']>;
-  min: Maybe<Scalars['Float']>;
-  sum: Maybe<Scalars['Float']>;
-  group: Array<ChannelGroupConnection>;
+};
+
+type StoreProduct = Node & {
+  seo: StoreSeo;
+  breadcrumbList: StoreBreadcrumbList;
+  slug: Scalars['String'];
+  name: Scalars['String'];
+  productID: Scalars['String'];
+  brand: StoreBrand;
+  description: Scalars['String'];
+  image: Array<StoreImage>;
+  offers: StoreAggregateOffer;
+  sku: Scalars['String'];
+  gtin: Scalars['String'];
+  review: Array<StoreReview>;
+  aggregateRating: StoreAggregateRating;
+  isVariantOf: StoreProductGroup;
+  remoteTypeName: Scalars['String'];
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+type IStoreProduct = {
+  sku: Scalars['String'];
+  name: Scalars['String'];
+  image: Array<IStoreImage>;
+};
+
+type StoreSeo = {
+  title: Scalars['String'];
+  titleTemplate: Scalars['String'];
+  description: Scalars['String'];
+  canonical: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreOffer = {
+  listPrice: Scalars['Float'];
+  sellingPrice: Scalars['Float'];
+  priceCurrency: Scalars['String'];
+  price: Scalars['Float'];
+  priceValidUntil: Scalars['String'];
+  itemCondition: Scalars['String'];
+  availability: Scalars['String'];
+  seller: StoreOrganization;
+  itemOffered: StoreProduct;
+  quantity: Scalars['Int'];
+  remoteTypeName: Scalars['String'];
+};
+
+type IStoreOffer = {
+  price: Scalars['Float'];
+  listPrice: Scalars['Float'];
+  seller: IStoreOrganization;
+  itemOffered: IStoreProduct;
+  quantity: Scalars['Int'];
+};
+
+type StoreAggregateRating = {
+  ratingValue: Scalars['Float'];
+  reviewCount: Scalars['Int'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreReviewRating = {
+  ratingValue: Scalars['Float'];
+  bestRating: Scalars['Float'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreReview = {
+  reviewRating: StoreReviewRating;
+  author: StoreAuthor;
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreAuthor = {
+  name: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreProductGroup = {
+  hasVariant: Array<StoreProduct>;
+  productGroupID: Scalars['String'];
+  name: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type StoreOrganization = {
+  identifier: Scalars['String'];
+  remoteTypeName: Scalars['String'];
+};
+
+type IStoreOrganization = {
+  identifier: Scalars['String'];
+};
+
+type StoreAggregateOffer = {
+  highPrice: Scalars['Float'];
+  lowPrice: Scalars['Float'];
+  offerCount: Scalars['Int'];
+  priceCurrency: Scalars['String'];
+  offers: Array<StoreOffer>;
+  remoteTypeName: Scalars['String'];
+};
+
+type Mutation = {
+  validateCart: Maybe<StoreCart>;
 };
 
 
-type ChannelConnectionDistinctArgs = {
-  field: ChannelFieldsEnum;
+type MutationValidateCartArgs = {
+  cart: IStoreCart;
+};
+
+type StoreOrder = {
+  orderNumber: Scalars['String'];
+  acceptedOffer: Array<StoreOffer>;
+};
+
+type IStoreOrder = {
+  orderNumber: Scalars['String'];
+  acceptedOffer: Array<IStoreOffer>;
+};
+
+type StoreCartMessage = {
+  text: Scalars['String'];
+  status: StoreStatus;
+};
+
+type StoreCart = {
+  order: StoreOrder;
+  messages: Array<StoreCartMessage>;
+};
+
+type IStoreCart = {
+  order: IStoreOrder;
+};
+
+type StoreStatus =
+  | 'INFO'
+  | 'WARNING'
+  | 'ERROR';
+
+type StoreProductConnection_Remote = {
+  edges: Array<StoreProductEdge>;
+  pageInfo: StorePageInfo;
+};
+
+type StoreCollectionConnection_Remote = {
+  edges: Array<StoreCollectionEdge>;
+  pageInfo: StorePageInfo;
+};
+
+type SitePlugin = Node & {
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  resolve: Maybe<Scalars['String']>;
+  name: Maybe<Scalars['String']>;
+  version: Maybe<Scalars['String']>;
+  pluginOptions: Maybe<SitePluginPluginOptions>;
+  nodeAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
+  browserAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
+  ssrAPIs: Maybe<Array<Maybe<Scalars['String']>>>;
+  pluginFilepath: Maybe<Scalars['String']>;
+  packageJson: Maybe<SitePluginPackageJson>;
+};
+
+type SitePluginPluginOptions = {
+  name: Maybe<Scalars['String']>;
+  short_name: Maybe<Scalars['String']>;
+  start_url: Maybe<Scalars['String']>;
+  icon: Maybe<Scalars['String']>;
+  background_color: Maybe<Scalars['String']>;
+  theme_color: Maybe<Scalars['String']>;
+  display: Maybe<Scalars['String']>;
+  cache_busting_mode: Maybe<Scalars['String']>;
+  legacy: Maybe<Scalars['Boolean']>;
+  theme_color_in_head: Maybe<Scalars['Boolean']>;
+  crossOrigin: Maybe<Scalars['String']>;
+  include_favicon: Maybe<Scalars['Boolean']>;
+  precachePages: Maybe<Array<Maybe<Scalars['String']>>>;
+  appendScript: Maybe<Scalars['String']>;
+  workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfig>;
+  env: Maybe<SitePluginPluginOptionsEnv>;
+  defer: Maybe<Scalars['Boolean']>;
+  server: Maybe<Scalars['String']>;
+  basePath: Maybe<Scalars['String']>;
+  sizes: Maybe<Array<Maybe<Scalars['String']>>>;
+  color: Maybe<Scalars['String']>;
+  showSpinner: Maybe<Scalars['Boolean']>;
+  src: Maybe<Scalars['String']>;
+  _generated: Maybe<Scalars['String']>;
+  compare: Maybe<Scalars['Boolean']>;
+  baseline: Maybe<Scalars['Boolean']>;
+  html: Maybe<Scalars['Boolean']>;
+  json: Maybe<Scalars['Boolean']>;
+  outDir: Maybe<Scalars['String']>;
+  stats: Maybe<SitePluginPluginOptionsStats>;
+  sourceProducts: Maybe<Scalars['Boolean']>;
+  sourceCollections: Maybe<Scalars['Boolean']>;
+  maxNumProducts: Maybe<Scalars['Int']>;
+  maxNumCollections: Maybe<Scalars['Int']>;
+  httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
+  serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
+  path: Maybe<Scalars['String']>;
+  pathCheck: Maybe<Scalars['Boolean']>;
+  allExtensions: Maybe<Scalars['Boolean']>;
+  isTSX: Maybe<Scalars['Boolean']>;
+  jsxPragma: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsWorkboxConfig = {
+  globPatterns: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+type SitePluginPluginOptionsEnv = {
+  production: Maybe<SitePluginPluginOptionsEnvProduction>;
+  branch_deploy: Maybe<SitePluginPluginOptionsEnvBranch_Deploy>;
+  deploy_preview: Maybe<SitePluginPluginOptionsEnvDeploy_Preview>;
+};
+
+type SitePluginPluginOptionsEnvProduction = {
+  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvProductionPolicy>>>;
+};
+
+type SitePluginPluginOptionsEnvProductionPolicy = {
+  userAgent: Maybe<Scalars['String']>;
+  allow: Maybe<Scalars['String']>;
+  disallow: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+type SitePluginPluginOptionsEnvBranch_Deploy = {
+  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicy>>>;
+};
+
+type SitePluginPluginOptionsEnvBranch_DeployPolicy = {
+  userAgent: Maybe<Scalars['String']>;
+  disallow: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+type SitePluginPluginOptionsEnvDeploy_Preview = {
+  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicy>>>;
+};
+
+type SitePluginPluginOptionsEnvDeploy_PreviewPolicy = {
+  userAgent: Maybe<Scalars['String']>;
+  disallow: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+type SitePluginPluginOptionsStats = {
+  context: Maybe<Scalars['String']>;
+};
+
+type SitePluginPackageJson = {
+  name: Maybe<Scalars['String']>;
+  description: Maybe<Scalars['String']>;
+  version: Maybe<Scalars['String']>;
+  main: Maybe<Scalars['String']>;
+  license: Maybe<Scalars['String']>;
+  dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>;
+  devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>;
+  peerDependencies: Maybe<Array<Maybe<SitePluginPackageJsonPeerDependencies>>>;
+  keywords: Maybe<Array<Maybe<Scalars['String']>>>;
+};
+
+type SitePluginPackageJsonDependencies = {
+  name: Maybe<Scalars['String']>;
+  version: Maybe<Scalars['String']>;
+};
+
+type SitePluginPackageJsonDevDependencies = {
+  name: Maybe<Scalars['String']>;
+  version: Maybe<Scalars['String']>;
+};
+
+type SitePluginPackageJsonPeerDependencies = {
+  name: Maybe<Scalars['String']>;
+  version: Maybe<Scalars['String']>;
+};
+
+type SiteBuildMetadata = Node & {
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  buildTime: Maybe<Scalars['Date']>;
 };
 
 
-type ChannelConnectionMaxArgs = {
-  field: ChannelFieldsEnum;
-};
-
-
-type ChannelConnectionMinArgs = {
-  field: ChannelFieldsEnum;
-};
-
-
-type ChannelConnectionSumArgs = {
-  field: ChannelFieldsEnum;
-};
-
-
-type ChannelConnectionGroupArgs = {
-  skip: Maybe<Scalars['Int']>;
-  limit: Maybe<Scalars['Int']>;
-  field: ChannelFieldsEnum;
-};
-
-type ChannelEdge = {
-  next: Maybe<Channel>;
-  node: Channel;
-  previous: Maybe<Channel>;
-};
-
-type ChannelFieldsEnum =
-  | 'id'
-  | 'parent___id'
-  | 'parent___parent___id'
-  | 'parent___parent___parent___id'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___children___children'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___children'
-  | 'parent___children___id'
-  | 'parent___children___parent___id'
-  | 'parent___children___parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___children___children'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'children'
-  | 'children___id'
-  | 'children___parent___id'
-  | 'children___parent___parent___id'
-  | 'children___parent___parent___children'
-  | 'children___parent___children'
-  | 'children___parent___children___id'
-  | 'children___parent___children___children'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___children'
-  | 'children___children___id'
-  | 'children___children___parent___id'
-  | 'children___children___parent___children'
-  | 'children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___children___children'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'salesChannel'
-  | 'canonicalBaseAddress'
-  | 'alternateBaseAddresses'
-  | 'defaultLocale'
-  | 'supportedLocales'
-  | 'defaultCurrency'
-  | 'supportedCurrencies'
-  | 'targetProduct';
-
-type ChannelGroupConnection = {
-  totalCount: Scalars['Int'];
-  edges: Array<ChannelEdge>;
-  nodes: Array<Channel>;
-  pageInfo: PageInfo;
-  field: Scalars['String'];
-  fieldValue: Maybe<Scalars['String']>;
-};
-
-type ChannelFilterInput = {
-  id: Maybe<StringQueryOperatorInput>;
-  parent: Maybe<NodeFilterInput>;
-  children: Maybe<NodeFilterListInput>;
-  internal: Maybe<InternalFilterInput>;
-  salesChannel: Maybe<IntQueryOperatorInput>;
-  canonicalBaseAddress: Maybe<StringQueryOperatorInput>;
-  alternateBaseAddresses: Maybe<StringQueryOperatorInput>;
-  defaultLocale: Maybe<StringQueryOperatorInput>;
-  supportedLocales: Maybe<StringQueryOperatorInput>;
-  defaultCurrency: Maybe<StringQueryOperatorInput>;
-  supportedCurrencies: Maybe<StringQueryOperatorInput>;
-  targetProduct: Maybe<StringQueryOperatorInput>;
-};
-
-type ChannelSortInput = {
-  fields: Maybe<Array<Maybe<ChannelFieldsEnum>>>;
-  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+type SiteBuildMetadataBuildTimeArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
 };

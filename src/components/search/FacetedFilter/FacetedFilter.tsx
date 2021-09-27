@@ -17,33 +17,33 @@ function FacetedFilter({ facets }: Props) {
   return (
     <div className={styles.container}>
       {facets
-        .filter((facet) => facet.type === 'TEXT')
-        .map(({ name, values }, index) => (
-          <div key={`${name}-${index}`}>
+        .filter((facet) => facet.type === 'BOOLEAN')
+        .map(({ label, values, key }, index) => (
+          <div key={`${label}-${index}`}>
             <button
               className={styles.button}
               onClick={() => setSelectedFilter(index)}
               data-testid="facet-filter-header"
             >
-              {name}
+              {label}
             </button>
             {selectedFilter === index && (
               <ul>
-                {values?.map((item) => {
-                  const id = `${name}-${item?.name}`
+                {values.map((item) => {
+                  const id = `${label}-${item.label}`
 
                   return (
                     <li key={id}>
                       <Checkbox
                         id={id}
-                        checked={!!item?.selected}
-                        onChange={() => toggleFacet(item as any)}
+                        checked={item.selected}
+                        onChange={() => toggleFacet({ key, ...item })}
                         data-testid="facet-filter-checkbox"
-                        data-value={item?.value}
-                        data-quantity={item?.quantity}
+                        data-value={item.value}
+                        data-quantity={item.quantity}
                       />
                       <label htmlFor={id}>
-                        {item?.name}({item?.quantity})
+                        {item.label}({item.quantity})
                       </label>
                     </li>
                   )
@@ -57,19 +57,15 @@ function FacetedFilter({ facets }: Props) {
 }
 
 export const fragment = graphql`
-  fragment FacetedFilter_facets on VTEX_Facet {
-    name
+  fragment FacetedFilter_facets on StoreFacet {
+    key
+    label
     type
     values {
-      key
-      name
+      label
       value
       selected
       quantity
-      range {
-        from
-        to
-      }
     }
   }
 `
