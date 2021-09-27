@@ -2406,11 +2406,13 @@ type SitePluginFilterInput = {
 type SitePluginPluginOptionsFilterInput = {
   repositoryName: Maybe<StringQueryOperatorInput>;
   accessToken: Maybe<StringQueryOperatorInput>;
-  customTypesApiToken: Maybe<StringQueryOperatorInput>;
+  promptForAccessToken: Maybe<BooleanQueryOperatorInput>;
   apiEndpoint: Maybe<StringQueryOperatorInput>;
   lang: Maybe<StringQueryOperatorInput>;
   imageImgixParams: Maybe<SitePluginPluginOptionsImageImgixParamsFilterInput>;
   imagePlaceholderImgixParams: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParamsFilterInput>;
+  toolbar: Maybe<StringQueryOperatorInput>;
+  customTypesApiToken: Maybe<StringQueryOperatorInput>;
   schemas: Maybe<SitePluginPluginOptionsSchemasFilterInput>;
   name: Maybe<StringQueryOperatorInput>;
   short_name: Maybe<StringQueryOperatorInput>;
@@ -2893,7 +2895,7 @@ type SitePageFieldsEnum =
   | 'pluginCreator___version'
   | 'pluginCreator___pluginOptions___repositoryName'
   | 'pluginCreator___pluginOptions___accessToken'
-  | 'pluginCreator___pluginOptions___customTypesApiToken'
+  | 'pluginCreator___pluginOptions___promptForAccessToken'
   | 'pluginCreator___pluginOptions___apiEndpoint'
   | 'pluginCreator___pluginOptions___lang'
   | 'pluginCreator___pluginOptions___imageImgixParams___auto'
@@ -2901,6 +2903,8 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___imageImgixParams___q'
   | 'pluginCreator___pluginOptions___imagePlaceholderImgixParams___w'
   | 'pluginCreator___pluginOptions___imagePlaceholderImgixParams___blur'
+  | 'pluginCreator___pluginOptions___toolbar'
+  | 'pluginCreator___pluginOptions___customTypesApiToken'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
@@ -4236,7 +4240,7 @@ type SitePluginFieldsEnum =
   | 'version'
   | 'pluginOptions___repositoryName'
   | 'pluginOptions___accessToken'
-  | 'pluginOptions___customTypesApiToken'
+  | 'pluginOptions___promptForAccessToken'
   | 'pluginOptions___apiEndpoint'
   | 'pluginOptions___lang'
   | 'pluginOptions___imageImgixParams___auto'
@@ -4244,6 +4248,8 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___imageImgixParams___q'
   | 'pluginOptions___imagePlaceholderImgixParams___w'
   | 'pluginOptions___imagePlaceholderImgixParams___blur'
+  | 'pluginOptions___toolbar'
+  | 'pluginOptions___customTypesApiToken'
   | 'pluginOptions___name'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -4730,11 +4736,13 @@ type SitePlugin = Node & {
 type SitePluginPluginOptions = {
   repositoryName: Maybe<Scalars['String']>;
   accessToken: Maybe<Scalars['String']>;
-  customTypesApiToken: Maybe<Scalars['String']>;
+  promptForAccessToken: Maybe<Scalars['Boolean']>;
   apiEndpoint: Maybe<Scalars['String']>;
   lang: Maybe<Scalars['String']>;
   imageImgixParams: Maybe<SitePluginPluginOptionsImageImgixParams>;
   imagePlaceholderImgixParams: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParams>;
+  toolbar: Maybe<Scalars['String']>;
+  customTypesApiToken: Maybe<Scalars['String']>;
   schemas: Maybe<SitePluginPluginOptionsSchemas>;
   name: Maybe<Scalars['String']>;
   short_name: Maybe<Scalars['String']>;
