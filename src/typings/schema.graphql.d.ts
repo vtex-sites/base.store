@@ -2413,6 +2413,7 @@ type SitePluginPluginOptionsFilterInput = {
   imagePlaceholderImgixParams: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParamsFilterInput>;
   toolbar: Maybe<StringQueryOperatorInput>;
   customTypesApiToken: Maybe<StringQueryOperatorInput>;
+  releaseID: Maybe<StringQueryOperatorInput>;
   schemas: Maybe<SitePluginPluginOptionsSchemasFilterInput>;
   name: Maybe<StringQueryOperatorInput>;
   short_name: Maybe<StringQueryOperatorInput>;
@@ -2905,6 +2906,7 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___imagePlaceholderImgixParams___blur'
   | 'pluginCreator___pluginOptions___toolbar'
   | 'pluginCreator___pluginOptions___customTypesApiToken'
+  | 'pluginCreator___pluginOptions___releaseID'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
@@ -4250,6 +4252,7 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___imagePlaceholderImgixParams___blur'
   | 'pluginOptions___toolbar'
   | 'pluginOptions___customTypesApiToken'
+  | 'pluginOptions___releaseID'
   | 'pluginOptions___name'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -4743,6 +4746,7 @@ type SitePluginPluginOptions = {
   imagePlaceholderImgixParams: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParams>;
   toolbar: Maybe<Scalars['String']>;
   customTypesApiToken: Maybe<Scalars['String']>;
+  releaseID: Maybe<Scalars['String']>;
   schemas: Maybe<SitePluginPluginOptionsSchemas>;
   name: Maybe<Scalars['String']>;
   short_name: Maybe<Scalars['String']>;
