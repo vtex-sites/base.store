@@ -39,7 +39,7 @@ Kick-off your project with this default boilerplate. This starter ships with the
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    gatsby develop
+    yarn develop
     ```
 
 1.  **Open the source code and start editing!**
