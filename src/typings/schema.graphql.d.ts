@@ -23,6 +23,8 @@ type Scalars = {
   Float: number;
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: any;
 };
 
 
@@ -249,6 +251,8 @@ type DirectoryCtimeArgs = {
 type Site = Node & {
   buildTime: Maybe<Scalars['Date']>;
   siteMetadata: Maybe<SiteSiteMetadata>;
+  port: Maybe<Scalars['Int']>;
+  host: Maybe<Scalars['String']>;
   flags: Maybe<SiteFlags>;
   polyfill: Maybe<Scalars['Boolean']>;
   pathPrefix: Maybe<Scalars['String']>;
@@ -323,6 +327,745 @@ type SitePageContext_Xparams = {
   slug: Maybe<Scalars['String']>;
 };
 
+type PrismicAlternateLanguageType = {
+  id: Maybe<Scalars['ID']>;
+  uid: Maybe<Scalars['String']>;
+  lang: Maybe<Scalars['String']>;
+  type: Maybe<Scalars['String']>;
+  document: Maybe<PrismicAllDocumentTypes>;
+  raw: Maybe<Scalars['JSON']>;
+};
+
+
+type PrismicEmbedType = Node & {
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+type PrismicGeoPointType = {
+  longitude: Scalars['Float'];
+  latitude: Scalars['Float'];
+};
+
+type PrismicImageDimensionsType = {
+  width: Scalars['Int'];
+  height: Scalars['Int'];
+};
+
+type PrismicImageThumbnailType = {
+  alt: Maybe<Scalars['String']>;
+  copyright: Maybe<Scalars['String']>;
+  dimensions: Maybe<PrismicImageDimensionsType>;
+  /** A plain imgix URL with the URL and params applied. */
+  url: Maybe<Scalars['String']>;
+  /** Should be used to generate fixed-width images (i.e. the size of the image doesn't change when the size of the browser changes, and are "fixed"). Returns data compatible with gatsby-image. Instead of accessing this data directly, the GatsbySourceImgixFixed fragment should be used. See the project's README for more information. */
+  fixed: Maybe<ImgixFixed>;
+  /** Should be used to generate fluid-width images (i.e. images that change when the size of the browser changes). Returns data compatible with gatsby-image. Instead of accessing this data directly, the GatsbySourceImgixFluid fragment should be used. See the project's README for more information. */
+  fluid: Maybe<ImgixFluid>;
+  gatsbyImageData: Maybe<Scalars['JSON']>;
+  localFile: Maybe<File>;
+};
+
+
+type PrismicImageThumbnailTypeUrlArgs = {
+  imgixParams?: Maybe<ImgixParamsInput>;
+};
+
+
+type PrismicImageThumbnailTypeFixedArgs = {
+  width?: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  quality: Maybe<Scalars['Int']>;
+  imgixParams?: Maybe<ImgixParamsInput>;
+  placeholderImgixParams?: Maybe<ImgixParamsInput>;
+};
+
+
+type PrismicImageThumbnailTypeFluidArgs = {
+  imgixParams?: Maybe<ImgixParamsInput>;
+  maxWidth?: Maybe<Scalars['Int']>;
+  maxHeight: Maybe<Scalars['Int']>;
+  srcSetBreakpoints: Maybe<Array<Maybe<Scalars['Int']>>>;
+  placeholderImgixParams?: Maybe<ImgixParamsInput>;
+};
+
+
+type PrismicImageThumbnailTypeGatsbyImageDataArgs = {
+  layout: Maybe<GatsbyImageLayout>;
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  aspectRatio: Maybe<Scalars['Float']>;
+  outputPixelDensities: Maybe<Array<Maybe<Scalars['Float']>>>;
+  breakpoints: Maybe<Array<Maybe<Scalars['Int']>>>;
+  sizes: Maybe<Scalars['String']>;
+  backgroundColor: Maybe<Scalars['String']>;
+  imgixParams: Maybe<ImgixParamsInput>;
+  placeholderImgixParams: Maybe<ImgixParamsInput>;
+  placeholder: Maybe<ImgixPlaceholder>;
+  widthTolerance?: Maybe<Scalars['Float']>;
+  srcSetMinWidth?: Maybe<Scalars['Int']>;
+  srcSetMaxWidth?: Maybe<Scalars['Int']>;
+};
+
+type GatsbyImageLayout =
+  | 'FIXED'
+  | 'FULL_WIDTH'
+  | 'CONSTRAINED';
+
+type PrismicLinkType = {
+  link_type: Maybe<PrismicLinkTypeEnum>;
+  isBroken: Maybe<Scalars['Boolean']>;
+  url: Maybe<Scalars['String']>;
+  target: Maybe<Scalars['String']>;
+  size: Maybe<Scalars['Int']>;
+  id: Maybe<Scalars['ID']>;
+  type: Maybe<Scalars['String']>;
+  tags: Maybe<Array<Maybe<Scalars['String']>>>;
+  lang: Maybe<Scalars['String']>;
+  slug: Maybe<Scalars['String']>;
+  uid: Maybe<Scalars['String']>;
+  document: Maybe<PrismicAllDocumentTypes>;
+  localFile: Maybe<File>;
+  raw: Maybe<Scalars['JSON']>;
+};
+
+type PrismicLinkTypeEnum =
+  | 'Any'
+  | 'Document'
+  | 'Media'
+  | 'Web';
+
+type PrismicSliceType = {
+  id: Scalars['ID'];
+  slice_type: Scalars['String'];
+  slice_label: Maybe<Scalars['String']>;
+};
+
+type PrismicStructuredTextType = {
+  text: Maybe<Scalars['String']>;
+  html: Maybe<Scalars['String']>;
+  raw: Maybe<Scalars['JSON']>;
+};
+
+type PrismicTypePathType = Node & {
+  path: Array<Scalars['String']>;
+  type: Scalars['String'];
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+type ImgixFixed = {
+  base64: Scalars['String'];
+  src: Scalars['String'];
+  srcSet: Scalars['String'];
+  srcWebp: Scalars['String'];
+  srcSetWebp: Scalars['String'];
+  sizes: Scalars['String'];
+  width: Scalars['Int'];
+  height: Scalars['Int'];
+};
+
+type ImgixFluid = {
+  base64: Scalars['String'];
+  src: Scalars['String'];
+  srcSet: Scalars['String'];
+  srcWebp: Scalars['String'];
+  srcSetWebp: Scalars['String'];
+  sizes: Scalars['String'];
+  aspectRatio: Scalars['Float'];
+};
+
+type ImgixPlaceholder =
+  | 'DOMINANT_COLOR'
+  | 'BLURRED'
+  | 'NONE';
+
+type ImgixParamsInput = {
+  /** Specifies an aspect ratio to maintain when resizing and cropping the image. [See docs](https://docs.imgix.com/apis/url/size/ar). */
+  ar: Maybe<Scalars['String']>;
+  /** Applies automatic enhancements to images. [See docs](https://docs.imgix.com/apis/url/auto). */
+  auto: Maybe<Scalars['String']>;
+  /** Colors the background of padded and partially-transparent images. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/bg). */
+  bg: Maybe<Scalars['String']>;
+  /** Changes the blend alignment relative to the parent image. [See docs](https://docs.imgix.com/apis/url/blending/blend-align). */
+  blendAlign: Maybe<Scalars['String']>;
+  /** Alias for `blendAlign`. */
+  blendalign: Maybe<Scalars['String']>;
+  /** Alias for `blendAlign`. */
+  ba: Maybe<Scalars['String']>;
+  /** Changes the alpha of the blend image. Default: `100`. [See docs](https://docs.imgix.com/apis/url/blending/blend-alpha). */
+  blendAlpha: Maybe<Scalars['Int']>;
+  /** Alias for `blendAlpha`. */
+  blendalpha: Maybe<Scalars['Int']>;
+  /** Alias for `blendAlpha`. */
+  balph: Maybe<Scalars['Int']>;
+  /** Specifies a color to use when applying the blend. [See docs](https://docs.imgix.com/apis/url/blending/blend-color). */
+  blendColor: Maybe<Scalars['String']>;
+  /** Alias for `blendColor`. */
+  blendcolor: Maybe<Scalars['String']>;
+  /** Alias for `blendColor`. */
+  blendClr: Maybe<Scalars['String']>;
+  /** Alias for `blendColor`. */
+  blendclr: Maybe<Scalars['String']>;
+  /** Specifies the type of crop for blend images. [See docs](https://docs.imgix.com/apis/url/blending/blend-crop). */
+  blendCrop: Maybe<Scalars['String']>;
+  /** Alias for `blendCrop`. */
+  blendcrop: Maybe<Scalars['String']>;
+  /** Alias for `blendCrop`. */
+  bc: Maybe<Scalars['String']>;
+  /** Specifies the fit mode for blend images. Default: `clip`. [See docs](https://docs.imgix.com/apis/url/blending/blend-fit). */
+  blendFit: Maybe<Scalars['String']>;
+  /** Alias for `blendFit`. */
+  blendfit: Maybe<Scalars['String']>;
+  /** Alias for `blendFit`. */
+  bf: Maybe<Scalars['String']>;
+  /** Adjusts the height of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend-h). */
+  blendH: Maybe<Scalars['Float']>;
+  /** Alias for `blendH`. */
+  blendh: Maybe<Scalars['Float']>;
+  /** Alias for `blendH`. */
+  bh: Maybe<Scalars['Float']>;
+  /** Sets the blend mode for a blend image. Default: `overlay`. [See docs](https://docs.imgix.com/apis/url/blending/blend-mode). */
+  blendMode: Maybe<Scalars['String']>;
+  /** Alias for `blendMode`. */
+  blendmode: Maybe<Scalars['String']>;
+  /** Alias for `blendMode`. */
+  bm: Maybe<Scalars['String']>;
+  /** Applies padding to the blend image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/blending/blend-pad). */
+  blendPad: Maybe<Scalars['Int']>;
+  /** Alias for `blendPad`. */
+  blendpad: Maybe<Scalars['Int']>;
+  /** Alias for `blendPad`. */
+  bp: Maybe<Scalars['Int']>;
+  /** Adjusts the size of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend-size). */
+  blendSize: Maybe<Scalars['String']>;
+  /** Alias for `blendSize`. */
+  blendsize: Maybe<Scalars['String']>;
+  /** Alias for `blendSize`. */
+  bs: Maybe<Scalars['String']>;
+  /** Adjusts the width of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend-w). */
+  blendW: Maybe<Scalars['Float']>;
+  /** Alias for `blendW`. */
+  blendw: Maybe<Scalars['Float']>;
+  /** Alias for `blendW`. */
+  bw: Maybe<Scalars['Float']>;
+  /** Adjusts the x-offset of the blend image relative to its parent. Default: `0`. [See docs](https://docs.imgix.com/apis/url/blending/blend-x). */
+  blendX: Maybe<Scalars['Int']>;
+  /** Alias for `blendX`. */
+  blendx: Maybe<Scalars['Int']>;
+  /** Alias for `blendX`. */
+  bx: Maybe<Scalars['Int']>;
+  /** Adjusts the y-offset of the blend image relative to its parent. Default: `0`. [See docs](https://docs.imgix.com/apis/url/blending/blend-y). */
+  blendY: Maybe<Scalars['Int']>;
+  /** Alias for `blendY`. */
+  blendy: Maybe<Scalars['Int']>;
+  /** Alias for `blendY`. */
+  by: Maybe<Scalars['Int']>;
+  /** Specifies the location of the blend image. [See docs](https://docs.imgix.com/apis/url/blending/blend). */
+  blend: Maybe<Scalars['String']>;
+  /** Alias for `blend`. */
+  b: Maybe<Scalars['String']>;
+  /** Applies a gaussian blur to an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/blur). */
+  blur: Maybe<Scalars['Int']>;
+  /** Sets bottom border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-bottom). */
+  borderBottom: Maybe<Scalars['Int']>;
+  /** Sets left border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-left). */
+  borderLeft: Maybe<Scalars['Int']>;
+  /** Sets the inner radius of the image's border in pixels. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-radius-inner). */
+  borderRadiusInner: Maybe<Scalars['String']>;
+  /** Sets the outer radius of the image's border in pixels. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-radius). */
+  borderRadius: Maybe<Scalars['String']>;
+  /** Sets right border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-right). */
+  borderRight: Maybe<Scalars['Int']>;
+  /** Sets top border of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border-top). */
+  borderTop: Maybe<Scalars['Int']>;
+  /** Applies a border to an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/border). */
+  border: Maybe<Scalars['String']>;
+  /** Adjusts the brightness of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/bri). */
+  bri: Maybe<Scalars['Int']>;
+  /** Sets one or more Client-Hints headers. [See docs](https://docs.imgix.com/apis/url/format/ch). */
+  ch: Maybe<Scalars['String']>;
+  /** Specifies the output chroma subsampling rate. Default: `420`. [See docs](https://docs.imgix.com/apis/url/format/chromasub). */
+  chromasub: Maybe<Scalars['Int']>;
+  /** Limits the number of unique colors in an image. [See docs](https://docs.imgix.com/apis/url/format/colorquant). */
+  colorquant: Maybe<Scalars['Int']>;
+  /** Specifies how many colors to include in a palette-extraction response. Default: `6`. [See docs](https://docs.imgix.com/apis/url/color-palette/colors). */
+  colors: Maybe<Scalars['Int']>;
+  /** Adjusts the contrast of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/con). */
+  con: Maybe<Scalars['Int']>;
+  /** Specifies the radius value for a rounded corner mask. [See docs](https://docs.imgix.com/apis/url/mask/corner-radius). */
+  cornerRadius: Maybe<Scalars['String']>;
+  /** Specifies how to crop an image. [See docs](https://docs.imgix.com/apis/url/size/crop). */
+  crop: Maybe<Scalars['String']>;
+  /** Specifies the color space of the output image. [See docs](https://docs.imgix.com/apis/url/format/cs). */
+  cs: Maybe<Scalars['String']>;
+  /** Forces a URL to use send-file in its response. [See docs](https://docs.imgix.com/apis/url/format/dl). */
+  dl: Maybe<Scalars['String']>;
+  /** Sets the DPI value in the EXIF header. [See docs](https://docs.imgix.com/apis/url/format/dpi). */
+  dpi: Maybe<Scalars['Int']>;
+  /** Adjusts the device-pixel ratio of the output image. Default: `1`. [See docs](https://docs.imgix.com/apis/url/dpr). */
+  dpr: Maybe<Scalars['Float']>;
+  /** Changes the alpha of the duotone effect atop the source image. Default: `100`. [See docs](https://docs.imgix.com/apis/url/stylize/duotone-alpha). */
+  duotoneAlpha: Maybe<Scalars['Int']>;
+  /** Applies a duotone effect to the source image. [See docs](https://docs.imgix.com/apis/url/stylize/duotone). */
+  duotone: Maybe<Scalars['String']>;
+  /** Adjusts the exposure of the output image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/exp). */
+  exp: Maybe<Scalars['Int']>;
+  /** A Unix timestamp specifying a UTC time. Requests made to this URL after that time will output a 404 status code. [See docs](https://docs.imgix.com/apis/url/expires). */
+  expires: Maybe<Scalars['String']>;
+  /** Selects a face to crop to. [See docs](https://docs.imgix.com/apis/url/face-detection/faceindex). */
+  faceindex: Maybe<Scalars['Int']>;
+  /** Adjusts padding around a selected face. Default: `1`. [See docs](https://docs.imgix.com/apis/url/face-detection/facepad). */
+  facepad: Maybe<Scalars['Float']>;
+  /** Specifies that face data should be included in output when combined with `fm=json`. [See docs](https://docs.imgix.com/apis/url/face-detection/faces). */
+  faces: Maybe<Scalars['Int']>;
+  /** Sets the fill color for images with additional space created by the fit setting. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/fill/fill-color). */
+  fillColor: Maybe<Scalars['String']>;
+  /** Alias for `fillColor`. */
+  fillcolor: Maybe<Scalars['String']>;
+  /** Determines how to fill in additional space created by the fit setting. [See docs](https://docs.imgix.com/apis/url/fill/fill). */
+  fill: Maybe<Scalars['String']>;
+  /** Specifies how to map the source image to the output image dimensions. Default: `clip`. [See docs](https://docs.imgix.com/apis/url/size/fit). */
+  fit: Maybe<Scalars['String']>;
+  /** Alias for `fit`. */
+  f: Maybe<Scalars['String']>;
+  /** Flips an image on a specified axis. [See docs](https://docs.imgix.com/apis/url/rotation/flip). */
+  flip: Maybe<Scalars['String']>;
+  /** Changes the format of the output image. [See docs](https://docs.imgix.com/apis/url/format/fm). */
+  fm: Maybe<Scalars['String']>;
+  /** Displays crosshairs identifying the location of the set focal point. Default: `false`. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-debug). */
+  fpDebug: Maybe<Scalars['Boolean']>;
+  /** Sets the relative horizontal value for the focal point of an image. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-x). */
+  fpX: Maybe<Scalars['Float']>;
+  /** Sets the relative vertical value for the focal point of an image. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-y). */
+  fpY: Maybe<Scalars['Float']>;
+  /** Sets the relative zoom value for the focal point of an image. [See docs](https://docs.imgix.com/apis/url/focalpoint-crop/fp-z). */
+  fpZ: Maybe<Scalars['Float']>;
+  /** Adjusts the gamma of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/gam). */
+  gam: Maybe<Scalars['Int']>;
+  /** Sets grid colors for the transparency checkerboard grid. */
+  gridColors: Maybe<Scalars['String']>;
+  /** Sets grid size for the transparency checkerboard grid. */
+  gridSize: Maybe<Scalars['Int']>;
+  /** Adjusts the height of the output image. [See docs](https://docs.imgix.com/apis/url/size/h). */
+  h: Maybe<Scalars['Float']>;
+  /** Alias for `h`. */
+  height: Maybe<Scalars['Float']>;
+  /** Adjusts the highlights of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/high). */
+  high: Maybe<Scalars['Int']>;
+  /** Applies a half-tone effect to the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/htn). */
+  htn: Maybe<Scalars['Int']>;
+  /** Adjusts the hue of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/hue). */
+  hue: Maybe<Scalars['Int']>;
+  /** Inverts the colors on the source image. Default: `false`. [See docs](https://docs.imgix.com/apis/url/adjustment/invert). */
+  invert: Maybe<Scalars['Boolean']>;
+  /** Alias for `invert`. */
+  inv: Maybe<Scalars['Boolean']>;
+  /** Specifies that the output image should be a lossless variant. Default: `false`. [See docs](https://docs.imgix.com/apis/url/format/lossless). */
+  lossless: Maybe<Scalars['Boolean']>;
+  /** Changes the watermark alignment relative to the parent image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-align). */
+  markAlign: Maybe<Scalars['String']>;
+  /** Alias for `markAlign`. */
+  ma: Maybe<Scalars['String']>;
+  /** Alias for `markAlign`. */
+  markalign: Maybe<Scalars['String']>;
+  /** Changes the alpha of the watermark image. Default: `100`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-alpha). */
+  markAlpha: Maybe<Scalars['Int']>;
+  /** Alias for `markAlpha`. */
+  markalpha: Maybe<Scalars['Int']>;
+  /** Alias for `markAlpha`. */
+  malph: Maybe<Scalars['Int']>;
+  /** Changes base URL of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-base). */
+  markBase: Maybe<Scalars['String']>;
+  /** Alias for `markBase`. */
+  mb: Maybe<Scalars['String']>;
+  /** Alias for `markBase`. */
+  markbase: Maybe<Scalars['String']>;
+  /** Specifies the fit mode for watermark images. Default: `clip`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-fit). */
+  markFit: Maybe<Scalars['String']>;
+  /** Alias for `markFit`. */
+  mf: Maybe<Scalars['String']>;
+  /** Alias for `markFit`. */
+  markfit: Maybe<Scalars['String']>;
+  /** Adjusts the height of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-h). */
+  markH: Maybe<Scalars['Float']>;
+  /** Alias for `markH`. */
+  mh: Maybe<Scalars['Float']>;
+  /** Alias for `markH`. */
+  markh: Maybe<Scalars['Float']>;
+  /** Applies padding to the watermark image. Default: `5`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-pad). */
+  markPad: Maybe<Scalars['Int']>;
+  /** Alias for `markPad`. */
+  mp: Maybe<Scalars['Int']>;
+  /** Alias for `markPad`. */
+  markpad: Maybe<Scalars['Int']>;
+  /** Rotates a watermark or tiled watermarks by a specified number of degrees. Default: `0`. [See docs](https://docs.imgix.com/apis/url/watermark/mark-rot). */
+  markRot: Maybe<Scalars['Float']>;
+  /** Adjusts the scale of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-scale). */
+  markScale: Maybe<Scalars['Int']>;
+  /** Alias for `markScale`. */
+  ms: Maybe<Scalars['Int']>;
+  /** Alias for `markScale`. */
+  markscale: Maybe<Scalars['Int']>;
+  /** Adds tiled watermark. [See docs](https://docs.imgix.com/apis/url/watermark/mark-tile). */
+  markTile: Maybe<Scalars['String']>;
+  /** Alias for `markTile`. */
+  mtile: Maybe<Scalars['String']>;
+  /** Alias for `markTile`. */
+  marktile: Maybe<Scalars['String']>;
+  /** Adjusts the width of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark-w). */
+  markW: Maybe<Scalars['Float']>;
+  /** Alias for `markW`. */
+  mw: Maybe<Scalars['Float']>;
+  /** Alias for `markW`. */
+  markw: Maybe<Scalars['Float']>;
+  /** Adjusts the x-offset of the watermark image relative to its parent. [See docs](https://docs.imgix.com/apis/url/watermark/mark-x). */
+  markX: Maybe<Scalars['Int']>;
+  /** Alias for `markX`. */
+  mx: Maybe<Scalars['Int']>;
+  /** Alias for `markX`. */
+  markx: Maybe<Scalars['Int']>;
+  /** Adjusts the y-offset of the watermark image relative to its parent. [See docs](https://docs.imgix.com/apis/url/watermark/mark-y). */
+  markY: Maybe<Scalars['Int']>;
+  /** Alias for `markY`. */
+  my: Maybe<Scalars['Int']>;
+  /** Alias for `markY`. */
+  marky: Maybe<Scalars['Int']>;
+  /** Specifies the location of the watermark image. [See docs](https://docs.imgix.com/apis/url/watermark/mark). */
+  mark: Maybe<Scalars['String']>;
+  /** Alias for `mark`. */
+  m: Maybe<Scalars['String']>;
+  /** Colors the background of the transparent mask area of images. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/mask/mask-bg). */
+  maskBg: Maybe<Scalars['String']>;
+  /** Alias for `maskBg`. */
+  maskbg: Maybe<Scalars['String']>;
+  /** Defines the type of mask and specifies the URL if that type is selected. [See docs](https://docs.imgix.com/apis/url/mask). */
+  mask: Maybe<Scalars['String']>;
+  /** Specifies the maximum height of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/max-height). */
+  maxH: Maybe<Scalars['Int']>;
+  /** Alias for `maxH`. */
+  maxHeight: Maybe<Scalars['Int']>;
+  /** Specifies the maximum width of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/max-width). */
+  maxW: Maybe<Scalars['Int']>;
+  /** Alias for `maxW`. */
+  maxWidth: Maybe<Scalars['Int']>;
+  /** Specifies the minimum height of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/min-height). */
+  minH: Maybe<Scalars['Int']>;
+  /** Alias for `minH`. */
+  minHeight: Maybe<Scalars['Int']>;
+  /** Specifies the minimum width of the output image in pixels. [See docs](https://docs.imgix.com/apis/url/size/min-width). */
+  minW: Maybe<Scalars['Int']>;
+  /** Alias for `minW`. */
+  minWidth: Maybe<Scalars['Int']>;
+  /** Applies a monochrome effect to the source image. [See docs](https://docs.imgix.com/apis/url/stylize/monochrome). */
+  monochrome: Maybe<Scalars['String']>;
+  /** Alias for `monochrome`. */
+  mono: Maybe<Scalars['String']>;
+  /** Reduces the noise in an image. Default: `20`. [See docs](https://docs.imgix.com/apis/url/noise-reduction/nr). */
+  nr: Maybe<Scalars['Int']>;
+  /** Provides a threshold by which to sharpen an image. Default: `20`. [See docs](https://docs.imgix.com/apis/url/noise-reduction/nrs). */
+  nrs: Maybe<Scalars['Int']>;
+  /** Changes the image orientation. [See docs](https://docs.imgix.com/apis/url/rotation/orient). */
+  orient: Maybe<Scalars['Int']>;
+  /** Alias for `orient`. */
+  or: Maybe<Scalars['Int']>;
+  /** Sets bottom padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-bottom). */
+  padBottom: Maybe<Scalars['Int']>;
+  /** Sets left padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-left). */
+  padLeft: Maybe<Scalars['Int']>;
+  /** Sets right padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-right). */
+  padRight: Maybe<Scalars['Int']>;
+  /** Sets top padding of an image. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad-top). */
+  padTop: Maybe<Scalars['Int']>;
+  /** Pads an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/border-and-padding/pad). */
+  pad: Maybe<Scalars['Int']>;
+  /** Selects a page from a PDF for display. Default: `1`. [See docs](https://docs.imgix.com/apis/url/pdf/page). */
+  page: Maybe<Scalars['Int']>;
+  /** Specifies an output format for palette-extraction. [See docs](https://docs.imgix.com/apis/url/color-palette/palette). */
+  palette: Maybe<Scalars['String']>;
+  /** Enables or disables PDF annotation. Default: `true`. [See docs](https://docs.imgix.com/apis/url/pdf/pdf-annotation). */
+  pdfAnnotation: Maybe<Scalars['Boolean']>;
+  /** Alias for `pdfAnnotation`. */
+  annotation: Maybe<Scalars['Boolean']>;
+  /** Specifies a CSS prefix for all classes in palette-extraction. Default: `image`. [See docs](https://docs.imgix.com/apis/url/color-palette/prefix). */
+  prefix: Maybe<Scalars['String']>;
+  /** Applies a pixelation effect to an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/px). */
+  px: Maybe<Scalars['Int']>;
+  /** Adjusts the quality of an output image. Default: `75`. [See docs](https://docs.imgix.com/apis/url/format/q). */
+  q: Maybe<Scalars['Int']>;
+  /** Crops an image to a specified rectangle. [See docs](https://docs.imgix.com/apis/url/size/rect). */
+  rect: Maybe<Scalars['String']>;
+  /** Rotates an image by a specified number of degrees. Default: `0`. [See docs](https://docs.imgix.com/apis/url/rotation/rot). */
+  rot: Maybe<Scalars['Float']>;
+  /** Adjusts the saturation of an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/sat). */
+  sat: Maybe<Scalars['Int']>;
+  /** Applies a sepia effect to an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/stylize/sepia). */
+  sepia: Maybe<Scalars['Int']>;
+  /** Adjusts the highlights of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/shad). */
+  shad: Maybe<Scalars['Float']>;
+  /** Adjusts the sharpness of the source image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/sharp). */
+  sharp: Maybe<Scalars['Float']>;
+  /** Adds checkerboard behind images which support transparency. [See docs](https://docs.imgix.com/apis/url/fill/transparency). */
+  transparency: Maybe<Scalars['String']>;
+  /** Specifies a trim color on a trim operation. [See docs](https://docs.imgix.com/apis/url/trim/trim-color). */
+  trimColor: Maybe<Scalars['String']>;
+  /** Alias for `trimColor`. */
+  trimcolor: Maybe<Scalars['String']>;
+  /** Specifies the mean difference on a trim operation. Default: `11`. [See docs](https://docs.imgix.com/apis/url/trim/trim-md). */
+  trimMd: Maybe<Scalars['Float']>;
+  /** Alias for `trimMd`. */
+  trimmd: Maybe<Scalars['Float']>;
+  /** Pads the area of the source image before trimming. Default: `0`. [See docs](https://docs.imgix.com/apis/url/trim/trim-pad). */
+  trimPad: Maybe<Scalars['Int']>;
+  /** Alias for `trimPad`. */
+  trimpad: Maybe<Scalars['Int']>;
+  /** Specifies the standard deviation on a trim operation. Default: `10`. [See docs](https://docs.imgix.com/apis/url/trim/trim-sd). */
+  trimSd: Maybe<Scalars['Float']>;
+  /** Alias for `trimSd`. */
+  trimsd: Maybe<Scalars['Float']>;
+  /** Specifies the tolerance on a trim operation. Default: `0`. [See docs](https://docs.imgix.com/apis/url/trim/trim-tol). */
+  trimTol: Maybe<Scalars['Float']>;
+  /** Alias for `trimTol`. */
+  trimtol: Maybe<Scalars['Float']>;
+  /** Trims the source image. [See docs](https://docs.imgix.com/apis/url/trim/trim). */
+  trim: Maybe<Scalars['String']>;
+  /** Sets the vertical and horizontal alignment of rendered text relative to the base image. [See docs](https://docs.imgix.com/apis/url/text/txt-align). */
+  txtAlign: Maybe<Scalars['String']>;
+  /** Alias for `txtAlign`. */
+  txtalign: Maybe<Scalars['String']>;
+  /** Alias for `txtAlign`. */
+  ta: Maybe<Scalars['String']>;
+  /** Sets the clipping properties of rendered text. Default: `end`. [See docs](https://docs.imgix.com/apis/url/text/txt-clip). */
+  txtClip: Maybe<Scalars['String']>;
+  /** Alias for `txtClip`. */
+  txtclip: Maybe<Scalars['String']>;
+  /** Alias for `txtClip`. */
+  tcl: Maybe<Scalars['String']>;
+  /** Specifies the color of rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-color). */
+  txtColor: Maybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  txtcolor: Maybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  txtClr: Maybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  txtclr: Maybe<Scalars['String']>;
+  /** Alias for `txtColor`. */
+  tc: Maybe<Scalars['String']>;
+  /** Specifies the fit approach for rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-fit). */
+  txtFit: Maybe<Scalars['String']>;
+  /** Alias for `txtFit`. */
+  txtfit: Maybe<Scalars['String']>;
+  /** Selects a font for rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-font). */
+  txtFont: Maybe<Scalars['String']>;
+  /** Alias for `txtFont`. */
+  tf: Maybe<Scalars['String']>;
+  /** Alias for `txtFont`. */
+  txtfont: Maybe<Scalars['String']>;
+  /** Sets the leading (line spacing) for rendered text. Only works on the multi-line text endpoint. Default: `0`. [See docs](https://docs.imgix.com/apis/url/typesetting/txt-lead). */
+  txtLead: Maybe<Scalars['Int']>;
+  /** Alias for `txtLead`. */
+  txtlead: Maybe<Scalars['Int']>;
+  /** Controls the level of ligature substitution. [See docs](https://docs.imgix.com/apis/url/text/txt-lig). */
+  txtLig: Maybe<Scalars['Int']>;
+  /** Alias for `txtLig`. */
+  txtlig: Maybe<Scalars['Int']>;
+  /** Specifies a text outline color. Default: `fff`. [See docs](https://docs.imgix.com/apis/url/text/txt-line-color). */
+  txtLineColor: Maybe<Scalars['String']>;
+  /** Alias for `txtLineColor`. */
+  txtlinecolor: Maybe<Scalars['String']>;
+  /** Alias for `txtLineColor`. */
+  txtLineClr: Maybe<Scalars['String']>;
+  /** Alias for `txtLineColor`. */
+  txtlineclr: Maybe<Scalars['String']>;
+  /** Outlines the rendered text with a specified color. Default: `0`. [See docs](https://docs.imgix.com/apis/url/text/txt-line). */
+  txtLine: Maybe<Scalars['Int']>;
+  /** Alias for `txtLine`. */
+  txtline: Maybe<Scalars['Int']>;
+  /** Alias for `txtLine`. */
+  tl: Maybe<Scalars['Int']>;
+  /** Specifies the padding (in device-independent pixels) between a textbox and the edges of the base image. [See docs](https://docs.imgix.com/apis/url/text/txt-pad). */
+  txtPad: Maybe<Scalars['Int']>;
+  /** Alias for `txtPad`. */
+  txtpad: Maybe<Scalars['Int']>;
+  /** Alias for `txtPad`. */
+  tp: Maybe<Scalars['Int']>;
+  /** Applies a shadow to rendered text. Default: `0`. [See docs](https://docs.imgix.com/apis/url/text/txt-shad). */
+  txtShad: Maybe<Scalars['Float']>;
+  /** Alias for `txtShad`. */
+  txtshad: Maybe<Scalars['Float']>;
+  /** Alias for `txtShad`. */
+  tsh: Maybe<Scalars['Float']>;
+  /** Sets the font size of rendered text. Default: `12`. [See docs](https://docs.imgix.com/apis/url/text/txt-size). */
+  txtSize: Maybe<Scalars['Int']>;
+  /** Alias for `txtSize`. */
+  tsz: Maybe<Scalars['Int']>;
+  /** Alias for `txtSize`. */
+  txtsize: Maybe<Scalars['Int']>;
+  /** Sets the tracking (letter spacing) for rendered text. Only works on the multi-line text endpoint. Default: `0`. [See docs](https://docs.imgix.com/apis/url/typesetting/txt-track). */
+  txtTrack: Maybe<Scalars['Int']>;
+  /** Alias for `txtTrack`. */
+  txttrack: Maybe<Scalars['Int']>;
+  /** Alias for `txtTrack`. */
+  tt: Maybe<Scalars['Int']>;
+  /** Sets the width of rendered text. [See docs](https://docs.imgix.com/apis/url/text/txt-width). */
+  txtWidth: Maybe<Scalars['Int']>;
+  /** Alias for `txtWidth`. */
+  txtwidth: Maybe<Scalars['Int']>;
+  /** Sets the text string to render. [See docs](https://docs.imgix.com/apis/url/text/txt). */
+  txt: Maybe<Scalars['String']>;
+  /** Alias for `txt`. */
+  t: Maybe<Scalars['String']>;
+  /** Sharpens the source image using an unsharp mask. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/usm). */
+  usm: Maybe<Scalars['Int']>;
+  /** Specifies the radius for an unsharp mask operation. Default: `2.5`. [See docs](https://docs.imgix.com/apis/url/adjustment/usmrad). */
+  usmrad: Maybe<Scalars['Float']>;
+  /** Adjusts the vibrance of an image. Default: `0`. [See docs](https://docs.imgix.com/apis/url/adjustment/vib). */
+  vib: Maybe<Scalars['Int']>;
+  /** Adjusts the width of the output image. [See docs](https://docs.imgix.com/apis/url/size/w). */
+  w: Maybe<Scalars['Float']>;
+  /** Alias for `w`. */
+  width: Maybe<Scalars['Float']>;
+};
+
+type PrismicHomeDataBodyCarouselItemsItemsImageThumbnailsType = {
+  desktop: Maybe<PrismicImageThumbnailType>;
+};
+
+type PrismicHomeDataBodyCarouselItemsItemsImageType = {
+  alt: Maybe<Scalars['String']>;
+  copyright: Maybe<Scalars['String']>;
+  dimensions: Maybe<PrismicImageDimensionsType>;
+  /** A plain imgix URL with the URL and params applied. */
+  url: Maybe<Scalars['String']>;
+  /** Should be used to generate fixed-width images (i.e. the size of the image doesn't change when the size of the browser changes, and are "fixed"). Returns data compatible with gatsby-image. Instead of accessing this data directly, the GatsbySourceImgixFixed fragment should be used. See the project's README for more information. */
+  fixed: Maybe<ImgixFixed>;
+  /** Should be used to generate fluid-width images (i.e. images that change when the size of the browser changes). Returns data compatible with gatsby-image. Instead of accessing this data directly, the GatsbySourceImgixFluid fragment should be used. See the project's README for more information. */
+  fluid: Maybe<ImgixFluid>;
+  gatsbyImageData: Maybe<Scalars['JSON']>;
+  localFile: Maybe<File>;
+  thumbnails: Maybe<PrismicHomeDataBodyCarouselItemsItemsImageThumbnailsType>;
+};
+
+
+type PrismicHomeDataBodyCarouselItemsItemsImageTypeUrlArgs = {
+  imgixParams?: Maybe<ImgixParamsInput>;
+};
+
+
+type PrismicHomeDataBodyCarouselItemsItemsImageTypeFixedArgs = {
+  width?: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  quality: Maybe<Scalars['Int']>;
+  imgixParams?: Maybe<ImgixParamsInput>;
+  placeholderImgixParams?: Maybe<ImgixParamsInput>;
+};
+
+
+type PrismicHomeDataBodyCarouselItemsItemsImageTypeFluidArgs = {
+  imgixParams?: Maybe<ImgixParamsInput>;
+  maxWidth?: Maybe<Scalars['Int']>;
+  maxHeight: Maybe<Scalars['Int']>;
+  srcSetBreakpoints: Maybe<Array<Maybe<Scalars['Int']>>>;
+  placeholderImgixParams?: Maybe<ImgixParamsInput>;
+};
+
+
+type PrismicHomeDataBodyCarouselItemsItemsImageTypeGatsbyImageDataArgs = {
+  layout: Maybe<GatsbyImageLayout>;
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+  aspectRatio: Maybe<Scalars['Float']>;
+  outputPixelDensities: Maybe<Array<Maybe<Scalars['Float']>>>;
+  breakpoints: Maybe<Array<Maybe<Scalars['Int']>>>;
+  sizes: Maybe<Scalars['String']>;
+  backgroundColor: Maybe<Scalars['String']>;
+  imgixParams: Maybe<ImgixParamsInput>;
+  placeholderImgixParams: Maybe<ImgixParamsInput>;
+  placeholder: Maybe<ImgixPlaceholder>;
+  widthTolerance?: Maybe<Scalars['Float']>;
+  srcSetMinWidth?: Maybe<Scalars['Int']>;
+  srcSetMaxWidth?: Maybe<Scalars['Int']>;
+};
+
+type PrismicHomeDataBodyCarouselItem = {
+  items: Maybe<PrismicHomeDataBodyCarouselItemsItemsImageType>;
+};
+
+type PrismicHomeDataBodyCarouselPrimary = {
+  display_arrows: Maybe<Scalars['Boolean']>;
+  display_dots: Maybe<Scalars['Boolean']>;
+  title: Maybe<PrismicStructuredTextType>;
+};
+
+type PrismicHomeDataBodyShelfPrimary = {
+  collection: Maybe<Scalars['String']>;
+  display_arrows: Maybe<Scalars['Boolean']>;
+  display_dots: Maybe<Scalars['Boolean']>;
+  title: Maybe<PrismicStructuredTextType>;
+};
+
+type PrismicHomeDataBodyCarousel = PrismicSliceType & {
+  items: Maybe<Array<Maybe<PrismicHomeDataBodyCarouselItem>>>;
+  primary: Maybe<PrismicHomeDataBodyCarouselPrimary>;
+  id: Scalars['ID'];
+  slice_type: Scalars['String'];
+  slice_label: Maybe<Scalars['String']>;
+};
+
+type PrismicHomeDataBodyShelf = PrismicSliceType & {
+  primary: Maybe<PrismicHomeDataBodyShelfPrimary>;
+  id: Scalars['ID'];
+  slice_type: Scalars['String'];
+  slice_label: Maybe<Scalars['String']>;
+};
+
+type PrismicHomeDataBodySlicesType = PrismicHomeDataBodyCarousel | PrismicHomeDataBodyShelf;
+
+type PrismicHomeDataType = {
+  body: Maybe<Array<Maybe<PrismicHomeDataBodySlicesType>>>;
+};
+
+type PrismicHome = Node & {
+  data: Maybe<PrismicHomeDataType>;
+  dataRaw: Scalars['JSON'];
+  prismicId: Scalars['ID'];
+  alternate_languages: Array<PrismicAlternateLanguageType>;
+  first_publication_date: Scalars['Date'];
+  href: Scalars['String'];
+  lang: Scalars['String'];
+  last_publication_date: Scalars['Date'];
+  tags: Array<Scalars['String']>;
+  type: Scalars['String'];
+  url: Maybe<Scalars['String']>;
+  _previewable: Scalars['ID'];
+  id: Scalars['ID'];
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+};
+
+
+type PrismicHomeFirst_Publication_DateArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+
+type PrismicHomeLast_Publication_DateArgs = {
+  formatString: Maybe<Scalars['String']>;
+  fromNow: Maybe<Scalars['Boolean']>;
+  difference: Maybe<Scalars['String']>;
+  locale: Maybe<Scalars['String']>;
+};
+
+type PrismicAllDocumentTypes = PrismicHome;
+
 type StoreProductEdge = {
   node: StoreProduct;
   cursor: Scalars['String'];
@@ -391,6 +1134,12 @@ type Query = {
   allSiteFunction: SiteFunctionConnection;
   sitePage: Maybe<SitePage>;
   allSitePage: SitePageConnection;
+  prismicEmbedType: Maybe<PrismicEmbedType>;
+  allPrismicEmbedType: PrismicEmbedTypeConnection;
+  prismicTypePathType: Maybe<PrismicTypePathType>;
+  allPrismicTypePathType: PrismicTypePathTypeConnection;
+  prismicHome: Maybe<PrismicHome>;
+  allPrismicHome: PrismicHomeConnection;
   storeCollection: Maybe<StoreCollection>;
   allStoreCollection: StoreCollectionConnection;
   storeProduct: Maybe<StoreProduct>;
@@ -525,6 +1274,8 @@ type QueryAllDirectoryArgs = {
 type QuerySiteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -586,6 +1337,67 @@ type QuerySitePageArgs = {
 type QueryAllSitePageArgs = {
   filter: Maybe<SitePageFilterInput>;
   sort: Maybe<SitePageSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type QueryPrismicEmbedTypeArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+
+type QueryAllPrismicEmbedTypeArgs = {
+  filter: Maybe<PrismicEmbedTypeFilterInput>;
+  sort: Maybe<PrismicEmbedTypeSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type QueryPrismicTypePathTypeArgs = {
+  path: Maybe<StringQueryOperatorInput>;
+  type: Maybe<StringQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+
+type QueryAllPrismicTypePathTypeArgs = {
+  filter: Maybe<PrismicTypePathTypeFilterInput>;
+  sort: Maybe<PrismicTypePathTypeSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type QueryPrismicHomeArgs = {
+  dataRaw: Maybe<JsonQueryOperatorInput>;
+  prismicId: Maybe<IdQueryOperatorInput>;
+  alternate_languages: Maybe<PrismicAlternateLanguageTypeFilterListInput>;
+  first_publication_date: Maybe<DateQueryOperatorInput>;
+  href: Maybe<StringQueryOperatorInput>;
+  lang: Maybe<StringQueryOperatorInput>;
+  last_publication_date: Maybe<DateQueryOperatorInput>;
+  tags: Maybe<StringQueryOperatorInput>;
+  type: Maybe<StringQueryOperatorInput>;
+  url: Maybe<StringQueryOperatorInput>;
+  _previewable: Maybe<IdQueryOperatorInput>;
+  id: Maybe<StringQueryOperatorInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+
+type QueryAllPrismicHomeArgs = {
+  filter: Maybe<PrismicHomeFilterInput>;
+  sort: Maybe<PrismicHomeSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -1272,6 +2084,8 @@ type SiteFieldsEnum =
   | 'siteMetadata___titleTemplate'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
+  | 'port'
+  | 'host'
   | 'flags___DEV_SSR'
   | 'flags___FAST_DEV'
   | 'flags___LMDB_STORE'
@@ -1379,6 +2193,8 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
+  port: Maybe<IntQueryOperatorInput>;
+  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -2112,10 +2928,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___json'
   | 'pluginCreator___pluginOptions___outDir'
   | 'pluginCreator___pluginOptions___stats___context'
-  | 'pluginCreator___pluginOptions___tenant'
-  | 'pluginCreator___pluginOptions___environment'
-  | 'pluginCreator___pluginOptions___workspace'
-  | 'pluginCreator___pluginOptions___minProducts'
+  | 'pluginCreator___pluginOptions___sourceProducts'
+  | 'pluginCreator___pluginOptions___sourceCollections'
+  | 'pluginCreator___pluginOptions___maxNumProducts'
+  | 'pluginCreator___pluginOptions___maxNumCollections'
   | 'pluginCreator___pluginOptions___httpOptions'
   | 'pluginCreator___pluginOptions___serverOptions'
   | 'pluginCreator___pluginOptions___path'
@@ -2661,112 +3477,7 @@ type PrismicHomeFieldsEnum =
   | 'internal___ignoreType'
   | 'internal___mediaType'
   | 'internal___owner'
-  | 'internal___type'
-  | 'isCreatedByStatefulCreatePages'
-  | 'context___id'
-  | 'context___slug'
-  | 'context____xparams___slug'
-  | 'pluginCreator___id'
-  | 'pluginCreator___parent___id'
-  | 'pluginCreator___parent___parent___id'
-  | 'pluginCreator___parent___parent___children'
-  | 'pluginCreator___parent___children'
-  | 'pluginCreator___parent___children___id'
-  | 'pluginCreator___parent___children___children'
-  | 'pluginCreator___parent___internal___content'
-  | 'pluginCreator___parent___internal___contentDigest'
-  | 'pluginCreator___parent___internal___description'
-  | 'pluginCreator___parent___internal___fieldOwners'
-  | 'pluginCreator___parent___internal___ignoreType'
-  | 'pluginCreator___parent___internal___mediaType'
-  | 'pluginCreator___parent___internal___owner'
-  | 'pluginCreator___parent___internal___type'
-  | 'pluginCreator___children'
-  | 'pluginCreator___children___id'
-  | 'pluginCreator___children___parent___id'
-  | 'pluginCreator___children___parent___children'
-  | 'pluginCreator___children___children'
-  | 'pluginCreator___children___children___id'
-  | 'pluginCreator___children___children___children'
-  | 'pluginCreator___children___internal___content'
-  | 'pluginCreator___children___internal___contentDigest'
-  | 'pluginCreator___children___internal___description'
-  | 'pluginCreator___children___internal___fieldOwners'
-  | 'pluginCreator___children___internal___ignoreType'
-  | 'pluginCreator___children___internal___mediaType'
-  | 'pluginCreator___children___internal___owner'
-  | 'pluginCreator___children___internal___type'
-  | 'pluginCreator___internal___content'
-  | 'pluginCreator___internal___contentDigest'
-  | 'pluginCreator___internal___description'
-  | 'pluginCreator___internal___fieldOwners'
-  | 'pluginCreator___internal___ignoreType'
-  | 'pluginCreator___internal___mediaType'
-  | 'pluginCreator___internal___owner'
-  | 'pluginCreator___internal___type'
-  | 'pluginCreator___resolve'
-  | 'pluginCreator___name'
-  | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___name'
-  | 'pluginCreator___pluginOptions___short_name'
-  | 'pluginCreator___pluginOptions___start_url'
-  | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___background_color'
-  | 'pluginCreator___pluginOptions___theme_color'
-  | 'pluginCreator___pluginOptions___display'
-  | 'pluginCreator___pluginOptions___cache_busting_mode'
-  | 'pluginCreator___pluginOptions___legacy'
-  | 'pluginCreator___pluginOptions___theme_color_in_head'
-  | 'pluginCreator___pluginOptions___crossOrigin'
-  | 'pluginCreator___pluginOptions___include_favicon'
-  | 'pluginCreator___pluginOptions___precachePages'
-  | 'pluginCreator___pluginOptions___appendScript'
-  | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
-  | 'pluginCreator___pluginOptions___defer'
-  | 'pluginCreator___pluginOptions___server'
-  | 'pluginCreator___pluginOptions___basePath'
-  | 'pluginCreator___pluginOptions___sizes'
-  | 'pluginCreator___pluginOptions___color'
-  | 'pluginCreator___pluginOptions___showSpinner'
-  | 'pluginCreator___pluginOptions___src'
-  | 'pluginCreator___pluginOptions____generated'
-  | 'pluginCreator___pluginOptions___compare'
-  | 'pluginCreator___pluginOptions___baseline'
-  | 'pluginCreator___pluginOptions___html'
-  | 'pluginCreator___pluginOptions___json'
-  | 'pluginCreator___pluginOptions___outDir'
-  | 'pluginCreator___pluginOptions___stats___context'
-  | 'pluginCreator___pluginOptions___sourceProducts'
-  | 'pluginCreator___pluginOptions___sourceCollections'
-  | 'pluginCreator___pluginOptions___maxNumProducts'
-  | 'pluginCreator___pluginOptions___maxNumCollections'
-  | 'pluginCreator___pluginOptions___httpOptions'
-  | 'pluginCreator___pluginOptions___serverOptions'
-  | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___isTSX'
-  | 'pluginCreator___pluginOptions___jsxPragma'
-  | 'pluginCreator___nodeAPIs'
-  | 'pluginCreator___browserAPIs'
-  | 'pluginCreator___ssrAPIs'
-  | 'pluginCreator___pluginFilepath'
-  | 'pluginCreator___packageJson___name'
-  | 'pluginCreator___packageJson___description'
-  | 'pluginCreator___packageJson___version'
-  | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___license'
-  | 'pluginCreator___packageJson___dependencies'
-  | 'pluginCreator___packageJson___dependencies___name'
-  | 'pluginCreator___packageJson___dependencies___version'
-  | 'pluginCreator___packageJson___devDependencies'
-  | 'pluginCreator___packageJson___devDependencies___name'
-  | 'pluginCreator___packageJson___devDependencies___version'
-  | 'pluginCreator___packageJson___peerDependencies'
-  | 'pluginCreator___packageJson___peerDependencies___name'
-  | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
-  | 'pluginCreatorId';
+  | 'internal___type';
 
 type PrismicHomeGroupConnection = {
   totalCount: Scalars['Int'];
@@ -2845,13 +3556,6 @@ type StoreCollectionTypeQueryOperatorInput = {
   ne: Maybe<StoreCollectionType>;
   in: Maybe<Array<Maybe<StoreCollectionType>>>;
   nin: Maybe<Array<Maybe<StoreCollectionType>>>;
-};
-
-type IdQueryOperatorInput = {
-  eq: Maybe<Scalars['ID']>;
-  ne: Maybe<Scalars['ID']>;
-  in: Maybe<Array<Maybe<Scalars['ID']>>>;
-  nin: Maybe<Array<Maybe<Scalars['ID']>>>;
 };
 
 type StoreCollectionConnection = {
@@ -4024,6 +4728,14 @@ type SitePlugin = Node & {
 };
 
 type SitePluginPluginOptions = {
+  repositoryName: Maybe<Scalars['String']>;
+  accessToken: Maybe<Scalars['String']>;
+  customTypesApiToken: Maybe<Scalars['String']>;
+  apiEndpoint: Maybe<Scalars['String']>;
+  lang: Maybe<Scalars['String']>;
+  imageImgixParams: Maybe<SitePluginPluginOptionsImageImgixParams>;
+  imagePlaceholderImgixParams: Maybe<SitePluginPluginOptionsImagePlaceholderImgixParams>;
+  schemas: Maybe<SitePluginPluginOptionsSchemas>;
   name: Maybe<Scalars['String']>;
   short_name: Maybe<Scalars['String']>;
   start_url: Maybe<Scalars['String']>;
@@ -4042,8 +4754,6 @@ type SitePluginPluginOptions = {
   env: Maybe<SitePluginPluginOptionsEnv>;
   defer: Maybe<Scalars['Boolean']>;
   server: Maybe<Scalars['String']>;
-  basePath: Maybe<Scalars['String']>;
-  sizes: Maybe<Array<Maybe<Scalars['String']>>>;
   color: Maybe<Scalars['String']>;
   showSpinner: Maybe<Scalars['Boolean']>;
   src: Maybe<Scalars['String']>;
@@ -4065,6 +4775,165 @@ type SitePluginPluginOptions = {
   allExtensions: Maybe<Scalars['Boolean']>;
   isTSX: Maybe<Scalars['Boolean']>;
   jsxPragma: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsImageImgixParams = {
+  auto: Maybe<Scalars['String']>;
+  fit: Maybe<Scalars['String']>;
+  q: Maybe<Scalars['Int']>;
+};
+
+type SitePluginPluginOptionsImagePlaceholderImgixParams = {
+  w: Maybe<Scalars['Int']>;
+  blur: Maybe<Scalars['Int']>;
+};
+
+type SitePluginPluginOptionsSchemas = {
+  home: Maybe<SitePluginPluginOptionsSchemasHome>;
+};
+
+type SitePluginPluginOptionsSchemasHome = {
+  Main: Maybe<SitePluginPluginOptionsSchemasHomeMain>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMain = {
+  body: Maybe<SitePluginPluginOptionsSchemasHomeMainBody>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBody = {
+  type: Maybe<Scalars['String']>;
+  fieldset: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfig = {
+  choices: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoices>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoices = {
+  carousel: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarousel>;
+  shelf: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelf>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarousel = {
+  type: Maybe<Scalars['String']>;
+  fieldset: Maybe<Scalars['String']>;
+  description: Maybe<Scalars['String']>;
+  icon: Maybe<Scalars['String']>;
+  display: Maybe<Scalars['String']>;
+  non_repeat: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_Repeat>;
+  repeat: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeat>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_Repeat = {
+  title: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatTitle>;
+  display_arrows: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_Arrows>;
+  display_dots: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_Dots>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatTitle = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatTitleConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatTitleConfig = {
+  single: Maybe<Scalars['String']>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_Arrows = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_ArrowsConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_ArrowsConfig = {
+  default_value: Maybe<Scalars['Boolean']>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_Dots = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_DotsConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselNon_RepeatDisplay_DotsConfig = {
+  default_value: Maybe<Scalars['Boolean']>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeat = {
+  items: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeatItems>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeatItems = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeatItemsConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeatItemsConfig = {
+  thumbnails: Maybe<Array<Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeatItemsConfigThumbnails>>>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesCarouselRepeatItemsConfigThumbnails = {
+  name: Maybe<Scalars['String']>;
+  width: Maybe<Scalars['Int']>;
+  height: Maybe<Scalars['Int']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelf = {
+  type: Maybe<Scalars['String']>;
+  fieldset: Maybe<Scalars['String']>;
+  description: Maybe<Scalars['String']>;
+  icon: Maybe<Scalars['String']>;
+  display: Maybe<Scalars['String']>;
+  non_repeat: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_Repeat>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_Repeat = {
+  title: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatTitle>;
+  display_dots: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_Dots>;
+  display_arrows: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_Arrows>;
+  collection: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatCollection>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatTitle = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatTitleConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatTitleConfig = {
+  single: Maybe<Scalars['String']>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_Dots = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_DotsConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_DotsConfig = {
+  default_value: Maybe<Scalars['Boolean']>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_Arrows = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_ArrowsConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatDisplay_ArrowsConfig = {
+  default_value: Maybe<Scalars['Boolean']>;
+  label: Maybe<Scalars['String']>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatCollection = {
+  type: Maybe<Scalars['String']>;
+  config: Maybe<SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatCollectionConfig>;
+};
+
+type SitePluginPluginOptionsSchemasHomeMainBodyConfigChoicesShelfNon_RepeatCollectionConfig = {
+  label: Maybe<Scalars['String']>;
 };
 
 type SitePluginPluginOptionsWorkboxConfig = {
