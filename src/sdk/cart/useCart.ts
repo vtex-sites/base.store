@@ -1,5 +1,5 @@
 import { useCart as useSDKCart } from '@vtex/store-sdk'
-import { useMemo, useCallback } from 'react'
+import { useCallback, useMemo } from 'react'
 import type { CartItem as ICartItem } from '@vtex/store-sdk'
 
 export interface CartItem extends ICartItem {
