@@ -2094,6 +2094,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/http-cache-semantics@*":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/http-cache-semantics/-/http-cache-semantics-4.0.1.tgz#0ea7b61496902b95890dc4c3a116b60cb8dae812"
+  integrity sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==
+
 "@types/http-proxy@^1.17.4", "@types/http-proxy@^1.17.5":
   version "1.17.7"
   resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.7.tgz#30ea85cc2c868368352a37f0d0d3581e24834c6f"
@@ -2391,17 +2396,6 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-graphql@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-graphql":
-  version "1.1.9"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-graphql#ff1171d69c95d89d8e7521f9e2701a224a43dfef"
-  dependencies:
-    "@graphql-codegen/core" "^1.17.7"
-    "@graphql-codegen/plugin-helpers" "^1.17.7"
-    "@graphql-codegen/typescript" "^1.17.7"
-    "@graphql-codegen/typescript-operations" "^1.17.7"
-    "@graphql-tools/relay-operation-optimizer" "^6.0.15"
-    fs-extra "^9.0.1"
-
 "@vtex/gatsby-plugin-nginx@^1.1.1":
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.1.11.tgz#0a69cedb0902eb957f1205b373615d203cb58d11"
@@ -2414,19 +2408,9 @@
   version "1.1.11"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-plugin-thumbor#81fd3396d3066822cb9b4745f8798fe64ee10e1d"
 
-"@vtex/gatsby-plugin-thumbor@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-thumbor":
-  version "1.1.9"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-plugin-thumbor#49a5a425627779c6f72d0c135afa1898c686c842"
-
 "@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-source-store":
   version "1.1.11"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/gatsby-source-store#e582e3cc9a1377fe2dc29fd912c82aba0c4fd208"
-  dependencies:
-    gatsby-graphql-source-toolkit "^2.0.1"
-
-"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-source-store":
-  version "1.1.9"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/gatsby-source-store#f570bb9994bdc0515a667623211ae6bf13a2b5af"
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
@@ -2450,25 +2434,9 @@
     rollup-plugin-graphql "^0.1.0"
     slugify "^1.6.0"
 
-"@vtex/store-api@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-api":
-  version "1.1.9"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-api#d31fa3ecf63ae6845e92868fab0ca976da1cdb84"
-  dependencies:
-    "@graphql-tools/schema" "^8.2.0"
-    dataloader "^2.0.0"
-    isomorphic-unfetch "^3.1.0"
-    rollup-plugin-graphql "^0.1.0"
-    slugify "^1.6.0"
-
 "@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-sdk":
   version "1.1.11"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-sdk#bd6bb17e23bd5e1bbd6fa029882aedb22c9a3412"
-  dependencies:
-    idb-keyval "^5.1.3"
-
-"@vtex/store-sdk@https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-sdk":
-  version "1.1.9"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/2d0a99ba/@vtex/store-sdk#dbac4826641105b2655dab870af272265b1ac492"
   dependencies:
     idb-keyval "^5.1.3"
 
