@@ -1,9 +1,9 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
-import { useSkuId } from 'src/sdk/product/useSkuId'
+import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/ProductDetailsFragment_product.graphql'
 import Button from 'src/components/ui/Button'
 
@@ -11,67 +11,68 @@ interface Props {
   product: ProductDetailsFragment_ProductFragment
 }
 
-const useSku = (product: Props['product']) => {
-  const [skuId] = useSkuId()
-
-  return useMemo(() => {
-    const maybeSku =
-      skuId && product.items?.find((item) => item?.itemId === skuId)
-
-    return maybeSku || product.items?.[0]
-  }, [product.items, skuId])
+const styles = {
+  listPrice: { textDecoration: 'line-through' },
 }
 
 function ProductDetails({ product }: Props) {
-  const sku = useSku(product)
-  const { images, sellers, itemId } = sku ?? {}
-  const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  const imageSrc = src ?? ''
-  const imageAlt = alt ?? ''
-  const [seller] = sellers!
-  const offer = seller!.commercialOffer
-  const image = useImage(imageSrc, 'product.details')
-  const buyProps = useBuyButton(
-    offer && {
-      name: product.productName!,
-      price: offer.spotPrice!,
-      listPrice: offer.listPrice!,
-      quantity: 1,
-      giftQuantity: 0,
-      seller: seller!.sellerId!,
-      skuId: itemId!,
-      image: {
-        src: imageSrc,
-        alt: imageAlt,
-      },
-    }
-  )
+  const {
+    id,
+    name,
+    image: [img],
+    offers: {
+      offers: [
+        {
+          price,
+          listPrice,
+          seller: { identifier },
+        },
+      ],
+    },
+  } = product
+
+  const image = useImage(img.url, 'product.details')
+  const buyProps = useBuyButton({
+    name,
+    price,
+    listPrice,
+    quantity: 1,
+    giftQuantity: 0,
+    seller: identifier,
+    skuId: id,
+    image: {
+      src: img.url,
+      alt: img.alternateName,
+    },
+  })
 
   return (
-    <>
-      <h1>{product.productName}</h1>
-      <GatsbyImage image={image} alt={imageAlt} loading="eager" />
+    <div>
+      <h1>{name}</h1>
+      <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
+      <div style={styles.listPrice}>{useFormattedPrice(listPrice)}</div>
+      <div>{useFormattedPrice(price)}</div>
       <Button {...buyProps}>Add to cart</Button>
-    </>
+    </div>
   )
 }
 
 export const fragment = graphql`
   fragment ProductDetailsFragment_product on StoreProduct {
-    id: productId
-    productName
+    id: productID
+    name
 
-    items {
-      itemId
-      images {
-        imageUrl
-        imageText
-      }
-      sellers {
-        sellerId
-        commercialOffer: commertialOffer {
-          spotPrice
-          listPrice: ListPrice
+    image {
+      url
+      alternateName
+    }
+
+    offers {
+      offers {
+        price
+        listPrice
+        seller {
+          identifier
         }
       }
     }

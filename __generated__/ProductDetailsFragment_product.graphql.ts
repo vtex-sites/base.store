@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type ProductDetailsFragment_ProductFragment = { productName: Maybe<string>, id: Maybe<string>, items: Maybe<Array<Maybe<{ itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ sellerId: Maybe<string>, commercialOffer: Maybe<{ spotPrice: Maybe<number>, listPrice: Maybe<number> }> }>>> }>>> };
+export type ProductDetailsFragment_ProductFragment = { name: string, id: string, image: Array<{ url: string, alternateName: string }>, offers: { offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } };
 
 
 // Query Related Code

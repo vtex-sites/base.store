@@ -1,8 +1,10 @@
 import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import getSchema from '../server'
-import persistedQueries from '../../__generated__/persisted.graphql.json'
+import { getSchema, getContextFactory } from '../server'
+import persisted from '../../__generated__/persisted.graphql.json'
+
+const persistedQueries = new Map(Object.entries(persisted))
 
 const parseProdRequest = (req: GatsbyFunctionRequest) => {
   const res =
@@ -15,7 +17,7 @@ const parseProdRequest = (req: GatsbyFunctionRequest) => {
         }
 
   const hash = res.extensions.persistedQuery.sha256Hash
-  const query = (persistedQueries as any)[hash]
+  const query = persistedQueries.get(hash)
 
   if (query == null) {
     throw new Error(`No query found with hash: ${hash}`)
@@ -35,6 +37,8 @@ const parseDevRequest = (req: GatsbyFunctionRequest) => {
 
   throw new Error('No GET request during development is allowed')
 }
+
+const contextFactory = getContextFactory()
 
 const handler = async (
   req: GatsbyFunctionRequest,
@@ -56,6 +60,7 @@ const handler = async (
       schema: await getSchema(),
       document: parse(query),
       variableValues: variables,
+      contextValue: contextFactory({}),
       operationName,
     })
 

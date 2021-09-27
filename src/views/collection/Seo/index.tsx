@@ -3,27 +3,21 @@ import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import type { CollectionSeoFragment_StoreCollectionFragment } from '@generated/CollectionSeoFragment_storeCollection.graphql'
 import type { CollectionSeoFragment_SiteFragment } from '@generated/CollectionSeoFragment_site.graphql'
-import type { CollectionSeoFragment_BreadcrumbFragment } from '@generated/CollectionSeoFragment_breadcrumb.graphql'
 
 import { useMetadata } from './hooks/useMetadata'
-import { useBreadcrumb } from './hooks/useBreadcrumb'
 
 interface Props {
   slug: string
   site: CollectionSeoFragment_SiteFragment
   storeCollection: CollectionSeoFragment_StoreCollectionFragment
-  breadcrumb: CollectionSeoFragment_BreadcrumbFragment[]
 }
 
 function Seo({
   site,
-  storeCollection: { seo: collectionSeo },
-  breadcrumb,
   slug,
+  storeCollection: { seo: collectionSeo, breadcrumbList },
 }: Props) {
   const siteMetadata = site.siteMetadata!
-
-  const breadcrumbJson = useBreadcrumb({ breadcrumb })
   const metadata = useMetadata({
     titleTemplate: siteMetadata.titleTemplate!,
     title: collectionSeo.title || siteMetadata.title!,
@@ -34,7 +28,10 @@ function Seo({
   return (
     <>
       <GatsbySeo {...metadata} defer />
-      {breadcrumbJson && <BreadcrumbJsonLd {...breadcrumbJson} defer />}
+      <BreadcrumbJsonLd
+        itemListElements={breadcrumbList.itemListElement}
+        defer
+      />
     </>
   )
 }
@@ -45,6 +42,13 @@ export const fragment = graphql`
       title
       description
     }
+    breadcrumbList {
+      itemListElement {
+        item
+        name
+        position
+      }
+    }
   }
   fragment CollectionSeoFragment_site on Site {
     siteMetadata {
@@ -52,10 +56,6 @@ export const fragment = graphql`
       title
       description
     }
-  }
-  fragment CollectionSeoFragment_breadcrumb on VTEX_SearchBreadcrumb {
-    href
-    name
   }
 `
 

@@ -9,21 +9,21 @@
 
 // Operation related types
 export type CollectionSearchQueryQueryVariables = Exact<{
-  to: Scalars['Int'];
-  from: Scalars['Int'];
-  selectedFacets: Array<Vtex_SelectedFacetInput> | Vtex_SelectedFacetInput;
-  sort: Scalars['String'];
+  first: Scalars['Int'];
+  after: Maybe<Scalars['String']>;
+  sort: Maybe<StoreSort>;
+  selectedFacets: Array<StoreSelectedFacet> | StoreSelectedFacet;
 }>;
 
 
-export type CollectionSearchQueryQuery = { vtex: { productSearch: Maybe<{ totalCount: Maybe<number>, products: Maybe<Array<Maybe<{ productName: Maybe<string>, slug: Maybe<string>, id: Maybe<string>, items: Maybe<Array<Maybe<{ itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ sellerId: Maybe<string>, commercialOffer: Maybe<{ spotPrice: Maybe<number>, listPrice: Maybe<number> }> }>>> }>>> }>>> }>, facets: Maybe<{ breadcrumb: Maybe<Array<Maybe<{ href: Maybe<string>, name: Maybe<string> }>>>, facets: Maybe<Array<Maybe<{ name: Maybe<string>, type: Maybe<Vtex_FilterType>, values: Maybe<Array<Maybe<{ key: Maybe<string>, name: Maybe<string>, value: Maybe<string>, selected: Maybe<boolean>, quantity: number, range: Maybe<{ from: Maybe<number>, to: Maybe<number> }> }>>> }>>> }> } };
+export type CollectionSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, name: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
 
 
 // Query Related Code
 
 export const CollectionSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($to: Int!, $from: Int!, $selectedFacets: [VTEX_SelectedFacetInput!]!, $sort: String!) {\n  vtex {\n    productSearch(\n      to: $to\n      from: $from\n      orderBy: $sort\n      selectedFacets: $selectedFacets\n      hideUnavailableItems: false\n      simulationBehavior: skip\n    ) {\n      products {\n        slug: linkText\n        id: productId\n        productName\n        items {\n          itemId\n          images {\n            imageUrl\n            imageText\n          }\n          sellers {\n            sellerId\n            commercialOffer: commertialOffer {\n              spotPrice\n              listPrice: ListPrice\n            }\n          }\n        }\n      }\n      totalCount: recordsFiltered\n    }\n    facets(\n      selectedFacets: $selectedFacets\n      operator: or\n      behavior: \"Static\"\n      removeHiddenFacets: true\n    ) {\n      breadcrumb {\n        href\n        name\n      }\n      facets {\n        name\n        type\n        values {\n          key\n          name\n          value\n          selected\n          quantity\n          range {\n            from\n            to\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "f8f1cf3bbffd5236e1e3f5d55f0b50be1b3e7f150f5d55c98361a14ac0ac5a09",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
+  sha256Hash: "58b6a46e7fdf3ce0ec4a09ad09f1e918eaa56a022542b3183170ee6357be9cc2",
   operationName: "CollectionSearchQuery",
 }
 

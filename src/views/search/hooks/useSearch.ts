@@ -1,6 +1,6 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
+import { useSearchVariablesFromSearchState } from 'src/sdk/search/useSearchVariablesFromSearchState'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   FullTextSearchQueryQuery,
@@ -9,7 +9,7 @@ import type {
 import { FullTextSearchQuery } from '@generated/FullTextSearchQuery.graphql'
 
 export const useSearch = (searchParams: SearchParamsState) => {
-  const variables = useQueryVariablesFromSearchParams(searchParams)
+  const variables = useSearchVariablesFromSearchState(searchParams)
 
   return useQuery<FullTextSearchQueryQuery, FullTextSearchQueryQueryVariables>({
     ...FullTextSearchQuery,
@@ -22,38 +22,29 @@ export const useSearch = (searchParams: SearchParamsState) => {
  * */
 export const query = gql`
   query FullTextSearchQuery(
-    $from: Int!
-    $to: Int!
-    $fullText: String
-    $selectedFacets: [VTEX_SelectedFacetInput!]!
-    $sort: String!
+    $first: Int!
+    $after: String
+    $sort: StoreSort
+    $term: String!
+    $selectedFacets: [StoreSelectedFacet!]!
   ) {
-    vtex {
-      productSearch(
-        from: $from
-        to: $to
-        orderBy: $sort
-        fullText: $fullText
-        selectedFacets: $selectedFacets
-        hideUnavailableItems: false
-        simulationBehavior: skip
-      ) {
-        products {
-          ...ProductSummary_product
+    search(
+      first: $first
+      after: $after
+      sort: $sort
+      term: $term
+      selectedFacets: $selectedFacets
+    ) {
+      products {
+        ...ProductGallery_products
+        edges {
+          node {
+            ...ProductSummary_product
+          }
         }
-        ...ProductGallery_productSearch
-        totalCount: recordsFiltered
       }
-      facets(
-        fullText: $fullText
-        selectedFacets: $selectedFacets
-        operator: or
-        behavior: "Static"
-        removeHiddenFacets: true
-      ) {
-        facets {
-          ...ProductGallery_facets
-        }
+      facets {
+        ...ProductGallery_facets
       }
     }
   }

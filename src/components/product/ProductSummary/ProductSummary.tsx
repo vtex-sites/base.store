@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
@@ -14,56 +14,59 @@ interface Props {
 }
 
 function ProductSummary({ product }: Props) {
-  const { images, sellers, itemId } = product.items?.[0] ?? {}
-  const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  const imageSrc = src ?? ''
-  const imageAlt = alt ?? ''
-  const [seller] = sellers!
-  const offer = seller!.commercialOffer
-  const linkProps = useProductLink({ slug: product.slug!, skuId: itemId! })
-  const image = useImage(imageSrc, 'product.summary')
-  const price = useFormattedPrice(offer!.spotPrice!)
-  const listPrice = useFormattedPrice(offer!.listPrice!)
-  const buyProps = useBuyButton(
-    offer && {
-      name: product.productName!,
-      skuId: itemId!,
-      price: offer.spotPrice!,
-      listPrice: offer.listPrice!,
-      quantity: 1,
-      giftQuantity: 0,
-      seller: seller!.sellerId!,
-      image: {
-        src: imageSrc,
-        alt: imageAlt,
-      },
-    }
+  const {
+    id,
+    slug,
+    name: productName,
+    isVariantOf: { name },
+    image: [img],
+    offers: { lowPrice: spotPrice, offers },
+  } = product
+
+  const {
+    listPrice,
+    seller: { identifier },
+  } = useMemo(
+    () => offers.find((x) => x.price === spotPrice)!,
+    [spotPrice, offers]
   )
 
-  const discountPercent = useDiscountPercent(
-    Number(offer?.listPrice),
-    Number(offer?.spotPrice)
-  )
+  const discountPercent = useDiscountPercent(listPrice, spotPrice)
+  const linkProps = useProductLink({ slug })
+  const image = useImage(img.url, 'product.summary')
+  const buyProps = useBuyButton({
+    name: productName,
+    skuId: id,
+    price: spotPrice,
+    listPrice,
+    quantity: 1,
+    giftQuantity: 0,
+    seller: identifier,
+    image: {
+      src: img.url,
+      alt: img.alternateName,
+    },
+  })
 
   return (
     <Link {...linkProps}>
       <GatsbyImage
         className="w-full"
         image={image}
-        alt={imageAlt}
+        alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />
-      <div>{product.productName}</div>
+      <div>{name}</div>
       <div className="flex justify-between">
         <span
           data-testid="list-price"
-          data-value={offer!.listPrice!}
+          data-value={listPrice}
           className="line-through"
         >
-          {listPrice}
+          {useFormattedPrice(listPrice)}
         </span>
-        <span data-testid="price" data-value={offer!.spotPrice!}>
-          {price}
+        <span data-testid="price" data-value={spotPrice}>
+          {useFormattedPrice(spotPrice)}
         </span>
         {!!Number(discountPercent) && <Badge>{discountPercent}%</Badge>}
       </div>
@@ -73,22 +76,28 @@ function ProductSummary({ product }: Props) {
 }
 
 export const fragment = graphql`
-  fragment ProductSummary_product on VTEX_Product {
-    slug: linkText
-    id: productId
-    productName
+  fragment ProductSummary_product on StoreProduct {
+    id: productID
+    slug
 
-    items {
-      itemId
-      images {
-        imageUrl
-        imageText
-      }
-      sellers {
-        sellerId
-        commercialOffer: commertialOffer {
-          spotPrice
-          listPrice: ListPrice
+    name
+
+    isVariantOf {
+      name
+    }
+
+    image {
+      url
+      alternateName
+    }
+
+    offers {
+      lowPrice
+      offers {
+        price
+        listPrice
+        seller {
+          identifier
         }
       }
     }
