@@ -2304,9 +2304,9 @@
   dependencies:
     idb-keyval "^5.1.3"
 
-"@vtex/store-ui@https://pkg.csb.dev/vtex/faststore/commit/809dc415/@vtex/store-ui":
-  version "1.1.10"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/809dc415/@vtex/store-ui#a3b6c84115bfee86a19019bafa3ab254b18f24ec"
+"@vtex/store-ui@https://pkg.csb.dev/vtex/faststore/commit/88881d32/@vtex/store-ui":
+  version "1.1.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/88881d32/@vtex/store-ui#c9b5c30dedfb42f3925c47f2cdb346d41982e3fb"
   dependencies:
     "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
