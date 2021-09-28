@@ -5,7 +5,7 @@ import type { FC } from 'react'
 export const AnalyticsProvider: FC = ({ children }) => {
   useEffect(() => {
     window.dataLayer = window.dataLayer || []
-  })
+  }, [])
 
   useAnalyticsEvent((event) => {
     window.dataLayer.push(event)
