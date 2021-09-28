@@ -1,14 +1,13 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://storetheme.vtex.com/">
-    <img alt="Gatsby" src="https://storecomponents.vtexassets.com/arquivos/store-theme-logo.png" width="250" />
+  <a href="https://github.com/vtex/faststore">
+    <img alt="Store Framework" src="https://emoji.slack-edge.com/T02BCPD0X/store-framework/7547b127e929c376.png" width="75" />
   </a>
 </p>
 <h1 align="center">
-  A store theme powered by VTEX and Gatsby
+  A starter powered by FastStore and Gatsby
 </h1> 
 
-Kick-off your project with this default boilerplate. This starter ships with the main VTEX Store configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
+Kick-off your sttore with this boilerplate. This starter ships with the main FastStore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
 
 ## 🚀 Quick start
 
@@ -18,7 +17,7 @@ Kick-off your project with this default boilerplate. This starter ships with the
 
     ```shell
     # Clone this repo into your machine
-    npx degit vtex-sites/base.store my-awesome-store
+    npx degit vtex-sites/base.store awesome.store
     ```
 
 1.  **Install dependencies**
@@ -26,13 +25,19 @@ Kick-off your project with this default boilerplate. This starter ships with the
     Install dependencies with yarn
 
     ```shell
-    cd my-awesome-store/
+    cd awesome.store/
     yarn
     ```
 
 2.  **Setup env vars.**
 
-    Chose a store by changing the `vtex.env` file and adding your own custom account name.
+    Choose the ecommerce platform provider of your choice in the `vtex.env` file and set the corresponding options. For instance, to connect to the VTEX platform on the store `fashioneurope`:
+
+    ```
+    GATSBY_STORE_ID=fashioneurope
+    GATSBY_VTEX_ENVIRONMENT=vtexcommercestable
+    GATSBY_VTEX_IO_WORKSPACE=master
+    ```
 
 3.  **Start developing.**
 
@@ -48,28 +53,36 @@ Kick-off your project with this default boilerplate. This starter ships with the
 
     _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
 
-    Open the `my-awesome-store` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real-time!
+    Open the `awesome.store` directory in your code editor of choice and edit `src/pages/index.tsx`. Save your changes and the browser will update in real-time!
 
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
 
-    .
+    ./
     ├── node_modules
     ├── src
     ├── .gitignore
-    ├── .prettierrc
-    ├── .eslintrc.js
-    ├── gatsby-browser.js
+    ├── .prettierrrc
+    ├── .eslintrc
     ├── gatsby-config.js
     ├── gatsby-node.js
-    ├── gatsby-ssr.js
     ├── LICENSE
     └── yarn.lock
     ├── package.json
     ├── tsconfig.json
     ├── vtex.env
-    └── README.md
+    ├── README.md
+    ├── __generated__
+    ├── babel.config.js
+    ├── cypress
+    ├── cypress.json
+    ├── gatsby-browser.js
+    ├── gatsby-ssr.js
+    ├── lighthouserc.js
+    ├── public
+    ├── pull_request_template.md
+    ├── renovate.json
 
 1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
 
@@ -97,15 +110,190 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 13. **`README.md`**: A text file containing useful reference information about your project.
 
-## 🎓 Learning Gatsby
+14. **`__generated__`**: Where TypeScript typings are generated for your GraphQL queries. You can use these files for strongly typing your App
 
-Looking for more guidance? Full documentation for Gatsby lives [on their website](https://www.gatsbyjs.org/). Here are some places to start:
+15. **`babel.config.js`**: [Babel configurations](https://babeljs.io/docs/en/configuration#babelrcjson) for you app. This is where you can change the targeted browers
 
-- **For most developers, we recommend starting with Gatsby's [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+16. **`cypress`**: End to End(e2e) tests using Cypress. Most of the cenarios are covered in here. Add your custom flows to avoid regressions
 
-- **To dive straight into code samples, head [to Gatsby's documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+17. **`cypress.json`**: [Cypress configuration file](https://docs.cypress.io/guides/references/configuration)
 
-## ⚡ Performance
-This project uses Google's Lighthouse CI for analyzing the store's performance and setting performance budgets. The URLs tested can be found and changed in the `ci.collect.url` property. Feel free to change this at your will 
+18. **`gatsby-browser.js`**: Lets you respond to Gatsby-specific events within the browser, and wrap your page components in additional global components. The Gatsby Browser API gives you many options for interacting with the client-side of Gatsby. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/
 
-<!-- AUTO-GENERATED-CONTENT:END -->
+19. **`gatsby-ssr.js`**: Lets you respond to Gatsby-specific events during SSG and SSR, and wrap your page components in additional global components. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
+
+
+20. **`lighthouserc.js`**: Configures [Google Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci). This is where you can turn on/off lighthouse assertions to be used by Lighthouse CI Bot/hook
+
+21. **`pull_request_template.md`**: Template used when creating your Pull Requests
+    
+22. **`renovate.json`**: Renovate configuratio file to keep your store always fresh with FastStore's latest versions
+
+23. **`.prettierignore`**: Ignore listed files when applying prettier rules
+
+24. **`.eslitignore`**: Ignore listed files when applying eslint rules
+
+## 💻 Code Structure
+
+All code is inside the `src` folder. The code is split into folders that implement an MVC like architecture.
+
+The `controller` is inside the `src/sdk` folder. This is where you will find most logic for the application. This folder contains hooks for adding items to cart, making graphql queries, resizing images, etc. If you eed to write a custom business logic this is probably the place to put this logic.
+
+The `views` are written in the `src/components` folder and are subdivided into domain specific components. Cart related items are inside the `src/components/cart` folder. Search and Product related components like facets, product summary and search results are on their respective folders. Basic building blocks components are inside the UI folder. Components like button, checkbox and modal are good candidates for the UI folder. 
+Section components are those components that occupy a whole slice on the webpage and are desirable to be changed by a CMS. Section components are Product Gallery, Carousel, Shelf and Product description.
+
+The `model`, in a website, is where the data fetching occurs. Since this project uses Jamstack, a crucial design decision was made to explicitly split where Static and Dynamic data are fetched. The files inside the `src/pages` folder use [Gatsby's File System Route API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/) to declare routes and fetch static data. The files inside the `src/views` folder revalidate and enrich static data with dynamic attributes.
+
+To summarize:
+1. `src/pages`: Routes are declared and static data is fetched
+2. `src/views`: Receives static data from `src/pages`, enrich this data with dynamic attributes and render section components along with SEO tags.
+3. `src/components/sections`: Receive necessary data and use domain specific components (cart/product/search/ui) for rendering a slice on the web page.
+
+## ✏️ Adding Components
+
+What better than an example for learning the best practices while adding components? On this example we will add a button component. 
+Components live on the `src/components` folder. Each component may have, at most, 3 files; a component file, an export file, and a styling file.
+First, let's create a folder and the files. 
+
+```sh
+mkdir src/components/ui/Button
+touch src/components/ui/Button/Button.tsx
+touch src/components/ui/Button/index.tsx
+```
+
+The `index.tsx` is just an export file, so it's content is really simple with:
+
+```tsx
+export { default } from './Button'
+```
+
+The real thing happens on `Button.tsx`. On this file let's define the component like:
+
+```tsx
+import React from 'react'
+
+interface Props {}
+
+function Button (props: Props) {
+  return <button {...props} />
+}
+
+export default Button
+```
+
+And, that's it! Now you have a working button that you can use anywhere on your project. FastStore, however, brings a handy library called `@vtex/store-ui` with builtin components to help you speed up your development. To use it, just change `Button.tsx` to:
+
+```tsx
+import React from 'react'
+import { Button as UIButton } from '@vtex/store-ui'
+import type { ButtonProps } from '@vtex/store-ui'
+
+interface Props extends ButtonProps {}
+
+function Button (props: Props) {
+  return <UIButton {...props} />
+}
+
+export default Button
+```
+
+Now, our Button component is powered by Store UI. However, if you try to use this on your app you will see that the button is lacking styles. To add styles, we will use CSS modules because it allow us to target data attributes. On your terminal, type:
+```sh
+touch src/components/ui/Button/Button.module.css
+```
+
+Now, on `Button.module.css`:
+```css
+[data-store-button]: {
+  @apply p-0 bg-primary-100;
+}
+```
+
+The `@apply` directive exists because we are using [Tailwind css](https://tailwindcss.com/). To learn more about tailwind, [see their docs](https://tailwindcss.com/docs). To know more about our best practices on using tailwid, see the `Styling Components` section.
+This `data-store-button` is a css data attribute selector. To know which selectors are available, check [store-ui docs](https://storeui.netlify.app/)
+
+Now, open `Button.tsx` and import this CSS with:
+```tsx
+import React from 'react'
+import { Button as UIButton } from '@vtex/store-ui'
+import type { ButtonProps } from '@vtex/store-ui'
+
+import './Button.module.css'
+
+interface Props extends ButtonProps {}
+
+function Button (props: Props) {
+  return <UIButton {...props} />
+}
+
+export default Button
+```
+
+For most components you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and muted variants. To add variants to the component, you can, on `Button.tsx`
+```tsx
+import React from 'react'
+import { Button as UIButton } from '@vtex/store-ui'
+import type { ButtonProps } from '@vtex/store-ui'
+
+import './Button.module.css'
+
+interface Props extends ButtonProps {
+  variant: 'muted' | 'primary'
+}
+
+function Button ({variant, ...props}: Props) {
+  return <UIButton className={variant} {...props} />
+}
+
+export default Button
+```
+
+and than, on `Button.module.css`:
+```css
+.primary [data-store-button]: {
+  @apply p-0 bg-primary-100;
+}
+
+.muted [data-store-button]: {
+  @apply p-0 bg-muted-100;
+}
+```
+
+Now we have a styled Button component that accepts different variants!! 🎉
+
+The aforementioned guide works well for UI components. However, sections are more complex and usually don't have variants, since they usually serve a single responsibility in the page. For sections, you can use tailwind natively like:
+
+```tsx
+// components/sections/MySection/MySection.tsx
+...
+function MySection {
+  return (
+    <>
+      <div className="p-2 flex items-center">
+        <p className="h-4 p-5 mx-2">Hello World</p>
+        <Button variant="muted">
+      </div>
+    </>
+  )
+}
+...
+```
+
+## 🖊️ Styling Components
+This starter uses [Tailwind CSS](https://tailwindcss.com/) for styling. If you want, you can remove it and use other solutions. Both Gatsby and Store UI support many different CSS frameworks, like [emotion](https://emotion.sh/docs/introduction), [stitches](https://stitches.dev/docs/introduction) or even no CSS framework at all. 
+This guide covers best practices and patterns to use when styling with Tailwind.
+
+Tailwind is a utility-first CSS framework. The goal of this starter is to make it possible for developers to use Tailwind themes to change the look of the store. To accomplish this, a few things needs to be respected:
+
+1. Do never use hard coded colors/padings/spacings etc. e.g.: `px-[10px], bg-[#fff]`
+2. Do never use named colors, but use alias colors instead: e.g. `bg-primary` instead of `bg-blue`
+
+> **Note**: CSS modules generate extra classes in your final CSS sheet. Use them with caution.
+
+## 🎓 Learning the Frameworks
+
+Looking for more guidance? Full documentation for FastStore lives [on thir github](https://github.com/vtex/faststore). Also, for learning Gatsby, take a look at the [Gatsby Website](https://www.gatsbyjs.com/). They have plenty of tutorials and examples in there.
+
+## ⚡ Performance & QA
+
+This project has strict performance budgets. Right out of the box, this project performs around 95 on Google's Page Speed Insights website, that usually is way more strict than your laptop's chrome lighthouse. Every time you commit into the repository, our QA bots will run and evaluate your code quality. We recommend you NEVER put in production a code that breaks any of the bots. If a bot breaks and still you need to put the code into production, change the bot config (`lighthouserc.js`, `cypress.json`) to make it pass and merge. This way you ensure your website will keep performing well during the years to come
