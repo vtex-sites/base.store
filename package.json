@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.221.0",
   "dependencies": {
-    "@cguimaraes/sfj-lambda": "^0.0.2",
+    "@cguimaraes/sfj-lambda": "^0.0.3",
     "@vtex/gatsby-plugin-graphql": "^1.1.11",
     "@vtex/gatsby-plugin-nginx": "^1.1.11",
     "@vtex/gatsby-plugin-thumbor": "^1.1.11",
