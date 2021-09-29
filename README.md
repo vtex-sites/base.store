@@ -4,10 +4,10 @@
   </a>
 </p>
 <h1 align="center">
-  A starter powered by FastStore and Gatsby
+  A starter powered by Faststore and Gatsby
 </h1> 
 
-Kick-off your store with this boilerplate. This starter ships with the main FastStore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
+Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
 
 ## 🚀 Quick start
 
@@ -124,12 +124,11 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 19. **`gatsby-ssr.js`**: Lets you respond to Gatsby-specific events during SSG and SSR, and wrap your page components in additional global components. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
 
-
 20. **`lighthouserc.js`**: Configures [Google Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci). This is where you can turn on/off lighthouse assertions to be used by Lighthouse CI Bot/hook
 
 21. **`pull_request_template.md`**: Template used when creating your Pull Requests
     
-22. **`renovate.json`**: Renovate configuration file to keep your store always fresh with FastStore's latest versions
+22. **`renovate.json`**: Renovate configuration file to keep your store always fresh with Faststore's latest versions
 
 23. **`.prettierignore`**: Ignore listed files when applying prettier rules
 
@@ -183,7 +182,7 @@ function Button (props: Props) {
 export default Button
 ```
 
-And, that's it! Now you have a working button that you can use anywhere on your project. FastStore, however, brings a handy library called `@vtex/store-ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
+And, that's it! Now you have a working button that you can use anywhere on your project. Faststore, however, brings a handy library called `@vtex/store-ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
 
 ```tsx
 import React from 'react'
@@ -263,7 +262,7 @@ and then, on `Button.module.css`:
 
 Now we have a styled Button component that accepts different variants!! 🎉
 
-The aforementioned guide works well for UI components. However, sections are more complex and usually don't have variants, since they usually serve a single responsibility in the page. For sections, you can use tailwind natively like:
+The aforementioned guide works well for UI components. However, sections are more complex and usually don't have variants, since they usually serve a single responsibility on the page. For sections, you can use tailwind natively like:
 
 ```tsx
 // components/sections/MySection/MySection.tsx
@@ -294,7 +293,7 @@ Tailwind is a utility-first CSS framework. The goal of this starter is to make i
 
 ## 🎓 Learning the Frameworks
 
-Looking for more guidance? Full documentation for FastStore lives [on this GitHub repository](https://github.com/vtex/faststore). Also, for learning Gatsby, take a look at the [Gatsby Website](https://www.gatsbyjs.com/), they have plenty of tutorials and examples in there.
+Looking for more guidance? Full documentation for Faststore lives [on this GitHub repository](https://github.com/vtex/faststore). Also, for learning Gatsby, take a look at the [Gatsby Website](https://www.gatsbyjs.com/), they have plenty of tutorials and examples in there.
 
 ## ⚡ Performance & QA
 
