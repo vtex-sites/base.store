@@ -160,6 +160,9 @@ module.exports = {
       },
     },
     {
+      resolve: '@cguimaraes/sfj-lambda',
+    },
+    {
       resolve: '@vtex/gatsby-plugin-nginx',
       options: {
         httpOptions: [
