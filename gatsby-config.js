@@ -176,5 +176,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-netlify',
     },
+    {
+      resolve: 'gatsby-plugin-postcss',
+    },
   ],
 }
