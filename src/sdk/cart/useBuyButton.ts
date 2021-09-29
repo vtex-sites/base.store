@@ -42,7 +42,7 @@ export const useBuyButton = (item: Item | null) => {
         type: 'add_to_cart',
         data: {
           currency: code,
-          value: item.price * item.quantity,
+          value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [
             {
               item_id: item.id,
