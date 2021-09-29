@@ -36,7 +36,6 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
     ```
     GATSBY_STORE_ID=fashioneurope
     GATSBY_VTEX_ENVIRONMENT=vtexcommercestable
-    GATSBY_VTEX_IO_WORKSPACE=master
     ```
 
 3.  **Start developing**
