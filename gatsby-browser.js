@@ -7,12 +7,12 @@ import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import Layout from './src/views/Layout'
 import TestProvider from './src/sdk/tests'
 import { validateCart } from './src/sdk/cart/validate'
-import AnalyticsProvider from './src/sdk/analytics'
+import AnalyticsHandler from './src/sdk/analytics'
 import { uiInitialState, uiActions, uiEffects } from './src/sdk/ui'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
-    <AnalyticsProvider>
+    <AnalyticsHandler>
       <TestProvider>
         <UIProvider
           initialState={uiInitialState}
@@ -28,7 +28,7 @@ export const wrapRootElement = ({ element }) => (
           </SessionProvider>
         </UIProvider>
       </TestProvider>
-    </AnalyticsProvider>
+    </AnalyticsHandler>
   </ErrorBoundary>
 )
 

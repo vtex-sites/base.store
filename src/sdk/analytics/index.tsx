@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useAnalyticsEvent } from '@vtex/store-sdk'
 import type { PropsWithChildren } from 'react'
 
-export const AnalyticsProvider = ({ children }: PropsWithChildren<unknown>) => {
+export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
     window.dataLayer = window.dataLayer || []
   }, [])
@@ -14,4 +14,4 @@ export const AnalyticsProvider = ({ children }: PropsWithChildren<unknown>) => {
   return children
 }
 
-export default AnalyticsProvider
+export default AnalyticsHandler
