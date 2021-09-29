@@ -1,22 +1,16 @@
+import { Badge } from '@vtex/store-ui'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
-import { useProductLink } from 'src/sdk/product/useProductLink'
-import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
-import { Badge } from '@vtex/store-ui'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
+import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useProductLink } from 'src/sdk/product/useProductLink'
+import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
 
 interface Props {
   product: ProductSummary_ProductFragment
-}
-
-const styles = {
-  image: { width: '100%' },
-  listPrice: { textDecoration: 'line-through' },
-  offer: { display: 'flex', justifyContent: 'space-between' },
 }
 
 function ProductSummary({ product }: Props) {
@@ -54,17 +48,17 @@ function ProductSummary({ product }: Props) {
   return (
     <Link {...linkProps}>
       <GatsbyImage
-        style={styles.image}
+        className="w-full"
         image={image}
         alt={imageAlt}
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{product.productName}</div>
-      <div style={styles.offer}>
+      <div className="flex justify-between">
         <span
           data-testid="list-price"
           data-value={offer!.listPrice!}
-          style={styles.listPrice}
+          className="line-through"
         >
           {listPrice}
         </span>

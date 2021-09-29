@@ -6,7 +6,11 @@ function CartToggle() {
   const btnProps = useCartToggleButton()
   const { totalUniqueItems } = useCart()
 
-  return <button {...btnProps}>cart: {totalUniqueItems}</button>
+  return (
+    <button className="mx-3" {...btnProps}>
+      cart: {totalUniqueItems}
+    </button>
+  )
 }
 
 export default CartToggle

@@ -8,10 +8,6 @@ import type { PropsWithChildren } from 'react'
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const Toast = lazy(() => import('src/components/ui/Toast'))
 
-const style = {
-  main: { minHeight: '100vh' },
-}
-
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()
 
@@ -20,7 +16,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
   return (
     <>
       <Navbar />
-      <main style={style.main}>{children}</main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
       {displayMinicart && (
         <Suspense fallback={null}>
