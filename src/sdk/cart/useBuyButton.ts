@@ -1,5 +1,9 @@
 import { useCallback } from 'react'
-import type { AddToCartEvent, Item as AnalyticsItem } from '@vtex/store-sdk'
+import type {
+  AddToCartEvent,
+  AddToCartData,
+  Item as AnalyticsItem,
+} from '@vtex/store-sdk'
 import { sendAnalyticsEvent, useSession } from '@vtex/store-sdk'
 
 import { useUI } from '../ui'
@@ -13,7 +17,7 @@ type AdditionalItemProperties = {
 }
 
 interface VTEXAddToCartEvent extends AddToCartEvent {
-  data: AddToCartEvent['data'] & {
+  data: AddToCartData & {
     items: Array<AnalyticsItem & AdditionalItemProperties>
   }
 }
