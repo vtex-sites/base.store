@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAnalyticsEvent } from '@vtex/store-sdk'
-import type { FC } from 'react'
+import type { PropsWithChildren } from 'react'
 
-export const AnalyticsProvider: FC = ({ children }) => {
+export const AnalyticsProvider = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
     window.dataLayer = window.dataLayer || []
   }, [])
@@ -11,7 +11,7 @@ export const AnalyticsProvider: FC = ({ children }) => {
     window.dataLayer.push(event)
   })
 
-  return <> {children} </>
+  return children
 }
 
 export default AnalyticsProvider
