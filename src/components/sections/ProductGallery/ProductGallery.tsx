@@ -36,13 +36,7 @@ function ProductGallery({
     <>
       {/* Controls */}
       <FacetedFilter facets={facets} />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className="flex items-center justify-between">
         <div>Total Products: {totalCount}</div>
         <Sort />
       </div>
@@ -50,10 +44,10 @@ function ProductGallery({
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
         <a
+          className="p-8 block center"
           onClick={setPrevPage}
           href={prev.link}
           rel="prev"
-          style={{ padding: '30px', display: 'block', textAlign: 'center' }}
         >
           Previous Page
         </a>
@@ -73,11 +67,11 @@ function ProductGallery({
       {/* Add link to next page. This helps on SEO */}
       {next !== false && (
         <a
+          className="p-8 block center"
           data-testid="show-more"
           onClick={setNextPage}
           href={next.link}
           rel="next"
-          style={{ padding: '30px', display: 'block', textAlign: 'center' }}
         >
           Show More
         </a>

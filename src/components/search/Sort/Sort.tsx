@@ -22,7 +22,7 @@ function Sort() {
 
   return (
     <select
-      style={{ padding: '10px' }}
+      className="p-2"
       data-testid="search-sort"
       onChange={(e) => setSort(keys[e.target.selectedIndex])}
       value={sort}

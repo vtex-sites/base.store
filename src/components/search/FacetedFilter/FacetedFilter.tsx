@@ -4,8 +4,6 @@ import { useSearch } from 'src/sdk/search/useSearch'
 import type { FacetedFilter_FacetsFragment } from '@generated/FacetedFilter_facets.graphql'
 import { Checkbox } from '@vtex/store-ui'
 
-import * as styles from './FacetedFilter.module.css'
-
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
 }
@@ -15,13 +13,13 @@ function FacetedFilter({ facets }: Props) {
   const { toggleFacet } = useSearch()
 
   return (
-    <div className={styles.container}>
+    <div className="flex flex-col flex-nowrap overflow-x-hidden justify-around sm:flex-row sm:w-full">
       {facets
         .filter((facet) => facet.type === 'TEXT')
         .map(({ name, values }, index) => (
           <div key={`${name}-${index}`}>
             <button
-              className={styles.button}
+              className="m-2"
               onClick={() => setSelectedFilter(index)}
               data-testid="facet-filter-header"
             >
