@@ -4,6 +4,7 @@ import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { CartItem as ICartItem } from 'src/sdk/cart/useCart'
+import Button from 'src/components/ui/Button'
 
 interface Props {
   item: ICartItem
@@ -30,7 +31,7 @@ function CartItem({ item }: Props) {
       <div>listPrice: {listPrice}</div>
       <div>quantity: {item.quantity}</div>
       <div>gifts: {item.giftQuantity}</div>
-      <button {...btnProps}>Remove Item</button>
+      <Button {...btnProps}>Remove Item</Button>
     </div>
   )
 }

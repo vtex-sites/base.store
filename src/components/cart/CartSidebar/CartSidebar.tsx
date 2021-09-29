@@ -3,6 +3,7 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import Button from 'src/components/ui/Button'
 
 import CartItem from '../CartItem'
 
@@ -16,7 +17,7 @@ function CartSidebar() {
 
   return (
     <div data-testid="cart-sidebar">
-      <button {...toggleProps}>Close</button>
+      <Button {...toggleProps}>Close</Button>
       <div>Cart Item Detais</div>
 
       {items.map((item) => (
@@ -29,7 +30,7 @@ function CartSidebar() {
       <div>items: {totalItems}</div>
       <div>subTotal: {subTotal}</div>
       <div>total: {total}</div>
-      <button {...btnProps}>{isValidating ? 'loading...' : 'Checkout'}</button>
+      <Button {...btnProps}>{isValidating ? 'loading...' : 'Checkout'}</Button>
     </div>
   )
 }

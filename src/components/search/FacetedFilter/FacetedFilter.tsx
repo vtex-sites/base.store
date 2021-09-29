@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 import React, { useState } from 'react'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { FacetedFilter_FacetsFragment } from '@generated/FacetedFilter_facets.graphql'
-import { Checkbox } from '@vtex/store-ui'
+import { Checkbox, Button } from '@vtex/store-ui'
 
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
@@ -18,13 +18,13 @@ function FacetedFilter({ facets }: Props) {
         .filter((facet) => facet.type === 'TEXT')
         .map(({ name, values }, index) => (
           <div key={`${name}-${index}`}>
-            <button
+            <Button
               className="m-2"
               onClick={() => setSelectedFilter(index)}
               data-testid="facet-filter-header"
             >
               {name}
-            </button>
+            </Button>
             {selectedFilter === index && (
               <ul>
                 {values?.map((item) => {

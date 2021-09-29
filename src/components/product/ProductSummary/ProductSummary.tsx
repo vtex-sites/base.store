@@ -1,4 +1,3 @@
-import { Badge } from '@vtex/store-ui'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
@@ -8,6 +7,7 @@ import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
+import { Badge, Button } from '@vtex/store-ui'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -67,7 +67,7 @@ function ProductSummary({ product }: Props) {
         </span>
         {!!Number(discountPercent) && <Badge>{discountPercent}%</Badge>}
       </div>
-      <button {...buyProps}>Add to cart</button>
+      <Button {...buyProps}>Add to cart</Button>
     </Link>
   )
 }

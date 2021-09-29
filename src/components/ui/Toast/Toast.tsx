@@ -1,3 +1,4 @@
+import Button from 'src/components/ui/Button'
 import React, { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
 
@@ -26,7 +27,7 @@ function Toast() {
 
   return (
     <div>
-      <button onClick={popToast}>Close</button>
+      <Button onClick={popToast}>Close</Button>
       <div className={`h-36 text-white ${state[toast.status]}`}>
         message: {toast.message}
       </div>
