@@ -1,45 +1,21 @@
-const fetch = require('isomorphic-unfetch')
-const { introspectSchema, wrapSchema } = require('@graphql-tools/wrap')
-const { print } = require('graphql')
+const {
+  getSchema: storeApiGetSchema,
+  getContextFactory: storeApiGetContextFactory,
+} = require('@vtex/store-api')
 
-const store = process.env.GATSBY_STORE_ID
-const workspace = process.env.GATSBY_VTEX_IO_WORKSPACE
-
-const executor = async ({ document, variables }) => {
-  const query = print(document)
-  const response = await fetch(
-    `https://${workspace}--${store}.myvtex.com/graphql/`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query, variables }),
-    }
-  )
-
-  return response.json()
+const options = {
+  platform: process.env.GATSBY_COMMERCE_PLATFORM,
+  account: process.env.GATSBY_STORE_ID,
+  environment: process.env.GATSBY_VTEX_ENVIRONMENT,
 }
 
-const getSchema = async () => {
-  const remoteSchema = await introspectSchema(executor)
+const schema = storeApiGetSchema(options)
+const contextFactory = storeApiGetContextFactory(options)
 
-  return wrapSchema({
-    schema: remoteSchema,
-    executor,
-  })
+const getSchema = () => schema
+const getContextFactory = () => contextFactory
+
+module.exports = {
+  getSchema,
+  getContextFactory,
 }
-
-const memoize = (fn) => {
-  let memoized
-
-  return () => {
-    if (memoized === undefined) {
-      memoized = fn()
-    }
-
-    return memoized
-  }
-}
-
-module.exports = memoize(getSchema)

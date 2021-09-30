@@ -52,7 +52,7 @@ const orderFormToCart = (orderForm: OrderForm) => {
   const { orderFormId: cartId, items: orderItems, messages } = orderForm
 
   const items = orderItems.reduce((acc, curr, index) => {
-    const { id: skuId, quantity, isGift, price, seller } = curr
+    const { id: skuId, quantity, isGift, price, listPrice, seller } = curr
     const id = getItemId({
       seller,
       skuId,
@@ -63,7 +63,7 @@ const orderFormToCart = (orderForm: OrderForm) => {
       seller,
       skuId,
       price: price / 100,
-      listPrice: price / 100,
+      listPrice: listPrice / 100,
       quantity: isGift ? acc[id]?.quantity ?? 0 : quantity,
       giftQuantity: isGift ? quantity : acc[id]?.giftQuantity ?? 0,
     }
