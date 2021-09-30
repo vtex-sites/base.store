@@ -6,21 +6,21 @@ describe('Accessibility tests', () => {
 
     cy.intercept('/graphql/?operationName=GalleryQuery*').as('galleryQuery')
   })
-  it('Test Home', () => {
+  it('Home', () => {
     cy.visit('/')
     cy.waitForHydration()
     cy.injectAxe()
     cy.checkA11y()
   })
 
-  it('Test Collections Page', () => {
+  it('Collections Page', () => {
     cy.visit('/women')
     cy.wait('@galleryQuery')
     cy.injectAxe()
     cy.checkA11y()
   })
 
-  it('Test Product Page', () => {
+  it('Product Page', () => {
     cy.visit('/small-messenger-bag-with-double-g/p')
     cy.wait('@productQuery')
     cy.injectAxe()
