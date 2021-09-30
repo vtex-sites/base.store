@@ -50,6 +50,15 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: '@vtex/gatsby-plugin-cms',
+      options: {
+        tenant: STORE_ID,
+        workspace: process.env.GATSBY_VTEX_IO_WORKSPACE,
+        environment: process.env.GATSBY_VTEX_ENVIRONMENT,
+        itemsPerPage: 12,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Fashion Demo Store',
