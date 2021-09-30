@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type ProductSeoFragment_ProductFragment = { titleTag: Maybe<string>, metaTagDescription: Maybe<string>, brand: Maybe<string>, linkText: Maybe<string>, productName: Maybe<string>, description: Maybe<string>, categoryTree: Maybe<Array<Maybe<{ name: Maybe<string>, href: Maybe<string> }>>>, items: Maybe<Array<Maybe<{ ean: Maybe<string>, name: Maybe<string>, itemId: Maybe<string>, images: Maybe<Array<Maybe<{ imageUrl: Maybe<string>, imageText: Maybe<string> }>>>, videos: Maybe<Array<Maybe<{ videoUrl: Maybe<string> }>>>, sellers: Maybe<Array<Maybe<{ commercialOffer: Maybe<{ spotPrice: Maybe<number>, price: Maybe<number>, listPrice: Maybe<number>, availableQuantity: Maybe<number>, priceValidUntil: Maybe<string> }> }>>> }>>> };
+export type ProductSeoFragment_ProductFragment = { slug: string, sku: string, gtin: string, name: string, description: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, highPrice: number, priceCurrency: string, offers: Array<{ price: number, priceValidUntil: string, priceCurrency: string, availability: string, itemCondition: string, seller: { identifier: string } }> } };
 
 
 // Query Related Code

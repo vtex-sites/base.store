@@ -1,7 +1,7 @@
 import React from 'react'
+import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { SearchProvider } from 'src/sdk/search/Provider'
-import ProductGallery from 'src/components/sections/ProductGallery'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
 
@@ -22,13 +22,19 @@ function View(props: Props) {
   const { data: dynamicData } = useCollection(searchParams)
 
   const data = { ...dynamicData, ...staticData }
-  const { storeCollection, site, vtex } = data
-  const { facets, productSearch } = vtex ?? {}
-  const totalCount = productSearch?.totalCount ?? 0
+  const { storeCollection, site, search } = data
 
-  if (dynamicData == null) {
+  if (search == null || storeCollection == null || site == null) {
     return <div>loading...</div>
   }
+
+  const {
+    facets,
+    products,
+    products: {
+      pageInfo: { totalCount },
+    },
+  } = search
 
   // usePlpPixelEffect({
   //   searchParams,
@@ -45,18 +51,13 @@ function View(props: Props) {
       }}
     >
       {/* Seo components */}
-      <Seo
-        slug={slug}
-        site={site!}
-        storeCollection={storeCollection!}
-        breadcrumb={facets!.breadcrumb! as any}
-      />
+      <Seo slug={slug} site={site} storeCollection={storeCollection} />
 
       {/* UI components */}
       <ProductGallery
         fallbackData={dynamicData}
-        facets={facets!.facets as any}
-        productSearch={productSearch!}
+        products={products}
+        facets={facets}
       />
     </SearchProvider>
   )

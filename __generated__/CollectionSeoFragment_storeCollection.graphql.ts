@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type CollectionSeoFragment_StoreCollectionFragment = { seo: { title: string, description: string } };
+export type CollectionSeoFragment_StoreCollectionFragment = { seo: { title: string, description: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> } };
 
 
 // Query Related Code

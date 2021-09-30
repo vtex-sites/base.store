@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type CollectionSeoFragment_BreadcrumbFragment = { itemListElement: Array<{ item: string, name: string, position: number }> };
+export type ProductGallery_ProductsFragment = { pageInfo: { totalCount: number } };
 
 
 // Query Related Code

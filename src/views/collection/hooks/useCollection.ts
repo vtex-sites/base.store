@@ -1,7 +1,7 @@
 import { CollectionSearchQuery } from '@generated/CollectionSearchQuery.graphql'
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
+import { useSearchVariablesFromSearchState } from 'src/sdk/search/useSearchVariablesFromSearchState'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   CollectionSearchQueryQuery,
@@ -9,7 +9,7 @@ import type {
 } from '@generated/CollectionSearchQuery.graphql'
 
 export const useCollection = (searchParams: SearchParamsState) => {
-  const variables = useQueryVariablesFromSearchParams(searchParams)
+  const variables = useSearchVariablesFromSearchState(searchParams)
 
   return useQuery<
     CollectionSearchQueryQuery,
@@ -26,38 +26,27 @@ export const useCollection = (searchParams: SearchParamsState) => {
  */
 export const clientSideQuery = gql`
   query CollectionSearchQuery(
-    $to: Int!
-    $from: Int!
-    $selectedFacets: [VTEX_SelectedFacetInput!]!
-    $sort: String!
+    $first: Int!
+    $after: String
+    $sort: StoreSort
+    $selectedFacets: [StoreSelectedFacet!]!
   ) {
-    vtex {
-      productSearch(
-        to: $to
-        from: $from
-        orderBy: $sort
-        selectedFacets: $selectedFacets
-        hideUnavailableItems: false
-        simulationBehavior: skip
-      ) {
-        products {
-          ...ProductSummary_product
+    search(
+      first: $first
+      after: $after
+      sort: $sort
+      selectedFacets: $selectedFacets
+    ) {
+      products {
+        ...ProductGallery_products
+        edges {
+          node {
+            ...ProductSummary_product
+          }
         }
-        ...ProductGallery_productSearch
-        totalCount: recordsFiltered
       }
-      facets(
-        selectedFacets: $selectedFacets
-        operator: or
-        behavior: "Static"
-        removeHiddenFacets: true
-      ) {
-        breadcrumb {
-          ...CollectionSeoFragment_breadcrumb
-        }
-        facets {
-          ...ProductGallery_facets
-        }
+      facets {
+        ...ProductGallery_facets
       }
     }
   }
