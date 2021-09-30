@@ -5,6 +5,6 @@ export const useDiscountPercent = (listPrice: number, spotPrice: number) => {
     const diff = listPrice - spotPrice
     const discount = (diff * 100) / listPrice
 
-    return discount.toFixed(2)
+    return discount.toFixed(0)
   }, [spotPrice, listPrice])
 }
