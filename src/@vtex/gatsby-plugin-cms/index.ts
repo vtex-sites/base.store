@@ -131,39 +131,27 @@ const Carousel: Schema = {
         title: 'Imagens',
         type: 'object',
         properties: {
-          sources: {
-            type: 'array',
-            minItems: 2,
-            maxItems: 2,
-            items: {
-              title: 'Imagem responsiva',
-              type: 'object',
-              properties: {
-                srcSet: {
-                  title: 'Imagem',
-                  type: 'string',
-                  ...widgets.imageUploader,
-                },
-                media: {
-                  title: 'Tipo de dispositivo',
-                  type: 'string',
-                  description: 'Em qual dispositivo a imagem sera mostrada',
-                  oneOf: [
-                    {
-                      type: 'string',
-                      enum: ['(max-width: 40em)'],
-                      title: 'mobile',
-                    },
-                    {
-                      type: 'string',
-                      enum: ['(min-width: 40em)'],
-                      title: 'desktop',
-                    },
-                  ],
-                },
+          desktop: {
+            title: 'Mobile Image',
+            type: 'object',
+            properties: {
+              srcSet: {
+                title: 'Imagem',
+                type: 'string',
+                ...widgets.imageUploader,
               },
             },
-            required: ['media'],
+          },
+          mobile: {
+            title: 'Desktop Image',
+            type: 'object',
+            properties: {
+              srcSet: {
+                title: 'Imagem',
+                type: 'string',
+                ...widgets.imageUploader,
+              },
+            },
           },
           href: {
             title: 'Link',

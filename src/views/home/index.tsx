@@ -1,9 +1,12 @@
 import React from 'react'
+import Render from 'src/cms'
 import type { Props as PageProps } from 'src/pages/index'
 
 import Seo from './Seo'
 
 export type Props = PageProps
+
+const components = {}
 
 function View(props: Props) {
   // Send event to analytics
@@ -25,7 +28,7 @@ function View(props: Props) {
       <Seo {...props} />
 
       {/* Visual Sections */}
-      <div>TODO</div>
+      <Render sections={[]} components={components} />
     </>
   )
 }
