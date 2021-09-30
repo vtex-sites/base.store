@@ -1,5 +1,6 @@
+import type { GraphQLError } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
-import { envelop, useSchema } from '@envelop/core'
+import { envelop, useSchema, useErrorHandler } from '@envelop/core'
 
 import { getSchema, getContextFactory } from '../server'
 import persisted from '../../__generated__/persisted.graphql.json'
@@ -40,11 +41,18 @@ const parseDevRequest = (req: GatsbyFunctionRequest) => {
 
 const contextFactory = getContextFactory()
 
+const handleError = (error: readonly GraphQLError[]) => {
+  // eslint-disable-next-line no-console
+  console.log(error)
+}
+
 const createGetEnveloped = async () =>
   envelop({
     plugins: [
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useSchema(await getSchema()),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useErrorHandler((error) => handleError(error)),
     ],
   })
 
