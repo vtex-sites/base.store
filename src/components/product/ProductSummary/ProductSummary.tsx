@@ -3,11 +3,11 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
+import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
-import { Button } from '@vtex/store-ui'
-import DiscountBadge from 'src/components/ui/DiscountBadge'
+import { Badge, Button } from '@vtex/store-ui'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -31,6 +31,7 @@ function ProductSummary({ product }: Props) {
     [spotPrice, offers]
   )
 
+  const discountPercent = useDiscountPercent(listPrice, spotPrice)
   const linkProps = useProductLink({ slug })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
@@ -67,7 +68,7 @@ function ProductSummary({ product }: Props) {
         <span data-testid="price" data-value={spotPrice}>
           {useFormattedPrice(spotPrice)}
         </span>
-        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
+        {!!Number(discountPercent) && <Badge>{discountPercent}%</Badge>}
       </div>
       <Button {...buyProps}>Add to cart</Button>
     </Link>
