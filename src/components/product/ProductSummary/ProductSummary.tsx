@@ -6,8 +6,8 @@ import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
-import { Button } from '@vtex/store-ui'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
+import Button from 'src/components/ui/Button'
 
 interface Props {
   product: ProductSummary_ProductFragment
