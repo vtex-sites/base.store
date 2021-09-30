@@ -1,6 +1,8 @@
 import React from 'react'
+import { SearchInput } from '@vtex/store-ui'
 import CartToggle from 'src/components/cart/CartToggle'
 
+import { search } from '../../../sdk/search/utils/search'
 import Navlinks from '../Navlinks'
 
 const styles = {
@@ -18,6 +20,7 @@ function Navbar() {
   return (
     <header style={styles.header}>
       <Navlinks />
+      <SearchInput onSubmit={(searchTerm) => search(searchTerm)} />
       <CartToggle />
     </header>
   )
