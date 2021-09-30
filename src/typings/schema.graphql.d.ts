@@ -23,6 +23,7 @@ type Scalars = {
   Float: number;
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
+  JSONPropsCmsObject: any;
 };
 
 
@@ -1588,6 +1589,10 @@ type SitePluginFilterInput = {
 };
 
 type SitePluginPluginOptionsFilterInput = {
+  tenant: Maybe<StringQueryOperatorInput>;
+  workspace: Maybe<StringQueryOperatorInput>;
+  environment: Maybe<StringQueryOperatorInput>;
+  itemsPerPage: Maybe<IntQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   short_name: Maybe<StringQueryOperatorInput>;
   start_url: Maybe<StringQueryOperatorInput>;
@@ -1906,6 +1911,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
+  | 'pluginCreator___pluginOptions___tenant'
+  | 'pluginCreator___pluginOptions___workspace'
+  | 'pluginCreator___pluginOptions___environment'
+  | 'pluginCreator___pluginOptions___itemsPerPage'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
@@ -2713,6 +2722,10 @@ type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
+  | 'pluginOptions___tenant'
+  | 'pluginOptions___workspace'
+  | 'pluginOptions___environment'
+  | 'pluginOptions___itemsPerPage'
   | 'pluginOptions___name'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -3119,6 +3132,12 @@ type StoreCollectionConnection_Remote = {
   pageInfo: StorePageInfo;
 };
 
+
+type CmsBlock = {
+  name: Scalars['String'];
+  props: Scalars['JSONPropsCmsObject'];
+};
+
 type SitePlugin = Node & {
   id: Scalars['ID'];
   parent: Maybe<Node>;
@@ -3136,6 +3155,10 @@ type SitePlugin = Node & {
 };
 
 type SitePluginPluginOptions = {
+  tenant: Maybe<Scalars['String']>;
+  workspace: Maybe<Scalars['String']>;
+  environment: Maybe<Scalars['String']>;
+  itemsPerPage: Maybe<Scalars['Int']>;
   name: Maybe<Scalars['String']>;
   short_name: Maybe<Scalars['String']>;
   start_url: Maybe<Scalars['String']>;
