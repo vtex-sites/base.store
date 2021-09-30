@@ -11,7 +11,8 @@
     "paths": {
       "src/*": ["src/*"],
       "@generated/*": ["__generated__/*"]
-    }
+    },
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "__generated__/**/*.ts"],
   "exclude": ["node_modules", "public"]
