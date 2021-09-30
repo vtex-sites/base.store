@@ -1617,10 +1617,6 @@ type SitePluginFilterInput = {
 };
 
 type SitePluginPluginOptionsFilterInput = {
-  tenant: Maybe<StringQueryOperatorInput>;
-  workspace: Maybe<StringQueryOperatorInput>;
-  environment: Maybe<StringQueryOperatorInput>;
-  itemsPerPage: Maybe<IntQueryOperatorInput>;
   name: Maybe<StringQueryOperatorInput>;
   short_name: Maybe<StringQueryOperatorInput>;
   start_url: Maybe<StringQueryOperatorInput>;
@@ -1660,6 +1656,10 @@ type SitePluginPluginOptionsFilterInput = {
   sourceCollections: Maybe<BooleanQueryOperatorInput>;
   maxNumProducts: Maybe<IntQueryOperatorInput>;
   maxNumCollections: Maybe<IntQueryOperatorInput>;
+  tenant: Maybe<StringQueryOperatorInput>;
+  workspace: Maybe<StringQueryOperatorInput>;
+  environment: Maybe<StringQueryOperatorInput>;
+  itemsPerPage: Maybe<IntQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsWorkboxConfigFilterInput = {
@@ -1937,10 +1937,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator___resolve'
   | 'pluginCreator___name'
   | 'pluginCreator___version'
-  | 'pluginCreator___pluginOptions___tenant'
-  | 'pluginCreator___pluginOptions___workspace'
-  | 'pluginCreator___pluginOptions___environment'
-  | 'pluginCreator___pluginOptions___itemsPerPage'
   | 'pluginCreator___pluginOptions___name'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
@@ -1979,6 +1975,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___sourceCollections'
   | 'pluginCreator___pluginOptions___maxNumProducts'
   | 'pluginCreator___pluginOptions___maxNumCollections'
+  | 'pluginCreator___pluginOptions___tenant'
+  | 'pluginCreator___pluginOptions___workspace'
+  | 'pluginCreator___pluginOptions___environment'
+  | 'pluginCreator___pluginOptions___itemsPerPage'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -2922,10 +2922,6 @@ type SitePluginFieldsEnum =
   | 'resolve'
   | 'name'
   | 'version'
-  | 'pluginOptions___tenant'
-  | 'pluginOptions___workspace'
-  | 'pluginOptions___environment'
-  | 'pluginOptions___itemsPerPage'
   | 'pluginOptions___name'
   | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
@@ -2967,6 +2963,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___sourceCollections'
   | 'pluginOptions___maxNumProducts'
   | 'pluginOptions___maxNumCollections'
+  | 'pluginOptions___tenant'
+  | 'pluginOptions___workspace'
+  | 'pluginOptions___environment'
+  | 'pluginOptions___itemsPerPage'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3362,10 +3362,6 @@ type SitePlugin = Node & {
 };
 
 type SitePluginPluginOptions = {
-  tenant: Maybe<Scalars['String']>;
-  workspace: Maybe<Scalars['String']>;
-  environment: Maybe<Scalars['String']>;
-  itemsPerPage: Maybe<Scalars['Int']>;
   name: Maybe<Scalars['String']>;
   short_name: Maybe<Scalars['String']>;
   start_url: Maybe<Scalars['String']>;
@@ -3405,6 +3401,10 @@ type SitePluginPluginOptions = {
   sourceCollections: Maybe<Scalars['Boolean']>;
   maxNumProducts: Maybe<Scalars['Int']>;
   maxNumCollections: Maybe<Scalars['Int']>;
+  tenant: Maybe<Scalars['String']>;
+  workspace: Maybe<Scalars['String']>;
+  environment: Maybe<Scalars['String']>;
+  itemsPerPage: Maybe<Scalars['Int']>;
 };
 
 type SitePluginPluginOptionsWorkboxConfig = {
