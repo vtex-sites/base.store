@@ -45,7 +45,7 @@ function Shelf(props: Props) {
       <div className="flex w-full items-center justify-center text-2xl font-bold">
         {title}
       </div>
-      <div className="flex flex-nowrap overflow-x-auto">
+      <div className="flex flex-nowrap overflow-x-auto min-h-[370px]">
         {products?.edges.map(({ node: product }, index) => (
           <div key={`shelf-item-${index}`} className="min-w-[250px] m-3">
             <ProductSummary product={product} />
