@@ -1,17 +1,10 @@
 import React from 'react'
 import Render from 'src/cms'
-import Carousel from 'src/components/sections/Carousel'
-import Shelf from 'src/components/sections/Shelf'
 import type { Props as PageProps } from 'src/pages/index'
 
 import Seo from './Seo'
 
 export type Props = PageProps
-
-const components = {
-  Carousel,
-  DynamicShelf: Shelf,
-}
 
 function View(props: Props) {
   const {
@@ -37,7 +30,7 @@ function View(props: Props) {
       <Seo {...props} />
 
       {/* Visual Sections */}
-      <Render sections={cmsHome?.sections ?? []} components={components} />
+      <Render sections={cmsHome?.sections ?? []} />
     </>
   )
 }

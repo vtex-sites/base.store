@@ -1,4 +1,6 @@
 import React from 'react'
+import Carousel from 'src/components/sections/Carousel'
+import Shelf from 'src/components/sections/Shelf'
 import type { ComponentType } from 'react'
 
 interface Block {
@@ -8,10 +10,14 @@ interface Block {
 
 interface Props {
   sections: Block[]
-  components: Record<string, ComponentType<any> | undefined>
 }
 
-function Render({ sections, components }: Props) {
+const components: Record<string, ComponentType<any>> = {
+  Carousel,
+  DynamicShelf: Shelf,
+}
+
+function Render({ sections }: Props) {
   return (
     <>
       {sections.map(({ name, props }, index) => {
