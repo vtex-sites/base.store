@@ -1,14 +1,21 @@
 import React from 'react'
 import Render from 'src/cms'
+import Carousel from 'src/components/sections/Carousel'
 import type { Props as PageProps } from 'src/pages/index'
 
 import Seo from './Seo'
 
 export type Props = PageProps
 
-const components = {}
+const components = {
+  Carousel,
+}
 
 function View(props: Props) {
+  const {
+    data: { cmsHome },
+  } = props
+
   // Send event to analytics
   // usePixelSendEvent(() => {
   //   const event: PageViewData = {
@@ -28,7 +35,7 @@ function View(props: Props) {
       <Seo {...props} />
 
       {/* Visual Sections */}
-      <Render sections={[]} components={components} />
+      <Render sections={cmsHome?.sections ?? []} components={components} />
     </>
   )
 }

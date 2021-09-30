@@ -1,0 +1,9 @@
+.image {
+  aspect-ratio: 632 / 418;
+}
+
+@media screen and (min-width: 40em) {
+  .image {
+    aspect-ratio: 1938 / 495;
+  }
+}

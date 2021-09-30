@@ -398,6 +398,8 @@ type Query = {
   allStoreCollection: StoreCollectionConnection;
   storeProduct: Maybe<StoreProduct>;
   allStoreProduct: StoreProductConnection;
+  cmsHome: Maybe<CmsHome>;
+  allCmsHome: CmsHomeConnection;
   sitePlugin: Maybe<SitePlugin>;
   allSitePlugin: SitePluginConnection;
   siteBuildMetadata: Maybe<SiteBuildMetadata>;
@@ -645,6 +647,24 @@ type QueryStoreProductArgs = {
 type QueryAllStoreProductArgs = {
   filter: Maybe<StoreProductFilterInput>;
   sort: Maybe<StoreProductSortInput>;
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+};
+
+
+type QueryCmsHomeArgs = {
+  id: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  sections: Maybe<CmsBlockFilterListInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+
+type QueryAllCmsHomeArgs = {
+  filter: Maybe<CmsHomeFilterInput>;
+  sort: Maybe<CmsHomeSortInput>;
   skip: Maybe<Scalars['Int']>;
   limit: Maybe<Scalars['Int']>;
 };
@@ -2591,6 +2611,182 @@ type StoreProductSortInput = {
   order: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
+type CmsBlockFilterListInput = {
+  elemMatch: Maybe<CmsBlockFilterInput>;
+};
+
+type CmsBlockFilterInput = {
+  name: Maybe<StringQueryOperatorInput>;
+  props: Maybe<JsonPropsCmsObjectQueryOperatorInput>;
+};
+
+type JsonPropsCmsObjectQueryOperatorInput = {
+  eq: Maybe<Scalars['JSONPropsCmsObject']>;
+  ne: Maybe<Scalars['JSONPropsCmsObject']>;
+  in: Maybe<Array<Maybe<Scalars['JSONPropsCmsObject']>>>;
+  nin: Maybe<Array<Maybe<Scalars['JSONPropsCmsObject']>>>;
+};
+
+type CmsHomeConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<CmsHomeEdge>;
+  nodes: Array<CmsHome>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  max: Maybe<Scalars['Float']>;
+  min: Maybe<Scalars['Float']>;
+  sum: Maybe<Scalars['Float']>;
+  group: Array<CmsHomeGroupConnection>;
+};
+
+
+type CmsHomeConnectionDistinctArgs = {
+  field: CmsHomeFieldsEnum;
+};
+
+
+type CmsHomeConnectionMaxArgs = {
+  field: CmsHomeFieldsEnum;
+};
+
+
+type CmsHomeConnectionMinArgs = {
+  field: CmsHomeFieldsEnum;
+};
+
+
+type CmsHomeConnectionSumArgs = {
+  field: CmsHomeFieldsEnum;
+};
+
+
+type CmsHomeConnectionGroupArgs = {
+  skip: Maybe<Scalars['Int']>;
+  limit: Maybe<Scalars['Int']>;
+  field: CmsHomeFieldsEnum;
+};
+
+type CmsHomeEdge = {
+  next: Maybe<CmsHome>;
+  node: CmsHome;
+  previous: Maybe<CmsHome>;
+};
+
+type CmsHomeFieldsEnum =
+  | 'id'
+  | 'name'
+  | 'sections'
+  | 'sections___name'
+  | 'sections___props'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type';
+
+type CmsHomeGroupConnection = {
+  totalCount: Scalars['Int'];
+  edges: Array<CmsHomeEdge>;
+  nodes: Array<CmsHome>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue: Maybe<Scalars['String']>;
+};
+
+type CmsHomeFilterInput = {
+  id: Maybe<StringQueryOperatorInput>;
+  name: Maybe<StringQueryOperatorInput>;
+  sections: Maybe<CmsBlockFilterListInput>;
+  parent: Maybe<NodeFilterInput>;
+  children: Maybe<NodeFilterListInput>;
+  internal: Maybe<InternalFilterInput>;
+};
+
+type CmsHomeSortInput = {
+  fields: Maybe<Array<Maybe<CmsHomeFieldsEnum>>>;
+  order: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 type SitePluginConnection = {
   totalCount: Scalars['Int'];
   edges: Array<SitePluginEdge>;
@@ -3138,6 +3334,15 @@ type StoreCollectionConnection_Remote = {
 type CmsBlock = {
   name: Scalars['String'];
   props: Scalars['JSONPropsCmsObject'];
+};
+
+type CmsHome = Node & {
+  id: Scalars['ID'];
+  name: Scalars['String'];
+  sections: Array<CmsBlock>;
+  parent: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
 };
 
 type SitePlugin = Node & {

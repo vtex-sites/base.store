@@ -1,4 +1,5 @@
 import React from 'react'
+import type { ComponentType } from 'react'
 
 interface Block {
   name: string
@@ -7,7 +8,7 @@ interface Block {
 
 interface Props {
   sections: Block[]
-  components: Record<string, React.ComponentType | undefined>
+  components: Record<string, ComponentType<any> | undefined>
 }
 
 function Render({ sections, components }: Props) {

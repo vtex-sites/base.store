@@ -12,6 +12,12 @@ function Page(props: Props) {
 
 export const query = graphql`
   query HomePageQuery {
+    cmsHome {
+      sections {
+        name
+        props
+      }
+    }
     site {
       siteMetadata {
         title

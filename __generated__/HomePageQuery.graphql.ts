@@ -11,14 +11,14 @@
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> };
+export type HomePageQueryQuery = { cmsHome: Maybe<{ sections: Array<{ name: string, props: any }> }>, site: Maybe<{ siteMetadata: Maybe<{ title: Maybe<string>, description: Maybe<string>, titleTemplate: Maybe<string> }> }> };
 
 
 // Query Related Code
 
 export const HomePageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query HomePageQuery {\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n    }\n  }\n}\n",
-  sha256Hash: "6ae3b26ce68da0cd3253ab425e98500c26d9c33760ba847de8120a2b4dae50ed",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query HomePageQuery {\n  cmsHome {\n    sections {\n      name\n      props\n    }\n  }\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n    }\n  }\n}\n",
+  sha256Hash: "41e0a653e37c6bd16a0a08903c060be90b9e3fd94d6fce85e4292c190ca1fbed",
   operationName: "HomePageQuery",
 }
 
