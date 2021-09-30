@@ -1153,13 +1153,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.15.4":
-  version "7.15.4"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.4.tgz#fd17d16bfdf878e6dd02d19753a39fa8a8d9c84a"
-  integrity sha512-99catp6bHCaxr4sJ/DbTGgHS4+Rs2RVd2g7iOap6SLGPDknRK9ztKNsE/Fg6QhSeh1FGE5f6gHGQmvvn3I3xhw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/standalone@^7.14.9":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.15.3.tgz#60f74273202ffcc6bb1428918053449fe477227c"
@@ -1986,7 +1979,7 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/http-proxy@^1.17.4":
+"@types/http-proxy@^1.17.4", "@types/http-proxy@^1.17.5":
   version "1.17.7"
   resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.7.tgz#30ea85cc2c868368352a37f0d0d3581e24834c6f"
   integrity sha512-9hdj6iXH64tHSLTY+Vt2eYOGzSogC+JQ2H7bdPWkuh7KXP5qLllWx++t+K9Wk556c3dkDdPws/SpMRi0sdCT1w==
@@ -2258,10 +2251,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.0.2.tgz#db4e3783f8f185f67ecee9157b42452133652c17"
-  integrity sha512-xbWQknIb66OaTxolcLQZJZIsCsnOXZ3lGxcf6bbwxziLa55/zaXrFxD3U+69weYf6O18jDyFF+6cOeIaKJ+JcQ==
+"@vtex/gatsby-plugin-graphql@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.1.4.tgz#ee9b07926016448da5c19c46d8f317a72e75f37d"
+  integrity sha512-oVAIo9o4UhXsFzdW5q/6Woj8vdP+XKqx0aIwaZLzCqe6zbi0sPCUEcK/yjGdUrLLzuJ9iCrgj7fQQaV6+RT9tg==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2270,23 +2263,23 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.0.2.tgz#5ad47bed96f9b77ec16a6190960c4ecdfe2edf04"
-  integrity sha512-mvCdiBdTyC1vQ3h70eTw6t9TmqcH/XJohrD/sk5qHpc4ILzkxIb1RiuGUCM+DPDP6tBLEY70yxASbILRPlEzIQ==
+"@vtex/gatsby-plugin-nginx@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.1.4.tgz#1f7d0704326a4d739b6e7879243a8c7ac7b14b33"
+  integrity sha512-MjjYXHkkOGdsIYtF5wg58DLZdO1g97/9wNpNRyDtUYh9Y1vAXSOqSgk4QbWpijbBX1sKhcKsoy7UHWNOuukP7w==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.0.2.tgz#b37abcfdb348549b75099ba8ec5f9225cb09a40a"
-  integrity sha512-qS9H42M8rZLjgA71HVcw4JcGP1uwB9l0Qfee++8fsyHShXadHp0eVoZpFouBccXmeylDdIsf+riMeF5E8ngZPQ==
+"@vtex/gatsby-plugin-thumbor@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.1.4.tgz#8d99b1112b02e92f081ebc4dbfdd63025a5556b1"
+  integrity sha512-M1tOMgslqjn713YA/mdBpjGmV4ElvUr7hxLJq8NOX4ZrN0D2+4vUCxT0/A1Qd+UttzwttWUPuAnsZeJKIuxtJw==
 
-"@vtex/gatsby-source-vtex@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-1.0.2.tgz#4a00c4640612b7f6919649254d1b927be79d03d7"
-  integrity sha512-3Gu/5rvuzTPYIXbxTAyN51OF52jOkNRtZqfnIz+7h7NFv4SnBOZWJ2mTdhhZWamMxIR2elJInfn5EHnZ6243lg==
+"@vtex/gatsby-source-vtex@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-vtex/-/gatsby-source-vtex-1.1.4.tgz#035825c93e0b29677e1924889de8ffdccaacabe9"
+  integrity sha512-1ZJ7neer3GRIZg44MMkAApNBJc8wjsaOVPLuzvGlClgHWXbgzZKCNbk2lhc53iXZaGsYqlpR5Ec6pLOyApiNcQ==
   dependencies:
     "@graphql-tools/delegate" "^7.1.5"
     "@graphql-tools/wrap" "^7.0.8"
@@ -2294,10 +2287,10 @@
     isomorphic-unfetch "^3.0.0"
     slugify "^1.4.6"
 
-"@vtex/lighthouse-config@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.0.2.tgz#7cb99c73f5a49f13f6f767651dd27ed460d1b9aa"
-  integrity sha512-TIlPBkgyZP3wtetqNmSLlB2XVJXSfPFYRsvYP7iggiX83aDab2KLaM3lGEAWb2WsCb1nZNpFcCUvFavdLJ0icw==
+"@vtex/lighthouse-config@^1.1.4":
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.1.4.tgz#b1c901c931ba28086e102ab454fe2fcb55b556a4"
+  integrity sha512-j4xActoLeRyU+wGBS0EaUHpftGT/+v2r6EnNbNTiF0WOn1cxJPoQpUQ7hijZb4N7kkTPrUD2dExNEtw1/LFdAw==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
@@ -7701,6 +7694,17 @@ http-errors@1.8.0:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
+http-proxy-middleware@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.1.tgz#7ef3417a479fb7666a571e09966c66a39bd2c15f"
+  integrity sha512-cfaXRVoZxSed/BmkA7SwBVNI9Kj7HFltaE5rqYOub5kWzWZ+gofV2koVN1j2rMW7pEfSSlCHGJ31xmuyFyfLOg==
+  dependencies:
+    "@types/http-proxy" "^1.17.5"
+    http-proxy "^1.18.1"
+    is-glob "^4.0.1"
+    is-plain-obj "^3.0.0"
+    micromatch "^4.0.2"
+
 http-proxy@^1.18.1:
   version "1.18.1"
   resolved "https://registry.yarnpkg.com/http-proxy/-/http-proxy-1.18.1.tgz#401541f0534884bbf95260334e72f88ee3976549"
@@ -8290,6 +8294,11 @@ is-plain-obj@^2.0.0:
   resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
   integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
 
+is-plain-obj@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-3.0.0.tgz#af6f2ea14ac5a646183a5bbdb5baabbc156ad9d7"
+  integrity sha512-gwsOE28k+23GP1B6vFl1oVh/WOzmawBrKwo5Ev6wMKzPkaXaCDIQKzLnvsA42DRlbVTWorkgTKIviAKCWkfUwA==
+
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/is-plain-object/-/is-plain-object-2.0.4.tgz#2c163b3fafb1b606d9d17928f05c2a1c38e07677"
@@ -8478,7 +8487,7 @@ isomorphic-fetch@^2.1.1:
     node-fetch "^1.0.1"
     whatwg-fetch ">=0.10.0"
 
-isomorphic-unfetch@^3.0.0:
+isomorphic-unfetch@^3.0.0, isomorphic-unfetch@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/isomorphic-unfetch/-/isomorphic-unfetch-3.1.0.tgz#87341d5f4f7b63843d468438128cb087b7c3e98f"
   integrity sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==
