@@ -1,5 +1,5 @@
-import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
+import { envelop, useSchema } from '@envelop/core'
 
 import { getSchema, getContextFactory } from '../server'
 import persisted from '../../__generated__/persisted.graphql.json'
@@ -40,6 +40,16 @@ const parseDevRequest = (req: GatsbyFunctionRequest) => {
 
 const contextFactory = getContextFactory()
 
+const createGetEnveloped = async () =>
+  envelop({
+    plugins: [
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useSchema(await getSchema()),
+    ],
+  })
+
+const enveloped = createGetEnveloped()
+
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
@@ -50,6 +60,11 @@ const handler = async (
     return
   }
 
+  // const { parse, validate, contextFactory, execute, schema } = getEnveloped({
+  const getEnveloped = await enveloped
+
+  const { parse, execute, schema } = getEnveloped({ req })
+
   const { operationName, variables, query } =
     process.env.NODE_ENV === 'production'
       ? parseProdRequest(req)
@@ -57,7 +72,7 @@ const handler = async (
 
   try {
     const response = await execute({
-      schema: await getSchema(),
+      schema,
       document: parse(query),
       variableValues: variables,
       contextValue: contextFactory({}),
