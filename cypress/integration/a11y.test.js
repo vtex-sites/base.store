@@ -21,7 +21,7 @@ describe('Accessibility tests', () => {
   })
 
   it('Product Page', () => {
-    cy.visit('/small-messenger-bag-with-double-g/p')
+    cy.visit('/organza-sleeve-top-143/p/')
     cy.wait('@productQuery')
     cy.injectAxe()
     cy.checkA11y()
