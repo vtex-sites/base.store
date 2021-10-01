@@ -23,7 +23,7 @@ const View: FC<Props> = (props) => {
 
   return (
     <>
-      <h1>{title}</h1>
+      <h1 className="absolute top-[-100px]">{title}</h1>
 
       {search == null || site == null ? (
         <div>...loading</div>

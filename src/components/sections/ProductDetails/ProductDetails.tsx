@@ -48,7 +48,7 @@ function ProductDetails({ product }: Props) {
 
   return (
     <div>
-      <h1>{name}</h1>
+      <h2>{name}</h2>
       <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
       <div style={styles.listPrice}>{useFormattedPrice(listPrice)}</div>
       <div>{useFormattedPrice(price)}</div>

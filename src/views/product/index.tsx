@@ -36,7 +36,8 @@ function View({ product: serverData, site }: Props) {
       <Seo title={title} product={product} site={site} />
 
       {/* Visual Sections */}
-      <h1>{title}</h1>
+      <h1 className="absolute top-[-100px]">{title}</h1>
+
       <ProductDetails product={product} />
     </>
   )
