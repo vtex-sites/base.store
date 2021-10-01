@@ -1,5 +1,7 @@
 const {
   getSchema: storeApiGetSchema,
+  getTypeDefs,
+  getResolvers,
   getContextFactory: storeApiGetContextFactory,
 } = require('@vtex/store-api')
 
@@ -13,10 +15,15 @@ const options = {
 const schema = storeApiGetSchema(options)
 const contextFactory = storeApiGetContextFactory(options)
 
+const resolvers = getResolvers(options)
+const typeDefs = getTypeDefs()
+
 const getSchema = () => schema
 const getContextFactory = () => contextFactory
 
 module.exports = {
   getSchema,
   getContextFactory,
+  resolvers,
+  typeDefs,
 }

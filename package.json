@@ -10,6 +10,7 @@
     "@vtex/store-api": "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-api",
     "@vtex/store-sdk": "https://pkg.csb.dev/vtex/faststore/commit/05ee7574/@vtex/store-sdk",
     "@vtex/store-ui": "^1.1.11",
+    "apollo-server-express": "^3.3.0",
     "babel-preset-gatsby": "^1.13.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-gatsby-cloud": "^3.1.0",
