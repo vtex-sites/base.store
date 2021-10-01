@@ -24,42 +24,44 @@ function View(props: Props) {
   const data = { ...dynamicData, ...staticData }
   const { storeCollection, site, search } = data
 
-  if (search == null || storeCollection == null || site == null) {
-    return <div>loading...</div>
-  }
-
-  const {
-    facets,
-    products,
-    products: {
-      pageInfo: { totalCount },
-    },
-  } = search
-
-  // usePlpPixelEffect({
-  //   searchParams,
-  //   totalCount,
-  //   location,
-  // })
+  const title =
+    staticData.storeCollection?.seo.title ??
+    staticData.site?.siteMetadata?.title ??
+    ''
 
   return (
-    <SearchProvider
-      searchParams={searchParams}
-      pageInfo={{
-        size: ITEMS_PER_PAGE,
-        total: Math.ceil(totalCount / ITEMS_PER_PAGE),
-      }}
-    >
-      {/* Seo components */}
-      <Seo slug={slug} site={site} storeCollection={storeCollection} />
+    <>
+      <h1 className="absolute top-[-100px]">{title}</h1>
 
-      {/* UI components */}
-      <ProductGallery
-        fallbackData={dynamicData}
-        products={products}
-        facets={facets}
-      />
-    </SearchProvider>
+      {search == null || site == null || storeCollection == null ? (
+        <div>...loading</div>
+      ) : (
+        <SearchProvider
+          searchParams={searchParams}
+          pageInfo={{
+            size: ITEMS_PER_PAGE,
+            total: Math.ceil(
+              search.products.pageInfo.totalCount / ITEMS_PER_PAGE
+            ),
+          }}
+        >
+          {/* TODO: Move seo components to SSG */}
+          <Seo
+            title={title}
+            slug={slug}
+            site={site}
+            storeCollection={storeCollection}
+          />
+
+          {/* UI components */}
+          <ProductGallery
+            fallbackData={dynamicData}
+            products={search.products}
+            facets={search.facets}
+          />
+        </SearchProvider>
+      )}
+    </>
   )
 }
 

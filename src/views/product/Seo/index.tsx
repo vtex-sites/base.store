@@ -13,6 +13,7 @@ import { useMetadata } from './hooks/useMetadata'
 export interface Props {
   site: ProductSeoFragment_SiteFragment
   product: ProductSeoFragment_ProductFragment
+  title: string
 }
 
 function Seo(props: Props) {

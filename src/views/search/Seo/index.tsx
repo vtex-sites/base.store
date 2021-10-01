@@ -6,18 +6,19 @@ import type { SearchSeoFragment_SiteFragment } from '@generated/SearchSeoFragmen
 
 interface Props {
   site: SearchSeoFragment_SiteFragment
+  title: string
 }
 
-function Seo({ site }: Props) {
+function Seo({ site, title }: Props) {
   const { locale } = useSession()
-  const { titleTemplate, title, description } = site.siteMetadata!
+  const { titleTemplate, description } = site.siteMetadata!
 
   return (
     <GatsbySeo
       noindex
       nofollow={false}
       language={locale}
-      title={title!}
+      title={title}
       description={description!}
       titleTemplate={titleTemplate!}
       openGraph={{
