@@ -1,10 +1,10 @@
 describe('Accessibility tests', () => {
   beforeEach(() => {
-    cy.intercept('/graphql/?operationName=BrowserProductQuery*').as(
+    cy.intercept('*/graphql?operationName=BrowserProductQuery*').as(
       'productQuery'
     )
 
-    cy.intercept('/graphql/?operationName=GalleryQuery*').as('galleryQuery')
+    cy.intercept('*/graphql?operationName=GalleryQuery*').as('galleryQuery')
   })
   it('Home', () => {
     cy.visit('/')
