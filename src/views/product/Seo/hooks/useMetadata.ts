@@ -4,19 +4,20 @@ import { useLocation } from '@reach/router'
 
 import type { Props } from '..'
 
-export const useMetadata = (options: Props) => {
+type Options = Props & { title: string }
+
+export const useMetadata = (options: Options) => {
   const { locale, currency } = useSession()
   const { pathname: path, host } = useLocation()
 
   return useMemo(() => {
-    const { product, site } = options
+    const { product, site, title } = options
     const siteMetadata = site.siteMetadata!
     const {
       seo,
       offers: { lowPrice },
     } = product
 
-    const title = seo.title ?? siteMetadata.title!
     const description = seo.description ?? siteMetadata.description!
     const pathname = path[path.length - 1] === '/' ? path.slice(0, -1) : path // remove trailing slashes from pathname
     const canonical =

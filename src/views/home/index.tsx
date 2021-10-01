@@ -19,13 +19,15 @@ function View(props: Props) {
   //   return { type: 'vtex:pageView', data: event }
   // })
 
+  const title = props.data.site?.siteMetadata?.title ?? ''
+
   return (
     <>
       {/* Seo Components */}
-      <Seo {...props} />
+      <Seo {...props} title={title} />
 
       {/* Visual Sections */}
-      <div>TODO</div>
+      <h1>{title}</h1>
     </>
   )
 }

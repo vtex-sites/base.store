@@ -4,7 +4,7 @@ import type { ComponentPropsWithoutRef } from 'react'
 
 import type { Props } from '..'
 
-type Options = Props
+type Options = Props & { title: string }
 
 type Return = ComponentPropsWithoutRef<typeof GatsbySeo>
 
@@ -13,13 +13,14 @@ export const useMetadata = (props: Options): Return => {
   const {
     location: { pathname, host },
     data: { site },
+    title,
   } = props
 
   const { siteMetadata } = site!
   const siteUrl = `https://${host}${pathname}`
 
   return {
-    title: siteMetadata!.title!,
+    title,
     description: siteMetadata!.description!,
     titleTemplate: siteMetadata!.titleTemplate!,
     language: locale,

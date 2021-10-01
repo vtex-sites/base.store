@@ -22,6 +22,7 @@ function View({ product: serverData, site }: Props) {
   )
 
   const product = data?.product
+  const title = data?.product.seo.title ?? site?.siteMetadata?.title ?? ''
 
   // useProductPixelEffect({ product: { id: product?.id ?? 'unknown' } })
 
@@ -32,9 +33,10 @@ function View({ product: serverData, site }: Props) {
   return (
     <>
       {/* Seo */}
-      <Seo product={product} site={site} />
+      <Seo title={title} product={product} site={site} />
 
       {/* Visual Sections */}
+      <h1>{title}</h1>
       <ProductDetails product={product} />
     </>
   )

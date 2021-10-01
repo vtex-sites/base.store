@@ -3,34 +3,33 @@ import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import type { CollectionSeoFragment_StoreCollectionFragment } from '@generated/CollectionSeoFragment_storeCollection.graphql'
 import type { CollectionSeoFragment_SiteFragment } from '@generated/CollectionSeoFragment_site.graphql'
-import useAddHead from 'src/utils/hooks/useAddHead'
 
 import { useMetadata } from './hooks/useMetadata'
 
 interface Props {
+  title: string
   slug: string
   site: CollectionSeoFragment_SiteFragment
   storeCollection: CollectionSeoFragment_StoreCollectionFragment
 }
 
 function Seo({
+  title,
   site,
   slug,
   storeCollection: { seo: collectionSeo, breadcrumbList },
 }: Props) {
   const siteMetadata = site.siteMetadata!
   const metadata = useMetadata({
+    title,
     titleTemplate: siteMetadata.titleTemplate!,
-    title: collectionSeo.title || siteMetadata.title!,
     description: collectionSeo.description || siteMetadata.description!,
     canonical: `/${slug}/`,
   })
 
-  useAddHead({ title: collectionSeo.title })
-
   return (
     <>
-      <GatsbySeo {...metadata} defer />
+      <GatsbySeo {...metadata} title={title} defer />
       <BreadcrumbJsonLd
         itemListElements={breadcrumbList.itemListElement}
         defer
