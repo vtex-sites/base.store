@@ -1,6 +1,12 @@
 import type { GraphQLError } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
-import { envelop, useSchema, useErrorHandler } from '@envelop/core'
+import {
+  envelop,
+  useSchema,
+  useErrorHandler,
+  useMaskedErrors,
+  useTiming,
+} from '@envelop/core'
 
 import { getSchema, getContextFactory } from '../server'
 import persisted from '../../__generated__/persisted.graphql.json'
@@ -53,6 +59,10 @@ const createGetEnveloped = async () =>
       useSchema(await getSchema()),
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useErrorHandler((error) => handleError(error)),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useMaskedErrors(),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useTiming(),
     ],
   })
 
