@@ -4,6 +4,7 @@ export const pages = {
   collection_filtered: '/women/red?map=c,color',
   search: '/s/shirt?map=term',
   home: '/',
+  brand_name: 'lacoste',
 }
 
 export const options = {

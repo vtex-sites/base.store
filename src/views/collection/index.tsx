@@ -51,13 +51,14 @@ function View(props: Props) {
         storeCollection={storeCollection!}
         breadcrumb={facets!.breadcrumb! as any}
       />
-
-      {/* UI components */}
-      <ProductGallery
-        initialData={dynamicData}
-        facets={facets!.facets as any}
-        productSearch={productSearch!}
-      />
+      <div id="collection-page">
+        {/* UI components */}
+        <ProductGallery
+          initialData={dynamicData}
+          facets={facets!.facets as any}
+          productSearch={productSearch!}
+        />
+      </div>
     </SearchProvider>
   )
 }

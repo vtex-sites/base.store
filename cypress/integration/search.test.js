@@ -16,7 +16,7 @@ describe('Search page Filters and Sorting options', () => {
       cy.visit(pages.home, options)
       cy.waitForHydration()
 
-      cy.getById('store-input').click().type('stripe')
+      cy.getById('store-input').click().type('shirt')
       cy.getById('store-button').click()
 
       cy.location('pathname').should((loc) => {
@@ -25,31 +25,16 @@ describe('Search page Filters and Sorting options', () => {
     })
   })
 
-  context('when search for brand name', () => {
-    it('opens the brand page', () => {
+  context('when search for collection name', () => {
+    it('opens the collection page', () => {
       cy.visit(pages.home, options)
       cy.waitForHydration()
 
-      cy.getById('store-input').click().type('lacoste')
+      cy.getById('store-input').click().type(pages.brand_name)
       cy.getById('store-button').click()
 
-      cy.location('pathname').should(() => {
-        // TODO make assertion here
-      })
-    })
-  })
-
-  context('when search for category name', () => {
-    it('opens the category page', () => {
-      cy.visit(pages.home, options)
-      cy.waitForHydration()
-
-      cy.getById('store-input').click().type('women')
-      cy.getById('store-button').click()
-
-      cy.location('pathname').should(() => {
-        // TODO make assertion here
-      })
+      cy.location('pathname')
+      cy.get('#collection-page').should('exist')
     })
   })
 })
