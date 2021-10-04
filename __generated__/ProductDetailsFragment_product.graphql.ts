@@ -8,7 +8,7 @@
 
 
 // Operation related types
-export type ProductDetailsFragment_ProductFragment = { name: string, id: string, image: Array<{ url: string, alternateName: string }>, offers: { offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } };
+export type ProductDetailsFragment_ProductFragment = { name: string, sku: string, id: string, image: Array<{ url: string, alternateName: string }>, offers: { offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } };
 
 
 // Query Related Code

@@ -1,11 +1,11 @@
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
+import Button from 'src/components/ui/Button'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/ProductDetailsFragment_product.graphql'
-import Button from 'src/components/ui/Button'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -17,33 +17,25 @@ const styles = {
 
 function ProductDetails({ product }: Props) {
   const {
-    id,
     name,
+    sku,
     image: [img],
     offers: {
-      offers: [
-        {
-          price,
-          listPrice,
-          seller: { identifier },
-        },
-      ],
+      offers: [{ price, listPrice, seller }],
     },
   } = product
 
   const image = useImage(img.url, 'product.details')
   const buyProps = useBuyButton({
-    name,
+    itemOffered: {
+      image: [img],
+      name,
+      sku,
+    },
     price,
     listPrice,
+    seller,
     quantity: 1,
-    giftQuantity: 0,
-    seller: identifier,
-    skuId: id,
-    image: {
-      src: img.url,
-      alt: img.alternateName,
-    },
   })
 
   return (
@@ -61,6 +53,7 @@ export const fragment = graphql`
   fragment ProductDetailsFragment_product on StoreProduct {
     id: productID
     name
+    sku
 
     image {
       url

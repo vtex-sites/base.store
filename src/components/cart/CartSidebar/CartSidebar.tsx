@@ -13,7 +13,7 @@ function CartSidebar() {
   const subTotal = useFormattedPrice(cart.subTotal)
   const total = useFormattedPrice(cart.total)
   const toggleProps = useCartToggleButton()
-  const { items, totalItems, totalUniqueItems, isValidating } = cart
+  const { items, gifts, totalItems, totalUniqueItems, isValidating } = cart
 
   return (
     <div data-testid="cart-sidebar">
@@ -21,6 +21,11 @@ function CartSidebar() {
       <div>Cart Item Detais</div>
 
       {items.map((item) => (
+        <CartItem key={item.id} item={item} />
+      ))}
+
+      <div>Gifts</div>
+      {gifts.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}
 

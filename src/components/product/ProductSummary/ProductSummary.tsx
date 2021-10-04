@@ -1,13 +1,13 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
+import Button from 'src/components/ui/Button'
+import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
-import DiscountBadge from 'src/components/ui/DiscountBadge'
-import Button from 'src/components/ui/Button'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -15,18 +15,15 @@ interface Props {
 
 function ProductSummary({ product }: Props) {
   const {
-    id,
     slug,
+    sku,
     name: productName,
     isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
   } = product
 
-  const {
-    listPrice,
-    seller: { identifier },
-  } = useMemo(
+  const { listPrice, seller } = useMemo(
     () => offers.find((x) => x.price === spotPrice)!,
     [spotPrice, offers]
   )
@@ -34,17 +31,15 @@ function ProductSummary({ product }: Props) {
   const linkProps = useProductLink({ slug })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
-    name: productName,
-    skuId: id,
+    itemOffered: {
+      name: productName,
+      image: [img],
+      sku,
+    },
     price: spotPrice,
     listPrice,
+    seller,
     quantity: 1,
-    giftQuantity: 0,
-    seller: identifier,
-    image: {
-      src: img.url,
-      alt: img.alternateName,
-    },
   })
 
   return (
@@ -79,6 +74,7 @@ export const fragment = graphql`
     id: productID
     slug
 
+    sku
     name
 
     isVariantOf {

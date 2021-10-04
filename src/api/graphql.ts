@@ -64,6 +64,13 @@ const handler = async (
       operationName,
     })
 
+    if (
+      process.env.NODE_ENV !== 'production' &&
+      Array.isArray(response.errors)
+    ) {
+      response.errors.forEach(console.error)
+    }
+
     res.setHeader('content-type', 'application/json')
     res.send(JSON.stringify(response))
   } catch (err) {
