@@ -17,14 +17,14 @@ export type GalleryQueryQueryVariables = Exact<{
 }>;
 
 
-export type GalleryQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, sku: string, name: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } } }> } } };
+export type GalleryQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, name: string, id: string, brand: { brandName: string }, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } } }> } } };
 
 
 // Query Related Code
 
 export const GalleryQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($first: Int!, $after: String, $sort: StoreSort, $term: String, $selectedFacets: [IStoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "a2392551f2fa71d32eb12249e508f82cee65cd5d225de4c7becbaf73fe78ade8",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($first: Int!, $after: String, $sort: StoreSort, $term: String, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          name\n          brand {\n            brandName: name\n          }\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  sha256Hash: "f0c8be8180842e453a14b8a978ec98d95112b582673ce48509beb6e0ab6b9f8b",
   operationName: "GalleryQuery",
 }
 

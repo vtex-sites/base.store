@@ -23,8 +23,8 @@ interface VTEXAddToCartEvent extends AddToCartEvent {
 }
 
 type Item = CartItem & {
+  id: string
   brand: string
-  categories: Array<Maybe<{ name: Maybe<string> }>>
 }
 
 export const useBuyButton = (item: Item | null) => {
@@ -53,11 +53,6 @@ export const useBuyButton = (item: Item | null) => {
               quantity: item.quantity,
               item_variant: item.skuId,
               item_brand: item.brand,
-              item_category: item?.categories?.[0]?.name ?? undefined,
-              item_category2: item?.categories?.[1]?.name ?? undefined,
-              item_category3: item?.categories?.[2]?.name ?? undefined,
-              item_category4: item?.categories?.[3]?.name ?? undefined,
-              item_category5: item?.categories?.[4]?.name ?? undefined,
               item_name: item.name,
               price: item.price,
               currency: code,

@@ -18,6 +18,7 @@ function ProductSummary({ product }: Props) {
     slug,
     sku,
     name: productName,
+    brand: { brandName },
     isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
@@ -36,7 +37,7 @@ function ProductSummary({ product }: Props) {
       image: [img],
       sku,
     },
-    id: product.id,
+    id,
     name: productName,
     skuId: id,
     price: spotPrice,
@@ -45,8 +46,7 @@ function ProductSummary({ product }: Props) {
     quantity: 1,
     giftQuantity: 0,
     seller: identifier,
-    brand: product.brand,
-    categories: product.categoryTree,
+    brand: brandName,
     image: {
       src: img.url,
       alt: img.alternateName,
@@ -86,9 +86,8 @@ export const fragment = graphql`
     slug
     sku
     name
-    brand
-    categoryTree {
-      name
+    brand {
+      brandName: name
     }
 
     isVariantOf {

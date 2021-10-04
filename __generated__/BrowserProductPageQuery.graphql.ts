@@ -13,14 +13,14 @@ export type BrowserProductPageQueryQueryVariables = Exact<{
 }>;
 
 
-export type BrowserProductPageQueryQuery = { product: { slug: string, sku: string, gtin: string, name: string, description: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, highPrice: number, priceCurrency: string, offers: Array<{ price: number, priceValidUntil: string, priceCurrency: string, availability: string, itemCondition: string, listPrice: number, seller: { identifier: string } }> } } };
+export type BrowserProductPageQueryQuery = { product: { slug: string, sku: string, gtin: string, name: string, description: string, id: string, seo: { title: string, description: string }, brand: { name: string, brandName: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, highPrice: number, priceCurrency: string, offers: Array<{ price: number, priceValidUntil: string, priceCurrency: string, availability: string, itemCondition: string, listPrice: number, seller: { identifier: string } }> } } };
 
 
 // Query Related Code
 
 export const BrowserProductPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: [IStoreSelectedFacet!]!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
-  sha256Hash: "65c948faaca46d0ecf106c73267c731a61b275a3d69eee0d4ec1b115db925449",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n      brandName: name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
+  sha256Hash: "94bc955c457491c8239dd3bc6203b81c381bdbd5e2ddac9d6494c9ce24b1c8a4",
   operationName: "BrowserProductPageQuery",
 }
 
