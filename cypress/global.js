@@ -5,6 +5,7 @@ export const pages = {
   search: '/s/shirt?map=term',
   home: '/',
   brand_name: 'lacoste',
+  collection_name: 'women',
 }
 
 export const options = {
