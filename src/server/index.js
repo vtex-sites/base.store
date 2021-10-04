@@ -7,6 +7,7 @@ const options = {
   platform: process.env.GATSBY_COMMERCE_PLATFORM,
   account: process.env.GATSBY_STORE_ID,
   environment: process.env.GATSBY_VTEX_ENVIRONMENT,
+  channel: process.env.GATSBY_VTEX_CHANNEL,
 }
 
 const schema = storeApiGetSchema(options)

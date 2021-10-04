@@ -23,7 +23,7 @@ function Seo({ site, title }: Props) {
       titleTemplate={titleTemplate!}
       openGraph={{
         type: 'website',
-        title: title!,
+        title,
         description: description!,
       }}
       defer

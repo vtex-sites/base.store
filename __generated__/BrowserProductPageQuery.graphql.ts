@@ -20,7 +20,7 @@ export type BrowserProductPageQueryQuery = { product: { slug: string, sku: strin
 
 export const BrowserProductPageQuery = {
   query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
-  sha256Hash: "e5c3f05f6b6eeb8f6e42e03fb953b0e0b7e4e920825220bf05e1242bbf3498e0",
+  sha256Hash: "73f9263c0669a654a2cd1baaa1423ca26554bbaf4bc56d5690cf5eefff799b97",
   operationName: "BrowserProductPageQuery",
 }
 
