@@ -15,9 +15,7 @@ interface Props {
 
 function View({ product: serverData, site }: Props) {
   const { data } = useProduct(
-    {
-      locator: { value: serverData.id, field: 'id' },
-    },
+    { productID: serverData.id },
     { product: serverData as unknown as BrowserProductQueryQuery['product'] } // TODO: Fix this typings
   )
 

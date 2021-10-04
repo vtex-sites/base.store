@@ -249,8 +249,6 @@ type DirectoryCtimeArgs = {
 type Site = Node & {
   buildTime: Maybe<Scalars['Date']>;
   siteMetadata: Maybe<SiteSiteMetadata>;
-  port: Maybe<Scalars['Int']>;
-  host: Maybe<Scalars['String']>;
   flags: Maybe<SiteFlags>;
   polyfill: Maybe<Scalars['Boolean']>;
   pathPrefix: Maybe<Scalars['String']>;
@@ -345,15 +343,6 @@ type BrowserStoreCollectionConnection = {
   edges: Array<StoreCollectionEdge>;
 };
 
-type StoreProductIdField =
-  | 'id'
-  | 'slug';
-
-type StoreProductId = {
-  field: StoreProductIdField;
-  value: Scalars['ID'];
-};
-
 type StoreSort =
   | 'price_desc'
   | 'price_asc'
@@ -364,7 +353,7 @@ type StoreSort =
   | 'discount_desc'
   | 'score_desc';
 
-type StoreSelectedFacet = {
+type IStoreSelectedFacet = {
   key: Scalars['String'];
   value: Scalars['String'];
 };
@@ -405,7 +394,7 @@ type Query = {
 
 
 type QueryProductArgs = {
-  locator: StoreProductId;
+  locator: Array<IStoreSelectedFacet>;
 };
 
 
@@ -414,7 +403,7 @@ type QuerySearchArgs = {
   after: Maybe<Scalars['String']>;
   sort?: Maybe<StoreSort>;
   term?: Maybe<Scalars['String']>;
-  selectedFacets: Maybe<Array<StoreSelectedFacet>>;
+  selectedFacets: Maybe<Array<IStoreSelectedFacet>>;
 };
 
 
@@ -527,8 +516,6 @@ type QueryAllDirectoryArgs = {
 type QuerySiteArgs = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -1276,8 +1263,6 @@ type SiteFieldsEnum =
   | 'siteMetadata___titleTemplate'
   | 'siteMetadata___author'
   | 'siteMetadata___siteUrl'
-  | 'port'
-  | 'host'
   | 'flags___DEV_SSR'
   | 'flags___FAST_DEV'
   | 'flags___LMDB_STORE'
@@ -1385,8 +1370,6 @@ type SiteGroupConnection = {
 type SiteFilterInput = {
   buildTime: Maybe<DateQueryOperatorInput>;
   siteMetadata: Maybe<SiteSiteMetadataFilterInput>;
-  port: Maybe<IntQueryOperatorInput>;
-  host: Maybe<StringQueryOperatorInput>;
   flags: Maybe<SiteFlagsFilterInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
@@ -1613,6 +1596,9 @@ type SitePluginPluginOptionsFilterInput = {
   workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>;
   env: Maybe<SitePluginPluginOptionsEnvFilterInput>;
   defer: Maybe<BooleanQueryOperatorInput>;
+  server: Maybe<StringQueryOperatorInput>;
+  basePath: Maybe<StringQueryOperatorInput>;
+  sizes: Maybe<StringQueryOperatorInput>;
   color: Maybe<StringQueryOperatorInput>;
   showSpinner: Maybe<BooleanQueryOperatorInput>;
   src: Maybe<StringQueryOperatorInput>;
@@ -1623,6 +1609,10 @@ type SitePluginPluginOptionsFilterInput = {
   json: Maybe<BooleanQueryOperatorInput>;
   outDir: Maybe<StringQueryOperatorInput>;
   stats: Maybe<SitePluginPluginOptionsStatsFilterInput>;
+  sourceProducts: Maybe<BooleanQueryOperatorInput>;
+  sourceCollections: Maybe<BooleanQueryOperatorInput>;
+  maxNumProducts: Maybe<IntQueryOperatorInput>;
+  maxNumCollections: Maybe<IntQueryOperatorInput>;
   httpOptions: Maybe<StringQueryOperatorInput>;
   serverOptions: Maybe<StringQueryOperatorInput>;
   path: Maybe<StringQueryOperatorInput>;
@@ -1630,11 +1620,6 @@ type SitePluginPluginOptionsFilterInput = {
   allExtensions: Maybe<BooleanQueryOperatorInput>;
   isTSX: Maybe<BooleanQueryOperatorInput>;
   jsxPragma: Maybe<StringQueryOperatorInput>;
-  server: Maybe<StringQueryOperatorInput>;
-  sourceProducts: Maybe<BooleanQueryOperatorInput>;
-  sourceCollections: Maybe<BooleanQueryOperatorInput>;
-  maxNumProducts: Maybe<IntQueryOperatorInput>;
-  maxNumCollections: Maybe<IntQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsWorkboxConfigFilterInput = {
@@ -1928,6 +1913,9 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___appendScript'
   | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
   | 'pluginCreator___pluginOptions___defer'
+  | 'pluginCreator___pluginOptions___server'
+  | 'pluginCreator___pluginOptions___basePath'
+  | 'pluginCreator___pluginOptions___sizes'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___showSpinner'
   | 'pluginCreator___pluginOptions___src'
@@ -1938,6 +1926,10 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___json'
   | 'pluginCreator___pluginOptions___outDir'
   | 'pluginCreator___pluginOptions___stats___context'
+  | 'pluginCreator___pluginOptions___sourceProducts'
+  | 'pluginCreator___pluginOptions___sourceCollections'
+  | 'pluginCreator___pluginOptions___maxNumProducts'
+  | 'pluginCreator___pluginOptions___maxNumCollections'
   | 'pluginCreator___pluginOptions___httpOptions'
   | 'pluginCreator___pluginOptions___serverOptions'
   | 'pluginCreator___pluginOptions___path'
@@ -1945,11 +1937,6 @@ type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___isTSX'
   | 'pluginCreator___pluginOptions___jsxPragma'
-  | 'pluginCreator___pluginOptions___server'
-  | 'pluginCreator___pluginOptions___sourceProducts'
-  | 'pluginCreator___pluginOptions___sourceCollections'
-  | 'pluginCreator___pluginOptions___maxNumProducts'
-  | 'pluginCreator___pluginOptions___maxNumCollections'
   | 'pluginCreator___nodeAPIs'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___ssrAPIs'
@@ -2750,6 +2737,9 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___env___branch_deploy___policy'
   | 'pluginOptions___env___deploy_preview___policy'
   | 'pluginOptions___defer'
+  | 'pluginOptions___server'
+  | 'pluginOptions___basePath'
+  | 'pluginOptions___sizes'
   | 'pluginOptions___color'
   | 'pluginOptions___showSpinner'
   | 'pluginOptions___src'
@@ -2760,6 +2750,10 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___json'
   | 'pluginOptions___outDir'
   | 'pluginOptions___stats___context'
+  | 'pluginOptions___sourceProducts'
+  | 'pluginOptions___sourceCollections'
+  | 'pluginOptions___maxNumProducts'
+  | 'pluginOptions___maxNumCollections'
   | 'pluginOptions___httpOptions'
   | 'pluginOptions___serverOptions'
   | 'pluginOptions___path'
@@ -2767,11 +2761,6 @@ type SitePluginFieldsEnum =
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___isTSX'
   | 'pluginOptions___jsxPragma'
-  | 'pluginOptions___server'
-  | 'pluginOptions___sourceProducts'
-  | 'pluginOptions___sourceCollections'
-  | 'pluginOptions___maxNumProducts'
-  | 'pluginOptions___maxNumCollections'
   | 'nodeAPIs'
   | 'browserAPIs'
   | 'ssrAPIs'
@@ -3232,6 +3221,9 @@ type SitePluginPluginOptions = {
   workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfig>;
   env: Maybe<SitePluginPluginOptionsEnv>;
   defer: Maybe<Scalars['Boolean']>;
+  server: Maybe<Scalars['String']>;
+  basePath: Maybe<Scalars['String']>;
+  sizes: Maybe<Array<Maybe<Scalars['String']>>>;
   color: Maybe<Scalars['String']>;
   showSpinner: Maybe<Scalars['Boolean']>;
   src: Maybe<Scalars['String']>;
@@ -3242,6 +3234,10 @@ type SitePluginPluginOptions = {
   json: Maybe<Scalars['Boolean']>;
   outDir: Maybe<Scalars['String']>;
   stats: Maybe<SitePluginPluginOptionsStats>;
+  sourceProducts: Maybe<Scalars['Boolean']>;
+  sourceCollections: Maybe<Scalars['Boolean']>;
+  maxNumProducts: Maybe<Scalars['Int']>;
+  maxNumCollections: Maybe<Scalars['Int']>;
   httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
   serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>;
   path: Maybe<Scalars['String']>;
@@ -3249,11 +3245,6 @@ type SitePluginPluginOptions = {
   allExtensions: Maybe<Scalars['Boolean']>;
   isTSX: Maybe<Scalars['Boolean']>;
   jsxPragma: Maybe<Scalars['String']>;
-  server: Maybe<Scalars['String']>;
-  sourceProducts: Maybe<Scalars['Boolean']>;
-  sourceCollections: Maybe<Scalars['Boolean']>;
-  maxNumProducts: Maybe<Scalars['Int']>;
-  maxNumCollections: Maybe<Scalars['Int']>;
 };
 
 type SitePluginPluginOptionsWorkboxConfig = {

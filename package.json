@@ -7,7 +7,7 @@
     "@vtex/gatsby-plugin-nginx": "^1.1.16",
     "@vtex/gatsby-plugin-thumbor": "^1.1.16",
     "@vtex/gatsby-source-store": "^1.1.16",
-    "@vtex/store-api": "^1.1.16",
+    "@vtex/store-api": "https://pkg.csb.dev/vtex/faststore/commit/8257f41a/@vtex/store-api",
     "@vtex/store-sdk": "^1.1.16",
     "@vtex/store-ui": "^1.1.16",
     "babel-preset-gatsby": "^1.13.0",

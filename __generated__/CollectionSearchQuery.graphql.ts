@@ -12,7 +12,7 @@ export type CollectionSearchQueryQueryVariables = Exact<{
   first: Scalars['Int'];
   after: Maybe<Scalars['String']>;
   sort: Maybe<StoreSort>;
-  selectedFacets: Array<StoreSelectedFacet> | StoreSelectedFacet;
+  selectedFacets: Array<IStoreSelectedFacet> | IStoreSelectedFacet;
 }>;
 
 
@@ -22,8 +22,8 @@ export type CollectionSearchQueryQuery = { search: { products: { pageInfo: { tot
 // Query Related Code
 
 export const CollectionSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
-  sha256Hash: "c0a1867bd49c2e324f745ec4629372f7819f2be391d7a016fff687d2f7ef5d5a",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [IStoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
+  sha256Hash: "45979352902a5bc49ccea66cb231d95c63ddb3d61f350987e8567c5becf93539",
   operationName: "CollectionSearchQuery",
 }
 

@@ -13,7 +13,7 @@ export type GalleryQueryQueryVariables = Exact<{
   after: Maybe<Scalars['String']>;
   sort: Maybe<StoreSort>;
   term: Maybe<Scalars['String']>;
-  selectedFacets: Array<StoreSelectedFacet> | StoreSelectedFacet;
+  selectedFacets: Array<IStoreSelectedFacet> | IStoreSelectedFacet;
 }>;
 
 
@@ -23,8 +23,8 @@ export type GalleryQueryQuery = { search: { products: { pageInfo: { totalCount: 
 // Query Related Code
 
 export const GalleryQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($first: Int!, $after: String, $sort: StoreSort, $term: String, $selectedFacets: [StoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
-  sha256Hash: "ecf326a5ce19587b9903d0964155d7d68163c624e763455ed36768d4dd5b0ec1",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query GalleryQuery($first: Int!, $after: String, $sort: StoreSort, $term: String, $selectedFacets: [IStoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    term: $term\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n  }\n}\n",
+  sha256Hash: "a2392551f2fa71d32eb12249e508f82cee65cd5d225de4c7becbaf73fe78ade8",
   operationName: "GalleryQuery",
 }
 

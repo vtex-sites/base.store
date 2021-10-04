@@ -1,7 +1,7 @@
 import { CollectionSearchQuery } from '@generated/CollectionSearchQuery.graphql'
 import { gql } from '@vtex/gatsby-plugin-graphql'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useSearchVariablesFromSearchState } from 'src/sdk/search/useSearchVariablesFromSearchState'
+import { useSearchVariables } from 'src/sdk/search/useSearchVariables'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   CollectionSearchQueryQuery,
@@ -9,7 +9,7 @@ import type {
 } from '@generated/CollectionSearchQuery.graphql'
 
 export const useCollection = (searchParams: SearchParamsState) => {
-  const variables = useSearchVariablesFromSearchState(searchParams)
+  const variables = useSearchVariables(searchParams)
 
   return useQuery<
     CollectionSearchQueryQuery,
@@ -29,7 +29,7 @@ export const clientSideQuery = gql`
     $first: Int!
     $after: String
     $sort: StoreSort
-    $selectedFacets: [StoreSelectedFacet!]!
+    $selectedFacets: [IStoreSelectedFacet!]!
   ) {
     search(
       first: $first

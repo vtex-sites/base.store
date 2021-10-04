@@ -9,7 +9,7 @@
 
 // Operation related types
 export type BrowserProductPageQueryQueryVariables = Exact<{
-  locator: StoreProductId;
+  locator: Array<IStoreSelectedFacet> | IStoreSelectedFacet;
 }>;
 
 
@@ -19,8 +19,8 @@ export type BrowserProductPageQueryQuery = { product: { slug: string, sku: strin
 // Query Related Code
 
 export const BrowserProductPageQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
-  sha256Hash: "73f9263c0669a654a2cd1baaa1423ca26554bbaf4bc56d5690cf5eefff799b97",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductPageQuery($locator: [IStoreSelectedFacet!]!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
+  sha256Hash: "65c948faaca46d0ecf106c73267c731a61b275a3d69eee0d4ec1b115db925449",
   operationName: "BrowserProductPageQuery",
 }
 
