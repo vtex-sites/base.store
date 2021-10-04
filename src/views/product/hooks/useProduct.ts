@@ -1,32 +1,41 @@
 import { BrowserProductQuery } from '@generated/BrowserProductQuery.graphql'
 import { gql } from '@vtex/gatsby-plugin-graphql'
+import { useSession } from '@vtex/store-sdk'
+import { useMemo } from 'react'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useProductVariables } from 'src/sdk/product/useProductVariables'
-import type { Options } from 'src/sdk/product/useProductVariables'
 import type {
   BrowserProductQueryQuery,
   BrowserProductQueryQueryVariables,
 } from '@generated/BrowserProductQuery.graphql'
+
 /**
  * serverProduct data is stale and incomplete (because we SSRed it).
  * Let's use it's value as placeholder while we fetch the rest of the data
  * on the browser
  */
 export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
-  options: Options,
+  productID: string,
   fallbackData?: T
 ) => {
-  const locator = useProductVariables(options)
+  const { channel } = useSession()
+  const variables = useMemo(
+    () => ({
+      locator: [
+        { key: 'id', value: productID },
+        { key: 'channel', value: channel },
+      ],
+    }),
+    [channel, productID]
+  )
 
   return useQuery<
     BrowserProductQueryQuery & T,
     BrowserProductQueryQueryVariables
   >({
     ...BrowserProductQuery,
-    variables: { locator },
+    variables,
     fallbackData,
     revalidateOnMount: true,
-    suspense: false,
   })
 }
 

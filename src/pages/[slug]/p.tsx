@@ -3,7 +3,6 @@ import { gql } from '@vtex/gatsby-plugin-graphql'
 import { graphql } from 'gatsby'
 import React from 'react'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useProductVariables } from 'src/sdk/product/useProductVariables'
 import View from 'src/views/product'
 import type { FC } from 'react'
 import type { PageProps } from 'gatsby'
@@ -27,13 +26,12 @@ const Page: FC<Props> = (props) => {
     data: serverData,
   } = props
 
-  const locator = useProductVariables({ slug })
   const { data: browserData } = useQuery<
     BrowserProductPageQueryQuery,
     BrowserProductPageQueryQueryVariables
   >({
     ...BrowserProductPageQuery,
-    variables: { locator },
+    variables: { locator: [{ key: 'slug', value: slug }] },
   })
 
   if (browserData == null) {
