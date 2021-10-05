@@ -68,6 +68,22 @@ describe('On product description pages', () => {
           cy.dataLayerHasEvent('add_to_cart')
         })
     })
+
+    it('sends the add_to_cart event at least with the required attributes', () => {
+      cy.visit(pages.collection, options)
+      cy.waitForHydration()
+
+      cy.itemsInCart(0)
+
+      // Add to cart
+      cy.getById('buy-button')
+        .first()
+        .click()
+        .then(() => {
+          cy.eventDataHasCurrencyProperty()
+          cy.itemsHaveRequiredProperties()
+        })
+    })
   })
 
   context('when removing a product from cart', () => {
@@ -140,6 +156,22 @@ describe('On product collection pages', () => {
           cy.itemsInCart(1)
           cy.dataLayerSize(1)
           cy.dataLayerHasEvent('add_to_cart')
+        })
+    })
+
+    it('sends the add_to_cart event at least with the required attributes', () => {
+      cy.visit(pages.collection, options)
+      cy.waitForHydration()
+
+      cy.itemsInCart(0)
+
+      // Add to cart
+      cy.getById('buy-button')
+        .first()
+        .click()
+        .then(() => {
+          cy.eventDataHasCurrencyProperty()
+          cy.itemsHaveRequiredProperties()
         })
     })
   })

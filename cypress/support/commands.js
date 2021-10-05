@@ -55,3 +55,26 @@ Cypress.Commands.add('dataLayerHasEvent', (eventName) => {
     expect(allEvents).to.include(eventName)
   })
 })
+
+Cypress.Commands.add('eventDataHasCurrencyProperty', () => {
+  return cy.window().then((window) => {
+    const allEvents = window.dataLayer.map((evt) => evt.data || {})
+
+    allEvents.forEach((event) => {
+      if (event.value !== undefined) {
+        expect(event).to.have.property('value')
+        expect(event).to.have.property('currency')
+      }
+    })
+  })
+})
+
+Cypress.Commands.add('itemsHaveRequiredProperties', () => {
+  return cy.window().then((window) => {
+    const allItems = window.dataLayer.flatMap((evt) => evt.data.items || [])
+
+    allItems.forEach((item) => {
+      expect(item).to.have.any.keys('item_id', 'item_name')
+    })
+  })
+})
