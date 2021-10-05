@@ -4,7 +4,14 @@ import type { PropsWithChildren } from 'react'
 
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useEffect(() => {
-    window.dataLayer = window.dataLayer || []
+if (typeof window !== 'undefined') {
+   window.dataLayer = window.dataLayer || []
+}
+
+export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
+  useAnalyticsEvent((event) => {
+    window.dataLayer.push(event)
+  })
   }, [])
 
   useAnalyticsEvent((event) => {
