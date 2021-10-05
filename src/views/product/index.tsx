@@ -5,8 +5,8 @@ import type { ProductViewFragment_ProductFragment } from '@generated/ProductView
 import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
 import type { BrowserProductQueryQuery } from '@generated/BrowserProductQuery.graphql'
 
-import { useProduct } from './hooks/useProduct'
 import Seo from './Seo'
+import { useProduct } from './hooks/useProduct'
 
 interface Props {
   site: ProductSeoFragment_SiteFragment
@@ -15,9 +15,7 @@ interface Props {
 
 function View({ product: serverData, site }: Props) {
   const { data } = useProduct(
-    {
-      locator: { value: serverData.id, field: 'id' },
-    },
+    serverData.id,
     { product: serverData as unknown as BrowserProductQueryQuery['product'] } // TODO: Fix this typings
   )
 

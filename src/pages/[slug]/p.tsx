@@ -31,7 +31,7 @@ const Page: FC<Props> = (props) => {
     BrowserProductPageQueryQueryVariables
   >({
     ...BrowserProductPageQuery,
-    variables: { locator: { value: slug, field: 'slug' } },
+    variables: { locator: [{ key: 'slug', value: slug }] },
   })
 
   if (browserData == null) {
@@ -44,7 +44,7 @@ const Page: FC<Props> = (props) => {
 }
 
 export const browserQuery = gql`
-  query BrowserProductPageQuery($locator: StoreProductID!) {
+  query BrowserProductPageQuery($locator: [IStoreSelectedFacet!]!) {
     product(locator: $locator) {
       ...ProductViewFragment_product
     }

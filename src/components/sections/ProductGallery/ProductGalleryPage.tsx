@@ -3,7 +3,7 @@ import { gql } from '@vtex/gatsby-plugin-graphql'
 import React from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useSearchVariablesFromSearchState } from 'src/sdk/search/useSearchVariablesFromSearchState'
+import { useSearchVariables } from 'src/sdk/search/useSearchVariables'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type {
   GalleryQueryQuery,
@@ -18,7 +18,7 @@ interface Props {
 
 const useProductList = (page: number, fallbackData?: GalleryQueryQuery) => {
   const { searchParams } = useSearch()
-  const variables = useSearchVariablesFromSearchState({
+  const variables = useSearchVariables({
     ...searchParams,
     page,
   })
@@ -49,7 +49,7 @@ export const query = gql`
     $after: String
     $sort: StoreSort
     $term: String
-    $selectedFacets: [StoreSelectedFacet!]!
+    $selectedFacets: [IStoreSelectedFacet!]!
   ) {
     search(
       first: $first
