@@ -1,19 +1,11 @@
-import { useEffect } from 'react'
 import { useAnalyticsEvent } from '@vtex/store-sdk'
 import type { PropsWithChildren } from 'react'
 
-export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
-  useEffect(() => {
 if (typeof window !== 'undefined') {
-   window.dataLayer = window.dataLayer || []
+  window.dataLayer = window.dataLayer || []
 }
 
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
-  useAnalyticsEvent((event) => {
-    window.dataLayer.push(event)
-  })
-  }, [])
-
   useAnalyticsEvent((event) => {
     window.dataLayer.push(event)
   })
