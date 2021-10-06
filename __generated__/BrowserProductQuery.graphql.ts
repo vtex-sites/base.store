@@ -19,8 +19,8 @@ export type BrowserProductQueryQuery = { product: { slug: string, sku: string, g
 // Query Related Code
 
 export const BrowserProductQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: StoreProductID!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n      brandName: name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
-  sha256Hash: "6f8b3d479cd7a32e15a35c14ddcda437b3eb428cc28fc291a503b247f442da55",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n      brandName: name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
+  sha256Hash: "1c200475fe111d3c4b7eaa94fc7687feaeee07943a9bfb11b39a90e3b5d726e5",
   operationName: "BrowserProductQuery",
 }
 

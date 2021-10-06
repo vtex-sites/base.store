@@ -20,7 +20,7 @@ export type ProductPageQueryQuery = { site: Maybe<{ siteMetadata: Maybe<{ title:
 
 export const ProductPageQuery = {
   query: process.env.NODE_ENV === 'production' ? undefined : "query ProductPageQuery($id: String!) {\n  site {\n    siteMetadata {\n      title\n      description\n      titleTemplate\n      siteUrl\n    }\n  }\n  product: storeProduct(id: {eq: $id}) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n      brandName: name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
-  sha256Hash: "d205abf66c71d28467210a40e74be98c0eb49f1913bc9af57eb6da897b84ad7b",
+  sha256Hash: "8de4505c4172ae14355444c50df435b524c68ca4075a9731ad5a7e330fe74130",
   operationName: "ProductPageQuery",
 }
 
