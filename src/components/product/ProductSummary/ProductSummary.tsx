@@ -32,25 +32,17 @@ function ProductSummary({ product }: Props) {
   const linkProps = useProductLink({ slug })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
+    id: product.id,
     itemOffered: {
       name: productName,
       image: [img],
       sku,
     },
-    id,
-    name: productName,
-    skuId: id,
     price: spotPrice,
     listPrice,
     seller,
     quantity: 1,
-    giftQuantity: 0,
-    seller: identifier,
     brand: brandName,
-    image: {
-      src: img.url,
-      alt: img.alternateName,
-    },
   })
 
   return (

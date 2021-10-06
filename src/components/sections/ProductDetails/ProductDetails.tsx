@@ -34,19 +34,11 @@ function ProductDetails({ product }: Props) {
       sku,
     },
     id: product.id,
-    name,
     price,
     listPrice,
     seller,
     quantity: 1,
-    giftQuantity: 0,
-    seller: identifier,
     brand: brandName,
-    skuId: id,
-    image: {
-      src: img.url,
-      alt: img.alternateName,
-    },
   })
 
   return (
