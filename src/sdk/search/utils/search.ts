@@ -21,7 +21,7 @@ const history = {
 
 const pathExists = async (pathname: string) => {
   try {
-    const response = await fetch(`/page-data${pathname}/page-data.json`, {
+    const response = await fetch(`${pathname}/`, {
       redirect: 'error',
     })
 
