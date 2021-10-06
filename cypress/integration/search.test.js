@@ -6,7 +6,7 @@
 
 import { pages, options } from '../global'
 
-describe('Search page Filters and Sorting options', () => {
+describe('Search input', () => {
   beforeEach(() => {
     cy.clearIDB()
   })
@@ -30,7 +30,7 @@ describe('Search page Filters and Sorting options', () => {
       cy.visit(pages.home, options)
       cy.waitForHydration()
 
-      cy.getById('store-input').click().type(pages.collection_name)
+      cy.getById('store-input').click().type(pages.brand_name)
       cy.getById('store-button').click()
 
       cy.location('pathname')
