@@ -18,7 +18,6 @@ function ProductSummary({ product }: Props) {
     slug,
     sku,
     name: productName,
-    brand: { brandName },
     isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
@@ -42,7 +41,6 @@ function ProductSummary({ product }: Props) {
     listPrice,
     seller,
     quantity: 1,
-    brand: brandName,
   })
 
   return (
@@ -78,9 +76,6 @@ export const fragment = graphql`
     slug
     sku
     name
-    brand {
-      brandName: name
-    }
 
     isVariantOf {
       name

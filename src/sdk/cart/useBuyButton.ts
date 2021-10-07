@@ -22,12 +22,7 @@ interface VTEXAddToCartEvent extends AddToCartEvent {
   }
 }
 
-type Item = CartItem & {
-  id: string
-  brand: string
-}
-
-export const useBuyButton = (item: Item | null) => {
+export const useBuyButton = (item: CartItem | null) => {
   const { addItem } = useCart()
   const { openMinicart } = useUI()
   const {
@@ -52,7 +47,6 @@ export const useBuyButton = (item: Item | null) => {
               item_id: item.id,
               quantity: item.quantity,
               item_variant: item.itemOffered.sku,
-              item_brand: item.brand,
               item_name: item.itemOffered.name,
               price: item.price,
               currency: code,

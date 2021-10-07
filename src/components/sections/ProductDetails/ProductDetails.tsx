@@ -19,7 +19,6 @@ function ProductDetails({ product }: Props) {
   const {
     name,
     sku,
-    brand: { brandName },
     image: [img],
     offers: {
       offers: [{ price, listPrice, seller }],
@@ -38,7 +37,6 @@ function ProductDetails({ product }: Props) {
     listPrice,
     seller,
     quantity: 1,
-    brand: brandName,
   })
 
   return (
@@ -57,9 +55,6 @@ export const fragment = graphql`
     id: productID
     name
     sku
-    brand {
-      brandName: name
-    }
 
     image {
       url
