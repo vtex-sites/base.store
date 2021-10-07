@@ -2312,6 +2312,14 @@
     "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
 
+"@vtex/store-ui@https://pkg.csb.dev/vtex/faststore/commit/0d7f4cd2/@vtex/store-ui":
+  version "1.1.18"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/0d7f4cd2/@vtex/store-ui#33a02f015665b88693ccd0411985dbf350359de4"
+  dependencies:
+    "@reach/popover" "^0.16.0"
+    react-swipeable "^6.1.2"
+    tabbable "^5.2.1"
+
 "@vtex/tsconfig@0.5.6":
   version "0.5.6"
   resolved "https://registry.yarnpkg.com/@vtex/tsconfig/-/tsconfig-0.5.6.tgz#c0eb4222a75d1b8a4fefb1d85bbd9349880ddbe5"
@@ -12981,6 +12989,11 @@ tabbable@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-4.0.0.tgz#5bff1d1135df1482cf0f0206434f15eadbeb9261"
   integrity sha512-H1XoH1URcBOa/rZZWxLxHCtOdVUEev+9vo5YdYhC9tCY4wnybX+VQrCYuy9ubkg69fCBxCONJOSLGfw0DWMffQ==
+
+tabbable@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.2.1.tgz#e3fda7367ddbb172dcda9f871c0fdb36d1c4cd9c"
+  integrity sha512-40pEZ2mhjaZzK0BnI+QGNjJO8UYx9pP5v7BGe17SORTO0OEuuaAwQTkAp8whcZvqon44wKFOikD+Al11K3JICQ==
 
 table@^6.0.9:
   version "6.7.1"

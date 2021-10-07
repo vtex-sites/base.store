@@ -8,7 +8,7 @@
     "@vtex/gatsby-plugin-thumbor": "^1.0.2",
     "@vtex/gatsby-source-vtex": "^1.0.2",
     "@vtex/store-sdk": "^1.0.2",
-    "@vtex/store-ui": "^1.1.12",
+    "@vtex/store-ui": "https://pkg.csb.dev/vtex/faststore/commit/0d7f4cd2/@vtex/store-ui",
     "babel-preset-gatsby": "^1.13.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-gatsby-cloud": "^3.1.0",
