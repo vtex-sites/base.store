@@ -18,40 +18,37 @@ const View: FC<Props> = (props) => {
   const { data: dynamicData } = useSearch(searchParams)
 
   const data = { ...dynamicData, ...serverData }
-  const { site, vtex } = data
-  const { productSearch, facets } = vtex ?? {}
-  const totalCount = productSearch?.totalCount ?? 0
-
-  if (dynamicData == null) {
-    return <div>loading...</div>
-  }
-
-  // usePlpPixelEffect({
-  //   searchParams,
-  //   totalCount,
-  //   location,
-  // })
+  const { site, search } = data
+  const title = site?.siteMetadata?.title ?? ''
 
   return (
-    <SearchProvider
-      searchParams={searchParams}
-      pageInfo={{
-        size: ITEMS_PER_PAGE,
-        total: Math.ceil(totalCount / ITEMS_PER_PAGE),
-      }}
-    >
-      <>
-        {/* Seo Components */}
-        <Seo site={site!} />
+    <>
+      <h1 className="absolute top-[-100px]">{title}</h1>
 
-        {/* UI Components */}
-        <ProductGallery
-          initialData={dynamicData as any}
-          facets={facets!.facets as any}
-          productSearch={productSearch as any}
-        />
-      </>
-    </SearchProvider>
+      {search == null || site == null ? (
+        <div>...loading</div>
+      ) : (
+        <SearchProvider
+          searchParams={searchParams}
+          pageInfo={{
+            size: ITEMS_PER_PAGE,
+            total: Math.ceil(
+              search.products.pageInfo.totalCount / ITEMS_PER_PAGE
+            ),
+          }}
+        >
+          {/* TODO: Move seo components to SSG */}
+          <Seo title={title} site={site} />
+
+          {/* UI components */}
+          <ProductGallery
+            fallbackData={dynamicData}
+            products={search.products}
+            facets={search.facets}
+          />
+        </SearchProvider>
+      )}
+    </>
   )
 }
 

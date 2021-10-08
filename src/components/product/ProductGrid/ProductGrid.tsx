@@ -2,16 +2,19 @@ import React from 'react'
 import type { ComponentPropsWithoutRef } from 'react'
 
 import ProductSummary from '../ProductSummary'
-import * as styles from './ProductGrid.module.css'
 
 interface Props {
-  products: Array<ComponentPropsWithoutRef<typeof ProductSummary>['product']>
+  products: {
+    edges: Array<{
+      node: ComponentPropsWithoutRef<typeof ProductSummary>['product']
+    }>
+  }
 }
 
 function ProductGrid({ products }: Props) {
   return (
-    <div className={styles.grid}>
-      {products.map((product, idx) => (
+    <div className="grid grid-cols-2 gap-2 mb-2 sm:grid-cols-4 sm:gap-7 sm:mb-7">
+      {products.edges.map(({ node: product }, idx) => (
         <ProductSummary key={`${product.id}-${idx}`} product={product} />
       ))}
     </div>

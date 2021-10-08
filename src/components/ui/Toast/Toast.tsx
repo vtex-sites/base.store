@@ -1,22 +1,11 @@
+import Button from 'src/components/ui/Button'
 import React, { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
 
-const styles = {
-  error: {
-    backgroundColor: 'red',
-    minHeight: '150px',
-    color: 'white',
-  },
-  warn: {
-    backgroundColor: 'yellow',
-    minHeight: '150px',
-    color: 'white',
-  },
-  info: {
-    backgroundColor: 'green',
-    minHeight: '150px',
-    color: 'white',
-  },
+const state = {
+  error: 'bg-red',
+  warn: 'bg-yellow',
+  info: 'bg-green',
 }
 
 function Toast() {
@@ -38,8 +27,10 @@ function Toast() {
 
   return (
     <div>
-      <button onClick={popToast}>Close</button>
-      <div style={styles[toast.status]}>message: {toast.message}</div>
+      <Button onClick={popToast}>Close</Button>
+      <div className={`h-36 text-white ${state[toast.status]}`}>
+        message: {toast.message}
+      </div>
     </div>
   )
 }

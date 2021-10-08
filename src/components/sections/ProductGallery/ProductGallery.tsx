@@ -1,24 +1,27 @@
 import { gql } from '@vtex/gatsby-plugin-graphql'
-import React from 'react'
+import React, { Fragment } from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
+import PageBreak from 'src/sdk/search/PageBreak'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { GalleryQueryQuery } from '@generated/GalleryQuery.graphql'
 import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
-import type { ProductGallery_ProductSearchFragment } from '@generated/ProductGallery_productSearch.graphql'
+import type { ProductGallery_ProductsFragment } from '@generated/ProductGallery_products.graphql'
 
 import GalleryPage from './ProductGalleryPage'
 
 interface Props {
-  initialData?: GalleryQueryQuery
+  fallbackData?: GalleryQueryQuery
   facets: ProductGallery_FacetsFragment[]
-  productSearch: ProductGallery_ProductSearchFragment
+  products: ProductGallery_ProductsFragment
 }
 
 function ProductGallery({
-  initialData,
-  productSearch: { totalCount },
+  fallbackData,
   facets,
+  products: {
+    pageInfo: { totalCount },
+  },
 }: Props) {
   const {
     searchParams,
@@ -35,13 +38,7 @@ function ProductGallery({
     <>
       {/* Controls */}
       <FacetedFilter facets={facets} />
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-        }}
-      >
+      <div className="flex items-center justify-between">
         <div>Total Products: {totalCount}</div>
         <Sort />
       </div>
@@ -49,10 +46,10 @@ function ProductGallery({
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
         <a
+          className="p-8 block center"
           onClick={setPrevPage}
           href={prev.link}
           rel="prev"
-          style={{ padding: '30px', display: 'block', textAlign: 'center' }}
         >
           Previous Page
         </a>
@@ -60,20 +57,23 @@ function ProductGallery({
 
       {/* Render ALL products */}
       {pages.map((page) => (
-        <GalleryPage
-          key={`gallery-page-${page}`}
-          initialData={page === searchParams.page ? initialData : undefined}
-          page={page}
-        />
+        <Fragment key={`gallery-page-${page}`}>
+          <PageBreak page={page} />
+          <GalleryPage
+            fallbackData={page === searchParams.page ? fallbackData : undefined}
+            page={page}
+          />
+        </Fragment>
       ))}
 
       {/* Add link to next page. This helps on SEO */}
       {next !== false && (
         <a
+          className="p-8 block center"
+          data-testid="show-more"
           onClick={setNextPage}
           href={next.link}
           rel="next"
-          style={{ padding: '30px', display: 'block', textAlign: 'center' }}
         >
           Show More
         </a>
@@ -87,10 +87,12 @@ function ProductGallery({
 }
 
 export const fragment = gql`
-  fragment ProductGallery_productSearch on VTEX_ProductSearch {
-    totalCount: recordsFiltered
+  fragment ProductGallery_products on BrowserStoreProductConnection {
+    pageInfo {
+      totalCount
+    }
   }
-  fragment ProductGallery_facets on VTEX_Facet {
+  fragment ProductGallery_facets on StoreFacet {
     ...FacetedFilter_facets
   }
 `

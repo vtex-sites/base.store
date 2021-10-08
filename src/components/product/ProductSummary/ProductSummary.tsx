@@ -1,92 +1,98 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React from 'react'
+import React, { useMemo } from 'react'
+import Button from 'src/components/ui/Button'
+import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
-import { useProductLink } from 'src/sdk/product/useProductLink'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
 
 interface Props {
   product: ProductSummary_ProductFragment
 }
 
-const styles = {
-  image: { width: '100%' },
-  listPrice: { textDecoration: 'line-through' },
-  offer: { display: 'flex', justifyContent: 'space-between' },
-}
-
 function ProductSummary({ product }: Props) {
-  const { images, sellers, itemId } = product.items?.[0] ?? {}
-  const { imageUrl: src, imageText: alt } = images?.[0] ?? {}
-  const imageSrc = src ?? ''
-  const imageAlt = alt ?? ''
-  const [seller] = sellers!
-  const offer = seller!.commercialOffer
-  const linkProps = useProductLink({ slug: product.slug!, skuId: itemId! })
-  const image = useImage(imageSrc, 'product.summary')
-  const price = useFormattedPrice(offer!.spotPrice!)
-  const listPrice = useFormattedPrice(offer!.listPrice!)
-  const buyProps = useBuyButton(
-    offer && {
-      name: product.productName!,
-      skuId: itemId!,
-      price: offer.spotPrice!,
-      listPrice: offer.listPrice!,
-      quantity: 1,
-      giftQuantity: 0,
-      seller: seller!.sellerId!,
-      image: {
-        src: imageSrc,
-        alt: imageAlt,
-      },
-    }
+  const {
+    slug,
+    sku,
+    name: productName,
+    isVariantOf: { name },
+    image: [img],
+    offers: { lowPrice: spotPrice, offers },
+  } = product
+
+  const { listPrice, seller } = useMemo(
+    () => offers.find((x) => x.price === spotPrice)!,
+    [spotPrice, offers]
   )
+
+  const linkProps = useProductLink({ slug })
+  const image = useImage(img.url, 'product.summary')
+  const buyProps = useBuyButton({
+    itemOffered: {
+      name: productName,
+      image: [img],
+      sku,
+    },
+    price: spotPrice,
+    listPrice,
+    seller,
+    quantity: 1,
+  })
 
   return (
     <Link {...linkProps}>
       <GatsbyImage
-        style={styles.image}
+        className="w-full"
         image={image}
-        alt={imageAlt}
+        alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />
-      <div>{product.productName}</div>
-      <div style={styles.offer}>
+      <div>{name}</div>
+      <div className="flex justify-between">
         <span
           data-testid="list-price"
-          data-value={offer!.listPrice!}
-          style={styles.listPrice}
+          data-value={listPrice}
+          className="line-through"
         >
-          {listPrice}
+          {useFormattedPrice(listPrice)}
         </span>
-        <span data-testid="price" data-value={offer!.spotPrice!}>
-          {price}
+        <span data-testid="price" data-value={spotPrice}>
+          {useFormattedPrice(spotPrice)}
         </span>
+        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
       </div>
-      <button {...buyProps}>Add to cart</button>
+      <Button {...buyProps}>Add to cart</Button>
     </Link>
   )
 }
 
 export const fragment = graphql`
-  fragment ProductSummary_product on VTEX_Product {
-    slug: linkText
-    id: productId
-    productName
+  fragment ProductSummary_product on StoreProduct {
+    id: productID
+    slug
 
-    items {
-      itemId
-      images {
-        imageUrl
-        imageText
-      }
-      sellers {
-        sellerId
-        commercialOffer: commertialOffer {
-          spotPrice
-          listPrice: ListPrice
+    sku
+    name
+
+    isVariantOf {
+      name
+    }
+
+    image {
+      url
+      alternateName
+    }
+
+    offers {
+      lowPrice
+      offers {
+        price
+        listPrice
+        seller {
+          identifier
         }
       }
     }

@@ -3,7 +3,7 @@ import { gql } from '@vtex/gatsby-plugin-graphql'
 import React from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useQueryVariablesFromSearchParams } from 'src/sdk/search/useQueryVariablesFromSearchParams'
+import { useSearchVariables } from 'src/sdk/search/useSearchVariables'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type {
   GalleryQueryQuery,
@@ -13,12 +13,12 @@ import type {
 interface Props {
   page: number
   display?: boolean
-  initialData?: GalleryQueryQuery
+  fallbackData?: GalleryQueryQuery
 }
 
-const useProductList = (page: number, initialData?: GalleryQueryQuery) => {
+const useProductList = (page: number, fallbackData?: GalleryQueryQuery) => {
   const { searchParams } = useSearch()
-  const variables = useQueryVariablesFromSearchParams({
+  const variables = useSearchVariables({
     ...searchParams,
     page,
   })
@@ -26,15 +26,15 @@ const useProductList = (page: number, initialData?: GalleryQueryQuery) => {
   const { data } = useQuery<GalleryQueryQuery, GalleryQueryQueryVariables>({
     ...GalleryQuery,
     variables,
-    initialData,
+    fallbackData,
     revalidateOnMount: true,
   })
 
-  return data?.vtex.productSearch?.products as any
+  return data?.search.products
 }
 
-function GalleryPage({ page, initialData, display }: Props) {
-  const products = useProductList(page, initialData)
+function GalleryPage({ page, fallbackData, display }: Props) {
+  const products = useProductList(page, fallbackData)
 
   if (display === false || products == null) {
     return null
@@ -45,24 +45,25 @@ function GalleryPage({ page, initialData, display }: Props) {
 
 export const query = gql`
   query GalleryQuery(
-    $fullText: String
-    $selectedFacets: [VTEX_SelectedFacetInput!]
-    $from: Int
-    $to: Int
-    $sort: String
-    $hideUnavailableItems: Boolean = false
+    $first: Int!
+    $after: String
+    $sort: StoreSort
+    $term: String
+    $selectedFacets: [IStoreSelectedFacet!]!
   ) {
-    vtex {
-      productSearch(
-        hideUnavailableItems: $hideUnavailableItems
-        selectedFacets: $selectedFacets
-        fullText: $fullText
-        from: $from
-        to: $to
-        orderBy: $sort
-      ) {
-        products {
-          ...ProductSummary_product
+    search(
+      first: $first
+      after: $after
+      sort: $sort
+      term: $term
+      selectedFacets: $selectedFacets
+    ) {
+      products {
+        ...ProductGallery_products
+        edges {
+          node {
+            ...ProductSummary_product
+          }
         }
       }
     }

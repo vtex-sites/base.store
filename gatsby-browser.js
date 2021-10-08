@@ -17,7 +17,9 @@ export const wrapRootElement = ({ element }) => (
         actions={uiActions}
         effects={uiEffects}
       >
-        <SessionProvider>
+        <SessionProvider
+          initialState={{ channel: process.env.GATSBY_VTEX_CHANNEL }}
+        >
           <CartProvider mode="optimistic" onValidateCart={validateCart}>
             {element}
           </CartProvider>

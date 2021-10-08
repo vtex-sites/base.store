@@ -1,11 +1,11 @@
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import React from 'react'
 
-import type { Props as ViewProps } from '../index'
 import { useMetadata } from './hooks/useMetadata'
 import { useSiteLinksSearchBoxJsonLd } from './hooks/useSiteLinksSearchBoxJsonLd'
+import type { Props as ViewProps } from '../index'
 
-export type Props = ViewProps
+export type Props = ViewProps & { title: string }
 
 function Seo(props: Props) {
   const metadata = useMetadata(props)

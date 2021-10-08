@@ -3,9 +3,10 @@ import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import type { ProductViewFragment_ProductFragment } from '@generated/ProductViewFragment_product.graphql'
 import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
+import type { BrowserProductQueryQuery } from '@generated/BrowserProductQuery.graphql'
 
-import { useProduct } from './hooks/useProduct'
 import Seo from './Seo'
+import { useProduct } from './hooks/useProduct'
 
 interface Props {
   site: ProductSeoFragment_SiteFragment
@@ -13,17 +14,13 @@ interface Props {
 }
 
 function View({ product: serverData, site }: Props) {
-  /**
-   * serverProduct data is stale and incomplete (because we SSRed it).
-   * Let's use it's value as placeholder while we fetch the rest of the data
-   * on the browser
-   */
   const { data } = useProduct(
-    { slug: serverData.slug! },
-    { vtex: { product: serverData as any } }
+    serverData.id,
+    { product: serverData as unknown as BrowserProductQueryQuery['product'] } // TODO: Fix this typings
   )
 
-  const product = data?.vtex.product
+  const product = data?.product
+  const title = data?.product.seo.title ?? site?.siteMetadata?.title ?? ''
 
   // useProductPixelEffect({ product: { id: product?.id ?? 'unknown' } })
 
@@ -34,9 +31,11 @@ function View({ product: serverData, site }: Props) {
   return (
     <>
       {/* Seo */}
-      <Seo product={product} site={site} />
+      <Seo title={title} product={product} site={site} />
 
       {/* Visual Sections */}
+      <h1 className="absolute top-[-100px]">{title}</h1>
+
       <ProductDetails product={product} />
     </>
   )
@@ -44,8 +43,8 @@ function View({ product: serverData, site }: Props) {
 
 export const fragment = graphql`
   fragment ProductViewFragment_product on StoreProduct {
-    id: productId
-    slug: linkText
+    id: productID
+    slug
 
     ...ProductSeoFragment_product
     ...ProductDetailsFragment_product

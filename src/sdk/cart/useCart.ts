@@ -1,35 +1,8 @@
 import { useCart as useSDKCart } from '@vtex/store-sdk'
-import { useMemo, useCallback } from 'react'
-import type { CartItem as ICartItem } from '@vtex/store-sdk'
+import { useCallback, useMemo } from 'react'
 
-export interface CartItem extends ICartItem {
-  image: {
-    src: string
-    alt: string
-  }
-  skuId: string
-  seller: string
-  name: string
-  price: number
-  listPrice: number
-  quantity: number
-  giftQuantity: number
-}
-
-export interface CartMessages {
-  status: 'error'
-  text: string
-  code: string
-}
-
-export interface Cart {
-  id: string
-  items: CartItem[]
-  messages?: CartMessages[]
-}
-
-export const getItemId = (item: Pick<CartItem, 'skuId' | 'seller'>) =>
-  `${item.skuId}:${item.seller}`
+import { getItemId, isGift } from './validate'
+import type { Cart, CartItem } from './validate'
 
 export const useCart = () => {
   const { addItem: addItemToCart, ...cart } = useSDKCart<CartItem>()
@@ -51,10 +24,11 @@ export const useCart = () => {
       ...cart,
       addItem,
       messages: (cart as Cart).messages,
-      gifts: cart.items.filter((item) => item.giftQuantity > 0),
+      gifts: cart.items.filter((item) => isGift(item)),
+      items: cart.items.filter((item) => !isGift(item)),
       totalUniqueItems: cart.items.length,
       totalItems: cart.items.reduce(
-        (acc, curr) => acc + curr.quantity + curr.giftQuantity,
+        (acc, curr) => acc + (isGift(curr) ? 0 : curr.quantity),
         0
       ),
       total: cart.items.reduce(
