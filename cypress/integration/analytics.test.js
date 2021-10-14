@@ -9,14 +9,11 @@ import { pages, options } from '../global'
 describe('add_to_cart event', () => {
   beforeEach(() => {
     cy.clearIDB()
-    cy.clearDataLayer()
   })
 
   const testAddToCartEvent = (skuId) => {
     cy.window().then((window) => {
       const { dataLayer } = window
-
-      expect(dataLayer).to.have.length(1)
 
       const event = dataLayer.find((e) => e.type === 'add_to_cart')
 
@@ -63,6 +60,42 @@ describe('add_to_cart event', () => {
         const skuId = $btn.attr('data-sku')
 
         testAddToCartEvent(skuId)
+      })
+  })
+})
+
+describe('view_item event', () => {
+  const dataLayerHasEvent = (eventName) => {
+    return cy.window().then((window) => {
+      const allEvents = window.dataLayer.map((evt) => evt.type)
+
+      expect(allEvents).to.include(eventName)
+    })
+  }
+
+  const eventDataHasCurrencyProperty = () => {
+    return cy.window().then((window) => {
+      const allEvents = window.dataLayer.map((evt) => evt.data || {})
+
+      allEvents.forEach((event) => {
+        if (event.value !== undefined) {
+          expect(event).to.have.property('value')
+          expect(event).to.have.property('currency')
+        }
+      })
+    })
+  }
+
+  it('add view_item event in data layer', () => {
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
+
+    cy.getById('product-link')
+      .first()
+      .click()
+      .then(() => {
+        dataLayerHasEvent('view_item')
+        eventDataHasCurrencyProperty()
       })
   })
 })

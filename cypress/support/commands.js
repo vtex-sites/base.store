@@ -36,12 +36,6 @@ Cypress.Commands.add('clearIDB', () => {
   return indexedDB.deleteDatabase('keyval-store')
 })
 
-Cypress.Commands.add('clearDataLayer', () => {
-  return cy.window().then((window) => {
-    window.dataLayer = []
-  })
-})
-
 Cypress.Commands.add('itemsInCart', (count) => {
   return cy.getById('cart-toggle').should(($toggle) => {
     expect($toggle.attr('data-items')).to.eq(count.toString())

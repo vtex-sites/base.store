@@ -9,25 +9,23 @@ import { useMemo } from 'react'
 
 export type ProductLinkOptions = {
   slug: string
-  product: ViewItemData
-}
+} & ViewItemData
 
-export const useProductLink = ({ product, slug }: ProductLinkOptions) => {
+export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
   const {
     currency: { code },
   } = useSession()
 
   return useMemo(() => {
     const onClick = () => {
-      product.currency = code as CurrencyCode
-
-      product.items = product.items?.map((p) => {
-        return { ...p, currency: code } as Item
+      const currency = code as CurrencyCode
+      const productItems = product.items?.map((p) => {
+        return { ...p, currency } as Item
       })
 
       sendAnalyticsEvent<ViewItemEvent>({
         type: 'view_item',
-        data: product,
+        data: { ...product, currency, items: productItems },
       })
     }
 
