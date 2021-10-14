@@ -12,7 +12,6 @@ import type { CartItem } from './validate'
 
 type AdditionalItemProperties = {
   product_reference_id: string | null
-  sku_reference_id: string | null
   sku_name: string | null
 }
 
@@ -54,7 +53,6 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
               price: item.price,
               currency: code,
               product_reference_id: item.id,
-              sku_reference_id: item.itemOffered.sku,
               sku_name: item.itemOffered.name,
             },
           ],
