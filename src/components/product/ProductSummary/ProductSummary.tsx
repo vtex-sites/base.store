@@ -8,12 +8,30 @@ import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import type { ViewItemData } from '@vtex/store-sdk'
 
 interface Props {
   product: ProductSummary_ProductFragment
 }
 
 function ProductSummary({ product }: Props) {
+  const productOptions: ViewItemData = {
+    value: product?.offers?.offers[0]?.price,
+    items: [
+      {
+        item_id: product?.id,
+        item_name: product?.name,
+        index: 0,
+        price: product?.offers?.offers[0]?.price,
+        discount:
+          product?.offers?.offers[0]?.listPrice -
+          product?.offers?.offers[0]?.price,
+        item_brand: product?.brand?.name,
+        item_variant: product?.isVariantOf?.name,
+      },
+    ],
+  }
+
   const {
     id,
     slug,
@@ -31,7 +49,7 @@ function ProductSummary({ product }: Props) {
     [spotPrice, offers]
   )
 
-  const linkProps = useProductLink({ slug })
+  const linkProps = useProductLink({ slug, product: productOptions })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
@@ -82,6 +100,9 @@ export const fragment = graphql`
     id: productID
     slug
     sku
+    brand {
+      brandName: name
+    }
     name
     gtin
 
@@ -104,6 +125,7 @@ export const fragment = graphql`
       offers {
         price
         listPrice
+        quantity
         seller {
           identifier
         }
