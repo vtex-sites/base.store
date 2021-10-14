@@ -17,7 +17,10 @@ const styles = {
 
 function ProductDetails({ product }: Props) {
   const {
-    name,
+    id,
+    isVariantOf: { name },
+    name: skuName,
+    brand: { name: brandName },
     sku,
     image: [img],
     offers: {
@@ -27,20 +30,23 @@ function ProductDetails({ product }: Props) {
 
   const image = useImage(img.url, 'product.details')
   const buyProps = useBuyButton({
-    itemOffered: {
-      image: [img],
-      name,
-      sku,
-    },
+    id,
+    name,
+    brand: brandName,
     price,
     listPrice,
     seller,
     quantity: 1,
+    itemOffered: {
+      image: [img],
+      name: skuName,
+      sku,
+    },
   })
 
   return (
     <div>
-      <h2>{name}</h2>
+      <h2>{skuName}</h2>
       <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
       <div style={styles.listPrice}>{useFormattedPrice(listPrice)}</div>
       <div>{useFormattedPrice(price)}</div>
@@ -55,9 +61,17 @@ export const fragment = graphql`
     name
     sku
 
+    isVariantOf {
+      name
+    }
+
     image {
       url
       alternateName
+    }
+
+    brand {
+      name
     }
 
     offers {

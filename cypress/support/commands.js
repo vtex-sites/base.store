@@ -41,3 +41,40 @@ Cypress.Commands.add('itemsInCart', (count) => {
     expect($toggle.attr('data-items')).to.eq(count.toString())
   })
 })
+
+Cypress.Commands.add('dataLayerSize', (count) => {
+  return cy.window().then((window) => {
+    expect(window.dataLayer.length).to.eq(count)
+  })
+})
+
+Cypress.Commands.add('dataLayerHasEvent', (eventName) => {
+  return cy.window().then((window) => {
+    const allEvents = window.dataLayer.map((evt) => evt.type)
+
+    expect(allEvents).to.include(eventName)
+  })
+})
+
+Cypress.Commands.add('eventDataHasCurrencyProperty', () => {
+  return cy.window().then((window) => {
+    const allEvents = window.dataLayer.map((evt) => evt.data || {})
+
+    allEvents.forEach((event) => {
+      if (event.value !== undefined) {
+        expect(event).to.have.property('value')
+        expect(event).to.have.property('currency')
+      }
+    })
+  })
+})
+
+Cypress.Commands.add('itemsHaveRequiredProperties', () => {
+  return cy.window().then((window) => {
+    const allItems = window.dataLayer.flatMap((evt) => evt.data.items || [])
+
+    allItems.forEach((item) => {
+      expect(item).to.have.any.keys('item_id', 'item_name')
+    })
+  })
+})

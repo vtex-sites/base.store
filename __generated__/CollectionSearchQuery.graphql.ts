@@ -16,14 +16,14 @@ export type CollectionSearchQueryQueryVariables = Exact<{
 }>;
 
 
-export type CollectionSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, sku: string, name: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
+export type CollectionSearchQueryQuery = { search: { products: { pageInfo: { totalCount: number }, edges: Array<{ node: { slug: string, sku: string, name: string, id: string, isVariantOf: { name: string }, image: Array<{ url: string, alternateName: string }>, brand: { name: string }, offers: { lowPrice: number, offers: Array<{ price: number, listPrice: number, seller: { identifier: string } }> } } }> }, facets: Array<{ key: string, label: string, type: StoreFacetType, values: Array<{ label: string, value: string, selected: boolean, quantity: number }> }> } };
 
 
 // Query Related Code
 
 export const CollectionSearchQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [IStoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
-  sha256Hash: "45979352902a5bc49ccea66cb231d95c63ddb3d61f350987e8567c5becf93539",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query CollectionSearchQuery($first: Int!, $after: String, $sort: StoreSort, $selectedFacets: [IStoreSelectedFacet!]!) {\n  search(\n    first: $first\n    after: $after\n    sort: $sort\n    selectedFacets: $selectedFacets\n  ) {\n    products {\n      pageInfo {\n        totalCount\n      }\n      edges {\n        node {\n          id: productID\n          slug\n          sku\n          name\n          isVariantOf {\n            name\n          }\n          image {\n            url\n            alternateName\n          }\n          brand {\n            name\n          }\n          offers {\n            lowPrice\n            offers {\n              price\n              listPrice\n              seller {\n                identifier\n              }\n            }\n          }\n        }\n      }\n    }\n    facets {\n      key\n      label\n      type\n      values {\n        label\n        value\n        selected\n        quantity\n      }\n    }\n  }\n}\n",
+  sha256Hash: "57ff404224bcfa480fbb92c45081a1a66286296720647a5281bb9738690ba473",
   operationName: "CollectionSearchQuery",
 }
 
