@@ -13,14 +13,14 @@ export type BrowserProductQueryQueryVariables = Exact<{
 }>;
 
 
-export type BrowserProductQueryQuery = { product: { slug: string, sku: string, gtin: string, name: string, description: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, highPrice: number, priceCurrency: string, offers: Array<{ price: number, priceValidUntil: string, priceCurrency: string, availability: string, itemCondition: string, listPrice: number, seller: { identifier: string } }> } } };
+export type BrowserProductQueryQuery = { product: { slug: string, sku: string, gtin: string, name: string, description: string, id: string, seo: { title: string, description: string }, brand: { name: string }, breadcrumbList: { itemListElement: Array<{ item: string, name: string, position: number }> }, image: Array<{ url: string, alternateName: string }>, offers: { lowPrice: number, highPrice: number, priceCurrency: string, offers: Array<{ price: number, priceValidUntil: string, priceCurrency: string, availability: string, itemCondition: string, listPrice: number, seller: { identifier: string } }> }, isVariantOf: { name: string } } };
 
 
 // Query Related Code
 
 export const BrowserProductQuery = {
-  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n  }\n}\n",
-  sha256Hash: "26841c31a18a1186c973943f36ea44639b668a10ac99aafe2a05aaed109106b4",
+  query: process.env.NODE_ENV === 'production' ? undefined : "query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {\n  product(locator: $locator) {\n    id: productID\n    slug\n    seo {\n      title\n      description\n    }\n    brand {\n      name\n    }\n    sku\n    gtin\n    name\n    description\n    breadcrumbList {\n      itemListElement {\n        item\n        name\n        position\n      }\n    }\n    image {\n      url\n      alternateName\n    }\n    offers {\n      lowPrice\n      highPrice\n      priceCurrency\n      offers {\n        price\n        priceValidUntil\n        priceCurrency\n        availability\n        itemCondition\n        seller {\n          identifier\n        }\n        listPrice\n      }\n    }\n    isVariantOf {\n      name\n    }\n  }\n}\n",
+  sha256Hash: "ffff7fbbcf66c13d241b28f204d8ad704c387926f9ca6f7332600b6202c5de2a",
   operationName: "BrowserProductQuery",
 }
 

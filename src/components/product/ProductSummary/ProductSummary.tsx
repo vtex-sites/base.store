@@ -15,9 +15,11 @@ interface Props {
 
 function ProductSummary({ product }: Props) {
   const {
+    id,
     slug,
     sku,
-    name: productName,
+    name: skuName,
+    brand: { name: brandName },
     isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
@@ -31,16 +33,18 @@ function ProductSummary({ product }: Props) {
   const linkProps = useProductLink({ slug })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
-    id: product.id,
-    itemOffered: {
-      name: productName,
-      image: [img],
-      sku,
-    },
+    id,
+    name,
+    brand: brandName,
     price: spotPrice,
     listPrice,
     seller,
     quantity: 1,
+    itemOffered: {
+      name: skuName,
+      image: [img],
+      sku,
+    },
   })
 
   return (
@@ -84,6 +88,10 @@ export const fragment = graphql`
     image {
       url
       alternateName
+    }
+
+    brand {
+      name
     }
 
     offers {
