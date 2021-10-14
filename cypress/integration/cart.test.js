@@ -62,10 +62,11 @@ describe('On product description pages', () => {
       // Add to cart
       cy.getById('buy-button')
         .click()
-        .then(() => {
+        .then(($btn) => {
           cy.itemsInCart(1)
           cy.dataLayerSize(1)
           cy.dataLayerHasEvent('add_to_cart')
+          cy.dataLayerHasEventWithProductId($btn.attr('data-sku'))
         })
     })
 
@@ -152,10 +153,11 @@ describe('On product collection pages', () => {
       cy.getById('buy-button')
         .first()
         .click()
-        .then(() => {
+        .then(($btn) => {
           cy.itemsInCart(1)
           cy.dataLayerSize(1)
           cy.dataLayerHasEvent('add_to_cart')
+          cy.dataLayerHasEventWithProductId($btn.attr('data-sku'))
         })
     })
 

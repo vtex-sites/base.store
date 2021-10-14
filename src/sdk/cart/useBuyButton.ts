@@ -3,6 +3,7 @@ import type {
   AddToCartEvent,
   AddToCartData,
   Item as AnalyticsItem,
+  CurrencyCode,
 } from '@vtex/store-sdk'
 import { sendAnalyticsEvent, useSession } from '@vtex/store-sdk'
 
@@ -30,6 +31,8 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
     currency: { code },
   } = useSession()
 
+  const currency = code as CurrencyCode
+
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault()
@@ -41,17 +44,17 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
       sendAnalyticsEvent<VTEXAddToCartEvent>({
         type: 'add_to_cart',
         data: {
-          currency: code,
+          currency,
           value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [
             {
+              currency,
               item_id: item.id,
               quantity: item.quantity,
               item_variant: item.itemOffered.sku,
               item_name: item.name,
               item_brand: item.brand,
               price: item.price,
-              currency: code,
               product_reference_id: item.id,
               sku_name: item.itemOffered.name,
             },
@@ -72,7 +75,7 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
       addItem(cartItem)
       openMinicart()
     },
-    [addItem, code, item, openMinicart]
+    [addItem, currency, item, openMinicart]
   )
 
   return {
