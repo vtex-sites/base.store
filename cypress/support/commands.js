@@ -56,6 +56,16 @@ Cypress.Commands.add('dataLayerHasEvent', (eventName) => {
   })
 })
 
+Cypress.Commands.add('dataLayerHasEventWithProductId', (id) => {
+  return cy.window().then((window) => {
+    const allEventItemIds = window.dataLayer
+      .flatMap((evt) => evt.data.items || [])
+      .map((item) => item.item_id)
+
+    expect(allEventItemIds).to.include(id)
+  })
+})
+
 Cypress.Commands.add('eventDataHasCurrencyProperty', () => {
   return cy.window().then((window) => {
     const allEvents = window.dataLayer.map((evt) => evt.data || {})
