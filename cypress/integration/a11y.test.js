@@ -1,28 +1,42 @@
+// eslint-disable-next-line spaced-comment
+/// <reference types="cypress" />
+/**
+ * Cypress tests for a11y (accessibility)
+ */
+
+import { pages } from '../global'
+
 describe('Accessibility tests', () => {
   beforeEach(() => {
-    cy.intercept('*/graphql?operationName=BrowserProductQuery*').as(
-      'productQuery'
-    )
-
-    cy.intercept('*/graphql?operationName=GalleryQuery*').as('galleryQuery')
+    cy.clearIDB()
   })
-  it('Home', () => {
-    cy.visit('/')
+
+  it('checks a11y for home page', () => {
+    cy.visit(pages.home)
     cy.waitForHydration()
+
     cy.injectAxe()
     cy.checkA11y()
   })
 
-  it('Collections Page', () => {
-    cy.visit('/women')
-    cy.wait('@galleryQuery')
+  it('checks a11y for collection page', () => {
+    cy.visit(pages.collection)
+    cy.waitForHydration()
+
+    // Waits for product list to be fetched and page to be interactive
+    cy.getById('product-link').should('exist')
+
     cy.injectAxe()
     cy.checkA11y()
   })
 
-  it('Product Page', () => {
-    cy.visit('/organza-sleeve-top-143/p/')
-    cy.wait('@productQuery')
+  it('checks a11y for product page', () => {
+    cy.visit(pages.pdp)
+    cy.waitForHydration()
+
+    // Wait for product to be available and page to be interactive
+    cy.getById('buy-button').should('exist')
+
     cy.injectAxe()
     cy.checkA11y()
   })

@@ -1782,9 +1782,9 @@
     tslib "~2.2.0"
 
 "@graphql-tools/utils@^8.2.0", "@graphql-tools/utils@^8.2.2":
-  version "8.2.5"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.2.5.tgz#695e6d760c1187ad2b159d5d3c4696eff9c08a27"
-  integrity sha512-k/Rktklhy22dQfbJLKiLGfQymQCTr6Rd2BilC7g2Yk6wFSzVLYr8jeXNoTD+/p61XBQzBjTVayskvaMvNS3BDg==
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.3.0.tgz#382111bc4a93f248e3641740a5300f44286bffae"
+  integrity sha512-ksE0RxS0AFllo6KIJjvQsRgcUAzoyZUgUrDbCngv4SaQwyX9YxTfddTLN4uQmbiZB9h25fPp/Xgeyaa3ARCzgg==
   dependencies:
     tslib "~2.3.0"
 
@@ -2248,9 +2248,9 @@
     form-data "^3.0.0"
 
 "@types/node@*":
-  version "16.10.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.3.tgz#7a8f2838603ea314d1d22bb3171d899e15c57bd5"
-  integrity sha512-ho3Ruq+fFnBrZhUYI46n/bV2GjwzSkwuT4dTf0GkuNFmnb8nq4ny2z9JEVemFi6bdEJanHLlYfy9c6FN9B9McQ==
+  version "16.11.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.0.tgz#4b95f2327bacd1ef8f08d8ceda193039c5d7f52e"
+  integrity sha512-8MLkBIYQMuhRBQzGN9875bYsOhPnf/0rgXGo66S2FemHkhbn9qtsz9ywV1iCG+vbjigE4WUNVvw37Dx+L0qsPg==
 
 "@types/node@^14.14.10", "@types/node@^14.14.31":
   version "14.17.9"
@@ -2440,10 +2440,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.1.18.tgz#54a7b332f00bf871d6e3b99217426755e9f17733"
-  integrity sha512-z5YRm8OGSJplCgZSSMbGafvT8JhLBtWCIC2YT9bp5TXxNPyxW0UVT9/xVl+W22t8sOk9I9gYjpL91SN7U3sq+w==
+"@vtex/gatsby-plugin-graphql@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.2.4.tgz#792ed63c2c7ede4358f6f23e43e80cb6bc865228"
+  integrity sha512-DWsaIPC3FGenCvQLIh4ZmkmHeJOU+BOyuL3MfhC1mqG8oYon2ZHo6Snm53o7PFRXei1QeesFo8anjXNQ0PusGw==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"
@@ -2452,40 +2452,40 @@
     "@graphql-tools/relay-operation-optimizer" "^6.0.15"
     fs-extra "^9.0.1"
 
-"@vtex/gatsby-plugin-nginx@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.1.18.tgz#5e8d115c91c915513d57866a5053e7aa0892e28e"
-  integrity sha512-9Ze3YS4i0WYquM9MBOU57a6DZfuGc8igptRWJqZFWxUCAwqeZp2aMgRU+ZBmI22Ke0n5s08a8au4YF0wqrb9rw==
+"@vtex/gatsby-plugin-nginx@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.2.4.tgz#49758c3b46cc16d1709ab8cd44886a4f59345c61"
+  integrity sha512-eXKq5RULD53+/Fr6UQAwNEzsqT5HVBam2OLJ7yWMA6K5ZvdJIfVWRzjbBu02URi4lobHf5fDhWWeNdW9ZqJ9zg==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.1.18.tgz#e40b81feb316f1c5ed87eb716bb0fc57c54e5c3c"
-  integrity sha512-0BuYX8eEWo2IlbY471HbzsvvfjI4pG+p+B78VbTkaECCR/hwbl4FHd5DrBpreZEjf3BDkO8y+4rJA5VBV6UV9w==
+"@vtex/gatsby-plugin-thumbor@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.2.4.tgz#0854dab0a4e74664c7c175738e0afc8614405d82"
+  integrity sha512-tZue4l3E6TOGbeXKA+JoOCBKW83zGD5KYCyTvgnkhXdZBb22bD8IclVRKYhGGzooav3bIjVQkk3JuK47ijIZTw==
 
-"@vtex/gatsby-source-store@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.1.18.tgz#9c90f1212695e6d760de6758bdd1994986344da4"
-  integrity sha512-aUkowl1M8rsKLk2uBbQZFLgfBz/z6+Q+vzAuHHcEJawgR9s4d4/TxOO1eehiBbQg+p5+s2W7WTUPgO78UliBUQ==
+"@vtex/gatsby-source-store@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.2.4.tgz#ceb4ae6f6538381f1fb02ef14664085cd52013e4"
+  integrity sha512-1J6WuJGhS/KqmUnh5btnrwk3pGcP3r8i2vJCMAvyXb0+xwWGi293Jyo4fP6gKx7EZOQ34O7KZrpBVKsHfC2k1Q==
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/lighthouse-config@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.1.18.tgz#6417128bfafb3f1ff877df11764bffe4b642b99c"
-  integrity sha512-6UKcNcvOVvzGYAsmDaHSafvquisI6TkdyDyFY/ufrkgNRxSO1pr6taGIzJQrrQ31kJvX/xHuWCOmSiVlMDdwuA==
+"@vtex/lighthouse-config@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.2.4.tgz#79593697d2e8597ab029a90b41ef3a15f7c2ca46"
+  integrity sha512-orMQZKGB/g3yEExN+DNoDqFP5CgAnVcUE/vl765AzSCzb5XL8kJIfxd7ZpyinDYMH2UMc1DBsJe2q9KZu2Afrw==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-api@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/store-api/-/store-api-1.1.18.tgz#2f94cfb363efae204fca6c566da838a56c41fa6b"
-  integrity sha512-jOlaRpWWiyNza60EGkbA/7YfD22WnGEWRwUuIFhhORPCLSaJKi0R9lxLTZ5E1faY2Pmznxe2t5lydxilkbXW6Q==
+"@vtex/store-api@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/store-api/-/store-api-1.2.4.tgz#870570f0b43f4c5095f5c285999092da9d727441"
+  integrity sha512-N/ih5SvS5epecq/izUTX1iMetdrdpgQdu2jSdXABErcUiUJ6WFEqoZ7/DnRJUpaHiUoSURJFbDSVAqRg0F2XDQ==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     dataloader "^2.0.0"
@@ -2494,17 +2494,17 @@
     rollup-plugin-graphql "^0.1.0"
     slugify "^1.6.0"
 
-"@vtex/store-sdk@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.1.18.tgz#b0a248f2cec3d0acccb3d28e886fe90f603dfff4"
-  integrity sha512-57PsoeqrWE8BlliFTTtDBaU4sJfvSEe6zfBKB4ljElsu3LNqg+yaHGgwsVoCYkQnRv3umohJEKvI708dPSt6ug==
+"@vtex/store-sdk@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.2.4.tgz#6c954be11c9167b59c1374ad527e5b817817d2f0"
+  integrity sha512-I7VtVyAF7B0wu4xn7qa4Q4Scn/myKtbGfnwfT/CzSKUcKHxYieapjnYVHqr76+Kxl66rTOCQdLknZ/OXsS2e1w==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@vtex/store-ui@^1.1.17":
-  version "1.1.18"
-  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-1.1.18.tgz#7679b2787f377d651a36be8390767d07544f1a14"
-  integrity sha512-uV8Wr1igGOseCeOi5X9Q8ShdQqwUGtwaluM4+WoMQoAaubC7B/H6LT0MpsriTyOsK/WbSAY5SSQy7IgrL6WMRQ==
+"@vtex/store-ui@^1.1.18":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-1.2.4.tgz#5d299c2e95ec4ecf24ebb2f778d9fad8ddea7b6a"
+  integrity sha512-hErxb1zM22HeF2Jq4sQjGnulfqz3My7ocCCcGj5Qjq+/GNnjcoUE73F630ODztRsdUPitDrWdfiPRI2ttkmV+g==
   dependencies:
     "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
@@ -3746,15 +3746,15 @@ browserslist@^4.0.0, browserslist@^4.12.2, browserslist@^4.14.5, browserslist@^4
     node-releases "^1.1.73"
 
 browserslist@^4.16.6:
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.17.3.tgz#2844cd6eebe14d12384b0122d217550160d2d624"
-  integrity sha512-59IqHJV5VGdcJZ+GZ2hU5n4Kv3YiASzW6Xk5g9tf5a/MAzGeFwgGWU39fVzNIOVcgB3+Gp+kiQu0HEfTVU/3VQ==
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.17.4.tgz#72e2508af2a403aec0a49847ef31bd823c57ead4"
+  integrity sha512-Zg7RpbZpIJRW3am9Lyckue7PLytvVxxhJj1CaJVlCWENsGEAOlnlt8X0ZxGRPp7Bt9o8tIRM5SEXy4BCPMJjLQ==
   dependencies:
-    caniuse-lite "^1.0.30001264"
-    electron-to-chromium "^1.3.857"
+    caniuse-lite "^1.0.30001265"
+    electron-to-chromium "^1.3.867"
     escalade "^3.1.1"
-    node-releases "^1.1.77"
-    picocolors "^0.2.1"
+    node-releases "^2.0.0"
+    picocolors "^1.0.0"
 
 browserslist@^4.17.1:
   version "4.17.1"
@@ -3973,10 +3973,10 @@ caniuse-lite@^1.0.30001259, caniuse-lite@^1.0.30001260:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001261.tgz#96d89813c076ea061209a4e040d8dcf0c66a1d01"
   integrity sha512-vM8D9Uvp7bHIN0fZ2KQ4wnmYFpJo/Etb4Vwsuc+ka0tfGDHvOPrFm6S/7CCNLSOkAUjenT2HnUPESdOIL91FaA==
 
-caniuse-lite@^1.0.30001264:
-  version "1.0.30001265"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001265.tgz#0613c9e6c922e422792e6fcefdf9a3afeee4f8c3"
-  integrity sha512-YzBnspggWV5hep1m9Z6sZVLOt7vrju8xWooFAgN6BA5qvy98qPAPb7vNUzypFaoh2pb3vlfzbDO8tB57UPGbtw==
+caniuse-lite@^1.0.30001265:
+  version "1.0.30001267"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001267.tgz#b1cf2937175afc0570e4615fc2d2f9069fa0ed30"
+  integrity sha512-r1mjTzAuJ9W8cPBGbbus8E0SKcUP7gn03R14Wk8FlAlqhH9hroy9nLqmpuXlfKEw/oILW+FGz47ipXV2O7x8lg==
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -5417,10 +5417,10 @@ electron-to-chromium@^1.3.846:
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.852.tgz#04091fd848b38e7248e4eb70c05e1f9befd2671b"
   integrity sha512-vNbdzbbx3d7TStoC0oIVYz6X/tIezHXnreI+4a8I7EqAQ9hpHulz3ar8xChUNcG77A+TtPSKz9B9Xwpt9e1B5w==
 
-electron-to-chromium@^1.3.857:
-  version "1.3.861"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.861.tgz#981e37a79af7a7b29bbaeed36376f4795527de13"
-  integrity sha512-GZyflmpMnZRdZ1e2yAyvuFwz1MPSVQelwHX4TJZyXypB8NcxdPvPNwy5lOTxnlkrK13EiQzyTPugRSnj6cBgKg==
+electron-to-chromium@^1.3.867:
+  version "1.3.868"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.868.tgz#ed835023b57ecf0ba63dfe7d50e16b53758ab1da"
+  integrity sha512-kZYCHqwJ1ctGrYDlOcWQH+/AftAm/KD4lEnLDNwS0kKwx1x6dU4zv+GuDjsPPOGn/2TjnKBaZjDyjXaoix0q/A==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -10277,10 +10277,10 @@ node-releases@^1.1.76:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.76.tgz#df245b062b0cafbd5282ab6792f7dccc2d97f36e"
   integrity sha512-9/IECtNr8dXNmPWmFXepT0/7o5eolGesHUa3mtr0KlgnCvnZxwh2qensKL42JJY2vQKC3nIBXetFAqR+PW1CmA==
 
-node-releases@^1.1.77:
-  version "1.1.77"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.77.tgz#50b0cfede855dd374e7585bf228ff34e57c1c32e"
-  integrity sha512-rB1DUFUNAN4Gn9keO2K1efO35IDK7yKHCdCaIMvFO7yUYmmZYeDjnGKle26G4rwj+LKRQpjyUUvMkPglwGCYNQ==
+node-releases@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.0.tgz#67dc74903100a7deb044037b8a2e5f453bb05400"
+  integrity sha512-aA87l0flFYMzCHpTM3DERFSYxc6lv/BltdbRTOMZuxZ0cwZCD3mejE5n9vLhSJCN++/eOqr77G1IO5uXxlQYWA==
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.5.0:
   version "2.5.0"
@@ -10999,10 +10999,10 @@ physical-cpu-count@^2.0.0:
   resolved "https://registry.yarnpkg.com/physical-cpu-count/-/physical-cpu-count-2.0.0.tgz#18de2f97e4bf7a9551ad7511942b5496f7aba660"
   integrity sha1-GN4vl+S/epVRrXURlCtUlverpmA=
 
-picocolors@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-0.2.1.tgz#570670f793646851d1ba135996962abad587859f"
-  integrity sha512-cMlDqaLEqfSaW8Z7N5Jw+lyIW869EzT73/F5lhtY9cLGoVxSXznfgfXMO0Z5K0o0Q2TkTXq+0KFsdnSe3jDViA==
+picocolors@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
+  integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
 picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.3.0"
