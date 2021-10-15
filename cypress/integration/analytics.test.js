@@ -12,6 +12,25 @@ describe('add_to_cart event', () => {
     cy.clearDataLayer()
   })
 
+  const testAddToCartEvent = (skuId) => {
+    cy.window().then((window) => {
+      const { dataLayer } = window
+
+      expect(dataLayer).to.have.length(1)
+
+      const event = dataLayer.find((e) => e.type === 'add_to_cart')
+
+      expect(event).to.not.be.null
+      expect(event.data).to.have.property('value')
+
+      const item = event.data.items.find((i) => i.item_id === skuId)
+
+      expect(item).to.not.be.null
+      expect(item).to.have.property('currency')
+      expect(item).to.have.property('item_name')
+    })
+  }
+
   it('raises add_to_cart at pdp', () => {
     cy.visit(pages.pdp, options)
     cy.waitForHydration()
@@ -23,24 +42,9 @@ describe('add_to_cart event', () => {
       .click()
       .then(($btn) => {
         cy.itemsInCart(1)
+        const skuId = $btn.attr('data-sku')
 
-        cy.window().then((window) => {
-          const { dataLayer } = window
-          const skuId = $btn.attr('data-sku')
-
-          expect(dataLayer).to.have.length(1)
-
-          const event = dataLayer.find((e) => e.type === 'add_to_cart')
-
-          expect(event).to.not.be.null
-          expect(event.data).to.have.property('value')
-
-          const item = event.data.items.find((i) => i.item_id === skuId)
-
-          expect(item).to.not.be.null
-          expect(item).to.have.property('currency')
-          expect(item).to.have.property('item_name')
-        })
+        testAddToCartEvent(skuId)
       })
   })
 
@@ -56,24 +60,9 @@ describe('add_to_cart event', () => {
       .click()
       .then(($btn) => {
         cy.itemsInCart(1)
+        const skuId = $btn.attr('data-sku')
 
-        cy.window().then((window) => {
-          const { dataLayer } = window
-          const skuId = $btn.attr('data-sku')
-
-          expect(dataLayer).to.have.length(1)
-
-          const event = dataLayer.find((e) => e.type === 'add_to_cart')
-
-          expect(event).to.not.be.null
-          expect(event.data).to.have.property('value')
-
-          const item = event.data.items.find((i) => i.item_id === skuId)
-
-          expect(item).to.not.be.null
-          expect(item).to.have.property('currency')
-          expect(item).to.have.property('item_name')
-        })
+        testAddToCartEvent(skuId)
       })
   })
 })
