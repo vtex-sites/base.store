@@ -7,7 +7,7 @@ import Navlinks from '../Navlinks'
 
 function Navbar() {
   return (
-    <header className="flex justify-between items-center h-12 bg-primary-400">
+    <header className="flex flex-col justify-between items-center bg-primary-400">
       <Navlinks />
       <SearchInput onSubmit={(searchTerm) => search(searchTerm)} />
       <CartToggle />
