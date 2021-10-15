@@ -1,40 +1,33 @@
-import { GalleryQuery } from '@generated/GalleryQuery.graphql'
-import { gql } from '@vtex/gatsby-plugin-graphql'
 import React from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
-import { useQuery } from 'src/sdk/graphql/useQuery'
-import { useSearchVariables } from 'src/sdk/search/useSearchVariables'
 import { useSearch } from 'src/sdk/search/useSearch'
-import type {
-  GalleryQueryQuery,
-  GalleryQueryQueryVariables,
-} from '@generated/GalleryQuery.graphql'
+import {
+  useSearchQuery,
+  useSearchVariables,
+} from 'src/sdk/search/useSearchQuery'
+import type { SearchQueryQuery } from '@generated/SearchQuery.graphql'
 
 interface Props {
   page: number
   display?: boolean
-  fallbackData?: GalleryQueryQuery
+  fallbackData?: SearchQueryQuery
 }
 
-const useProductList = (page: number, fallbackData?: GalleryQueryQuery) => {
+const useProducts = (page: number, fallbackData?: SearchQueryQuery) => {
   const { searchParams } = useSearch()
   const variables = useSearchVariables({
     ...searchParams,
     page,
   })
 
-  const { data } = useQuery<GalleryQueryQuery, GalleryQueryQueryVariables>({
-    ...GalleryQuery,
+  return useSearchQuery({
     variables,
     fallbackData,
-    revalidateOnMount: true,
   })
-
-  return data?.search.products
 }
 
 function GalleryPage({ page, fallbackData, display }: Props) {
-  const products = useProductList(page, fallbackData)
+  const products = useProducts(page, fallbackData)
 
   if (display === false || products == null) {
     return null
@@ -42,32 +35,5 @@ function GalleryPage({ page, fallbackData, display }: Props) {
 
   return <ProductGrid products={products} />
 }
-
-export const query = gql`
-  query GalleryQuery(
-    $first: Int!
-    $after: String
-    $sort: StoreSort
-    $term: String
-    $selectedFacets: [IStoreSelectedFacet!]!
-  ) {
-    search(
-      first: $first
-      after: $after
-      sort: $sort
-      term: $term
-      selectedFacets: $selectedFacets
-    ) {
-      products {
-        ...ProductGallery_products
-        edges {
-          node {
-            ...ProductSummary_product
-          }
-        }
-      }
-    }
-  }
-`
 
 export default GalleryPage
