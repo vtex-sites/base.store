@@ -2440,10 +2440,10 @@
     "@typescript-eslint/types" "4.29.1"
     eslint-visitor-keys "^2.0.0"
 
-"@vtex/gatsby-plugin-graphql@^1.1.18":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.2.4.tgz#792ed63c2c7ede4358f6f23e43e80cb6bc865228"
-  integrity sha512-DWsaIPC3FGenCvQLIh4ZmkmHeJOU+BOyuL3MfhC1mqG8oYon2ZHo6Snm53o7PFRXei1QeesFo8anjXNQ0PusGw==
+"@vtex/gatsby-plugin-graphql@^1.2.12":
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-graphql/-/gatsby-plugin-graphql-1.2.12.tgz#b3a42f26a3392622389bdb5b53c3ee76e7b98395"
+  integrity sha512-xMrA44TGF/s/MCjGKN8Ou/w1AsU0yCXqk2p7crG44oYj6Pdh/0BDdDMvqr6NPf+p8EBuRX5Lo1BtDVHQznLt8w==
   dependencies:
     "@graphql-codegen/core" "^1.17.7"
     "@graphql-codegen/plugin-helpers" "^1.17.7"

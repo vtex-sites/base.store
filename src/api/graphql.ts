@@ -9,7 +9,7 @@ const persistedQueries = new Map(Object.entries(persisted))
 const parseProdRequest = (req: GatsbyFunctionRequest) => {
   const res =
     req.method === 'POST'
-      ? JSON.parse(req.body)
+      ? req.body
       : {
           operationName: req.query.operationName,
           extensions: JSON.parse(req.query.extensions),
@@ -32,7 +32,7 @@ const parseProdRequest = (req: GatsbyFunctionRequest) => {
 
 const parseDevRequest = (req: GatsbyFunctionRequest) => {
   if (req.method === 'POST') {
-    return JSON.parse(req.body)
+    return req.body
   }
 
   throw new Error('No GET request during development is allowed')
