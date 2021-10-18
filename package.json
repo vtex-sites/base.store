@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.221.0",
   "dependencies": {
-    "@vtex/gatsby-plugin-graphql": "^1.1.18",
+    "@vtex/gatsby-plugin-graphql": "https://pkg.csb.dev/vtex/faststore/commit/bcc19d2a/@vtex/gatsby-plugin-graphql",
     "@vtex/gatsby-plugin-nginx": "^1.1.18",
     "@vtex/gatsby-plugin-thumbor": "^1.1.18",
     "@vtex/gatsby-source-store": "^1.1.18",
