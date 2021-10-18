@@ -62,27 +62,8 @@ describe('On product description pages', () => {
       // Add to cart
       cy.getById('buy-button')
         .click()
-        .then(($btn) => {
-          cy.itemsInCart(1)
-          cy.dataLayerSize(1)
-          cy.dataLayerHasEvent('add_to_cart')
-          cy.dataLayerHasEventWithProductId($btn.attr('data-sku'))
-        })
-    })
-
-    it('sends the add_to_cart event at least with the required attributes', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      // Add to cart
-      cy.getById('buy-button')
-        .first()
-        .click()
         .then(() => {
-          cy.eventDataHasCurrencyProperty()
-          cy.itemsHaveRequiredProperties()
+          cy.itemsInCart(1)
         })
     })
   })
@@ -141,40 +122,6 @@ describe('On product collection pages', () => {
         })
 
       cy.itemsInCart(1)
-    })
-
-    it('sends the add_to_cart event for analytics', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      // Add to cart
-      cy.getById('buy-button')
-        .first()
-        .click()
-        .then(($btn) => {
-          cy.itemsInCart(1)
-          cy.dataLayerSize(1)
-          cy.dataLayerHasEvent('add_to_cart')
-          cy.dataLayerHasEventWithProductId($btn.attr('data-sku'))
-        })
-    })
-
-    it('sends the add_to_cart event at least with the required attributes', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      // Add to cart
-      cy.getById('buy-button')
-        .first()
-        .click()
-        .then(() => {
-          cy.eventDataHasCurrencyProperty()
-          cy.itemsHaveRequiredProperties()
-        })
     })
   })
 
