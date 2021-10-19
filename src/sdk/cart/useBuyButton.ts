@@ -22,7 +22,14 @@ interface VTEXAddToCartEvent extends AddToCartEvent {
   }
 }
 
-type AnalyticsCartItem = CartItem & { name: string; brand: string }
+type AdditionalAnalyticsProperties = {
+  name: string
+  brand: string
+  referenceId: string
+  productId: string
+}
+
+type AnalyticsCartItem = CartItem & AdditionalAnalyticsProperties
 
 export const useBuyButton = (item: AnalyticsCartItem | null) => {
   const { addItem } = useCart()
@@ -49,13 +56,13 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
           items: [
             {
               currency,
-              item_id: item.id,
+              item_id: item.productId,
               quantity: item.quantity,
-              item_variant: item.itemOffered.sku,
+              item_variant: item.id,
               item_name: item.name,
               item_brand: item.brand,
               price: item.price,
-              product_reference_id: item.id,
+              product_reference_id: item.referenceId,
               sku_name: item.itemOffered.name,
             },
           ],
