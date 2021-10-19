@@ -62,9 +62,8 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
         },
       })
 
-      const { id, price, listPrice, seller, quantity, itemOffered } = item
-      const cartItem: CartItem = {
-        id,
+      const { price, listPrice, seller, quantity, itemOffered } = item
+      const cartItem: Omit<CartItem, 'id'> = {
         price,
         listPrice,
         seller,
