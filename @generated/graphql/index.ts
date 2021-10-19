@@ -1839,6 +1839,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___parent___parent___children'
   | 'pluginCreator___parent___parent___id'
   | 'pluginCreator___pluginFilepath'
+  | 'pluginCreator___pluginOptions____generated'
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___appendScript'
   | 'pluginCreator___pluginOptions___background_color'
@@ -2072,6 +2073,7 @@ export type SitePluginFieldsEnum =
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
   | 'pluginFilepath'
+  | 'pluginOptions____generated'
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___appendScript'
   | 'pluginOptions___background_color'
@@ -2208,6 +2210,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 }
 
 export type SitePluginPluginOptions = {
+  _generated: Maybe<Scalars['String']>
   allExtensions: Maybe<Scalars['Boolean']>
   appendScript: Maybe<Scalars['String']>
   background_color: Maybe<Scalars['String']>
@@ -2329,6 +2332,7 @@ export type SitePluginPluginOptionsEnvProductionPolicyFilterListInput = {
 }
 
 export type SitePluginPluginOptionsFilterInput = {
+  _generated: Maybe<StringQueryOperatorInput>
   allExtensions: Maybe<BooleanQueryOperatorInput>
   appendScript: Maybe<StringQueryOperatorInput>
   background_color: Maybe<StringQueryOperatorInput>
