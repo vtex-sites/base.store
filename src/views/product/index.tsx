@@ -1,12 +1,14 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
-import type { ProductViewFragment_ProductFragment } from '@generated/ProductViewFragment_product.graphql'
-import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
-import type { BrowserProductQueryQuery } from '@generated/BrowserProductQuery.graphql'
+import type {
+  BrowserProductQueryQuery,
+  ProductSeoFragment_SiteFragment,
+  ProductViewFragment_ProductFragment,
+} from '@generated/graphql'
 
-import Seo from './Seo'
 import { useProduct } from './hooks/useProduct'
+import Seo from './Seo'
 
 interface Props {
   site: ProductSeoFragment_SiteFragment

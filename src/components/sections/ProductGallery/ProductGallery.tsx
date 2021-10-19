@@ -1,12 +1,14 @@
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import { gql } from '@vtex/graphql-utils'
 import React, { Fragment } from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
 import PageBreak from 'src/sdk/search/PageBreak'
 import { useSearch } from 'src/sdk/search/useSearch'
-import type { SearchQueryQuery } from '@generated/SearchQuery.graphql'
-import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
-import type { ProductGallery_ProductsFragment } from '@generated/ProductGallery_products.graphql'
+import type {
+  ProductGallery_FacetsFragment,
+  ProductGallery_ProductsFragment,
+  SearchQueryQuery,
+} from '@generated/graphql'
 
 import GalleryPage from './ProductGalleryPage'
 

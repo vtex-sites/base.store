@@ -7,7 +7,7 @@ import type { PageProps } from 'gatsby'
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
-} from '@generated/CollectionPageQuery.graphql'
+} from '@generated/graphql'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,

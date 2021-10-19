@@ -6,7 +6,7 @@ import type { PageProps } from 'gatsby'
 import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
-} from '@generated/SearchPageQuery.graphql'
+} from '@generated/graphql'
 
 export type Props = PageProps<
   SearchPageQueryQuery,

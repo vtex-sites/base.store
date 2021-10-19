@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import React from 'react'
 import Logo from 'src/components/ui/Logo'
-import type { NavlinksQueryQuery } from '@generated/NavlinksQuery.graphql'
+import type { NavlinksQueryQuery } from '@generated/graphql'
 
 function Navlinks() {
   const links = useStaticQuery<NavlinksQueryQuery>(graphql`

@@ -1,5 +1,5 @@
-import { request as baseRequest } from '@vtex/gatsby-plugin-graphql'
-import type { RequestOptions as GraphQLRequestOptions } from '@vtex/gatsby-plugin-graphql'
+import { request as baseRequest } from '@vtex/graphql-utils'
+import type { RequestOptions as GraphQLRequestOptions } from '@vtex/graphql-utils'
 
 export type RequestOptions = GraphQLRequestOptions
 

@@ -6,9 +6,8 @@ import type { RequestOptions } from './request'
 
 export type QueryOptions = SWRConfiguration & RequestOptions
 
-// TODO: Change here
 export const getKey = (options: QueryOptions) =>
-  `${options.sha256Hash}::${JSON.stringify(options.variables)}`
+  `${options.operationName}::${JSON.stringify(options.variables)}`
 
 export const DEFAULT_OPTIONS = {
   errorRetryCount: 3,

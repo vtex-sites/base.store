@@ -10,10 +10,10 @@
     "allowJs": true,
     "paths": {
       "src/*": ["src/*"],
-      "@generated/*": ["__generated__/*"]
+      "@generated/*": ["@generated/*"]
     },
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "__generated__/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "@generated/**/*.ts"],
   "exclude": ["node_modules", "public"]
 }

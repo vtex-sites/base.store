@@ -7,7 +7,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
-import type { ProductSummary_ProductFragment } from '@generated/ProductSummary_product.graphql'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 interface Props {
   product: ProductSummary_ProductFragment

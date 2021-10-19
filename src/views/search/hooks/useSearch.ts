@@ -1,18 +1,17 @@
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import { gql } from '@vtex/graphql-utils'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useSearchVariables } from 'src/sdk/search/useSearchQuery'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   FullTextSearchQueryQuery,
   FullTextSearchQueryQueryVariables,
-} from '@generated/FullTextSearchQuery.graphql'
-import { FullTextSearchQuery } from '@generated/FullTextSearchQuery.graphql'
+} from '@generated/graphql'
 
 export const useSearch = (searchParams: SearchParamsState) => {
   const variables = useSearchVariables(searchParams)
 
   return useQuery<FullTextSearchQueryQuery, FullTextSearchQueryQueryVariables>({
-    ...FullTextSearchQuery,
+    operationName: FullTextSearchQuery,
     variables,
   })
 }
@@ -20,7 +19,7 @@ export const useSearch = (searchParams: SearchParamsState) => {
 /**
  * This query is run on the browser
  * */
-export const query = gql`
+export const FullTextSearchQuery = gql`
   query FullTextSearchQuery(
     $first: Int!
     $after: String

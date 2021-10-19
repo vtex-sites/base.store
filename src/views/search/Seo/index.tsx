@@ -1,8 +1,8 @@
-import React from 'react'
 import { useSession } from '@vtex/store-sdk'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { graphql } from 'gatsby'
-import type { SearchSeoFragment_SiteFragment } from '@generated/SearchSeoFragment_site.graphql'
+import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import React from 'react'
+import type { SearchSeoFragment_SiteFragment } from '@generated/graphql'
 
 interface Props {
   site: SearchSeoFragment_SiteFragment
