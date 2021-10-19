@@ -9,7 +9,7 @@
     "@vtex/gatsby-source-store": "^1.1.17",
     "@vtex/store-api": "^1.1.17",
     "@vtex/store-sdk": "^1.1.17",
-    "@vtex/store-ui": "https://pkg.csb.dev/vtex/faststore/commit/9676eccc/@vtex/store-ui",
+    "@vtex/store-ui": "https://pkg.csb.dev/vtex/faststore/commit/b0028526/@vtex/store-ui",
     "babel-preset-gatsby": "^1.13.0",
     "gatsby": "^3.13.0",
     "gatsby-plugin-gatsby-cloud": "^3.1.0",
