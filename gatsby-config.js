@@ -110,7 +110,7 @@ module.exports = {
         server:
           isCI && !isNetlify
             ? 'http://thumbor.vtex.internal'
-            : 'http://thumbor.thumborize.me',
+            : 'https://thumbor-dev-server.vtex.io',
         ...((isProduction || isNetlify) && {
           basePath: '/assets',
           sizes: getSizes(images),
