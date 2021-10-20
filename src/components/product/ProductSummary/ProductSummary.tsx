@@ -6,7 +6,6 @@ import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { ProductLinkOptions } from 'src/sdk/product/useProductLink'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
@@ -17,7 +16,6 @@ interface Props {
 function ProductSummary({ product }: Props) {
   const {
     id,
-    slug,
     sku,
     gtin: referenceId,
     name: variantName,
@@ -27,29 +25,12 @@ function ProductSummary({ product }: Props) {
     offers: { lowPrice: spotPrice, offers },
   } = product
 
-  const productOptions: ProductLinkOptions = {
-    slug,
-    value: product.offers.offers[0]?.price,
-    items: [
-      {
-        item_id: product.id,
-        item_name: product.name,
-        index: 0,
-        price: product.offers.offers[0]?.price,
-        discount:
-          product.offers.offers[0]?.listPrice - product.offers.offers[0]?.price,
-        item_brand: product.brand.name,
-        item_variant: product.isVariantOf.name,
-      },
-    ],
-  }
-
   const { listPrice, seller } = useMemo(
     () => offers.find((x) => x.price === spotPrice)!,
     [spotPrice, offers]
   )
 
-  const linkProps = useProductLink(productOptions)
+  const linkProps = useProductLink(product)
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
