@@ -38,14 +38,11 @@ export const validateCart = async (cart: Cart) => {
   const { validateCart: validated } = await request<
     ValidateCartMutationMutation,
     ValidateCartMutationMutationVariables
-  >({
-    operationName: ValidateCartMutation,
-    variables: {
-      cart: {
-        order: {
-          orderNumber: cart.id,
-          acceptedOffer: cart.items.map(({ id, ...item }) => item),
-        },
+  >(ValidateCartMutation, {
+    cart: {
+      order: {
+        orderNumber: cart.id,
+        acceptedOffer: cart.items.map(({ id, ...item }) => item),
       },
     },
   })

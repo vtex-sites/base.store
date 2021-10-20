@@ -11,10 +11,6 @@ import type {
 import { useQuery } from '../graphql/useQuery'
 import type { QueryOptions } from '../graphql/useQuery'
 
-type Options = Omit<QueryOptions, 'operationName'> & {
-  variables: SearchQueryQueryVariables
-}
-
 export const useSearchVariables = (params: SearchParamsState) => {
   const { channel } = useSession()
   const { page, sort, term, selectedFacets } = params
@@ -37,11 +33,15 @@ export const useSearchVariables = (params: SearchParamsState) => {
 /**
  * Use this hook for fetching a list of products, like in search results and shelfs
  */
-export const useSearchQuery = (options: Options) => {
-  const { data } = useQuery<SearchQueryQuery, SearchQueryQueryVariables>({
-    operationName: SearchQuery,
-    ...options,
-  })
+export const useSearchQuery = (
+  variables: SearchQueryQueryVariables,
+  options?: QueryOptions
+) => {
+  const { data } = useQuery<SearchQueryQuery, SearchQueryQueryVariables>(
+    SearchQuery,
+    variables,
+    options
+  )
 
   return data?.search.products
 }

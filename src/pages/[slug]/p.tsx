@@ -26,10 +26,7 @@ const Page: FC<Props> = (props) => {
   const { data: browserData } = useQuery<
     BrowserProductPageQueryQuery,
     BrowserProductPageQueryQueryVariables
-  >({
-    operationName: BrowserProductPageQuery,
-    variables: { locator: [{ key: 'slug', value: slug }] },
-  })
+  >(BrowserProductPageQuery, { locator: [{ key: 'slug', value: slug }] })
 
   if (browserData == null) {
     return <div>loading...</div>

@@ -5,19 +5,18 @@ import { DEFAULT_OPTIONS, getKey } from './useQuery'
 import type { QueryOptions } from './useQuery'
 
 export const useLazyQuery = <Query = any, Variables = any>(
-  options: QueryOptions
+  operationName: string,
+  variables: Variables,
+  options?: QueryOptions
 ) => {
   const response = useSWR<Query | null, any[]>(
-    getKey(options),
+    getKey(operationName, variables),
     () => null,
     DEFAULT_OPTIONS
   )
 
-  const execute = async (variables: Variables) => {
-    const data = await request<Query, Variables>({
-      ...options,
-      variables,
-    })
+  const execute = async (v: Variables) => {
+    const data = await request<Query, Variables>(operationName, v, options)
 
     response.mutate(data, false)
   }

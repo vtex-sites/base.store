@@ -13,10 +13,7 @@ export const useCollection = (searchParams: SearchParamsState) => {
   return useQuery<
     CollectionSearchQueryQuery,
     CollectionSearchQueryQueryVariables
-  >({
-    operationName: CollectionSearchQuery,
-    variables,
-  })
+  >(CollectionSearchQuery, variables)
 }
 
 /**

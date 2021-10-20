@@ -21,7 +21,7 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
     () => ({
       locator: [
         { key: 'id', value: productID },
-        { key: 'channel', value: channel },
+        { key: 'channel', value: channel! },
       ],
     }),
     [channel, productID]
@@ -30,9 +30,7 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   return useQuery<
     BrowserProductQueryQuery & T,
     BrowserProductQueryQueryVariables
-  >({
-    operationName: BrowserProductQuery,
-    variables,
+  >(BrowserProductQuery, variables, {
     fallbackData,
     revalidateOnMount: true,
   })

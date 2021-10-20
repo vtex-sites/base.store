@@ -3233,8 +3233,9 @@ export type ProductSummary_ProductFragment = {
   slug: string
   sku: string
   name: string
+  gtin: string
   id: string
-  isVariantOf: { name: string }
+  isVariantOf: { productGroupID: string; name: string }
   image: Array<{ url: string; alternateName: string }>
   brand: { name: string }
   offers: {
@@ -3260,10 +3261,11 @@ export type FacetedFilter_FacetsFragment = {
 }
 
 export type ProductDetailsFragment_ProductFragment = {
-  name: string
   sku: string
+  name: string
+  gtin: string
   id: string
-  isVariantOf: { name: string }
+  isVariantOf: { productGroupID: string; name: string }
   image: Array<{ url: string; alternateName: string }>
   brand: { name: string }
   offers: {
@@ -3323,7 +3325,7 @@ export type BrowserProductPageQueryQuery = {
         seller: { identifier: string }
       }>
     }
-    isVariantOf: { name: string }
+    isVariantOf: { productGroupID: string; name: string }
   }
 }
 
@@ -3427,7 +3429,7 @@ export type ProductPageQueryQuery = {
         seller: { identifier: string }
       }>
     }
-    isVariantOf: { name: string }
+    isVariantOf: { productGroupID: string; name: string }
   } | null
 }
 
@@ -3471,8 +3473,9 @@ export type SearchQueryQuery = {
           slug: string
           sku: string
           name: string
+          gtin: string
           id: string
-          isVariantOf: { name: string }
+          isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
           brand: { name: string }
           offers: {
@@ -3520,8 +3523,9 @@ export type CollectionSearchQueryQuery = {
           slug: string
           sku: string
           name: string
+          gtin: string
           id: string
-          isVariantOf: { name: string }
+          isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
           brand: { name: string }
           offers: {
@@ -3618,7 +3622,7 @@ export type BrowserProductQueryQuery = {
         seller: { identifier: string }
       }>
     }
-    isVariantOf: { name: string }
+    isVariantOf: { productGroupID: string; name: string }
   }
 }
 
@@ -3649,7 +3653,7 @@ export type ProductViewFragment_ProductFragment = {
       seller: { identifier: string }
     }>
   }
-  isVariantOf: { name: string }
+  isVariantOf: { productGroupID: string; name: string }
 }
 
 export type SearchSeoFragment_SiteFragment = {
@@ -3676,8 +3680,9 @@ export type FullTextSearchQueryQuery = {
           slug: string
           sku: string
           name: string
+          gtin: string
           id: string
-          isVariantOf: { name: string }
+          isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
           brand: { name: string }
           offers: {

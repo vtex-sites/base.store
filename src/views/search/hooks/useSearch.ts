@@ -10,10 +10,10 @@ import type {
 export const useSearch = (searchParams: SearchParamsState) => {
   const variables = useSearchVariables(searchParams)
 
-  return useQuery<FullTextSearchQueryQuery, FullTextSearchQueryQueryVariables>({
-    operationName: FullTextSearchQuery,
-    variables,
-  })
+  return useQuery<FullTextSearchQueryQuery, FullTextSearchQueryQueryVariables>(
+    FullTextSearchQuery,
+    variables
+  )
 }
 
 /**

@@ -20,8 +20,7 @@ const useProducts = (page: number, fallbackData?: SearchQueryQuery) => {
     page,
   })
 
-  return useSearchQuery({
-    variables,
+  return useSearchQuery(variables, {
     fallbackData,
   })
 }

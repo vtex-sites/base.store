@@ -1,15 +1,21 @@
 import { request as baseRequest } from '@vtex/graphql-utils'
 import type { RequestOptions as GraphQLRequestOptions } from '@vtex/graphql-utils'
 
-export type RequestOptions = GraphQLRequestOptions
+export type RequestOptions = Omit<
+  GraphQLRequestOptions,
+  'operationName' | 'variables'
+>
 
 export const request = async <Query = unknown, Variables = unknown>(
-  options: RequestOptions
+  operationName: string,
+  variables: Variables,
+  options?: RequestOptions
 ) => {
-  const { data, errors } = await baseRequest<Variables, Query>(
-    '/api/graphql',
-    options
-  )
+  const { data, errors } = await baseRequest<Variables, Query>('/api/graphql', {
+    ...options,
+    variables,
+    operationName,
+  })
 
   if (errors?.length) {
     throw errors[0]
