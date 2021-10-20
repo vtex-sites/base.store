@@ -2767,6 +2767,15 @@
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
+"@vtex/graphql-utils@https://pkg.csb.dev/vtex/faststore/commit/c3c2b9b6/@vtex/graphql-utils":
+  version "1.2.9"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/c3c2b9b6/@vtex/graphql-utils#aaf554e9ee55c7d30e3598caba736d4d1b8a4422"
+  dependencies:
+    "@babel/traverse" "^7.15.4"
+    "@babel/types" "^7.15.6"
+    "@graphql-codegen/plugin-helpers" "^2.2.0"
+    "@graphql-tools/relay-operation-optimizer" "^6.4.0"
+
 "@vtex/lighthouse-config@^1.1.18":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.2.4.tgz#79593697d2e8597ab029a90b41ef3a15f7c2ca46"
