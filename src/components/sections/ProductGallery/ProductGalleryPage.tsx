@@ -5,7 +5,7 @@ import {
   useSearchQuery,
   useSearchVariables,
 } from 'src/sdk/search/useSearchQuery'
-import type { SearchQueryQuery } from '@generated/SearchQuery.graphql'
+import type { SearchQueryQuery } from '@generated/graphql'
 
 interface Props {
   page: number
@@ -20,8 +20,7 @@ const useProducts = (page: number, fallbackData?: SearchQueryQuery) => {
     page,
   })
 
-  return useSearchQuery({
-    variables,
+  return useSearchQuery(variables, {
     fallbackData,
   })
 }

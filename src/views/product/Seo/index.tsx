@@ -1,12 +1,14 @@
-import React from 'react'
 import { graphql } from 'gatsby'
 import {
   BreadcrumbJsonLd,
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import type { ProductSeoFragment_SiteFragment } from '@generated/ProductSeoFragment_site.graphql'
-import type { ProductSeoFragment_ProductFragment } from '@generated/ProductSeoFragment_product.graphql'
+import React from 'react'
+import type {
+  ProductSeoFragment_ProductFragment,
+  ProductSeoFragment_SiteFragment,
+} from '@generated/graphql'
 
 import { useMetadata } from './hooks/useMetadata'
 

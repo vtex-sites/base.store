@@ -1,11 +1,10 @@
-import { ValidateCartMutation } from '@generated/ValidateCartMutation.graphql'
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import { gql } from '@vtex/graphql-utils'
 import type { CartItem as ICartItem } from '@vtex/store-sdk'
+import type { IStoreProduct } from '@vtex/store-api'
 import type {
   ValidateCartMutationMutation,
   ValidateCartMutationMutationVariables,
-} from '@generated/ValidateCartMutation.graphql'
-import type { IStoreProduct } from '@vtex/store-api'
+} from '@generated/graphql'
 
 import { request } from '../graphql/request'
 
@@ -39,14 +38,11 @@ export const validateCart = async (cart: Cart) => {
   const { validateCart: validated } = await request<
     ValidateCartMutationMutation,
     ValidateCartMutationMutationVariables
-  >({
-    ...ValidateCartMutation,
-    variables: {
-      cart: {
-        order: {
-          orderNumber: cart.id,
-          acceptedOffer: cart.items.map(({ id, ...item }) => item),
-        },
+  >(ValidateCartMutation, {
+    cart: {
+      order: {
+        orderNumber: cart.id,
+        acceptedOffer: cart.items.map(({ id, ...item }) => item),
       },
     },
   })
@@ -63,7 +59,7 @@ export const validateCart = async (cart: Cart) => {
   )
 }
 
-export const mutation = gql`
+export const ValidateCartMutation = gql`
   mutation ValidateCartMutation($cart: IStoreCart!) {
     validateCart(cart: $cart) {
       order {

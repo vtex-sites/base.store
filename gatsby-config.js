@@ -128,7 +128,7 @@ module.exports = {
       resolve: 'gatsby-plugin-root-import',
       options: {
         src: resolve('./src'),
-        '@generated': resolve('./__generated__'),
+        '@generated': resolve('./@generated'),
       },
     },
     {
@@ -143,9 +143,6 @@ module.exports = {
           context: join(__dirname, 'src'),
         },
       },
-    },
-    {
-      resolve: `@vtex/gatsby-plugin-graphql`,
     },
     {
       resolve: `@vtex/gatsby-source-store`,

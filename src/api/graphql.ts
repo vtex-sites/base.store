@@ -2,40 +2,30 @@ import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
 import { getSchema, getContextFactory } from '../server'
-import persisted from '../../__generated__/persisted.graphql.json'
+import persisted from '../../@generated/graphql/persisted.json'
 
 const persistedQueries = new Map(Object.entries(persisted))
 
-const parseProdRequest = (req: GatsbyFunctionRequest) => {
-  const res =
+const parseRequest = (req: GatsbyFunctionRequest) => {
+  const { operationName, variables } =
     req.method === 'POST'
       ? req.body
       : {
           operationName: req.query.operationName,
-          extensions: JSON.parse(req.query.extensions),
           variables: JSON.parse(req.query.variables),
         }
 
-  const hash = res.extensions.persistedQuery.sha256Hash
-  const query = persistedQueries.get(hash)
+  const query = persistedQueries.get(operationName)
 
   if (query == null) {
-    throw new Error(`No query found with hash: ${hash}`)
+    throw new Error(`No query found for operationName: ${operationName}`)
   }
 
   return {
     query,
-    operationName: res.operationName,
-    variables: res.variables,
+    operationName,
+    variables,
   }
-}
-
-const parseDevRequest = (req: GatsbyFunctionRequest) => {
-  if (req.method === 'POST') {
-    return req.body
-  }
-
-  throw new Error('No GET request during development is allowed')
 }
 
 const contextFactory = getContextFactory()
@@ -50,10 +40,7 @@ const handler = async (
     return
   }
 
-  const { operationName, variables, query } =
-    process.env.NODE_ENV === 'production'
-      ? parseProdRequest(req)
-      : parseDevRequest(req)
+  const { operationName, variables, query } = parseRequest(req)
 
   try {
     const response = await execute({
@@ -64,11 +51,12 @@ const handler = async (
       operationName,
     })
 
-    if (
-      process.env.NODE_ENV !== 'production' &&
-      Array.isArray(response.errors)
-    ) {
-      response.errors.forEach(console.error)
+    if (process.env.NODE_ENV !== 'production') {
+      if (Array.isArray(response.errors)) {
+        response.errors.forEach(console.error)
+      }
+
+      res.setHeader('cache-control', 'no-cache, no-store')
     }
 
     res.setHeader('content-type', 'application/json')

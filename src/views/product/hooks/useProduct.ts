@@ -1,12 +1,11 @@
-import { BrowserProductQuery } from '@generated/BrowserProductQuery.graphql'
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import { gql } from '@vtex/graphql-utils'
 import { useSession } from '@vtex/store-sdk'
 import { useMemo } from 'react'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import type {
   BrowserProductQueryQuery,
   BrowserProductQueryQueryVariables,
-} from '@generated/BrowserProductQuery.graphql'
+} from '@generated/graphql'
 
 /**
  * serverProduct data is stale and incomplete (because we SSRed it).
@@ -22,7 +21,7 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
     () => ({
       locator: [
         { key: 'id', value: productID },
-        { key: 'channel', value: channel },
+        { key: 'channel', value: channel! },
       ],
     }),
     [channel, productID]
@@ -31,15 +30,13 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   return useQuery<
     BrowserProductQueryQuery & T,
     BrowserProductQueryQueryVariables
-  >({
-    ...BrowserProductQuery,
-    variables,
+  >(BrowserProductQuery, variables, {
     fallbackData,
     revalidateOnMount: true,
   })
 }
 
-export const query = gql`
+export const BrowserProductQuery = gql`
   query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {
     product(locator: $locator) {
       ...ProductViewFragment_product

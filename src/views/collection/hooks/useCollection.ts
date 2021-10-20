@@ -1,12 +1,11 @@
-import { CollectionSearchQuery } from '@generated/CollectionSearchQuery.graphql'
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import { gql } from '@vtex/graphql-utils'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useSearchVariables } from 'src/sdk/search/useSearchQuery'
 import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
-  CollectionSearchQueryQuery,
   CollectionSearchQueryQueryVariables,
-} from '@generated/CollectionSearchQuery.graphql'
+  CollectionSearchQueryQuery,
+} from '@generated/graphql'
 
 export const useCollection = (searchParams: SearchParamsState) => {
   const variables = useSearchVariables(searchParams)
@@ -14,17 +13,14 @@ export const useCollection = (searchParams: SearchParamsState) => {
   return useQuery<
     CollectionSearchQueryQuery,
     CollectionSearchQueryQueryVariables
-  >({
-    ...CollectionSearchQuery,
-    variables,
-  })
+  >(CollectionSearchQuery, variables)
 }
 
 /**
  * This query is run on the browser and contains
  * the current search state of the user
  */
-export const clientSideQuery = gql`
+export const CollectionSearchQuery = gql`
   query CollectionSearchQuery(
     $first: Int!
     $after: String

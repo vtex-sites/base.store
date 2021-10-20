@@ -5,7 +5,7 @@ import Button from 'src/components/ui/Button'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { ProductDetailsFragment_ProductFragment } from '@generated/ProductDetailsFragment_product.graphql'
+import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment

@@ -290,6 +290,24 @@ Tailwind is a utility-first CSS framework. The goal of this starter is to make i
 
 > :warning: CSS modules generate extra classes in your final CSS sheet. Use them with caution.
 
+## 🍒 Adding queries
+We use [graphql-codegen](https://www.graphql-code-generator.com/) to pre-process GraphQL queries. This compilation generates TypeScript typings and configurations for our graphql server under the folder `@generated/graphql`. 
+This means we can staticaly analyse your code in search of bugs and secure your graphql server before each deploy. If, however you need to change any GraphQL Fragment, Query or Mutation, you will need to regenerate the whole thing. To do this, open your terminal and type
+
+```sh
+$ yarn develop
+```
+
+Now, after the gatsby development server is up and running, open another terminal and run
+
+```sh
+$ yarn generate
+```
+
+That's it! you have just regenerated all graphql queries/fragments for your application and the new data you requested should be available to your component.
+
+> Pro tip: Pass `-w` to the `yarn generate` command so it watches for changes and you don't need to run this command multiple times
+
 ## 🎓 Learning the Frameworks
 
 Looking for more guidance? Full documentation for Faststore lives [on this GitHub repository](https://github.com/vtex/faststore). Also, for learning Gatsby, take a look at the [Gatsby Website](https://www.gatsbyjs.com/), they have plenty of tutorials and examples in there.

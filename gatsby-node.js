@@ -12,3 +12,10 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
     })
   }
 }
+
+exports.onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({
+    name: `@vtex/graphql-utils/babel`,
+    options: {},
+  })
+}

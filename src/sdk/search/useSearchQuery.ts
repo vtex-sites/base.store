@@ -1,20 +1,15 @@
-import { SearchQuery } from '@generated/SearchQuery.graphql'
-import { gql } from '@vtex/gatsby-plugin-graphql'
+import { gql } from '@vtex/graphql-utils'
 import { useSession } from '@vtex/store-sdk'
 import { useMemo } from 'react'
 import { ITEMS_PER_PAGE } from 'src/constants'
+import type { SearchParamsState } from '@vtex/store-sdk'
 import type {
   SearchQueryQuery,
   SearchQueryQueryVariables,
-} from '@generated/SearchQuery.graphql'
-import type { SearchParamsState } from '@vtex/store-sdk'
+} from '@generated/graphql'
 
 import { useQuery } from '../graphql/useQuery'
 import type { QueryOptions } from '../graphql/useQuery'
-
-type Options = Omit<QueryOptions, 'query' | 'operationName' | 'sha256Hash'> & {
-  variables: SearchQueryQueryVariables
-}
 
 export const useSearchVariables = (params: SearchParamsState) => {
   const { channel } = useSession()
@@ -38,16 +33,20 @@ export const useSearchVariables = (params: SearchParamsState) => {
 /**
  * Use this hook for fetching a list of products, like in search results and shelfs
  */
-export const useSearchQuery = (options: Options) => {
-  const { data } = useQuery<SearchQueryQuery, SearchQueryQueryVariables>({
-    ...SearchQuery,
-    ...options,
-  })
+export const useSearchQuery = (
+  variables: SearchQueryQueryVariables,
+  options?: QueryOptions
+) => {
+  const { data } = useQuery<SearchQueryQuery, SearchQueryQueryVariables>(
+    SearchQuery,
+    variables,
+    options
+  )
 
   return data?.search.products
 }
 
-export const query = gql`
+export const SearchQuery = gql`
   query SearchQuery(
     $first: Int!
     $after: String

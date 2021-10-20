@@ -5,7 +5,7 @@ import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
-} from '@generated/ProductPageQuery.graphql'
+} from '@generated/graphql'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
