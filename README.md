@@ -299,6 +299,7 @@ $ yarn develop
 ```
 
 Now, after the gatsby development server is up and running, open another terminal and run
+
 ```sh
 $ yarn generate
 ```
