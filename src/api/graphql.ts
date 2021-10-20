@@ -5,7 +5,6 @@ import {
   useSchema,
   useErrorHandler,
   useMaskedErrors,
-  useTiming,
 } from '@envelop/core'
 
 import { getSchema, getContextFactory } from '../server'
@@ -51,8 +50,6 @@ const createGetEnveloped = async () =>
       useErrorHandler((error) => handleError(error)),
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useMaskedErrors(),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      useTiming(),
     ],
   })
 
