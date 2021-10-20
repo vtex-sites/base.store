@@ -18,9 +18,10 @@ function ProductSummary({ product }: Props) {
     id,
     slug,
     sku,
-    name: skuName,
+    gtin: referenceId,
+    name: variantName,
     brand: { name: brandName },
-    isVariantOf: { name },
+    isVariantOf: { name, productGroupID: productId },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
   } = product
@@ -40,8 +41,10 @@ function ProductSummary({ product }: Props) {
     listPrice,
     seller,
     quantity: 1,
+    referenceId,
+    productId,
     itemOffered: {
-      name: skuName,
+      name: variantName,
       image: [img],
       sku,
     },
@@ -80,8 +83,10 @@ export const fragment = graphql`
     slug
     sku
     name
+    gtin
 
     isVariantOf {
+      productGroupID
       name
     }
 

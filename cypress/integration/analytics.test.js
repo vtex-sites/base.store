@@ -23,7 +23,7 @@ describe('add_to_cart event', () => {
       expect(event).to.not.be.null
       expect(event.data).to.have.property('value')
 
-      const item = event.data.items.find((i) => i.item_id === skuId)
+      const item = event.data.items.find((i) => i.item_variant === skuId)
 
       expect(item).to.not.be.null
       expect(item).to.have.property('currency')

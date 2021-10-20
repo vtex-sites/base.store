@@ -18,10 +18,11 @@ const styles = {
 function ProductDetails({ product }: Props) {
   const {
     id,
-    isVariantOf: { name },
-    name: skuName,
-    brand: { name: brandName },
     sku,
+    gtin: referenceId,
+    name: variantName,
+    brand: { name: brandName },
+    isVariantOf: { name, productGroupID: productId },
     image: [img],
     offers: {
       offers: [{ price, listPrice, seller }],
@@ -37,16 +38,18 @@ function ProductDetails({ product }: Props) {
     listPrice,
     seller,
     quantity: 1,
+    referenceId,
+    productId,
     itemOffered: {
       image: [img],
-      name: skuName,
+      name: variantName,
       sku,
     },
   })
 
   return (
     <div>
-      <h2>{skuName}</h2>
+      <h2>{variantName}</h2>
       <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
       <div style={styles.listPrice}>{useFormattedPrice(listPrice)}</div>
       <div>{useFormattedPrice(price)}</div>
@@ -58,10 +61,12 @@ function ProductDetails({ product }: Props) {
 export const fragment = graphql`
   fragment ProductDetailsFragment_product on StoreProduct {
     id: productID
-    name
     sku
+    name
+    gtin
 
     isVariantOf {
+      productGroupID
       name
     }
 

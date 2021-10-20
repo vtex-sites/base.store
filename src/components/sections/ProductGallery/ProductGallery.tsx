@@ -4,14 +4,14 @@ import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
 import PageBreak from 'src/sdk/search/PageBreak'
 import { useSearch } from 'src/sdk/search/useSearch'
-import type { GalleryQueryQuery } from '@generated/GalleryQuery.graphql'
+import type { SearchQueryQuery } from '@generated/SearchQuery.graphql'
 import type { ProductGallery_FacetsFragment } from '@generated/ProductGallery_facets.graphql'
 import type { ProductGallery_ProductsFragment } from '@generated/ProductGallery_products.graphql'
 
 import GalleryPage from './ProductGalleryPage'
 
 interface Props {
-  fallbackData?: GalleryQueryQuery
+  fallbackData?: SearchQueryQuery
   facets: ProductGallery_FacetsFragment[]
   products: ProductGallery_ProductsFragment
 }
