@@ -54,11 +54,13 @@ function View(props: Props) {
           />
 
           {/* UI components */}
-          <ProductGallery
-            fallbackData={dynamicData}
-            products={search.products}
-            facets={search.facets}
-          />
+          <div id="collection-page">
+            <ProductGallery
+              fallbackData={dynamicData}
+              products={search.products}
+              facets={search.facets}
+            />
+          </div>
         </SearchProvider>
       )}
     </>
