@@ -1,13 +1,14 @@
 import { useCart } from './useCart'
+import { checkoutURL } from '../../../store-config'
 
 export const useCheckoutButton = () => {
-  const { isValidating } = useCart()
+  const { isValidating, id } = useCart()
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
 
-    if (!isValidating) {
-      window.location.href = '/checkout/'
+    if (!isValidating && id) {
+      window.location.href = checkoutURL(id)
     }
   }
 

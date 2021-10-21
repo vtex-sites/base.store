@@ -9,6 +9,7 @@ import TestProvider from './src/sdk/tests'
 import { validateCart } from './src/sdk/cart/validate'
 import AnalyticsHandler from './src/sdk/analytics'
 import { uiInitialState, uiActions, uiEffects } from './src/sdk/ui'
+import { channel } from './store-config'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
@@ -19,9 +20,7 @@ export const wrapRootElement = ({ element }) => (
           actions={uiActions}
           effects={uiEffects}
         >
-          <SessionProvider
-            initialState={{ channel: process.env.GATSBY_VTEX_CHANNEL }}
-          >
+          <SessionProvider initialState={{ channel }}>
             <CartProvider mode="optimistic" onValidateCart={validateCart}>
               {element}
             </CartProvider>

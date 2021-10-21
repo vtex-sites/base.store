@@ -6,10 +6,9 @@ const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
 
 const {
-  GATSBY_STORE_ID: STORE_ID,
   CI: isCI,
   NODE_ENV,
-  URL = `https://${STORE_ID}.vtex.app`,
+  URL,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
   NETLIFY: isNetlify,
@@ -38,7 +37,7 @@ module.exports = {
     description: 'Fashion Demo Store',
     titleTemplate: '%s | Fashion Store',
     author: 'Store Framework',
-    siteUrl,
+    siteUrl: siteUrl || 'https://base.vtex.app',
   },
   flags: {
     DEV_SSR: true,

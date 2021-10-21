@@ -1,3 +1,5 @@
+const storeConfig = require('./store-config')
+
 exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
   const profiling = process.env.GATSBY_STORE_PROFILING === 'true'
 
@@ -18,4 +20,12 @@ exports.onCreateBabelConfig = ({ actions }) => {
     name: `@vtex/graphql-utils/babel`,
     options: {},
   })
+}
+
+exports.createPages = ({ actions: { createRedirect } }) => {
+  const { redirects } = storeConfig
+
+  for (const redirect of redirects) {
+    createRedirect(redirect)
+  }
 }
