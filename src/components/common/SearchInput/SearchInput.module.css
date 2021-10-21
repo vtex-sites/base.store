@@ -1,7 +1,3 @@
 [data-store-input] {
   @apply m-2
 }
-
-[data-store-button] {
-  @apply p-2
-}
