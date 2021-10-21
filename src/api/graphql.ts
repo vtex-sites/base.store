@@ -86,6 +86,10 @@ const handler = async (
       res.setHeader('cache-control', 'no-cache, no-store')
     }
 
+    if (response.errors) {
+      res.status(500)
+    }
+
     res.setHeader('content-type', 'application/json')
     res.send(JSON.stringify(response))
   } catch (err) {
