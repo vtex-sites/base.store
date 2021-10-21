@@ -16,7 +16,6 @@ interface Props {
 function ProductSummary({ product }: Props) {
   const {
     id,
-    slug,
     sku,
     gtin: referenceId,
     name: variantName,
@@ -31,7 +30,7 @@ function ProductSummary({ product }: Props) {
     [spotPrice, offers]
   )
 
-  const linkProps = useProductLink({ slug })
+  const linkProps = useProductLink(product)
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
@@ -82,6 +81,9 @@ export const fragment = graphql`
     id: productID
     slug
     sku
+    brand {
+      brandName: name
+    }
     name
     gtin
 
@@ -104,6 +106,7 @@ export const fragment = graphql`
       offers {
         price
         listPrice
+        quantity
         seller {
           identifier
         }
