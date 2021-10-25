@@ -3,15 +3,23 @@ import React, { useMemo } from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 
 const platform = process.env.GATSBY_COMMERCE_PLATFORM ?? 'vtex'
+const account = process.env.GATSBY_STORE_ID
+const environment = process.env.GATSBY_VTEX_ENVIRONMENT
 
-const urlsByPlatform: Record<string, (id: string) => string> = {
-  vtex: (cartId: string) =>
-    `https://${process.env.GATSBY_STORE_ID}.${process.env.GATSBY_VTEX_ENVIRONMENT}.com.br/checkout?orderFormId=${cartId}`,
-}
+const useCheckoutUrl = (cartId: string) =>
+  useMemo(() => {
+    switch (platform) {
+      case 'vtex':
+        return `https://${account}.${environment}.com.br/checkout?orderFormId=${cartId}`
+
+      default:
+        return ''
+    }
+  }, [cartId])
 
 function Page() {
   const { id } = useCart()
-  const src = useMemo(() => urlsByPlatform[platform]?.(id), [id])
+  const src = useCheckoutUrl(id)
 
   return (
     <>
