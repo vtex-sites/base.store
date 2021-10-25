@@ -2818,55 +2818,50 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/gatsby-plugin-nginx@^1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.2.14.tgz#3c3188f826a8a83cfb2d8de7a92a65b98297e173"
-  integrity sha512-3Jlr6GdEK9F1LJcS02XRoXsNFveD+AkwhivQL2yjTzJHdRmqwvFp9AVZoMaQ05Aha1y1I3Tn7aF7Nc+I1Qcr0Q==
+"@vtex/gatsby-plugin-nginx@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.2.19.tgz#431d5401cd13252ab402f08a4b881bb23f0bd754"
+  integrity sha512-gRMKuVIMhUdEoc+r4iebQLDj2LDWikZpK+9o2ZO2+03ZifGVHTYq7c7GTtBoaYzjqG6G6ytvSC6Iq9L2WWdKiQ==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.2.14.tgz#65df7d6ed57d60a1552f2f17a963edeca0aeda34"
-  integrity sha512-6enL7OvWaTXHjZ7QuhXtwZmNzmk0oyz42yhAKbBu9N0EPm41i7Wut7Gm/0E7OBr4zR/dfLWg+gE/SJ331D2pfw==
+"@vtex/gatsby-plugin-thumbor@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.2.19.tgz#ed125779f09be8f1829e76e6209deb89788e342d"
+  integrity sha512-5yFcUAoZBBPWbSphvviAr8r92MV7o7oIwjpx2bjpVcNFc0oxFuslGErccH8FexIeBdvVjaqh+ie+lShpxK5Ypg==
 
-"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/42760166/@vtex/gatsby-source-store":
-  version "1.2.17"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/42760166/@vtex/gatsby-source-store#a3ff9bc0b25ba53ece8bd36656c3ac4027a939f7"
+"@vtex/gatsby-source-store@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.2.19.tgz#d34975aa1c5973b557d118756aced27adc41b829"
+  integrity sha512-G2pZ/F2GCL60rSUuTTgzJoFAqLwraA3WGqRDCFjCW9IRmE0+DMSSA74zfp/WH0VnWx4Tf3aTAQnCaTvCaxDvTQ==
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/gatsby-source-store@https://pkg.csb.dev/vtex/faststore/commit/d3d0c393/@vtex/gatsby-source-store":
-  version "1.2.17"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/d3d0c393/@vtex/gatsby-source-store#9238256f6c706bd5a78cd9abd3233c08d8445ead"
-  dependencies:
-    gatsby-graphql-source-toolkit "^2.0.1"
-
-"@vtex/graphql-utils@^1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.2.14.tgz#fd35db50402d668b8b2d054a8b87b7f93e433f49"
-  integrity sha512-gKSIzCHMfu3v2WS1md2L8C1eEuTBohiVLzW/Yt5/uBivSPuLFnPTF41PyLW54pLcZPs9U3PQXhjfiwhD4IR8Rg==
+"@vtex/graphql-utils@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.2.19.tgz#df68471d80d1c143533d7319b1da4333fb3f5c70"
+  integrity sha512-QNCiEGE7WiE/CRSEMNLeBSHz2gH342N2Tm5Cy18avPnqfkcFS0zmy8F0yA5H++qn/ACmadj/q9cojz5fC9uoWw==
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
-"@vtex/lighthouse-config@^1.1.18":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.2.4.tgz#79593697d2e8597ab029a90b41ef3a15f7c2ca46"
-  integrity sha512-orMQZKGB/g3yEExN+DNoDqFP5CgAnVcUE/vl765AzSCzb5XL8kJIfxd7ZpyinDYMH2UMc1DBsJe2q9KZu2Afrw==
+"@vtex/lighthouse-config@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.2.19.tgz#a3c6d683f4247a1c6a7c0cf67ad6174b335dadc5"
+  integrity sha512-Gn4b4xKOyN84sSBladASZgxlkOodHJV6H59Dba6ms7i4aUB2alNMqNGKGWBx/VcXE7UqgGRLYILeDn3n8sYCJw==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-0.3.6.tgz#31762608d9a59b815b6d4e963e439b12f1a12279"
   integrity sha512-nXE3BcMODomFK3EowfK+Hdj2qQRqB8JcdRv8yTREXnN9xq8DYKmH/dWB+RY/Hn3KozFLbygpZRbqYsiA6HDINQ==
 
-"@vtex/store-api@^1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@vtex/store-api/-/store-api-1.2.14.tgz#c39d37bc7a56cce5edb712a4779c562c4804d64c"
-  integrity sha512-6UDkR3i1/sMZnQse0uTCTN3le3hm4zcJdOVdoa4CK84CnbiHvg8a03MaqQ9mPfrogO8YTszI3Bv3HbHaN/sw0A==
+"@vtex/store-api@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/store-api/-/store-api-1.2.19.tgz#510ae5116e7f94b5e44eafeba76e7c6f93e7c597"
+  integrity sha512-uWg0niuoF+XvWhWdKagbuNqJTNu4vutAjspmpcS24rCd9ciGIxPjt3NaVNG4TMr7fi6qNGWbMah+m0KcSUi1MQ==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     dataloader "^2.0.0"
@@ -2875,17 +2870,17 @@
     rollup-plugin-graphql "^0.1.0"
     slugify "^1.6.0"
 
-"@vtex/store-sdk@^1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.2.14.tgz#9195d980d16757d633b6577f8b9e20d996ea962c"
-  integrity sha512-6wN9Rhb9xJHQh9rDJYiVt7F5uZoDhSVZ6DjcaJA+TQVu9SRaIFkbi+6D2Uft+OumAhazUrRIBJwwYczMDpjB1A==
+"@vtex/store-sdk@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/store-sdk/-/store-sdk-1.2.19.tgz#c5d159c36ffca8948ded986ff0be09dacc19d806"
+  integrity sha512-l0dZUA1OXEVgg5CctDmnbovIPyETDcW3euEc3XcS60t6usg/ceMaBMKqsvFOnyQBevyeP7g565YcQCDXDZMzKA==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@vtex/store-ui@^1.2.14":
-  version "1.2.14"
-  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-1.2.14.tgz#15173f0e3c094ad37375dbe81511f4b807c7f739"
-  integrity sha512-YWMoYa/jYv2fYpZWuCWO9IMOlUYBTgN5RfjxDTo0ydwfYBvsiIJ4TRQXIYitcQ6Rrn3pjFKpbOOVFF8mRdVzng==
+"@vtex/store-ui@^1.2.19":
+  version "1.2.19"
+  resolved "https://registry.yarnpkg.com/@vtex/store-ui/-/store-ui-1.2.19.tgz#3a00760383fa7b49821bb05b1a241350286f92c9"
+  integrity sha512-G00CTm0hBsYmZg0nW72eA/oeRCNrum3gDnJiGi27dAsGLHClRySFe5dXV5xPGvW5CBZn3Vj5ks0Fbsvn7bwRqA==
   dependencies:
     "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
