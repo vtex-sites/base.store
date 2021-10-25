@@ -1,3 +1,5 @@
+import { navigate } from 'gatsby'
+
 import { useCart } from './useCart'
 
 export const useCheckoutButton = () => {
@@ -7,7 +9,7 @@ export const useCheckoutButton = () => {
     e.preventDefault()
 
     if (!isValidating) {
-      window.location.href = '/checkout/'
+      navigate('/checkout')
     }
   }
 
