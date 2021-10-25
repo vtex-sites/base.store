@@ -15,7 +15,7 @@ const useCheckoutUrl = (cartId: string) =>
         return `https://${account}.${environment}.com.br/checkout?orderFormId=${cartId}`
 
       default:
-        return ''
+        throw new Error(`Uknown platform: ${platform}`)
     }
   }, [cartId])
 
