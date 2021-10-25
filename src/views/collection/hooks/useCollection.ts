@@ -12,50 +12,14 @@ import type {
   CollectionSearchQueryQueryVariables,
   CollectionSearchQueryQuery,
 } from '@generated/graphql'
-import { useMemo } from 'react'
 
 export const useCollection = (searchParams: SearchParamsState) => {
   const variables = useSearchVariables(searchParams)
 
-  const {
-    currency: { code },
-  } = useSession()
-
-  const currency = code as CurrencyCode
-
-  const query = useQuery<
+  return useQuery<
     CollectionSearchQueryQuery,
     CollectionSearchQueryQueryVariables
   >(CollectionSearchQuery, variables)
-
-  const { data } = query
-
-  const products: Item[] = useMemo(() => {
-    return (
-      data?.search.products.edges.map(({ node: product }) => {
-        return {
-          item_id: product.id,
-          item_name: product.name,
-          currency,
-          discount:
-            product.offers.offers[0].listPrice - product.offers.offers[0].price,
-          item_brand: product.brand.name,
-          item_variant: product.isVariantOf.name,
-          location_id: product.id,
-          price: product.offers.offers[0].price,
-        }
-      }) ?? []
-    )
-  }, [currency, data?.search.products.edges])
-
-  const event: ViewItemListEvent = {
-    type: 'view_item_list',
-    data: {
-      items: products,
-    },
-  }
-
-  return { query, event }
 }
 
 /**

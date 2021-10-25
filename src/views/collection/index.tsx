@@ -8,6 +8,7 @@ import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
 
 import { useCollection } from './hooks/useCollection'
 import Seo from './Seo'
+import { useViewItemListEvent } from './hooks/useViewItemListEvent'
 
 interface Props extends PageProps {
   searchParams: SearchParamsState
@@ -20,10 +21,7 @@ function View(props: Props) {
     searchParams,
   } = props
 
-  const {
-    query: { data: dynamicData },
-    event,
-  } = useCollection(searchParams)
+  const { data: dynamicData } = useCollection(searchParams)
 
   const data = { ...dynamicData, ...staticData }
   const { storeCollection, site, search } = data
@@ -33,7 +31,9 @@ function View(props: Props) {
     staticData.site?.siteMetadata?.title ??
     ''
 
-  sendAnalyticsEvent<ViewItemListEvent>(event)
+  const productList = search?.products.edges.map((edge) => edge.node)
+
+  useViewItemListEvent(productList ?? [])
 
   return (
     <>
