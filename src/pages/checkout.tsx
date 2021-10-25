@@ -2,9 +2,11 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 
-const platform = process.env.GATSBY_COMMERCE_PLATFORM ?? 'vtex'
-const account = process.env.GATSBY_STORE_ID
-const environment = process.env.GATSBY_VTEX_ENVIRONMENT
+const {
+  GATSBY_COMMERCE_PLATFORM: platform = 'vtex',
+  GATSBY_STORE_ID: account,
+  GATSBY_VTEX_ENVIRONMENT: environment,
+} = process.env
 
 const useCheckoutUrl = (cartId: string) =>
   useMemo(() => {
