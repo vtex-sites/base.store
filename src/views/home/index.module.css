@@ -1,0 +1,25 @@
+[data-store-modal-content] {
+  @apply bg-primary-50 w-96 font-sans;
+  @apply p-5 rounded;
+}
+
+[data-store-modal-content] > [data-action-container] {
+  @apply flex justify-end;
+}
+
+[data-story-overlay-out-container] {
+  height: calc(100vh + 150px);
+}
+
+[data-store-overlay] {
+  @apply z-50 fixed inset-0;
+  @apply flex justify-center items-center;
+}
+
+[data-store-overlay][data-green] {
+  @apply bg-primary-500 bg-opacity-50;
+}
+
+[data-store-overlay][data-black], [data-modal-overlay] {
+  @apply bg-primary-500 bg-opacity-50;
+}

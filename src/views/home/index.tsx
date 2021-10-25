@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import type { Props as PageProps } from 'src/pages/index'
+import { Modal, Button } from '@vtex/store-ui'
 
 import Seo from './Seo'
+import './index.module.css'
 
 export type Props = PageProps
 
@@ -18,6 +20,11 @@ function View(props: Props) {
 
   //   return { type: 'vtex:pageView', data: event }
   // })
+  const [isModalOpen, setModalOpen] = useState(false)
+
+  if (typeof window === 'undefined') {
+    return null
+  }
 
   const title = props.data.site?.siteMetadata?.title ?? ''
 
@@ -28,6 +35,14 @@ function View(props: Props) {
 
       {/* Visual Sections */}
       <h1 className="absolute top-[-100px]">{title}</h1>
+      <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+      <Modal
+        isOpen={isModalOpen}
+        onDismiss={() => setModalOpen(false)}
+        className="absolute"
+      >
+        asasasas
+      </Modal>
     </>
   )
 }
