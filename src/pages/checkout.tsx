@@ -3,7 +3,6 @@ import React from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 
 const storeId = process.env.GATSBY_STORE_ID
-const environment = process.env.GATSBY_VTEX_ENVIRONMENT
 
 function Page() {
   const { id } = useCart()
@@ -13,7 +12,7 @@ function Page() {
       <GatsbySeo nofollow noindex />
       <iframe
         title="checkout"
-        src={`https://${storeId}.${environment}.com.br/checkout?orderFormId=${id}`}
+        src={`https://${storeId}.myvtex.com/checkout?orderFormId=${id}`}
         className="min-h-screen min-w-full"
       />
     </>
