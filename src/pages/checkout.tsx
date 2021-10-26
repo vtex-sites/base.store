@@ -14,7 +14,7 @@ function Page() {
       {id && (
         <iframe
           title="checkout"
-          src={`https://${storeId}.${environment}.myvtex.com/checkout?orderFormId=${id}`}
+          src={`https://${storeId}.${environment}.com.br/checkout?orderFormId=${id}`}
           className="min-h-screen min-w-full"
         />
       )}
