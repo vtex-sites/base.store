@@ -2,8 +2,8 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 
-const { GATSBY_STORE_ID: account, GATSBY_VTEX_ENVIRONMENT: environment } =
-  process.env
+const storeId = process.env.GATSBY_STORE_ID
+const environment = process.env.GATSBY_VTEX_ENVIRONMENT
 
 function Page() {
   const { id } = useCart()
@@ -13,7 +13,7 @@ function Page() {
       <GatsbySeo nofollow noindex />
       <iframe
         title="checkout"
-        src={`https://${account}.${environment}.com.br/checkout?orderFormId=${id}`}
+        src={`https://${storeId}.${environment}.com.br/checkout?orderFormId=${id}`}
         className="min-h-screen min-w-full"
       />
     </>
