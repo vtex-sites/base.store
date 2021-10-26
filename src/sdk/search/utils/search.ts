@@ -1,6 +1,6 @@
 import { navigate } from 'gatsby'
 
-// TODO move these files to faststore repository
+// TODO: Move this search/utils folder and files to faststore repository (perhaps?)
 
 import { slugify } from './slugify'
 import { uniqBy } from './uniq'
