@@ -31,7 +31,9 @@ function View(props: Props) {
 
   return (
     <>
-      <h1 className="absolute top-[-100px]">{title}</h1>
+      <h1 data-testid="collection-page" className="absolute top-[-100px]">
+        {title}
+      </h1>
 
       {search == null || site == null || storeCollection == null ? (
         <div>...loading</div>
@@ -54,13 +56,11 @@ function View(props: Props) {
           />
 
           {/* UI components */}
-          <div id="collection-page">
-            <ProductGallery
-              fallbackData={dynamicData}
-              products={search.products}
-              facets={search.facets}
-            />
-          </div>
+          <ProductGallery
+            fallbackData={dynamicData}
+            products={search.products}
+            facets={search.facets}
+          />
         </SearchProvider>
       )}
     </>

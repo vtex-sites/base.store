@@ -34,7 +34,7 @@ describe('Search input', () => {
       cy.getById('store-button').click()
 
       cy.location('pathname')
-      cy.get('#collection-page').should('exist')
+      cy.getById('collection-page').should('exist')
     })
   })
 })
