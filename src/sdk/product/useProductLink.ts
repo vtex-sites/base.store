@@ -46,7 +46,7 @@ export const useProductLink = ({
           index,
           item_brand: product.brand.name,
           // item_category: item_category,
-          // item_variant: item_variant,
+          item_variant: product.isVariantOf.name,
           price: product.offers.offers[0].price,
         },
       ],
