@@ -2,13 +2,11 @@ import React from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { SearchProvider } from 'src/sdk/search/Provider'
-import type { SearchParamsState, ViewItemListEvent } from '@faststore/sdk'
-import { sendAnalyticsEvent } from '@faststore/sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
 
 import { useCollection } from './hooks/useCollection'
 import Seo from './Seo'
-import { useViewItemListEvent } from './hooks/useViewItemListEvent'
 
 interface Props extends PageProps {
   searchParams: SearchParamsState
@@ -30,10 +28,6 @@ function View(props: Props) {
     staticData.storeCollection?.seo.title ??
     staticData.site?.siteMetadata?.title ??
     ''
-
-  const productList = search?.products.edges.map((edge) => edge.node)
-
-  useViewItemListEvent(productList ?? [])
 
   return (
     <>

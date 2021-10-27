@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
@@ -8,13 +8,18 @@ import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import useIntersectionObserver from 'src/sdk/analytics/hooks/useIntersectionObserver'
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
+  viewProduct?: (
+    product: ProductSummary_ProductFragment,
+    firstView: boolean
+  ) => void
 }
 
-function ProductSummary({ product, index }: Props) {
+function ProductSummary({ product, viewProduct, index }: Props) {
   const {
     id,
     sku,
@@ -25,6 +30,11 @@ function ProductSummary({ product, index }: Props) {
     image: [img],
     offers: { lowPrice: spotPrice, offers },
   } = product
+
+  const [emited, setEmited] = useState(false)
+  const ref = useRef<HTMLDivElement | null>(null)
+  const entry = useIntersectionObserver(ref, {})
+  const isVisible = entry?.isIntersecting
 
   const { listPrice, seller } = useMemo(
     () => offers.find((x) => x.price === spotPrice)!,
@@ -50,6 +60,17 @@ function ProductSummary({ product, index }: Props) {
     },
   })
 
+  const handleViewProduct = useCallback(() => {
+    if (isVisible) {
+      viewProduct?.(product, !emited)
+      setEmited(true)
+    }
+  }, [emited, isVisible, product, viewProduct])
+
+  useEffect(() => {
+    handleViewProduct()
+  }, [handleViewProduct, isVisible])
+
   return (
     <Link {...linkProps}>
       <GatsbyImage
@@ -59,7 +80,7 @@ function ProductSummary({ product, index }: Props) {
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{name}</div>
-      <div className="flex justify-between">
+      <div className="flex justify-between" ref={ref}>
         <span
           data-testid="list-price"
           data-value={listPrice}

@@ -1,13 +1,7 @@
 import { gql } from '@vtex/graphql-utils'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useSearchVariables } from 'src/sdk/search/useSearchQuery'
-import type {
-  CurrencyCode,
-  Item,
-  SearchParamsState,
-  ViewItemListEvent,
-} from '@faststore/sdk'
-import { useSession } from '@faststore/sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 import type {
   CollectionSearchQueryQueryVariables,
   CollectionSearchQueryQuery,

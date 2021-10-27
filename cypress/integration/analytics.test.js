@@ -176,12 +176,17 @@ describe('select_item event', () => {
 
 describe('view_item_list event', () => {
   it('view_item_list event', () => {
+    const DEBOUNCE_DELAY_EXTRA = 2000
+
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('product-link').then(() => {
-      dataLayerHasEvent('view_item_list')
-      eventDataHasCurrencyProperty()
-    })
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
+    cy.getById('product-link')
+      .wait(DEBOUNCE_DELAY_EXTRA)
+      .then(() => {
+        dataLayerHasEvent('view_item_list')
+        eventDataHasCurrencyProperty()
+      })
   })
 })
