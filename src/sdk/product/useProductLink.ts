@@ -7,27 +7,43 @@ import type {
   ViewItemEvent,
   SelectItemEvent,
   SelectItemData,
+  Item,
 } from '@vtex/store-sdk'
 
 export type ProductLinkOptions = {
   slug: string
+  index: number
 } & ProductSummary_ProductFragment
 
-export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
+type LocalItem = Item & {
+  product_reference_id?: string
+}
+
+type GASelectItemEventData = SelectItemData & { items: LocalItem[] }
+
+interface GASelectItemEvent extends SelectItemEvent {
+  data: GASelectItemEventData
+}
+
+export const useProductLink = ({
+  slug,
+  index,
+  ...product
+}: ProductLinkOptions) => {
   const {
     currency: { code },
   } = useSession()
 
   return useMemo(() => {
-    const SelectItemEventData: SelectItemData = {
+    const SelectItemEventData: GASelectItemEventData = {
       items: [
         {
           item_id: product.id,
-          // product_reference_id: product.gtin,
+          product_reference_id: product.gtin,
           // sku_reference_id: product.sku,
           item_name: product.name,
           // sku_name: 'sku name', // not sure about where to get that
-          // index: index,
+          index,
           item_brand: product.brand.name,
           // item_category: item_category,
           // item_variant: item_variant,
@@ -56,7 +72,7 @@ export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
     const onClick = () => {
       const currency = code as CurrencyCode
 
-      sendAnalyticsEvent<SelectItemEvent>({
+      sendAnalyticsEvent<GASelectItemEvent>({
         type: 'select_item',
         data: { ...SelectItemEventData },
       })
@@ -72,5 +88,5 @@ export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
       onClick,
       'data-testid': 'product-link',
     }
-  }, [slug, code, product])
+  }, [slug, code, product, index])
 }
