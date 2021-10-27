@@ -1,23 +1,6 @@
 import { navigate } from 'gatsby'
 
-// TODO: Move this search/utils folder and files to faststore repository (perhaps?)
-
 import { slugify } from './slugify'
-import { uniqBy } from './uniq'
-
-const HISTORY_KEY = 'vtex:search-history'
-const MAX_ITEMS = 10
-
-const history = {
-  get: (): string[] => JSON.parse(localStorage.getItem(HISTORY_KEY) ?? '[]'),
-  add: (term: string) => {
-    const h = history.get()
-
-    const updatedHistory = uniqBy([term, ...h].slice(0, MAX_ITEMS), (t) => t)
-
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(updatedHistory))
-  },
-}
 
 const pathExists = async (pathname: string) => {
   try {
@@ -53,8 +36,6 @@ export const search = async (term: string) => {
     params.set('map', 'term')
     pathname = `/s/${encodeURIComponent(term)}`
   }
-
-  history.add(term)
 
   navigate(`${pathname}?${params.toString()}`)
 }
