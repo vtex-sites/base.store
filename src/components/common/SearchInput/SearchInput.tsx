@@ -1,6 +1,6 @@
 import React from 'react'
-import type { SearchInputProps } from '@vtex/store-ui'
-import { SearchInput as UISearchInput } from '@vtex/store-ui'
+import type { SearchInputProps } from '@faststore/ui'
+import { SearchInput as UISearchInput } from '@faststore/ui'
 
 import './SearchInput.module.css'
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
+import { search } from 'src/sdk/search/utils/search'
 
 import Navlinks from '../Navlinks'
 import SearchInput from '../SearchInput'
-import { search } from '../../../sdk/search/utils/search'
 
 function Navbar() {
   return (
