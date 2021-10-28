@@ -181,12 +181,12 @@ function Button (props: Props) {
 export default Button
 ```
 
-And, that's it! Now you have a working button that you can use anywhere on your project. Faststore, however, brings a handy library called `@vtex/store-ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
+And, that's it! Now you have a working button that you can use anywhere on your project. Faststore, however, brings a handy library called `@faststore/ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
 
 ```tsx
 import React from 'react'
-import { Button as UIButton } from '@vtex/store-ui'
-import type { ButtonProps } from '@vtex/store-ui'
+import { Button as UIButton } from '@faststore/ui'
+import type { ButtonProps } from '@faststore/ui'
 
 interface Props extends ButtonProps {}
 
@@ -215,8 +215,8 @@ This `data-store-button` is a CSS data attribute selector. To know which selecto
 Now, open `Button.tsx` and import this CSS with:
 ```tsx
 import React from 'react'
-import { Button as UIButton } from '@vtex/store-ui'
-import type { ButtonProps } from '@vtex/store-ui'
+import { Button as UIButton } from '@faststore/ui'
+import type { ButtonProps } from '@faststore/ui'
 
 import './Button.module.css'
 
@@ -232,8 +232,8 @@ export default Button
 For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and muted variants. To add variants to the component, update `Button.tsx`:
 ```tsx
 import React from 'react'
-import { Button as UIButton } from '@vtex/store-ui'
-import type { ButtonProps } from '@vtex/store-ui'
+import { Button as UIButton } from '@faststore/ui'
+import type { ButtonProps } from '@faststore/ui'
 
 import './Button.module.css'
 

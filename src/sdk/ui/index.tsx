@@ -1,5 +1,5 @@
-import { useGlobalUIState } from '@vtex/store-sdk'
-import type { UIActions } from '@vtex/store-sdk'
+import { useGlobalUIState } from '@faststore/sdk'
+import type { UIActions } from '@faststore/sdk'
 import type { Dispatch } from 'react'
 
 export interface Toast {

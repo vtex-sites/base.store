@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 
 export const useFormattedPrice = (price: number) => {
   const { currency, locale } = useSession()

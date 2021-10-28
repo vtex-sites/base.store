@@ -2,7 +2,7 @@ import React from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { SearchProvider } from 'src/sdk/search/Provider'
-import type { SearchParamsState } from '@vtex/store-sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 import type { FC } from 'react'
 import type { Props as PageProps } from 'src/pages/s/[...]'
 

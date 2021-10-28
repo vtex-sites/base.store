@@ -1,4 +1,4 @@
-import { useCart as useSDKCart } from '@vtex/store-sdk'
+import { useCart as useSDKCart } from '@faststore/sdk'
 import { useCallback, useMemo } from 'react'
 
 import { getItemId, isGift } from './validate'

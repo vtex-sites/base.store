@@ -1,4 +1,4 @@
-import { useAnalyticsEvent } from '@vtex/store-sdk'
+import { useAnalyticsEvent } from '@faststore/sdk'
 import type { PropsWithChildren } from 'react'
 
 if (typeof window !== 'undefined') {

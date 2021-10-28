@@ -1,6 +1,6 @@
 import { useLocation } from '@reach/router'
 import { useMemo } from 'react'
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type { GatsbySeo } from 'gatsby-plugin-next-seo'
 import type { ComponentPropsWithoutRef } from 'react'
