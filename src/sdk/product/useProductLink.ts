@@ -40,12 +40,12 @@ export const useProductLink = ({
         {
           item_id: product.id,
           product_reference_id: product.gtin,
-          // sku_reference_id: product.sku,
+          sku_reference_id: product.sku,
           item_name: product.name,
-          // sku_name: 'sku name', // not sure about where to get that
+          sku_name: '', // TODO: not sure about where to get that
           index,
           item_brand: product.brand.name,
-          // item_category: item_category,
+          item_category: '', // TODO: not sure about where to get that
           item_variant: product.isVariantOf.name,
           price: product.offers.offers[0].price,
         },
