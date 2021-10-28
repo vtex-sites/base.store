@@ -1,6 +1,6 @@
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import type { CurrencyCode, ViewItemData, ViewItemEvent } from '@vtex/store-sdk'
-import { useSession, sendAnalyticsEvent } from '@vtex/store-sdk'
+import type { CurrencyCode, ViewItemData, ViewItemEvent } from '@faststore/sdk'
+import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
 import { useMemo } from 'react'
 
 export type ProductLinkOptions = {

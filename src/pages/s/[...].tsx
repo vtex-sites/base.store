@@ -1,4 +1,4 @@
-import { parseSearchParamsState } from '@vtex/store-sdk'
+import { parseSearchParamsState } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
 import View from 'src/views/search'

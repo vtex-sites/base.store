@@ -3,11 +3,11 @@ import {
   initSearchParamsState,
   removeSearchParam,
   setSearchParam,
-} from '@vtex/store-sdk'
+} from '@faststore/sdk'
 import { navigate } from 'gatsby'
 import React, { createContext, useMemo, useState } from 'react'
 import type { FC, ReactNode } from 'react'
-import type { SearchParamsState } from '@vtex/store-sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 
 export interface PageInfo {
   /** @description items per page */

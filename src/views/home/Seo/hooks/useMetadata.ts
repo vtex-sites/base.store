@@ -1,4 +1,4 @@
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 import type { GatsbySeo } from 'gatsby-plugin-next-seo'
 import type { ComponentPropsWithoutRef } from 'react'
 

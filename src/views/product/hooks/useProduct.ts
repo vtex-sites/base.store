@@ -1,5 +1,5 @@
 import { gql } from '@vtex/graphql-utils'
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 import { useMemo } from 'react'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import type {

@@ -1,4 +1,4 @@
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'

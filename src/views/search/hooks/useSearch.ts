@@ -1,7 +1,7 @@
 import { gql } from '@vtex/graphql-utils'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import { useSearchVariables } from 'src/sdk/search/useSearchQuery'
-import type { SearchParamsState } from '@vtex/store-sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 import type {
   FullTextSearchQueryQuery,
   FullTextSearchQueryQueryVariables,

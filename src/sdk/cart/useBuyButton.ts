@@ -4,8 +4,8 @@ import type {
   AddToCartData,
   Item as AnalyticsItem,
   CurrencyCode,
-} from '@vtex/store-sdk'
-import { sendAnalyticsEvent, useSession } from '@vtex/store-sdk'
+} from '@faststore/sdk'
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 
 import { useUI } from '../ui'
 import { useCart } from './useCart'
