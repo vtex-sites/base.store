@@ -7,7 +7,7 @@ import { search } from '../../../sdk/search/utils/search'
 
 function Navbar() {
   return (
-    <header className="flex flex-col sm:flex-row p-2 sm:p-4 justify-between items-center bg-primary-400">
+    <header className="flex flex-col sm:flex-row justify-between items-center bg-primary-400">
       <Navlinks />
       <SearchInput onSubmit={(searchTerm) => search(searchTerm)} />
       <CartToggle />

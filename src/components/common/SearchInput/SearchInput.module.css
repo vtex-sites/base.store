@@ -1,5 +1,5 @@
 [data-store-input] {
-  @apply mt-2 mb-2
+  @apply m-2 p-1
 }
 
 [data-store-button] {
@@ -8,8 +8,4 @@
 
 [data-store-button] svg {
   @apply w-6 h-6
-}
-
-[data-store-search-input] {
-  @apply flex
 }
