@@ -15,11 +15,7 @@ function ProductGrid({ products }: Props) {
   return (
     <div className="grid grid-cols-2 gap-2 mb-2 sm:grid-cols-4 sm:gap-7 sm:mb-7">
       {products.edges.map(({ node: product }, idx) => (
-        <ProductSummary
-          key={`${product.id}-${idx}`}
-          product={product}
-          index={idx}
-        />
+        <ProductSummary key={`${product.id}`} product={product} index={idx} />
       ))}
     </div>
   )
