@@ -99,3 +99,25 @@ describe('view_item event', () => {
       })
   })
 })
+
+describe('select_item event', () => {
+  const dataLayerHasEvent = (eventName) => {
+    return cy.window().then((window) => {
+      const allEvents = window.dataLayer.map((evt) => evt.type)
+
+      expect(allEvents).to.include(eventName)
+    })
+  }
+
+  it('add select_item event in data layer', () => {
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
+
+    cy.getById('product-link')
+      .first()
+      .click()
+      .then(() => {
+        dataLayerHasEvent('select_item')
+      })
+  })
+})
