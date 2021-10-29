@@ -24,17 +24,4 @@ describe('Search input', () => {
       })
     })
   })
-
-  context('when search for collection name', () => {
-    it('opens the collection page', () => {
-      cy.visit(pages.home, options)
-      cy.waitForHydration()
-
-      cy.getById('store-input').click().type(pages.brand_name)
-      cy.getById('store-button').click()
-
-      cy.location('pathname')
-      cy.getById('collection-page').should('exist')
-    })
-  })
 })
