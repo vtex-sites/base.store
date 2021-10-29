@@ -1,8 +1,8 @@
-import { parseSearchParamsState } from '@vtex/store-sdk'
+import { parseSearchParamsState } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
 import View from 'src/views/collection'
-import type { SearchParamsState } from '@vtex/store-sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
   CollectionPageQueryQuery,

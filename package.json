@@ -20,13 +20,13 @@
     "node": ">=14"
   },
   "dependencies": {
+    "@faststore/api": "^1.2.23",
+    "@faststore/sdk": "^1.2.23",
+    "@faststore/ui": "^1.2.23",
     "@vtex/gatsby-plugin-nginx": "^1.2.19",
     "@vtex/gatsby-plugin-thumbor": "^1.2.19",
     "@vtex/gatsby-source-store": "^1.2.19",
     "@vtex/graphql-utils": "^1.2.19",
-    "@vtex/store-api": "^1.2.19",
-    "@vtex/store-sdk": "^1.2.19",
-    "@vtex/store-ui": "^1.2.19",
     "gatsby": "^3.14.3",
     "gatsby-plugin-gatsby-cloud": "^3.2.0",
     "gatsby-plugin-image": "^1.14.1",

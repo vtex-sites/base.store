@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react'
-import { SessionProvider, UIProvider, CartProvider } from '@vtex/store-sdk'
+import { SessionProvider, UIProvider, CartProvider } from '@faststore/sdk'
 
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import Layout from './src/views/Layout'

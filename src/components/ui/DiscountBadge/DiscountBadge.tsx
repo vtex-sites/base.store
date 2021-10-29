@@ -1,4 +1,4 @@
-import { Badge } from '@vtex/store-ui'
+import { Badge } from '@faststore/ui'
 import React from 'react'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 

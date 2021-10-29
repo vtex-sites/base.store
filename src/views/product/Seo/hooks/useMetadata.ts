@@ -1,4 +1,4 @@
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 import { useMemo } from 'react'
 import { useLocation } from '@reach/router'
 

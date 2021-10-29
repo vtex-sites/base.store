@@ -1,7 +1,7 @@
 const {
   getSchema: storeApiGetSchema,
   getContextFactory: storeApiGetContextFactory,
-} = require('@vtex/store-api')
+} = require('@faststore/api')
 
 const options = {
   platform: process.env.GATSBY_COMMERCE_PLATFORM,

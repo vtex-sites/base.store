@@ -1,8 +1,8 @@
 import { gql } from '@vtex/graphql-utils'
-import { useSession } from '@vtex/store-sdk'
+import { useSession } from '@faststore/sdk'
 import { useMemo } from 'react'
 import { ITEMS_PER_PAGE } from 'src/constants'
-import type { SearchParamsState } from '@vtex/store-sdk'
+import type { SearchParamsState } from '@faststore/sdk'
 import type {
   SearchQueryQuery,
   SearchQueryQueryVariables,

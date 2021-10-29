@@ -1,6 +1,6 @@
 import React from 'react'
-import { Button as UIButton } from '@vtex/store-ui'
-import type { ButtonProps } from '@vtex/store-ui'
+import { Button as UIButton } from '@faststore/ui'
+import type { ButtonProps } from '@faststore/ui'
 
 type Props = ButtonProps
 
