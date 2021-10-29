@@ -45,7 +45,6 @@ export const useProductLink = ({
           sku_name: '', // TODO: not sure about where to get that
           index,
           item_brand: product.brand.name,
-          item_category: '', // TODO: not sure about where to get that
           item_variant: product.isVariantOf.name,
           price: product.offers.offers[0].price,
         },
