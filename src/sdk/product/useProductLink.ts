@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useSession, sendAnalyticsEvent } from '@vtex/store-sdk'
+import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import type {
   CurrencyCode,
@@ -8,7 +8,7 @@ import type {
   SelectItemEvent,
   SelectItemData,
   Item,
-} from '@vtex/store-sdk'
+} from '@faststore/sdk'
 
 export type ProductLinkOptions = {
   slug: string
