@@ -39,8 +39,6 @@ export const useProductLink = ({
       items: [
         {
           item_id: product.id,
-          product_reference_id: product.gtin,
-          sku_reference_id: product.sku,
           item_name: product.name,
           sku_name: '', // TODO: not sure about where to get that
           index,
