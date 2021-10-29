@@ -39,11 +39,11 @@ export const useProductLink = ({
       items: [
         {
           item_id: product.id,
-          item_name: product.name,
-          sku_name: '', // TODO: not sure about where to get that
+          item_name: product.isVariantOf.name,
+          item_variant_name: product.name,
           index,
           item_brand: product.brand.name,
-          item_variant: product.isVariantOf.name,
+          item_variant: product.sku,
           price: product.offers.offers[0].price,
         },
       ],
