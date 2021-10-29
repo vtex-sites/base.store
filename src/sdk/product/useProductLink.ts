@@ -15,11 +15,11 @@ export type ProductLinkOptions = {
   index: number
 } & ProductSummary_ProductFragment
 
-type LocalItem = Item & {
+type CustomItem = Item & {
   product_reference_id?: string
 }
 
-type GASelectItemEventData = SelectItemData & { items: LocalItem[] }
+type GASelectItemEventData = SelectItemData & { items: CustomItem[] }
 
 interface GASelectItemEvent extends SelectItemEvent {
   data: GASelectItemEventData
