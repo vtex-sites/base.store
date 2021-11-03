@@ -210,7 +210,7 @@ Now, on `Button.module.css`:
 ```
 
 The `@apply` directive exists because we are using [Tailwind CSS](https://tailwindcss.com/). To learn more about tailwind, [see their docs](https://tailwindcss.com/docs). To know more about our best practices on using tailwind, see the [Styling Components](#%EF%B8%8F-styling-components) section.
-This `data-store-button` is a CSS data attribute selector. To know which selectors are available, check [store-ui docs](https://storeui.netlify.app/).
+This `data-store-button` is a CSS data attribute selector. To know which selectors are available, check [FastStore UI docs](https://faststoreui.netlify.app/).
 
 Now, open `Button.tsx` and import this CSS with:
 ```tsx
