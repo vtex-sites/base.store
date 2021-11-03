@@ -1588,9 +1588,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/44f5cad4/@faststore/api":
-  version "1.2.28"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/44f5cad4/@faststore/api#f1f3debeefea3e33b17c5fa5530549706cf47853"
+"@faststore/api@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.2.30.tgz#1103ae8c4cf94ad55e3b4d6dfac675b6ac59326d"
+  integrity sha512-/kwSrWmmn5+bZ4wu55uAbNekPBQk9OlVLBdPFJltIQg853M6pSVXu7T0GaX1ajl8hr0KM84IdzDbYFuDopj+GA==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -2850,40 +2851,40 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/gatsby-plugin-nginx@^1.2.29":
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.2.29.tgz#bb04b0b7278310b2c22168989f102bf21ed0846f"
-  integrity sha512-Myyuxj7MJ7cBAttbKrwiB404YJbFgsH4kBAurQNsV7WhN6E9aj+SqQtqf8nR04lBUlQxVyhJyw6NYLA96GlQpw==
+"@vtex/gatsby-plugin-nginx@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.2.30.tgz#d8f3f491f4da9fecb8f2c5ba705459ebab9ce6bf"
+  integrity sha512-JcegD1tPf1dlc3xhPIfbdI+9zhw8EfyrE8BkZntJul+Pv7OuGKmSMikEOEOPRMwzc9GkNbdDLyqVzEssuXC1JA==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.2.29":
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.2.29.tgz#d0da2898cc0ca2454b9457a631eeb5a4888953c1"
-  integrity sha512-KqFfGLgMHJgUNxTDxymwbzqZf64oIDid/E1ow7hXpEaLb+YhOkMjXbN3C3Oq4xa3ugSCNCLp4gFWGO0GrbYQGA==
+"@vtex/gatsby-plugin-thumbor@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.2.30.tgz#446d5f33ae82d221e3f81aa603215b8062919f05"
+  integrity sha512-u7VEpEUi0+WkdvDDAiDzCLvvPwoAa53ctIq9vykQK9KYhefyMyutWtU7ipYOi2o+tycvdtqoQsnw/kH3GJXVqQ==
 
-"@vtex/gatsby-source-store@^1.2.29":
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.2.29.tgz#8b239e4dbc4a14a1e6af2db50c1c342a92d53257"
-  integrity sha512-k+ZeBvPXwNReET1Mo1FtufhrLX+tbTfOF6aHbcEdp585inuCsPi4sZMtUXIuOuey5dHVIsxEM64RtW2sjOAb1Q==
+"@vtex/gatsby-source-store@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.2.30.tgz#80f771979af2d52d8a43a7843758d60d060ff320"
+  integrity sha512-GkxJqn1krxmtQ6iSUMKKOL6b8be6QR/zb53lqbxNBwPnrOkaM6YXkLJC4EX1ak33WJIy2KLbpVmIIZYhdtGLLw==
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/graphql-utils@^1.2.29":
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.2.29.tgz#8cefa61cced27fd77127666b8b7f4623decf912b"
-  integrity sha512-khgCeF//o6KyAAIQaphEFGCzb913uYzXtWUrZ30TWe6bd9qVC1KEnyr+AdKMU4qsskCs2r1pZLCSmlKhlH3Ffw==
+"@vtex/graphql-utils@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.2.30.tgz#03b78f2964089fe71b5fbffe01f3bbdebcea9461"
+  integrity sha512-vx5gnh7AlBgcJEGu7XmyzcQRGdv3QyLpTgfWTnem1YJEZeRK9gOLfSrgj5OYYqNNzDAcJ/1tKOcNqn3ixNxzkA==
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
-"@vtex/lighthouse-config@^1.2.29":
-  version "1.2.29"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.2.29.tgz#72f9113fc27bd539a6d2409e48ff44709963fcb6"
-  integrity sha512-agt67BJjphDik9YrYo6Fqj0mGRj149nutNNRbkKPKFl/vTxzYA2He89OkCkMDVQ3QCtJDpaDptpxY5l9totVfw==
+"@vtex/lighthouse-config@^1.2.30":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.2.30.tgz#bf094b7041f3329d289862ca8b0c5d69ab2be0e6"
+  integrity sha512-Jlhhp4J1oQuSPxhpDGmNWrv+uJECA7qJFu9GvREHRu1pJPdY9VNtgb1OVI4yNqkn7tFz3/ojAHfuYQTkdGfQmw==
 
 "@vtex/prettier-config@0.3.6":
   version "0.3.6"
