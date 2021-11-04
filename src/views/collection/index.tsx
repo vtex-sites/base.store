@@ -31,7 +31,9 @@ function View(props: Props) {
 
   return (
     <>
-      <h1 className="absolute top-[-100px]">{title}</h1>
+      <h1 data-testid="collection-page" className="absolute top-[-100px]">
+        {title}
+      </h1>
 
       {search == null || site == null || storeCollection == null ? (
         <div>...loading</div>
