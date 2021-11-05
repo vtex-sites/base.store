@@ -19,7 +19,7 @@ function ProductGrid({ products }: Props) {
         <ProductSummary
           key={`${product.id}`}
           product={product}
-          index={productIndex(idx)}
+          index={getProductIndex(idx)}
         />
       ))}
     </div>
@@ -42,7 +42,7 @@ function ItemsPerPage() {
   return size
 }
 
-function productIndex(idx: number) {
+function getProductIndex(idx: number) {
   return ItemsPerPage() * CurrentPage() + idx + 1
 }
 
