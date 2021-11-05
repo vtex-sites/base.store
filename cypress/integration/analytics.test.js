@@ -109,6 +109,19 @@ describe('select_item event', () => {
     })
   }
 
+  const eventDataHasProperties = () => {
+    return cy.window().then((window) => {
+      const [selectItemEvent] = window.dataLayer.filter(
+        ({ type }) => type === 'select_item'
+      )
+
+      expect(selectItemEvent.data.items[0]).to.have.property('item_name')
+      expect(selectItemEvent.data.items[0]).to.have.property(
+        'item_variant_name'
+      )
+    })
+  }
+
   it('add select_item event in data layer', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
@@ -118,6 +131,7 @@ describe('select_item event', () => {
       .click()
       .then(() => {
         dataLayerHasEvent('select_item')
+        eventDataHasProperties()
       })
   })
 })
