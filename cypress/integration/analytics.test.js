@@ -101,6 +101,10 @@ describe('view_item event', () => {
 })
 
 describe('select_item event', () => {
+  beforeEach(() => {
+    cy.visit(pages.collection, options)
+  })
+
   const dataLayerHasEvent = (eventName) => {
     return cy.window().then((window) => {
       const allEvents = window.dataLayer.map((evt) => evt.type)
@@ -123,9 +127,6 @@ describe('select_item event', () => {
   }
 
   it('add select_item event in data layer', () => {
-    cy.visit(pages.collection, options)
-    cy.waitForHydration()
-
     cy.getById('product-link')
       .first()
       .click()
@@ -133,5 +134,36 @@ describe('select_item event', () => {
         dataLayerHasEvent('select_item')
         eventDataHasProperties()
       })
+  })
+
+  it('select_item has the right properties', () => {
+    cy.intercept('/api/graphql?operationName=CollectionSearchQuery*').as(
+      'CollectionSearchQuery'
+    )
+    cy.wait('@CollectionSearchQuery').then((xhr) => {
+      cy.log(xhr.response.body.data.search.products.edges[0].node.name)
+      const productInfo = xhr.response.body.data.search.products.edges[0].node
+
+      cy.getById('product-link')
+        .first()
+        .click()
+        .then(() => {
+          return cy.window().then((window) => {
+            const [selectItemEvent] = window.dataLayer.filter(
+              ({ type }) => type === 'select_item'
+            )
+
+            expect(productInfo.name).to.equal(
+              selectItemEvent.data.items[0].item_variant_name
+            )
+            expect(productInfo.id).to.equal(
+              selectItemEvent.data.items[0].item_id
+            )
+            expect(productInfo.sku).to.equal(
+              selectItemEvent.data.items[0].item_variant
+            )
+          })
+        })
+    })
   })
 })
