@@ -7,6 +7,9 @@ import {
   useMaskedErrors,
 } from '@envelop/core'
 import { useGraphQlJit } from '@envelop/graphql-jit'
+import { useParserCache } from '@envelop/parser-cache'
+import { useValidationCache } from '@envelop/validation-cache'
+import { useResponseCache } from '@envelop/response-cache'
 
 import { getSchema, getContextFactory } from '../server'
 import persisted from '../../@generated/graphql/persisted.json'
@@ -53,6 +56,12 @@ const createGetEnveloped = async () =>
       useMaskedErrors(),
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useGraphQlJit(),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useValidationCache(),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useParserCache(),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useResponseCache(),
     ],
   })
 
