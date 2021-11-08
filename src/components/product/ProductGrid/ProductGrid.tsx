@@ -13,37 +13,29 @@ interface Props {
 }
 
 function ProductGrid({ products }: Props) {
+  const {
+    searchParams: { page },
+  } = useSearch()
+
+  const {
+    pageInfo: { size },
+  } = useSearch()
+
   return (
     <div className="grid grid-cols-2 gap-2 mb-2 sm:grid-cols-4 sm:gap-7 sm:mb-7">
       {products.edges.map(({ node: product }, idx) => (
         <ProductSummary
           key={`${product.id}`}
           product={product}
-          index={getProductIndex(idx)}
+          index={getProductIndex(size, page, idx)}
         />
       ))}
     </div>
   )
 }
 
-function CurrentPage() {
-  const {
-    searchParams: { page },
-  } = useSearch()
-
-  return page
-}
-
-function ItemsPerPage() {
-  const {
-    pageInfo: { size },
-  } = useSearch()
-
-  return size
-}
-
-function getProductIndex(idx: number) {
-  return ItemsPerPage() * CurrentPage() + idx + 1
+function getProductIndex(size: number, page: number, idx: number) {
+  return size * page + idx + 1
 }
 
 export default ProductGrid
