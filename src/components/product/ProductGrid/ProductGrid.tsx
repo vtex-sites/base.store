@@ -15,9 +15,6 @@ interface Props {
 function ProductGrid({ products }: Props) {
   const {
     searchParams: { page },
-  } = useSearch()
-
-  const {
     pageInfo: { size },
   } = useSearch()
 
