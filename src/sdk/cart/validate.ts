@@ -61,13 +61,24 @@ export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
     },
   })
 
+  const mappedItems = cart.items.reduce((acc, item) => {
+    acc[item.id] = item
+
+    return acc
+  }, {} as Record<string, Item>)
+
   return (
     validated && {
       id: validated.order.orderNumber,
-      items: validated.order.acceptedOffer.map((item) => ({
-        ...item,
-        id: getItemId(item),
-      })),
+      items: validated.order.acceptedOffer.map((item): Item => {
+        const id = getItemId(item)
+
+        return {
+          ...(mappedItems[id] ?? {}),
+          ...item,
+          id,
+        }
+      }),
       messages: validated.messages,
     }
   )
