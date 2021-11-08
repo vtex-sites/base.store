@@ -11,7 +11,6 @@ import type {
 } from '@faststore/sdk'
 
 export type ProductLinkOptions = {
-  slug: string
   index: number
 } & ProductSummary_ProductFragment
 
@@ -25,11 +24,8 @@ interface GASelectItemEvent extends SelectItemEvent {
   data: GASelectItemEventData
 }
 
-export const useProductLink = ({
-  slug,
-  index,
-  ...product
-}: ProductLinkOptions) => {
+export const useProductLink = ({ index, ...product }: ProductLinkOptions) => {
+  const { slug } = product
   const {
     currency: { code },
   } = useSession()
