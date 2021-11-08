@@ -6,6 +6,14 @@
 
 import { pages, options } from '../global'
 
+const dataLayerHasEvent = (eventName) => {
+  return cy.window().then((window) => {
+    const allEvents = window.dataLayer.map((evt) => evt.type)
+
+    expect(allEvents).to.include(eventName)
+  })
+}
+
 describe('add_to_cart event', () => {
   beforeEach(() => {
     cy.clearIDB()
@@ -65,14 +73,6 @@ describe('add_to_cart event', () => {
 })
 
 describe('view_item event', () => {
-  const dataLayerHasEvent = (eventName) => {
-    return cy.window().then((window) => {
-      const allEvents = window.dataLayer.map((evt) => evt.type)
-
-      expect(allEvents).to.include(eventName)
-    })
-  }
-
   const eventDataHasCurrencyProperty = () => {
     return cy.window().then((window) => {
       const allEvents = window.dataLayer.map((evt) => evt.data || {})
@@ -105,34 +105,12 @@ describe('select_item event', () => {
     cy.visit(pages.collection, options)
   })
 
-  const dataLayerHasEvent = (eventName) => {
-    return cy.window().then((window) => {
-      const allEvents = window.dataLayer.map((evt) => evt.type)
-
-      expect(allEvents).to.include(eventName)
-    })
-  }
-
-  const eventDataHasProperties = () => {
-    return cy.window().then((window) => {
-      const [selectItemEvent] = window.dataLayer.filter(
-        ({ type }) => type === 'select_item'
-      )
-
-      expect(selectItemEvent.data.items[0]).to.have.property('item_name')
-      expect(selectItemEvent.data.items[0]).to.have.property(
-        'item_variant_name'
-      )
-    })
-  }
-
   it('add select_item event in data layer', () => {
     cy.getById('product-link')
       .first()
       .click()
       .then(() => {
         dataLayerHasEvent('select_item')
-        eventDataHasProperties()
       })
   })
 
@@ -142,6 +120,15 @@ describe('select_item event', () => {
     )
     cy.wait('@CollectionSearchQuery').then((xhr) => {
       const productInfo = xhr.response.body.data.search.products.edges[0].node
+      const eventData = {
+        item_id: productInfo.id,
+        item_name: productInfo.isVariantOf.name,
+        item_variant_name: productInfo.name,
+        index: 1,
+        item_brand: productInfo.brand.name,
+        item_variant: productInfo.sku,
+        price: productInfo.offers.offers[0].price,
+      }
 
       cy.getById('product-link')
         .first()
@@ -152,15 +139,7 @@ describe('select_item event', () => {
               ({ type }) => type === 'select_item'
             )
 
-            expect(productInfo.name).to.equal(
-              selectItemEvent.data.items[0].item_variant_name
-            )
-            expect(productInfo.id).to.equal(
-              selectItemEvent.data.items[0].item_id
-            )
-            expect(productInfo.sku).to.equal(
-              selectItemEvent.data.items[0].item_variant
-            )
+            expect(eventData).to.deep.equal(selectItemEvent.data.items[0])
           })
         })
     })
