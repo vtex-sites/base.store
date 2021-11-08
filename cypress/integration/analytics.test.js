@@ -141,7 +141,6 @@ describe('select_item event', () => {
       'CollectionSearchQuery'
     )
     cy.wait('@CollectionSearchQuery').then((xhr) => {
-      cy.log(xhr.response.body.data.search.products.edges[0].node.name)
       const productInfo = xhr.response.body.data.search.products.edges[0].node
 
       cy.getById('product-link')
