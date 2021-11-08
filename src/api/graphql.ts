@@ -5,6 +5,7 @@ import {
   useSchema,
   useErrorHandler,
   useMaskedErrors,
+  useExtendContext,
 } from '@envelop/core'
 import { useGraphQlJit } from '@envelop/graphql-jit'
 import { useParserCache } from '@envelop/parser-cache'
@@ -38,8 +39,6 @@ const parseRequest = (req: GatsbyFunctionRequest) => {
   }
 }
 
-const contextFactory = getContextFactory()
-
 const handleError = (error: readonly GraphQLError[]) => {
   // eslint-disable-next-line no-console
   console.log(error)
@@ -50,6 +49,8 @@ const createGetEnveloped = async () =>
     plugins: [
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useSchema(await getSchema()),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useExtendContext(getContextFactory()),
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useErrorHandler((error) => handleError(error)),
       // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -78,15 +79,18 @@ const handler = async (
   }
 
   const getEnveloped = await enveloped
-  const { parse, execute, schema } = getEnveloped({ req })
+  const { parse, contextFactory, execute, schema } = getEnveloped({ req })
   const { operationName, variables, query } = parseRequest(req)
+
+  const document = parse(query)
+  const contextValue = await contextFactory()
 
   try {
     const response = await execute({
       schema,
-      document: parse(query),
+      document,
       variableValues: variables,
-      contextValue: contextFactory({}),
+      contextValue,
       operationName,
     })
 
