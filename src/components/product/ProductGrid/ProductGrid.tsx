@@ -31,8 +31,7 @@ function ProductGrid({ products }: Props) {
   )
 }
 
-function getProductIndex(size: number, page: number, idx: number) {
-  return size * page + idx + 1
-}
+const getProductIndex = (size: number, page: number, idx: number) =>
+  size * page + idx + 1
 
 export default ProductGrid
