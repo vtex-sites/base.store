@@ -14,11 +14,11 @@ const dataLayerHasEvent = (eventName) => {
   })
 }
 
-describe('add_to_cart event', () => {
-  beforeEach(() => {
-    cy.clearIDB()
-  })
+beforeEach(() => {
+  cy.clearIDB()
+})
 
+describe('add_to_cart event', () => {
   const testAddToCartEvent = (skuId) => {
     cy.window().then((window) => {
       const { dataLayer } = window
@@ -36,7 +36,7 @@ describe('add_to_cart event', () => {
     })
   }
 
-  it('raises add_to_cart at pdp', () => {
+  it('add add_to_cart event in the data layer at product description page', () => {
     cy.visit(pages.pdp, options)
     cy.waitForHydration()
 
@@ -53,7 +53,7 @@ describe('add_to_cart event', () => {
       })
   })
 
-  it('raises add_to_cart at collection page', () => {
+  it('add add_to_cart event in the data layer at the product listing page', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -69,6 +69,52 @@ describe('add_to_cart event', () => {
 
         testAddToCartEvent(skuId)
       })
+  })
+})
+
+describe('remove_from_cart event', () => {
+  const testRemoveFromCartEvent = (skuId) => {
+    cy.window().then((window) => {
+      const { dataLayer } = window
+
+      const event = dataLayer.find((e) => e.type === 'remove_from_cart')
+
+      expect(event).to.not.be.null
+      expect(event.data).to.have.property('value')
+
+      const item = event.data.items.find((i) => i.item_variant === skuId)
+
+      expect(item).to.not.be.null
+      expect(item).to.have.property('currency')
+      expect(item).to.have.property('item_name')
+    })
+  }
+
+  context('when removing a product from cart', () => {
+    it('adds remove_from_cart event in the data layer', () => {
+      cy.visit(pages.pdp, options)
+      cy.waitForHydration()
+
+      cy.itemsInCart(0)
+
+      // Add item to cart
+      cy.getById('buy-button').click()
+      cy.itemsInCart(1)
+      cy.getById('checkout-button').should('be.enabled')
+      cy.itemsInCart(1)
+
+      // Remove the added item
+      cy.getById('remove-from-cart-button')
+        .click()
+        .then(($btn) => {
+          cy.itemsInCart(0)
+          const skuId = $btn.attr('data-sku')
+
+          testRemoveFromCartEvent(skuId)
+        })
+      cy.getById('cart-item').should('not.exist')
+      cy.getById('checkout-button').should('be.enabled')
+    })
   })
 })
 
