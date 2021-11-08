@@ -1,6 +1,6 @@
 import { gql } from '@vtex/graphql-utils'
 import type { CartItem as ICartItem } from '@faststore/sdk'
-import type { IStoreProduct } from '@faststore/api'
+import type { IStoreProduct, IStoreOffer } from '@faststore/api'
 import type {
   ValidateCartMutationMutation,
   ValidateCartMutationMutationVariables,
@@ -22,9 +22,9 @@ export interface CartMessages {
   text: string
 }
 
-export interface Cart {
+export interface Cart<Item> {
   id: string
-  items: CartItem[]
+  items: Item[]
   messages?: CartMessages[]
 }
 
@@ -34,7 +34,7 @@ export const getItemId = (
   item: Pick<CartItem, 'itemOffered' | 'seller' | 'price'>
 ) => `${item.itemOffered.sku}:${item.seller.identifier}:${item.price}`
 
-export const validateCart = async (cart: Cart) => {
+export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
   const { validateCart: validated } = await request<
     ValidateCartMutationMutation,
     ValidateCartMutationMutationVariables
@@ -42,7 +42,21 @@ export const validateCart = async (cart: Cart) => {
     cart: {
       order: {
         orderNumber: cart.id,
-        acceptedOffer: cart.items.map(({ id, ...item }) => item),
+        acceptedOffer: cart.items.map(
+          ({
+            price,
+            listPrice,
+            seller,
+            quantity,
+            itemOffered,
+          }): IStoreOffer => ({
+            price,
+            listPrice,
+            seller,
+            quantity,
+            itemOffered,
+          })
+        ),
       },
     },
   })

@@ -36,7 +36,7 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
               currency,
               item_id: item.productId,
               quantity: item.quantity,
-              item_variant: item.id,
+              item_variant: item.itemOffered.sku,
               item_name: item.name,
               item_brand: item.brand,
               price: item.price,
@@ -47,16 +47,7 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
         },
       })
 
-      const { price, listPrice, seller, quantity, itemOffered } = item
-      const cartItem: Omit<CartItem, 'id'> = {
-        price,
-        listPrice,
-        seller,
-        quantity,
-        itemOffered,
-      }
-
-      addItem(cartItem)
+      addItem(item)
       openMinicart()
     },
     [addItem, currency, item, openMinicart]

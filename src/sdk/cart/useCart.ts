@@ -24,7 +24,7 @@ export const useCart = () => {
     () => ({
       ...cart,
       addItem,
-      messages: (cart as Cart).messages,
+      messages: (cart as Cart<CartItem>).messages,
       gifts: cart.items.filter((item) => isGift(item)),
       items: cart.items.filter((item) => !isGift(item)),
       totalUniqueItems: cart.items.length,
