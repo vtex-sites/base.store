@@ -1,35 +1,13 @@
 import { useCallback } from 'react'
-import type {
-  AddToCartEvent,
-  AddToCartData,
-  Item as AnalyticsItem,
-  CurrencyCode,
-} from '@faststore/sdk'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
+import type { CurrencyCode } from '@faststore/sdk'
+import type {
+  AnalyticsCartItem,
+  VTEXAddToCartEvent,
+} from 'src/sdk/analytics/types'
 
 import { useUI } from '../ui'
 import { useCart } from './useCart'
-import type { CartItem } from './validate'
-
-type AdditionalItemProperties = {
-  product_reference_id: string | null
-  sku_name: string | null
-}
-
-interface VTEXAddToCartEvent extends AddToCartEvent {
-  data: AddToCartData & {
-    items: Array<AnalyticsItem & AdditionalItemProperties>
-  }
-}
-
-type AdditionalAnalyticsProperties = {
-  name: string
-  brand: string
-  referenceId: string
-  productId: string
-}
-
-type AnalyticsCartItem = CartItem & AdditionalAnalyticsProperties
 
 export const useBuyButton = (item: AnalyticsCartItem | null) => {
   const { addItem } = useCart()
