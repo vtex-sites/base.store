@@ -23,7 +23,7 @@
     "@faststore/api": "^1.2.30",
     "@faststore/sdk": "^1.2.23",
     "@faststore/ui": "^1.2.23",
-    "@vtex/gatsby-plugin-nginx": "https://pkg.csb.dev/vtex/faststore/commit/a6e7a5f4/@vtex/gatsby-plugin-nginx",
+    "@vtex/gatsby-plugin-nginx": "^1.2.30",
     "@vtex/gatsby-plugin-thumbor": "^1.2.30",
     "@vtex/gatsby-source-store": "^1.2.30",
     "@vtex/graphql-utils": "^1.2.30",
