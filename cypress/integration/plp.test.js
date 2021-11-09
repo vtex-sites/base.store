@@ -124,6 +124,7 @@ describe('Infinite Scroll pagination', () => {
             // The skuId of the last product on the page
             let skuIdBeforeNavigate
 
+            cy.scrollTo('bottom')
             cy.getById('product-link')
               // Number of products after showMore is clicked should be higher
               .should('have.length.gte', before)
