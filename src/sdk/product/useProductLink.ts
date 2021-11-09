@@ -1,18 +1,51 @@
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import type { CurrencyCode, ViewItemData, ViewItemEvent } from '@faststore/sdk'
-import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
 import { useMemo } from 'react'
+import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import type {
+  CurrencyCode,
+  ViewItemData,
+  ViewItemEvent,
+  SelectItemEvent,
+  SelectItemData,
+  Item,
+} from '@faststore/sdk'
 
 export type ProductLinkOptions = {
-  slug: string
-} & ProductSummary_ProductFragment
+  index: number
+  product: ProductSummary_ProductFragment
+}
 
-export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
+type GAItem = Item & {
+  product_reference_id?: string
+}
+
+type GASelectItemEventData = SelectItemData & { items: GAItem[] }
+
+interface GASelectItemEvent extends SelectItemEvent {
+  data: GASelectItemEventData
+}
+
+export const useProductLink = ({ index, product }: ProductLinkOptions) => {
+  const { slug } = product
   const {
     currency: { code },
   } = useSession()
 
   return useMemo(() => {
+    const SelectItemEventData: GASelectItemEventData = {
+      items: [
+        {
+          item_id: product.id,
+          item_name: product.isVariantOf.name,
+          item_variant_name: product.name,
+          index,
+          item_brand: product.brand.name,
+          item_variant: product.sku,
+          price: product.offers.offers[0].price,
+        },
+      ],
+    }
+
     const viewItemEventData: ViewItemData = {
       value: product.offers.offers[0]?.price,
       items: [
@@ -33,6 +66,11 @@ export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
     const onClick = () => {
       const currency = code as CurrencyCode
 
+      sendAnalyticsEvent<GASelectItemEvent>({
+        type: 'select_item',
+        data: { ...SelectItemEventData },
+      })
+
       sendAnalyticsEvent<ViewItemEvent>({
         type: 'view_item',
         data: { ...viewItemEventData, currency },
@@ -44,5 +82,5 @@ export const useProductLink = ({ slug, ...product }: ProductLinkOptions) => {
       onClick,
       'data-testid': 'product-link',
     }
-  }, [slug, code, product])
+  }, [slug, code, product, index])
 }

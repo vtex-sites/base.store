@@ -11,9 +11,10 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 interface Props {
   product: ProductSummary_ProductFragment
+  index: number
 }
 
-function ProductSummary({ product }: Props) {
+function ProductSummary({ product, index }: Props) {
   const {
     id,
     sku,
@@ -30,7 +31,7 @@ function ProductSummary({ product }: Props) {
     [spotPrice, offers]
   )
 
-  const linkProps = useProductLink(product)
+  const linkProps = useProductLink({ product, index })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
