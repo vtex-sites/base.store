@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
@@ -8,7 +8,7 @@ import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import useIntersectionObserver from 'src/sdk/analytics/hooks/useIntersectionObserver'
+import { useInView } from 'react-intersection-observer'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -32,9 +32,7 @@ function ProductSummary({ product, viewProduct, index }: Props) {
   } = product
 
   const [emited, setEmited] = useState(false)
-  const ref = useRef<HTMLDivElement | null>(null)
-  const entry = useIntersectionObserver(ref, {})
-  const isVisible = entry?.isIntersecting
+  const { ref, inView } = useInView()
 
   const { listPrice, seller } = useMemo(
     () => offers.find((x) => x.price === spotPrice)!,
@@ -61,15 +59,15 @@ function ProductSummary({ product, viewProduct, index }: Props) {
   })
 
   const handleViewProduct = useCallback(() => {
-    if (isVisible) {
+    if (inView) {
       viewProduct?.(product, !emited)
       setEmited(true)
     }
-  }, [emited, isVisible, product, viewProduct])
+  }, [emited, inView, product, viewProduct])
 
   useEffect(() => {
     handleViewProduct()
-  }, [handleViewProduct, isVisible])
+  }, [handleViewProduct, inView])
 
   return (
     <Link {...linkProps}>

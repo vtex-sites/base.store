@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import { useDebounce } from 'src/sdk/analytics/hooks/useDebounce'
 import type { CurrencyCode, Item, ViewItemListEvent } from '@faststore/sdk'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
+import { useDebounce } from 'use-debounce'
 
 export const useViewItemListEvent = () => {
   const DEBOUNCE_DELAY = 1500
@@ -11,7 +11,7 @@ export const useViewItemListEvent = () => {
     ProductSummary_ProductFragment[]
   >([])
 
-  const debouncedViewedProducts = useDebounce(viewedProducts, DEBOUNCE_DELAY)
+  const [debouncedViewedProducts] = useDebounce(viewedProducts, DEBOUNCE_DELAY)
 
   const {
     currency: { code },
