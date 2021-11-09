@@ -1,4 +1,6 @@
-import React from 'react'
+import type { UnknownEvent } from '@faststore/sdk'
+import { sendAnalyticsEvent } from '@faststore/sdk'
+import React, { useEffect } from 'react'
 import type { Props as PageProps } from 'src/pages/index'
 
 import Seo from './Seo'
@@ -6,20 +8,15 @@ import Seo from './Seo'
 export type Props = PageProps
 
 function View(props: Props) {
-  // Send event to analytics
-  // usePixelSendEvent(() => {
-  //   const event: PageViewData = {
-  //     pageType: 'home',
-  //     pageUrl: window.location.href,
-  //     pageTitle: document.title,
-  //     referrer: '',
-  //     accountName: process.env.GATSBY_STORE_ID!,
-  //   }
-
-  //   return { type: 'vtex:pageView', data: event }
-  // })
-
   const title = props.data.site?.siteMetadata?.title ?? ''
+
+  useEffect(() => {
+    sendAnalyticsEvent<UnknownEvent & { event: string }>({
+      type: 'pageview',
+      event: 'pageview',
+      data: {},
+    })
+  }, [])
 
   return (
     <>
