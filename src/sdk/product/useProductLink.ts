@@ -12,7 +12,8 @@ import type {
 
 export type ProductLinkOptions = {
   index: number
-} & ProductSummary_ProductFragment
+  product: ProductSummary_ProductFragment
+}
 
 type GAItem = Item & {
   product_reference_id?: string
@@ -24,7 +25,7 @@ interface GASelectItemEvent extends SelectItemEvent {
   data: GASelectItemEventData
 }
 
-export const useProductLink = ({ index, ...product }: ProductLinkOptions) => {
+export const useProductLink = ({ index, product }: ProductLinkOptions) => {
   const { slug } = product
   const {
     currency: { code },

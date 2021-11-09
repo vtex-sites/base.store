@@ -31,7 +31,7 @@ function ProductSummary({ product, index }: Props) {
     [spotPrice, offers]
   )
 
-  const linkProps = useProductLink({ ...product, index })
+  const linkProps = useProductLink({ product, index })
   const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
