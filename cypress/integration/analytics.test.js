@@ -36,39 +36,41 @@ describe('add_to_cart event', () => {
     })
   }
 
-  it('add add_to_cart event in the data layer at product description page', () => {
-    cy.visit(pages.pdp, options)
-    cy.waitForHydration()
+  context('when adding a product to cart', () => {
+    it('adds add_to_cart event in the data layer at product description page', () => {
+      cy.visit(pages.pdp, options)
+      cy.waitForHydration()
 
-    cy.itemsInCart(0)
+      cy.itemsInCart(0)
 
-    // Add to cart
-    cy.getById('buy-button')
-      .click()
-      .then(($btn) => {
-        cy.itemsInCart(1)
-        const skuId = $btn.attr('data-sku')
+      // Add to cart
+      cy.getById('buy-button')
+        .click()
+        .then(($btn) => {
+          cy.itemsInCart(1)
+          const skuId = $btn.attr('data-sku')
 
-        testAddToCartEvent(skuId)
-      })
-  })
+          testAddToCartEvent(skuId)
+        })
+    })
 
-  it('add add_to_cart event in the data layer at the product listing page', () => {
-    cy.visit(pages.collection, options)
-    cy.waitForHydration()
+    it('adds add_to_cart event in the data layer at the product listing page', () => {
+      cy.visit(pages.collection, options)
+      cy.waitForHydration()
 
-    cy.itemsInCart(0)
+      cy.itemsInCart(0)
 
-    // Add to cart
-    cy.getById('buy-button')
-      .first()
-      .click()
-      .then(($btn) => {
-        cy.itemsInCart(1)
-        const skuId = $btn.attr('data-sku')
+      // Add to cart
+      cy.getById('buy-button')
+        .first()
+        .click()
+        .then(($btn) => {
+          cy.itemsInCart(1)
+          const skuId = $btn.attr('data-sku')
 
-        testAddToCartEvent(skuId)
-      })
+          testAddToCartEvent(skuId)
+        })
+    })
   })
 })
 
