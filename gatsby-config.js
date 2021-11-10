@@ -42,7 +42,6 @@ module.exports = {
   flags: {
     FAST_DEV: true,
     PARALLEL_SOURCING: true,
-    PARALLEL_QUERY_RUNNING: false,
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
