@@ -17,8 +17,6 @@ export const useRemoveButton = (item: AnalyticsCartItem | null | undefined) => {
     currency: { code },
   } = useSession()
 
-  const currency = code as CurrencyCode
-
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault()
@@ -30,13 +28,13 @@ export const useRemoveButton = (item: AnalyticsCartItem | null | undefined) => {
       sendAnalyticsEvent<VTEXRemoveFromCartEvent>({
         type: 'remove_from_cart',
         data: {
-          currency,
+          currency: code as CurrencyCode,
           value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [
             {
               item_id: item.productId,
               item_name: item.name,
-              currency,
+              currency: code as CurrencyCode,
               item_brand: item.brand,
               item_variant: item.itemOffered.sku,
               price: item.price,
@@ -50,7 +48,7 @@ export const useRemoveButton = (item: AnalyticsCartItem | null | undefined) => {
 
       removeItem(item.id)
     },
-    [currency, item, removeItem]
+    [code, item, removeItem]
   )
 
   return {

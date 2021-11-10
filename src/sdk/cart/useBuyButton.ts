@@ -16,8 +16,6 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
     currency: { code },
   } = useSession()
 
-  const currency = code as CurrencyCode
-
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault()
@@ -29,11 +27,11 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
       sendAnalyticsEvent<VTEXAddToCartEvent>({
         type: 'add_to_cart',
         data: {
-          currency,
+          currency: code as CurrencyCode,
           value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [
             {
-              currency,
+              currency: code as CurrencyCode,
               item_id: item.productId,
               quantity: item.quantity,
               item_variant: item.itemOffered.sku,
@@ -50,7 +48,7 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
       addItem(item)
       openMinicart()
     },
-    [addItem, currency, item, openMinicart]
+    [addItem, code, item, openMinicart]
   )
 
   return {
