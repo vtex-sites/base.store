@@ -112,8 +112,6 @@ describe('remove_from_cart event', () => {
 
           testRemoveFromCartEvent(skuId)
         })
-      cy.getById('cart-item').should('not.exist')
-      cy.getById('checkout-button').should('be.enabled')
     })
   })
 })
