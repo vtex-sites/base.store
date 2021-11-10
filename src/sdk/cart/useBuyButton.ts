@@ -1,35 +1,13 @@
 import { useCallback } from 'react'
-import type {
-  AddToCartEvent,
-  AddToCartData,
-  Item as AnalyticsItem,
-  CurrencyCode,
-} from '@faststore/sdk'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
+import type { CurrencyCode } from '@faststore/sdk'
+import type {
+  AnalyticsCartItem,
+  VTEXAddToCartEvent,
+} from 'src/sdk/analytics/types'
 
 import { useUI } from '../ui'
 import { useCart } from './useCart'
-import type { CartItem } from './validate'
-
-type AdditionalItemProperties = {
-  product_reference_id: string | null
-  sku_name: string | null
-}
-
-interface VTEXAddToCartEvent extends AddToCartEvent {
-  data: AddToCartData & {
-    items: Array<AnalyticsItem & AdditionalItemProperties>
-  }
-}
-
-type AdditionalAnalyticsProperties = {
-  name: string
-  brand: string
-  referenceId: string
-  productId: string
-}
-
-type AnalyticsCartItem = CartItem & AdditionalAnalyticsProperties
 
 export const useBuyButton = (item: AnalyticsCartItem | null) => {
   const { addItem } = useCart()
@@ -37,8 +15,6 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
   const {
     currency: { code },
   } = useSession()
-
-  const currency = code as CurrencyCode
 
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -51,14 +27,14 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
       sendAnalyticsEvent<VTEXAddToCartEvent>({
         type: 'add_to_cart',
         data: {
-          currency,
+          currency: code as CurrencyCode,
           value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [
             {
-              currency,
+              currency: code as CurrencyCode,
               item_id: item.productId,
               quantity: item.quantity,
-              item_variant: item.id,
+              item_variant: item.itemOffered.sku,
               item_name: item.name,
               item_brand: item.brand,
               price: item.price,
@@ -69,19 +45,10 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
         },
       })
 
-      const { price, listPrice, seller, quantity, itemOffered } = item
-      const cartItem: Omit<CartItem, 'id'> = {
-        price,
-        listPrice,
-        seller,
-        quantity,
-        itemOffered,
-      }
-
-      addItem(cartItem)
+      addItem(item)
       openMinicart()
     },
-    [addItem, currency, item, openMinicart]
+    [addItem, code, item, openMinicart]
   )
 
   return {
