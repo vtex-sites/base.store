@@ -3,7 +3,6 @@ import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import type {
   CurrencyCode,
-  ViewItemData,
   ViewItemEvent,
   SelectItemEvent,
   SelectItemData,
@@ -32,48 +31,45 @@ export const useProductLink = ({ index, product }: ProductLinkOptions) => {
   } = useSession()
 
   return useMemo(() => {
-    const SelectItemEventData: GASelectItemEventData = {
-      items: [
-        {
-          item_id: product.id,
-          item_name: product.isVariantOf.name,
-          item_variant_name: product.name,
-          index,
-          item_brand: product.brand.name,
-          item_variant: product.sku,
-          price: product.offers.offers[0].price,
-        },
-      ],
-    }
-
-    const viewItemEventData: ViewItemData = {
-      value: product.offers.offers[0]?.price,
-      items: [
-        {
-          item_id: product.id,
-          item_name: product.name,
-          index: 0,
-          price: product.offers.offers[0]?.price,
-          discount:
-            product.offers.offers[0]?.listPrice -
-            product.offers.offers[0]?.price,
-          item_brand: product.brand.name,
-          item_variant: product.isVariantOf.name,
-        },
-      ],
-    }
-
     const onClick = () => {
       const currency = code as CurrencyCode
 
       sendAnalyticsEvent<GASelectItemEvent>({
         type: 'select_item',
-        data: { ...SelectItemEventData },
+        data: {
+          items: [
+            {
+              item_id: product.id,
+              item_name: product.isVariantOf.name,
+              item_variant_name: product.name,
+              index,
+              item_brand: product.brand.name,
+              item_variant: product.sku,
+              price: product.offers.offers[0].price,
+            },
+          ],
+        },
       })
 
       sendAnalyticsEvent<ViewItemEvent>({
         type: 'view_item',
-        data: { ...viewItemEventData, currency },
+        data: {
+          currency,
+          value: product.offers.offers[0]?.price,
+          items: [
+            {
+              item_id: product.id,
+              item_name: product.name,
+              index: 0,
+              price: product.offers.offers[0]?.price,
+              discount:
+                product.offers.offers[0]?.listPrice -
+                product.offers.offers[0]?.price,
+              item_brand: product.brand.name,
+              item_variant: product.isVariantOf.name,
+            },
+          ],
+        },
       })
     }
 
