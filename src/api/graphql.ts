@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type { GraphQLError } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 import {
@@ -47,21 +48,13 @@ const handleError = (error: readonly GraphQLError[]) => {
 const createGetEnveloped = async () =>
   envelop({
     plugins: [
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useSchema(await getSchema()),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useExtendContext(getContextFactory()),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useErrorHandler((error) => handleError(error)),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useMaskedErrors(),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useGraphQlJit(),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useValidationCache(),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useParserCache(),
-      // eslint-disable-next-line react-hooks/rules-of-hooks
       useResponseCache(),
     ],
   })
