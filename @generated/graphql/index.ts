@@ -15,6 +15,8 @@ export type Scalars = {
   Float: number
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: any
 }
 
 export type BooleanQueryOperatorInput = {
@@ -332,12 +334,39 @@ export type DirectoryFilterInput = {
 }
 
 export type DirectoryGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<DirectoryEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<DirectoryGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<Directory>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type DirectoryGroupConnectionDistinctArgs = {
+  field: DirectoryFieldsEnum
+}
+
+export type DirectoryGroupConnectionGroupArgs = {
+  field: DirectoryFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type DirectoryGroupConnectionMaxArgs = {
+  field: DirectoryFieldsEnum
+}
+
+export type DirectoryGroupConnectionMinArgs = {
+  field: DirectoryFieldsEnum
+}
+
+export type DirectoryGroupConnectionSumArgs = {
+  field: DirectoryFieldsEnum
 }
 
 export type DirectorySortInput = {
@@ -632,12 +661,39 @@ export type FileFilterInput = {
 }
 
 export type FileGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<FileEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<FileGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<File>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type FileGroupConnectionDistinctArgs = {
+  field: FileFieldsEnum
+}
+
+export type FileGroupConnectionGroupArgs = {
+  field: FileFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type FileGroupConnectionMaxArgs = {
+  field: FileFieldsEnum
+}
+
+export type FileGroupConnectionMinArgs = {
+  field: FileFieldsEnum
+}
+
+export type FileGroupConnectionSumArgs = {
+  field: FileFieldsEnum
 }
 
 export type FileSortInput = {
@@ -656,12 +712,21 @@ export type FloatQueryOperatorInput = {
   nin: Maybe<Array<Maybe<Scalars['Float']>>>
 }
 
-export type IdQueryOperatorInput = {
-  eq: Maybe<Scalars['ID']>
-  in: Maybe<Array<Maybe<Scalars['ID']>>>
-  ne: Maybe<Scalars['ID']>
-  nin: Maybe<Array<Maybe<Scalars['ID']>>>
-}
+export type GatsbyImageFormat =
+  | 'AUTO'
+  | 'AVIF'
+  | 'JPG'
+  | 'NO_CHANGE'
+  | 'PNG'
+  | 'WEBP'
+
+export type GatsbyImageLayout = 'CONSTRAINED' | 'FIXED' | 'FULL_WIDTH'
+
+export type GatsbyImagePlaceholder =
+  | 'BLURRED'
+  | 'DOMINANT_COLOR'
+  | 'NONE'
+  | 'TRACED_SVG'
 
 export type IStoreCart = {
   order: IStoreOrder
@@ -731,6 +796,15 @@ export type InternalFilterInput = {
   mediaType: Maybe<StringQueryOperatorInput>
   owner: Maybe<StringQueryOperatorInput>
   type: Maybe<StringQueryOperatorInput>
+}
+
+export type JsonQueryOperatorInput = {
+  eq: Maybe<Scalars['JSON']>
+  glob: Maybe<Scalars['JSON']>
+  in: Maybe<Array<Maybe<Scalars['JSON']>>>
+  ne: Maybe<Scalars['JSON']>
+  nin: Maybe<Array<Maybe<Scalars['JSON']>>>
+  regex: Maybe<Scalars['JSON']>
 }
 
 export type Mutation = {
@@ -963,6 +1037,7 @@ export type QuerySiteArgs = {
   host: Maybe<StringQueryOperatorInput>
   id: Maybe<StringQueryOperatorInput>
   internal: Maybe<InternalFilterInput>
+  jsxRuntime: Maybe<StringQueryOperatorInput>
   parent: Maybe<NodeFilterInput>
   pathPrefix: Maybe<StringQueryOperatorInput>
   polyfill: Maybe<BooleanQueryOperatorInput>
@@ -996,16 +1071,14 @@ export type QuerySitePageArgs = {
   children: Maybe<NodeFilterListInput>
   component: Maybe<StringQueryOperatorInput>
   componentChunkName: Maybe<StringQueryOperatorInput>
-  context: Maybe<SitePageContextFilterInput>
   id: Maybe<StringQueryOperatorInput>
   internal: Maybe<InternalFilterInput>
   internalComponentName: Maybe<StringQueryOperatorInput>
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>
   matchPath: Maybe<StringQueryOperatorInput>
+  pageContext: Maybe<JsonQueryOperatorInput>
   parent: Maybe<NodeFilterInput>
   path: Maybe<StringQueryOperatorInput>
   pluginCreator: Maybe<SitePluginFilterInput>
-  pluginCreatorId: Maybe<StringQueryOperatorInput>
 }
 
 export type QuerySitePluginArgs = {
@@ -1015,10 +1088,10 @@ export type QuerySitePluginArgs = {
   internal: Maybe<InternalFilterInput>
   name: Maybe<StringQueryOperatorInput>
   nodeAPIs: Maybe<StringQueryOperatorInput>
-  packageJson: Maybe<SitePluginPackageJsonFilterInput>
+  packageJson: Maybe<JsonQueryOperatorInput>
   parent: Maybe<NodeFilterInput>
   pluginFilepath: Maybe<StringQueryOperatorInput>
-  pluginOptions: Maybe<SitePluginPluginOptionsFilterInput>
+  pluginOptions: Maybe<JsonQueryOperatorInput>
   resolve: Maybe<StringQueryOperatorInput>
   ssrAPIs: Maybe<StringQueryOperatorInput>
   version: Maybe<StringQueryOperatorInput>
@@ -1031,7 +1104,7 @@ export type QueryStoreCollectionArgs = {
   internal: Maybe<InternalFilterInput>
   meta: Maybe<StoreCollectionMetaFilterInput>
   parent: Maybe<NodeFilterInput>
-  remoteId: Maybe<IdQueryOperatorInput>
+  remoteId: Maybe<StringQueryOperatorInput>
   remoteTypeName: Maybe<StringQueryOperatorInput>
   seo: Maybe<StoreSeoFilterInput>
   slug: Maybe<StringQueryOperatorInput>
@@ -1053,7 +1126,6 @@ export type QueryStoreProductArgs = {
   offers: Maybe<StoreAggregateOfferFilterInput>
   parent: Maybe<NodeFilterInput>
   productID: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   review: Maybe<StoreReviewFilterListInput>
   seo: Maybe<StoreSeoFilterInput>
   sku: Maybe<StringQueryOperatorInput>
@@ -1067,6 +1139,7 @@ export type Site = Node & {
   host: Maybe<Scalars['String']>
   id: Scalars['ID']
   internal: Internal
+  jsxRuntime: Maybe<Scalars['String']>
   parent: Maybe<Node>
   pathPrefix: Maybe<Scalars['String']>
   polyfill: Maybe<Scalars['Boolean']>
@@ -1234,12 +1307,39 @@ export type SiteBuildMetadataFilterInput = {
 }
 
 export type SiteBuildMetadataGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SiteBuildMetadataEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SiteBuildMetadataGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SiteBuildMetadata>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SiteBuildMetadataGroupConnectionDistinctArgs = {
+  field: SiteBuildMetadataFieldsEnum
+}
+
+export type SiteBuildMetadataGroupConnectionGroupArgs = {
+  field: SiteBuildMetadataFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SiteBuildMetadataGroupConnectionMaxArgs = {
+  field: SiteBuildMetadataFieldsEnum
+}
+
+export type SiteBuildMetadataGroupConnectionMinArgs = {
+  field: SiteBuildMetadataFieldsEnum
+}
+
+export type SiteBuildMetadataGroupConnectionSumArgs = {
+  field: SiteBuildMetadataFieldsEnum
 }
 
 export type SiteBuildMetadataSortInput = {
@@ -1328,9 +1428,7 @@ export type SiteFieldsEnum =
   | 'children___parent___internal___type'
   | 'children___parent___parent___children'
   | 'children___parent___parent___id'
-  | 'flags___DEV_SSR'
   | 'flags___FAST_DEV'
-  | 'flags___LMDB_STORE'
   | 'flags___PARALLEL_QUERY_RUNNING'
   | 'flags___PARALLEL_SOURCING'
   | 'flags___PRESERVE_FILE_DOWNLOAD_CACHE'
@@ -1344,6 +1442,7 @@ export type SiteFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
+  | 'jsxRuntime'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -1398,6 +1497,7 @@ export type SiteFilterInput = {
   host: Maybe<StringQueryOperatorInput>
   id: Maybe<StringQueryOperatorInput>
   internal: Maybe<InternalFilterInput>
+  jsxRuntime: Maybe<StringQueryOperatorInput>
   parent: Maybe<NodeFilterInput>
   pathPrefix: Maybe<StringQueryOperatorInput>
   polyfill: Maybe<BooleanQueryOperatorInput>
@@ -1406,18 +1506,14 @@ export type SiteFilterInput = {
 }
 
 export type SiteFlags = {
-  DEV_SSR: Maybe<Scalars['Boolean']>
   FAST_DEV: Maybe<Scalars['Boolean']>
-  LMDB_STORE: Maybe<Scalars['Boolean']>
   PARALLEL_QUERY_RUNNING: Maybe<Scalars['Boolean']>
   PARALLEL_SOURCING: Maybe<Scalars['Boolean']>
   PRESERVE_FILE_DOWNLOAD_CACHE: Maybe<Scalars['Boolean']>
 }
 
 export type SiteFlagsFilterInput = {
-  DEV_SSR: Maybe<BooleanQueryOperatorInput>
   FAST_DEV: Maybe<BooleanQueryOperatorInput>
-  LMDB_STORE: Maybe<BooleanQueryOperatorInput>
   PARALLEL_QUERY_RUNNING: Maybe<BooleanQueryOperatorInput>
   PARALLEL_SOURCING: Maybe<BooleanQueryOperatorInput>
   PRESERVE_FILE_DOWNLOAD_CACHE: Maybe<BooleanQueryOperatorInput>
@@ -1587,12 +1683,39 @@ export type SiteFunctionFilterInput = {
 }
 
 export type SiteFunctionGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SiteFunctionEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SiteFunctionGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SiteFunction>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SiteFunctionGroupConnectionDistinctArgs = {
+  field: SiteFunctionFieldsEnum
+}
+
+export type SiteFunctionGroupConnectionGroupArgs = {
+  field: SiteFunctionFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SiteFunctionGroupConnectionMaxArgs = {
+  field: SiteFunctionFieldsEnum
+}
+
+export type SiteFunctionGroupConnectionMinArgs = {
+  field: SiteFunctionFieldsEnum
+}
+
+export type SiteFunctionGroupConnectionSumArgs = {
+  field: SiteFunctionFieldsEnum
 }
 
 export type SiteFunctionSortInput = {
@@ -1601,28 +1724,53 @@ export type SiteFunctionSortInput = {
 }
 
 export type SiteGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SiteEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SiteGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<Site>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SiteGroupConnectionDistinctArgs = {
+  field: SiteFieldsEnum
+}
+
+export type SiteGroupConnectionGroupArgs = {
+  field: SiteFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SiteGroupConnectionMaxArgs = {
+  field: SiteFieldsEnum
+}
+
+export type SiteGroupConnectionMinArgs = {
+  field: SiteFieldsEnum
+}
+
+export type SiteGroupConnectionSumArgs = {
+  field: SiteFieldsEnum
 }
 
 export type SitePage = Node & {
   children: Array<Node>
   component: Scalars['String']
   componentChunkName: Scalars['String']
-  context: Maybe<SitePageContext>
   id: Scalars['ID']
   internal: Internal
   internalComponentName: Scalars['String']
-  isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>
   matchPath: Maybe<Scalars['String']>
+  pageContext: Maybe<Scalars['JSON']>
   parent: Maybe<Node>
   path: Scalars['String']
   pluginCreator: Maybe<SitePlugin>
-  pluginCreatorId: Maybe<Scalars['String']>
 }
 
 export type SitePageConnection = {
@@ -1657,26 +1805,6 @@ export type SitePageConnectionMinArgs = {
 
 export type SitePageConnectionSumArgs = {
   field: SitePageFieldsEnum
-}
-
-export type SitePageContext = {
-  _xparams: Maybe<SitePageContext_Xparams>
-  id: Maybe<Scalars['String']>
-  slug: Maybe<Scalars['String']>
-}
-
-export type SitePageContextFilterInput = {
-  _xparams: Maybe<SitePageContext_XparamsFilterInput>
-  id: Maybe<StringQueryOperatorInput>
-  slug: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePageContext_Xparams = {
-  slug: Maybe<Scalars['String']>
-}
-
-export type SitePageContext_XparamsFilterInput = {
-  slug: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageEdge = {
@@ -1727,9 +1855,6 @@ export type SitePageFieldsEnum =
   | 'children___parent___parent___id'
   | 'component'
   | 'componentChunkName'
-  | 'context____xparams___slug'
-  | 'context___id'
-  | 'context___slug'
   | 'id'
   | 'internalComponentName'
   | 'internal___content'
@@ -1740,8 +1865,8 @@ export type SitePageFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'isCreatedByStatefulCreatePages'
   | 'matchPath'
+  | 'pageContext'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -1781,7 +1906,6 @@ export type SitePageFieldsEnum =
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
   | 'path'
-  | 'pluginCreatorId'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___children'
   | 'pluginCreator___children___children'
@@ -1809,21 +1933,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___internal___type'
   | 'pluginCreator___name'
   | 'pluginCreator___nodeAPIs'
-  | 'pluginCreator___packageJson___dependencies'
-  | 'pluginCreator___packageJson___dependencies___name'
-  | 'pluginCreator___packageJson___dependencies___version'
-  | 'pluginCreator___packageJson___description'
-  | 'pluginCreator___packageJson___devDependencies'
-  | 'pluginCreator___packageJson___devDependencies___name'
-  | 'pluginCreator___packageJson___devDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
-  | 'pluginCreator___packageJson___license'
-  | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___name'
-  | 'pluginCreator___packageJson___peerDependencies'
-  | 'pluginCreator___packageJson___peerDependencies___name'
-  | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___version'
+  | 'pluginCreator___packageJson'
   | 'pluginCreator___parent___children'
   | 'pluginCreator___parent___children___children'
   | 'pluginCreator___parent___children___id'
@@ -1839,44 +1949,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___parent___parent___children'
   | 'pluginCreator___parent___parent___id'
   | 'pluginCreator___pluginFilepath'
-  | 'pluginCreator___pluginOptions____generated'
-  | 'pluginCreator___pluginOptions___allExtensions'
-  | 'pluginCreator___pluginOptions___appendScript'
-  | 'pluginCreator___pluginOptions___background_color'
-  | 'pluginCreator___pluginOptions___baseline'
-  | 'pluginCreator___pluginOptions___cache_busting_mode'
-  | 'pluginCreator___pluginOptions___color'
-  | 'pluginCreator___pluginOptions___compare'
-  | 'pluginCreator___pluginOptions___crossOrigin'
-  | 'pluginCreator___pluginOptions___defer'
-  | 'pluginCreator___pluginOptions___display'
-  | 'pluginCreator___pluginOptions___html'
-  | 'pluginCreator___pluginOptions___httpOptions'
-  | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___include_favicon'
-  | 'pluginCreator___pluginOptions___isTSX'
-  | 'pluginCreator___pluginOptions___json'
-  | 'pluginCreator___pluginOptions___jsxPragma'
-  | 'pluginCreator___pluginOptions___legacy'
-  | 'pluginCreator___pluginOptions___maxNumCollections'
-  | 'pluginCreator___pluginOptions___maxNumProducts'
-  | 'pluginCreator___pluginOptions___name'
-  | 'pluginCreator___pluginOptions___outDir'
-  | 'pluginCreator___pluginOptions___path'
-  | 'pluginCreator___pluginOptions___pathCheck'
-  | 'pluginCreator___pluginOptions___precachePages'
-  | 'pluginCreator___pluginOptions___server'
-  | 'pluginCreator___pluginOptions___serverOptions'
-  | 'pluginCreator___pluginOptions___short_name'
-  | 'pluginCreator___pluginOptions___showSpinner'
-  | 'pluginCreator___pluginOptions___sourceCollections'
-  | 'pluginCreator___pluginOptions___sourceProducts'
-  | 'pluginCreator___pluginOptions___src'
-  | 'pluginCreator___pluginOptions___start_url'
-  | 'pluginCreator___pluginOptions___stats___context'
-  | 'pluginCreator___pluginOptions___theme_color'
-  | 'pluginCreator___pluginOptions___theme_color_in_head'
-  | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
+  | 'pluginCreator___pluginOptions'
   | 'pluginCreator___resolve'
   | 'pluginCreator___ssrAPIs'
   | 'pluginCreator___version'
@@ -1885,25 +1958,50 @@ export type SitePageFilterInput = {
   children: Maybe<NodeFilterListInput>
   component: Maybe<StringQueryOperatorInput>
   componentChunkName: Maybe<StringQueryOperatorInput>
-  context: Maybe<SitePageContextFilterInput>
   id: Maybe<StringQueryOperatorInput>
   internal: Maybe<InternalFilterInput>
   internalComponentName: Maybe<StringQueryOperatorInput>
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>
   matchPath: Maybe<StringQueryOperatorInput>
+  pageContext: Maybe<JsonQueryOperatorInput>
   parent: Maybe<NodeFilterInput>
   path: Maybe<StringQueryOperatorInput>
   pluginCreator: Maybe<SitePluginFilterInput>
-  pluginCreatorId: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePageGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SitePageEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SitePageGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SitePage>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SitePageGroupConnectionDistinctArgs = {
+  field: SitePageFieldsEnum
+}
+
+export type SitePageGroupConnectionGroupArgs = {
+  field: SitePageFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SitePageGroupConnectionMaxArgs = {
+  field: SitePageFieldsEnum
+}
+
+export type SitePageGroupConnectionMinArgs = {
+  field: SitePageFieldsEnum
+}
+
+export type SitePageGroupConnectionSumArgs = {
+  field: SitePageFieldsEnum
 }
 
 export type SitePageSortInput = {
@@ -1918,10 +2016,10 @@ export type SitePlugin = Node & {
   internal: Internal
   name: Maybe<Scalars['String']>
   nodeAPIs: Maybe<Array<Maybe<Scalars['String']>>>
-  packageJson: Maybe<SitePluginPackageJson>
+  packageJson: Maybe<Scalars['JSON']>
   parent: Maybe<Node>
   pluginFilepath: Maybe<Scalars['String']>
-  pluginOptions: Maybe<SitePluginPluginOptions>
+  pluginOptions: Maybe<Scalars['JSON']>
   resolve: Maybe<Scalars['String']>
   ssrAPIs: Maybe<Array<Maybe<Scalars['String']>>>
   version: Maybe<Scalars['String']>
@@ -2019,21 +2117,7 @@ export type SitePluginFieldsEnum =
   | 'internal___type'
   | 'name'
   | 'nodeAPIs'
-  | 'packageJson___dependencies'
-  | 'packageJson___dependencies___name'
-  | 'packageJson___dependencies___version'
-  | 'packageJson___description'
-  | 'packageJson___devDependencies'
-  | 'packageJson___devDependencies___name'
-  | 'packageJson___devDependencies___version'
-  | 'packageJson___keywords'
-  | 'packageJson___license'
-  | 'packageJson___main'
-  | 'packageJson___name'
-  | 'packageJson___peerDependencies'
-  | 'packageJson___peerDependencies___name'
-  | 'packageJson___peerDependencies___version'
-  | 'packageJson___version'
+  | 'packageJson'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -2073,47 +2157,7 @@ export type SitePluginFieldsEnum =
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
   | 'pluginFilepath'
-  | 'pluginOptions____generated'
-  | 'pluginOptions___allExtensions'
-  | 'pluginOptions___appendScript'
-  | 'pluginOptions___background_color'
-  | 'pluginOptions___baseline'
-  | 'pluginOptions___cache_busting_mode'
-  | 'pluginOptions___color'
-  | 'pluginOptions___compare'
-  | 'pluginOptions___crossOrigin'
-  | 'pluginOptions___defer'
-  | 'pluginOptions___display'
-  | 'pluginOptions___env___branch_deploy___policy'
-  | 'pluginOptions___env___deploy_preview___policy'
-  | 'pluginOptions___env___production___policy'
-  | 'pluginOptions___html'
-  | 'pluginOptions___httpOptions'
-  | 'pluginOptions___icon'
-  | 'pluginOptions___include_favicon'
-  | 'pluginOptions___isTSX'
-  | 'pluginOptions___json'
-  | 'pluginOptions___jsxPragma'
-  | 'pluginOptions___legacy'
-  | 'pluginOptions___maxNumCollections'
-  | 'pluginOptions___maxNumProducts'
-  | 'pluginOptions___name'
-  | 'pluginOptions___outDir'
-  | 'pluginOptions___path'
-  | 'pluginOptions___pathCheck'
-  | 'pluginOptions___precachePages'
-  | 'pluginOptions___server'
-  | 'pluginOptions___serverOptions'
-  | 'pluginOptions___short_name'
-  | 'pluginOptions___showSpinner'
-  | 'pluginOptions___sourceCollections'
-  | 'pluginOptions___sourceProducts'
-  | 'pluginOptions___src'
-  | 'pluginOptions___start_url'
-  | 'pluginOptions___stats___context'
-  | 'pluginOptions___theme_color'
-  | 'pluginOptions___theme_color_in_head'
-  | 'pluginOptions___workboxConfig___globPatterns'
+  | 'pluginOptions'
   | 'resolve'
   | 'ssrAPIs'
   | 'version'
@@ -2125,268 +2169,49 @@ export type SitePluginFilterInput = {
   internal: Maybe<InternalFilterInput>
   name: Maybe<StringQueryOperatorInput>
   nodeAPIs: Maybe<StringQueryOperatorInput>
-  packageJson: Maybe<SitePluginPackageJsonFilterInput>
+  packageJson: Maybe<JsonQueryOperatorInput>
   parent: Maybe<NodeFilterInput>
   pluginFilepath: Maybe<StringQueryOperatorInput>
-  pluginOptions: Maybe<SitePluginPluginOptionsFilterInput>
+  pluginOptions: Maybe<JsonQueryOperatorInput>
   resolve: Maybe<StringQueryOperatorInput>
   ssrAPIs: Maybe<StringQueryOperatorInput>
   version: Maybe<StringQueryOperatorInput>
 }
 
 export type SitePluginGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SitePluginEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SitePluginGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SitePlugin>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
 }
 
-export type SitePluginPackageJson = {
-  dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>
-  description: Maybe<Scalars['String']>
-  devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>
-  keywords: Maybe<Array<Maybe<Scalars['String']>>>
-  license: Maybe<Scalars['String']>
-  main: Maybe<Scalars['String']>
-  name: Maybe<Scalars['String']>
-  peerDependencies: Maybe<Array<Maybe<SitePluginPackageJsonPeerDependencies>>>
-  version: Maybe<Scalars['String']>
+export type SitePluginGroupConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type SitePluginPackageJsonDependencies = {
-  name: Maybe<Scalars['String']>
-  version: Maybe<Scalars['String']>
+export type SitePluginGroupConnectionGroupArgs = {
+  field: SitePluginFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
 }
 
-export type SitePluginPackageJsonDependenciesFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
+export type SitePluginGroupConnectionMaxArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type SitePluginPackageJsonDependenciesFilterListInput = {
-  elemMatch: Maybe<SitePluginPackageJsonDependenciesFilterInput>
+export type SitePluginGroupConnectionMinArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type SitePluginPackageJsonDevDependencies = {
-  name: Maybe<Scalars['String']>
-  version: Maybe<Scalars['String']>
-}
-
-export type SitePluginPackageJsonDevDependenciesFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPackageJsonDevDependenciesFilterListInput = {
-  elemMatch: Maybe<SitePluginPackageJsonDevDependenciesFilterInput>
-}
-
-export type SitePluginPackageJsonFilterInput = {
-  dependencies: Maybe<SitePluginPackageJsonDependenciesFilterListInput>
-  description: Maybe<StringQueryOperatorInput>
-  devDependencies: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>
-  keywords: Maybe<StringQueryOperatorInput>
-  license: Maybe<StringQueryOperatorInput>
-  main: Maybe<StringQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  peerDependencies: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>
-  version: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPackageJsonPeerDependencies = {
-  name: Maybe<Scalars['String']>
-  version: Maybe<Scalars['String']>
-}
-
-export type SitePluginPackageJsonPeerDependenciesFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
-  elemMatch: Maybe<SitePluginPackageJsonPeerDependenciesFilterInput>
-}
-
-export type SitePluginPluginOptions = {
-  _generated: Maybe<Scalars['String']>
-  allExtensions: Maybe<Scalars['Boolean']>
-  appendScript: Maybe<Scalars['String']>
-  background_color: Maybe<Scalars['String']>
-  baseline: Maybe<Scalars['Boolean']>
-  cache_busting_mode: Maybe<Scalars['String']>
-  color: Maybe<Scalars['String']>
-  compare: Maybe<Scalars['Boolean']>
-  crossOrigin: Maybe<Scalars['String']>
-  defer: Maybe<Scalars['Boolean']>
-  display: Maybe<Scalars['String']>
-  env: Maybe<SitePluginPluginOptionsEnv>
-  html: Maybe<Scalars['Boolean']>
-  httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
-  icon: Maybe<Scalars['String']>
-  include_favicon: Maybe<Scalars['Boolean']>
-  isTSX: Maybe<Scalars['Boolean']>
-  json: Maybe<Scalars['Boolean']>
-  jsxPragma: Maybe<Scalars['String']>
-  legacy: Maybe<Scalars['Boolean']>
-  maxNumCollections: Maybe<Scalars['Int']>
-  maxNumProducts: Maybe<Scalars['Int']>
-  name: Maybe<Scalars['String']>
-  outDir: Maybe<Scalars['String']>
-  path: Maybe<Scalars['String']>
-  pathCheck: Maybe<Scalars['Boolean']>
-  precachePages: Maybe<Array<Maybe<Scalars['String']>>>
-  server: Maybe<Scalars['String']>
-  serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
-  short_name: Maybe<Scalars['String']>
-  showSpinner: Maybe<Scalars['Boolean']>
-  sourceCollections: Maybe<Scalars['Boolean']>
-  sourceProducts: Maybe<Scalars['Boolean']>
-  src: Maybe<Scalars['String']>
-  start_url: Maybe<Scalars['String']>
-  stats: Maybe<SitePluginPluginOptionsStats>
-  theme_color: Maybe<Scalars['String']>
-  theme_color_in_head: Maybe<Scalars['Boolean']>
-  workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfig>
-}
-
-export type SitePluginPluginOptionsEnv = {
-  branch_deploy: Maybe<SitePluginPluginOptionsEnvBranch_Deploy>
-  deploy_preview: Maybe<SitePluginPluginOptionsEnvDeploy_Preview>
-  production: Maybe<SitePluginPluginOptionsEnvProduction>
-}
-
-export type SitePluginPluginOptionsEnvBranch_Deploy = {
-  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicy>>>
-}
-
-export type SitePluginPluginOptionsEnvBranch_DeployFilterInput = {
-  policy: Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput>
-}
-
-export type SitePluginPluginOptionsEnvBranch_DeployPolicy = {
-  disallow: Maybe<Array<Maybe<Scalars['String']>>>
-  userAgent: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput = {
-  disallow: Maybe<StringQueryOperatorInput>
-  userAgent: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput>
-}
-
-export type SitePluginPluginOptionsEnvDeploy_Preview = {
-  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicy>>>
-}
-
-export type SitePluginPluginOptionsEnvDeploy_PreviewFilterInput = {
-  policy: Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput>
-}
-
-export type SitePluginPluginOptionsEnvDeploy_PreviewPolicy = {
-  disallow: Maybe<Array<Maybe<Scalars['String']>>>
-  userAgent: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput = {
-  disallow: Maybe<StringQueryOperatorInput>
-  userAgent: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput>
-}
-
-export type SitePluginPluginOptionsEnvFilterInput = {
-  branch_deploy: Maybe<SitePluginPluginOptionsEnvBranch_DeployFilterInput>
-  deploy_preview: Maybe<SitePluginPluginOptionsEnvDeploy_PreviewFilterInput>
-  production: Maybe<SitePluginPluginOptionsEnvProductionFilterInput>
-}
-
-export type SitePluginPluginOptionsEnvProduction = {
-  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvProductionPolicy>>>
-}
-
-export type SitePluginPluginOptionsEnvProductionFilterInput = {
-  policy: Maybe<SitePluginPluginOptionsEnvProductionPolicyFilterListInput>
-}
-
-export type SitePluginPluginOptionsEnvProductionPolicy = {
-  allow: Maybe<Scalars['String']>
-  disallow: Maybe<Array<Maybe<Scalars['String']>>>
-  userAgent: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsEnvProductionPolicyFilterInput = {
-  allow: Maybe<StringQueryOperatorInput>
-  disallow: Maybe<StringQueryOperatorInput>
-  userAgent: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPluginOptionsEnvProductionPolicyFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsEnvProductionPolicyFilterInput>
-}
-
-export type SitePluginPluginOptionsFilterInput = {
-  _generated: Maybe<StringQueryOperatorInput>
-  allExtensions: Maybe<BooleanQueryOperatorInput>
-  appendScript: Maybe<StringQueryOperatorInput>
-  background_color: Maybe<StringQueryOperatorInput>
-  baseline: Maybe<BooleanQueryOperatorInput>
-  cache_busting_mode: Maybe<StringQueryOperatorInput>
-  color: Maybe<StringQueryOperatorInput>
-  compare: Maybe<BooleanQueryOperatorInput>
-  crossOrigin: Maybe<StringQueryOperatorInput>
-  defer: Maybe<BooleanQueryOperatorInput>
-  display: Maybe<StringQueryOperatorInput>
-  env: Maybe<SitePluginPluginOptionsEnvFilterInput>
-  html: Maybe<BooleanQueryOperatorInput>
-  httpOptions: Maybe<StringQueryOperatorInput>
-  icon: Maybe<StringQueryOperatorInput>
-  include_favicon: Maybe<BooleanQueryOperatorInput>
-  isTSX: Maybe<BooleanQueryOperatorInput>
-  json: Maybe<BooleanQueryOperatorInput>
-  jsxPragma: Maybe<StringQueryOperatorInput>
-  legacy: Maybe<BooleanQueryOperatorInput>
-  maxNumCollections: Maybe<IntQueryOperatorInput>
-  maxNumProducts: Maybe<IntQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  outDir: Maybe<StringQueryOperatorInput>
-  path: Maybe<StringQueryOperatorInput>
-  pathCheck: Maybe<BooleanQueryOperatorInput>
-  precachePages: Maybe<StringQueryOperatorInput>
-  server: Maybe<StringQueryOperatorInput>
-  serverOptions: Maybe<StringQueryOperatorInput>
-  short_name: Maybe<StringQueryOperatorInput>
-  showSpinner: Maybe<BooleanQueryOperatorInput>
-  sourceCollections: Maybe<BooleanQueryOperatorInput>
-  sourceProducts: Maybe<BooleanQueryOperatorInput>
-  src: Maybe<StringQueryOperatorInput>
-  start_url: Maybe<StringQueryOperatorInput>
-  stats: Maybe<SitePluginPluginOptionsStatsFilterInput>
-  theme_color: Maybe<StringQueryOperatorInput>
-  theme_color_in_head: Maybe<BooleanQueryOperatorInput>
-  workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
-}
-
-export type SitePluginPluginOptionsStats = {
-  context: Maybe<Scalars['String']>
-}
-
-export type SitePluginPluginOptionsStatsFilterInput = {
-  context: Maybe<StringQueryOperatorInput>
-}
-
-export type SitePluginPluginOptionsWorkboxConfig = {
-  globPatterns: Maybe<Array<Maybe<Scalars['String']>>>
-}
-
-export type SitePluginPluginOptionsWorkboxConfigFilterInput = {
-  globPatterns: Maybe<StringQueryOperatorInput>
+export type SitePluginGroupConnectionSumArgs = {
+  field: SitePluginFieldsEnum
 }
 
 export type SitePluginSortInput = {
@@ -2423,7 +2248,6 @@ export type StoreAggregateOffer = {
   offerCount: Scalars['Int']
   offers: Array<StoreOffer>
   priceCurrency: Scalars['String']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreAggregateOfferFilterInput = {
@@ -2432,45 +2256,38 @@ export type StoreAggregateOfferFilterInput = {
   offerCount: Maybe<IntQueryOperatorInput>
   offers: Maybe<StoreOfferFilterListInput>
   priceCurrency: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreAggregateRating = {
   ratingValue: Scalars['Float']
-  remoteTypeName: Scalars['String']
   reviewCount: Scalars['Int']
 }
 
 export type StoreAggregateRatingFilterInput = {
   ratingValue: Maybe<FloatQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   reviewCount: Maybe<IntQueryOperatorInput>
 }
 
 export type StoreAuthor = {
   name: Scalars['String']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreAuthorFilterInput = {
   name: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreBrand = {
   name: Scalars['String']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreBrandFilterInput = {
   name: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreBreadcrumbList = {
   itemListElement: Array<StoreListItem>
   numberOfItems: Scalars['Int']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreBreadcrumbListFilterInput = {
@@ -2496,8 +2313,8 @@ export type StoreCollection = Node & {
   internal: Internal
   meta: StoreCollectionMeta
   parent: Maybe<Node>
-  remoteId: Scalars['ID']
-  remoteTypeName: Scalars['String']
+  remoteId: Maybe<Scalars['String']>
+  remoteTypeName: Maybe<Scalars['String']>
   seo: StoreSeo
   slug: Scalars['String']
   type: StoreCollectionType
@@ -2537,11 +2354,6 @@ export type StoreCollectionConnectionSumArgs = {
   field: StoreCollectionFieldsEnum
 }
 
-export type StoreCollectionConnection_Remote = {
-  edges: Array<StoreCollectionEdge>
-  pageInfo: StorePageInfo
-}
-
 export type StoreCollectionEdge = {
   cursor: Scalars['String']
   node: StoreCollection
@@ -2549,7 +2361,7 @@ export type StoreCollectionEdge = {
 
 export type StoreCollectionFacet = {
   key: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   value: Scalars['String']
 }
 
@@ -2568,7 +2380,6 @@ export type StoreCollectionFieldsEnum =
   | 'breadcrumbList___itemListElement___item'
   | 'breadcrumbList___itemListElement___name'
   | 'breadcrumbList___itemListElement___position'
-  | 'breadcrumbList___itemListElement___remoteTypeName'
   | 'breadcrumbList___numberOfItems'
   | 'breadcrumbList___remoteTypeName'
   | 'children'
@@ -2679,7 +2490,7 @@ export type StoreCollectionFilterInput = {
   internal: Maybe<InternalFilterInput>
   meta: Maybe<StoreCollectionMetaFilterInput>
   parent: Maybe<NodeFilterInput>
-  remoteId: Maybe<IdQueryOperatorInput>
+  remoteId: Maybe<StringQueryOperatorInput>
   remoteTypeName: Maybe<StringQueryOperatorInput>
   seo: Maybe<StoreSeoFilterInput>
   slug: Maybe<StringQueryOperatorInput>
@@ -2687,16 +2498,43 @@ export type StoreCollectionFilterInput = {
 }
 
 export type StoreCollectionGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<StoreCollectionEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<StoreCollectionGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<StoreCollection>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
 }
 
+export type StoreCollectionGroupConnectionDistinctArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
+export type StoreCollectionGroupConnectionGroupArgs = {
+  field: StoreCollectionFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type StoreCollectionGroupConnectionMaxArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
+export type StoreCollectionGroupConnectionMinArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
+export type StoreCollectionGroupConnectionSumArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
 export type StoreCollectionMeta = {
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   selectedFacets: Array<StoreCollectionFacet>
 }
 
@@ -2741,13 +2579,11 @@ export type StoreFacetValue = {
 
 export type StoreImage = {
   alternateName: Scalars['String']
-  remoteTypeName: Scalars['String']
   url: Scalars['String']
 }
 
 export type StoreImageFilterInput = {
   alternateName: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   url: Maybe<StringQueryOperatorInput>
 }
 
@@ -2759,14 +2595,12 @@ export type StoreListItem = {
   item: Scalars['String']
   name: Scalars['String']
   position: Scalars['Int']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreListItemFilterInput = {
   item: Maybe<StringQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
   position: Maybe<IntQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreListItemFilterListInput = {
@@ -2782,7 +2616,6 @@ export type StoreOffer = {
   priceCurrency: Scalars['String']
   priceValidUntil: Scalars['String']
   quantity: Scalars['Int']
-  remoteTypeName: Scalars['String']
   seller: StoreOrganization
   sellingPrice: Scalars['Float']
 }
@@ -2796,7 +2629,6 @@ export type StoreOfferFilterInput = {
   priceCurrency: Maybe<StringQueryOperatorInput>
   priceValidUntil: Maybe<StringQueryOperatorInput>
   quantity: Maybe<IntQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   seller: Maybe<StoreOrganizationFilterInput>
   sellingPrice: Maybe<FloatQueryOperatorInput>
 }
@@ -2812,12 +2644,10 @@ export type StoreOrder = {
 
 export type StoreOrganization = {
   identifier: Scalars['String']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreOrganizationFilterInput = {
   identifier: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StorePageInfo = {
@@ -2843,7 +2673,6 @@ export type StoreProduct = Node & {
   offers: StoreAggregateOffer
   parent: Maybe<Node>
   productID: Scalars['String']
-  remoteTypeName: Scalars['String']
   review: Array<StoreReview>
   seo: StoreSeo
   sku: Scalars['String']
@@ -2884,11 +2713,6 @@ export type StoreProductConnectionSumArgs = {
   field: StoreProductFieldsEnum
 }
 
-export type StoreProductConnection_Remote = {
-  edges: Array<StoreProductEdge>
-  pageInfo: StorePageInfo
-}
-
 export type StoreProductEdge = {
   cursor: Scalars['String']
   node: StoreProduct
@@ -2896,15 +2720,12 @@ export type StoreProductEdge = {
 
 export type StoreProductFieldsEnum =
   | 'aggregateRating___ratingValue'
-  | 'aggregateRating___remoteTypeName'
   | 'aggregateRating___reviewCount'
   | 'brand___name'
-  | 'brand___remoteTypeName'
   | 'breadcrumbList___itemListElement'
   | 'breadcrumbList___itemListElement___item'
   | 'breadcrumbList___itemListElement___name'
   | 'breadcrumbList___itemListElement___position'
-  | 'breadcrumbList___itemListElement___remoteTypeName'
   | 'breadcrumbList___numberOfItems'
   | 'breadcrumbList___remoteTypeName'
   | 'children'
@@ -2951,7 +2772,6 @@ export type StoreProductFieldsEnum =
   | 'id'
   | 'image'
   | 'image___alternateName'
-  | 'image___remoteTypeName'
   | 'image___url'
   | 'internal___content'
   | 'internal___contentDigest'
@@ -2963,10 +2783,8 @@ export type StoreProductFieldsEnum =
   | 'internal___type'
   | 'isVariantOf___hasVariant'
   | 'isVariantOf___hasVariant___aggregateRating___ratingValue'
-  | 'isVariantOf___hasVariant___aggregateRating___remoteTypeName'
   | 'isVariantOf___hasVariant___aggregateRating___reviewCount'
   | 'isVariantOf___hasVariant___brand___name'
-  | 'isVariantOf___hasVariant___brand___remoteTypeName'
   | 'isVariantOf___hasVariant___breadcrumbList___itemListElement'
   | 'isVariantOf___hasVariant___breadcrumbList___numberOfItems'
   | 'isVariantOf___hasVariant___breadcrumbList___remoteTypeName'
@@ -2978,7 +2796,6 @@ export type StoreProductFieldsEnum =
   | 'isVariantOf___hasVariant___id'
   | 'isVariantOf___hasVariant___image'
   | 'isVariantOf___hasVariant___image___alternateName'
-  | 'isVariantOf___hasVariant___image___remoteTypeName'
   | 'isVariantOf___hasVariant___image___url'
   | 'isVariantOf___hasVariant___internal___content'
   | 'isVariantOf___hasVariant___internal___contentDigest'
@@ -2991,20 +2808,16 @@ export type StoreProductFieldsEnum =
   | 'isVariantOf___hasVariant___isVariantOf___hasVariant'
   | 'isVariantOf___hasVariant___isVariantOf___name'
   | 'isVariantOf___hasVariant___isVariantOf___productGroupID'
-  | 'isVariantOf___hasVariant___isVariantOf___remoteTypeName'
   | 'isVariantOf___hasVariant___name'
   | 'isVariantOf___hasVariant___offers___highPrice'
   | 'isVariantOf___hasVariant___offers___lowPrice'
   | 'isVariantOf___hasVariant___offers___offerCount'
   | 'isVariantOf___hasVariant___offers___offers'
   | 'isVariantOf___hasVariant___offers___priceCurrency'
-  | 'isVariantOf___hasVariant___offers___remoteTypeName'
   | 'isVariantOf___hasVariant___parent___children'
   | 'isVariantOf___hasVariant___parent___id'
   | 'isVariantOf___hasVariant___productID'
-  | 'isVariantOf___hasVariant___remoteTypeName'
   | 'isVariantOf___hasVariant___review'
-  | 'isVariantOf___hasVariant___review___remoteTypeName'
   | 'isVariantOf___hasVariant___seo___canonical'
   | 'isVariantOf___hasVariant___seo___description'
   | 'isVariantOf___hasVariant___seo___remoteTypeName'
@@ -3014,7 +2827,6 @@ export type StoreProductFieldsEnum =
   | 'isVariantOf___hasVariant___slug'
   | 'isVariantOf___name'
   | 'isVariantOf___productGroupID'
-  | 'isVariantOf___remoteTypeName'
   | 'name'
   | 'offers___highPrice'
   | 'offers___lowPrice'
@@ -3029,7 +2841,6 @@ export type StoreProductFieldsEnum =
   | 'offers___offers___itemOffered___image'
   | 'offers___offers___itemOffered___name'
   | 'offers___offers___itemOffered___productID'
-  | 'offers___offers___itemOffered___remoteTypeName'
   | 'offers___offers___itemOffered___review'
   | 'offers___offers___itemOffered___sku'
   | 'offers___offers___itemOffered___slug'
@@ -3038,12 +2849,9 @@ export type StoreProductFieldsEnum =
   | 'offers___offers___priceCurrency'
   | 'offers___offers___priceValidUntil'
   | 'offers___offers___quantity'
-  | 'offers___offers___remoteTypeName'
   | 'offers___offers___seller___identifier'
-  | 'offers___offers___seller___remoteTypeName'
   | 'offers___offers___sellingPrice'
   | 'offers___priceCurrency'
-  | 'offers___remoteTypeName'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -3083,14 +2891,10 @@ export type StoreProductFieldsEnum =
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
   | 'productID'
-  | 'remoteTypeName'
   | 'review'
   | 'review___author___name'
-  | 'review___author___remoteTypeName'
-  | 'review___remoteTypeName'
   | 'review___reviewRating___bestRating'
   | 'review___reviewRating___ratingValue'
-  | 'review___reviewRating___remoteTypeName'
   | 'seo___canonical'
   | 'seo___description'
   | 'seo___remoteTypeName'
@@ -3114,7 +2918,6 @@ export type StoreProductFilterInput = {
   offers: Maybe<StoreAggregateOfferFilterInput>
   parent: Maybe<NodeFilterInput>
   productID: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   review: Maybe<StoreReviewFilterListInput>
   seo: Maybe<StoreSeoFilterInput>
   sku: Maybe<StringQueryOperatorInput>
@@ -3129,23 +2932,48 @@ export type StoreProductGroup = {
   hasVariant: Array<StoreProduct>
   name: Scalars['String']
   productGroupID: Scalars['String']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreProductGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<StoreProductEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<StoreProductGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<StoreProduct>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type StoreProductGroupConnectionDistinctArgs = {
+  field: StoreProductFieldsEnum
+}
+
+export type StoreProductGroupConnectionGroupArgs = {
+  field: StoreProductFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type StoreProductGroupConnectionMaxArgs = {
+  field: StoreProductFieldsEnum
+}
+
+export type StoreProductGroupConnectionMinArgs = {
+  field: StoreProductFieldsEnum
+}
+
+export type StoreProductGroupConnectionSumArgs = {
+  field: StoreProductFieldsEnum
 }
 
 export type StoreProductGroupFilterInput = {
   hasVariant: Maybe<StoreProductFilterListInput>
   name: Maybe<StringQueryOperatorInput>
   productGroupID: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreProductSortInput = {
@@ -3155,13 +2983,11 @@ export type StoreProductSortInput = {
 
 export type StoreReview = {
   author: StoreAuthor
-  remoteTypeName: Scalars['String']
   reviewRating: StoreReviewRating
 }
 
 export type StoreReviewFilterInput = {
   author: Maybe<StoreAuthorFilterInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   reviewRating: Maybe<StoreReviewRatingFilterInput>
 }
 
@@ -3172,13 +2998,11 @@ export type StoreReviewFilterListInput = {
 export type StoreReviewRating = {
   bestRating: Scalars['Float']
   ratingValue: Scalars['Float']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreReviewRatingFilterInput = {
   bestRating: Maybe<FloatQueryOperatorInput>
   ratingValue: Maybe<FloatQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreSearchResult = {
@@ -3189,7 +3013,7 @@ export type StoreSearchResult = {
 export type StoreSeo = {
   canonical: Scalars['String']
   description: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   title: Scalars['String']
   titleTemplate: Scalars['String']
 }
@@ -3235,14 +3059,15 @@ export type ProductSummary_ProductFragment = {
   name: string
   gtin: string
   id: string
+  brand: { name: string; brandName: string }
   isVariantOf: { productGroupID: string; name: string }
   image: Array<{ url: string; alternateName: string }>
-  brand: { name: string }
   offers: {
     lowPrice: number
     offers: Array<{
       price: number
       listPrice: number
+      quantity: number
       seller: { identifier: string }
     }>
   }
@@ -3293,11 +3118,24 @@ export type ProductGallery_FacetsFragment = {
   }>
 }
 
-export type BrowserProductPageQueryQueryVariables = Exact<{
+export type ProductPageQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type ProductPageQueryQuery = {
+  site: {
+    siteMetadata: {
+      title: string | null
+      description: string | null
+      titleTemplate: string | null
+      siteUrl: string | null
+    } | null
+  } | null
+}
+
+export type ServerProductPageQueryQueryVariables = Exact<{
   locator: Array<IStoreSelectedFacet> | IStoreSelectedFacet
 }>
 
-export type BrowserProductPageQueryQuery = {
+export type ServerProductPageQueryQuery = {
   product: {
     slug: string
     sku: string
@@ -3327,21 +3165,6 @@ export type BrowserProductPageQueryQuery = {
     }
     isVariantOf: { productGroupID: string; name: string }
   }
-}
-
-export type ServerProductPageQueryQueryVariables = Exact<{
-  [key: string]: never
-}>
-
-export type ServerProductPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      title: string | null
-      description: string | null
-      titleTemplate: string | null
-      siteUrl: string | null
-    } | null
-  } | null
 }
 
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
@@ -3389,50 +3212,6 @@ export type CollectionPageQueryQuery = {
   } | null
 }
 
-export type ProductPageQueryQueryVariables = Exact<{
-  id: Scalars['String']
-}>
-
-export type ProductPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      title: string | null
-      description: string | null
-      titleTemplate: string | null
-      siteUrl: string | null
-    } | null
-  } | null
-  product: {
-    slug: string
-    sku: string
-    gtin: string
-    name: string
-    description: string
-    id: string
-    seo: { title: string; description: string }
-    brand: { name: string }
-    breadcrumbList: {
-      itemListElement: Array<{ item: string; name: string; position: number }>
-    }
-    image: Array<{ url: string; alternateName: string }>
-    offers: {
-      lowPrice: number
-      highPrice: number
-      priceCurrency: string
-      offers: Array<{
-        price: number
-        priceValidUntil: string
-        priceCurrency: string
-        availability: string
-        itemCondition: string
-        listPrice: number
-        seller: { identifier: string }
-      }>
-    }
-    isVariantOf: { productGroupID: string; name: string }
-  } | null
-}
-
 export type ValidateCartMutationMutationVariables = Exact<{
   cart: IStoreCart
 }>
@@ -3475,14 +3254,15 @@ export type SearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
@@ -3525,14 +3305,15 @@ export type CollectionSearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
@@ -3682,14 +3463,15 @@ export type FullTextSearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }

@@ -69,4 +69,10 @@ export const query = graphql`
   }
 `
 
+export const config = () => {
+  return () => ({
+    defer: true,
+  })
+}
+
 export default Page
