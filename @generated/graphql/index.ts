@@ -332,12 +332,39 @@ export type DirectoryFilterInput = {
 }
 
 export type DirectoryGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<DirectoryEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<DirectoryGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<Directory>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type DirectoryGroupConnectionDistinctArgs = {
+  field: DirectoryFieldsEnum
+}
+
+export type DirectoryGroupConnectionGroupArgs = {
+  field: DirectoryFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type DirectoryGroupConnectionMaxArgs = {
+  field: DirectoryFieldsEnum
+}
+
+export type DirectoryGroupConnectionMinArgs = {
+  field: DirectoryFieldsEnum
+}
+
+export type DirectoryGroupConnectionSumArgs = {
+  field: DirectoryFieldsEnum
 }
 
 export type DirectorySortInput = {
@@ -632,12 +659,39 @@ export type FileFilterInput = {
 }
 
 export type FileGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<FileEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<FileGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<File>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type FileGroupConnectionDistinctArgs = {
+  field: FileFieldsEnum
+}
+
+export type FileGroupConnectionGroupArgs = {
+  field: FileFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type FileGroupConnectionMaxArgs = {
+  field: FileFieldsEnum
+}
+
+export type FileGroupConnectionMinArgs = {
+  field: FileFieldsEnum
+}
+
+export type FileGroupConnectionSumArgs = {
+  field: FileFieldsEnum
 }
 
 export type FileSortInput = {
@@ -656,12 +710,21 @@ export type FloatQueryOperatorInput = {
   nin: Maybe<Array<Maybe<Scalars['Float']>>>
 }
 
-export type IdQueryOperatorInput = {
-  eq: Maybe<Scalars['ID']>
-  in: Maybe<Array<Maybe<Scalars['ID']>>>
-  ne: Maybe<Scalars['ID']>
-  nin: Maybe<Array<Maybe<Scalars['ID']>>>
-}
+export type GatsbyImageFormat =
+  | 'AUTO'
+  | 'AVIF'
+  | 'JPG'
+  | 'NO_CHANGE'
+  | 'PNG'
+  | 'WEBP'
+
+export type GatsbyImageLayout = 'CONSTRAINED' | 'FIXED' | 'FULL_WIDTH'
+
+export type GatsbyImagePlaceholder =
+  | 'BLURRED'
+  | 'DOMINANT_COLOR'
+  | 'NONE'
+  | 'TRACED_SVG'
 
 export type IStoreCart = {
   order: IStoreOrder
@@ -1031,7 +1094,7 @@ export type QueryStoreCollectionArgs = {
   internal: Maybe<InternalFilterInput>
   meta: Maybe<StoreCollectionMetaFilterInput>
   parent: Maybe<NodeFilterInput>
-  remoteId: Maybe<IdQueryOperatorInput>
+  remoteId: Maybe<StringQueryOperatorInput>
   remoteTypeName: Maybe<StringQueryOperatorInput>
   seo: Maybe<StoreSeoFilterInput>
   slug: Maybe<StringQueryOperatorInput>
@@ -1234,12 +1297,39 @@ export type SiteBuildMetadataFilterInput = {
 }
 
 export type SiteBuildMetadataGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SiteBuildMetadataEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SiteBuildMetadataGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SiteBuildMetadata>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SiteBuildMetadataGroupConnectionDistinctArgs = {
+  field: SiteBuildMetadataFieldsEnum
+}
+
+export type SiteBuildMetadataGroupConnectionGroupArgs = {
+  field: SiteBuildMetadataFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SiteBuildMetadataGroupConnectionMaxArgs = {
+  field: SiteBuildMetadataFieldsEnum
+}
+
+export type SiteBuildMetadataGroupConnectionMinArgs = {
+  field: SiteBuildMetadataFieldsEnum
+}
+
+export type SiteBuildMetadataGroupConnectionSumArgs = {
+  field: SiteBuildMetadataFieldsEnum
 }
 
 export type SiteBuildMetadataSortInput = {
@@ -1587,12 +1677,39 @@ export type SiteFunctionFilterInput = {
 }
 
 export type SiteFunctionGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SiteFunctionEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SiteFunctionGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SiteFunction>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SiteFunctionGroupConnectionDistinctArgs = {
+  field: SiteFunctionFieldsEnum
+}
+
+export type SiteFunctionGroupConnectionGroupArgs = {
+  field: SiteFunctionFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SiteFunctionGroupConnectionMaxArgs = {
+  field: SiteFunctionFieldsEnum
+}
+
+export type SiteFunctionGroupConnectionMinArgs = {
+  field: SiteFunctionFieldsEnum
+}
+
+export type SiteFunctionGroupConnectionSumArgs = {
+  field: SiteFunctionFieldsEnum
 }
 
 export type SiteFunctionSortInput = {
@@ -1601,12 +1718,39 @@ export type SiteFunctionSortInput = {
 }
 
 export type SiteGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SiteEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SiteGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<Site>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SiteGroupConnectionDistinctArgs = {
+  field: SiteFieldsEnum
+}
+
+export type SiteGroupConnectionGroupArgs = {
+  field: SiteFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SiteGroupConnectionMaxArgs = {
+  field: SiteFieldsEnum
+}
+
+export type SiteGroupConnectionMinArgs = {
+  field: SiteFieldsEnum
+}
+
+export type SiteGroupConnectionSumArgs = {
+  field: SiteFieldsEnum
 }
 
 export type SitePage = Node & {
@@ -1898,12 +2042,39 @@ export type SitePageFilterInput = {
 }
 
 export type SitePageGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SitePageEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SitePageGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SitePage>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SitePageGroupConnectionDistinctArgs = {
+  field: SitePageFieldsEnum
+}
+
+export type SitePageGroupConnectionGroupArgs = {
+  field: SitePageFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SitePageGroupConnectionMaxArgs = {
+  field: SitePageFieldsEnum
+}
+
+export type SitePageGroupConnectionMinArgs = {
+  field: SitePageFieldsEnum
+}
+
+export type SitePageGroupConnectionSumArgs = {
+  field: SitePageFieldsEnum
 }
 
 export type SitePageSortInput = {
@@ -2135,12 +2306,39 @@ export type SitePluginFilterInput = {
 }
 
 export type SitePluginGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<SitePluginEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<SitePluginGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<SitePlugin>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type SitePluginGroupConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum
+}
+
+export type SitePluginGroupConnectionGroupArgs = {
+  field: SitePluginFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type SitePluginGroupConnectionMaxArgs = {
+  field: SitePluginFieldsEnum
+}
+
+export type SitePluginGroupConnectionMinArgs = {
+  field: SitePluginFieldsEnum
+}
+
+export type SitePluginGroupConnectionSumArgs = {
+  field: SitePluginFieldsEnum
 }
 
 export type SitePluginPackageJson = {
@@ -2423,7 +2621,7 @@ export type StoreAggregateOffer = {
   offerCount: Scalars['Int']
   offers: Array<StoreOffer>
   priceCurrency: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreAggregateOfferFilterInput = {
@@ -2437,7 +2635,7 @@ export type StoreAggregateOfferFilterInput = {
 
 export type StoreAggregateRating = {
   ratingValue: Scalars['Float']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   reviewCount: Scalars['Int']
 }
 
@@ -2449,17 +2647,15 @@ export type StoreAggregateRatingFilterInput = {
 
 export type StoreAuthor = {
   name: Scalars['String']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreAuthorFilterInput = {
   name: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreBrand = {
   name: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreBrandFilterInput = {
@@ -2470,7 +2666,7 @@ export type StoreBrandFilterInput = {
 export type StoreBreadcrumbList = {
   itemListElement: Array<StoreListItem>
   numberOfItems: Scalars['Int']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreBreadcrumbListFilterInput = {
@@ -2496,8 +2692,8 @@ export type StoreCollection = Node & {
   internal: Internal
   meta: StoreCollectionMeta
   parent: Maybe<Node>
-  remoteId: Scalars['ID']
-  remoteTypeName: Scalars['String']
+  remoteId: Maybe<Scalars['String']>
+  remoteTypeName: Maybe<Scalars['String']>
   seo: StoreSeo
   slug: Scalars['String']
   type: StoreCollectionType
@@ -2537,11 +2733,6 @@ export type StoreCollectionConnectionSumArgs = {
   field: StoreCollectionFieldsEnum
 }
 
-export type StoreCollectionConnection_Remote = {
-  edges: Array<StoreCollectionEdge>
-  pageInfo: StorePageInfo
-}
-
 export type StoreCollectionEdge = {
   cursor: Scalars['String']
   node: StoreCollection
@@ -2549,7 +2740,7 @@ export type StoreCollectionEdge = {
 
 export type StoreCollectionFacet = {
   key: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   value: Scalars['String']
 }
 
@@ -2679,7 +2870,7 @@ export type StoreCollectionFilterInput = {
   internal: Maybe<InternalFilterInput>
   meta: Maybe<StoreCollectionMetaFilterInput>
   parent: Maybe<NodeFilterInput>
-  remoteId: Maybe<IdQueryOperatorInput>
+  remoteId: Maybe<StringQueryOperatorInput>
   remoteTypeName: Maybe<StringQueryOperatorInput>
   seo: Maybe<StoreSeoFilterInput>
   slug: Maybe<StringQueryOperatorInput>
@@ -2687,16 +2878,43 @@ export type StoreCollectionFilterInput = {
 }
 
 export type StoreCollectionGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<StoreCollectionEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<StoreCollectionGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<StoreCollection>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
 }
 
+export type StoreCollectionGroupConnectionDistinctArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
+export type StoreCollectionGroupConnectionGroupArgs = {
+  field: StoreCollectionFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type StoreCollectionGroupConnectionMaxArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
+export type StoreCollectionGroupConnectionMinArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
+export type StoreCollectionGroupConnectionSumArgs = {
+  field: StoreCollectionFieldsEnum
+}
+
 export type StoreCollectionMeta = {
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   selectedFacets: Array<StoreCollectionFacet>
 }
 
@@ -2741,7 +2959,7 @@ export type StoreFacetValue = {
 
 export type StoreImage = {
   alternateName: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   url: Scalars['String']
 }
 
@@ -2759,7 +2977,7 @@ export type StoreListItem = {
   item: Scalars['String']
   name: Scalars['String']
   position: Scalars['Int']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreListItemFilterInput = {
@@ -2782,7 +3000,7 @@ export type StoreOffer = {
   priceCurrency: Scalars['String']
   priceValidUntil: Scalars['String']
   quantity: Scalars['Int']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   seller: StoreOrganization
   sellingPrice: Scalars['Float']
 }
@@ -2812,7 +3030,7 @@ export type StoreOrder = {
 
 export type StoreOrganization = {
   identifier: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreOrganizationFilterInput = {
@@ -2843,7 +3061,7 @@ export type StoreProduct = Node & {
   offers: StoreAggregateOffer
   parent: Maybe<Node>
   productID: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   review: Array<StoreReview>
   seo: StoreSeo
   sku: Scalars['String']
@@ -2882,11 +3100,6 @@ export type StoreProductConnectionMinArgs = {
 
 export type StoreProductConnectionSumArgs = {
   field: StoreProductFieldsEnum
-}
-
-export type StoreProductConnection_Remote = {
-  edges: Array<StoreProductEdge>
-  pageInfo: StorePageInfo
 }
 
 export type StoreProductEdge = {
@@ -3004,7 +3217,6 @@ export type StoreProductFieldsEnum =
   | 'isVariantOf___hasVariant___productID'
   | 'isVariantOf___hasVariant___remoteTypeName'
   | 'isVariantOf___hasVariant___review'
-  | 'isVariantOf___hasVariant___review___remoteTypeName'
   | 'isVariantOf___hasVariant___seo___canonical'
   | 'isVariantOf___hasVariant___seo___description'
   | 'isVariantOf___hasVariant___seo___remoteTypeName'
@@ -3086,11 +3298,8 @@ export type StoreProductFieldsEnum =
   | 'remoteTypeName'
   | 'review'
   | 'review___author___name'
-  | 'review___author___remoteTypeName'
-  | 'review___remoteTypeName'
   | 'review___reviewRating___bestRating'
   | 'review___reviewRating___ratingValue'
-  | 'review___reviewRating___remoteTypeName'
   | 'seo___canonical'
   | 'seo___description'
   | 'seo___remoteTypeName'
@@ -3129,16 +3338,43 @@ export type StoreProductGroup = {
   hasVariant: Array<StoreProduct>
   name: Scalars['String']
   productGroupID: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
 }
 
 export type StoreProductGroupConnection = {
+  distinct: Array<Scalars['String']>
   edges: Array<StoreProductEdge>
   field: Scalars['String']
   fieldValue: Maybe<Scalars['String']>
+  group: Array<StoreProductGroupConnection>
+  max: Maybe<Scalars['Float']>
+  min: Maybe<Scalars['Float']>
   nodes: Array<StoreProduct>
   pageInfo: PageInfo
+  sum: Maybe<Scalars['Float']>
   totalCount: Scalars['Int']
+}
+
+export type StoreProductGroupConnectionDistinctArgs = {
+  field: StoreProductFieldsEnum
+}
+
+export type StoreProductGroupConnectionGroupArgs = {
+  field: StoreProductFieldsEnum
+  limit: Maybe<Scalars['Int']>
+  skip: Maybe<Scalars['Int']>
+}
+
+export type StoreProductGroupConnectionMaxArgs = {
+  field: StoreProductFieldsEnum
+}
+
+export type StoreProductGroupConnectionMinArgs = {
+  field: StoreProductFieldsEnum
+}
+
+export type StoreProductGroupConnectionSumArgs = {
+  field: StoreProductFieldsEnum
 }
 
 export type StoreProductGroupFilterInput = {
@@ -3155,13 +3391,11 @@ export type StoreProductSortInput = {
 
 export type StoreReview = {
   author: StoreAuthor
-  remoteTypeName: Scalars['String']
   reviewRating: StoreReviewRating
 }
 
 export type StoreReviewFilterInput = {
   author: Maybe<StoreAuthorFilterInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
   reviewRating: Maybe<StoreReviewRatingFilterInput>
 }
 
@@ -3172,13 +3406,11 @@ export type StoreReviewFilterListInput = {
 export type StoreReviewRating = {
   bestRating: Scalars['Float']
   ratingValue: Scalars['Float']
-  remoteTypeName: Scalars['String']
 }
 
 export type StoreReviewRatingFilterInput = {
   bestRating: Maybe<FloatQueryOperatorInput>
   ratingValue: Maybe<FloatQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
 }
 
 export type StoreSearchResult = {
@@ -3189,7 +3421,7 @@ export type StoreSearchResult = {
 export type StoreSeo = {
   canonical: Scalars['String']
   description: Scalars['String']
-  remoteTypeName: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   title: Scalars['String']
   titleTemplate: Scalars['String']
 }
@@ -3235,14 +3467,15 @@ export type ProductSummary_ProductFragment = {
   name: string
   gtin: string
   id: string
+  brand: { name: string; brandName: string }
   isVariantOf: { productGroupID: string; name: string }
   image: Array<{ url: string; alternateName: string }>
-  brand: { name: string }
   offers: {
     lowPrice: number
     offers: Array<{
       price: number
       listPrice: number
+      quantity: number
       seller: { identifier: string }
     }>
   }
@@ -3475,14 +3708,15 @@ export type SearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
@@ -3525,14 +3759,15 @@ export type CollectionSearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
@@ -3682,14 +3917,15 @@ export type FullTextSearchQueryQuery = {
           name: string
           gtin: string
           id: string
+          brand: { name: string; brandName: string }
           isVariantOf: { productGroupID: string; name: string }
           image: Array<{ url: string; alternateName: string }>
-          brand: { name: string }
           offers: {
             lowPrice: number
             offers: Array<{
               price: number
               listPrice: number
+              quantity: number
               seller: { identifier: string }
             }>
           }
