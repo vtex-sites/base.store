@@ -41,8 +41,7 @@
     "react-dom": "^17.0.2",
     "react-helmet-async": "^1.1.2",
     "react-intersection-observer": "^8.32.1",
-    "swr": "^1.0.1",
-    "use-debounce": "^7.0.0"
+    "swr": "^1.0.1"
   },
   "devDependencies": {
     "@cypress/code-coverage": "^3.9.10",

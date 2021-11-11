@@ -175,18 +175,15 @@ describe('select_item event', () => {
 })
 
 describe('view_item_list event', () => {
-  it('view_item_list event', () => {
-    const DEBOUNCE_DELAY_EXTRA = 2000
-
+  it.only('view_item_list event', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
-    cy.getById('product-link')
-      .wait(DEBOUNCE_DELAY_EXTRA)
-      .then(() => {
+    cy.getById('product-link').then(() => {
+      cy.scrollTo('top', { duration: 500 }).then(() => {
         dataLayerHasEvent('view_item_list')
         eventDataHasCurrencyProperty()
       })
+    })
   })
 })

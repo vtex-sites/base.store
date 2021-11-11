@@ -1,6 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
@@ -8,18 +8,13 @@ import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import { useInView } from 'react-intersection-observer'
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
-  viewProduct?: (
-    product: ProductSummary_ProductFragment,
-    firstView: boolean
-  ) => void
 }
 
-function ProductSummary({ product, viewProduct, index }: Props) {
+function ProductSummary({ product, index }: Props) {
   const {
     id,
     sku,
@@ -30,9 +25,6 @@ function ProductSummary({ product, viewProduct, index }: Props) {
     image: [img],
     offers: { lowPrice: spotPrice, offers },
   } = product
-
-  const [emited, setEmited] = useState(false)
-  const { ref, inView } = useInView()
 
   const { listPrice, seller } = useMemo(
     () => offers.find((x) => x.price === spotPrice)!,
@@ -58,17 +50,6 @@ function ProductSummary({ product, viewProduct, index }: Props) {
     },
   })
 
-  const handleViewProduct = useCallback(() => {
-    if (inView) {
-      viewProduct?.(product, !emited)
-      setEmited(true)
-    }
-  }, [emited, inView, product, viewProduct])
-
-  useEffect(() => {
-    handleViewProduct()
-  }, [handleViewProduct, inView])
-
   return (
     <Link {...linkProps}>
       <GatsbyImage
@@ -78,7 +59,7 @@ function ProductSummary({ product, viewProduct, index }: Props) {
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{name}</div>
-      <div className="flex justify-between" ref={ref}>
+      <div className="flex justify-between">
         <span
           data-testid="list-price"
           data-value={listPrice}

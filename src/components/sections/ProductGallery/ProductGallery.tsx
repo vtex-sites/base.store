@@ -2,7 +2,6 @@ import { gql } from '@vtex/graphql-utils'
 import React, { Fragment } from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
-import PageBreak from 'src/sdk/search/PageBreak'
 import { useSearch } from 'src/sdk/search/useSearch'
 import type {
   ProductGallery_FacetsFragment,
@@ -16,11 +15,13 @@ interface Props {
   fallbackData?: SearchQueryQuery
   facets: ProductGallery_FacetsFragment[]
   products: ProductGallery_ProductsFragment
+  title: string
 }
 
 function ProductGallery({
   fallbackData,
   facets,
+  title,
   products: {
     pageInfo: { totalCount },
   },
@@ -60,10 +61,10 @@ function ProductGallery({
       {/* Render ALL products */}
       {pages.map((page) => (
         <Fragment key={`gallery-page-${page}`}>
-          <PageBreak page={page} />
           <GalleryPage
             fallbackData={page === searchParams.page ? fallbackData : undefined}
             page={page}
+            title={title}
           />
         </Fragment>
       ))}
@@ -82,8 +83,12 @@ function ProductGallery({
       )}
 
       {/* Prefetch Previous and Next pages */}
-      {prev !== false && <GalleryPage page={prev.cursor} display={false} />}
-      {next !== false && <GalleryPage page={next.cursor} display={false} />}
+      {prev !== false && (
+        <GalleryPage page={prev.cursor} display={false} title={title} />
+      )}
+      {next !== false && (
+        <GalleryPage page={next.cursor} display={false} title={title} />
+      )}
     </>
   )
 }
