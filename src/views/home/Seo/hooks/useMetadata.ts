@@ -6,9 +6,9 @@ import type { Props } from '..'
 
 type Options = Props & { title: string }
 
-type Return = ComponentPropsWithoutRef<typeof GatsbySeo>
-
-export const useMetadata = (props: Options): Return => {
+export const useMetadata = (
+  props: Options
+): ComponentPropsWithoutRef<typeof GatsbySeo> => {
   const { locale } = useSession()
   const {
     location: { pathname, host },
@@ -16,20 +16,33 @@ export const useMetadata = (props: Options): Return => {
     title,
   } = props
 
-  const { siteMetadata } = site!
+  if (!site || !site.siteMetadata) {
+    throw new Error(`useMetadata: missing site metadata.`)
+  }
+
+  const { titleTemplate, description } = site.siteMetadata
+
+  if (!titleTemplate) {
+    console.warn(`useMetadata: missing 'titleTemplate' from site metadata.`)
+  }
+
+  if (!description) {
+    console.warn(`useMetadata: missing 'description' from site metadata.`)
+  }
+
   const siteUrl = `https://${host}${pathname}`
 
   return {
     title,
-    description: siteMetadata!.description!,
-    titleTemplate: siteMetadata!.titleTemplate!,
+    description: site.siteMetadata.description ?? undefined,
+    titleTemplate: site.siteMetadata.titleTemplate ?? undefined,
     language: locale,
     canonical: siteUrl,
     openGraph: {
       type: 'website',
       url: siteUrl,
-      title: siteMetadata!.title!,
-      description: siteMetadata!.description!,
+      title: site.siteMetadata.title ?? undefined,
+      description: site.siteMetadata.description ?? undefined,
     },
   }
 }
