@@ -13,26 +13,26 @@ interface Props {
   fallbackData?: SearchQueryQuery
 }
 
-const useProducts = (page: number, fallbackData?: SearchQueryQuery) => {
-  const { searchParams } = useSearch()
+function GalleryPage({ page, fallbackData, display }: Props) {
+  const {
+    searchParams,
+    pageInfo: { size },
+  } = useSearch()
+
   const variables = useSearchVariables({
     ...searchParams,
     page,
   })
 
-  return useSearchQuery(variables, {
+  const products = useSearchQuery(variables, {
     fallbackData,
   })
-}
-
-function GalleryPage({ page, fallbackData, display }: Props) {
-  const products = useProducts(page, fallbackData)
 
   if (display === false || products == null) {
     return null
   }
 
-  return <ProductGrid products={products} />
+  return <ProductGrid products={products} page={page} pageSize={size} />
 }
 
 export default GalleryPage
