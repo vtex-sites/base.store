@@ -28,6 +28,36 @@ export interface Cart<Item> {
   messages?: CartMessages[]
 }
 
+export const ValidateCartMutation = gql`
+  mutation ValidateCartMutation($cart: IStoreCart!) {
+    validateCart(cart: $cart) {
+      order {
+        orderNumber
+        acceptedOffer {
+          seller {
+            identifier
+          }
+          quantity
+          price
+          listPrice
+          itemOffered {
+            sku
+            name
+            image {
+              url
+              alternateName
+            }
+          }
+        }
+      }
+      messages {
+        text
+        status
+      }
+    }
+  }
+`
+
 export const isGift = (item: CartItem) => item.price === 0
 
 export const getItemId = (
@@ -83,33 +113,3 @@ export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
     }
   )
 }
-
-export const ValidateCartMutation = gql`
-  mutation ValidateCartMutation($cart: IStoreCart!) {
-    validateCart(cart: $cart) {
-      order {
-        orderNumber
-        acceptedOffer {
-          seller {
-            identifier
-          }
-          quantity
-          price
-          listPrice
-          itemOffered {
-            sku
-            name
-            image {
-              url
-              alternateName
-            }
-          }
-        }
-      }
-      messages {
-        text
-        status
-      }
-    }
-  }
-`

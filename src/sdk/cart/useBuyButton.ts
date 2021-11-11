@@ -28,7 +28,9 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
         type: 'add_to_cart',
         data: {
           currency: code as CurrencyCode,
-          value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
+          // TODO: In the future, we can explore more robust ways of
+          // calculating the value (gift items, discounts, etc.).
+          value: item.price * item.quantity,
           items: [
             {
               currency: code as CurrencyCode,
