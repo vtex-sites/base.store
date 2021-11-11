@@ -26,7 +26,7 @@ export const useMetadata = ({
   } = useSearch()
 
   // According to Google, one should use either noindex or canonical, never both.
-  // Also, we generate relative canonicals in the HTML. These will be hydrated to absolute URLs via JS
+  // Also, we generate relative canonicals in the HTML. These will be hydrated to absolute URLs via JS.
   const canonicalTags = useMemo(() => {
     // We still don't support canonalizing other pagination rather then the first one
     if (typeof canonical === 'string' && page === 0) {
