@@ -12,14 +12,17 @@ export const useMetadata = (options: Options) => {
 
   return useMemo(() => {
     const { product, site, title } = options
-    const siteMetadata = site.siteMetadata!
+    const { siteMetadata } = site
     const {
       seo,
       offers: { lowPrice },
     } = product
 
-    const description = seo.description ?? siteMetadata.description!
-    const pathname = path[path.length - 1] === '/' ? path.slice(0, -1) : path // remove trailing slashes from pathname
+    const description = seo.description ?? siteMetadata?.description
+
+    // Remove trailing slashes from pathname.
+    const pathname = path[path.length - 1] === '/' ? path.slice(0, -1) : path
+
     const canonical =
       host !== undefined ? `https://${host}${pathname}` : pathname
 
@@ -35,7 +38,7 @@ export const useMetadata = (options: Options) => {
       canonical,
       openGraph: {
         type: 'og:product',
-        url: `${siteMetadata.siteUrl}${pathname}`,
+        url: `${siteMetadata?.siteUrl}${pathname}`,
         title,
         description,
         images,
