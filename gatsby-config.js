@@ -181,7 +181,9 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-csp',
       options: {
+        mergeStyleHashes: false,
         directives: {
+          'script-src': "'self' 'unsafe-eval'",
           'style-src': "'self' 'unsafe-inline'",
         },
       },
