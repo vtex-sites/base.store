@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import React, { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 
+import { useViewItemListEvent } from '../analytics/hooks/useViewItemListEvent'
 import { useSearch } from './useSearch'
 
 interface Props {
   page: number
+  title: string
+  products: ProductSummary_ProductFragment[]
 }
 
 /**
@@ -15,17 +19,25 @@ interface Props {
  *
  * Also, this component's name was taken from: https://en.wikipedia.org/wiki/Page_break
  */
-function PageBreak({ page }: Props) {
+function PageBreak({ page, products, title }: Props) {
+  const viewedRef = useRef(false)
   const { ref, inView } = useInView()
   const {
     pageInfo: { setCurrentPage },
   } = useSearch()
 
+  const { sendViewItemListEvent } = useViewItemListEvent({ products, title })
+
   useEffect(() => {
     if (inView) {
       setCurrentPage(page)
     }
-  }, [inView, page, setCurrentPage])
+
+    if (inView && !viewedRef.current) {
+      sendViewItemListEvent()
+      viewedRef.current = true
+    }
+  }, [inView, page, sendViewItemListEvent, setCurrentPage])
 
   return <div ref={ref} />
 }

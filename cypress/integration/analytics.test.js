@@ -14,11 +14,24 @@ const dataLayerHasEvent = (eventName) => {
   })
 }
 
-beforeEach(() => {
-  cy.clearIDB()
-})
+const eventDataHasCurrencyProperty = () => {
+  return cy.window().then((window) => {
+    const allEvents = window.dataLayer.map((evt) => evt.data || {})
+
+    allEvents.forEach((event) => {
+      if (event.value !== undefined) {
+        expect(event).to.have.property('value')
+        expect(event).to.have.property('currency')
+      }
+    })
+  })
+}
 
 describe('add_to_cart event', () => {
+  beforeEach(() => {
+    cy.clearIDB()
+  })
+
   const testAddToCartEvent = (skuId) => {
     cy.window().then((window) => {
       const { dataLayer } = window
@@ -119,19 +132,6 @@ describe('remove_from_cart event', () => {
 })
 
 describe('view_item event', () => {
-  const eventDataHasCurrencyProperty = () => {
-    return cy.window().then((window) => {
-      const allEvents = window.dataLayer.map((evt) => evt.data || {})
-
-      allEvents.forEach((event) => {
-        if (event.value !== undefined) {
-          expect(event).to.have.property('value')
-          expect(event).to.have.property('currency')
-        }
-      })
-    })
-  }
-
   it('add view_item event in data layer', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
@@ -171,5 +171,19 @@ describe('select_item event', () => {
           expect(skuId).to.equal(event.data.items[0].item_id)
         })
       })
+  })
+})
+
+describe('view_item_list event', () => {
+  it.only('view_item_list event', () => {
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
+
+    cy.getById('product-link').then(() => {
+      cy.scrollTo('top', { duration: 500 }).then(() => {
+        dataLayerHasEvent('view_item_list')
+        eventDataHasCurrencyProperty()
+      })
+    })
   })
 })

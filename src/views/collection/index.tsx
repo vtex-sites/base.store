@@ -60,6 +60,7 @@ function View(props: Props) {
             fallbackData={dynamicData}
             products={search.products}
             facets={search.facets}
+            title={title}
           />
         </SearchProvider>
       )}
