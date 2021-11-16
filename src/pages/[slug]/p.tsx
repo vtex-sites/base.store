@@ -17,6 +17,14 @@ export type Props = PageProps<
   ServerProductPageQueryQueryVariables
 >
 
+export const BrowserProductPageQuery = gql`
+  query BrowserProductPageQuery($locator: [IStoreSelectedFacet!]!) {
+    product(locator: $locator) {
+      ...ProductViewFragment_product
+    }
+  }
+`
+
 const Page: FC<Props> = (props) => {
   const {
     params: { slug },
@@ -32,18 +40,14 @@ const Page: FC<Props> = (props) => {
     return <div>loading...</div>
   }
 
+  if (serverData.site == null) {
+    throw new Error('Site metadata is null on the server side.')
+  }
+
   return (
-    <View {...props} site={serverData.site!} product={browserData.product} />
+    <View {...props} site={serverData.site} product={browserData.product} />
   )
 }
-
-export const BrowserProductPageQuery = gql`
-  query BrowserProductPageQuery($locator: [IStoreSelectedFacet!]!) {
-    product(locator: $locator) {
-      ...ProductViewFragment_product
-    }
-  }
-`
 
 export const serverQuery = graphql`
   query ServerProductPageQuery {
