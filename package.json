@@ -20,9 +20,9 @@
     "node": ">=14"
   },
   "dependencies": {
-    "@faststore/api": "^1.2.32",
-    "@faststore/sdk": "^1.2.32",
-    "@faststore/ui": "^1.2.32",
+    "@faststore/api": "https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/api",
+    "@faststore/sdk": "https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/sdk",
+    "@faststore/ui": "https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/ui",
     "@vtex/gatsby-plugin-nginx": "^1.2.32",
     "@vtex/gatsby-plugin-thumbor": "^1.2.32",
     "@vtex/gatsby-source-store": "^1.2.32",

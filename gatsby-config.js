@@ -183,7 +183,6 @@ module.exports = {
       options: {
         mergeStyleHashes: false,
         directives: {
-          'script-src': "'self' 'unsafe-eval'",
           'style-src': "'self' 'unsafe-inline'",
         },
       },
