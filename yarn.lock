@@ -1588,18 +1588,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.2.32":
-  version "1.2.32"
-  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.2.32.tgz#894a5f649b4ec667df7917579371f79d01d60797"
-  integrity sha512-e0OsFhc1GxxT49Gu34e5QozSmKQIM8zFarQ87+psOc6LS2t5/+lZLUfUUsm50gQeYnCi4wHR0oifd0HjLgfBSA==
-  dependencies:
-    "@graphql-tools/schema" "^8.2.0"
-    "@rollup/plugin-graphql" "^1.0.0"
-    dataloader "^2.0.0"
-    fast-deep-equal "^3.1.3"
-    isomorphic-unfetch "^3.1.0"
-    slugify "^1.6.0"
-
 "@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/api":
   version "1.2.33"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/api#ca98af07181156d5a1e008ceea59284be9e47ead"
@@ -1611,12 +1599,17 @@
     isomorphic-unfetch "^3.1.0"
     slugify "^1.6.0"
 
-"@faststore/sdk@^1.2.32":
-  version "1.2.32"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.2.32.tgz#d9bc6ed61045310c6aa778d50bbb8827712453f5"
-  integrity sha512-TdAyuT8+bPqV6ofy+O9kcuKvAv3QKNasoLHSnBS/NUJQwqezGiWnTnQBMjqwo/xZT27Dhb4TzBOZbCSNjnmVUA==
+"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/f6c41a36/@faststore/api":
+  version "1.2.33"
+  uid ca98af07181156d5a1e008ceea59284be9e47ead
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/f6c41a36/@faststore/api#ca98af07181156d5a1e008ceea59284be9e47ead"
   dependencies:
-    idb-keyval "^5.1.3"
+    "@graphql-tools/schema" "^8.2.0"
+    "@rollup/plugin-graphql" "^1.0.0"
+    dataloader "^2.0.0"
+    fast-deep-equal "^3.1.3"
+    isomorphic-unfetch "^3.1.0"
+    slugify "^1.6.0"
 
 "@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/sdk":
   version "1.2.33"
@@ -1624,18 +1617,23 @@
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.2.32":
-  version "1.2.32"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.2.32.tgz#500237b8187f4e14d0d4ff569a883c94add98b04"
-  integrity sha512-uyF7n46cFM33IbGhz9YKNV7VEK8rJJWYo3xtSzG2FdjX3dqZdwpQbzstyI+kn3ibgvvSUfhyL99SAd3DIdqkXQ==
+"@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/f6c41a36/@faststore/sdk":
+  version "1.2.33"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/f6c41a36/@faststore/sdk#262ac2d65052d5b41bb36064bc9f6d2b5e5ae9b8"
+  dependencies:
+    idb-keyval "^5.1.3"
+
+"@faststore/ui@https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/ui":
+  version "1.2.33"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/ui#8b0c35d8a9b0549d77d72ec8e27931eaf6fa2988"
   dependencies:
     "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
     tabbable "^5.2.1"
 
-"@faststore/ui@https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/ui":
+"@faststore/ui@https://pkg.csb.dev/vtex/faststore/commit/f6c41a36/@faststore/ui":
   version "1.2.33"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/7d3918c5/@faststore/ui#8b0c35d8a9b0549d77d72ec8e27931eaf6fa2988"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/f6c41a36/@faststore/ui#c67a6d44420a7b395ca3ea0d2c62fe74b2c65128"
   dependencies:
     "@reach/popover" "^0.16.0"
     react-swipeable "^6.1.2"
