@@ -25,7 +25,7 @@ function ProductGallery({ title }: Props) {
   return (
     <>
       {/* Controls */}
-      {<FacetedFilter facets={data.search.facets} />}
+      <FacetedFilter facets={data.search.facets} />
       <div className="flex items-center justify-between">
         <div>Total Products: {totalCount}</div>
         <Sort />
