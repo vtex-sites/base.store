@@ -1,32 +1,69 @@
-import { google } from 'googleapis'
+import type { AnalyticsEvent } from '@faststore/sdk'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-// https://developers.google.com/tag-platform/tag-manager/api/v2/authorization
-const TAG_MANAGER_SCOPES = [
-  'https://www.googleapis.com/auth/tagmanager.readonly',
-]
+// https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag
+const measurementId = ''
+const secretApi = ''
+const ANALYTICS_URL = `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${secretApi}`
 
-// https://github.com/googleapis/google-api-nodejs-client#using-the-keyfile-property
-const auth = new google.auth.GoogleAuth({
-  keyFile: '/Users/igorbrasileiroduarte/dev/gtm-key.json',
-  scopes: TAG_MANAGER_SCOPES,
+interface AnalyticsRequestData {
+  client_id: string
+  event: AnalyticsEvent
+}
+const parseEventToGA4 = ({ client_id, event }: AnalyticsRequestData) => ({
+  client_id,
+  events: [
+    {
+      name: event.type,
+      params: {
+        ...event.data,
+      },
+    },
+  ],
 })
 
-const tagmanager = google.tagmanager({
-  version: 'v2',
-  auth,
-})
+const validateRequest = (
+  req: GatsbyFunctionRequest,
+  res: GatsbyFunctionResponse
+) => {
+  if (req.method !== 'POST') {
+    res.statusCode = 405
+    res.send('')
+
+    return false
+  }
+
+  if (!req.body.client_id) {
+    res.statusCode = 400
+    res.send('')
+
+    return false
+  }
+
+  return true
+}
 
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) => {
+  if (!validateRequest(req, res)) {
+    return
+  }
+
   const { body } = req
 
-  const accs = await tagmanager.accounts.list()
+  fetch(ANALYTICS_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(parseEventToGA4(body)),
+  })
 
   res.setHeader('content-type', 'application/json')
-  res.send(JSON.stringify({ success: true, body, accs }))
+  res.statusCode = 200
+  res.send(JSON.stringify({ success: true, body }))
 }
 
 export default handler
