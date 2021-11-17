@@ -45,6 +45,7 @@ const View: FC<Props> = (props) => {
             fallbackData={dynamicData}
             products={search.products}
             facets={search.facets}
+            title="Search Results"
           />
         </SearchProvider>
       )}

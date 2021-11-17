@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import { useSearch } from 'src/sdk/search/useSearch'
 import {
@@ -6,14 +6,16 @@ import {
   useSearchVariables,
 } from 'src/sdk/search/useSearchQuery'
 import type { SearchQueryQuery } from '@generated/graphql'
+import PageBreak from 'src/sdk/search/PageBreak'
 
 interface Props {
   page: number
   display?: boolean
   fallbackData?: SearchQueryQuery
+  title: string
 }
 
-function GalleryPage({ page, fallbackData, display }: Props) {
+function GalleryPage({ page, fallbackData, display, title }: Props) {
   const {
     searchParams,
     pageInfo: { size },
@@ -28,11 +30,20 @@ function GalleryPage({ page, fallbackData, display }: Props) {
     fallbackData,
   })
 
+  const productsList = useMemo(() => {
+    return products?.edges.map(({ node: product }) => product) ?? []
+  }, [products])
+
   if (display === false || products == null) {
     return null
   }
 
-  return <ProductGrid products={products} page={page} pageSize={size} />
+  return (
+    <>
+      <PageBreak page={page} products={productsList} title={title} />
+      <ProductGrid products={products} page={page} pageSize={size} />
+    </>
+  )
 }
 
 export default GalleryPage
