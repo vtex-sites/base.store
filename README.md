@@ -321,3 +321,55 @@ Looking for more guidance? Full documentation for Faststore lives [on this GitHu
 ## ⚡ Performance & QA
 
 This project has strict performance budgets. Right out of the box, this project performs around 95 on Google's Page Speed Insights website, which usually is way more strict than your laptop's chrome lighthouse. Every time you commit to the repository, our QA bots will run and evaluate your code quality. We recommend you NEVER put in production a code that breaks any of the bots. If a bot breaks and still you need to put the code into production, change the bot config (`lighthouserc.js`, `cypress.json`) to make it pass and merge. This way you ensure your website will keep performing well during the years to come.
+
+
+## Adding analytics systems
+
+To boost the performance of the store pages, this store transfers all computation related to analytics to the backend. This backend work as a hub that receives events from the store page and forwards the event to the analytics engine (e.g: google analytics, facebook analytics, google tag manager).
+
+The analytics backend code is inside the `src/api/analytics.ts`.
+
+### Adding Google Analytics 4
+
+Follow those steps to add the google analytics 4 on the store:
+1. [Google article to setup a new analytics](https://support.google.com/analytics/answer/9304153#zippy=%2Cweb)
+2. After finish the setup, get the `measurement id` and `api secret`. Add an environment variable called `GA_MEASUREMENT_ID` with measurement id value and other variable `GA_API_SECRET` with your the api secret.
+
+Adding environment variables at [netlify](https://docs.netlify.com/configure-builds/environment-variables/), [gatsby cloud](https://support.gatsbyjs.com/hc/en-us/articles/360053096753-Managing-Environment-Variables)
+
+### Adding custom analytics engine
+
+Add your engine event handler inside the analytics handler at `src/api/analytics.ts` file.
+
+Example adding a new engine.
+```ts
+// src/server/MyCustomEngine.ts
+interface MyEngineData {
+// ...
+}
+
+const myCustomEngineEventHandler = (eventData: MyEngineData) => {
+  fetch('/api/engine/analytics', {
+    method: 'POST',
+    body: JSON.stringify(eventData),
+  })
+}
+
+export default myCustomEngineEventHandler
+```
+
+At `src/api/analytics.ts` file add your event handler
+```ts
+import myCustomEngineEventHandler from '../server/MyCustomEngine'
+
+...
+
+const handler = (req, res) => {
+  ...
+  if (!validRequest(req)) {}
+
+  myCustomEngineEventHandler(req.body)
+
+  ...
+}
+```
