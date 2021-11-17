@@ -178,5 +178,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-postcss',
     },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GATSBY_GA_MEASUREMENT_ID,
+        includeInDevelopment: true,
+      },
+    },
   ],
 }
