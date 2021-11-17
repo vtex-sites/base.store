@@ -6,7 +6,7 @@ import {
   useSearchVariables,
 } from 'src/sdk/search/useSearchQuery'
 import type { SearchQueryQuery } from '@generated/graphql'
-import PageBreak from 'src/sdk/search/PageBreak'
+import Sentinel from 'src/sdk/search/Sentinel'
 
 interface Props {
   page: number
@@ -40,8 +40,8 @@ function GalleryPage({ page, fallbackData, display, title }: Props) {
 
   return (
     <>
-      <PageBreak page={page} products={productsList} title={title} />
       <ProductGrid products={products} page={page} pageSize={size} />
+      <Sentinel page={page} products={productsList} title={title} />
     </>
   )
 }

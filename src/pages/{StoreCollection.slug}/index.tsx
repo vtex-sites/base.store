@@ -16,30 +16,23 @@ export type Props = PageProps<
 
 const useSearchParams = (props: Props): SearchParamsState => {
   const {
-    location: { href, pathname },
+    location: { pathname, href },
     data: { storeCollection },
-    params: { '*': wildcard },
   } = props
 
+  const selectedFacets = storeCollection?.meta.selectedFacets
+
   return useMemo(() => {
-    // Runs when filters are applied
-    if (wildcard?.length > 0) {
-      return parseSearchParamsState(new URL(href))
+    const url = new URL(href ?? pathname, 'https://localhost')
+
+    for (const { key, value } of selectedFacets ?? []) {
+      url.searchParams.append('facet', `${key}=${value}`)
     }
 
-    // Runs on SSG
-    const { selectedFacets } = storeCollection!.meta
-    const [base] = pathname.split(selectedFacets[0].value)
+    const state = parseSearchParamsState(url)
 
-    return {
-      page: 0,
-      base,
-      selectedFacets,
-      term: null,
-      personalized: false,
-      sort: 'score_desc',
-    }
-  }, [href, pathname, storeCollection, wildcard?.length])
+    return state
+  }, [href, pathname, selectedFacets])
 }
 
 function Page(props: Props) {

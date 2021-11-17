@@ -3,7 +3,7 @@ import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { SearchProvider } from 'src/sdk/search/Provider'
 import type { SearchParamsState } from '@faststore/sdk'
-import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
+import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}'
 
 import { useCollection } from './hooks/useCollection'
 import Seo from './Seo'

@@ -19,7 +19,7 @@ interface Props {
  *
  * Also, this component's name was taken from: https://en.wikipedia.org/wiki/Page_break
  */
-function PageBreak({ page, products, title }: Props) {
+function Sentinel({ page, products, title }: Props) {
   const viewedRef = useRef(false)
   const { ref, inView } = useInView()
   const {
@@ -42,4 +42,4 @@ function PageBreak({ page, products, title }: Props) {
   return <div ref={ref} />
 }
 
-export default PageBreak
+export default Sentinel
