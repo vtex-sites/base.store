@@ -1,5 +1,5 @@
 import { gql } from '@vtex/graphql-utils'
-import React, { Fragment } from 'react'
+import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
 import { useSearch } from 'src/sdk/search/useSearch'
@@ -60,13 +60,12 @@ function ProductGallery({
 
       {/* Render ALL products */}
       {pages.map((page) => (
-        <Fragment key={`gallery-page-${page}`}>
-          <GalleryPage
-            fallbackData={page === searchParams.page ? fallbackData : undefined}
-            page={page}
-            title={title}
-          />
-        </Fragment>
+        <GalleryPage
+          key={`gallery-page-${page}`}
+          fallbackData={page === searchParams.page ? fallbackData : undefined}
+          page={page}
+          title={title}
+        />
       ))}
 
       {/* Add link to next page. This helps on SEO */}
