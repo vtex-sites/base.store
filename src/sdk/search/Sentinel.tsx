@@ -1,9 +1,10 @@
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { formatSearchState, useSearch } from '@faststore/sdk'
 import React, { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
+import { setSearchPage } from '.'
 import { useViewItemListEvent } from '../analytics/hooks/useViewItemListEvent'
-import { useSearch } from './useSearch'
 
 interface Props {
   page: number
@@ -23,22 +24,20 @@ interface Props {
 function Sentinel({ page, products, title }: Props) {
   const viewedRef = useRef(false)
   const { ref, inView } = useInView()
-  const {
-    pageInfo: { setCurrentPage },
-  } = useSearch()
+  const { state: searchState } = useSearch()
 
   const { sendViewItemListEvent } = useViewItemListEvent({ products, title })
 
   useEffect(() => {
     if (inView) {
-      setCurrentPage(page)
+      setSearchPage(formatSearchState({ ...searchState, page }))
     }
 
     if (inView && !viewedRef.current) {
       sendViewItemListEvent()
       viewedRef.current = true
     }
-  }, [inView, page, sendViewItemListEvent, setCurrentPage])
+  }, [inView, page, searchState, sendViewItemListEvent])
 
   return <div ref={ref} />
 }
