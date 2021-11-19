@@ -2,31 +2,19 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import type { SearchInputProps as UISearchInputProps } from '@faststore/ui'
 import { SearchInput as UISearchInput } from '@faststore/ui'
-import type { SearchEvent } from '@faststore/sdk'
-import {
-  initSearchParamsState,
-  formatSearchParamsState,
-  sendAnalyticsEvent,
-} from '@faststore/sdk'
-
+import { initSearchParamsState } from '@faststore/sdk'
 import './SearchInput.module.css'
+import { getLink } from 'src/sdk/search/Provider'
 
 declare type SearchInputProps = Omit<UISearchInputProps, 'onSubmit'>
 
 const search = async (term: string) => {
-  sendAnalyticsEvent<SearchEvent>({
-    type: 'search',
-    data: { search_term: term },
-  })
-
   const searchParamsState = initSearchParamsState({
     term,
     base: '/s',
   })
 
-  const formattedUrl = formatSearchParamsState(searchParamsState)
-
-  navigate(formattedUrl.pathname + formattedUrl.search)
+  navigate(getLink(searchParamsState))
 }
 
 function SearchInput(props: SearchInputProps) {

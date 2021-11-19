@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { SearchProvider } from 'src/sdk/search/Provider'
-import type { SearchParamsState } from '@faststore/sdk'
+import type { SearchEvent, SearchParamsState } from '@faststore/sdk'
+import { sendAnalyticsEvent } from '@faststore/sdk'
 import type { FC } from 'react'
 import type { Props as PageProps } from 'src/pages/s/[...]'
 
@@ -20,6 +21,17 @@ const View: FC<Props> = (props) => {
   const data = { ...dynamicData, ...serverData }
   const { site, search } = data
   const title = site?.siteMetadata?.title ?? ''
+
+  useEffect(() => {
+    if (searchParams.term) {
+      const searchTerm: string = searchParams.term
+
+      sendAnalyticsEvent<SearchEvent>({
+        type: 'search',
+        data: { search_term: searchTerm },
+      })
+    }
+  }, [searchParams])
 
   return (
     <>
