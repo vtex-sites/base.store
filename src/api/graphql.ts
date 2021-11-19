@@ -95,8 +95,14 @@ const handler = async (
       res.setHeader('cache-control', 'no-cache, no-store')
     }
 
-    if (response.errors) {
+    const isGraphQLError = (error: GraphQLError) => {
+      return error.name === 'GraphQLError'
+    }
+
+    if (response.errors && isGraphQLError(response.errors[0])) {
       res.status(500)
+    } else {
+      response.errors && res.status(400)
     }
 
     res.setHeader('content-type', 'application/json')
