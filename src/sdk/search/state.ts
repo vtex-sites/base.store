@@ -1,12 +1,12 @@
 import { navigate } from 'gatsby'
 
-export const applySearch = (url: URL) => {
+export const applySearchState = (url: URL) => {
   const link = `${url.pathname}${url.search}`
 
   navigate(link)
 }
 
-export const setSearchPage = (url: URL) => {
+export const replaceSearchState = (url: URL) => {
   const link = `${url.pathname}${url.search}`
 
   window.history.replaceState(undefined, '', link)

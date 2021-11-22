@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import { setSearchPage } from '.'
+import { replaceSearchState } from './state'
 import { useViewItemListEvent } from '../analytics/hooks/useViewItemListEvent'
 
 interface Props {
@@ -30,7 +30,7 @@ function Sentinel({ page, products, title }: Props) {
 
   useEffect(() => {
     if (inView) {
-      setSearchPage(formatSearchState({ ...searchState, page }))
+      replaceSearchState(formatSearchState({ ...searchState, page }))
     }
 
     if (inView && !viewedRef.current) {

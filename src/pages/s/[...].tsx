@@ -2,7 +2,7 @@ import { parseSearchState, SearchProvider } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
 import { ITEMS_PER_PAGE } from 'src/constants'
-import { applySearch } from 'src/sdk/search'
+import { applySearchState } from 'src/sdk/search/state'
 import View from 'src/views/search'
 import type { PageProps } from 'gatsby'
 import type {
@@ -27,7 +27,7 @@ function Page(props: Props) {
 
   return (
     <SearchProvider
-      onChange={applySearch}
+      onChange={applySearchState}
       itemsPerPage={ITEMS_PER_PAGE}
       {...searchParams}
     >
