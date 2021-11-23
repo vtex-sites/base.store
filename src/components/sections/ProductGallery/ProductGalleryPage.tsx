@@ -1,38 +1,41 @@
+import { useSearch } from '@faststore/sdk'
 import React, { useMemo } from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
-import { useSearch } from 'src/sdk/search/useSearch'
-import {
-  useSearchQuery,
-  useSearchVariables,
-} from 'src/sdk/search/useSearchQuery'
-import type { SearchQueryQuery } from '@generated/graphql'
+import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import Sentinel from 'src/sdk/search/Sentinel'
+import type { ProductsQueryQuery } from '@generated/graphql'
 
 interface Props {
   page: number
   display?: boolean
-  fallbackData?: SearchQueryQuery
+  fallbackData?: ProductsQueryQuery
   title: string
 }
 
-function GalleryPage({ page, fallbackData, display, title }: Props) {
+function GalleryPage({ page, display, title, fallbackData }: Props) {
   const {
-    searchParams,
-    pageInfo: { size },
+    itemsPerPage,
+    state: { sort, term, selectedFacets },
   } = useSearch()
 
-  const variables = useSearchVariables({
-    ...searchParams,
-    page,
-  })
+  const productList = useProductsQuery(
+    {
+      first: itemsPerPage,
+      after: (itemsPerPage * page).toString(),
+      sort,
+      term: term ?? '',
+      selectedFacets,
+    },
+    {
+      fallbackData,
+      revalidateOnMount: fallbackData == null,
+    }
+  )
 
-  const products = useSearchQuery(variables, {
-    fallbackData,
-  })
-
-  const productsList = useMemo(() => {
-    return products?.edges.map(({ node: product }) => product) ?? []
-  }, [products])
+  const products = useMemo(
+    () => productList?.edges.map((edge) => edge.node),
+    [productList]
+  )
 
   if (display === false || products == null) {
     return null
@@ -40,8 +43,8 @@ function GalleryPage({ page, fallbackData, display, title }: Props) {
 
   return (
     <>
-      <Sentinel page={page} products={productsList} title={title} />
-      <ProductGrid products={products} page={page} pageSize={size} />
+      <Sentinel products={products} page={page} title={title} />
+      <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
     </>
   )
 }

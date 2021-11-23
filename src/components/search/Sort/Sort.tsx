@@ -1,5 +1,5 @@
+import { useSearch } from '@faststore/sdk'
 import React from 'react'
-import { useSearch } from 'src/sdk/search/useSearch'
 
 const OptionsMap = {
   price_desc: 'Price, descending',
@@ -17,7 +17,7 @@ const keys = Object.keys(OptionsMap) as Array<keyof typeof OptionsMap>
 function Sort() {
   const {
     setSort,
-    searchParams: { sort },
+    state: { sort },
   } = useSearch()
 
   return (

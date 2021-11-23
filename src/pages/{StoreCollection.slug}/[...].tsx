@@ -1,8 +1,10 @@
-import { parseSearchParamsState } from '@faststore/sdk'
+import { parseSearchState, SearchProvider } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
+import { ITEMS_PER_PAGE } from 'src/constants'
+import { applySearchState } from 'src/sdk/search/state'
 import View from 'src/views/collection'
-import type { SearchParamsState } from '@faststore/sdk'
+import type { SearchState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
   CollectionPageQueryQuery,
@@ -14,7 +16,7 @@ export type Props = PageProps<
   CollectionPageQueryQueryVariables & { slug: string }
 >
 
-const useSearchParams = (props: Props): SearchParamsState => {
+const useSearchParams = (props: Props): SearchState => {
   const {
     location: { href, pathname },
     data: { storeCollection },
@@ -24,7 +26,7 @@ const useSearchParams = (props: Props): SearchParamsState => {
   return useMemo(() => {
     // Runs when filters are applied
     if (wildcard?.length > 0) {
-      return parseSearchParamsState(new URL(href))
+      return parseSearchState(new URL(href))
     }
 
     // Runs on SSG
@@ -36,7 +38,6 @@ const useSearchParams = (props: Props): SearchParamsState => {
       base,
       selectedFacets,
       term: null,
-      personalized: false,
       sort: 'score_desc',
     }
   }, [href, pathname, storeCollection, wildcard?.length])
@@ -45,7 +46,15 @@ const useSearchParams = (props: Props): SearchParamsState => {
 function Page(props: Props) {
   const searchParams = useSearchParams(props)
 
-  return <View {...props} searchParams={searchParams} />
+  return (
+    <SearchProvider
+      onChange={applySearchState}
+      itemsPerPage={ITEMS_PER_PAGE}
+      {...searchParams}
+    >
+      <View {...props} />
+    </SearchProvider>
+  )
 }
 
 /**

@@ -1,6 +1,8 @@
-import { parseSearchParamsState } from '@faststore/sdk'
+import { parseSearchState, SearchProvider } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
+import { ITEMS_PER_PAGE } from 'src/constants'
+import { applySearchState } from 'src/sdk/search/state'
 import View from 'src/views/search'
 import type { PageProps } from 'gatsby'
 import type {
@@ -14,7 +16,7 @@ export type Props = PageProps<
 >
 
 const useSearchParams = ({ href }: Location) =>
-  useMemo(() => href && parseSearchParamsState(new URL(href)), [href])
+  useMemo(() => href && parseSearchState(new URL(href)), [href])
 
 function Page(props: Props) {
   const searchParams = useSearchParams(props.location)
@@ -23,7 +25,15 @@ function Page(props: Props) {
     return null
   }
 
-  return <View {...props} searchParams={searchParams} />
+  return (
+    <SearchProvider
+      onChange={applySearchState}
+      itemsPerPage={ITEMS_PER_PAGE}
+      {...searchParams}
+    >
+      <View {...props} />
+    </SearchProvider>
+  )
 }
 
 export const query = graphql`

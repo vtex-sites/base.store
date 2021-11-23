@@ -1,8 +1,8 @@
+import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useState } from 'react'
-import { useSearch } from 'src/sdk/search/useSearch'
-import Checkbox from 'src/components/ui/Checkbox'
 import Button from 'src/components/ui/Button'
+import Checkbox from 'src/components/ui/Checkbox'
 import type { FacetedFilter_FacetsFragment } from '@generated/graphql'
 
 interface Props {
@@ -36,7 +36,7 @@ function FacetedFilter({ facets }: Props) {
                       <Checkbox
                         id={id}
                         checked={item.selected}
-                        onChange={() => toggleFacet({ key, ...item })}
+                        onChange={() => toggleFacet({ key, value: item.value })}
                         data-testid="facet-filter-checkbox"
                         data-value={item.value}
                         data-quantity={item.quantity}
