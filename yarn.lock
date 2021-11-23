@@ -1602,14 +1602,7 @@
 
 "@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/79b5a378/@faststore/sdk":
   version "1.2.37"
-  uid "6eb81669ede315a0e343a4c650787766358ffc58"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/79b5a378/@faststore/sdk#6eb81669ede315a0e343a4c650787766358ffc58"
-  dependencies:
-    idb-keyval "^5.1.3"
-
-"@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/b965de2e/@faststore/sdk":
-  version "1.2.37"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/b965de2e/@faststore/sdk#6eb81669ede315a0e343a4c650787766358ffc58"
   dependencies:
     idb-keyval "^5.1.3"
 

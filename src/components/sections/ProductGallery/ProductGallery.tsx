@@ -38,7 +38,7 @@ function ProductGallery({ title }: Props) {
           <a
             className="p-8 block center"
             onClick={(e) => {
-              ;(e.target as any).blur?.()
+              e.currentTarget.blur()
               e.preventDefault()
               addPrevPage()
             }}
@@ -68,7 +68,7 @@ function ProductGallery({ title }: Props) {
             className="p-8 block center"
             data-testid="show-more"
             onClick={(e) => {
-              ;(e.target as any).blur?.()
+              e.currentTarget.blur()
               e.preventDefault()
               addNextPage()
             }}
