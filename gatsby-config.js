@@ -16,6 +16,7 @@ const {
 } = process.env
 
 const isProduction = ENV === 'production'
+
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
 const unique = (x) => Array.from(new Set(x))
