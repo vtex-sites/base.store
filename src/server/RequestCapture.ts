@@ -32,6 +32,9 @@ const sendRCEvent = async (
 
   fetch('https://rc.vtex.com.br/api/events', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(parseEventToRC(data)),
   })
 }
