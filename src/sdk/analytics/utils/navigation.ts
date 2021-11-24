@@ -31,7 +31,7 @@ function setVtexCookie(
   cookieValue: string,
   expirationTime: number
 ) {
-  const formattedValue = encodeURIComponent(cookieValue)
+  const formattedValue = encodeURI(cookieValue)
   const host = window.location.hostname
   const expirationDate = new Date()
 
@@ -50,11 +50,11 @@ function setVtexCookie(
  */
 function getVtexCookie(cookieId: string): string | undefined {
   const regex = new RegExp(`(^| )${cookieId}=([^;]+)`)
-  const [match] = regex.exec(document.cookie) ?? []
+  const match = document.cookie.match(regex)
 
   if (!match) return
 
-  return decodeURIComponent(match)
+  return decodeURI(match[2])
 }
 
 export interface NavigationData {
