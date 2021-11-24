@@ -1,4 +1,5 @@
-const ONE_YEAR_IN_MS = 31536000000
+const THIRTY_MINUTES_IN_MS = 1_800_000
+const ONE_YEAR_IN_MS = 31_536_000_000
 const SESSION_ID = 'VtexRCSessionIdv7'
 const MAC_ID = 'VtexRCMacIdv7'
 
@@ -58,7 +59,7 @@ function getVtexCookie(cookieId: string): string | undefined {
 }
 
 export interface NavigationData {
-  sessionID?: string
+  sessionID: string
   userSessionInfo: {
     macID: string
     isNewUser: boolean
@@ -71,13 +72,21 @@ export interface NavigationData {
   accountName?: string
 }
 
+function renewSessionId() {
+  const newSessionId = uuidv4()
+
+  setVtexCookie(SESSION_ID, newSessionId, THIRTY_MINUTES_IN_MS)
+
+  return newSessionId
+}
+
 /**
  * Get session id value that is stored in cookie.
  *
  * @returns {string} Session id value.
  */
-function getSessionID(): string | undefined {
-  return getVtexCookie(SESSION_ID)
+function getSessionID(): string {
+  return getVtexCookie(SESSION_ID) ?? renewSessionId()
 }
 
 /**
