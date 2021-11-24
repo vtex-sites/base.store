@@ -28,7 +28,7 @@ export const useMetadata = ({
   // According to Google, one should use either noindex or canonical, never both.
   // Also, we generate relative canonicals in the HTML. These will be hydrated to absolute URLs via JS.
   const canonicalTags = useMemo(() => {
-    // We still don't support canonalizing other pagination rather then the first one
+    // We only support canonicalizing the first page for now.
     if (typeof canonical === 'string' && page === 0) {
       return {
         canonical:

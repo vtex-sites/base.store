@@ -31,7 +31,7 @@ function ProductSummary({ product, index }: Props) {
 
     if (!lowestPriceOffer) {
       console.error(
-        'Could not find product offering with the lowest price. Showing the first provided offering.'
+        'Could not find the lowest price product offer. Showing the first offer provided.'
       )
 
       return offers[0]

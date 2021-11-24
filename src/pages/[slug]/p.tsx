@@ -40,7 +40,7 @@ const Page: FC<Props> = (props) => {
     return <div>loading...</div>
   }
 
-  if (serverData.site == null) {
+  if (serverData.site === null) {
     throw new Error('Site metadata is null on the server side.')
   }
 

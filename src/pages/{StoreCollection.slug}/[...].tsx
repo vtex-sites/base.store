@@ -29,7 +29,7 @@ const useSearchParams = (props: Props): SearchState => {
       return parseSearchState(new URL(href))
     }
 
-    if (storeCollection == null) {
+    if (storeCollection === null) {
       throw new Error('storeCollection is null.')
     }
 

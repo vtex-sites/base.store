@@ -20,7 +20,11 @@ export const useMetadata = (
     throw new Error(`useMetadata: missing site metadata.`)
   }
 
-  const { titleTemplate, description } = site.siteMetadata
+  const {
+    titleTemplate,
+    description,
+    title: openGraphTitle,
+  } = site.siteMetadata
 
   if (!titleTemplate) {
     console.warn(`useMetadata: missing 'titleTemplate' from site metadata.`)
@@ -30,19 +34,23 @@ export const useMetadata = (
     console.warn(`useMetadata: missing 'description' from site metadata.`)
   }
 
+  if (!openGraphTitle) {
+    console.warn(`useMetadata: missing 'title' from site metadata.`)
+  }
+
   const siteUrl = `https://${host}${pathname}`
 
   return {
     title,
-    description: site.siteMetadata.description ?? undefined,
-    titleTemplate: site.siteMetadata.titleTemplate ?? undefined,
+    description: description ?? undefined,
+    titleTemplate: titleTemplate ?? undefined,
     language: locale,
     canonical: siteUrl,
     openGraph: {
       type: 'website',
       url: siteUrl,
-      title: site.siteMetadata.title ?? undefined,
-      description: site.siteMetadata.description ?? undefined,
+      title: openGraphTitle ?? undefined,
+      description: description ?? undefined,
     },
   }
 }

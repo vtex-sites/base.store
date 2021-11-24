@@ -21,7 +21,7 @@ function Page(props: Props) {
     return <div>loading...</div>
   }
 
-  if (site == null) {
+  if (site === null) {
     throw new Error('Site metadata is null.')
   }
 

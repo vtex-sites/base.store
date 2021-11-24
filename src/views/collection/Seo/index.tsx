@@ -37,8 +37,8 @@ function Seo({
 
   const metadata = useMetadata({
     title,
-    titleTemplate: site.siteMetadata.titleTemplate ?? undefined,
-    description: collectionSeo.description ?? site.siteMetadata.description,
+    titleTemplate: titleTemplate ?? undefined,
+    description: collectionSeo.description ?? description,
     canonical: `/${slug}/`,
   })
 
