@@ -20,7 +20,7 @@ export const useMetadata = (options: Options) => {
 
     const description = seo.description ?? siteMetadata?.description
 
-    // Remove trailing slashes from pathname.
+    // Remove trailing slashes from pathname
     const pathname = path[path.length - 1] === '/' ? path.slice(0, -1) : path
 
     const canonical =
