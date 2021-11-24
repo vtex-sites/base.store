@@ -51,7 +51,7 @@ const sendEvent = async (
     body: JSON.stringify(parseEventToGA4(data)),
   })
 
-  await next?.()
+  await next()
 }
 
 export default sendEvent

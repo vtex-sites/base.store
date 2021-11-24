@@ -17,7 +17,7 @@ const validateRequest = async (
     return
   }
 
-  await next?.()
+  await next()
 
   res.setHeader('content-type', 'application/json')
   res.statusCode = 200
