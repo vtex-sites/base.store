@@ -1,36 +1,27 @@
+import type { Next } from 'compose-middleware'
+import { compose } from 'compose-middleware'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
+import sendRCEvent from '../server/RequestCapture'
 import sendGAEvent from '../server/GoogleAnalytics'
 
-const validateRequest = (
+const validateRequest = async (
   req: GatsbyFunctionRequest,
-  res: GatsbyFunctionResponse
+  res: GatsbyFunctionResponse,
+  next: Next<Promise<any> | undefined>
 ) => {
   if (req.method !== 'POST') {
     res.statusCode = 405
     res.send('')
 
-    return false
-  }
-
-  return true
-}
-
-const handler = async (
-  req: GatsbyFunctionRequest,
-  res: GatsbyFunctionResponse
-) => {
-  if (!validateRequest(req, res)) {
     return
   }
 
-  const { body } = req
-
-  sendGAEvent(body)
+  await next?.()
 
   res.setHeader('content-type', 'application/json')
   res.statusCode = 200
-  res.send(JSON.stringify({ success: true, body }))
+  res.send(JSON.stringify({ success: true }))
 }
 
-export default handler
+export default compose([validateRequest, sendGAEvent, sendRCEvent])

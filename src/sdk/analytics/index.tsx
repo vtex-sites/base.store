@@ -3,6 +3,7 @@ import { useAnalyticsEvent } from '@faststore/sdk'
 import type { PropsWithChildren } from 'react'
 
 import useGetClientId from './hooks/useGetClientId'
+import { getNavigationData } from './utils/navigation'
 
 if (typeof window !== 'undefined') {
   window.dataLayer = window.dataLayer ?? []
@@ -26,6 +27,7 @@ export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
       body: JSON.stringify({
         client_id: clientId,
         event,
+        rcExtraData: getNavigationData(),
       }),
     })
   })

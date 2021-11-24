@@ -1,4 +1,6 @@
 import type { AnalyticsEvent } from '@faststore/sdk'
+import type { Next } from 'compose-middleware'
+import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
 // https://developers.google.com/analytics/devguides/collection/protocol/ga4/sending-events?client_type=gtag
 const measurementId = process.env.GA_MEASUREMENT_ID
@@ -30,7 +32,13 @@ const parseEventToGA4 = ({ client_id, event }: AnalyticsRequestData) => ({
   ],
 })
 
-const sendEvent = (data: AnalyticsRequestData) => {
+const sendEvent = async (
+  req: GatsbyFunctionRequest,
+  _: GatsbyFunctionResponse,
+  next: Next<Promise<any> | undefined>
+) => {
+  const { body: data } = req
+
   if (!validateEventData(data)) {
     return
   }
@@ -42,6 +50,8 @@ const sendEvent = (data: AnalyticsRequestData) => {
     },
     body: JSON.stringify(parseEventToGA4(data)),
   })
+
+  await next?.()
 }
 
 export default sendEvent
