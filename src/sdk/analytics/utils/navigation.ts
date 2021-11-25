@@ -12,9 +12,8 @@ const MAC_ID = 'VtexRCMacIdv7'
 function uuidv4() {
   const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0
-    const v = c === 'x' ? r : (r & 0x3) | 0x8
 
-    return v.toString(16)
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
   })
 
   return uuid
@@ -34,9 +33,7 @@ function setVtexCookie(
 ) {
   const formattedValue = encodeURI(cookieValue)
   const host = window.location.hostname
-  const expirationDate = new Date()
-
-  expirationDate.setTime(expirationDate.getTime() + expirationTime)
+  const expirationDate = new Date(Date.now() + expirationTime)
 
   const formattedExpirationDate = expirationDate.toUTCString()
 
@@ -53,7 +50,9 @@ function getVtexCookie(cookieId: string): string | undefined {
   const regex = new RegExp(`(^| )${cookieId}=([^;]+)`)
   const match = document.cookie.match(regex)
 
-  if (!match) return
+  if (!match) {
+    return
+  }
 
   return decodeURI(match[2])
 }
