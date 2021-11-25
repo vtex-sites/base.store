@@ -1,3 +1,29 @@
+:root {
+  --primary-color: #632CD8;
+  --dark: #27325F;
+  --darker: #151312;
+
+  --light: #E4DFFD;
+  --lighter: #F2F5FC;
+
+
+  --link-positive: #2953B2;
+  --link-negative: #FFFFFF;
+
+  --muted-primary: #E0E2E7;
+  --muted-secondary: #F2F5FC;
+
+
+  --gray: #C4C5CA;
+  --dark-gray: #898F9E;
+  --darker-gray: #707685;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+a {
+  @apply text-link;
+}
