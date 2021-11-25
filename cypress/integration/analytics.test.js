@@ -30,6 +30,19 @@ const eventDataHasCurrencyProperty = () => {
   })
 }
 
+// Prevent cache test files.
+// https://github.com/cypress-io/cypress/issues/702
+before(function () {
+  // run this once before all code
+  return window.caches.keys().then(function mapCache(cacheNames) {
+    return Promise.all(
+      cacheNames.map(function clearCache(cacheName) {
+        return window.caches.delete(cacheName)
+      })
+    )
+  })
+})
+
 describe('add_to_cart event', () => {
   beforeEach(() => {
     cy.clearIDB()
@@ -178,7 +191,7 @@ describe('select_item event', () => {
 })
 
 describe('view_item_list event', () => {
-  it.only('view_item_list event', () => {
+  it('view_item_list event', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
