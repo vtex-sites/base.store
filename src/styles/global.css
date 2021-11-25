@@ -6,13 +6,11 @@
   --light: #E4DFFD;
   --lighter: #F2F5FC;
 
-
   --link-positive: #2953B2;
   --link-negative: #FFFFFF;
 
   --muted-primary: #E0E2E7;
   --muted-secondary: #F2F5FC;
-
 
   --gray: #C4C5CA;
   --dark-gray: #898F9E;
@@ -26,4 +24,8 @@
 
 a {
   @apply text-link;
+}
+
+.container {
+  @apply m-auto;
 }

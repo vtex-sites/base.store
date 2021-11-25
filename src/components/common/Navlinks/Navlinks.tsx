@@ -1,6 +1,5 @@
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import React from 'react'
-import Logo from 'src/components/ui/Logo'
 import type { NavlinksQueryQuery } from '@generated/graphql'
 
 function Navlinks() {
@@ -19,11 +18,8 @@ function Navlinks() {
 
   return (
     <nav>
-      <Link className="m-1" to="/">
-        <Logo />
-      </Link>
       {links.allStoreCollection.nodes.map((x) => (
-        <Link className="m-1" key={x.slug} to={`/${x.slug}`}>
+        <Link className="p-4 pl-0" key={x.slug} to={`/${x.slug}`}>
           {x.seo.title}
         </Link>
       ))}
