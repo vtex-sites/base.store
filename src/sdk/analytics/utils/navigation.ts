@@ -10,13 +10,11 @@ const MAC_ID = 'VtexRCMacIdv7'
  *
  */
 function uuidv4() {
-  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0
 
     return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16)
   })
-
-  return uuid
 }
 
 /**
@@ -143,11 +141,9 @@ function getPageTitle(): string {
 }
 
 /**
- * Get account name of store created in License Manager.
- * If store is into IO environment, so the account name is into `window.__RUNTIME__.account`, otherwise
- * if the store is into Portal environment, so its account name is into `window.jsnomeLoja`.
+ * Get account name from the environment varibable GATSBY_STORE_ID.
  *
- * @returns {string | null} Account name.
+ * @returns {string | undefined} Account name.
  */
 function getAccountName(): string | undefined {
   return process.env.GATSBY_STORE_ID
