@@ -9,8 +9,10 @@ if (typeof window !== 'undefined') {
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useAnalyticsEvent((event: AnalyticsEvent) => {
     window.dataLayer.push(event)
-    import('./handlers/RequestCapture').then(({ sendRCEvent }) =>
-      sendRCEvent(event)
+    import(`./platform/${process.env.GATSBY_COMMERCE_PLATFORM}`).then(
+      ({ default: sendEvent }) => {
+        sendEvent(event)
+      }
     )
   })
 
