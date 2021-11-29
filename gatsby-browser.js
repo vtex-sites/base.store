@@ -32,15 +32,3 @@ export const wrapRootElement = ({ element }) => (
 )
 
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
-
-export const onInitialClientRender = () => {
-  window.vtexrca =
-    window.vtexrca ||
-    function () {
-      // RCA script
-      // eslint-disable-next-line
-      ;(vtexrca.q = vtexrca.q || []).push(arguments)
-    }
-
-  window.vtexrca.l = +new Date()
-}
