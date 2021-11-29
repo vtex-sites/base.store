@@ -1,8 +1,17 @@
 interface Window extends Window {
   dataLayer: any[];
+  /**
+   * This is a global script added by VTEX Request Capture
+   */
   vtexrca: {
     (...args: any[]): void
-    q: any[] 
+    /**
+     * event list
+     */
+    q: any[]
+    /**
+     * Script initialization datetime
+     */
     l: number
   }
 }
