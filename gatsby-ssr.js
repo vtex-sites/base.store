@@ -32,3 +32,9 @@ export const wrapRootElement = ({ element }) => (
 )
 
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
+
+export const onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents([
+    <script key="rc.js-script" async src="https://io.vtex.com.br/rc/rc.js" />,
+  ])
+}
