@@ -21,11 +21,24 @@ function Seo({
   slug,
   storeCollection: { seo: collectionSeo, breadcrumbList },
 }: Props) {
-  const siteMetadata = site.siteMetadata!
+  if (!site || !site.siteMetadata) {
+    throw new Error(`useMetadata: missing site metadata.`)
+  }
+
+  const { titleTemplate, description } = site.siteMetadata
+
+  if (!titleTemplate) {
+    console.warn(`useMetadata: missing 'titleTemplate' from site metadata.`)
+  }
+
+  if (!description) {
+    console.warn(`useMetadata: missing 'description' from site metadata.`)
+  }
+
   const metadata = useMetadata({
     title,
-    titleTemplate: siteMetadata.titleTemplate!,
-    description: collectionSeo.description || siteMetadata.description!,
+    titleTemplate: titleTemplate ?? undefined,
+    description: collectionSeo.description ?? description,
     canonical: `/${slug}/`,
   })
 

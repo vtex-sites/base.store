@@ -24,8 +24,6 @@ function View({ product: serverData, site }: Props) {
   const product = data?.product
   const title = data?.product.seo.title ?? site?.siteMetadata?.title ?? ''
 
-  // useProductPixelEffect({ product: { id: product?.id ?? 'unknown' } })
-
   if (product == null) {
     return null
   }

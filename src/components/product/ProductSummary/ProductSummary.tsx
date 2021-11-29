@@ -26,10 +26,19 @@ function ProductSummary({ product, index }: Props) {
     offers: { lowPrice: spotPrice, offers },
   } = product
 
-  const { listPrice, seller } = useMemo(
-    () => offers.find((x) => x.price === spotPrice)!,
-    [spotPrice, offers]
-  )
+  const { listPrice, seller } = useMemo(() => {
+    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+
+    if (!lowestPriceOffer) {
+      console.error(
+        'Could not find the lowest price product offer. Showing the first offer provided.'
+      )
+
+      return offers[0]
+    }
+
+    return lowestPriceOffer
+  }, [spotPrice, offers])
 
   const linkProps = useProductLink({ product, index })
   const image = useImage(img.url, 'product.summary')

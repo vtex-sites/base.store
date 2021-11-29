@@ -11,7 +11,26 @@ interface Props {
 
 function Seo({ site, title }: Props) {
   const { locale } = useSession()
-  const { titleTemplate, description } = site.siteMetadata!
+
+  if (!site.siteMetadata) {
+    console.error(`Missing site metadata on search page with title ${title}.`)
+
+    return null
+  }
+
+  const { titleTemplate, description } = site.siteMetadata
+
+  if (!titleTemplate) {
+    console.warn(
+      `Missing 'titleTemplate' in site metadata on search page with title ${title}.`
+    )
+  }
+
+  if (!description) {
+    console.warn(
+      `Missing 'description' in site metadata on search page with title ${title}.`
+    )
+  }
 
   return (
     <GatsbySeo
@@ -19,12 +38,12 @@ function Seo({ site, title }: Props) {
       nofollow={false}
       language={locale}
       title={title}
-      description={description!}
-      titleTemplate={titleTemplate!}
+      description={description ?? ''}
+      titleTemplate={titleTemplate ?? ''}
       openGraph={{
         type: 'website',
         title,
-        description: description!,
+        description: description ?? '',
       }}
       defer
     />

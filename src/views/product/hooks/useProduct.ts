@@ -7,6 +7,14 @@ import type {
   BrowserProductQueryQueryVariables,
 } from '@generated/graphql'
 
+export const BrowserProductQuery = gql`
+  query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {
+    product(locator: $locator) {
+      ...ProductViewFragment_product
+    }
+  }
+`
+
 /**
  * serverProduct data is stale and incomplete (because we SSRed it).
  * Let's use it's value as placeholder while we fetch the rest of the data
@@ -17,15 +25,18 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   fallbackData?: T
 ) => {
   const { channel } = useSession()
-  const variables = useMemo(
-    () => ({
+  const variables = useMemo(() => {
+    if (!channel) {
+      throw new Error(`useProduct: 'channel' from session is 'null'.`)
+    }
+
+    return {
       locator: [
         { key: 'id', value: productID },
-        { key: 'channel', value: channel! },
+        { key: 'channel', value: channel },
       ],
-    }),
-    [channel, productID]
-  )
+    }
+  }, [channel, productID])
 
   return useQuery<
     BrowserProductQueryQuery & T,
@@ -35,11 +46,3 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
     revalidateOnMount: true,
   })
 }
-
-export const BrowserProductQuery = gql`
-  query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {
-    product(locator: $locator) {
-      ...ProductViewFragment_product
-    }
-  }
-`

@@ -21,7 +21,11 @@ function Page(props: Props) {
     return <div>loading...</div>
   }
 
-  return <View {...props} site={site!} product={product} />
+  if (site === null) {
+    throw new Error('Site metadata is null.')
+  }
+
+  return <View {...props} site={site} product={product} />
 }
 
 export const query = graphql`

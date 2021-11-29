@@ -29,8 +29,12 @@ const useSearchParams = (props: Props): SearchState => {
       return parseSearchState(new URL(href))
     }
 
+    if (storeCollection === null) {
+      throw new Error('storeCollection is null.')
+    }
+
     // Runs on SSG
-    const { selectedFacets } = storeCollection!.meta
+    const { selectedFacets } = storeCollection.meta
     const [base] = pathname.split(selectedFacets[0].value)
 
     return {

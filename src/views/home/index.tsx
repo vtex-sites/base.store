@@ -27,7 +27,7 @@ function View(props: Props) {
       <Seo {...props} title={title} />
 
       {/* Visual Sections */}
-      <h1 className="absolute top-[-100px]">{title}</h1>
+      <h1>{title}</h1>
     </>
   )
 }
