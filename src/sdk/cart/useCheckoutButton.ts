@@ -3,7 +3,7 @@ import { useCart } from './useCart'
 const storeId = process.env.GATSBY_STORE_ID
 const environment = process.env.GATSBY_VTEX_ENVIRONMENT
 const checkoutURL =
-  process.env.CHECKOUT_URL ??
+  process.env.GATSBY_CHECKOUT_URL ??
   `https://${storeId}.${environment}.com.br/checkout`
 
 export const useCheckoutButton = () => {
