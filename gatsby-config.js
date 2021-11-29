@@ -6,16 +6,16 @@ const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
 
 const {
+  GATSBY_STORE_ID: STORE_ID,
   CI: isCI,
   NODE_ENV,
-  URL = `http://www.vtex-base1.tk`,
+  URL = `https://${STORE_ID}.vtex.app`,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
   NETLIFY: isNetlify,
 } = process.env
 
 const isProduction = ENV === 'production'
-
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
 const unique = (x) => Array.from(new Set(x))
