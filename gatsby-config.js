@@ -7,12 +7,12 @@ const images = require('./src/images/config')
 
 const {
   GATSBY_STORE_ID: STORE_ID,
-  CI: isCI,
   NODE_ENV,
   URL = `https://${STORE_ID}.vtex.app`,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
   NETLIFY: isNetlify,
+  VTEX_WEBOPS: isWebOps,
 } = process.env
 
 const isProduction = ENV === 'production'
@@ -107,10 +107,9 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server:
-          isCI && !isNetlify
-            ? 'http://thumbor.vtex.internal'
-            : 'https://thumbor-dev-server.vtex.io',
+        server: isWebOps
+          ? 'http://thumbor.vtex.internal'
+          : 'https://thumbor-dev-server.vtex.io',
         ...((isProduction || isNetlify) && {
           basePath: '/assets',
           sizes: getSizes(images),
@@ -164,7 +163,7 @@ module.exports = {
           ['proxy_http_version', '1.1'],
           ['absolute_redirect', 'off'],
         ],
-        serverOptions: isCI
+        serverOptions: isWebOps
           ? [['resolver', '169.254.169.253']]
           : [['resolver', '8.8.8.8']],
       },
