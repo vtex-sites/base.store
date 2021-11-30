@@ -3,10 +3,10 @@ import type { AnalyticsEvent } from '@faststore/sdk'
 if (typeof window !== 'undefined') {
   window.vtexrca =
     window.vtexrca ||
-    function () {
+    function vtexrca(...args) {
       // RCA script
       // eslint-disable-next-line
-      ;((window.vtexrca as any).q = window.vtexrca?.q || []).push(arguments)
+      ;(window.vtexrca.q = window.vtexrca?.q || []).push(args)
     }
 
   window.vtexrca.l = +new Date()
