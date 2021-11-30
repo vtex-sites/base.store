@@ -35,6 +35,11 @@ export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
 export const onRenderBody = ({ setHeadComponents }) => {
   if (process.env.GATSBY_COMMERCE_PLATFORM === 'vtex') {
     setHeadComponents([
+      <script key="rc.js-define">
+        {
+          'window.vtexrca=window.vtexrca||function(){(window.vtexrca.q=window.vtexrca.q||[]).push(arguments)};window.vtexrca.q=window.vtexrca.q||[];vtexrca.l=+new Date;'
+        }
+      </script>,
       <script key="rc.js-script" async src="https://io.vtex.com.br/rc/rc.js" />,
     ])
   }
