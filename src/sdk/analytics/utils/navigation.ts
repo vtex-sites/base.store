@@ -141,7 +141,7 @@ function getPageTitle(): string {
 }
 
 /**
- * Get account name from the environment varibable GATSBY_STORE_ID.
+ * Get account name from the environment variable GATSBY_STORE_ID.
  *
  * @returns {string | undefined} Account name.
  */
