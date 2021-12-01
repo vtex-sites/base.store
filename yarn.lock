@@ -1029,6 +1029,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.3.1", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.6":
+  version "7.16.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.16.3.tgz#b86f0db02a04187a3c17caa77de69840165d42d5"
+  integrity sha512-WBwekcqacdY2e9AF/Q7WLFUWmdJGJTkbjqTjoMDgXkVZ3ZRUvOPsLb5KdwISoQVsbP+DQzVZW4Zhci0DvpbNTQ==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/standalone@^7.15.5":
   version "7.16.4"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.16.4.tgz#f62a5b14fc0e881668f26739f28bcdaacedd3080"
@@ -1354,10 +1361,17 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+<<<<<<< HEAD
 "@faststore/api@^1.3.12":
   version "1.3.15"
   resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.3.15.tgz#df9ead18c1fdadb608080ef29b59555e36d76190"
   integrity sha512-xjujqO220xAKHqnUvrz57ULG6SPwe3zD41gN2RHYz0xipJxnz58GgOjBJbiaZKUI+pPIRe5iPzsGbegugXznag==
+=======
+"@faststore/api@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.3.8.tgz#c5cfb4c25771a3d99ffdd8451c0b41449b201ec2"
+  integrity sha512-zEIb42K8kK7iljXNRzh8VMQmLzWkfEcS3eVpa/j/fCPdliuIsPBbhHGPSlfOqMoSqx0Y079CzLnC+cFHpZT3wQ==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1366,6 +1380,7 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
+<<<<<<< HEAD
 "@faststore/sdk@^1.3.12":
   version "1.3.15"
   resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.3.15.tgz#de78d077ae47512acd2bd126a61c8e63dcdde94a"
@@ -1380,6 +1395,22 @@
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
+=======
+"@faststore/sdk@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.3.8.tgz#7d007b8ee8e06313952886d0dac079ec44eb404b"
+  integrity sha512-oydRRO7ZkVHkzB0o/nSiv2V/Jj+I7fZy8ezFQXLi02MVAf1vGs+XrF0QyBNFc3X0+BGkmSQysbSTA19Zg2X/Sw==
+  dependencies:
+    idb-keyval "^5.1.3"
+
+"@faststore/ui@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.3.8.tgz#70de871129b2b770e0de13bf2964f356f2f1d272"
+  integrity sha512-pD6nt4gn+Z3WTM8Y4/mJOeVbE2AW5jPkagZMQXKAglAVZq/hxH8E0/c+yvSgzas4Ok5VX/7922uc+CERypavpg==
+  dependencies:
+    "@reach/popover" "^0.16.0"
+    "@storybook/addon-a11y" "^6.3.12"
+>>>>>>> 182fdec (Handle error codes)
     react-swipeable "^6.1.2"
     tabbable "^5.2.1"
 
@@ -2029,6 +2060,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
   integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
 
+"@popperjs/core@^2.6.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.0.tgz#6734f8ebc106a0860dff7f92bf90df193f0935d7"
+  integrity sha512-zrsUxjLOKAzdewIDRWy9nsV1GQsKBCWaGwsZQlCgr6/q+vjyZhFgqedLfFBuI9anTPEUT4APq9Mu0SZBTzIcGQ==
+
 "@reach/observe-rect@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@reach/observe-rect/-/observe-rect-1.2.0.tgz#d7a6013b8aafcc64c778a0ccb83355a11204d3b2"
@@ -2139,6 +2175,7 @@
     escape-string-regexp "^2.0.0"
     lodash.deburr "^4.1.0"
 
+<<<<<<< HEAD
 "@storybook/addon-a11y@^6.4.4":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.4.8.tgz#1cbd434380dc322eca111b9a6a51336a3ec17db8"
@@ -2156,11 +2193,31 @@
     core-js "^3.8.2"
     global "^4.4.0"
     lodash "^4.17.21"
+=======
+"@storybook/addon-a11y@^6.3.12":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.4.3.tgz#29b116ccc34f98534b97fc488375374b6034b565"
+  integrity sha512-sb3cPfqHACtivPkcx1UePYAyJ0VMmwS4NWWe8JzfSxV4Fmyj7m6O7vIThuWs5eEm6iakljheubVTsQwQwll85A==
+  dependencies:
+    "@storybook/addons" "6.4.3"
+    "@storybook/api" "6.4.3"
+    "@storybook/channels" "6.4.3"
+    "@storybook/client-logger" "6.4.3"
+    "@storybook/components" "6.4.3"
+    "@storybook/core-events" "6.4.3"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/theming" "6.4.3"
+    axe-core "^4.2.0"
+    core-js "^3.8.2"
+    global "^4.4.0"
+    lodash "^4.17.20"
+>>>>>>> 182fdec (Handle error codes)
     react-sizeme "^3.0.1"
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
+<<<<<<< HEAD
 "@storybook/addons@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.4.8.tgz#a90c85906e97898b8f2b8139c942b46d880006c9"
@@ -2173,11 +2230,26 @@
     "@storybook/csf" "0.0.2--canary.87bc651.0"
     "@storybook/router" "6.4.8"
     "@storybook/theming" "6.4.8"
+=======
+"@storybook/addons@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-6.4.3.tgz#f34cb04289806f3d22be8a39c67fcd1dbdcbe137"
+  integrity sha512-LiS8NNZXpietvWw+A+jTVtVpVRARc2vq9R7KWAj07oFF91KD+U4PISAYbNMUVitej05CJJqT0jdtiW8G5pAr1g==
+  dependencies:
+    "@storybook/api" "6.4.3"
+    "@storybook/channels" "6.4.3"
+    "@storybook/client-logger" "6.4.3"
+    "@storybook/core-events" "6.4.3"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/router" "6.4.3"
+    "@storybook/theming" "6.4.3"
+>>>>>>> 182fdec (Handle error codes)
     "@types/webpack-env" "^1.16.0"
     core-js "^3.8.2"
     global "^4.4.0"
     regenerator-runtime "^0.13.7"
 
+<<<<<<< HEAD
 "@storybook/api@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.4.8.tgz#3a67c644330b4c6bc1ad728fda4bf4742cbd8fdc"
@@ -2194,6 +2266,24 @@
     fast-deep-equal "^3.1.3"
     global "^4.4.0"
     lodash "^4.17.21"
+=======
+"@storybook/api@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/api/-/api-6.4.3.tgz#ae30c75be8559cb6b54195989b50a7e3ccf4cb23"
+  integrity sha512-aWD7wPhj+HF2XBmH6b7hgRJPFldDXzhYbtPqsq6ukCrGlJder8NsnL6wHzXlQWgxudw8u3oqM+Q9kLwNiz4yXg==
+  dependencies:
+    "@storybook/channels" "6.4.3"
+    "@storybook/client-logger" "6.4.3"
+    "@storybook/core-events" "6.4.3"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/router" "6.4.3"
+    "@storybook/semver" "^7.3.2"
+    "@storybook/theming" "6.4.3"
+    core-js "^3.8.2"
+    fast-deep-equal "^3.1.3"
+    global "^4.4.0"
+    lodash "^4.17.20"
+>>>>>>> 182fdec (Handle error codes)
     memoizerific "^1.11.3"
     regenerator-runtime "^0.13.7"
     store2 "^2.12.0"
@@ -2201,23 +2291,38 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
+<<<<<<< HEAD
 "@storybook/channels@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.4.8.tgz#48db28c52c3b24e1124414d84420cf6c0b81078f"
   integrity sha512-WnEuOgS7Z/K4/pm6h/3f3P2+dxEeI3Xmk+zDCgNmY/WbsqiexhFfvjneOlpIe2gJNfjCZDjTOy7u/+r8vj0nhA==
+=======
+"@storybook/channels@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-6.4.3.tgz#e70668d3dea06fcadf274c867a3430e3a5350787"
+  integrity sha512-E9JGZ53ITybokm7CEYARQjwdF/yDTu/R0tEo0MldPrNumb8yDjb4vxokBpvwbOMZ/n+QSU1BUIISm5bYt3owlQ==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     core-js "^3.8.2"
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
+<<<<<<< HEAD
 "@storybook/client-logger@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.4.8.tgz#9dcf8227ea1d1354757d3966cb6343eaa474a9da"
   integrity sha512-JjxDCFyGQiUtJAotDy/Nv/tnCG4TpqV4l8FxIH97AVM8/2sSE3TbUzfEMkI/tAlUa0o6WarniKS8xxyDjZJaDA==
+=======
+"@storybook/client-logger@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-6.4.3.tgz#1db1eab500f85c095239d581769c8e04e84994fe"
+  integrity sha512-/KmfJlihg2ldm9ml2sNIPOCdSIgF+TsRCET5W8vmwRUu/QUcs6mJMKlEWmmmlyATBp5DKQR+fABe2DccGuOWEQ==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     core-js "^3.8.2"
     global "^4.4.0"
 
+<<<<<<< HEAD
 "@storybook/components@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.8.tgz#cdcc3d0e8163e6fdc62e37963e5e5d69cb0bd8a8"
@@ -2227,6 +2332,17 @@
     "@storybook/client-logger" "6.4.8"
     "@storybook/csf" "0.0.2--canary.87bc651.0"
     "@storybook/theming" "6.4.8"
+=======
+"@storybook/components@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-6.4.3.tgz#498f22b375a73d1e4cefdbb165d1de2d8d60ba31"
+  integrity sha512-U8U5xm6R4ufsoFODimTNywk1zMG4p4AmKNpq9GboF9tSVKcoyfj8DpPlDJbdga5V9XVGcO2b5FoTRCzUiEsfvw==
+  dependencies:
+    "@popperjs/core" "^2.6.0"
+    "@storybook/client-logger" "6.4.3"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    "@storybook/theming" "6.4.3"
+>>>>>>> 182fdec (Handle error codes)
     "@types/color-convert" "^2.0.0"
     "@types/overlayscrollbars" "^1.12.0"
     "@types/react-syntax-highlighter" "11.0.5"
@@ -2234,7 +2350,11 @@
     core-js "^3.8.2"
     fast-deep-equal "^3.1.3"
     global "^4.4.0"
+<<<<<<< HEAD
     lodash "^4.17.21"
+=======
+    lodash "^4.17.20"
+>>>>>>> 182fdec (Handle error codes)
     markdown-to-jsx "^7.1.3"
     memoizerific "^1.11.3"
     overlayscrollbars "^1.13.1"
@@ -2248,10 +2368,17 @@
     ts-dedent "^2.0.0"
     util-deprecate "^1.0.2"
 
+<<<<<<< HEAD
 "@storybook/core-events@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.4.8.tgz#e12713d062bb75efd7a72bee883e7ee3aba875df"
   integrity sha512-KeuYJtS86Yx1bTStMCZRMwnSqXvkpiVLDCvAE9aCtl3MGixd5O749+MsfOBxV5p1N0pT5IFLCpdVNE1V2DRbzg==
+=======
+"@storybook/core-events@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-6.4.3.tgz#5fb3281a7cacba7fbf0d51a7a782cf751b27f6d7"
+  integrity sha512-UnXDO57U0jJYxXT4hVYQ7ze2wnCp3jrkRSyUPmMcyqpuLAWFhj+QYyna/7+geNID80MbVkkNLE+AEeSY+PPglQ==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     core-js "^3.8.2"
 
@@ -2262,17 +2389,30 @@
   dependencies:
     lodash "^4.17.15"
 
+<<<<<<< HEAD
 "@storybook/router@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/router/-/router-6.4.8.tgz#0f8680e5e5c9f3e4c07b6821165d9ca54c1ef051"
   integrity sha512-2aI8QexINPJIu2EHOirROAFh93VPv9a83hiH97PlWdVNqrsG2S8cWZN98b1Vxc+h5m80kp5rac34RSz0oQXJug==
   dependencies:
     "@storybook/client-logger" "6.4.8"
+=======
+"@storybook/router@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/router/-/router-6.4.3.tgz#3682793a14b8bb75105184450117e4df3505b820"
+  integrity sha512-13Xs9KK9vvnil7HPF8esuvwrpdb/DDn6SzMgEFJxKYVgJy6ASAu/rzFweezCZntT58F8kEqEn1sHMOjw4gN7hw==
+  dependencies:
+    "@storybook/client-logger" "6.4.3"
+>>>>>>> 182fdec (Handle error codes)
     core-js "^3.8.2"
     fast-deep-equal "^3.1.3"
     global "^4.4.0"
     history "5.0.0"
+<<<<<<< HEAD
     lodash "^4.17.21"
+=======
+    lodash "^4.17.20"
+>>>>>>> 182fdec (Handle error codes)
     memoizerific "^1.11.3"
     qs "^6.10.0"
     react-router "^6.0.0"
@@ -2287,15 +2427,26 @@
     core-js "^3.6.5"
     find-up "^4.1.0"
 
+<<<<<<< HEAD
 "@storybook/theming@6.4.8":
   version "6.4.8"
   resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.8.tgz#09e7aa99df9607e602a3dfb4ee5e0cbde434031a"
   integrity sha512-2VzUJbeKsEOr+ArVW8qRS7x7JvIXexUmA1CCR+lF2Bd9raoXAqigcRCYtK9zf5kep/cJPq/cKhOrx30ioVyJpg==
+=======
+"@storybook/theming@6.4.3":
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/@storybook/theming/-/theming-6.4.3.tgz#97db57dde4cb1dfa1cc07181b8b1ece3557696ea"
+  integrity sha512-kXoDN8H6jfHLBawYB65E11yU7iRzej1HRG33CpY6ViPllV0IfIesUWXbrVQyJmTB2IQaoJpzwJN0Bt2KPaTOhw==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     "@emotion/core" "^10.1.1"
     "@emotion/is-prop-valid" "^0.8.6"
     "@emotion/styled" "^10.0.27"
+<<<<<<< HEAD
     "@storybook/client-logger" "6.4.8"
+=======
+    "@storybook/client-logger" "6.4.3"
+>>>>>>> 182fdec (Handle error codes)
     core-js "^3.8.2"
     deep-object-diff "^1.1.0"
     emotion-theming "^10.0.27"
@@ -2691,6 +2842,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-syntax-highlighter@11.0.5":
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@types/react-syntax-highlighter/-/react-syntax-highlighter-11.0.5.tgz#0d546261b4021e1f9d85b50401c0a42acb106087"
+  integrity sha512-VIOi9i2Oj5XsmWWoB72p3KlZoEbdRAcechJa8Ztebw7bDl2YmR+odxIqhtJGp1q2EozHs02US+gzxJ9nuf56qg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "17.0.37"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.37.tgz#6884d0aa402605935c397ae689deed115caad959"
@@ -2872,14 +3030,22 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
+<<<<<<< HEAD
 "@vtex/gatsby-plugin-nginx@^1.3.12":
   version "1.3.15"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.3.15.tgz#d026c04292a40d1298348c2d9af75a69442d401c"
   integrity sha512-nZSNVSGkSCYwf8v7wHBjH1qzXouGbRFxUWZOdJ858T+tCBIpND5F7BkpdhwiM58NO4qiB4o5uoFkcYlddqBdmg==
+=======
+"@vtex/gatsby-plugin-nginx@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.3.8.tgz#ad3b8836a11695b902352d5fcc11fc2236bd234a"
+  integrity sha512-cwoPen6/FPaWJQNO8EVeowiN60p8GHaJ17rdSaKqc2FeBcotjjPCH7TM3cZBnsxs2vi8xjVh/JDFIiTKfevtpw==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
+<<<<<<< HEAD
 "@vtex/gatsby-plugin-thumbor@^1.3.12":
   version "1.3.15"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.3.15.tgz#d37c43a1c939b530b373363e97aee77b44d571f1"
@@ -2896,6 +3062,24 @@
   version "1.3.15"
   resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.3.15.tgz#ad1ab45293811ab439f8b47a51689aad37c5dca4"
   integrity sha512-yF5FU2W6p+f9yr4KshHZ9APeCIjFb5nEfQ6QItFKB1F3CuJO32uz6ypWr3URb9GFFNPXLr6OhCycaUSvJddwww==
+=======
+"@vtex/gatsby-plugin-thumbor@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.3.8.tgz#4a38e925fd2e5c2070b08294e8b37fb323d87077"
+  integrity sha512-pZnaZIabJ/TDEMIFRAxTNcLFLN+HxSo6ooTeycHZeNZth8aKy3uQzkZNIcw+LEZ+sbjBW1zVb7EZxC0d7xWM0w==
+
+"@vtex/gatsby-source-store@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.3.8.tgz#d112d26ace1d702fdd2303272920d32e82406040"
+  integrity sha512-7vjrd/O05mergiC2mTVK9mwVjcQsNGGRTWa8GWwcXLL37qjNsEJu7Po/LUQdzkKQM5YLjcAlduQg3vEYRhe5LQ==
+  dependencies:
+    gatsby-graphql-source-toolkit "^2.0.1"
+
+"@vtex/graphql-utils@^1.3.7":
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.3.8.tgz#64a7f8c2d77d8b8cfba943be8a32288b23ba4629"
+  integrity sha512-bDlkQg+sJo8mpFmf01yX/sUcGbhL/1sjypNBxvu2+Qey49+DaVBrZIUEOilkqSRCq0jTxRe4pCVtK6jTcspfIg==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
@@ -3514,10 +3698,27 @@ axe-core@^4.2.0, axe-core@^4.3.3, axe-core@^4.3.5:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
   integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
 
+<<<<<<< HEAD
 axios@^0.21.1, axios@^0.21.4:
   version "0.21.4"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+=======
+axe-core@^4.2.0:
+  version "4.3.5"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.5.tgz#78d6911ba317a8262bfee292aeafcc1e04b49cc5"
+  integrity sha512-WKTW1+xAzhMS5dJsxWkliixlO/PqC4VhmO9T4juNYcaTg9jzWiJsou6m5pxWYGfigWbwzJWeFY6z47a+4neRXA==
+
+axe-core@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.3.tgz#b55cd8e8ddf659fe89b064680e1c6a4dceab0325"
+  integrity sha512-/lqqLAmuIPi79WYfRpy2i8z+x+vxU3zX2uAm0gs1q52qTuKwolOj1P8XbufpXcsydrpKx2yGn2wzAnxCMV86QA==
+
+axios@^0.21.0, axios@^0.21.1:
+  version "0.21.1"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
+  integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     follow-redirects "^1.14.0"
 
@@ -4951,7 +5152,11 @@ convert-hrtime@^3.0.0:
   resolved "https://registry.yarnpkg.com/convert-hrtime/-/convert-hrtime-3.0.0.tgz#62c7593f5809ca10be8da858a6d2f702bcda00aa"
   integrity sha512-7V+KqSvMiHp8yWDuwfww06XleMWVVB9b9tURBx+G7UTADuo5hYPuowKloz4OzOqbPezxgo+fdQ1522WzPG4OeA==
 
+<<<<<<< HEAD
 convert-source-map@^1.3.0, convert-source-map@^1.5.0, convert-source-map@^1.7.0:
+=======
+convert-source-map@^1.1.0, convert-source-map@^1.3.0, convert-source-map@^1.5.0, convert-source-map@^1.7.0:
+>>>>>>> 182fdec (Handle error codes)
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/convert-source-map/-/convert-source-map-1.8.0.tgz#f3373c32d21b4d780dd8004514684fb791ca4369"
   integrity sha512-+OQdjP49zViI/6i7nIJpA8rAl4sV/JdPfU9nZs3VqOwGIgizICvuN2ru6fMd+4llL0tar18UYJXfZ/TWtmhUjA==
@@ -5024,7 +5229,21 @@ core-js@^3.17.2, core-js@^3.6.5, core-js@^3.8.2:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.3.tgz#6df8142a996337503019ff3235a7022d7cdf4559"
   integrity sha512-LeLBMgEGSsG7giquSzvgBrTS7V5UL6ks3eQlUSbN8dJStlLFiRzUm5iqsRyzUB8carhfKjkJ2vzKqE6z1Vga9g==
 
+<<<<<<< HEAD
 core-util-is@1.0.2:
+=======
+core-js@^3.17.2:
+  version "3.18.3"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.18.3.tgz#86a0bba2d8ec3df860fefcc07a8d119779f01509"
+  integrity sha512-tReEhtMReZaPFVw7dajMx0vlsz3oOb8ajgPoHVYGxr8ErnZ6PcYEvvmjGmXlfpnxpkYSdOQttjB+MvVbCGfvLw==
+
+core-js@^3.6.5, core-js@^3.8.2:
+  version "3.19.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.19.2.tgz#ae216d7f4f7e924d9a2e3ff1e4b1940220f9157b"
+  integrity sha512-ciYCResnLIATSsXuXnIOH4CbdfgV+H1Ltg16hJFN7/v6OxqnFr/IFGeLacaZ+fHLAm0TBbXwNK9/DNBzBUrO/g==
+
+core-util-is@1.0.2, core-util-is@~1.0.0:
+>>>>>>> 182fdec (Handle error codes)
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
@@ -5522,6 +5741,11 @@ deep-is@^0.1.3:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.4.tgz#a6f2dce612fadd2ef1f519b73551f17e85199831"
   integrity sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==
+
+deep-object-diff@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/deep-object-diff/-/deep-object-diff-1.1.0.tgz#d6fabf476c2ed1751fc94d5ca693d2ed8c18bc5a"
+  integrity sha512-b+QLs5vHgS+IoSNcUE4n9HP2NwcHj7aqnJWsjPtuG75Rh5TOaGt0OjAYInh77d5T16V5cRDC+Pw/6ZZZiETBGw==
 
 deep-object-diff@^1.1.0:
   version "1.1.0"
@@ -8257,6 +8481,23 @@ history@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/history/-/history-5.0.0.tgz#0cabbb6c4bbf835addb874f8259f6d25101efd08"
   integrity sha512-3NyRMKIiFSJmIPdq7FxkNMJkQ7ZEtVblOQ38VtKaA0zZMW1Eo6Q6W8oDKEflr1kNNTItSnk4JMCO1deeSgbLLg==
+<<<<<<< HEAD
+=======
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
+history@^4.9.0:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
+  integrity sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==
+>>>>>>> 182fdec (Handle error codes)
+  dependencies:
+    "@babel/runtime" "^7.7.6"
+
+history@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/history/-/history-5.1.0.tgz#2e93c09c064194d38d52ed62afd0afc9d9b01ece"
+  integrity sha512-zPuQgPacm2vH2xdORvGGz1wQMuHSIB56yNAy5FnLuwOwgSYyPKptJtcMm6Ev+hRGeS+GzhbmRacHzvlESbFwDg==
   dependencies:
     "@babel/runtime" "^7.7.6"
 
@@ -8276,7 +8517,16 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
+<<<<<<< HEAD
 hoist-non-react-statics@^3.3.0:
+=======
+hoist-non-react-statics@^2.3.1:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.5.tgz#c5903cf409c0dfd908f388e619d86b9c1174cb47"
+  integrity sha512-rqcy4pJo55FTTLWt+bU8ukscqHeE/e9KWvsOW2b/a3afxQZhwkQdT1rPPCJ0rYXdj4vNcasY8zHTH+jF/qStxw==
+
+hoist-non-react-statics@^3.1.0, hoist-non-react-statics@^3.3.0:
+>>>>>>> 182fdec (Handle error codes)
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -8915,6 +9165,7 @@ is-function@^1.0.2:
   resolved "https://registry.yarnpkg.com/is-function/-/is-function-1.0.2.tgz#4f097f30abf6efadac9833b17ca5dc03f8144e08"
   integrity sha512-lw7DUp0aWXYg+CBCN+JKkcE0Q2RayZnSvnZBlwgxHBQhqt5pZNVy4Ri7H9GmmXkdu7LUthszM+Tor1u/2iBcpQ==
 
+<<<<<<< HEAD
 is-generator-function@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/is-generator-function/-/is-generator-function-1.0.10.tgz#f1558baf1ac17e0deea7c0415c438351ff2b3c72"
@@ -8923,6 +9174,9 @@ is-generator-function@^1.0.7:
     has-tostringtag "^1.0.0"
 
 is-glob@4.0.1:
+=======
+is-glob@4.0.1, is-glob@^4.0.0, is-glob@^4.0.1, is-glob@~4.0.1:
+>>>>>>> 182fdec (Handle error codes)
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-4.0.1.tgz#7567dbe9f2f5e2467bc77ab83c4a29482407a5dc"
   integrity sha512-5G0tKtBTFImOqDnLB2hG6Bp2qcKEFduo4tZu9MT/H6NQv/ghhy30o55ufafxJ/LdH79LLs2Kfrn85TLKyA7BUg==
@@ -9063,7 +9317,11 @@ is-property@^1.0.2:
   resolved "https://registry.yarnpkg.com/is-property/-/is-property-1.0.2.tgz#57fe1c4e48474edd65b09911f26b1cd4095dda84"
   integrity sha1-V/4cTkhHTt1lsJkR8msc1Ald2oQ=
 
+<<<<<<< HEAD
 is-regex@^1.1.2, is-regex@^1.1.4:
+=======
+is-regex@^1.1.2, is-regex@^1.1.3, is-regex@^1.1.4:
+>>>>>>> 182fdec (Handle error codes)
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/is-regex/-/is-regex-1.1.4.tgz#eef5663cd59fa4c0ae339505323df6854bb15958"
   integrity sha512-kvRdxDsxZjhzUX07ZnLydzS1TU/TJlTUHHY4YLL87e37oUA49DfkLqgy+VjFocowy29cKvcSiu+kIv728jTTVg==
@@ -9248,6 +9506,17 @@ isobject@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-4.0.0.tgz#3f1c9155e73b192022a80819bacd0343711697b0"
   integrity sha512-S/2fF5wH8SJA/kmwr6HYhK/RI/OkhD84k8ntalo0iJjZikgq1XFvR5M8NPT1x5F7fBwCG3qHfnzeP/Vh/ZxCUA==
+<<<<<<< HEAD
+=======
+
+isomorphic-fetch@^2.1.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+  integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
+  dependencies:
+    node-fetch "^1.0.1"
+    whatwg-fetch ">=0.10.0"
+>>>>>>> 182fdec (Handle error codes)
 
 isomorphic-fetch@^3.0.0:
   version "3.0.0"
@@ -10165,6 +10434,11 @@ map-obj@^4.0.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/map-obj/-/map-obj-4.3.0.tgz#9304f906e93faae70880da102a9f1df0ea8bb05a"
   integrity sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==
+
+map-or-similar@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/map-or-similar/-/map-or-similar-1.5.0.tgz#6de2653174adfb5d9edc33c69d3e92a1b76faf08"
+  integrity sha1-beJlMXSt+12e3DPGnT6Sobdvrwg=
 
 map-or-similar@^1.5.0:
   version "1.5.0"
@@ -12373,9 +12647,15 @@ qs@6.7.0:
   integrity sha512-VCdBRNFTX1fyE7Nb6FYoURo/SPe62QCaAyzJvUjwRaIsc+NePBEniHlvxFmmX56+HZphIGtV0XeCirBtpDrTyQ==
 
 qs@^6.10.0, qs@^6.9.4:
+<<<<<<< HEAD
   version "6.10.2"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.2.tgz#c1431bea37fc5b24c5bdbafa20f16bdf2a4b9ffe"
   integrity sha512-mSIdjzqznWgfd4pMii7sHtaYF8rx8861hBO80SraY5GT0XQibWZWJSid0avzHGkDIZLImux2S5mXO0Hfct2QCw==
+=======
+  version "6.10.1"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.10.1.tgz#4931482fa8d647a5aab799c5271d2133b981fb6a"
+  integrity sha512-M528Hph6wsSVOBiYUnGf+K/7w0hNshs/duGsNXPUCLH5XAqjEtiPGwNONLV0tBH8NoGb0mvD5JubnUTrujKDTg==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     side-channel "^1.0.4"
 
@@ -12607,6 +12887,38 @@ react-router-dom@^6.0.0:
     history "^5.1.0"
     react-router "6.0.2"
 
+<<<<<<< HEAD
+react-router@6.0.2, react-router@^6.0.0:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.2.tgz#bd2b0fa84fd1d152671e9f654d9c0b1f5a7c86da"
+  integrity sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q==
+=======
+react-router-dom@^6.0.0:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.0.2.tgz#860cefa697b9d4965eced3f91e82cdbc5995f3ad"
+  integrity sha512-cOpJ4B6raFutr0EG8O/M2fEoyQmwvZWomf1c6W2YXBZuFBx8oTk/zqjXghwScyhfrtnt0lANXV2182NQblRxFA==
+  dependencies:
+    history "^5.1.0"
+    react-router "6.0.2"
+
+react-router@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-5.2.0.tgz#424e75641ca8747fbf76e5ecca69781aa37ea293"
+  integrity sha512-smz1DUuFHRKdcJC0jobGo8cVbhO3x50tCL4icacOlcwDOEQPq4TMqwx3sY1TP+DvtTgz4nm3thuo7A+BK2U0Dw==
+>>>>>>> 182fdec (Handle error codes)
+  dependencies:
+    history "^5.1.0"
+
+react-sizeme@^3.0.1:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/react-sizeme/-/react-sizeme-3.0.2.tgz#4a2f167905ba8f8b8d932a9e35164e459f9020e4"
+  integrity sha512-xOIAOqqSSmKlKFJLO3inBQBdymzDuXx4iuwkNcJmC96jeiOg5ojByvL+g3MW9LPEsojLbC6pf68zOfobK8IPlw==
+  dependencies:
+    element-resize-detector "^1.2.2"
+    invariant "^2.2.4"
+    shallowequal "^1.1.0"
+    throttle-debounce "^3.0.1"
+
 react-router@6.0.2, react-router@^6.0.0:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.0.2.tgz#bd2b0fa84fd1d152671e9f654d9c0b1f5a7c86da"
@@ -12633,6 +12945,29 @@ react-syntax-highlighter@^13.5.3:
   version "13.5.3"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-13.5.3.tgz#9712850f883a3e19eb858cf93fad7bb357eea9c6"
   integrity sha512-crPaF+QGPeHNIblxxCdf2Lg936NAHKhNhuMzRL3F9ct6aYXL3NcZtCL0Rms9+qVo6Y1EQLdXGypBNSbPL/r+qg==
+<<<<<<< HEAD
+=======
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    highlight.js "^10.1.1"
+    lowlight "^1.14.0"
+    prismjs "^1.21.0"
+    refractor "^3.1.0"
+
+react-textarea-autosize@^8.3.0:
+  version "8.3.3"
+  resolved "https://registry.yarnpkg.com/react-textarea-autosize/-/react-textarea-autosize-8.3.3.tgz#f70913945369da453fd554c168f6baacd1fa04d8"
+  integrity sha512-2XlHXK2TDxS6vbQaoPbMOfQ8GK7+irc2fVK6QFIcC8GOnH3zI/v481n+j1L0WaPVvKxwesnY93fEfH++sus2rQ==
+  dependencies:
+    "@babel/runtime" "^7.10.2"
+    use-composed-ref "^1.0.0"
+    use-latest "^1.0.0"
+
+react@16.14.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     "@babel/runtime" "^7.3.1"
     highlight.js "^10.1.1"
@@ -12792,6 +13127,18 @@ refractor@^3.1.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/refractor/-/refractor-3.5.0.tgz#334586f352dda4beaf354099b48c2d18e0819aec"
   integrity sha512-QwPJd3ferTZ4cSPPjdP5bsYHMytwWYnAN5EEnLtGvkqp/FCCnGsBgxrm9EuIDnjUC3Uc/kETtvVi7fSIVC74Dg==
+<<<<<<< HEAD
+=======
+  dependencies:
+    hastscript "^6.0.0"
+    parse-entities "^2.0.0"
+    prismjs "~1.25.0"
+
+regenerate-unicode-properties@^8.2.0:
+  version "8.2.0"
+  resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.2.0.tgz#e5de7111d655e7ba60c057dbe9ff37c87e65cdec"
+  integrity sha512-F9DjY1vKLo/tPePDycuH3dn9H1OTPIkVD9Kz4LODu+F2C75mgjAJ7x/gwy6ZcSNRAAkhNlJSOHRe8k3p+K9WhA==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     hastscript "^6.0.0"
     parse-entities "^2.0.0"
@@ -12814,6 +13161,14 @@ regenerator-runtime@^0.11.0:
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
+<<<<<<< HEAD
+=======
+regenerator-runtime@^0.12.0:
+  version "0.12.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.12.1.tgz#fa1a71544764c036f8c49b13a08b2594c9f8a0de"
+  integrity sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
+
+>>>>>>> 182fdec (Handle error codes)
 regenerator-runtime@^0.13.4, regenerator-runtime@^0.13.7:
   version "0.13.9"
   resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
@@ -15075,6 +15430,28 @@ use-composed-ref@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/use-composed-ref/-/use-composed-ref-1.1.0.tgz#9220e4e94a97b7b02d7d27eaeab0b37034438bbc"
   integrity sha512-my1lNHGWsSDAhhVAT4MKs6IjBUtG6ZG11uUqexPH9PptiIZDQOzaF4f5tEbJ2+7qvNbtXNBbU3SfmN+fXlWDhg==
+<<<<<<< HEAD
+=======
+  dependencies:
+    ts-essentials "^2.0.3"
+
+use-isomorphic-layout-effect@^1.0.0:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.1.tgz#7bb6589170cd2987a152042f9084f9effb75c225"
+  integrity sha512-L7Evj8FGcwo/wpbv/qvSfrkHFtOpCzvM5yl2KVyDJoylVuSvzphiiasmjgQPttIGBAy2WKiBNR98q8w7PiNgKQ==
+
+use-latest@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/use-latest/-/use-latest-1.2.0.tgz#a44f6572b8288e0972ec411bdd0840ada366f232"
+  integrity sha512-d2TEuG6nSLKQLAfW3By8mKr8HurOlTkul0sOpxbClIv4SQ4iOd7BYr7VIzdbktUCnv7dua/60xzd8igMU6jmyw==
+  dependencies:
+    use-isomorphic-layout-effect "^1.0.0"
+
+use-query-params@^1.2.2:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/use-query-params/-/use-query-params-1.2.3.tgz#306c31a0cbc714e8a3b4bd7e91a6a9aaccaa5e22"
+  integrity sha512-cdG0tgbzK+FzsV6DAt2CN8Saa3WpRnze7uC4Rdh7l15epSFq7egmcB/zuREvPNwO5Yk80nUpDZpiyHsoq50d8w==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     ts-essentials "^2.0.3"
 
@@ -15239,6 +15616,16 @@ warning@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/warning/-/warning-4.0.3.tgz#16e9e077eb8a86d6af7d64aa1e05fd85b4678ca3"
   integrity sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==
+<<<<<<< HEAD
+=======
+  dependencies:
+    loose-envify "^1.0.0"
+
+watchify@3.11.1:
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/watchify/-/watchify-3.11.1.tgz#8e4665871fff1ef64c0430d1a2c9d084d9721881"
+  integrity sha512-WwnUClyFNRMB2NIiHgJU9RQPQNqVeFk7OmZaWf5dC5EnNa0Mgr7imBydbaJ7tGTuPM2hz1Cb4uiBvK9NVxMfog==
+>>>>>>> 182fdec (Handle error codes)
   dependencies:
     loose-envify "^1.0.0"
 

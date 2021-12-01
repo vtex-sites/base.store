@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import type { GraphQLError } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
+import type { FormatErrorHandler } from '@envelop/core'
+import { GraphQLError } from 'graphql'
 import {
   envelop,
   useSchema,
-  useErrorHandler,
   useMaskedErrors,
   useExtendContext,
 } from '@envelop/core'
@@ -40,9 +40,20 @@ const parseRequest = (req: GatsbyFunctionRequest) => {
   }
 }
 
-const handleError = (error: readonly GraphQLError[]) => {
-  // eslint-disable-next-line no-console
-  console.log(error)
+const isBadRequestError = (err: GraphQLError) => {
+  return err.originalError && err.originalError.name === 'BadRequestError'
+}
+
+const maskError: FormatErrorHandler = (err: GraphQLError | unknown) => {
+  if (err instanceof GraphQLError) {
+    if (!isBadRequestError(err)) {
+      return new GraphQLError('Sorry, something went wrong.')
+    }
+
+    return err
+  }
+
+  return new GraphQLError('Sorry, something went wrong.')
 }
 
 const createGetEnveloped = async () =>
@@ -50,8 +61,7 @@ const createGetEnveloped = async () =>
     plugins: [
       useSchema(await getSchema()),
       useExtendContext(getContextFactory()),
-      useErrorHandler((error) => handleError(error)),
-      useMaskedErrors(),
+      useMaskedErrors({ formatError: maskError }),
       useGraphQlJit(),
       useValidationCache(),
       useParserCache(),
@@ -95,14 +105,10 @@ const handler = async (
       res.setHeader('cache-control', 'no-cache, no-store')
     }
 
-    const isGraphQLError = (error: GraphQLError) => {
-      return error.name === 'GraphQLError'
-    }
-
-    if (response.errors && isGraphQLError(response.errors[0])) {
-      res.status(500)
+    if (response.errors && isBadRequestError(response.errors[0])) {
+      res.status(400)
     } else {
-      response.errors && res.status(400)
+      response.errors && res.status(500)
     }
 
     res.setHeader('content-type', 'application/json')
