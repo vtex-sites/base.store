@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 import type { FormatErrorHandler } from '@envelop/core'
-import { GraphQLError } from 'graphql'
 import {
+  enableIf,
   envelop,
   useSchema,
   useMaskedErrors,
   useExtendContext,
 } from '@envelop/core'
+import { GraphQLError } from 'graphql'
 import { useGraphQlJit } from '@envelop/graphql-jit'
 import { useParserCache } from '@envelop/parser-cache'
 import { useValidationCache } from '@envelop/validation-cache'
@@ -15,6 +16,9 @@ import { useResponseCache } from '@envelop/response-cache'
 
 import { getSchema, getContextFactory } from '../server'
 import persisted from '../../@generated/graphql/persisted.json'
+
+const { NODE_ENV, CONTEXT: ENV = NODE_ENV } = process.env
+const isProduction = ENV === 'production'
 
 const persistedQueries = new Map(Object.entries(persisted))
 
@@ -61,7 +65,7 @@ const createGetEnveloped = async () =>
     plugins: [
       useSchema(await getSchema()),
       useExtendContext(getContextFactory()),
-      useMaskedErrors({ formatError: maskError }),
+      enableIf(isProduction, () => useMaskedErrors({ formatError: maskError })),
       useGraphQlJit(),
       useValidationCache(),
       useParserCache(),
