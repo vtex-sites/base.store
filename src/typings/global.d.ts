@@ -4,14 +4,15 @@ interface Window extends Window {
    * This is a global script added by VTEX Request Capture
    */
   vtexrca: {
-    (...args: any[]): void
-    /**
+        /**
      * event list
      */
     q: any[]
-    /**
-     * Script initialization datetime
-     */
-    l: number
+  }
+  /**
+   * This is a global function added by VTEX Request Capture
+   */
+  NavigationCapture: {
+    sendEvent: (...args: any[]) => void
   }
 }
