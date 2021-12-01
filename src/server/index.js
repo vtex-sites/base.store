@@ -2,7 +2,7 @@ const api = require('@faststore/api')
 const graphql = require('graphql')
 
 const persisted = require('../../@generated/graphql/persisted.json')
-const options = require('../store.config')
+const options = require('../../store.config')
 
 const schema = api.getSchema(options)
 const contextFactory = api.getContextFactory(options)
