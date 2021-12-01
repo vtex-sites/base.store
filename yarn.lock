@@ -1709,9 +1709,10 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
-"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/dc1546c4/@faststore/api":
+"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/3b976b5f/@faststore/api":
   version "1.3.4"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/dc1546c4/@faststore/api#d13cb7f811caf8dcc5b6d242e16a3201e9f3d316"
+  uid d13cb7f811caf8dcc5b6d242e16a3201e9f3d316
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/3b976b5f/@faststore/api#d13cb7f811caf8dcc5b6d242e16a3201e9f3d316"
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1722,7 +1723,6 @@
 
 "@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/e3618098/@faststore/api":
   version "1.3.4"
-  uid d13cb7f811caf8dcc5b6d242e16a3201e9f3d316
   resolved "https://pkg.csb.dev/vtex/faststore/commit/e3618098/@faststore/api#d13cb7f811caf8dcc5b6d242e16a3201e9f3d316"
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
@@ -1732,15 +1732,15 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
-"@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/dc1546c4/@faststore/sdk":
+"@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/3b976b5f/@faststore/sdk":
   version "1.3.4"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/dc1546c4/@faststore/sdk#7f9908e4037123e1cc950560a2d2fe219e2121eb"
+  uid "7f9908e4037123e1cc950560a2d2fe219e2121eb"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/3b976b5f/@faststore/sdk#7f9908e4037123e1cc950560a2d2fe219e2121eb"
   dependencies:
     idb-keyval "^5.1.3"
 
 "@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/e3618098/@faststore/sdk":
   version "1.3.4"
-  uid "7f9908e4037123e1cc950560a2d2fe219e2121eb"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/e3618098/@faststore/sdk#7f9908e4037123e1cc950560a2d2fe219e2121eb"
   dependencies:
     idb-keyval "^5.1.3"
@@ -3330,16 +3330,15 @@
     perf_hooks "^0.0.1"
     tslib "^1"
 
-"@vtex/gatsby-plugin-nginx@https://pkg.csb.dev/vtex/faststore/commit/dc1546c4/@vtex/gatsby-plugin-nginx":
+"@vtex/gatsby-plugin-nginx@https://pkg.csb.dev/vtex/faststore/commit/3b976b5f/@vtex/gatsby-plugin-nginx":
   version "1.3.4"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/dc1546c4/@vtex/gatsby-plugin-nginx#e840d63794e72d2032fba0a8d49c20ce107e409b"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/3b976b5f/@vtex/gatsby-plugin-nginx#acf99f06d3f0ab3d8dfff5eb6da3b838ee8eef38"
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
 "@vtex/gatsby-plugin-nginx@https://pkg.csb.dev/vtex/faststore/commit/e3618098/@vtex/gatsby-plugin-nginx":
   version "1.3.4"
-  uid e840d63794e72d2032fba0a8d49c20ce107e409b
   resolved "https://pkg.csb.dev/vtex/faststore/commit/e3618098/@vtex/gatsby-plugin-nginx#e840d63794e72d2032fba0a8d49c20ce107e409b"
   dependencies:
     kebab-hash "^0.1.2"
