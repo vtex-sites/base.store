@@ -3,9 +3,8 @@ export const pages = {
   collection: '/women',
   collection_filtered:
     '/women/?category-1=women&color=red&facets=category-1%2Ccolor',
-  search: '/s?q=shirt',
+  search: '/s/?q=shirt',
   home: '/',
-  brand_name: 'lacoste',
 }
 
 export const options = {
