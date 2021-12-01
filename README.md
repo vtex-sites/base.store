@@ -29,13 +29,16 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
     yarn
     ```
 
-2.  **Setup env vars**
+2.  **Setup store configuration**
 
-    Choose the ecommerce platform provider of your choice in the `vtex.env` file and set the corresponding options. For instance, to connect to the VTEX platform on the store `fashioneurope`:
+    Choose the ecommerce platform provider of your choice in the `store.config.js` file and set the corresponding options. For instance, to connect to the VTEX platform on the store `fashioneurope`:
 
-    ```
-    GATSBY_STORE_ID=fashioneurope
-    GATSBY_VTEX_ENVIRONMENT=vtexcommercestable
+    ```js
+    module.exports = {       
+        platform: 'vtex',
+        store: 'fashioneurope',
+        environment: 'vtexcommercestable',
+    }
     ```
 
 3.  **Start developing**

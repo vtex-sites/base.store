@@ -10,16 +10,15 @@ import { useMetadata } from './hooks/useMetadata'
 
 interface Props {
   title: string
-  slug: string
+
   site: CollectionSeoFragment_SiteFragment
-  storeCollection: CollectionSeoFragment_StoreCollectionFragment
+  collection: CollectionSeoFragment_StoreCollectionFragment
 }
 
 function Seo({
   title,
   site,
-  slug,
-  storeCollection: { seo: collectionSeo, breadcrumbList },
+  collection: { seo: collectionSeo, breadcrumbList, canonical },
 }: Props) {
   if (!site || !site.siteMetadata) {
     throw new Error(`useMetadata: missing site metadata.`)
@@ -38,8 +37,8 @@ function Seo({
   const metadata = useMetadata({
     title,
     titleTemplate: titleTemplate ?? undefined,
-    description: collectionSeo.description ?? description,
-    canonical: `/${slug}/`,
+    description: collectionSeo.description ?? description ?? undefined,
+    canonical: `/${canonical}/`,
   })
 
   return (
@@ -55,6 +54,7 @@ function Seo({
 
 export const fragment = graphql`
   fragment CollectionSeoFragment_storeCollection on StoreCollection {
+    canonical: slug
     seo {
       title
       description

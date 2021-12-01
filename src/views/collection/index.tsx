@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
-import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}'
+import type { Props as PageProps } from 'src/pages/[...]'
 
 import Seo from './Seo'
 
@@ -8,25 +8,18 @@ type Props = PageProps
 
 function View(props: Props) {
   const {
-    pageContext: { slug },
-    data,
+    data: { site },
+    serverData,
   } = props
 
-  const { storeCollection, site } = data
-
-  const title =
-    data.storeCollection?.seo.title ?? data.site?.siteMetadata?.title ?? ''
+  const collection = serverData?.collection
+  const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
 
   return (
     <>
       {/* TODO: Move seo components to SSG */}
-      {storeCollection && site && (
-        <Seo
-          title={title}
-          slug={slug}
-          site={site}
-          storeCollection={storeCollection}
-        />
+      {collection && site && (
+        <Seo title={title} site={site} collection={collection} />
       )}
 
       <h1 data-testid="collection-page" className="absolute top-[-100px]">

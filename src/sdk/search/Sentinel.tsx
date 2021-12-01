@@ -30,7 +30,7 @@ const replacePagination = (page: number) => {
  *
  * For more info: https://developers.google.com/search/blog/2014/02/infinite-scroll-search-friendly
  *
- * Also, this component's name is kind of curious. Wikipedia calls is Page Break(https://en.wikipedia.org/wiki/Page_break)
+ * Also, this component's name is kind of curious. Wikipedia calls it Page Break(https://en.wikipedia.org/wiki/Page_break)
  * however all codes I've seen online use Sentinel
  */
 function Sentinel({ page, products, title }: Props) {

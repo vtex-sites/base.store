@@ -1,22 +1,30 @@
-const {
-  getSchema: storeApiGetSchema,
-  getContextFactory: storeApiGetContextFactory,
-} = require('@faststore/api')
+const api = require('@faststore/api')
+const graphql = require('graphql')
 
-const options = {
-  platform: process.env.GATSBY_COMMERCE_PLATFORM,
-  account: process.env.GATSBY_STORE_ID,
-  environment: process.env.GATSBY_VTEX_ENVIRONMENT,
-  channel: process.env.GATSBY_VTEX_CHANNEL,
+const persisted = require('../../@generated/graphql/persisted.json')
+const options = require('../store.config')
+
+const schema = api.getSchema(options)
+const contextFactory = api.getContextFactory(options)
+const persistedQueries = new Map(Object.entries(persisted))
+
+const execute = async ({ operationName, variableValues }) => {
+  const query = persistedQueries.get(operationName)
+
+  if (query == null) {
+    throw new Error(`No query found for operationName: ${operationName}`)
+  }
+
+  return graphql.execute({
+    schema: await schema,
+    document: graphql.parse(query),
+    contextValue: contextFactory({}),
+    variableValues,
+    operationName,
+  })
 }
 
-const schema = storeApiGetSchema(options)
-const contextFactory = storeApiGetContextFactory(options)
-
-const getSchema = () => schema
-const getContextFactory = () => contextFactory
-
 module.exports = {
-  getSchema,
-  getContextFactory,
+  execute,
+  schema,
 }

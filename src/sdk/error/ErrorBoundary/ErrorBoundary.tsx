@@ -45,17 +45,14 @@ class ErrorBoundary extends Component {
     const from = encodeURIComponent(window.location.pathname)
 
     const isOffline = !window.navigator.onLine
-    const is404 = error?.extensions?.exception?.status === 404
 
     if (isFrameworkLevelError(error) && canRecover()) {
       setReloads(getReloads() + 1)
       window.location.reload()
     } else if (isOffline) {
-      window.location.href = `/offline?from=${from}`
-    } else if (is404) {
-      window.location.href = `/404?from=${from}`
+      window.location.href = `/offline/?from=${from}`
     } else {
-      window.location.href = `/500?from=${from}&errorId=${errorId}`
+      window.location.href = `/500/?from=${from}&errorId=${errorId}`
     }
   }
 

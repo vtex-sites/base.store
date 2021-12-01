@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import type {
-  BrowserProductQueryQuery,
+  ServerProductPageQueryQuery,
   ProductSeoFragment_SiteFragment,
   ProductViewFragment_ProductFragment,
 } from '@generated/graphql'
@@ -18,7 +18,7 @@ interface Props {
 function View({ product: serverData, site }: Props) {
   const { data } = useProduct(
     serverData.id,
-    { product: serverData as unknown as BrowserProductQueryQuery['product'] } // TODO: Fix this typings
+    { product: serverData as unknown as ServerProductPageQueryQuery['product'] } // TODO: Fix this typings
   )
 
   const product = data?.product

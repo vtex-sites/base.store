@@ -1,10 +1,6 @@
-import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 
-import { getSchema, getContextFactory } from '../server'
-import persisted from '../../@generated/graphql/persisted.json'
-
-const persistedQueries = new Map(Object.entries(persisted))
+import { execute } from '../server'
 
 const parseRequest = (req: GatsbyFunctionRequest) => {
   const { operationName, variables } =
@@ -15,20 +11,11 @@ const parseRequest = (req: GatsbyFunctionRequest) => {
           variables: JSON.parse(req.query.variables),
         }
 
-  const query = persistedQueries.get(operationName)
-
-  if (query == null) {
-    throw new Error(`No query found for operationName: ${operationName}`)
-  }
-
   return {
-    query,
     operationName,
     variables,
   }
 }
-
-const contextFactory = getContextFactory()
 
 const handler = async (
   req: GatsbyFunctionRequest,
@@ -40,30 +27,25 @@ const handler = async (
     return
   }
 
-  const { operationName, variables, query } = parseRequest(req)
-
   try {
+    const { operationName, variables } = parseRequest(req)
+
     const response = await execute({
-      schema: await getSchema(),
-      document: parse(query),
       variableValues: variables,
-      contextValue: contextFactory({}),
       operationName,
     })
 
-    if (process.env.NODE_ENV !== 'production') {
-      if (Array.isArray(response.errors)) {
-        response.errors.forEach(console.error)
-      }
-
-      res.setHeader('cache-control', 'no-cache, no-store')
+    if (Array.isArray(response.errors)) {
+      response.errors.forEach(console.error)
     }
 
+    res.setHeader('cache-control', 'no-cache, no-store')
     res.setHeader('content-type', 'application/json')
     res.send(JSON.stringify(response))
   } catch (err) {
     console.error(err)
 
+    res.setHeader('cache-control', 'no-cache, no-store')
     res.status(500)
   }
 }

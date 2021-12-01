@@ -1,3 +1,5 @@
+const { schema } = require('./src/server')
+
 exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
   const profiling = process.env.GATSBY_STORE_PROFILING === 'true'
 
@@ -18,4 +20,10 @@ exports.onCreateBabelConfig = ({ actions }) => {
     name: `@vtex/graphql-utils/babel`,
     options: {},
   })
+}
+
+exports.createSchemaCustomization = async (gatsbyApi) => {
+  const { actions } = gatsbyApi
+
+  actions.addThirdPartySchema({ schema: await schema })
 }
