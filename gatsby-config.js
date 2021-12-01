@@ -7,7 +7,7 @@ const config = require('./store.config')
 
 const {
   NODE_ENV,
-  URL = `https://${config.store}.vtex.app`,
+  URL = `https://${config.account}.vtex.app`,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
   VTEX_WEBOPS: isWebOps,

@@ -36,7 +36,7 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
     ```js
     module.exports = {       
         platform: 'vtex',
-        store: 'fashioneurope',
+        account: 'fashioneurope',
         environment: 'vtexcommercestable',
     }
     ```
