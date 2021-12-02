@@ -3605,57 +3605,6 @@ export type ProductGalleryQueryQuery = {
   }
 }
 
-export type BrowserProductPageQueryQueryVariables = Exact<{
-  locator: Array<IStoreSelectedFacet> | IStoreSelectedFacet
-}>
-
-export type BrowserProductPageQueryQuery = {
-  product: {
-    slug: string
-    sku: string
-    gtin: string
-    name: string
-    description: string
-    id: string
-    seo: { title: string; description: string }
-    brand: { name: string }
-    breadcrumbList: {
-      itemListElement: Array<{ item: string; name: string; position: number }>
-    }
-    image: Array<{ url: string; alternateName: string }>
-    offers: {
-      lowPrice: number
-      highPrice: number
-      priceCurrency: string
-      offers: Array<{
-        price: number
-        priceValidUntil: string
-        priceCurrency: string
-        availability: string
-        itemCondition: string
-        listPrice: number
-        seller: { identifier: string }
-      }>
-    }
-    isVariantOf: { productGroupID: string; name: string }
-  }
-}
-
-export type ServerProductPageQueryQueryVariables = Exact<{
-  [key: string]: never
-}>
-
-export type ServerProductPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      title: string | null
-      description: string | null
-      titleTemplate: string | null
-      siteUrl: string | null
-    } | null
-  } | null
-}
-
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type HomePageQueryQuery = {
@@ -3699,6 +3648,29 @@ export type CollectionPageQueryQuery = {
     }
     meta: { selectedFacets: Array<{ key: string; value: string }> }
   } | null
+}
+
+export type BrowserProductQueryQueryVariables = Exact<{
+  locator: Array<IStoreSelectedFacet> | IStoreSelectedFacet
+}>
+
+export type BrowserProductQueryQuery = {
+  product: {
+    sku: string
+    name: string
+    gtin: string
+    id: string
+    isVariantOf: { productGroupID: string; name: string }
+    image: Array<{ url: string; alternateName: string }>
+    brand: { name: string }
+    offers: {
+      offers: Array<{
+        price: number
+        listPrice: number
+        seller: { identifier: string }
+      }>
+    }
+  }
 }
 
 export type ProductPageQueryQueryVariables = Exact<{
@@ -3804,114 +3776,4 @@ export type ProductsQueryQuery = {
       }>
     }
   }
-}
-
-export type ProductSeoFragment_SiteFragment = {
-  siteMetadata: {
-    title: string | null
-    description: string | null
-    titleTemplate: string | null
-    siteUrl: string | null
-  } | null
-}
-
-export type ProductSeoFragment_ProductFragment = {
-  slug: string
-  sku: string
-  gtin: string
-  name: string
-  description: string
-  seo: { title: string; description: string }
-  brand: { name: string }
-  breadcrumbList: {
-    itemListElement: Array<{ item: string; name: string; position: number }>
-  }
-  image: Array<{ url: string; alternateName: string }>
-  offers: {
-    lowPrice: number
-    highPrice: number
-    priceCurrency: string
-    offers: Array<{
-      price: number
-      priceValidUntil: string
-      priceCurrency: string
-      availability: string
-      itemCondition: string
-      seller: { identifier: string }
-    }>
-  }
-}
-
-export type BrowserProductQueryQueryVariables = Exact<{
-  locator: Array<IStoreSelectedFacet> | IStoreSelectedFacet
-}>
-
-export type BrowserProductQueryQuery = {
-  product: {
-    slug: string
-    sku: string
-    gtin: string
-    name: string
-    description: string
-    id: string
-    seo: { title: string; description: string }
-    brand: { name: string }
-    breadcrumbList: {
-      itemListElement: Array<{ item: string; name: string; position: number }>
-    }
-    image: Array<{ url: string; alternateName: string }>
-    offers: {
-      lowPrice: number
-      highPrice: number
-      priceCurrency: string
-      offers: Array<{
-        price: number
-        priceValidUntil: string
-        priceCurrency: string
-        availability: string
-        itemCondition: string
-        listPrice: number
-        seller: { identifier: string }
-      }>
-    }
-    isVariantOf: { productGroupID: string; name: string }
-  }
-}
-
-export type ProductViewFragment_ProductFragment = {
-  slug: string
-  sku: string
-  gtin: string
-  name: string
-  description: string
-  id: string
-  seo: { title: string; description: string }
-  brand: { name: string }
-  breadcrumbList: {
-    itemListElement: Array<{ item: string; name: string; position: number }>
-  }
-  image: Array<{ url: string; alternateName: string }>
-  offers: {
-    lowPrice: number
-    highPrice: number
-    priceCurrency: string
-    offers: Array<{
-      price: number
-      priceValidUntil: string
-      priceCurrency: string
-      availability: string
-      itemCondition: string
-      listPrice: number
-      seller: { identifier: string }
-    }>
-  }
-  isVariantOf: { productGroupID: string; name: string }
-}
-
-export type SearchSeoFragment_SiteFragment = {
-  siteMetadata: {
-    titleTemplate: string | null
-    title: string | null
-    description: string | null
-  } | null
 }

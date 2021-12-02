@@ -9,13 +9,10 @@ import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
+  isValidating: boolean
 }
 
-const styles = {
-  listPrice: { textDecoration: 'line-through' },
-}
-
-function ProductDetails({ product }: Props) {
+function ProductDetails({ product, isValidating }: Props) {
   const {
     id,
     sku,
@@ -29,6 +26,8 @@ function ProductDetails({ product }: Props) {
     },
   } = product
 
+  const formattedPrice = useFormattedPrice(price)
+  const formattedListPrice = useFormattedPrice(listPrice)
   const image = useImage(img.url, 'product.details')
   const buyProps = useBuyButton({
     id,
@@ -51,9 +50,11 @@ function ProductDetails({ product }: Props) {
     <div>
       <h2>{variantName}</h2>
       <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
-      <div style={styles.listPrice}>{useFormattedPrice(listPrice)}</div>
-      <div>{useFormattedPrice(price)}</div>
-      <Button {...buyProps}>Add to cart</Button>
+      <div className="line-through">{formattedListPrice}</div>
+      <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
+      <Button {...buyProps} disabled={isValidating}>
+        Add to cart
+      </Button>
     </div>
   )
 }
