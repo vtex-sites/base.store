@@ -1,21 +1,21 @@
-import { parseSearchState, SearchProvider } from '@faststore/sdk'
+import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
+import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
+import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
-import View from 'src/views/collection'
 import type { SearchState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
-import ProductGallery from 'src/components/sections/ProductGallery'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables & { slug: string }
->
+  CollectionPageQueryQueryVariables
+> & { slug: string }
 
 const useSearchParams = (props: Props): SearchState => {
   const {
@@ -23,7 +23,7 @@ const useSearchParams = (props: Props): SearchState => {
     data,
   } = props
 
-  const selectedFacets = data?.storeCollection?.meta.selectedFacets
+  const selectedFacets = data?.collection?.meta.selectedFacets
 
   return useMemo(() => {
     const maybeState = href ? parseSearchState(new URL(href)) : null
@@ -43,12 +43,19 @@ const useSearchParams = (props: Props): SearchState => {
 
 function Page(props: Props) {
   const {
-    data: { site, storeCollection },
+    data: { site, collection },
+    location: { host },
+    slug,
   } = props
 
+  const { locale } = useSession()
   const searchParams = useSearchParams(props)
 
-  const title = storeCollection?.seo.title ?? site?.siteMetadata?.title ?? ''
+  const { page } = searchParams
+  const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
+  const canonicalPath = `/${slug}/${page !== 0 ? `?page=${page}` : ''}`
+  const canonical =
+    host !== undefined ? `https://${host}/${canonicalPath}` : canonicalPath
 
   return (
     <SearchProvider
@@ -57,8 +64,26 @@ function Page(props: Props) {
       {...searchParams}
     >
       {/* SEO */}
+      <GatsbySeo
+        title={title}
+        titleTemplate={site?.siteMetadata?.titleTemplate ?? ''}
+        description={site?.siteMetadata?.description ?? ''}
+        canonical={canonical}
+        language={locale}
+        openGraph={{
+          type: 'website',
+          title,
+          description: site?.siteMetadata?.description ?? '',
+        }}
+      />
+      <BreadcrumbJsonLd
+        itemListElements={collection?.breadcrumbList.itemListElement ?? []}
+      />
 
-      {/* Sections */}
+      {/*
+        Sections: Components imported from '../components/sections' only.
+        Do not import or render components from any other folder in here.
+      */}
       <h1 data-testid="collection-page" className="absolute top-[-100px]">
         {title}
       </h1>
@@ -74,11 +99,25 @@ function Page(props: Props) {
 export const query = graphql`
   query CollectionPageQuery($id: String!) {
     site {
-      ...CollectionSeoFragment_site
+      siteMetadata {
+        titleTemplate
+        title
+        description
+      }
     }
 
-    storeCollection(id: { eq: $id }) {
-      ...CollectionSeoFragment_storeCollection
+    collection: storeCollection(id: { eq: $id }) {
+      seo {
+        title
+        description
+      }
+      breadcrumbList {
+        itemListElement {
+          item
+          name
+          position
+        }
+      }
       meta {
         selectedFacets {
           key
