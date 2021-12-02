@@ -3,10 +3,11 @@ import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import type {
   CurrencyCode,
-  ViewItemEvent,
-  SelectItemEvent,
-  SelectItemData,
-  Item,
+  ViewItemEvent as SDKViewItemEvent,
+  SelectItemEvent as SDKSelectItemEvent,
+  SelectItemData as SDKSelectItemData,
+  Item as SDKItem,
+  ViewItemData as SDKViewItemData,
 } from '@faststore/sdk'
 
 export type ProductLinkOptions = {
@@ -14,14 +15,26 @@ export type ProductLinkOptions = {
   product: ProductSummary_ProductFragment
 }
 
-type GAItem = Item & {
+type Item = SDKItem & {
   product_reference_id?: string
 }
 
-type GASelectItemEventData = SelectItemData & { items: GAItem[] }
+type SelectItemEventData = SDKSelectItemData & { items: Item[] }
 
-interface GASelectItemEvent extends SelectItemEvent {
-  data: GASelectItemEventData
+export interface SelectItemEvent extends SDKSelectItemEvent {
+  data: SelectItemEventData
+}
+
+type ViewItemDataItem = SDKItem & {
+  item_id: string
+}
+
+type ViewItemData = SDKViewItemData & {
+  items: ViewItemDataItem[]
+}
+
+export interface ViewItemEvent extends SDKViewItemEvent {
+  data: ViewItemData
 }
 
 export const useProductLink = ({ index, product }: ProductLinkOptions) => {
@@ -34,7 +47,7 @@ export const useProductLink = ({ index, product }: ProductLinkOptions) => {
     const onClick = () => {
       const currency = code as CurrencyCode
 
-      sendAnalyticsEvent<GASelectItemEvent>({
+      sendAnalyticsEvent<SelectItemEvent>({
         type: 'select_item',
         data: {
           items: [
