@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
-import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}/[...]'
+import type { Props as PageProps } from 'src/pages/{StoreCollection.slug}'
 
 import Seo from './Seo'
 

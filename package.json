@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@faststore/api": "^1.3.10",
-    "@faststore/sdk": "^1.3.10",
+    "@faststore/sdk": "https://pkg.csb.dev/vtex/faststore/commit/47c49b79/@faststore/sdk",
     "@faststore/ui": "^1.3.10",
     "@vtex/gatsby-plugin-nginx": "^1.3.10",
     "@vtex/gatsby-plugin-thumbor": "^1.3.10",

@@ -19,32 +19,25 @@ export type Props = PageProps<
 const useSearchParams = (props: Props): SearchState => {
   const {
     location: { href, pathname },
-    data: { storeCollection },
-    params: { '*': wildcard },
+    data,
   } = props
 
+  const selectedFacets = data?.storeCollection?.meta.selectedFacets
+
   return useMemo(() => {
-    // Runs when filters are applied
-    if (wildcard?.length > 0) {
-      return parseSearchState(new URL(href))
-    }
-
-    if (storeCollection === null) {
-      throw new Error('storeCollection is null.')
-    }
-
-    // Runs on SSG
-    const { selectedFacets } = storeCollection.meta
-    const [base] = pathname.split(selectedFacets[0].value)
+    const maybeState = href ? parseSearchState(new URL(href)) : null
 
     return {
-      page: 0,
-      base,
-      selectedFacets,
-      term: null,
-      sort: 'score_desc',
+      page: maybeState?.page ?? 0,
+      base: maybeState?.base ?? pathname,
+      selectedFacets:
+        maybeState && maybeState.selectedFacets.length > 0
+          ? maybeState.selectedFacets
+          : selectedFacets ?? [],
+      term: maybeState?.term ?? null,
+      sort: maybeState?.sort ?? 'score_desc',
     }
-  }, [href, pathname, storeCollection, wildcard?.length])
+  }, [href, pathname, selectedFacets])
 }
 
 function Page(props: Props) {

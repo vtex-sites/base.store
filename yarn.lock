@@ -1709,10 +1709,9 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
-"@faststore/sdk@^1.3.10":
-  version "1.3.10"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.3.10.tgz#2c82eb8c8cfaa914cfa1501e24b409238a4b541b"
-  integrity sha512-FXIp8T2xCFMOSmJBTypfKOW87uadU/EfbtfeXa6vuJqc0ILncyH720ySDs/i5AIiWslr63b3lzkxshqrn5A04A==
+"@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/47c49b79/@faststore/sdk":
+  version "1.3.8"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/47c49b79/@faststore/sdk#3745ffc528f155970cb986dec459a6276115ae00"
   dependencies:
     idb-keyval "^5.1.3"
 
