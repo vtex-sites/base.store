@@ -10,6 +10,7 @@ import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
+import ProductGallery from 'src/components/sections/ProductGallery'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,
@@ -41,7 +42,13 @@ const useSearchParams = (props: Props): SearchState => {
 }
 
 function Page(props: Props) {
+  const {
+    data: { site, storeCollection },
+  } = props
+
   const searchParams = useSearchParams(props)
+
+  const title = storeCollection?.seo.title ?? site?.siteMetadata?.title ?? ''
 
   return (
     <SearchProvider
@@ -49,7 +56,14 @@ function Page(props: Props) {
       itemsPerPage={ITEMS_PER_PAGE}
       {...searchParams}
     >
-      <View {...props} />
+      {/* SEO */}
+
+      {/* Sections */}
+      <h1 data-testid="collection-page" className="absolute top-[-100px]">
+        {title}
+      </h1>
+
+      <ProductGallery title={title} />
     </SearchProvider>
   )
 }
