@@ -845,6 +845,7 @@ export type Query = {
   allSitePlugin: SitePluginConnection
   allStoreCollection: StoreCollectionConnection
   allStoreProduct: StoreProductConnection
+  collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
   product: StoreProduct
@@ -929,6 +930,10 @@ export type QueryAllStoreProductArgs = {
   limit: Maybe<Scalars['Int']>
   skip: Maybe<Scalars['Int']>
   sort: Maybe<StoreProductSortInput>
+}
+
+export type QueryCollectionArgs = {
+  slug: Scalars['String']
 }
 
 export type QueryDirectoryArgs = {
@@ -1090,6 +1095,7 @@ export type QuerySitePluginArgs = {
 export type QueryStoreCollectionArgs = {
   breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>
   children: Maybe<NodeFilterListInput>
+  gatsbyPath: Maybe<StringQueryOperatorInput>
   id: Maybe<StringQueryOperatorInput>
   internal: Maybe<InternalFilterInput>
   meta: Maybe<StoreCollectionMetaFilterInput>
@@ -2266,6 +2272,8 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___json'
   | 'pluginOptions___jsxPragma'
   | 'pluginOptions___legacy'
+  | 'pluginOptions___locations___append___children'
+  | 'pluginOptions___locations___append___cmd'
   | 'pluginOptions___maxNumCollections'
   | 'pluginOptions___maxNumProducts'
   | 'pluginOptions___name'
@@ -2428,6 +2436,7 @@ export type SitePluginPluginOptions = {
   json: Maybe<Scalars['Boolean']>
   jsxPragma: Maybe<Scalars['String']>
   legacy: Maybe<Scalars['Boolean']>
+  locations: Maybe<SitePluginPluginOptionsLocations>
   maxNumCollections: Maybe<Scalars['Int']>
   maxNumProducts: Maybe<Scalars['Int']>
   name: Maybe<Scalars['String']>
@@ -2550,6 +2559,7 @@ export type SitePluginPluginOptionsFilterInput = {
   json: Maybe<BooleanQueryOperatorInput>
   jsxPragma: Maybe<StringQueryOperatorInput>
   legacy: Maybe<BooleanQueryOperatorInput>
+  locations: Maybe<SitePluginPluginOptionsLocationsFilterInput>
   maxNumCollections: Maybe<IntQueryOperatorInput>
   maxNumProducts: Maybe<IntQueryOperatorInput>
   name: Maybe<StringQueryOperatorInput>
@@ -2569,6 +2579,36 @@ export type SitePluginPluginOptionsFilterInput = {
   theme_color: Maybe<StringQueryOperatorInput>
   theme_color_in_head: Maybe<BooleanQueryOperatorInput>
   workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
+}
+
+export type SitePluginPluginOptionsLocations = {
+  append: Maybe<SitePluginPluginOptionsLocationsAppend>
+}
+
+export type SitePluginPluginOptionsLocationsAppend = {
+  children: Maybe<Array<Maybe<SitePluginPluginOptionsLocationsAppendChildren>>>
+  cmd: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type SitePluginPluginOptionsLocationsAppendChildren = {
+  cmd: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type SitePluginPluginOptionsLocationsAppendChildrenFilterInput = {
+  cmd: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsLocationsAppendChildrenFilterListInput = {
+  elemMatch: Maybe<SitePluginPluginOptionsLocationsAppendChildrenFilterInput>
+}
+
+export type SitePluginPluginOptionsLocationsAppendFilterInput = {
+  children: Maybe<SitePluginPluginOptionsLocationsAppendChildrenFilterListInput>
+  cmd: Maybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsLocationsFilterInput = {
+  append: Maybe<SitePluginPluginOptionsLocationsAppendFilterInput>
 }
 
 export type SitePluginPluginOptionsStats = {
@@ -2688,6 +2728,7 @@ export type StoreCartMessage = {
 export type StoreCollection = Node & {
   breadcrumbList: StoreBreadcrumbList
   children: Array<Node>
+  gatsbyPath: Maybe<Scalars['String']>
   id: Scalars['ID']
   internal: Internal
   meta: StoreCollectionMeta
@@ -2697,6 +2738,10 @@ export type StoreCollection = Node & {
   seo: StoreSeo
   slug: Scalars['String']
   type: StoreCollectionType
+}
+
+export type StoreCollectionGatsbyPathArgs = {
+  filePath: Maybe<Scalars['String']>
 }
 
 export type StoreCollectionConnection = {
@@ -2801,6 +2846,7 @@ export type StoreCollectionFieldsEnum =
   | 'children___parent___internal___type'
   | 'children___parent___parent___children'
   | 'children___parent___parent___id'
+  | 'gatsbyPath'
   | 'id'
   | 'internal___content'
   | 'internal___contentDigest'
@@ -2866,6 +2912,7 @@ export type StoreCollectionFieldsEnum =
 export type StoreCollectionFilterInput = {
   breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>
   children: Maybe<NodeFilterListInput>
+  gatsbyPath: Maybe<StringQueryOperatorInput>
   id: Maybe<StringQueryOperatorInput>
   internal: Maybe<InternalFilterInput>
   meta: Maybe<StoreCollectionMetaFilterInput>
@@ -3645,12 +3692,12 @@ export type CollectionPageQueryQuery = {
       description: string | null
     } | null
   } | null
-  storeCollection: {
-    meta: { selectedFacets: Array<{ key: string; value: string }> }
+  collection: {
     seo: { title: string; description: string }
     breadcrumbList: {
       itemListElement: Array<{ item: string; name: string; position: number }>
     }
+    meta: { selectedFacets: Array<{ key: string; value: string }> }
   } | null
 }
 
@@ -3757,21 +3804,6 @@ export type ProductsQueryQuery = {
       }>
     }
   }
-}
-
-export type CollectionSeoFragment_StoreCollectionFragment = {
-  seo: { title: string; description: string }
-  breadcrumbList: {
-    itemListElement: Array<{ item: string; name: string; position: number }>
-  }
-}
-
-export type CollectionSeoFragment_SiteFragment = {
-  siteMetadata: {
-    titleTemplate: string | null
-    title: string | null
-    description: string | null
-  } | null
 }
 
 export type ProductSeoFragment_SiteFragment = {
