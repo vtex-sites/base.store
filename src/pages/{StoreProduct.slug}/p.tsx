@@ -77,10 +77,12 @@ function Page(props: Props) {
     return <div>loading...</div>
   }
 
-  const canonical = host !== undefined ? `https://${host}/${slug}` : `/${slug}`
   const title = staleProduct.seo.title ?? site?.siteMetadata?.title ?? ''
   const description =
     staleProduct.seo.description ?? site?.siteMetadata?.description ?? ''
+
+  const canonical =
+    host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
 
   const { product: freshProduct } = data
 
