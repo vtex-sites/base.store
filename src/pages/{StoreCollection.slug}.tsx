@@ -45,7 +45,7 @@ function Page(props: Props) {
   const {
     data: { site, collection },
     location: { host },
-    slug,
+    params: { slug },
   } = props
 
   const { locale } = useSession()
@@ -55,7 +55,7 @@ function Page(props: Props) {
   const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
   const canonicalPath = `/${slug}/${page !== 0 ? `?page=${page}` : ''}`
   const canonical =
-    host !== undefined ? `https://${host}/${canonicalPath}` : canonicalPath
+    host !== undefined ? `https://${host}${canonicalPath}` : canonicalPath
 
   return (
     <SearchProvider
