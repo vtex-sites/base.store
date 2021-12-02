@@ -1,6 +1,4 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-
-import { GraphQLError } from 'graphql'
 import type { FormatErrorHandler } from '@envelop/core'
 import {
   enableIf,
@@ -19,28 +17,14 @@ import { getSchema, getContextFactory } from '..'
 const { NODE_ENV, CONTEXT: ENV = NODE_ENV } = process.env
 const isProduction = ENV === 'production'
 
-export const isBadRequestError = (err: GraphQLError) => {
-  return err.originalError && err.originalError.name === 'BadRequestError'
-}
+export type FormatError = FormatErrorHandler
 
-const maskError: FormatErrorHandler = (err: GraphQLError | unknown) => {
-  if (err instanceof GraphQLError) {
-    if (!isBadRequestError(err)) {
-      return new GraphQLError('Sorry, something went wrong.')
-    }
-
-    return err
-  }
-
-  return new GraphQLError('Sorry, something went wrong.')
-}
-
-export const enveloped = async () =>
+export const getEnveloped = async (formatError: FormatError) =>
   envelop({
     plugins: [
       useSchema(await getSchema()),
       useExtendContext(getContextFactory()),
-      enableIf(isProduction, () => useMaskedErrors({ formatError: maskError })),
+      enableIf(isProduction, () => useMaskedErrors({ formatError })),
       useGraphQlJit(),
       useValidationCache(),
       useParserCache(),

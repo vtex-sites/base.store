@@ -1,6 +1,8 @@
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
+import { GraphQLError } from 'graphql'
 
-import { enveloped, isBadRequestError } from '../server/envelop'
+import type { FormatError } from '../server/envelop'
+import { getEnveloped } from '../server/envelop'
 import persisted from '../../@generated/graphql/persisted.json'
 
 const persistedQueries = new Map(Object.entries(persisted))
@@ -27,6 +29,22 @@ const parseRequest = (req: GatsbyFunctionRequest) => {
   }
 }
 
+const isBadRequestError = (err: GraphQLError) => {
+  return err.originalError && err.originalError.name === 'BadRequestError'
+}
+
+const maskError: FormatError = (err: GraphQLError | unknown) => {
+  if (err instanceof GraphQLError) {
+    if (!isBadRequestError(err)) {
+      return new GraphQLError('Sorry, something went wrong.')
+    }
+
+    return err
+  }
+
+  return new GraphQLError('Sorry, something went wrong.')
+}
+
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
@@ -37,19 +55,16 @@ const handler = async (
     return
   }
 
-  const getEnveloped = await enveloped()
-  const { parse, contextFactory, execute, schema } = getEnveloped({ req })
+  const enveloped = await getEnveloped(maskError)
+  const { parse, contextFactory, execute, schema } = enveloped({ req })
   const { operationName, variables, query } = parseRequest(req)
-
-  const document = parse(query)
-  const contextValue = await contextFactory()
 
   try {
     const response = await execute({
       schema,
-      document,
+      document: parse(query),
       variableValues: variables,
-      contextValue,
+      contextValue: await contextFactory(),
       operationName,
     })
 
