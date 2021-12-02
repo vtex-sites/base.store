@@ -13,14 +13,16 @@ describe('Search input', () => {
 
   context('when search for generic term', () => {
     it('opens the search page', () => {
+      const term = 'shirt'
+
       cy.visit(pages.home, options)
       cy.waitForHydration()
 
-      cy.getById('store-input').click().type('shirt')
+      cy.getById('store-input').click().type(term)
       cy.getById('store-button').click()
 
-      cy.location('pathname').should((loc) => {
-        expect(loc).to.include(`/s/`)
+      cy.location('search').should((loc) => {
+        expect(loc).to.include(`q=${term}`)
       })
     })
   })
