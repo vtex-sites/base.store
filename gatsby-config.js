@@ -11,6 +11,7 @@ const {
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
   VTEX_WEBOPS: isWebOps,
+  NETLIFY: isNetlify,
   GATSBY_CLOUD: isGatsbyCloud,
 } = process.env
 
