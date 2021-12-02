@@ -1,15 +1,27 @@
-import { formatSearchState, useSearch } from '@faststore/sdk'
+import { useSearch } from '@faststore/sdk'
 import React, { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import { replaceSearchState } from './state'
 import { useViewItemListEvent } from '../analytics/hooks/useViewItemListEvent'
 
 interface Props {
   page: number
   title: string
   products: ProductSummary_ProductFragment[]
+}
+
+// Adds/Replaces ?page= to the querystring of the page
+const replacePagination = (page: number) => {
+  const searchParams = new URLSearchParams(window.location.search)
+
+  searchParams.set('page', page.toString())
+
+  window.history.replaceState(
+    undefined,
+    '',
+    `${window.location.pathname}?${searchParams}`
+  )
 }
 
 /**
@@ -24,20 +36,22 @@ interface Props {
 function Sentinel({ page, products, title }: Props) {
   const viewedRef = useRef(false)
   const { ref, inView } = useInView()
-  const { state: searchState } = useSearch()
+  const { state: searchState, pages } = useSearch()
 
   const { sendViewItemListEvent } = useViewItemListEvent({ products, title })
 
   useEffect(() => {
-    if (inView) {
-      replaceSearchState(formatSearchState({ ...searchState, page }))
+    // Only replace pagination state when infinite scroll
+    // state has more than one page being rendered to the screen
+    if (inView && pages.length > 1) {
+      replacePagination(page)
     }
 
     if (inView && !viewedRef.current) {
       sendViewItemListEvent()
       viewedRef.current = true
     }
-  }, [inView, page, searchState, sendViewItemListEvent])
+  }, [inView, page, pages.length, searchState, sendViewItemListEvent])
 
   return <div ref={ref} />
 }

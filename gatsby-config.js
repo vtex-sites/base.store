@@ -11,7 +11,6 @@ const {
   URL = `https://${STORE_ID}.vtex.app`,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
-  NETLIFY: isNetlify,
   VTEX_WEBOPS: isWebOps,
 } = process.env
 
@@ -107,10 +106,9 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server: isWebOps
-          ? 'http://thumbor.vtex.internal'
-          : 'https://thumbor-dev-server.vtex.io',
-        ...((isProduction || isNetlify) && {
+        server: 'https://thumbor-dev-server.vtex.io',
+        ...(isWebOps && {
+          server: 'http://thumbor.vtex.internal',
           basePath: '/assets',
           sizes: getSizes(images),
         }),

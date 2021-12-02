@@ -5,9 +5,3 @@ export const applySearchState = (url: URL) => {
 
   navigate(link)
 }
-
-export const replaceSearchState = (url: URL) => {
-  const link = `${url.pathname}${url.search}`
-
-  window.history.replaceState(undefined, '', link)
-}

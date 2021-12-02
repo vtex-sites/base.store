@@ -1,7 +1,7 @@
 import React from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import type { FC } from 'react'
-import type { Props as PageProps } from 'src/pages/s/[...]'
+import type { Props as PageProps } from 'src/pages/s'
 
 import Seo from './Seo'
 
