@@ -47,7 +47,10 @@ function Page(props: Props) {
         }}
       />
 
-      {/* Layout */}
+      {/*
+        Sections: Components imported from '../components/sections' only.
+        Do not import or render components from any other folder in here.
+      */}
       <h1>{title}</h1>
     </>
   )
