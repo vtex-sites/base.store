@@ -28,7 +28,7 @@ describe('Search page Filters and Sorting options', () => {
 
         // Check if the filter applied actually ended up in the URL
         cy.location('pathname').should((loc) => {
-          expect(loc).to.include(`${pages.collection}/${value}`)
+          expect(loc).to.include(value)
         })
 
         // Check if the filter applied actually brought the number of products it said it would
@@ -166,16 +166,14 @@ describe('Infinite Scroll pagination', () => {
           .scrollIntoView()
           .location()
           .should(($loc) => {
-            expect($loc.search).includes('page')
-            expect($loc.pathname).includes('/1')
+            expect($loc.search).includes('page=1')
           })
           .getById('product-link')
           .first()
           .scrollIntoView()
           .location()
           .should(($loc) => {
-            expect($loc.search).includes('page')
-            expect($loc.pathname).includes('/0')
+            expect($loc.search).includes('page=0')
           })
       })
   })
