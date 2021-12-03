@@ -18,18 +18,22 @@ module.exports = {
   // Lighthouse CI
   lighthouse: {
     server: process.env.BASE_SITE_URL || 'http://localhost:9000',
-    urls: ['/', '/women', '/organza-sleeve-top-138/p'],
+    pages: {
+      home: '/',
+      pdp: '/organza-sleeve-top-138/p',
+      collection: '/women',
+    },
   },
 
   // E2E CI
   cypress: {
     pages: {
+      home: '/',
       pdp: '/organza-sleeve-top-138/p',
       collection: '/women',
       collection_filtered:
         '/women/?category-1=women&color=red&facets=category-1%2Ccolor',
       search: '/s?q=shirt',
-      home: '/',
     },
   },
 }
