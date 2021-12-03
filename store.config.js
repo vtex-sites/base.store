@@ -1,0 +1,32 @@
+module.exports = {
+  // Ecommerce Platform
+  platform: 'vtex',
+
+  // Platform specific configs
+  storeId: 'fashioneurope',
+  environment: 'vtexcommercestable',
+
+  channel: '1',
+
+  // Production URLs
+  storeUrl: 'https://www.vtex-base1.tk',
+  checkoutUrl: 'https://chk.vtex-base1.tk/checkout',
+
+  // Lighthouse CI
+  lighthouse: {
+    server: process.env.BASE_SITE_URL || 'http://localhost:9000',
+    urls: ['/', '/women', '/organza-sleeve-top-138/p'],
+  },
+
+  // E2E CI
+  cypress: {
+    pages: {
+      pdp: '/organza-sleeve-top-138/p',
+      collection: '/women',
+      collection_filtered:
+        '/women/?category-1=women&color=red&facets=category-1%2Ccolor',
+      search: '/s?q=shirt',
+      home: '/',
+    },
+  },
+}

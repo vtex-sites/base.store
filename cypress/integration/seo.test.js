@@ -6,7 +6,10 @@
  * TODO: Improve structured data validaton by actually using schema.org's schemas
  */
 
-import { pages, options } from '../global'
+import { options } from '../global'
+import { cypress } from '../../store.config'
+
+const { pages } = cypress
 
 describe('Home Page Seo', () => {
   beforeEach(() => {

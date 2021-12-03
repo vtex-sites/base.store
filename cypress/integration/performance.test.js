@@ -4,7 +4,10 @@
  * Cypress tests for testing the Cart module
  */
 
-import { pages, options } from '../global'
+import { options } from '../global'
+import { cypress } from '../../store.config'
+
+const { pages } = cypress
 
 describe('React rendering performance', () => {
   beforeEach(() => {

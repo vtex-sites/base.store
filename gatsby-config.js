@@ -4,11 +4,11 @@ const { join, resolve } = require('path')
 
 const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
+const config = require('./store.config')
 
 const {
-  GATSBY_STORE_ID: STORE_ID,
   NODE_ENV,
-  URL = `https://${STORE_ID}.vtex.app`,
+  URL = config.storeUrl,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
   VTEX_WEBOPS: isWebOps,
