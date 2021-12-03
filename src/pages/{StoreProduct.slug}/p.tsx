@@ -1,18 +1,14 @@
 import { useSession } from '@faststore/sdk'
-import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import {
   BreadcrumbJsonLd,
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
+import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
-import { useQuery } from 'src/sdk/graphql/useQuery'
 import type { PageProps } from 'gatsby'
 import type {
-  BrowserProductQueryQuery,
-  BrowserProductQueryQueryVariables,
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
@@ -22,69 +18,24 @@ export type Props = PageProps<
   ProductPageQueryQueryVariables
 >
 
-export const queryCSR = gql`
-  query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {
-    product(locator: $locator) {
-      ...ProductDetailsFragment_product
-    }
-  }
-`
-
-const useProduct = <T extends BrowserProductQueryQuery>(
-  productID: string,
-  fallbackData?: T
-) => {
-  const { channel } = useSession()
-  const variables = useMemo(() => {
-    if (!channel) {
-      throw new Error(`useProduct: 'channel' from session is 'null'.`)
-    }
-
-    return {
-      locator: [
-        { key: 'id', value: productID },
-        { key: 'channel', value: channel },
-      ],
-    }
-  }, [channel, productID])
-
-  return useQuery<
-    BrowserProductQueryQuery & T,
-    BrowserProductQueryQueryVariables
-  >(queryCSR, variables, {
-    fallbackData,
-    revalidateOnMount: true,
-  })
-}
-
 function Page(props: Props) {
+  const { locale, currency } = useSession()
   const {
-    data: { product: staleProduct, site },
+    data: { product, site },
     location: { host },
     params: { slug },
   } = props
 
-  if (!staleProduct) {
+  if (!product) {
     throw new Error('NotFound')
   }
 
-  const { locale, currency } = useSession()
-  const { data, isValidating } = useProduct(staleProduct.id, {
-    product: staleProduct,
-  })
-
-  if (data?.product == null) {
-    return <div>loading...</div>
-  }
-
-  const title = staleProduct.seo.title ?? site?.siteMetadata?.title ?? ''
+  const title = product.seo.title ?? site?.siteMetadata?.title ?? ''
   const description =
-    staleProduct.seo.description ?? site?.siteMetadata?.description ?? ''
+    product.seo.description ?? site?.siteMetadata?.description ?? ''
 
   const canonical =
     host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
-
-  const { product: freshProduct } = data
 
   return (
     <>
@@ -99,7 +50,7 @@ function Page(props: Props) {
           url: `${site?.siteMetadata?.siteUrl}${slug}`,
           title,
           description,
-          images: staleProduct.image.map((img) => ({
+          images: product.image.map((img) => ({
             url: img.url,
             alt: img.alternateName,
           })),
@@ -107,7 +58,7 @@ function Page(props: Props) {
         metaTags={[
           {
             property: 'product:price:amount',
-            content: staleProduct.offers.lowPrice?.toString() ?? undefined,
+            content: product.offers.lowPrice?.toString() ?? undefined,
           },
           {
             property: 'product:price:currency',
@@ -116,19 +67,19 @@ function Page(props: Props) {
         ]}
       />
       <BreadcrumbJsonLd
-        itemListElements={staleProduct.breadcrumbList.itemListElement ?? []}
+        itemListElements={product.breadcrumbList.itemListElement ?? []}
       />
       <ProductJsonLd
-        name={staleProduct.name}
-        description={staleProduct.description}
-        brand={staleProduct.brand.name}
-        sku={staleProduct.sku}
-        gtin={staleProduct.gtin}
-        images={staleProduct.image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
+        name={product.name}
+        description={product.description}
+        brand={product.brand.name}
+        sku={product.sku}
+        gtin={product.gtin}
+        images={product.image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
         offersType="AggregateOffer"
         offers={{
-          ...staleProduct.offers,
-          price: staleProduct.offers.offers[0].price.toString(),
+          ...product.offers,
+          price: product.offers.offers[0].price.toString(),
         }}
       />
 
@@ -138,7 +89,7 @@ function Page(props: Props) {
       */}
       <h1 className="absolute top-[-100px]">{title}</h1>
 
-      <ProductDetails product={freshProduct} isValidating={isValidating} />
+      <ProductDetails product={product} />
     </>
   )
 }

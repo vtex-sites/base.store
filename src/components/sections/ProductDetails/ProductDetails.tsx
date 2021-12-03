@@ -6,25 +6,36 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
+import { useProduct } from 'src/sdk/product/useProduct'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
-  isValidating: boolean
 }
 
-function ProductDetails({ product, isValidating }: Props) {
+function ProductDetails({ product: staleProduct }: Props) {
+  // Stale while revalidate the product for fetching the new price etc
+  const { data, isValidating } = useProduct(staleProduct.id, {
+    product: staleProduct,
+  })
+
+  if (!data) {
+    throw new Error('NotFound')
+  }
+
   const {
-    id,
-    sku,
-    gtin: referenceId,
-    name: variantName,
-    brand: { name: brandName },
-    isVariantOf: { name, productGroupID: productId },
-    image: [img],
-    offers: {
-      offers: [{ price, listPrice, seller }],
+    product: {
+      id,
+      sku,
+      gtin: referenceId,
+      name: variantName,
+      brand: { name: brandName },
+      isVariantOf: { name, productGroupID: productId },
+      image: [img],
+      offers: {
+        offers: [{ price, listPrice, seller }],
+      },
     },
-  } = product
+  } = data
 
   const formattedPrice = useFormattedPrice(price)
   const formattedListPrice = useFormattedPrice(listPrice)
