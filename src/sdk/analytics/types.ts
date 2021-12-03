@@ -9,7 +9,9 @@ import type { CartItem } from 'src/sdk/cart/validate'
 
 type AdditionalItemProperties = {
   product_reference_id: string | null
-  sku_name: string | null
+  sku_name: string
+  item_variant: string
+  quantity: number
 }
 
 type AdditionalAnalyticsProperties = {
