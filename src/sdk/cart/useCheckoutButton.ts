@@ -1,10 +1,7 @@
 import { useCart } from './useCart'
+import * as storeConfig from '../../../store.config'
 
-const storeId = process.env.GATSBY_STORE_ID
-const environment = process.env.GATSBY_VTEX_ENVIRONMENT
-const checkoutURL =
-  process.env.GATSBY_CHECKOUT_URL ??
-  `https://${storeId}.${environment}.com.br/checkout`
+const { checkoutUrl } = storeConfig
 
 export const useCheckoutButton = () => {
   const { isValidating, id } = useCart()
@@ -13,7 +10,7 @@ export const useCheckoutButton = () => {
     e.preventDefault()
 
     if (!isValidating && id) {
-      window.location.href = `${checkoutURL}?orderFormId=${id}`
+      window.location.href = `${checkoutUrl}?orderFormId=${id}`
     }
   }
 

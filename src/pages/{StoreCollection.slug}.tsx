@@ -53,9 +53,11 @@ function Page(props: Props) {
 
   const { page } = searchParams
   const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
-  const canonicalPath = `/${slug}/${page !== 0 ? `?page=${page}` : ''}`
+  const query = page !== 0 ? `?page=${page}` : ''
   const canonical =
-    host !== undefined ? `https://${host}${canonicalPath}` : canonicalPath
+    host !== undefined
+      ? `https://${host}/${slug}/${query}`
+      : `/${slug}/${query}`
 
   return (
     <SearchProvider

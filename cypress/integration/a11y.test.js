@@ -4,7 +4,9 @@
  * Cypress tests for a11y (accessibility)
  */
 
-import { pages } from '../global'
+import { cypress } from '../../store.config'
+
+const { pages } = cypress
 
 describe('Accessibility tests', () => {
   beforeEach(() => {

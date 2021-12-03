@@ -3,11 +3,17 @@ const {
   getContextFactory: storeApiGetContextFactory,
 } = require('@faststore/api')
 
+const {
+  platform,
+  channel,
+  api: { storeId, environment },
+} = require('../../store.config')
+
 const options = {
-  platform: process.env.GATSBY_COMMERCE_PLATFORM,
-  account: process.env.GATSBY_STORE_ID,
-  environment: process.env.GATSBY_VTEX_ENVIRONMENT,
-  channel: process.env.GATSBY_VTEX_CHANNEL,
+  platform,
+  account: storeId,
+  environment,
+  channel,
 }
 
 const schema = storeApiGetSchema(options)

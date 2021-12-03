@@ -4,7 +4,10 @@
  * Cypress tests for Search Input
  */
 
-import { pages, options } from '../global'
+import { options } from '../global'
+import { cypress } from '../../store.config'
+
+const { pages } = cypress
 
 describe('Search input', () => {
   beforeEach(() => {
