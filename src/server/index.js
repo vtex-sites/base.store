@@ -5,9 +5,8 @@ const {
 
 const {
   platform,
-  storeId,
-  environment,
   channel,
+  api: { storeId, environment },
 } = require('../../store.config')
 
 const options = {

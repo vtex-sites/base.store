@@ -2,10 +2,13 @@ module.exports = {
   // Ecommerce Platform
   platform: 'vtex',
 
-  // Platform specific configs
-  storeId: 'fashioneurope',
-  environment: 'vtexcommercestable',
+  // Platform specific configs for API
+  api: {
+    storeId: 'fashioneurope',
+    environment: 'vtexcommercestable',
+  },
 
+  // Default channel
   channel: '1',
 
   // Production URLs
