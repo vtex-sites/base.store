@@ -29,13 +29,19 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
     yarn
     ```
 
-2.  **Setup env vars**
+2.  **Setup store.config.js**
 
-    Choose the ecommerce platform provider of your choice in the `vtex.env` file and set the corresponding options. For instance, to connect to the VTEX platform on the store `fashioneurope`:
+    Choose the ecommerce platform provider of your choice in the `store.config` file and set the corresponding options. For instance, to connect to the VTEX platform on the store `fashioneurope`:
 
-    ```
-    GATSBY_STORE_ID=fashioneurope
-    GATSBY_VTEX_ENVIRONMENT=vtexcommercestable
+    ```js
+    module.exports = {
+      platform: 'vtex',
+
+      api: {
+        storeId: 'fashioneurope'
+        environment: 'vtexcommercestable'
+      }
+    }
     ```
 
 3.  **Start developing**
@@ -72,7 +78,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     └── yarn.lock
     ├── package.json
     ├── tsconfig.json
-    ├── vtex.env
+    ├── store.config.js
     ├── README.md
     ├── __generated__
     ├── babel.config.js
@@ -107,7 +113,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 11. **`tsconfig.json`**: The configuration file for the typescript compiler. This will statically analyze your code for errors and bugs before releasing them into production
 
-12. **`vtex.env`**: Environment variables needed for accessing your account in VTEX
+12. **`store.config.js`**: Configure your e-commerce platform, default sales channel etc.
 
 13. **`README.md`**: A text file containing useful reference information about your project.
 
