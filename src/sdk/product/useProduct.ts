@@ -1,26 +1,22 @@
-import { gql } from '@vtex/graphql-utils'
 import { useSession } from '@faststore/sdk'
 import { useMemo } from 'react'
-import { useQuery } from 'src/sdk/graphql/useQuery'
 import type {
   BrowserProductQueryQuery,
   BrowserProductQueryQueryVariables,
 } from '@generated/graphql'
+import { gql } from '@vtex/graphql-utils'
 
-export const BrowserProductQuery = gql`
+import { useQuery } from '../graphql/useQuery'
+
+const query = gql`
   query BrowserProductQuery($locator: [IStoreSelectedFacet!]!) {
     product(locator: $locator) {
-      ...ProductViewFragment_product
+      ...ProductDetailsFragment_product
     }
   }
 `
 
-/**
- * serverProduct data is stale and incomplete (because we SSRed it).
- * Let's use it's value as placeholder while we fetch the rest of the data
- * on the browser
- */
-export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
+export const useProduct = <T extends BrowserProductQueryQuery>(
   productID: string,
   fallbackData?: T
 ) => {
@@ -41,7 +37,7 @@ export const useProduct = <T extends Partial<BrowserProductQueryQuery>>(
   return useQuery<
     BrowserProductQueryQuery & T,
     BrowserProductQueryQueryVariables
-  >(BrowserProductQuery, variables, {
+  >(query, variables, {
     fallbackData,
     revalidateOnMount: true,
   })
