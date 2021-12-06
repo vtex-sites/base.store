@@ -14,7 +14,7 @@ import { getSchema, getContextFactory } from '..'
 
 export type FormatError = FormatErrorHandler
 
-export const getEnveloped = async (formatError: FormatError) =>
+export const getEnvelop = async (formatError: FormatError) =>
   envelop({
     plugins: [
       useSchema(await getSchema()),

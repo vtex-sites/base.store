@@ -2,7 +2,7 @@ import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
 import { GraphQLError } from 'graphql'
 
 import type { FormatError } from '../server/envelop'
-import { getEnveloped } from '../server/envelop'
+import { getEnvelop } from '../server/envelop'
 import persisted from '../../@generated/graphql/persisted.json'
 
 const persistedQueries = new Map(Object.entries(persisted))
@@ -45,6 +45,8 @@ const maskError: FormatError = (err: GraphQLError | unknown) => {
   return new GraphQLError('Sorry, something went wrong.')
 }
 
+const envelop = getEnvelop(maskError)
+
 const handler = async (
   req: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
@@ -55,8 +57,7 @@ const handler = async (
     return
   }
 
-  const enveloped = await getEnveloped(maskError)
-  const { parse, contextFactory, execute, schema } = enveloped({ req })
+  const { parse, contextFactory, execute, schema } = (await envelop)({ req })
   const { operationName, variables, query } = parseRequest(req)
 
   try {
