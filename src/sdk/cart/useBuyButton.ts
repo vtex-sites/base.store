@@ -25,8 +25,8 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
       }
 
       sendAnalyticsEvent<VTEXAddToCartEvent>({
-        type: 'add_to_cart',
-        data: {
+        name: 'add_to_cart',
+        params: {
           currency: code as CurrencyCode,
           // TODO: In the future, we can explore more robust ways of
           // calculating the value (gift items, discounts, etc.).

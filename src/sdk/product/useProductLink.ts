@@ -3,9 +3,8 @@ import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import type {
   CurrencyCode,
-  ViewItemEvent,
   SelectItemEvent,
-  SelectItemData,
+  SelectItemParams,
   Item,
 } from '@faststore/sdk'
 
@@ -18,10 +17,10 @@ type GAItem = Item & {
   product_reference_id?: string
 }
 
-type GASelectItemEventData = SelectItemData & { items: GAItem[] }
+type GASelectItemEventParams = SelectItemParams & { items: GAItem[] }
 
 interface GASelectItemEvent extends SelectItemEvent {
-  data: GASelectItemEventData
+  params: GASelectItemEventParams
 }
 
 export const useProductLink = ({ index, product }: ProductLinkOptions) => {
@@ -35,8 +34,8 @@ export const useProductLink = ({ index, product }: ProductLinkOptions) => {
       const currency = code as CurrencyCode
 
       sendAnalyticsEvent<GASelectItemEvent>({
-        type: 'select_item',
-        data: {
+        name: 'select_item',
+        params: {
           items: [
             {
               item_id: product.id,
@@ -51,9 +50,9 @@ export const useProductLink = ({ index, product }: ProductLinkOptions) => {
         },
       })
 
-      sendAnalyticsEvent<ViewItemEvent>({
-        type: 'view_item',
-        data: {
+      sendAnalyticsEvent({
+        name: 'view_item',
+        params: {
           currency,
           value: product.offers.offers[0]?.price,
           items: [

@@ -29,8 +29,8 @@ export const useViewItemListEvent = ({ products, title }: Props) => {
     })
 
     const event: ViewItemListEvent = {
-      type: 'view_item_list',
-      data: {
+      name: 'view_item_list',
+      params: {
         item_list_name: title,
         item_list_id: title,
         items: productItems,
