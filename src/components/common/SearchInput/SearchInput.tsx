@@ -1,3 +1,5 @@
+import './SearchInput.module.scss'
+
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'

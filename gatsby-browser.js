@@ -1,4 +1,4 @@
-import './src/styles/global.css'
+import './src/styles/global.scss'
 
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
