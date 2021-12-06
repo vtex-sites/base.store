@@ -6,6 +6,7 @@ import {
   useErrorHandler,
   useMaskedErrors,
 } from '@envelop/core'
+import { useGraphQlJit } from '@envelop/graphql-jit'
 
 import { getSchema, getContextFactory } from '../server'
 import persisted from '../../@generated/graphql/persisted.json'
@@ -50,6 +51,8 @@ const createGetEnveloped = async () =>
       useErrorHandler((error) => handleError(error)),
       // eslint-disable-next-line react-hooks/rules-of-hooks
       useMaskedErrors(),
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      useGraphQlJit(),
     ],
   })
 
