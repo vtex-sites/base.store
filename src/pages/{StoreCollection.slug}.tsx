@@ -53,11 +53,11 @@ function Page(props: Props) {
 
   const { page } = searchParams
   const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
-  const query = page !== 0 ? `?page=${page}` : ''
+  const pageQuery = page !== 0 ? `?page=${page}` : ''
   const canonical =
     host !== undefined
-      ? `https://${host}/${slug}/${query}`
-      : `/${slug}/${query}`
+      ? `https://${host}/${slug}/${pageQuery}`
+      : `/${slug}/${pageQuery}`
 
   return (
     <SearchProvider
