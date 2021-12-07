@@ -327,8 +327,6 @@ This project has strict performance budgets. Right out of the box, this project 
 
 To boost the performance of the store pages, this store transfers all computation related to analytics to the backend. This backend work as a hub that receives events from the store frontend and forwards the event to the analytics engine (e.g: google analytics, facebook analytics, google tag manager).
 
-The analytics backend code is inside the `src/api/analytics.ts`.
-
 ### Adding Google Analytics 4
 
 Follow those steps to add the google analytics 4 on the store:
@@ -339,7 +337,7 @@ Adding environment variables at [netlify](https://docs.netlify.com/configure-bui
 
 ### Adding custom analytics engine
 
-Add your engine event handler inside the analytics handler at `src/api/analytics.ts` file.
+Add your engine event handler inside the analytics handler at file.
 
 Example adding a new engine.
 ```ts

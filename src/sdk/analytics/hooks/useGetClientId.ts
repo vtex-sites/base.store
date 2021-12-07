@@ -2,6 +2,7 @@ import { useRef } from 'react'
 
 const GA_CLIENT_ID_KEY = 'main::store::ga::client_id'
 
+// This represents a unique client id
 // https://gist.github.com/kindy/35ccd6c60b650e7fd261
 function generateClientId() {
   return `${Math.floor(Math.random() * 0x7fffffff)}.${Math.floor(

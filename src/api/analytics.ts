@@ -30,7 +30,7 @@ const handler = async (
 
   res.setHeader('content-type', 'application/json')
   res.statusCode = 200
-  res.send(JSON.stringify({ success: true, body }))
+  res.send(JSON.stringify({ success: true }))
 }
 
 export default handler
