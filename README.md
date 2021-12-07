@@ -325,7 +325,7 @@ This project has strict performance budgets. Right out of the box, this project 
 
 ## Adding analytics systems
 
-To boost the performance of the store pages, this store transfers all computation related to analytics to the backend. This backend work as a hub that receives events from the store page and forwards the event to the analytics engine (e.g: google analytics, facebook analytics, google tag manager).
+To boost the performance of the store pages, this store transfers all computation related to analytics to the backend. This backend work as a hub that receives events from the store frontend and forwards the event to the analytics engine (e.g: google analytics, facebook analytics, google tag manager).
 
 The analytics backend code is inside the `src/api/analytics.ts`.
 
@@ -333,7 +333,7 @@ The analytics backend code is inside the `src/api/analytics.ts`.
 
 Follow those steps to add the google analytics 4 on the store:
 1. [Google article to setup a new analytics](https://support.google.com/analytics/answer/9304153#zippy=%2Cweb)
-2. After finish the setup, get the `measurement id` and `api secret`. Add an environment variable called `GA_MEASUREMENT_ID` with measurement id value and other variable `GA_API_SECRET` with your the api secret.
+2. After finish the setup, get the `measurement id` and `api secret`. Add an environment variable called `GA_MEASUREMENT_ID` with the `measurement id` value and another variable `GA_API_SECRET` with your `api secret` as its value.
 
 Adding environment variables at [netlify](https://docs.netlify.com/configure-builds/environment-variables/), [gatsby cloud](https://support.gatsbyjs.com/hc/en-us/articles/360053096753-Managing-Environment-Variables)
 
