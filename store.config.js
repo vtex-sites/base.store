@@ -4,7 +4,7 @@ module.exports = {
 
   // Platform specific configs for API
   api: {
-    storeId: 'fashioneurope',
+    storeId: 'storeframework',
     environment: 'vtexcommercestable',
   },
 
@@ -20,8 +20,8 @@ module.exports = {
     server: process.env.BASE_SITE_URL || 'http://localhost:9000',
     pages: {
       home: '/',
-      pdp: '/organza-sleeve-top-138/p',
-      collection: '/women',
+      pdp: '/navel-oranges-grown-large-fresh-fruit-880320/p',
+      collection: '/food-and-beverage',
     },
   },
 
@@ -29,11 +29,11 @@ module.exports = {
   cypress: {
     pages: {
       home: '/',
-      pdp: '/organza-sleeve-top-138/p',
-      collection: '/women',
+      pdp: '/navel-oranges-grown-large-fresh-fruit-880320/p',
+      collection: '/power-tools',
       collection_filtered:
-        '/women/?category-1=women&color=red&facets=category-1%2Ccolor',
-      search: '/s?q=shirt',
+        '/power-tools/?category-1=power-tools&marca=acer&facets=category-1%2Cmarca',
+      search: '/s?q=orange',
     },
   },
 }
