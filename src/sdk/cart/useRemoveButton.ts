@@ -26,8 +26,8 @@ export const useRemoveButton = (item: AnalyticsCartItem | null | undefined) => {
       }
 
       sendAnalyticsEvent<VTEXRemoveFromCartEvent>({
-        type: 'remove_from_cart',
-        data: {
+        name: 'remove_from_cart',
+        params: {
           currency: code as CurrencyCode,
           value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [

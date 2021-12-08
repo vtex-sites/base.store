@@ -1,8 +1,8 @@
 import type {
   AddToCartEvent,
-  AddToCartData,
+  AddToCartParams,
   RemoveFromCartEvent,
-  RemoveFromCartData,
+  RemoveFromCartParams,
   Item as AnalyticsItem,
 } from '@faststore/sdk'
 import type { CartItem } from 'src/sdk/cart/validate'
@@ -20,13 +20,13 @@ type AdditionalAnalyticsProperties = {
 }
 
 export interface VTEXRemoveFromCartEvent extends RemoveFromCartEvent {
-  data: RemoveFromCartData & {
+  params: RemoveFromCartParams & {
     items: Array<AnalyticsItem & AdditionalItemProperties>
   }
 }
 
 export interface VTEXAddToCartEvent extends AddToCartEvent {
-  data: AddToCartData & {
+  params: AddToCartParams & {
     items: Array<AnalyticsItem & AdditionalItemProperties>
   }
 }

@@ -11,7 +11,7 @@ const { pages } = cypress
 
 const dataLayerHasEvent = (eventName) => {
   return cy.window().then((window) => {
-    const allEvents = window.dataLayer.map((evt) => evt.type)
+    const allEvents = window.dataLayer.map((evt) => evt.name)
 
     expect(allEvents).to.include(eventName)
   })
@@ -19,7 +19,7 @@ const dataLayerHasEvent = (eventName) => {
 
 const eventDataHasCurrencyProperty = () => {
   return cy.window().then((window) => {
-    const allEvents = window.dataLayer.map((evt) => evt.data || {})
+    const allEvents = window.dataLayer.map((evt) => evt.params || {})
 
     allEvents.forEach((event) => {
       if (event.value !== undefined) {
@@ -39,12 +39,12 @@ describe('add_to_cart event', () => {
     cy.window().then((window) => {
       const { dataLayer } = window
 
-      const event = dataLayer.find((e) => e.type === 'add_to_cart')
+      const event = dataLayer.find((e) => e.name === 'add_to_cart')
 
       expect(event).to.not.be.null
-      expect(event.data).to.have.property('value')
+      expect(event.params).to.have.property('value')
 
-      const item = event.data.items.find((i) => i.item_variant === skuId)
+      const item = event.params.items.find((i) => i.item_variant === skuId)
 
       expect(item).to.not.be.null
       expect(item).to.have.property('currency')
@@ -95,12 +95,12 @@ describe('remove_from_cart event', () => {
     cy.window().then((window) => {
       const { dataLayer } = window
 
-      const event = dataLayer.find((e) => e.type === 'remove_from_cart')
+      const event = dataLayer.find((e) => e.name === 'remove_from_cart')
 
       expect(event).to.not.be.null
-      expect(event.data).to.have.property('value')
+      expect(event.params).to.have.property('value')
 
-      const item = event.data.items.find((i) => i.item_variant === skuId)
+      const item = event.params.items.find((i) => i.item_variant === skuId)
 
       expect(item).to.not.be.null
       expect(item).to.have.property('currency')
@@ -167,11 +167,11 @@ describe('select_item event', () => {
       .then(() => {
         cy.window().then((window) => {
           const event = window.dataLayer.find(
-            ({ type }) => type === 'select_item'
+            ({ name }) => name === 'select_item'
           )
 
           expect(event).to.exist
-          expect(skuId).to.equal(event.data.items[0].item_id)
+          expect(skuId).to.equal(event.params.items[0].item_id)
         })
       })
   })
