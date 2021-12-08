@@ -22,7 +22,7 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
 
 1.  **Install dependencies**
 
-    Install dependencies with yarn
+    Install dependencies with yarn a
 
     ```shell
     cd awesome.store/
