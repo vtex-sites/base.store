@@ -35,7 +35,9 @@ describe('Search page Filters and Sorting options', () => {
         })
 
         // Check if the filter applied actually brought the number of products it said it would
-        cy.getById('product-link').should('have.length', Number(quantity))
+        cy.getById('total-product-count').then(($countDiv) => {
+          expect(Number($countDiv.attr('data-count'))).to.eq(Number(quantity))
+        })
       })
   })
 
