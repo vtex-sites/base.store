@@ -32,7 +32,7 @@ module.exports = {
       pdp: '/navel-oranges-grown-large-fresh-fruit-880320/p',
       collection: '/power-tools',
       collection_filtered:
-        '/sporting/?category-1=sporting&marca=nike&facets=category-1%2Cmarca&sort=score_desc',
+        '/power-tools/?category-1=power-tools&marca=acer&facets=category-1%2Cmarca',
       search: '/s?q=orange',
     },
   },
