@@ -118,5 +118,25 @@
 
 
   // Borders ////////////////////////
+
+  // Radius
+  --border-radius-0: 0;
+  --border-radius-1: .25rem;
+  --border-radius-3: 100px;
+  --border-radius-4: 100%;
+
+
+  // Width
+  --border-width-0: 1px;
+  --border-width-1: 1.5px;
+  --border-width-2: 2px;
+
+  // Semantical Tokens
+  --border-radius-default: var(--border-radius-0);
+  --border-radius-flat: var(--border-radius-0);
+  --border-radius-pill: var(--border-radius-3);
+  --border-radius-circle: var(--border-radius-4);
+
+
   // Grid ///////////////////////////
 }
