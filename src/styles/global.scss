@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 
 // Styles ///////////////////////////
+@import "colors";
 @import "typography";
 
 // Tokens ///////////////////////////
@@ -29,41 +30,6 @@
   --color-neutral-5: #74808b;
   --color-neutral-6: #5d666f;
   --color-neutral-7: #171a1c;
-
-  --color-emphasis: #8db6fa;
-  --color-visited: #6058ba;
-
-  // Semantical Tokens – Text
-  --color-link: var(--color-secondary-2);
-  --color-link-visited: var(--color-visited);
-  --color-link-negative: var(--color-neutral-0);
-
-  --color-text: var(--color-neutral-6);
-  --color-text-negative: var(--color-neutral-0);
-
-  // Semantical Tokens – Backgrounds
-  --bg-primary-light: var(--color-primary-0);
-  --bg-secondary-light: var(--color-secondary-0);
-  --bg-neutral-light: var(--color-neutral-1);
-  --bg-neutral-lightest: var(--color-neutral-0);
-
-  --bg-primary-default: var(--color-primary-3);
-  --bg-primary-hover: var(--color-primary-2);
-  --bg-primary-pressed: var(--color-primary-1);
-
-  --bg-secondary-default: var(--color-secondary-4);
-  --bg-secondary-hover: var(--color-secondary-3);
-  --bg-secondary-pressed: var(--color-secondary-2);
-
-  --bg-disabled: var(--color-neutral-2);
-  --bg-focus-ring: var(--color-emphasis);
-  --bg-seleted-outline: var(--color-emphasis);
-
-  // Semantical Tokens – Borders
-  --color-border-display: var(--color-neutral-3);
-  --color-border-input: var(--color-neutral-4);
-  --color-border-input-disabled: var(--color-neutral-6);
-
 
   // Typography /////////////////////
 
@@ -139,4 +105,6 @@
 
 
   // Grid ///////////////////////////
+  --breakpoint-not: var(--grid-gap-2);
+  --breakpoint-desk: var(--grid-gap-2);
 }
