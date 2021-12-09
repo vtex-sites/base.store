@@ -41,17 +41,6 @@
   --base-font-size: 1rem;
   --scale: 1.25;
 
-  // Sizes
-  --text-size-1: calc(var(--text-size-2) * var(--scale));    // 61
-  --text-size-2: calc(var(--text-size-3) * var(--scale));    // 48
-  --text-size-3: calc(var(--text-size-4) * var(--scale));    // 39
-  --text-size-4: calc(var(--text-size-5) * var(--scale));    // 31
-  --text-size-5: calc(var(--text-size-6) * var(--scale));    // 25
-  --text-size-6: calc(var(--base-font-size) * var(--scale)); // 20
-  --text-size-7: var(--base-font-size);
-  --text-size-8: 14px;
-  --text-size-9: 12px;
-
   // Weight
   --text-weight-regular: 400;
   --text-weight-bold: 700;
@@ -71,25 +60,14 @@
   --space-7: 3.5rem; // 56px
   --space-8: 4rem;   // 64px
 
-  // Semantical Tokens
-  --space-xxs: var(--space-0);
-  --space-xs:  var(--space-1);
-  --space-sm:  var(--space-2);
-  --space-md:  var(--space-3);
-  --space-lg:  var(--space-4);
-  --space-xl:  var(--space-5);
-  --space-xxl: var(--space-6);
-  --space-3xl: var(--space-7);
-  --space-4xl: var(--space-8);
-
 
   // Borders ////////////////////////
 
   // Radius
-  --border-radius-0: 0;
-  --border-radius-1: .25rem;
-  --border-radius-3: 100px;
-  --border-radius-4: 100%;
+  --border-radius-default: 0;
+  --border-radius-flat: .25rem;
+  --border-radius-pill: 100px;
+  --border-radius-circle: 100%;
 
 
   // Width
@@ -97,14 +75,19 @@
   --border-width-1: 1.5px;
   --border-width-2: 2px;
 
-  // Semantical Tokens
-  --border-radius-default: var(--border-radius-0);
-  --border-radius-flat: var(--border-radius-0);
-  --border-radius-pill: var(--border-radius-3);
-  --border-radius-circle: var(--border-radius-4);
-
-
   // Grid ///////////////////////////
-  --breakpoint-not: var(--grid-gap-2);
-  --breakpoint-desk: var(--grid-gap-2);
+
+  // Gaps
+  --grid-gap-0: var(--space-2);
+  --grid-gap-1: var(--space-3);
+  --grid-gap-2: var(--space-4);
+
+  // Breakpoints
+  --breakpoint-mob-sm:   320px;
+  --breakpoint-mob-md:   375px;
+  --breakpoint-tablet:   768px;
+  --breakpoint-note-sm: 1025px;
+  --breakpoint-note-md: 1280px;
+  --breakpoint-desk:    1440px;
+
 }
