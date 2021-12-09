@@ -4,6 +4,7 @@ import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
+import Hero, { HeroContent, HeroImage, HeroLink } from 'src/components/ui/Hero'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -51,7 +52,26 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <h1>{title}</h1>
+      <Hero>
+        <HeroContent>
+          <div>
+            <h1>New Products Available</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+              ipsum.
+            </p>
+          </div>
+          <HeroLink>
+            <a href="/">See all</a>
+          </HeroLink>
+        </HeroContent>
+        <HeroImage>
+          <img
+            alt="A person with hands on the pocket, carrying a round straw bag"
+            src="https://storecomponents.vtex.app/assets/fit-in/1280x613/center/middle/https%3A%2F%2Fstorecomponents.vtexassets.com%2Fassets%2Fvtex.file-manager-graphql%2Fimages%2Fedce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
+          />
+        </HeroImage>
+      </Hero>
     </>
   )
 }
