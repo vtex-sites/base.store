@@ -55,7 +55,6 @@
   --bg-secondary-hover: var(--color-secondary-3);
   --bg-secondary-pressed: var(--color-secondary-2);
 
-  --bg-selected: var(--color-neutral-0);
   --bg-disabled: var(--color-neutral-2);
   --bg-focus-ring: var(--color-emphasis);
   --bg-seleted-outline: var(--color-emphasis);
@@ -93,7 +92,31 @@
   --text-weight-black: 900;
 
 
-  // Borders ////////////////////////
   // Spacing ////////////////////////
+
+  // Sizes
+  --space-0: .25rem; //  4px
+  --space-1: .5rem;  //  8px
+  --space-2: 1rem;   // 16px
+  --space-3: 1.5rem; // 24px
+  --space-4: 2rem;   // 32px
+  --space-5: 2.5rem; // 40px
+  --space-6: 3rem;   // 48px
+  --space-7: 3.5rem; // 56px
+  --space-8: 4rem;   // 64px
+
+  // Semantical Tokens
+  --space-xxs: var(--space-0);
+  --space-xs:  var(--space-1);
+  --space-sm:  var(--space-2);
+  --space-md:  var(--space-3);
+  --space-lg:  var(--space-4);
+  --space-xl:  var(--space-5);
+  --space-xxl: var(--space-6);
+  --space-3xl: var(--space-7);
+  --space-4xl: var(--space-8);
+
+
+  // Borders ////////////////////////
   // Grid ///////////////////////////
 }
