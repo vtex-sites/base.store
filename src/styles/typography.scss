@@ -1,0 +1,75 @@
+// Default //////////////////////////
+
+body {
+  letter-spacing: 1%;
+  font-family: var(--sans-serif);
+  font-size: var(--text-size-7);
+}
+
+
+// Titles ///////////////////////////
+
+.title-hero {
+  font-weight: var(--text-weight-black);
+  font-size: var(--text-size-1);
+  line-height: 1.1;
+}
+
+.title-display-big {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-3);
+  line-height: 1.25;
+}
+
+.title-section {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-4);
+  line-height: 1.16;
+}
+
+.title-display {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-5);
+  line-height: 1.12;
+}
+
+.title-product {
+  font-size: var(--text-size-5);
+  font-weight: var(--text-weight-regular);
+  line-height: 1.12;
+}
+
+.title-subsection {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-6);
+  line-height: 1.2;
+}
+
+.title-sub-subsection {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-6);
+  line-height: 1.25;
+}
+
+
+// Texts ////////////////////////////
+
+.text-body-tiny {
+  font-size: var(--text-size-9);
+  line-height: 1.5;
+}
+
+.text-body-small {
+  font-size: var(--text-size-8);
+  line-height: 1.7;
+}
+
+.text-body {
+  font-size: var(--text-size-7);
+  line-height: 1.5;
+}
+
+.text-body-big {
+  font-size: var(--text-size-6);
+  line-height: 1.5;
+}

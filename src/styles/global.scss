@@ -1,16 +1,15 @@
-/*
-  color,
-  spacing,
-  border-radius,
-  typography,
-  grid,
-  typography scale
-*/
+// Font Import //////////////////////
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+// Styles ///////////////////////////
+@import "typography";
+
+// Tokens ///////////////////////////
 
 :root {
-  /* Colors /////////////////////////// */
+  // Colors /////////////////////////
 
-  /* Brand */
+  // Brand
   --color-primary-0: #ebdcff;
   --color-primary-1: #8d50fd;
   --color-primary-2: #732fe2;
@@ -31,17 +30,18 @@
   --color-neutral-6: #5d666f;
   --color-neutral-7: #171a1c;
 
-  --color-accessibility-0: #8db6fa;
-  --color-accessibility-2: #6058ba;
+  --color-emphasis: #8db6fa;
+  --color-visited: #6058ba;
 
-  /* Semantical tokens */
+  // Semantical Tokens – Text
   --color-link: var(--color-secondary-2);
-  --color-link-visited: var(--color-accessibility-2);
+  --color-link-visited: var(--color-visited);
   --color-link-negative: var(--color-neutral-0);
 
   --color-text: var(--color-neutral-6);
   --color-text-negative: var(--color-neutral-0);
 
+  // Semantical Tokens – Backgrounds
   --bg-primary-light: var(--color-primary-0);
   --bg-secondary-light: var(--color-secondary-0);
   --bg-neutral-light: var(--color-neutral-1);
@@ -57,13 +57,43 @@
 
   --bg-selected: var(--color-neutral-0);
   --bg-disabled: var(--color-neutral-2);
-  --bg-focus-ring: var(--color-accessibility-0);
-  --bg-seleted-outline: var(--color-accessibility-0);
+  --bg-focus-ring: var(--color-emphasis);
+  --bg-seleted-outline: var(--color-emphasis);
 
+  // Semantical Tokens – Borders
   --color-border-display: var(--color-neutral-3);
   --color-border-input: var(--color-neutral-4);
   --color-border-input-disabled: var(--color-neutral-6);
 
-  /* Borders /////////////////////////// */
-  /* Spacing /////////////////////////// */
+
+  // Typography /////////////////////
+
+  // Family
+  --sans-serif: 'Lato', -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+
+  // Base
+  font-size: 16px;
+  --base-font-size: 1rem;
+  --scale: 1.25;
+
+  // Sizes
+  --text-size-1: calc(var(--text-size-2) * var(--scale));    // 61
+  --text-size-2: calc(var(--text-size-3) * var(--scale));    // 48
+  --text-size-3: calc(var(--text-size-4) * var(--scale));    // 39
+  --text-size-4: calc(var(--text-size-5) * var(--scale));    // 31
+  --text-size-5: calc(var(--text-size-6) * var(--scale));    // 25
+  --text-size-6: calc(var(--base-font-size) * var(--scale)); // 20
+  --text-size-7: var(--base-font-size);
+  --text-size-8: 14px;
+  --text-size-9: 12px;
+
+  // Weight
+  --text-weight-regular: 400;
+  --text-weight-bold: 700;
+  --text-weight-black: 900;
+
+
+  // Borders ////////////////////////
+  // Spacing ////////////////////////
+  // Grid ///////////////////////////
 }
