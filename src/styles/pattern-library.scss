@@ -1,0 +1,21 @@
+// Default //////////////////////////
+
+body {
+  background-color: var(--bg-neutral-light);
+  padding: var(--space-7) 0 var(--space-5);
+}
+
+#gatsby-focus-wrapper > footer,
+#gatsby-focus-wrapper > header { display: none; }
+
+.title-section { margin-bottom: var(--space-5); }
+.title-subsection { margin-bottom: var(--space-1); }
+
+.grid-section ul {
+  background-color:  var(--bg-neutral-lightest);
+  padding: var(--space-3);
+  border-radius: var(--border-radius-default);
+  list-style: none;
+  display: flex;
+  gap: var(--space-2);
+}
