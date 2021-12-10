@@ -19,11 +19,11 @@ function Navlinks() {
 
   return (
     <nav>
-      <Link className="m-1" to="/">
+      <Link to="/">
         <Logo />
       </Link>
       {links.allStoreCollection.nodes.map((x) => (
-        <Link className="m-1" key={x.slug} to={`/${x.slug}`}>
+        <Link key={x.slug} to={`/${x.slug}`}>
           {x.seo.title}
         </Link>
       ))}

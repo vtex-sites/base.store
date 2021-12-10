@@ -61,8 +61,8 @@ function ProductDetails({ product: staleProduct }: Props) {
     <div>
       <h2>{variantName}</h2>
       <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
-      <div className="line-through">{formattedListPrice}</div>
-      <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
+      <div>{formattedListPrice}</div>
+      <div>{isValidating ? '' : formattedPrice}</div>
       <Button {...buyProps} disabled={isValidating}>
         Add to cart
       </Button>

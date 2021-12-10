@@ -62,18 +62,13 @@ function ProductSummary({ product, index }: Props) {
   return (
     <Link {...linkProps}>
       <GatsbyImage
-        className="w-full"
         image={image}
         alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />
       <div>{name}</div>
-      <div className="flex justify-between">
-        <span
-          data-testid="list-price"
-          data-value={listPrice}
-          className="line-through"
-        >
+      <div>
+        <span data-testid="list-price" data-value={listPrice}>
           {useFormattedPrice(listPrice)}
         </span>
         <span data-testid="price" data-value={spotPrice}>
