@@ -14,13 +14,12 @@ function FacetedFilter({ facets }: Props) {
   const { toggleFacet } = useSearch()
 
   return (
-    <div className="flex flex-col flex-nowrap overflow-x-hidden justify-around sm:flex-row sm:w-full">
+    <div>
       {facets
         .filter((facet) => facet.type === 'BOOLEAN')
         .map(({ label, values, key }, index) => (
           <div key={`${label}-${index}`}>
             <Button
-              className="m-2"
               onClick={() => setSelectedFilter(index)}
               data-testid="facet-filter-header"
             >

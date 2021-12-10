@@ -69,12 +69,8 @@ function ProductSummary({ product, index, className }: Props) {
       />
 
       <div>{name}</div>
-      <div className="flex justify-between">
-        <span
-          data-testid="list-price"
-          data-value={listPrice}
-          className="line-through"
-        >
+      <div>
+        <span data-testid="list-price" data-value={listPrice}>
           {useFormattedPrice(listPrice)}
         </span>
         <span data-testid="price" data-value={spotPrice}>

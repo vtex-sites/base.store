@@ -6,7 +6,7 @@ import SearchInput from '../SearchInput'
 
 function Navbar() {
   return (
-    <header className="flex flex-col sm:flex-row justify-between items-center bg-primary-400">
+    <header>
       <Navlinks />
       <SearchInput />
       <CartToggle />

@@ -11,7 +11,7 @@ interface Props {
 
 function ProductGrid({ products, page, pageSize }: Props) {
   return (
-    <div className="grid grid-cols-2 gap-2 mb-2 sm:grid-cols-4 sm:gap-7 sm:mb-7">
+    <div>
       {products.map((product, idx) => (
         <ProductSummary
           key={`${product.id}`}
