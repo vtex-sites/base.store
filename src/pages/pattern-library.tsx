@@ -42,7 +42,7 @@ function Page() {
             <p className="text-body-small">Text Body Small</p>
           </li>
           <li>
-            <p className="text-body-small">Text Body Tiny</p>
+            <p className="text-body-tiny">Text Body Tiny</p>
           </li>
         </ul>
       </section>
