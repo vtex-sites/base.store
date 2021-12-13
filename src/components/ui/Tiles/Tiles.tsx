@@ -11,14 +11,23 @@ export interface TilesProps extends HTMLAttributes<HTMLDivElement> {
   testId?: string
 }
 
+const MIN_CHILDREN = 2
+const MAX_CHILDREN = 4
+const NUMBER_ITEMS_TO_EXPAND = 3
+
 const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
   { testId = 'store-tiles', children, ...otherProps },
   ref
 ) {
   const childrenCount = React.Children.count(children)
+  const spanFirstChild = childrenCount === NUMBER_ITEMS_TO_EXPAND
+  const isOutOfBounds =
+    childrenCount < MIN_CHILDREN || childrenCount > MAX_CHILDREN
 
-  if (childrenCount < 2 || childrenCount > 4) {
-    throw new Error('Tiles cannot receive less than 2 or more than 4 children')
+  if (isOutOfBounds) {
+    throw new Error(
+      `Tiles cannot receive less than ${MIN_CHILDREN} or more than ${MAX_CHILDREN} children.`
+    )
   }
 
   React.Children.forEach(children, (child) => {
@@ -26,8 +35,6 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
       throw new Error('Only Tile components allowed as children.')
     }
   })
-
-  const spanFirstChild = childrenCount === 3
 
   return (
     <div ref={ref} data-store-tiles data-testid={testId} {...otherProps}>
