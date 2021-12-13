@@ -22,7 +22,7 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
   }
 
   React.Children.forEach(children, (child) => {
-    if (React.isValidElement(child) && child.type !== Tile) {
+    if (!React.isValidElement(child) || child.type !== Tile) {
       throw new Error('Only Tile components allowed as children.')
     }
   })
