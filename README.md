@@ -210,7 +210,7 @@ touch src/components/ui/Button/Button.module.css
 
 Now, on `Button.module.css`:
 ```css
-[data-store-button]: {
+[data-store-button] {
   @apply p-0 bg-primary-100;
 }
 ```
@@ -256,11 +256,11 @@ export default Button
 
 and then, on `Button.module.css`:
 ```css
-.primary [data-store-button]: {
+.primary [data-store-button] {
   @apply p-0 bg-primary-100;
 }
 
-.muted [data-store-button]: {
+.muted [data-store-button] {
   @apply p-0 bg-muted-100;
 }
 ```

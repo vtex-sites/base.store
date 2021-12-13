@@ -1,12 +1,11 @@
 import { graphql } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import Button from 'src/components/ui/Button'
+import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
-import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import { useProduct } from 'src/sdk/product/useProduct'
+import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -39,7 +38,7 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   const formattedPrice = useFormattedPrice(price)
   const formattedListPrice = useFormattedPrice(listPrice)
-  const image = useImage(img.url, 'product.details')
+
   const buyProps = useBuyButton({
     id,
     name,
@@ -60,9 +59,14 @@ function ProductDetails({ product: staleProduct }: Props) {
   return (
     <div>
       <h2>{variantName}</h2>
-      <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
-      <div>{formattedListPrice}</div>
-      <div>{isValidating ? '' : formattedPrice}</div>
+      <Image
+        src={img.url}
+        variant="product.details"
+        alt={img.alternateName}
+        loading="eager"
+      />
+      <div className="line-through">{formattedListPrice}</div>
+      <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
       <Button {...buyProps} disabled={isValidating}>
         Add to cart
       </Button>

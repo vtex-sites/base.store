@@ -1,10 +1,9 @@
 import { graphql, Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
+import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
-import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
@@ -41,7 +40,6 @@ function ProductSummary({ product, index }: Props) {
   }, [spotPrice, offers])
 
   const linkProps = useProductLink({ product, index })
-  const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
     name,
@@ -61,11 +59,14 @@ function ProductSummary({ product, index }: Props) {
 
   return (
     <Link {...linkProps}>
-      <GatsbyImage
-        image={image}
+      <Image
+        className="w-full"
+        src={img.url}
+        variant="product.summary"
         alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />
+
       <div>{name}</div>
       <div>
         <span data-testid="list-price" data-value={listPrice}>
