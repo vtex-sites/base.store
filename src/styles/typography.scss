@@ -14,9 +14,14 @@
 }
 
 body {
-  letter-spacing: 1%;
   font-family: var(--sans-serif);
   font-size: var(--text-size-2);
+  letter-spacing: 1%;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  padding: 0;
+  margin: 0;
 }
 
 
@@ -47,8 +52,8 @@ body {
 }
 
 .title-product {
-  font-size: var(--text-size-4);
   font-weight: var(--text-weight-regular);
+  font-size: var(--text-size-4);
   line-height: 1.12;
 }
 
