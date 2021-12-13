@@ -1,21 +1,28 @@
 [data-store-search-input] {
   position: relative;
+  box-sizing: border-box;
   display: inline-flex;
   width: 100%;
-  border: 1px solid var(--color-neutral-4);
-  border-radius: var(--border-radius-flat);
+  height: 2.5rem;
 }
 
 [data-store-search-input] [data-store-input] {
   width: 100%;
-  height: var(--space-6);
-  border: 0;
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-neutral-4);
+  border-radius: var(--border-radius-default);
+}
+
+[data-store-search-input] [data-store-icon] {
+  display: block;
+  padding: 2px var(--space-1);
 }
 
 [data-store-search-input] [data-store-button] {
   position: absolute;
-  right: 0;
-  padding: var(--space-1) var(--space-2);
+  top: var(--space-0);
+  right: var(--space-0);
+  padding: 0;
   background-color: transparent;
   border: 0;
 }
