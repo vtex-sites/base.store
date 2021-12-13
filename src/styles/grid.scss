@@ -26,13 +26,13 @@ body {
 .grid-content {
   width: 100%;
   max-width: var(--breakpoint-note-md);
-  padding-left: var(--space-3);
   padding-right: var(--space-3);
-  margin-left: auto;
+  padding-left: var(--space-3);
   margin-right: auto;
+  margin-left: auto;
   box-sizing: border-box;
   @media (min-width: var(--breakpoint-note-sm)) {
-    padding-left: var(--space-4);
     padding-right: var(--space-4);
+    padding-left: var(--space-4);
   }
 }

@@ -1,21 +1,21 @@
 // Default //////////////////////////
 
 body {
-  background-color: var(--bg-neutral-light);
   padding: var(--space-7) 0 var(--space-5);
+  background-color: var(--bg-neutral-light);
 }
 
-#gatsby-focus-wrapper > footer,
-#gatsby-focus-wrapper > header { display: none; }
+#gatsby-focus-wrapper > header,
+#gatsby-focus-wrapper > footer { display: none; }
 
 .title-section.grid-content { margin-bottom: var(--space-5); }
 
 .grid-section {
   ul {
-    background-color:  var(--bg-neutral-lightest);
     padding: var(--space-3);
-    border-radius: var(--border-radius-default);
     list-style: none;
+    background-color:  var(--bg-neutral-lightest);
+    border-radius: var(--border-radius-default);
     &.list-horizontal {
       display: flex;
       gap: var(--space-2);
