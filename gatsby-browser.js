@@ -31,14 +31,4 @@ export const wrapRootElement = ({ element }) => (
   </ErrorBoundary>
 )
 
-export const wrapPageElement = ({ props, element }) => {
-  // Temporary added condition for pattern library page
-  if (props.path !== '/pattern-library/') {
-    return <Layout>{element}</Layout>
-  }
-}
-
-/**
- * TODO: Remove the wrapPageElement below and replace for:
- * export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
- * */
+export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
