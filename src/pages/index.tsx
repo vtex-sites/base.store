@@ -6,6 +6,7 @@ import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import Hero, { HeroContent, HeroImage, HeroLink } from 'src/components/ui/Hero'
 import { StaticImage } from 'gatsby-plugin-image'
+import BannerText from 'src/components/common/BannerText'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -48,7 +49,6 @@ function Page(props: Props) {
           },
         }}
       />
-
       {/*
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
@@ -77,6 +77,7 @@ function Page(props: Props) {
           />
         </HeroImage>
       </Hero>
+      <BannerText />
     </>
   )
 }
