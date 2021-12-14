@@ -22,3 +22,11 @@
     > .title-subsection { margin-bottom: var(--space-1); }
   }
 }
+
+/* FIXME Remove this once links and buttons are styled properly */
+a, button[data-store-button] {
+  display: inline-block;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 2px 5px;
+}
