@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
@@ -15,10 +15,20 @@ function Layout({ children }: PropsWithChildren<unknown>) {
   useCartNotificationEffect()
 
   // Temporary added condition for pattern library page
-  /* FIXME Remove this after removing pattern library page */
-  const location = useLocation()
+  /* FIXME Remove this after removing pattern library page (line 19 - 33) */
+  const [hasMounted, setHasMounted] = useState(false)
 
-  if (location.pathname === '/pattern-library') {
+  const windowGlobal = typeof window !== 'undefined' && window
+  const location = useLocation()
+  const path = hasMounted ? location : ''
+
+  useEffect(() => {
+    if (windowGlobal) {
+      setHasMounted(true)
+    }
+  }, [windowGlobal])
+
+  if (path !== '' && path.pathname.includes('/pattern-library')) {
     return <>{children}</>
   }
 
