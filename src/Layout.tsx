@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { useEffect, useState, lazy, Suspense } from 'react'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
