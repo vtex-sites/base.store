@@ -2,6 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function HTML(props) {
+  const cssImport =
+    "@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');"
+
   return (
     <html lang="en" {...props.htmlAttributes}>
       <head>
@@ -17,10 +20,7 @@ export default function HTML(props) {
           href="https://fonts.gstatic.com"
           crossOrigin="yes"
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap"
-          rel="stylesheet"
-        />
+        <style>{cssImport}</style>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
