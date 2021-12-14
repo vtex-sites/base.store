@@ -4,7 +4,7 @@ import React, { useMemo } from 'react'
 import imagesConf from 'src/images/config'
 import type { GatsbyImageProps } from 'gatsby-plugin-image'
 
-interface Props extends GatsbyImageProps {
+interface Props extends Omit<GatsbyImageProps, 'image'> {
   desktop: {
     src: string
     variant: string

@@ -11,9 +11,10 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
+  className?: string
 }
 
-function ProductSummary({ product, index }: Props) {
+function ProductSummary({ product, index, className }: Props) {
   const {
     id,
     sku,
@@ -58,7 +59,7 @@ function ProductSummary({ product, index }: Props) {
   })
 
   return (
-    <Link {...linkProps}>
+    <Link {...linkProps} className={className}>
       <Image
         className="w-full"
         src={img.url}
