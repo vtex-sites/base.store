@@ -7,6 +7,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
+import OutOfStock from 'src/components/product/OutOfStock'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -80,6 +81,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       <Button {...buyProps} disabled={isValidating}>
         Add to cart
       </Button>
+      <OutOfStock visible onSubmit={(email) => alert(email)} />
     </div>
   )
 }
