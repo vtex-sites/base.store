@@ -6,7 +6,7 @@ import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import Hero, { HeroContent, HeroImage, HeroLink } from 'src/components/ui/Hero'
 import { StaticImage } from 'gatsby-plugin-image'
-import BannerText from 'src/components/common/BannerText'
+import BannerText from 'src/components/sections/BannerText'
 
 export type Props = PageProps<HomePageQueryQuery>
 
