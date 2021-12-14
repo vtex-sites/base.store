@@ -15,6 +15,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
   useCartNotificationEffect()
 
   // Temporary added condition for pattern library page
+  /* FIXME Remove this after removing pattern library page */
   const location = useLocation()
 
   if (location.pathname === '/pattern-library') {
