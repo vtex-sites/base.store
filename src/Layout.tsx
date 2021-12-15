@@ -16,7 +16,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">{children}</main>
+      <main>{children}</main>
       <Footer />
       {displayMinicart && (
         <Suspense fallback={null}>
