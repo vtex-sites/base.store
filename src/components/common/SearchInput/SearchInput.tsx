@@ -20,7 +20,13 @@ const doSearch = async (term: string) => {
 }
 
 function SearchInput(props: SearchInputProps) {
-  return <UISearchInput onSubmit={doSearch} {...props} />
+  return (
+    <UISearchInput
+      placeholder="Search everything at the store"
+      onSubmit={doSearch}
+      {...props}
+    />
+  )
 }
 
 export default SearchInput
