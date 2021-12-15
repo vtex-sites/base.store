@@ -12,6 +12,8 @@ import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
 export const wrapRootElement = ({ element }) => {
+  // Temporary added condition for pattern library page
+  /* FIXME Remove this after removing pattern library page */
   if (window.location.pathname.includes('pattern-library')) {
     return <>{element}</>
   }
@@ -38,6 +40,8 @@ export const wrapRootElement = ({ element }) => {
 }
 
 export const wrapPageElement = ({ element, props }) => {
+  // Temporary added condition for pattern library page
+  /* FIXME Remove this after removing pattern library page */
   if (props.location.pathname.includes('pattern-library')) return <>{element}</>
 
   return <Layout>{element}</Layout>
