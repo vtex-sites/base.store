@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import { Image } from 'src/components/ui/Image'
+import Image from 'next/image'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { AnalyticsCartItem } from 'src/sdk/analytics/types'
@@ -21,9 +21,10 @@ function CartItem({ item }: Props) {
       data-seller={item.seller.identifier}
     >
       <Image
+        width={200}
+        height={200}
         src={item.itemOffered.image[0].url}
         alt={item.itemOffered.image[0].alternateName}
-        variant="product.miniature"
       />
       <div>name: {item.itemOffered.name}</div>
       <div>sku: {item.itemOffered.sku}</div>

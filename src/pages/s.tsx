@@ -1,32 +1,30 @@
-import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
-import { graphql } from 'gatsby'
+import { parseSearchState, SearchProvider } from '@faststore/sdk'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
 import React, { useMemo } from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
-import { applySearchState } from 'src/sdk/search/state'
-import type { PageProps } from 'gatsby'
-import type {
-  SearchPageQueryQuery,
-  SearchPageQueryQueryVariables,
-} from '@generated/graphql'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import { useApplySearchState } from 'src/sdk/search/state'
+import { useSiteUrl } from 'src/sdk/useSiteUrl'
 
-export type Props = PageProps<
-  SearchPageQueryQuery,
-  SearchPageQueryQueryVariables
->
+import storeConfig from '../../store.config'
 
-const useSearchParams = ({ href }: Location) =>
-  useMemo(() => href && parseSearchState(new URL(href)), [href])
+const {
+  site: { title },
+} = storeConfig
 
-function Page(props: Props) {
-  const {
-    data: { site },
-  } = props
+const useSearchParams = () => {
+  const siteUrl = useSiteUrl()
+  const { asPath } = useRouter()
 
-  const { locale } = useSession()
-  const searchParams = useSearchParams(props.location)
-  const title = site?.siteMetadata?.title ?? ''
+  return useMemo(() => {
+    return siteUrl && parseSearchState(new URL(asPath, siteUrl))
+  }, [asPath, siteUrl])
+}
+
+function Page() {
+  const applySearchState = useApplySearchState()
+  const searchParams = useSearchParams()
 
   if (!searchParams) {
     return null
@@ -39,18 +37,7 @@ function Page(props: Props) {
       {...searchParams}
     >
       {/* SEO */}
-      <GatsbySeo
-        noindex
-        language={locale}
-        title={title}
-        description={site?.siteMetadata?.description ?? ''}
-        titleTemplate={site?.siteMetadata?.titleTemplate ?? ''}
-        openGraph={{
-          type: 'website',
-          title,
-          description: site?.siteMetadata?.description ?? '',
-        }}
-      />
+      <NextSeo noindex />
 
       {/*
         Sections: Components imported from '../components/sections' only.
@@ -62,17 +49,5 @@ function Page(props: Props) {
     </SearchProvider>
   )
 }
-
-export const query = graphql`
-  query SearchPageQuery {
-    site {
-      siteMetadata {
-        titleTemplate
-        title
-        description
-      }
-    }
-  }
-`
 
 export default Page

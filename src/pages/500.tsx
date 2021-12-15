@@ -1,27 +1,15 @@
-import React, { useMemo } from 'react'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import type { PageProps } from 'gatsby'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-type Props = PageProps
-
-const useErrorState = (location: Location) =>
-  useMemo(() => {
-    const params = new URLSearchParams(location.search)
-    const errorId = params.get('errorId')
-    const fromUrl = params.get('from')
-
-    return {
-      errorId,
-      fromUrl,
-    }
-  }, [location.search])
-
-function Page({ location }: Props) {
-  const { errorId, fromUrl } = useErrorState(location)
+function Page() {
+  const router = useRouter()
+  const errorId = router.query.errorId?.toString()
+  const fromUrl = decodeURI(router.query.fromUrl?.toString() ?? router.pathname)
 
   return (
     <>
-      <GatsbySeo noindex nofollow />
+      <NextSeo noindex nofollow />
 
       <h1>500</h1>
       <h2>Internal Server Error</h2>

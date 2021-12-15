@@ -58,6 +58,9 @@ src/typings/
 .cache/
 public
 
+# next files
+.next
+
 # Mac files
 .DS_Store
 

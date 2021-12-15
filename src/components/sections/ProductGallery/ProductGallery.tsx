@@ -1,5 +1,5 @@
 import { usePagination, useSearch } from '@faststore/sdk'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import { NextSeo } from 'next-seo'
 import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
@@ -36,7 +36,7 @@ function ProductGallery({ title }: Props) {
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
         <>
-          <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
+          <NextSeo additionalLinkTags={[{ rel: 'prev', href: prev.link }]} />
           <a
             className="p-8 block center"
             onClick={(e) => {
@@ -65,7 +65,7 @@ function ProductGallery({ title }: Props) {
       {/* Add link to next page. This helps on SEO */}
       {next !== false && (
         <>
-          <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
+          <NextSeo additionalLinkTags={[{ rel: 'next', href: next.link }]} />
           <a
             className="p-8 block center"
             data-testid="show-more"

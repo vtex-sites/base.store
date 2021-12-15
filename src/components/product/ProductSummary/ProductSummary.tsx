@@ -1,8 +1,9 @@
-import { graphql, Link } from 'gatsby'
+import { gql } from '@vtex/graphql-utils'
+import Image from 'next/image'
+import Link from 'next/link'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
-import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
@@ -59,34 +60,35 @@ function ProductSummary({ product, index }: Props) {
 
   return (
     <Link {...linkProps}>
-      <Image
-        className="w-full"
-        src={img.url}
-        variant="product.summary"
-        alt={img.alternateName}
-        sizes="(max-width: 768px) 200px, 320px"
-      />
-
-      <div>{name}</div>
-      <div className="flex justify-between">
-        <span
-          data-testid="list-price"
-          data-value={listPrice}
-          className="line-through"
-        >
-          {useFormattedPrice(listPrice)}
-        </span>
-        <span data-testid="price" data-value={spotPrice}>
-          {useFormattedPrice(spotPrice)}
-        </span>
-        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
-      </div>
-      <Button {...buyProps}>Add to cart</Button>
+      <a {...linkProps}>
+        <Image
+          className="w-full"
+          width={360}
+          height={360}
+          src={img.url}
+          alt={img.alternateName}
+        />
+        <div>{name}</div>
+        <div className="flex justify-between">
+          <span
+            data-testid="list-price"
+            data-value={listPrice}
+            className="line-through"
+          >
+            {useFormattedPrice(listPrice)}
+          </span>
+          <span data-testid="price" data-value={spotPrice}>
+            {useFormattedPrice(spotPrice)}
+          </span>
+          <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
+        </div>
+        <Button {...buyProps}>Add to cart</Button>
+      </a>
     </Link>
   )
 }
 
-export const fragment = graphql`
+export const fragment = gql`
   fragment ProductSummary_product on StoreProduct {
     id: productID
     slug

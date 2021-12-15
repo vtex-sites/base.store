@@ -1,5 +1,5 @@
 import { useSearch } from '@faststore/sdk'
-import { graphql } from 'gatsby'
+import { gql } from '@vtex/graphql-utils'
 import React, { useState } from 'react'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
@@ -55,7 +55,7 @@ function FacetedFilter({ facets }: Props) {
   )
 }
 
-export const fragment = graphql`
+export const fragment = gql`
   fragment FacetedFilter_facets on StoreFacet {
     key
     label

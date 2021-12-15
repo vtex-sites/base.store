@@ -1,9 +1,7 @@
 require('dotenv').config({ path: 'vtex.env' })
 
-const { join, resolve } = require('path')
+const { join } = require('path')
 
-const { getSchema, getContextFactory } = require('./src/server')
-const images = require('./src/images/config')
 const config = require('./store.config')
 
 const {
@@ -11,25 +9,10 @@ const {
   URL = config.storeUrl,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
-  VTEX_WEBOPS: isWebOps,
 } = process.env
 
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
-
-const unique = (x) => Array.from(new Set(x))
-
-const getSizes = (variants) =>
-  unique(
-    Object.values(variants)
-      .flatMap((variant) =>
-        variant.breakpoints.map((width) => [
-          `${width}x${Math.ceil(width / variant.aspectRatio)}`,
-          `${width}x${Math.floor(width / variant.aspectRatio)}`,
-        ])
-      )
-      .flat()
-  )
 
 module.exports = {
   siteMetadata: {
@@ -38,14 +21,6 @@ module.exports = {
     titleTemplate: '%s | Fashion Store',
     author: 'Store Framework',
     siteUrl,
-  },
-  flags: {
-    DEV_SSR: true,
-    FAST_DEV: true,
-    LMDB_STORE: false,
-    PARALLEL_SOURCING: true,
-    PARALLEL_QUERY_RUNNING: false,
-    PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
     {
@@ -94,26 +69,7 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: 'gatsby-plugin-next-seo',
-      options: {
-        defer: true,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-image',
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-thumbor',
-      options: {
-        server: 'https://thumbor-dev-server.vtex.io',
-        ...(isWebOps && {
-          server: 'http://thumbor.vtex.internal',
-          basePath: '/assets',
-          sizes: getSizes(images),
-        }),
-      },
-    },
+
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
@@ -121,13 +77,7 @@ module.exports = {
         showSpinner: false,
       },
     },
-    {
-      resolve: 'gatsby-plugin-root-import',
-      options: {
-        src: resolve('./src'),
-        '@generated': resolve('./@generated'),
-      },
-    },
+
     {
       resolve: 'gatsby-plugin-bundle-stats',
       options: {
@@ -140,64 +90,6 @@ module.exports = {
           context: join(__dirname, 'src'),
         },
       },
-    },
-    {
-      resolve: `@vtex/gatsby-source-store`,
-      options: {
-        sourceProducts: true,
-        sourceCollections: true,
-        getSchema,
-        getContextFactory,
-        // Source less products is development for better DX
-        maxNumProducts: isProduction ? 2500 : 100,
-        maxNumCollections: isProduction ? 2500 : 100,
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-nginx',
-      options: {
-        httpOptions: [
-          ['merge_slashes', 'off'],
-          ['proxy_http_version', '1.1'],
-          ['absolute_redirect', 'off'],
-        ],
-        serverOptions: isWebOps
-          ? [['resolver', '169.254.169.253']]
-          : [['resolver', '8.8.8.8']],
-        locations: {
-          append: {
-            cmd: ['location', '/'],
-            children: [
-              {
-                cmd: [
-                  'add_header',
-                  'Cache-Control',
-                  '"public, max-age=0, must-revalidate"',
-                ],
-              },
-              {
-                cmd: [
-                  'try_files',
-                  '$uri',
-                  '$uri/',
-                  '$uri/index.html',
-                  '$uri.html',
-                  '=404',
-                ],
-              },
-            ],
-          },
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-gatsby-cloud',
-    },
-    {
-      resolve: 'gatsby-plugin-netlify',
-    },
-    {
-      resolve: 'gatsby-plugin-postcss',
     },
   ],
 }

@@ -1,7 +1,7 @@
-import { graphql } from 'gatsby'
+import { gql } from '@vtex/graphql-utils'
+import Image from 'next/image'
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
@@ -60,10 +60,11 @@ function ProductDetails({ product: staleProduct }: Props) {
     <div>
       <h2>{variantName}</h2>
       <Image
+        width={500}
+        height={500}
         src={img.url}
-        variant="product.details"
         alt={img.alternateName}
-        loading="eager"
+        priority
       />
       <div className="line-through">{formattedListPrice}</div>
       <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
@@ -74,7 +75,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   )
 }
 
-export const fragment = graphql`
+export const fragment = gql`
   fragment ProductDetailsFragment_product on StoreProduct {
     id: productID
     sku

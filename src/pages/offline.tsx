@@ -1,10 +1,10 @@
 import React from 'react'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import { NextSeo } from 'next-seo'
 
 function Page() {
   return (
     <>
-      <GatsbySeo noindex nofollow />
+      <NextSeo noindex nofollow />
 
       <div>TODO</div>
     </>

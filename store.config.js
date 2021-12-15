@@ -15,6 +15,12 @@ module.exports = {
   storeUrl: 'https://www.vtex-base1.tk',
   checkoutUrl: 'https://chk.vtex-base1.tk/checkout',
 
+  site: {
+    title: 'Fashion Store',
+    description: 'Fashion Demo Store',
+    titleTemplate: '%s | Fashion Store',
+  },
+
   // Lighthouse CI
   lighthouse: {
     server: process.env.BASE_SITE_URL || 'http://localhost:9000',

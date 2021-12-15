@@ -1,53 +1,45 @@
 import { useSession } from '@faststore/sdk'
-import { graphql } from 'gatsby'
-import {
-  BreadcrumbJsonLd,
-  GatsbySeo,
-  ProductJsonLd,
-} from 'gatsby-plugin-next-seo'
+import { gql } from '@vtex/graphql-utils'
+import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
+import { useRouter } from 'next/router'
 import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
-import type { PageProps } from 'gatsby'
+import { useSiteUrl } from 'src/sdk/useSiteUrl'
+import { execute } from 'src/server'
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 
-export type Props = PageProps<
-  ProductPageQueryQuery,
-  ProductPageQueryQueryVariables
->
+function Page(props: ProductPageQueryQuery) {
+  const { product } = props
+  const { currency } = useSession()
+  const siteUrl = useSiteUrl()
+  const router = useRouter()
 
-function Page(props: Props) {
-  const { locale, currency } = useSession()
-  const {
-    data: { product, site },
-    location: { host },
-    params: { slug },
-  } = props
+  if (router.isFallback) {
+    return <div>...loading</div>
+  }
 
   if (!product) {
     throw new Error('NotFound')
   }
 
-  const title = product.seo.title ?? site?.siteMetadata?.title ?? ''
-  const description =
-    product.seo.description ?? site?.siteMetadata?.description ?? ''
-
-  const canonical =
-    host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
+  const { slug } = router.query
+  const { title, description } = product.seo
+  const canonical = `${siteUrl}/${slug}/p`
 
   return (
     <>
       {/* SEO */}
-      <GatsbySeo
+      <NextSeo
         title={title}
         description={description}
         canonical={canonical}
-        language={locale}
         openGraph={{
           type: 'og:product',
-          url: `${site?.siteMetadata?.siteUrl}${slug}`,
+          url: canonical,
           title,
           description,
           images: product.image.map((img) => ({
@@ -55,7 +47,7 @@ function Page(props: Props) {
             alt: img.alternateName,
           })),
         }}
-        metaTags={[
+        additionalMetaTags={[
           {
             property: 'product:price:amount',
             content: product.offers.lowPrice?.toString() ?? undefined,
@@ -70,16 +62,16 @@ function Page(props: Props) {
         itemListElements={product.breadcrumbList.itemListElement ?? []}
       />
       <ProductJsonLd
-        name={product.name}
+        productName={product.name}
         description={product.description}
         brand={product.brand.name}
         sku={product.sku}
-        gtin={product.gtin}
+        gtin13={product.gtin}
         images={product.image.map((img) => img.url)} // Somehow, Google does not understand this valid Schema.org schema, so we need to do conversions
-        offersType="AggregateOffer"
-        offers={{
-          ...product.offers,
-          price: product.offers.offers[0].price.toString(),
+        aggregateOffer={{
+          lowPrice: product.offers.lowPrice.toString(),
+          highPrice: product.offers.highPrice.toString(),
+          priceCurrency: product.offers.priceCurrency,
         }}
       />
 
@@ -94,18 +86,9 @@ function Page(props: Props) {
   )
 }
 
-export const querySSG = graphql`
-  query ProductPageQuery($id: String!) {
-    site {
-      siteMetadata {
-        title
-        description
-        titleTemplate
-        siteUrl
-      }
-    }
-
-    product: storeProduct(id: { eq: $id }) {
+export const querySSG = gql`
+  query ProductPageQuery($slug: String!) {
+    product(locator: [{ key: "slug", value: $slug }]) {
       id: productID
       slug
 
@@ -157,5 +140,42 @@ export const querySSG = graphql`
     }
   }
 `
+
+export const getStaticProps: GetStaticProps<ProductPageQueryQuery> = async (
+  context
+) => {
+  const slug = context.params?.slug
+
+  if (typeof slug !== 'string') {
+    throw new Error(`Slug needs to be string, received ${typeof slug}`)
+  }
+
+  const response = await execute<
+    ProductPageQueryQuery,
+    ProductPageQueryQueryVariables
+  >({
+    operationName: querySSG,
+    variables: {
+      slug,
+    },
+  })
+
+  if (response.errors != null || response.data == null) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: response.data,
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return {
+    paths: [],
+    fallback: true,
+  }
+}
 
 export default Page

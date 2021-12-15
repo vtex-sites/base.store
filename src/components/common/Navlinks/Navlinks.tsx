@@ -1,30 +1,31 @@
-import { useStaticQuery, graphql, Link } from 'gatsby'
+import Link from 'next/link'
 import React from 'react'
 import Logo from 'src/components/ui/Logo'
-import type { NavlinksQueryQuery } from '@generated/graphql'
+
+const links = [
+  {
+    href: '/apparel',
+    name: 'Apparel',
+  },
+  {
+    href: '/food-and-beverage',
+    name: 'Food and beverage',
+  },
+]
 
 function Navlinks() {
-  const links = useStaticQuery<NavlinksQueryQuery>(graphql`
-    query NavlinksQuery {
-      allStoreCollection(limit: 2, filter: { type: { eq: Department } }) {
-        nodes {
-          slug
-          seo {
-            title
-          }
-        }
-      }
-    }
-  `)
-
   return (
     <nav>
-      <Link className="m-1" to="/">
-        <Logo />
+      <Link href="/">
+        <a className="m-1" href="/">
+          <Logo />
+        </a>
       </Link>
-      {links.allStoreCollection.nodes.map((x) => (
-        <Link className="m-1" key={x.slug} to={`/${x.slug}`}>
-          {x.seo.title}
+      {links.map((x) => (
+        <Link key={x.href} href={x.href}>
+          <a className="m-1" href={x.href}>
+            {x.name}
+          </a>
         </Link>
       ))}
     </nav>

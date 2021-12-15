@@ -1,4 +1,5 @@
 import { useAnalyticsEvent } from '@faststore/sdk'
+import React from 'react'
 import type { PropsWithChildren } from 'react'
 
 if (typeof window !== 'undefined') {
@@ -10,7 +11,7 @@ export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
     window.dataLayer.push(event)
   })
 
-  return children
+  return <>{children}</>
 }
 
 export default AnalyticsHandler

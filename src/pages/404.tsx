@@ -1,25 +1,14 @@
-import React, { useMemo } from 'react'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import type { PageProps } from 'gatsby'
+import { NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-type Props = PageProps
-
-const useErrorState = (location: Location) =>
-  useMemo(() => {
-    const params = new URLSearchParams(location.search)
-    const fromUrl = decodeURI(params.get('from') ?? location.pathname)
-
-    return {
-      fromUrl,
-    }
-  }, [location.pathname, location.search])
-
-function Page({ location }: Props) {
-  const { fromUrl } = useErrorState(location)
+function Page() {
+  const router = useRouter()
+  const fromUrl = decodeURI(router.query.from?.toString() ?? router.pathname)
 
   return (
     <>
-      <GatsbySeo noindex nofollow />
+      <NextSeo noindex nofollow />
 
       <h1>Not Found: 404</h1>
       <div>This app could not find url {fromUrl}</div>
