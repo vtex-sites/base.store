@@ -20,6 +20,9 @@ function OutOfStock(props: OutOfStockProps) {
 
   const [email, setEmail] = useState('')
 
+  // TODO: Find how to check if product is out of stock (I'm using visible prop to simulate that )
+  // TODO: Display (after the button) a success alert if onSubmit succeed
+
   return (
     <>
       {visible && (
