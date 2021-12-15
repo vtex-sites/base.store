@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react'
-import type { HTMLAttributes } from 'react'
+import type { HTMLAttributes, ReactElement } from 'react'
 
 import Tile from './Tile'
 
@@ -30,17 +30,15 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
     )
   }
 
-  React.Children.forEach(children, (child) => {
-    if (!React.isValidElement(child) || child.type !== Tile) {
+  React.Children.forEach(children as ReactElement, (child) => {
+    if (child.type !== Tile) {
       throw new Error('Only Tile components allowed as children.')
     }
   })
 
   return (
     <div ref={ref} data-store-tiles data-testid={testId} {...otherProps}>
-      {React.Children.map(children, (child, index) => {
-        if (!React.isValidElement(child)) return
-
+      {React.Children.map(children as ReactElement, (child, index) => {
         if (index === 0 && spanFirstChild) {
           const { className } = child.props
 
