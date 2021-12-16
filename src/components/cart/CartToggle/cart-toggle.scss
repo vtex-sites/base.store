@@ -1,4 +1,4 @@
-[data-store-button].buttonCart {
+[data-store-button-cart] {
     background-color: #FFF0;
     border-width: 0;
     height: 20px;
@@ -6,11 +6,11 @@
     position: relative;
 
     &::after{
-      content: attr(data-items);
+      content: "25";
 
       position: absolute;
-      top: 0;
-      right: -6px;
+      top: -6px;
+      right: -12px;
 
       font-style: normal;
       font-weight: bold;
@@ -19,7 +19,7 @@
 
       background: #001947;
       border-radius: 50px;
-      padding: 0px 10px;
+      padding: 5px 10px;
       display: flex;
       align-items: center;
       justify-content: center;
