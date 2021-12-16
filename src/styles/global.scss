@@ -1,6 +1,10 @@
 // Font Import //////////////////////
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 
+// Resets //////////////////////////
+@import "resets/modern-normalize";
+@import "resets/reset";
+
 // Styles ///////////////////////////
 @import "colors";
 @import "typography";
@@ -62,6 +66,8 @@
   --space-8: 3.5rem; // 56px
   --space-9: 4rem;   // 64px
 
+  // Target Size
+  --min-size: var(--space-7);
 
   // Borders ////////////////////////
 
