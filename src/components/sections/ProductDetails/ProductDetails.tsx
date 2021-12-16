@@ -81,7 +81,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       <Button {...buyProps} disabled={isValidating}>
         Add to cart
       </Button>
-      <OutOfStock visible onSubmit={(email) => alert(email)} />
+      <OutOfStock onSubmit={(email) => alert(email)} />
     </div>
   )
 }
