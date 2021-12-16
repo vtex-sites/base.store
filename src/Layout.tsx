@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
-import ImageGallery from 'src/components/ui/ImageGallery'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
@@ -18,7 +17,6 @@ function Layout({ children }: PropsWithChildren<unknown>) {
     <>
       <Navbar />
       <main className="min-h-screen">{children}</main>
-      <ImageGallery />
       <Footer />
       {displayMinicart && (
         <Suspense fallback={null}>
