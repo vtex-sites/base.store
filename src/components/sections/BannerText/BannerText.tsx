@@ -16,19 +16,19 @@ export interface BannerTextProps extends InputHTMLAttributes<HTMLDivElement> {
   /**
    * The href used at the link
    */
-  action_path: string
+  actionPath: string
 
   /**
    * The label used at the link
    */
-  action_label: string
+  actionLabel: string
 }
 
 function BannerText({
   title,
   caption,
-  action_path,
-  action_label,
+  actionPath,
+  actionLabel,
 }: BannerTextProps) {
   return (
     <Banner>
@@ -38,7 +38,7 @@ function BannerText({
           <p>{caption}</p>
         </div>
         <BannerLink>
-          <a href={action_path}>{action_label}</a>
+          <a href={actionPath}>{actionLabel}</a>
         </BannerLink>
       </BannerContent>
     </Banner>
