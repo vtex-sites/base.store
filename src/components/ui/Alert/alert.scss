@@ -1,0 +1,32 @@
+[data-store-alert] {
+  box-sizing: border-box; /** FIXME remove after add css reset */
+  display: flex;
+  align-items: center;
+  min-height: var(--space-7);
+  padding: var(--space-1) var(--space-3);
+  background-color: var(--bg-primary-light);
+  color: var(--color-text);
+  font-size: var(--text-size-1);
+
+  [data-store-icon] {
+    margin: 0;
+    padding-right: var(--space-1);
+  }
+
+  span { font-weight: bold; }
+
+  a {
+    font-weight: bold;
+    color: var(--color-text);
+
+    &:visited { color: var(--color-text) };
+  }
+
+  [data-alert-button] {
+    margin-left: auto;
+    padding: 0 var(--space-0);
+    border: none;
+    background-image: none;
+    background-color: transparent;
+  }
+}
