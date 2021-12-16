@@ -77,7 +77,12 @@ function Page(props: Props) {
           />
         </HeroImage>
       </Hero>
-      <BannerText />
+      <BannerText
+        title="Receive our news and promotions in advance."
+        caption="Enjoy and get 10% off your first purchase."
+        action_path="/"
+        action_label="Call to action"
+      />
     </>
   )
 }
