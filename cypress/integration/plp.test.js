@@ -30,7 +30,7 @@ describe('Search page Filters and Sorting options', () => {
         const value = $checkbox.attr('data-value')
 
         // Check if the filter applied actually ended up in the URL
-        cy.location('pathname').should((loc) => {
+        cy.location('href').should((loc) => {
           expect(loc).to.include(value)
         })
 

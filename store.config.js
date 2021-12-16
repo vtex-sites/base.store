@@ -20,8 +20,8 @@ module.exports = {
     server: process.env.BASE_SITE_URL || 'http://localhost:9000',
     pages: {
       home: '/',
-      pdp: '/navel-oranges-grown-large-fresh-fruit-880320/p',
-      collection: '/food-and-beverage',
+      pdp: '/sleek-metal-pizza-24041857/p',
+      collection: '/office',
     },
   },
 
@@ -29,10 +29,10 @@ module.exports = {
   cypress: {
     pages: {
       home: '/',
-      pdp: '/navel-oranges-grown-large-fresh-fruit-880320/p',
-      collection: '/power-tools',
+      pdp: '/sleek-metal-pizza-24041857/p',
+      collection: '/office',
       collection_filtered:
-        '/power-tools/?category-1=power-tools&marca=acer&facets=category-1%2Cmarca',
+        '/office/?category-1=office&marca=acer&facets=category-1%2Cmarca',
       search: '/s?q=orange',
     },
   },
