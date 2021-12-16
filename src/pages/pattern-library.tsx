@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton } from '@faststore/ui'
+import Alert from 'src/components/ui/Alert'
+import { BellRinging } from 'phosphor-react'
 
 import '../styles/pattern-library.scss'
 
 function Page() {
+  const [showAlert1, setShowAlert1] = useState(true)
+  const [showAlert2, setShowAlert2] = useState(true)
+
   return (
     <>
       <GatsbySeo title="Pattern Library" language="en" noindex nofollow />
@@ -63,6 +68,57 @@ function Page() {
               </li>
               <li>
                 <UIButton>Call to Action</UIButton>
+              </li>
+            </ul>
+          </section>
+
+          <section id="alerts" className="grid-section grid-content">
+            <h2 className="title-subsection">Alerts</h2>
+            <ul className="list-vertical">
+              <li>
+                <Alert icon={<BellRinging size={24} />}>
+                  Get 10% off today:&nbsp;<span>NEW10</span>
+                </Alert>
+              </li>
+              <li>
+                <Alert>
+                  Get 10% off today:&nbsp;<span>NEW10</span>
+                </Alert>
+              </li>
+              <li>
+                {showAlert1 ? (
+                  <Alert
+                    icon={<BellRinging size={24} />}
+                    dismissible
+                    onClose={() => setShowAlert1(false)}
+                  >
+                    Get 10% off today:&nbsp;<span>NEW10</span>
+                  </Alert>
+                ) : (
+                  <UIButton
+                    onClick={() => setShowAlert1((prevState) => !prevState)}
+                  >
+                    Show Alert
+                  </UIButton>
+                )}
+              </li>
+              <li>
+                {showAlert2 ? (
+                  <Alert
+                    icon={<BellRinging size={24} />}
+                    dismissible
+                    onClose={() => setShowAlert2(false)}
+                  >
+                    Get 10% off today:&nbsp;<span>NEW10</span>&nbsp;
+                    <a href="#alerts">Action</a>
+                  </Alert>
+                ) : (
+                  <UIButton
+                    onClick={() => setShowAlert2((prevState) => !prevState)}
+                  >
+                    Show Alert
+                  </UIButton>
+                )}
               </li>
             </ul>
           </section>
