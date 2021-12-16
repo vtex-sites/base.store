@@ -1,8 +1,7 @@
 import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 
-export interface HeroContentProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, 'role'> {
+export interface HeroContentProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress, testing library, and jest).
    */
@@ -15,15 +14,14 @@ const HeroContent = forwardRef<HTMLDivElement, HeroContentProps>(
     ref
   ) {
     return (
-      <div
+      <section
         ref={ref}
-        role="region"
         data-store-hero-content
         data-testid={testId}
         {...otherProps}
       >
         {children}
-      </div>
+      </section>
     )
   }
 )

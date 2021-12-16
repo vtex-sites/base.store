@@ -1,6 +1,7 @@
-import React from 'react'
+import type { HTMLAttributes } from 'react'
+import React, { forwardRef } from 'react'
 
-export interface HeroProps {
+export interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -9,12 +10,15 @@ export interface HeroProps {
   children: React.ReactNode
 }
 
-const Hero = ({ testId = 'store-hero', children }: HeroProps) => {
+const Hero = forwardRef<HTMLDivElement, HeroProps>(function Hero(
+  { testId = 'store-hero', children, ...otherProps },
+  ref
+) {
   return (
-    <article data-store-hero data-testid={testId}>
+    <article ref={ref} data-store-hero data-testid={testId} {...otherProps}>
       {children}
     </article>
   )
-}
+})
 
 export default Hero

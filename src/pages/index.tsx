@@ -54,9 +54,9 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
       <Hero>
-        <HeroContent>
+        <HeroContent aria-labelledby="hero-heading">
           <div>
-            <h1>New Products Available</h1>
+            <h1 id="hero-heading">New Products Available</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
               ipsum.
