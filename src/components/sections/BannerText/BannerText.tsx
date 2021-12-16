@@ -6,7 +6,7 @@ function BannerText() {
     <Banner>
       <BannerContent>
         <div>
-          <h3>Receive our news and promotions in advance.</h3>
+          <h2>Receive our news and promotions in advance.</h2>
           <p>Enjoy and get 10% off your first purchase.</p>
         </div>
         <BannerLink>
