@@ -58,7 +58,8 @@ function Page(props: Props) {
           <div>
             <h1>New Products Available</h1>
             <p>
-              Lorem ipsum dolor sit, consectetur adipiscing elit. Lorem ipsum.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+              ipsum.
             </p>
           </div>
           <HeroLink>
