@@ -15,7 +15,9 @@ type Props = AlertProps & {
 
 function Alert({ children, icon, dismissible, onClose, ...otherProps }: Props) {
   const handleClose = (event: MouseEvent<HTMLElement>) => {
-    if (event.defaultPrevented) return
+    if (event.defaultPrevented) {
+      return
+    }
 
     event.stopPropagation()
     onClose?.(event)
