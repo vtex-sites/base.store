@@ -72,7 +72,7 @@ function Page() {
           <section className="grid-section grid-content">
             <h2 className="title-subsection">Inputs</h2>
             <ul className="list-horizontal">
-              <li style={{ width: '50%' }}>
+              <li style={{ width: '100%' }}>
                 <SearchInput />
               </li>
             </ul>
