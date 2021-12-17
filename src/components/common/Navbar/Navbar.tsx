@@ -13,7 +13,12 @@ function Navbar() {
     <header className="navbar grid-content">
       <div className="navbar__header">
         <Navlinks />
-        <Link to="/">
+        <Link
+          to="/"
+          aria-label="Go to Faststore home"
+          title="Go to Faststore home"
+          className="navbar__logo"
+        >
           <Logo />
         </Link>
         <CartToggle />
