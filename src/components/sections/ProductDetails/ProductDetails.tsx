@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import { ImageGallery } from 'src/components/ui/ImageGallery'
+import { CarouselSlider } from 'src/components/ui/ImageGallery'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
@@ -59,7 +59,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   return (
     <div>
       <h2>{variantName}</h2>
-      <ImageGallery />
+      <CarouselSlider />
       <div className="line-through">{formattedListPrice}</div>
       <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
       <Button {...buyProps} disabled={isValidating}>

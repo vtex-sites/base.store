@@ -1,9 +1,27 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import type { HTMLAttributes } from 'react'
 
-import { CarouselSlider } from './index'
+import { ImageGalleryContext } from './useImageGallery'
 
-function ImageGallery() {
-  return <CarouselSlider />
+export type ImageGalleryProps = ImageGalleryContext &
+  HTMLAttributes<HTMLDivElement>
+
+const ImageGallery = ({
+  name,
+  children,
+  selectedImage,
+  onChange,
+  ...otherProps
+}: ImageGalleryProps) => {
+  const contextValues = useMemo(() => {
+    return { name, selectedImage, onChange }
+  }, [name, selectedImage, onChange])
+
+  return (
+    <ImageGalleryContext.Provider value={contextValues}>
+      <div {...otherProps}>{children}</div>
+    </ImageGalleryContext.Provider>
+  )
 }
 
 export default ImageGallery
