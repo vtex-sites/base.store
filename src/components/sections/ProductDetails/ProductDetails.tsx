@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import ImageGallery from 'src/components/ui/ImageGallery'
+import { ImageGallery } from 'src/components/ui/ImageGallery'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
