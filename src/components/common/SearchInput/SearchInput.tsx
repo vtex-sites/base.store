@@ -1,10 +1,11 @@
-import './SearchInput.module.scss'
+import './search-input.scss'
 
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
 import React from 'react'
 import type { SearchInputProps as UISearchInputProps } from '@faststore/ui'
+import { MagnifyingGlass } from 'phosphor-react'
 
 declare type SearchInputProps = Omit<UISearchInputProps, 'onSubmit'>
 
@@ -20,7 +21,14 @@ const doSearch = async (term: string) => {
 }
 
 function SearchInput(props: SearchInputProps) {
-  return <UISearchInput onSubmit={doSearch} {...props} />
+  return (
+    <UISearchInput
+      icon={<MagnifyingGlass />}
+      placeholder="Search everything at the store"
+      onSubmit={doSearch}
+      {...props}
+    />
+  )
 }
 
 export default SearchInput
