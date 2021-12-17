@@ -15,6 +15,7 @@
     "format": "prettier --write \"**/*.{ts,js,tsx,jsx,json}\"",
     "lint": "eslint --ext js,ts,jsx,tsx .",
     "stylelint": "stylelint \"**/*.scss\"",
+    "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "postinstall": "is-ci || husky install"
   },
   "engines": {
