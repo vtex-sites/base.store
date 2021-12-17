@@ -178,7 +178,7 @@ describe('select_item event', () => {
 })
 
 describe('view_item_list event', () => {
-  it.only('view_item_list event', () => {
+  it('view_item_list event', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 

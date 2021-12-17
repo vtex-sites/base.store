@@ -1,4 +1,7 @@
 {
   "extends": "vtex-react/gatsby",
-  "root": true
+  "root": true,
+  "rules": {
+    "react/prop-types": "off"
+  }
 }

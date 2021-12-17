@@ -1,11 +1,14 @@
 export type Maybe<T> = T | null
+export type InputMaybe<T> = Maybe<T>
 export type Exact<T extends { [key: string]: unknown }> = {
   [K in keyof T]: T[K]
 }
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]?: Maybe<T[SubKey]> }
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
-  { [SubKey in K]: Maybe<T[SubKey]> }
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>
+}
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>
+}
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string
@@ -18,10 +21,10 @@ export type Scalars = {
 }
 
 export type BooleanQueryOperatorInput = {
-  eq: Maybe<Scalars['Boolean']>
-  in: Maybe<Array<Maybe<Scalars['Boolean']>>>
-  ne: Maybe<Scalars['Boolean']>
-  nin: Maybe<Array<Maybe<Scalars['Boolean']>>>
+  eq: InputMaybe<Scalars['Boolean']>
+  in: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>
+  ne: InputMaybe<Scalars['Boolean']>
+  nin: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>
 }
 
 export type BrowserStoreCollectionConnection = {
@@ -35,14 +38,14 @@ export type BrowserStoreProductConnection = {
 }
 
 export type DateQueryOperatorInput = {
-  eq: Maybe<Scalars['Date']>
-  gt: Maybe<Scalars['Date']>
-  gte: Maybe<Scalars['Date']>
-  in: Maybe<Array<Maybe<Scalars['Date']>>>
-  lt: Maybe<Scalars['Date']>
-  lte: Maybe<Scalars['Date']>
-  ne: Maybe<Scalars['Date']>
-  nin: Maybe<Array<Maybe<Scalars['Date']>>>
+  eq: InputMaybe<Scalars['Date']>
+  gt: InputMaybe<Scalars['Date']>
+  gte: InputMaybe<Scalars['Date']>
+  in: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
+  lt: InputMaybe<Scalars['Date']>
+  lte: InputMaybe<Scalars['Date']>
+  ne: InputMaybe<Scalars['Date']>
+  nin: InputMaybe<Array<InputMaybe<Scalars['Date']>>>
 }
 
 export type Directory = Node & {
@@ -86,52 +89,52 @@ export type Directory = Node & {
 }
 
 export type DirectoryAccessTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryAtimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryBirthTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryChangeTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryCtimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryModifiedTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryMtimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type DirectoryConnection = {
@@ -152,8 +155,8 @@ export type DirectoryConnectionDistinctArgs = {
 
 export type DirectoryConnectionGroupArgs = {
   field: DirectoryFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type DirectoryConnectionMaxArgs = {
@@ -294,41 +297,41 @@ export type DirectoryFieldsEnum =
   | 'uid'
 
 export type DirectoryFilterInput = {
-  absolutePath: Maybe<StringQueryOperatorInput>
-  accessTime: Maybe<DateQueryOperatorInput>
-  atime: Maybe<DateQueryOperatorInput>
-  atimeMs: Maybe<FloatQueryOperatorInput>
-  base: Maybe<StringQueryOperatorInput>
-  birthTime: Maybe<DateQueryOperatorInput>
-  birthtime: Maybe<DateQueryOperatorInput>
-  birthtimeMs: Maybe<FloatQueryOperatorInput>
-  changeTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  ctime: Maybe<DateQueryOperatorInput>
-  ctimeMs: Maybe<FloatQueryOperatorInput>
-  dev: Maybe<IntQueryOperatorInput>
-  dir: Maybe<StringQueryOperatorInput>
-  ext: Maybe<StringQueryOperatorInput>
-  extension: Maybe<StringQueryOperatorInput>
-  gid: Maybe<IntQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  ino: Maybe<FloatQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  mode: Maybe<IntQueryOperatorInput>
-  modifiedTime: Maybe<DateQueryOperatorInput>
-  mtime: Maybe<DateQueryOperatorInput>
-  mtimeMs: Maybe<FloatQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  nlink: Maybe<IntQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  prettySize: Maybe<StringQueryOperatorInput>
-  rdev: Maybe<IntQueryOperatorInput>
-  relativeDirectory: Maybe<StringQueryOperatorInput>
-  relativePath: Maybe<StringQueryOperatorInput>
-  root: Maybe<StringQueryOperatorInput>
-  size: Maybe<IntQueryOperatorInput>
-  sourceInstanceName: Maybe<StringQueryOperatorInput>
-  uid: Maybe<IntQueryOperatorInput>
+  absolutePath: InputMaybe<StringQueryOperatorInput>
+  accessTime: InputMaybe<DateQueryOperatorInput>
+  atime: InputMaybe<DateQueryOperatorInput>
+  atimeMs: InputMaybe<FloatQueryOperatorInput>
+  base: InputMaybe<StringQueryOperatorInput>
+  birthTime: InputMaybe<DateQueryOperatorInput>
+  birthtime: InputMaybe<DateQueryOperatorInput>
+  birthtimeMs: InputMaybe<FloatQueryOperatorInput>
+  changeTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  ctime: InputMaybe<DateQueryOperatorInput>
+  ctimeMs: InputMaybe<FloatQueryOperatorInput>
+  dev: InputMaybe<IntQueryOperatorInput>
+  dir: InputMaybe<StringQueryOperatorInput>
+  ext: InputMaybe<StringQueryOperatorInput>
+  extension: InputMaybe<StringQueryOperatorInput>
+  gid: InputMaybe<IntQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  ino: InputMaybe<FloatQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  mode: InputMaybe<IntQueryOperatorInput>
+  modifiedTime: InputMaybe<DateQueryOperatorInput>
+  mtime: InputMaybe<DateQueryOperatorInput>
+  mtimeMs: InputMaybe<FloatQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  nlink: InputMaybe<IntQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  prettySize: InputMaybe<StringQueryOperatorInput>
+  rdev: InputMaybe<IntQueryOperatorInput>
+  relativeDirectory: InputMaybe<StringQueryOperatorInput>
+  relativePath: InputMaybe<StringQueryOperatorInput>
+  root: InputMaybe<StringQueryOperatorInput>
+  size: InputMaybe<IntQueryOperatorInput>
+  sourceInstanceName: InputMaybe<StringQueryOperatorInput>
+  uid: InputMaybe<IntQueryOperatorInput>
 }
 
 export type DirectoryGroupConnection = {
@@ -351,8 +354,8 @@ export type DirectoryGroupConnectionDistinctArgs = {
 
 export type DirectoryGroupConnectionGroupArgs = {
   field: DirectoryFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type DirectoryGroupConnectionMaxArgs = {
@@ -368,8 +371,8 @@ export type DirectoryGroupConnectionSumArgs = {
 }
 
 export type DirectorySortInput = {
-  fields: Maybe<Array<Maybe<DirectoryFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<DirectoryFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type File = Node & {
@@ -413,52 +416,52 @@ export type File = Node & {
 }
 
 export type FileAccessTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileAtimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileBirthTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileChangeTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileCtimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileModifiedTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileMtimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type FileConnection = {
@@ -479,8 +482,8 @@ export type FileConnectionDistinctArgs = {
 
 export type FileConnectionGroupArgs = {
   field: FileFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type FileConnectionMaxArgs = {
@@ -621,41 +624,41 @@ export type FileFieldsEnum =
   | 'uid'
 
 export type FileFilterInput = {
-  absolutePath: Maybe<StringQueryOperatorInput>
-  accessTime: Maybe<DateQueryOperatorInput>
-  atime: Maybe<DateQueryOperatorInput>
-  atimeMs: Maybe<FloatQueryOperatorInput>
-  base: Maybe<StringQueryOperatorInput>
-  birthTime: Maybe<DateQueryOperatorInput>
-  birthtime: Maybe<DateQueryOperatorInput>
-  birthtimeMs: Maybe<FloatQueryOperatorInput>
-  changeTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  ctime: Maybe<DateQueryOperatorInput>
-  ctimeMs: Maybe<FloatQueryOperatorInput>
-  dev: Maybe<IntQueryOperatorInput>
-  dir: Maybe<StringQueryOperatorInput>
-  ext: Maybe<StringQueryOperatorInput>
-  extension: Maybe<StringQueryOperatorInput>
-  gid: Maybe<IntQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  ino: Maybe<FloatQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  mode: Maybe<IntQueryOperatorInput>
-  modifiedTime: Maybe<DateQueryOperatorInput>
-  mtime: Maybe<DateQueryOperatorInput>
-  mtimeMs: Maybe<FloatQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  nlink: Maybe<IntQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  prettySize: Maybe<StringQueryOperatorInput>
-  rdev: Maybe<IntQueryOperatorInput>
-  relativeDirectory: Maybe<StringQueryOperatorInput>
-  relativePath: Maybe<StringQueryOperatorInput>
-  root: Maybe<StringQueryOperatorInput>
-  size: Maybe<IntQueryOperatorInput>
-  sourceInstanceName: Maybe<StringQueryOperatorInput>
-  uid: Maybe<IntQueryOperatorInput>
+  absolutePath: InputMaybe<StringQueryOperatorInput>
+  accessTime: InputMaybe<DateQueryOperatorInput>
+  atime: InputMaybe<DateQueryOperatorInput>
+  atimeMs: InputMaybe<FloatQueryOperatorInput>
+  base: InputMaybe<StringQueryOperatorInput>
+  birthTime: InputMaybe<DateQueryOperatorInput>
+  birthtime: InputMaybe<DateQueryOperatorInput>
+  birthtimeMs: InputMaybe<FloatQueryOperatorInput>
+  changeTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  ctime: InputMaybe<DateQueryOperatorInput>
+  ctimeMs: InputMaybe<FloatQueryOperatorInput>
+  dev: InputMaybe<IntQueryOperatorInput>
+  dir: InputMaybe<StringQueryOperatorInput>
+  ext: InputMaybe<StringQueryOperatorInput>
+  extension: InputMaybe<StringQueryOperatorInput>
+  gid: InputMaybe<IntQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  ino: InputMaybe<FloatQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  mode: InputMaybe<IntQueryOperatorInput>
+  modifiedTime: InputMaybe<DateQueryOperatorInput>
+  mtime: InputMaybe<DateQueryOperatorInput>
+  mtimeMs: InputMaybe<FloatQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  nlink: InputMaybe<IntQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  prettySize: InputMaybe<StringQueryOperatorInput>
+  rdev: InputMaybe<IntQueryOperatorInput>
+  relativeDirectory: InputMaybe<StringQueryOperatorInput>
+  relativePath: InputMaybe<StringQueryOperatorInput>
+  root: InputMaybe<StringQueryOperatorInput>
+  size: InputMaybe<IntQueryOperatorInput>
+  sourceInstanceName: InputMaybe<StringQueryOperatorInput>
+  uid: InputMaybe<IntQueryOperatorInput>
 }
 
 export type FileGroupConnection = {
@@ -678,8 +681,8 @@ export type FileGroupConnectionDistinctArgs = {
 
 export type FileGroupConnectionGroupArgs = {
   field: FileFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type FileGroupConnectionMaxArgs = {
@@ -695,19 +698,19 @@ export type FileGroupConnectionSumArgs = {
 }
 
 export type FileSortInput = {
-  fields: Maybe<Array<Maybe<FileFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<FileFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type FloatQueryOperatorInput = {
-  eq: Maybe<Scalars['Float']>
-  gt: Maybe<Scalars['Float']>
-  gte: Maybe<Scalars['Float']>
-  in: Maybe<Array<Maybe<Scalars['Float']>>>
-  lt: Maybe<Scalars['Float']>
-  lte: Maybe<Scalars['Float']>
-  ne: Maybe<Scalars['Float']>
-  nin: Maybe<Array<Maybe<Scalars['Float']>>>
+  eq: InputMaybe<Scalars['Float']>
+  gt: InputMaybe<Scalars['Float']>
+  gte: InputMaybe<Scalars['Float']>
+  in: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
+  lt: InputMaybe<Scalars['Float']>
+  lte: InputMaybe<Scalars['Float']>
+  ne: InputMaybe<Scalars['Float']>
+  nin: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
 }
 
 export type GatsbyImageFormat =
@@ -764,14 +767,14 @@ export type IStoreSelectedFacet = {
 }
 
 export type IntQueryOperatorInput = {
-  eq: Maybe<Scalars['Int']>
-  gt: Maybe<Scalars['Int']>
-  gte: Maybe<Scalars['Int']>
-  in: Maybe<Array<Maybe<Scalars['Int']>>>
-  lt: Maybe<Scalars['Int']>
-  lte: Maybe<Scalars['Int']>
-  ne: Maybe<Scalars['Int']>
-  nin: Maybe<Array<Maybe<Scalars['Int']>>>
+  eq: InputMaybe<Scalars['Int']>
+  gt: InputMaybe<Scalars['Int']>
+  gte: InputMaybe<Scalars['Int']>
+  in: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
+  lt: InputMaybe<Scalars['Int']>
+  lte: InputMaybe<Scalars['Int']>
+  ne: InputMaybe<Scalars['Int']>
+  nin: InputMaybe<Array<InputMaybe<Scalars['Int']>>>
 }
 
 export type Internal = {
@@ -786,14 +789,14 @@ export type Internal = {
 }
 
 export type InternalFilterInput = {
-  content: Maybe<StringQueryOperatorInput>
-  contentDigest: Maybe<StringQueryOperatorInput>
-  description: Maybe<StringQueryOperatorInput>
-  fieldOwners: Maybe<StringQueryOperatorInput>
-  ignoreType: Maybe<BooleanQueryOperatorInput>
-  mediaType: Maybe<StringQueryOperatorInput>
-  owner: Maybe<StringQueryOperatorInput>
-  type: Maybe<StringQueryOperatorInput>
+  content: InputMaybe<StringQueryOperatorInput>
+  contentDigest: InputMaybe<StringQueryOperatorInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  fieldOwners: InputMaybe<StringQueryOperatorInput>
+  ignoreType: InputMaybe<BooleanQueryOperatorInput>
+  mediaType: InputMaybe<StringQueryOperatorInput>
+  owner: InputMaybe<StringQueryOperatorInput>
+  type: InputMaybe<StringQueryOperatorInput>
 }
 
 export type Mutation = {
@@ -813,14 +816,14 @@ export type Node = {
 }
 
 export type NodeFilterInput = {
-  children: Maybe<NodeFilterListInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  parent: Maybe<NodeFilterInput>
+  children: InputMaybe<NodeFilterListInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  parent: InputMaybe<NodeFilterInput>
 }
 
 export type NodeFilterListInput = {
-  elemMatch: Maybe<NodeFilterInput>
+  elemMatch: InputMaybe<NodeFilterInput>
 }
 
 export type PageInfo = {
@@ -860,76 +863,76 @@ export type Query = {
 }
 
 export type QueryAllCollectionsArgs = {
-  after: Maybe<Scalars['String']>
+  after: InputMaybe<Scalars['String']>
   first: Scalars['Int']
 }
 
 export type QueryAllDirectoryArgs = {
-  filter: Maybe<DirectoryFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<DirectorySortInput>
+  filter: InputMaybe<DirectoryFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<DirectorySortInput>
 }
 
 export type QueryAllFileArgs = {
-  filter: Maybe<FileFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<FileSortInput>
+  filter: InputMaybe<FileFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<FileSortInput>
 }
 
 export type QueryAllProductsArgs = {
-  after: Maybe<Scalars['String']>
+  after: InputMaybe<Scalars['String']>
   first: Scalars['Int']
 }
 
 export type QueryAllSiteArgs = {
-  filter: Maybe<SiteFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<SiteSortInput>
+  filter: InputMaybe<SiteFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<SiteSortInput>
 }
 
 export type QueryAllSiteBuildMetadataArgs = {
-  filter: Maybe<SiteBuildMetadataFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<SiteBuildMetadataSortInput>
+  filter: InputMaybe<SiteBuildMetadataFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<SiteBuildMetadataSortInput>
 }
 
 export type QueryAllSiteFunctionArgs = {
-  filter: Maybe<SiteFunctionFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<SiteFunctionSortInput>
+  filter: InputMaybe<SiteFunctionFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<SiteFunctionSortInput>
 }
 
 export type QueryAllSitePageArgs = {
-  filter: Maybe<SitePageFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<SitePageSortInput>
+  filter: InputMaybe<SitePageFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<SitePageSortInput>
 }
 
 export type QueryAllSitePluginArgs = {
-  filter: Maybe<SitePluginFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<SitePluginSortInput>
+  filter: InputMaybe<SitePluginFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<SitePluginSortInput>
 }
 
 export type QueryAllStoreCollectionArgs = {
-  filter: Maybe<StoreCollectionFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<StoreCollectionSortInput>
+  filter: InputMaybe<StoreCollectionFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<StoreCollectionSortInput>
 }
 
 export type QueryAllStoreProductArgs = {
-  filter: Maybe<StoreProductFilterInput>
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
-  sort: Maybe<StoreProductSortInput>
+  filter: InputMaybe<StoreProductFilterInput>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
+  sort: InputMaybe<StoreProductSortInput>
 }
 
 export type QueryCollectionArgs = {
@@ -937,79 +940,79 @@ export type QueryCollectionArgs = {
 }
 
 export type QueryDirectoryArgs = {
-  absolutePath: Maybe<StringQueryOperatorInput>
-  accessTime: Maybe<DateQueryOperatorInput>
-  atime: Maybe<DateQueryOperatorInput>
-  atimeMs: Maybe<FloatQueryOperatorInput>
-  base: Maybe<StringQueryOperatorInput>
-  birthTime: Maybe<DateQueryOperatorInput>
-  birthtime: Maybe<DateQueryOperatorInput>
-  birthtimeMs: Maybe<FloatQueryOperatorInput>
-  changeTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  ctime: Maybe<DateQueryOperatorInput>
-  ctimeMs: Maybe<FloatQueryOperatorInput>
-  dev: Maybe<IntQueryOperatorInput>
-  dir: Maybe<StringQueryOperatorInput>
-  ext: Maybe<StringQueryOperatorInput>
-  extension: Maybe<StringQueryOperatorInput>
-  gid: Maybe<IntQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  ino: Maybe<FloatQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  mode: Maybe<IntQueryOperatorInput>
-  modifiedTime: Maybe<DateQueryOperatorInput>
-  mtime: Maybe<DateQueryOperatorInput>
-  mtimeMs: Maybe<FloatQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  nlink: Maybe<IntQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  prettySize: Maybe<StringQueryOperatorInput>
-  rdev: Maybe<IntQueryOperatorInput>
-  relativeDirectory: Maybe<StringQueryOperatorInput>
-  relativePath: Maybe<StringQueryOperatorInput>
-  root: Maybe<StringQueryOperatorInput>
-  size: Maybe<IntQueryOperatorInput>
-  sourceInstanceName: Maybe<StringQueryOperatorInput>
-  uid: Maybe<IntQueryOperatorInput>
+  absolutePath: InputMaybe<StringQueryOperatorInput>
+  accessTime: InputMaybe<DateQueryOperatorInput>
+  atime: InputMaybe<DateQueryOperatorInput>
+  atimeMs: InputMaybe<FloatQueryOperatorInput>
+  base: InputMaybe<StringQueryOperatorInput>
+  birthTime: InputMaybe<DateQueryOperatorInput>
+  birthtime: InputMaybe<DateQueryOperatorInput>
+  birthtimeMs: InputMaybe<FloatQueryOperatorInput>
+  changeTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  ctime: InputMaybe<DateQueryOperatorInput>
+  ctimeMs: InputMaybe<FloatQueryOperatorInput>
+  dev: InputMaybe<IntQueryOperatorInput>
+  dir: InputMaybe<StringQueryOperatorInput>
+  ext: InputMaybe<StringQueryOperatorInput>
+  extension: InputMaybe<StringQueryOperatorInput>
+  gid: InputMaybe<IntQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  ino: InputMaybe<FloatQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  mode: InputMaybe<IntQueryOperatorInput>
+  modifiedTime: InputMaybe<DateQueryOperatorInput>
+  mtime: InputMaybe<DateQueryOperatorInput>
+  mtimeMs: InputMaybe<FloatQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  nlink: InputMaybe<IntQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  prettySize: InputMaybe<StringQueryOperatorInput>
+  rdev: InputMaybe<IntQueryOperatorInput>
+  relativeDirectory: InputMaybe<StringQueryOperatorInput>
+  relativePath: InputMaybe<StringQueryOperatorInput>
+  root: InputMaybe<StringQueryOperatorInput>
+  size: InputMaybe<IntQueryOperatorInput>
+  sourceInstanceName: InputMaybe<StringQueryOperatorInput>
+  uid: InputMaybe<IntQueryOperatorInput>
 }
 
 export type QueryFileArgs = {
-  absolutePath: Maybe<StringQueryOperatorInput>
-  accessTime: Maybe<DateQueryOperatorInput>
-  atime: Maybe<DateQueryOperatorInput>
-  atimeMs: Maybe<FloatQueryOperatorInput>
-  base: Maybe<StringQueryOperatorInput>
-  birthTime: Maybe<DateQueryOperatorInput>
-  birthtime: Maybe<DateQueryOperatorInput>
-  birthtimeMs: Maybe<FloatQueryOperatorInput>
-  changeTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  ctime: Maybe<DateQueryOperatorInput>
-  ctimeMs: Maybe<FloatQueryOperatorInput>
-  dev: Maybe<IntQueryOperatorInput>
-  dir: Maybe<StringQueryOperatorInput>
-  ext: Maybe<StringQueryOperatorInput>
-  extension: Maybe<StringQueryOperatorInput>
-  gid: Maybe<IntQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  ino: Maybe<FloatQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  mode: Maybe<IntQueryOperatorInput>
-  modifiedTime: Maybe<DateQueryOperatorInput>
-  mtime: Maybe<DateQueryOperatorInput>
-  mtimeMs: Maybe<FloatQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  nlink: Maybe<IntQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  prettySize: Maybe<StringQueryOperatorInput>
-  rdev: Maybe<IntQueryOperatorInput>
-  relativeDirectory: Maybe<StringQueryOperatorInput>
-  relativePath: Maybe<StringQueryOperatorInput>
-  root: Maybe<StringQueryOperatorInput>
-  size: Maybe<IntQueryOperatorInput>
-  sourceInstanceName: Maybe<StringQueryOperatorInput>
-  uid: Maybe<IntQueryOperatorInput>
+  absolutePath: InputMaybe<StringQueryOperatorInput>
+  accessTime: InputMaybe<DateQueryOperatorInput>
+  atime: InputMaybe<DateQueryOperatorInput>
+  atimeMs: InputMaybe<FloatQueryOperatorInput>
+  base: InputMaybe<StringQueryOperatorInput>
+  birthTime: InputMaybe<DateQueryOperatorInput>
+  birthtime: InputMaybe<DateQueryOperatorInput>
+  birthtimeMs: InputMaybe<FloatQueryOperatorInput>
+  changeTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  ctime: InputMaybe<DateQueryOperatorInput>
+  ctimeMs: InputMaybe<FloatQueryOperatorInput>
+  dev: InputMaybe<IntQueryOperatorInput>
+  dir: InputMaybe<StringQueryOperatorInput>
+  ext: InputMaybe<StringQueryOperatorInput>
+  extension: InputMaybe<StringQueryOperatorInput>
+  gid: InputMaybe<IntQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  ino: InputMaybe<FloatQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  mode: InputMaybe<IntQueryOperatorInput>
+  modifiedTime: InputMaybe<DateQueryOperatorInput>
+  mtime: InputMaybe<DateQueryOperatorInput>
+  mtimeMs: InputMaybe<FloatQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  nlink: InputMaybe<IntQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  prettySize: InputMaybe<StringQueryOperatorInput>
+  rdev: InputMaybe<IntQueryOperatorInput>
+  relativeDirectory: InputMaybe<StringQueryOperatorInput>
+  relativePath: InputMaybe<StringQueryOperatorInput>
+  root: InputMaybe<StringQueryOperatorInput>
+  size: InputMaybe<IntQueryOperatorInput>
+  sourceInstanceName: InputMaybe<StringQueryOperatorInput>
+  uid: InputMaybe<IntQueryOperatorInput>
 }
 
 export type QueryProductArgs = {
@@ -1017,116 +1020,116 @@ export type QueryProductArgs = {
 }
 
 export type QuerySearchArgs = {
-  after: Maybe<Scalars['String']>
+  after: InputMaybe<Scalars['String']>
   first: Scalars['Int']
-  selectedFacets: Maybe<Array<IStoreSelectedFacet>>
-  sort?: Maybe<StoreSort>
-  term?: Maybe<Scalars['String']>
+  selectedFacets: InputMaybe<Array<IStoreSelectedFacet>>
+  sort?: InputMaybe<StoreSort>
+  term?: InputMaybe<Scalars['String']>
 }
 
 export type QuerySiteArgs = {
-  buildTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  flags: Maybe<SiteFlagsFilterInput>
-  host: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  parent: Maybe<NodeFilterInput>
-  pathPrefix: Maybe<StringQueryOperatorInput>
-  polyfill: Maybe<BooleanQueryOperatorInput>
-  port: Maybe<IntQueryOperatorInput>
-  siteMetadata: Maybe<SiteSiteMetadataFilterInput>
+  buildTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  flags: InputMaybe<SiteFlagsFilterInput>
+  host: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  pathPrefix: InputMaybe<StringQueryOperatorInput>
+  polyfill: InputMaybe<BooleanQueryOperatorInput>
+  port: InputMaybe<IntQueryOperatorInput>
+  siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
 }
 
 export type QuerySiteBuildMetadataArgs = {
-  buildTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  parent: Maybe<NodeFilterInput>
+  buildTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  parent: InputMaybe<NodeFilterInput>
 }
 
 export type QuerySiteFunctionArgs = {
-  absoluteCompiledFilePath: Maybe<StringQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  functionRoute: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  matchPath: Maybe<StringQueryOperatorInput>
-  originalAbsoluteFilePath: Maybe<StringQueryOperatorInput>
-  originalRelativeFilePath: Maybe<StringQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  pluginName: Maybe<StringQueryOperatorInput>
-  relativeCompiledFilePath: Maybe<StringQueryOperatorInput>
+  absoluteCompiledFilePath: InputMaybe<StringQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  functionRoute: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  matchPath: InputMaybe<StringQueryOperatorInput>
+  originalAbsoluteFilePath: InputMaybe<StringQueryOperatorInput>
+  originalRelativeFilePath: InputMaybe<StringQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  pluginName: InputMaybe<StringQueryOperatorInput>
+  relativeCompiledFilePath: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySitePageArgs = {
-  children: Maybe<NodeFilterListInput>
-  component: Maybe<StringQueryOperatorInput>
-  componentChunkName: Maybe<StringQueryOperatorInput>
-  context: Maybe<SitePageContextFilterInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  internalComponentName: Maybe<StringQueryOperatorInput>
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>
-  matchPath: Maybe<StringQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  path: Maybe<StringQueryOperatorInput>
-  pluginCreator: Maybe<SitePluginFilterInput>
-  pluginCreatorId: Maybe<StringQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  component: InputMaybe<StringQueryOperatorInput>
+  componentChunkName: InputMaybe<StringQueryOperatorInput>
+  context: InputMaybe<SitePageContextFilterInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  internalComponentName: InputMaybe<StringQueryOperatorInput>
+  isCreatedByStatefulCreatePages: InputMaybe<BooleanQueryOperatorInput>
+  matchPath: InputMaybe<StringQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  path: InputMaybe<StringQueryOperatorInput>
+  pluginCreator: InputMaybe<SitePluginFilterInput>
+  pluginCreatorId: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySitePluginArgs = {
-  browserAPIs: Maybe<StringQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  name: Maybe<StringQueryOperatorInput>
-  nodeAPIs: Maybe<StringQueryOperatorInput>
-  packageJson: Maybe<SitePluginPackageJsonFilterInput>
-  parent: Maybe<NodeFilterInput>
-  pluginFilepath: Maybe<StringQueryOperatorInput>
-  pluginOptions: Maybe<SitePluginPluginOptionsFilterInput>
-  resolve: Maybe<StringQueryOperatorInput>
-  ssrAPIs: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
+  browserAPIs: InputMaybe<StringQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  nodeAPIs: InputMaybe<StringQueryOperatorInput>
+  packageJson: InputMaybe<SitePluginPackageJsonFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  pluginFilepath: InputMaybe<StringQueryOperatorInput>
+  pluginOptions: InputMaybe<SitePluginPluginOptionsFilterInput>
+  resolve: InputMaybe<StringQueryOperatorInput>
+  ssrAPIs: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QueryStoreCollectionArgs = {
-  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>
-  children: Maybe<NodeFilterListInput>
-  gatsbyPath: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  meta: Maybe<StoreCollectionMetaFilterInput>
-  parent: Maybe<NodeFilterInput>
-  remoteId: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  seo: Maybe<StoreSeoFilterInput>
-  slug: Maybe<StringQueryOperatorInput>
-  type: Maybe<StoreCollectionTypeQueryOperatorInput>
+  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
+  children: InputMaybe<NodeFilterListInput>
+  gatsbyPath: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  meta: InputMaybe<StoreCollectionMetaFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  remoteId: InputMaybe<DateQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  seo: InputMaybe<StoreSeoFilterInput>
+  slug: InputMaybe<StringQueryOperatorInput>
+  type: InputMaybe<StoreCollectionTypeQueryOperatorInput>
 }
 
 export type QueryStoreProductArgs = {
-  aggregateRating: Maybe<StoreAggregateRatingFilterInput>
-  brand: Maybe<StoreBrandFilterInput>
-  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>
-  children: Maybe<NodeFilterListInput>
-  description: Maybe<StringQueryOperatorInput>
-  gtin: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  image: Maybe<StoreImageFilterListInput>
-  internal: Maybe<InternalFilterInput>
-  isVariantOf: Maybe<StoreProductGroupFilterInput>
-  name: Maybe<StringQueryOperatorInput>
-  offers: Maybe<StoreAggregateOfferFilterInput>
-  parent: Maybe<NodeFilterInput>
-  productID: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  review: Maybe<StoreReviewFilterListInput>
-  seo: Maybe<StoreSeoFilterInput>
-  sku: Maybe<StringQueryOperatorInput>
-  slug: Maybe<StringQueryOperatorInput>
+  aggregateRating: InputMaybe<StoreAggregateRatingFilterInput>
+  brand: InputMaybe<StoreBrandFilterInput>
+  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
+  children: InputMaybe<NodeFilterListInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  gtin: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  image: InputMaybe<StoreImageFilterListInput>
+  internal: InputMaybe<InternalFilterInput>
+  isVariantOf: InputMaybe<StoreProductGroupFilterInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  offers: InputMaybe<StoreAggregateOfferFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  productID: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  review: InputMaybe<StoreReviewFilterListInput>
+  seo: InputMaybe<StoreSeoFilterInput>
+  sku: InputMaybe<StringQueryOperatorInput>
+  slug: InputMaybe<StringQueryOperatorInput>
 }
 
 export type Site = Node & {
@@ -1144,10 +1147,10 @@ export type Site = Node & {
 }
 
 export type SiteBuildTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type SiteBuildMetadata = Node & {
@@ -1159,10 +1162,10 @@ export type SiteBuildMetadata = Node & {
 }
 
 export type SiteBuildMetadataBuildTimeArgs = {
-  difference: Maybe<Scalars['String']>
-  formatString: Maybe<Scalars['String']>
-  fromNow: Maybe<Scalars['Boolean']>
-  locale: Maybe<Scalars['String']>
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type SiteBuildMetadataConnection = {
@@ -1183,8 +1186,8 @@ export type SiteBuildMetadataConnectionDistinctArgs = {
 
 export type SiteBuildMetadataConnectionGroupArgs = {
   field: SiteBuildMetadataFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SiteBuildMetadataConnectionMaxArgs = {
@@ -1295,11 +1298,11 @@ export type SiteBuildMetadataFieldsEnum =
   | 'parent___parent___parent___id'
 
 export type SiteBuildMetadataFilterInput = {
-  buildTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  parent: Maybe<NodeFilterInput>
+  buildTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  parent: InputMaybe<NodeFilterInput>
 }
 
 export type SiteBuildMetadataGroupConnection = {
@@ -1322,8 +1325,8 @@ export type SiteBuildMetadataGroupConnectionDistinctArgs = {
 
 export type SiteBuildMetadataGroupConnectionGroupArgs = {
   field: SiteBuildMetadataFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SiteBuildMetadataGroupConnectionMaxArgs = {
@@ -1339,8 +1342,8 @@ export type SiteBuildMetadataGroupConnectionSumArgs = {
 }
 
 export type SiteBuildMetadataSortInput = {
-  fields: Maybe<Array<Maybe<SiteBuildMetadataFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<SiteBuildMetadataFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type SiteConnection = {
@@ -1361,8 +1364,8 @@ export type SiteConnectionDistinctArgs = {
 
 export type SiteConnectionGroupArgs = {
   field: SiteFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SiteConnectionMaxArgs = {
@@ -1488,17 +1491,17 @@ export type SiteFieldsEnum =
   | 'siteMetadata___titleTemplate'
 
 export type SiteFilterInput = {
-  buildTime: Maybe<DateQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  flags: Maybe<SiteFlagsFilterInput>
-  host: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  parent: Maybe<NodeFilterInput>
-  pathPrefix: Maybe<StringQueryOperatorInput>
-  polyfill: Maybe<BooleanQueryOperatorInput>
-  port: Maybe<IntQueryOperatorInput>
-  siteMetadata: Maybe<SiteSiteMetadataFilterInput>
+  buildTime: InputMaybe<DateQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  flags: InputMaybe<SiteFlagsFilterInput>
+  host: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  pathPrefix: InputMaybe<StringQueryOperatorInput>
+  polyfill: InputMaybe<BooleanQueryOperatorInput>
+  port: InputMaybe<IntQueryOperatorInput>
+  siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
 }
 
 export type SiteFlags = {
@@ -1511,12 +1514,12 @@ export type SiteFlags = {
 }
 
 export type SiteFlagsFilterInput = {
-  DEV_SSR: Maybe<BooleanQueryOperatorInput>
-  FAST_DEV: Maybe<BooleanQueryOperatorInput>
-  LMDB_STORE: Maybe<BooleanQueryOperatorInput>
-  PARALLEL_QUERY_RUNNING: Maybe<BooleanQueryOperatorInput>
-  PARALLEL_SOURCING: Maybe<BooleanQueryOperatorInput>
-  PRESERVE_FILE_DOWNLOAD_CACHE: Maybe<BooleanQueryOperatorInput>
+  DEV_SSR: InputMaybe<BooleanQueryOperatorInput>
+  FAST_DEV: InputMaybe<BooleanQueryOperatorInput>
+  LMDB_STORE: InputMaybe<BooleanQueryOperatorInput>
+  PARALLEL_QUERY_RUNNING: InputMaybe<BooleanQueryOperatorInput>
+  PARALLEL_SOURCING: InputMaybe<BooleanQueryOperatorInput>
+  PRESERVE_FILE_DOWNLOAD_CACHE: InputMaybe<BooleanQueryOperatorInput>
 }
 
 export type SiteFunction = Node & {
@@ -1551,8 +1554,8 @@ export type SiteFunctionConnectionDistinctArgs = {
 
 export type SiteFunctionConnectionGroupArgs = {
   field: SiteFunctionFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SiteFunctionConnectionMaxArgs = {
@@ -1669,17 +1672,17 @@ export type SiteFunctionFieldsEnum =
   | 'relativeCompiledFilePath'
 
 export type SiteFunctionFilterInput = {
-  absoluteCompiledFilePath: Maybe<StringQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  functionRoute: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  matchPath: Maybe<StringQueryOperatorInput>
-  originalAbsoluteFilePath: Maybe<StringQueryOperatorInput>
-  originalRelativeFilePath: Maybe<StringQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  pluginName: Maybe<StringQueryOperatorInput>
-  relativeCompiledFilePath: Maybe<StringQueryOperatorInput>
+  absoluteCompiledFilePath: InputMaybe<StringQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  functionRoute: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  matchPath: InputMaybe<StringQueryOperatorInput>
+  originalAbsoluteFilePath: InputMaybe<StringQueryOperatorInput>
+  originalRelativeFilePath: InputMaybe<StringQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  pluginName: InputMaybe<StringQueryOperatorInput>
+  relativeCompiledFilePath: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SiteFunctionGroupConnection = {
@@ -1702,8 +1705,8 @@ export type SiteFunctionGroupConnectionDistinctArgs = {
 
 export type SiteFunctionGroupConnectionGroupArgs = {
   field: SiteFunctionFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SiteFunctionGroupConnectionMaxArgs = {
@@ -1719,8 +1722,8 @@ export type SiteFunctionGroupConnectionSumArgs = {
 }
 
 export type SiteFunctionSortInput = {
-  fields: Maybe<Array<Maybe<SiteFunctionFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<SiteFunctionFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type SiteGroupConnection = {
@@ -1743,8 +1746,8 @@ export type SiteGroupConnectionDistinctArgs = {
 
 export type SiteGroupConnectionGroupArgs = {
   field: SiteFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SiteGroupConnectionMaxArgs = {
@@ -1793,8 +1796,8 @@ export type SitePageConnectionDistinctArgs = {
 
 export type SitePageConnectionGroupArgs = {
   field: SitePageFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SitePageConnectionMaxArgs = {
@@ -1816,9 +1819,9 @@ export type SitePageContext = {
 }
 
 export type SitePageContextFilterInput = {
-  _xparams: Maybe<SitePageContext_XparamsFilterInput>
-  id: Maybe<StringQueryOperatorInput>
-  slug: Maybe<StringQueryOperatorInput>
+  _xparams: InputMaybe<SitePageContext_XparamsFilterInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  slug: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePageContext_Xparams = {
@@ -1826,7 +1829,7 @@ export type SitePageContext_Xparams = {
 }
 
 export type SitePageContext_XparamsFilterInput = {
-  slug: Maybe<StringQueryOperatorInput>
+  slug: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePageEdge = {
@@ -2032,19 +2035,19 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___version'
 
 export type SitePageFilterInput = {
-  children: Maybe<NodeFilterListInput>
-  component: Maybe<StringQueryOperatorInput>
-  componentChunkName: Maybe<StringQueryOperatorInput>
-  context: Maybe<SitePageContextFilterInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  internalComponentName: Maybe<StringQueryOperatorInput>
-  isCreatedByStatefulCreatePages: Maybe<BooleanQueryOperatorInput>
-  matchPath: Maybe<StringQueryOperatorInput>
-  parent: Maybe<NodeFilterInput>
-  path: Maybe<StringQueryOperatorInput>
-  pluginCreator: Maybe<SitePluginFilterInput>
-  pluginCreatorId: Maybe<StringQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  component: InputMaybe<StringQueryOperatorInput>
+  componentChunkName: InputMaybe<StringQueryOperatorInput>
+  context: InputMaybe<SitePageContextFilterInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  internalComponentName: InputMaybe<StringQueryOperatorInput>
+  isCreatedByStatefulCreatePages: InputMaybe<BooleanQueryOperatorInput>
+  matchPath: InputMaybe<StringQueryOperatorInput>
+  parent: InputMaybe<NodeFilterInput>
+  path: InputMaybe<StringQueryOperatorInput>
+  pluginCreator: InputMaybe<SitePluginFilterInput>
+  pluginCreatorId: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePageGroupConnection = {
@@ -2067,8 +2070,8 @@ export type SitePageGroupConnectionDistinctArgs = {
 
 export type SitePageGroupConnectionGroupArgs = {
   field: SitePageFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SitePageGroupConnectionMaxArgs = {
@@ -2084,8 +2087,8 @@ export type SitePageGroupConnectionSumArgs = {
 }
 
 export type SitePageSortInput = {
-  fields: Maybe<Array<Maybe<SitePageFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<SitePageFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type SitePlugin = Node & {
@@ -2122,8 +2125,8 @@ export type SitePluginConnectionDistinctArgs = {
 
 export type SitePluginConnectionGroupArgs = {
   field: SitePluginFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SitePluginConnectionMaxArgs = {
@@ -2298,19 +2301,19 @@ export type SitePluginFieldsEnum =
   | 'version'
 
 export type SitePluginFilterInput = {
-  browserAPIs: Maybe<StringQueryOperatorInput>
-  children: Maybe<NodeFilterListInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  name: Maybe<StringQueryOperatorInput>
-  nodeAPIs: Maybe<StringQueryOperatorInput>
-  packageJson: Maybe<SitePluginPackageJsonFilterInput>
-  parent: Maybe<NodeFilterInput>
-  pluginFilepath: Maybe<StringQueryOperatorInput>
-  pluginOptions: Maybe<SitePluginPluginOptionsFilterInput>
-  resolve: Maybe<StringQueryOperatorInput>
-  ssrAPIs: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
+  browserAPIs: InputMaybe<StringQueryOperatorInput>
+  children: InputMaybe<NodeFilterListInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  nodeAPIs: InputMaybe<StringQueryOperatorInput>
+  packageJson: InputMaybe<SitePluginPackageJsonFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  pluginFilepath: InputMaybe<StringQueryOperatorInput>
+  pluginOptions: InputMaybe<SitePluginPluginOptionsFilterInput>
+  resolve: InputMaybe<StringQueryOperatorInput>
+  ssrAPIs: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginGroupConnection = {
@@ -2333,8 +2336,8 @@ export type SitePluginGroupConnectionDistinctArgs = {
 
 export type SitePluginGroupConnectionGroupArgs = {
   field: SitePluginFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type SitePluginGroupConnectionMaxArgs = {
@@ -2367,12 +2370,12 @@ export type SitePluginPackageJsonDependencies = {
 }
 
 export type SitePluginPackageJsonDependenciesFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPackageJsonDependenciesFilterListInput = {
-  elemMatch: Maybe<SitePluginPackageJsonDependenciesFilterInput>
+  elemMatch: InputMaybe<SitePluginPackageJsonDependenciesFilterInput>
 }
 
 export type SitePluginPackageJsonDevDependencies = {
@@ -2381,24 +2384,24 @@ export type SitePluginPackageJsonDevDependencies = {
 }
 
 export type SitePluginPackageJsonDevDependenciesFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPackageJsonDevDependenciesFilterListInput = {
-  elemMatch: Maybe<SitePluginPackageJsonDevDependenciesFilterInput>
+  elemMatch: InputMaybe<SitePluginPackageJsonDevDependenciesFilterInput>
 }
 
 export type SitePluginPackageJsonFilterInput = {
-  dependencies: Maybe<SitePluginPackageJsonDependenciesFilterListInput>
-  description: Maybe<StringQueryOperatorInput>
-  devDependencies: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>
-  keywords: Maybe<StringQueryOperatorInput>
-  license: Maybe<StringQueryOperatorInput>
-  main: Maybe<StringQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  peerDependencies: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>
-  version: Maybe<StringQueryOperatorInput>
+  dependencies: InputMaybe<SitePluginPackageJsonDependenciesFilterListInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  devDependencies: InputMaybe<SitePluginPackageJsonDevDependenciesFilterListInput>
+  keywords: InputMaybe<StringQueryOperatorInput>
+  license: InputMaybe<StringQueryOperatorInput>
+  main: InputMaybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  peerDependencies: InputMaybe<SitePluginPackageJsonPeerDependenciesFilterListInput>
+  version: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPackageJsonPeerDependencies = {
@@ -2407,12 +2410,12 @@ export type SitePluginPackageJsonPeerDependencies = {
 }
 
 export type SitePluginPackageJsonPeerDependenciesFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  version: Maybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
-  elemMatch: Maybe<SitePluginPackageJsonPeerDependenciesFilterInput>
+  elemMatch: InputMaybe<SitePluginPackageJsonPeerDependenciesFilterInput>
 }
 
 export type SitePluginPluginOptions = {
@@ -2469,7 +2472,7 @@ export type SitePluginPluginOptionsEnvBranch_Deploy = {
 }
 
 export type SitePluginPluginOptionsEnvBranch_DeployFilterInput = {
-  policy: Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput>
+  policy: InputMaybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput>
 }
 
 export type SitePluginPluginOptionsEnvBranch_DeployPolicy = {
@@ -2478,12 +2481,12 @@ export type SitePluginPluginOptionsEnvBranch_DeployPolicy = {
 }
 
 export type SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput = {
-  disallow: Maybe<StringQueryOperatorInput>
-  userAgent: Maybe<StringQueryOperatorInput>
+  disallow: InputMaybe<StringQueryOperatorInput>
+  userAgent: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput>
+  elemMatch: InputMaybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput>
 }
 
 export type SitePluginPluginOptionsEnvDeploy_Preview = {
@@ -2491,7 +2494,7 @@ export type SitePluginPluginOptionsEnvDeploy_Preview = {
 }
 
 export type SitePluginPluginOptionsEnvDeploy_PreviewFilterInput = {
-  policy: Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput>
+  policy: InputMaybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput>
 }
 
 export type SitePluginPluginOptionsEnvDeploy_PreviewPolicy = {
@@ -2500,18 +2503,18 @@ export type SitePluginPluginOptionsEnvDeploy_PreviewPolicy = {
 }
 
 export type SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput = {
-  disallow: Maybe<StringQueryOperatorInput>
-  userAgent: Maybe<StringQueryOperatorInput>
+  disallow: InputMaybe<StringQueryOperatorInput>
+  userAgent: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput>
+  elemMatch: InputMaybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput>
 }
 
 export type SitePluginPluginOptionsEnvFilterInput = {
-  branch_deploy: Maybe<SitePluginPluginOptionsEnvBranch_DeployFilterInput>
-  deploy_preview: Maybe<SitePluginPluginOptionsEnvDeploy_PreviewFilterInput>
-  production: Maybe<SitePluginPluginOptionsEnvProductionFilterInput>
+  branch_deploy: InputMaybe<SitePluginPluginOptionsEnvBranch_DeployFilterInput>
+  deploy_preview: InputMaybe<SitePluginPluginOptionsEnvDeploy_PreviewFilterInput>
+  production: InputMaybe<SitePluginPluginOptionsEnvProductionFilterInput>
 }
 
 export type SitePluginPluginOptionsEnvProduction = {
@@ -2519,7 +2522,7 @@ export type SitePluginPluginOptionsEnvProduction = {
 }
 
 export type SitePluginPluginOptionsEnvProductionFilterInput = {
-  policy: Maybe<SitePluginPluginOptionsEnvProductionPolicyFilterListInput>
+  policy: InputMaybe<SitePluginPluginOptionsEnvProductionPolicyFilterListInput>
 }
 
 export type SitePluginPluginOptionsEnvProductionPolicy = {
@@ -2529,56 +2532,56 @@ export type SitePluginPluginOptionsEnvProductionPolicy = {
 }
 
 export type SitePluginPluginOptionsEnvProductionPolicyFilterInput = {
-  allow: Maybe<StringQueryOperatorInput>
-  disallow: Maybe<StringQueryOperatorInput>
-  userAgent: Maybe<StringQueryOperatorInput>
+  allow: InputMaybe<StringQueryOperatorInput>
+  disallow: InputMaybe<StringQueryOperatorInput>
+  userAgent: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsEnvProductionPolicyFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsEnvProductionPolicyFilterInput>
+  elemMatch: InputMaybe<SitePluginPluginOptionsEnvProductionPolicyFilterInput>
 }
 
 export type SitePluginPluginOptionsFilterInput = {
-  _generated: Maybe<StringQueryOperatorInput>
-  allExtensions: Maybe<BooleanQueryOperatorInput>
-  appendScript: Maybe<StringQueryOperatorInput>
-  background_color: Maybe<StringQueryOperatorInput>
-  baseline: Maybe<BooleanQueryOperatorInput>
-  cache_busting_mode: Maybe<StringQueryOperatorInput>
-  color: Maybe<StringQueryOperatorInput>
-  compare: Maybe<BooleanQueryOperatorInput>
-  crossOrigin: Maybe<StringQueryOperatorInput>
-  defer: Maybe<BooleanQueryOperatorInput>
-  display: Maybe<StringQueryOperatorInput>
-  env: Maybe<SitePluginPluginOptionsEnvFilterInput>
-  html: Maybe<BooleanQueryOperatorInput>
-  httpOptions: Maybe<StringQueryOperatorInput>
-  icon: Maybe<StringQueryOperatorInput>
-  include_favicon: Maybe<BooleanQueryOperatorInput>
-  isTSX: Maybe<BooleanQueryOperatorInput>
-  json: Maybe<BooleanQueryOperatorInput>
-  jsxPragma: Maybe<StringQueryOperatorInput>
-  legacy: Maybe<BooleanQueryOperatorInput>
-  locations: Maybe<SitePluginPluginOptionsLocationsFilterInput>
-  maxNumCollections: Maybe<IntQueryOperatorInput>
-  maxNumProducts: Maybe<IntQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  outDir: Maybe<StringQueryOperatorInput>
-  path: Maybe<StringQueryOperatorInput>
-  pathCheck: Maybe<BooleanQueryOperatorInput>
-  precachePages: Maybe<StringQueryOperatorInput>
-  server: Maybe<StringQueryOperatorInput>
-  serverOptions: Maybe<StringQueryOperatorInput>
-  short_name: Maybe<StringQueryOperatorInput>
-  showSpinner: Maybe<BooleanQueryOperatorInput>
-  sourceCollections: Maybe<BooleanQueryOperatorInput>
-  sourceProducts: Maybe<BooleanQueryOperatorInput>
-  src: Maybe<StringQueryOperatorInput>
-  start_url: Maybe<StringQueryOperatorInput>
-  stats: Maybe<SitePluginPluginOptionsStatsFilterInput>
-  theme_color: Maybe<StringQueryOperatorInput>
-  theme_color_in_head: Maybe<BooleanQueryOperatorInput>
-  workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
+  _generated: InputMaybe<StringQueryOperatorInput>
+  allExtensions: InputMaybe<BooleanQueryOperatorInput>
+  appendScript: InputMaybe<StringQueryOperatorInput>
+  background_color: InputMaybe<StringQueryOperatorInput>
+  baseline: InputMaybe<BooleanQueryOperatorInput>
+  cache_busting_mode: InputMaybe<StringQueryOperatorInput>
+  color: InputMaybe<StringQueryOperatorInput>
+  compare: InputMaybe<BooleanQueryOperatorInput>
+  crossOrigin: InputMaybe<StringQueryOperatorInput>
+  defer: InputMaybe<BooleanQueryOperatorInput>
+  display: InputMaybe<StringQueryOperatorInput>
+  env: InputMaybe<SitePluginPluginOptionsEnvFilterInput>
+  html: InputMaybe<BooleanQueryOperatorInput>
+  httpOptions: InputMaybe<StringQueryOperatorInput>
+  icon: InputMaybe<StringQueryOperatorInput>
+  include_favicon: InputMaybe<BooleanQueryOperatorInput>
+  isTSX: InputMaybe<BooleanQueryOperatorInput>
+  json: InputMaybe<BooleanQueryOperatorInput>
+  jsxPragma: InputMaybe<StringQueryOperatorInput>
+  legacy: InputMaybe<BooleanQueryOperatorInput>
+  locations: InputMaybe<SitePluginPluginOptionsLocationsFilterInput>
+  maxNumCollections: InputMaybe<IntQueryOperatorInput>
+  maxNumProducts: InputMaybe<IntQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  outDir: InputMaybe<StringQueryOperatorInput>
+  path: InputMaybe<StringQueryOperatorInput>
+  pathCheck: InputMaybe<BooleanQueryOperatorInput>
+  precachePages: InputMaybe<StringQueryOperatorInput>
+  server: InputMaybe<StringQueryOperatorInput>
+  serverOptions: InputMaybe<StringQueryOperatorInput>
+  short_name: InputMaybe<StringQueryOperatorInput>
+  showSpinner: InputMaybe<BooleanQueryOperatorInput>
+  sourceCollections: InputMaybe<BooleanQueryOperatorInput>
+  sourceProducts: InputMaybe<BooleanQueryOperatorInput>
+  src: InputMaybe<StringQueryOperatorInput>
+  start_url: InputMaybe<StringQueryOperatorInput>
+  stats: InputMaybe<SitePluginPluginOptionsStatsFilterInput>
+  theme_color: InputMaybe<StringQueryOperatorInput>
+  theme_color_in_head: InputMaybe<BooleanQueryOperatorInput>
+  workboxConfig: InputMaybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
 }
 
 export type SitePluginPluginOptionsLocations = {
@@ -2595,20 +2598,20 @@ export type SitePluginPluginOptionsLocationsAppendChildren = {
 }
 
 export type SitePluginPluginOptionsLocationsAppendChildrenFilterInput = {
-  cmd: Maybe<StringQueryOperatorInput>
+  cmd: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsLocationsAppendChildrenFilterListInput = {
-  elemMatch: Maybe<SitePluginPluginOptionsLocationsAppendChildrenFilterInput>
+  elemMatch: InputMaybe<SitePluginPluginOptionsLocationsAppendChildrenFilterInput>
 }
 
 export type SitePluginPluginOptionsLocationsAppendFilterInput = {
-  children: Maybe<SitePluginPluginOptionsLocationsAppendChildrenFilterListInput>
-  cmd: Maybe<StringQueryOperatorInput>
+  children: InputMaybe<SitePluginPluginOptionsLocationsAppendChildrenFilterListInput>
+  cmd: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsLocationsFilterInput = {
-  append: Maybe<SitePluginPluginOptionsLocationsAppendFilterInput>
+  append: InputMaybe<SitePluginPluginOptionsLocationsAppendFilterInput>
 }
 
 export type SitePluginPluginOptionsStats = {
@@ -2616,7 +2619,7 @@ export type SitePluginPluginOptionsStats = {
 }
 
 export type SitePluginPluginOptionsStatsFilterInput = {
-  context: Maybe<StringQueryOperatorInput>
+  context: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginPluginOptionsWorkboxConfig = {
@@ -2624,12 +2627,12 @@ export type SitePluginPluginOptionsWorkboxConfig = {
 }
 
 export type SitePluginPluginOptionsWorkboxConfigFilterInput = {
-  globPatterns: Maybe<StringQueryOperatorInput>
+  globPatterns: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginSortInput = {
-  fields: Maybe<Array<Maybe<SitePluginFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<SitePluginFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type SiteSiteMetadata = {
@@ -2641,16 +2644,16 @@ export type SiteSiteMetadata = {
 }
 
 export type SiteSiteMetadataFilterInput = {
-  author: Maybe<StringQueryOperatorInput>
-  description: Maybe<StringQueryOperatorInput>
-  siteUrl: Maybe<StringQueryOperatorInput>
-  title: Maybe<StringQueryOperatorInput>
-  titleTemplate: Maybe<StringQueryOperatorInput>
+  author: InputMaybe<StringQueryOperatorInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  siteUrl: InputMaybe<StringQueryOperatorInput>
+  title: InputMaybe<StringQueryOperatorInput>
+  titleTemplate: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SiteSortInput = {
-  fields: Maybe<Array<Maybe<SiteFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<SiteFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type SortOrderEnum = 'ASC' | 'DESC'
@@ -2665,12 +2668,12 @@ export type StoreAggregateOffer = {
 }
 
 export type StoreAggregateOfferFilterInput = {
-  highPrice: Maybe<FloatQueryOperatorInput>
-  lowPrice: Maybe<FloatQueryOperatorInput>
-  offerCount: Maybe<IntQueryOperatorInput>
-  offers: Maybe<StoreOfferFilterListInput>
-  priceCurrency: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
+  highPrice: InputMaybe<FloatQueryOperatorInput>
+  lowPrice: InputMaybe<FloatQueryOperatorInput>
+  offerCount: InputMaybe<IntQueryOperatorInput>
+  offers: InputMaybe<StoreOfferFilterListInput>
+  priceCurrency: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreAggregateRating = {
@@ -2680,9 +2683,9 @@ export type StoreAggregateRating = {
 }
 
 export type StoreAggregateRatingFilterInput = {
-  ratingValue: Maybe<FloatQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  reviewCount: Maybe<IntQueryOperatorInput>
+  ratingValue: InputMaybe<FloatQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  reviewCount: InputMaybe<IntQueryOperatorInput>
 }
 
 export type StoreAuthor = {
@@ -2690,7 +2693,7 @@ export type StoreAuthor = {
 }
 
 export type StoreAuthorFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreBrand = {
@@ -2699,8 +2702,8 @@ export type StoreBrand = {
 }
 
 export type StoreBrandFilterInput = {
-  name: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreBreadcrumbList = {
@@ -2710,9 +2713,9 @@ export type StoreBreadcrumbList = {
 }
 
 export type StoreBreadcrumbListFilterInput = {
-  itemListElement: Maybe<StoreListItemFilterListInput>
-  numberOfItems: Maybe<IntQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
+  itemListElement: InputMaybe<StoreListItemFilterListInput>
+  numberOfItems: InputMaybe<IntQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreCart = {
@@ -2733,7 +2736,7 @@ export type StoreCollection = Node & {
   internal: Internal
   meta: StoreCollectionMeta
   parent: Maybe<Node>
-  remoteId: Maybe<Scalars['String']>
+  remoteId: Maybe<Scalars['Date']>
   remoteTypeName: Maybe<Scalars['String']>
   seo: StoreSeo
   slug: Scalars['String']
@@ -2741,7 +2744,14 @@ export type StoreCollection = Node & {
 }
 
 export type StoreCollectionGatsbyPathArgs = {
-  filePath: Maybe<Scalars['String']>
+  filePath: InputMaybe<Scalars['String']>
+}
+
+export type StoreCollectionRemoteIdArgs = {
+  difference: InputMaybe<Scalars['String']>
+  formatString: InputMaybe<Scalars['String']>
+  fromNow: InputMaybe<Scalars['Boolean']>
+  locale: InputMaybe<Scalars['String']>
 }
 
 export type StoreCollectionConnection = {
@@ -2762,8 +2772,8 @@ export type StoreCollectionConnectionDistinctArgs = {
 
 export type StoreCollectionConnectionGroupArgs = {
   field: StoreCollectionFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type StoreCollectionConnectionMaxArgs = {
@@ -2790,13 +2800,13 @@ export type StoreCollectionFacet = {
 }
 
 export type StoreCollectionFacetFilterInput = {
-  key: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  value: Maybe<StringQueryOperatorInput>
+  key: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  value: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreCollectionFacetFilterListInput = {
-  elemMatch: Maybe<StoreCollectionFacetFilterInput>
+  elemMatch: InputMaybe<StoreCollectionFacetFilterInput>
 }
 
 export type StoreCollectionFieldsEnum =
@@ -2910,18 +2920,18 @@ export type StoreCollectionFieldsEnum =
   | 'type'
 
 export type StoreCollectionFilterInput = {
-  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>
-  children: Maybe<NodeFilterListInput>
-  gatsbyPath: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  internal: Maybe<InternalFilterInput>
-  meta: Maybe<StoreCollectionMetaFilterInput>
-  parent: Maybe<NodeFilterInput>
-  remoteId: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  seo: Maybe<StoreSeoFilterInput>
-  slug: Maybe<StringQueryOperatorInput>
-  type: Maybe<StoreCollectionTypeQueryOperatorInput>
+  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
+  children: InputMaybe<NodeFilterListInput>
+  gatsbyPath: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  internal: InputMaybe<InternalFilterInput>
+  meta: InputMaybe<StoreCollectionMetaFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  remoteId: InputMaybe<DateQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  seo: InputMaybe<StoreSeoFilterInput>
+  slug: InputMaybe<StringQueryOperatorInput>
+  type: InputMaybe<StoreCollectionTypeQueryOperatorInput>
 }
 
 export type StoreCollectionGroupConnection = {
@@ -2944,8 +2954,8 @@ export type StoreCollectionGroupConnectionDistinctArgs = {
 
 export type StoreCollectionGroupConnectionGroupArgs = {
   field: StoreCollectionFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type StoreCollectionGroupConnectionMaxArgs = {
@@ -2966,13 +2976,13 @@ export type StoreCollectionMeta = {
 }
 
 export type StoreCollectionMetaFilterInput = {
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  selectedFacets: Maybe<StoreCollectionFacetFilterListInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  selectedFacets: InputMaybe<StoreCollectionFacetFilterListInput>
 }
 
 export type StoreCollectionSortInput = {
-  fields: Maybe<Array<Maybe<StoreCollectionFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<StoreCollectionFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type StoreCollectionType =
@@ -2982,10 +2992,10 @@ export type StoreCollectionType =
   | 'Department'
 
 export type StoreCollectionTypeQueryOperatorInput = {
-  eq: Maybe<StoreCollectionType>
-  in: Maybe<Array<Maybe<StoreCollectionType>>>
-  ne: Maybe<StoreCollectionType>
-  nin: Maybe<Array<Maybe<StoreCollectionType>>>
+  eq: InputMaybe<StoreCollectionType>
+  in: InputMaybe<Array<InputMaybe<StoreCollectionType>>>
+  ne: InputMaybe<StoreCollectionType>
+  nin: InputMaybe<Array<InputMaybe<StoreCollectionType>>>
 }
 
 export type StoreFacet = {
@@ -3011,13 +3021,13 @@ export type StoreImage = {
 }
 
 export type StoreImageFilterInput = {
-  alternateName: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  url: Maybe<StringQueryOperatorInput>
+  alternateName: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  url: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreImageFilterListInput = {
-  elemMatch: Maybe<StoreImageFilterInput>
+  elemMatch: InputMaybe<StoreImageFilterInput>
 }
 
 export type StoreListItem = {
@@ -3028,14 +3038,14 @@ export type StoreListItem = {
 }
 
 export type StoreListItemFilterInput = {
-  item: Maybe<StringQueryOperatorInput>
-  name: Maybe<StringQueryOperatorInput>
-  position: Maybe<IntQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
+  item: InputMaybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  position: InputMaybe<IntQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreListItemFilterListInput = {
-  elemMatch: Maybe<StoreListItemFilterInput>
+  elemMatch: InputMaybe<StoreListItemFilterInput>
 }
 
 export type StoreOffer = {
@@ -3053,21 +3063,21 @@ export type StoreOffer = {
 }
 
 export type StoreOfferFilterInput = {
-  availability: Maybe<StringQueryOperatorInput>
-  itemCondition: Maybe<StringQueryOperatorInput>
-  itemOffered: Maybe<StoreProductFilterInput>
-  listPrice: Maybe<FloatQueryOperatorInput>
-  price: Maybe<FloatQueryOperatorInput>
-  priceCurrency: Maybe<StringQueryOperatorInput>
-  priceValidUntil: Maybe<StringQueryOperatorInput>
-  quantity: Maybe<IntQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  seller: Maybe<StoreOrganizationFilterInput>
-  sellingPrice: Maybe<FloatQueryOperatorInput>
+  availability: InputMaybe<StringQueryOperatorInput>
+  itemCondition: InputMaybe<StringQueryOperatorInput>
+  itemOffered: InputMaybe<StoreProductFilterInput>
+  listPrice: InputMaybe<FloatQueryOperatorInput>
+  price: InputMaybe<FloatQueryOperatorInput>
+  priceCurrency: InputMaybe<StringQueryOperatorInput>
+  priceValidUntil: InputMaybe<StringQueryOperatorInput>
+  quantity: InputMaybe<IntQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  seller: InputMaybe<StoreOrganizationFilterInput>
+  sellingPrice: InputMaybe<FloatQueryOperatorInput>
 }
 
 export type StoreOfferFilterListInput = {
-  elemMatch: Maybe<StoreOfferFilterInput>
+  elemMatch: InputMaybe<StoreOfferFilterInput>
 }
 
 export type StoreOrder = {
@@ -3081,8 +3091,8 @@ export type StoreOrganization = {
 }
 
 export type StoreOrganizationFilterInput = {
-  identifier: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
+  identifier: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StorePageInfo = {
@@ -3133,8 +3143,8 @@ export type StoreProductConnectionDistinctArgs = {
 
 export type StoreProductConnectionGroupArgs = {
   field: StoreProductFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type StoreProductConnectionMaxArgs = {
@@ -3356,29 +3366,29 @@ export type StoreProductFieldsEnum =
   | 'slug'
 
 export type StoreProductFilterInput = {
-  aggregateRating: Maybe<StoreAggregateRatingFilterInput>
-  brand: Maybe<StoreBrandFilterInput>
-  breadcrumbList: Maybe<StoreBreadcrumbListFilterInput>
-  children: Maybe<NodeFilterListInput>
-  description: Maybe<StringQueryOperatorInput>
-  gtin: Maybe<StringQueryOperatorInput>
-  id: Maybe<StringQueryOperatorInput>
-  image: Maybe<StoreImageFilterListInput>
-  internal: Maybe<InternalFilterInput>
-  isVariantOf: Maybe<StoreProductGroupFilterInput>
-  name: Maybe<StringQueryOperatorInput>
-  offers: Maybe<StoreAggregateOfferFilterInput>
-  parent: Maybe<NodeFilterInput>
-  productID: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  review: Maybe<StoreReviewFilterListInput>
-  seo: Maybe<StoreSeoFilterInput>
-  sku: Maybe<StringQueryOperatorInput>
-  slug: Maybe<StringQueryOperatorInput>
+  aggregateRating: InputMaybe<StoreAggregateRatingFilterInput>
+  brand: InputMaybe<StoreBrandFilterInput>
+  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
+  children: InputMaybe<NodeFilterListInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  gtin: InputMaybe<StringQueryOperatorInput>
+  id: InputMaybe<StringQueryOperatorInput>
+  image: InputMaybe<StoreImageFilterListInput>
+  internal: InputMaybe<InternalFilterInput>
+  isVariantOf: InputMaybe<StoreProductGroupFilterInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  offers: InputMaybe<StoreAggregateOfferFilterInput>
+  parent: InputMaybe<NodeFilterInput>
+  productID: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  review: InputMaybe<StoreReviewFilterListInput>
+  seo: InputMaybe<StoreSeoFilterInput>
+  sku: InputMaybe<StringQueryOperatorInput>
+  slug: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreProductFilterListInput = {
-  elemMatch: Maybe<StoreProductFilterInput>
+  elemMatch: InputMaybe<StoreProductFilterInput>
 }
 
 export type StoreProductGroup = {
@@ -3408,8 +3418,8 @@ export type StoreProductGroupConnectionDistinctArgs = {
 
 export type StoreProductGroupConnectionGroupArgs = {
   field: StoreProductFieldsEnum
-  limit: Maybe<Scalars['Int']>
-  skip: Maybe<Scalars['Int']>
+  limit: InputMaybe<Scalars['Int']>
+  skip: InputMaybe<Scalars['Int']>
 }
 
 export type StoreProductGroupConnectionMaxArgs = {
@@ -3425,15 +3435,15 @@ export type StoreProductGroupConnectionSumArgs = {
 }
 
 export type StoreProductGroupFilterInput = {
-  hasVariant: Maybe<StoreProductFilterListInput>
-  name: Maybe<StringQueryOperatorInput>
-  productGroupID: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
+  hasVariant: InputMaybe<StoreProductFilterListInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  productGroupID: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreProductSortInput = {
-  fields: Maybe<Array<Maybe<StoreProductFieldsEnum>>>
-  order: Maybe<Array<Maybe<SortOrderEnum>>>
+  fields: InputMaybe<Array<InputMaybe<StoreProductFieldsEnum>>>
+  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type StoreReview = {
@@ -3442,12 +3452,12 @@ export type StoreReview = {
 }
 
 export type StoreReviewFilterInput = {
-  author: Maybe<StoreAuthorFilterInput>
-  reviewRating: Maybe<StoreReviewRatingFilterInput>
+  author: InputMaybe<StoreAuthorFilterInput>
+  reviewRating: InputMaybe<StoreReviewRatingFilterInput>
 }
 
 export type StoreReviewFilterListInput = {
-  elemMatch: Maybe<StoreReviewFilterInput>
+  elemMatch: InputMaybe<StoreReviewFilterInput>
 }
 
 export type StoreReviewRating = {
@@ -3456,8 +3466,8 @@ export type StoreReviewRating = {
 }
 
 export type StoreReviewRatingFilterInput = {
-  bestRating: Maybe<FloatQueryOperatorInput>
-  ratingValue: Maybe<FloatQueryOperatorInput>
+  bestRating: InputMaybe<FloatQueryOperatorInput>
+  ratingValue: InputMaybe<FloatQueryOperatorInput>
 }
 
 export type StoreSearchResult = {
@@ -3474,11 +3484,11 @@ export type StoreSeo = {
 }
 
 export type StoreSeoFilterInput = {
-  canonical: Maybe<StringQueryOperatorInput>
-  description: Maybe<StringQueryOperatorInput>
-  remoteTypeName: Maybe<StringQueryOperatorInput>
-  title: Maybe<StringQueryOperatorInput>
-  titleTemplate: Maybe<StringQueryOperatorInput>
+  canonical: InputMaybe<StringQueryOperatorInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
+  title: InputMaybe<StringQueryOperatorInput>
+  titleTemplate: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreSort =
@@ -3494,18 +3504,12 @@ export type StoreSort =
 export type StoreStatus = 'ERROR' | 'INFO' | 'WARNING'
 
 export type StringQueryOperatorInput = {
-  eq: Maybe<Scalars['String']>
-  glob: Maybe<Scalars['String']>
-  in: Maybe<Array<Maybe<Scalars['String']>>>
-  ne: Maybe<Scalars['String']>
-  nin: Maybe<Array<Maybe<Scalars['String']>>>
-  regex: Maybe<Scalars['String']>
-}
-
-export type NavlinksQueryQueryVariables = Exact<{ [key: string]: never }>
-
-export type NavlinksQueryQuery = {
-  allStoreCollection: { nodes: Array<{ slug: string; seo: { title: string } }> }
+  eq: InputMaybe<Scalars['String']>
+  glob: InputMaybe<Scalars['String']>
+  in: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  ne: InputMaybe<Scalars['String']>
+  nin: InputMaybe<Array<InputMaybe<Scalars['String']>>>
+  regex: InputMaybe<Scalars['String']>
 }
 
 export type ProductSummary_ProductFragment = {
@@ -3608,25 +3612,37 @@ export type ProductGalleryQueryQuery = {
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type HomePageQueryQuery = {
-  site: {
-    siteMetadata: {
-      title: string | null
-      description: string | null
-      titleTemplate: string | null
-    } | null
-  } | null
+  site:
+    | {
+        siteMetadata:
+          | {
+              title: string | null | undefined
+              description: string | null | undefined
+              titleTemplate: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
 }
 
 export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type SearchPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      titleTemplate: string | null
-      title: string | null
-      description: string | null
-    } | null
-  } | null
+  site:
+    | {
+        siteMetadata:
+          | {
+              titleTemplate: string | null | undefined
+              title: string | null | undefined
+              description: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
 }
 
 export type CollectionPageQueryQueryVariables = Exact<{
@@ -3634,20 +3650,117 @@ export type CollectionPageQueryQueryVariables = Exact<{
 }>
 
 export type CollectionPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      titleTemplate: string | null
-      title: string | null
-      description: string | null
-    } | null
-  } | null
-  collection: {
-    seo: { title: string; description: string }
-    breadcrumbList: {
-      itemListElement: Array<{ item: string; name: string; position: number }>
-    }
-    meta: { selectedFacets: Array<{ key: string; value: string }> }
-  } | null
+  site:
+    | {
+        siteMetadata:
+          | {
+              titleTemplate: string | null | undefined
+              title: string | null | undefined
+              description: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+  collection:
+    | {
+        seo: { title: string; description: string }
+        breadcrumbList: {
+          itemListElement: Array<{
+            item: string
+            name: string
+            position: number
+          }>
+        }
+        meta: { selectedFacets: Array<{ key: string; value: string }> }
+      }
+    | null
+    | undefined
+}
+
+export type ProductPageQueryQueryVariables = Exact<{
+  id: Scalars['String']
+}>
+
+export type ProductPageQueryQuery = {
+  site:
+    | {
+        siteMetadata:
+          | {
+              title: string | null | undefined
+              description: string | null | undefined
+              titleTemplate: string | null | undefined
+              siteUrl: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+  product:
+    | {
+        slug: string
+        sku: string
+        gtin: string
+        name: string
+        description: string
+        id: string
+        seo: { title: string; description: string }
+        brand: { name: string }
+        breadcrumbList: {
+          itemListElement: Array<{
+            item: string
+            name: string
+            position: number
+          }>
+        }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          highPrice: number
+          priceCurrency: string
+          offers: Array<{
+            price: number
+            priceValidUntil: string
+            priceCurrency: string
+            availability: string
+            itemCondition: string
+            listPrice: number
+            seller: { identifier: string }
+          }>
+        }
+        isVariantOf: { productGroupID: string; name: string }
+      }
+    | null
+    | undefined
+}
+
+export type ValidateCartMutationMutationVariables = Exact<{
+  cart: IStoreCart
+}>
+
+export type ValidateCartMutationMutation = {
+  validateCart:
+    | {
+        order: {
+          orderNumber: string
+          acceptedOffer: Array<{
+            quantity: number
+            price: number
+            listPrice: number
+            seller: { identifier: string }
+            itemOffered: {
+              sku: string
+              name: string
+              image: Array<{ url: string; alternateName: string }>
+            }
+          }>
+        }
+        messages: Array<{ text: string; status: StoreStatus }>
+      }
+    | null
+    | undefined
 }
 
 export type BrowserProductQueryQueryVariables = Exact<{
@@ -3671,74 +3784,6 @@ export type BrowserProductQueryQuery = {
       }>
     }
   }
-}
-
-export type ProductPageQueryQueryVariables = Exact<{
-  id: Scalars['String']
-}>
-
-export type ProductPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      title: string | null
-      description: string | null
-      titleTemplate: string | null
-      siteUrl: string | null
-    } | null
-  } | null
-  product: {
-    slug: string
-    sku: string
-    gtin: string
-    name: string
-    description: string
-    id: string
-    seo: { title: string; description: string }
-    brand: { name: string }
-    breadcrumbList: {
-      itemListElement: Array<{ item: string; name: string; position: number }>
-    }
-    image: Array<{ url: string; alternateName: string }>
-    offers: {
-      lowPrice: number
-      highPrice: number
-      priceCurrency: string
-      offers: Array<{
-        price: number
-        priceValidUntil: string
-        priceCurrency: string
-        availability: string
-        itemCondition: string
-        listPrice: number
-        seller: { identifier: string }
-      }>
-    }
-    isVariantOf: { productGroupID: string; name: string }
-  } | null
-}
-
-export type ValidateCartMutationMutationVariables = Exact<{
-  cart: IStoreCart
-}>
-
-export type ValidateCartMutationMutation = {
-  validateCart: {
-    order: {
-      orderNumber: string
-      acceptedOffer: Array<{
-        quantity: number
-        price: number
-        listPrice: number
-        seller: { identifier: string }
-        itemOffered: {
-          sku: string
-          name: string
-          image: Array<{ url: string; alternateName: string }>
-        }
-      }>
-    }
-    messages: Array<{ text: string; status: StoreStatus }>
-  } | null
 }
 
 export type ProductsQueryQueryVariables = Exact<{
