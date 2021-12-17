@@ -8,7 +8,7 @@ function CartToggle() {
   const { totalUniqueItems } = useCart()
 
   return (
-    <Button {...btnProps} className="mx-3">
+    <Button {...btnProps} className="cart-toggle">
       cart: {totalUniqueItems}
     </Button>
   )

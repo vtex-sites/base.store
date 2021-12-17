@@ -1,0 +1,29 @@
+.navbar {
+  [data-store-search-input] {
+    flex: 1 0 100%;
+    order: 2;
+  }
+  @media screen and (min-width: 768px) {
+    [data-store-search-input] {
+      max-width: 37.5rem;
+      order: 1;
+    }
+    .navlinks {
+      flex: 1 0 100%;
+      order: 3;
+    }
+    .cart-toggle { order: 2; }
+  }
+}
+
+.navbar__header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: var(--space-1) 0;
+
+  @media screen and (min-width: 768px) {
+    padding: var(--space-2) 0;
+  }
+}
