@@ -50,7 +50,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     'gatsby-plugin-sharp',
-    'gatsby-plugin-sass',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
