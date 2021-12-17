@@ -81,10 +81,12 @@ function Carousel({
   })
 
   const postRenderedSlides =
-    infiniteMode && children ? childrenArray.slice(0, 1) : []
+    infiniteMode && children ? childrenArray.slice(0, itemsPerPage) : []
 
   const preRenderedSlides =
-    infiniteMode && children ? childrenArray.slice(childrenCount - 1) : []
+    infiniteMode && children
+      ? childrenArray.slice(childrenCount - itemsPerPage)
+      : []
 
   const slides = preRenderedSlides.concat(children ?? [], postRenderedSlides)
 

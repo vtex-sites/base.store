@@ -27,7 +27,7 @@ function CarouselSlider() {
         <img
           alt=""
           height={150}
-          src="https://a-static.mlcdn.com.br/618x463/camisa-polo-masculina-marca-toq-ref/toqref/3126fd0eed8011eb97a34201ac18150e/6d07820c64d1d772ba895025ad7db4e5.jpg"
+          src="https://i5.walmartimages.com/asr/b20a7928-fc8a-4b9f-a923-27448facface.c9df6f17cdf584784c1c40fbfc6354af.jpeg?odnHeight=612odnWidth=612odnBg=FFFFFF"
           width={150}
         />
         <img
