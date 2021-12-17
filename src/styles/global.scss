@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 
 // Output functions & mixins
-@import "../../node_modules/include-media/dist/include-media";
-@import "include-media";
+@import "vendors/include-media";
 
 // Resets //////////////////////////
 @import "resets/modern-normalize";
