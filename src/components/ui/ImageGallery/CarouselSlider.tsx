@@ -6,11 +6,8 @@ function CarouselSlider() {
   return (
     <ImageGallery name="image-gallery">
       <ImageGallerySelector
-        controls="navigationArrows"
-        transition={{
-          duration: 400,
-          property: 'transform',
-        }}
+        imagesPerPage={4}
+        style={{ overflow: 'hidden', width: '30%' }}
       >
         <img
           alt=""
@@ -46,6 +43,30 @@ function CarouselSlider() {
           alt=""
           height={150}
           src="https://placekitten.com/200/286"
+          width={150}
+        />
+        <img
+          alt=""
+          height={150}
+          src="https://thumbor-dev-server.vtex.io/unsafe/fit-in/360x360/center/middle/http%3A%2F%2Fstoreframework.vtexassets.com%2Farquivos%2Fids%2F177402%2Fneque.jpg"
+          width={150}
+        />
+        <img
+          alt=""
+          height={150}
+          src="https://thumbor-dev-server.vtex.io/unsafe/fit-in/360x360/center/middle/http%3A%2F%2Fstoreframework.vtexassets.com%2Farquivos%2Fids%2F155949%2Fvoluptas.jpg"
+          width={150}
+        />
+        <img
+          alt=""
+          height={150}
+          src="https://thumbor-dev-server.vtex.io/unsafe/fit-in/360x360/center/middle/http%3A%2F%2Fstoreframework.vtexassets.com%2Farquivos%2Fids%2F158554%2Fquasi.jpg"
+          width={150}
+        />
+        <img
+          alt=""
+          height={150}
+          src="https://thumbor-dev-server.vtex.io/unsafe/fit-in/360x360/center/middle/http%3A%2F%2Fstoreframework.vtexassets.com%2Farquivos%2Fids%2F176494%2Fsuscipit.jpg"
           width={150}
         />
       </ImageGallerySelector>
