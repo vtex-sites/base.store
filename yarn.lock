@@ -1347,10 +1347,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.3.28":
-  version "1.3.28"
-  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.3.28.tgz#a808e4e816a510ab470c973a8cff34833744c9de"
-  integrity sha512-ynK4SPATV5FKswOva+cboMlRAR3d42v+0IlQdijYTtn0JUWVpFsbeFtfN3Z0QXrtPqYtZRSIPkSBfziZPNGnxQ==
+"@faststore/api@^1.3.39":
+  version "1.3.39"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.3.39.tgz#6fcbd9661a3e40487e36a23a8266f66641485bc9"
+  integrity sha512-r+jO/Arzh/W8JkMLJlgY93aQJeaI5rnumeKVpEB2xnZjWvhy4V2HCuFknDjcvsbYE5deLYvF0f5k+ciX9qIfeQ==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1359,17 +1359,17 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
-"@faststore/sdk@^1.3.28":
-  version "1.3.28"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.3.28.tgz#0183a54410d9843979745e80af9034c3d8a4de6a"
-  integrity sha512-xUTwAkn86/2r0okPwwtvi6SaEmIO7zS4zY+va42NibvOW1GpCgyf0oYd+lX3B6jEoO2yM0DdeXFbKunCtV4olg==
+"@faststore/sdk@^1.3.39":
+  version "1.3.39"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.3.39.tgz#55ca79cd2b594d595bbb38f4f3e0d3b2ff837e3a"
+  integrity sha512-eMoetAJwsi7C1wdExs08wPlxf0bG2+QBiPy+WZGIzw2vANN4kKipc3QVHgZmlMD3YRw7tf2sRAMphFcpW+7mmg==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.3.28":
-  version "1.3.28"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.3.28.tgz#b55de7a997512595618156390f2b900f736cf2fe"
-  integrity sha512-iewRecnE0SxPg0bJPN8WEpFjRJLXJMNN1hRHxBmk0OyS1woTWnqDZrAZ04kDSJZZjqImOBqKTQP2RK1BCSttKQ==
+"@faststore/ui@^1.3.39":
+  version "1.3.39"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.3.39.tgz#068aef516450b9881c049fc47440969d61e4c23e"
+  integrity sha512-hKw0bIAiAxXUUfJOyCN7USahKrAkYxpJScw1uAlXSesoox3PjLs333l03p+BpVzCBq4GDTGRyzjNJl+iho+e4A==
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
@@ -7794,6 +7794,15 @@ gatsby-plugin-root-import@^2.0.7:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-root-import/-/gatsby-plugin-root-import-2.0.8.tgz#374a738ccf91c74bf86e158213d09a25ef64b4ac"
   integrity sha512-y07q3c+Pz1qoW3XdkAvl5PbO2+gc0GhcfZYq+Msw2JBe5M+FSByhQVDhZYCVMRVZz0qx6L4qr3w3i04/k4S2HA==
 
+gatsby-plugin-sass@^5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-5.3.0.tgz#01ba4972c9b7325bdd1e5288d486238ca59d8481"
+  integrity sha512-6oHclQ5ckOZv2AQE/NmB2NrRrTBdgSvxotPaJ1g3AiAOGZhsPJljbQB4l2hUDq+sXMFoDFlIzWama4NY2N4MCA==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    resolve-url-loader "^3.1.2"
+    sass-loader "^10.1.1"
+
 gatsby-plugin-sharp@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-sharp/-/gatsby-plugin-sharp-4.4.0.tgz#d3d182f1397011aeb969f4300022ff13df81e720"
@@ -7817,15 +7826,6 @@ gatsby-plugin-sharp@^4.4.0:
     sharp "^0.29.3"
     svgo "1.3.2"
     uuid "3.4.0"
-
-gatsby-plugin-sass@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-sass/-/gatsby-plugin-sass-5.3.0.tgz#01ba4972c9b7325bdd1e5288d486238ca59d8481"
-  integrity sha512-6oHclQ5ckOZv2AQE/NmB2NrRrTBdgSvxotPaJ1g3AiAOGZhsPJljbQB4l2hUDq+sXMFoDFlIzWama4NY2N4MCA==
-  dependencies:
-    "@babel/runtime" "^7.15.4"
-    resolve-url-loader "^3.1.2"
-    sass-loader "^10.1.1"
 
 gatsby-plugin-typescript@^3.14.0:
   version "3.14.0"
@@ -12262,15 +12262,15 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
-phosphor-react@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/phosphor-react/-/phosphor-react-1.3.1.tgz#96e33f44370d83cda15b60cccc17087ad0060684"
-  integrity sha512-N4dk4Lrl8Pa2V9cImw/6zP8x9oPFOSh6ixtSvB73zmcpKrX6Sb+lPlu6Y222VOwZx19mfo01bP+OeAbXHw95Jg==
-
 phin@^2.9.1:
   version "2.9.3"
   resolved "https://registry.yarnpkg.com/phin/-/phin-2.9.3.tgz#f9b6ac10a035636fb65dfc576aaaa17b8743125c"
   integrity sha512-CzFr90qM24ju5f88quFC/6qohjC144rehe5n6DH900lgXmUe86+xCKc10ev56gRKC4/BkHUoG4uSiQgBiIXwDA==
+
+phosphor-react@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/phosphor-react/-/phosphor-react-1.3.1.tgz#96e33f44370d83cda15b60cccc17087ad0060684"
+  integrity sha512-N4dk4Lrl8Pa2V9cImw/6zP8x9oPFOSh6ixtSvB73zmcpKrX6Sb+lPlu6Y222VOwZx19mfo01bP+OeAbXHw95Jg==
 
 physical-cpu-count@^2.0.0:
   version "2.0.0"
