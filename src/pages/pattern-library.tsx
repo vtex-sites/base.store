@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import { Button as UIButton } from '@faststore/ui'
+import { Button as UIButton, Badge as UIBadge } from '@faststore/ui'
 import { BellRinging } from 'phosphor-react'
 
 import Alert from '../components/ui/Alert'
@@ -130,6 +130,18 @@ function Page() {
                     Show Alert
                   </UIButton>
                 )}
+              </li>
+            </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Badge</h2>
+            <ul className="list-horizontal">
+              <li>
+                <UIBadge>15% off</UIBadge>
+              </li>
+              <li>
+                <UIBadge className="badge_small">15% off</UIBadge>
               </li>
             </ul>
           </section>

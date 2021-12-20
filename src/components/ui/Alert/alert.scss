@@ -4,9 +4,9 @@
   align-items: center;
   min-height: var(--space-7);
   padding: var(--space-1) var(--space-3);
-  background-color: var(--bg-primary-light);
   color: var(--color-text);
   font-size: var(--text-size-1);
+  background-color: var(--bg-primary-light);
 
   [data-store-icon] {
     margin: 0;
@@ -18,10 +18,10 @@
   a {
     display: inline-flex;
     align-items: center;
-    font-weight: var(--text-weight-bold);
     color: var(--color-text);
+    font-weight: var(--text-weight-bold);
 
-    &:visited { color: var(--color-text) }
+    &:visited { color: var(--color-text); }
   }
 
   [data-alert-button] {
@@ -31,7 +31,7 @@
     min-height: var(--space-7);
     margin-left: auto;
     padding: 0 var(--space-0);
-    border: none;
     background-color: transparent;
+    border: none;
   }
 }
