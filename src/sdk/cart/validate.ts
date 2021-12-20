@@ -1,6 +1,6 @@
 import { gql } from '@vtex/graphql-utils'
 import type { CartItem as ICartItem } from '@faststore/sdk'
-import type { IStoreProduct } from '@faststore/api'
+import type { IStoreProduct, IStoreOffer } from '@faststore/api'
 import type {
   ValidateCartMutationMutation,
   ValidateCartMutationMutationVariables,
@@ -22,41 +22,10 @@ export interface CartMessages {
   text: string
 }
 
-export interface Cart {
+export interface Cart<Item> {
   id: string
-  items: CartItem[]
+  items: Item[]
   messages?: CartMessages[]
-}
-
-export const isGift = (item: CartItem) => item.price === 0
-
-export const getItemId = (
-  item: Pick<CartItem, 'itemOffered' | 'seller' | 'price'>
-) => `${item.itemOffered.sku}:${item.seller.identifier}:${item.price}`
-
-export const validateCart = async (cart: Cart) => {
-  const { validateCart: validated } = await request<
-    ValidateCartMutationMutation,
-    ValidateCartMutationMutationVariables
-  >(ValidateCartMutation, {
-    cart: {
-      order: {
-        orderNumber: cart.id,
-        acceptedOffer: cart.items.map(({ id, ...item }) => item),
-      },
-    },
-  })
-
-  return (
-    validated && {
-      id: validated.order.orderNumber,
-      items: validated.order.acceptedOffer.map((item) => ({
-        ...item,
-        id: getItemId(item),
-      })),
-      messages: validated.messages,
-    }
-  )
 }
 
 export const ValidateCartMutation = gql`
@@ -88,3 +57,59 @@ export const ValidateCartMutation = gql`
     }
   }
 `
+
+export const isGift = (item: CartItem) => item.price === 0
+
+export const getItemId = (
+  item: Pick<CartItem, 'itemOffered' | 'seller' | 'price'>
+) => `${item.itemOffered.sku}:${item.seller.identifier}:${item.price}`
+
+export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
+  const { validateCart: validated } = await request<
+    ValidateCartMutationMutation,
+    ValidateCartMutationMutationVariables
+  >(ValidateCartMutation, {
+    cart: {
+      order: {
+        orderNumber: cart.id,
+        acceptedOffer: cart.items.map(
+          ({
+            price,
+            listPrice,
+            seller,
+            quantity,
+            itemOffered,
+          }): IStoreOffer => ({
+            price,
+            listPrice,
+            seller,
+            quantity,
+            itemOffered,
+          })
+        ),
+      },
+    },
+  })
+
+  const mappedItems = cart.items.reduce((acc, item) => {
+    acc[item.id] = item
+
+    return acc
+  }, {} as Record<string, Item>)
+
+  return (
+    validated && {
+      id: validated.order.orderNumber,
+      items: validated.order.acceptedOffer.map((item): Item => {
+        const id = getItemId(item)
+
+        return {
+          ...(mappedItems[id] ?? {}),
+          ...item,
+          id,
+        }
+      }),
+      messages: validated.messages,
+    }
+  )
+}

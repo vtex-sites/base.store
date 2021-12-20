@@ -1,10 +1,9 @@
 import { graphql, Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
+import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
-import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
@@ -12,9 +11,10 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
+  className?: string
 }
 
-function ProductSummary({ product, index }: Props) {
+function ProductSummary({ product, index, className }: Props) {
   const {
     id,
     sku,
@@ -26,13 +26,21 @@ function ProductSummary({ product, index }: Props) {
     offers: { lowPrice: spotPrice, offers },
   } = product
 
-  const { listPrice, seller } = useMemo(
-    () => offers.find((x) => x.price === spotPrice)!,
-    [spotPrice, offers]
-  )
+  const { listPrice, seller } = useMemo(() => {
+    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+
+    if (!lowestPriceOffer) {
+      console.error(
+        'Could not find the lowest price product offer. Showing the first offer provided.'
+      )
+
+      return offers[0]
+    }
+
+    return lowestPriceOffer
+  }, [spotPrice, offers])
 
   const linkProps = useProductLink({ product, index })
-  const image = useImage(img.url, 'product.summary')
   const buyProps = useBuyButton({
     id,
     name,
@@ -51,13 +59,15 @@ function ProductSummary({ product, index }: Props) {
   })
 
   return (
-    <Link {...linkProps}>
-      <GatsbyImage
+    <Link {...linkProps} className={className}>
+      <Image
         className="w-full"
-        image={image}
+        src={img.url}
+        variant="product.summary"
         alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />
+
       <div>{name}</div>
       <div className="flex justify-between">
         <span

@@ -4,15 +4,14 @@ const { join, resolve } = require('path')
 
 const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
+const config = require('./store.config')
 
 const {
-  GATSBY_STORE_ID: STORE_ID,
-  CI: isCI,
   NODE_ENV,
-  URL = `https://${STORE_ID}.vtex.app`,
+  URL = config.storeUrl,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
-  NETLIFY: isNetlify,
+  VTEX_WEBOPS: isWebOps,
 } = process.env
 
 const isProduction = ENV === 'production'
@@ -49,6 +48,7 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
+    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -107,11 +107,9 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server:
-          isCI && !isNetlify
-            ? 'http://thumbor.vtex.internal'
-            : 'https://thumbor-dev-server.vtex.io',
-        ...((isProduction || isNetlify) && {
+        server: 'https://thumbor-dev-server.vtex.io',
+        ...(isWebOps && {
+          server: 'http://thumbor.vtex.internal',
           basePath: '/assets',
           sizes: getSizes(images),
         }),
@@ -164,9 +162,33 @@ module.exports = {
           ['proxy_http_version', '1.1'],
           ['absolute_redirect', 'off'],
         ],
-        serverOptions: isCI
+        serverOptions: isWebOps
           ? [['resolver', '169.254.169.253']]
           : [['resolver', '8.8.8.8']],
+        locations: {
+          append: {
+            cmd: ['location', '/'],
+            children: [
+              {
+                cmd: [
+                  'add_header',
+                  'Cache-Control',
+                  '"public, max-age=0, must-revalidate"',
+                ],
+              },
+              {
+                cmd: [
+                  'try_files',
+                  '$uri',
+                  '$uri/',
+                  '$uri/index.html',
+                  '$uri.html',
+                  '=404',
+                ],
+              },
+            ],
+          },
+        },
       },
     },
     {

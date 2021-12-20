@@ -25,6 +25,9 @@ class ErrorBoundary extends Component {
     }
   }
 
+  // We can't accurately type the error here, since it could vary depending on
+  // what caused it. This is not standardized.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public componentDidCatch(error: any, errorInfo: ErrorInfo) {
     console.error(`React Error: ${error.message} ${errorInfo.componentStack}`)
 

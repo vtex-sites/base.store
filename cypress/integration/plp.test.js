@@ -4,7 +4,10 @@
  * Cypress tests for PLP
  */
 
-import { pages, options } from '../global'
+import { options } from '../global'
+import { cypress } from '../../store.config'
+
+const { pages } = cypress
 
 describe('Search page Filters and Sorting options', () => {
   beforeEach(() => {
@@ -27,12 +30,14 @@ describe('Search page Filters and Sorting options', () => {
         const value = $checkbox.attr('data-value')
 
         // Check if the filter applied actually ended up in the URL
-        cy.location('pathname').should((loc) => {
-          expect(loc).to.include(`${pages.collection}/${value}`)
+        cy.location('href').should((loc) => {
+          expect(loc).to.include(value)
         })
 
         // Check if the filter applied actually brought the number of products it said it would
-        cy.getById('product-link').should('have.length', Number(quantity))
+        cy.getById('total-product-count').then(($countDiv) => {
+          expect(Number($countDiv.attr('data-count'))).to.eq(Number(quantity))
+        })
       })
   })
 
@@ -166,16 +171,14 @@ describe('Infinite Scroll pagination', () => {
           .scrollIntoView()
           .location()
           .should(($loc) => {
-            expect($loc.search).includes('page')
-            expect($loc.pathname).includes('/1')
+            expect($loc.search).includes('page=1')
           })
           .getById('product-link')
           .first()
           .scrollIntoView()
           .location()
           .should(($loc) => {
-            expect($loc.search).includes('page')
-            expect($loc.pathname).includes('/0')
+            expect($loc.search).includes('page=0')
           })
       })
   })

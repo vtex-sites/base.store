@@ -1,38 +1,52 @@
-import React from 'react'
+import { useSearch } from '@faststore/sdk'
+import React, { useMemo } from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
-import { useSearch } from 'src/sdk/search/useSearch'
-import {
-  useSearchQuery,
-  useSearchVariables,
-} from 'src/sdk/search/useSearchQuery'
-import type { SearchQueryQuery } from '@generated/graphql'
+import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
+import Sentinel from 'src/sdk/search/Sentinel'
+import type { ProductsQueryQuery } from '@generated/graphql'
 
 interface Props {
   page: number
   display?: boolean
-  fallbackData?: SearchQueryQuery
+  fallbackData?: ProductsQueryQuery
+  title: string
 }
 
-const useProducts = (page: number, fallbackData?: SearchQueryQuery) => {
-  const { searchParams } = useSearch()
-  const variables = useSearchVariables({
-    ...searchParams,
-    page,
-  })
+function GalleryPage({ page, display, title, fallbackData }: Props) {
+  const {
+    itemsPerPage,
+    state: { sort, term, selectedFacets },
+  } = useSearch()
 
-  return useSearchQuery(variables, {
-    fallbackData,
-  })
-}
+  const productList = useProductsQuery(
+    {
+      first: itemsPerPage,
+      after: (itemsPerPage * page).toString(),
+      sort,
+      term: term ?? '',
+      selectedFacets,
+    },
+    {
+      fallbackData,
+      revalidateOnMount: fallbackData == null,
+    }
+  )
 
-function GalleryPage({ page, fallbackData, display }: Props) {
-  const products = useProducts(page, fallbackData)
+  const products = useMemo(
+    () => productList?.edges.map((edge) => edge.node),
+    [productList]
+  )
 
   if (display === false || products == null) {
     return null
   }
 
-  return <ProductGrid products={products} />
+  return (
+    <>
+      <Sentinel products={products} page={page} title={title} />
+      <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
+    </>
+  )
 }
 
 export default GalleryPage

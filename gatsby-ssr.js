@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-filename-extension */
+import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
-import { SessionProvider, UIProvider, CartProvider } from '@faststore/sdk'
 
-import ErrorBoundary from './src/sdk/error/ErrorBoundary'
-import Layout from './src/views/Layout'
-import TestProvider from './src/sdk/tests'
-import { validateCart } from './src/sdk/cart/validate'
+import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
-import { uiInitialState, uiActions, uiEffects } from './src/sdk/ui'
+import { validateCart } from './src/sdk/cart/validate'
+import ErrorBoundary from './src/sdk/error/ErrorBoundary'
+import TestProvider from './src/sdk/tests'
+import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
+import storeConfig from './store.config'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
@@ -18,9 +19,7 @@ export const wrapRootElement = ({ element }) => (
           actions={uiActions}
           effects={uiEffects}
         >
-          <SessionProvider
-            initialState={{ channel: process.env.GATSBY_VTEX_CHANNEL }}
-          >
+          <SessionProvider initialState={{ channel: storeConfig.channel }}>
             <CartProvider mode="optimistic" onValidateCart={validateCart}>
               {element}
             </CartProvider>

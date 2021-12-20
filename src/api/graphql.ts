@@ -1,7 +1,8 @@
-import { execute, parse } from 'graphql'
 import type { GatsbyFunctionRequest, GatsbyFunctionResponse } from 'gatsby'
+import { GraphQLError } from 'graphql'
 
-import { getSchema, getContextFactory } from '../server'
+import type { FormatError } from '../server/envelop'
+import { getEnvelop } from '../server/envelop'
 import persisted from '../../@generated/graphql/persisted.json'
 
 const persistedQueries = new Map(Object.entries(persisted))
@@ -28,7 +29,23 @@ const parseRequest = (req: GatsbyFunctionRequest) => {
   }
 }
 
-const contextFactory = getContextFactory()
+const isBadRequestError = (err: GraphQLError) => {
+  return err.originalError && err.originalError.name === 'BadRequestError'
+}
+
+const maskError: FormatError = (err: GraphQLError | unknown) => {
+  if (err instanceof GraphQLError) {
+    if (!isBadRequestError(err)) {
+      return new GraphQLError('Sorry, something went wrong.')
+    }
+
+    return err
+  }
+
+  return new GraphQLError('Sorry, something went wrong.')
+}
+
+const envelop = getEnvelop(maskError)
 
 const handler = async (
   req: GatsbyFunctionRequest,
@@ -40,14 +57,15 @@ const handler = async (
     return
   }
 
+  const { parse, contextFactory, execute, schema } = (await envelop)({ req })
   const { operationName, variables, query } = parseRequest(req)
 
   try {
     const response = await execute({
-      schema: await getSchema(),
+      schema,
       document: parse(query),
       variableValues: variables,
-      contextValue: contextFactory({}),
+      contextValue: await contextFactory(),
       operationName,
     })
 
@@ -57,6 +75,12 @@ const handler = async (
       }
 
       res.setHeader('cache-control', 'no-cache, no-store')
+    }
+
+    if (response.errors && isBadRequestError(response.errors[0])) {
+      res.status(400)
+    } else {
+      response.errors && res.status(500)
     }
 
     res.setHeader('content-type', 'application/json')

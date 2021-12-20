@@ -1,11 +1,12 @@
 const VTEXLHConfig = require('@vtex/lighthouse-config').default
 
-const urls = ['/', '/women', '/organza-sleeve-top-138/p']
+const { lighthouse: lh } = require('./store.config')
 
 module.exports = VTEXLHConfig({
-  urls,
-  server: process.env.BASE_SITE_URL,
+  urls: Object.values(lh.pages),
+  server: lh.server,
   assertions: {
+    'csp-xss': 'off',
     'legacy-javascript': ['error', { maxLength: 1 }],
   },
 })

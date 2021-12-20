@@ -2,7 +2,6 @@
   "extends": "vtex-react/gatsby",
   "root": true,
   "rules": {
-    "@typescript-eslint/no-use-before-define": ["off"],
-    "@typescript-eslint/no-non-null-assertion": ["off"]
+    "react/prop-types": "off"
   }
 }

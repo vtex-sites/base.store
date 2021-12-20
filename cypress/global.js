@@ -1,11 +1,6 @@
-export const pages = {
-  pdp: '/organza-sleeve-top-138/p',
-  collection: '/women',
-  collection_filtered: '/women/red?map=c,color',
-  search: '/s/shirt?map=term',
-  home: '/',
-  brand_name: 'lacoste',
-}
+import storeConfig from '../store.config'
+
+export const { pages } = storeConfig.cypress
 
 export const options = {
   onBeforeLoad: () => {

@@ -1,35 +1,44 @@
 import { graphql } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import Button from 'src/components/ui/Button'
+import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
-import { useImage } from 'src/sdk/image/useImage'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
 }
 
-const styles = {
-  listPrice: { textDecoration: 'line-through' },
-}
+function ProductDetails({ product: staleProduct }: Props) {
+  // Stale while revalidate the product for fetching the new price etc
+  const { data, isValidating } = useProduct(staleProduct.id, {
+    product: staleProduct,
+  })
 
-function ProductDetails({ product }: Props) {
+  if (!data) {
+    throw new Error('NotFound')
+  }
+
   const {
-    id,
-    sku,
-    gtin: referenceId,
-    name: variantName,
-    brand: { name: brandName },
-    isVariantOf: { name, productGroupID: productId },
-    image: [img],
-    offers: {
-      offers: [{ price, listPrice, seller }],
+    product: {
+      id,
+      sku,
+      gtin: referenceId,
+      name: variantName,
+      brand: { name: brandName },
+      isVariantOf: { name, productGroupID: productId },
+      image: [img],
+      offers: {
+        offers: [{ price, listPrice, seller }],
+      },
     },
-  } = product
+  } = data
 
-  const image = useImage(img.url, 'product.details')
+  const formattedPrice = useFormattedPrice(price)
+  const formattedListPrice = useFormattedPrice(listPrice)
+
   const buyProps = useBuyButton({
     id,
     name,
@@ -50,10 +59,17 @@ function ProductDetails({ product }: Props) {
   return (
     <div>
       <h2>{variantName}</h2>
-      <GatsbyImage image={image} alt={img.alternateName} loading="eager" />
-      <div style={styles.listPrice}>{useFormattedPrice(listPrice)}</div>
-      <div>{useFormattedPrice(price)}</div>
-      <Button {...buyProps}>Add to cart</Button>
+      <Image
+        src={img.url}
+        variant="product.details"
+        alt={img.alternateName}
+        loading="eager"
+      />
+      <div className="line-through">{formattedListPrice}</div>
+      <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
+      <Button {...buyProps} disabled={isValidating}>
+        Add to cart
+      </Button>
     </div>
   )
 }
