@@ -1,3 +1,10 @@
+/* Reset default styles */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /* Remove all of the default margins */
 blockquote,
 dl,
