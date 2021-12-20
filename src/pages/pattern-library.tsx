@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton } from '@faststore/ui'
-import Alert from 'src/components/ui/Alert'
 import { BellRinging } from 'phosphor-react'
+
+import Alert from '../components/ui/Alert'
+import SearchInput from '../components/common/SearchInput'
 
 import '../styles/pattern-library.scss'
 
@@ -68,6 +70,15 @@ function Page() {
               </li>
               <li>
                 <UIButton>Call to Action</UIButton>
+              </li>
+            </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Inputs</h2>
+            <ul className="list-horizontal">
+              <li style={{ width: '100%' }}>
+                <SearchInput />
               </li>
             </ul>
           </section>
