@@ -13,10 +13,10 @@
     padding-right: var(--space-1);
   }
 
-  span { font-weight: bold; }
+  span { font-weight: var(--text-weight-bold); }
 
   a {
-    font-weight: bold;
+    font-weight: var(--text-weight-bold);
     color: var(--color-text);
 
     &:visited { color: var(--color-text) }
