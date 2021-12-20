@@ -1,9 +1,12 @@
+
+@import "../../../styles/vendors/include-media";
+
 .navbar {
   [data-store-search-input] {
     flex: 1 0 100%;
     order: 2;
   }
-  @media screen and (min-width: 768px) {
+  @include media(">=tablet") {
     [data-store-search-input] {
       max-width: 37.5rem;
       order: 1;
@@ -23,7 +26,7 @@
   justify-content: space-between;
   padding: var(--space-1) 0;
 
-  @media screen and (min-width: 768px) {
+  @include media(">=tablet") {
     padding: var(--space-2) 0;
   }
 }
