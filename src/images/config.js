@@ -33,4 +33,15 @@ module.exports = {
       fitIn: true,
     },
   },
+  'hero.home': {
+    sourceWidth: 720,
+    aspectRatio: 2,
+    width: 800,
+    breakpoints: [50, 100, 150],
+    layout: 'constrained',
+    backgroundColor: '#f0f0f0',
+    options: {
+      fitIn: true,
+    },
+  },
 }
