@@ -37,20 +37,13 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
   })
 
   return (
-    <div ref={ref} data-store-tiles data-testid={testId} {...otherProps}>
-      {React.Children.map(children as ReactElement, (child, index) => {
-        if (index === 0 && spanFirstChild) {
-          const { className } = child.props
-
-          return React.cloneElement(child, {
-            className: className
-              ? `${className} tile-item-spanded`
-              : 'tile-item-spanded',
-          })
-        }
-
-        return child
-      })}
+    <div
+      ref={ref}
+      data-store-tiles={spanFirstChild ? 'expanded' : ''}
+      data-testid={testId}
+      {...otherProps}
+    >
+      {children}
     </div>
   )
 })
