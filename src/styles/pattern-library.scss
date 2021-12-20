@@ -11,8 +11,9 @@
     ul {
       padding: var(--space-3);
       list-style: none;
-      background-color:  var(--bg-neutral-lightest);
+      background-color: var(--bg-neutral-lightest);
       border-radius: var(--border-radius-default);
+
       &.list-horizontal {
         display: flex;
         gap: var(--space-2);

@@ -1,5 +1,5 @@
 // Font Import //////////////////////
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap");
 
 // Output functions & mixins
 @import "vendors/include-media";
@@ -23,13 +23,11 @@
   --color-primary-1: #8d50fd;
   --color-primary-2: #732fe2;
   --color-primary-3: #5900c8;
-
   --color-secondary-0: #ecf0ff;
   --color-secondary-1: #d8e2ff;
   --color-secondary-2: #00419e;
   --color-secondary-3: #002c71;
   --color-secondary-4: #001947;
-
   --color-neutral-0: #ffffff;
   --color-neutral-1: #f1f2f3;
   --color-neutral-2: #e3e6e8;
@@ -42,7 +40,7 @@
   // Typography /////////////////////
 
   // Family
-  --sans-serif: 'Lato', -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --sans-serif: "Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 
   // Base
   font-size: 16px;
@@ -53,7 +51,6 @@
   --text-weight-regular: 400;
   --text-weight-bold: 700;
   --text-weight-black: 900;
-
 
   // Spacing ////////////////////////
 
@@ -80,7 +77,6 @@
   --border-radius-pill: 100px;
   --border-radius-circle: 100%;
 
-
   // Width
   --border-width-0: 1px;
   --border-width-1: 1.5px;
@@ -94,11 +90,10 @@
   --grid-gap-2: var(--space-5);
 
   // Breakpoints
-  --breakpoint-mob-sm:   320px;
-  --breakpoint-mob-md:   375px;
-  --breakpoint-tablet:   768px;
+  --breakpoint-mob-sm: 320px;
+  --breakpoint-mob-md: 375px;
+  --breakpoint-tablet: 768px;
   --breakpoint-note-sm: 1025px;
   --breakpoint-note-md: 1280px;
-  --breakpoint-desk:    1440px;
-
+  --breakpoint-desk: 1440px;
 }
