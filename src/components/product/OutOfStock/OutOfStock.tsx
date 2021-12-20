@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Input, Label, Button } from '@faststore/ui'
+import { Input, Button } from '@faststore/ui'
 
 interface OutOfStockProps {
   buttonTxt?: string
@@ -18,18 +18,19 @@ function OutOfStock(props: OutOfStockProps) {
 
   const [email, setEmail] = useState('')
 
-  // TODO: Display (after the button) a success alert if onSubmit succeed
-
   return (
     <>
       <p>{title}</p>
-      <Label>{notificationMsg}</Label>
+      {/* TODO Add icon here */}
+      <p>{notificationMsg}</p>
       <Input
+        aria-label="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="Email"
       />
       <Button onClick={() => onSubmit(email)}>{buttonTxt}</Button>
+      {/* TODO: Display success alert if onSubmit succeed */}
     </>
   )
 }
