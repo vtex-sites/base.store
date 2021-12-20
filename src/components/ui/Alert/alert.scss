@@ -1,5 +1,6 @@
 [data-store-alert] {
   box-sizing: border-box; /** FIXME remove after add css reset */
+  position: relative;
   display: flex;
   align-items: center;
   min-height: var(--space-7);
@@ -23,6 +24,10 @@
   }
 
   [data-alert-button] {
+    position: absolute;
+    right: 0;
+    min-width: var(--space-7);
+    min-height: var(--space-7);
     margin-left: auto;
     padding: 0 var(--space-0);
     border: none;
