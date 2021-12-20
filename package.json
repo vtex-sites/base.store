@@ -99,6 +99,9 @@
     ],
     "*.json": [
       "prettier --write"
+    ],
+    "*.scss": [
+      "stylelint --fix"
     ]
   }
 }
