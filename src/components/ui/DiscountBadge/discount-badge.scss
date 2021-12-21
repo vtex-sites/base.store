@@ -1,4 +1,5 @@
 [data-store-badge] {
+  width: fit-content;
   padding: var(--space-1) var(--space-2);
   color: var(--color-text);
   font-weight: var(--text-weight-bold);
@@ -6,7 +7,8 @@
   text-transform: uppercase;
   background-color: var(--bg-feedback-success);
   border-radius: var(--border-radius-pill);
-  &.badge_small {
+
+  &[data-store-badge="small"] {
     padding: var(--space-0) var(--space-2);
     font-size: var(--text-size-0);
   }
