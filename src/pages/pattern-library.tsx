@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton, Badge as UIBadge } from '@faststore/ui'
+import BuyButton from 'src/components/ui/BuyButton'
 import { BellRinging } from 'phosphor-react'
 
 import Alert from '../components/ui/Alert'
@@ -63,7 +64,7 @@ function Page() {
             <h2 className="title-subsection">Buttons</h2>
             <ul className="list-horizontal">
               <li>
-                <UIButton>Call to Action</UIButton>
+                <BuyButton>Buy Now</BuyButton>
               </li>
               <li>
                 <UIButton>Call to Action</UIButton>
