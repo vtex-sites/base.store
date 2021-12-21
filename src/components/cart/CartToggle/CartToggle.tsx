@@ -9,7 +9,11 @@ function CartToggle() {
   const btnProps = useCartToggleButton()
 
   return (
-    <Button {...btnProps} className="cart-toggle">
+    <Button
+      {...btnProps}
+      className="cart-toggle"
+      aria-label="Button cart toggle"
+    >
       <ShoppingCart />
     </Button>
   )
