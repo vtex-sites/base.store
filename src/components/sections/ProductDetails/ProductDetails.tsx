@@ -59,7 +59,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   return (
     <div>
       <h2>{variantName}</h2>
-      <ImageGallery images={productImages.map((el) => el.url)} />
+      <ImageGallery images={productImages} />
       <div className="line-through">{formattedListPrice}</div>
       <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
       <Button {...buyProps} disabled={isValidating}>

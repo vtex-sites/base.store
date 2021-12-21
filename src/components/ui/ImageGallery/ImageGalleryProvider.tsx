@@ -9,13 +9,13 @@ export type ImageGalleryProps = ImageGalleryContext &
 const ImageGalleryProvider = ({
   name,
   children,
-  selectedImageSrc,
-  onChange,
+  selectedImageData,
+  onClick,
   ...otherProps
 }: ImageGalleryProps) => {
   const contextValues = useMemo(() => {
-    return { name, selectedImageSrc, onChange }
-  }, [name, selectedImageSrc, onChange])
+    return { name, selectedImageData, onClick }
+  }, [name, selectedImageData, onClick])
 
   return (
     <ImageGalleryContext.Provider value={contextValues}>

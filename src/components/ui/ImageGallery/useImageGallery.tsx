@@ -1,14 +1,22 @@
 import type { MouseEventHandler } from 'react'
 import { createContext, useContext } from 'react'
 
+import type { ImageElementData } from '.'
+
 export interface ImageGalleryContext {
   /**
    * Name to link children by context.
    */
   name: string
 
-  selectedImageSrc?: string
+  /**
+   * Stores the url and alt attributes to populate the <img> tag.
+   */
+  selectedImageData: ImageElementData
 
+  /**
+   * onClick event that can be shared to other components inside the context
+   */
   onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
