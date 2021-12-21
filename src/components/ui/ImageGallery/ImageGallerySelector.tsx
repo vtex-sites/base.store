@@ -95,18 +95,7 @@ function ImageGallerySelector({
           {images.map((image, idx) => (
             <div key={idx} style={{ width: `${100 / imageCount}%` }}>
               <div className="flex justify-center items-center w-full">
-                <Button
-                  onClick={onClick}
-                  style={{
-                    border: '1px solid black',
-                    padding: '2px',
-                    margin: '2px',
-                    width: '75px',
-                    height: '75px',
-                  }}
-                >
-                  {image}
-                </Button>
+                <Button onClick={onClick}>{image}</Button>
               </div>
             </div>
           ))}
