@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
+import SkuSelector from 'src/components/ui/SkuSelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
@@ -67,6 +68,15 @@ function ProductDetails({ product: staleProduct }: Props) {
       />
       <div className="line-through">{formattedListPrice}</div>
       <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
+      <SkuSelector
+        label="Size"
+        variant="size"
+        options={[
+          { label: 'P', value: 'p' },
+          { label: 'M', value: 'm' },
+          { label: 'G', value: 'g' },
+        ]}
+      />
       <Button {...buyProps} disabled={isValidating}>
         Add to cart
       </Button>
