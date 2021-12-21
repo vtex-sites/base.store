@@ -23,7 +23,7 @@
 .grid-content {
   box-sizing: border-box;
   width: 100%;
-  max-width: var(--breakpoint-note-md);
+  max-width: var(--breakpoint-notebook);
   margin-right: auto;
 
   @include media(">=notebook") {

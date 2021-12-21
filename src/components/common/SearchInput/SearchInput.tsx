@@ -1,11 +1,11 @@
-import './search-input.scss'
-
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
 import React from 'react'
 import type { SearchInputProps as UISearchInputProps } from '@faststore/ui'
 import { MagnifyingGlass } from 'phosphor-react'
+
+import './search-input.scss'
 
 declare type SearchInputProps = Omit<UISearchInputProps, 'onSubmit'>
 

@@ -141,7 +141,7 @@ function Page() {
                 <UIBadge>15% off</UIBadge>
               </li>
               <li>
-                <UIBadge className="badge_small">15% off</UIBadge>
+                <UIBadge data-store-badge="small">15% off</UIBadge>
               </li>
             </ul>
           </section>
