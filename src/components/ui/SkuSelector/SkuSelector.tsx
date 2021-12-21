@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import type { ChangeEventHandler } from 'react'
+import { Image } from 'src/components/ui/Image'
 import { RadioGroup, RadioOption, Label } from '@faststore/ui'
 
 interface OptionProps {
@@ -20,12 +21,12 @@ function Option({
     return (
       <RadioOption
         label={label}
-        value={value}
+        value={label}
         disabled={disabled}
-        checked={value === selectedOption}
+        checked={label === selectedOption}
         {...otherProps}
       >
-        {variant === 'size' && <span>{option.value}</span>}
+        {variant === 'size' && <span>{option.label}</span>}
         {variant === 'color' && (
           <div style={{ backgroundColor: value, height: 40, width: 40 }} />
         )}
@@ -34,17 +35,17 @@ function Option({
   }
 
   if (variant === 'image' && 'src' in option) {
-    const { id, src, alt, disabled }: ImageSkuProps = option
+    const { label, src, alt, disabled }: ImageSkuProps = option
 
     return (
       <RadioOption
-        value={id}
-        label={alt}
+        label={label}
+        value={label}
         disabled={disabled}
-        checked={id === selectedOption}
+        checked={label === selectedOption}
         {...otherProps}
       >
-        <img src={src} alt={alt} width={40} height={40} />
+        <Image src={src} alt={alt} variant="product.sku" />
       </RadioOption>
     )
   }
@@ -53,15 +54,36 @@ function Option({
 }
 
 type DefaultSkuProps = {
+  /**
+   * Label to describe the SKU when selected.
+   */
   label: string
+  /**
+   * Current value for this SKU.
+   */
   value: string
+  /**
+   * Specifies that this option should be disabled.
+   */
   disabled?: boolean
 }
 
 interface ImageSkuProps {
+  /**
+   * Alternative text description of the image.
+   */
   alt: string
+  /**
+   * Image URL.
+   */
   src: string
-  id: string | number
+  /**
+   * Label to describe the image when selected.
+   */
+  label: string
+  /**
+   * Specifies that this option should be disabled.
+   */
   disabled?: boolean
 }
 
@@ -84,7 +106,7 @@ export interface SkuSelectorProps {
   /**
    * SKU options that should be rendered.
    */
-  skus: Array<Sku<Variant>>
+  options: Array<Sku<Variant>>
   /**
    * Default SKU option.
    */
@@ -100,9 +122,9 @@ export interface SkuSelectorProps {
 }
 
 const SkuSelector = ({
-  skus,
   label,
   variant,
+  options,
   onChange,
   defaultSku,
   testId = 'store-sku-selector',
@@ -124,12 +146,12 @@ const SkuSelector = ({
           setSelectedSku(e.currentTarget.value)
         }}
       >
-        {skus.map((sku, index) => {
+        {options.map((option, index) => {
           return (
             <Option
               data-sku-selector-option
               key={String(index)}
-              option={sku}
+              option={option}
               variant={variant}
               selectedOption={selectedSku}
             />
