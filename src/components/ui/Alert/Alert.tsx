@@ -27,7 +27,7 @@ function Alert({ children, icon, dismissible, onClose, ...otherProps }: Props) {
     <UIAlert {...otherProps}>
       {icon && <UIIcon component={icon} />}
 
-      {children}
+      <div data-alert-content>{children}</div>
 
       {dismissible && (
         <Button data-alert-button aria-label="Close" onClick={handleClose}>
