@@ -1,3 +1,5 @@
+@import "../../../styles/utilities";
+
 .button[data-store-button] {
   &[data-button-variant="primary"] {
     display: flex;
@@ -18,8 +20,7 @@
     }
 
     &:focus {
-      outline: 2px solid var(--bg-focus-ring);
-      outline-offset: 1px;
+      @include focus-ring;
     }
 
     &:disabled {

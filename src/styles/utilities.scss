@@ -10,3 +10,8 @@ $base: 16px !default;
 
   @return #{$rem}rem;
 }
+
+@mixin focus-ring {
+  outline: 2px solid var(--bg-focus-ring);
+  outline-offset: 1px;
+}
