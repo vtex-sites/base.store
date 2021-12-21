@@ -1,8 +1,8 @@
-import './discount-badge.scss'
-
 import { Badge } from '@faststore/ui'
 import React from 'react'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
+
+import './discount-badge.scss'
 
 type Props = {
   listPrice: number
