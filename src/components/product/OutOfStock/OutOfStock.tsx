@@ -20,6 +20,8 @@ function OutOfStock(props: OutOfStockProps) {
 
   return (
     <>
+      {/* TODO: This component seems to fit in Aria live Regions, this is just a reminder to handle this in the future
+      https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions */}
       <p>{title}</p>
       {/* TODO Add icon here */}
       <p>{notificationMsg}</p>
