@@ -2,6 +2,7 @@ import type { HTMLAttributes, PropsWithChildren } from 'react'
 import React, { useMemo } from 'react'
 import { useSlider, IconButton, Button } from '@faststore/ui'
 
+import { useImageGallery } from './useImageGallery'
 import { LeftArrowIcon, RightArrowIcon } from './Icons'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -32,6 +33,8 @@ function ImageGallerySelector({
 }: PropsWithChildren<Props>) {
   const images = React.Children.toArray(children)
   const imageCount = images.length
+
+  const { onClick } = useImageGallery()
 
   const transformValues = useMemo(
     () => createTransformValues(imageCount),
@@ -93,6 +96,7 @@ function ImageGallerySelector({
             <div key={idx} style={{ width: `${100 / imageCount}%` }}>
               <div className="flex justify-center items-center w-full">
                 <Button
+                  onClick={onClick}
                   style={{
                     border: '1px solid black',
                     padding: '2px',

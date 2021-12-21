@@ -1,3 +1,4 @@
+import type { MouseEventHandler, ReactNode } from 'react'
 import { createContext, useContext } from 'react'
 
 export interface ImageGalleryContext {
@@ -6,7 +7,9 @@ export interface ImageGalleryContext {
    */
   name: string
 
-  selectedImage?: string
+  selectedImage?: ReactNode
+
+  onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
 export const ImageGalleryContext = createContext<

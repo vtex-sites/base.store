@@ -1,14 +1,29 @@
-import React from 'react'
+import type { ReactNode } from 'react'
+import React, { useState } from 'react'
 
 import { ImageGalleryProvider, ImageGallerySelector, ImageGalleryZoom } from '.'
 
 function ImageGallery() {
+  const [currentImage, setCurrentImage] = useState<ReactNode>()
+
   return (
     <>
-      <ImageGalleryProvider name="image-gallery">
+      <ImageGalleryProvider name="image-gallery" selectedImage={currentImage}>
+        <ImageGalleryZoom displayImage={currentImage} />
+
         <ImageGallerySelector
           imagesPerPage={4}
           style={{ overflow: 'hidden', width: '30%' }}
+          onClick={() =>
+            setCurrentImage(
+              <img
+                alt=""
+                height={150}
+                src="https://placekitten.com/408/287"
+                width={150}
+              />
+            )
+          }
         >
           <img
             alt=""
@@ -72,7 +87,6 @@ function ImageGallery() {
           />
         </ImageGallerySelector>
       </ImageGalleryProvider>
-      <ImageGalleryZoom />
     </>
   )
 }
