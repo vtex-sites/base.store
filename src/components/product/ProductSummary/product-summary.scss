@@ -4,7 +4,7 @@
 
   &:hover,
   &:focus-within {
-    outline: 2px solid var(--color-emphasis);
+    outline: 2px solid var(--bg-focus-ring);
   }
 
   [data-store-card-image] {
@@ -33,6 +33,26 @@
     right: 0;
     bottom: 0;
     left: 0;
-    button { z-index: 1; }
+
+    [data-store-button] {
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      padding: var(--space-1)  var(--space-2);
+      color: var(--color-text-negative);
+      background-color: var(--bg-secondary-default);
+      border: 0;
+      border-radius: var(--border-radius-default);
+      svg { margin-right: var(--space-1); }
+
+      &:hover, &:focus {
+        background-color: var(--bg-secondary-hover);
+      }
+
+      &:focus {
+        outline: 1px solid var(--bg-selected-outline);
+        outline-offset: var(--space-0);
+      }
+    }
   }
 }

@@ -9,6 +9,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { ShoppingCart } from 'phosphor-react'
 import {
   Card as UICard,
   CardImage as UICardImage,
@@ -91,7 +92,10 @@ function ProductSummary({ product, index, className }: Props) {
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
       </UICardContent>
       <UICardActions>
-        <Button {...buyProps}>Add to cart</Button>
+        <Button {...buyProps} title="Add to cart">
+          <ShoppingCart size={18} weight="bold" />
+          Add
+        </Button>
       </UICardActions>
     </UICard>
   )
