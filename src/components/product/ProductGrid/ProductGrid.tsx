@@ -11,15 +11,13 @@ interface Props {
 
 function ProductGrid({ products, page, pageSize }: Props) {
   return (
-    <div>
+    <ul>
       {products.map((product, idx) => (
-        <ProductSummary
-          key={`${product.id}`}
-          product={product}
-          index={pageSize * page + idx + 1}
-        />
+        <li key={`${product.id}`}>
+          <ProductSummary product={product} index={pageSize * page + idx + 1} />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
 
