@@ -12,9 +12,9 @@ function CartToggle() {
     <Button
       {...btnProps}
       className="cart-toggle"
-      aria-label="Button cart toggle"
+      aria-label={`Cart with ${btnProps['data-items']} items`}
     >
-      <ShoppingCart />
+      <ShoppingCart size={32} />
     </Button>
   )
 }
