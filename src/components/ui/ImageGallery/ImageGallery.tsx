@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { ImageGalleryProvider, ImageGallerySelector, ImageGalleryZoom } from '.'
 
 function ImageGallery() {
-  const [currentImage, setCurrentImage] = useState<string>('')
+  const [currentImage, setCurrentImage] = useState<string | undefined>('')
 
   return (
     <>
@@ -12,7 +12,9 @@ function ImageGallery() {
         selectedImageSrc={currentImage}
         onClick={(v) =>
           setCurrentImage(() => {
-            return v.target.getAttribute('src')
+            const target = v.target as HTMLImageElement
+
+            return target.getAttribute('src') ?? undefined
           })
         }
       >

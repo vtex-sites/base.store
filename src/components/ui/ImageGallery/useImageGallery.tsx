@@ -1,4 +1,4 @@
-import type { MouseEventHandler, ReactNode } from 'react'
+import type { MouseEventHandler } from 'react'
 import { createContext, useContext } from 'react'
 
 export interface ImageGalleryContext {

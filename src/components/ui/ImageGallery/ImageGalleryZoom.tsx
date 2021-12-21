@@ -1,12 +1,11 @@
-import type { ReactNode } from 'react'
 import React from 'react'
 
 interface ImageGalleryProps {
-  imageSrc: string
+  imageSrc?: string
 }
 
 const ImageGalleryZoom = (props: ImageGalleryProps) => {
-  return <img src={props.imageSrc} />
+  return <img alt="Product gallery" src={props.imageSrc} />
 }
 
 export default ImageGalleryZoom
