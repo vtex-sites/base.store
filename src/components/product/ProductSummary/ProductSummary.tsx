@@ -1,3 +1,5 @@
+import './product-summary.scss'
+
 import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
@@ -7,6 +9,12 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import {
+  Card as UICard,
+  CardImage as UICardImage,
+  CardContent as UICardContent,
+  CardActions as UICardActions,
+} from '@faststore/ui'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -59,27 +67,33 @@ function ProductSummary({ product, index, className }: Props) {
   })
 
   return (
-    <Link {...linkProps} className={className}>
-      <Image
-        className="w-full"
-        src={img.url}
-        variant="product.summary"
-        alt={img.alternateName}
-        sizes="(max-width: 768px) 200px, 320px"
-      />
-
-      <div>{name}</div>
-      <div>
-        <span data-testid="list-price" data-value={listPrice}>
-          {useFormattedPrice(listPrice)}
-        </span>
-        <span data-testid="price" data-value={spotPrice}>
-          {useFormattedPrice(spotPrice)}
-        </span>
-        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
-      </div>
-      <Button {...buyProps}>Add to cart</Button>
-    </Link>
+    <UICard className={className}>
+      <UICardImage>
+        <Image
+          src={img.url}
+          variant="product.summary"
+          alt={img.alternateName}
+          sizes="(max-width: 768px) 200px, 320px"
+        />
+      </UICardImage>
+      <UICardContent aria-label="">
+        <Link {...linkProps}>
+          <h3 className="text-body">{name}</h3>
+        </Link>
+        <div>
+          <span data-testid="list-price" data-value={listPrice}>
+            {useFormattedPrice(listPrice)}
+          </span>
+          <span data-testid="price" data-value={spotPrice}>
+            {useFormattedPrice(spotPrice)}
+          </span>
+        </div>
+        <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
+      </UICardContent>
+      <UICardActions>
+        <Button {...buyProps}>Add to cart</Button>
+      </UICardActions>
+    </UICard>
   )
 }
 

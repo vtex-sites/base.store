@@ -1,0 +1,38 @@
+[data-store-card] {
+  position: relative;
+  padding-bottom: 44px;
+
+  &:hover,
+  &:focus-within {
+    outline: 2px solid var(--color-emphasis);
+  }
+
+  [data-store-card-image] {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  [data-store-card-content] a[href] {
+    color: inherit;
+    text-decoration: none;
+    outline: none;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: block;
+      content: "";
+    }
+  }
+
+  [data-store-card-actions] {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    button { z-index: 1; }
+  }
+}
