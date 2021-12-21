@@ -31,7 +31,7 @@ function Alert({ children, icon, dismissible, onClose, ...otherProps }: Props) {
 
       {dismissible && (
         <Button data-alert-button aria-label="Close" onClick={handleClose}>
-          <X size={24} />
+          <X size={18} />
         </Button>
       )}
     </UIAlert>
