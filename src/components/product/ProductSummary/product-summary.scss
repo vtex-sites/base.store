@@ -1,6 +1,7 @@
 [data-store-card] {
   position: relative;
-  padding-bottom: 44px;
+  padding: var(--space-1);
+  background-color: var(--bg-neutral-lightest);
 
   &:hover,
   &:focus-within {
@@ -10,9 +11,13 @@
   [data-store-card-image] {
     width: 14rem;
     height: 14rem;
+    overflow: hidden;
+    border-radius: var(--border-radius-default);
   }
 
   [data-store-card-content] a[href] {
+    margin-top: var(--space-2);
+    padding: 0;
     color: inherit;
     text-decoration: none;
     outline: none;
@@ -29,10 +34,8 @@
   }
 
   [data-store-card-actions] {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    position: relative;
+    margin-top: var(--space-4);
 
     [data-store-button] {
       z-index: 1;

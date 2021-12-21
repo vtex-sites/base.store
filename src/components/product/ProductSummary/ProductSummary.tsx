@@ -78,9 +78,9 @@ function ProductSummary({ product, index, className }: Props) {
         />
       </UICardImage>
       <UICardContent aria-label="">
-        <Link {...linkProps}>
-          <h3 className="text-body">{name}</h3>
-        </Link>
+        <h3 className="text-body">
+          <Link {...linkProps}>{name}</Link>
+        </h3>
         <div>
           <span data-testid="list-price" data-value={listPrice}>
             {useFormattedPrice(listPrice)}
