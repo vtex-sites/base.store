@@ -7,7 +7,7 @@ export interface ImageGalleryContext {
    */
   name: string
 
-  selectedImage?: ReactNode
+  selectedImageSrc?: string
 
   onClick?: MouseEventHandler<HTMLButtonElement>
 }

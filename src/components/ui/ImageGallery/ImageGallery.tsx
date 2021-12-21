@@ -1,29 +1,26 @@
-import type { ReactNode } from 'react'
 import React, { useState } from 'react'
 
 import { ImageGalleryProvider, ImageGallerySelector, ImageGalleryZoom } from '.'
 
 function ImageGallery() {
-  const [currentImage, setCurrentImage] = useState<ReactNode>()
+  const [currentImage, setCurrentImage] = useState<string>('')
 
   return (
     <>
-      <ImageGalleryProvider name="image-gallery" selectedImage={currentImage}>
-        <ImageGalleryZoom displayImage={currentImage} />
+      <ImageGalleryProvider
+        name="image-gallery"
+        selectedImageSrc={currentImage}
+        onClick={(v) =>
+          setCurrentImage(() => {
+            return v.target.getAttribute('src')
+          })
+        }
+      >
+        <ImageGalleryZoom imageSrc={currentImage} />
 
         <ImageGallerySelector
           imagesPerPage={4}
           style={{ overflow: 'hidden', width: '30%' }}
-          onClick={() =>
-            setCurrentImage(
-              <img
-                alt=""
-                height={150}
-                src="https://placekitten.com/408/287"
-                width={150}
-              />
-            )
-          }
         >
           <img
             alt=""
