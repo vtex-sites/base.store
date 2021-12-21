@@ -179,5 +179,17 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-postcss',
     },
+    // {
+    // resolve: `gatsby-plugin-google-gtag`,
+    // options: {
+    // trackingIds: ['G-BPNTB95XTP'],
+    // gtagConfig: {
+    // cookie_expires: 0,
+    // },
+    // pluginConfig: {
+    // head: true,
+    // },
+    // },
+    // },
   ],
 }

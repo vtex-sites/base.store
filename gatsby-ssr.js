@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
+import { GoogleTagManager, Partytown } from '@builder.io/partytown/react'
 
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
@@ -31,3 +32,10 @@ export const wrapRootElement = ({ element }) => (
 )
 
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
+
+export const onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents([
+    <GoogleTagManager key="gtm" containerId="GTM-PGHZ95N" />,
+    <Partytown key="party" />,
+  ])
+}

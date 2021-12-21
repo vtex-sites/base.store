@@ -20,6 +20,7 @@
     "node": ">=14"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.0.29",
     "@envelop/core": "^1.2.0",
     "@envelop/graphql-jit": "^1.1.1",
     "@envelop/parser-cache": "^2.2.0",
@@ -32,8 +33,10 @@
     "@vtex/gatsby-plugin-thumbor": "^1.4.14",
     "@vtex/gatsby-source-store": "^1.4.14",
     "@vtex/graphql-utils": "^1.4.14",
+    "copy-webpack-plugin": "^10.2.0",
     "gatsby": "^3.14.3",
     "gatsby-plugin-gatsby-cloud": "^3.2.0",
+    "gatsby-plugin-google-gtag": "^4.4.0",
     "gatsby-plugin-image": "^1.14.1",
     "gatsby-plugin-manifest": "^3.14.0",
     "gatsby-plugin-netlify": "^3.14.0",
