@@ -1,28 +1,31 @@
 .button[data-store-button] {
-  display: flex;
-  align-items: center;
-  padding: var(--space-1)  var(--space-2);
-  color: var(--color-text-negative);
-  background-color: var(--bg-secondary-default);
-  border: 0;
-  border-radius: var(--border-radius-default);
-  svg { margin-right: var(--space-1); }
+  &[data-button-variant="primary"] {
+    display: flex;
+    align-items: center;
+    padding: var(--space-1)  var(--space-2);
+    color: var(--color-text-negative);
+    background-color: var(--bg-secondary-default);
+    border: 0;
+    border-radius: var(--border-radius-default);
+    svg { margin-right: var(--space-1); }
 
-  &:hover, &:focus {
-    background-color: var(--bg-secondary-hover);
-  }
+    &:hover, &:focus {
+      background-color: var(--bg-secondary-hover);
+    }
 
-  &:active {
-    background-color: var(--bg-primary-pressed);
-  }
+    &:active {
+      background-color: var(--bg-primary-pressed);
+    }
 
-  &:focus {
-    outline: 2px solid var(--bg-focus-ring);
-    outline-offset: 1px;
-  }
+    &:focus {
+      outline: 2px solid var(--bg-focus-ring);
+      outline-offset: 1px;
+    }
 
-  &:disabled {
-    color: var(--color-neutral-6);
-    background-color: var(--bg-disabled);
+    &:disabled {
+      color: var(--color-neutral-6);
+      background-color: var(--bg-disabled);
+      cursor: not-allowed;
+    }
   }
 }

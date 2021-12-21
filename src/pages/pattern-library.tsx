@@ -6,10 +6,10 @@ import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 
 import SkuSelector from '../components/ui/SkuSelector'
-import BuyButton from '../components/ui/BuyButton'
 import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
+import Button from '../components/ui/Button'
 import SearchInput from '../components/common/SearchInput'
 
 import '../styles/pattern-library.scss'
@@ -27,8 +27,6 @@ function Page() {
 
           <LinksSection />
 
-          <ButtonsSection />
-
           <InputsSection />
 
           <SkuSelectorSection />
@@ -38,6 +36,20 @@ function Page() {
           <BadgesSection />
 
           <CartToggleSection />
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Custom Button – Primary</h2>
+            <ul className="list-horizontal">
+              <li>
+                <Button variant="primary">Add to Cart</Button>
+              </li>
+              <li>
+                <Button variant="primary" disabled>
+                  Add to Cart
+                </Button>
+              </li>
+            </ul>
+          </section>
         </main>
       </div>
     </>
@@ -120,25 +132,6 @@ function LinksSection() {
           <Link href="/" inverse>
             Link Inverse
           </Link>
-        </li>
-      </ul>
-    </section>
-  )
-}
-
-function ButtonsSection() {
-  return (
-    <section className="grid-section grid-content">
-      <h2 className="title-subsection">Buttons</h2>
-      <ul className="list-horizontal">
-        <li>
-          <BuyButton>Buy Now</BuyButton>
-        </li>
-        <li>
-          <UIButton>Call to Action</UIButton>
-        </li>
-        <li>
-          <UIButton>Call to Action</UIButton>
         </li>
       </ul>
     </section>
