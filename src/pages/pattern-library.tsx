@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton, Badge as UIBadge } from '@faststore/ui'
 import { BellRinging } from 'phosphor-react'
+import CartToggle from 'src/components/cart/CartToggle'
+import { CartProvider, UIProvider } from '@faststore/sdk'
 
 import Alert from '../components/ui/Alert'
 import SearchInput from '../components/common/SearchInput'
@@ -144,6 +146,19 @@ function Page() {
                 <UIBadge data-store-badge="small">15% off</UIBadge>
               </li>
             </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">CartToggle</h2>
+            <UIProvider>
+              <CartProvider>
+                <ul className="list-vertical">
+                  <li>
+                    <CartToggle />
+                  </li>
+                </ul>
+              </CartProvider>
+            </UIProvider>
           </section>
         </main>
       </div>
