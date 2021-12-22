@@ -1,12 +1,13 @@
-[data-store-badge] {
+.discount-badge[data-store-badge] {
   padding: var(--space-1) var(--space-2);
   color: var(--color-text);
   font-weight: var(--text-weight-bold);
   font-size: var(--text-size-2);
   text-transform: uppercase;
-  background-color: var(--bg-feedback-success);
+  background-color: var(--bg-success);
   border-radius: var(--border-radius-pill);
-  &.badge_small {
+
+  &[data-store-badge="small"] {
     padding: var(--space-0) var(--space-2);
     font-size: var(--text-size-0);
   }
