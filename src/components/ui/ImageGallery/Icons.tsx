@@ -4,7 +4,7 @@ type IconProps = {
   color: string
 }
 
-export function LeftArrowIcon(props: IconProps) {
+export function BackwardArrowIcon(props: IconProps) {
   return (
     <svg
       width="16"
@@ -23,7 +23,7 @@ export function LeftArrowIcon(props: IconProps) {
   )
 }
 
-export function RightArrowIcon(props: IconProps) {
+export function ForwardArrowIcon(props: IconProps) {
   return (
     <svg
       width="16"

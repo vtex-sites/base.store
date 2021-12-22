@@ -3,7 +3,7 @@ import React, { useMemo } from 'react'
 import { useSlider, IconButton, Button } from '@faststore/ui'
 
 import { useImageGallery } from './useImageGallery'
-import { LeftArrowIcon, RightArrowIcon } from './Icons'
+import { ForwardArrowIcon, BackwardArrowIcon } from './Icons'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   imagesPerPage: number
@@ -103,6 +103,7 @@ function ImageGallerySelector({
       </div>
 
       <IconButton
+        aria-label="slide image selector backward"
         onClick={() => {
           if (sliderState.sliding) {
             return
@@ -110,9 +111,10 @@ function ImageGallerySelector({
 
           slide('previous', sliderDispatch)
         }}
-        icon={<LeftArrowIcon color="#323845" />}
+        icon={<BackwardArrowIcon color="#323845" />}
       />
       <IconButton
+        aria-label="slide image selector forward"
         onClick={() => {
           if (sliderState.sliding) {
             return
@@ -120,7 +122,7 @@ function ImageGallerySelector({
 
           slide('next', sliderDispatch)
         }}
-        icon={<RightArrowIcon color="#323845" />}
+        icon={<ForwardArrowIcon color="#323845" />}
       />
     </section>
   )
