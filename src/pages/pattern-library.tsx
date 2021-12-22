@@ -1,12 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton } from '@faststore/ui'
+import { BellRinging } from 'phosphor-react'
+import CartToggle from 'src/components/cart/CartToggle'
+import { CartProvider, UIProvider } from '@faststore/sdk'
 
+import Alert from '../components/ui/Alert'
+import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
 
 import '../styles/pattern-library.scss'
 
 function Page() {
+  const [showAlert1, setShowAlert1] = useState(true)
+  const [showAlert2, setShowAlert2] = useState(true)
+
   return (
     <>
       <GatsbySeo title="Pattern Library" language="en" noindex nofollow />
@@ -76,6 +84,82 @@ function Page() {
                 <SearchInput />
               </li>
             </ul>
+          </section>
+
+          <section id="alerts" className="grid-section grid-content">
+            <h2 className="title-subsection">Alerts</h2>
+            <ul className="list-vertical">
+              <li>
+                <Alert icon={<BellRinging size={24} />}>
+                  Get 10% off today:&nbsp;<span>NEW10</span>
+                </Alert>
+              </li>
+              <li>
+                <Alert>
+                  Get 10% off today:&nbsp;<span>NEW10</span>
+                </Alert>
+              </li>
+              <li>
+                {showAlert1 ? (
+                  <Alert
+                    icon={<BellRinging size={24} />}
+                    dismissible
+                    onClose={() => setShowAlert1(false)}
+                  >
+                    Get 10% off today:&nbsp;<span>NEW10</span>
+                  </Alert>
+                ) : (
+                  <UIButton
+                    onClick={() => setShowAlert1((prevState) => !prevState)}
+                  >
+                    Show Alert
+                  </UIButton>
+                )}
+              </li>
+              <li>
+                {showAlert2 ? (
+                  <Alert
+                    icon={<BellRinging size={24} />}
+                    dismissible
+                    onClose={() => setShowAlert2(false)}
+                  >
+                    Get 10% off today:&nbsp;<span>NEW10</span>&nbsp;
+                    <a href="#alerts">Action</a>
+                  </Alert>
+                ) : (
+                  <UIButton
+                    onClick={() => setShowAlert2((prevState) => !prevState)}
+                  >
+                    Show Alert
+                  </UIButton>
+                )}
+              </li>
+            </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Badge</h2>
+            <ul className="list-horizontal">
+              <li>
+                <DiscountBadge listPrice={100} spotPrice={50} />
+              </li>
+              <li>
+                <DiscountBadge listPrice={100} spotPrice={50} small />
+              </li>
+            </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">CartToggle</h2>
+            <UIProvider>
+              <CartProvider>
+                <ul className="list-vertical">
+                  <li>
+                    <CartToggle />
+                  </li>
+                </ul>
+              </CartProvider>
+            </UIProvider>
           </section>
         </main>
       </div>
