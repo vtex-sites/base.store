@@ -39,5 +39,7 @@
     color: var(--color-secondary-4);
     background-color: transparent;
     border: none;
+
+    &:hover { background-color: var(--bg-darken-hover); }
   }
 }
