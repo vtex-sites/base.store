@@ -2,6 +2,7 @@ import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
+import Price from 'src/components/ui/Price'
 import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
@@ -13,6 +14,7 @@ import {
   CardImage as UICardImage,
   CardContent as UICardContent,
   CardActions as UICardActions,
+  Price as UIPrice,
 } from '@faststore/ui'
 
 import './product-summary.scss'
@@ -81,20 +83,22 @@ function ProductSummary({ product, index }: Props) {
           <Link {...linkProps}>{name}</Link>
         </h3>
         <div className="product-summary__prices">
-          <span
-            className="product-summary__prices-list / text-body-small"
-            data-testid="list-price"
+          <Price
+            value={listPrice}
+            formatter={useFormattedPrice}
+            testId="list-price"
             data-value={listPrice}
-          >
-            {useFormattedPrice(listPrice)}
-          </span>
-          <span
-            className="product-summary__prices-spot / text-body"
-            data-testid="price"
+            variant="listing"
+            // className="text-body-small"
+          />
+          <Price
+            value={spotPrice}
+            formatter={useFormattedPrice}
+            testId="price"
             data-value={spotPrice}
-          >
-            {useFormattedPrice(spotPrice)}
-          </span>
+            variant="spot"
+            className="text-body"
+          />
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
       </UICardContent>

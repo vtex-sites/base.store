@@ -40,16 +40,6 @@
     margin-bottom: var(--space-2);
   }
 
-  .product-summary__prices-list {
-    text-decoration-line: line-through;
-    color: var(--color-text-subtle);
-  }
-
-  .product-summary__prices-spot {
-    margin-left: var(--space-1);
-    font-weight: var(--text-weight-bold);
-  }
-
   [data-store-card-actions] {
     position: relative;
     margin-top: var(--space-4);
