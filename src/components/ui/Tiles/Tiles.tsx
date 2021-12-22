@@ -21,20 +21,25 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
 ) {
   const childrenCount = React.Children.count(children)
   const spanFirstChild = childrenCount === NUMBER_ITEMS_TO_EXPAND
-  const isOutOfBounds =
-    childrenCount < MIN_CHILDREN || childrenCount > MAX_CHILDREN
 
-  if (isOutOfBounds) {
-    throw new Error(
-      `Tiles cannot receive less than ${MIN_CHILDREN} or more than ${MAX_CHILDREN} children.`
-    )
+  if (process.env.NODE_ENV === 'development') {
+    const isOutOfBounds =
+      childrenCount < MIN_CHILDREN || childrenCount > MAX_CHILDREN
+
+    if (isOutOfBounds) {
+      throw new Error(
+        `Tiles cannot receive less than ${MIN_CHILDREN} or more than ${MAX_CHILDREN} children.`
+      )
+    }
   }
 
-  React.Children.forEach(children as ReactElement, (child) => {
-    if (child.type !== Tile) {
-      throw new Error('Only Tile components allowed as children.')
-    }
-  })
+  if (process.env.NODE_ENV === 'development') {
+    React.Children.forEach(children as ReactElement, (child) => {
+      if (child.type !== Tile) {
+        throw new Error('Only Tile components allowed as children.')
+      }
+    })
+  }
 
   return (
     <div
