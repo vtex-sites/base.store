@@ -37,7 +37,7 @@ module.exports = {
     sourceWidth: 720,
     aspectRatio: 2,
     width: 800,
-    breakpoints: [50, 100, 150],
+    breakpoints: [480, 540, 720],
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {
