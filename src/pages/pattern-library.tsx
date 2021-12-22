@@ -5,6 +5,7 @@ import { BellRinging } from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 
+import BuyButton from '../components/ui/BuyButton'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
@@ -66,7 +67,7 @@ function Page() {
             <h2 className="title-subsection">Buttons</h2>
             <ul className="list-horizontal">
               <li>
-                <UIButton>Call to Action</UIButton>
+                <BuyButton>Buy Now</BuyButton>
               </li>
               <li>
                 <UIButton>Call to Action</UIButton>
