@@ -14,7 +14,6 @@ import {
   CardImage as UICardImage,
   CardContent as UICardContent,
   CardActions as UICardActions,
-  Price as UIPrice,
 } from '@faststore/ui'
 
 import './product-summary.scss'
@@ -89,7 +88,7 @@ function ProductSummary({ product, index }: Props) {
             testId="list-price"
             data-value={listPrice}
             variant="listing"
-            // className="text-body-small"
+            classes="text-body-small"
           />
           <Price
             value={spotPrice}
@@ -97,7 +96,7 @@ function ProductSummary({ product, index }: Props) {
             testId="price"
             data-value={spotPrice}
             variant="spot"
-            className="text-body"
+            classes="text-body"
           />
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
