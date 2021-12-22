@@ -20,16 +20,24 @@
 
   span { font-weight: var(--text-weight-bold); }
 
-  a {
-    display: inline-flex;
-    align-items: center;
-    min-width: var(--space-7);
+  [data-alert-link] {
+    min-width: var(--space-8);
     min-height: var(--space-7);
-    padding: 0 var(--space-1);
-    color: var(--color-secondary-4);
-    font-weight: var(--text-weight-bold);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
-    &:visited { color: var(--color-secondary-4); }
+    a {
+      display: inline-flex;
+      align-items: center;
+      min-width: var(--space-7);
+      min-height: var(--space-7);
+      padding: 0 var(--space-1);
+      color: var(--color-secondary-4);
+      font-weight: var(--text-weight-bold);
+
+      &:visited { color: var(--color-secondary-4); }
+    }
   }
 
   [data-alert-button] {

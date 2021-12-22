@@ -119,10 +119,10 @@ function Page() {
                   <Alert
                     icon={<BellRinging size={24} />}
                     dismissible
+                    link={{ to: '#alerts', text: 'Action' }}
                     onClose={() => setShowAlert2(false)}
                   >
                     Get 10% off today:&nbsp;<span>NEW10</span>
-                    <a href="#alerts">Action</a>
                   </Alert>
                 ) : (
                   <UIButton
@@ -138,13 +138,13 @@ function Page() {
                   <Alert
                     icon={<BellRinging size={24} />}
                     dismissible
+                    link={{ to: '#alerts', text: 'Action' }}
                     onClose={() => setShowAlert3(false)}
                   >
-                    Long text example: &nbsp;<span>NEW10</span>
-                    <a href="#alerts">Action</a> Get 10% off today Get 10% off
+                    Long text example:&nbsp;<span>NEW10.</span>&nbsp; Get 10%
+                    off today Get 10% off today Get 10% off today Get 10% off
                     today Get 10% off today Get 10% off today Get 10% off today
-                    Get 10% off today Get 10% off today Get 10% off today Get
-                    10% off today
+                    Get 10% off today Get 10% off today{' '}
                   </Alert>
                 ) : (
                   <UIButton
