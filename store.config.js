@@ -36,4 +36,8 @@ module.exports = {
       search: '/s?q=orange',
     },
   },
+
+  analytics: {
+    gtmContainerId: 'GTM-PGHZ95N',
+  },
 }
