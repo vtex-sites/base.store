@@ -31,7 +31,7 @@ const createTransformValues = (totalItems: number) => {
 function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
   const imageCount = images.length
 
-  const { onClick } = useImageGallery()
+  const { onClick, selectedImageData } = useImageGallery()
 
   const transformValues = useMemo(
     () => createTransformValues(imageCount),
@@ -94,6 +94,9 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
               <div className="flex justify-center items-center w-full">
                 <Button
                   data-thumbnail-button
+                  className={
+                    selectedImageData.url === image.url ? 'selected' : ''
+                  }
                   aria-label={`${image.alternateName} - Image ${idx + 1} of ${
                     images.length
                   }`}
