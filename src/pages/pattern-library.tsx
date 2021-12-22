@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import { Button as UIButton, Badge as UIBadge } from '@faststore/ui'
+import { Button as UIButton } from '@faststore/ui'
 import { BellRinging } from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 
 import Alert from '../components/ui/Alert'
+import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
 
 import '../styles/pattern-library.scss'
@@ -140,10 +141,10 @@ function Page() {
             <h2 className="title-subsection">Badge</h2>
             <ul className="list-horizontal">
               <li>
-                <UIBadge>15% off</UIBadge>
+                <DiscountBadge listPrice={100} spotPrice={50} />
               </li>
               <li>
-                <UIBadge data-store-badge="small">15% off</UIBadge>
+                <DiscountBadge listPrice={100} spotPrice={50} small />
               </li>
             </ul>
           </section>

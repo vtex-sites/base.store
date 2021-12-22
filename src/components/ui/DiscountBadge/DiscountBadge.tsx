@@ -18,7 +18,7 @@ const DiscountBadge = ({ listPrice, spotPrice, small = false }: Props) => {
   }
 
   return (
-    <UIBadge data-store-badge={small ? 'small' : ''}>
+    <UIBadge className="discount-badge" data-store-badge={small ? 'small' : ''}>
       {discountPercent}% off
     </UIBadge>
   )
