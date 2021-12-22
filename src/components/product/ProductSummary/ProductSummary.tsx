@@ -1,5 +1,3 @@
-import './product-summary.scss'
-
 import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
@@ -9,7 +7,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import { ShoppingCart } from 'phosphor-react'
+import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
 import {
   Card as UICard,
   CardImage as UICardImage,
@@ -17,13 +15,14 @@ import {
   CardActions as UICardActions,
 } from '@faststore/ui'
 
+import './product-summary.scss'
+
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
-  className?: string
 }
 
-function ProductSummary({ product, index, className }: Props) {
+function ProductSummary({ product, index }: Props) {
   const {
     id,
     sku,
@@ -68,7 +67,7 @@ function ProductSummary({ product, index, className }: Props) {
   })
 
   return (
-    <UICard className={className}>
+    <UICard className="product-summary">
       <UICardImage>
         <Image
           src={img.url}
@@ -81,11 +80,19 @@ function ProductSummary({ product, index, className }: Props) {
         <h3 className="text-body">
           <Link {...linkProps}>{name}</Link>
         </h3>
-        <div>
-          <span data-testid="list-price" data-value={listPrice}>
+        <div className="product-summary__prices">
+          <span
+            className="product-summary__prices-list / text-body-small"
+            data-testid="list-price"
+            data-value={listPrice}
+          >
             {useFormattedPrice(listPrice)}
           </span>
-          <span data-testid="price" data-value={spotPrice}>
+          <span
+            className="product-summary__prices-spot / text-body"
+            data-testid="price"
+            data-value={spotPrice}
+          >
             {useFormattedPrice(spotPrice)}
           </span>
         </div>
@@ -93,7 +100,7 @@ function ProductSummary({ product, index, className }: Props) {
       </UICardContent>
       <UICardActions>
         <Button {...buyProps} title="Add to cart">
-          <ShoppingCart size={18} weight="bold" />
+          <ShoppingCartIcon size={18} weight="bold" />
           Add
         </Button>
       </UICardActions>

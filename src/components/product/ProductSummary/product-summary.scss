@@ -1,4 +1,4 @@
-[data-store-card] {
+.product-summary[data-store-card] {
   position: relative;
   padding: var(--space-1);
   background-color: var(--bg-neutral-lightest);
@@ -16,6 +16,7 @@
   }
 
   [data-store-card-content] a[href] {
+    min-height: 100%;
     margin-top: var(--space-2);
     padding: 0;
     color: inherit;
@@ -31,6 +32,22 @@
       display: block;
       content: "";
     }
+  }
+
+  .product-summary__prices {
+    display: inline-flex;
+    align-content: center;
+    margin-bottom: var(--space-2);
+  }
+
+  .product-summary__prices-list {
+    text-decoration-line: line-through;
+    color: var(--color-text-subtle);
+  }
+
+  .product-summary__prices-spot {
+    margin-left: var(--space-1);
+    font-weight: var(--text-weight-bold);
   }
 
   [data-store-card-actions] {
