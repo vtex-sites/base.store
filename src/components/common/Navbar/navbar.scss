@@ -6,7 +6,7 @@
     order: 2;
   }
 
-  @include media(">=tablet") {
+  @include media(">=notebook") {
     [data-store-search-input] {
       order: 1;
       max-width: 37.5rem;
@@ -26,9 +26,7 @@
   justify-content: space-between;
   padding: var(--space-1) 0;
 
-  @include media(">=tablet") {
-    padding: var(--space-2) 0;
-  }
+  @include media(">=notebook") { padding: var(--space-2) 0; }
 }
 
 .navbar__logo svg {

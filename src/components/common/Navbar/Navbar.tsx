@@ -1,5 +1,3 @@
-import './navbar.scss'
-
 import React from 'react'
 import { Link } from 'gatsby'
 import CartToggle from 'src/components/cart/CartToggle'
@@ -7,6 +5,8 @@ import Logo from 'src/components/ui/Logo'
 
 import Navlinks from '../Navlinks'
 import SearchInput from '../SearchInput'
+
+import './navbar.scss'
 
 function Navbar() {
   return (
