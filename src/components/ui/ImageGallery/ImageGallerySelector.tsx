@@ -1,12 +1,14 @@
-import type { HTMLAttributes, PropsWithChildren } from 'react'
+import type { HTMLAttributes } from 'react'
 import React, { useMemo } from 'react'
 import { useSlider, IconButton, Button } from '@faststore/ui'
 
 import { useImageGallery } from './useImageGallery'
 import { ForwardArrowIcon, BackwardArrowIcon } from './Icons'
+import type { ImageElementData } from '.'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   imagesPerPage: number
+  images: ImageElementData[]
 }
 
 const createTransformValues = (totalItems: number) => {
@@ -26,12 +28,7 @@ const createTransformValues = (totalItems: number) => {
   return transformMap
 }
 
-function ImageGallerySelector({
-  imagesPerPage,
-  children,
-  ...otherProps
-}: PropsWithChildren<Props>) {
-  const images = React.Children.toArray(children)
+function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
   const imageCount = images.length
 
   const { onClick } = useImageGallery()
@@ -95,7 +92,15 @@ function ImageGallerySelector({
           {images.map((image, idx) => (
             <div key={idx} style={{ width: `${100 / imageCount}%` }}>
               <div className="flex justify-center items-center w-full">
-                <Button onClick={onClick}>{image}</Button>
+                <Button
+                  data-thumbnail-button
+                  aria-label={`${image.alternateName} - Image ${idx + 1} of ${
+                    images.length
+                  }`}
+                  onClick={onClick}
+                >
+                  <img alt={image.alternateName} src={image.url} />
+                </Button>
               </div>
             </div>
           ))}

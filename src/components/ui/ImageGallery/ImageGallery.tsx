@@ -40,11 +40,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
         />
       </ImageGalleryZoom>
 
-      <ImageGallerySelector imagesPerPage={4}>
-        {images.map((imgData, idx) => {
-          return <img key={idx} alt={imgData.alternateName} src={imgData.url} />
-        })}
-      </ImageGallerySelector>
+      <ImageGallerySelector imagesPerPage={4} images={images} />
     </ImageGalleryProvider>
   )
 }
