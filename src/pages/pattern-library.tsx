@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton, Badge as UIBadge } from '@faststore/ui'
-import BuyButton from 'src/components/ui/BuyButton'
 import { BellRinging } from 'phosphor-react'
 
+import BuyButton from '../components/ui/BuyButton'
 import Alert from '../components/ui/Alert'
 import SearchInput from '../components/common/SearchInput'
 
