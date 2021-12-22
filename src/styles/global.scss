@@ -37,6 +37,9 @@
   --color-neutral-6: #5d666f;
   --color-neutral-7: #171a1c;
 
+  // Contextual Colors ////////////////
+  --color-success: #cee8de;
+
   // Typography /////////////////////
 
   // Family
@@ -90,10 +93,9 @@
   --grid-gap-2: var(--space-5);
 
   // Breakpoints
-  --breakpoint-mob-sm: 320px;
-  --breakpoint-mob-md: 375px;
+  --breakpoint-phone: 320px;
+  --breakpoint-phonemid: 375px;
   --breakpoint-tablet: 768px;
-  --breakpoint-note-sm: 1025px;
-  --breakpoint-note-md: 1280px;
-  --breakpoint-desk: 1440px;
+  --breakpoint-notebook: 1280px;
+  --breakpoint-desktop: 1440px;
 }

@@ -1,0 +1,23 @@
+.cart-toggle[data-store-button] {
+  position: relative;
+  background-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+
+  &::after {
+    position: absolute;
+    top: var(--space-0);
+    left: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--space-4);
+    padding: 1px var(--space-0);
+    color: var(--color-text-negative);
+    font-weight: var(--text-weight-bold);
+    font-size: var(--text-size-0);
+    background: var(--bg-secondary-default);
+    border-radius: var(--border-radius-pill);
+    content: attr(data-items);
+  }
+}
