@@ -1,16 +1,15 @@
-import type { ImgHTMLAttributes } from 'react'
+import type { PropsWithChildren } from 'react'
 import React from 'react'
 
-import type { ImageElementData } from '.'
-
-interface ImageGalleryProps extends ImgHTMLAttributes<HTMLImageElement> {
-  imageData: ImageElementData
+interface ImageGalleryZoomProps {
+  helpMessage?: string
+  zoomFactor?: number
 }
 
-const ImageGalleryZoom = ({ imageData, ...otherProps }: ImageGalleryProps) => {
-  return (
-    <img alt={imageData.alternateName} src={imageData.url} {...otherProps} />
-  )
+const ImageGalleryZoom = ({
+  children,
+}: PropsWithChildren<ImageGalleryZoomProps>) => {
+  return <> {children} </>
 }
 
 export default ImageGalleryZoom
