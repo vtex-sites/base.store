@@ -4,11 +4,13 @@ import type { ButtonProps } from '@faststore/ui'
 
 import './buttons.scss'
 
+type Variant = 'primary' | 'secondary'
+
 type Props = ButtonProps & {
-  variant?: string
+  variant?: Variant
 }
 
-function Button({ variant = '', ...props }: Props) {
+function Button({ variant, ...props }: Props) {
   return (
     <UIButton className="button" data-button-variant={variant} {...props} />
   )
