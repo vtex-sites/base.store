@@ -1,4 +1,3 @@
-
 @import "../../../styles/vendors/include-media";
 
 .navbar {
@@ -6,11 +5,13 @@
     flex: 1 0 100%;
     order: 2;
   }
-  @include media(">=tablet") {
+
+  @include media(">=notebook") {
     [data-store-search-input] {
-      max-width: 37.5rem;
       order: 1;
+      max-width: 37.5rem;
     }
+
     .navlinks {
       flex: 1 0 100%;
       order: 3;
@@ -21,14 +22,11 @@
 
 .navbar__header {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: space-between;
   padding: var(--space-1) 0;
 
-  @include media(">=tablet") {
-    padding: var(--space-2) 0;
-  }
+  @include media(">=notebook") { padding: var(--space-2) 0; }
 }
 
 .navbar__logo svg {
