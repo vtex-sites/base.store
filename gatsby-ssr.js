@@ -35,7 +35,7 @@ export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
-    <GoogleTagManager key="gtm" containerId="GTM-PGHZ95N" />,
+    <GoogleTagManager key="gtm" containerId="GTM-PGHZ95N" enablePartytown />,
     <Partytown key="party" />,
   ])
 }
