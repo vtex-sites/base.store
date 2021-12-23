@@ -4,9 +4,8 @@ import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
-import Hero, { HeroContent, HeroImage, HeroLink } from 'src/components/ui/Hero'
-import { StaticImage } from 'gatsby-plugin-image'
 import BannerText from 'src/components/sections/BannerText'
+import Hero from 'src/components/sections/Hero'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -53,30 +52,14 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <Hero>
-        <HeroContent aria-labelledby="hero-heading">
-          <div>
-            <h1 id="hero-heading">New Products Available</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
-              ipsum.
-            </p>
-          </div>
-          <HeroLink>
-            <a href="/">See all</a>
-          </HeroLink>
-        </HeroContent>
-        <HeroImage>
-          <StaticImage
-            src="https://storecomponents.vtex.app/assets/fit-in/1280x613/center/middle/https%3A%2F%2Fstorecomponents.vtexassets.com%2Fassets%2Fvtex.file-manager-graphql%2Fimages%2Fedce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
-            alt="A person with hands on the pocket, carrying a round straw bag"
-            placeholder="blurred"
-            layout="constrained"
-            width={800}
-            height={600}
-          />
-        </HeroImage>
-      </Hero>
+      <Hero
+        title="New Products Available"
+        subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
+        linkText="See all"
+        link="/"
+        imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
+        imageAlt="A person with hands on the pocket, carrying a round straw bag"
+      />
       <BannerText
         title="Receive our news and promotions in advance."
         caption="Enjoy and get 10% off your first purchase."
