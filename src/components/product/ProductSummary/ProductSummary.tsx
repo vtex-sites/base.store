@@ -12,7 +12,6 @@ import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
 import {
   Card as UICard,
   CardImage as UICardImage,
-  CardContent as UICardContent,
   CardActions as UICardActions,
 } from '@faststore/ui'
 
@@ -77,9 +76,11 @@ function ProductSummary({ product, index }: Props) {
           sizes="(max-width: 768px) 200px, 320px"
         />
       </UICardImage>
-      <UICardContent aria-label="">
+      <div data-store-card-content="true" data-testid="store-card-content">
         <h3 className="text-body">
-          <Link {...linkProps}>{name}</Link>
+          <Link {...linkProps} title={name}>
+            {name}
+          </Link>
         </h3>
         <div className="product-summary__prices">
           <Price
@@ -100,7 +101,7 @@ function ProductSummary({ product, index }: Props) {
           />
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
-      </UICardContent>
+      </div>
       <UICardActions>
         <Button {...buyProps} title="Add to cart">
           <ShoppingCartIcon size={18} weight="bold" />
