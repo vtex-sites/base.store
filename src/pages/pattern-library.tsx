@@ -4,12 +4,12 @@ import { Button as UIButton } from '@faststore/ui'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
+import BuyButton from 'src/components/ui/BuyButton'
 
 import SkuSelector from '../components/ui/SkuSelector'
 import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
-import Button from '../components/ui/Button'
 import SearchInput from '../components/common/SearchInput'
 
 import '../styles/pattern-library.scss'
@@ -27,6 +27,21 @@ function Page() {
 
           <LinksSection />
 
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Custom Button – BuyButton</h2>
+            <ul className="list-horizontal">
+              <li>
+                <BuyButton>Buy Now</BuyButton>
+              </li>
+              <li>
+                <BuyButton disabled>Buy Now</BuyButton>
+              </li>
+              <li>
+                <UIButton>Call to Action</UIButton>
+              </li>
+            </ul>
+          </section>
+
           <InputsSection />
 
           <SkuSelectorSection />
@@ -36,20 +51,6 @@ function Page() {
           <BadgesSection />
 
           <CartToggleSection />
-
-          <section className="grid-section grid-content">
-            <h2 className="title-subsection">Custom Button – Primary</h2>
-            <ul className="list-horizontal">
-              <li>
-                <Button variant="primary">Add to Cart</Button>
-              </li>
-              <li>
-                <Button variant="primary" disabled>
-                  Add to Cart
-                </Button>
-              </li>
-            </ul>
-          </section>
         </main>
       </div>
     </>
