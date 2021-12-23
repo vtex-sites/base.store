@@ -47,9 +47,9 @@
     background-color: transparent;
     border: 2px solid var(--bg-secondary-default);
 
-    &:hover, &:focus { background-color: var(--color-secondary-0); }
+    &:hover, &:focus { background-color: var(--bg-darken-hover); }
 
-    &:active { background-color: var(--color-secondary-1); }
+    &:active { background-color: var(--bg-darken-pressed); }
 
     &:disabled {
       color: var(--color-neutral-6);
@@ -60,8 +60,8 @@
     &[data-button-inverse] {
       color: var(--color-text-inverse);
       border-color: var(--color-border-light);
-      &:hover, &:focus { background-color: var(--bg-secondary-hover); }
-      &:active { background-color: var(--bg-secondary-pressed); }
+      &:hover, &:focus { background-color: var(--bg-lighten-hover); }
+      &:active { background-color: var(--bg-lighten-pressed); }
     }
   }
 }

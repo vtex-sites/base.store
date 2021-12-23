@@ -8,7 +8,7 @@
 
   &:hover { background-color: var(--bg-primary-hover); }
 
-  &:visited { background-color: var(--bg-primary-pressed); }
+  &:active { background-color: var(--bg-primary-pressed); }
 
   &:disabled {
     color: var(--color-neutral-6);
