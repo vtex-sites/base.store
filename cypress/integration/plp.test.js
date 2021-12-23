@@ -126,9 +126,6 @@ describe('Infinite Scroll pagination', () => {
           .should('exist')
           .click()
           .then(() => {
-            // Ensure wait new page after clicks show more
-            cy.location('search').should('match', /\page=1$/)
-
             // The skuId of the last product on the page
             let skuIdBeforeNavigate
 
@@ -172,13 +169,17 @@ describe('Infinite Scroll pagination', () => {
         cy.getById('product-link')
           .last()
           .scrollIntoView()
-          .location('search')
-          .should('match', /\page=1$/)
+          .location()
+          .should(($loc) => {
+            expect($loc.search).includes('page=1')
+          })
           .getById('product-link')
           .first()
-          .scrollIntoView({ offset: { top: -10 } })
-          .location('search')
-          .should('match', /\page=0$/)
+          .scrollIntoView()
+          .location()
+          .should(($loc) => {
+            expect($loc.search).includes('page=0')
+          })
       })
   })
 })
