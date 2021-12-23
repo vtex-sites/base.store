@@ -52,6 +52,29 @@ function ImageGallerySelector({
 
   return (
     <section>
+      <IconButton
+        aria-label="slide image selector backward"
+        icon={<BackwardArrowIcon color="#323845" />}
+        onClick={() => {
+          if (sliderState.sliding) {
+            return
+          }
+
+          slide('previous', sliderDispatch)
+        }}
+      />
+      <IconButton
+        aria-label="slide image selector forward"
+        icon={<ForwardArrowIcon color="#323845" />}
+        onClick={() => {
+          if (sliderState.sliding) {
+            return
+          }
+
+          slide('next', sliderDispatch)
+        }}
+      />
+
       <div {...otherProps} {...handlers}>
         <div
           data-carousel-track
@@ -100,29 +123,6 @@ function ImageGallerySelector({
           })}
         </div>
       </div>
-
-      <IconButton
-        aria-label="slide image selector backward"
-        icon={<BackwardArrowIcon color="#323845" />}
-        onClick={() => {
-          if (sliderState.sliding) {
-            return
-          }
-
-          slide('previous', sliderDispatch)
-        }}
-      />
-      <IconButton
-        aria-label="slide image selector forward"
-        icon={<ForwardArrowIcon color="#323845" />}
-        onClick={() => {
-          if (sliderState.sliding) {
-            return
-          }
-
-          slide('next', sliderDispatch)
-        }}
-      />
     </section>
   )
 }
