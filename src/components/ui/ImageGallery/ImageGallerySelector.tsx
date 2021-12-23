@@ -1,14 +1,11 @@
-import type { HTMLAttributes } from 'react'
+import type { HTMLAttributes, PropsWithChildren } from 'react'
 import React, { useMemo } from 'react'
-import { useSlider, IconButton, Button } from '@faststore/ui'
+import { useSlider, IconButton } from '@faststore/ui'
 
-import { useImageGallery } from './useImageGallery'
 import { ForwardArrowIcon, BackwardArrowIcon } from './Icons'
-import type { ImageElementData } from '.'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  imagesPerPage: number
-  images: ImageElementData[]
+  itemsPerPage: number
 }
 
 const createTransformValues = (totalItems: number) => {
@@ -28,25 +25,28 @@ const createTransformValues = (totalItems: number) => {
   return transformMap
 }
 
-function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
-  const imageCount = images.length
-
-  const { onClick, selectedImageData } = useImageGallery()
+function ImageGallerySelector({
+  itemsPerPage,
+  children,
+  ...otherProps
+}: PropsWithChildren<Props>) {
+  const elements = React.Children.toArray(children)
+  const elementCount = elements.length
 
   const transformValues = useMemo(
-    () => createTransformValues(imageCount),
-    [imageCount]
+    () => createTransformValues(elementCount),
+    [elementCount]
   )
 
   const { handlers, slide, sliderState, sliderDispatch } = useSlider({
-    totalItems: imageCount,
-    itemsPerPage: imagesPerPage,
+    totalItems: elementCount,
+    itemsPerPage,
     infiniteMode: false,
   })
 
   const slidingTransition = `transform 400ms`
 
-  if (!images || !imageCount) {
+  if (!elements || !elementCount) {
     return null
   }
 
@@ -58,9 +58,9 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
           style={{
             display: 'flex',
             transition: sliderState.sliding ? slidingTransition : undefined,
-            width: `${(imageCount * 100) / imagesPerPage}%`,
+            width: `${(elementCount * 100) / itemsPerPage}%`,
             transform: `translate3d(${
-              transformValues[sliderState.currentPage * imagesPerPage]
+              transformValues[sliderState.currentPage * itemsPerPage]
             }%, 0, 0)`,
           }}
           onTransitionEnd={() => {
@@ -68,7 +68,7 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
               type: 'STOP_SLIDE',
             })
 
-            if (sliderState.currentItem >= imageCount) {
+            if (sliderState.currentItem >= elementCount) {
               sliderDispatch({
                 type: 'GO_TO_PAGE',
                 payload: {
@@ -89,24 +89,15 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
             }
           }}
         >
-          {images.map((image, idx) => (
-            <div key={idx} style={{ width: `${100 / imageCount}%` }}>
-              <div className="flex justify-center items-center w-full">
-                <Button
-                  data-thumbnail-button
-                  className={
-                    selectedImageData.url === image.url ? 'selected' : ''
-                  }
-                  aria-label={`${image.alternateName} - Image ${idx + 1} of ${
-                    images.length
-                  }`}
-                  onClick={onClick}
-                >
-                  <img alt={image.alternateName} src={image.url} />
-                </Button>
+          {elements.map((el, idx) => {
+            return (
+              <div key={idx} style={{ width: `${100 / elementCount}%` }}>
+                <div className="flex justify-center items-center w-full">
+                  {el}
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
