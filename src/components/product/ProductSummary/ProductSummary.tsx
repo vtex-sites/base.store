@@ -76,7 +76,7 @@ function ProductSummary({ product, index }: Props) {
           sizes="(max-width: 768px) 200px, 320px"
         />
       </UICardImage>
-      <div data-store-card-content="true" data-testid="store-card-content">
+      <section data-store-card-content="true" data-testid="store-card-content">
         <h3 className="text-body">
           <Link {...linkProps} title={name}>
             {name}
@@ -101,7 +101,7 @@ function ProductSummary({ product, index }: Props) {
           />
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
-      </div>
+      </section>
       <UICardActions>
         <Button {...buyProps} title="Add to cart">
           <ShoppingCartIcon size={18} weight="bold" />
