@@ -19,7 +19,7 @@
 
   &[data-button-variant="primary"] {
     padding: var(--space-1)  var(--space-2);
-    color: var(--color-text-negative);
+    color: var(--color-text-inverse);
     background-color: var(--bg-secondary-default);
 
     &:hover, &:focus { background-color: var(--bg-secondary-hover); }
@@ -58,7 +58,7 @@
     }
 
     &[data-button-inverse] {
-      color: var(--color-text-negative);
+      color: var(--color-text-inverse);
       border-color: var(--color-border-light);
       &:hover, &:focus { background-color: var(--bg-secondary-hover); }
       &:active { background-color: var(--bg-secondary-pressed); }

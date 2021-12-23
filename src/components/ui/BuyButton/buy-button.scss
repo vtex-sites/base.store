@@ -3,7 +3,7 @@
 .button__buy[data-store-button] {
   padding-right: var(--space-3);
   padding-left: var(--space-3);
-  color: var(--color-text-negative);
+  color: var(--color-text-inverse);
   background-color: var(--bg-primary-default);
 
   &:hover { background-color: var(--bg-primary-hover); }
