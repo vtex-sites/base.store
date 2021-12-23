@@ -1,32 +1,67 @@
 @import "../../../styles/utilities";
 
 .button[data-store-button] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--text-weight-bold);
+  column-gap: var(--space-2);
+  border: 0;
+  border-radius: var(--border-radius-default);
+  transition: background-color .5s ease;
+
+  &:focus { @include focus-ring; }
+
+  &:disabled {
+    cursor: not-allowed;
+    svg { color: var(--color-neutral-5); }
+  }
+
   &[data-button-variant="primary"] {
-    display: flex;
-    align-items: center;
     padding: var(--space-1)  var(--space-2);
     color: var(--color-text-negative);
     background-color: var(--bg-secondary-default);
-    border: 0;
-    border-radius: var(--border-radius-default);
-    svg { margin-right: var(--space-1); }
 
-    &:hover, &:focus {
-      background-color: var(--bg-secondary-hover);
-    }
+    &:hover, &:focus { background-color: var(--bg-secondary-hover); }
 
-    &:active {
-      background-color: var(--bg-primary-pressed);
-    }
-
-    &:focus {
-      @include focus-ring;
-    }
+    &:active { background-color: var(--bg-secondary-pressed); }
 
     &:disabled {
       color: var(--color-neutral-6);
       background-color: var(--bg-disabled);
-      cursor: not-allowed;
+    }
+
+    &[data-button-inverse] {
+      color: var(--color-text-display);
+      background-color: var(--bg-neutral-lightest);
+
+      &:hover, &:focus { background-color: var(--color-secondary-0); }
+
+      &:active { background-color: var(--color-secondary-1); }
+    }
+  }
+
+  &[data-button-variant="secondary"] {
+    padding: var(--space-1)  var(--space-2);
+    color: var(--color-text-display);
+    background-color: transparent;
+    border: 2px solid var(--bg-secondary-default);
+
+    &:hover, &:focus { background-color: var(--color-secondary-0); }
+
+    &:active { background-color: var(--color-secondary-1); }
+
+    &:disabled {
+      color: var(--color-neutral-6);
+      background-color: var(--bg-disabled);
+      border: 0;
+    }
+
+    &[data-button-inverse] {
+      color: var(--color-text-negative);
+      border-color: var(--color-border-light);
+      &:hover, &:focus { background-color: var(--bg-secondary-hover); }
+      &:active { background-color: var(--bg-secondary-pressed); }
     }
   }
 }

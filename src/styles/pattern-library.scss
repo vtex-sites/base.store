@@ -22,11 +22,16 @@
       background-color: var(--bg-neutral-lightest);
       border-radius: var(--border-radius-default);
 
+      &:not(:last-child):not(:only-of-type) { margin-bottom: var(--space-3); }
+
+      &.dark { background-color: var(--color-neutral-4); }
+
       &.list-horizontal {
         display: flex;
         gap: var(--space-2);
         align-items: center;
       }
+
       &.list-vertical li:not(:last-child) { margin-bottom: var(--space-2); }
     }
     > .title-subsection { margin-bottom: var(--space-1); }
