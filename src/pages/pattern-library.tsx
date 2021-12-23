@@ -15,6 +15,7 @@ import '../styles/pattern-library.scss'
 function Page() {
   const [showAlert1, setShowAlert1] = useState(true)
   const [showAlert2, setShowAlert2] = useState(true)
+  const [showAlert3, setShowAlert3] = useState(true)
 
   return (
     <>
@@ -122,14 +123,36 @@ function Page() {
                   <Alert
                     icon={<BellRinging size={24} />}
                     dismissible
+                    link={{ to: '#alerts', text: 'Action' }}
                     onClose={() => setShowAlert2(false)}
                   >
-                    Get 10% off today:&nbsp;<span>NEW10</span>&nbsp;
-                    <a href="#alerts">Action</a>
+                    Get 10% off today:&nbsp;<span>NEW10</span>
                   </Alert>
                 ) : (
                   <UIButton
                     onClick={() => setShowAlert2((prevState) => !prevState)}
+                  >
+                    Show Alert
+                  </UIButton>
+                )}
+              </li>
+
+              <li>
+                {showAlert3 ? (
+                  <Alert
+                    icon={<BellRinging size={24} />}
+                    dismissible
+                    link={{ to: '#alerts', text: 'Action' }}
+                    onClose={() => setShowAlert3(false)}
+                  >
+                    Long text example:&nbsp;<span>NEW10.</span>&nbsp; Get 10%
+                    off today Get 10% off today Get 10% off today Get 10% off
+                    today Get 10% off today Get 10% off today Get 10% off today
+                    Get 10% off today Get 10% off today{' '}
+                  </Alert>
+                ) : (
+                  <UIButton
+                    onClick={() => setShowAlert3((prevState) => !prevState)}
                   >
                     Show Alert
                   </UIButton>
