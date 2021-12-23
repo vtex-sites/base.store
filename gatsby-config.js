@@ -46,16 +46,16 @@ module.exports = {
         cache_busting_mode: 'none',
       },
     },
-    {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        precachePages: [`/offline`],
-        appendScript: 'src/custom-sw-code.js',
-        workboxConfig: {
-          globPatterns: ['**/offline/*'],
-        },
-      },
-    },
+    // {
+    // resolve: 'gatsby-plugin-offline',
+    // options: {
+    // precachePages: [`/offline`],
+    // appendScript: 'src/custom-sw-code.js',
+    // workboxConfig: {
+    // globPatterns: ['**/offline/*'],
+    // },
+    // },
+    // },
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
