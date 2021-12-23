@@ -112,6 +112,7 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
 
       <IconButton
         aria-label="slide image selector backward"
+        icon={<BackwardArrowIcon color="#323845" />}
         onClick={() => {
           if (sliderState.sliding) {
             return
@@ -119,10 +120,10 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
 
           slide('previous', sliderDispatch)
         }}
-        icon={<BackwardArrowIcon color="#323845" />}
       />
       <IconButton
         aria-label="slide image selector forward"
+        icon={<ForwardArrowIcon color="#323845" />}
         onClick={() => {
           if (sliderState.sliding) {
             return
@@ -130,7 +131,6 @@ function ImageGallerySelector({ imagesPerPage, images, ...otherProps }: Props) {
 
           slide('next', sliderDispatch)
         }}
-        icon={<ForwardArrowIcon color="#323845" />}
       />
     </section>
   )
