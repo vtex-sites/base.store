@@ -77,7 +77,7 @@ function ProductSummary({ product, index }: Props) {
           sizes="(max-width: 768px) 200px, 320px"
         />
       </UICardImage>
-      <UICardContent aria-label={name}>
+      <UICardContent>
         <h3 className="text-body">
           <Link {...linkProps} title={name}>
             {name}
@@ -90,7 +90,8 @@ function ProductSummary({ product, index }: Props) {
             testId="list-price"
             data-value={listPrice}
             variant="listing"
-            className="text-body-small"
+            classes="text-body-small"
+            aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
           />
           <Price
             value={spotPrice}
@@ -98,7 +99,8 @@ function ProductSummary({ product, index }: Props) {
             testId="price"
             data-value={spotPrice}
             variant="spot"
-            className="text-body"
+            classes="text-body"
+            aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
           />
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
