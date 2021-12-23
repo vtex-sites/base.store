@@ -3,61 +3,7 @@ import type { ChangeEventHandler } from 'react'
 import { Image } from 'src/components/ui/Image'
 import { RadioGroup, RadioOption, Label } from '@faststore/ui'
 
-interface OptionProps {
-  variant: string
-  selectedOption: string | number
-  option: DefaultSkuProps | ImageSkuProps
-}
-
-function Option({
-  option,
-  variant,
-  selectedOption,
-  ...otherProps
-}: OptionProps): JSX.Element {
-  if (variant !== 'image' && 'value' in option) {
-    const { label, value, disabled }: DefaultSkuProps = option
-
-    return (
-      <RadioOption
-        label={label}
-        value={label}
-        style={{ marginLeft: 60 }} // TODO: Remove it. Added just to skip "Tap Target" error (Lighthouse)
-        disabled={disabled}
-        checked={label === selectedOption}
-        {...otherProps}
-      >
-        {variant === 'size' && (
-          // TODO: Remove this inline style. Added just to skip "Tap Target" error (Lighthouse)
-          <span style={{ padding: 48 }}>{option.label}</span>
-        )}
-        {variant === 'color' && (
-          <div style={{ backgroundColor: value, height: 40, width: 40 }} />
-        )}
-      </RadioOption>
-    )
-  }
-
-  if (variant === 'image' && 'src' in option) {
-    const { label, src, alt, disabled }: ImageSkuProps = option
-
-    return (
-      <RadioOption
-        label={label}
-        value={label}
-        disabled={disabled}
-        checked={label === selectedOption}
-        {...otherProps}
-      >
-        <Image src={src} alt={alt} variant="product.sku" />
-      </RadioOption>
-    )
-  }
-
-  return <div />
-}
-
-type DefaultSkuProps = {
+interface DefaultSkuProps {
   /**
    * Label to describe the SKU when selected.
    */
@@ -125,14 +71,14 @@ export interface SkuSelectorProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-const SkuSelector = ({
+function SkuSelector({
   label,
   variant,
   options,
   onChange,
   defaultSku,
   testId = 'store-sku-selector',
-}: SkuSelectorProps) => {
+}: SkuSelectorProps) {
   const [selectedSku, setSelectedSku] = useState<string>(defaultSku ?? '')
 
   return (
@@ -152,13 +98,37 @@ const SkuSelector = ({
       >
         {options.map((option, index) => {
           return (
-            <Option
+            <RadioOption
               data-sku-selector-option
               key={String(index)}
-              option={option}
-              variant={variant}
-              selectedOption={selectedSku}
-            />
+              label={option.label}
+              value={option.label}
+              // TODO: Remove this inline style when we start to styling this component. Added just to skip "Tap Target" error (Lighthouse)
+              style={{ marginLeft: 60 }}
+              disabled={option.disabled}
+              checked={option.label === selectedSku}
+            >
+              {variant === 'size' && (
+                // TODO: Remove this inline style when we start to styling this component. Added just to skip "Tap Target" error (Lighthouse)
+                <span style={{ padding: 48 }}>{option.label}</span>
+              )}
+              {variant === 'color' && 'value' in option && (
+                <div
+                  style={{
+                    width: 40,
+                    height: 40,
+                    backgroundColor: option.value,
+                  }}
+                />
+              )}
+              {variant === 'image' && 'src' in option && (
+                <Image
+                  src={option.src}
+                  alt={option.alt}
+                  variant="product.sku"
+                />
+              )}
+            </RadioOption>
           )
         })}
       </RadioGroup>
