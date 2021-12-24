@@ -13,17 +13,11 @@ function ProductGrid({ products, page, pageSize }: Props) {
   return (
     // TODO Update this once grid page are styled properly
     <ul className="temp-grid-row">
-      {products.map((product, idx) => {
-        return (
-          <li key={`${product.id}`}>
-            <ProductSummary
-              key={`${product.id}`}
-              product={product}
-              index={pageSize * page + idx + 1}
-            />
-          </li>
-        )
-      })}
+      {products.map((product, idx) => (
+        <li key={`${product.id}`}>
+          <ProductSummary product={product} index={pageSize * page + idx + 1} />
+        </li>
+      ))}
     </ul>
   )
 }
