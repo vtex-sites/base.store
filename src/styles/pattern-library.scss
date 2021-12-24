@@ -36,3 +36,16 @@ a, button[data-store-button] {
 select {
   min-height: var(--min-size);
 }
+
+.tiles-section-item {
+  margin-bottom: var(--space-4);
+
+  [data-store-tile] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-primary-0);
+
+    &:nth-of-type(2n) { background-color: var(--color-secondary-1); }
+  }
+}
