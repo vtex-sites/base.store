@@ -5,17 +5,21 @@
   max-width: 14rem;
   height: 100%;
   padding: var(--space-1);
-  background-color: var(--bg-neutral-lightest);
+  border-radius: var(--border-radius-default);
+  transition: box-shadow .5s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--bg-neutral-lightest);
+  }
 
   &:hover {
-    border-radius: var(--border-radius-default);
     outline: 1px solid var(--color-border-display);
     box-shadow: var(--box-shadow);
   }
 
   &:focus,
   &:focus-within {
-    border-radius: var(--border-radius-default);
     outline: 2px solid var(--bg-focus-ring);
   }
 
