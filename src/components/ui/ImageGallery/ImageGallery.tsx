@@ -2,7 +2,7 @@ import { Button } from '@faststore/ui'
 import React, { useState } from 'react'
 import { Image } from 'src/components/ui/Image'
 
-import { ImageGallerySelector, ImageGalleryZoom } from '.'
+import { ImageGallerySelector, ImageZoom } from '.'
 
 export interface ImageElementData {
   url: string
@@ -19,14 +19,14 @@ function ImageGallery({ images }: ImageGalleryProps) {
 
   return (
     <div>
-      <ImageGalleryZoom>
+      <ImageZoom>
         <Image
           src={currentImage.url}
           alt={currentImage.alternateName}
           variant="product.details"
           loading="eager"
         />
-      </ImageGalleryZoom>
+      </ImageZoom>
       <ImageGallerySelector itemsPerPage={4}>
         {images.map((image, idx) => {
           return (
