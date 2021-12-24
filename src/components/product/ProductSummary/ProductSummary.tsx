@@ -78,7 +78,7 @@ function ProductSummary({ product, index }: Props) {
         />
       </UICardImage>
       <UICardContent>
-        <h3 className="text-body">
+        <h3 className="product-summary__title">
           <Link {...linkProps} title={name}>
             {name}
           </Link>

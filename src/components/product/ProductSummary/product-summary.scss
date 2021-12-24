@@ -43,6 +43,11 @@
     }
   }
 
+  .product-summary__title {
+    font-size: var(--text-size-2);
+    line-height: 1.25;
+  }
+
   .product-summary__prices {
     display: inline-flex;
     align-content: center;
