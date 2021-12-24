@@ -1,8 +1,6 @@
 @import "../Button/buttons";
 
-.button__buy[data-store-button] {
-  padding-right: var(--space-3);
-  padding-left: var(--space-3);
+.button[data-store-buy-button] {
   color: var(--color-text-inverse);
   background-color: var(--bg-primary-default);
 

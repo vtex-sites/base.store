@@ -9,7 +9,7 @@ type Props = ButtonProps
 
 function BuyButton({ children, ...props }: Props) {
   return (
-    <UIButton className="button button__buy" {...props}>
+    <UIButton className="button" data-store-buy-button {...props}>
       <ShoppingCartIcon size="18" weight="bold" />
       {children}
     </UIButton>
