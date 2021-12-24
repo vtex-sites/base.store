@@ -15,14 +15,14 @@ export interface TilesProps extends HTMLAttributes<HTMLDivElement> {
 
 const MIN_CHILDREN = 2
 const MAX_CHILDREN = 4
-const NUMBER_ITEMS_TO_EXPAND = 3
+const NUMBER_ITEMS_TO_EXPAND_FIRST_TWO = 2
+const NUMBER_ITEMS_TO_EXPAND_FIRST = 3
 
 const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
   { testId = 'store-tiles', children, ...otherProps },
   ref
 ) {
   const childrenCount = React.Children.count(children)
-  const spanFirstChild = childrenCount === NUMBER_ITEMS_TO_EXPAND
 
   if (process.env.NODE_ENV === 'development') {
     const isOutOfBounds =
@@ -43,10 +43,17 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
     })
   }
 
+  const expandedClass =
+    childrenCount === NUMBER_ITEMS_TO_EXPAND_FIRST
+      ? 'expanded-first'
+      : childrenCount === NUMBER_ITEMS_TO_EXPAND_FIRST_TWO
+      ? 'expanded-first-two'
+      : ''
+
   return (
     <div
       ref={ref}
-      data-store-tiles={spanFirstChild ? 'expanded' : ''}
+      data-store-tiles={expandedClass}
       data-testid={testId}
       {...otherProps}
     >
