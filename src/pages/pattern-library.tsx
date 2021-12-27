@@ -49,7 +49,8 @@ function Page() {
               <li>
                 <Button
                   variant="primary"
-                  iconLeft={<BellRingingIcon size={18} weight="bold" />}
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
                 >
                   Call To Action
                 </Button>
@@ -57,7 +58,8 @@ function Page() {
               <li>
                 <Button
                   variant="primary"
-                  iconLeft={<BellRingingIcon size={18} weight="bold" />}
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
                   disabled
                 >
                   Call To Action
@@ -68,7 +70,8 @@ function Page() {
               <li>
                 <Button
                   variant="primary"
-                  iconLeft={<BellRingingIcon size={18} weight="bold" />}
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
                   inverse
                 >
                   Call To Action
@@ -83,7 +86,8 @@ function Page() {
               <li>
                 <Button
                   variant="secondary"
-                  iconRight={<ArrowRightIcon size={18} weight="bold" />}
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
                 >
                   Call To Action
                 </Button>
@@ -91,7 +95,8 @@ function Page() {
               <li>
                 <Button
                   variant="secondary"
-                  iconRight={<ArrowRightIcon size={18} weight="bold" />}
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
                   disabled
                 >
                   Call To Action
@@ -102,7 +107,8 @@ function Page() {
               <li>
                 <Button
                   variant="secondary"
-                  iconRight={<ArrowRightIcon size={18} weight="bold" />}
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
                   inverse
                 >
                   Call To Action

@@ -6,19 +6,20 @@ import type { ButtonProps } from '@faststore/ui'
 import './buttons.scss'
 
 type Variant = 'primary' | 'secondary'
+type IconPosition = 'left' | 'right'
 
 type Props = ButtonProps & {
   variant?: Variant
   inverse?: boolean
-  iconLeft?: ReactNode
-  iconRight?: ReactNode
+  icon?: ReactNode
+  iconPosition?: IconPosition
 }
 
 function Button({
   variant,
   inverse,
-  iconLeft,
-  iconRight,
+  icon,
+  iconPosition,
   children,
   ...props
 }: Props) {
@@ -29,9 +30,9 @@ function Button({
       data-button-inverse={inverse}
       {...props}
     >
-      {iconLeft && <UIIcon component={iconLeft} />}
+      {iconPosition === 'left' && <UIIcon component={icon} />}
       {children}
-      {iconRight && <UIIcon component={iconRight} />}
+      {iconPosition === 'right' && <UIIcon component={icon} />}
     </UIButton>
   )
 }
