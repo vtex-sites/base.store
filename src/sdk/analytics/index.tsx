@@ -3,9 +3,7 @@ import type { PropsWithChildren } from 'react'
 
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useAnalyticsEvent((event) => {
-    // eslint-disable-next-line
-    console.log('EVENT', event)
-    window.dataLayer.push(event)
+    window.dataLayer.push({ event: event.name, ecommerce: event.params })
   })
 
   return children

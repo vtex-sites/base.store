@@ -34,12 +34,16 @@ export const wrapRootElement = ({ element }) => (
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
 
 export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents([
-    <GoogleTagManager
-      key="gtm"
-      containerId={storeConfig.analytics.gtmContainerId}
-      enablePartytown
-    />,
-    <Partytown key="party" />,
-  ])
+  if (storeConfig.analytics.gtmContainerId) {
+    setHeadComponents([
+      <GoogleTagManager
+        key="gtm"
+        containerId={storeConfig.analytics.gtmContainerId}
+        enablePartytown
+      />,
+      <Partytown key="party" />,
+    ])
+  } else if (process.env.NODE_ENV === 'development') {
+    console.warn('Add the gtmContainerId on storeConfig file')
+  }
 }
