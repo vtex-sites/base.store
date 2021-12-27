@@ -1,6 +1,8 @@
 import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 
+import './hero.scss'
+
 export interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress,

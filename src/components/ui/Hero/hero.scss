@@ -1,0 +1,76 @@
+@import "../../../styles/vendors/include-media.scss";
+
+[data-store-hero] {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  background-color: var(--bg-secondary-default);
+
+  @include media(">=notebook") {
+    flex-direction: row;
+  }
+
+  [data-store-hero-content] {
+    width: 100%;
+    padding: var(--space-6) var(--space-4);
+    color: var(--color-text-negative);
+
+    @include media(">=notebook") {
+      padding: var(--space-13) var(--space-9) var(--space-13) 0;
+    }
+
+    .banner-info-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 100%;
+      height: 100%;
+      margin-left: auto;
+
+      @include media(">=notebook") {
+        max-width: 30rem;
+      }
+    }
+
+    p {
+      margin-top: var(--space-4);
+      font-weight: var(--text-weight-regular);
+    }
+
+    [data-store-hero-link] {
+      // TODO: Repassar estilização para Link Button
+      margin-top: var(--space-6);
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 11.25rem;
+        padding: var(--space-1) var(--space-4);
+        color: var(--color-secondary-4);
+        font-weight: var(--text-weight-bold);
+        font-size: var(--space-3);
+        text-decoration: none;
+        background: var(--bg-neutral-lightest);
+        border-radius: var(--border-radius-default);
+
+        @include media(">=notebook") {
+          padding: var(--space-2) var(--space-4);
+        }
+      }
+    }
+  }
+
+  [data-store-hero-image] {
+    width: 100%;
+
+    [data-gatsby-image-wrapper] {
+      width: 100%;
+      height: 18.75rem;
+
+      @include media(">=notebook") {
+        min-height: 40rem;
+      }
+    }
+  }
+}
