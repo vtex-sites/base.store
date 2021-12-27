@@ -40,6 +40,12 @@
         box-shadow: 0 0 0 1px var(--color-neutral-0), 0 0 0 var(--border-width-3) var(--bg-focus-ring);
       }
 
+      &:hover:not(:disabled) + span {
+        border-color: var(--color-border-input-selected);
+        border-width: var(--border-width-2);
+        box-shadow: inset 0 0 0 var(--border-width-3) var(--color-neutral-0);
+      }
+
       &:checked + span {
         border-color: var(--color-border-input-selected);
         border-width: var(--border-width-2);
@@ -65,18 +71,12 @@
           }
         }
       }
-
-      &:hover:not(:disabled) + span {
-        border-color: var(--color-border-input-selected);
-        border-width: var(--border-width-2);
-        box-shadow: inset 0 0 0 var(--border-width-3) var(--color-neutral-0);
-      }
     }
   }
 
   &[data-variant="size"] input {
-    &:checked + span { background-color: var(--bg-secondary-light); }
     &:hover:not(:disabled) + span { background-color: var(--bg-secondary-light); }
+    &:checked + span { background-color: var(--bg-secondary-light); }
   }
 
   &[data-variant="color"] {
@@ -89,7 +89,7 @@
     }
 
     input {
-      &:hover:not(:disabled) + span [data-sku-selector-color] { transform: scale(.95); }
+      &:hover:not(:disabled):not(:checked) + span [data-sku-selector-color] { transform: scale(.95); }
       &:checked + span [data-sku-selector-color] { transform: scale(.85); }
     }
   }
