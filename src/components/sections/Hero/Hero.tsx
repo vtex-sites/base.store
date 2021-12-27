@@ -6,6 +6,7 @@ import UIHero, {
   HeroLink,
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
+import { ArrowRight } from 'phosphor-react'
 
 interface HeroProps {
   title: string
@@ -27,13 +28,19 @@ const Hero = ({
   return (
     <UIHero>
       <HeroContent aria-labelledby="hero-heading">
-        <div>
-          <h1 id="hero-heading">{title}</h1>
-          <p>{subtitle}</p>
+        <div className="banner-info-content">
+          <div>
+            <h1 id="hero-heading" className="title-hero">
+              {title}
+            </h1>
+            <p className="text-body-big">{subtitle}</p>
+          </div>
+          <HeroLink>
+            <Link to={link}>
+              {linkText} <ArrowRight size={24} />
+            </Link>
+          </HeroLink>
         </div>
-        <HeroLink>
-          <Link to={link}>{linkText}</Link>
-        </HeroLink>
       </HeroContent>
       <HeroImage>
         <Image variant="hero.home" src={imageSrc} alt={imageAlt} />
