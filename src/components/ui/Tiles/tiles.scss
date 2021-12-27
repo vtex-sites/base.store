@@ -4,7 +4,7 @@
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  max-width: 1236px;
+  max-width: 77.25rem;
   column-gap: var(--grid-gap-0);
   row-gap: var(--grid-gap-0);
 
@@ -15,31 +15,31 @@
   }
 
   [data-store-tile] {
-    height: 324px;
+    height: 20.25rem;
     border-radius: var(--border-radius-default);
 
     @include media(">=tablet") {
-      height: 460px;
+      height: 28.75rem;
     }
   }
 }
 
 [data-store-tiles="expanded-first"] > [data-store-tile]:first-child {
   grid-column: span 2;
-  height: 324px;
+  height: 20.25rem;
 
   @include media(">=tablet") {
-    height: 460px;
+    height: 28.75rem;
   }
 }
 
 [data-store-tiles="expanded-first-two"] {
   > [data-store-tile]:first-child, > [data-store-tile]:nth-child(2) {
     grid-column: span 2;
-    height: 324px;
+    height: 20.25rem;
 
     @include media(">=tablet") {
-      height: 460px;
+      height: 28.75rem;
     }
   }
 }
