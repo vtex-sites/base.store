@@ -6,6 +6,7 @@ import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 
 import BuyButton from '../components/ui/BuyButton'
+import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
@@ -60,6 +61,32 @@ function Page() {
               </li>
               <li>
                 <p className="text-body-tiny">Text Body Tiny</p>
+              </li>
+            </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Links</h2>
+            <ul className="list-vertical">
+              <li>
+                <Link className="link" href="/">
+                  Link
+                </Link>
+              </li>
+              <li>
+                <Link className="link link-inverse" href="/">
+                  Link
+                </Link>
+              </li>
+              <li>
+                <Link className="link-display" href="/">
+                  Link Display
+                </Link>
+              </li>
+              <li>
+                <Link className="link-footer" href="/">
+                  Link Footer
+                </Link>
               </li>
             </ul>
           </section>

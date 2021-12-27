@@ -1,0 +1,25 @@
+[data-store-link] {
+  min-height: auto;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+// Links ////////////////////////////
+
+.link {
+  color: var(--color-link);
+  &:visited { color: var(--color-link-visited); }
+}
+
+.link-display { color: var(--color-secondary-4); }
+
+.link-footer {
+  color: var(--color-text);
+  font-size: var(--text-size-1);
+  &:visited { color: var(--color-link-visited); }
+}
+
+.link-inverse {
+  color: var(--color-link-inverse);
+  &:visited { color: var(--color-link-inverse); }
+}
