@@ -2,11 +2,31 @@ import type { ReactElement } from 'react'
 import React, { useState } from 'react'
 import { Button, Icon, Input } from '@faststore/ui'
 
-interface OutOfStockProps {
+export interface OutOfStockProps {
+  /**
+   * ID to find this component in testing tools (e.g.: cypress,
+   * testing-library, and jest).
+   */
+  testId?: string
+  /**
+   * The text tha goes inside the notification button.
+   */
   buttonTxt?: string
+  /**
+   * Message describing how the user will be notified.
+   */
   notificationMsg?: string
+  /**
+   * The Out of Stock Section's title.
+   */
   title?: string
+  /**
+   * Notification icon.
+   */
   icon?: ReactElement
+  /**
+   *
+   */
   onSubmit: (value: string) => void
 }
 
