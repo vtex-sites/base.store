@@ -75,7 +75,7 @@ function Page() {
               </li>
               <li>
                 <Link className="link link-inverse" href="/">
-                  Link
+                  Link Inverse
                 </Link>
               </li>
               <li>
