@@ -1,0 +1,93 @@
+$media: 1280px;
+
+[data-store-hero] {
+  display: flex;
+  width: 100%;
+  background-color: var(--bg-secondary-default);
+
+  @media screen and (max-width: $media) {
+    flex-direction: column-reverse;
+  }
+
+  [data-store-hero-content] {
+    width: 100%;
+    padding: 92px var(--space-9) 92px 105px;
+    color: var(--color-text-negative);
+
+    @media screen and (max-width: $media) {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .banner-info-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      max-width: 470px;
+      height: 100%;
+      margin-left: auto;
+
+      @media screen and (max-width: $media) {
+        max-width: 100%;
+      }
+    }
+
+    h1 {
+      font-weight: var(--text-weight-black);
+      font-size: var(--space-8);
+      line-height: var(--space-9);
+
+      @media screen and (max-width: $media) {
+        font-size: var(--space-5);
+        line-height: var(--space-6);
+      }
+    }
+
+    p {
+      margin-top: var(--space-4);
+      font-weight: var(--text-weight-regular);
+      font-size: 20px;
+      line-height: var(--space-5);
+
+      @media screen and (max-width: $media) {
+        font-size: var(--space-3);
+        line-height: var(--space-4);
+      }
+    }
+
+    [data-store-hero-link] {
+      margin-top: var(--space-6);
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 180px;
+        padding: var(--space-2) var(--space-4);
+        color: var(--color-secondary-4);
+        font-weight: var(--text-weight-bold);
+        font-size: var(--space-3);
+        text-decoration: none;
+        background: var(--bg-neutral-lightest);
+        border-radius: var(--border-radius-default);
+
+        @media screen and (max-width: $media) {
+          padding: var(--space-1) var(--space-4);
+        }
+      }
+    }
+  }
+
+  [data-store-hero-image] {
+    width: 100%;
+
+    [data-gatsby-image-wrapper] {
+      width: 100%;
+      min-height: 640px;
+
+      @media screen and (max-width: $media) {
+        height: 300px;
+        min-height: 0;
+      }
+    }
+  }
+}
