@@ -1,4 +1,4 @@
-$media: 1280px;
+@import "../../../styles/vendors/include-media.scss";
 
 [data-store-hero] {
   display: flex;
@@ -6,7 +6,7 @@ $media: 1280px;
   width: 100%;
   background-color: var(--bg-secondary-default);
 
-  @media screen and (min-width: $media) {
+  @include media(">=notebook") {
     flex-direction: row;
   }
 
@@ -15,8 +15,8 @@ $media: 1280px;
     padding: var(--space-6) var(--space-4);
     color: var(--color-text-negative);
 
-    @media screen and (min-width: $media) {
-      padding: 92px var(--space-9) 92px 0;
+    @include media(">=notebook") {
+      padding: var(--space-13) var(--space-9) var(--space-13) 0;
     }
 
     .banner-info-content {
@@ -27,32 +27,14 @@ $media: 1280px;
       height: 100%;
       margin-left: auto;
 
-      @media screen and (min-width: $media) {
-        max-width: 470px;
-      }
-    }
-
-    h1 {
-      font-weight: var(--text-weight-black);
-      font-size: var(--space-5);
-      line-height: var(--space-6);
-
-      @media screen and (min-width: $media) {
-        font-size: var(--space-8);
-        line-height: var(--space-9);
+      @include media(">=notebook") {
+        max-width: 30rem;
       }
     }
 
     p {
       margin-top: var(--space-4);
       font-weight: var(--text-weight-regular);
-      font-size: var(--space-3);
-      line-height: var(--space-4);
-
-      @media screen and (min-width: $media) {
-        font-size: 20px;
-        line-height: var(--space-5);
-      }
     }
 
     [data-store-hero-link] {
@@ -62,7 +44,7 @@ $media: 1280px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        width: 180px;
+        width: 11.25rem;
         padding: var(--space-1) var(--space-4);
         color: var(--color-secondary-4);
         font-weight: var(--text-weight-bold);
@@ -71,7 +53,7 @@ $media: 1280px;
         background: var(--bg-neutral-lightest);
         border-radius: var(--border-radius-default);
 
-        @media screen and (min-width: $media) {
+        @include media(">=notebook") {
           padding: var(--space-2) var(--space-4);
         }
       }
@@ -83,11 +65,10 @@ $media: 1280px;
 
     [data-gatsby-image-wrapper] {
       width: 100%;
-      height: 300px;
-      min-height: 0;
+      height: 18.75rem;
 
-      @media screen and (min-width: $media) {
-        min-height: 640px;
+      @include media(">=notebook") {
+        min-height: 40rem;
       }
     }
   }

@@ -30,8 +30,10 @@ const Hero = ({
       <HeroContent aria-labelledby="hero-heading">
         <div className="banner-info-content">
           <div>
-            <h1 id="hero-heading">{title}</h1>
-            <p>{subtitle}</p>
+            <h1 id="hero-heading" className="title-hero">
+              {title}
+            </h1>
+            <p className="text-body-big">{subtitle}</p>
           </div>
           <HeroLink>
             <Link to={link}>
