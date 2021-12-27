@@ -44,4 +44,15 @@ module.exports = {
       fitIn: true,
     },
   },
+  'product.sku': {
+    sourceWidth: 720,
+    aspectRatio: 1,
+    width: 40,
+    breakpoints: [20, 40, 80],
+    layout: 'constrained',
+    backgroundColor: '#f0f0f0',
+    options: {
+      fitIn: true,
+    },
+  },
 }
