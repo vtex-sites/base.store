@@ -54,12 +54,13 @@ function OutOfStock(props: OutOfStockProps) {
     buttonTxt = 'Send',
     icon = defaultIcon,
     onSubmit,
+    testId = 'store-out-of-stock',
   } = props
 
   const [email, setEmail] = useState('')
 
   return (
-    <>
+    <div data-store-out-of-stock data-testid={testId}>
       {/* TODO: This component seems to fit in Aria live Regions, this is just a reminder to handle this in the future
       https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions */}
       <p>{title}</p>
@@ -75,7 +76,7 @@ function OutOfStock(props: OutOfStockProps) {
       {/* TODO: Add icon to button */}
       <Button onClick={() => onSubmit(email)}>{buttonTxt}</Button>
       {/* TODO: Display success alert if onSubmit succeed */}
-    </>
+    </div>
   )
 }
 
