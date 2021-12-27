@@ -105,14 +105,10 @@ function SkuSelector({
               key={String(index)}
               label={option.label}
               value={option.label}
-              // TODO: Remove this inline style when we start to styling this component. Added just to skip "Tap Target" error (Lighthouse)
               disabled={option.disabled}
               checked={option.label === selectedSku}
             >
-              {variant === 'size' && (
-                // TODO: Remove this inline style when we start to styling this component. Added just to skip "Tap Target" error (Lighthouse)
-                <span>{option.label}</span>
-              )}
+              {variant === 'size' && <span>{option.label}</span>}
               {variant === 'color' && 'value' in option && (
                 <span>
                   <div

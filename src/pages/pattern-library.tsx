@@ -100,7 +100,7 @@ function Page() {
                     { label: 'S', value: 's' },
                     { label: 'M', value: 'm' },
                     { label: 'L', value: 'l' },
-                    { label: 'XL', value: 'xl' },
+                    { label: 'XL', value: 'xl', disabled: true },
                   ]}
                 />
               </li>
@@ -113,7 +113,7 @@ function Page() {
                     { label: 'Pink', value: '#eed0d0' },
                     { label: 'Green', value: '#b2dbcb' },
                     { label: 'Blue', value: '#bacbec' },
-                    { label: 'Lilac', value: '#ebdcff' },
+                    { label: 'Lilac', value: '#ebdcff', disabled: true },
                   ]}
                 />
               </li>
