@@ -74,9 +74,13 @@ function Page() {
                 </Link>
               </li>
               <li>
-                <Link className="link link-inverse" href="/">
-                  Link Inverse
-                </Link>
+                <p className="text-body">
+                  Lorem ipsum dolor sit amet, consectetur adipisci{' '}
+                  <Link className="link-inline" href="/">
+                    Link Inline
+                  </Link>{' '}
+                  ipsum.
+                </p>
               </li>
               <li>
                 <Link className="link-display" href="/">
@@ -86,6 +90,13 @@ function Page() {
               <li>
                 <Link className="link-footer" href="/">
                   Link Footer
+                </Link>
+              </li>
+            </ul>
+            <ul className="list-vertical" style={{ background: '#7e7e7e' }}>
+              <li>
+                <Link className="link link-inverse" href="/">
+                  Link Inverse
                 </Link>
               </li>
             </ul>
