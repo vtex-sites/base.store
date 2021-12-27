@@ -5,6 +5,7 @@ import { BellRinging } from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 
+import SkuSelector from '../components/ui/SkuSelector'
 import BuyButton from '../components/ui/BuyButton'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
@@ -84,6 +85,37 @@ function Page() {
             <ul className="list-horizontal">
               <li style={{ width: '100%' }}>
                 <SearchInput />
+              </li>
+            </ul>
+          </section>
+
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">SKU Selectors</h2>
+            <ul className="list-vertical">
+              <li>
+                <SkuSelector
+                  label="Size"
+                  variant="size"
+                  options={[
+                    { label: 'S', value: 's' },
+                    { label: 'M', value: 'm' },
+                    { label: 'L', value: 'l' },
+                    { label: 'XL', value: 'xl' },
+                  ]}
+                />
+              </li>
+              <li>
+                <SkuSelector
+                  label="Color"
+                  variant="color"
+                  options={[
+                    { label: 'Yellow', value: '#f1d096' },
+                    { label: 'Pink', value: '#eed0d0' },
+                    { label: 'Green', value: '#b2dbcb' },
+                    { label: 'Blue', value: '#bacbec' },
+                    { label: 'Lilac', value: '#ebdcff' },
+                  ]}
+                />
               </li>
             </ul>
           </section>
