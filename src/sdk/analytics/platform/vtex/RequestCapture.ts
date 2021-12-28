@@ -6,8 +6,8 @@ export function sendRCEvent(event: AnalyticsEvent) {
     window.vtexrca = {
       q: [],
     }
-    window.vtexrca.q.push('sendevent', event.type, event)
+    window.vtexrca.q.push('sendevent', event.name, event)
   }
 
-  window.NavigationCapture.sendEvent(event.type, event)
+  window.NavigationCapture.sendEvent(event.name, event)
 }
