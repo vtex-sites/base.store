@@ -190,3 +190,21 @@ describe('view_item_list event', () => {
     })
   })
 })
+
+describe('search event', () => {
+  beforeEach(() => {
+    cy.clearIDB()
+  })
+
+  it('raises search', () => {
+    cy.visit(pages.home, options)
+    cy.waitForHydration()
+
+    cy.getById('store-input').click().type('shirt')
+    cy.getById('store-button')
+      .click()
+      .then(() => {
+        dataLayerHasEvent('search')
+      })
+  })
+})
