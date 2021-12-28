@@ -11,6 +11,7 @@ import {
   InstagramIcon,
   PinterestIcon,
   TwitterIcon,
+  FastStoreIcon,
 } from './Icons'
 
 function Footer() {
@@ -85,6 +86,10 @@ function Footer() {
         <Icon component={<InstagramIcon />} />
         <Icon component={<PinterestIcon />} />
         <Icon component={<TwitterIcon />} />
+      </div>
+      {/* fast store logo */}
+      <div>
+        <Icon component={<FastStoreIcon />} />
       </div>
     </footer>
   )
