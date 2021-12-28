@@ -13,7 +13,7 @@
   [data-store-hero-content] {
     width: 100%;
     padding: var(--space-6) var(--space-4);
-    color: var(--color-text-negative);
+    color: var(--color-link-inverse);
 
     @include media(">=notebook") {
       padding: var(--space-13) var(--space-9) var(--space-13) 0;
