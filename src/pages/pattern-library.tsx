@@ -11,6 +11,7 @@ import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
+import QuantitySelector from '../components/ui/QuantitySelector'
 
 import '../styles/pattern-library.scss'
 
