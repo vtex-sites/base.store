@@ -93,9 +93,7 @@ function LinksSection() {
       <h2 className="title-subsection">Links</h2>
       <ul className="list-vertical">
         <li>
-          <Link className="link" href="/">
-            Link
-          </Link>
+          <Link href="/">Link</Link>
         </li>
         <li>
           <p className="text-body">
@@ -117,9 +115,9 @@ function LinksSection() {
           </Link>
         </li>
       </ul>
-      <ul className="list-vertical" style={{ background: '#7e7e7e' }}>
+      <ul className="list-vertical" style={{ background: '#5d666f' }}>
         <li>
-          <Link className="link" href="/" inverse>
+          <Link href="/" inverse>
             Link Inverse
           </Link>
         </li>
