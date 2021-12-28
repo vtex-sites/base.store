@@ -219,44 +219,50 @@ function Page() {
             </UIProvider>
           </section>
 
-          <section className="grid-section grid-content">
-            <h2 className="title-subsection">Tiles</h2>
-            <ul className="list-vertical">
-              <li>
-                <div className="tiles-section-item">
-                  <h3>Tiles with 2 items</h3>
-                  <Tiles>
-                    <Tile>Item 1</Tile>
-                    <Tile>Item 2</Tile>
-                  </Tiles>
-                </div>
-              </li>
-              <li>
-                <div className="tiles-section-item">
-                  <h3>Tiles with 3 items</h3>
-                  <Tiles>
-                    <Tile>Item 1</Tile>
-                    <Tile>Item 2</Tile>
-                    <Tile>Item 3</Tile>
-                  </Tiles>
-                </div>
-              </li>
-              <li>
-                <div className="tiles-section-item">
-                  <h3>Tiles with 4 items</h3>
-                  <Tiles>
-                    <Tile>Item 1</Tile>
-                    <Tile>Item 2</Tile>
-                    <Tile>Item 3</Tile>
-                    <Tile>Item 4</Tile>
-                  </Tiles>
-                </div>
-              </li>
-            </ul>
-          </section>
+          <TilesSection />
         </main>
       </div>
     </>
+  )
+}
+
+function TilesSection() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Tiles</h2>
+      <ul className="list-vertical">
+        <li>
+          <div className="tiles-section-item">
+            <h3>Tiles with 2 items</h3>
+            <Tiles>
+              <Tile>Item 1</Tile>
+              <Tile>Item 2</Tile>
+            </Tiles>
+          </div>
+        </li>
+        <li>
+          <div className="tiles-section-item">
+            <h3>Tiles with 3 items</h3>
+            <Tiles>
+              <Tile>Item 1</Tile>
+              <Tile>Item 2</Tile>
+              <Tile>Item 3</Tile>
+            </Tiles>
+          </div>
+        </li>
+        <li>
+          <div className="tiles-section-item">
+            <h3>Tiles with 4 items</h3>
+            <Tiles>
+              <Tile>Item 1</Tile>
+              <Tile>Item 2</Tile>
+              <Tile>Item 3</Tile>
+              <Tile>Item 4</Tile>
+            </Tiles>
+          </div>
+        </li>
+      </ul>
+    </section>
   )
 }
 
