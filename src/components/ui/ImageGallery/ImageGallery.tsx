@@ -45,7 +45,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
                 src={image.url}
                 alt={image.alternateName}
                 variant="product.details"
-                loading="eager"
+                loading={idx === 0 ? 'eager' : 'lazy'}
               />
             </Button>
           )
