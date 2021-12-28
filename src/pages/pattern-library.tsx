@@ -119,7 +119,7 @@ function LinksSection() {
       </ul>
       <ul className="list-vertical" style={{ background: '#7e7e7e' }}>
         <li>
-          <Link className="link link-inverse" href="/">
+          <Link className="link" href="/" data-link-inverse>
             Link Inverse
           </Link>
         </li>

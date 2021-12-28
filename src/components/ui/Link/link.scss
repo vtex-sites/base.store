@@ -11,6 +11,11 @@
 
 // Links ////////////////////////////
 
+[data-link-inverse] {
+  color: var(--color-link-inverse);
+  &:visited { color: var(--color-link-inverse); }
+}
+
 .link {
   color: var(--color-link);
   line-height: 1.5;
@@ -32,9 +37,4 @@
   font-size: var(--text-size-1);
 
   @include media(">=notebook") { padding: var(--space-1) var(--space-0); }
-}
-
-.link-inverse {
-  color: var(--color-link-inverse);
-  &:visited { color: var(--color-link-inverse); }
 }

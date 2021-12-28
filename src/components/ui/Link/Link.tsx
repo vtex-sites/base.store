@@ -4,10 +4,12 @@ import type { LinkProps } from '@faststore/ui'
 
 import './link.scss'
 
-type Props = LinkProps<'a'>
+type Props = LinkProps<'a'> & {
+  inverse?: boolean
+}
 
-function Link(props: Props) {
-  return <UILink {...props} />
+function Link({ inverse, ...props }: Props) {
+  return <UILink data-link-inverse={inverse} {...props} />
 }
 
 export default Link
