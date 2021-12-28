@@ -3,6 +3,8 @@ import { Link } from 'gatsby'
 import type { InputHTMLAttributes } from 'react'
 import React from 'react'
 
+import './banner-text.scss'
+
 export interface BannerTextProps extends InputHTMLAttributes<HTMLDivElement> {
   /**
    * The content for the h2 tag.
@@ -33,7 +35,7 @@ function BannerText({
 }: BannerTextProps) {
   return (
     <Banner>
-      <BannerContent>
+      <BannerContent className="title-display-big">
         <div>
           <h2>{title}</h2>
           <p>{caption}</p>
