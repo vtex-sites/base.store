@@ -44,8 +44,6 @@ function ImageGallerySelector({
     infiniteMode: false,
   })
 
-  const slidingTransition = `transform 400ms`
-
   if (!elements || !elementCount) {
     return null
   }
@@ -80,7 +78,7 @@ function ImageGallerySelector({
           data-carousel-track
           style={{
             display: 'flex',
-            transition: sliderState.sliding ? slidingTransition : undefined,
+            transition: sliderState.sliding ? `transform 400ms` : undefined,
             width: `${(elementCount * 100) / itemsPerPage}%`,
             transform: `translate3d(${
               transformValues[sliderState.currentPage * itemsPerPage]
