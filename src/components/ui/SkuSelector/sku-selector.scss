@@ -74,7 +74,7 @@
     }
   }
 
-  &[data-variant="size"] input {
+  &[data-variant="label"] input {
     &:hover:not(:disabled) + span { background-color: var(--bg-secondary-light); }
     &:checked + span { background-color: var(--bg-secondary-light); }
   }
