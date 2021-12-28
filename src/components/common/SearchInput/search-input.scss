@@ -1,8 +1,12 @@
+@import "../../../styles/vendors/include-media";
+
 [data-store-search-input] {
   position: relative;
   display: inline-flex;
   width: 100%;
   height: var(--min-size);
+
+  @include media(">=notebook") { height: var(--space-6); }
 }
 
 [data-store-search-input] [data-store-input] {
@@ -28,6 +32,11 @@
   padding: 0;
   background-color: transparent;
   border: 0;
+
+  @include media(">=notebook") {
+    height: var(--space-6);
+    min-height: var(--space-6);
+  }
 }
 
 [data-store-search-input] [data-store-button] svg {
