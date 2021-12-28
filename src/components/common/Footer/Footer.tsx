@@ -1,5 +1,5 @@
 import React from 'react'
-import { Incentive, List, Link } from '@faststore/ui'
+import { Incentive, List, Link, Icon } from '@faststore/ui'
 
 import {
   QualityIcon,
@@ -7,6 +7,10 @@ import {
   GuaranteeIcon,
   ShippingIcon,
   StoreIcon,
+  FacebookIcon,
+  InstagramIcon,
+  PinterestIcon,
+  TwitterIcon,
 } from './Icons'
 
 function Footer() {
@@ -73,6 +77,14 @@ function Footer() {
           <Link href="/">Advertise with US</Link>
           <Link href="/">Market Place</Link>
         </div>
+      </div>
+      {/* Follow us section */}
+      <div>
+        <span>Follow us</span>
+        <Icon component={<FacebookIcon />} />
+        <Icon component={<InstagramIcon />} />
+        <Icon component={<PinterestIcon />} />
+        <Icon component={<TwitterIcon />} />
       </div>
     </footer>
   )
