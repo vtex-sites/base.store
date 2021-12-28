@@ -2,6 +2,8 @@ import type { AnalyticsEvent } from '@faststore/sdk'
 import { useAnalyticsEvent } from '@faststore/sdk'
 import type { PropsWithChildren } from 'react'
 
+import storeConfig from '../../../store.config'
+
 if (typeof window !== 'undefined') {
   window.dataLayer = window.dataLayer ?? []
 }
@@ -9,7 +11,7 @@ if (typeof window !== 'undefined') {
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useAnalyticsEvent((event: AnalyticsEvent) => {
     window.dataLayer.push(event)
-    import(`./platform/${process.env.GATSBY_COMMERCE_PLATFORM}`).then(
+    import(`./platform/${storeConfig.platform}`).then(
       ({ default: sendEvent }) => {
         sendEvent(event)
       }
