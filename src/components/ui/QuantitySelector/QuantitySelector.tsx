@@ -56,12 +56,12 @@ export function QuantitySelector({
       leftButtonProps={{
         onClick: decrease,
         disabled: isLeftDisabled() || inputDisabled,
-        icon: <Minus size={16} weight="bold" />,
+        icon: <MinusIcon size={16} weight="bold" />,
       }}
       rightButtonProps={{
         onClick: increase,
         disabled: isRightDisabled() || inputDisabled,
-        icon: <Plus size={16} weight="bold" />,
+        icon: <PlusIcon size={16} weight="bold" />,
       }}
       inputProps={{
         onChange: validateInput,
