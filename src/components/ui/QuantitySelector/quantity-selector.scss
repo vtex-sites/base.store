@@ -44,7 +44,7 @@
 
   &.disabled {
     background-color: var(--bg-disabled);
-    outline-color: var(--color-neutral-2);
+    outline-color: var(--bg-disabled);
   }
 
   &:hover:not(.disabled) {
