@@ -14,11 +14,11 @@ function FacetedFilter({ facets }: Props) {
   const { toggleFacet } = useSearch()
 
   return (
-    <div>
+    <ul className="temp-grid-row">
       {facets
         .filter((facet) => facet.type === 'BOOLEAN')
         .map(({ label, values, key }, index) => (
-          <div key={`${label}-${index}`}>
+          <li key={`${label}-${index}`}>
             <Button
               onClick={() => setSelectedFilter(index)}
               data-testid="facet-filter-header"
@@ -48,9 +48,9 @@ function FacetedFilter({ facets }: Props) {
                 })}
               </ul>
             )}
-          </div>
+          </li>
         ))}
-    </div>
+    </ul>
   )
 }
 
