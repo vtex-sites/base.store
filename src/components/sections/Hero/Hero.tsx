@@ -6,7 +6,7 @@ import UIHero, {
   HeroLink,
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
-import { ArrowRight } from 'phosphor-react'
+import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 
 interface HeroProps {
   title: string
@@ -37,7 +37,7 @@ const Hero = ({
           </div>
           <HeroLink>
             <Link to={link}>
-              {linkText} <ArrowRight size={24} />
+              {linkText} <ArrowRightIcon size={24} />
             </Link>
           </HeroLink>
         </div>

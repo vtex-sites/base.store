@@ -3,7 +3,7 @@ import React from 'react'
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
 import type { AlertProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
-import { X } from 'phosphor-react'
+import { X as XIcon } from 'phosphor-react'
 import { Link } from 'gatsby'
 
 import './alert.scss'
@@ -49,7 +49,7 @@ function Alert({
 
       {dismissible && (
         <Button data-alert-button aria-label="Close" onClick={handleClose}>
-          <X size={18} weight="bold" />
+          <XIcon size={18} weight="bold" />
         </Button>
       )}
     </UIAlert>
