@@ -43,7 +43,7 @@ type ImageVariant = 'image'
 
 type Sku<V> = V extends ImageVariant ? ImageSkuProps : DefaultSkuProps
 
-type Variant = 'color' | 'size' | 'image'
+type Variant = 'color' | 'label' | 'image'
 
 export interface SkuSelectorProps {
   /**
@@ -101,14 +101,13 @@ function SkuSelector({
         {options.map((option, index) => {
           return (
             <RadioOption
-              data-sku-selector-option
               key={String(index)}
               label={option.label}
               value={option.label}
               disabled={option.disabled}
               checked={option.label === selectedSku}
             >
-              {variant === 'size' && <span>{option.label}</span>}
+              {variant === 'label' && <span>{option.label}</span>}
               {variant === 'color' && 'value' in option && (
                 <span>
                   <div
