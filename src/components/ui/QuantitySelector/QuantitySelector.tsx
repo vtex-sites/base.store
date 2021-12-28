@@ -16,6 +16,8 @@ export function QuantitySelector({
   disabled,
 }: QuantitySelectorProps) {
   const [quantity, setQuantity] = useState<number>(min)
+  const isLeftDisabled = quantity === min
+  const isRightDisabled = quantity === max
 
   function increase() {
     setQuantity((currentQuantity) =>
@@ -27,14 +29,6 @@ export function QuantitySelector({
     setQuantity((currentQuantity) =>
       validateQuantityBounds(currentQuantity - 1)
     )
-  }
-
-  function isLeftDisabled(): boolean {
-    return quantity === min
-  }
-
-  function isRightDisabled(): boolean {
-    return quantity === max
   }
 
   function validateQuantityBounds(n: number): number {
@@ -55,12 +49,12 @@ export function QuantitySelector({
       quantity={quantity}
       leftButtonProps={{
         onClick: decrease,
-        disabled: isLeftDisabled() || disabled,
+        disabled: isLeftDisabled || disabled,
         icon: <MinusIcon size={16} weight="bold" />,
       }}
       rightButtonProps={{
         onClick: increase,
-        disabled: isRightDisabled() || disabled,
+        disabled: isRightDisabled || disabled,
         icon: <PlusIcon size={16} weight="bold" />,
       }}
       inputProps={{
