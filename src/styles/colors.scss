@@ -2,6 +2,7 @@
 
 :root {
   --color-emphasis: #8db6fa;
+  --color-emphasis-transparent-80: #8db6fa80;
   --color-visited: #6058ba;
 
   // Text
@@ -10,6 +11,7 @@
   --color-link-inverse: var(--color-neutral-0);
   --color-text: var(--color-neutral-7);
   --color-text-inverse: var(--color-neutral-0);
+  --color-text-disabled: var(--color-neutral-6);
 
   // Backgrounds
   --bg-primary-light: var(--color-primary-0);
@@ -24,13 +26,14 @@
   --bg-secondary-pressed: var(--color-secondary-2);
   --bg-disabled: var(--color-neutral-2);
   --bg-focus-ring: var(--color-emphasis);
-  --bg-selected-outline: var(--color-emphasis);
+  --bg-selected-outline: var(--color-emphasis-transparent-80);
   --bg-darken-hover: rgb(0 0 0 / 5%);
   --bg-success: var(--color-success);
 
   // Borders
   --color-border-display: var(--color-neutral-3);
   --color-border-input: var(--color-neutral-4);
+  --color-border-input-selected: var(--color-secondary-2);
   --color-border-input-disabled: var(--color-neutral-6);
 }
 
