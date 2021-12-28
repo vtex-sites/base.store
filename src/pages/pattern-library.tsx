@@ -6,6 +6,7 @@ import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 
+import SkuSelector from '../components/ui/SkuSelector'
 import BuyButton from '../components/ui/BuyButton'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
@@ -16,6 +17,7 @@ import '../styles/pattern-library.scss'
 function Page() {
   const [showAlert1, setShowAlert1] = useState(true)
   const [showAlert2, setShowAlert2] = useState(true)
+  const [showAlert3, setShowAlert3] = useState(true)
 
   return (
     <>
@@ -88,6 +90,37 @@ function Page() {
             </ul>
           </section>
 
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">SKU Selectors</h2>
+            <ul className="list-vertical">
+              <li>
+                <SkuSelector
+                  label="Size"
+                  variant="label"
+                  options={[
+                    { label: 'S', value: 's' },
+                    { label: 'M', value: 'm' },
+                    { label: 'L', value: 'l' },
+                    { label: 'XL', value: 'xl', disabled: true },
+                  ]}
+                />
+              </li>
+              <li>
+                <SkuSelector
+                  label="Color"
+                  variant="color"
+                  options={[
+                    { label: 'Yellow', value: '#f1d096' },
+                    { label: 'Pink', value: '#eed0d0' },
+                    { label: 'Green', value: '#b2dbcb' },
+                    { label: 'Blue', value: '#bacbec' },
+                    { label: 'Lilac', value: '#ebdcff', disabled: true },
+                  ]}
+                />
+              </li>
+            </ul>
+          </section>
+
           <section id="alerts" className="grid-section grid-content">
             <h2 className="title-subsection">Alerts</h2>
             <ul className="list-vertical">
@@ -123,14 +156,36 @@ function Page() {
                   <Alert
                     icon={<BellRinging size={24} />}
                     dismissible
+                    link={{ to: '#alerts', text: 'Action' }}
                     onClose={() => setShowAlert2(false)}
                   >
-                    Get 10% off today:&nbsp;<span>NEW10</span>&nbsp;
-                    <a href="#alerts">Action</a>
+                    Get 10% off today:&nbsp;<span>NEW10</span>
                   </Alert>
                 ) : (
                   <UIButton
                     onClick={() => setShowAlert2((prevState) => !prevState)}
+                  >
+                    Show Alert
+                  </UIButton>
+                )}
+              </li>
+
+              <li>
+                {showAlert3 ? (
+                  <Alert
+                    icon={<BellRinging size={24} />}
+                    dismissible
+                    link={{ to: '#alerts', text: 'Action' }}
+                    onClose={() => setShowAlert3(false)}
+                  >
+                    Long text example:&nbsp;<span>NEW10.</span>&nbsp; Get 10%
+                    off today Get 10% off today Get 10% off today Get 10% off
+                    today Get 10% off today Get 10% off today Get 10% off today
+                    Get 10% off today Get 10% off today{' '}
+                  </Alert>
+                ) : (
+                  <UIButton
+                    onClick={() => setShowAlert3((prevState) => !prevState)}
                   >
                     Show Alert
                   </UIButton>

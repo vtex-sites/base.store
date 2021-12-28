@@ -32,6 +32,7 @@ module.exports = {
     'selector-pseudo-class-no-unknown': true,
     'selector-pseudo-element-no-unknown': true,
     'comment-no-empty': true,
+    'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': true,
     'no-duplicate-at-import-rules': true,
     'no-extra-semicolons': true,
@@ -77,5 +78,8 @@ module.exports = {
     'scss/operator-no-unspaced': true,
     'scss/selector-no-redundant-nesting-selector': true,
     'scss/at-rule-no-unknown': true,
+    'scss/at-import-partial-extension': null,
+    'selector-class-pattern':
+      '^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$',
   },
 }
