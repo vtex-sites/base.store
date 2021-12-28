@@ -34,17 +34,37 @@ export const wrapRootElement = ({ element }) => (
 export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
 
 export const onRenderBody = ({ setHeadComponents }) => {
+  let addPartytown = false
+  const forward = []
+
   if (storeConfig.analytics.gtmContainerId) {
+    addPartytown = true
     setHeadComponents([
       <GoogleTagManager
         key="gtm"
         containerId={storeConfig.analytics.gtmContainerId}
         enablePartytown
       />,
-      <Partytown key="party" />,
     ])
   } else if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line
     console.warn('Check the analytics section on your store.config.js file.')
+  }
+
+  if (storeConfig.platform === 'vtex') {
+    addPartytown = true
+    forward.push('NavigationCapture.sendEvent')
+    setHeadComponents([
+      <script
+        key="rc.js-script"
+        type="text/partytown"
+        async
+        src="https://io.vtex.com.br/rc/rc.js"
+      />,
+    ])
+  }
+
+  if (addPartytown) {
+    setHeadComponents([<Partytown key="partytown" forward={forward} />])
   }
 }

@@ -8,6 +8,8 @@ if (typeof window !== 'undefined') {
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useAnalyticsEvent((event) => {
     window.dataLayer.push({ event: event.name, ecommerce: event.params })
+
+    window.NavigationCapture.sendEvent(event.name, event.params)
   })
 
   return children
