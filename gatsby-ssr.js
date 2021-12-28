@@ -44,6 +44,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
       <Partytown key="party" />,
     ])
   } else if (process.env.NODE_ENV === 'development') {
-    console.warn('Add the gtmContainerId on storeConfig file')
+    // eslint-disable-next-line
+    console.log('Add the gtmContainerId on storeConfig file')
   }
 }
