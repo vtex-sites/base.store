@@ -30,6 +30,13 @@
 }
 
 .navbar__logo {
-  width: 177px;
-  height: 38px;
+  width: 148px;
+  height: 41px;
+  min-height: 41px;
+  padding: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
