@@ -6,8 +6,8 @@
   width: 8.125rem;
   height: var(--space-7);
   background-color: var(--bg-neutral-lightest);
+  border: var(--border-width-0) solid var(--color-border-input);
   border-radius: var(--border-radius-default);
-  outline: var(--border-width-0) solid var(--color-border-input);
 
   [data-store-icon] {
     margin: 0;
@@ -44,10 +44,10 @@
 
   &[data-store-quantity-selector="disabled"] {
     background-color: var(--bg-disabled);
-    outline-color: var(--bg-disabled);
+    border-color: var(--bg-disabled);
   }
 
   &:hover:not([data-store-quantity-selector="disabled"]) {
-    outline: var(--border-width-2) solid var(--color-border-input-selected);
+    border: var(--border-width-2) solid var(--color-border-input-selected);
   }
 }
