@@ -43,79 +43,9 @@ function Page() {
             </ul>
           </section>
 
-          <section className="grid-section grid-content">
-            <h2 className="title-subsection">Custom Button – Primary</h2>
-            <ul className="list-horizontal">
-              <li>
-                <Button
-                  variant="primary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                >
-                  Call To Action
-                </Button>
-              </li>
-              <li>
-                <Button
-                  variant="primary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                  disabled
-                >
-                  Call To Action
-                </Button>
-              </li>
-            </ul>
-            <ul className="list-horizontal dark">
-              <li>
-                <Button
-                  variant="primary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                  inverse
-                >
-                  Call To Action
-                </Button>
-              </li>
-            </ul>
-          </section>
+          <CustomButtonPrimary />
 
-          <section className="grid-section grid-content">
-            <h2 className="title-subsection">Custom Button – Secondary</h2>
-            <ul className="list-horizontal">
-              <li>
-                <Button
-                  variant="secondary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                >
-                  Call To Action
-                </Button>
-              </li>
-              <li>
-                <Button
-                  variant="secondary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                  disabled
-                >
-                  Call To Action
-                </Button>
-              </li>
-            </ul>
-            <ul className="list-horizontal dark">
-              <li>
-                <Button
-                  variant="secondary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                  inverse
-                >
-                  Call To Action
-                </Button>
-              </li>
-            </ul>
-          </section>
+          <CustomButtonSecondary />
 
           <InputsSection />
 
@@ -208,6 +138,88 @@ function LinksSection() {
           <Link href="/" inverse>
             Link Inverse
           </Link>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function CustomButtonPrimary() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Custom Button – Primary</h2>
+      <ul className="list-horizontal">
+        <li>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+          >
+            Call To Action
+          </Button>
+        </li>
+        <li>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            disabled
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            inverse
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function CustomButtonSecondary() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Custom Button – Secondary</h2>
+      <ul className="list-horizontal">
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+          >
+            Call To Action
+          </Button>
+        </li>
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+            disabled
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+            inverse
+          >
+            Call To Action
+          </Button>
         </li>
       </ul>
     </section>
