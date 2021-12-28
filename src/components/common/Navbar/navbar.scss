@@ -1,6 +1,16 @@
 @import "../../../styles/vendors/include-media";
 
 .navbar {
+  padding: 0;
+
+  > section {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
   [data-store-search-input] {
     flex: 1 0 100%;
     order: 2;
@@ -15,24 +25,25 @@
     .navlinks {
       flex: 1 0 100%;
       order: 3;
+      padding-top: var(--space-2);
+      > a { min-height: auto; }
     }
+
     .cart-toggle { order: 2; }
   }
 }
 
 .navbar__header {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  padding: var(--space-1) 0;
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-1);
 
   @include media(">=notebook") { padding: var(--space-2) 0; }
 }
 
 .navbar__logo {
-  width: 148px;
-  height: 41px;
-  min-height: 41px;
+  width: 9.25rem;
+  height: 2.5625rem;
+  min-height: 2.5625rem;
   padding: 0;
 
   img {

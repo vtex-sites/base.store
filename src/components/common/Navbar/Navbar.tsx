@@ -10,20 +10,20 @@ import './navbar.scss'
 
 function Navbar() {
   return (
-    <header className="navbar grid-content">
-      <div className="navbar__header">
-        <Link
-          to="/"
-          aria-label="Go to Faststore home"
-          title="Go to Faststore home"
-          className="navbar__logo"
-        >
-          <Logo />
-        </Link>
-        <CartToggle />
-        <SearchInput />
-      </div>
-      <div>
+    <header className="navbar grid-content-full">
+      <div className="navbar__header grid-content">
+        <section>
+          <Link
+            to="/"
+            aria-label="Go to Faststore home"
+            title="Go to Faststore home"
+            className="navbar__logo"
+          >
+            <Logo />
+          </Link>
+          <CartToggle />
+          <SearchInput />
+        </section>
         <Navlinks />
       </div>
     </header>
