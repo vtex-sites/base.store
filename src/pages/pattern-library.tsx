@@ -168,7 +168,7 @@ function SkuSelectorSection() {
         <li>
           <SkuSelector
             label="Size"
-            variant="size"
+            variant="label"
             options={[
               { label: 'S', value: 's' },
               { label: 'M', value: 'm' },

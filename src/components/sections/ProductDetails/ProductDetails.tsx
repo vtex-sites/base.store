@@ -70,7 +70,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
       <SkuSelector
         label="Size"
-        variant="size"
+        variant="label"
         options={[
           { label: 'P', value: 'p' },
           { label: 'M', value: 'm' },
