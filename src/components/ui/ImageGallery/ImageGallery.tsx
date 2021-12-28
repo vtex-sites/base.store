@@ -32,8 +32,9 @@ function ImageGallery({ images }: ImageGalleryProps) {
           return (
             <Button
               key={idx}
-              data-thumbnail-button
-              className={image.url === currentImage.url ? 'selected' : ''}
+              data-thumbnail-button={
+                idx === selectedImageIdx ? 'selected' : 'true'
+              }
               aria-label={`${image.alternateName} - Image ${idx + 1} of ${
                 images.length
               }`}
