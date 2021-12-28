@@ -2,19 +2,28 @@ import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
+import Price from 'src/components/ui/Price'
 import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
+import {
+  Card as UICard,
+  CardImage as UICardImage,
+  CardContent as UICardContent,
+  CardActions as UICardActions,
+} from '@faststore/ui'
+
+import './product-summary.scss'
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
-  className?: string
 }
 
-function ProductSummary({ product, index, className }: Props) {
+function ProductSummary({ product, index }: Props) {
   const {
     id,
     sku,
@@ -59,27 +68,50 @@ function ProductSummary({ product, index, className }: Props) {
   })
 
   return (
-    <Link {...linkProps} className={className}>
-      <Image
-        className="w-full"
-        src={img.url}
-        variant="product.summary"
-        alt={img.alternateName}
-        sizes="(max-width: 768px) 200px, 320px"
-      />
-
-      <div>{name}</div>
-      <div>
-        <span data-testid="list-price" data-value={listPrice}>
-          {useFormattedPrice(listPrice)}
-        </span>
-        <span data-testid="price" data-value={spotPrice}>
-          {useFormattedPrice(spotPrice)}
-        </span>
-        <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
-      </div>
-      <Button {...buyProps}>Add to cart</Button>
-    </Link>
+    <UICard className="product-summary">
+      <UICardImage>
+        <Image
+          src={img.url}
+          variant="product.summary"
+          alt={img.alternateName}
+          sizes="(max-width: 768px) 200px, 320px"
+        />
+      </UICardImage>
+      <UICardContent>
+        <h3 className="product-summary__title">
+          <Link {...linkProps} title={name}>
+            {name}
+          </Link>
+        </h3>
+        <div className="product-summary__prices">
+          <Price
+            value={listPrice}
+            formatter={useFormattedPrice}
+            testId="list-price"
+            data-value={listPrice}
+            variant="listing"
+            classes="text-body-small"
+            aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
+          />
+          <Price
+            value={spotPrice}
+            formatter={useFormattedPrice}
+            testId="price"
+            data-value={spotPrice}
+            variant="spot"
+            classes="text-body"
+            aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
+          />
+        </div>
+        <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
+      </UICardContent>
+      <UICardActions>
+        <Button {...buyProps} aria-label="Add to cart" title="Add to cart">
+          <ShoppingCartIcon size={18} weight="bold" />
+          Add
+        </Button>
+      </UICardActions>
+    </UICard>
   )
 }
 

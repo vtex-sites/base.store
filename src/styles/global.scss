@@ -76,10 +76,12 @@
   // Target Size
   --min-size: var(--space-7);
 
-  // Borders ////////////////////////
+  // Box-Shadows ////////////////////////
+  --box-shadow: 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
 
   // Radius
   --border-radius-flat: 0;
+  --border-radius-small: .125rem;
   --border-radius-default: .25rem;
   --border-radius-pill: 100px;
   --border-radius-circle: 100%;
@@ -88,6 +90,7 @@
   --border-width-0: 1px;
   --border-width-1: 1.5px;
   --border-width-2: 2px;
+  --border-width-3: 3px;
 
   // Grid ///////////////////////////
 

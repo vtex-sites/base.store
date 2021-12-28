@@ -1,5 +1,13 @@
 // Default //////////////////////////
 
+/* FIXME Remove this once grid page are styled properly */
+.temp-grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  li { margin: 4px; }
+}
+
 .pattern-library {
   height: 100%;
   padding: var(--space-7) 0 var(--space-5);
@@ -35,4 +43,10 @@ a, button[data-store-button] {
 
 select {
   min-height: var(--min-size);
+}
+
+/* FIXME Remove this once we have another approach for SEO titles */
+.temp-offscreen {
+  position: absolute;
+  top: -100px;
 }

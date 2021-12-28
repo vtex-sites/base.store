@@ -31,6 +31,7 @@ function ProductGallery({ title }: Props) {
           Total Products: {totalCount}
         </div>
         <Sort />
+        <h2>Most Wanted</h2>
       </div>
 
       {/* Add link to previous page. This helps on SEO */}

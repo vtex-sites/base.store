@@ -90,7 +90,7 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('product-link')
+    cy.getById('store-card')
       .should('exist')
       .should('have.length.gt', 0)
       .then(($links) => {
@@ -100,7 +100,7 @@ describe('Infinite Scroll pagination', () => {
           .should('exist')
           .click()
           .then(() => {
-            cy.getById('product-link')
+            cy.getById('store-card')
               .should('have.length.gte', before)
               .then(($products) => {
                 const after = $products.length
@@ -115,7 +115,7 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('product-link')
+    cy.getById('store-card')
       .should('exist')
       .should('have.length.gt', 0)
       .then(($links) => {
@@ -132,7 +132,7 @@ describe('Infinite Scroll pagination', () => {
             // The skuId of the last product on the page
             let skuIdBeforeNavigate
 
-            cy.getById('product-link')
+            cy.getById('store-card')
               // Number of products after showMore is clicked should be higher
               .should('have.length.gte', before)
               .last()
@@ -169,12 +169,12 @@ describe('Infinite Scroll pagination', () => {
       .should('exist')
       .click()
       .then(() => {
-        cy.getById('product-link')
+        cy.getById('store-card')
           .last()
           .scrollIntoView()
           .location('search')
           .should('match', /\page=1$/)
-          .getById('product-link')
+          .getById('store-card')
           .first()
           .scrollIntoView({ offset: { top: -10 } })
           .location('search')
