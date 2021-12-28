@@ -12,7 +12,6 @@ function Navbar() {
   return (
     <header className="navbar grid-content">
       <div className="navbar__header">
-        <Navlinks />
         <Link
           to="/"
           aria-label="Go to Faststore home"
@@ -23,6 +22,9 @@ function Navbar() {
         </Link>
         <CartToggle />
         <SearchInput />
+      </div>
+      <div>
+        <Navlinks />
       </div>
     </header>
   )

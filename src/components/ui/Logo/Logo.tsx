@@ -1,15 +1,9 @@
 import React from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
+
+import logoImg from './logo.png'
 
 function Logo() {
-  return (
-    <StaticImage
-      src="../logo.png"
-      alt="Faststore logo"
-      width={178}
-      height={38}
-    />
-  )
+  return <img src={logoImg} alt="Faststore logo" width={148} height={38} />
 }
 
 export default Logo
