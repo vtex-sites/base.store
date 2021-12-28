@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
-import { Plus, Minus } from 'phosphor-react'
+import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
 
 import './quantity-selector.scss'
 
