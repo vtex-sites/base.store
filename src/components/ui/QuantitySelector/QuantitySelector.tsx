@@ -5,17 +5,17 @@ import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
 import './quantity-selector.scss'
 
 interface QuantitySelectorProps {
-  maxQuantity: number
-  minQuantity: number
+  max: number
+  min: number
   disabled: boolean
 }
 
 export function QuantitySelector({
-  maxQuantity,
-  minQuantity,
+  max,
+  min,
   disabled,
 }: QuantitySelectorProps) {
-  const [quantity, setQuantity] = useState<number>(minQuantity)
+  const [quantity, setQuantity] = useState<number>(min)
 
   function increase() {
     setQuantity((currentQuantity) =>
@@ -30,15 +30,15 @@ export function QuantitySelector({
   }
 
   function isLeftDisabled(): boolean {
-    return quantity === minQuantity
+    return quantity === min
   }
 
   function isRightDisabled(): boolean {
-    return quantity === maxQuantity
+    return quantity === max
   }
 
   function validateQuantityBounds(n: number): number {
-    return Math.min(Math.max(n, minQuantity), maxQuantity)
+    return Math.min(Math.max(n, min), max)
   }
 
   function validateInput(e: React.FormEvent<HTMLInputElement>) {
