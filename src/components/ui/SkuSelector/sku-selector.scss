@@ -40,7 +40,7 @@
         box-shadow: 0 0 0 1px var(--color-neutral-0), 0 0 0 var(--border-width-3) var(--bg-focus-ring);
       }
 
-      &:hover:not(:disabled) + span {
+      &:hover:not(:disabled):not(:checked) + span {
         border-color: var(--color-border-input-selected);
         border-width: var(--border-width-2);
         box-shadow: inset 0 0 0 var(--border-width-3) var(--color-neutral-0);
@@ -49,7 +49,7 @@
       &:checked + span {
         border-color: var(--color-border-input-selected);
         border-width: var(--border-width-2);
-        outline: var(--border-width-3) solid var(--bg-selected-outline);
+        box-shadow: 0 0 0 var(--border-width-3) var(--bg-selected-outline);
       }
 
       &:disabled {
