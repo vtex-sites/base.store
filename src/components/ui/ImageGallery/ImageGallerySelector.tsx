@@ -49,7 +49,7 @@ function ImageGallerySelector({
   }
 
   return (
-    <section>
+    <section aria-roledescription="carousel" aria-label="Product images">
       <IconButton
         aria-label="slide image selector backward"
         icon={<BackwardArrowIcon color="#323845" />}
