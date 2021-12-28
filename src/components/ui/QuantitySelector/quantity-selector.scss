@@ -42,12 +42,12 @@
     }
   }
 
-  &.disabled {
+  &[data-store-quantity-selector="disabled"] {
     background-color: var(--bg-disabled);
     outline-color: var(--bg-disabled);
   }
 
-  &:hover:not(.disabled) {
+  &:hover:not([data-store-quantity-selector="disabled"]) {
     outline: var(--border-width-2) solid var(--color-border-input-selected);
   }
 }

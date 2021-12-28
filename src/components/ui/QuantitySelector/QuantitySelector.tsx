@@ -51,8 +51,8 @@ export function QuantitySelector({
 
   return (
     <UIQuantitySelector
+      data-store-quantity-selector={disabled ? 'disabled' : 'true'}
       quantity={quantity}
-      className={disabled ? 'disabled' : ''}
       leftButtonProps={{
         onClick: decrease,
         disabled: isLeftDisabled() || disabled,
