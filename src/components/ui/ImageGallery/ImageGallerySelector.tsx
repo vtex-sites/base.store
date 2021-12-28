@@ -44,7 +44,7 @@ function ImageGallerySelector({
     infiniteMode: false,
   })
 
-  if (!elements || !elementCount) {
+  if (!elementCount) {
     return null
   }
 
