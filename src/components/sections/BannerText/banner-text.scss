@@ -1,0 +1,47 @@
+@import "../../../styles/vendors/include-media.scss";
+
+[data-store-banner] {
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  background-color: var(--color-secondary-4);
+
+  @include media(">=notebook") {
+    padding: var(--space-9) 273px;
+  }
+
+  [data-store-banner-content] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2, p {
+    display: inline;
+    margin-left: var(--space-1);
+    color: var(--color-text-inverse);
+
+    @include media(">=notebook") {
+      display: block;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 11.25rem;
+    margin-top: var(--space-5);
+    padding: var(--space-1) var(--space-4);
+    color: var(--color-secondary-4);
+    font-weight: var(--text-weight-bold);
+    font-size: var(--space-3);
+    text-decoration: none;
+    background: var(--bg-neutral-lightest);
+    border-radius: var(--border-radius-default);
+
+    @include media(">=notebook") {
+      margin-top: var(--space-7);
+      padding: var(--space-2) var(--space-4);
+    }
+  }
+}
