@@ -7,13 +7,13 @@ import './quantity-selector.scss'
 interface QuantitySelectorProps {
   maxQuantity: number
   minQuantity: number
-  inputDisabled: boolean
+  disabled: boolean
 }
 
 export function QuantitySelector({
   maxQuantity,
   minQuantity,
-  inputDisabled,
+  disabled,
 }: QuantitySelectorProps) {
   const [quantity, setQuantity] = useState<number>(minQuantity)
 
@@ -52,21 +52,21 @@ export function QuantitySelector({
   return (
     <UIQuantitySelector
       quantity={quantity}
-      className={inputDisabled ? 'disabled' : ''}
+      className={disabled ? 'disabled' : ''}
       leftButtonProps={{
         onClick: decrease,
-        disabled: isLeftDisabled() || inputDisabled,
+        disabled: isLeftDisabled() || disabled,
         icon: <MinusIcon size={16} weight="bold" />,
       }}
       rightButtonProps={{
         onClick: increase,
-        disabled: isRightDisabled() || inputDisabled,
+        disabled: isRightDisabled() || disabled,
         icon: <PlusIcon size={16} weight="bold" />,
       }}
       inputProps={{
         onChange: validateInput,
         readOnly: false,
-        disabled: inputDisabled,
+        disabled,
       }}
     />
   )
