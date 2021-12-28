@@ -100,26 +100,26 @@ function LinksSection() {
         <li>
           <p className="text-body">
             Lorem ipsum dolor sit amet, consectetur adipisci{' '}
-            <Link className="link-inline" href="/">
+            <Link variant="inline" href="/">
               Link Inline
             </Link>{' '}
             ipsum.
           </p>
         </li>
         <li>
-          <Link className="link-display" href="/">
+          <Link variant="display" href="/">
             Link Display
           </Link>
         </li>
         <li>
-          <Link className="link-footer" href="/">
+          <Link variant="footer" href="/">
             Link Footer
           </Link>
         </li>
       </ul>
       <ul className="list-vertical" style={{ background: '#7e7e7e' }}>
         <li>
-          <Link className="link" href="/" data-link-inverse>
+          <Link className="link" href="/" inverse>
             Link Inverse
           </Link>
         </li>
