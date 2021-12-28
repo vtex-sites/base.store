@@ -99,6 +99,22 @@ function Footer() {
       <div>
         <Icon component={<FastStoreIcon />} />
       </div>
+      {/* text */}
+      <div>
+        <p>
+          <small>This website uses VTEX technology</small>
+        </p>
+        <p>
+          <small>
+            In-store price may vary. Prices and offers are subject to change.
+            2021 Store name. All rights reserved. Store is a trademark of Store
+            and its affiliated companies.
+          </small>
+        </p>
+        <p>
+          <small> Mount St, 000, New York / NY - 00000.</small>
+        </p>
+      </div>
       {/* payment methods */}
       <div>
         <PaymentMethods title="Payment Methods">
