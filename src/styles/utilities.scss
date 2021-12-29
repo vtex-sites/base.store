@@ -1,0 +1,20 @@
+// Mixins & functions utilities  //////////////////////////
+
+/* SQ-DISABLE */
+@use "sass:math";
+
+/* SQ-ENABLE */
+
+// Px to rem.
+$base: 16px !default;
+
+@function rem($size) {
+  $rem: math.div($size, $base);
+
+  @return #{$rem}rem;
+}
+
+@mixin focus-ring {
+  outline: 2px solid var(--bg-focus-ring);
+  outline-offset: 1px;
+}

@@ -6,6 +6,9 @@
   --color-visited: #6058ba;
 
   --color-black-transparent-5: rgb(0 0 0 / 5%);
+  --color-black-transparent-10: rgb(0 0 0 / 10%);
+  --color-white-transparent-10: rgb(0 0 0 / 10%);
+  --color-white-transparent-20: rgb(0 0 0 / 20%);
 
   // Text
   --color-link: var(--color-secondary-2);
@@ -17,24 +20,39 @@
   --color-text-display: var(--color-secondary-4);
   --color-text-subtle: var(--color-neutral-6);
 
-  // Backgrounds
+  // Backgrounds – Light
   --bg-primary-light: var(--color-primary-0);
+
   --bg-secondary-light: var(--color-secondary-0);
+
   --bg-neutral-light: var(--color-neutral-1);
   --bg-neutral-lightest: var(--color-neutral-0);
+
+  // Backgrounds – Dark
+  --bg-secondary-dark: var(--color-secondary-4);
+
+  // Backgrounds – Interations
   --bg-primary-default: var(--color-primary-3);
   --bg-primary-hover: var(--color-primary-2);
   --bg-primary-pressed: var(--color-primary-1);
+
   --bg-secondary-default: var(--color-secondary-4);
   --bg-secondary-hover: var(--color-secondary-3);
   --bg-secondary-pressed: var(--color-secondary-2);
+
+  --bg-darken-hover: var(--color-black-transparent-5);
+  --bg-darken-pressed: var(--color-black-transparent-10);
+
+  --bg-lighten-hover: var(--color-white-transparent-10);
+  --bg-lighten-pressed: var(--color-white-transparent-20);
+
   --bg-disabled: var(--color-neutral-2);
   --bg-focus-ring: var(--color-emphasis);
   --bg-selected-outline: var(--color-emphasis-transparent-80);
-  --bg-darken-hover: rgb(0 0 0 / 5%);
   --bg-success: var(--color-success);
 
   // Borders
+  --color-border-light: var(--color-neutral-0);
   --color-border-display: var(--color-neutral-3);
   --color-border-input: var(--color-neutral-4);
   --color-border-input-selected: var(--color-secondary-2);

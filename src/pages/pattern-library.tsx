@@ -1,16 +1,21 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton } from '@faststore/ui'
-import { BellRinging } from 'phosphor-react'
+import {
+  BellRinging as BellRingingIcon,
+  ArrowRight as ArrowRightIcon,
+} from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
+import BuyButton from 'src/components/ui/BuyButton'
+import Button from 'src/components/ui/Button'
 
 import SkuSelector from '../components/ui/SkuSelector'
-import BuyButton from '../components/ui/BuyButton'
 import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
+import QuantitySelector from '../components/ui/QuantitySelector'
 
 import '../styles/pattern-library.scss'
 
@@ -27,7 +32,21 @@ function Page() {
 
           <LinksSection />
 
-          <ButtonsSection />
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Custom Button – BuyButton</h2>
+            <ul className="list-horizontal">
+              <li>
+                <BuyButton>Buy Now</BuyButton>
+              </li>
+              <li>
+                <BuyButton disabled>Buy Now</BuyButton>
+              </li>
+            </ul>
+          </section>
+
+          <CustomButtonPrimary />
+
+          <CustomButtonSecondary />
 
           <InputsSection />
 
@@ -126,19 +145,82 @@ function LinksSection() {
   )
 }
 
-function ButtonsSection() {
+function CustomButtonPrimary() {
   return (
     <section className="grid-section grid-content">
-      <h2 className="title-subsection">Buttons</h2>
+      <h2 className="title-subsection">Custom Button – Primary</h2>
       <ul className="list-horizontal">
         <li>
-          <BuyButton>Buy Now</BuyButton>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+          >
+            Call To Action
+          </Button>
         </li>
         <li>
-          <UIButton>Call to Action</UIButton>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            disabled
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            inverse
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function CustomButtonSecondary() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Custom Button – Secondary</h2>
+      <ul className="list-horizontal">
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+          >
+            Call To Action
+          </Button>
         </li>
         <li>
-          <UIButton>Call to Action</UIButton>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+            disabled
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+            inverse
+          >
+            Call To Action
+          </Button>
         </li>
       </ul>
     </section>
@@ -147,14 +229,28 @@ function ButtonsSection() {
 
 function InputsSection() {
   return (
-    <section className="grid-section grid-content">
-      <h2 className="title-subsection">Inputs</h2>
-      <ul className="list-horizontal">
-        <li style={{ width: '100%' }}>
-          <SearchInput />
-        </li>
-      </ul>
-    </section>
+    <>
+      <section className="grid-section grid-content">
+        <h2 className="title-subsection">Search Input</h2>
+        <ul className="list-horizontal">
+          <li style={{ width: '100%' }}>
+            <SearchInput />
+          </li>
+        </ul>
+      </section>
+
+      <section className="grid-section grid-content">
+        <h2 className="title-subsection">Quantity Selector Input</h2>
+        <ul className="list-horizontal">
+          <li>
+            <QuantitySelector min={1} max={10} disabled={false} />
+          </li>
+          <li>
+            <QuantitySelector min={4} max={40} disabled />
+          </li>
+        </ul>
+      </section>
+    </>
   )
 }
 
@@ -203,7 +299,7 @@ function AlertsSection() {
       <h2 className="title-subsection">Alerts</h2>
       <ul className="list-vertical">
         <li>
-          <Alert icon={<BellRinging size={24} />}>
+          <Alert icon={<BellRingingIcon size={24} />}>
             Get 10% off today:&nbsp;<span>NEW10</span>
           </Alert>
         </li>
@@ -215,7 +311,7 @@ function AlertsSection() {
         <li>
           {showAlert1 ? (
             <Alert
-              icon={<BellRinging size={24} />}
+              icon={<BellRingingIcon size={24} />}
               dismissible
               onClose={() => setShowAlert1(false)}
             >
@@ -230,7 +326,7 @@ function AlertsSection() {
         <li>
           {showAlert2 ? (
             <Alert
-              icon={<BellRinging size={24} />}
+              icon={<BellRingingIcon size={24} />}
               dismissible
               link={{ to: '#alerts', text: 'Action' }}
               onClose={() => setShowAlert2(false)}
@@ -247,7 +343,7 @@ function AlertsSection() {
         <li>
           {showAlert3 ? (
             <Alert
-              icon={<BellRinging size={24} />}
+              icon={<BellRingingIcon size={24} />}
               dismissible
               link={{ to: '#alerts', text: 'Action' }}
               onClose={() => setShowAlert3(false)}
