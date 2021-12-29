@@ -1996,13 +1996,16 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___allExtensions'
   | 'pluginCreator___pluginOptions___appendScript'
   | 'pluginCreator___pluginOptions___background_color'
+  | 'pluginCreator___pluginOptions___base64Width'
   | 'pluginCreator___pluginOptions___baseline'
   | 'pluginCreator___pluginOptions___cache_busting_mode'
   | 'pluginCreator___pluginOptions___color'
   | 'pluginCreator___pluginOptions___compare'
   | 'pluginCreator___pluginOptions___crossOrigin'
+  | 'pluginCreator___pluginOptions___defaultQuality'
   | 'pluginCreator___pluginOptions___defer'
   | 'pluginCreator___pluginOptions___display'
+  | 'pluginCreator___pluginOptions___failOnError'
   | 'pluginCreator___pluginOptions___html'
   | 'pluginCreator___pluginOptions___httpOptions'
   | 'pluginCreator___pluginOptions___icon'
@@ -2027,6 +2030,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___src'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___stats___context'
+  | 'pluginCreator___pluginOptions___stripMetadata'
   | 'pluginCreator___pluginOptions___theme_color'
   | 'pluginCreator___pluginOptions___theme_color_in_head'
   | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
@@ -2257,16 +2261,19 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___allExtensions'
   | 'pluginOptions___appendScript'
   | 'pluginOptions___background_color'
+  | 'pluginOptions___base64Width'
   | 'pluginOptions___baseline'
   | 'pluginOptions___cache_busting_mode'
   | 'pluginOptions___color'
   | 'pluginOptions___compare'
   | 'pluginOptions___crossOrigin'
+  | 'pluginOptions___defaultQuality'
   | 'pluginOptions___defer'
   | 'pluginOptions___display'
   | 'pluginOptions___env___branch_deploy___policy'
   | 'pluginOptions___env___deploy_preview___policy'
   | 'pluginOptions___env___production___policy'
+  | 'pluginOptions___failOnError'
   | 'pluginOptions___html'
   | 'pluginOptions___httpOptions'
   | 'pluginOptions___icon'
@@ -2293,6 +2300,7 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___src'
   | 'pluginOptions___start_url'
   | 'pluginOptions___stats___context'
+  | 'pluginOptions___stripMetadata'
   | 'pluginOptions___theme_color'
   | 'pluginOptions___theme_color_in_head'
   | 'pluginOptions___workboxConfig___globPatterns'
@@ -2423,14 +2431,17 @@ export type SitePluginPluginOptions = {
   allExtensions: Maybe<Scalars['Boolean']>
   appendScript: Maybe<Scalars['String']>
   background_color: Maybe<Scalars['String']>
+  base64Width: Maybe<Scalars['Int']>
   baseline: Maybe<Scalars['Boolean']>
   cache_busting_mode: Maybe<Scalars['String']>
   color: Maybe<Scalars['String']>
   compare: Maybe<Scalars['Boolean']>
   crossOrigin: Maybe<Scalars['String']>
+  defaultQuality: Maybe<Scalars['Int']>
   defer: Maybe<Scalars['Boolean']>
   display: Maybe<Scalars['String']>
   env: Maybe<SitePluginPluginOptionsEnv>
+  failOnError: Maybe<Scalars['Boolean']>
   html: Maybe<Scalars['Boolean']>
   httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
   icon: Maybe<Scalars['String']>
@@ -2456,6 +2467,7 @@ export type SitePluginPluginOptions = {
   src: Maybe<Scalars['String']>
   start_url: Maybe<Scalars['String']>
   stats: Maybe<SitePluginPluginOptionsStats>
+  stripMetadata: Maybe<Scalars['Boolean']>
   theme_color: Maybe<Scalars['String']>
   theme_color_in_head: Maybe<Scalars['Boolean']>
   workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfig>
@@ -2546,14 +2558,17 @@ export type SitePluginPluginOptionsFilterInput = {
   allExtensions: InputMaybe<BooleanQueryOperatorInput>
   appendScript: InputMaybe<StringQueryOperatorInput>
   background_color: InputMaybe<StringQueryOperatorInput>
+  base64Width: InputMaybe<IntQueryOperatorInput>
   baseline: InputMaybe<BooleanQueryOperatorInput>
   cache_busting_mode: InputMaybe<StringQueryOperatorInput>
   color: InputMaybe<StringQueryOperatorInput>
   compare: InputMaybe<BooleanQueryOperatorInput>
   crossOrigin: InputMaybe<StringQueryOperatorInput>
+  defaultQuality: InputMaybe<IntQueryOperatorInput>
   defer: InputMaybe<BooleanQueryOperatorInput>
   display: InputMaybe<StringQueryOperatorInput>
   env: InputMaybe<SitePluginPluginOptionsEnvFilterInput>
+  failOnError: InputMaybe<BooleanQueryOperatorInput>
   html: InputMaybe<BooleanQueryOperatorInput>
   httpOptions: InputMaybe<StringQueryOperatorInput>
   icon: InputMaybe<StringQueryOperatorInput>
@@ -2579,6 +2594,7 @@ export type SitePluginPluginOptionsFilterInput = {
   src: InputMaybe<StringQueryOperatorInput>
   start_url: InputMaybe<StringQueryOperatorInput>
   stats: InputMaybe<SitePluginPluginOptionsStatsFilterInput>
+  stripMetadata: InputMaybe<BooleanQueryOperatorInput>
   theme_color: InputMaybe<StringQueryOperatorInput>
   theme_color_in_head: InputMaybe<BooleanQueryOperatorInput>
   workboxConfig: InputMaybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
@@ -3513,6 +3529,26 @@ export type StringQueryOperatorInput = {
 }
 
 export type ProductSummary_ProductFragment = {
+  slug: string
+  sku: string
+  name: string
+  gtin: string
+  id: string
+  brand: { name: string; brandName: string }
+  isVariantOf: { productGroupID: string; name: string }
+  image: Array<{ url: string; alternateName: string }>
+  offers: {
+    lowPrice: number
+    offers: Array<{
+      price: number
+      listPrice: number
+      quantity: number
+      seller: { identifier: string }
+    }>
+  }
+}
+
+export type ProductTile_ProductFragment = {
   slug: string
   sku: string
   name: string
