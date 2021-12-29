@@ -1,0 +1,9 @@
+main {
+  height: 100%;
+  padding: var(--space-7) 0 var(--space-5);
+  background-color: var(--bg-neutral-light);
+
+  .title-section.grid-content { margin-bottom: var(--space-5); }
+
+  .grid-section > .title-subsection { margin-bottom: var(--space-1); }
+}
