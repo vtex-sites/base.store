@@ -35,7 +35,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
               data-thumbnail-button={
                 idx === selectedImageIdx ? 'selected' : 'true'
               }
-              aria-label={`${image.alternateName} - Image ${idx + 1} of ${
+              aria-label={`Load ${image.alternateName} - Image ${idx + 1} of ${
                 images.length
               }`}
               onClick={() => {
