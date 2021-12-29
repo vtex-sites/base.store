@@ -1,7 +1,6 @@
 import React from 'react'
-import type { FC } from 'react'
 
-const GuaranteeIcon: FC = () => (
+const GuaranteeIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none">
     <path
       fillRule="evenodd"
@@ -12,7 +11,7 @@ const GuaranteeIcon: FC = () => (
   </svg>
 )
 
-const QualityIcon: FC = () => (
+const QualityIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none">
     <path
       fillRule="evenodd"
@@ -23,7 +22,7 @@ const QualityIcon: FC = () => (
   </svg>
 )
 
-const SafetyIcon: FC = () => (
+const SafetyIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none">
     <path
       fillRule="evenodd"
@@ -34,7 +33,7 @@ const SafetyIcon: FC = () => (
   </svg>
 )
 
-const ShippingIcon: FC = () => (
+const ShippingIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="none">
     <path
       fillRule="evenodd"
@@ -45,7 +44,7 @@ const ShippingIcon: FC = () => (
   </svg>
 )
 
-const StoreIcon: FC = () => (
+const StoreIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="35"
@@ -97,7 +96,7 @@ const StoreIcon: FC = () => (
   </svg>
 )
 
-const FacebookIcon: FC = () => (
+const FacebookIcon = () => (
   <svg
     width="24"
     height="24"
@@ -114,7 +113,7 @@ const FacebookIcon: FC = () => (
   </svg>
 )
 
-const InstagramIcon: FC = () => (
+const InstagramIcon = () => (
   <svg
     width="24"
     height="24"
@@ -129,7 +128,7 @@ const InstagramIcon: FC = () => (
   </svg>
 )
 
-const PinterestIcon: FC = () => (
+const PinterestIcon = () => (
   <svg
     width="24"
     height="24"
@@ -144,7 +143,7 @@ const PinterestIcon: FC = () => (
   </svg>
 )
 
-const TwitterIcon: FC = () => (
+const TwitterIcon = () => (
   <svg
     width="25"
     height="22"
@@ -161,7 +160,7 @@ const TwitterIcon: FC = () => (
   </svg>
 )
 
-const FastStoreIcon: FC = () => (
+const FastStoreIcon = () => (
   <svg
     width="124"
     height="32"
@@ -195,7 +194,7 @@ const FastStoreIcon: FC = () => (
 
 // payment methods
 
-const VisaCardIcon: FC = () => (
+const VisaCardIcon = () => (
   <svg
     width="34"
     height="24"
@@ -217,7 +216,7 @@ const VisaCardIcon: FC = () => (
   </svg>
 )
 
-const DinersClubIcon: FC = () => (
+const DinersClubIcon = () => (
   <svg
     width="34"
     height="24"
@@ -239,7 +238,7 @@ const DinersClubIcon: FC = () => (
   </svg>
 )
 
-const PayPalIcon: FC = () => (
+const PayPalIcon = () => (
   <svg
     width="34"
     height="24"
@@ -279,7 +278,7 @@ const PayPalIcon: FC = () => (
   </svg>
 )
 
-const MastercardIcon: FC = () => (
+const MastercardIcon = () => (
   <svg
     width="34"
     height="24"
@@ -313,7 +312,7 @@ const MastercardIcon: FC = () => (
   </svg>
 )
 
-const StripeIcon: FC = () => (
+const StripeIcon = () => (
   <svg
     width="34"
     height="24"
@@ -335,7 +334,7 @@ const StripeIcon: FC = () => (
   </svg>
 )
 
-const GooglePayIcon: FC = () => (
+const GooglePayIcon = () => (
   <svg
     width="34"
     height="24"
@@ -373,7 +372,7 @@ const GooglePayIcon: FC = () => (
   </svg>
 )
 
-const EloCardIcon: FC = () => (
+const EloCardIcon = () => (
   <svg
     width="34"
     height="24"
@@ -407,7 +406,7 @@ const EloCardIcon: FC = () => (
   </svg>
 )
 
-const ApplePayIcon: FC = () => (
+const ApplePayIcon = () => (
   <svg
     width="34"
     height="24"
