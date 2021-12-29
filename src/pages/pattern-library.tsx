@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton } from '@faststore/ui'
-import { BellRinging as BellRingingIcon } from 'phosphor-react'
+import {
+  BellRinging as BellRingingIcon,
+  ArrowRight as ArrowRightIcon,
+} from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
+import BuyButton from 'src/components/ui/BuyButton'
+import Button from 'src/components/ui/Button'
 
 import SkuSelector from '../components/ui/SkuSelector'
-import BuyButton from '../components/ui/BuyButton'
 import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
@@ -28,7 +32,21 @@ function Page() {
 
           <LinksSection />
 
-          <ButtonsSection />
+          <section className="grid-section grid-content">
+            <h2 className="title-subsection">Custom Button – BuyButton</h2>
+            <ul className="list-horizontal">
+              <li>
+                <BuyButton>Buy Now</BuyButton>
+              </li>
+              <li>
+                <BuyButton disabled>Buy Now</BuyButton>
+              </li>
+            </ul>
+          </section>
+
+          <CustomButtonPrimary />
+
+          <CustomButtonSecondary />
 
           <InputsSection />
 
@@ -127,19 +145,82 @@ function LinksSection() {
   )
 }
 
-function ButtonsSection() {
+function CustomButtonPrimary() {
   return (
     <section className="grid-section grid-content">
-      <h2 className="title-subsection">Buttons</h2>
+      <h2 className="title-subsection">Custom Button – Primary</h2>
       <ul className="list-horizontal">
         <li>
-          <BuyButton>Buy Now</BuyButton>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+          >
+            Call To Action
+          </Button>
         </li>
         <li>
-          <UIButton>Call to Action</UIButton>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            disabled
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <Button
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            inverse
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function CustomButtonSecondary() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Custom Button – Secondary</h2>
+      <ul className="list-horizontal">
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+          >
+            Call To Action
+          </Button>
         </li>
         <li>
-          <UIButton>Call to Action</UIButton>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+            disabled
+          >
+            Call To Action
+          </Button>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <Button
+            variant="secondary"
+            icon={<ArrowRightIcon size={18} weight="bold" />}
+            iconPosition="right"
+            inverse
+          >
+            Call To Action
+          </Button>
         </li>
       </ul>
     </section>
