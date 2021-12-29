@@ -24,109 +24,115 @@ import {
 
 function Footer() {
   return (
-    <footer className="w-full bg-primary-200 flex flex-col">
-      {/* list of incentives */}
-      <List variant="unordered" className="justify-around flex">
-        <li>
-          <Incentive>
-            <SafetyIcon />
-            <span>Trusted by SafeCon</span>
-          </Incentive>
-        </li>
-        <li>
-          <Incentive>
-            <QualityIcon />
-            <span>Quality Products</span>
-          </Incentive>
-        </li>
-        <li>
-          <Incentive>
-            <GuaranteeIcon />
-            <span>3-years Guarantee</span>
-          </Incentive>
-        </li>
-        <li>
-          <Incentive>
-            <StoreIcon />
-            <span>Pickup Options</span>
-          </Incentive>
-        </li>
-        <li>
-          <Incentive>
-            <ShippingIcon />
-            <span>Free Shipping</span>
-          </Incentive>
-        </li>
-      </List>
-      {/* links */}
-      <div className="flex flex-row justify-around">
-        <div className="flex flex-col">
-          <span>Our company</span>
-          <Link href="/">About Us</Link>
-          <Link href="/">Our Blog</Link>
-          <Link href="/">Stores</Link>
-          <Link href="/">Work With Us</Link>
-        </div>
-        <div className="flex flex-col">
-          <span>Orders {'&'} Purchases</span>
-          <Link href="/">Check Order Status</Link>
-          <Link href="/">Returns and Exchanges</Link>
-          <Link href="/">Product Recall</Link>
-          <Link href="/">Gift Cards</Link>
-        </div>
-        <div className="flex flex-col">
-          <span>Support {'&'} Services</span>
-          <Link href="/">Support Center</Link>
-          <Link href="/">Schedule a Service</Link>
-          <Link href="/">Contact Us</Link>
-        </div>
-        <div className="flex flex-col">
-          <span>Partnerships</span>
-          <Link href="/">Affiliate Program</Link>
-          <Link href="/">Advertise with US</Link>
-          <Link href="/">Market Place</Link>
-        </div>
-      </div>
-      {/* Follow us section */}
+    <footer>
       <div>
-        <span>Follow us</span>
-        <Icon component={<FacebookIcon />} />
-        <Icon component={<InstagramIcon />} />
-        <Icon component={<PinterestIcon />} />
-        <Icon component={<TwitterIcon />} />
+        {/* list of incentives */}
+        <List variant="unordered">
+          <li>
+            <Incentive>
+              <SafetyIcon />
+              <span>Trusted by SafeCon</span>
+            </Incentive>
+          </li>
+          <li>
+            <Incentive>
+              <QualityIcon />
+              <span>Quality Products</span>
+            </Incentive>
+          </li>
+          <li>
+            <Incentive>
+              <GuaranteeIcon />
+              <span>3-years Guarantee</span>
+            </Incentive>
+          </li>
+          <li>
+            <Incentive>
+              <StoreIcon />
+              <span>Pickup Options</span>
+            </Incentive>
+          </li>
+          <li>
+            <Incentive>
+              <ShippingIcon />
+              <span>Free Shipping</span>
+            </Incentive>
+          </li>
+        </List>
       </div>
-      {/* fast store logo */}
       <div>
-        <Icon component={<FastStoreIcon />} />
+        {/* list of links -- must to be an accordion on mobile */}
+        <section>
+          <div>
+            <span>Our company</span>
+            <Link href="/">About Us</Link>
+            <Link href="/">Our Blog</Link>
+            <Link href="/">Stores</Link>
+            <Link href="/">Work With Us</Link>
+          </div>
+          <div>
+            <span>Orders {'&'} Purchases</span>
+            <Link href="/">Check Order Status</Link>
+            <Link href="/">Returns and Exchanges</Link>
+            <Link href="/">Product Recall</Link>
+            <Link href="/">Gift Cards</Link>
+          </div>
+          <div>
+            <span>Support {'&'} Services</span>
+            <Link href="/">Support Center</Link>
+            <Link href="/">Schedule a Service</Link>
+            <Link href="/">Contact Us</Link>
+          </div>
+          <div>
+            <span>Partnerships</span>
+            <Link href="/">Affiliate Program</Link>
+            <Link href="/">Advertise with US</Link>
+            <Link href="/">Market Place</Link>
+          </div>
+        </section>
+        {/* Follow us section */}
+        <section>
+          <span>Follow us</span>
+          <Icon component={<FacebookIcon />} />
+          <Icon component={<InstagramIcon />} />
+          <Icon component={<PinterestIcon />} />
+          <Icon component={<TwitterIcon />} />
+        </section>
       </div>
-      {/* text */}
       <div>
-        <p>
-          <small>This website uses VTEX technology</small>
-        </p>
-        <p>
-          <small>
-            In-store price may vary. Prices and offers are subject to change.
-            2021 Store name. All rights reserved. Store is a trademark of Store
-            and its affiliated companies.
-          </small>
-        </p>
-        <p>
-          <small> Mount St, 000, New York / NY - 00000.</small>
-        </p>
-      </div>
-      {/* payment methods */}
-      <div>
-        <PaymentMethods title="Payment Methods">
-          <VisaCardIcon />
-          <DinersClubIcon />
-          <PayPalIcon />
-          <MastercardIcon />
-          <StripeIcon />
-          <GooglePayIcon />
-          <EloCardIcon />
-          <ApplePayIcon />
-        </PaymentMethods>
+        {/* fast store logo */}
+        <div>
+          <Icon component={<FastStoreIcon />} />
+        </div>
+        {/* small text */}
+        <section>
+          <p>
+            <small>This website uses VTEX technology</small>
+          </p>
+          <p>
+            <small>
+              In-store price may vary. Prices and offers are subject to change.
+              2021 Store name. All rights reserved. Store is a trademark of
+              Store and its affiliated companies.
+            </small>
+          </p>
+          <p>
+            <small> Mount St, 000, New York / NY - 00000.</small>
+          </p>
+        </section>
+        {/* payment methods */}
+        <div>
+          <PaymentMethods title="Payment Methods">
+            <VisaCardIcon />
+            <DinersClubIcon />
+            <PayPalIcon />
+            <MastercardIcon />
+            <StripeIcon />
+            <GooglePayIcon />
+            <EloCardIcon />
+            <ApplePayIcon />
+          </PaymentMethods>
+        </div>
       </div>
     </footer>
   )
