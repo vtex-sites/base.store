@@ -51,7 +51,7 @@ function ImageGallerySelector({
   return (
     <section aria-roledescription="carousel" aria-label="Product images">
       <IconButton
-        aria-label="slide image selector backward"
+        aria-label="backward slide image selector"
         icon={<BackwardArrowIcon color="#323845" />}
         onClick={() => {
           if (sliderState.sliding) {
@@ -62,7 +62,7 @@ function ImageGallerySelector({
         }}
       />
       <IconButton
-        aria-label="slide image selector forward"
+        aria-label="forward slide image selector"
         icon={<ForwardArrowIcon color="#323845" />}
         onClick={() => {
           if (sliderState.sliding) {
