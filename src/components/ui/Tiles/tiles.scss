@@ -15,7 +15,8 @@
   }
 
   [data-store-tile] {
-    height: 20.25rem;
+    height: 21rem;
+    background-color: var(--color-neutral-1);
     border-radius: var(--border-radius-default);
 
     @include media(">=tablet") {
@@ -26,7 +27,7 @@
 
 [data-store-tiles="expanded-first"] > [data-store-tile]:first-child {
   grid-column: span 2;
-  height: 20.25rem;
+  min-width: 12rem;
 
   @include media(">=tablet") {
     height: 28.75rem;
@@ -36,7 +37,7 @@
 [data-store-tiles="expanded-first-two"] {
   > [data-store-tile]:first-child, > [data-store-tile]:nth-child(2) {
     grid-column: span 2;
-    height: 20.25rem;
+    min-width: 12rem;
 
     @include media(">=tablet") {
       height: 28.75rem;
