@@ -22,7 +22,7 @@ module.exports = {
     'string-no-newline': true,
     'unit-no-unknown': true,
     'custom-property-no-missing-var-function': true,
-    'property-no-unknown': true,
+    'property-no-unknown': null,
     'keyframe-declaration-no-important': true,
     'declaration-block-no-duplicate-custom-properties': true,
     'declaration-block-no-duplicate-properties': true,
@@ -61,6 +61,7 @@ module.exports = {
     'selector-pseudo-class-case': 'lower',
     'selector-pseudo-element-case': 'lower',
     'selector-type-case': 'lower',
+    'at-rule-no-unknown': null,
     'at-rule-name-case': 'lower',
     'at-rule-semicolon-space-before': 'never',
     'at-rule-empty-line-before': [
@@ -77,7 +78,7 @@ module.exports = {
     'scss/operator-no-newline-before': true,
     'scss/operator-no-unspaced': true,
     'scss/selector-no-redundant-nesting-selector': true,
-    'scss/at-rule-no-unknown': true,
+    'scss/at-rule-no-unknown': null,
     'scss/at-import-partial-extension': null,
     'selector-class-pattern':
       '^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$',
