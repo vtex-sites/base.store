@@ -28,7 +28,7 @@
       margin-left: auto;
 
       @include media(">=notebook") {
-        max-width: 30rem;
+        max-width: 35rem;
       }
     }
 
@@ -69,7 +69,7 @@
       height: 18.75rem;
 
       @include media(">=notebook") {
-        min-height: 40rem;
+        min-height: 31.5rem;
       }
     }
   }
