@@ -53,30 +53,32 @@ function ProductTile({ product, index }: Props) {
         />
       </UICardImage>
       <UICardContent>
-        <h3 className="product-tile__title">
-          <Link {...linkProps} title={name}>
-            {name}
-          </Link>
-        </h3>
-        <div className="product-tile__prices">
-          <Price
-            value={listPrice}
-            formatter={useFormattedPrice}
-            testId="list-price"
-            data-value={listPrice}
-            variant="listing"
-            classes="text-body-small"
-            aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
-          />
-          <Price
-            value={spotPrice}
-            formatter={useFormattedPrice}
-            testId="price"
-            data-value={spotPrice}
-            variant="spot"
-            classes="text-body"
-            aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
-          />
+        <div>
+          <h3 className="product-tile__title">
+            <Link {...linkProps} title={name}>
+              {name}
+            </Link>
+          </h3>
+          <div className="product-tile__prices">
+            <Price
+              value={listPrice}
+              formatter={useFormattedPrice}
+              testId="list-price"
+              data-value={listPrice}
+              variant="listing"
+              classes="text-body-small"
+              aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
+            />
+            <Price
+              value={spotPrice}
+              formatter={useFormattedPrice}
+              testId="price"
+              data-value={spotPrice}
+              variant="spot"
+              classes="text-body"
+              aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
+            />
+          </div>
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
       </UICardContent>
