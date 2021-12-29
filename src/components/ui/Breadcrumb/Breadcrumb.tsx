@@ -14,6 +14,12 @@ export interface BreadcrumbProps extends UIBreadcrumbProps {
 }
 
 function Breadcrumb({ breadcrumbList, divider }: BreadcrumbProps) {
+  const buildUrl = (url: string) => {
+    const parsedUrl = url.split('/')
+
+    return `/${parsedUrl[parsedUrl.length - 1]}`
+  }
+
   return (
     <UIBreadcrumb divider={divider}>
       <Link aria-label="home" href="/">
@@ -22,9 +28,9 @@ function Breadcrumb({ breadcrumbList, divider }: BreadcrumbProps) {
 
       {breadcrumbList.map(({ item, name }, index) => {
         return breadcrumbList.length === index + 1 ? (
-          <span>{name}</span>
+          <span key={String(index)}>{name}</span>
         ) : (
-          <Link href={item} key={String(index)}>
+          <Link href={buildUrl(item)} key={String(index)}>
             {name}
           </Link>
         )
