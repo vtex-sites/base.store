@@ -7,6 +7,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -34,8 +35,11 @@ function ProductDetails({ product: staleProduct }: Props) {
       offers: {
         offers: [{ price, listPrice, seller }],
       },
+      breadcrumbList,
     },
   } = data
+
+  const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
 
   const formattedPrice = useFormattedPrice(price)
   const formattedListPrice = useFormattedPrice(listPrice)
@@ -59,6 +63,7 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   return (
     <div>
+      <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
       <h2>{variantName}</h2>
       <Image
         src={img.url}
@@ -176,6 +181,14 @@ export const fragment = graphql`
         seller {
           identifier
         }
+      }
+    }
+
+    breadcrumbList {
+      itemListElement {
+        item
+        name
+        position
       }
     }
   }
