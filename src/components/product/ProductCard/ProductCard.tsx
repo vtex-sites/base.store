@@ -18,12 +18,15 @@ import {
 
 import './product-card.scss'
 
+type Variant = 'horizontal' | 'vertical'
+
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
+  variant?: Variant
 }
 
-function ProductCard({ product, index }: Props) {
+function ProductCard({ product, index, variant = 'vertical' }: Props) {
   const {
     id,
     sku,
@@ -68,7 +71,7 @@ function ProductCard({ product, index }: Props) {
   })
 
   return (
-    <UICard className="product-card">
+    <UICard className="product-card" data-card-variant={variant}>
       <UICardImage>
         <Image
           src={img.url}
@@ -78,30 +81,32 @@ function ProductCard({ product, index }: Props) {
         />
       </UICardImage>
       <UICardContent>
-        <h3 className="product-card__title">
-          <Link {...linkProps} title={name}>
-            {name}
-          </Link>
-        </h3>
-        <div className="product-card__prices">
-          <Price
-            value={listPrice}
-            formatter={useFormattedPrice}
-            testId="list-price"
-            data-value={listPrice}
-            variant="listing"
-            classes="text-body-small"
-            aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
-          />
-          <Price
-            value={spotPrice}
-            formatter={useFormattedPrice}
-            testId="price"
-            data-value={spotPrice}
-            variant="spot"
-            classes="text-body"
-            aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
-          />
+        <div className="product-card__heading">
+          <h3 className="product-card__title">
+            <Link {...linkProps} title={name}>
+              {name}
+            </Link>
+          </h3>
+          <div className="product-card__prices">
+            <Price
+              value={listPrice}
+              formatter={useFormattedPrice}
+              testId="list-price"
+              data-value={listPrice}
+              variant="listing"
+              classes="text-body-small"
+              aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
+            />
+            <Price
+              value={spotPrice}
+              formatter={useFormattedPrice}
+              testId="price"
+              data-value={spotPrice}
+              variant="spot"
+              classes="text-body"
+              aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
+            />
+          </div>
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
       </UICardContent>

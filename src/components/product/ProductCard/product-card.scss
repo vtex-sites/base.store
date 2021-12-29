@@ -23,6 +23,26 @@
     outline: 2px solid var(--bg-focus-ring);
   }
 
+  &[data-card-variant="vertical"] {
+    [data-store-card-content] {
+      padding-top: var(--space-2);
+    }
+  }
+
+  &[data-card-variant="horizontal"] {
+    [data-store-card-content] {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: var(--space-3);
+      background-color: var(--bg-neutral-light);
+    }
+
+    .product-card__heading {
+      margin-right: var(--space-1);
+    }
+  }
+
   [data-store-card-image] {
     overflow: hidden;
     border-radius: var(--border-radius-default);
@@ -30,7 +50,6 @@
 
   [data-store-card-content] a[href] {
     min-height: 100%;
-    margin-top: var(--space-2);
     padding: 0;
     color: inherit;
     text-decoration: none;
