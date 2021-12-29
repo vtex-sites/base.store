@@ -11,6 +11,7 @@ import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
 import DiscountBadge from '../components/ui/DiscountBadge'
 import SearchInput from '../components/common/SearchInput'
+import QuantitySelector from '../components/ui/QuantitySelector'
 
 import '../styles/pattern-library.scss'
 
@@ -147,14 +148,28 @@ function ButtonsSection() {
 
 function InputsSection() {
   return (
-    <section className="grid-section grid-content">
-      <h2 className="title-subsection">Inputs</h2>
-      <ul className="list-horizontal">
-        <li style={{ width: '100%' }}>
-          <SearchInput />
-        </li>
-      </ul>
-    </section>
+    <>
+      <section className="grid-section grid-content">
+        <h2 className="title-subsection">Search Input</h2>
+        <ul className="list-horizontal">
+          <li style={{ width: '100%' }}>
+            <SearchInput />
+          </li>
+        </ul>
+      </section>
+
+      <section className="grid-section grid-content">
+        <h2 className="title-subsection">Quantity Selector Input</h2>
+        <ul className="list-horizontal">
+          <li>
+            <QuantitySelector min={1} max={10} disabled={false} />
+          </li>
+          <li>
+            <QuantitySelector min={4} max={40} disabled />
+          </li>
+        </ul>
+      </section>
+    </>
   )
 }
 
