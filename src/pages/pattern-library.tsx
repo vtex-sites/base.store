@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Button as UIButton } from '@faststore/ui'
-import { BellRinging } from 'phosphor-react'
+import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 
@@ -203,7 +203,7 @@ function AlertsSection() {
       <h2 className="title-subsection">Alerts</h2>
       <ul className="list-vertical">
         <li>
-          <Alert icon={<BellRinging size={24} />}>
+          <Alert icon={<BellRingingIcon size={24} />}>
             Get 10% off today:&nbsp;<span>NEW10</span>
           </Alert>
         </li>
@@ -215,7 +215,7 @@ function AlertsSection() {
         <li>
           {showAlert1 ? (
             <Alert
-              icon={<BellRinging size={24} />}
+              icon={<BellRingingIcon size={24} />}
               dismissible
               onClose={() => setShowAlert1(false)}
             >
@@ -230,7 +230,7 @@ function AlertsSection() {
         <li>
           {showAlert2 ? (
             <Alert
-              icon={<BellRinging size={24} />}
+              icon={<BellRingingIcon size={24} />}
               dismissible
               link={{ to: '#alerts', text: 'Action' }}
               onClose={() => setShowAlert2(false)}
@@ -247,7 +247,7 @@ function AlertsSection() {
         <li>
           {showAlert3 ? (
             <Alert
-              icon={<BellRinging size={24} />}
+              icon={<BellRingingIcon size={24} />}
               dismissible
               link={{ to: '#alerts', text: 'Action' }}
               onClose={() => setShowAlert3(false)}
