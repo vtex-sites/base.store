@@ -83,18 +83,11 @@ function Page(props: Props) {
           imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
           imageAlt="A person with hands on the pocket, carrying a round straw bag"
         />
-        <BannerText
-          title="Receive our news and promotions in advance."
-          caption="Enjoy and get 10% off your first purchase."
-          actionPath="/"
-          actionLabel="Call to action"
-        />
-
         <section className="grid-section grid-content">
           <h2 className="title-subsection">Just Arrived</h2>
           <div className="tiles-content">
             <Tiles>
-              {products.slice(0, 4).map((product, idx) => (
+              {products.slice(0, 3).map((product, idx) => (
                 <Tile key={`${product.id}`}>
                   <ProductTile product={product} index={idx + 1} />
                 </Tile>
@@ -102,6 +95,12 @@ function Page(props: Props) {
             </Tiles>
           </div>
         </section>
+        <BannerText
+          title="Receive our news and promotions in advance."
+          caption="Enjoy and get 10% off your first purchase."
+          actionPath="/"
+          actionLabel="Call to action"
+        />
       </main>
     </>
   )
