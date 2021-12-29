@@ -1,4 +1,4 @@
-@import "../../../styles/vendors/include-media.scss";
+@import "../../../styles/vendors/include-media";
 
 [data-store-banner] {
   padding: var(--space-6) var(--space-5);
@@ -6,7 +6,7 @@
   background-color: var(--color-secondary-4);
 
   @include media(">=notebook") {
-    padding: var(--space-9) 273px;
+    padding: var(--space-9) 17.06rem;
   }
 
   [data-store-banner-content] {
