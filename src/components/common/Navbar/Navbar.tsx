@@ -12,7 +12,7 @@ function Navbar() {
   return (
     <header className="navbar grid-content-full">
       <div className="navbar__header grid-content">
-        <section>
+        <section className="navbar__wrapper">
           <Link
             to="/"
             aria-label="Go to Faststore home"

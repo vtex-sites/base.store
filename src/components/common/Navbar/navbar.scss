@@ -5,7 +5,7 @@
   border-bottom: var(--border-width-0) solid var(--color-neutral-2);
   box-shadow: 0 var(--space-0) var(--space-3) var(--color-black-transparent-5);
 
-  > section {
+  .navbar__wrapper {
     display: flex;
     flex-flow: row wrap;
     align-items: center;
