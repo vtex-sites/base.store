@@ -1,13 +1,16 @@
 .cart-toggle[data-store-button] {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border-width: 0;
   cursor: pointer;
 
   &::after {
     position: absolute;
-    top: var(--space-0);
-    left: var(--space-4);
+    top: .375rem;
+    right: 1px;
     display: flex;
     align-items: center;
     justify-content: center;

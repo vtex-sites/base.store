@@ -14,7 +14,7 @@ function CartToggle() {
       className="cart-toggle"
       aria-label={`Cart with ${btnProps['data-items']} items`}
     >
-      <ShoppingCart size={32} />
+      <ShoppingCart size={24} />
     </Button>
   )
 }
