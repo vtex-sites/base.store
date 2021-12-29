@@ -24,9 +24,15 @@ interface Props {
   product: ProductSummary_ProductFragment
   index: number
   variant?: Variant
+  showActions?: boolean
 }
 
-function ProductCard({ product, index, variant = 'vertical' }: Props) {
+function ProductCard({
+  product,
+  index,
+  variant = 'vertical',
+  showActions = true,
+}: Props) {
   const {
     id,
     sku,
@@ -110,12 +116,14 @@ function ProductCard({ product, index, variant = 'vertical' }: Props) {
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
       </UICardContent>
-      <UICardActions>
-        <Button {...buyProps} aria-label="Add to cart" title="Add to cart">
-          <ShoppingCartIcon size={18} weight="bold" />
-          Add
-        </Button>
-      </UICardActions>
+      {showActions && (
+        <UICardActions>
+          <Button {...buyProps} aria-label="Add to cart" title="Add to cart">
+            <ShoppingCartIcon size={18} weight="bold" />
+            Add
+          </Button>
+        </UICardActions>
+      )}
     </UICard>
   )
 }
