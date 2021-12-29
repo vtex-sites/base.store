@@ -16,14 +16,23 @@ import {
   CardActions as UICardActions,
 } from '@faststore/ui'
 
-import './product-summary.scss'
+import './product-card.scss'
+
+type Variant = 'horizontal' | 'vertical'
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
+  variant?: Variant
+  showActions?: boolean
 }
 
-function ProductSummary({ product, index }: Props) {
+function ProductCard({
+  product,
+  index,
+  variant = 'vertical',
+  showActions = true,
+}: Props) {
   const {
     id,
     sku,
@@ -68,7 +77,7 @@ function ProductSummary({ product, index }: Props) {
   })
 
   return (
-    <UICard className="product-summary">
+    <UICard className="product-card" data-card-variant={variant}>
       <UICardImage>
         <Image
           src={img.url}
@@ -78,39 +87,49 @@ function ProductSummary({ product, index }: Props) {
         />
       </UICardImage>
       <UICardContent>
-        <h3 className="product-summary__title">
-          <Link {...linkProps} title={name}>
-            {name}
-          </Link>
-        </h3>
-        <div className="product-summary__prices">
-          <Price
-            value={listPrice}
-            formatter={useFormattedPrice}
-            testId="list-price"
-            data-value={listPrice}
-            variant="listing"
-            classes="text-body-small"
-            aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
-          />
-          <Price
-            value={spotPrice}
-            formatter={useFormattedPrice}
-            testId="price"
-            data-value={spotPrice}
-            variant="spot"
-            classes="text-body"
-            aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
-          />
+        <div className="product-card__heading">
+          <h3 className="product-card__title">
+            <Link {...linkProps} title={name}>
+              {name}
+            </Link>
+          </h3>
+          <div className="product-card__prices">
+            <Price
+              value={listPrice}
+              formatter={useFormattedPrice}
+              testId="list-price"
+              data-value={listPrice}
+              variant="listing"
+              classes="text-body-small"
+              aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
+            />
+            <Price
+              value={spotPrice}
+              formatter={useFormattedPrice}
+              testId="price"
+              data-value={spotPrice}
+              variant="spot"
+              classes="text-body"
+              aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
+            />
+          </div>
         </div>
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
       </UICardContent>
-      <UICardActions>
-        <Button {...buyProps} aria-label="Add to cart" title="Add to cart">
-          <ShoppingCartIcon size={18} weight="bold" />
-          Add
-        </Button>
-      </UICardActions>
+      {showActions && (
+        <UICardActions>
+          <Button
+            {...buyProps}
+            variant="primary"
+            icon={<ShoppingCartIcon size={18} weight="bold" />}
+            iconPosition="left"
+            aria-label="Add to cart"
+            title="Add to cart"
+          >
+            Add
+          </Button>
+        </UICardActions>
+      )}
     </UICard>
   )
 }
@@ -154,4 +173,4 @@ export const fragment = graphql`
   }
 `
 
-export default ProductSummary
+export default ProductCard
