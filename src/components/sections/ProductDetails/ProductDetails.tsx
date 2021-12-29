@@ -79,7 +79,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       />
       {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
       non-composited animation violation due to the button transitioning its
-      background coloe when changing from its initial disabled to active state.
+      background color when changing from its initial disabled to active state.
       See full explanation on commit https://git.io/JyXV5. */}
       {isValidating ? (
         <AddToCartLoadingSkeleton />
