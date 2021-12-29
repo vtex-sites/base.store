@@ -4,22 +4,23 @@ import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
 import { House as HouseIcon } from 'phosphor-react'
 
+type ItemElement = {
+  item: string
+  name: string
+  position: number
+}
 export interface BreadcrumbProps extends UIBreadcrumbProps {
-  breadcrumbList: Array<{
-    item: string
-    name: string
-    position: number
-  }>
+  breadcrumbList: ItemElement[]
 }
 
 function Breadcrumb({ breadcrumbList, divider }: BreadcrumbProps) {
   return (
     <UIBreadcrumb divider={divider}>
-      <Link href="/">
+      <Link aria-label="home" href="/">
         <HouseIcon />
       </Link>
 
-      {breadcrumbList.map(({ item, name, position }, index) => {
+      {breadcrumbList.map(({ item, name }, index) => {
         return breadcrumbList.length === index + 1 ? (
           <span>{name}</span>
         ) : (
