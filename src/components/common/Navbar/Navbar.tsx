@@ -49,7 +49,7 @@ function Navbar() {
           <SearchInput />
         </section>
 
-        <aside className={`navlinks ${showMenu ? 'open' : ''}`}>
+        <div className={`navlinks ${showMenu ? 'open' : ''}`}>
           <section>
             <LinkGatsby
               to="/"
@@ -74,7 +74,7 @@ function Navbar() {
               </Link>
             ))}
           </nav>
-        </aside>
+        </div>
       </div>
     </header>
   )
