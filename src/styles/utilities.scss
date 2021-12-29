@@ -1,0 +1,12 @@
+// Mixins & functions utilities  //////////////////////////
+
+@use "sass:math";
+
+// Px to rem.
+$base: 16px !default;
+
+@function rem($size) {
+  $rem: math.div($size, $base);
+
+  @return #{$rem}rem;
+}
