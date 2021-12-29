@@ -21,8 +21,10 @@ describe('Search input', () => {
       cy.visit(pages.home, options)
       cy.waitForHydration()
 
-      cy.getById('store-input').click().type(term)
-      cy.getById('store-button').click()
+      cy.getById('store-input', 'form[data-store-search-input]')
+        .click()
+        .type(term)
+      cy.getById('store-button', 'form[data-store-search-input]').click()
 
       cy.location('search').should((loc) => {
         expect(loc).to.include(`q=${term}`)
