@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react'
+import { Helmet } from 'react-helmet-async'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
@@ -15,6 +16,9 @@ function Layout({ children }: PropsWithChildren<unknown>) {
 
   return (
     <>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+      </Helmet>
       <Navbar />
       <main>{children}</main>
       <Footer />
