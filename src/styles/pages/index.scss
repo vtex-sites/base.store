@@ -1,0 +1,12 @@
+@import "../../styles/vendors/include-media";
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page__section {
+  display: inline-block;
+  width: 100%;
+  .title-section { margin-bottom: var(--space-3); }
+}
