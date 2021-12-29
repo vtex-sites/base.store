@@ -7,6 +7,8 @@
   border-width: 0;
   cursor: pointer;
 
+  svg { color: var(--color-text); }
+
   &::after {
     position: absolute;
     top: .375rem;
