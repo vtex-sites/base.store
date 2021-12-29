@@ -16,14 +16,14 @@ import {
   CardActions as UICardActions,
 } from '@faststore/ui'
 
-import './product-summary.scss'
+import './product-card.scss'
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
 }
 
-function ProductSummary({ product, index }: Props) {
+function ProductCard({ product, index }: Props) {
   const {
     id,
     sku,
@@ -68,7 +68,7 @@ function ProductSummary({ product, index }: Props) {
   })
 
   return (
-    <UICard className="product-summary">
+    <UICard className="product-card">
       <UICardImage>
         <Image
           src={img.url}
@@ -78,12 +78,12 @@ function ProductSummary({ product, index }: Props) {
         />
       </UICardImage>
       <UICardContent>
-        <h3 className="product-summary__title">
+        <h3 className="product-card__title">
           <Link {...linkProps} title={name}>
             {name}
           </Link>
         </h3>
-        <div className="product-summary__prices">
+        <div className="product-card__prices">
           <Price
             value={listPrice}
             formatter={useFormattedPrice}
@@ -154,4 +154,4 @@ export const fragment = graphql`
   }
 `
 
-export default ProductSummary
+export default ProductCard

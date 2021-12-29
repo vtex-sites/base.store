@@ -1,4 +1,4 @@
-.product-summary[data-store-card] {
+.product-card[data-store-card] {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -47,12 +47,12 @@
     }
   }
 
-  .product-summary__title {
+  .product-card__title {
     font-size: var(--text-size-2);
     line-height: 1.25;
   }
 
-  .product-summary__prices {
+  .product-card__prices {
     display: inline-flex;
     align-content: center;
     margin-bottom: var(--space-2);
