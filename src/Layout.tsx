@@ -26,7 +26,9 @@ function Layout({ children }: PropsWithChildren<unknown>) {
   const onAlertClose = () => {
     setShowAlert(false)
 
-    isBrowser && window?.localStorage.setItem('dismissed-alert-ALERTID', 'true')
+    if (isBrowser) {
+      window?.localStorage.setItem('dismissed-alert-ALERTID', 'true')
+    }
   }
 
   useCartNotificationEffect()
