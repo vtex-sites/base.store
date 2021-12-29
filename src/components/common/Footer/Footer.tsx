@@ -1,7 +1,7 @@
 import React from 'react'
 import { Incentive, List, Icon, PaymentMethods } from '@faststore/ui'
 
-import LinksList from './index'
+import LinksList from './LinksList'
 import {
   QualityIcon,
   SafetyIcon,
