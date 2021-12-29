@@ -40,6 +40,7 @@ function Navbar() {
             aria-label="Go to Faststore home"
             title="Go to Faststore home"
             className="navbar__logo"
+            onClick={() => setShowMenu(false)}
           >
             <Logo />
           </LinkGatsby>
@@ -56,6 +57,7 @@ function Navbar() {
               aria-label="Go to Faststore home"
               title="Go to Faststore home"
               className="navbar__logo"
+              onClick={() => setShowMenu(false)}
             >
               <Logo />
             </LinkGatsby>
