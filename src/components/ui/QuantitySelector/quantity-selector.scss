@@ -61,15 +61,14 @@
     }
   }
 
-  &[data-store-quantity-selector="disabled"] {
-    background-color: var(--bg-disabled);
-    border-color: var(--bg-disabled);
-    box-shadow: 0 0 0 var(--border-width-0) var(--bg-disabled);
-
-    [data-quantity-selector-button]:hover [data-store-icon] { background-color: transparent; }
-  }
-
   &:hover:not([data-store-quantity-selector="disabled"]) {
     box-shadow: 0 0 0 var(--border-width-2) var(--color-border-input-selected);
   }
+}
+
+[data-store-quantity-selector="disabled"] {
+  background-color: var(--bg-disabled);
+  box-shadow: 0 0 0 var(--border-width-0) var(--bg-disabled);
+
+  [data-quantity-selector-button]:hover [data-store-icon] { background-color: transparent; }
 }
