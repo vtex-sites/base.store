@@ -118,8 +118,14 @@ function ProductCard({
       </UICardContent>
       {showActions && (
         <UICardActions>
-          <Button {...buyProps} aria-label="Add to cart" title="Add to cart">
-            <ShoppingCartIcon size={18} weight="bold" />
+          <Button
+            {...buyProps}
+            variant="primary"
+            icon={<ShoppingCartIcon size={18} weight="bold" />}
+            iconPosition="left"
+            aria-label="Add to cart"
+            title="Add to cart"
+          >
             Add
           </Button>
         </UICardActions>
