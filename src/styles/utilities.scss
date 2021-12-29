@@ -1,6 +1,9 @@
 // Mixins & functions utilities  //////////////////////////
 
+/* SQ-DISABLE */
 @use "sass:math";
+
+/* SQ-ENABLE */
 
 // Px to rem.
 $base: 16px !default;
