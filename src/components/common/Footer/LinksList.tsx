@@ -64,16 +64,16 @@ function LinksList() {
             <AccordionPanel>
               <ul>
                 <li>
-                  <a href="/">About Us</a>
+                  <Link href="/">About Us</Link>
                 </li>
                 <li>
-                  <a href="/">Our Blog</a>
+                  <Link href="/">Our Blog</Link>
                 </li>
                 <li>
-                  <a href="/">Stores</a>
+                  <Link href="/">Stores</Link>
                 </li>
                 <li>
-                  <a href="/">Work With Us</a>
+                  <Link href="/">Work With Us</Link>
                 </li>
               </ul>
             </AccordionPanel>
@@ -85,34 +85,16 @@ function LinksList() {
             <AccordionPanel>
               <ul>
                 <li>
-                  <a href="/">Check Order Status</a>
+                  <Link href="/">Check Order Status</Link>
                 </li>
                 <li>
-                  <a href="/">Returns and Exchanges</a>
+                  <Link href="/">Returns and Exchanges</Link>
                 </li>
                 <li>
-                  <a href="/">Product Recall</a>
+                  <Link href="/">Product Recall</Link>
                 </li>
                 <li>
-                  <a href="/">Gift Cards</a>
-                </li>
-              </ul>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton>
-              Support {'&'} Services <Icon component={<PlusButtonIcon />} />
-            </AccordionButton>
-            <AccordionPanel>
-              <ul>
-                <li>
-                  <a href="/">Support Center</a>
-                </li>
-                <li>
-                  <a href="/">Schedule a Service</a>
-                </li>
-                <li>
-                  <a href="/">Contact Us</a>
+                  <Link href="/">Gift Cards</Link>
                 </li>
               </ul>
             </AccordionPanel>
@@ -124,13 +106,31 @@ function LinksList() {
             <AccordionPanel>
               <ul>
                 <li>
-                  <a href="/">Affiliate Program</a>
+                  <Link href="/">Support Center</Link>
                 </li>
                 <li>
-                  <a href="/">Advertise with US</a>
+                  <Link href="/">Schedule a Service</Link>
                 </li>
                 <li>
-                  <a href="/">Market Place</a>
+                  <Link href="/">Contact Us</Link>
+                </li>
+              </ul>
+            </AccordionPanel>
+          </AccordionItem>
+          <AccordionItem>
+            <AccordionButton>
+              Support {'&'} Services <Icon component={<PlusButtonIcon />} />
+            </AccordionButton>
+            <AccordionPanel>
+              <ul>
+                <li>
+                  <Link href="/">Affiliate Program</Link>
+                </li>
+                <li>
+                  <Link href="/">Advertise with US</Link>
+                </li>
+                <li>
+                  <Link href="/">Market Place</Link>
                 </li>
               </ul>
             </AccordionPanel>
