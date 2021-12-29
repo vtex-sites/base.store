@@ -14,6 +14,7 @@ const createTransformValues = (totalItems: number) => {
   }
 
   const transformMap: Record<number, number> = {}
+  // We use 100 to represent the full width of the parent element
   const slideWidth = 100 / totalItems
 
   for (let idx = 0; idx < totalItems; ++idx) {
