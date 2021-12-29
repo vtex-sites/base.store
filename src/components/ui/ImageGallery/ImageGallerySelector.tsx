@@ -1,5 +1,5 @@
 import type { HTMLAttributes, PropsWithChildren } from 'react'
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useSlider, IconButton } from '@faststore/ui'
 
 import { ForwardArrowIcon, BackwardArrowIcon } from './Icons'
@@ -8,22 +8,19 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   itemsPerPage: number
 }
 
-const createTransformValues = (totalItems: number) => {
-  if (!totalItems) {
-    return {}
-  }
-
-  const transformMap: Record<number, number> = {}
+function getTransformValue(
+  totalItems: number,
+  currentPage: number,
+  itemsPerPage: number
+) {
   // We use 100 to represent the full width of the parent element
   const slideWidth = 100 / totalItems
 
-  for (let idx = 0; idx < totalItems; ++idx) {
-    const transformValue = -(slideWidth * idx)
-
-    transformMap[idx] = transformValue
-  }
-
-  return transformMap
+  // slideWidth gives us the full width value for sliding through all elements.
+  // We then multiply the slideWidth by (currentPage * itemsPerPage) to calculate the
+  // transformValue for each page (the more we slide forward, the more we have to slide in total).
+  // It is negative so the transition slides the items to the left.
+  return -(slideWidth * currentPage * itemsPerPage)
 }
 
 function ImageGallerySelector({
@@ -33,11 +30,6 @@ function ImageGallerySelector({
 }: PropsWithChildren<Props>) {
   const elements = React.Children.toArray(children)
   const elementCount = elements.length
-
-  const transformValues = useMemo(
-    () => createTransformValues(elementCount),
-    [elementCount]
-  )
 
   const { handlers, slide, sliderState, sliderDispatch } = useSlider({
     totalItems: elementCount,
@@ -81,9 +73,11 @@ function ImageGallerySelector({
             display: 'flex',
             transition: sliderState.sliding ? `transform 400ms` : undefined,
             width: `${(elementCount * 100) / itemsPerPage}%`,
-            transform: `translate3d(${
-              transformValues[sliderState.currentPage * itemsPerPage]
-            }%, 0, 0)`,
+            transform: `translate3d(${getTransformValue(
+              elementCount,
+              sliderState.currentPage,
+              itemsPerPage
+            )}%, 0, 0)`,
           }}
           onTransitionEnd={() => {
             sliderDispatch({
