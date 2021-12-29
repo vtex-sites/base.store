@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
@@ -14,13 +14,33 @@ const Toast = lazy(() => import('src/components/ui/Toast'))
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()
 
+  const isBrowser = typeof window !== 'undefined'
+  const [showAlert, setShowAlert] = useState<boolean>(() => {
+    return (
+      (isBrowser && !window?.localStorage.getItem('dismissed-alert-ALERTID')) ||
+      true
+    )
+  })
+
+  const onAlertClose = () => {
+    setShowAlert(false)
+
+    isBrowser && window?.localStorage.setItem('dismissed-alert-ALERTID', 'true')
+  }
+
   useCartNotificationEffect()
 
   return (
     <>
-      <Alert icon={<BellRingingIcon size={24} />}>
-        Get 10% off today:&nbsp;<span>NEW10</span>
-      </Alert>
+      {showAlert && (
+        <Alert
+          icon={<BellRingingIcon size={24} />}
+          dismissible
+          onClose={onAlertClose}
+        >
+          Get 10% off today:&nbsp;<span>NEW10</span>
+        </Alert>
+      )}
 
       <Navbar />
 
