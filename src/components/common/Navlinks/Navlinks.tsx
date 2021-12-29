@@ -1,5 +1,6 @@
-import { Link } from 'gatsby'
 import React from 'react'
+
+import Link from '../../ui/Link'
 
 const links = [
   {
@@ -16,7 +17,7 @@ function Navlinks() {
   return (
     <nav className="navlinks">
       {links.map((x) => (
-        <Link key={x.href} to={x.href}>
+        <Link variant="display" key={x.href} href={x.href}>
           {x.name}
         </Link>
       ))}
