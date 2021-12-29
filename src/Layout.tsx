@@ -18,6 +18,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
     <>
       <Helmet>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="preconnect" href="https://storecomponents.vtexassets.com" />
       </Helmet>
       <Navbar />
       <main>{children}</main>
