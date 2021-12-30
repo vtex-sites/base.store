@@ -8,6 +8,7 @@ import BannerText from 'src/components/sections/BannerText'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import Hero from 'src/components/sections/Hero'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
+import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
 import '../styles/pages/index.scss'
 
@@ -77,6 +78,8 @@ function Page(props: Props) {
         imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
         imageAlt="A person with hands on the pocket, carrying a round straw bag"
       />
+
+      <IncentivesHeader />
 
       {products && products?.length > 0 && (
         <section className="grid-section grid-content">
