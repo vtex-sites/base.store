@@ -9,8 +9,6 @@ import {
 
 import Incentives from './Incentives'
 
-import './incentives.scss'
-
 function IncentivesHeader() {
   const incentives = [
     {
