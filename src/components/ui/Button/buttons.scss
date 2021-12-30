@@ -86,7 +86,7 @@
       color: var(--color-text-display);
       background-color: var(--bg-neutral-lightest);
 
-      &:hover, &:focus { background-color: var(--color-secondary-0); }
+      &:hover, &:focus { background-color: var(--bg-secondary-light); }
 
       &:active { background-color: var(--color-secondary-1); }
     }
