@@ -78,7 +78,14 @@ function Page(props: Props) {
         imageAlt="A person with hands on the pocket, carrying a round straw bag"
       />
 
-      {products && products?.length > 0 && <ProductTiles products={products} />}
+      {products && products?.length > 0 && (
+        <section className="grid-section grid-content">
+          <h2 className="title-section / grid-content">Just Arrived</h2>
+          <div className="page__section-content">
+            <ProductTiles products={products} />
+          </div>
+        </section>
+      )}
 
       <BannerText
         title="Receive our news and promotions in advance."
