@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 
-import ProductCard from '../ProductCard'
+import ProductCard from '../../product/ProductCard'
 
 import './product-shelf.scss'
 
