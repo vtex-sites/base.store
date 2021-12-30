@@ -37,10 +37,6 @@ function Page(props: Props) {
     [productList]
   )
 
-  if (products == null) {
-    return null
-  }
-
   return (
     <>
       {/* SEO */}
@@ -82,7 +78,7 @@ function Page(props: Props) {
         imageAlt="A person with hands on the pocket, carrying a round straw bag"
       />
 
-      <ProductTiles products={products} />
+      {products && products?.length > 0 && <ProductTiles products={products} />}
 
       <BannerText
         title="Receive our news and promotions in advance."
