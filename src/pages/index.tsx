@@ -68,7 +68,7 @@ function Page(props: Props) {
       </section>
 
       <section className="page__section page__section-shelf / grid-section">
-        <h2 className="title-section / grid-content">Deals & Promotions</h2>
+        <h2 className="title-section / grid-content">Most Wanted</h2>
         <div className="page__section-content">
           <ProductShelf />
         </div>
