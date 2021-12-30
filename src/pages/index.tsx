@@ -56,7 +56,7 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <section className="page__section page__section-hero / grid-section">
+      <section className="page__section">
         <Hero
           title="New Products Available"
           subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
