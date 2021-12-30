@@ -23,6 +23,7 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 10. Sitemap
 11. Sku selector on PDP
 12. Promotions via utm
+13. Produt specifications
 
 ## 🚀 Quick start
 
