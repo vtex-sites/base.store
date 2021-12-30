@@ -1,6 +1,5 @@
 import React from 'react'
-import { Icon } from '@faststore/ui'
-// import { Icon, PaymentMethods } from '@faststore/ui'
+import { Icon, PaymentMethods } from '@faststore/ui'
 
 import LinksList from './LinksList'
 import Incentives from './Incentives'
@@ -15,14 +14,14 @@ import {
   PinterestIcon,
   TwitterIcon,
   FastStoreIcon,
-  // VisaCardIcon,
-  // DinersClubIcon,
-  // PayPalIcon,
-  // MastercardIcon,
-  // StripeIcon,
-  // GooglePayIcon,
-  // EloCardIcon,
-  // ApplePayIcon,
+  VisaCardIcon,
+  DinersClubIcon,
+  PayPalIcon,
+  MastercardIcon,
+  StripeIcon,
+  GooglePayIcon,
+  EloCardIcon,
+  ApplePayIcon,
 } from './Icons'
 
 function Footer() {
@@ -86,7 +85,7 @@ function Footer() {
       </section>
 
       {/* payment methods */}
-      {/* <div>
+      <div>
         <PaymentMethods title="Payment Methods">
           <VisaCardIcon />
           <DinersClubIcon />
@@ -97,7 +96,7 @@ function Footer() {
           <EloCardIcon />
           <ApplePayIcon />
         </PaymentMethods>
-      </div> */}
+      </div>
     </footer>
   )
 }
