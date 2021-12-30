@@ -7,7 +7,9 @@
   background-color: var(--bg-secondary-default);
 
   @include media(">=notebook") {
+    position: relative;
     flex-direction: row;
+    justify-content: flex-end;
   }
 
   [data-store-hero-content] {
@@ -16,19 +18,29 @@
     color: var(--color-text-inverse);
 
     @include media(">=notebook") {
-      padding: var(--space-13) var(--space-9) var(--space-13) 0;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: var(--space-13) 0;
     }
 
     .banner-info-content {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      max-width: 100%;
       height: 100%;
-      margin-left: auto;
 
       @include media(">=notebook") {
-        max-width: 35rem;
+        max-width: var(--breakpoint-notebook);
+        margin-right: auto;
+        margin-left: auto;
+        padding-left: var(--space-5);
+
+        > div {
+          max-width: 42%;
+          padding-right: var(--space-9);
+        }
       }
     }
 
@@ -64,13 +76,13 @@
   [data-store-hero-image] {
     width: 100%;
 
+    @include media(">=notebook") { width: 53%; }
+
     [data-gatsby-image-wrapper] {
       width: 100%;
       height: 18.75rem;
 
-      @include media(">=notebook") {
-        min-height: 31.5rem;
-      }
+      @include media(">=notebook") { min-height: 31.5rem; }
     }
   }
 }
