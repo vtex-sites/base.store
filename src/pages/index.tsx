@@ -62,7 +62,7 @@ function Page(props: Props) {
           subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
           linkText="See all"
           link="/"
-          imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
+          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
           imageAlt="A person with hands on the pocket, carrying a round straw bag"
         />
       </section>
