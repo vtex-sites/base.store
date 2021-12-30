@@ -53,7 +53,7 @@ function ProductTile({ product, index }: Props) {
         />
       </UICardImage>
       <UICardContent>
-        <div>
+        <div className="product-tile__info">
           <h3 className="product-tile__title">
             <Link {...linkProps} title={name}>
               {name}

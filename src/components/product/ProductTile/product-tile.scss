@@ -10,11 +10,6 @@
   border-radius: var(--border-radius-default);
   transition: box-shadow .5s ease;
 
-  &:hover,
-  &:focus {
-    background-color: var(--bg-neutral-lightest);
-  }
-
   &:hover {
     outline: 1px solid var(--color-border-display);
     box-shadow: var(--box-shadow);
@@ -26,31 +21,30 @@
   }
 
   [data-store-card-image] {
-    min-height: 14rem;
-    max-height: 14rem;
+    height: 60%;
     overflow: hidden;
     border-top-left-radius: var(--border-radius-default);
     border-top-right-radius: var(--border-radius-default);
 
     [data-gatsby-image-wrapper] {
       width: 100%;
-      min-height: inherit;
+      height: 100%;
     }
 
     @include media(">=tablet") {
-      min-height: 20rem;
-      max-height: 20rem;
+      height: 70%;
     }
   }
 
   [data-store-card-content] {
     display: flex;
-
-    // flex-direction: column;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
     align-items: flex-start;
     justify-content: space-between;
+    height: 40%;
     padding: var(--space-2);
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 
     a[href] {
       min-height: 100%;
@@ -75,11 +69,20 @@
     }
 
     @include media(">=tablet") {
+      flex-flow: row wrap;
+      height: 30%;
       padding: var(--space-3);
     }
   }
 
+  .product-tile__info {
+    min-width: 8.125rem;
+    height: 70%;
+  }
+
   .product-tile__title {
+    max-height: 2.5rem;
+    overflow: hidden;
     font-size: var(--text-size-2);
     line-height: 1.25;
   }
