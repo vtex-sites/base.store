@@ -94,3 +94,15 @@
     height: 28rem;
   }
 }
+
+[data-store-tiles="expanded-first"] {
+  @include media("<tablet") {
+    grid-template-rows: auto 1fr;
+
+    [data-store-tile]:first-child {
+      height: fit-content;
+      [data-store-card-image] { height: calc((100vw - 32px) * .65); }
+      [data-store-card-content] { height: auto; }
+    }
+  }
+}
