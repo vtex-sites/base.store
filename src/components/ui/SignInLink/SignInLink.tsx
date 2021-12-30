@@ -11,7 +11,7 @@ const SignInLink: React.FC = () => {
       className="title-sub-subsection signin-link"
       variant="tertiary"
     >
-      <UserIcon size={24} />
+      <UserIcon size={18} weight="bold" />
       <span>Sign In</span>
     </LinkButton>
   )
