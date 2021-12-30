@@ -1,0 +1,42 @@
+@import "../../../styles/scaffold";
+
+.incentives[data-store-list] {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  overflow: scroll;
+
+  [data-store-incentive] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // padding: 0 var(--space-3);
+
+    p, span {
+      font-size: var(--text-size-1);
+    }
+
+    p {
+      font-weight: var(--text-weight-bold);
+      line-height: 1.42;
+    }
+
+    span {
+      line-height: 1.14;
+      white-space: nowrap;
+    }
+
+    .incentives__item-content {
+      text-align: center;
+    }
+
+    @include media(">=notebook") {
+      flex-direction: row;
+
+      .incentives__item-content {
+        margin-left: var(--space-2);
+        text-align: left;
+      }
+    }
+  }
+}
