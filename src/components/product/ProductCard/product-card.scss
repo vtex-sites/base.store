@@ -2,9 +2,9 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 14rem;
+  width: 14rem;
   height: 100%;
-  padding: var(--space-1);
+  padding: var(--space-1) var(--space-1) var(--space-2);
   border-radius: var(--border-radius-default);
   transition: box-shadow .5s ease;
 
