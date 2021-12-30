@@ -40,11 +40,7 @@ function IncentivesHeader() {
     },
   ]
 
-  return (
-    <section className="incentives__wrapper / grid-section grid-content">
-      <Incentives incentives={incentives} />
-    </section>
-  )
+  return <Incentives incentives={incentives} />
 }
 
 export default IncentivesHeader

@@ -16,19 +16,21 @@ interface Props {
 
 function Incentives({ incentives }: Props) {
   return (
-    <UIList variant="unordered" className="incentives">
-      {incentives.map((incentive, index) => (
-        <li key={String(index)}>
-          <UIIncentive>
-            {incentive.icon}
-            <div data-incentives-content>
-              {incentive.title && <p>{incentive.title}</p>}
-              <span>{incentive.text}</span>
-            </div>
-          </UIIncentive>
-        </li>
-      ))}
-    </UIList>
+    <div className="incentives / grid-content-full">
+      <UIList variant="unordered" className="grid-content">
+        {incentives.map((incentive, index) => (
+          <li key={String(index)}>
+            <UIIncentive>
+              {incentive.icon}
+              <div data-incentive-content>
+                {incentive.title && <p>{incentive.title}</p>}
+                <span>{incentive.text}</span>
+              </div>
+            </UIIncentive>
+          </li>
+        ))}
+      </UIList>
+    </div>
   )
 }
 
