@@ -14,7 +14,7 @@
 
   [data-store-hero-content] {
     width: 100%;
-    padding: var(--space-6) var(--space-4);
+    padding: var(--space-5) 0 var(--space-6);
     color: var(--color-text-inverse);
 
     @include media(">=notebook") {
@@ -32,9 +32,6 @@
       height: 100%;
 
       @include media(">=notebook") {
-        max-width: var(--breakpoint-notebook);
-        margin-right: auto;
-        margin-left: auto;
         padding-left: var(--space-5);
 
         > div {
