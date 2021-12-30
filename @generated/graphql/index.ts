@@ -3559,6 +3559,13 @@ export type ProductDetailsFragment_ProductFragment = {
       seller: { identifier: string }
     }>
   }
+  breadcrumbList: {
+    itemListElement: Array<{
+      item: string
+      name: string
+      position: number
+    }>
+  }
 }
 
 export type ProductGalleryQueryQueryVariables = Exact<{

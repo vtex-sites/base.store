@@ -7,6 +7,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -30,12 +31,15 @@ function ProductDetails({ product: staleProduct }: Props) {
       name: variantName,
       brand: { name: brandName },
       isVariantOf: { name, productGroupID: productId },
-      image: [img],
+      image: productImages,
       offers: {
         offers: [{ price, listPrice, seller }],
       },
+      breadcrumbList,
     },
   } = data
+
+  const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
 
   const formattedPrice = useFormattedPrice(price)
   const formattedListPrice = useFormattedPrice(listPrice)
@@ -51,7 +55,7 @@ function ProductDetails({ product: staleProduct }: Props) {
     referenceId,
     productId,
     itemOffered: {
-      image: [img],
+      image: productImages,
       name: variantName,
       sku,
     },
@@ -59,11 +63,12 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   return (
     <div>
+      <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
       <h2>{variantName}</h2>
       <Image
-        src={img.url}
+        src={productImages[0].url}
         variant="product.details"
-        alt={img.alternateName}
+        alt={productImages[0].alternateName}
         loading="eager"
       />
       <div className="line-through">{formattedListPrice}</div>
@@ -176,6 +181,14 @@ export const fragment = graphql`
         seller {
           identifier
         }
+      }
+    }
+
+    breadcrumbList {
+      itemListElement {
+        item
+        name
+        position
       }
     }
   }
