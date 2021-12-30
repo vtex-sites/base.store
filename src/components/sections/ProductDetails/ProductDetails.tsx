@@ -63,7 +63,7 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   return (
     <div>
-      <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} divider="" />
+      <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
       <h2>{variantName}</h2>
       <Image
         src={productImages[0].url}
