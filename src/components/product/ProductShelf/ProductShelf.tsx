@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 
-import ProductSummary from '../ProductSummary'
+import ProductCard from '../ProductCard'
 
 import './product-shelf.scss'
 
@@ -25,10 +25,10 @@ function ProductShelf() {
   }
 
   return (
-    <ul data-product-shelf>
+    <ul data-product-shelf className="grid-content">
       {products.slice(0, 5).map((product, idx) => (
         <li key={`${product.id}`}>
-          <ProductSummary product={product} index={idx + 1} />
+          <ProductCard product={product} index={idx + 1} showActions={false} />
         </li>
       ))}
     </ul>
