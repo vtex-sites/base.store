@@ -78,6 +78,9 @@ function Navbar() {
               </Link>
             ))}
           </nav>
+          <div className="navlinks__signin">
+            <SignInLink />
+          </div>
         </div>
       </div>
     </header>

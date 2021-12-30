@@ -6,12 +6,12 @@ import { LinkButton } from '../Button'
 const SignInLink: React.FC = () => {
   return (
     <LinkButton
+      data-button-signin-link
       href="/"
-      className="title-sub-subsection"
-      data-button-variant="primary"
-      data-button-inverse="true"
+      className="title-sub-subsection signin-link"
+      variant="tertiary"
     >
-      <UserIcon size={32} />
+      <UserIcon size={24} />
       <span>Sign In</span>
     </LinkButton>
   )

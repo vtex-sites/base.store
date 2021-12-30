@@ -5,15 +5,17 @@ import type { ButtonProps } from '@faststore/ui'
 
 import './buttons.scss'
 
-type Variant = 'primary' | 'secondary'
-type IconPosition = 'left' | 'right'
+export type Variant = 'primary' | 'secondary' | 'tertiary'
+export type IconPosition = 'left' | 'right'
 
-type Props = ButtonProps & {
+export type UIButtonProps = {
   variant?: Variant
   inverse?: boolean
   icon?: ReactNode
   iconPosition?: IconPosition
 }
+
+type Props = ButtonProps & UIButtonProps
 
 function Button({
   variant,

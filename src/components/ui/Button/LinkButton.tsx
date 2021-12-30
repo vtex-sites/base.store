@@ -1,19 +1,15 @@
-import type { AnchorHTMLAttributes, ReactNode } from 'react'
 import React from 'react'
-import { Icon as UIIcon, Link } from '@faststore/ui'
+import type { LinkProps } from '@faststore/ui'
+import { Icon as UIIcon, Link as UILink } from '@faststore/ui'
+
+import type { UIButtonProps } from './Button'
 
 import './buttons.scss'
 
-type Variant = 'primary' | 'secondary'
-type IconPosition = 'left' | 'right'
-
 type Props = {
-  variant?: Variant
-  inverse?: boolean
-  icon?: ReactNode
-  iconPosition?: IconPosition
   disabled?: boolean
-} & AnchorHTMLAttributes<HTMLAnchorElement>
+} & UIButtonProps &
+  LinkProps<'a'>
 
 function LinkButton({
   variant,
@@ -22,13 +18,13 @@ function LinkButton({
   iconPosition,
   children,
   disabled = false,
-  className,
+  className = '',
   ...otherProps
 }: Props) {
   return (
-    <Link
+    <UILink
       data-store-button
-      className={`button ${className}`}
+      className={`link-button ${className}`}
       data-button-variant={variant}
       data-button-inverse={inverse}
       data-button-disabled={disabled}
@@ -37,7 +33,7 @@ function LinkButton({
       {iconPosition === 'left' && <UIIcon component={icon} />}
       {children}
       {iconPosition === 'right' && <UIIcon component={icon} />}
-    </Link>
+    </UILink>
   )
 }
 

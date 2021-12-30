@@ -1,6 +1,6 @@
 @import "../../../styles/utilities";
 
-.button[data-store-button] {
+.button[data-store-button], .link-button[data-store-button] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -19,14 +19,6 @@
     cursor: not-allowed;
     pointer-events: none;
     svg { color: var(--color-neutral-5); }
-  }
-
-  &:hover {
-    text-decoration: none;
-  }
-
-  &:visited {
-    color: inherit;
   }
 
   &[data-button-variant="primary"] {
@@ -73,5 +65,40 @@
       &:hover, &:focus { background-color: var(--bg-lighten-hover); }
       &:active { background-color: var(--bg-lighten-pressed); }
     }
+  }
+
+  &[data-button-variant="tertiary"] {
+    color: var(--color-link);
+
+    &:hover, &:focus { background-color: var(--bg-secondary-light); }
+
+    &:active {
+      color: var(--color-text-display);
+      background-color: var(--color-secondary-1);
+    }
+
+    &:disabled, &[data-button-disabled="true"] {
+      color: var(--color-neutral-6);
+      background-color: var(--bg-disabled);
+    }
+
+    &[data-button-inverse] {
+      color: var(--color-text-display);
+      background-color: var(--bg-neutral-lightest);
+
+      &:hover, &:focus { background-color: var(--color-secondary-0); }
+
+      &:active { background-color: var(--color-secondary-1); }
+    }
+  }
+}
+
+.link-button[data-store-button] {
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:disabled, &[data-button-disabled="true"] {
+    pointer-events: none;
   }
 }
