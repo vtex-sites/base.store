@@ -9,6 +9,8 @@ import {
 
 import Incentives from './Incentives'
 
+import './incentives.scss'
+
 function IncentivesHeader() {
   const incentives = [
     {
@@ -39,7 +41,7 @@ function IncentivesHeader() {
   ]
 
   return (
-    <section className="grid-section grid-content">
+    <section className="incentives__wrapper / grid-section grid-content">
       <Incentives incentives={incentives} />
     </section>
   )
