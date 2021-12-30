@@ -21,7 +21,7 @@ function Incentives({ incentives }: Props) {
         <li key={String(index)}>
           <UIIncentive>
             {incentive.icon}
-            <div className="incentives__item-content">
+            <div data-incentives-content>
               {incentive.title && <p>{incentive.title}</p>}
               <span>{incentive.text}</span>
             </div>
