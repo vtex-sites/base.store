@@ -78,7 +78,7 @@
     }
 
     &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
+      color: var(--color-text-disabled);
       background-color: var(--bg-disabled);
     }
 
