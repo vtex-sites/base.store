@@ -1,47 +1,19 @@
 import React from 'react'
+import type { ReactNode } from 'react'
 import { Incentive, List } from '@faststore/ui'
 
-import {
-  QualityIcon,
-  SafetyIcon,
-  GuaranteeIcon,
-  ShippingIcon,
-  StoreIcon,
-} from './Icons'
+interface Props {
+  incentives: ReactNode[]
+}
 
-function Incentives() {
+function Incentives({ incentives }: Props) {
   return (
     <List variant="unordered">
-      <li>
-        <Incentive>
-          <SafetyIcon />
-          <span>Trusted by SafeCon</span>
-        </Incentive>
-      </li>
-      <li>
-        <Incentive>
-          <QualityIcon />
-          <span>Quality Products</span>
-        </Incentive>
-      </li>
-      <li>
-        <Incentive>
-          <GuaranteeIcon />
-          <span>3-years Guarantee</span>
-        </Incentive>
-      </li>
-      <li>
-        <Incentive>
-          <StoreIcon />
-          <span>Pickup Options</span>
-        </Incentive>
-      </li>
-      <li>
-        <Incentive>
-          <ShippingIcon />
-          <span>Free Shipping</span>
-        </Incentive>
-      </li>
+      {incentives.map((incentive, index) => (
+        <li key={String(index)}>
+          <Incentive>{incentive}</Incentive>
+        </li>
+      ))}
     </List>
   )
 }

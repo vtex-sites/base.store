@@ -4,6 +4,11 @@ import { Icon, PaymentMethods } from '@faststore/ui'
 import LinksList from './LinksList'
 import Incentives from './Incentives'
 import {
+  QualityIcon,
+  SafetyIcon,
+  GuaranteeIcon,
+  ShippingIcon,
+  StoreIcon,
   FacebookIcon,
   InstagramIcon,
   PinterestIcon,
@@ -20,11 +25,34 @@ import {
 } from './Icons'
 
 function Footer() {
+  const incentives = [
+    <>
+      <SafetyIcon />
+      <span>Trusted by SafeCon</span>
+    </>,
+    <>
+      <QualityIcon />
+      <span>Quality Products</span>
+    </>,
+    <>
+      <GuaranteeIcon />
+      <span>3-years Guarantee</span>
+    </>,
+    <>
+      <StoreIcon />
+      <span>Pickup Options</span>
+    </>,
+    <>
+      <ShippingIcon />
+      <span>Free Shipping</span>
+    </>,
+  ]
+
   return (
     <footer>
       {/* Incentives list */}
       <section>
-        <Incentives />
+        <Incentives incentives={incentives} />
       </section>
 
       {/* list of links -- must be an accordion on mobile */}
