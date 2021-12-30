@@ -4,6 +4,8 @@ import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
 import { House as HouseIcon } from 'phosphor-react'
 
+import './breadcrumb.scss'
+
 type ItemElement = {
   item: string
   name: string

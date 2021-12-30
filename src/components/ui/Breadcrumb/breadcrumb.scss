@@ -1,0 +1,19 @@
+[data-store-breadcrumb] {
+  width: 100%;
+  padding: 12px 16px;
+
+  [data-store-breadcrumb-list] {
+    display: flex;
+    align-items: center;
+
+    [data-store-breadcrumb-divider] {
+      height: 14px;
+      margin: 0 10px 0 8px;
+      border-left: 1px solid #c7ccd1;
+    }
+
+    [data-store-link] {
+      padding: 0;
+    }
+  }
+}
