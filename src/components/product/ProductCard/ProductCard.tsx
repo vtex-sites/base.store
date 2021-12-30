@@ -101,7 +101,6 @@ function ProductCard({
               data-value={listPrice}
               variant="listing"
               classes="text-body-small"
-              aria-label={`Original price: ${useFormattedPrice(listPrice)}`}
             />
             <Price
               value={spotPrice}
@@ -110,7 +109,6 @@ function ProductCard({
               data-value={spotPrice}
               variant="spot"
               classes="text-body"
-              aria-label={`Sale price: ${useFormattedPrice(spotPrice)}`}
             />
           </div>
         </div>
