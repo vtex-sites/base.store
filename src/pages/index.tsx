@@ -56,23 +56,25 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <Hero
-        title="New Products Available"
-        subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
-        linkText="See all"
-        link="/"
-        imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
-        imageAlt="A person with hands on the pocket, carrying a round straw bag"
-      />
+      <section className="page__section page__section-hero / grid-section">
+        <Hero
+          title="New Products Available"
+          subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
+          linkText="See all"
+          link="/"
+          imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
+          imageAlt="A person with hands on the pocket, carrying a round straw bag"
+        />
+      </section>
 
-      <section className="page__section grid-section grid-content">
-        <h2 className="title-section">Most Wanted</h2>
+      <section className="page__section page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Deals & Promotions</h2>
         <div className="page__section-content">
           <ProductShelf />
         </div>
       </section>
 
-      <section className="page__section grid-section">
+      <section className="page__section / grid-section">
         <BannerText
           title="Receive our news and promotions in advance."
           caption="Enjoy and get 10% off your first purchase."
@@ -81,8 +83,8 @@ function Page(props: Props) {
         />
       </section>
 
-      <section className="page__section grid-section grid-content">
-        <h2 className="title-section">Deals & Promotions</h2>
+      <section className="page__section page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Deals & Promotions</h2>
         <div className="page__section-content">
           <ProductShelf />
         </div>
