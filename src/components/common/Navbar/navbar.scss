@@ -1,0 +1,121 @@
+@import "../../../styles/vendors/include-media";
+
+.navbar {
+  padding: 0;
+  border-bottom: var(--border-width-0) solid var(--color-neutral-2);
+  box-shadow: 0 var(--space-0) var(--space-3) var(--color-black-transparent-5);
+
+  [data-store-search-input] {
+    flex: 1 0 100%;
+    order: 2;
+
+    @include media(">=notebook") { order: 1; }
+  }
+
+  .navlinks {
+    @include media("<notebook") {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 3;
+      width: 100%;
+      max-width: 37.5rem;
+      height: 100%;
+      padding: var(--space-1) var(--space-3) var(--space-3);
+      background-color: var(--bg-neutral-lightest);
+      border-right: var(--border-width-0) solid var(--color-neutral-2);
+      box-shadow: var(--space-0) 0 var(--space-3) var(--color-black-transparent-5);
+      transform: translateX(-100%);
+      transition: transform .2s ease;
+      &.open { transform: translateX(0); }
+
+      nav {
+        padding-top: var(--space-3);
+        border-top: var(--border-width-0) solid var(--color-neutral-2);
+      }
+    }
+
+    > section {
+      @include media("<notebook") {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: var(--space-1);
+      }
+
+      @include media(">=notebook") { display: none; }
+    }
+  }
+
+  .navlinks__button {
+    color: var(--color-text-display);
+    background-color: transparent;
+    border: 0;
+  }
+
+  .navlinks__list {
+    a { width: 100%; }
+
+    @include media(">=notebook") {
+      display: flex;
+      padding-top: var(--space-1);
+      column-gap: var(--space-3);
+
+      a {
+        width: auto;
+        padding: var(--space-0) 0;
+      }
+    }
+  }
+}
+
+.navbar__row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @include media(">=notebook") {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 37.5rem) 1fr;
+  }
+}
+
+.navbar__menu[data-store-button] {
+  color: var(--color-text);
+  background-color: transparent;
+  border: 0;
+
+  @include media(">=notebook") { display: none; }
+}
+
+.navbar__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  @include media(">=notebook") { order: 2; }
+}
+
+.navbar__header {
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-2);
+
+  @include media(">=notebook") {
+    padding-top: var(--space-1);
+    padding-bottom: var(--space-1);
+  }
+}
+
+.navbar__logo {
+  width: 9.25rem;
+  height: 2.5625rem;
+  min-height: 2.5625rem;
+  padding: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

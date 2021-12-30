@@ -19,6 +19,7 @@
 [data-link-variant="display"] {
   color: var(--color-text-display);
   line-height: 1.5;
+  &:visited { color: var(--color-text-display); }
 }
 
 [data-link-variant="inline"] {
