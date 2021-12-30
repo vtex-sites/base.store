@@ -1,0 +1,74 @@
+@import "../../../styles/scaffold";
+
+.incentives {
+  [data-store-list] {
+    display: flex;
+    overflow-x: auto;
+
+    @include media("<notebook") {
+      padding-top: var(--space-2);
+      padding-bottom: var(--space-2);
+
+      li {
+        &:not(:first-child) {
+          [data-store-incentive] {
+            padding: 0 var(--space-3);
+          }
+        }
+
+        &:first-child {
+          [data-store-incentive] {
+            padding-right: var(--space-3);
+            padding-left: var(--space-1);
+          }
+        }
+      }
+    }
+
+    li {
+      width: 100%;
+
+      &:not(:last-child) {
+        border-right: 1px solid var(--color-border-display);
+      }
+    }
+  }
+
+  [data-store-incentive] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p, span {
+      font-size: var(--text-size-1);
+    }
+
+    p {
+      font-weight: var(--text-weight-bold);
+      line-height: 1.42;
+    }
+
+    span {
+      line-height: 1.14;
+      white-space: nowrap;
+    }
+
+    [data-incentive-content] {
+      text-align: center;
+    }
+
+    @include media(">=notebook") {
+      flex-direction: row;
+      padding: 0 var(--space-6);
+
+      [data-incentive-content] {
+        margin-left: var(--space-2);
+        text-align: left;
+      }
+    }
+  }
+
+  &.incentives--colored {
+    background-color: var(--bg-secondary-light);
+  }
+}

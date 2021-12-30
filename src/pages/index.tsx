@@ -6,6 +6,7 @@ import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
+import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -60,6 +61,9 @@ function Page(props: Props) {
         imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
         imageAlt="A person with hands on the pocket, carrying a round straw bag"
       />
+
+      <IncentivesHeader />
+
       <BannerText
         title="Receive our news and promotions in advance."
         caption="Enjoy and get 10% off your first purchase."
