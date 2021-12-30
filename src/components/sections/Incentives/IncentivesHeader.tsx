@@ -38,7 +38,7 @@ function IncentivesHeader() {
     },
   ]
 
-  return <Incentives incentives={incentives} hasBackground />
+  return <Incentives incentives={incentives} classes="incentives--colored" />
 }
 
 export default IncentivesHeader
