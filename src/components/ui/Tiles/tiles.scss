@@ -4,7 +4,6 @@
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  max-width: 77.25rem;
   column-gap: var(--grid-gap-0);
   row-gap: var(--grid-gap-0);
 
@@ -13,29 +12,65 @@
     grid-template-columns: repeat(4, 1fr);
     column-gap: var(--grid-gap-1);
   }
+}
 
-  [data-store-tile] {
-    min-width: 9rem;
-    height: 24rem;
-    background-color: var(--color-neutral-1);
-    border-radius: var(--border-radius-default);
+[data-store-tile] {
+  min-width: 9rem;
+  height: 24rem;
+  border-radius: var(--border-radius-default);
 
-    [data-store-card-content] {
-      flex-direction: column;
+  .product-card[data-store-card] {
+    max-width: 100%;
+    height: 100%;
+    padding: 0;
 
-      .product-tile__info {
-        overflow: hidden;
+    &[data-card-variant="horizontal"] .product-card__heading {
+      margin-right: 0;
 
-        @include media(">=tablet") {
-          width: 60%;
-          max-width: 60%;
-        }
+      @include media(">=tablet") {
+        width: 60%;
+        max-width: 60%;
       }
     }
 
-    @include media(">=tablet") {
-      height: 28rem;
+    [data-store-card-image] {
+      height: 60%;
+      overflow: hidden;
+      border-radius: var(--border-radius-default) var(--border-radius-default) 0 0;
+
+      [data-gatsby-image-wrapper] {
+        width: 100%;
+        height: 100%;
+      }
+
+      @include media(">=tablet") {
+        height: 70%;
+      }
     }
+
+    [data-store-card-content] {
+      flex-direction: column;
+      align-items: flex-start;
+      height: 40%;
+      padding: var(--space-2);
+      border-bottom-right-radius: var(--border-radius-default);
+      border-bottom-left-radius: var(--border-radius-default);
+
+      @include media(">=tablet") {
+        flex-flow: row wrap;
+        height: 30%;
+        padding: var(--space-3);
+      }
+    }
+
+    .product-card__title {
+      max-height: 2.5rem;
+      overflow: hidden;
+    }
+  }
+
+  @include media(">=tablet") {
+    height: 28rem;
   }
 }
 
@@ -44,11 +79,12 @@
 [data-store-tiles="expanded-first-two"] > [data-store-tile]:nth-child(2) {
   grid-column: span 2;
   min-width: 12rem;
+  height: 24rem;
 
   [data-store-card-content] {
     flex-direction: row;
 
-    .product-tile__info {
+    .product-card__heading {
       width: 65%;
       max-width: 65%;
     }
