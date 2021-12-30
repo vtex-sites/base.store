@@ -40,7 +40,7 @@ function IncentivesHeader() {
     },
   ]
 
-  return <Incentives incentives={incentives} />
+  return <Incentives incentives={incentives} hasBackground />
 }
 
 export default IncentivesHeader

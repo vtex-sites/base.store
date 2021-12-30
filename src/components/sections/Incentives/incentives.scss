@@ -68,4 +68,8 @@
       }
     }
   }
+
+  &[data-incentives-background] {
+    background-color: var(--bg-secondary-light);
+  }
 }

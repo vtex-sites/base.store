@@ -12,11 +12,15 @@ interface Incentive {
 
 interface Props {
   incentives: Incentive[]
+  hasBackground?: boolean
 }
 
-function Incentives({ incentives }: Props) {
+function Incentives({ incentives, hasBackground }: Props) {
   return (
-    <div className="incentives / grid-content-full">
+    <div
+      className="incentives / grid-content-full"
+      data-incentives-background={hasBackground}
+    >
       <UIList variant="unordered" className="grid-content">
         {incentives.map((incentive, index) => (
           <li key={String(index)}>
