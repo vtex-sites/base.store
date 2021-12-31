@@ -3548,26 +3548,6 @@ export type ProductSummary_ProductFragment = {
   }
 }
 
-export type ProductTile_ProductFragment = {
-  slug: string
-  sku: string
-  name: string
-  gtin: string
-  id: string
-  brand: { name: string; brandName: string }
-  isVariantOf: { productGroupID: string; name: string }
-  image: Array<{ url: string; alternateName: string }>
-  offers: {
-    lowPrice: number
-    offers: Array<{
-      price: number
-      listPrice: number
-      quantity: number
-      seller: { identifier: string }
-    }>
-  }
-}
-
 export type FacetedFilter_FacetsFragment = {
   key: string
   label: string
@@ -3596,11 +3576,7 @@ export type ProductDetailsFragment_ProductFragment = {
     }>
   }
   breadcrumbList: {
-    itemListElement: Array<{
-      item: string
-      name: string
-      position: number
-    }>
+    itemListElement: Array<{ item: string; name: string; position: number }>
   }
 }
 
@@ -3668,6 +3644,27 @@ export type HomePageQueryQuery = {
       }
     | null
     | undefined
+  allStoreProduct: {
+    nodes: Array<{
+      slug: string
+      sku: string
+      name: string
+      gtin: string
+      id: string
+      brand: { name: string; brandName: string }
+      isVariantOf: { productGroupID: string; name: string }
+      image: Array<{ url: string; alternateName: string }>
+      offers: {
+        lowPrice: number
+        offers: Array<{
+          price: number
+          listPrice: number
+          quantity: number
+          seller: { identifier: string }
+        }>
+      }
+    }>
+  }
 }
 
 export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
@@ -3825,6 +3822,9 @@ export type BrowserProductQueryQuery = {
         listPrice: number
         seller: { identifier: string }
       }>
+    }
+    breadcrumbList: {
+      itemListElement: Array<{ item: string; name: string; position: number }>
     }
   }
 }

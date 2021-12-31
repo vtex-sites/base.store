@@ -7,7 +7,6 @@ import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import Hero from 'src/components/sections/Hero'
-import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
 import '../styles/pages/index.scss'
@@ -16,7 +15,7 @@ export type Props = PageProps<HomePageQueryQuery>
 
 function Page(props: Props) {
   const {
-    data: { site },
+    data: { site, allStoreProduct },
     location: { pathname, host },
   } = props
 
@@ -24,19 +23,7 @@ function Page(props: Props) {
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
-  const perPage = 10
-  const productList = useProductsQuery({
-    first: perPage,
-    after: (perPage * 1).toString(),
-    sort: 'score_desc',
-    term: '',
-    selectedFacets: [{ key: 'category-1', value: 'office' }],
-  })
-
-  const products = useMemo(
-    () => productList?.edges.map((edge) => edge.node),
-    [productList]
-  )
+  const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
 
   return (
     <>
@@ -107,6 +94,12 @@ export const query = graphql`
         title
         description
         titleTemplate
+      }
+    }
+
+    allStoreProduct(limit: 10) {
+      nodes {
+        ...ProductSummary_product
       }
     }
   }
