@@ -81,8 +81,8 @@ function Page(props: Props) {
       </section>
 
       {products && products?.length > 0 && (
-        <section className="grid-section grid-content">
-          <h2 className="title-section / grid-content">Just Arrived</h2>
+        <section className="page__section / grid-section grid-content">
+          <h2 className="title-section">Just Arrived</h2>
           <div className="page__section-content">
             <ProductTiles products={products} />
           </div>
