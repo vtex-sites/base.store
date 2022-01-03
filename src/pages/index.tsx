@@ -7,6 +7,7 @@ import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import ProductShelf from 'src/components/sections/ProductShelf'
+import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
 import '../styles/pages/index.scss'
 
@@ -64,6 +65,10 @@ function Page(props: Props) {
           imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
           imageAlt="A person with hands on the pocket, carrying a round straw bag"
         />
+      </section>
+
+      <section className="page__section">
+        <IncentivesHeader />
       </section>
 
       <section className="page__section page__section-shelf / grid-section">
