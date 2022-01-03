@@ -1,5 +1,9 @@
 import React from 'react'
-import { Icon, PaymentMethods } from '@faststore/ui'
+import {
+  Icon as UIIcon,
+  PaymentMethods as UIPaymentMethods,
+  List as UIList,
+} from '@faststore/ui'
 
 import LinksList from './LinksList'
 import Incentives from './Incentives'
@@ -61,16 +65,26 @@ function Footer() {
       {/* Follow us section */}
 
       <section>
-        <span>Follow us</span>
-        <Icon component={<FacebookIcon />} />
-        <Icon component={<InstagramIcon />} />
-        <Icon component={<PinterestIcon />} />
-        <Icon component={<TwitterIcon />} />
+        <p>Follow us</p>
+        <UIList variant="unordered">
+          <li>
+            <UIIcon component={<FacebookIcon />} />
+          </li>
+          <li>
+            <UIIcon component={<InstagramIcon />} />
+          </li>
+          <li>
+            <UIIcon component={<PinterestIcon />} />
+          </li>
+          <li>
+            <UIIcon component={<TwitterIcon />} />
+          </li>
+        </UIList>
       </section>
 
       {/* fast store logo */}
       <div>
-        <Icon component={<FastStoreIcon />} />
+        <UIIcon component={<FastStoreIcon />} />
       </div>
 
       {/* small text */}
@@ -85,18 +99,32 @@ function Footer() {
       </section>
 
       {/* payment methods */}
-      <div>
-        <PaymentMethods title="Payment Methods">
-          <VisaCardIcon />
-          <DinersClubIcon />
+      <UIPaymentMethods title="Payment Methods">
+        <UIList variant="unordered">
+          <li>
+            <VisaCardIcon />
+          </li>
+          <li>
+            <DinersClubIcon />
+          </li>
           <PayPalIcon />
-          <MastercardIcon />
-          <StripeIcon />
-          <GooglePayIcon />
-          <EloCardIcon />
-          <ApplePayIcon />
-        </PaymentMethods>
-      </div>
+          <li>
+            <MastercardIcon />
+          </li>
+          <li>
+            <StripeIcon />
+          </li>
+          <li>
+            <GooglePayIcon />
+          </li>
+          <li>
+            <EloCardIcon />
+          </li>
+          <li>
+            <ApplePayIcon />
+          </li>
+        </UIList>
+      </UIPaymentMethods>
     </footer>
   )
 }
