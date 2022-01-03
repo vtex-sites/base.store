@@ -1,7 +1,7 @@
 {
   "name": "base.store",
   "private": true,
-  "version": "0.221.0",
+  "version": "0.221.0-beta",
   "license": "MIT",
   "browserslist": "supports es6-module and not dead",
   "scripts": {
