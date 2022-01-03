@@ -5,9 +5,14 @@
   [data-store-breadcrumb-list] {
     display: flex;
     align-items: center;
+    overflow-x: hidden;
 
     [data-store-breadcrumb-item] {
-      display: flex;
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
       svg {
         color: var(--color-text);
@@ -21,7 +26,12 @@
     }
 
     [data-store-link] {
+      display: flex;
       padding: 0;
+
+      &:visited {
+        color: var(--color-link);
+      }
     }
 
     [data-store-breadcrumb-item="current"] {
