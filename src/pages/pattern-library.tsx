@@ -8,7 +8,8 @@ import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 import BuyButton from 'src/components/ui/BuyButton'
-import Button from 'src/components/ui/Button'
+import Button, { LinkButton } from 'src/components/ui/Button'
+import SignInLink from 'src/components/ui/SignInLink'
 
 import SkuSelector from '../components/ui/SkuSelector'
 import Link from '../components/ui/Link'
@@ -38,6 +39,8 @@ function Page() {
 
           <CustomButtonSecondary />
 
+          <CustomLinkButtonPrimary />
+
           <InputsSection />
 
           <SkuSelectorSection />
@@ -49,6 +52,8 @@ function Page() {
           <BadgesSection />
 
           <CartToggleSection />
+
+          <SignInLinkSection />
         </main>
       </div>
     </>
@@ -229,6 +234,50 @@ function CustomButtonSecondary() {
           >
             Call To Action
           </Button>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function CustomLinkButtonPrimary() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Custom Link Button – Primary</h2>
+      <ul className="list-horizontal">
+        <li>
+          <LinkButton
+            href="/"
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+          >
+            Call To Action
+          </LinkButton>
+        </li>
+        <li>
+          <LinkButton
+            href="/"
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            disabled
+          >
+            Call To Action
+          </LinkButton>
+        </li>
+      </ul>
+      <ul className="list-horizontal dark">
+        <li>
+          <LinkButton
+            href="/"
+            variant="primary"
+            icon={<BellRingingIcon size={18} weight="bold" />}
+            iconPosition="left"
+            inverse
+          >
+            Call To Action
+          </LinkButton>
         </li>
       </ul>
     </section>
@@ -441,6 +490,19 @@ function CartToggleSection() {
           </ul>
         </CartProvider>
       </UIProvider>
+    </section>
+  )
+}
+
+function SignInLinkSection() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Sign In Link</h2>
+      <ul className="list-horizontal">
+        <li>
+          <SignInLink />
+        </li>
+      </ul>
     </section>
   )
 }

@@ -67,6 +67,19 @@
       }
     }
   }
+
+  .navlinks__signin {
+    margin-top: var(--space-2);
+    padding-top: var(--space-2);
+    border-top: var(--border-width-0) solid var(--color-neutral-2);
+
+    @include media(">=notebook") { display: none; }
+
+    .signin-link[data-button-signin-link] {
+      width: fit-content;
+      padding-left: 0;
+    }
+  }
 }
 
 .navbar__row {
@@ -95,7 +108,17 @@
   align-items: center;
   justify-content: flex-end;
 
-  @include media(">=notebook") { order: 2; }
+  .signin-link[data-button-signin-link] {
+    display: none;
+  }
+
+  @include media(">=notebook") {
+    order: 2;
+
+    .signin-link[data-button-signin-link] {
+      display: inline-flex;
+    }
+  }
 }
 
 .navbar__header {
