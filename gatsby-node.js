@@ -15,6 +15,8 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
     })
   }
 
+  // Copy @builder.io/partytown lib files to the <rootPath>/static/~partytown wheen gatsby stage is develop.
+  // Those files are used by the Partytown component.
   if (stage === 'develop') {
     copyPartytown()
   }
@@ -50,6 +52,10 @@ const copyRecursiveSync = (src, dest) => {
   }
 }
 
+/**
+ * Copy @builder.io/partytown/lib to <rootPath>/static/\~partytown.
+ * If folder static/\~partytown doesn't exist, it will be created.
+ */
 const copyPartytown = () => {
   copyRecursiveSync(
     path.join(__dirname, 'node_modules/@builder.io/partytown/lib'),
@@ -59,5 +65,8 @@ const copyPartytown = () => {
 
 exports.onPreBuild = ({ reporter }) => {
   reporter.info('Copying Partytown Files')
+
+  // Copy @builder.io/partytown lib files to the <rootPath>/static/~partytown.
+  // Those files are used by the Partytown component.
   copyPartytown()
 }
