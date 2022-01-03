@@ -1,18 +1,21 @@
 import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useMemo } from 'react'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
+import ProductTiles from 'src/components/sections/ProductTiles'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
+
+import '../styles/pages/index.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
 
 function Page(props: Props) {
   const {
-    data: { site },
+    data: { site, allStoreProduct },
     location: { pathname, host },
   } = props
 
@@ -20,6 +23,7 @@ function Page(props: Props) {
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
+  const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
 
   return (
     <>
@@ -64,6 +68,15 @@ function Page(props: Props) {
 
       <IncentivesHeader />
 
+      {products && products?.length > 0 && (
+        <section className="grid-section grid-content">
+          <h2 className="title-section / grid-content">Just Arrived</h2>
+          <div className="page__section-content">
+            <ProductTiles products={products} />
+          </div>
+        </section>
+      )}
+
       <BannerText
         title="Receive our news and promotions in advance."
         caption="Enjoy and get 10% off your first purchase."
@@ -81,6 +94,12 @@ export const query = graphql`
         title
         description
         titleTemplate
+      }
+    }
+
+    allStoreProduct(limit: 10) {
+      nodes {
+        ...ProductSummary_product
       }
     }
   }

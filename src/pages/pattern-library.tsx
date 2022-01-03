@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import { Button as UIButton } from '@faststore/ui'
 import {
   BellRinging as BellRingingIcon,
   ArrowRight as ArrowRightIcon,
 } from 'phosphor-react'
 import CartToggle from 'src/components/cart/CartToggle'
 import { CartProvider, UIProvider } from '@faststore/sdk'
+import Tiles, { Tile } from 'src/components/ui/Tiles'
 import BuyButton from 'src/components/ui/BuyButton'
 import Button from 'src/components/ui/Button'
 
@@ -32,19 +32,9 @@ function Page() {
 
           <LinksSection />
 
-          <section className="grid-section grid-content">
-            <h2 className="title-subsection">Custom Button – BuyButton</h2>
-            <ul className="list-horizontal">
-              <li>
-                <BuyButton>Buy Now</BuyButton>
-              </li>
-              <li>
-                <BuyButton disabled>Buy Now</BuyButton>
-              </li>
-            </ul>
-          </section>
+          <CustomBuyButtonSection />
 
-          <CustomButtonPrimary />
+          <CustomButtonPrimarySection />
 
           <CustomButtonSecondary />
 
@@ -53,6 +43,8 @@ function Page() {
           <SkuSelectorSection />
 
           <AlertsSection />
+
+          <TilesSection />
 
           <BadgesSection />
 
@@ -145,7 +137,23 @@ function LinksSection() {
   )
 }
 
-function CustomButtonPrimary() {
+function CustomBuyButtonSection() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Custom Button – BuyButton</h2>
+      <ul className="list-horizontal">
+        <li>
+          <BuyButton>Buy Now</BuyButton>
+        </li>
+        <li>
+          <BuyButton disabled>Buy Now</BuyButton>
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function CustomButtonPrimarySection() {
   return (
     <section className="grid-section grid-content">
       <h2 className="title-subsection">Custom Button – Primary</h2>
@@ -318,9 +326,9 @@ function AlertsSection() {
               Get 10% off today:&nbsp;<span>NEW10</span>
             </Alert>
           ) : (
-            <UIButton onClick={() => setShowAlert1((prevState) => !prevState)}>
+            <Button onClick={() => setShowAlert1((prevState) => !prevState)}>
               Show Alert
-            </UIButton>
+            </Button>
           )}
         </li>
         <li>
@@ -334,9 +342,9 @@ function AlertsSection() {
               Get 10% off today:&nbsp;<span>NEW10</span>
             </Alert>
           ) : (
-            <UIButton onClick={() => setShowAlert2((prevState) => !prevState)}>
+            <Button onClick={() => setShowAlert2((prevState) => !prevState)}>
               Show Alert
-            </UIButton>
+            </Button>
           )}
         </li>
 
@@ -354,10 +362,50 @@ function AlertsSection() {
               today Get 10% off today{' '}
             </Alert>
           ) : (
-            <UIButton onClick={() => setShowAlert3((prevState) => !prevState)}>
+            <Button onClick={() => setShowAlert3((prevState) => !prevState)}>
               Show Alert
-            </UIButton>
+            </Button>
           )}
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function TilesSection() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Tiles</h2>
+      <ul className="list-vertical">
+        <li>
+          <div className="tiles-section-item">
+            <h3>Tiles with 2 items</h3>
+            <Tiles>
+              <Tile>Item 1</Tile>
+              <Tile>Item 2</Tile>
+            </Tiles>
+          </div>
+        </li>
+        <li>
+          <div className="tiles-section-item">
+            <h3>Tiles with 3 items</h3>
+            <Tiles>
+              <Tile>Item 1</Tile>
+              <Tile>Item 2</Tile>
+              <Tile>Item 3</Tile>
+            </Tiles>
+          </div>
+        </li>
+        <li>
+          <div className="tiles-section-item">
+            <h3>Tiles with 4 items</h3>
+            <Tiles>
+              <Tile>Item 1</Tile>
+              <Tile>Item 2</Tile>
+              <Tile>Item 3</Tile>
+              <Tile>Item 4</Tile>
+            </Tiles>
+          </div>
         </li>
       </ul>
     </section>
