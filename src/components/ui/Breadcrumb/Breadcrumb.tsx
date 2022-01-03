@@ -25,7 +25,7 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
   return (
     <UIBreadcrumb divider="">
       <Link aria-label="home" href="/">
-        <HouseIcon size={18} />
+        <HouseIcon size={18} weight="bold" />
       </Link>
 
       {breadcrumbList.map(({ item, name }, index) => {
