@@ -1,32 +1,18 @@
-import React, { useMemo } from 'react'
-import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
+import React from 'react'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../../product/ProductCard'
 
 import './product-shelf.scss'
 
-function ProductShelf() {
-  const perPage = 10
-  const productList = useProductsQuery({
-    first: perPage,
-    after: (perPage * 1).toString(),
-    sort: 'score_desc',
-    term: '',
-    selectedFacets: [{ key: 'category-1', value: 'office' }],
-  })
+interface ProductShelfProps {
+  products: ProductSummary_ProductFragment[]
+}
 
-  const products = useMemo(
-    () => productList?.edges.map((edge) => edge.node),
-    [productList]
-  )
-
-  if (products == null) {
-    return null
-  }
-
+function ProductShelf({ products }: ProductShelfProps) {
   return (
     <ul data-product-shelf className="grid-content">
-      {products.slice(0, 5).map((product, idx) => (
+      {products.map((product, idx) => (
         <li key={`${product.id}`}>
           <ProductCard product={product} index={idx + 1} showActions={false} />
         </li>

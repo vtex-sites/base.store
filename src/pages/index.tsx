@@ -76,7 +76,7 @@ function Page(props: Props) {
       <section className="page__section page__section-shelf / grid-section">
         <h2 className="title-section / grid-content">Most Wanted</h2>
         <div className="page__section-content">
-          <ProductShelf />
+          <ProductShelf products={products.slice(0, 5)} />
         </div>
       </section>
 
@@ -84,7 +84,7 @@ function Page(props: Props) {
         <section className="page__section / grid-section grid-content">
           <h2 className="title-section">Just Arrived</h2>
           <div className="page__section-content">
-            <ProductTiles products={products} />
+            <ProductTiles products={products.slice(5, 8)} />
           </div>
         </section>
       )}
@@ -101,7 +101,7 @@ function Page(props: Props) {
       <section className="page__section page__section-shelf / grid-section">
         <h2 className="title-section / grid-content">Deals & Promotions</h2>
         <div className="page__section-content">
-          <ProductShelf />
+          <ProductShelf products={products.slice(9, 14)} />
         </div>
       </section>
     </>
@@ -118,7 +118,7 @@ export const query = graphql`
       }
     }
 
-    allStoreProduct(limit: 10) {
+    allStoreProduct(limit: 14) {
       nodes {
         ...ProductSummary_product
       }
