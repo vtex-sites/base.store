@@ -55,20 +55,6 @@ describe('On product description pages', () => {
           cy.itemsInCart(1)
         })
     })
-
-    it('sends the add_to_cart event for analytics', () => {
-      cy.visit(pages.pdp, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      // Add to cart
-      cy.getById('buy-button')
-        .click()
-        .then(() => {
-          cy.itemsInCart(1)
-        })
-    })
   })
 
   context('when removing a product from cart', () => {

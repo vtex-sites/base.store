@@ -4,6 +4,8 @@ import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
 import { House as HouseIcon } from 'phosphor-react'
 
+import './breadcrumb.scss'
+
 type ItemElement = {
   item: string
   name: string
@@ -13,7 +15,7 @@ export interface BreadcrumbProps extends UIBreadcrumbProps {
   breadcrumbList: ItemElement[]
 }
 
-function Breadcrumb({ breadcrumbList, divider }: BreadcrumbProps) {
+function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
   const buildUrl = (url: string) => {
     const parsedUrl = url.split('/')
 
@@ -21,9 +23,9 @@ function Breadcrumb({ breadcrumbList, divider }: BreadcrumbProps) {
   }
 
   return (
-    <UIBreadcrumb divider={divider}>
+    <UIBreadcrumb divider="">
       <Link aria-label="home" href="/">
-        <HouseIcon />
+        <HouseIcon size={18} weight="bold" />
       </Link>
 
       {breadcrumbList.map(({ item, name }, index) => {

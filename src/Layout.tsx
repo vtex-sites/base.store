@@ -1,5 +1,4 @@
 import React, { lazy, Suspense, useState } from 'react'
-import { Helmet } from 'react-helmet-async'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
@@ -8,6 +7,7 @@ import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
 import Alert from './components/ui/Alert'
+import './styles/fonts.css'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const Toast = lazy(() => import('src/components/ui/Toast'))
@@ -35,10 +35,6 @@ function Layout({ children }: PropsWithChildren<unknown>) {
 
   return (
     <>
-      <Helmet>
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-      </Helmet>
-
       {showAlert && (
         <Alert
           icon={<BellRingingIcon size={24} />}
