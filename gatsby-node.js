@@ -1,4 +1,7 @@
 const path = require('path')
+const config = require('./store.config')
+
+const { storeUrl, loginUrl } = config
 
 const fs = require('fs-extra')
 

@@ -14,6 +14,7 @@ module.exports = {
   // Production URLs
   storeUrl: 'https://www.vtex-base1.tk',
   checkoutUrl: 'https://chk.vtex-base1.tk/checkout',
+  loginUrl: 'https://test1.vtex-base1.tk/api/io/login',
 
   // Lighthouse CI
   lighthouse: {
