@@ -2,7 +2,6 @@ import React from 'react'
 import {
   Icon as UIIcon,
   PaymentMethods as UIPaymentMethods,
-  List as UIList,
 } from '@faststore/ui'
 
 import LinksList from './LinksList'
@@ -66,7 +65,7 @@ function Footer() {
 
       <section>
         <p>Follow us</p>
-        <UIList variant="unordered">
+        <ul>
           <li>
             <UIIcon component={<FacebookIcon />} />
           </li>
@@ -79,7 +78,7 @@ function Footer() {
           <li>
             <UIIcon component={<TwitterIcon />} />
           </li>
-        </UIList>
+        </ul>
       </section>
 
       {/* fast store logo */}
@@ -100,7 +99,7 @@ function Footer() {
 
       {/* payment methods */}
       <UIPaymentMethods title="Payment Methods">
-        <UIList variant="unordered">
+        <ul>
           <li>
             <VisaCardIcon />
           </li>
@@ -123,7 +122,7 @@ function Footer() {
           <li>
             <ApplePayIcon />
           </li>
-        </UIList>
+        </ul>
       </UIPaymentMethods>
     </footer>
   )

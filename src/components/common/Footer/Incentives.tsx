@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import { Incentive, List } from '@faststore/ui'
+import { Incentive } from '@faststore/ui'
 
 interface Props {
   incentives: ReactNode[]
@@ -8,13 +8,13 @@ interface Props {
 
 function Incentives({ incentives }: Props) {
   return (
-    <List variant="unordered">
+    <ul>
       {incentives.map((incentive, index) => (
         <li key={String(index)}>
           <Incentive>{incentive}</Incentive>
         </li>
       ))}
-    </List>
+    </ul>
   )
 }
 
