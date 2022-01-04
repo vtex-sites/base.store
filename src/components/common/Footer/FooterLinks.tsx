@@ -89,7 +89,7 @@ const links = [
   },
 ]
 
-function LinksList() {
+function FooterLinks() {
   const [indices, setIndices] = useState<Set<number>>(new Set([]))
   const onChange = (index: number) => {
     if (indices.has(index)) {
@@ -144,4 +144,4 @@ function LinksList() {
   )
 }
 
-export default LinksList
+export default FooterLinks

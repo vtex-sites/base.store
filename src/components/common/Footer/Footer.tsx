@@ -4,7 +4,7 @@ import {
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
 
-import LinksList from './LinksList'
+import FooterLinks from './FooterLinks'
 import Incentives from './Incentives'
 import {
   QualityIcon,
@@ -59,7 +59,7 @@ function Footer() {
       </section>
 
       {/* list of links -- must be an accordion on mobile */}
-      <LinksList />
+      <FooterLinks />
 
       {/* Follow us section */}
 
