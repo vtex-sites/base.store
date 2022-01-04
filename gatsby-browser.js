@@ -1,7 +1,8 @@
-import './src/styles/global.css'
+import './src/styles/global.scss'
 
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
+import { HelmetProvider } from 'react-helmet-async'
 
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
@@ -11,24 +12,40 @@ import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element }) => (
-  <ErrorBoundary>
-    <AnalyticsHandler>
-      <TestProvider>
-        <UIProvider
-          initialState={uiInitialState}
-          actions={uiActions}
-          effects={uiEffects}
-        >
-          <SessionProvider initialState={{ channel: storeConfig.channel }}>
-            <CartProvider mode="optimistic" onValidateCart={validateCart}>
-              {element}
-            </CartProvider>
-          </SessionProvider>
-        </UIProvider>
-      </TestProvider>
-    </AnalyticsHandler>
-  </ErrorBoundary>
-)
+export const wrapRootElement = ({ element }) => {
+  // Temporary added condition for pattern library page
+  /* FIXME Remove this after removing pattern library page */
+  if (window.location.pathname.includes('pattern-library')) {
+    return <>{element}</>
+  }
 
-export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
+  return (
+    <ErrorBoundary>
+      <AnalyticsHandler>
+        <TestProvider>
+          <UIProvider
+            initialState={uiInitialState}
+            actions={uiActions}
+            effects={uiEffects}
+          >
+            <HelmetProvider>
+              <SessionProvider initialState={{ channel: storeConfig.channel }}>
+                <CartProvider mode="optimistic" onValidateCart={validateCart}>
+                  {element}
+                </CartProvider>
+              </SessionProvider>
+            </HelmetProvider>
+          </UIProvider>
+        </TestProvider>
+      </AnalyticsHandler>
+    </ErrorBoundary>
+  )
+}
+
+export const wrapPageElement = ({ element, props }) => {
+  // Temporary added condition for pattern library page
+  /* FIXME Remove this after removing pattern library page */
+  if (props.location.pathname.includes('pattern-library')) return <>{element}</>
+
+  return <Layout>{element}</Layout>
+}

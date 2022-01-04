@@ -1,0 +1,46 @@
+@import "../../../styles/vendors/include-media";
+
+[data-store-search-input] {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  height: var(--min-size);
+
+  @include media(">=notebook") { height: var(--space-6); }
+}
+
+[data-store-search-input] [data-store-input] {
+  width: 100%;
+  padding: var(--space-1) var(--space-7) var(--space-1) var(--space-2);
+  border: var(--border-width-0) solid var(--color-border-input);
+  border-radius: var(--border-radius-default);
+
+  &:focus {
+    border: var(--border-width-2) solid var(--color-secondary-2);
+  }
+}
+
+[data-store-search-input] [data-store-icon] {
+  display: block;
+}
+
+[data-store-search-input] [data-store-button] {
+  position: absolute;
+  right: 0;
+  width: var(--space-7);
+  height: var(--space-7);
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+
+  @include media(">=notebook") {
+    height: var(--space-6);
+    min-height: var(--space-6);
+  }
+}
+
+[data-store-search-input] [data-store-button] svg {
+  width: var(--space-4);
+  height: var(--space-4);
+  color: var(--color-neutral-7);
+}

@@ -1,0 +1,41 @@
+@import "../../../styles/vendors/include-media";
+
+[data-store-link] {
+  min-width: auto;
+  min-height: auto;
+  padding: var(--space-2) var(--space-0);
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+  &:visited { color: var(--color-link-visited); }
+}
+
+// Links ////////////////////////////
+
+[data-link-variant="default"] {
+  color: var(--color-link);
+  line-height: 1.5;
+}
+
+[data-link-variant="display"] {
+  color: var(--color-text-display);
+  line-height: 1.5;
+  &:visited { color: var(--color-text-display); }
+}
+
+[data-link-variant="inline"] {
+  display: inline-block;
+  padding: 0;
+  text-decoration: underline;
+}
+
+[data-link-variant="footer"] {
+  color: var(--color-text);
+  font-size: var(--text-size-1);
+
+  @include media(">=notebook") { padding: var(--space-1) var(--space-0); }
+}
+
+[data-link-inverse] {
+  color: var(--color-link-inverse);
+  &:visited { color: var(--color-link-inverse); }
+}

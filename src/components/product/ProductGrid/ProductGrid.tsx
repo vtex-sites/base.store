@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import ProductSummary from '../ProductSummary'
+import ProductCard from '../ProductCard'
 
 interface Props {
   products: ProductSummary_ProductFragment[]
@@ -11,15 +11,14 @@ interface Props {
 
 function ProductGrid({ products, page, pageSize }: Props) {
   return (
-    <div className="grid grid-cols-2 gap-2 mb-2 sm:grid-cols-4 sm:gap-7 sm:mb-7">
+    // TODO Update this once grid page are styled properly
+    <ul className="temp-grid-row">
       {products.map((product, idx) => (
-        <ProductSummary
-          key={`${product.id}`}
-          product={product}
-          index={pageSize * page + idx + 1}
-        />
+        <li key={`${product.id}`}>
+          <ProductCard product={product} index={pageSize * page + idx + 1} />
+        </li>
       ))}
-    </div>
+    </ul>
   )
 }
 

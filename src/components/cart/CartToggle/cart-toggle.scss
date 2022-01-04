@@ -1,0 +1,28 @@
+.cart-toggle[data-store-button] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-width: 0;
+  cursor: pointer;
+
+  svg { color: var(--color-text); }
+
+  &::after {
+    position: absolute;
+    top: .375rem;
+    right: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--space-4);
+    padding: 1px var(--space-0);
+    color: var(--color-text-inverse);
+    font-weight: var(--text-weight-bold);
+    font-size: var(--text-size-0);
+    background: var(--bg-secondary-default);
+    border-radius: var(--border-radius-pill);
+    content: attr(data-items);
+  }
+}

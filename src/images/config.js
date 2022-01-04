@@ -33,22 +33,22 @@ module.exports = {
       fitIn: true,
     },
   },
-  'hero.home': {
+  'product.sku': {
     sourceWidth: 720,
-    aspectRatio: 2,
-    width: 800,
-    breakpoints: [480, 540, 720],
+    aspectRatio: 1,
+    width: 40,
+    breakpoints: [20, 40, 80],
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {
       fitIn: true,
     },
   },
-  'product.sku': {
+  'hero.home': {
     sourceWidth: 720,
-    aspectRatio: 1,
-    width: 40,
-    breakpoints: [20, 40, 80],
+    aspectRatio: 2,
+    width: 800,
+    breakpoints: [480, 540, 720],
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {

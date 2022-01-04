@@ -26,11 +26,12 @@ function ProductGallery({ title }: Props) {
     <>
       {/* Controls */}
       <FacetedFilter facets={data.search.facets} />
-      <div className="flex items-center justify-between">
+      <div>
         <div data-testid="total-product-count" data-count={totalCount}>
           Total Products: {totalCount}
         </div>
         <Sort />
+        <h2>Most Wanted</h2>
       </div>
 
       {/* Add link to previous page. This helps on SEO */}
@@ -38,7 +39,6 @@ function ProductGallery({ title }: Props) {
         <>
           <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
           <a
-            className="p-8 block center"
             onClick={(e) => {
               e.currentTarget.blur()
               e.preventDefault()
@@ -67,7 +67,6 @@ function ProductGallery({ title }: Props) {
         <>
           <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
           <a
-            className="p-8 block center"
             data-testid="show-more"
             onClick={(e) => {
               e.currentTarget.blur()

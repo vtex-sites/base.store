@@ -91,6 +91,9 @@ describe('add_to_cart event', () => {
 })
 
 describe('remove_from_cart event', () => {
+  beforeEach(() => {
+    cy.clearIDB()
+  })
   const testRemoveFromCartEvent = (skuId) => {
     cy.window().then((window) => {
       const { dataLayer } = window
@@ -156,7 +159,7 @@ describe('select_item event', () => {
 
     let skuId
 
-    cy.getById('product-link')
+    cy.getById('store-card')
       .first()
       .within(() => {
         cy.getById('buy-button').then(($btn) => {

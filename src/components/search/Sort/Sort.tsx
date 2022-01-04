@@ -22,7 +22,6 @@ function Sort() {
 
   return (
     <select
-      className="p-2"
       data-testid="search-sort"
       onChange={(e) => setSort(keys[e.target.selectedIndex])}
       value={sort}

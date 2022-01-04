@@ -90,7 +90,7 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('product-link')
+    cy.getById('store-card')
       .should('exist')
       .should('have.length.gt', 0)
       .then(($links) => {
@@ -100,7 +100,7 @@ describe('Infinite Scroll pagination', () => {
           .should('exist')
           .click()
           .then(() => {
-            cy.getById('product-link')
+            cy.getById('store-card')
               .should('have.length.gte', before)
               .then(($products) => {
                 const after = $products.length
@@ -115,7 +115,7 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('product-link')
+    cy.getById('store-card')
       .should('exist')
       .should('have.length.gt', 0)
       .then(($links) => {
@@ -126,11 +126,13 @@ describe('Infinite Scroll pagination', () => {
           .should('exist')
           .click()
           .then(() => {
+            // Ensure wait new page after clicks show more
+            cy.location('search').should('match', /\page=1$/)
+
             // The skuId of the last product on the page
             let skuIdBeforeNavigate
 
-            cy.scrollTo('bottom')
-              .getById('product-link')
+            cy.getById('store-card')
               // Number of products after showMore is clicked should be higher
               .should('have.length.gte', before)
               .last()
@@ -168,21 +170,16 @@ describe('Infinite Scroll pagination', () => {
       .should('exist')
       .click()
       .then(() => {
-        cy.scrollTo('bottom')
-          .getById('product-link')
+        cy.getById('store-card')
           .last()
           .scrollIntoView()
-          .location()
-          .should(($loc) => {
-            expect($loc.search).includes('page=1')
-          })
-          .getById('product-link')
+          .location('search')
+          .should('match', /\page=1$/)
+          .getById('store-card')
           .first()
-          .scrollIntoView()
-          .location()
-          .should(($loc) => {
-            expect($loc.search).includes('page=0')
-          })
+          .scrollIntoView({ offset: { top: -10 } })
+          .location('search')
+          .should('match', /\page=0$/)
       })
   })
 })
