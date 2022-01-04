@@ -1,0 +1,19 @@
+@import "../../../styles/utilities.scss";
+
+.product-title {
+  padding: rem(24px) rem(16px) rem(14px);
+}
+
+.product-title__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: rem(12px);
+}
+
+.product-title__header + .product-title__footer { margin-top: rem(16px); }
+
+.product-title__footer {
+  color: var(--color-neutral-6);
+  font-size: var(--text-size-1);
+}

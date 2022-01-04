@@ -8,6 +8,8 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
+import ProductTitle from 'src/components/ui/ProductTitle'
+import DiscountBadge from 'src/components/ui/DiscountBadge'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -64,6 +66,13 @@ function ProductDetails({ product: staleProduct }: Props) {
   return (
     <div>
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
+
+      <ProductTitle
+        title={<h1 className="title-product">{name}</h1>}
+        label={<DiscountBadge listPrice={100} spotPrice={50} />}
+        refNumber="Ref.: 54412"
+      />
+
       <h2>{variantName}</h2>
       <Image
         src={productImages[0].url}
