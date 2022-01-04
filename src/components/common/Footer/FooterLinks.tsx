@@ -107,7 +107,7 @@ function FooterLinks() {
   return (
     <section>
       {screen === 'desktop' ? (
-        <>
+        <div className="flex flex-row justify-around">
           {links.map((section) => (
             <div key={section.title}>
               <span>{section.title}</span>
@@ -120,9 +120,13 @@ function FooterLinks() {
               </List>
             </div>
           ))}
-        </>
+        </div>
       ) : (
-        <Accordion indices={indices} onChange={onChange}>
+        <Accordion
+          indices={indices}
+          onChange={onChange}
+          className="flex flex-row justify-around"
+        >
           {links.map((section) => (
             <AccordionItem key={section.title}>
               <AccordionButton>

@@ -53,7 +53,7 @@ function Footer() {
   ]
 
   return (
-    <footer>
+    <footer className="w-full bg-primary-200 flex flex-col">
       {/* Incentives list */}
       <Incentives incentives={incentives} />
 
@@ -63,7 +63,7 @@ function Footer() {
       {/* Follow us section */}
       <section>
         <p>Follow us</p>
-        <List>
+        <List variant="unordered" className="justify-around flex">
           <li>
             <UIIcon component={<FacebookIcon />} />
           </li>
@@ -97,7 +97,7 @@ function Footer() {
 
       {/* payment methods */}
       <UIPaymentMethods title="Payment Methods">
-        <List>
+        <List className="flex flex-row justify-around">
           <li>
             <VisaCardIcon />
           </li>
