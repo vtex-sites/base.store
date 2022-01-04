@@ -174,7 +174,8 @@ describe('Infinite Scroll pagination', () => {
           .should(($loc) => {
             expect($loc.search).includes('page=1')
           })
-          .getById('product-link')
+
+        cy.getById('product-link')
           .first()
           .scrollIntoView()
           .location()
