@@ -9,6 +9,11 @@ import { cypress } from '../../store.config'
 
 const { pages } = cypress
 
+beforeEach(() => {
+  cy.clearIDB()
+  cy.log('IDB Cleared')
+})
+
 const dataLayerHasEvent = (eventName) => {
   return cy.window().then((window) => {
     const allEvents = window.dataLayer.map((evt) => evt.name)
@@ -31,10 +36,6 @@ const eventDataHasCurrencyProperty = () => {
 }
 
 describe('add_to_cart event', () => {
-  beforeEach(() => {
-    cy.clearIDB()
-  })
-
   const testAddToCartEvent = (skuId) => {
     cy.window().then((window) => {
       const { dataLayer } = window
