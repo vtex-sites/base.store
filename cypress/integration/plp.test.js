@@ -169,15 +169,14 @@ describe('Infinite Scroll pagination', () => {
       .then(() => {
         cy.getById('product-link')
           .last()
-          .scrollIntoView()
+          .scrollIntoView({ offset: { top: 10 } })
           .location()
           .should(($loc) => {
             expect($loc.search).includes('page=1')
           })
-
-        cy.getById('product-link')
+          .getById('product-link')
           .first()
-          .scrollIntoView()
+          .scrollIntoView({ offset: { top: -10 } })
           .location()
           .should(($loc) => {
             expect($loc.search).includes('page=0')
