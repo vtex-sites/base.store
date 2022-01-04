@@ -6,13 +6,8 @@ import {
 } from '@faststore/ui'
 
 import FooterLinks from './FooterLinks'
-import Incentives from './Incentives'
+import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
 import {
-  QualityIcon,
-  SafetyIcon,
-  GuaranteeIcon,
-  ShippingIcon,
-  StoreIcon,
   FacebookIcon,
   InstagramIcon,
   PinterestIcon,
@@ -29,33 +24,10 @@ import {
 } from './Icons'
 
 function Footer() {
-  const incentives = [
-    <>
-      <SafetyIcon />
-      <span>Trusted by SafeCon</span>
-    </>,
-    <>
-      <QualityIcon />
-      <span>Quality Products</span>
-    </>,
-    <>
-      <GuaranteeIcon />
-      <span>3-years Guarantee</span>
-    </>,
-    <>
-      <StoreIcon />
-      <span>Pickup Options</span>
-    </>,
-    <>
-      <ShippingIcon />
-      <span>Free Shipping</span>
-    </>,
-  ]
-
   return (
     <footer className="w-full bg-primary-200 flex flex-col">
       {/* Incentives list */}
-      <Incentives incentives={incentives} />
+      <IncentivesFooter />
 
       {/* list of links -- must be an accordion on mobile */}
       <FooterLinks />
