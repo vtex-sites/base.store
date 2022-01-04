@@ -10,7 +10,7 @@ type Props = PriceProps & {
   /**
    * Text for the screen readers only
    */
-  SRText: string
+  'sr-text': string
   /**
    * Other classes that might be applied
    */
