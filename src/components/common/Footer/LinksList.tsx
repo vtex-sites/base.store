@@ -10,6 +10,85 @@ import {
 
 import { PlusButtonIcon } from './Icons'
 
+const links = [
+  {
+    title: 'Our company',
+    items: [
+      {
+        href: '/',
+        name: 'About Us',
+      },
+      {
+        href: '/',
+        name: 'Our Blog',
+      },
+      {
+        href: '/',
+        name: 'Stores',
+      },
+      {
+        href: '/',
+        name: 'Work With Us',
+      },
+    ],
+  },
+  {
+    title: 'Orders & Purchases',
+    items: [
+      {
+        href: '/',
+        name: 'Check Order Status',
+      },
+      {
+        href: '/',
+        name: 'Returns and Exchanges',
+      },
+      {
+        href: '/',
+        name: 'Product Recall',
+      },
+      {
+        href: '/',
+        name: 'Gift Cards',
+      },
+    ],
+  },
+  {
+    title: 'Support & Services',
+    items: [
+      {
+        href: '/',
+        name: 'Support Center',
+      },
+      {
+        href: '/',
+        name: 'Schedule a Service',
+      },
+      {
+        href: '/',
+        name: 'Contact Us',
+      },
+    ],
+  },
+  {
+    title: 'Partnerships',
+    items: [
+      {
+        href: '/',
+        name: 'Affiliate Program',
+      },
+      {
+        href: '/',
+        name: 'Advertise with US',
+      },
+      {
+        href: '/',
+        name: 'Market Place',
+      },
+    ],
+  },
+]
+
 function LinksList() {
   const [indices, setIndices] = useState<Set<number>>(new Set([]))
   const onChange = (index: number) => {
@@ -28,149 +107,37 @@ function LinksList() {
     <section>
       {screen === 'desktop' ? (
         <>
-          <div>
-            <span>Our company</span>
-            <ul>
-              <li>
-                <Link href="/">About Us</Link>
-              </li>
-              <li>
-                <Link href="/">Our Blog</Link>
-              </li>
-              <li>
-                <Link href="/">Stores</Link>
-              </li>
-              <li>
-                <Link href="/">Work With Us</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <span>Orders {'&'} Purchases</span>
-            <ul>
-              <li>
-                <Link href="/">Check Order Status</Link>
-              </li>
-              <li>
-                <Link href="/">Returns and Exchanges</Link>
-              </li>
-              <li>
-                <Link href="/">Product Recall</Link>
-              </li>
-              <li>
-                <Link href="/">Gift Cards</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <span>Support {'&'} Services</span>
-            <ul>
-              <li>
-                <Link href="/">Support Center</Link>
-              </li>
-              <li>
-                <Link href="/">Schedule a Service</Link>
-              </li>
-              <li>
-                <Link href="/">Contact Us</Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <span>Partnerships</span>
-            <ul>
-              <li>
-                <Link href="/">Affiliate Program</Link>
-              </li>
-              <li>
-                <Link href="/">Advertise with US</Link>
-              </li>
-              <li>
-                <Link href="/">Market Place</Link>
-              </li>
-            </ul>
-          </div>
+          {links.map((section) => (
+            <div key={section.title}>
+              <span>{section.title}</span>
+              <ul>
+                {section.items.map((item) => (
+                  <li key={item.name}>
+                    <Link href={item.name}>{item.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </>
       ) : (
         <Accordion indices={indices} onChange={onChange}>
-          <AccordionItem>
-            <AccordionButton>
-              Our company <Icon component={<PlusButtonIcon />} />
-            </AccordionButton>
-            <AccordionPanel>
-              <ul>
-                <li>
-                  <Link href="/">About Us</Link>
-                </li>
-                <li>
-                  <Link href="/">Our Blog</Link>
-                </li>
-                <li>
-                  <Link href="/">Stores</Link>
-                </li>
-                <li>
-                  <Link href="/">Work With Us</Link>
-                </li>
-              </ul>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton>
-              Orders {'&'} Purchases <Icon component={<PlusButtonIcon />} />
-            </AccordionButton>
-            <AccordionPanel>
-              <ul>
-                <li>
-                  <Link href="/">Check Order Status</Link>
-                </li>
-                <li>
-                  <Link href="/">Returns and Exchanges</Link>
-                </li>
-                <li>
-                  <Link href="/">Product Recall</Link>
-                </li>
-                <li>
-                  <Link href="/">Gift Cards</Link>
-                </li>
-              </ul>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton>
-              Support {'&'} Services <Icon component={<PlusButtonIcon />} />
-            </AccordionButton>
-            <AccordionPanel>
-              <ul>
-                <li>
-                  <Link href="/">Support Center</Link>
-                </li>
-                <li>
-                  <Link href="/">Schedule a Service</Link>
-                </li>
-                <li>
-                  <Link href="/">Contact Us</Link>
-                </li>
-              </ul>
-            </AccordionPanel>
-          </AccordionItem>
-          <AccordionItem>
-            <AccordionButton>
-              Support {'&'} Services <Icon component={<PlusButtonIcon />} />
-            </AccordionButton>
-            <AccordionPanel>
-              <ul>
-                <li>
-                  <Link href="/">Affiliate Program</Link>
-                </li>
-                <li>
-                  <Link href="/">Advertise with US</Link>
-                </li>
-                <li>
-                  <Link href="/">Market Place</Link>
-                </li>
-              </ul>
-            </AccordionPanel>
-          </AccordionItem>
+          {links.map((section) => (
+            <AccordionItem key={section.title}>
+              <AccordionButton>
+                {section.title} <Icon component={<PlusButtonIcon />} />
+              </AccordionButton>
+              <AccordionPanel>
+                <ul>
+                  {section.items.map((item) => (
+                    <li key={item.name}>
+                      <Link href={item.name}>{item.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
         </Accordion>
       )}
     </section>
