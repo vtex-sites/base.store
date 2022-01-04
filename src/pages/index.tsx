@@ -25,6 +25,7 @@ function Page(props: Props) {
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
   const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
+  const haveProducts = products && products?.length > 0
 
   return (
     <>
@@ -73,14 +74,16 @@ function Page(props: Props) {
         <IncentivesHeader />
       </section>
 
-      <section className="page__section page__section-shelf / grid-section">
-        <h2 className="title-section / grid-content">Most Wanted</h2>
-        <div className="page__section-content">
-          <ProductShelf products={products.slice(0, 5)} />
-        </div>
-      </section>
+      {haveProducts && (
+        <section className="page__section page__section-shelf / grid-section">
+          <h2 className="title-section / grid-content">Most Wanted</h2>
+          <div className="page__section-content">
+            <ProductShelf products={products.slice(0, 5)} />
+          </div>
+        </section>
+      )}
 
-      {products && products?.length > 0 && (
+      {haveProducts && (
         <section className="page__section / grid-section grid-content">
           <h2 className="title-section">Just Arrived</h2>
           <div className="page__section-content">
@@ -98,12 +101,14 @@ function Page(props: Props) {
         />
       </section>
 
-      <section className="page__section page__section-shelf / grid-section">
-        <h2 className="title-section / grid-content">Deals & Promotions</h2>
-        <div className="page__section-content">
-          <ProductShelf products={products.slice(9, 14)} />
-        </div>
-      </section>
+      {haveProducts && (
+        <section className="page__section page__section-shelf / grid-section">
+          <h2 className="title-section / grid-content">Deals & Promotions</h2>
+          <div className="page__section-content">
+            <ProductShelf products={products.slice(9, 14)} />
+          </div>
+        </section>
+      )}
     </>
   )
 }
