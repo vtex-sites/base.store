@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  List,
+  List as UIList,
   Icon as UIIcon,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
@@ -25,7 +25,7 @@ import {
 
 function Footer() {
   return (
-    <footer className="w-full bg-primary-200 flex flex-col">
+    <footer>
       {/* Incentives list */}
       <IncentivesFooter />
 
@@ -35,7 +35,7 @@ function Footer() {
       {/* Follow us section */}
       <section>
         <p>Follow us</p>
-        <List variant="unordered" className="justify-around flex">
+        <UIList variant="unordered">
           <li>
             <UIIcon component={<FacebookIcon />} />
           </li>
@@ -48,7 +48,7 @@ function Footer() {
           <li>
             <UIIcon component={<TwitterIcon />} />
           </li>
-        </List>
+        </UIList>
       </section>
 
       {/* fast store logo */}
@@ -69,7 +69,7 @@ function Footer() {
 
       {/* payment methods */}
       <UIPaymentMethods title="Payment Methods">
-        <List className="flex flex-row justify-around">
+        <UIList>
           <li>
             <VisaCardIcon />
           </li>
@@ -94,7 +94,7 @@ function Footer() {
           <li>
             <ApplePayIcon />
           </li>
-        </List>
+        </UIList>
       </UIPaymentMethods>
     </footer>
   )
