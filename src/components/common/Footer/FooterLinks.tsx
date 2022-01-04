@@ -114,7 +114,7 @@ function FooterLinks() {
               <List>
                 {section.items.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.name} className="pt-7">
+                    <Link href={item.name} className="pt-8">
                       {item.name}
                     </Link>
                   </li>
