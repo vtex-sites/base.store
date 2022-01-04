@@ -30,29 +30,65 @@ function LinksList() {
         <>
           <div>
             <span>Our company</span>
-            <Link href="/">About Us</Link>
-            <Link href="/">Our Blog</Link>
-            <Link href="/">Stores</Link>
-            <Link href="/">Work With Us</Link>
+            <ul>
+              <li>
+                <Link href="/">About Us</Link>
+              </li>
+              <li>
+                <Link href="/">Our Blog</Link>
+              </li>
+              <li>
+                <Link href="/">Stores</Link>
+              </li>
+              <li>
+                <Link href="/">Work With Us</Link>
+              </li>
+            </ul>
           </div>
           <div>
             <span>Orders {'&'} Purchases</span>
-            <Link href="/">Check Order Status</Link>
-            <Link href="/">Returns and Exchanges</Link>
-            <Link href="/">Product Recall</Link>
-            <Link href="/">Gift Cards</Link>
+            <ul>
+              <li>
+                <Link href="/">Check Order Status</Link>
+              </li>
+              <li>
+                <Link href="/">Returns and Exchanges</Link>
+              </li>
+              <li>
+                <Link href="/">Product Recall</Link>
+              </li>
+              <li>
+                <Link href="/">Gift Cards</Link>
+              </li>
+            </ul>
           </div>
           <div>
             <span>Support {'&'} Services</span>
-            <Link href="/">Support Center</Link>
-            <Link href="/">Schedule a Service</Link>
-            <Link href="/">Contact Us</Link>
+            <ul>
+              <li>
+                <Link href="/">Support Center</Link>
+              </li>
+              <li>
+                <Link href="/">Schedule a Service</Link>
+              </li>
+              <li>
+                <Link href="/">Contact Us</Link>
+              </li>
+            </ul>
           </div>
           <div>
             <span>Partnerships</span>
-            <Link href="/">Affiliate Program</Link>
-            <Link href="/">Advertise with US</Link>
-            <Link href="/">Market Place</Link>
+            <ul>
+              <li>
+                <Link href="/">Affiliate Program</Link>
+              </li>
+              <li>
+                <Link href="/">Advertise with US</Link>
+              </li>
+              <li>
+                <Link href="/">Market Place</Link>
+              </li>
+            </ul>
           </div>
         </>
       ) : (
