@@ -13,7 +13,7 @@ import './navbar.scss'
 
 const links = [
   {
-    href: '/apparel-and-accesories',
+    href: '/apparel-and-accessories',
     name: 'Apparel',
   },
   {
