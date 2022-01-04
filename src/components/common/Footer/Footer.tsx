@@ -104,7 +104,9 @@ function Footer() {
           <li>
             <DinersClubIcon />
           </li>
-          <PayPalIcon />
+          <li>
+            <PayPalIcon />
+          </li>
           <li>
             <MastercardIcon />
           </li>
