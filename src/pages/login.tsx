@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 
-function Page() {
-  return (
-    <>
-      <GatsbySeo noindex nofollow />
+import * as storeConfig from '../../store.config'
 
-      <div>TODO</div>
-    </>
-  )
+const { loginUrl } = storeConfig
+
+function Page() {
+  useEffect(() => {
+    window.location.href = loginUrl
+  }, [])
+
+  return <GatsbySeo noindex nofollow />
 }
 
 export default Page
