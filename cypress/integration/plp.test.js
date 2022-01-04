@@ -145,6 +145,7 @@ describe('Infinite Scroll pagination', () => {
               })
               .then(() => {
                 cy.go('back')
+                  .scrollTo('bottom')
                   .getById('buy-button')
                   .last()
                   .then(($btn) => {
