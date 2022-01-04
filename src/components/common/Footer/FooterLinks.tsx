@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {
   Link,
   Icon,
+  List,
   Accordion,
   AccordionItem,
   AccordionButton,
@@ -110,13 +111,13 @@ function FooterLinks() {
           {links.map((section) => (
             <div key={section.title}>
               <span>{section.title}</span>
-              <ul>
+              <List>
                 {section.items.map((item) => (
                   <li key={item.name}>
                     <Link href={item.name}>{item.name}</Link>
                   </li>
                 ))}
-              </ul>
+              </List>
             </div>
           ))}
         </>
@@ -128,13 +129,13 @@ function FooterLinks() {
                 {section.title} <Icon component={<PlusButtonIcon />} />
               </AccordionButton>
               <AccordionPanel>
-                <ul>
+                <List>
                   {section.items.map((item) => (
                     <li key={item.name}>
                       <Link href={item.name}>{item.name}</Link>
                     </li>
                   ))}
-                </ul>
+                </List>
               </AccordionPanel>
             </AccordionItem>
           ))}

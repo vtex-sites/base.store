@@ -1,5 +1,6 @@
 import React from 'react'
 import {
+  List,
   Icon as UIIcon,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
@@ -54,18 +55,15 @@ function Footer() {
   return (
     <footer>
       {/* Incentives list */}
-      <section>
-        <Incentives incentives={incentives} />
-      </section>
+      <Incentives incentives={incentives} />
 
       {/* list of links -- must be an accordion on mobile */}
       <FooterLinks />
 
       {/* Follow us section */}
-
       <section>
         <p>Follow us</p>
-        <ul>
+        <List>
           <li>
             <UIIcon component={<FacebookIcon />} />
           </li>
@@ -78,7 +76,7 @@ function Footer() {
           <li>
             <UIIcon component={<TwitterIcon />} />
           </li>
-        </ul>
+        </List>
       </section>
 
       {/* fast store logo */}
@@ -99,7 +97,7 @@ function Footer() {
 
       {/* payment methods */}
       <UIPaymentMethods title="Payment Methods">
-        <ul>
+        <List>
           <li>
             <VisaCardIcon />
           </li>
@@ -122,7 +120,7 @@ function Footer() {
           <li>
             <ApplePayIcon />
           </li>
-        </ul>
+        </List>
       </UIPaymentMethods>
     </footer>
   )
