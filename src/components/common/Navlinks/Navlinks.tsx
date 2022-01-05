@@ -4,7 +4,7 @@ import Logo from 'src/components/ui/Logo'
 
 const links = [
   {
-    href: '/apparel-and-accesories',
+    href: '/apparel-and-accessories',
     name: 'Apparel',
   },
   {
