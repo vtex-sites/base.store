@@ -14,7 +14,7 @@ const Tile = forwardRef<HTMLDivElement, TileProps>(function Tile(
   ref
 ) {
   return (
-    <div ref={ref} data-store-tile data-testid={testId} {...otherProps}>
+    <div ref={ref} data-tile data-testid={testId} {...otherProps}>
       {children}
     </div>
   )

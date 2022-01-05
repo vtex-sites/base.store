@@ -9,11 +9,11 @@ export interface HeroImageProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const HeroImage = forwardRef<HTMLDivElement, HeroImageProps>(function HeroImage(
-  { testId = 'store-hero-image', children, ...otherProps },
+  { testId = 'hero-image', children, ...otherProps },
   ref
 ) {
   return (
-    <div ref={ref} data-store-hero-image data-testid={testId} {...otherProps}>
+    <div ref={ref} data-hero-image data-testid={testId} {...otherProps}>
       {children}
     </div>
   )

@@ -9,11 +9,11 @@ export interface HeroLinkProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const HeroLink = forwardRef<HTMLDivElement, HeroLinkProps>(function HeroLink(
-  { testId = 'store-hero-link', children, ...otherProps },
+  { testId = 'hero-link', children, ...otherProps },
   ref
 ) {
   return (
-    <div ref={ref} data-store-hero-link data-testid={testId} {...otherProps}>
+    <div ref={ref} data-hero-link data-testid={testId} {...otherProps}>
       {children}
     </div>
   )
