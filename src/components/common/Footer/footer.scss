@@ -8,6 +8,10 @@
   display: flex;
   flex-direction: column;
 
+  @include media("<notebook") {
+    padding: var(--space-5) 0;
+  }
+
   .title-sub-subsection {
     text-align: center;
   }
