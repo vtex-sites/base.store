@@ -29,7 +29,7 @@
     "@faststore/sdk": "^1.3.28",
     "@faststore/ui": "^1.3.28",
     "@vtex/gatsby-plugin-nginx": "^1.3.22",
-    "@vtex/gatsby-plugin-thumbor": "^1.3.22",
+    "@vtex/gatsby-plugin-thumbor": "https://pkg.csb.dev/vtex/faststore/commit/47ec99e8/@vtex/gatsby-plugin-thumbor",
     "@vtex/gatsby-source-store": "^1.3.22",
     "@vtex/graphql-utils": "^1.3.22",
     "gatsby": "^3.14.3",

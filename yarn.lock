@@ -2878,6 +2878,10 @@
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.3.22.tgz#b55d5c3256d3d37d9f161ec210aeb87bd7f64a3a"
   integrity sha512-LI5k0J3HXd5JBXpdaYfKjHgvTEEOkK6PqLlMFaR71JmIbTwtX4DfH4BqvJaZSKdxcpp0KA7lgFoygEvBU3eeig==
 
+"@vtex/gatsby-plugin-thumbor@https://pkg.csb.dev/vtex/faststore/commit/47ec99e8/@vtex/gatsby-plugin-thumbor":
+  version "1.4.4"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/47ec99e8/@vtex/gatsby-plugin-thumbor#84bccb0f8dad3c92aee15c2da878aa387c70c426"
+
 "@vtex/gatsby-source-store@^1.3.22":
   version "1.3.22"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.3.22.tgz#e1a0cbd4f42c0af4d420431ee4189c710a98b522"
