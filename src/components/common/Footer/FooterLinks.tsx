@@ -8,8 +8,7 @@ import {
   AccordionButton,
   AccordionPanel,
 } from '@faststore/ui'
-
-import { PlusButtonIcon } from './Icons'
+import { PlusCircle as PlusCircleIcon } from 'phosphor-react'
 
 const links = [
   {
@@ -102,11 +101,35 @@ function FooterLinks() {
   }
 
   // TODO: Verify if the screen is a desktop or mobile and change it here
-  const screen = 'desktop'
+  const screen = 'mobile'
 
   return (
     <section>
-      {screen === 'desktop' ? (
+      {screen === 'mobile' ? (
+        <Accordion
+          indices={indices}
+          onChange={onChange}
+          className="flex flex-row justify-around"
+        >
+          {links.map((section) => (
+            <AccordionItem key={section.title}>
+              <AccordionButton>
+                {section.title}
+                <Icon component={<PlusCircleIcon size={16} />} />
+              </AccordionButton>
+              <AccordionPanel>
+                <List>
+                  {section.items.map((item) => (
+                    <li key={item.name}>
+                      <Link href={item.name}>{item.name}</Link>
+                    </li>
+                  ))}
+                </List>
+              </AccordionPanel>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      ) : (
         <div className="flex flex-row justify-around">
           {links.map((section) => (
             <div key={section.title}>
@@ -123,29 +146,6 @@ function FooterLinks() {
             </div>
           ))}
         </div>
-      ) : (
-        <Accordion
-          indices={indices}
-          onChange={onChange}
-          className="flex flex-row justify-around"
-        >
-          {links.map((section) => (
-            <AccordionItem key={section.title}>
-              <AccordionButton>
-                {section.title} <Icon component={<PlusButtonIcon />} />
-              </AccordionButton>
-              <AccordionPanel>
-                <List>
-                  {section.items.map((item) => (
-                    <li key={item.name}>
-                      <Link href={item.name}>{item.name}</Link>
-                    </li>
-                  ))}
-                </List>
-              </AccordionPanel>
-            </AccordionItem>
-          ))}
-        </Accordion>
       )}
     </section>
   )
