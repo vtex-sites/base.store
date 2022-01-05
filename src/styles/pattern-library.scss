@@ -53,7 +53,7 @@ select {
 .tiles-section-item {
   margin-bottom: var(--space-4);
 
-  [data-store-tile] {
+  [data-tile] {
     display: flex;
     align-items: center;
     justify-content: center;

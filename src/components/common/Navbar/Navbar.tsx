@@ -5,6 +5,7 @@ import Logo from 'src/components/ui/Logo'
 import Link from 'src/components/ui/Link'
 import Button from 'src/components/ui/Button'
 import { List as ListIcon, X as XIcon } from 'phosphor-react'
+import SignInLink from 'src/components/ui/SignInLink'
 
 import SearchInput from '../SearchInput'
 
@@ -12,7 +13,7 @@ import './navbar.scss'
 
 const links = [
   {
-    href: '/apparel-and-accesories',
+    href: '/apparel-and-accessories',
     name: 'Apparel',
   },
   {
@@ -45,6 +46,7 @@ function Navbar() {
             <Logo />
           </LinkGatsby>
           <div className="navbar__buttons">
+            <SignInLink />
             <CartToggle />
           </div>
           <SearchInput />
@@ -76,6 +78,9 @@ function Navbar() {
               </Link>
             ))}
           </nav>
+          <div className="navlinks__signin">
+            <SignInLink />
+          </div>
         </div>
       </div>
     </header>
