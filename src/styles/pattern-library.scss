@@ -68,3 +68,10 @@ select {
   position: absolute;
   top: -100px;
 }
+
+/* FIXME Remove this once we have a product gallery skeleton */
+.temp-data-loading {
+  min-height: 1400px;
+  padding: var(--space-3);
+  text-align: center;
+}
