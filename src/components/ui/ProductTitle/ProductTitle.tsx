@@ -22,12 +22,15 @@ function ProductTitle({ title, label, refNumber }: ProductTitleProp) {
   return (
     <div className="product-title">
       <div className="product-title__header">
-        <div className="product-title__title">{title}</div>
-
-        {label && <div className="product-title__label">{label}</div>}
+        {title}
+        {label && label}
       </div>
 
-      {refNumber && <div className="product-title__footer">{refNumber}</div>}
+      {refNumber && (
+        <div className="product-title__footer / text-body-small">
+          {refNumber}
+        </div>
+      )}
     </div>
   )
 }

@@ -1,19 +1,18 @@
+@import "../../../styles/vendors/include-media";
 @import "../../../styles/utilities.scss";
 
 .product-title {
-  padding: rem(24px) rem(16px) rem(14px);
+  @include media(">=tablet") { padding: var(--space-4) var(--space-5); }
 }
 
 .product-title__header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  column-gap: rem(12px);
+  column-gap: var(--space-2);
+  [data-store-badge] { white-space: nowrap; }
 }
 
-.product-title__header + .product-title__footer { margin-top: rem(16px); }
+.product-title__header + .product-title__footer { margin-top: var(--space-3); }
 
-.product-title__footer {
-  color: var(--color-neutral-6);
-  font-size: var(--text-size-1);
-}
+.product-title__footer { color: var(--color-text-subtle); }
