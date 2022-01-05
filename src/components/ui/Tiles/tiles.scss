@@ -46,7 +46,7 @@
       .product-card__heading {
         margin-right: 0;
 
-        @include media(">=notebook") {
+        @include media(">=tablet") {
           width: 60%;
           max-width: 60%;
         }
