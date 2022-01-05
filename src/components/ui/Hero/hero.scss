@@ -10,7 +10,7 @@
     flex-direction: row;
   }
 
-  [data-store-hero-content] {
+  [data-hero-content] {
     width: 100%;
     padding: var(--space-6) var(--space-4);
     color: var(--color-text-inverse);
@@ -37,7 +37,7 @@
       font-weight: var(--text-weight-regular);
     }
 
-    [data-store-hero-link] {
+    [data-hero-link] {
       // TODO: Repassar estilização para Link Button
       margin-top: var(--space-6);
 
@@ -61,7 +61,7 @@
     }
   }
 
-  [data-store-hero-image] {
+  [data-hero-image] {
     width: 100%;
 
     [data-gatsby-image-wrapper] {
