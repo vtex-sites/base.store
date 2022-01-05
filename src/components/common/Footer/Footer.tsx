@@ -30,7 +30,7 @@ function Footer() {
     <footer className="footer / grid-content-full">
       <IncentivesFooter />
 
-      <div className="grid-content">
+      <div className="footer__section / grid-content">
         <FooterLinks />
 
         <section className="footer__social">

@@ -126,16 +126,14 @@ function FooterLinks() {
           ))}
         </Accordion>
       ) : (
-        <div className="flex flex-row justify-around">
+        <div className="footer__links-columns">
           {links.map((section) => (
             <div key={section.title}>
-              <span>{section.title}</span>
+              <p className="title-sub-subsection">{section.title}</p>
               <List>
                 {section.items.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.name} className="pt-8">
-                      {item.name}
-                    </Link>
+                    <Link href={item.name}>{item.name}</Link>
                   </li>
                 ))}
               </List>

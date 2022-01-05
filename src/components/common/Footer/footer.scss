@@ -14,6 +14,10 @@
 
   .title-sub-subsection {
     text-align: center;
+
+    @include media(">=notebook") {
+      text-align: left;
+    }
   }
 
   [data-store-list] {
@@ -24,22 +28,43 @@
   }
 }
 
-.footer__note {
+.footer__note,
+.footer__section {
   position: relative;
   display: flex;
-  flex-direction: column;
-  padding-top: var(--space-4);
 
   @include media("<notebook") {
-    align-items: center;
-    justify-content: space-between;
-    text-align: center;
+    flex-direction: column;
   }
 
   @include media(">=notebook") {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    width: calc(100% - (2 * var(--space-3)));
+    border-top: 1px solid var(--color-border-display);
+    content: "";
+
+    @include media(">=notebook") {
+      width: calc(100% - (2 * var(--space-5)));
+    }
+  }
+}
+
+.footer__note {
+  position: relative;
+  display: flex;
+  padding-top: var(--space-4);
+
+  @include media("<notebook") {
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
   }
 
   [data-store-payment-methods] {
@@ -55,6 +80,10 @@
     .title-sub-subsection {
       margin-bottom: var(--space-3);
       text-align: center;
+
+      @include media(">=notebook") {
+        text-align: left;
+      }
     }
 
     [data-store-list] {
@@ -63,18 +92,6 @@
       grid-template-columns: repeat(4, 1fr);
       max-width: 13.5rem;
       margin: auto;
-    }
-  }
-
-  &::before {
-    position: absolute;
-    top: 0;
-    width: calc(100% - (2 * var(--space-3)));
-    border-top: 1px solid var(--color-border-display);
-    content: "";
-
-    @include media(">=notebook") {
-      width: calc(100% - (2 * var(--space-5)));
     }
   }
 }
@@ -103,7 +120,6 @@
   }
 
   [data-store-accordion-item] {
-    border-top: 1px solid var(--color-border-display);
     border-bottom: 1px solid var(--color-border-display);
   }
 
@@ -115,5 +131,18 @@
     padding: var(--space-3) 0;
     background-color: transparent;
     border: 0;
+  }
+}
+
+.footer__links-columns {
+  display: grid;
+  grid-gap: var(--grid-gap-1);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.footer__section {
+  @include media(">=notebook") {
+    padding-top: var(--space-7);
+    padding-bottom: var(--space-7);
   }
 }
