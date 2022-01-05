@@ -34,7 +34,7 @@ function Footer() {
         <FooterLinks />
 
         <section className="footer__social">
-          <h4 className="title-sub-subsection">Follow us</h4>
+          <p className="title-sub-subsection">Follow us</p>
           <UIList variant="unordered">
             <li>
               <UIIcon component={<FacebookIcon />} />
@@ -56,7 +56,7 @@ function Footer() {
         <UIIcon component={<FastStoreIcon />} />
 
         <UIPaymentMethods>
-          <h4 className="title-sub-subsection">Payment Methods</h4>
+          <p className="title-sub-subsection">Payment Methods</p>
           <UIList>
             <li>
               <VisaCardIcon />
@@ -65,19 +65,19 @@ function Footer() {
               <DinersClubIcon />
             </li>
             <li>
-              <PayPalIcon />
+              <MastercardIcon />
             </li>
             <li>
-              <MastercardIcon />
+              <EloCardIcon />
+            </li>
+            <li>
+              <PayPalIcon />
             </li>
             <li>
               <StripeIcon />
             </li>
             <li>
               <GooglePayIcon />
-            </li>
-            <li>
-              <EloCardIcon />
             </li>
             <li>
               <ApplePayIcon />
