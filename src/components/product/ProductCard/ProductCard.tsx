@@ -101,7 +101,7 @@ function ProductCard({
               data-value={listPrice}
               variant="listing"
               classes="text-body-small"
-              sr-text="Original price:"
+              SRText="Original price:"
             />
             <Price
               value={spotPrice}
@@ -110,7 +110,7 @@ function ProductCard({
               data-value={spotPrice}
               variant="spot"
               classes="text-body"
-              sr-text="Sale Price:"
+              SRText="Sale Price:"
             />
           </div>
         </div>
