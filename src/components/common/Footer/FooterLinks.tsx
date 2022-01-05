@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Link,
   Icon,
@@ -100,12 +100,18 @@ function FooterLinks() {
     }
   }
 
-  // TODO: Verify if the screen is a desktop or mobile and change it here
-  const screen = 'mobile'
+  const [isMobile, setIsMobile] = useState(true)
+
+  useEffect(() => {
+    const viewPortWidth = window.innerWidth
+    const notebook = 1280
+
+    setIsMobile(viewPortWidth < notebook)
+  }, [])
 
   return (
     <section className="footer__links">
-      {screen === 'mobile' ? (
+      {isMobile ? (
         <Accordion indices={indices} onChange={onChange}>
           {links.map((section) => (
             <AccordionItem key={section.title}>
