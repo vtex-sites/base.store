@@ -39,6 +39,6 @@ export const useProduct = <T extends BrowserProductQueryQuery>(
     BrowserProductQueryQueryVariables
   >(query, variables, {
     fallbackData,
-    revalidateOnMount: true,
+    revalidateOnMount: false,
   })
 }
