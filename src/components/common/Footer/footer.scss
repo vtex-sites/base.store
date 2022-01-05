@@ -1,0 +1,92 @@
+@import "../../../styles/scaffold";
+
+.footer {
+  background-color: var(--bg-neutral-light);
+}
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    text-align: center;
+  }
+
+  [data-store-list] {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-4);
+    li:not(:last-child) { margin-right: var(--space-6); }
+  }
+}
+
+.footer__note {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--space-4);
+
+  @include media("<notebook") {
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  @include media(">=notebook") {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  [data-store-payment-methods] {
+    margin: var(--space-5) auto;
+
+    @include media(">=notebook") {
+      order: 3;
+      margin: 0;
+    }
+  }
+
+  [data-payment-methods-flags] {
+    h4 {
+      margin-bottom: var(--space-3);
+      text-align: center;
+    }
+
+    [data-store-list] {
+      display: grid;
+      grid-gap: var(--grid-gap-0) var(--grid-gap-1);
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 13.5rem;
+      margin: auto;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    width: calc(100% - (2 * var(--space-3)));
+    border-top: 1px solid var(--color-border-display);
+    content: "";
+
+    @include media(">=notebook") {
+      width: calc(100% - (2 * var(--space-5)));
+    }
+  }
+}
+
+.footer__copyright {
+  p + p {
+    margin: var(--space-2) auto;
+  }
+  address { font-style: normal; }
+
+  @include media(">=notebook") {
+    max-width: 37.5rem;
+
+    .text-body-small {
+      font-size: var(--text-size-0);
+      line-height: 1.5;
+    }
+  }
+}

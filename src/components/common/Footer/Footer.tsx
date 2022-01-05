@@ -23,79 +23,78 @@ import {
   ApplePayIcon,
 } from './Icons'
 
+import './footer.scss'
+
 function Footer() {
   return (
-    <footer>
-      {/* Incentives list */}
+    <footer className="footer / grid-content-full">
       <IncentivesFooter />
 
-      {/* list of links -- must be an accordion on mobile */}
-      <FooterLinks />
+      <div className="grid-content">
+        <FooterLinks />
 
-      {/* Follow us section */}
-      <section>
-        <p>Follow us</p>
-        <UIList variant="unordered">
-          <li>
-            <UIIcon component={<FacebookIcon />} />
-          </li>
-          <li>
-            <UIIcon component={<InstagramIcon />} />
-          </li>
-          <li>
-            <UIIcon component={<PinterestIcon />} />
-          </li>
-          <li>
-            <UIIcon component={<TwitterIcon />} />
-          </li>
-        </UIList>
-      </section>
-
-      {/* fast store logo */}
-      <div>
-        <UIIcon component={<FastStoreIcon />} />
+        <section className="footer__social">
+          <h4 className="title-sub-subsection">Follow us</h4>
+          <UIList variant="unordered">
+            <li>
+              <UIIcon component={<FacebookIcon />} />
+            </li>
+            <li>
+              <UIIcon component={<InstagramIcon />} />
+            </li>
+            <li>
+              <UIIcon component={<PinterestIcon />} />
+            </li>
+            <li>
+              <UIIcon component={<TwitterIcon />} />
+            </li>
+          </UIList>
+        </section>
       </div>
 
-      {/* small text */}
-      <section>
-        <small>This website uses VTEX technology</small>
-        <small>
-          In-store price may vary. Prices and offers are subject to change. 2021
-          Store name. All rights reserved. Store is a trademark of Store and its
-          affiliated companies.
-        </small>
-        <small> Mount St, 000, New York / NY - 00000.</small>
-      </section>
+      <div className="footer__note / grid-content">
+        <UIIcon component={<FastStoreIcon />} />
 
-      {/* payment methods */}
-      <UIPaymentMethods title="Payment Methods">
-        <UIList>
-          <li>
-            <VisaCardIcon />
-          </li>
-          <li>
-            <DinersClubIcon />
-          </li>
-          <li>
-            <PayPalIcon />
-          </li>
-          <li>
-            <MastercardIcon />
-          </li>
-          <li>
-            <StripeIcon />
-          </li>
-          <li>
-            <GooglePayIcon />
-          </li>
-          <li>
-            <EloCardIcon />
-          </li>
-          <li>
-            <ApplePayIcon />
-          </li>
-        </UIList>
-      </UIPaymentMethods>
+        <UIPaymentMethods>
+          <h4 className="title-sub-subsection">Payment Methods</h4>
+          <UIList>
+            <li>
+              <VisaCardIcon />
+            </li>
+            <li>
+              <DinersClubIcon />
+            </li>
+            <li>
+              <PayPalIcon />
+            </li>
+            <li>
+              <MastercardIcon />
+            </li>
+            <li>
+              <StripeIcon />
+            </li>
+            <li>
+              <GooglePayIcon />
+            </li>
+            <li>
+              <EloCardIcon />
+            </li>
+            <li>
+              <ApplePayIcon />
+            </li>
+          </UIList>
+        </UIPaymentMethods>
+
+        <div className="footer__copyright / text-body-small">
+          <p>This website uses VTEX technology</p>
+          <p>
+            In-store price may vary. Prices and offers are subject to change.
+            2021 Store name. All rights reserved. Store is a trademark of Store
+            and its affiliated companies.
+          </p>
+          <address>Mount St, 000, New York / NY - 00000.</address>
+        </div>
+      </div>
     </footer>
   )
 }
