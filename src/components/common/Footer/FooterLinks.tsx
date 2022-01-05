@@ -104,18 +104,14 @@ function FooterLinks() {
   const screen = 'mobile'
 
   return (
-    <section>
+    <section className="footer__links">
       {screen === 'mobile' ? (
-        <Accordion
-          indices={indices}
-          onChange={onChange}
-          className="flex flex-row justify-around"
-        >
+        <Accordion indices={indices} onChange={onChange}>
           {links.map((section) => (
             <AccordionItem key={section.title}>
-              <AccordionButton>
+              <AccordionButton className="title-subsection">
                 {section.title}
-                <Icon component={<PlusCircleIcon size={16} />} />
+                <Icon component={<PlusCircleIcon size={18} />} />
               </AccordionButton>
               <AccordionPanel>
                 <List>
