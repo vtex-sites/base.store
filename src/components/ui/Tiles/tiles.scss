@@ -46,7 +46,7 @@
       .product-card__heading {
         margin-right: 0;
 
-        @include media(">=desktop") {
+        @include media(">=notebook") {
           width: 60%;
           max-width: 60%;
         }
@@ -63,7 +63,9 @@
         height: 100%;
       }
 
-      @include media(">=tablet") { height: 80%; }
+      @include media(">=tablet") { height: 70%; }
+
+      @include media(">=notebook") { height: 80%; }
     }
 
     [data-store-card-content] {
@@ -80,7 +82,7 @@
         padding: var(--space-3);
       }
 
-      @include media(">=desktop") { height: 20%; }
+      @include media(">=notebook") { height: 20%; }
     }
 
     .product-card__title {
@@ -101,16 +103,23 @@
 [data-store-tiles="expanded-first-two"] > [data-store-tile]:nth-child(2) {
   grid-column: span 2;
   min-width: 12rem;
-  height: fit-content;
 
   [data-store-card-image] {
-    height: calc((100vw - 2rem) * .65);
-    max-height: 18rem;
+    [data-gatsby-image-wrapper] {
+      height: 0; // TODO: Remove this after aspect-ratio component is developed
+      padding-top: calc(3 / 4 * 100%); // TODO: Remove this after aspect-ratio component is developed
+    }
 
     @include media(">=tablet") {
-      height: 80%;
-      max-height: 80%;
+      height: 70%;
+
+      [data-gatsby-image-wrapper] {
+        height: auto;
+        padding-top: 0;
+      }
     }
+
+    @include media(">=notebook") { height: 80%; }
   }
 
   [data-store-card-content] {
@@ -124,8 +133,19 @@
 
     @include media(">=tablet") { height: 30%; }
 
-    @include media(">=desktop") { height: 20%; }
+    @include media(">=notebook") { height: 20%; }
   }
 
-  @include media(">=tablet") { height: 28rem; }
+  @include media("<tablet") { height: fit-content; }
+}
+
+[data-store-tiles="expanded-first-two"] > [data-store-tile]:first-child,
+[data-store-tiles="expanded-first-two"] > [data-store-tile]:nth-child(2) {
+  [data-store-card-image] {
+    @include media(">=tablet") { height: 80%; }
+  }
+
+  [data-store-card-content] {
+    @include media(">=tablet") { height: 20%; }
+  }
 }
