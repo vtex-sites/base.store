@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import Button from 'src/components/ui/Button'
+import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
 import SkuSelector from 'src/components/ui/SkuSelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
@@ -10,6 +10,9 @@ import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import ProductTitle from 'src/components/ui/ProductTitle'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
+import QuantitySelector from 'src/components/ui/QuantitySelector'
+
+import './product-details.scss'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -29,6 +32,7 @@ function ProductDetails({ product: staleProduct }: Props) {
     product: {
       id,
       sku,
+      description: productDescription,
       gtin: referenceId,
       name: variantName,
       brand: { name: brandName },
@@ -42,6 +46,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   } = data
 
   const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
+  const description = productDescription ?? staleProduct.description
 
   const formattedPrice = useFormattedPrice(price)
   const formattedListPrice = useFormattedPrice(listPrice)
@@ -64,42 +69,74 @@ function ProductDetails({ product: staleProduct }: Props) {
   })
 
   return (
-    <div>
+    <div className="grid-content product-details">
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
-      <ProductTitle
-        title={<h1 className="title-product">{name}</h1>}
-        label={<DiscountBadge listPrice={100} spotPrice={50} />}
-        refNumber="Ref.: 54412"
-      />
+      <section className="product-details__body">
+        <section className="product-details__title">
+          <ProductTitle
+            title={<h2 className="title-product">{name}</h2>}
+            label={<DiscountBadge listPrice={100} spotPrice={50} />}
+            refNumber="Ref.: 54412"
+          />
+        </section>
 
-      <h2>{variantName}</h2>
-      <Image
-        src={productImages[0].url}
-        variant="product.details"
-        alt={productImages[0].alternateName}
-        loading="eager"
-      />
-      <div className="line-through">{formattedListPrice}</div>
-      <div className="min-h-[2rem]">{isValidating ? '' : formattedPrice}</div>
-      <SkuSelector
-        label="Size"
-        variant="label"
-        options={[
-          { label: 'P', value: 'p' },
-          { label: 'M', value: 'm' },
-          { label: 'G', value: 'g' },
-        ]}
-      />
-      {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
-      non-composited animation violation due to the button transitioning its
-      background color when changing from its initial disabled to active state.
-      See full explanation on commit https://git.io/JyXV5. */}
-      {isValidating ? (
-        <AddToCartLoadingSkeleton />
-      ) : (
-        <Button {...buyProps}>Add to cart</Button>
-      )}
+        <section className="product-details__image">
+          <Image
+            src={productImages[0].url}
+            variant="product.details"
+            alt={productImages[0].alternateName}
+            loading="eager"
+          />
+        </section>
+
+        <section className="product-details__settings">
+          <section className="product-details__values">
+            <div className="prices">
+              <p className="price__old text-body-small">{formattedListPrice}</p>
+              <p className="price__new">{isValidating ? '' : formattedPrice}</p>
+            </div>
+            <QuantitySelector min={1} max={10} disabled={false} />
+          </section>
+
+          <SkuSelector
+            label="Size"
+            variant="label"
+            options={[
+              { label: 'P', value: 'p' },
+              { label: 'M', value: 'm' },
+              { label: 'G', value: 'g' },
+            ]}
+          />
+          <SkuSelector
+            label="Color"
+            variant="color"
+            options={[
+              { label: 'Yellow', value: '#f1d096' },
+              { label: 'Pink', value: '#eed0d0' },
+              { label: 'Green', value: '#b2dbcb' },
+              { label: 'Blue', value: '#bacbec' },
+              { label: 'Lilac', value: '#ebdcff', disabled: true },
+            ]}
+          />
+          {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
+              non-composited animation violation due to the button transitioning its
+              background color when changing from its initial disabled to active state.
+              See full explanation on commit https://git.io/JyXV5. */}
+          {isValidating ? (
+            <AddToCartLoadingSkeleton />
+          ) : (
+            <BuyButton {...buyProps}>Buy Now</BuyButton>
+          )}
+        </section>
+
+        <section className="product-details__content">
+          <article className="product-details__description">
+            <h3 className="title-subsection">Description</h3>
+            <p className="text-body">{description}</p>
+          </article>
+        </section>
+      </section>
     </div>
   )
 }
@@ -109,7 +146,7 @@ function AddToCartLoadingSkeleton() {
   return (
     <svg
       role="img"
-      width="112"
+      width="100%"
       height="48"
       aria-labelledby="loading-aria"
       viewBox="0 0 112 48"
@@ -168,6 +205,7 @@ export const fragment = graphql`
     sku
     name
     gtin
+    description
 
     isVariantOf {
       productGroupID

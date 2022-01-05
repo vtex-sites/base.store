@@ -3564,6 +3564,7 @@ export type ProductDetailsFragment_ProductFragment = {
   sku: string
   name: string
   gtin: string
+  description: string
   id: string
   isVariantOf: { productGroupID: string; name: string }
   image: Array<{ url: string; alternateName: string }>
