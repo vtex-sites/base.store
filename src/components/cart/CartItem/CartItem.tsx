@@ -21,9 +21,17 @@ function CartItem({ item }: Props) {
       data-seller={item.seller.identifier}
     >
       <Image
-        src={item.itemOffered.image[0].url}
+        baseUrl={item.itemOffered.image[0].url}
         alt={item.itemOffered.image[0].alternateName}
-        variant="product.miniature"
+        sourceWidth={720}
+        aspectRatio={1}
+        width={100}
+        breakpoints={[50, 100, 150]}
+        layout="constrained"
+        backgroundColor="#f0f0f0"
+        options={{
+          fitIn: true,
+        }}
       />
       <div>name: {item.itemOffered.name}</div>
       <div>sku: {item.itemOffered.sku}</div>
