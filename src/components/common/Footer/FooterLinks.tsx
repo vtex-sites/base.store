@@ -108,7 +108,7 @@ function FooterLinks() {
     }
   }
 
-  const [isMobile, setIsMobile] = useState<boolean>(true)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
 
   const { width: screenWidth } = useWindowDimensions()
 
