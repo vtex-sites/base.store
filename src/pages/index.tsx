@@ -7,6 +7,7 @@ import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import Hero from 'src/components/sections/Hero'
+import ProductShelf from 'src/components/sections/ProductShelf'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
 import '../styles/pages/index.scss'
@@ -24,6 +25,7 @@ function Page(props: Props) {
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
   const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
+  const haveProducts = products && products?.length > 0
 
   return (
     <>
@@ -57,32 +59,56 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <Hero
-        title="New Products Available"
-        subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
-        linkText="See all"
-        link="/"
-        imageSrc="https://storecomponents.vtexassets.com/assets/vtex.file-manager-graphql/images/edce348c-068c-4fb9-91f2-7d235d596e0f___b2822f893b14f87337d08f07f0e520ab.jpg"
-        imageAlt="A person with hands on the pocket, carrying a round straw bag"
-      />
+      <section className="page__section">
+        <Hero
+          title="New Products Available"
+          subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
+          linkText="See all"
+          link="/"
+          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+          imageAlt="Quest 2 Controller on a table"
+        />
+      </section>
 
-      <IncentivesHeader />
+      <section className="page__section">
+        <IncentivesHeader />
+      </section>
 
-      {products && products?.length > 0 && (
-        <section className="grid-section grid-content">
-          <h2 className="title-section / grid-content">Just Arrived</h2>
+      {haveProducts && (
+        <section className="page__section page__section-shelf / grid-section">
+          <h2 className="title-section / grid-content">Most Wanted</h2>
           <div className="page__section-content">
-            <ProductTiles products={products} />
+            <ProductShelf products={products.slice(0, 5)} />
           </div>
         </section>
       )}
 
-      <BannerText
-        title="Receive our news and promotions in advance."
-        caption="Enjoy and get 10% off your first purchase."
-        actionPath="/"
-        actionLabel="Call to action"
-      />
+      {haveProducts && (
+        <section className="page__section / grid-section grid-content">
+          <h2 className="title-section">Just Arrived</h2>
+          <div className="page__section-content">
+            <ProductTiles products={products.slice(5, 8)} />
+          </div>
+        </section>
+      )}
+
+      <section className="page__section / grid-section">
+        <BannerText
+          title="Receive our news and promotions in advance."
+          caption="Enjoy and get 10% off on your first purchase."
+          actionPath="/"
+          actionLabel="Call to action"
+        />
+      </section>
+
+      {haveProducts && (
+        <section className="page__section page__section-shelf / grid-section">
+          <h2 className="title-section / grid-content">Deals & Promotions</h2>
+          <div className="page__section-content">
+            <ProductShelf products={products.slice(9, 14)} />
+          </div>
+        </section>
+      )}
     </>
   )
 }
@@ -97,7 +123,7 @@ export const query = graphql`
       }
     }
 
-    allStoreProduct(limit: 10) {
+    allStoreProduct(limit: 14) {
       nodes {
         ...ProductSummary_product
       }

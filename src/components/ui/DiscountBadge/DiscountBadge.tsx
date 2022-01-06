@@ -11,9 +11,11 @@ type Props = {
 }
 
 const DiscountBadge = ({ listPrice, spotPrice, small = false }: Props) => {
-  const discountPercent = useDiscountPercent(listPrice, spotPrice)
+  const discountPercent = Math.round(
+    Number(useDiscountPercent(listPrice, spotPrice))
+  )
 
-  if (!Number(discountPercent)) {
+  if (!discountPercent) {
     return <></>
   }
 
