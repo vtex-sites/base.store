@@ -119,11 +119,11 @@
     justify-content: space-around;
   }
 
-  [data-store-accordion-item] {
+  [data-accordion-item] {
     border-bottom: 1px solid var(--color-border-display);
   }
 
-  [data-store-accordion-item] [data-store-button] {
+  [data-accordion-item] [data-store-button] {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
