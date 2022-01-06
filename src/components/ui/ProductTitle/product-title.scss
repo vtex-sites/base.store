@@ -1,5 +1,4 @@
-@import "../../../styles/vendors/include-media";
-@import "../../../styles/utilities.scss";
+@import "../../../styles/scaffold";
 
 .product-title {
   @include media(">=tablet") { padding: var(--space-4) var(--space-5); }
