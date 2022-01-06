@@ -66,7 +66,7 @@ function Page(props: Props) {
           linkText="See all"
           link="/"
           imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-          imageAlt="A person with hands on the pocket, carrying a round straw bag"
+          imageAlt="Quest 2 Controller on a table"
         />
       </section>
 
