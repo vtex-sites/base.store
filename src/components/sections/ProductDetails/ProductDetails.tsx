@@ -73,13 +73,13 @@ function ProductDetails({ product: staleProduct }: Props) {
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
       <section className="product-details__body">
-        <section className="product-details__title">
+        <header className="product-details__title">
           <ProductTitle
             title={<h2 className="title-product">{name}</h2>}
             label={<DiscountBadge listPrice={100} spotPrice={50} />}
             refNumber="Ref.: 54412"
           />
-        </section>
+        </header>
 
         <section className="product-details__image">
           <Image
