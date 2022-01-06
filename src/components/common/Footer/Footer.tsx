@@ -7,6 +7,7 @@ import {
 
 import FooterLinks from './FooterLinks'
 import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
+import SROnly from '../../ui/SROnly'
 import {
   FacebookIcon,
   InstagramIcon,
@@ -60,27 +61,35 @@ function Footer() {
           <UIList>
             <li>
               <VisaCardIcon />
+              <SROnly text="Visa" />
             </li>
             <li>
               <DinersClubIcon />
+              <SROnly text="Diners Club" />
             </li>
             <li>
               <MastercardIcon />
+              <SROnly text="Mastercard" />
             </li>
             <li>
               <EloCardIcon />
+              <SROnly text="Elo Card" />
             </li>
             <li>
               <PayPalIcon />
+              <SROnly text="PayPay" />
             </li>
             <li>
               <StripeIcon />
+              <SROnly text="Stripe" />
             </li>
             <li>
               <GooglePayIcon />
+              <SROnly text="Google Pay" />
             </li>
             <li>
               <ApplePayIcon />
+              <SROnly text="Apple Pay" />
             </li>
           </UIList>
         </UIPaymentMethods>
