@@ -203,11 +203,13 @@ describe('search event', () => {
     cy.visit(pages.home, options)
     cy.waitForHydration()
 
-    cy.getById('store-input').click().type('shirt')
-    cy.getById('store-button')
-      .click()
-      .then(() => {
-        dataLayerHasEvent('search')
-      })
+    cy.get('form[data-store-search-input]').within(() => {
+      cy.getById('store-input').click().type('shirt')
+      cy.getById('store-button')
+        .click()
+        .then(() => {
+          dataLayerHasEvent('search')
+        })
+    })
   })
 })

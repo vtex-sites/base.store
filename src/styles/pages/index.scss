@@ -21,3 +21,10 @@ main {
     }
   }
 }
+
+.page__section-divisor {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border-display);
+
+  @include media(">=notebook") { padding-top: var(--space-9); }
+}

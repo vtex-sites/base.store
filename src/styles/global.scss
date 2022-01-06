@@ -70,6 +70,10 @@
   --space-12: 5.5rem; // 88px
   --space-13: 6rem;   // 96px
 
+  // Paddings
+  --page-padding-phone: var(--space-3);
+  --page-padding-notebook: var(--space-5);
+
   // Target Size
   --min-size: var(--space-7);
 

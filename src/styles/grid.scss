@@ -7,8 +7,8 @@
   margin-bottom: var(--space-4);
 
   @include media(">=notebook") {
-    margin-top: var(--space-5);
-    margin-bottom: var(--space-5);
+    margin-top: var(--page-padding-notebook);
+    margin-bottom: var(--page-padding-notebook);
   }
 }
 
@@ -17,8 +17,8 @@
   padding-bottom: var(--space-4);
 
   @include media(">=notebook") {
-    padding-top: var(--space-5);
-    padding-bottom: var(--space-5);
+    padding-top: var(--page-padding-notebook);
+    padding-bottom: var(--page-padding-notebook);
   }
 }
 
@@ -28,11 +28,11 @@
   max-width: var(--breakpoint-notebook);
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--space-3);
-  padding-left: var(--space-3);
+  padding-right: var(--page-padding-phone);
+  padding-left: var(--page-padding-phone);
 
   @include media(">=notebook") {
-    padding-right: var(--space-5);
-    padding-left: var(--space-5);
+    padding-right: var(--page-padding-notebook);
+    padding-left: var(--page-padding-notebook);
   }
 }
