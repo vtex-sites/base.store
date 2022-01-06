@@ -1,4 +1,9 @@
-import { formatSearchState, initSearchState } from '@faststore/sdk'
+import type { SearchEvent } from '@faststore/sdk'
+import {
+  formatSearchState,
+  initSearchState,
+  sendAnalyticsEvent,
+} from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
 import React from 'react'
@@ -16,6 +21,11 @@ const doSearch = async (term: string) => {
       base: '/s',
     })
   )
+
+  sendAnalyticsEvent<SearchEvent>({
+    name: 'search',
+    params: { search_term: term },
+  })
 
   navigate(`${pathname}${search}`)
 }

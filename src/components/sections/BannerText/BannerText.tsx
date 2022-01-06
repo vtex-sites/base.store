@@ -35,7 +35,7 @@ function BannerText({
 }: BannerTextProps) {
   return (
     <Banner>
-      <BannerContent className="title-display-big">
+      <BannerContent className="title-display-big / grid-content">
         <div>
           <h2>{title}</h2>
           <p>{caption}</p>
