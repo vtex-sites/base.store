@@ -81,6 +81,5 @@ const execute = async (options, envelopContext = {}) => {
 
 module.exports = {
   execute,
-  getSchema: () => apiSchema,
-  getContextFactory: () => apiContextFactory,
+  schema: apiSchema,
 }

@@ -1,4 +1,5 @@
 const path = require('path')
+const { schema } = require('./src/server')
 
 const { copyLibFiles } = require('@builder.io/partytown/utils')
 
@@ -49,4 +50,10 @@ exports.onCreateBabelConfig = ({ actions }) => {
     name: `@vtex/graphql-utils/babel`,
     options: {},
   })
+}
+
+exports.createSchemaCustomization = async (gatsbyApi) => {
+  const { actions } = gatsbyApi
+
+  actions.addThirdPartySchema({ schema: await schema })
 }
