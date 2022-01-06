@@ -77,7 +77,7 @@ function Footer() {
             </li>
             <li>
               <PayPalIcon />
-              <SROnly text="PayPay" />
+              <SROnly text="PayPal" />
             </li>
             <li>
               <StripeIcon />
