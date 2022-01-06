@@ -8,8 +8,6 @@
   [data-store-search-input] {
     flex: 1 0 100%;
     order: 2;
-
-    @include media(">=notebook") { order: 1; }
   }
 
   .navlinks {

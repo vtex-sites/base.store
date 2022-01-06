@@ -45,11 +45,11 @@ function Navbar() {
           >
             <Logo />
           </LinkGatsby>
+          <SearchInput />
           <div className="navbar__buttons">
             <SignInLink />
             <CartToggle />
           </div>
-          <SearchInput />
         </section>
 
         <div className={`navlinks ${showMenu ? 'open' : ''}`}>
