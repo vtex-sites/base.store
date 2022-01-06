@@ -6,12 +6,11 @@
 
 .product-title__header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   column-gap: var(--space-2);
   [data-store-badge] { white-space: nowrap; }
 }
 
-.product-title__header + .product-title__footer { margin-top: var(--space-3); }
+.product-title__header + .product-title__addendum { margin-top: var(--space-3); }
 
 .product-title__footer { color: var(--color-text-subtle); }
