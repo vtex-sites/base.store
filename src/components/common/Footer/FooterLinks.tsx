@@ -134,7 +134,7 @@ function FooterLinks() {
       ) : (
         <div className="footer__links-columns">
           {links.map((section) => (
-            <div key={section.title}>
+            <nav key={section.title}>
               <p className="title-sub-subsection">{section.title}</p>
               <List>
                 {section.items.map((item) => (
@@ -143,7 +143,7 @@ function FooterLinks() {
                   </li>
                 ))}
               </List>
-            </div>
+            </nav>
           ))}
         </div>
       )}
