@@ -5,13 +5,14 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useMemo } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
+import ProductShelf from 'src/components/sections/ProductShelf'
 
 import '../../styles/pages/pdp.scss'
 
@@ -23,7 +24,7 @@ export type Props = PageProps<
 function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
-    data: { product, site },
+    data: { product, site, allStoreProduct },
     location: { host },
     params: { slug },
   } = props
@@ -38,6 +39,14 @@ function Page(props: Props) {
 
   const canonical =
     host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
+
+  const youMightAlsoLikeProducts = useMemo(
+    () => allStoreProduct?.nodes,
+    [allStoreProduct]
+  )
+
+  const haveYouMightAlsoLikeProducts =
+    youMightAlsoLikeProducts && youMightAlsoLikeProducts?.length > 0
 
   return (
     <>
@@ -93,14 +102,14 @@ function Page(props: Props) {
 
       <ProductDetails product={product} />
 
-      {/* TODO: Styles will be available after PR #191. */}
-      <section className="page__section page__section-shelf / grid-section">
-        <h2 className="title-section / grid-content">You might also like</h2>
-        <div className="page__section-content">
-          {/* TODO: Component will be available after PR #191. */}
-          {/* <ProductShelf /> */}
-        </div>
-      </section>
+      {haveYouMightAlsoLikeProducts && (
+        <section className="page__section page__section-shelf / grid-section">
+          <h2 className="title-section / grid-content">You might also like</h2>
+          <div className="page__section-content">
+            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
+          </div>
+        </section>
+      )}
     </>
   )
 }
@@ -165,6 +174,12 @@ export const querySSG = graphql`
       }
 
       ...ProductDetailsFragment_product
+    }
+
+    allStoreProduct(limit: 5) {
+      nodes {
+        ...ProductSummary_product
+      }
     }
   }
 `
