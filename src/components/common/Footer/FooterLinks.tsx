@@ -138,7 +138,7 @@ function FooterLinks() {
                 <List>
                   {section.items.map((item) => (
                     <li key={item.name}>
-                      <Link variant="footer" href={item.name}>
+                      <Link variant="footer" href={item.href}>
                         {item.name}
                       </Link>
                     </li>
@@ -156,7 +156,7 @@ function FooterLinks() {
               <List>
                 {section.items.map((item) => (
                   <li key={item.name}>
-                    <Link variant="footer" href={item.name}>
+                    <Link variant="footer" href={item.href}>
                       {item.name}
                     </Link>
                   </li>
