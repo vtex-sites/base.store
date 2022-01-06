@@ -43,7 +43,12 @@ const Hero = ({
         </div>
       </HeroContent>
       <HeroImage>
-        <Image variant="hero.home" src={imageSrc} alt={imageAlt} />
+        <Image
+          variant="hero.home"
+          src={imageSrc}
+          alt={imageAlt}
+          loading="eager"
+        />
       </HeroImage>
     </UIHero>
   )
