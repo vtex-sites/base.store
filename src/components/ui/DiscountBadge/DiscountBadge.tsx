@@ -15,7 +15,7 @@ const DiscountBadge = ({ listPrice, spotPrice, small = false }: Props) => {
     Number(useDiscountPercent(listPrice, spotPrice))
   )
 
-  if (!Number(discountPercent)) {
+  if (!discountPercent) {
     return <></>
   }
 
