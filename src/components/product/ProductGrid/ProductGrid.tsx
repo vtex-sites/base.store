@@ -11,8 +11,7 @@ interface Props {
 
 function ProductGrid({ products, page, pageSize }: Props) {
   return (
-    // TODO Update this once grid page are styled properly
-    <ul className="temp-grid-row">
+    <ul>
       {products.map((product, idx) => (
         <li key={`${product.id}`}>
           <ProductCard product={product} index={pageSize * page + idx + 1} />
