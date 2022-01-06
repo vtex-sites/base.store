@@ -43,6 +43,7 @@ function Footer() {
                 href="https://www.facebook.com/"
                 title="Facebook"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <UIIcon component={<FacebookIcon />} />
               </Link>
@@ -52,6 +53,7 @@ function Footer() {
                 href="https://www.instagram.com/"
                 title="Instagram"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <UIIcon component={<InstagramIcon />} />
               </Link>
@@ -61,12 +63,18 @@ function Footer() {
                 href="https://www.pinterest.com/"
                 title="Pinterest"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <UIIcon component={<PinterestIcon />} />
               </Link>
             </li>
             <li>
-              <Link href="https://twitter.com/" title="Twitter" target="_blank">
+              <Link
+                href="https://twitter.com/"
+                title="Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <UIIcon component={<TwitterIcon />} />
               </Link>
             </li>
