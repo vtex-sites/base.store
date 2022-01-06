@@ -12,7 +12,7 @@ main {
 }
 
 .page__section-shelf {
-  padding-top: var(--space-9);
+  padding-top: var(--space-5);
   border-top: 1px solid var(--color-border-display);
 
   .page__section-content {
@@ -23,4 +23,6 @@ main {
       margin-bottom: calc(-1 * var(--space-3));
     }
   }
+
+  @include media(">=notebook") { padding-top: var(--space-9); }
 }
