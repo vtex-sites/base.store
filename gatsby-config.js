@@ -13,8 +13,6 @@ const {
   VTEX_WEBOPS: isWebOps,
 } = process.env
 
-const { loginUrl } = config
-
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
@@ -182,8 +180,4 @@ module.exports = {
       resolve: 'gatsby-plugin-postcss',
     },
   ],
-  proxy: {
-    prefix: '/login',
-    url: loginUrl,
-  },
 }
