@@ -1,15 +1,21 @@
 import { useCallback } from 'react'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
-import type { CurrencyCode } from '@faststore/sdk'
-import type {
-  AnalyticsCartItem,
-  VTEXAddToCartEvent,
-} from 'src/sdk/analytics/types'
+import type { CurrencyCode, AddToCartEvent } from '@faststore/sdk'
+import type { AnalyticsItem } from 'src/sdk/analytics/types'
+import type { CartItem } from 'src/sdk/cart/validate'
+import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 
 import { useUI } from '../ui'
 import { useCart } from './useCart'
 
-export const useBuyButton = (item: AnalyticsCartItem | null) => {
+type AdditionalAnalyticsProperties = Pick<
+  ProductDetailsFragment_ProductFragment,
+  'isVariantOf' | 'brand' | 'gtin'
+>
+
+export type CartItemWithAnalytics = CartItem & AdditionalAnalyticsProperties
+
+export const useBuyButton = (item: CartItemWithAnalytics | null) => {
   const { addItem } = useCart()
   const { openMinicart } = useUI()
   const {
@@ -24,7 +30,7 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
         return
       }
 
-      sendAnalyticsEvent<VTEXAddToCartEvent>({
+      sendAnalyticsEvent<AddToCartEvent<AnalyticsItem>>({
         name: 'add_to_cart',
         params: {
           currency: code as CurrencyCode,
@@ -33,15 +39,16 @@ export const useBuyButton = (item: AnalyticsCartItem | null) => {
           value: item.price * item.quantity,
           items: [
             {
-              currency: code as CurrencyCode,
-              item_id: item.productId,
-              quantity: item.quantity,
+              item_id: item.isVariantOf.productGroupID,
+              item_name: item.isVariantOf.name,
+              item_brand: item.brand.name,
               item_variant: item.itemOffered.sku,
-              item_name: item.name,
-              item_brand: item.brand,
+              quantity: item.quantity,
               price: item.price,
-              product_reference_id: item.referenceId,
-              sku_name: item.itemOffered.name,
+              discount: item.listPrice - item.price,
+              currency: code as CurrencyCode,
+              item_variant_name: item.itemOffered.name,
+              product_reference_id: item.gtin,
             },
           ],
         },

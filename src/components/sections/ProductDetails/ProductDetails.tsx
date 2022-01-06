@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import SkuSelector from 'src/components/ui/SkuSelector'
@@ -7,6 +7,9 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
+import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
+import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -26,10 +29,10 @@ function ProductDetails({ product: staleProduct }: Props) {
     product: {
       id,
       sku,
-      gtin: referenceId,
+      gtin,
       name: variantName,
-      brand: { name: brandName },
-      isVariantOf: { name, productGroupID: productId },
+      brand,
+      isVariantOf,
       image: productImages,
       offers: {
         offers: [{ price, listPrice, seller }],
@@ -37,19 +40,53 @@ function ProductDetails({ product: staleProduct }: Props) {
     },
   } = data
 
+  const { currency } = useSession()
+
+  useEffect(() => {
+    sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
+      name: 'view_item',
+      params: {
+        currency: currency.code as CurrencyCode,
+        value: price,
+        items: [
+          {
+            item_id: isVariantOf.productGroupID,
+            item_name: isVariantOf.name,
+            item_brand: brand.name,
+            item_variant: sku,
+            price,
+            discount: listPrice - price,
+            currency: currency.code as CurrencyCode,
+            item_variant_name: variantName,
+            product_reference_id: gtin,
+          },
+        ],
+      },
+    })
+  }, [
+    isVariantOf.productGroupID,
+    isVariantOf.name,
+    brand.name,
+    sku,
+    price,
+    listPrice,
+    currency.code,
+    variantName,
+    gtin,
+  ])
+
   const formattedPrice = useFormattedPrice(price)
   const formattedListPrice = useFormattedPrice(listPrice)
 
   const buyProps = useBuyButton({
     id,
-    name,
-    brand: brandName,
+    brand,
+    isVariantOf,
     price,
     listPrice,
     seller,
     quantity: 1,
-    referenceId,
-    productId,
+    gtin,
     itemOffered: {
       image: productImages,
       name: variantName,

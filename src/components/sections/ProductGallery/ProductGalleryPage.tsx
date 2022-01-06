@@ -43,7 +43,12 @@ function GalleryPage({ page, display, title, fallbackData }: Props) {
 
   return (
     <>
-      <Sentinel products={products} page={page} title={title} />
+      <Sentinel
+        products={products}
+        page={page}
+        pageSize={itemsPerPage}
+        title={title}
+      />
       <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
     </>
   )
