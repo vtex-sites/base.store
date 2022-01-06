@@ -3,10 +3,11 @@
   flex-wrap: wrap;
   font-size: var(--text-size-1);
   column-gap: var(--space-1);
+  row-gap: var(--space-1);
 
   [data-sku-selector-label] {
     width: 100%;
-    margin-bottom: var(--space-2);
+    margin-bottom: var(--space-0);
   }
 
   [data-store-radio-option] {
