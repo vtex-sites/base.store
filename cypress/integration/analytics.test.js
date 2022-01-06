@@ -120,19 +120,22 @@ describe('remove_from_cart event', () => {
       cy.itemsInCart(0)
 
       // Add item to cart
-      cy.getById('buy-button').click()
-      cy.itemsInCart(1)
-      cy.getById('checkout-button').should('be.enabled')
-      cy.itemsInCart(1)
-
-      // Remove the added item
-      cy.getById('remove-from-cart-button')
+      cy.getById('buy-button')
         .click()
-        .then(($btn) => {
-          cy.itemsInCart(0)
-          const skuId = $btn.attr('data-sku')
+        .then(() => {
+          cy.itemsInCart(1)
+          cy.getById('checkout-button').should('be.enabled')
+          cy.itemsInCart(1)
 
-          testRemoveFromCartEvent(skuId)
+          // Remove the added item
+          cy.getById('remove-from-cart-button')
+            .click()
+            .then(($btn) => {
+              cy.itemsInCart(0)
+              const skuId = $btn.attr('data-sku')
+
+              testRemoveFromCartEvent(skuId)
+            })
         })
     })
   })

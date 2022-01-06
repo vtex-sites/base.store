@@ -28,7 +28,7 @@ const Hero = ({
   return (
     <UIHero>
       <HeroContent aria-labelledby="hero-heading">
-        <div className="banner-info-content">
+        <div className="banner-info-content grid-content">
           <div>
             <h1 id="hero-heading" className="title-hero">
               {title}
