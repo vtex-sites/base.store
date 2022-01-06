@@ -62,11 +62,11 @@ function Page(props: Props) {
       <section className="page__section">
         <Hero
           title="New Products Available"
-          subtitle="Lorem ipsum dolor amet, consectetur adipiscing elit. Lorem ipsum."
+          subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
           linkText="See all"
           link="/"
           imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-          imageAlt="A person with hands on the pocket, carrying a round straw bag"
+          imageAlt="Quest 2 Controller on a table"
         />
       </section>
 
@@ -95,7 +95,7 @@ function Page(props: Props) {
       <section className="page__section / grid-section">
         <BannerText
           title="Receive our news and promotions in advance."
-          caption="Enjoy and get 10% off your first purchase."
+          caption="Enjoy and get 10% off on your first purchase."
           actionPath="/"
           actionLabel="Call to action"
         />

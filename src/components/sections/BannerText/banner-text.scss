@@ -1,13 +1,10 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-banner] {
-  padding: var(--space-6) var(--space-5);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
   text-align: center;
   background-color: var(--color-secondary-4);
-
-  @include media(">=notebook") {
-    padding: var(--space-9) 17.06rem;
-  }
 
   [data-banner-content] {
     display: flex;
@@ -17,12 +14,9 @@
 
   h2, p {
     display: inline;
-    margin-left: var(--space-1);
     color: var(--color-text-inverse);
 
-    @include media(">=notebook") {
-      display: block;
-    }
+    @include media(">=notebook") { display: block; }
   }
 
   a {
@@ -43,5 +37,10 @@
       margin-top: var(--space-7);
       padding: var(--space-2) var(--space-4);
     }
+  }
+
+  @include media(">=notebook") {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-9);
   }
 }
