@@ -14,8 +14,6 @@ import type {
 } from '@generated/graphql'
 import ProductShelf from 'src/components/sections/ProductShelf'
 
-import '../../styles/pages/pdp.scss'
-
 export type Props = PageProps<
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables
@@ -103,7 +101,7 @@ function Page(props: Props) {
       <ProductDetails product={product} />
 
       {haveYouMightAlsoLikeProducts && (
-        <section className="page__section page__section-shelf / grid-section">
+        <section className="page__section page__section-shelf page__section-divisor / grid-section">
           <h2 className="title-section / grid-content">You might also like</h2>
           <div className="page__section-content">
             <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
