@@ -3570,6 +3570,7 @@ export type ProductDetailsFragment_ProductFragment = {
   image: Array<{ url: string; alternateName: string }>
   brand: { name: string }
   offers: {
+    lowPrice: number
     offers: Array<{
       price: number
       listPrice: number

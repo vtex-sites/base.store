@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { useMemo } from 'react'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
+import Price from 'src/components/ui/Price'
 import SkuSelector from 'src/components/ui/SkuSelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
@@ -38,24 +39,34 @@ function ProductDetails({ product: staleProduct }: Props) {
       brand: { name: brandName },
       isVariantOf: { name, productGroupID: productId },
       image: productImages,
-      offers: {
-        offers: [{ price, listPrice, seller }],
-      },
+      offers: { lowPrice: spotPrice, offers },
       breadcrumbList,
     },
   } = data
 
+  const { listPrice, seller } = useMemo(() => {
+    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+
+    if (!lowestPriceOffer) {
+      console.error(
+        'Could not find the lowest price product offer. Showing the first offer provided.'
+      )
+
+      return offers[0]
+    }
+
+    return lowestPriceOffer
+  }, [spotPrice, offers])
+
   const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
   const description = productDescription ?? staleProduct.description
-
-  const formattedPrice = useFormattedPrice(price)
-  const formattedListPrice = useFormattedPrice(listPrice)
+  const lowPrice = spotPrice ?? staleProduct.offers.lowPrice
 
   const buyProps = useBuyButton({
     id,
     name,
     brand: brandName,
-    price,
+    price: spotPrice,
     listPrice,
     seller,
     quantity: 1,
@@ -76,8 +87,8 @@ function ProductDetails({ product: staleProduct }: Props) {
         <header className="product-details__title">
           <ProductTitle
             title={<h2 className="title-product">{name}</h2>}
-            label={<DiscountBadge listPrice={100} spotPrice={50} />}
-            refNumber="Ref.: 54412"
+            label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} />}
+            refNumber={productId}
           />
         </header>
 
@@ -92,10 +103,28 @@ function ProductDetails({ product: staleProduct }: Props) {
 
         <section className="product-details__settings">
           <section className="product-details__values">
-            <div className="prices">
+            <div className="product-details__prices">
+              <Price
+                value={listPrice}
+                formatter={useFormattedPrice}
+                testId="list-price"
+                data-value={listPrice}
+                variant="listing"
+                classes="text-body-small"
+              />
+              <Price
+                value={lowPrice}
+                formatter={useFormattedPrice}
+                testId="price"
+                data-value={lowPrice}
+                variant="spot"
+                classes="title-display"
+              />
+            </div>
+            {/* <div className="prices">
               <p className="price__old text-body-small">{formattedListPrice}</p>
               <p className="price__new">{isValidating ? '' : formattedPrice}</p>
-            </div>
+            </div> */}
             <QuantitySelector min={1} max={10} disabled={false} />
           </section>
 
@@ -222,6 +251,7 @@ export const fragment = graphql`
     }
 
     offers {
+      lowPrice
       offers {
         price
         listPrice
