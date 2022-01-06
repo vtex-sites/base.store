@@ -10,7 +10,7 @@ interface TilesProps {
 const ProductTiles = ({ products }: TilesProps) => {
   return (
     <Tiles>
-      {products.slice(0, 3).map((product, idx) => (
+      {products.map((product, idx) => (
         <Tile key={`${product.id}`}>
           <ProductCard
             product={product}

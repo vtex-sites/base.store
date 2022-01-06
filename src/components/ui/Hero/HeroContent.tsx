@@ -10,16 +10,11 @@ export interface HeroContentProps extends HTMLAttributes<HTMLDivElement> {
 
 const HeroContent = forwardRef<HTMLDivElement, HeroContentProps>(
   function HeroContent(
-    { testId = 'store-hero-content', children, ...otherProps },
+    { testId = 'hero-content', children, ...otherProps },
     ref
   ) {
     return (
-      <section
-        ref={ref}
-        data-store-hero-content
-        data-testid={testId}
-        {...otherProps}
-      >
+      <section ref={ref} data-hero-content data-testid={testId} {...otherProps}>
         {children}
       </section>
     )
