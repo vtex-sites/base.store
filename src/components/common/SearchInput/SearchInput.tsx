@@ -1,5 +1,3 @@
-import './SearchInput.module.css'
-
 import type { SearchEvent } from '@faststore/sdk'
 import {
   formatSearchState,
