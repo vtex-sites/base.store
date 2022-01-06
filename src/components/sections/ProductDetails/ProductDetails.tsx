@@ -107,6 +107,7 @@ function ProductDetails({ product: staleProduct }: Props) {
                 data-value={listPrice}
                 variant="listing"
                 classes="text-body-small"
+                SRText="Original price:"
               />
               <Price
                 value={lowPrice}
@@ -115,6 +116,7 @@ function ProductDetails({ product: staleProduct }: Props) {
                 data-value={lowPrice}
                 variant="spot"
                 classes="title-display"
+                SRText="Sale Price:"
               />
             </div>
             {/* <div className="prices">
