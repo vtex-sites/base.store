@@ -8,6 +8,7 @@ import {
 import FooterLinks from './FooterLinks'
 import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
 import SROnly from '../../ui/SROnly'
+import Link from '../../ui/Link'
 import {
   FacebookIcon,
   InstagramIcon,
@@ -38,16 +39,36 @@ function Footer() {
           <p className="title-sub-subsection">Follow us</p>
           <UIList variant="unordered">
             <li>
-              <UIIcon component={<FacebookIcon />} />
+              <Link
+                href="https://www.facebook.com/"
+                title="Facebook"
+                target="_blank"
+              >
+                <UIIcon component={<FacebookIcon />} />
+              </Link>
             </li>
             <li>
-              <UIIcon component={<InstagramIcon />} />
+              <Link
+                href="https://www.instagram.com/"
+                title="Instagram"
+                target="_blank"
+              >
+                <UIIcon component={<InstagramIcon />} />
+              </Link>
             </li>
             <li>
-              <UIIcon component={<PinterestIcon />} />
+              <Link
+                href="https://www.pinterest.com/"
+                title="Pinterest"
+                target="_blank"
+              >
+                <UIIcon component={<PinterestIcon />} />
+              </Link>
             </li>
             <li>
-              <UIIcon component={<TwitterIcon />} />
+              <Link href="https://twitter.com/" title="Twitter" target="_blank">
+                <UIIcon component={<TwitterIcon />} />
+              </Link>
             </li>
           </UIList>
         </section>
