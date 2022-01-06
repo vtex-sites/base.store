@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Link,
   Icon,
   List,
   Accordion,
@@ -9,6 +8,8 @@ import {
   AccordionPanel,
 } from '@faststore/ui'
 import { PlusCircle as PlusCircleIcon } from 'phosphor-react'
+
+import Link from '../../ui/Link'
 
 const links = [
   {
@@ -123,7 +124,9 @@ function FooterLinks() {
                 <List>
                   {section.items.map((item) => (
                     <li key={item.name}>
-                      <Link href={item.name}>{item.name}</Link>
+                      <Link variant="footer" href={item.name}>
+                        {item.name}
+                      </Link>
                     </li>
                   ))}
                 </List>
@@ -139,7 +142,9 @@ function FooterLinks() {
               <List>
                 {section.items.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.name}>{item.name}</Link>
+                    <Link variant="footer" href={item.name}>
+                      {item.name}
+                    </Link>
                   </li>
                 ))}
               </List>
