@@ -23,7 +23,7 @@ function ProductTitle({ title, label, refNumber }: ProductTitleProp) {
     <div className="product-title">
       <div className="product-title__header">
         {title}
-        {label && label}
+        {!!label && label}
       </div>
 
       {refNumber && (
