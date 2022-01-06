@@ -48,12 +48,6 @@ function ProductCard({
     const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
 
     if (!lowestPriceOffer) {
-      if (process.env.NODE_ENV === 'development') {
-        console.error(
-          'Could not find the lowest price product offer. Showing the first offer provided.'
-        )
-      }
-
       return offers[0]
     }
 
