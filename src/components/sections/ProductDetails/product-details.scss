@@ -10,7 +10,7 @@
 
   @include media(">=tablet") {
     display: grid;
-    grid-template-rows: repeat(3, minmax(0, max-content));
+    grid-template-rows: repeat(4, minmax(0, max-content));
     grid-template-columns: repeat(12, 1fr);
     column-gap: var(--space-4);
     row-gap: 0;

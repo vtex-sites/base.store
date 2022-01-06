@@ -13,6 +13,8 @@ import type {
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
 
+import '../../styles/pages/pdp.scss'
+
 export type Props = PageProps<
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables

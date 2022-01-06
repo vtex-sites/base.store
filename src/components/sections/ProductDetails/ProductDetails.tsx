@@ -76,7 +76,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   })
 
   return (
-    <div className="grid-content product-details">
+    <div className="product-details / grid-content grid-section">
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
       <section className="product-details__body">
