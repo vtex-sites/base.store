@@ -70,13 +70,19 @@
   --space-12: 5.5rem; // 88px
   --space-13: 6rem;   // 96px
 
+  // Paddings
+  --page-padding-phone: var(--space-3);
+  --page-padding-notebook: var(--space-5);
+
   // Target Size
   --min-size: var(--space-7);
 
-  // Box-Shadows ////////////////////////
+  // Box-Shadows ////////////////////
   --box-shadow: 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
+  --box-shadow-dark: 0 0 10px rgb(0 0 0 / 20%);
 
-  // Radius
+  // Border /////////////////////////
+
   --border-radius-flat: 0;
   --border-radius-small: .125rem;
   --border-radius-default: .25rem;
