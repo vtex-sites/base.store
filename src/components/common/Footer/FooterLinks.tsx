@@ -13,6 +13,7 @@ import {
 } from 'phosphor-react'
 
 import Link from '../../ui/Link'
+import useWindowDimensions from './useWindowDimensions'
 
 const links = [
   {
@@ -109,12 +110,14 @@ function FooterLinks() {
 
   const [isMobile, setIsMobile] = useState<boolean>(true)
 
-  useEffect(() => {
-    const viewPortWidth = window.innerWidth
-    const notebook = 1280
+  const { width: screenWidth } = useWindowDimensions()
 
-    setIsMobile(viewPortWidth < notebook)
-  }, [])
+  useEffect(() => {
+    // breakpoint notebook = 1280px
+    if (!screenWidth) return
+
+    setIsMobile(screenWidth < 1280)
+  }, [screenWidth])
 
   return (
     <section className="footer__links">
