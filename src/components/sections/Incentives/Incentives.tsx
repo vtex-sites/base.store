@@ -15,7 +15,7 @@ interface Props {
   classes?: string
 }
 
-function Incentives({ incentives, classes }: Props) {
+function Incentives({ incentives, classes = '' }: Props) {
   return (
     <div className={`incentives ${classes} / grid-content-full`}>
       <UIList variant="unordered" className="grid-content">
