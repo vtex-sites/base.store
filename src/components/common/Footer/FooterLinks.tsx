@@ -7,7 +7,10 @@ import {
   AccordionButton,
   AccordionPanel,
 } from '@faststore/ui'
-import { PlusCircle as PlusCircleIcon } from 'phosphor-react'
+import {
+  PlusCircle as PlusCircleIcon,
+  MinusCircle as MinusCircleIcon,
+} from 'phosphor-react'
 
 import Link from '../../ui/Link'
 
@@ -92,7 +95,10 @@ const links = [
 
 function FooterLinks() {
   const [indices, setIndices] = useState<Set<number>>(new Set([]))
+  const [expanded, setExpanded] = useState<boolean>(false)
+
   const onChange = (index: number) => {
+    setExpanded(!expanded)
     if (indices.has(index)) {
       indices.delete(index)
       setIndices(new Set(indices))
@@ -101,7 +107,7 @@ function FooterLinks() {
     }
   }
 
-  const [isMobile, setIsMobile] = useState(true)
+  const [isMobile, setIsMobile] = useState<boolean>(true)
 
   useEffect(() => {
     const viewPortWidth = window.innerWidth
@@ -118,7 +124,15 @@ function FooterLinks() {
             <AccordionItem key={section.title}>
               <AccordionButton className="title-subsection">
                 {section.title}
-                <Icon component={<PlusCircleIcon size={18} />} />
+                <Icon
+                  component={
+                    expanded ? (
+                      <MinusCircleIcon size={18} />
+                    ) : (
+                      <PlusCircleIcon size={18} />
+                    )
+                  }
+                />
               </AccordionButton>
               <AccordionPanel>
                 <List>
