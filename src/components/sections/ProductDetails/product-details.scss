@@ -20,7 +20,7 @@
 .product-details__image {
   position: relative;
   left: calc(-1 * var(--page-padding-phone));
-  width: calc(100% + var(--page-padding-phone) + var(--page-padding-phone));
+  width: calc(100% + (2 * var(--page-padding-phone)));
 
   [data-gatsby-image-wrapper] {
     width: 100%;
