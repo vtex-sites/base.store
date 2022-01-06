@@ -113,9 +113,9 @@ function FooterLinks() {
   const { width: screenWidth } = useWindowDimensions()
 
   useEffect(() => {
-    // breakpoint notebook = 1280px
     if (!screenWidth) return
 
+    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
     setIsMobile(screenWidth < 1280)
   }, [screenWidth])
 
