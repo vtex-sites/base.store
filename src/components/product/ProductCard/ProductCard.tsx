@@ -48,10 +48,6 @@ function ProductCard({
     const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
 
     if (!lowestPriceOffer) {
-      console.error(
-        'Could not find the lowest price product offer. Showing the first offer provided.'
-      )
-
       return offers[0]
     }
 
@@ -101,6 +97,7 @@ function ProductCard({
               data-value={listPrice}
               variant="listing"
               classes="text-body-small"
+              SRText="Original price:"
             />
             <Price
               value={spotPrice}
@@ -109,6 +106,7 @@ function ProductCard({
               data-value={spotPrice}
               variant="spot"
               classes="text-body"
+              SRText="Sale Price:"
             />
           </div>
         </div>
