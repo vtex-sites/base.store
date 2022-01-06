@@ -1,5 +1,4 @@
-@import "../../../styles/vendors/include-media";
-@import "../../../styles/utilities.scss";
+@import "../../../styles/scaffold";
 
 .product-title {
   @include media(">=tablet") { padding: var(--space-4) var(--space-5); }
@@ -7,12 +6,16 @@
 
 .product-title__header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   column-gap: var(--space-2);
   [data-store-badge] { white-space: nowrap; }
+
+  @include media(">=tablet", "<notebook") {
+    flex-direction: column;
+    row-gap: var(--space-3);
+  }
 }
 
-.product-title__header + .product-title__footer { margin-top: var(--space-3); }
+.product-title__header + .product-title__addendum { margin-top: var(--space-3); }
 
-.product-title__footer { color: var(--color-text-subtle); }
+.product-title__addendum { color: var(--color-text-subtle); }

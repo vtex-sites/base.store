@@ -3570,6 +3570,7 @@ export type ProductDetailsFragment_ProductFragment = {
   image: Array<{ url: string; alternateName: string }>
   brand: { name: string }
   offers: {
+    lowPrice: number
     offers: Array<{
       price: number
       listPrice: number
@@ -3775,6 +3776,27 @@ export type ProductPageQueryQuery = {
       }
     | null
     | undefined
+  allStoreProduct: {
+    nodes: Array<{
+      slug: string
+      sku: string
+      name: string
+      gtin: string
+      id: string
+      brand: { name: string; brandName: string }
+      isVariantOf: { productGroupID: string; name: string }
+      image: Array<{ url: string; alternateName: string }>
+      offers: {
+        lowPrice: number
+        offers: Array<{
+          price: number
+          listPrice: number
+          quantity: number
+          seller: { identifier: string }
+        }>
+      }
+    }>
+  }
 }
 
 export type ValidateCartMutationMutationVariables = Exact<{
@@ -3813,11 +3835,13 @@ export type BrowserProductQueryQuery = {
     sku: string
     name: string
     gtin: string
+    description: string
     id: string
     isVariantOf: { productGroupID: string; name: string }
     image: Array<{ url: string; alternateName: string }>
     brand: { name: string }
     offers: {
+      lowPrice: number
       offers: Array<{
         price: number
         listPrice: number
