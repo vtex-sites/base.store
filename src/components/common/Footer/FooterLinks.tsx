@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Icon,
-  List,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
+  Icon as UIIcon,
+  List as UIList,
+  Accordion as UIAccordion,
+  AccordionItem as UIAccordionItem,
+  AccordionButton as UIAccordionButton,
+  AccordionPanel as UIAccordionPanel,
 } from '@faststore/ui'
 import {
   PlusCircle as PlusCircleIcon,
@@ -122,12 +122,12 @@ function FooterLinks() {
   return (
     <section className="footer__links">
       {isMobile ? (
-        <Accordion indices={indices} onChange={onChange}>
+        <UIAccordion indices={indices} onChange={onChange}>
           {links.map((section) => (
-            <AccordionItem key={section.title}>
-              <AccordionButton className="title-subsection">
+            <UIAccordionItem key={section.title}>
+              <UIAccordionButton className="title-subsection">
                 {section.title}
-                <Icon
+                <UIIcon
                   component={
                     expanded ? (
                       <MinusCircleIcon size={18} />
@@ -136,9 +136,9 @@ function FooterLinks() {
                     )
                   }
                 />
-              </AccordionButton>
-              <AccordionPanel>
-                <List>
+              </UIAccordionButton>
+              <UIAccordionPanel>
+                <UIList>
                   {section.items.map((item) => (
                     <li key={item.name}>
                       <Link variant="footer" href={item.href}>
@@ -146,17 +146,17 @@ function FooterLinks() {
                       </Link>
                     </li>
                   ))}
-                </List>
-              </AccordionPanel>
-            </AccordionItem>
+                </UIList>
+              </UIAccordionPanel>
+            </UIAccordionItem>
           ))}
-        </Accordion>
+        </UIAccordion>
       ) : (
         <div className="footer__links-columns">
           {links.map((section) => (
             <nav key={section.title}>
               <p className="title-sub-subsection">{section.title}</p>
-              <List>
+              <UIList>
                 {section.items.map((item) => (
                   <li key={item.name}>
                     <Link variant="footer" href={item.href}>
@@ -164,7 +164,7 @@ function FooterLinks() {
                     </Link>
                   </li>
                 ))}
-              </List>
+              </UIList>
             </nav>
           ))}
         </div>
