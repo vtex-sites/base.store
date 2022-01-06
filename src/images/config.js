@@ -8,6 +8,9 @@ module.exports = {
     fadeIn: false,
     backgroundColor: '#f0f0f0',
     options: {
+      filters: {
+        quality: '100',
+      },
       fitIn: true,
     },
   },
@@ -19,6 +22,9 @@ module.exports = {
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {
+      filters: {
+        quality: '100',
+      },
       fitIn: true,
     },
   },
@@ -30,6 +36,9 @@ module.exports = {
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {
+      filters: {
+        quality: '100',
+      },
       fitIn: true,
     },
   },
@@ -41,18 +50,24 @@ module.exports = {
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {
+      filters: {
+        quality: '100',
+      },
       fitIn: true,
     },
   },
   'hero.home': {
-    sourceWidth: 720,
-    aspectRatio: 2,
+    sourceWidth: 2280,
+    aspectRatio: 1,
     width: 800,
-    breakpoints: [480, 540, 720],
+    breakpoints: [480, 540, 720, 1140, 2280],
     layout: 'constrained',
     backgroundColor: '#f0f0f0',
     options: {
       fitIn: true,
+      filters: {
+        quality: '100',
+      },
     },
   },
 }
