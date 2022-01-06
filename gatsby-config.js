@@ -2,7 +2,6 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
-const { getSchema, getContextFactory } = require('./src/server')
 const images = require('./src/images/config')
 const config = require('./store.config')
 
@@ -40,15 +39,10 @@ module.exports = {
     siteUrl,
   },
   flags: {
-    DEV_SSR: true,
     FAST_DEV: true,
-    LMDB_STORE: false,
     PARALLEL_SOURCING: true,
-    PARALLEL_QUERY_RUNNING: false,
-    PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
-    'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -140,18 +134,6 @@ module.exports = {
         stats: {
           context: join(__dirname, 'src'),
         },
-      },
-    },
-    {
-      resolve: `@vtex/gatsby-source-store`,
-      options: {
-        sourceProducts: true,
-        sourceCollections: true,
-        getSchema,
-        getContextFactory,
-        // Source less products is development for better DX
-        maxNumProducts: isProduction ? 2500 : 100,
-        maxNumCollections: isProduction ? 2500 : 100,
       },
     },
     {
