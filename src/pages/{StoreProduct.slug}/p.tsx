@@ -90,6 +90,15 @@ function Page(props: Props) {
       <h1 className="temp-offscreen">{title}</h1>
 
       <ProductDetails product={product} />
+
+      {/* TODO: Styles will be available after PR #191. */}
+      <section className="page__section page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">You might also like</h2>
+        <div className="page__section-content">
+          {/* TODO: Component will be available after PR #191. */}
+          {/* <ProductShelf /> */}
+        </div>
+      </section>
     </>
   )
 }
