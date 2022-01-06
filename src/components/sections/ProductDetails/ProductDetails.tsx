@@ -48,10 +48,6 @@ function ProductDetails({ product: staleProduct }: Props) {
     const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
 
     if (!lowestPriceOffer) {
-      console.error(
-        'Could not find the lowest price product offer. Showing the first offer provided.'
-      )
-
       return offers[0]
     }
 
@@ -111,6 +107,7 @@ function ProductDetails({ product: staleProduct }: Props) {
                 data-value={listPrice}
                 variant="listing"
                 classes="text-body-small"
+                SRText="Original price:"
               />
               <Price
                 value={lowPrice}
@@ -119,6 +116,7 @@ function ProductDetails({ product: staleProduct }: Props) {
                 data-value={lowPrice}
                 variant="spot"
                 classes="title-display"
+                SRText="Sale Price:"
               />
             </div>
             {/* <div className="prices">
