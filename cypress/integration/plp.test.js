@@ -127,7 +127,9 @@ describe('Infinite Scroll pagination', () => {
           .click()
           .then(() => {
             // Ensure wait new page after clicks show more
-            cy.getById('store-card').closest('.product-card').should('exist')
+            cy.getById('store-card').last().scrollIntoView()
+            // .closest('.product-card')
+            // .should('exist')
             cy.location('search').should('match', /\page=1$/)
 
             // The skuId of the last product on the page
@@ -170,14 +172,15 @@ describe('Infinite Scroll pagination', () => {
       .should('exist')
       .click()
       .then(() => {
-        cy.getById('store-card')
+        cy.scrollTo('center')
+          .getById('store-card')
           .last()
           .scrollIntoView()
           .location('search')
           .should('match', /\page=1$/)
           .getById('store-card')
           .first()
-          .scrollIntoView({ offset: { top: -10 } })
+          .scrollIntoView({ offset: { top: -20 } })
           .location('search')
           .should('match', /\page=0$/)
       })
