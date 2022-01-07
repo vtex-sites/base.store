@@ -18,7 +18,9 @@ export default function useWindowDimensions() {
   )
 
   useEffect(() => {
-    if (!hasWindow) return
+    if (!hasWindow) {
+      return
+    }
 
     function handleResize() {
       setWindowDimensions(getWindowDimensions())
