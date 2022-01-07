@@ -127,6 +127,7 @@ describe('Infinite Scroll pagination', () => {
           .click()
           .then(() => {
             // Ensure wait new page after clicks show more
+            cy.getById('store-card').closest('.product-card').should('exist')
             cy.location('search').should('match', /\page=1$/)
 
             // The skuId of the last product on the page
