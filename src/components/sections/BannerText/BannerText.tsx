@@ -1,7 +1,7 @@
 import { Banner, BannerContent, BannerLink } from '@faststore/ui'
-import { Link } from 'gatsby'
 import type { InputHTMLAttributes } from 'react'
 import React from 'react'
+import { LinkButton } from 'src/components/ui/Button'
 
 import './banner-text.scss'
 
@@ -41,7 +41,7 @@ function BannerText({
           <p>{caption}</p>
         </div>
         <BannerLink>
-          <Link to={actionPath}>{actionLabel}</Link>
+          <LinkButton href={actionPath}>{actionLabel}</LinkButton>
         </BannerLink>
       </BannerContent>
     </Banner>
