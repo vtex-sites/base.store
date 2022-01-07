@@ -1,4 +1,4 @@
-import { usePagination, useSearch } from '@faststore/sdk'
+import { usePagination, useSearch, useSession } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
@@ -12,8 +12,20 @@ interface Props {
 }
 
 function ProductGallery({ title }: Props) {
-  const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
+  const {
+    pages,
+    state: searchState,
+    addNextPage,
+    addPrevPage,
+    setFacet,
+  } = useSearch()
+
   const { data } = useGalleryQuery()
+  const { region } = useSession()
+
+  if (region) {
+    setFacet({ key: 'region-id', value: region }, true)
+  }
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)

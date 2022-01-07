@@ -26,6 +26,7 @@ export const useProduct = <T extends BrowserProductQueryQuery>(
       throw new Error(`useProduct: 'channel' from session is 'null'.`)
     }
 
+    // TODO: Add region from session here (maybe)
     return {
       locator: [
         { key: 'id', value: productID },

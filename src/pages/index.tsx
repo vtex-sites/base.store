@@ -6,6 +6,7 @@ import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
+import RegionModal from 'src/components/sections/RegionModal'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -15,10 +16,18 @@ function Page(props: Props) {
     location: { pathname, host },
   } = props
 
-  const { locale } = useSession()
+  const { locale, region } = useSession()
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
+
+  const showRegionModal = React.useRef<boolean>(false)
+
+  React.useEffect(() => {
+    showRegionModal.current = typeof window !== 'undefined' ? !region : false
+  }, [region])
+
+  const regionMessage = region ? <p>You are using region {region}</p> : null
 
   return (
     <>
@@ -66,6 +75,9 @@ function Page(props: Props) {
         actionPath="/"
         actionLabel="Call to action"
       />
+
+      <RegionModal isOpen={showRegionModal.current} />
+      {regionMessage}
     </>
   )
 }
