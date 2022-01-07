@@ -13,23 +13,28 @@ function IncentivesFooter() {
   const incentives = [
     {
       icon: <ShieldCheckIcon size={32} />,
-      text: 'Trusted by SafeCon',
+      firstLineText: 'Trusted',
+      secondLineText: 'by SafeCon',
     },
     {
       icon: <MedalIcon size={32} />,
-      text: 'Quality Products',
+      firstLineText: 'Quality',
+      secondLineText: 'Products',
     },
     {
       icon: <CircleWavyCheckIcon size={32} />,
-      text: '3-years Guarantee',
+      firstLineText: '3-years',
+      secondLineText: 'Guarantee',
     },
     {
       icon: <StorefrontIcon size={32} />,
-      text: 'Pickup Options',
+      firstLineText: 'Pickup',
+      secondLineText: 'Options',
     },
     {
       icon: <TruckIcon size={32} />,
-      text: 'Free Shipping',
+      firstLineText: 'Free',
+      secondLineText: 'Shipping',
     },
   ]
 

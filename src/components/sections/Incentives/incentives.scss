@@ -12,14 +12,20 @@
       li {
         &:not(:first-child) {
           [data-store-incentive] {
-            padding: 0 var(--space-3);
+            padding: 0 var(--space-4);
           }
         }
 
         &:first-child {
           [data-store-incentive] {
-            padding-right: var(--space-3);
-            padding-left: var(--space-1);
+            padding-right: var(--space-4);
+            padding-left: 0;
+          }
+        }
+
+        &:last-child {
+          [data-store-incentive] {
+            padding-right: 0;
           }
         }
       }
@@ -38,6 +44,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 
     p, span {
       font-size: var(--text-size-1);
@@ -49,6 +56,7 @@
     }
 
     span {
+      display: inline-block;
       line-height: 1.14;
       white-space: nowrap;
     }
@@ -57,9 +65,13 @@
       text-align: center;
     }
 
+    @include media("<notebook") {
+      row-gap: var(--space-0);
+    }
+
     @include media(">=notebook") {
       flex-direction: row;
-      padding: 0 var(--space-6);
+      padding: 0 var(--space-5);
 
       [data-incentive-content] {
         margin-left: var(--space-2);
