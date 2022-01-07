@@ -3,6 +3,7 @@ import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import Price from 'src/components/ui/Price'
+import AspectRatio from 'src/components/ui/AspectRatio'
 import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
@@ -25,6 +26,7 @@ interface Props {
   index: number
   variant?: Variant
   showActions?: boolean
+  ratio?: string
 }
 
 function ProductCard({
@@ -32,6 +34,7 @@ function ProductCard({
   index,
   variant = 'vertical',
   showActions = true,
+  ratio = '1',
 }: Props) {
   const {
     id,
@@ -81,20 +84,22 @@ function ProductCard({
   return (
     <UICard className="product-card" data-card-variant={variant}>
       <UICardImage>
-        <Image
-          baseUrl={img.url}
-          sourceWidth={480}
-          aspectRatio={1}
-          width={360}
-          breakpoints={[250, 360, 480]}
-          layout="constrained"
-          backgroundColor="#f0f0f0"
-          options={{
-            fitIn: true,
-          }}
-          alt={img.alternateName}
-          sizes="(max-width: 768px) 200px, 320px"
-        />
+        <AspectRatio ratio={ratio}>
+          <Image
+            baseUrl={img.url}
+            sourceWidth={480}
+            aspectRatio={1}
+            width={360}
+            breakpoints={[250, 360, 480]}
+            layout="constrained"
+            backgroundColor="#f0f0f0"
+            options={{
+              fitIn: true,
+            }}
+            alt={img.alternateName}
+            sizes="(max-width: 768px) 200px, 320px"
+          />
+        </AspectRatio>
       </UICardImage>
       <UICardContent>
         <div className="product-card__heading">
