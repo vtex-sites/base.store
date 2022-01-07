@@ -60,9 +60,7 @@ function OutOfStock(props: OutOfStockProps) {
   const [email, setEmail] = useState('')
 
   return (
-    <div data-store-out-of-stock data-testid={testId}>
-      {/* TODO: This component seems to fit in Aria live Regions, this is just a reminder to handle this in the future
-      https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions */}
+    <div data-store-out-of-stock data-testid={testId} aria-live="polite">
       <p>{title}</p>
       <p>
         <Icon component={icon} /> {notificationMsg}
