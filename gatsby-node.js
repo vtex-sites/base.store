@@ -15,7 +15,7 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
     })
   }
 
-  // Copy @builder.io/partytown lib files to the <rootPath>/static/~partytown wheen gatsby stage is develop.
+  // Copy @builder.io/partytown lib files to the <rootPath>/static/~partytown when gatsby stage is develop.
   // Those files are used by the Partytown component.
   if (stage === 'develop') {
     copyPartytown()
