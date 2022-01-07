@@ -95,14 +95,16 @@ const links = [
 ]
 
 function FooterLinks() {
-  const [indices, setIndices] = useState<Set<number>>(new Set([]))
+  const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
+    new Set([])
+  )
 
   const onChange = (index: number) => {
-    if (indices.has(index)) {
-      indices.delete(index)
-      setIndices(new Set(indices))
+    if (indicesExpanded.has(index)) {
+      indicesExpanded.delete(index)
+      setIndicesExpanded(new Set(indicesExpanded))
     } else {
-      setIndices(new Set(indices.add(index)))
+      setIndicesExpanded(new Set(indicesExpanded.add(index)))
     }
   }
 
@@ -122,14 +124,14 @@ function FooterLinks() {
   return (
     <section className="footer__links">
       {isMobile ? (
-        <UIAccordion indices={indices} onChange={onChange}>
+        <UIAccordion indices={indicesExpanded} onChange={onChange}>
           {links.map((section, index) => (
             <UIAccordionItem key={section.title}>
               <UIAccordionButton className="title-subsection">
                 {section.title}
                 <UIIcon
                   component={
-                    indices.has(index) ? (
+                    indicesExpanded.has(index) ? (
                       <MinusCircleIcon size={24} />
                     ) : (
                       <PlusCircleIcon size={24} />
