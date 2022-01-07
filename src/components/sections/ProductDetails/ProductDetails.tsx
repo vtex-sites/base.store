@@ -61,8 +61,16 @@ function ProductDetails({ product: staleProduct }: Props) {
     <div>
       <h2>{variantName}</h2>
       <Image
-        src={productImages[0].url}
-        variant="product.details"
+        baseUrl={productImages[0].url}
+        sourceWidth={720}
+        aspectRatio={1}
+        width={720}
+        breakpoints={[250, 360, 480, 720]}
+        layout="constrained"
+        backgroundColor="#f0f0f0"
+        options={{
+          fitIn: true,
+        }}
         alt={productImages[0].alternateName}
         loading="eager"
       />
