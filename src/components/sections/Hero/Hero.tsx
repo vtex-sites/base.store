@@ -1,4 +1,3 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import UIHero, {
   HeroContent,
@@ -7,6 +6,7 @@ import UIHero, {
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
 import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
+import { LinkButton } from 'src/components/ui/Button'
 
 interface HeroProps {
   title: string
@@ -36,9 +36,9 @@ const Hero = ({
             <p className="text-body-big">{subtitle}</p>
           </div>
           <HeroLink>
-            <Link to={link}>
+            <LinkButton href={link}>
               {linkText} <ArrowRightIcon size={24} />
-            </Link>
+            </LinkButton>
           </HeroLink>
         </div>
       </HeroContent>
