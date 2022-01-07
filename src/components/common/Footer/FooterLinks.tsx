@@ -132,9 +132,9 @@ function FooterLinks() {
                 <UIIcon
                   component={
                     expanded ? (
-                      <MinusCircleIcon size={18} />
+                      <MinusCircleIcon size={24} />
                     ) : (
-                      <PlusCircleIcon size={18} />
+                      <PlusCircleIcon size={24} />
                     )
                   }
                 />
