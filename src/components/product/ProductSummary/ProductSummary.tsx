@@ -18,39 +18,41 @@ function ProductSummary({ product, index, className }: Props) {
   const {
     id,
     sku,
-    gtin: referenceId,
+    gtin,
     name: variantName,
-    brand: { name: brandName },
-    isVariantOf: { name, productGroupID: productId },
+    brand,
+    isVariantOf,
+    isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
   } = product
 
-  const { listPrice, seller } = useMemo(() => {
-    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+  const selectedOffer = useMemo(() => {
+    const lowestPriceOffer = offers.findIndex((x) => x.price === spotPrice)
 
-    if (!lowestPriceOffer) {
+    if (lowestPriceOffer === -1) {
       console.error(
         'Could not find the lowest price product offer. Showing the first offer provided.'
       )
 
-      return offers[0]
+      return 0
     }
 
     return lowestPriceOffer
   }, [spotPrice, offers])
 
-  const linkProps = useProductLink({ product, index })
+  const { listPrice, seller } = offers[selectedOffer]
+
+  const linkProps = useProductLink({ product, selectedOffer, index })
   const buyProps = useBuyButton({
     id,
-    name,
-    brand: brandName,
+    brand,
     price: spotPrice,
     listPrice,
     seller,
     quantity: 1,
-    referenceId,
-    productId,
+    isVariantOf,
+    gtin,
     itemOffered: {
       name: variantName,
       image: [img],
@@ -62,8 +64,16 @@ function ProductSummary({ product, index, className }: Props) {
     <Link {...linkProps} className={className}>
       <Image
         className="w-full"
-        src={img.url}
-        variant="product.summary"
+        baseUrl={img.url}
+        sourceWidth={480}
+        aspectRatio={1}
+        width={360}
+        breakpoints={[250, 360, 480]}
+        layout="constrained"
+        backgroundColor="#f0f0f0"
+        options={{
+          fitIn: true,
+        }}
         alt={img.alternateName}
         sizes="(max-width: 768px) 200px, 320px"
       />

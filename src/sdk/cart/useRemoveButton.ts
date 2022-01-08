@@ -3,15 +3,15 @@
  * */
 import { useCallback } from 'react'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
-import type { CurrencyCode } from '@faststore/sdk'
-import type {
-  AnalyticsCartItem,
-  VTEXRemoveFromCartEvent,
-} from 'src/sdk/analytics/types'
+import type { CurrencyCode, RemoveFromCartEvent } from '@faststore/sdk'
+import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 import { useCart } from './useCart'
+import type { CartItemWithAnalytics } from './useBuyButton'
 
-export const useRemoveButton = (item: AnalyticsCartItem | null | undefined) => {
+export const useRemoveButton = (
+  item: CartItemWithAnalytics | null | undefined
+) => {
   const { removeItem } = useCart()
   const {
     currency: { code },
@@ -25,22 +25,23 @@ export const useRemoveButton = (item: AnalyticsCartItem | null | undefined) => {
         return
       }
 
-      sendAnalyticsEvent<VTEXRemoveFromCartEvent>({
+      sendAnalyticsEvent<RemoveFromCartEvent<AnalyticsItem>>({
         name: 'remove_from_cart',
         params: {
           currency: code as CurrencyCode,
           value: item.price * item.quantity, // TODO: In the future, we can explore more robust ways of calculating the value (gift items, discounts, etc.).
           items: [
             {
-              item_id: item.productId,
-              item_name: item.name,
-              currency: code as CurrencyCode,
-              item_brand: item.brand,
+              item_id: item.isVariantOf.productGroupID,
+              item_name: item.isVariantOf.name,
+              item_brand: item.brand.name,
               item_variant: item.itemOffered.sku,
-              price: item.price,
               quantity: item.quantity,
-              product_reference_id: item.referenceId,
-              sku_name: item.itemOffered.name,
+              price: item.price,
+              discount: item.listPrice - item.price,
+              currency: code as CurrencyCode,
+              item_variant_name: item.itemOffered.name,
+              product_reference_id: item.gtin,
             },
           ],
         },

@@ -1,23 +1,55 @@
 import { useGetThumborImageData } from '@vtex/gatsby-plugin-thumbor'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { useMemo } from 'react'
-import imagesConf from 'src/images/config'
+import type { ThumborImageOptions } from '@vtex/gatsby-plugin-thumbor'
 import type { GatsbyImageProps } from 'gatsby-plugin-image'
 
-interface Props extends Omit<GatsbyImageProps, 'image'> {
-  variant: string
-  src: string
-}
+interface Props extends Omit<GatsbyImageProps, 'image'>, ThumborImageOptions {}
 
-function Image({ variant, src, ...imgProps }: Props) {
+function Image({
+  baseUrl,
+  width,
+  height,
+  sourceWidth,
+  sourceHeight,
+  aspectRatio,
+  layout,
+  placeholderURL,
+  backgroundColor,
+  breakpoints,
+  options,
+  ...imgProps
+}: Props) {
   const getImage = useGetThumborImageData()
   const image = useMemo(
     () =>
       getImage({
-        baseUrl: src,
-        ...imagesConf[variant],
+        baseUrl,
+        width,
+        height,
+        sourceWidth,
+        sourceHeight,
+        aspectRatio,
+        layout,
+        placeholderURL,
+        backgroundColor,
+        breakpoints,
+        options,
       }),
-    [getImage, src, variant]
+    [
+      aspectRatio,
+      backgroundColor,
+      baseUrl,
+      breakpoints,
+      getImage,
+      height,
+      layout,
+      options,
+      placeholderURL,
+      sourceHeight,
+      sourceWidth,
+      width,
+    ]
   )
 
   return <GatsbyImage {...imgProps} image={image} />
