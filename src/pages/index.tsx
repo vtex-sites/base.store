@@ -1,7 +1,7 @@
 import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useState } from 'react'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
@@ -16,18 +16,20 @@ function Page(props: Props) {
     location: { pathname, host },
   } = props
 
-  const { locale, region } = useSession()
+  const { setSession, ...session } = useSession()
+  const { locale, region } = session
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
 
-  const showRegionModal = React.useRef<boolean>(false)
+  const [showRegionModal, setShowRegionModal] = useState<boolean>(
+    typeof window !== 'undefined' ? !region : false
+  )
 
-  React.useEffect(() => {
-    showRegionModal.current = typeof window !== 'undefined' ? !region : false
-  }, [region])
-
-  const regionMessage = region ? <p>You are using region {region}</p> : null
+  const clearRegion = () => {
+    setSession({ ...session, region: null })
+    setShowRegionModal(true)
+  }
 
   return (
     <>
@@ -76,8 +78,18 @@ function Page(props: Props) {
         actionLabel="Call to action"
       />
 
-      <RegionModal isOpen={showRegionModal.current} />
-      {regionMessage}
+      <RegionModal
+        isOpen={showRegionModal}
+        onSuccess={() => {
+          setShowRegionModal(false)
+        }}
+      />
+      {region ? (
+        <p>
+          You are using region {region}.
+          <button onClick={clearRegion}>Clear region</button>
+        </p>
+      ) : null}
     </>
   )
 }

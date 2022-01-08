@@ -4,9 +4,10 @@ import { useSession } from '@faststore/sdk'
 
 interface Props {
   isOpen: boolean
+  onSuccess: () => void
 }
 
-function RegionModal({ isOpen = false }: Props) {
+function RegionModal({ isOpen = false, onSuccess = () => {} }: Props) {
   const [postalCode, setPostalCode] = useState<string>('')
 
   const { setSession, ...session } = useSession()
@@ -22,6 +23,7 @@ function RegionModal({ isOpen = false }: Props) {
 
     if (data.sellers.length) {
       setSession({ ...session, region: data.sellers[0].id, postalCode })
+      onSuccess()
     }
   }
 
