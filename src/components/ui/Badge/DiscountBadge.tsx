@@ -9,7 +9,9 @@ type Props = {
   listPrice: number
   spotPrice: number
   small?: boolean
+  // Set limit percentage value to consider a low discount.
   thresholdLow?: number
+  // Set limit percentage value to consider a high discount
   thresholdHigh?: number
 }
 
@@ -29,9 +31,9 @@ const DiscountBadge = ({
   }
 
   const discountVariant =
-    discountPercent < thresholdLow
+    discountPercent <= thresholdLow
       ? 'low'
-      : discountPercent < thresholdHigh
+      : discountPercent <= thresholdHigh
       ? 'medium'
       : 'high'
 
