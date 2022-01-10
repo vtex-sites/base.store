@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import React, { useEffect } from 'react'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
+import AspectRatio from 'src/components/ui/AspectRatio'
 import Price from 'src/components/ui/Price'
 import SkuSelector from 'src/components/ui/SkuSelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
@@ -121,20 +122,22 @@ function ProductDetails({ product: staleProduct }: Props) {
         </header>
 
         <section className="product-details__image">
-          <Image
-            baseUrl={productImages[0].url}
-            sourceWidth={720}
-            aspectRatio={1}
-            width={720}
-            breakpoints={[250, 360, 480, 720]}
-            layout="constrained"
-            backgroundColor="#f0f0f0"
-            options={{
-              fitIn: true,
-            }}
-            alt={productImages[0].alternateName}
-            loading="eager"
-          />
+          <AspectRatio ratio="4:3">
+            <Image
+              baseUrl={productImages[0].url}
+              sourceWidth={720}
+              aspectRatio={1}
+              width={720}
+              breakpoints={[250, 360, 480, 720]}
+              layout="constrained"
+              backgroundColor="#f0f0f0"
+              options={{
+                fitIn: true,
+              }}
+              alt={productImages[0].alternateName}
+              loading="eager"
+            />
+          </AspectRatio>
         </section>
 
         <section className="product-details__settings">
