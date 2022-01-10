@@ -43,6 +43,14 @@
     }
   }
 
+  &[data-card-bordered="true"] {
+    border: 1px solid var(--color-border-display);
+  }
+
+  &[data-card-out-of-stock="true"] {
+    background-color: var(--bg-neutral-light);
+  }
+
   [data-card-image] {
     overflow: hidden;
     border-radius: var(--border-radius-default);

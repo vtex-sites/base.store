@@ -1,8 +1,9 @@
-import { Badge as UIBadge } from '@faststore/ui'
 import React from 'react'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
-import './discount-badge.scss'
+import Badge from './Badge'
+
+import './badge.scss'
 
 type Props = {
   listPrice: number
@@ -20,9 +21,9 @@ const DiscountBadge = ({ listPrice, spotPrice, small = false }: Props) => {
   }
 
   return (
-    <UIBadge className="discount-badge" data-store-badge={small ? 'small' : ''}>
+    <Badge small={small} variant="discount">
       {discountPercent}% off
-    </UIBadge>
+    </Badge>
   )
 }
 
