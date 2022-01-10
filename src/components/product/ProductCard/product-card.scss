@@ -7,7 +7,7 @@
   padding: var(--space-1) var(--space-1) var(--space-2);
   border: 1px solid transparent;
   border-radius: var(--border-radius-default);
-  transition: box-shadow .5s ease;
+  transition: box-shadow .5s ease, border .5s ease;
 
   &:hover,
   &:focus {
@@ -23,7 +23,7 @@
 
   &:focus,
   &:focus-within {
-    border: 2px solid var(--bg-focus-ring);
+    box-shadow: 0 0 0 1px var(--color-neutral-0), 0 0 0 var(--border-width-3) var(--bg-focus-ring);
   }
 
   &[data-card-variant="vertical"] {
