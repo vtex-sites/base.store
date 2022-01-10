@@ -1,0 +1,9 @@
+@import "../../../styles/vendors/include-media";
+
+.link-button[data-store-button][data-store-link-show-more] {
+  padding: var(--space-2) var(--space-10);
+
+  @include media(">=tablet") {
+    padding: var(--space-2) var(--space-6);
+  }
+}

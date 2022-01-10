@@ -3,6 +3,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
+import ShowMoreLink from 'src/components/ui/ShowMoreLink'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -66,18 +67,16 @@ function ProductGallery({ title }: Props) {
       {next !== false && (
         <>
           <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
-          <a
-            data-testid="show-more"
+          <ShowMoreLink
             onClick={(e) => {
               e.currentTarget.blur()
               e.preventDefault()
               addNextPage()
             }}
             href={next.link}
-            rel="next"
           >
-            Show More
-          </a>
+            Load more products
+          </ShowMoreLink>
         </>
       )}
 
