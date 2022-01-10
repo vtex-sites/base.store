@@ -127,34 +127,37 @@ describe('Infinite Scroll pagination', () => {
           .click()
           .then(() => {
             // Ensure wait new page after clicks show more
-            cy.getById('show-more').scrollIntoView()
-            cy.location('search').should('match', /\page=1$/)
-
-            // The skuId of the last product on the page
-            let skuIdBeforeNavigate
-
-            cy.getById('store-card')
-              // Number of products after showMore is clicked should be higher
-              .should('have.length.gte', before)
-              .last()
-              .within(() => {
-                cy.getById('buy-button').then(($btn) => {
-                  skuIdBeforeNavigate = $btn.attr('data-sku')
-                })
-              })
-              .click()
+            cy.getById('show-more')
+              .scrollIntoView()
               .then(() => {
-                // make sure we are on the pdp
-                cy.location('pathname').should('match', /\/p$/)
-              })
-              .then(() => {
-                cy.go('back')
-                  .getById('buy-button')
+                cy.location('search').should('match', /\page=1$/)
+
+                // The skuId of the last product on the page
+                let skuIdBeforeNavigate
+
+                cy.getById('store-card')
+                  // Number of products after showMore is clicked should be higher
+                  .should('have.length.gte', before)
                   .last()
-                  .then(($btn) => {
-                    const skuIdAfterNavigate = $btn.attr('data-sku')
+                  .within(() => {
+                    cy.getById('buy-button').then(($btn) => {
+                      skuIdBeforeNavigate = $btn.attr('data-sku')
+                    })
+                  })
+                  .click()
+                  .then(() => {
+                    // make sure we are on the pdp
+                    cy.location('pathname').should('match', /\/p$/)
+                  })
+                  .then(() => {
+                    cy.go('back')
+                      .getById('buy-button')
+                      .last()
+                      .then(($btn) => {
+                        const skuIdAfterNavigate = $btn.attr('data-sku')
 
-                    expect(skuIdBeforeNavigate).to.eq(skuIdAfterNavigate)
+                        expect(skuIdBeforeNavigate).to.eq(skuIdAfterNavigate)
+                      })
                   })
               })
           })
@@ -170,12 +173,16 @@ describe('Infinite Scroll pagination', () => {
       .should('exist')
       .click()
       .then(() => {
+        cy.location('search').should('match', /\page=1$/)
+
         cy.getById('store-card').last().scrollIntoView()
         cy.location('search').should('match', /\page=1$/)
         cy.getById('store-card')
           .first()
           .scrollIntoView({ offset: { top: -20 } })
-        cy.location('search').should('match', /\page=0$/)
+          .then(() => {
+            cy.location('search').should('match', /\page=0$/)
+          })
       })
   })
 })
