@@ -127,10 +127,6 @@ function ProductDetails({ product: staleProduct }: Props) {
                 SRText="Sale Price:"
               />
             </div>
-            {/* <div className="prices">
-              <p className="price__old text-body-small">{formattedListPrice}</p>
-              <p className="price__new">{isValidating ? '' : formattedPrice}</p>
-            </div> */}
             <QuantitySelector min={1} max={10} disabled={false} />
           </section>
 
