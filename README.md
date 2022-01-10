@@ -337,3 +337,27 @@ Looking for more guidance? Full documentation for Faststore lives [on this GitHu
 ## ⚡ Performance & QA
 
 This project has strict performance budgets. Right out of the box, this project performs around 95 on Google's Page Speed Insights website, which usually is way more strict than your laptop's chrome lighthouse. Every time you commit to the repository, our QA bots will run and evaluate your code quality. We recommend you NEVER put in production a code that breaks any of the bots. If a bot breaks and still you need to put the code into production, change the bot config (`lighthouserc.js`, `cypress.json`) to make it pass and merge. This way you ensure your website will keep performing well during the years to come.
+
+## Adding third party scripts
+
+As mentioned before, this project is focused on performance. So, to maintain the performance and allow adding third-party scripts, this project uses [Partytown](https://github.com/BuilderIO/partytown/), a lazy-load library that helps relocate intensive scripts into the web worker and off of the main thread.
+
+To add new scripts to the Partytown, add the `type="text/partytown"` to the script tag and add it before the Partytown script or component.
+Also, if the third-party script executes expensive computations, wrap it in some function,  and then add to the Partytown `forward` prop.
+
+```tsx
+export const onRenderBody = ({ setHeadComponents }) => {
+  // ...
+  setHeadComponents([
+    <script>
+      window.expensiveFunction = function() {/* expensive computation used by custom-script */}
+    </script>
+    <script key="custom-script" src="*://domain/path" type="text/partytown" />,
+    <Partytown key="partytown" forward={["expensiveFunction"]} />
+  ])
+  // ...
+}
+```
+
+For more information about integrating third-party scripts: [Partytown Wiki](https://github.com/BuilderIO/partytown/wiki)
+
