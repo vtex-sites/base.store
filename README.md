@@ -343,7 +343,7 @@ This project has strict performance budgets. Right out of the box, this project 
 As mentioned before, this project is focused on performance. So, to maintain the performance and allow adding third-party scripts, this project uses [Partytown](https://github.com/BuilderIO/partytown/), a lazy-load library that helps relocate intensive scripts into the web worker and off of the main thread.
 
 To add new scripts to the Partytown, add the `type="text/partytown"` to the script tag and add it before the Partytown script or component.
-Also, if the third-party script executes expensive computations, wrap it in some function,  and then add to the Partytown `forward` prop.
+Some third-party scripts execute expensive computations that may require some time to run, making pages few slow. If that's the case, wrap those in a function and reference it on the Partytown `forward` prop. By doing this, Partytown will run this function on a web worker so it doesn't block the main thread.
 
 ```tsx
 export const onRenderBody = ({ setHeadComponents }) => {
