@@ -7,7 +7,7 @@
 
   li:first-child { margin-left: calc(-1 * var(--space-1)); }
 
-  @include media(">=notebook") {
+  @include media(">=tablet") {
     padding-top: var(--space-0);
     padding-bottom: var(--space-3);
     overflow-x: auto;

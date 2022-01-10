@@ -5,6 +5,7 @@
   min-width: 14rem;
   height: 100%;
   padding: var(--space-1) var(--space-1) var(--space-2);
+  border: 1px solid transparent;
   border-radius: var(--border-radius-default);
   transition: box-shadow .5s ease;
 
@@ -13,14 +14,16 @@
     background-color: var(--bg-neutral-lightest);
   }
 
-  &:hover {
-    outline: 1px solid var(--color-border-display);
-    box-shadow: var(--box-shadow);
+  @media (hover: hover) {
+    &:hover {
+      border: 1px solid var(--color-border-display);
+      box-shadow: var(--box-shadow);
+    }
   }
 
   &:focus,
   &:focus-within {
-    outline: 2px solid var(--bg-focus-ring);
+    border: 2px solid var(--bg-focus-ring);
   }
 
   &[data-card-variant="vertical"] {
