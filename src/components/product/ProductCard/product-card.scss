@@ -46,9 +46,10 @@
     }
   }
 
-  [data-gatsby-image-wrapper] {
+  [data-card-image] {
     overflow: hidden;
     border-radius: var(--border-radius-default);
+    transform: translate3d(0, 0, 0);
   }
 
   [data-card-content] a[href] {
