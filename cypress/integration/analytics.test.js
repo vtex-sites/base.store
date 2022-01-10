@@ -16,7 +16,7 @@ beforeEach(() => {
 
 const dataLayerHasEvent = (eventName) => {
   return cy.window().then((window) => {
-    const allEvents = window.dataLayer.map((evt) => evt.name)
+    const allEvents = window.dataLayer.map((evt) => evt.event)
 
     expect(allEvents).to.include(eventName)
   })
@@ -24,7 +24,7 @@ const dataLayerHasEvent = (eventName) => {
 
 const eventDataHasCurrencyProperty = () => {
   return cy.window().then((window) => {
-    const allEvents = window.dataLayer.map((evt) => evt.params || {})
+    const allEvents = window.dataLayer.map((evt) => evt.ecommerce || {})
 
     allEvents.forEach((event) => {
       if (event.value !== undefined) {
@@ -40,12 +40,12 @@ describe('add_to_cart event', () => {
     cy.window().then((window) => {
       const { dataLayer } = window
 
-      const event = dataLayer.find((e) => e.name === 'add_to_cart')
+      const event = dataLayer.find((e) => e.event === 'add_to_cart')
 
       expect(event).to.not.be.null
-      expect(event.params).to.have.property('value')
+      expect(event.ecommerce).to.have.property('value')
 
-      const item = event.params.items.find((i) => i.item_variant === skuId)
+      const item = event.ecommerce.items.find((i) => i.item_variant === skuId)
 
       expect(item).to.not.be.null
       expect(item).to.have.property('currency')
@@ -96,12 +96,12 @@ describe('remove_from_cart event', () => {
     cy.window().then((window) => {
       const { dataLayer } = window
 
-      const event = dataLayer.find((e) => e.name === 'remove_from_cart')
+      const event = dataLayer.find((e) => e.event === 'remove_from_cart')
 
       expect(event).to.not.be.null
-      expect(event.params).to.have.property('value')
+      expect(event.ecommerce).to.have.property('value')
 
-      const item = event.params.items.find((i) => i.item_variant === skuId)
+      const item = event.ecommerce.items.find((i) => i.item_variant === skuId)
 
       expect(item).to.not.be.null
       expect(item).to.have.property('currency')
@@ -110,6 +110,10 @@ describe('remove_from_cart event', () => {
   }
 
   context('when removing a product from cart', () => {
+    beforeEach(() => {
+      cy.getById('remove-from-cart-button').click()
+    })
+
     it('adds remove_from_cart event in the data layer', () => {
       cy.visit(pages.pdp, options)
       cy.waitForHydration()
@@ -168,11 +172,11 @@ describe('select_item event', () => {
       .then(() => {
         cy.window().then((window) => {
           const event = window.dataLayer.find(
-            ({ name }) => name === 'select_item'
+            ({ event: eventName }) => eventName === 'select_item'
           )
 
           expect(event).to.exist
-          expect(skuId).to.equal(event.params.items[0].item_variant)
+          expect(skuId).to.equal(event.ecommerce.items[0].item_variant)
         })
       })
   })
