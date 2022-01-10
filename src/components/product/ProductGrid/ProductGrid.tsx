@@ -15,7 +15,13 @@ function ProductGrid({ products, page, pageSize }: Props) {
     <ul className="temp-grid-row">
       {products.map((product, idx) => (
         <li key={`${product.id}`}>
-          <ProductCard product={product} index={pageSize * page + idx + 1} />
+          <ProductCard
+            product={product}
+            index={pageSize * page + idx + 1}
+            showActions={false}
+            bordered
+            outOfStock={product.offers.offerCount < 1}
+          />
         </li>
       ))}
     </ul>

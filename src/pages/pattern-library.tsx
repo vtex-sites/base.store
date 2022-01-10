@@ -10,11 +10,12 @@ import Tiles, { Tile } from 'src/components/ui/Tiles'
 import BuyButton from 'src/components/ui/BuyButton'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import SignInLink from 'src/components/ui/SignInLink'
+import Badge from 'src/components/ui/Badge/Badge'
 
 import SkuSelector from '../components/ui/SkuSelector'
 import Link from '../components/ui/Link'
 import Alert from '../components/ui/Alert'
-import DiscountBadge from '../components/ui/DiscountBadge'
+import { DiscountBadge } from '../components/ui/Badge'
 import SearchInput from '../components/common/SearchInput'
 import QuantitySelector from '../components/ui/QuantitySelector'
 
@@ -473,6 +474,30 @@ function BadgesSection() {
         </li>
         <li>
           <DiscountBadge listPrice={100} spotPrice={50} small />
+        </li>
+        <li>
+          <Badge variant="new">New</Badge>
+        </li>
+        <li>
+          <Badge variant="new" small>
+            New
+          </Badge>
+        </li>
+        <li>
+          <Badge variant="outOfStock">Out of stock</Badge>
+        </li>
+        <li>
+          <Badge variant="outOfStock" small>
+            Out of stock
+          </Badge>
+        </li>
+        <li>
+          <Badge variant="recommended">Recommended</Badge>
+        </li>
+        <li>
+          <Badge variant="recommended" small>
+            Recommended
+          </Badge>
         </li>
       </ul>
     </section>
