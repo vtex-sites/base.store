@@ -7,7 +7,25 @@ interface TilesProps {
   products: ProductSummary_ProductFragment[]
 }
 
+const NUMBER_ITEMS_TO_EXPAND_FIRST_TWO = 2
+const NUMBER_ITEMS_TO_EXPAND_FIRST = 3
+
 const ProductTiles = ({ products }: TilesProps) => {
+  function getRatio(idx: number) {
+    const expandsFirstTile =
+      products.length === NUMBER_ITEMS_TO_EXPAND_FIRST && idx === 0
+
+    const expandsFirstTwoTile =
+      products.length === NUMBER_ITEMS_TO_EXPAND_FIRST_TWO &&
+      (idx === 0 || idx === 1)
+
+    if (expandsFirstTile || expandsFirstTwoTile) {
+      return '4:3'
+    }
+
+    return '3:4'
+  }
+
   return (
     <Tiles>
       {products.map((product, idx) => (
@@ -17,7 +35,7 @@ const ProductTiles = ({ products }: TilesProps) => {
             index={idx + 1}
             variant="horizontal"
             showActions={false}
-            ratio="3:4"
+            ratio={getRatio(idx)}
           />
         </Tile>
       ))}
