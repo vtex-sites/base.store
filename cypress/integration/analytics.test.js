@@ -176,7 +176,7 @@ describe('select_item event', () => {
           )
 
           expect(event).to.exist
-          expect(skuId).to.equal(event.ecommerce.items[0].item_id)
+          expect(skuId).to.equal(event.ecommerce.items[0].item_variant)
         })
       })
   })
