@@ -49,11 +49,23 @@
   }
 
   [data-card-content] a[href] {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
     min-height: 100%;
+    max-height: var(--space-6);
     padding: 0;
+    overflow: hidden;
     color: inherit;
     text-decoration: none;
+    text-overflow: -o-ellipsis-lastline;
+    text-overflow: ellipsis;
     outline: none;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    box-orient: vertical;
 
     &::after {
       position: absolute;
