@@ -1364,6 +1364,17 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
+"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/52993d46/@faststore/api":
+  version "1.4.14"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/52993d46/@faststore/api#13f4b7d92ca10a33db2d3c5006d532768fb3c72a"
+  dependencies:
+    "@graphql-tools/schema" "^8.2.0"
+    "@rollup/plugin-graphql" "^1.0.0"
+    "@sindresorhus/slugify" "^1.1.2"
+    dataloader "^2.0.0"
+    fast-deep-equal "^3.1.3"
+    isomorphic-unfetch "^3.1.0"
+
 "@faststore/sdk@^1.4.14":
   version "1.4.14"
   resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.4.14.tgz#b7edff9b86892dada7b6e872fbad72c0f617956c"
