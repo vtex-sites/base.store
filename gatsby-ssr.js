@@ -1,7 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
-import { HelmetProvider } from 'react-helmet-async'
 
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
@@ -25,13 +24,11 @@ export const wrapRootElement = ({ element, pathname }) => {
             actions={uiActions}
             effects={uiEffects}
           >
-            <HelmetProvider>
-              <SessionProvider initialState={{ channel: storeConfig.channel }}>
-                <CartProvider mode="optimistic" onValidateCart={validateCart}>
-                  {element}
-                </CartProvider>
-              </SessionProvider>
-            </HelmetProvider>
+            <SessionProvider initialState={{ channel: storeConfig.channel }}>
+              <CartProvider mode="optimistic" onValidateCart={validateCart}>
+                {element}
+              </CartProvider>
+            </SessionProvider>
           </UIProvider>
         </TestProvider>
       </AnalyticsHandler>
