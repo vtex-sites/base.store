@@ -45,8 +45,6 @@ export const onRenderBody = ({ setHeadComponents }) => {
     ])
   } else if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line
-    console.warn(
-      'gtmContainerId is not set. Google Tag Manager will not work until you provide a valid container id.'
-    )
+    console.warn('Check the analytics section on your store.config.js file.')
   }
 }
