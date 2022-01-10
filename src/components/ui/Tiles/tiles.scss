@@ -28,13 +28,15 @@
 
     img { transition: transform .5s ease; }
 
-    &:hover {
-      outline: none;
-      box-shadow: var(--box-shadow-dark);
+    @media (hover: hover) {
+      &:hover {
+        outline: none;
+        box-shadow: var(--box-shadow-dark);
 
-      img {
-        transform: scale(1.03);
-        transform-origin: center center;
+        img {
+          transform: scale(1.03);
+          transform-origin: center center;
+        }
       }
     }
 
