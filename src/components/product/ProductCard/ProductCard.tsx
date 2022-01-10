@@ -14,7 +14,7 @@ interface Props {
   className?: string
 }
 
-function ProductSummary({ product, index, className }: Props) {
+function ProductCard({ product, index, className }: Props) {
   const {
     id,
     sku,
@@ -136,4 +136,4 @@ export const fragment = graphql`
   }
 `
 
-export default ProductSummary
+export default ProductCard
