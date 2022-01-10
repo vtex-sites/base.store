@@ -17,6 +17,7 @@ const ProductTiles = ({ products }: TilesProps) => {
             index={idx + 1}
             variant="horizontal"
             showActions={false}
+            ratio="3:4"
           />
         </Tile>
       ))}
