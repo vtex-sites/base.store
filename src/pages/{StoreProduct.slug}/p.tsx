@@ -160,10 +160,10 @@ export const querySSG = graphql`
         highPrice
         priceCurrency
         offers {
+          availability
           price
           priceValidUntil
           priceCurrency
-          availability
           itemCondition
           seller {
             identifier

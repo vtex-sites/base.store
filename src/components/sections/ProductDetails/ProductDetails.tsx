@@ -44,7 +44,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       isVariantOf: { name, productGroupID: productId },
       image: productImages,
       offers: {
-        offers: [{ price, listPrice, seller }],
+        offers: [{ availability, price, listPrice, seller }],
         lowPrice: spotPrice,
       },
       breadcrumbList,
@@ -52,6 +52,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   } = data
 
   const { currency } = useSession()
+  const buyDisabled: boolean = availability !== 'https://schema.org/InStock'
 
   useEffect(() => {
     sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
@@ -192,7 +193,9 @@ function ProductDetails({ product: staleProduct }: Props) {
           {isValidating ? (
             <AddToCartLoadingSkeleton />
           ) : (
-            <BuyButton {...buyProps}>Buy Now</BuyButton>
+            <BuyButton disabled={buyDisabled} {...buyProps}>
+              Buy Now
+            </BuyButton>
           )}
         </section>
 
@@ -290,6 +293,7 @@ export const fragment = graphql`
     offers {
       lowPrice
       offers {
+        availability
         price
         listPrice
         seller {
