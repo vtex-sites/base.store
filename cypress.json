@@ -5,6 +5,6 @@
   "video": true,
   "retries": 2,
   "chromeWebSecurity": false,
-  "viewportWidth": 1920,
-  "viewportHeight": 1080
+  "viewportWidth": 1000,
+  "viewportHeight": 600
 }
