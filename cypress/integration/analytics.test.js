@@ -82,6 +82,7 @@ describe('add_to_cart event', () => {
       cy.itemsInCart(0)
 
       // Add to cart
+      cy.getById('store-card').first().click()
       cy.getById('buy-button')
         .first()
         .click()
@@ -171,13 +172,12 @@ describe('select_item event', () => {
 
     let skuId
 
-    cy.getById('store-card')
-      .first()
-      .within(() => {
-        cy.getById('buy-button').then(($btn) => {
-          skuId = $btn.attr('data-sku')
-        })
+    cy.getById('store-card').first().click()
+    cy.getById('buy-button')
+      .then(($btn) => {
+        skuId = $btn.attr('data-sku')
       })
+
       .click()
       .then(() => {
         cy.window().then((window) => {
