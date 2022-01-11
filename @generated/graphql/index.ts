@@ -3572,6 +3572,7 @@ export type ProductDetailsFragment_ProductFragment = {
   offers: {
     lowPrice: number
     offers: Array<{
+      availability: string
       price: number
       listPrice: number
       seller: { identifier: string }
@@ -3763,10 +3764,10 @@ export type ProductPageQueryQuery = {
           highPrice: number
           priceCurrency: string
           offers: Array<{
+            availability: string
             price: number
             priceValidUntil: string
             priceCurrency: string
-            availability: string
             itemCondition: string
             listPrice: number
             seller: { identifier: string }
@@ -3843,6 +3844,7 @@ export type BrowserProductQueryQuery = {
     offers: {
       lowPrice: number
       offers: Array<{
+        availability: string
         price: number
         listPrice: number
         seller: { identifier: string }
