@@ -25,7 +25,7 @@
     "@envelop/parser-cache": "^2.2.0",
     "@envelop/response-cache": "^0.5.0",
     "@envelop/validation-cache": "^2.2.0",
-    "@faststore/api": "^1.4.14",
+    "@faststore/api": "https://pkg.csb.dev/vtex/faststore/commit/eb569b75/@faststore/api",
     "@faststore/sdk": "^1.4.14",
     "@faststore/ui": "^1.4.14",
     "@vtex/gatsby-plugin-nginx": "^1.4.14",
