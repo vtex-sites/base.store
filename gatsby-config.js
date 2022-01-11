@@ -137,43 +137,6 @@ module.exports = {
       },
     },
     {
-      resolve: '@vtex/gatsby-plugin-nginx',
-      options: {
-        httpOptions: [
-          ['merge_slashes', 'off'],
-          ['proxy_http_version', '1.1'],
-          ['absolute_redirect', 'off'],
-        ],
-        serverOptions: isWebOps
-          ? [['resolver', '169.254.169.253']]
-          : [['resolver', '8.8.8.8']],
-        locations: {
-          append: {
-            cmd: ['location', '/'],
-            children: [
-              {
-                cmd: [
-                  'add_header',
-                  'Cache-Control',
-                  '"public, max-age=0, must-revalidate"',
-                ],
-              },
-              {
-                cmd: [
-                  'try_files',
-                  '$uri',
-                  '$uri/',
-                  '$uri/index.html',
-                  '$uri.html',
-                  '=404',
-                ],
-              },
-            ],
-          },
-        },
-      },
-    },
-    {
       resolve: 'gatsby-plugin-gatsby-cloud',
     },
     {
