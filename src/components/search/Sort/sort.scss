@@ -2,6 +2,8 @@
 
 .sort {
   position: relative;
+  display: flex;
+  align-items: center;
   font-size: var(--text-size-2);
   line-height: 1.25;
 
@@ -38,7 +40,6 @@
 
   svg {
     position: absolute;
-    top: calc(50% - 9px);
     right: var(--space-2);
     color: var(--color-link);
   }
