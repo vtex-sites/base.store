@@ -8,6 +8,13 @@
     align-items: center;
     overflow-x: hidden;
 
+    li:last-of-type {
+      display: inline;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
     [data-breadcrumb-item] {
       display: block;
       width: 100%;
