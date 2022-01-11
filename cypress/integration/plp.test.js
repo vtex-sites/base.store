@@ -127,7 +127,7 @@ describe('Infinite Scroll pagination', () => {
           .scrollIntoView({ offset: { top: -20 } })
           .click()
           .then(() => {
-            // Ensure wait new page after clicks show more
+            // Ensure it waits for the new page after clicking "show more"
             cy.getById('show-more')
               .scrollIntoView({ offset: { top: -20 } })
               .then(() => {
@@ -172,9 +172,15 @@ describe('Infinite Scroll pagination', () => {
 
     cy.getById('show-more')
       .should('exist')
+      .scrollIntoView()
       .click()
       .then(() => {
-        cy.location('search').should('match', /page=1$/)
+        // Ensure it waits for the new page after clicking "show more"
+        cy.getById('show-more')
+          .scrollIntoView({ offset: { top: -20 } })
+          .then(() => {
+            cy.location('search').should('match', /page=1$/)
+          })
 
         cy.getById('store-card').last().scrollIntoView()
         cy.location('search').should('match', /page=1$/)
