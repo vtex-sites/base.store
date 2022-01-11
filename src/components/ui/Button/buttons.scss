@@ -10,7 +10,7 @@
   text-decoration: none;
   column-gap: var(--space-2);
   border: 0;
-  border-radius: var(--border-radius-default);
+  border-radius: var(--border-radius-button);
   transition: background-color .5s ease;
 
   &:focus { @include focus-ring; }

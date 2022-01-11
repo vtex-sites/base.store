@@ -34,8 +34,9 @@
   --color-neutral-6: #5d666f;
   --color-neutral-7: #171a1c;
 
-  // Contextual Colors ////////////////
   --color-success: #cee8de;
+
+  // State Colors ////////////////
 
   // Typography /////////////////////
 
@@ -85,9 +86,12 @@
 
   --border-radius-flat: 0;
   --border-radius-small: .125rem;
-  --border-radius-default: .25rem;
+  --border-radius-regular: .25rem;
   --border-radius-pill: 100px;
   --border-radius-circle: 100%;
+
+  --border-radius-default: var(--border-radius-regular);
+  --border-radius-button: var(--border-radius-regular);
 
   // Width
   --border-width-0: 1px;
