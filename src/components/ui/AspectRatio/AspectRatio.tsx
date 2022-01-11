@@ -3,7 +3,32 @@ import type { HTMLAttributes } from 'react'
 
 import './aspect-ratio.scss'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+type Ratio =
+  | '1'
+  | '1:1'
+  | '2'
+  | '2:1'
+  | '3:2'
+  | '4:3'
+  | '5:3'
+  | '5:4'
+  | '7:5'
+  | '16:9'
+  | '16:10'
+  | '21:9'
+
+type InverseRatio =
+  | '1:2'
+  | '2:3'
+  | '3:4'
+  | '3:5'
+  | '4:5'
+  | '5:7'
+  | '9:16'
+  | '10:16'
+  | '9:21'
+
+export interface AspectRatioProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -14,23 +39,25 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
    *
    * `21:9`, `16:10`, `16:9`, `4:3`, `2:1`
    */
-  ratio?: string
+  ratio?: Ratio | InverseRatio
 }
 
-const AspectRatio = forwardRef<HTMLDivElement, Props>(function AspectRatio(
-  { children, ratio = '1', testId = 'store-aspect-ratio', ...otherProps },
-  ref
-) {
-  // Ensures only one child component
-  const child = Children.only(children)
+const AspectRatio = forwardRef<HTMLDivElement, AspectRatioProps>(
+  function AspectRatio(
+    { children, ratio = '1', testId = 'store-aspect-ratio', ...otherProps },
+    ref
+  ) {
+    // Ensures only one child component
+    const child = Children.only(children)
 
-  return (
-    <div data-store-aspect-ratio-wrapper data-variant={ratio} {...otherProps}>
-      <div data-aspect-ratio ref={ref} data-testid={testId}>
-        {child}
+    return (
+      <div data-store-aspect-ratio-wrapper data-variant={ratio} {...otherProps}>
+        <div data-aspect-ratio ref={ref} data-testid={testId}>
+          {child}
+        </div>
       </div>
-    </div>
-  )
-})
+    )
+  }
+)
 
 export default AspectRatio

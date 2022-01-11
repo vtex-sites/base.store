@@ -4,6 +4,7 @@ import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import Price from 'src/components/ui/Price'
 import AspectRatio from 'src/components/ui/AspectRatio'
+import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
 import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
@@ -26,7 +27,7 @@ interface Props {
   index: number
   variant?: Variant
   showActions?: boolean
-  ratio?: string
+  ratio?: AspectRatioProps['ratio']
 }
 
 function ProductCard({
