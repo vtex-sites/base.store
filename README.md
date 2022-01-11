@@ -72,7 +72,7 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 
     Your site is now running at `http://localhost:8000`!
 
-> Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+> Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries). Also, if you want to query for dynamic data (allProducts, allCollections, search etc), you can use tools like [GraphQL Playground](https://github.com/graphql/graphql-playground) and configure it to query _`http://localhost:8000/api/graphql`_
 
     Open the `awesome.store` directory in your code editor of choice and edit `src/pages/index.tsx`. Save your changes and the browser will update in real-time!
 
