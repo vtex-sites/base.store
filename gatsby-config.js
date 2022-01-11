@@ -10,7 +10,6 @@ const {
   URL = config.storeUrl,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
-  VTEX_WEBOPS: isWebOps,
 } = process.env
 
 const isProduction = ENV === 'production'
@@ -131,43 +130,6 @@ module.exports = {
         // Source less products is development for better DX
         maxNumProducts: isProduction ? 2500 : 100,
         maxNumCollections: isProduction ? 2500 : 100,
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-nginx',
-      options: {
-        httpOptions: [
-          ['merge_slashes', 'off'],
-          ['proxy_http_version', '1.1'],
-          ['absolute_redirect', 'off'],
-        ],
-        serverOptions: isWebOps
-          ? [['resolver', '169.254.169.253']]
-          : [['resolver', '8.8.8.8']],
-        locations: {
-          append: {
-            cmd: ['location', '/'],
-            children: [
-              {
-                cmd: [
-                  'add_header',
-                  'Cache-Control',
-                  '"public, max-age=0, must-revalidate"',
-                ],
-              },
-              {
-                cmd: [
-                  'try_files',
-                  '$uri',
-                  '$uri/',
-                  '$uri/index.html',
-                  '$uri.html',
-                  '=404',
-                ],
-              },
-            ],
-          },
-        },
       },
     },
     {
