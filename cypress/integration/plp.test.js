@@ -126,12 +126,13 @@ describe('Infinite Scroll pagination', () => {
           .should('exist')
           .click()
           .then(() => {
-            // Ensure wait new page after clicks show more
+            cy.location('search').should('match', /^\?page=1$/)
+          })
+          // Ensure that it waits for a new page after clicking "show more"
+          .then(() => {
             cy.getById('show-more')
               .scrollIntoView()
               .then(() => {
-                cy.location('search').should('match', /\page=1$/)
-
                 // The skuId of the last product on the page
                 let skuIdBeforeNavigate
 
@@ -173,15 +174,15 @@ describe('Infinite Scroll pagination', () => {
       .should('exist')
       .click()
       .then(() => {
-        cy.location('search').should('match', /\page=1$/)
+        cy.location('search').should('match', /^\?page=1$/)
 
         cy.getById('store-card').last().scrollIntoView()
-        cy.location('search').should('match', /\page=1$/)
+        cy.location('search').should('match', /^\?page=1$/)
         cy.getById('store-card')
           .first()
           .scrollIntoView({ offset: { top: -20 } })
           .then(() => {
-            cy.location('search').should('match', /\page=0$/)
+            cy.location('search').should('match', /^\?page=0$/)
           })
       })
   })
