@@ -24,6 +24,7 @@
     &:disabled {
       color: var(--color-text-disabled);
       cursor: not-allowed;
+      opacity: 1;
     }
 
     &:focus {
