@@ -92,6 +92,7 @@ function ProductCard({
       data-card-variant={variant}
       data-card-bordered={bordered}
       data-card-out-of-stock={outOfStock}
+      data-sku={buyProps['data-sku']}
     >
       <UICardImage>
         <AspectRatio ratio={ratio}>
