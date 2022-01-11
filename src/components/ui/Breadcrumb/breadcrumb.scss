@@ -1,3 +1,5 @@
+@import "../../../styles/vendors/include-media";
+
 [data-store-breadcrumb] {
   width: 100%;
   padding-top: var(--space-2);
@@ -8,11 +10,16 @@
     align-items: center;
     overflow-x: hidden;
 
-    li:last-of-type {
+    li:not(:first-child) {
       display: inline;
+      min-width: var(--space-7);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+
+      @include media("<=tablet") {
+        max-width: 30%;
+      }
     }
 
     [data-breadcrumb-item] {
@@ -34,7 +41,7 @@
     }
 
     [data-store-link] {
-      display: flex;
+      display: inline;
       padding: 0;
 
       &:visited {
