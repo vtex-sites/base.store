@@ -31,6 +31,7 @@
     @include media(">=tablet") {
       padding-top: calc(3 / 4 * 100%); // TODO: Remove this after aspect-ratio component is developed
       border-radius: var(--border-radius-default);
+      transform: translate3d(0, 0, 0);
     }
   }
 
