@@ -52,7 +52,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   } = data
 
   const { currency } = useSession()
-  const buyDisabled: boolean = availability !== 'https://schema.org/InStock'
+  const buyDisabled = availability !== 'https://schema.org/InStock'
 
   useEffect(() => {
     sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
