@@ -1,12 +1,12 @@
 import React from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
+import type { CartItemWithAnalytics } from 'src/sdk/cart/useBuyButton'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { AnalyticsCartItem } from 'src/sdk/analytics/types'
 
 interface Props {
-  item: AnalyticsCartItem
+  item: CartItemWithAnalytics
 }
 
 function CartItem({ item }: Props) {

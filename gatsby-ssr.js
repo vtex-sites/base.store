@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
+import { GoogleTagManager, Partytown } from '@builder.io/partytown/react'
 
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
@@ -42,4 +43,20 @@ export const wrapPageElement = ({ element, props }) => {
   if (props.location.pathname.includes('pattern-library')) return <>{element}</>
 
   return <Layout>{element}</Layout>
+}
+
+export const onRenderBody = ({ setHeadComponents }) => {
+  if (storeConfig.analytics.gtmContainerId) {
+    setHeadComponents([
+      <GoogleTagManager
+        key="gtm"
+        containerId={storeConfig.analytics.gtmContainerId}
+        enablePartytown
+      />,
+      <Partytown key="party" />,
+    ])
+  } else if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line
+    console.warn('Check the analytics section on your store.config.js file.')
+  }
 }

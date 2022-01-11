@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import React, { useMemo } from 'react'
+import React, { useEffect } from 'react'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
@@ -12,6 +12,9 @@ import Breadcrumb from 'src/components/ui/Breadcrumb'
 import ProductTitle from 'src/components/ui/ProductTitle'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import QuantitySelector from 'src/components/ui/QuantitySelector'
+import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
+import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 import './product-details.scss'
 
@@ -33,26 +36,55 @@ function ProductDetails({ product: staleProduct }: Props) {
     product: {
       id,
       sku,
+      gtin,
       description: productDescription,
-      gtin: referenceId,
       name: variantName,
-      brand: { name: brandName },
+      brand,
+      isVariantOf,
       isVariantOf: { name, productGroupID: productId },
       image: productImages,
-      offers: { lowPrice: spotPrice, offers },
+      offers: {
+        offers: [{ price, listPrice, seller }],
+        lowPrice: spotPrice,
+      },
       breadcrumbList,
     },
   } = data
 
-  const { listPrice, seller } = useMemo(() => {
-    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+  const { currency } = useSession()
 
-    if (!lowestPriceOffer) {
-      return offers[0]
-    }
-
-    return lowestPriceOffer
-  }, [spotPrice, offers])
+  useEffect(() => {
+    sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
+      name: 'view_item',
+      params: {
+        currency: currency.code as CurrencyCode,
+        value: price,
+        items: [
+          {
+            item_id: isVariantOf.productGroupID,
+            item_name: isVariantOf.name,
+            item_brand: brand.name,
+            item_variant: sku,
+            price,
+            discount: listPrice - price,
+            currency: currency.code as CurrencyCode,
+            item_variant_name: variantName,
+            product_reference_id: gtin,
+          },
+        ],
+      },
+    })
+  }, [
+    isVariantOf.productGroupID,
+    isVariantOf.name,
+    brand.name,
+    sku,
+    price,
+    listPrice,
+    currency.code,
+    variantName,
+    gtin,
+  ])
 
   const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
   const description = productDescription ?? staleProduct.description
@@ -60,14 +92,13 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   const buyProps = useBuyButton({
     id,
-    name,
-    brand: brandName,
-    price: spotPrice,
+    brand,
+    isVariantOf,
+    price,
     listPrice,
     seller,
     quantity: 1,
-    referenceId,
-    productId,
+    gtin,
     itemOffered: {
       image: productImages,
       name: variantName,
@@ -127,6 +158,10 @@ function ProductDetails({ product: staleProduct }: Props) {
                 SRText="Sale Price:"
               />
             </div>
+            {/* <div className="prices">
+              <p className="price__old text-body-small">{formattedListPrice}</p>
+              <p className="price__new">{isValidating ? '' : formattedPrice}</p>
+            </div> */}
             <QuantitySelector min={1} max={10} disabled={false} />
           </section>
 

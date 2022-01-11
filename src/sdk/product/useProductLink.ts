@@ -1,29 +1,21 @@
 import { useMemo } from 'react'
-import { useSession, sendAnalyticsEvent } from '@faststore/sdk'
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import type {
-  CurrencyCode,
-  SelectItemEvent,
-  SelectItemParams,
-  Item,
-} from '@faststore/sdk'
+import type { SelectItemEvent, CurrencyCode } from '@faststore/sdk'
+
+import type { AnalyticsItem } from '../analytics/types'
 
 export type ProductLinkOptions = {
   index: number
   product: ProductSummary_ProductFragment
+  selectedOffer: number
 }
 
-type GAItem = Item & {
-  product_reference_id?: string
-}
-
-type GASelectItemEventParams = SelectItemParams & { items: GAItem[] }
-
-interface GASelectItemEvent extends SelectItemEvent {
-  params: GASelectItemEventParams
-}
-
-export const useProductLink = ({ index, product }: ProductLinkOptions) => {
+export const useProductLink = ({
+  index,
+  product,
+  selectedOffer,
+}: ProductLinkOptions) => {
   const { slug } = product
   const {
     currency: { code },
@@ -31,41 +23,23 @@ export const useProductLink = ({ index, product }: ProductLinkOptions) => {
 
   return useMemo(() => {
     const onClick = () => {
-      const currency = code as CurrencyCode
-
-      sendAnalyticsEvent<GASelectItemEvent>({
+      sendAnalyticsEvent<SelectItemEvent<AnalyticsItem>>({
         name: 'select_item',
         params: {
           items: [
             {
-              item_id: product.id,
+              item_id: product.isVariantOf.productGroupID,
               item_name: product.isVariantOf.name,
-              item_variant_name: product.name,
-              index,
               item_brand: product.brand.name,
               item_variant: product.sku,
-              price: product.offers.offers[0].price,
-            },
-          ],
-        },
-      })
-
-      sendAnalyticsEvent({
-        name: 'view_item',
-        params: {
-          currency,
-          value: product.offers.offers[0]?.price,
-          items: [
-            {
-              item_id: product.id,
-              item_name: product.name,
-              index: 0,
-              price: product.offers.offers[0]?.price,
+              index,
+              price: product.offers.offers[selectedOffer].price,
               discount:
-                product.offers.offers[0]?.listPrice -
-                product.offers.offers[0]?.price,
-              item_brand: product.brand.name,
-              item_variant: product.isVariantOf.name,
+                product.offers.offers[selectedOffer].listPrice -
+                product.offers.offers[selectedOffer].price,
+              currency: code as CurrencyCode,
+              item_variant_name: product.name,
+              product_reference_id: product.gtin,
             },
           ],
         },
@@ -77,5 +51,5 @@ export const useProductLink = ({ index, product }: ProductLinkOptions) => {
       onClick,
       'data-testid': 'product-link',
     }
-  }, [slug, code, product, index])
+  }, [slug, code, product, index, selectedOffer])
 }
