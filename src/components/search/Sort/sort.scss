@@ -1,4 +1,4 @@
-@import "../../../styles/utilities";
+@import "../../../styles/scaffold.scss";
 
 .sort {
   position: relative;
@@ -11,7 +11,6 @@
   }
 
   [data-store-select] {
-    min-height: var(--min-size);
     padding: var(--space-1) var(--space-5) var(--space-1) var(--space-2);
     color: var(--color-link);
     background: transparent;
@@ -30,6 +29,10 @@
     &:focus {
       @include focus-ring;
     }
+
+    @include media("<notebook") { min-height: var(--min-size); }
+
+    @include media(">=notebook") { height: var(--space-6); }
   }
 
   svg {
