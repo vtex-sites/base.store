@@ -4,6 +4,7 @@
   padding: var(--space-1) var(--space-2);
   font-weight: var(--text-weight-bold);
   font-size: var(--text-size-2);
+  white-space: nowrap;
   text-transform: uppercase;
   border-radius: var(--border-radius-pill);
 
@@ -25,7 +26,7 @@
 
 [data-store-badge-variant="recommended"] {
   color: var(--color-text);
-  background-color: var(--bg-secondary-light);
+  background-color: var(--bg-primary-light);
 }
 
 [data-store-badge-variant="new"] {
