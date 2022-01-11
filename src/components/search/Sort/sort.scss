@@ -1,0 +1,40 @@
+@import "../../../styles/utilities";
+
+.sort {
+  position: relative;
+  font-size: var(--text-size-2);
+  line-height: 1.25;
+
+  label {
+    margin-right: var(--space-1);
+    color: var(--color-text-subtle); // --color-neutral-5
+  }
+
+  [data-store-select] {
+    padding: var(--space-1) var(--space-5) var(--space-1) var(--space-2);
+    color: var(--color-link);
+    background: transparent;
+    border: 0;
+    border-radius: var(--border-radius-default);
+    transition: background-color .2s ease;
+    appearance: none;
+
+    &:hover:not(:disabled) { background-color: var(--bg-secondary-light); }
+
+    &:disabled {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+    }
+
+    &:focus {
+      @include focus-ring;
+    }
+  }
+
+  svg {
+    position: absolute;
+    top: calc(50% - 9px);
+    right: var(--space-2);
+    color: var(--color-link);
+  }
+}
