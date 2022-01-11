@@ -10,15 +10,20 @@
     align-items: center;
     overflow-x: hidden;
 
-    li:not(:first-child) {
-      display: inline;
-      min-width: var(--space-7);
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    li {
+      &:first-child a {
+        display: flex;
+        align-items: center;
+      }
 
-      @include media("<=tablet") {
-        max-width: 30%;
+      &:not(:first-child) {
+        display: inline;
+        min-width: var(--space-7);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        @include media("<=tablet") { max-width: 30%; }
       }
     }
 
