@@ -179,7 +179,7 @@ describe('Infinite Scroll pagination', () => {
         cy.location('search').should('match', /\page=1$/)
         cy.getById('store-card')
           .first()
-          .scrollIntoView({ offset: { top: -40 } })
+          .scrollIntoView({ offset: { top: -20 } })
           .then(() => {
             cy.location('search').should('match', /\page=0$/)
           })
