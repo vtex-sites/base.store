@@ -1,9 +1,5 @@
 const path = require('path')
 
-const config = require('./store.config')
-
-const { loginUrl } = config
-
 const fs = require('fs-extra')
 
 exports.onPreInit = ({ reporter }) => {
