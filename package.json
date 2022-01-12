@@ -35,6 +35,7 @@
     "@vtex/gatsby-plugin-thumbor": "^1.4.15",
     "@vtex/gatsby-source-store": "^1.4.15",
     "@vtex/graphql-utils": "^1.4.15",
+    "fs-extra": "^10.0.0",
     "gatsby": "^3.14.3",
     "gatsby-plugin-gatsby-cloud": "^3.2.0",
     "gatsby-plugin-image": "^1.14.1",
