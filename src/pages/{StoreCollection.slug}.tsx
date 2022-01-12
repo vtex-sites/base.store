@@ -11,6 +11,10 @@ import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
+import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
+
+import '../styles/pages/plp.scss'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,
@@ -90,9 +94,28 @@ function Page(props: Props) {
         {title}
       </h1>
 
+      <div className="plp-wrapper / grid-content">
+        <BreadcrumbWrapper
+          breadcrumbList={collection?.breadcrumbList.itemListElement}
+          name={title}
+        />
+      </div>
+
       <ProductGallery title={title} />
     </SearchProvider>
   )
+}
+
+interface BreadcrumbWrapperProps
+  extends Partial<Pick<BreadcrumbProps, 'breadcrumbList'>> {
+  name: string
+}
+
+function BreadcrumbWrapper({ breadcrumbList, name }: BreadcrumbWrapperProps) {
+  const fallback = [{ item: '/', name, position: 1 }]
+  const list = breadcrumbList ?? fallback
+
+  return <Breadcrumb breadcrumbList={list} />
 }
 
 /**
