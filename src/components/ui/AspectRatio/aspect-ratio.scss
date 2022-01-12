@@ -1,0 +1,117 @@
+[data-store-aspect-ratio] {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+
+  /*
+  * Ratio variants
+  */
+
+  &[data-variant="1"] {
+    padding-bottom: 100%;
+  }
+
+  &[data-variant="1:1"] {
+    padding-bottom: 100%;
+  }
+
+  &[data-variant="2"] {
+    padding-bottom: calc(100% / 2);
+  }
+
+  &[data-variant="2:1"] {
+    padding-bottom: calc(100% / 2);
+  }
+
+  &[data-variant="3:2"] {
+    padding-bottom: calc(100% / (3 / 2));
+  }
+
+  &[data-variant="4:3"] {
+    padding-bottom: calc(100% / (4 / 3));
+  }
+
+  &[data-variant="5:3"] {
+    padding-bottom: calc(100% / (5 / 3));
+  }
+
+  &[data-variant="5:4"] {
+    padding-bottom: calc(100% / (5 / 4));
+  }
+
+  &[data-variant="7:5"] {
+    padding-bottom: calc(100% / (7 / 5));
+  }
+
+  &[data-variant="16:9"] {
+    padding-bottom: calc(100% / (16 / 9));
+  }
+
+  &[data-variant="16:10"] {
+    padding-bottom: calc(100% / (16 / 10));
+  }
+
+  &[data-variant="21:9"] {
+    padding-bottom: calc(100% / (21 / 9));
+  }
+
+  /*
+  * InverseRatio variants
+  */
+
+  &[data-variant="1:2"] {
+    padding-bottom: calc(100% / (1 / 2));
+  }
+
+  &[data-variant="2:3"] {
+    padding-bottom: calc(100% / (2 / 3));
+  }
+
+  &[data-variant="3:4"] {
+    padding-bottom: calc(100% / (3 / 4));
+  }
+
+  &[data-variant="3:5"] {
+    padding-bottom: calc(100% / (3 / 5));
+  }
+
+  &[data-variant="4:5"] {
+    padding-bottom: calc(100% / (4 / 5));
+  }
+
+  &[data-variant="5:7"] {
+    padding-bottom: calc(100% / (5 / 7));
+  }
+
+  &[data-variant="9:16"] {
+    padding-bottom: calc(100% / (9 / 16));
+  }
+
+  &[data-variant="10:16"] {
+    padding-bottom: calc(100% / (10 / 16));
+  }
+
+  &[data-variant="9:21"] {
+    padding-bottom: calc(100% / (9 / 21));
+  }
+}
+
+[data-aspect-ratio-content] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  > * {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
