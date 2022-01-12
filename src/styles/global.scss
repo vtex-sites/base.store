@@ -34,9 +34,13 @@
   --color-neutral-6: #5d666f;
   --color-neutral-7: #171a1c;
 
+  // State Colors
   --color-success: #cee8de;
 
-  // State Colors ////////////////
+  // Customizable
+  --bg-body: var(--color-neutral-0);
+  --color-text: var(--color-neutral-7);
+  --color-text-inverse: var(--color-neutral-0);
 
   // Typography /////////////////////
 
