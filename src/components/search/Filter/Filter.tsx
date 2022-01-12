@@ -68,9 +68,11 @@ function Filter({
     if (expandedIndices.has(index)) {
       expandedIndices.delete(index)
       setExpandedIndices(new Set(expandedIndices))
-    } else {
-      setExpandedIndices(new Set(expandedIndices.add(index)))
+
+      return
     }
+
+    setExpandedIndices(new Set(expandedIndices.add(index)))
   }
 
   const onFilterChange = (item: IStoreSelectedFacet) => {
@@ -81,9 +83,11 @@ function Filter({
 
       selectedFilters.splice(indexToRemove, 1)
       setSelectedFilters([...selectedFilters])
-    } else {
-      setSelectedFilters([...selectedFilters, item])
+
+      return
     }
+
+    setSelectedFilters([...selectedFilters, item])
   }
 
   const Filters = () => {
@@ -124,10 +128,12 @@ function Filter({
                             onChange={() => {
                               if (isMobile) {
                                 onFilterChange({ key, value: item.value })
-                              } else {
-                                toggleFacet({ key, value: item.value })
-                                onFilterChange({ key, value: item.value })
+
+                                return
                               }
+
+                              toggleFacet({ key, value: item.value })
+                              onFilterChange({ key, value: item.value })
                             }}
                             data-testid="filter-accordion-panel-checkbox"
                             data-value={item.value}
