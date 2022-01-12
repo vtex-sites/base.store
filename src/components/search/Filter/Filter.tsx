@@ -14,6 +14,7 @@ import {
   AccordionButton as UIAccordionButton,
   AccordionPanel as UIAccordionPanel,
 } from '@faststore/ui'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
 
@@ -31,7 +32,8 @@ interface Props {
 }
 
 function Filter({ facets, onDismiss, isOpen = false }: Props) {
-  const { toggleFacets, state: searchState } = useSearch()
+  const { width: screenWidth } = useWindowDimensions()
+  const { toggleFacet, toggleFacets, state: searchState } = useSearch()
 
   const [expandedIndices, setExpandedIndices] = useState<Set<number>>(
     new Set([])
@@ -44,9 +46,13 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
-    // TODO: check if is mobile version here
-    setIsMobile(true)
-  }, [])
+    if (!screenWidth) {
+      return
+    }
+
+    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
+    setIsMobile(screenWidth < 1280)
+  }, [screenWidth])
 
   const onAccordionChange = (index: number) => {
     if (expandedIndices.has(index)) {
@@ -105,9 +111,13 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
                           <Checkbox
                             id={id}
                             checked={isSelected}
-                            onChange={() =>
-                              onFilterChange({ key, value: item.value })
-                            }
+                            onChange={() => {
+                              if (isMobile) {
+                                onFilterChange({ key, value: item.value })
+                              } else {
+                                toggleFacet({ key, value: item.value })
+                              }
+                            }}
                           />
                           <label htmlFor={id}>
                             {item.label} ({item.quantity})
