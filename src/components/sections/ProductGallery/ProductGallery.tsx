@@ -20,7 +20,7 @@ function ProductGallery({ title }: Props) {
   const { next, prev } = usePagination(totalCount)
 
   if (!data) {
-    return <div>loading...</div>
+    return <div className="temp-data-loading">loading...</div>
   }
 
   return (
