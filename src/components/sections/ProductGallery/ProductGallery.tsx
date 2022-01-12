@@ -42,17 +42,19 @@ function ProductGallery({ title }: Props) {
   return (
     <>
       {/* Controls */}
-      <Filter
-        isOpen={isFilterOpen}
-        facets={data.search.facets}
-        onDismiss={() => setIsFilterOpen(false)}
-      />
       <div>
         <div data-testid="total-product-count" data-count={totalCount}>
           Total Products: {totalCount}
         </div>
         <Sort />
         <h2>Most Wanted</h2>
+      </div>
+      <div>
+        <Filter
+          isOpen={isFilterOpen}
+          facets={data.search.facets}
+          onDismiss={() => setIsFilterOpen(false)}
+        />
         {isMobile && (
           <Button
             data-testid="open-filter-button"
