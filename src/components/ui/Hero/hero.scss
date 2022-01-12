@@ -110,7 +110,7 @@
     p {
       font-size: var(--space-3);
 
-      @include media(">=tablet") { font-size: 1.25rem; }
+      @include media(">=tablet") { font-size: var(--text-size-3); }
     }
   }
 }
