@@ -5,7 +5,10 @@
   align-items: stretch;
   overflow-x: scroll;
 
-  li:first-child { margin-left: calc(-1 * var(--space-1)); }
+  li {
+    width: 100%;
+    &:first-child { margin-left: calc(-1 * var(--space-1)); }
+  }
 
   @include media(">=notebook") {
     padding-top: var(--space-0);
