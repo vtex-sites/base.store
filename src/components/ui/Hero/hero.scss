@@ -7,38 +7,22 @@
   background-color: var(--bg-secondary-default);
 
   @include media(">=notebook") {
-    position: relative;
     flex-direction: row;
-    justify-content: flex-end;
   }
 
   [data-hero-content] {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
-    padding: var(--space-5) 0 var(--space-6);
+    padding: var(--space-5) var(--space-3) var(--space-6);
     color: var(--color-text-inverse);
 
-    @include media(">=notebook") {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      padding: var(--space-13) 0;
-    }
+    .title-hero {
+      font-weight: var(--text-weight-black);
+      font-size: var(--space-5);
+      line-height: 1.1;
 
-    .banner-info-content {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100%;
-
-      @include media(">=notebook") {
-        padding-left: var(--space-5);
-
-        > div {
-          max-width: 42%;
-          padding-right: var(--space-9);
-        }
-      }
+      @include media(">=notebook") { font-size: var(--space-8); }
     }
 
     p {
@@ -70,16 +54,61 @@
     }
   }
 
-  [data-hero-image] {
-    width: 100%;
+  &[data-hero-variant="default"] {
+    [data-hero-content] {
+      @include media(">=notebook") {
+        width: 45%;
+        padding: var(--space-13) var(--space-9) var(--space-13) var(--space-5);
+      }
+    }
 
-    @include media(">=notebook") { width: 53%; }
+    [data-hero-link] a {
+      @include media(">=notebook") { padding: var(--space-2) var(--space-4); }
+    }
 
-    [data-gatsby-image-wrapper] {
+    [data-hero-image] {
       width: 100%;
-      height: 18.75rem;
 
-      @include media(">=notebook") { min-height: 31.5rem; }
+      [data-gatsby-image-wrapper] {
+        width: 100%;
+        height: 18.75rem;
+
+        @include media(">=notebook") { min-height: 31.5rem; }
+      }
+
+      @include media(">=notebook") { width: 55%; }
+    }
+  }
+
+  &[data-hero-variant="small"] {
+    [data-hero-image] {
+      [data-gatsby-image-wrapper] {
+        width: 100%;
+        max-height: 14.5rem;
+      }
+
+      @include media(">=notebook") { width: 50%; }
+    }
+
+    [data-hero-content] {
+      padding: var(--space-4) var(--space-3) var(--space-3) var(--space-3);
+
+      @include media(">=notebook") {
+        width: 50%;
+        padding: var(--space-5) var(--space-5) var(--space-5) 6.4rem;
+      }
+    }
+
+    .title-hero {
+      font-size: var(--space-5);
+
+      @include media(">=notebook") { font-size: var(--space-7); }
+    }
+
+    p {
+      font-size: var(--space-3);
+
+      @include media(">=notebook") { font-size: 1.25rem; }
     }
   }
 }

@@ -28,14 +28,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
 
 // Titles ///////////////////////////
 
-.title-hero {
-  font-weight: var(--text-weight-black);
-  font-size: var(--space-5);
-  line-height: 1.1;
-
-  @include media(">=notebook") { font-size: var(--space-8); }
-}
-
 .title-display-big {
   font-weight: var(--text-weight-bold);
   font-size: var(--text-size-3);
