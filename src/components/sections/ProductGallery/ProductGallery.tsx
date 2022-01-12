@@ -3,6 +3,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
+import { LinkButton } from 'src/components/ui/Button'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -19,7 +20,7 @@ function ProductGallery({ title }: Props) {
   const { next, prev } = usePagination(totalCount)
 
   if (!data) {
-    return <div>loading...</div>
+    return <div className="temp-data-loading">loading...</div>
   }
 
   return (
@@ -66,7 +67,7 @@ function ProductGallery({ title }: Props) {
       {next !== false && (
         <>
           <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
-          <a
+          <LinkButton
             data-testid="show-more"
             onClick={(e) => {
               e.currentTarget.blur()
@@ -75,9 +76,10 @@ function ProductGallery({ title }: Props) {
             }}
             href={next.link}
             rel="next"
+            variant="secondary"
           >
-            Show More
-          </a>
+            Load more products
+          </LinkButton>
         </>
       )}
 

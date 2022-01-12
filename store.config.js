@@ -36,4 +36,9 @@ module.exports = {
       search: '/s?q=orange',
     },
   },
+
+  analytics: {
+    // https://developers.google.com/tag-platform/tag-manager/web#standard_web_page_installation,
+    gtmContainerId: 'GTM-PGHZ95N',
+  },
 }

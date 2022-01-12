@@ -3,5 +3,6 @@
   "root": true,
   "rules": {
     "react/prop-types": "off"
-  }
+  },
+  "ignorePatterns": ["static/~partytown/*"]
 }

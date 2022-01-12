@@ -7,7 +7,8 @@ import './incentives.scss'
 interface Incentive {
   icon: ReactNode
   title?: string
-  text: string
+  firstLineText: string
+  secondLineText?: string
 }
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
   classes?: string
 }
 
-function Incentives({ incentives, classes }: Props) {
+function Incentives({ incentives, classes = '' }: Props) {
   return (
     <div className={`incentives ${classes} / grid-content-full`}>
       <UIList variant="unordered" className="grid-content">
@@ -25,7 +26,10 @@ function Incentives({ incentives, classes }: Props) {
               {incentive.icon}
               <div data-incentive-content>
                 {incentive.title && <p>{incentive.title}</p>}
-                <span>{incentive.text}</span>
+                <span>{incentive.firstLineText}</span>
+                {incentive.secondLineText && (
+                  <span>{incentive.secondLineText}</span>
+                )}
               </div>
             </UIIncentive>
           </li>

@@ -9,6 +9,22 @@
 
 Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
 
+## ⚠️ Before you start
+As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarise what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
+1. Support up to 2.5K SKUs. If you have more than 2.5K SKUs, you have two options. Either reduce the number of skus on your catalog to fall below 2.5K SKUs or use Client Side Rendering (CSR) for all SKUs. (Note that CSR makes your SKUs not indexable by Search Engines and harms performance considerably)
+2. Multiple CMS Previews. Only one user is allowed to preview content from the CMS at a time. If two users preview any content from any page at the CMS, the previews are not consistent and one user may see data from the other.
+3. Price Table
+4. Regionalization
+5. Internationalization
+6. Shared Cart (Carrinho compartilhado)
+7. Clear products that are our of stock from cart
+8. GDPR (LGDP)
+9. Shipping simulation
+10. Sitemap
+11. Sku selector on PDP
+12. Promotions via utm
+13. Produt specifications
+
 ## 🚀 Quick start
 
 0. **Clone this repo**
@@ -56,7 +72,7 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
 
     Your site is now running at `http://localhost:8000`!
 
-> Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+> Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.com/docs/tutorial/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries). Also, if you want to query for dynamic data (allProducts, allCollections, search etc), you can use tools like [GraphQL Playground](https://github.com/graphql/graphql-playground) and configure it to query _`http://localhost:8000/api/graphql`_
 
     Open the `awesome.store` directory in your code editor of choice and edit `src/pages/index.tsx`. Save your changes and the browser will update in real-time!
 
@@ -321,3 +337,27 @@ Looking for more guidance? Full documentation for Faststore lives [on this GitHu
 ## ⚡ Performance & QA
 
 This project has strict performance budgets. Right out of the box, this project performs around 95 on Google's Page Speed Insights website, which usually is way more strict than your laptop's chrome lighthouse. Every time you commit to the repository, our QA bots will run and evaluate your code quality. We recommend you NEVER put in production a code that breaks any of the bots. If a bot breaks and still you need to put the code into production, change the bot config (`lighthouserc.js`, `cypress.json`) to make it pass and merge. This way you ensure your website will keep performing well during the years to come.
+
+## Adding third party scripts
+
+Adding third-party scripts to a webpage usually makes it slow. To maintain great performance while third-party scripts are added, this project uses [Partytown](https://github.com/BuilderIO/partytown/), a lazy-load library that helps relocate intensive scripts into a web worker and off of the main thread.
+
+To add scripts using Partytown, add the `type="text/partytown"` to the script tag and make sure to add it before the Partytown script or component.
+Some third-party scripts execute expensive computations that may require some time to run, making pages few slow. If that's the case, wrap those in a function and reference it on the Partytown `forward` prop. By doing this, Partytown will run this function on a web worker so it doesn't block the main thread.
+
+```tsx
+export const onRenderBody = ({ setHeadComponents }) => {
+  // ...
+  setHeadComponents([
+    <script>
+      window.expensiveFunction = function() {/* expensive computation used by custom-script */}
+    </script>
+    <script key="custom-script" src="*://domain/path" type="text/partytown" />,
+    <Partytown key="partytown" forward={["expensiveFunction"]} />
+  ])
+  // ...
+}
+```
+
+For more information about integrating third-party scripts: [Partytown Wiki](https://github.com/BuilderIO/partytown/wiki)
+

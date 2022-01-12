@@ -43,7 +43,17 @@ const Hero = ({
         </div>
       </HeroContent>
       <HeroImage>
-        <Image variant="hero.home" src={imageSrc} alt={imageAlt} />
+        <Image
+          baseUrl={imageSrc}
+          alt={imageAlt}
+          aspectRatio={2}
+          layout="fullWidth"
+          backgroundColor="#f0f0f0"
+          loading="eager"
+          options={{
+            fitIn: true,
+          }}
+        />
       </HeroImage>
     </UIHero>
   )

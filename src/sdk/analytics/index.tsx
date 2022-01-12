@@ -7,7 +7,7 @@ if (typeof window !== 'undefined') {
 
 export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
   useAnalyticsEvent((event) => {
-    window.dataLayer.push(event)
+    window.dataLayer.push({ event: event.name, ecommerce: event.params })
   })
 
   return children

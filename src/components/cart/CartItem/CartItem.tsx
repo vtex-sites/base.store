@@ -1,12 +1,12 @@
 import React from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
+import type { CartItemWithAnalytics } from 'src/sdk/cart/useBuyButton'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import type { AnalyticsCartItem } from 'src/sdk/analytics/types'
 
 interface Props {
-  item: AnalyticsCartItem
+  item: CartItemWithAnalytics
 }
 
 function CartItem({ item }: Props) {
@@ -21,9 +21,17 @@ function CartItem({ item }: Props) {
       data-seller={item.seller.identifier}
     >
       <Image
-        src={item.itemOffered.image[0].url}
+        baseUrl={item.itemOffered.image[0].url}
         alt={item.itemOffered.image[0].alternateName}
-        variant="product.miniature"
+        sourceWidth={720}
+        aspectRatio={1}
+        width={100}
+        breakpoints={[50, 100, 150]}
+        layout="constrained"
+        backgroundColor="#f0f0f0"
+        options={{
+          fitIn: true,
+        }}
       />
       <div>name: {item.itemOffered.name}</div>
       <div>sku: {item.itemOffered.sku}</div>
