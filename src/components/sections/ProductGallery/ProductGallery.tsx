@@ -54,7 +54,10 @@ function ProductGallery({ title }: Props) {
         <Sort />
         <h2>Most Wanted</h2>
         {isMobile && (
-          <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>
+          <Button
+            data-testid="open-filter-button"
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+          >
             <UIIcon component={<FilterIcon size={20} />} />
             Filters
           </Button>

@@ -29,9 +29,19 @@ interface Props {
    * the filter modal or clicks in close button. (mobile only)
    */
   onDismiss?: (event: MouseEvent | KeyboardEvent) => void
+  /**
+   * ID to find this component in testing tools (e.g.: cypress,
+   * testing-library, and jest).
+   */
+  testId?: string
 }
 
-function Filter({ facets, onDismiss, isOpen = false }: Props) {
+function Filter({
+  facets,
+  onDismiss,
+  isOpen = false,
+  testId = 'store-filter',
+}: Props) {
   const { width: screenWidth } = useWindowDimensions()
   const { toggleFacet, toggleFacets, state: searchState } = useSearch()
 
@@ -78,13 +88,13 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
 
   const Filters = () => {
     return (
-      <div data-store-filter>
+      <div data-store-filter data-testid={testId}>
         <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
             .map(({ label, values, key }, index) => (
               <UIAccordionItem key={`${label}-${index}`}>
-                <UIAccordionButton>
+                <UIAccordionButton data-testid="filter-accordion-button">
                   {label}
                   <UIIcon
                     component={
@@ -118,6 +128,9 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
                                 toggleFacet({ key, value: item.value })
                               }
                             }}
+                            data-testid="filter-accordion-panel-checkbox"
+                            data-value={item.value}
+                            data-quantity={item.quantity}
                           />
                           <label htmlFor={id}>
                             {item.label} ({item.quantity})
@@ -141,7 +154,10 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
             >
               Clear All
             </Button>
-            <Button onClick={() => toggleFacets(selectedFilters)}>
+            <Button
+              data-testid="apply-filters-button"
+              onClick={() => toggleFacets(selectedFilters)}
+            >
               View Results
             </Button>
           </div>
@@ -153,7 +169,9 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
   return isMobile ? (
     <UIModal isOpen={isOpen} onDismiss={onDismiss}>
       <h2>Filters</h2>
-      <Button onClick={onDismiss}>X</Button>
+      <Button onClick={onDismiss} data-testid="close-filters-button">
+        X
+      </Button>
       <Filters />
     </UIModal>
   ) : (
