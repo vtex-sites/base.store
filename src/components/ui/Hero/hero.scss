@@ -104,7 +104,7 @@
     .title-hero {
       font-size: var(--space-5);
 
-      @include media(">=tablet") { font-size: var(--space-7); }
+      @include media(">=tablet") { font-size: var(--text-size-7); }
     }
 
     p {
