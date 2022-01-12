@@ -51,8 +51,8 @@ const AspectRatio = forwardRef<HTMLDivElement, AspectRatioProps>(
     const child = Children.only(children)
 
     return (
-      <div data-store-aspect-ratio-wrapper data-variant={ratio} {...otherProps}>
-        <div data-aspect-ratio ref={ref} data-testid={testId}>
+      <div data-store-aspect-ratio data-variant={ratio} {...otherProps}>
+        <div data-aspect-ratio-content ref={ref} data-testid={testId}>
           {child}
         </div>
       </div>
