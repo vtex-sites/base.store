@@ -46,12 +46,10 @@ const Hero = ({
         <Image
           baseUrl={imageSrc}
           alt={imageAlt}
-          sourceWidth={720}
           aspectRatio={2}
-          width={800}
-          breakpoints={[480, 540, 720]}
-          layout="constrained"
+          layout="fullWidth"
           backgroundColor="#f0f0f0"
+          loading="eager"
           options={{
             fitIn: true,
           }}

@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby'
-import React, { useMemo } from 'react'
+import React, { useEffect } from 'react'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
+import AspectRatio from 'src/components/ui/AspectRatio'
 import Price from 'src/components/ui/Price'
 import SkuSelector from 'src/components/ui/SkuSelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
@@ -12,6 +13,9 @@ import Breadcrumb from 'src/components/ui/Breadcrumb'
 import ProductTitle from 'src/components/ui/ProductTitle'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import QuantitySelector from 'src/components/ui/QuantitySelector'
+import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
+import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 import './product-details.scss'
 
@@ -33,26 +37,56 @@ function ProductDetails({ product: staleProduct }: Props) {
     product: {
       id,
       sku,
+      gtin,
       description: productDescription,
-      gtin: referenceId,
       name: variantName,
-      brand: { name: brandName },
+      brand,
+      isVariantOf,
       isVariantOf: { name, productGroupID: productId },
       image: productImages,
-      offers: { lowPrice: spotPrice, offers },
+      offers: {
+        offers: [{ availability, price, listPrice, seller }],
+        lowPrice: spotPrice,
+      },
       breadcrumbList,
     },
   } = data
 
-  const { listPrice, seller } = useMemo(() => {
-    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+  const { currency } = useSession()
+  const buyDisabled = availability !== 'https://schema.org/InStock'
 
-    if (!lowestPriceOffer) {
-      return offers[0]
-    }
-
-    return lowestPriceOffer
-  }, [spotPrice, offers])
+  useEffect(() => {
+    sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
+      name: 'view_item',
+      params: {
+        currency: currency.code as CurrencyCode,
+        value: price,
+        items: [
+          {
+            item_id: isVariantOf.productGroupID,
+            item_name: isVariantOf.name,
+            item_brand: brand.name,
+            item_variant: sku,
+            price,
+            discount: listPrice - price,
+            currency: currency.code as CurrencyCode,
+            item_variant_name: variantName,
+            product_reference_id: gtin,
+          },
+        ],
+      },
+    })
+  }, [
+    isVariantOf.productGroupID,
+    isVariantOf.name,
+    brand.name,
+    sku,
+    price,
+    listPrice,
+    currency.code,
+    variantName,
+    gtin,
+  ])
 
   const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
   const description = productDescription ?? staleProduct.description
@@ -60,14 +94,13 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   const buyProps = useBuyButton({
     id,
-    name,
-    brand: brandName,
-    price: spotPrice,
+    brand,
+    isVariantOf,
+    price,
     listPrice,
     seller,
     quantity: 1,
-    referenceId,
-    productId,
+    gtin,
     itemOffered: {
       image: productImages,
       name: variantName,
@@ -89,20 +122,22 @@ function ProductDetails({ product: staleProduct }: Props) {
         </header>
 
         <section className="product-details__image">
-          <Image
-            baseUrl={productImages[0].url}
-            sourceWidth={720}
-            aspectRatio={1}
-            width={720}
-            breakpoints={[250, 360, 480, 720]}
-            layout="constrained"
-            backgroundColor="#f0f0f0"
-            options={{
-              fitIn: true,
-            }}
-            alt={productImages[0].alternateName}
-            loading="eager"
-          />
+          <AspectRatio ratio="4:3">
+            <Image
+              baseUrl={productImages[0].url}
+              sourceWidth={720}
+              aspectRatio={1}
+              width={720}
+              breakpoints={[250, 360, 480, 720]}
+              layout="constrained"
+              backgroundColor="#f0f0f0"
+              options={{
+                fitIn: true,
+              }}
+              alt={productImages[0].alternateName}
+              loading="eager"
+            />
+          </AspectRatio>
         </section>
 
         <section className="product-details__settings">
@@ -161,7 +196,9 @@ function ProductDetails({ product: staleProduct }: Props) {
           {isValidating ? (
             <AddToCartLoadingSkeleton />
           ) : (
-            <BuyButton {...buyProps}>Buy Now</BuyButton>
+            <BuyButton disabled={buyDisabled} {...buyProps}>
+              Buy Now
+            </BuyButton>
           )}
         </section>
 
@@ -259,6 +296,7 @@ export const fragment = graphql`
     offers {
       lowPrice
       offers {
+        availability
         price
         listPrice
         seller {

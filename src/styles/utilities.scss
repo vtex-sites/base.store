@@ -14,7 +14,13 @@ $base: 16px !default;
   @return #{$rem}rem;
 }
 
-@mixin focus-ring {
+@mixin button-focus-ring {
   outline: 2px solid var(--bg-focus-ring);
   outline-offset: 1px;
+}
+
+// Supports safari browsers
+@mixin focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-3) var(--bg-focus-ring);
 }

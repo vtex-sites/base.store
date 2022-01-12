@@ -14,27 +14,27 @@ function IncentivesHeader() {
     {
       icon: <TruckIcon size={32} />,
       title: 'Buy online',
-      text: 'Get Free Shipping',
+      firstLineText: 'Get Free Shipping',
     },
     {
       icon: <CalendarIcon size={32} />,
       title: 'Free return',
-      text: '30 days to return',
+      firstLineText: '30 days to return',
     },
     {
       icon: <GiftIcon size={32} />,
       title: 'Gift cards',
-      text: '$20 / $30 / $50',
+      firstLineText: '$20 / $30 / $50',
     },
     {
       icon: <StorefrontIcon size={32} />,
       title: 'Physical Stores',
-      text: '+40 Stores in Brazil',
+      firstLineText: '+40 Stores in Brazil',
     },
     {
       icon: <ShieldCheckIcon size={32} />,
       title: 'Buy online',
-      text: 'Get Free Shipping',
+      firstLineText: 'Get Free Shipping',
     },
   ]
 

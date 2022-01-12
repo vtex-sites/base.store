@@ -3,6 +3,8 @@ import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import Price from 'src/components/ui/Price'
+import AspectRatio from 'src/components/ui/AspectRatio'
+import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
 import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
@@ -25,6 +27,7 @@ interface Props {
   index: number
   variant?: Variant
   showActions?: boolean
+  ratio?: AspectRatioProps['ratio']
 }
 
 function ProductCard({
@@ -32,39 +35,46 @@ function ProductCard({
   index,
   variant = 'vertical',
   showActions = true,
+  ratio = '1',
 }: Props) {
   const {
     id,
     sku,
-    gtin: referenceId,
+    gtin,
     name: variantName,
-    brand: { name: brandName },
-    isVariantOf: { name, productGroupID: productId },
+    brand,
+    isVariantOf,
+    isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
   } = product
 
-  const { listPrice, seller } = useMemo(() => {
-    const lowestPriceOffer = offers.find((x) => x.price === spotPrice)
+  const selectedOffer = useMemo(() => {
+    const lowestPriceOffer = offers.findIndex((x) => x.price === spotPrice)
 
-    if (!lowestPriceOffer) {
-      return offers[0]
+    if (lowestPriceOffer === -1) {
+      console.error(
+        'Could not find the lowest price product offer. Showing the first offer provided.'
+      )
+
+      return 0
     }
 
     return lowestPriceOffer
   }, [spotPrice, offers])
 
-  const linkProps = useProductLink({ product, index })
+  const { listPrice, seller } = offers[selectedOffer]
+
+  const linkProps = useProductLink({ product, selectedOffer, index })
   const buyProps = useBuyButton({
     id,
-    name,
-    brand: brandName,
+    brand,
     price: spotPrice,
     listPrice,
     seller,
     quantity: 1,
-    referenceId,
-    productId,
+    isVariantOf,
+    gtin,
     itemOffered: {
       name: variantName,
       image: [img],
@@ -75,20 +85,22 @@ function ProductCard({
   return (
     <UICard className="product-card" data-card-variant={variant}>
       <UICardImage>
-        <Image
-          baseUrl={img.url}
-          sourceWidth={480}
-          aspectRatio={1}
-          width={360}
-          breakpoints={[250, 360, 480]}
-          layout="constrained"
-          backgroundColor="#f0f0f0"
-          options={{
-            fitIn: true,
-          }}
-          alt={img.alternateName}
-          sizes="(max-width: 768px) 200px, 320px"
-        />
+        <AspectRatio ratio={ratio}>
+          <Image
+            baseUrl={img.url}
+            sourceWidth={480}
+            aspectRatio={1}
+            width={360}
+            breakpoints={[250, 360, 480]}
+            layout="constrained"
+            backgroundColor="#f0f0f0"
+            options={{
+              fitIn: true,
+            }}
+            alt={img.alternateName}
+            sizes="(max-width: 768px) 200px, 320px"
+          />
+        </AspectRatio>
       </UICardImage>
       <UICardContent>
         <div className="product-card__heading">
