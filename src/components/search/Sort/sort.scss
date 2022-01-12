@@ -18,7 +18,8 @@
     background: transparent;
     border: 0;
     border-radius: var(--border-radius-default);
-    transition: background-color .2s ease;
+    box-shadow: 0;
+    transition: box-shadow .2s ease, background-color .2s ease;
     appearance: none;
 
     &:hover:not(:disabled) { background-color: var(--bg-secondary-light); }
