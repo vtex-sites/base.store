@@ -108,7 +108,7 @@
     }
 
     p {
-      font-size: var(--space-3);
+      font-size: var(--text-size-2);
 
       @include media(">=tablet") { font-size: var(--text-size-3); }
     }
