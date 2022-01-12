@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Fashion Demo Store',
+        name: 'Fashion XPTO',
         short_name: 'Fashion Store',
         start_url: '/',
         icon: 'src/images/icon.png',
