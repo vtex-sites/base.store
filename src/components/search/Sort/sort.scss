@@ -31,7 +31,7 @@
       + svg { display: none; }
     }
 
-    &:focus {
+    &:focus-visible {
       @include focus-ring;
     }
 
