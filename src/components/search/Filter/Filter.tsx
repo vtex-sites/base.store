@@ -126,6 +126,7 @@ function Filter({
                                 onFilterChange({ key, value: item.value })
                               } else {
                                 toggleFacet({ key, value: item.value })
+                                onFilterChange({ key, value: item.value })
                               }
                             }}
                             data-testid="filter-accordion-panel-checkbox"
