@@ -44,28 +44,22 @@
   --sans-serif: "Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 
   // Base
-  font-size: 16px;
-  --base-font-size: 1rem;
+  --base-font-size: 16px;
   --scale: 1.25;
-
-  // Weight
-  --text-weight-regular: 400;
-  --text-weight-bold: 700;
-  --text-weight-black: 900;
 
   // Spacing ////////////////////////
 
   // Sizes
-  --space-0: .25rem; //  4px
-  --space-1: .5rem;  //  8px
-  --space-2: .75rem; // 12px
-  --space-3: 1rem;   // 16px
-  --space-4: 1.5rem; // 24px
-  --space-5: 2rem;   // 32px
-  --space-6: 2.5rem; // 40px
-  --space-7: 3rem;   // 48px
-  --space-8: 3.5rem; // 56px
-  --space-9: 4rem;   // 64px
+  --space-0: .25rem;  //  4px
+  --space-1: .5rem;   //  8px
+  --space-2: .75rem;  // 12px
+  --space-3: 1rem;    // 16px
+  --space-4: 1.5rem;  // 24px
+  --space-5: 2rem;    // 32px
+  --space-6: 2.5rem;  // 40px
+  --space-7: 3rem;    // 48px
+  --space-8: 3.5rem;  // 56px
+  --space-9: 4rem;    // 64px
   --space-10: 4.5rem; // 72px
   --space-11: 5rem;   // 80px
   --space-12: 5.5rem; // 88px
@@ -76,7 +70,7 @@
   --page-padding-notebook: var(--space-5);
 
   // Target Size
-  --min-size: var(--space-7);
+  --min-size: 48px;
 
   // Box-Shadows ////////////////////
   --box-shadow: 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
