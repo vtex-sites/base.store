@@ -1,9 +1,12 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React from 'react'
-import FacetedFilter from 'src/components/search/FacetedFilter'
+import React, { useState, useEffect } from 'react'
+import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
-import { LinkButton } from 'src/components/ui/Button'
+import { FadersHorizontal as FilterIcon } from 'phosphor-react'
+import { Icon as UIIcon } from '@faststore/ui'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
+import Button, { LinkButton } from 'src/components/ui/Button'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -18,6 +21,19 @@ function ProductGallery({ title }: Props) {
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
+  const { width: screenWidth } = useWindowDimensions()
+
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!screenWidth) {
+      return
+    }
+
+    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
+    setIsMobile(screenWidth < 1280)
+  }, [screenWidth])
 
   if (!data) {
     return <div className="temp-data-loading">loading...</div>
@@ -26,13 +42,23 @@ function ProductGallery({ title }: Props) {
   return (
     <>
       {/* Controls */}
-      <FacetedFilter facets={data.search.facets} />
+      <Filter
+        isOpen={isFilterOpen}
+        facets={data.search.facets}
+        onDismiss={() => setIsFilterOpen(false)}
+      />
       <div>
         <div data-testid="total-product-count" data-count={totalCount}>
           Total Products: {totalCount}
         </div>
         <Sort />
         <h2>Most Wanted</h2>
+        {isMobile && (
+          <Button onClick={() => setIsFilterOpen(!isFilterOpen)}>
+            <UIIcon component={<FilterIcon size={20} />} />
+            Filters
+          </Button>
+        )}
       </div>
 
       {/* Add link to previous page. This helps on SEO */}
