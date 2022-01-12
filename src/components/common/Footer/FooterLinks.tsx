@@ -7,13 +7,13 @@ import {
   AccordionButton as UIAccordionButton,
   AccordionPanel as UIAccordionPanel,
 } from '@faststore/ui'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import {
   PlusCircle as PlusCircleIcon,
   MinusCircle as MinusCircleIcon,
 } from 'phosphor-react'
 
 import Link from '../../ui/Link'
-import useWindowDimensions from './useWindowDimensions'
 
 const links = [
   {
