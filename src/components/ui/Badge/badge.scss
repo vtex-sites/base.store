@@ -21,7 +21,7 @@
 
 [data-store-badge-variant="outOfStock"] {
   color: var(--color-text-inverse);
-  background-color: var(--bg-secondary-hover);
+  background-color: var(--bg-out);
 }
 
 [data-store-badge-variant="recommended"] {
@@ -31,5 +31,5 @@
 
 [data-store-badge-variant="new"] {
   color: var(--color-text);
-  background-color: var(--color-secondary-1);
+  background-color: var(--bg-accent);
 }
