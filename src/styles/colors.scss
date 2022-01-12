@@ -55,6 +55,13 @@
   --bg-highlighted: var(--color-primary-0);
   --bg-info: var(--color-secondary-1);
   --bg-neutral: var(--color-neutral-1);
+  --bg-warning: var(--color-warning);
+  --bg-error: var(--color-error);
+
+  // Backgrounds – Discount range
+  --bg-discount-low: var(--bg-success);
+  --bg-discount-medium: var(--bg-warning);
+  --bg-discount-high: var(--bg-error);
 
   // Borders
   --color-border-light: var(--color-neutral-0);
