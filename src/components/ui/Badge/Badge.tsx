@@ -15,7 +15,7 @@ type Props = {
 const Badge = ({ small = false, variant, children }: Props) => {
   return (
     <UIBadge
-      className="product-badge"
+      className="badge"
       data-store-badge={small ? 'small' : ''}
       data-store-badge-variant={variant}
     >
