@@ -2,6 +2,7 @@
   width: fit-content;
   height: fit-content;
   padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
   font-weight: var(--text-weight-bold);
   font-size: var(--text-size-2);
   white-space: nowrap;
@@ -14,22 +15,26 @@
   }
 }
 
-[data-store-badge-variant="discount"] {
-  color: var(--color-text);
-  background-color: var(--bg-success);
-}
-
 [data-store-badge-variant="outOfStock"] {
-  color: var(--color-text-inverse);
-  background-color: var(--bg-out);
+  background-color: var(--bg-neutral);
 }
 
 [data-store-badge-variant="recommended"] {
-  color: var(--color-text);
-  background-color: var(--bg-primary-light);
+  background-color: var(--bg-highlighted);
 }
 
 [data-store-badge-variant="new"] {
-  color: var(--color-text);
-  background-color: var(--bg-accent);
+  background-color: var(--bg-info);
+}
+
+[data-store-discount-badge-variant="low"] {
+  background-color: var(--bg-success);
+}
+
+[data-store-discount-badge-variant="medium"] {
+  background-color: var(--bg-warning);
+}
+
+[data-store-discount-badge-variant="high"] {
+  background-color: var(--bg-error);
 }

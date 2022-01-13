@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
-import { DiscountBadge, ProductBadge } from 'src/components/ui/Badge'
+import { DiscountBadge, Badge } from 'src/components/ui/Badge'
 import Price from 'src/components/ui/Price'
 import AspectRatio from 'src/components/ui/AspectRatio'
 import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
@@ -142,7 +142,9 @@ function ProductCard({
         </div>
 
         {outOfStock ? (
-          <ProductBadge small variant="outOfStock" />
+          <Badge small variant="outOfStock">
+            OUT OF STOCK
+          </Badge>
         ) : (
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
