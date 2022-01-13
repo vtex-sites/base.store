@@ -143,7 +143,7 @@ function ProductCard({
 
         {outOfStock ? (
           <Badge small variant="outOfStock">
-            OUT OF STOCK
+            Out of stock
           </Badge>
         ) : (
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
