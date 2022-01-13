@@ -14,6 +14,7 @@ import type {
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 import Sort from 'src/components/search/Sort'
+import ProductShelf from 'src/components/sections/ProductShelf'
 
 import '../styles/pages/plp.scss'
 
@@ -48,7 +49,7 @@ const useSearchParams = (props: Props): SearchState => {
 
 function Page(props: Props) {
   const {
-    data: { site, collection },
+    data: { site, collection, allStoreProduct },
     location: { host },
     params: { slug },
   } = props
@@ -63,6 +64,14 @@ function Page(props: Props) {
     host !== undefined
       ? `https://${host}/${slug}/${pageQuery}`
       : `/${slug}/${pageQuery}`
+
+  const youMightAlsoLikeProducts = useMemo(
+    () => allStoreProduct?.nodes,
+    [allStoreProduct]
+  )
+
+  const haveYouMightAlsoLikeProducts =
+    youMightAlsoLikeProducts && youMightAlsoLikeProducts?.length > 0
 
   return (
     <SearchProvider
@@ -113,6 +122,15 @@ function Page(props: Props) {
       <div className="plp-results-wrapper">
         <ProductGallery title={title} />
       </div>
+
+      {haveYouMightAlsoLikeProducts && (
+        <section className="page__section page__section-shelf / grid-section">
+          <h2 className="title-section / grid-content">You might also like</h2>
+          <div className="page__section-content">
+            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
+          </div>
+        </section>
+      )}
     </SearchProvider>
   )
 }
@@ -159,6 +177,12 @@ export const query = graphql`
           key
           value
         }
+      }
+    }
+
+    allStoreProduct(limit: 5) {
+      nodes {
+        ...ProductSummary_product
       }
     }
   }
