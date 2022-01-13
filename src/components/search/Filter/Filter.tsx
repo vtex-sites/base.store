@@ -56,12 +56,10 @@ function Filter({
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
-    if (!screenWidth) {
-      return
+    if (screenWidth) {
+      // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
+      setIsMobile(screenWidth < 1280)
     }
-
-    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
-    setIsMobile(screenWidth < 1280)
   }, [screenWidth])
 
   const onAccordionChange = (index: number) => {
@@ -116,15 +114,14 @@ function Filter({
                   <UIList>
                     {values.map((item) => {
                       const id = `${label}-${item.label}`
-                      const isSelected = selectedFilters.some(
-                        (filter) => filter.value === item.value
-                      )
 
                       return (
                         <li key={id}>
                           <Checkbox
                             id={id}
-                            checked={isSelected}
+                            checked={selectedFilters.some(
+                              (filter) => filter.value === item.value
+                            )}
                             onChange={() => {
                               if (isMobile) {
                                 onFilterChange({ key, value: item.value })
