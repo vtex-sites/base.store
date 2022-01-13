@@ -40,9 +40,15 @@
   --color-error: #fee1e1;
 
   // Customizable
-  --bg-body: var(--color-neutral-0);
   --color-text: var(--color-neutral-7);
   --color-text-inverse: var(--color-neutral-0);
+
+  --bg-body: var(--color-neutral-0);
+  --bg-primary-light: var(--color-primary-0);
+  --bg-secondary-light: var(--color-secondary-0);
+  --bg-neutral-light: var(--color-neutral-1);
+  --bg-neutral-lightest: var(--color-neutral-0);
+  --bg-secondary-dark: var(--color-secondary-4);
 
   // Typography /////////////////////
 
