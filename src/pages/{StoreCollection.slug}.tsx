@@ -13,6 +13,7 @@ import type {
 } from '@generated/graphql'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
+import Sort from 'src/components/search/Sort'
 
 import '../styles/pages/plp.scss'
 
@@ -102,6 +103,12 @@ function Page(props: Props) {
       </div>
 
       <div className="plp-hero temp">Hero</div>
+
+      <div className="plp-filters-bar temp">
+        <Sort />
+
+        <button>Filters</button>
+      </div>
 
       <ProductGallery title={title} />
     </SearchProvider>

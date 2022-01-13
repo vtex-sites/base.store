@@ -2,7 +2,6 @@ import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
-import Sort from 'src/components/search/Sort'
 import { LinkButton } from 'src/components/ui/Button'
 
 import GalleryPage from './ProductGalleryPage'
@@ -31,7 +30,6 @@ function ProductGallery({ title }: Props) {
         <div data-testid="total-product-count" data-count={totalCount}>
           Total Products: {totalCount}
         </div>
-        <Sort />
         <h2>Most Wanted</h2>
       </div>
 
