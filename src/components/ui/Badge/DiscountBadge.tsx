@@ -9,9 +9,17 @@ type Props = {
   listPrice: number
   spotPrice: number
   small?: boolean
+  thresholdLow?: number
+  thresholdHigh?: number
 }
 
-const DiscountBadge = ({ listPrice, spotPrice, small = false }: Props) => {
+const DiscountBadge = ({
+  listPrice,
+  spotPrice,
+  small = false,
+  thresholdLow = 15,
+  thresholdHigh = 40,
+}: Props) => {
   const discountPercent = Math.round(
     Number(useDiscountPercent(listPrice, spotPrice))
   )
@@ -20,8 +28,15 @@ const DiscountBadge = ({ listPrice, spotPrice, small = false }: Props) => {
     return <></>
   }
 
+  const discountVariant =
+    discountPercent < thresholdLow
+      ? 'low'
+      : discountPercent < thresholdHigh
+      ? 'medium'
+      : 'high'
+
   return (
-    <Badge small={small} variant="discount">
+    <Badge small={small} data-store-discount-badge-variant={discountVariant}>
       {discountPercent}% off
     </Badge>
   )

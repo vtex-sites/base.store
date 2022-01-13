@@ -470,10 +470,22 @@ function BadgesSection() {
       <h2 className="title-subsection">Badge</h2>
       <ul className="list-horizontal">
         <li>
+          <DiscountBadge listPrice={100} spotPrice={90} />
+        </li>
+        <li>
+          <DiscountBadge listPrice={100} spotPrice={90} small />
+        </li>
+        <li>
           <DiscountBadge listPrice={100} spotPrice={50} />
         </li>
         <li>
           <DiscountBadge listPrice={100} spotPrice={50} small />
+        </li>
+        <li>
+          <DiscountBadge listPrice={100} spotPrice={1} />
+        </li>
+        <li>
+          <DiscountBadge listPrice={100} spotPrice={1} small />
         </li>
         <li>
           <Badge variant="new">New</Badge>

@@ -4,11 +4,11 @@ import React from 'react'
 
 import './badge.scss'
 
-export type BadgeVariants = 'outOfStock' | 'new' | 'recommended' | 'discount'
+export type BadgeVariants = 'outOfStock' | 'new' | 'recommended'
 
 type Props = {
   small?: boolean
-  variant: BadgeVariants
+  variant?: BadgeVariants
   children: ReactNode
 }
 
