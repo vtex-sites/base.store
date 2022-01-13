@@ -3,6 +3,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import FacetedFilter from 'src/components/search/FacetedFilter'
 import { LinkButton } from 'src/components/ui/Button'
+import SROnly from 'src/components/ui/SROnly'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -29,6 +30,9 @@ function ProductGallery({ title }: Props) {
         data-testid="total-product-count"
         data-count={totalCount}
       >
+        <h2>
+          <SROnly text="Search results" />
+        </h2>
         {totalCount} Results
       </div>
 
