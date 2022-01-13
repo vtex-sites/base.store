@@ -17,6 +17,10 @@ import {
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
+import {
+  PlusCircle as PlusCircleIcon,
+  MinusCircle as MinusCircleIcon,
+} from 'phosphor-react'
 
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
@@ -88,6 +92,17 @@ function Filter({
     setSelectedFilters([...selectedFilters, item])
   }
 
+  const onCheck = ({ key, value }: IStoreSelectedFacet) => {
+    if (isMobile) {
+      onFilterChange({ key, value })
+
+      return
+    }
+
+    toggleFacet({ key, value })
+    onFilterChange({ key, value })
+  }
+
   const Filters = () => {
     return (
       <div data-store-filter data-testid={testId}>
@@ -101,11 +116,9 @@ function Filter({
                   <UIIcon
                     component={
                       expandedIndices.has(index) ? (
-                        // TODO: use MinusCircle icon from phosphor-react lib here
-                        <div>-</div>
+                        <MinusCircleIcon size={20} />
                       ) : (
-                        // TODO: use PlusCircle icon from phosphor-react lib here
-                        <div>+</div>
+                        <PlusCircleIcon size={20} />
                       )
                     }
                   />
@@ -122,16 +135,7 @@ function Filter({
                             checked={selectedFilters.some(
                               (filter) => filter.value === item.value
                             )}
-                            onChange={() => {
-                              if (isMobile) {
-                                onFilterChange({ key, value: item.value })
-
-                                return
-                              }
-
-                              toggleFacet({ key, value: item.value })
-                              onFilterChange({ key, value: item.value })
-                            }}
+                            onChange={() => onCheck({ key, value: item.value })}
                             data-testid="filter-accordion-panel-checkbox"
                             data-value={item.value}
                             data-quantity={item.quantity}
