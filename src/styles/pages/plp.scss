@@ -1,3 +1,16 @@
 @import "../vendors//include-media.scss";
 
 .plp-wrapper { margin-top: var(--space-3); }
+
+.plp-hero {
+  width: 100%;
+  margin-top: var(--space-3);
+
+  &.temp {
+    height: 365px;
+    color: var(--color-neutral-3);
+    background-color: currentColor;
+
+    @include media(">=notebook") { height: 227px; }
+  }
+}

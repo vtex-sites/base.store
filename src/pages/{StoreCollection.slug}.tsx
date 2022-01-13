@@ -101,6 +101,8 @@ function Page(props: Props) {
         />
       </div>
 
+      <div className="plp-hero temp">Hero</div>
+
       <ProductGallery title={title} />
     </SearchProvider>
   )
