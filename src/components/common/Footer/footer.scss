@@ -111,12 +111,19 @@
     display: flex;
     justify-content: center;
     margin-top: var(--space-1);
-    column-gap: var(--grid-gap-0);
 
     @include media(">=notebook") {
       justify-content: space-between;
       margin-top: var(--space-0);
-      column-gap: unset;
+    }
+
+    [data-store-link] {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--min-size);
+      min-height: var(--min-size);
+      padding: var(--space-1);
     }
   }
 }
