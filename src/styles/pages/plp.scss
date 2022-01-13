@@ -23,3 +23,22 @@
   min-height: 68px;
   padding: var(--space-1) var(--space-3) var(--space-2);
 }
+
+.plp-results-wrapper {
+  width: 100%;
+  background-color: var(--color-neutral-1);
+}
+
+.plp-results-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 45px;
+  padding: var(--space-2) var(--space-3);
+}
+
+.plp-results-results {
+  --padding: var(--space-1);
+
+  padding: var(--padding);
+}

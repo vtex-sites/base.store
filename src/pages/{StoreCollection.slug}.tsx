@@ -110,7 +110,9 @@ function Page(props: Props) {
         <button>Filters</button>
       </div>
 
-      <ProductGallery title={title} />
+      <div className="plp-results-wrapper">
+        <ProductGallery title={title} />
+      </div>
     </SearchProvider>
   )
 }
