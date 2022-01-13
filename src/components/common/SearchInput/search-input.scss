@@ -1,4 +1,4 @@
-@import "../../../styles/vendors/include-media";
+@import "../../../styles/scaffold.scss";
 
 [data-store-search-input] {
   position: relative;
@@ -15,9 +15,7 @@
     border-radius: var(--border-radius-default);
     transition: box-shadow .2s ease, border .2s ease;
 
-    &:focus {
-      border: var(--border-width-1) solid var(--color-secondary-2);
-    }
+    &:focus { @include input-focus-ring; }
   }
 
   [data-store-icon] { display: block; }

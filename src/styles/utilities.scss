@@ -19,8 +19,14 @@ $base: 16px !default;
   outline-offset: 1px;
 }
 
+@mixin input-focus-ring {
+  border-color: var(--color-border-input-selected);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-2) var(--bg-focus-ring), inset 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+}
+
 // Supports safari browsers
 @mixin focus-ring {
   outline: none;
-  box-shadow: 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-3) var(--bg-focus-ring);
+  box-shadow: 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
 }

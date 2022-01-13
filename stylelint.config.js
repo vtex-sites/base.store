@@ -32,6 +32,7 @@ module.exports = {
     'selector-pseudo-class-no-unknown': true,
     'selector-pseudo-element-no-unknown': true,
     'comment-no-empty': true,
+    'max-line-length': 200,
     'no-descending-specificity': null,
     'no-invalid-position-at-import-rule': true,
     'no-duplicate-at-import-rules': true,
