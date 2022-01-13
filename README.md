@@ -311,15 +311,46 @@ function MySection {
 
 ## 🖊️ Styling Components
 
-This starter uses [Tailwind CSS](https://tailwindcss.com/) for styling. If you want, you can remove it and use other solutions. Both Gatsby and Store UI support many different CSS frameworks, like [emotion](https://emotion.sh/docs/introduction), [stitches](https://stitches.dev/docs/introduction) or even no CSS framework at all. Check the supported frameworks at [the Gatsby website](https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/#other-css-options)
-This guide covers best practices and patterns to use when styling with Tailwind.
+Our customized theme is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) of a `class` for each one of them. Today, we have the following files in the `src/styles` folder:
 
-Tailwind is a utility-first CSS framework. The goal of this starter is to make it possible for developers to use Tailwind themes to change the look of the store. To accomplish this, a few things need to be respected:
+### `global.scss`
 
-1. Do never use hard coded colors/padings/spacings etc, e.g., `px-[10px]`, `bg-[#fff]`.
-2. Do never use named colors, but use alias colors instead, e.g., `bg-primary` instead of `bg-blue`.
+Here you'll find the basic structure to build your theme (font base, color palette, spacing, color-text, body background color...), feel free to update it with your brand guidelines.
 
-> :warning: CSS modules generate extra classes in your final CSS sheet. Use them with caution.
+#### <b>Colors</b>
+
+We suggest using a color palette of 3 colors and its gradation: `primary`, `secondary` and `neutral`.
+
+We also listed a couple of customizable tokens so you can easily change your body background, for example.
+
+If you feel the need to edit some of the color decisions, you can enter `colors.scss` and update the semantical tokens. E.g.:
+
+```scss
+--color-border-input: var(--color-neutral-4); // Current
+--color-border-input: var(--color-neutral-5); // Updated
+```
+
+#### <b>Typography</b>
+
+We use the [Modular Scale](https://www.modularscale.com/) setting to create our text-sizes. If you want to change it, just set the `base-font-size` and the `scale` ratio.
+
+#### <b>Spacing</b>
+
+The spacing scale is based on `rem` sizes, so it will remain consistent if you change the `base-font-size`.
+
+### `grid.scss`
+
+List of classes used to create default page grid.
+
+```scss
+.grid-content-full // Should be used for sections that are side to side, generally with a colored background.
+.grid-content // Should be used for sections that fit centered on the grid.
+.grid-section // This class only adds default vertical margins for page sections.
+```
+
+### `typography.scss`
+
+For the typography-related tokens, we decided to use classes to add extra stylings like `font-weight` and `line-height`. In this file, you'll see all the classes for titles, paragraphs, and default settings on the body. You can create new ones here if needed.
 
 ## 🍒 Adding queries
 
