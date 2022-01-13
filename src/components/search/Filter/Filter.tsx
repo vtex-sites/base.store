@@ -14,6 +14,7 @@ import {
   AccordionButton as UIAccordionButton,
   AccordionPanel as UIAccordionPanel,
 } from '@faststore/ui'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
 
@@ -28,10 +29,21 @@ interface Props {
    * the filter modal or clicks in close button. (mobile only)
    */
   onDismiss?: (event: MouseEvent | KeyboardEvent) => void
+  /**
+   * ID to find this component in testing tools (e.g.: cypress,
+   * testing-library, and jest).
+   */
+  testId?: string
 }
 
-function Filter({ facets, onDismiss, isOpen = false }: Props) {
-  const { toggleFacets, state: searchState } = useSearch()
+function Filter({
+  facets,
+  onDismiss,
+  isOpen = false,
+  testId = 'store-filter',
+}: Props) {
+  const { width: screenWidth } = useWindowDimensions()
+  const { toggleFacet, toggleFacets, state: searchState } = useSearch()
 
   const [expandedIndices, setExpandedIndices] = useState<Set<number>>(
     new Set([])
@@ -44,17 +56,21 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
   const [isMobile, setIsMobile] = useState<boolean>(false)
 
   useEffect(() => {
-    // TODO: check if is mobile version here
-    setIsMobile(true)
-  }, [])
+    if (screenWidth) {
+      // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
+      setIsMobile(screenWidth < 1280)
+    }
+  }, [screenWidth])
 
   const onAccordionChange = (index: number) => {
     if (expandedIndices.has(index)) {
       expandedIndices.delete(index)
       setExpandedIndices(new Set(expandedIndices))
-    } else {
-      setExpandedIndices(new Set(expandedIndices.add(index)))
+
+      return
     }
+
+    setExpandedIndices(new Set(expandedIndices.add(index)))
   }
 
   const onFilterChange = (item: IStoreSelectedFacet) => {
@@ -65,30 +81,37 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
 
       selectedFilters.splice(indexToRemove, 1)
       setSelectedFilters([...selectedFilters])
-    } else {
-      setSelectedFilters([...selectedFilters, item])
+
+      return
     }
+
+    setSelectedFilters([...selectedFilters, item])
+  }
+
+  const onCheck = ({ key, value }: IStoreSelectedFacet) => {
+    if (isMobile) {
+      onFilterChange({ key, value })
+
+      return
+    }
+
+    toggleFacet({ key, value })
+    onFilterChange({ key, value })
   }
 
   const Filters = () => {
     return (
-      <div data-store-filter>
+      <div data-store-filter data-testid={testId}>
         <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
             .map(({ label, values, key }, index) => (
               <UIAccordionItem key={`${label}-${index}`}>
-                <UIAccordionButton>
+                <UIAccordionButton data-testid="filter-accordion-button">
                   {label}
                   <UIIcon
                     component={
-                      expandedIndices.has(index) ? (
-                        // TODO: use MinusCircle icon from phosphor-react lib here
-                        <div>-</div>
-                      ) : (
-                        // TODO: use PlusCircle icon from phosphor-react lib here
-                        <div>+</div>
-                      )
+                      expandedIndices.has(index) ? <div>-</div> : <div>+</div>
                     }
                   />
                 </UIAccordionButton>
@@ -96,18 +119,18 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
                   <UIList>
                     {values.map((item) => {
                       const id = `${label}-${item.label}`
-                      const isSelected = selectedFilters.some(
-                        (filter) => filter.value === item.value
-                      )
 
                       return (
                         <li key={id}>
                           <Checkbox
                             id={id}
-                            checked={isSelected}
-                            onChange={() =>
-                              onFilterChange({ key, value: item.value })
-                            }
+                            checked={selectedFilters.some(
+                              (filter) => filter.value === item.value
+                            )}
+                            onChange={() => onCheck({ key, value: item.value })}
+                            data-testid="filter-accordion-panel-checkbox"
+                            data-value={item.value}
+                            data-quantity={item.quantity}
                           />
                           <label htmlFor={id}>
                             {item.label} ({item.quantity})
@@ -131,7 +154,10 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
             >
               Clear All
             </Button>
-            <Button onClick={() => toggleFacets(selectedFilters)}>
+            <Button
+              data-testid="apply-filters-button"
+              onClick={() => toggleFacets(selectedFilters)}
+            >
               View Results
             </Button>
           </div>
@@ -143,7 +169,9 @@ function Filter({ facets, onDismiss, isOpen = false }: Props) {
   return isMobile ? (
     <UIModal isOpen={isOpen} onDismiss={onDismiss}>
       <h2>Filters</h2>
-      <Button onClick={onDismiss}>X</Button>
+      <Button onClick={onDismiss} data-testid="close-filters-button">
+        X
+      </Button>
       <Filters />
     </UIModal>
   ) : (
