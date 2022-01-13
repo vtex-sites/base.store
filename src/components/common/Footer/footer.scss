@@ -149,7 +149,10 @@
     border-bottom: 1px solid var(--color-border-display);
   }
 
-  [data-store-link] { padding-left: 0; }
+  [data-store-link] {
+    display: inline-block;
+    padding-left: 0;
+  }
 
   [data-accordion-item] [data-store-button] {
     display: inline-flex;
