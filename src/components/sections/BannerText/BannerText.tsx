@@ -35,13 +35,15 @@ function BannerText({
 }: BannerTextProps) {
   return (
     <Banner>
-      <BannerContent className="title-display-big / grid-content">
-        <div>
+      <BannerContent className="grid-content">
+        <div className="title-display-big">
           <h2>{title}</h2>
           <p>{caption}</p>
         </div>
         <BannerLink>
-          <LinkButton href={actionPath}>{actionLabel}</LinkButton>
+          <LinkButton href={actionPath} inverse>
+            {actionLabel}
+          </LinkButton>
         </BannerLink>
       </BannerContent>
     </Banner>

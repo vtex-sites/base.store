@@ -22,10 +22,6 @@
   [data-banner-link] a {
     width: 11.25rem;
     margin-top: var(--space-5);
-    padding: var(--space-1) var(--space-4);
-    color: var(--color-secondary-4);
-    font-size: var(--space-3);
-    background: var(--bg-neutral-lightest);
 
     @include media(">=notebook") {
       margin-top: var(--space-7);
