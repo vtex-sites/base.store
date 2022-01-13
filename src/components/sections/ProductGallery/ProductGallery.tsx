@@ -66,7 +66,7 @@ function ProductGallery({ title }: Props) {
 
         {/* Add link to next page. This helps on SEO */}
         {next !== false && (
-          <>
+          <div className="plp-results-load-more">
             <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
             <LinkButton
               data-testid="show-more"
@@ -81,7 +81,7 @@ function ProductGallery({ title }: Props) {
             >
               Load more products
             </LinkButton>
-          </>
+          </div>
         )}
 
         {/* Prefetch Previous and Next pages */}

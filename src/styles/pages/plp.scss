@@ -42,3 +42,14 @@
 
   padding: var(--padding);
 }
+
+.plp-results-load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  margin-right: calc(var(--padding) * -1);
+  margin-left: calc(var(--padding) * -1);
+  padding: var(--space-3);
+  background-color: var(--color-neutral-0);
+}
