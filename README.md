@@ -9,7 +9,7 @@
 
 Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
 
-## 🚀 Quick start *****
+## 🚀 Quick start ******
 
 0. **Clone this repo**
 
