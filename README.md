@@ -7,6 +7,8 @@
   A starter powered by Faststore and Gatsby
 </h1> 
 
+bla
+
 Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
 
 ## ⚠️ Before you start
