@@ -1,16 +1,15 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect, lazy, Suspense } from 'react'
+import React, { useState, useEffect } from 'react'
 import Sort from 'src/components/search/Sort'
 import { FadersHorizontal as FilterIcon } from 'phosphor-react'
 import { Icon as UIIcon } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
+import Filter from 'src/components/search/Filter'
 import Button, { LinkButton } from 'src/components/ui/Button'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
-
-const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
@@ -52,24 +51,22 @@ function ProductGallery({ title }: Props) {
       </div>
 
       {/* Filters */}
-      <Suspense fallback={null}>
-        <div>
-          <Filter
-            isOpen={isFilterOpen}
-            facets={data.search.facets}
-            onDismiss={() => setIsFilterOpen(false)}
-          />
-          {isMobile && (
-            <Button
-              data-testid="open-filter-button"
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-            >
-              <UIIcon component={<FilterIcon size={20} />} />
-              Filters
-            </Button>
-          )}
-        </div>
-      </Suspense>
+      <div>
+        <Filter
+          isOpen={isFilterOpen}
+          facets={data.search.facets}
+          onDismiss={() => setIsFilterOpen(false)}
+        />
+        {isMobile && (
+          <Button
+            data-testid="open-filter-button"
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+          >
+            <UIIcon component={<FilterIcon size={20} />} />
+            Filters
+          </Button>
+        )}
+      </div>
 
       {/* Add link to previous page. This helps on SEO */}
       {prev !== false && (
