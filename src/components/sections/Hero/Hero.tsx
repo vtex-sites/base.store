@@ -35,22 +35,22 @@ const Hero = ({
   return (
     <UIHero data-hero-variant={variant}>
       <HeroContent aria-labelledby="hero-heading">
-        <div className="grid-content">
+        <div className="hero-content-wrapper / grid-content">
           <div className="hero-content-info">
             <h1 id="hero-heading" className="title-hero">
               {title}
             </h1>
             <p className="text-body-big">{subtitle}</p>
+            {!!link && (
+              <HeroLink>
+                <Link to={link}>
+                  {linkText} <ArrowRightIcon size={24} />
+                </Link>
+              </HeroLink>
+            )}
           </div>
-          {!!link && (
-            <HeroLink>
-              <Link to={link}>
-                {linkText} <ArrowRightIcon size={24} />
-              </Link>
-            </HeroLink>
-          )}
+          {!!icon && <div className="hero-content-icon">{icon}</div>}
         </div>
-        {!!icon && <div className="hero-content-icon">{icon}</div>}
       </HeroContent>
       <HeroImage>
         <Image
