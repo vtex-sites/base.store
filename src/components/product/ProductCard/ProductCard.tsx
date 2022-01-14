@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
-import DiscountBadge from 'src/components/ui/DiscountBadge'
+import { DiscountBadge, Badge } from 'src/components/ui/Badge'
 import Price from 'src/components/ui/Price'
 import AspectRatio from 'src/components/ui/AspectRatio'
 import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
@@ -25,6 +25,8 @@ type Variant = 'horizontal' | 'vertical'
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
+  bordered?: boolean
+  outOfStock?: boolean
   variant?: Variant
   showActions?: boolean
   ratio?: AspectRatioProps['ratio']
@@ -36,6 +38,8 @@ function ProductCard({
   variant = 'vertical',
   showActions = true,
   ratio = '1',
+  bordered = false,
+  outOfStock = false,
 }: Props) {
   const {
     id,
@@ -83,7 +87,13 @@ function ProductCard({
   })
 
   return (
-    <UICard className="product-card" data-card-variant={variant}>
+    <UICard
+      className="product-card"
+      data-card-variant={variant}
+      data-card-bordered={bordered}
+      data-card-out-of-stock={outOfStock}
+      data-sku={buyProps['data-sku']}
+    >
       <UICardImage>
         <AspectRatio ratio={ratio}>
           <Image
@@ -130,7 +140,14 @@ function ProductCard({
             />
           </div>
         </div>
-        <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
+
+        {outOfStock ? (
+          <Badge small variant="outOfStock">
+            Out of stock
+          </Badge>
+        ) : (
+          <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
+        )}
       </UICardContent>
       {showActions && (
         <UICardActions>
@@ -178,6 +195,7 @@ export const fragment = graphql`
     offers {
       lowPrice
       offers {
+        availability
         price
         listPrice
         quantity
