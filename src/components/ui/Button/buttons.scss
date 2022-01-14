@@ -91,6 +91,10 @@
       &:active { background-color: var(--color-secondary-1); }
     }
   }
+
+  [data-store-icon] {
+    display: flex;
+  }
 }
 
 .link-button[data-store-button] {
