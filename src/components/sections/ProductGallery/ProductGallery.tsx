@@ -31,8 +31,12 @@ function ProductGallery({ title }: Props) {
       return
     }
 
-    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
-    setIsMobile(screenWidth < 1280)
+    const notebookBreakpoint =
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--breakpoint-notebook'
+      ) || '1280'
+
+    setIsMobile(screenWidth < parseInt(notebookBreakpoint, 10))
   }, [screenWidth])
 
   if (!data) {
