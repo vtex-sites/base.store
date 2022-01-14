@@ -17,7 +17,11 @@ import {
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
-import { X as XIcon } from 'phosphor-react'
+import {
+  X as XIcon,
+  PlusCircle as PlusCircleIcon,
+  MinusCircle as MinusCircleIcon,
+} from 'phosphor-react'
 
 import './filter.scss'
 
@@ -114,7 +118,11 @@ function Filter({
                   {label}
                   <UIIcon
                     component={
-                      expandedIndices.has(index) ? <div>-</div> : <div>+</div>
+                      expandedIndices.has(index) ? (
+                        <MinusCircleIcon size={24} />
+                      ) : (
+                        <PlusCircleIcon size={24} />
+                      )
                     }
                   />
                 </UIAccordionButton>
