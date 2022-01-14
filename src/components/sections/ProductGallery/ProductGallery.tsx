@@ -6,6 +6,7 @@ import Button, { LinkButton } from 'src/components/ui/Button'
 import { Icon as UIIcon } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
+import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -49,10 +50,11 @@ function ProductGallery({ title }: Props) {
         />
         {isMobile && (
           <Button
+            variant="tertiary"
             data-testid="open-filter-button"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
           >
-            <UIIcon component={<div />} />
+            <UIIcon component={<FadersHorizontalIcon size={18} />} />
             Filters
           </Button>
         )}

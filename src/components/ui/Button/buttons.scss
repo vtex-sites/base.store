@@ -68,6 +68,7 @@
 
   &[data-button-variant="tertiary"] {
     color: var(--color-link);
+    background-color: var(--bg-neutral-lightest);
 
     &:hover, &:focus { background-color: var(--bg-secondary-light); }
 
