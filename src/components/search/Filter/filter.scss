@@ -25,3 +25,20 @@
     background-color: transparent;
   }
 }
+
+.filter-modal__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: var(--space-3);
+
+  .button {
+    &[data-button-variant="secondary"] {
+      width: 40%;
+      margin-right: var(--space-3);
+    }
+
+    &[data-button-variant="primary"] {
+      width: 60%;
+    }
+  }
+}

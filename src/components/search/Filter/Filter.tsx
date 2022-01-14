@@ -147,8 +147,9 @@ function Filter({
             ))}
         </UIAccordion>
         {isMobile && (
-          <div className="filter-modal__footer">
+          <footer className="filter-modal__footer">
             <Button
+              variant="secondary"
               onClick={() => {
                 toggleFacets(selectedFilters)
                 setExpandedIndices(new Set([]))
@@ -158,12 +159,13 @@ function Filter({
               Clear All
             </Button>
             <Button
+              variant="primary"
               data-testid="apply-filters-button"
               onClick={() => toggleFacets(selectedFilters)}
             >
               View Results
             </Button>
-          </div>
+          </footer>
         )}
       </div>
     )
