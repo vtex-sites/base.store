@@ -6,6 +6,7 @@ import { Icon as UIIcon } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
 import SROnly from 'src/components/ui/SROnly'
+import Sort from 'src/components/search/Sort'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -40,92 +41,100 @@ function ProductGallery({ title }: Props) {
 
   return (
     <>
-      {/* Controls */}
-      <div
-        className="plp-results-count"
-        data-testid="total-product-count"
-        data-count={totalCount}
-      >
-        <h2>
-          <SROnly text="Search results" />
-        </h2>
-        {totalCount} Results
+      <div className="plp-filters-bar temp">
+        <Sort />
+
+        <button>Filters</button>
       </div>
 
-      <div className="plp-results-results">
-        {/* Filters */}
-        <div>
-          <Filter
-            isOpen={isFilterOpen}
-            facets={data.search.facets}
-            onDismiss={() => setIsFilterOpen(false)}
-          />
-          {isMobile && (
-            <Button
-              data-testid="open-filter-button"
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-            >
-              <UIIcon component={<div />} />
-              Filters
-            </Button>
-          )}
+      <div className="plp-results-wrapper">
+        {/* Controls */}
+        <div
+          className="plp-results-count"
+          data-testid="total-product-count"
+          data-count={totalCount}
+        >
+          <h2>
+            <SROnly text="Search results" />
+          </h2>
+          {totalCount} Results
         </div>
 
-        {/* Add link to previous page. This helps on SEO */}
-        {prev !== false && (
-          <>
-            <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-            <a
-              onClick={(e) => {
-                e.currentTarget.blur()
-                e.preventDefault()
-                addPrevPage()
-              }}
-              href={prev.link}
-              rel="prev"
-            >
-              Previous Page
-            </a>
-          </>
-        )}
-
-        {/* Render ALL products */}
-        {pages.map((page) => (
-          <GalleryPage
-            key={`gallery-page-${page}`}
-            fallbackData={page === searchState.page ? data : undefined}
-            page={page}
-            title={title}
-          />
-        ))}
-
-        {/* Add link to next page. This helps on SEO */}
-        {next !== false && (
-          <div className="plp-results-load-more">
-            <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
-            <LinkButton
-              data-testid="show-more"
-              onClick={(e) => {
-                e.currentTarget.blur()
-                e.preventDefault()
-                addNextPage()
-              }}
-              href={next.link}
-              rel="next"
-              variant="secondary"
-            >
-              Load more products
-            </LinkButton>
+        <div className="plp-results-results">
+          {/* Filters */}
+          <div>
+            <Filter
+              isOpen={isFilterOpen}
+              facets={data.search.facets}
+              onDismiss={() => setIsFilterOpen(false)}
+            />
+            {isMobile && (
+              <Button
+                data-testid="open-filter-button"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+              >
+                <UIIcon component={<div />} />
+                Filters
+              </Button>
+            )}
           </div>
-        )}
 
-        {/* Prefetch Previous and Next pages */}
-        {prev !== false && (
-          <GalleryPage page={prev.cursor} display={false} title={title} />
-        )}
-        {next !== false && (
-          <GalleryPage page={next.cursor} display={false} title={title} />
-        )}
+          {/* Add link to previous page. This helps on SEO */}
+          {prev !== false && (
+            <>
+              <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
+              <a
+                onClick={(e) => {
+                  e.currentTarget.blur()
+                  e.preventDefault()
+                  addPrevPage()
+                }}
+                href={prev.link}
+                rel="prev"
+              >
+                Previous Page
+              </a>
+            </>
+          )}
+
+          {/* Render ALL products */}
+          {pages.map((page) => (
+            <GalleryPage
+              key={`gallery-page-${page}`}
+              fallbackData={page === searchState.page ? data : undefined}
+              page={page}
+              title={title}
+            />
+          ))}
+
+          {/* Add link to next page. This helps on SEO */}
+          {next !== false && (
+            <div className="plp-results-load-more">
+              <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
+              <LinkButton
+                data-testid="show-more"
+                onClick={(e) => {
+                  e.currentTarget.blur()
+                  e.preventDefault()
+                  addNextPage()
+                }}
+                href={next.link}
+                rel="next"
+                variant="secondary"
+              >
+                Load more products
+              </LinkButton>
+            </div>
+          )}
+
+          {/* Prefetch Previous and Next pages */}
+          {prev !== false && (
+            <GalleryPage page={prev.cursor} display={false} title={title} />
+          )}
+          {next !== false && (
+            <GalleryPage page={next.cursor} display={false} title={title} />
+          )}
+        </div>
       </div>
     </>
   )

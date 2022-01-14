@@ -15,7 +15,6 @@ import type {
 } from '@generated/graphql'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
-import Sort from 'src/components/search/Sort'
 import ProductShelf from 'src/components/sections/ProductShelf'
 
 import '../styles/pages/plp.scss'
@@ -123,15 +122,7 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <div className="plp-filters-bar temp">
-        <Sort />
-
-        <button>Filters</button>
-      </div>
-
-      <div className="plp-results-wrapper">
-        <ProductGallery title={title} />
-      </div>
+      <ProductGallery title={title} />
 
       {haveYouMightAlsoLikeProducts && (
         <section className="page__section page__section-shelf / grid-section">
