@@ -40,15 +40,6 @@ function ProductGallery({ title }: Props) {
 
   return (
     <>
-      {/* Controls */}
-      <div className="flex items-center justify-between">
-        <div data-testid="total-product-count" data-count={totalCount}>
-          Total Products: {totalCount}
-        </div>
-        <Sort />
-        <h2>Most Wanted</h2>
-      </div>
-
       {/* Filters */}
       <div>
         <Filter
@@ -65,6 +56,15 @@ function ProductGallery({ title }: Props) {
             Filters
           </Button>
         )}
+      </div>
+
+      {/* Controls */}
+      <div>
+        <div data-testid="total-product-count" data-count={totalCount}>
+          Total Products: {totalCount}
+        </div>
+        <Sort />
+        <h2>Most Wanted</h2>
       </div>
 
       {/* Add link to previous page. This helps on SEO */}
