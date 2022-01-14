@@ -23,6 +23,10 @@
       line-height: 1.25;
     }
   }
+
+  [data-accordion-item] [data-store-icon] {
+    display: flex;
+  }
 }
 
 [data-store-overlay] {
