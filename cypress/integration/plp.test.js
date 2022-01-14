@@ -18,6 +18,7 @@ describe('Search page Filters and Sorting options', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
+    // Apply filters
     cy.getById('open-filter-button')
       .click()
       .getById('filter-accordion-button')
@@ -29,7 +30,16 @@ describe('Search page Filters and Sorting options', () => {
       .click()
       .getById('filter-modal-button-apply')
       .click()
+
+    // Check applied filters
+    cy.getById('open-filter-button')
+      .click()
+      .getById('filter-accordion-button')
+      .first()
+      .click()
       .getById('filter-accordion-panel-checkbox')
+      .first()
+      .click()
       .then(($checkbox) => {
         const value = $checkbox.attr('data-value')
         const quantity = $checkbox.attr('data-quantity')
