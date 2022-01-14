@@ -176,7 +176,7 @@ function Filter({
     </UIModal>
   ) : (
     <>
-      <h4>Filters</h4>
+      <h2>Filters</h2>
       <Filters />
     </>
   )
