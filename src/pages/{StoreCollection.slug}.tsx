@@ -2,9 +2,11 @@ import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
+import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
+import { Headphones as HeadphonesIcon } from 'phosphor-react'
 import type { SearchState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
@@ -89,6 +91,17 @@ function Page(props: Props) {
       <h1 data-testid="collection-page" className="temp-offscreen">
         {title}
       </h1>
+
+      <section className="page__section">
+        <Hero
+          variant="small"
+          title="Headphones"
+          subtitle="All the amazing Headphones from the brands we partner with."
+          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+          imageAlt="Quest 2 Controller on a table"
+          icon={<HeadphonesIcon size={48} weight="thin" />}
+        />
+      </section>
 
       <ProductGallery title={title} />
     </SearchProvider>
