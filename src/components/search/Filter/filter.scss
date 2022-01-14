@@ -2,6 +2,16 @@
 
 .filter[data-store-filter] {
   // copied from footer.scss (extract?)
+  [data-store-accordion] {
+    [data-store-list] {
+      padding-bottom: var(--space-3);
+
+      li:not(:last-child) {
+        margin-bottom: var(--space-3);
+      }
+    }
+  }
+
   [data-accordion-item] {
     border-bottom: 1px solid var(--color-border-display);
   }
