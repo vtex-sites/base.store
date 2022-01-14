@@ -1,14 +1,15 @@
 @import "../../../styles/scaffold";
 
 .incentives {
+  display: flex;
+  justify-content: center;
+
   [data-store-list] {
     display: flex;
+    width: fit-content;
     overflow-x: auto;
 
     @include media("<notebook") {
-      padding-top: var(--space-2);
-      padding-bottom: var(--space-2);
-
       li {
         &:not(:first-child) {
           [data-store-incentive] {
@@ -83,6 +84,8 @@
   }
 
   &.incentives--colored {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
     background-color: var(--bg-secondary-light);
   }
 }
