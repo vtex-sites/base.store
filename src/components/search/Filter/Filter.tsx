@@ -35,7 +35,7 @@ interface Props {
    * This function is called whenever the user hits "Escape", clicks outside
    * the filter modal or clicks in close button. (mobile only)
    */
-  onDismiss?: (event: MouseEvent | KeyboardEvent) => void
+  onDismiss?: (event: MouseEvent | KeyboardEvent | undefined) => void
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -154,27 +154,6 @@ function Filter({
               </UIAccordionItem>
             ))}
         </UIAccordion>
-        {isMobile && (
-          <footer className="filter-modal__footer">
-            <Button
-              variant="secondary"
-              onClick={() => {
-                toggleFacets(selectedFilters)
-                setExpandedIndices(new Set([]))
-                setSelectedFilters([])
-              }}
-            >
-              Clear All
-            </Button>
-            <Button
-              variant="primary"
-              data-testid="apply-filters-button"
-              onClick={() => toggleFacets(selectedFilters)}
-            >
-              View Results
-            </Button>
-          </footer>
-        )}
       </div>
     )
   }
@@ -197,6 +176,29 @@ function Filter({
       </header>
 
       <Filters />
+
+      <footer className="filter-modal__footer">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            toggleFacets(selectedFilters)
+            setExpandedIndices(new Set([]))
+            setSelectedFilters([])
+          }}
+        >
+          Clear All
+        </Button>
+        <Button
+          variant="primary"
+          data-testid="apply-filters-button"
+          onClick={(e) => {
+            onDismiss?.(e)
+            toggleFacets(selectedFilters)
+          }}
+        >
+          View Results
+        </Button>
+      </footer>
     </UIModal>
   ) : (
     <>
