@@ -25,7 +25,7 @@ function Sort() {
   } = useSearch()
 
   return (
-    <div className="sort">
+    <div className="sort / tile-small">
       <label htmlFor="select-sort">Sort by</label>
       <UISelect
         data-testid="search-sort"
