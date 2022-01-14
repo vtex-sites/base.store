@@ -1,5 +1,16 @@
 .product-grid {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  width: 100%;
+
+  li {
+    background-color: var(--color-neutral-0);
+  }
+
+  [data-store-card] {
+    min-width: initial;
+
+    &[data-card-bordered="true"] { border: none; }
+  }
 }
