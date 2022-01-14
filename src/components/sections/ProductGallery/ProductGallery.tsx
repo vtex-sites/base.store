@@ -1,8 +1,10 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React from 'react'
-import FacetedFilter from 'src/components/search/FacetedFilter'
-import { LinkButton } from 'src/components/ui/Button'
+import React, { useState, useEffect } from 'react'
+import Button, { LinkButton } from 'src/components/ui/Button'
+import { Icon as UIIcon } from '@faststore/ui'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
+import Filter from 'src/components/search/Filter'
 import SROnly from 'src/components/ui/SROnly'
 
 import GalleryPage from './ProductGalleryPage'
@@ -18,6 +20,19 @@ function ProductGallery({ title }: Props) {
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
+  const { width: screenWidth } = useWindowDimensions()
+
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!screenWidth) {
+      return
+    }
+
+    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
+    setIsMobile(screenWidth < 1280)
+  }, [screenWidth])
 
   if (!data) {
     return <div className="temp-data-loading">loading...</div>
@@ -25,6 +40,7 @@ function ProductGallery({ title }: Props) {
 
   return (
     <>
+      {/* Controls */}
       <div
         className="plp-results-count"
         data-testid="total-product-count"
@@ -37,8 +53,41 @@ function ProductGallery({ title }: Props) {
       </div>
 
       <div className="plp-results-results">
-        {/* Controls */}
-        <FacetedFilter facets={data.search.facets} />
+        {/* Filters */}
+        <div>
+          <Filter
+            isOpen={isFilterOpen}
+            facets={data.search.facets}
+            onDismiss={() => setIsFilterOpen(false)}
+          />
+          {isMobile && (
+            <Button
+              data-testid="open-filter-button"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+            >
+              <UIIcon component={<div />} />
+              Filters
+            </Button>
+          )}
+        </div>
+
+        {/* Add link to previous page. This helps on SEO */}
+        {prev !== false && (
+          <>
+            <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
+            <a
+              onClick={(e) => {
+                e.currentTarget.blur()
+                e.preventDefault()
+                addPrevPage()
+              }}
+              href={prev.link}
+              rel="prev"
+            >
+              Previous Page
+            </a>
+          </>
+        )}
 
         {/* Add link to previous page. This helps on SEO */}
         {prev !== false && (
