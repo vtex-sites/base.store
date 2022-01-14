@@ -29,6 +29,8 @@ function Page() {
           <h1 className="title-section grid-content">Pattern Library</h1>
         </header>
         <main>
+          <ColorsSection />
+
           <TypographySection />
 
           <LinksSection />
@@ -501,6 +503,36 @@ function SignInLinkSection() {
       <ul className="list-horizontal">
         <li>
           <SignInLink />
+        </li>
+      </ul>
+    </section>
+  )
+}
+
+function ColorsSection() {
+  return (
+    <section className="grid-section grid-content">
+      <h2 className="title-subsection">Contextual Colors</h2>
+      <ul className="list-horizontal / list-colors">
+        <li>
+          <div className="square / bg-success" />
+          <span>success</span>
+        </li>
+        <li>
+          <div className="square / bg-highlighted" />
+          <span>highlighted</span>
+        </li>
+        <li>
+          <div className="square / bg-info" />
+          <span>info</span>
+        </li>
+        <li>
+          <div className="square / bg-warning" />
+          <span>warning</span>
+        </li>
+        <li>
+          <div className="square / bg-error" />
+          <span>error</span>
         </li>
       </ul>
     </section>

@@ -70,15 +70,13 @@ const execute = async (options, envelopContext = {}) => {
     schema,
   } = enveloped(envelopContext)
 
-  const response = await run({
+  return run({
     schema,
     document: parse(query),
     variableValues: variables,
     contextValue: await contextFactory({}),
     operationName,
   })
-
-  return response
 }
 
 module.exports = {

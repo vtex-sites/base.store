@@ -36,6 +36,45 @@
     }
     > .title-subsection { margin-bottom: var(--space-1); }
   }
+
+  .list-colors {
+    li {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .square {
+    width: var(--space-5);
+    height: var(--space-5);
+    margin-right: var(--space-1);
+    border-radius: var(--border-radius-default);
+    + span { margin-right: var(--space-2); }
+  }
+
+  .bg-success {
+    background-color: var(--bg-success);
+  }
+
+  .bg-highlighted {
+    background-color: var(--bg-highlighted);
+  }
+
+  .bg-info {
+    background-color: var(--bg-info);
+  }
+
+  .bg-neutral {
+    background-color: var(--bg-neutral);
+  }
+
+  .bg-warning {
+    background-color: var(--bg-warning);
+  }
+
+  .bg-error {
+    background-color: var(--bg-error);
+  }
 }
 
 /* FIXME Remove this once links and buttons are styled properly */

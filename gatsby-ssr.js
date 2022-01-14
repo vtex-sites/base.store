@@ -54,6 +54,12 @@ export const onRenderBody = ({ setHeadComponents }) => {
         enablePartytown
       />,
       <Partytown key="party" />,
+      <link
+        key="preconnect"
+        rel="preconnect"
+        crossOrigin
+        href="https://googletagmanager.com"
+      />,
     ])
   } else if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line
