@@ -2,7 +2,7 @@ import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useState, useEffect } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
-import { Icon as UIIcon } from '@faststore/ui'
+import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
 import SROnly from 'src/components/ui/SROnly'
@@ -44,7 +44,18 @@ function ProductGallery({ title }: Props) {
       <div className="plp-filters-bar temp">
         <Sort />
 
-        <button>Filters</button>
+        {isMobile && (
+          <Button
+            data-testid="open-filter-button"
+            variant="tertiary"
+            icon={<FadersHorizontalIcon size={16} />}
+            iconPosition="left"
+            aria-label="Open Filters"
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+          >
+            Filters
+          </Button>
+        )}
       </div>
 
       <div className="plp-results-wrapper">
@@ -68,15 +79,6 @@ function ProductGallery({ title }: Props) {
               facets={data.search.facets}
               onDismiss={() => setIsFilterOpen(false)}
             />
-            {isMobile && (
-              <Button
-                data-testid="open-filter-button"
-                onClick={() => setIsFilterOpen(!isFilterOpen)}
-              >
-                <UIIcon component={<div />} />
-                Filters
-              </Button>
-            )}
           </div>
 
           {/* Add link to previous page. This helps on SEO */}
