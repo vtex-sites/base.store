@@ -1,8 +1,15 @@
+@import "../../../styles/vendors/include-media.scss";
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2px;
   width: 100%;
+
+  @include media(">=notebook") {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap--0);
+  }
 
   li {
     background-color: var(--color-neutral-0);
