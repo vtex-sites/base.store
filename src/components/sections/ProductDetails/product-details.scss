@@ -22,6 +22,13 @@
   left: calc(-1 * var(--page-padding-phone));
   width: calc(100% + (2 * var(--page-padding-phone)));
 
+  [data-gatsby-image-wrapper] {
+    @include media(">=tablet") {
+      border-radius: var(--border-radius-default);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
   @include media(">=tablet") {
     left: 0;
     grid-row: 1 / span 2;

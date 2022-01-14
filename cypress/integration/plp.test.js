@@ -147,10 +147,8 @@ describe('Infinite Scroll pagination', () => {
               // Number of products after showMore is clicked should be higher
               .should('have.length.gte', before)
               .last()
-              .within(() => {
-                cy.getById('buy-button').then(($btn) => {
-                  skuIdBeforeNavigate = $btn.attr('data-sku')
-                })
+              .then(($card) => {
+                skuIdBeforeNavigate = $card.attr('data-sku')
               })
               .click()
               .then(() => {
@@ -159,10 +157,10 @@ describe('Infinite Scroll pagination', () => {
               })
               .then(() => {
                 cy.go('back')
-                  .getById('buy-button')
+                  .getById('store-card')
                   .last()
-                  .then(($btn) => {
-                    const skuIdAfterNavigate = $btn.attr('data-sku')
+                  .then(($card) => {
+                    const skuIdAfterNavigate = $card.attr('data-sku')
 
                     expect(skuIdBeforeNavigate).to.eq(skuIdAfterNavigate)
                   })

@@ -11,11 +11,7 @@ import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element, pathname }) => {
-  // Temporary added condition for pattern library page
-  /* FIXME Remove this after removing pattern library page */
-  if (pathname.includes('pattern-library')) return <>{element}</>
-
+export const wrapRootElement = ({ element }) => {
   return (
     <ErrorBoundary>
       <AnalyticsHandler>
@@ -37,11 +33,7 @@ export const wrapRootElement = ({ element, pathname }) => {
   )
 }
 
-export const wrapPageElement = ({ element, props }) => {
-  // Temporary added condition for pattern library page
-  /* FIXME Remove this after removing pattern library page */
-  if (props.location.pathname.includes('pattern-library')) return <>{element}</>
-
+export const wrapPageElement = ({ element }) => {
   return <Layout>{element}</Layout>
 }
 
