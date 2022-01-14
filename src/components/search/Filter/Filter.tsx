@@ -17,6 +17,9 @@ import {
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
+import { X as XIcon } from 'phosphor-react'
+
+import './filter.scss'
 
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
@@ -144,7 +147,7 @@ function Filter({
             ))}
         </UIAccordion>
         {isMobile && (
-          <div>
+          <div className="filter-modal__footer">
             <Button
               onClick={() => {
                 toggleFacets(selectedFilters)
@@ -167,11 +170,22 @@ function Filter({
   }
 
   return isMobile ? (
-    <UIModal isOpen={isOpen} onDismiss={onDismiss}>
-      <h2>Filters</h2>
-      <Button onClick={onDismiss} data-testid="close-filters-button">
-        X
-      </Button>
+    <UIModal
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      className="filter-modal__content"
+    >
+      <header className="filter-modal__header">
+        <h2 className="title-display">Filters</h2>
+        <Button
+          data-testid="close-filters-button"
+          aria-label="Close"
+          onClick={onDismiss}
+        >
+          <XIcon size={18} weight="bold" />
+        </Button>
+      </header>
+
       <Filters />
     </UIModal>
   ) : (

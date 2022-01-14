@@ -1,0 +1,27 @@
+[data-store-overlay] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background-color: var(--bg-neutral-lightest);
+}
+
+.filter-modal__content {
+  padding: var(--page-padding-phone);
+}
+
+.filter-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  h2 { padding: var(--space-3) 0; }
+
+  button {
+    position: absolute;
+    right: 3px;
+    background-color: transparent;
+  }
+}
