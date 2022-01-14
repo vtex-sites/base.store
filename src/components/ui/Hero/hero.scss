@@ -27,14 +27,19 @@
       gap: var(--space-3);
       justify-content: space-between;
 
-      @include media(">=tablet") {
-        gap: var(--space-1);
-        justify-content: flex-start;
+      @include media(">=tablet", "<notebook") {
+        justify-content: space-between;
+        width: 50%;
+        margin-left: 0;
       }
+
+      @include media(">=tablet") { gap: var(--space-1); }
+
+      @include media(">=notebook") { justify-content: flex-start; }
     }
 
     .hero-content-info {
-      @include media(">=tablet") { width: 42%; }
+      @include media(">=notebook") { width: 42%; }
     }
 
     p {

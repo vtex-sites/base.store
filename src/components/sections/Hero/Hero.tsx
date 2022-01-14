@@ -37,9 +37,15 @@ const Hero = ({
       <HeroContent aria-labelledby="hero-heading">
         <div className="hero-content-wrapper / grid-content">
           <div className="hero-content-info">
-            <h1 id="hero-heading" className="title-hero">
+            <h1
+              id="hero-heading"
+              className={
+                variant === 'default' ? 'title-hero' : 'title-hero-small'
+              }
+            >
               {title}
             </h1>
+
             <p className="text-body-big">{subtitle}</p>
             {!!link && (
               <HeroLink>
