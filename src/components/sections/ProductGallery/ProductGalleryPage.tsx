@@ -89,7 +89,8 @@ function GalleryPage({
       {/* If showSponsoredProducts is on, a ProductTiles will be display in between two blocks of ProductGrid on the page 0 */}
       {showSponsoredProducts &&
       page === 0 &&
-      productsSponsored !== undefined ? (
+      productsSponsored !== undefined &&
+      productsSponsored.length > 1 ? (
         <>
           <ProductGrid
             products={products.slice(0, middleItemIndex)}
