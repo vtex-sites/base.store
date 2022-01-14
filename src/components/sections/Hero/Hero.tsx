@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import React from 'react'
+import type { ReactNode } from 'react'
 import UIHero, {
   HeroContent,
   HeroImage,
@@ -8,11 +9,15 @@ import UIHero, {
 import Image from 'src/components/ui/Image/Image'
 import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 
+type Variant = 'default' | 'small'
+
 interface HeroProps {
   title: string
   subtitle: string
-  linkText: string
-  link: string
+  variant?: Variant
+  linkText?: string
+  link?: string
+  icon?: ReactNode
   imageSrc: string
   imageAlt: string
 }
@@ -20,26 +25,31 @@ interface HeroProps {
 const Hero = ({
   title,
   subtitle,
+  variant = 'default',
   linkText,
   link,
+  icon,
   imageAlt,
   imageSrc,
 }: HeroProps) => {
   return (
-    <UIHero>
+    <UIHero data-hero-variant={variant}>
       <HeroContent aria-labelledby="hero-heading">
-        <div className="banner-info-content / grid-content">
-          <div>
+        <div className="hero-content-wrapper / grid-content">
+          <div className="hero-content-info">
             <h1 id="hero-heading" className="title-hero">
               {title}
             </h1>
             <p className="text-body-big">{subtitle}</p>
+            {!!link && (
+              <HeroLink>
+                <Link to={link}>
+                  {linkText} <ArrowRightIcon size={24} />
+                </Link>
+              </HeroLink>
+            )}
           </div>
-          <HeroLink>
-            <Link to={link}>
-              {linkText} <ArrowRightIcon size={24} />
-            </Link>
-          </HeroLink>
+          {!!icon && <div className="hero-content-icon">{icon}</div>}
         </div>
       </HeroContent>
       <HeroImage>
