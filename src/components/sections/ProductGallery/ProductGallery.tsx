@@ -40,7 +40,7 @@ function ProductGallery({ title }: Props) {
   }
 
   return (
-    <div className="plp-content-grid">
+    <div className="plp-content-grid / grid-content">
       <div className="plp-filters-wrapper">
         <Filter
           isOpen={isFilterOpen}

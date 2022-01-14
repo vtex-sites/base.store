@@ -14,12 +14,14 @@
   @include media(">=notebook") {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    padding-top: var(--space-3);
     column-gap: var(--space-4);
   }
 }
 
 .plp-filters-wrapper {
   @include media(">=notebook") {
+    grid-row: span 2;
     grid-column: 1 / span 3;
     order: unset;
   }
@@ -36,8 +38,11 @@
   background-color: var(--color-neutral-0);
 
   @include media(">=notebook") {
-    grid-column: 10 / span 3;
+    grid-column: 6 / span 7;
+    justify-content: right;
     order: unset;
+    min-height: initial;
+    padding: 0;
   }
 }
 
@@ -51,8 +56,12 @@
   background-color: var(--color-neutral-1);
 
   @include media(">=notebook") {
-    grid-column: 4 /span 6;
+    grid-column: 4 /span 2;
+    justify-content: left;
     order: unset;
+    min-height: initial;
+    padding: 0;
+    background-color: unset;
   }
 }
 
@@ -66,6 +75,8 @@
   @include media(">=notebook") {
     grid-column: 4 / span 9;
     order: unset;
+    padding: 0;
+    background-color: unset;
   }
 }
 
