@@ -89,24 +89,6 @@ function ProductGallery({ title }: Props) {
           </>
         )}
 
-        {/* Add link to previous page. This helps on SEO */}
-        {prev !== false && (
-          <>
-            <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-            <a
-              onClick={(e) => {
-                e.currentTarget.blur()
-                e.preventDefault()
-                addPrevPage()
-              }}
-              href={prev.link}
-              rel="prev"
-            >
-              Previous Page
-            </a>
-          </>
-        )}
-
         {/* Render ALL products */}
         {pages.map((page) => (
           <GalleryPage
