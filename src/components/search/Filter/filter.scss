@@ -1,7 +1,17 @@
 @import "../../../styles/scaffold";
 
 .filter[data-store-filter] {
-  // copied from footer.scss (extract?)
+  // copied from footer.scss (extract?
+  h4 {
+    margin-bottom: var(--space-3);
+    font-size: var(--text-size-2);
+    line-height: 1.25;
+
+    @include media("<notebook") {
+      display: none;
+    }
+  }
+
   [data-store-accordion] {
     [data-store-list] {
       padding-bottom: var(--space-3);
@@ -10,10 +20,23 @@
         margin-bottom: var(--space-3);
       }
     }
+
+    @include media(">=notebook") {
+      border: 1px solid var(--color-border-display);
+      border-radius: var(--border-radius-default);
+    }
   }
 
   [data-accordion-item] {
     border-bottom: 1px solid var(--color-border-display);
+
+    @include media(">=notebook") {
+      padding: 0 var(--space-4);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
   }
 
   [data-accordion-item] [data-store-button] {
@@ -67,10 +90,13 @@
 }
 
 .filter-modal__body {
+  height: calc(100vh - 80px);
   padding: var(--page-padding-phone);
+  overflow-y: auto;
 }
 
 .filter-modal__header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,7 +105,7 @@
 
   button {
     position: absolute;
-    right: 3px;
+    right: calc(-1 * var(--page-padding-phone));
     background-color: transparent;
   }
 }
