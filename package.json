@@ -69,6 +69,7 @@
     "autoprefixer": "^10.4.0",
     "axe-core": "^4.3.3",
     "cypress-axe": "^0.13.0",
+    "cypress-wait-until": "^1.7.2",
     "dotenv": "^8.2.0",
     "eslint": "^7.22.0",
     "eslint-config-vtex-react": "^7.0.0",
