@@ -110,7 +110,7 @@ function Page(props: Props) {
         />
       </div>
 
-      <div className="plp-hero temp">
+      <div className="plp-hero">
         <section className="page__section">
           <Hero
             variant="small"
