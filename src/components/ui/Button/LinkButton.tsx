@@ -12,7 +12,7 @@ type Props = {
   LinkProps<'a'>
 
 function LinkButton({
-  variant,
+  variant = 'primary',
   inverse,
   icon,
   iconPosition,
