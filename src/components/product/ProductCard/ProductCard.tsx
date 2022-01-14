@@ -36,6 +36,7 @@ function ProductCard({
   variant = 'vertical',
   showActions = true,
   ratio = '1',
+  ...otherProps
 }: Props) {
   const {
     id,
@@ -83,7 +84,11 @@ function ProductCard({
   })
 
   return (
-    <UICard className="product-card" data-card-variant={variant}>
+    <UICard
+      className="product-card"
+      data-card-variant={variant}
+      {...otherProps}
+    >
       <UICardImage>
         <AspectRatio ratio={ratio}>
           <Image
