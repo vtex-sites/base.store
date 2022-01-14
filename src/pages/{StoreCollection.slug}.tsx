@@ -88,8 +88,6 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <h1 data-testid="collection-page">{title}</h1>
-
       <section className="page__section">
         <Hero
           variant="small"
