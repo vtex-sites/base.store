@@ -12,12 +12,13 @@ type Props = {
   children: ReactNode
 }
 
-const Badge = ({ small = false, variant, children }: Props) => {
+const Badge = ({ small = false, variant, children, ...otherProps }: Props) => {
   return (
     <UIBadge
       className="badge"
       data-store-badge={small ? 'small' : ''}
       data-store-badge-variant={variant}
+      {...otherProps}
     >
       {children}
     </UIBadge>
