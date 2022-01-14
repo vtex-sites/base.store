@@ -13,10 +13,12 @@ import {
   AccordionItem as UIAccordionItem,
   AccordionButton as UIAccordionButton,
   AccordionPanel as UIAccordionPanel,
+  Label as UILabel,
 } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
+import { Badge } from 'src/components/ui/Badge'
 import {
   X as XIcon,
   PlusCircle as PlusCircleIcon,
@@ -132,7 +134,7 @@ function Filter({
                       const id = `${label}-${item.label}`
 
                       return (
-                        <li key={id}>
+                        <li key={id} className="filter__item">
                           <Checkbox
                             id={id}
                             checked={selectedFilters.some(
@@ -143,9 +145,12 @@ function Filter({
                             data-value={item.value}
                             data-quantity={item.quantity}
                           />
-                          <label htmlFor={id}>
-                            {item.label} ({item.quantity})
-                          </label>
+                          <UILabel htmlFor={id}>
+                            {item.label}{' '}
+                            <Badge variant="neutral" small>
+                              {item.quantity}
+                            </Badge>
+                          </UILabel>
                         </li>
                       )
                     })}
@@ -164,19 +169,19 @@ function Filter({
       onDismiss={onDismiss}
       className="filter-modal__content"
     >
-      <header className="filter-modal__header">
-        <h2 className="title-display">Filters</h2>
-        <Button
-          data-testid="close-filters-button"
-          aria-label="Close"
-          onClick={onDismiss}
-        >
-          <XIcon size={18} weight="bold" />
-        </Button>
-      </header>
-
-      <Filters />
-
+      <div className="filter-modal__body">
+        <header className="filter-modal__header">
+          <h2 className="title-display">Filters</h2>
+          <Button
+            data-testid="close-filters-button"
+            aria-label="Close"
+            onClick={onDismiss}
+          >
+            <XIcon size={18} weight="bold" />
+          </Button>
+        </header>
+        <Filters />
+      </div>
       <footer className="filter-modal__footer">
         <Button
           variant="secondary"

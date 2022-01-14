@@ -27,6 +27,10 @@
   background-color: var(--bg-info);
 }
 
+[data-store-badge-variant="neutral"] {
+  background-color: var(--bg-neutral);
+}
+
 [data-store-discount-badge-variant="low"] {
   background-color: var(--bg-discount-low);
 }
