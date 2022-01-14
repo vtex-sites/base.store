@@ -3523,7 +3523,6 @@ export type ProductSummary_ProductFragment = {
   image: Array<{ url: string; alternateName: string }>
   offers: {
     lowPrice: number
-    offerCount: number
     offers: Array<{
       availability: string
       price: number
@@ -3593,7 +3592,6 @@ export type ProductGalleryQueryQuery = {
           image: Array<{ url: string; alternateName: string }>
           offers: {
             lowPrice: number
-            offerCount: number
             offers: Array<{
               availability: string
               price: number
@@ -3647,7 +3645,6 @@ export type HomePageQueryQuery = {
       image: Array<{ url: string; alternateName: string }>
       offers: {
         lowPrice: number
-        offerCount: number
         offers: Array<{
           availability: string
           price: number
@@ -3779,7 +3776,6 @@ export type ProductPageQueryQuery = {
       image: Array<{ url: string; alternateName: string }>
       offers: {
         lowPrice: number
-        offerCount: number
         offers: Array<{
           availability: string
           price: number
@@ -3872,7 +3868,6 @@ export type ProductsQueryQuery = {
           image: Array<{ url: string; alternateName: string }>
           offers: {
             lowPrice: number
-            offerCount: number
             offers: Array<{
               availability: string
               price: number

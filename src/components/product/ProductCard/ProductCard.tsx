@@ -194,7 +194,6 @@ export const fragment = graphql`
 
     offers {
       lowPrice
-      offerCount
       offers {
         availability
         price
