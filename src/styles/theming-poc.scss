@@ -1,0 +1,107 @@
+// Default //////////////////////////
+
+@import "vendors/include-media";
+
+:root {
+  --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+
+  --toggle-color-active: darkseagreen;
+  --toggle-color: transparent;
+  --toggle-color-border: gray;
+  --toggle-color-border-knob: gray;
+  --toggle-color-knob: gray;
+  --toggle-height-desk: 30px;
+  --toggle-height-mob: 48px;
+  --toggle-height: var(--toggle-height-mob);
+  --toggle-radius: 0;
+  --toggle-radius-knob: 0;
+  --toggle-border-width: 1px;
+  --toggle-border-style: solid;
+  --toggle-shadow-knob: none;
+  --toggle-transition-property: all;
+  --toggle-transition-function: ease-in-out;
+  --toggle-transition-timing: .2s;
+
+  @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
+}
+
+.theme-2 {
+  --toggle-color-active: var(--bg-success);
+  --toggle-color: var(--bg-neutral-lightest);
+  --toggle-color-border: var(--color-border-input);
+  --toggle-color-border-knob: var(--color-border-input);
+  --toggle-color-knob: var(--bg-neutral-lightest);
+  --toggle-radius: var(--border-radius-pill);
+  --toggle-radius-knob: var(--border-radius-circle);
+  --toggle-shadow-knob: var(--box-shadow);
+}
+
+.theme-3 {
+  --toggle-color-active: var(--bg-primary-default);
+  --toggle-color: var(--bg-neutral-lightest);
+  --toggle-color-border: var(--color-neutral-3);
+  --toggle-color-border-knob: var(--color-neutral-3);
+  --toggle-color-knob: var(--bg-neutral-lightest);
+  --toggle-radius: var(--border-radius-default);
+  --toggle-radius-knob: var(--border-radius-default);
+  --toggle-shadow-knob: var(--box-shadow);
+}
+
+.theming-poc > main {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.input-toggle {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+
+  input {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--toggle-color);
+    border: var(--toggle-border-width) var(--toggle-border-style) var(--toggle-color-border);
+    border-radius: var(--toggle-radius);
+    cursor: pointer;
+    transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
+    appearance: none;
+
+    &:checked {
+      background-color: var(--toggle-color-active);
+      + .knob { left: calc(50% + (var(--toggle-border-width) * 2)); }
+    }
+  }
+
+  .container {
+    position: relative;
+    width: calc(var(--toggle-height) * 2);
+    height: var(--toggle-height);
+  }
+
+  .knob {
+    position: absolute;
+    top: calc(var(--toggle-border-width) * 2);
+    left: calc(var(--toggle-border-width) * 2);
+    z-index: 2;
+    display: block;
+    width: calc(50% - (var(--toggle-border-width) * 4));
+    height: calc(100% - (var(--toggle-border-width) * 4));
+    background-color: var(--toggle-color-knob);
+    border: var(--toggle-border-width) var(--toggle-border-style) var(--toggle-color-border-knob);
+    border-radius: var(--toggle-radius-knob);
+    box-shadow: var(--toggle-shadow-knob);
+    transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
+    pointer-events: none;
+  }
+}
