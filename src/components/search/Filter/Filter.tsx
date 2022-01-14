@@ -111,7 +111,7 @@ function Filter({
   const Filters = () => {
     return (
       <div className="filter" data-store-filter data-testid={testId}>
-        <h4>Filters</h4>
+        <h4 className="tile-small">Filters</h4>
         <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
@@ -146,7 +146,7 @@ function Filter({
                             data-value={item.value}
                             data-quantity={item.quantity}
                           />
-                          <UILabel htmlFor={id}>
+                          <UILabel htmlFor={id} className="tile-small">
                             {item.label}{' '}
                             <Badge variant="neutral" small>
                               {item.quantity}

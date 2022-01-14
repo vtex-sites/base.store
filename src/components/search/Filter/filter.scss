@@ -4,8 +4,6 @@
   // copied from footer.scss (extract?
   h4 {
     margin-bottom: var(--space-3);
-    font-size: var(--text-size-2);
-    line-height: 1.25;
 
     @include media("<notebook") {
       display: none;
@@ -70,8 +68,6 @@
     display: flex;
     align-items: center;
     margin-left: var(--space-1);
-    font-size: var(--text-size-2);
-    line-height: 1.25;
   }
 
   [data-store-badge] {
