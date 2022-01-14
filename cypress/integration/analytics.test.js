@@ -15,11 +15,15 @@ beforeEach(() => {
 })
 
 const dataLayerHasEvent = (eventName) => {
-  return cy.window().then((window) => {
-    const allEvents = window.dataLayer.map((evt) => evt.event)
+  cy.waitUntil(
+    () =>
+      cy.window({ log: false }).then((window) => {
+        const allEvents = window.dataLayer.map((evt) => evt.event)
 
-    expect(allEvents).to.include(eventName)
-  })
+        return allEvents.includes(eventName)
+      }),
+    { errorMsg: `Event ${eventName} not found` }
+  ).then((assert) => expect(assert).to.be.true)
 }
 
 const eventDataHasCurrencyProperty = () => {
@@ -78,6 +82,7 @@ describe('add_to_cart event', () => {
       cy.itemsInCart(0)
 
       // Add to cart
+      cy.getById('store-card').first().click()
       cy.getById('buy-button')
         .first()
         .click()
@@ -167,13 +172,12 @@ describe('select_item event', () => {
 
     let skuId
 
-    cy.getById('store-card')
-      .first()
-      .within(() => {
-        cy.getById('buy-button').then(($btn) => {
-          skuId = $btn.attr('data-sku')
-        })
+    cy.getById('store-card').first().click()
+    cy.getById('buy-button')
+      .then(($btn) => {
+        skuId = $btn.attr('data-sku')
       })
+
       .click()
       .then(() => {
         cy.window().then((window) => {

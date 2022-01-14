@@ -18,16 +18,21 @@ describe('Search page Filters and Sorting options', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('facet-filter-header')
+    cy.getById('open-filter-button')
+      .click()
+      .getById('filter-accordion-button')
       .first()
       .click()
-      .getById('facet-filter-checkbox')
+      .getById('filter-accordion-panel-checkbox')
       .should('exist')
       .first()
       .click()
+      .getById('apply-filters-button')
+      .click()
+      .getById('filter-accordion-panel-checkbox')
       .then(($checkbox) => {
-        const quantity = $checkbox.attr('data-quantity')
         const value = $checkbox.attr('data-value')
+        const quantity = $checkbox.attr('data-quantity')
 
         // Check if the filter applied actually ended up in the URL
         cy.location('href').should((loc) => {
@@ -136,10 +141,8 @@ describe('Infinite Scroll pagination', () => {
               // Number of products after showMore is clicked should be higher
               .should('have.length.gte', before)
               .last()
-              .within(() => {
-                cy.getById('buy-button').then(($btn) => {
-                  skuIdBeforeNavigate = $btn.attr('data-sku')
-                })
+              .then(($card) => {
+                skuIdBeforeNavigate = $card.attr('data-sku')
               })
               .click()
               .then(() => {
@@ -148,10 +151,10 @@ describe('Infinite Scroll pagination', () => {
               })
               .then(() => {
                 cy.go('back')
-                  .getById('buy-button')
+                  .getById('store-card')
                   .last()
-                  .then(($btn) => {
-                    const skuIdAfterNavigate = $btn.attr('data-sku')
+                  .then(($card) => {
+                    const skuIdAfterNavigate = $card.attr('data-sku')
 
                     expect(skuIdBeforeNavigate).to.eq(skuIdAfterNavigate)
                   })
