@@ -93,6 +93,7 @@ describe('On product collection pages', () => {
 
       cy.itemsInCart(0)
 
+      cy.getById('store-card').first().click()
       // Add to cart
       cy.getById('buy-button')
         .first()
@@ -121,6 +122,7 @@ describe('On product collection pages', () => {
 
       cy.itemsInCart(0)
 
+      cy.getById('store-card').first().click()
       // Remove from cart
       cy.getById('buy-button').first().click()
       cy.getById('checkout-button').should('be.enabled')
