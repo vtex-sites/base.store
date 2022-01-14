@@ -108,7 +108,7 @@ function Filter({
 
   const Filters = () => {
     return (
-      <div data-store-filter data-testid={testId}>
+      <div className="filter" data-store-filter data-testid={testId}>
         <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
