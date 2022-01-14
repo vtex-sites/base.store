@@ -27,7 +27,7 @@ describe('Search page Filters and Sorting options', () => {
       .should('exist')
       .first()
       .click()
-      .getById('apply-filters-button')
+      .getById('filter-modal-button-apply')
       .click()
       .getById('filter-accordion-panel-checkbox')
       .then(($checkbox) => {

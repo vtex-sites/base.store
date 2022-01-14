@@ -174,7 +174,7 @@ function Filter({
         <header className="filter-modal__header">
           <h2 className="title-display">Filters</h2>
           <Button
-            data-testid="close-filters-button"
+            data-testid="filter-modal-button-close"
             aria-label="Close"
             onClick={onDismiss}
           >
@@ -196,7 +196,7 @@ function Filter({
         </Button>
         <Button
           variant="primary"
-          data-testid="apply-filters-button"
+          data-testid="filter-modal-button-apply"
           onClick={(e) => {
             onDismiss?.(e)
             toggleFacets(selectedFilters)
