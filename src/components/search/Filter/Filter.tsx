@@ -98,17 +98,14 @@ function Filter({
   }
 
   const onCheck = ({ key, value }: IStoreSelectedFacet) => {
-    if (isMobile) {
-      onFilterChange({ key, value })
-
-      return
+    if (!isMobile) {
+      toggleFacet({ key, value })
     }
 
-    toggleFacet({ key, value })
     onFilterChange({ key, value })
   }
 
-  const Filters = () => {
+  const Facets = () => {
     return (
       <div className="filter" data-store-filter data-testid={testId}>
         <h4 className="tile-small">Filters</h4>
@@ -181,7 +178,7 @@ function Filter({
             <XIcon size={18} weight="bold" />
           </Button>
         </header>
-        <Filters />
+        <Facets />
       </div>
       <footer className="filter-modal__footer">
         <Button
@@ -207,7 +204,7 @@ function Filter({
       </footer>
     </UIModal>
   ) : (
-    <Filters />
+    <Facets />
   )
 }
 
