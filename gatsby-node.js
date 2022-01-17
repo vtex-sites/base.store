@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 
 const config = require('./store.config')
 
-const { loginUrl } = config
+const { loginUrl, loginSubdomain } = config
 
 exports.onPreInit = ({ reporter }) => {
   reporter.info('Copying Partytown Files')
@@ -46,5 +46,35 @@ exports.createPages = async ({ actions: { createRedirect } }) => {
     toPath: loginUrl,
     statusCode: 301,
     redirectInBrowser: true,
+  })
+
+  createRedirect({
+    fromPath: '/_v/private/graphql/*',
+    toPath: `${loginSubdomain}/_v/private/graphql/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/_v/public/graphql/*',
+    toPath: `${loginSubdomain}/_v/public/graphql/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/_v/segment/graphql/*',
+    toPath: `${loginSubdomain}/_v/segment/graphql/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/api/vtexid/*',
+    toPath: `${loginSubdomain}/api/vtexid/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/api/sessions/*',
+    toPath: `${loginSubdomain}/api/sessions/:splat`,
+    statusCode: 301,
   })
 }

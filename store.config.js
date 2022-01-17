@@ -14,6 +14,7 @@ module.exports = {
   // Production URLs
   storeUrl: 'https://vtexfaststore.com',
   checkoutUrl: 'https://secure.vtexfaststore.com/checkout',
+  loginSubdomain: 'https://secure.vtexfaststore.com',
   loginUrl: 'https://secure.vtexfaststore.com/api/io/login',
 
   // Lighthouse CI
