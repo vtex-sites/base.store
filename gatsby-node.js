@@ -45,5 +45,6 @@ exports.createPages = async ({ actions: { createRedirect } }) => {
     fromPath: '/login/',
     toPath: loginUrl,
     statusCode: 301,
+    redirectInBrowser: true,
   })
 }
