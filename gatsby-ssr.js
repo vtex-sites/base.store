@@ -53,8 +53,17 @@ export const onRenderBody = ({ setHeadComponents }) => {
 
   if (storeConfig.platform === 'vtex') {
     addPartytown = true
-    forward.push('NavigationCapture.sendEvent')
+    forward.push('sendrc')
     setHeadComponents([
+      <script
+        key="rc.js-init"
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: `
+          window.sendrc=function(en,ed){window.NavigationCapture.sendEvent(en,ed)}
+          `,
+        }}
+      />,
       <script
         key="rc.js-script"
         type="text/partytown"
