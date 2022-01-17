@@ -15,7 +15,19 @@ export const wrapRootElement = ({ element }) => {
   // Temporary added condition for pattern library page
   /* FIXME Remove this after removing pattern library page */
   if (window.location.pathname.includes('theming-poc')) {
-    return <>{element}</>
+    return (
+      <UIProvider
+        initialState={uiInitialState}
+        actions={uiActions}
+        effects={uiEffects}
+      >
+        <SessionProvider initialState={{ channel: storeConfig.channel }}>
+          <CartProvider mode="optimistic" onValidateCart={validateCart}>
+            {element}
+          </CartProvider>
+        </SessionProvider>
+      </UIProvider>
+    )
   }
 
   return (
