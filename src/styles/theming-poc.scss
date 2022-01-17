@@ -4,79 +4,12 @@
 
 :root {
   --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
-
-  --toggle-border-style: solid;
-  --toggle-border-width: 1px;
-  --toggle-color-bkg-active: darkseagreen;
-  --toggle-color-bkg: transparent;
-  --toggle-color-border-active-knob: var(--toggle-color-border-knob);
-  --toggle-color-border-active: var(--toggle-color-border);
-  --toggle-color-border-knob: gray;
-  --toggle-color-border: gray;
-  --toggle-color-knob-active: var(--toggle-color-knob);
-  --toggle-color-knob: gray;
-  --toggle-color-focus: var(--toggle-color-bkg-active);
-  --toggle-height-desk: 30px;
-  --toggle-height-mob: 48px;
-  --toggle-height: var(--toggle-height-mob);
-  --toggle-radius-knob: 0;
-  --toggle-radius: 0;
-  --toggle-shadow-knob: none;
-  --toggle-transition-function: ease-in-out;
-  --toggle-transition-property: all;
-  --toggle-transition-timing: .15s;
-}
-
-.theme-1 {
-  --toggle-color-knob-active: white;
-  --toggle-color-border-active-knob: white;
-}
-
-.theme-2 {
-  --toggle-color-bkg-active: var(--bg-success);
-  --toggle-color-bkg: var(--bg-neutral-lightest);
-  --toggle-color-border-knob: var(--color-border-input);
-  --toggle-color-border: var(--color-border-input);
-  --toggle-color-knob-active: var(--toggle-color-knob);
-  --toggle-color-knob: var(--bg-neutral-lightest);
-  --toggle-color-focus: var(--toggle-color-bkg-active);
-  --toggle-radius-knob: var(--border-radius-circle);
-  --toggle-radius: var(--border-radius-pill);
-  --toggle-shadow-knob: var(--box-shadow);
-}
-
-.theme-3 {
-  --toggle-color-bkg-active: var(--bg-primary-default);
-  --toggle-color-bkg: var(--bg-neutral-lightest);
-  --toggle-color-border-knob: var(--color-neutral-3);
-  --toggle-color-border: var(--color-neutral-3);
-  --toggle-color-knob-active: var(--toggle-color-knob);
-  --toggle-color-knob: var(--bg-neutral-lightest);
-  --toggle-color-focus: var(--toggle-color-bkg-active);
-  --toggle-height-desk: 38px;
-  --toggle-radius-knob: var(--border-radius-default);
-  --toggle-radius: var(--border-radius-default);
-  --toggle-shadow-knob: var(--box-shadow);
-}
-
-.theme-4 {
-  --toggle-border-width: 2px;
-  --toggle-color-bkg-active: darkgreen;
-  --toggle-color-bkg: var(--color-neutral-3);
-  --toggle-color-border-active-knob: darkgreen;
-  --toggle-color-border-active: darkgreen;
-  --toggle-color-border-knob: var(--color-neutral-3);
-  --toggle-color-border: var(--color-neutral-3);
-  --toggle-color-knob-active: var(--toggle-color-knob);
-  --toggle-color-knob: var(--bg-neutral-lightest);
-  --toggle-color-focus: var(--toggle-color-bkg-active);
-  --toggle-radius-knob: var(--border-radius-circle);
-  --toggle-radius: var(--border-radius-pill);
-  --toggle-shadow-knob: none;
 }
 
 .theming-poc {
   display: flex;
+  flex-direction: column;
+  gap: 48px;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -104,62 +37,63 @@
   }
 }
 
-.input-toggle {
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-
-  input {
-    position: absolute;
-    z-index: 1;
-    display: block;
-    width: 100%;
-    height: 100%;
-    background-color: var(--toggle-color-bkg);
-    border: var(--toggle-border-width) var(--toggle-border-style) var(--toggle-color-border);
-    border-radius: var(--toggle-radius);
-    cursor: pointer;
-    transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
-    appearance: none;
-
-    &:checked {
-      background-color: var(--toggle-color-bkg-active);
-      border-color: var(--toggle-color-border-active);
-
-      + .knob {
-        left: calc(50% + (var(--toggle-border-width) * 2));
-        background-color: var(--toggle-color-knob-active);
-        border-color: var(--toggle-color-border-active-knob);
-      }
-    }
-
-    &:focus { outline: 2px solid var(--toggle-color-focus); }
+.theming-toggle > main > div {
+  &:nth-child(2) {
+    --toggle-bkg-color-active: darkseagreen;
+    --toggle-bkg-color: transparent;
+    --toggle-border-color-active: var(--toggle-border-color);
+    --toggle-border-color: black;
+    --toggle-border-radius: 0;
+    --toggle-border-style: solid;
+    --toggle-border-width: 1px;
+    --toggle-height-desk: 30px;
+    --toggle-height-mob: 48px;
+    --toggle-height: var(--toggle-height-mob);
+    --toggle-knob-border-color-active: var(--toggle-knob-border-color);
+    --toggle-knob-border-color: black;
+    --toggle-knob-color-active: var(--toggle-knob-color);
+    --toggle-knob-color: black;
   }
 
-  .container {
-    position: relative;
-    width: calc(var(--toggle-height) * 2);
-    height: var(--toggle-height);
-
-    @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
+  &:nth-child(3) {
+    --toggle-bkg-color-active: var(--bg-success);
+    --toggle-bkg-color: var(--bg-neutral-lightest);
+    --toggle-border-radius: var(--border-radius-pill);
+    --toggle-border-color-active: var(--color-border-input);
+    --toggle-border-color: var(--color-border-input);
+    --toggle-knob-border-color-active: var(--toggle-knob-border-color);
+    --toggle-knob-border-color: var(--color-border-input);
+    --toggle-knob-color-active: var(--toggle-knob-color);
+    --toggle-knob-color: var(--bg-neutral-lightest);
+    --toggle-knob-radius: var(--border-radius-pill);
+    --toggle-knob-shadow: var(--box-shadow);
   }
 
-  .knob {
-    position: absolute;
-    top: calc(var(--toggle-border-width) * 2);
-    left: calc(var(--toggle-border-width) * 2);
-    z-index: 2;
-    display: block;
-    width: calc(50% - (var(--toggle-border-width) * 4));
-    height: calc(100% - (var(--toggle-border-width) * 4));
-    background-color: var(--toggle-color-knob);
-    border: var(--toggle-border-width) var(--toggle-border-style) var(--toggle-color-border-knob);
-    border-radius: var(--toggle-radius-knob);
-    box-shadow: var(--toggle-shadow-knob);
-    transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
-    pointer-events: none;
+  &:nth-child(4) {
+    --toggle-border-color: var(--color-neutral-3);
+    --toggle-border-radius: var(--border-radius-default);
+    --toggle-bkg-color-active: var(--bg-primary-default);
+    --toggle-bkg-color: var(--bg-neutral-lightest);
+    --toggle-height-desk: 38px;
+    --toggle-knob-border-color: var(--color-neutral-3);
+    --toggle-knob-color-active: var(--toggle-knob-color);
+    --toggle-knob-color: var(--bg-neutral-lightest);
+    --toggle-knob-radius: var(--border-radius-default);
+    --toggle-knob-shadow: var(--box-shadow);
+  }
+
+  &:nth-child(5) {
+    --toggle-bkg-color-active: darkgreen;
+    --toggle-bkg-color: var(--color-neutral-3);
+    --toggle-border-color-active: darkgreen;
+    --toggle-border-color: var(--color-neutral-3);
+    --toggle-border-radius: var(--border-radius-pill);
+    --toggle-border-width: 2px;
+    --toggle-knob-border-color-active: darkgreen;
+    --toggle-knob-border-color: var(--color-neutral-3);
+    --toggle-knob-color-active: var(--toggle-knob-color);
+    --toggle-knob-color: var(--bg-neutral-lightest);
+    --toggle-knob-radius: var(--border-radius-circle);
+    --toggle-knob-shadow: none;
   }
 }

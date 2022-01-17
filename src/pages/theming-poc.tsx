@@ -8,6 +8,7 @@ import type {
 } from '@generated/graphql'
 
 import ProductCard from '../components/product/ProductCard'
+import InputToggle from '../components/ui/InputToggle'
 
 import '../styles/theming-poc.scss'
 
@@ -29,13 +30,14 @@ function Page(props: Props) {
           noindex
           nofollow
         />
-        <div className="theming-poc-content">
+        <div className="theming-poc-content theming-toggle">
           <header />
           <main>
             <InputToggle />
-            <InputToggle2 />
-            <InputToggle3 />
-            <InputToggle4 />
+            <InputToggle />
+            <InputToggle />
+            <InputToggle />
+            <InputToggle />
           </main>
           <aside>
             <h3>Elements</h3>
@@ -71,68 +73,20 @@ function Page(props: Props) {
             <code>transition-timing</code>
           </aside>
         </div>
-      </div>
-      <div className="theming-poc-content">
-        <ProductCard
-          product={products[0] ?? {}}
-          index={0}
-          showActions={false}
-        />
-        <ProductCard
-          product={products[1] ?? {}}
-          index={1}
-          showActions={false}
-        />
+        <div className="theming-poc-content">
+          <ProductCard
+            product={products[0] ?? {}}
+            index={0}
+            showActions={false}
+          />
+          <ProductCard
+            product={products[1] ?? {}}
+            index={1}
+            showActions={false}
+          />
+        </div>
       </div>
     </>
-  )
-}
-
-function InputToggle() {
-  return (
-    <div className="input-toggle theme-1">
-      <label htmlFor="input-toggle">How about this?</label>
-      <div className="container">
-        <input id="input-toggle" name="input-toggle" type="checkbox" />
-        <span className="knob" />
-      </div>
-    </div>
-  )
-}
-
-function InputToggle2() {
-  return (
-    <div className="input-toggle theme-2">
-      <label htmlFor="input-toggle">How about this?</label>
-      <div className="container">
-        <input id="input-toggle-1" name="input-toggle" type="checkbox" />
-        <span className="knob" />
-      </div>
-    </div>
-  )
-}
-
-function InputToggle3() {
-  return (
-    <div className="input-toggle theme-3">
-      <label htmlFor="input-toggle">How about this?</label>
-      <div className="container">
-        <input id="input-toggle-2" name="input-toggle" type="checkbox" />
-        <span className="knob" />
-      </div>
-    </div>
-  )
-}
-
-function InputToggle4() {
-  return (
-    <div className="input-toggle theme-4">
-      <label htmlFor="input-toggle">How about this?</label>
-      <div className="container">
-        <input id="input-toggle-3" name="input-toggle" type="checkbox" />
-        <span className="knob" />
-      </div>
-    </div>
   )
 }
 
