@@ -40,37 +40,30 @@ function Page(props: Props) {
             <InputToggle />
           </main>
           <aside>
-            <h3>Elements</h3>
-            <code>bkg (background)</code>
-            <code>border</code>
-            <code>knob</code>
-          </aside>
-          <aside>
             <h3>Design Tokens</h3>
-            <code>border-style</code>
-            <code>border-width</code>
+            <code>toggle-bkg-color-active</code>
+            <code>toggle-bkg-color</code>
             <br />
-            <code>color-bkg-active</code>
-            <code>color-bkg</code>
-            <code>color-border-active-knob</code>
-            <code>color-border-active</code>
-            <code>color-border-knob</code>
-            <code>color-border</code>
-            <code>color-knob-active</code>
-            <code>color-knob</code>
-            <code>color-focus</code>
+            <code>toggle-border-color-active</code>
+            <code>toggle-border-color</code>
+            <code>toggle-border-radius</code>
+            <code>toggle-border-style</code>
+            <code>toggle-border-width</code>
             <br />
-            <code>height-desk</code>
-            <code>height-mob</code>
+            <code>toggle-height-desk</code>
+            <code>toggle-height-mob</code>
+            <code>toggle-height</code>
             <br />
-            <code>radius-knob</code>
-            <code>radius</code>
+            <code>toggle-knob-border-color-active</code>
+            <code>toggle-knob-border-color</code>
+            <code>toggle-knob-color-active</code>
+            <code>toggle-knob-color</code>
+            <code>toggle-knob-radius</code>
+            <code>toggle-knob-shadow</code>
             <br />
-            <code>shadow-knob</code>
-            <br />
-            <code>transition-function</code>
-            <code>transition-property</code>
-            <code>transition-timing</code>
+            <code>toggle-transition-function</code>
+            <code>toggle-transition-property</code>
+            <code>toggle-transition-timing</code>
           </aside>
         </div>
         <div className="theming-poc-content">
