@@ -14,7 +14,9 @@ import storeConfig from './store.config'
 export const wrapRootElement = ({ element, pathname }) => {
   // Temporary added condition for pattern library page
   /* FIXME Remove this after removing pattern library page */
-  if (pathname.includes('pattern-library')) return <>{element}</>
+  if (pathname.includes('theming-poc')) {
+    return <>{element}</>
+  }
 
   return (
     <ErrorBoundary>
@@ -40,7 +42,9 @@ export const wrapRootElement = ({ element, pathname }) => {
 export const wrapPageElement = ({ element, props }) => {
   // Temporary added condition for pattern library page
   /* FIXME Remove this after removing pattern library page */
-  if (props.location.pathname.includes('pattern-library')) return <>{element}</>
+  if (props.location.pathname.includes('theming-poc')) {
+    return <>{element}</>
+  }
 
   return <Layout>{element}</Layout>
 }
