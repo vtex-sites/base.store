@@ -35,3 +35,12 @@ exports.onCreateBabelConfig = ({ actions }) => {
     options: {},
   })
 }
+
+exports.createPages = ({ actions: { createRedirect } }) => {
+  createRedirect({
+    fromPath: '/login/',
+    toPath: 'https://login.vtex-base1.tk/',
+    isPermanent: true,
+    redirectInBrowser: true,
+  })
+}
