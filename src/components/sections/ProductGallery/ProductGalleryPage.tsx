@@ -98,7 +98,7 @@ function GalleryPage({
             pageSize={middleItemIndex}
           />
           <div>
-            <h1>Sponsored</h1>
+            <h3>Sponsored</h3>
           </div>
           <ProductTiles products={productsSponsored.slice(0, 2)} />
           <ProductGrid
