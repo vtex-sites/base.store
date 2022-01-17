@@ -349,7 +349,7 @@ Some third-party scripts execute expensive computations that may require some ti
 export const onRenderBody = ({ setHeadComponents }) => {
   // ...
   setHeadComponents([
-    <script>
+    <script type="text/partytown">
       window.expensiveFunction = function() {/* expensive computation used by custom-script */}
     </script>
     <script key="custom-script" src="*://domain/path" type="text/partytown" />,
