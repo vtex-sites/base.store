@@ -2,7 +2,6 @@ import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
-import { Image } from 'src/components/ui/Image'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
@@ -62,22 +61,6 @@ function ProductCard({ product, index, className }: Props) {
 
   return (
     <Link {...linkProps} className={className}>
-      <Image
-        className="w-full"
-        baseUrl={img.url}
-        sourceWidth={480}
-        aspectRatio={1}
-        width={360}
-        breakpoints={[250, 360, 480]}
-        layout="constrained"
-        backgroundColor="#f0f0f0"
-        options={{
-          fitIn: true,
-        }}
-        alt={img.alternateName}
-        sizes="(max-width: 768px) 200px, 320px"
-      />
-
       <div>{name}</div>
       <div className="flex justify-between">
         <span
