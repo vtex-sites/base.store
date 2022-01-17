@@ -83,33 +83,3 @@
   transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
   pointer-events: none;
 }
-
-.theme-3 {
-  --toggle-color-bkg-active: var(--bg-primary-default);
-  --toggle-color-bkg: var(--bg-neutral-lightest);
-  --toggle-color-border-knob: var(--color-neutral-3);
-  --toggle-color-border: var(--color-neutral-3);
-  --toggle-color-knob-active: var(--toggle-color-knob);
-  --toggle-color-knob: var(--bg-neutral-lightest);
-  --toggle-color-focus: var(--toggle-color-bkg-active);
-  --toggle-height-desk: 38px;
-  --toggle-radius-knob: var(--border-radius-default);
-  --toggle-radius: var(--border-radius-default);
-  --toggle-shadow-knob: var(--box-shadow);
-}
-
-.theme-4 {
-  --toggle-border-width: 2px;
-  --toggle-color-bkg-active: darkgreen;
-  --toggle-color-bkg: var(--color-neutral-3);
-  --toggle-color-border-active-knob: darkgreen;
-  --toggle-color-border-active: darkgreen;
-  --toggle-color-border-knob: var(--color-neutral-3);
-  --toggle-color-border: var(--color-neutral-3);
-  --toggle-color-knob-active: var(--toggle-color-knob);
-  --toggle-color-knob: var(--bg-neutral-lightest);
-  --toggle-color-focus: var(--toggle-color-bkg-active);
-  --toggle-radius-knob: var(--border-radius-circle);
-  --toggle-radius: var(--border-radius-pill);
-  --toggle-shadow-knob: none;
-}
