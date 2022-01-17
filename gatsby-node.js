@@ -2,6 +2,10 @@ const path = require('path')
 
 const fs = require('fs-extra')
 
+const config = require('./store.config')
+
+const { loginUrl } = config
+
 exports.onPreInit = ({ reporter }) => {
   reporter.info('Copying Partytown Files')
 
@@ -33,5 +37,13 @@ exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: `@vtex/graphql-utils/babel`,
     options: {},
+  })
+}
+
+exports.createPages = async ({ actions: { createRedirect } }) => {
+  createRedirect({
+    fromPath: '/login/',
+    toPath: loginUrl,
+    statusCode: 301,
   })
 }
