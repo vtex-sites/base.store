@@ -31,6 +31,7 @@ const ProductTiles = ({ products }: TilesProps) => {
       {products.map((product, idx) => (
         <Tile key={`${product.id}`}>
           <ProductCard
+            data-testid="tile-card"
             product={product}
             index={idx + 1}
             variant="horizontal"
