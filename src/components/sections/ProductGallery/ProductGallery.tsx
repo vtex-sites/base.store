@@ -2,11 +2,11 @@ import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useState, useEffect } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
-import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
 import SROnly from 'src/components/ui/SROnly'
 import Sort from 'src/components/search/Sort'
+import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -69,8 +69,8 @@ function ProductGallery({ title }: Props) {
 
         {isMobile && (
           <Button
-            data-testid="open-filter-button"
             variant="tertiary"
+            data-testid="open-filter-button"
             icon={<FadersHorizontalIcon size={16} />}
             iconPosition="left"
             aria-label="Open Filters"

@@ -40,6 +40,7 @@ function ProductCard({
   ratio = '1',
   bordered = false,
   outOfStock = false,
+  ...otherProps
 }: Props) {
   const {
     id,
@@ -93,6 +94,7 @@ function ProductCard({
       data-card-bordered={bordered}
       data-card-out-of-stock={outOfStock}
       data-sku={buyProps['data-sku']}
+      {...otherProps}
     >
       <UICardImage>
         <AspectRatio ratio={ratio}>
