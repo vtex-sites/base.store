@@ -111,3 +111,13 @@
   --breakpoint-notebook: 1280px;
   --breakpoint-desktop: 1440px;
 }
+
+main.temp-cls-fix {
+  // NOTE: Temporary fix to make sure the footer stays below the fold so
+  // there's not much CLS after the main content is loaded.
+  // Remove when skeletons are used!
+  --alert-height: 48px;
+  --navbar-height: 117px;
+
+  min-height: calc(100vh - var(--alert-height) - var(--navbar-height));
+}

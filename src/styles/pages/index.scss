@@ -3,15 +3,6 @@
 main {
   display: flex;
   flex-wrap: wrap;
-
-  &.temp-cls-fix {
-    // NOTE: Make sure the footer stays below the fold so there's no CLS after
-    // the main content is loaded. Remove when skeletons are used.
-    --alert-height: 48px;
-    --navbar-height: 117px;
-
-    min-height: calc(100vh - var(--alert-height) - var(--navbar-height));
-  }
 }
 
 .page__section {
