@@ -96,7 +96,9 @@
 }
 
 .filter-modal__body {
-  height: calc(100vh - 80px);
+  --filter-footer-height: 80px;
+
+  height: calc(100vh - var(--filter-footer-height));
   padding: var(--page-padding-phone);
   overflow-y: auto;
 }
