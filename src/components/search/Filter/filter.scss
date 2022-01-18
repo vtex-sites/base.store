@@ -1,7 +1,7 @@
 @import "../../../styles/scaffold";
 
 .filter[data-store-filter] {
-  h4 {
+  .title-small {
     margin-bottom: var(--space-3);
 
     @include media("<notebook") {
