@@ -21,23 +21,23 @@ function OrderSummary({
   const formattedDiscount = useFormattedPrice(discount)
 
   return (
-    <div className="order-summary" data-order-summary>
-      <p data-order-summary-subtotal>
-        <div>Subtotal ({numberOfItems} products)</div>
-        <div>{useFormattedPrice(subTotal)}</div>
-      </p>
+    <ul className="order-summary" data-order-summary>
+      <li>
+        <span>Subtotal ({numberOfItems} products)</span>
+        <span>{useFormattedPrice(subTotal)}</span>
+      </li>
       {discount > 0 && (
-        <p data-order-summary-discount>
-          <div>Discount</div>
-          <div>-{formattedDiscount}</div>
-        </p>
+        <li data-order-summary-discount>
+          <span>Discount</span>
+          <span>-{formattedDiscount}</span>
+        </li>
       )}
-      <p className="title-subsection" data-order-summary-total>
-        <div>Total</div>
-        <div>{useFormattedPrice(total)}</div>
-      </p>
+      <li className="title-subsection">
+        <span>Total</span>
+        <span>{useFormattedPrice(total)}</span>
+      </li>
       {checkoutButton}
-    </div>
+    </ul>
   )
 }
 

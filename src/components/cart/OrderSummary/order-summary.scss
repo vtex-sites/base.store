@@ -1,24 +1,13 @@
 @import "../../../styles/scaffold";
 
 .order-summary[data-order-summary] {
-  padding: 1rem;
+  padding: var(--space-3);
 
-  [data-order-summary-subtotal] {
+  li {
     display: flex;
     justify-content: space-between;
     line-height: 1.5;
-  }
 
-  [data-order-summary-discount] {
-    display: flex;
-    justify-content: space-between;
-    color: green;
-    line-height: 1.5;
-  }
-
-  [data-order-summary-total] {
-    display: flex;
-    justify-content: space-between;
-    line-height: 1.5;
+    &[data-order-summary-discount] { color: var(--color-text-success); }
   }
 }
