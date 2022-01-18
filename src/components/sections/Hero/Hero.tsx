@@ -62,6 +62,7 @@ const Hero = ({
         <Image
           baseUrl={imageSrc}
           alt={imageAlt}
+          height={variant === 'default' ? 240 : 180}
           aspectRatio={2}
           layout="fullWidth"
           backgroundColor="#f0f0f0"
