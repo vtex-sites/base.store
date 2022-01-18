@@ -172,6 +172,10 @@
     border: 0;
   }
 
+  [data-accordion-item] [data-store-icon] {
+    display: flex;
+  }
+
   @include media(">=notebook") { grid-column: span 8; }
 }
 

@@ -4,7 +4,7 @@ import React from 'react'
 
 import './badge.scss'
 
-export type BadgeVariants = 'outOfStock' | 'new' | 'recommended'
+export type BadgeVariants = 'outOfStock' | 'new' | 'recommended' | 'neutral'
 
 type Props = {
   small?: boolean

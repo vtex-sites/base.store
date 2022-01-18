@@ -13,10 +13,19 @@ import {
   AccordionItem as UIAccordionItem,
   AccordionButton as UIAccordionButton,
   AccordionPanel as UIAccordionPanel,
+  Label as UILabel,
 } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
+import { Badge } from 'src/components/ui/Badge'
+import {
+  X as XIcon,
+  PlusCircle as PlusCircleIcon,
+  MinusCircle as MinusCircleIcon,
+} from 'phosphor-react'
+
+import './filter.scss'
 
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
@@ -28,7 +37,7 @@ interface Props {
    * This function is called whenever the user hits "Escape", clicks outside
    * the filter modal or clicks in close button. (mobile only)
    */
-  onDismiss?: (event: MouseEvent | KeyboardEvent) => void
+  onDismiss?: (event: MouseEvent | KeyboardEvent | undefined) => void
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -89,19 +98,17 @@ function Filter({
   }
 
   const onCheck = ({ key, value }: IStoreSelectedFacet) => {
-    if (isMobile) {
-      onFilterChange({ key, value })
-
-      return
+    if (!isMobile) {
+      toggleFacet({ key, value })
     }
 
-    toggleFacet({ key, value })
     onFilterChange({ key, value })
   }
 
-  const Filters = () => {
+  const Facets = () => {
     return (
-      <div data-store-filter data-testid={testId}>
+      <div className="filter" data-store-filter data-testid={testId}>
+        <h2 className="title-small">Filters</h2>
         <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
@@ -111,7 +118,11 @@ function Filter({
                   {label}
                   <UIIcon
                     component={
-                      expandedIndices.has(index) ? <div>-</div> : <div>+</div>
+                      expandedIndices.has(index) ? (
+                        <MinusCircleIcon size={24} />
+                      ) : (
+                        <PlusCircleIcon size={24} />
+                      )
                     }
                   />
                 </UIAccordionButton>
@@ -121,7 +132,7 @@ function Filter({
                       const id = `${label}-${item.label}`
 
                       return (
-                        <li key={id}>
+                        <li key={id} className="filter__item">
                           <Checkbox
                             id={id}
                             checked={selectedFilters.some(
@@ -132,9 +143,12 @@ function Filter({
                             data-value={item.value}
                             data-quantity={item.quantity}
                           />
-                          <label htmlFor={id}>
-                            {item.label} ({item.quantity})
-                          </label>
+                          <UILabel htmlFor={id} className="title-small">
+                            {item.label}{' '}
+                            <Badge variant="neutral" small>
+                              {item.quantity}
+                            </Badge>
+                          </UILabel>
                         </li>
                       )
                     })}
@@ -143,42 +157,54 @@ function Filter({
               </UIAccordionItem>
             ))}
         </UIAccordion>
-        {isMobile && (
-          <div>
-            <Button
-              onClick={() => {
-                toggleFacets(selectedFilters)
-                setExpandedIndices(new Set([]))
-                setSelectedFilters([])
-              }}
-            >
-              Clear All
-            </Button>
-            <Button
-              data-testid="apply-filters-button"
-              onClick={() => toggleFacets(selectedFilters)}
-            >
-              View Results
-            </Button>
-          </div>
-        )}
       </div>
     )
   }
 
   return isMobile ? (
-    <UIModal isOpen={isOpen} onDismiss={onDismiss}>
-      <h2>Filters</h2>
-      <Button onClick={onDismiss} data-testid="close-filters-button">
-        X
-      </Button>
-      <Filters />
+    <UIModal
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      className="filter-modal__content"
+    >
+      <div className="filter-modal__body">
+        <header className="filter-modal__header">
+          <h2 className="title-display">Filters</h2>
+          <Button
+            data-testid="filter-modal-button-close"
+            aria-label="Close"
+            onClick={onDismiss}
+          >
+            <XIcon size={18} weight="bold" />
+          </Button>
+        </header>
+        <Facets />
+      </div>
+      <footer className="filter-modal__footer">
+        <Button
+          variant="secondary"
+          onClick={() => {
+            toggleFacets(selectedFilters)
+            setExpandedIndices(new Set([]))
+            setSelectedFilters([])
+          }}
+        >
+          Clear All
+        </Button>
+        <Button
+          variant="primary"
+          data-testid="filter-modal-button-apply"
+          onClick={(e) => {
+            onDismiss?.(e)
+            toggleFacets(selectedFilters)
+          }}
+        >
+          View Results
+        </Button>
+      </footer>
     </UIModal>
   ) : (
-    <>
-      <h2>Filters</h2>
-      <Filters />
-    </>
+    <Facets />
   )
 }
 
