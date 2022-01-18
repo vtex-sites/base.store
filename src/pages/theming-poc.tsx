@@ -23,13 +23,13 @@ function Page(props: Props) {
 
   return (
     <>
+      <GatsbySeo
+        title="UI Theming: Proof of Concept"
+        language="en"
+        noindex
+        nofollow
+      />
       <div className="theming-poc">
-        <GatsbySeo
-          title="UI Theming: Proof of Concept"
-          language="en"
-          noindex
-          nofollow
-        />
         <div className="theming-poc-content theming-toggle">
           <header />
           <main>
@@ -66,6 +66,7 @@ function Page(props: Props) {
             <code>toggle-transition-timing</code>
           </aside>
         </div>
+        <hr />
         <div className="theming-poc-content">
           <ProductCard
             product={products[0] ?? {}}
