@@ -1,4 +1,3 @@
-import { Link } from 'gatsby'
 import React from 'react'
 import type { ReactNode } from 'react'
 import UIHero, {
@@ -8,6 +7,7 @@ import UIHero, {
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
 import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
+import { LinkButton } from 'src/components/ui/Button'
 
 type Variant = 'default' | 'small'
 
@@ -37,15 +37,21 @@ const Hero = ({
       <HeroContent aria-labelledby="hero-heading">
         <div className="hero-content-wrapper / grid-content">
           <div className="hero-content-info">
-            <h1 id="hero-heading" className="title-hero">
+            <h1
+              id="hero-heading"
+              className={
+                variant === 'default' ? 'title-hero' : 'title-hero-small'
+              }
+            >
               {title}
             </h1>
+
             <p className="text-body-big">{subtitle}</p>
             {!!link && (
               <HeroLink>
-                <Link to={link}>
+                <LinkButton href={link} inverse>
                   {linkText} <ArrowRightIcon size={24} />
-                </Link>
+                </LinkButton>
               </HeroLink>
             )}
           </div>

@@ -31,6 +31,11 @@
   padding-right: var(--page-padding-phone);
   padding-left: var(--page-padding-phone);
 
+  @include media(">=tablet") {
+    padding-right: var(--page-padding-tablet);
+    padding-left: var(--page-padding-tablet);
+  }
+
   @include media(">=notebook") {
     padding-right: var(--page-padding-notebook);
     padding-left: var(--page-padding-notebook);

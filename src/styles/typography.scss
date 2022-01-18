@@ -41,6 +41,14 @@ h1, h2, h3, h4, h5, h6, p, ul {
   @include media(">=tablet") { font-size: var(--text-size-7); }
 }
 
+.title-hero-small {
+  font-weight: var(--text-weight-black);
+  font-size: var(--text-size-5);
+  line-height: 1.1;
+
+  @include media(">=tablet") { font-size: var(--text-size-6); }
+}
+
 .title-display-big {
   font-weight: var(--text-weight-bold);
   font-size: var(--text-size-3);
