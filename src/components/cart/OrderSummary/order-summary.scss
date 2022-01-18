@@ -1,22 +1,22 @@
 @import "../../../styles/scaffold";
 
-.cart-summary[data-cart-summary] {
+.order-summary[data-order-summary] {
   padding: 1rem;
 
-  [data-cart-summary-subtotal] {
+  [data-order-summary-subtotal] {
     display: flex;
     justify-content: space-between;
     line-height: 1.5;
   }
 
-  [data-cart-summary-discount] {
+  [data-order-summary-discount] {
     display: flex;
     justify-content: space-between;
     color: green;
     line-height: 1.5;
   }
 
-  [data-cart-summary-total] {
+  [data-order-summary-total] {
     display: flex;
     justify-content: space-between;
     line-height: 1.5;

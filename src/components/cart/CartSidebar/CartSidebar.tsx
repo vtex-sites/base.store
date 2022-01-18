@@ -6,7 +6,7 @@ import Button from 'src/components/ui/Button'
 import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 
 import CartItem from '../CartItem'
-import CartSummary from '../CartSummary'
+import OrderSummary from '../OrderSummary'
 
 import './cart-sidebar.scss'
 
@@ -32,7 +32,7 @@ function CartSidebar() {
 
       <div>Cart Summary</div>
 
-      <CartSummary
+      <OrderSummary
         subTotal={subTotal}
         total={total}
         numberOfItems={totalItems}
