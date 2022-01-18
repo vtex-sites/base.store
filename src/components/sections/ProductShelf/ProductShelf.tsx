@@ -14,7 +14,7 @@ function ProductShelf({ products }: ProductShelfProps) {
     <ul data-product-shelf className="grid-content">
       {products.map((product, idx) => (
         <li key={`${product.id}`}>
-          <ProductCard product={product} index={idx + 1} showActions={false} />
+          <ProductCard product={product} index={idx + 1} />
         </li>
       ))}
     </ul>

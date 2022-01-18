@@ -1,6 +1,7 @@
 import { graphql, Link } from 'gatsby'
 import React, { useMemo } from 'react'
 import Button from 'src/components/ui/Button'
+import Select from 'src/components/ui/Select'
 import DiscountBadge from 'src/components/ui/DiscountBadge'
 import Price from 'src/components/ui/Price'
 import AspectRatio from 'src/components/ui/AspectRatio'
@@ -11,6 +12,7 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
+import QuantitySelector from 'src/components/ui/QuantitySelector'
 import {
   Card as UICard,
   CardImage as UICardImage,
@@ -20,22 +22,30 @@ import {
 
 import './product-card.scss'
 
-type Variant = 'horizontal' | 'vertical'
+type Structure = 'wide' | 'default' | 'horizontal'
+
+type Action = 'quantitySelector' | 'button' | ''
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
-  variant?: Variant
-  showActions?: boolean
+  structure?: Structure
+  action?: Action
+  select?: boolean
+  moreInfo?: boolean
+  showDescription?: boolean
   ratio?: AspectRatioProps['ratio']
 }
 
 function ProductCard({
   product,
   index,
-  variant = 'vertical',
-  showActions = true,
+  structure = 'default',
+  action = '',
   ratio = '1',
+  select = false,
+  moreInfo = false,
+  showDescription = false,
 }: Props) {
   const {
     id,
@@ -83,7 +93,7 @@ function ProductCard({
   })
 
   return (
-    <UICard data-card-variant={variant} data-base-product-card>
+    <UICard data-card-structure={structure} data-base-product-card>
       <UICardImage>
         <AspectRatio ratio={ratio}>
           <Image
@@ -102,6 +112,7 @@ function ProductCard({
           />
         </AspectRatio>
       </UICardImage>
+
       <UICardContent>
         <div data-base-product-card-heading>
           <h3 data-base-product-card-title>
@@ -128,9 +139,26 @@ function ProductCard({
             />
           </div>
         </div>
+        {showDescription && (
+          <p data-base-product-card-description>
+            The quick brown fox jumps over the lazy dog
+          </p>
+        )}
         <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
+        {(select || moreInfo) && (
+          <footer data-base-product-card-footer>
+            {select && <Select />}
+            {moreInfo && (
+              <div>
+                <small>~$2,13 /un.</small>
+                <small>~300g /un.</small>
+              </div>
+            )}
+          </footer>
+        )}
       </UICardContent>
-      {showActions && (
+
+      {action === 'button' && (
         <UICardActions>
           <Button
             {...buyProps}
@@ -142,6 +170,11 @@ function ProductCard({
           >
             Add
           </Button>
+        </UICardActions>
+      )}
+      {action === 'quantitySelector' && (
+        <UICardActions>
+          <QuantitySelector min={1} max={10} disabled={false} />
         </UICardActions>
       )}
     </UICard>

@@ -71,13 +71,19 @@ function Page(props: Props) {
           <ProductCard
             product={products[0] ?? {}}
             index={0}
-            showActions={false}
+            action="quantitySelector"
+            select
+            moreInfo
           />
+          <ProductCard product={products[1] ?? {}} index={1} structure="wide" />
           <ProductCard
-            product={products[1] ?? {}}
+            product={products[2] ?? {}}
             index={1}
-            showActions={false}
+            structure="horizontal"
+            ratio="3:4"
+            showDescription
           />
+          <ProductCard product={products[3] ?? {}} index={1} />
         </div>
       </div>
     </>

@@ -33,8 +33,7 @@ const ProductTiles = ({ products }: TilesProps) => {
           <ProductCard
             product={product}
             index={idx + 1}
-            variant="horizontal"
-            showActions={false}
+            structure="wide"
             ratio={getRatio(idx)}
           />
         </Tile>
