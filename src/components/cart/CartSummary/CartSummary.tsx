@@ -17,16 +17,21 @@ function CartSummary({
   numberOfItems,
   checkoutButton,
 }: CartSummaryProps) {
+  const discount = subTotal - total
+  const formattedDiscount = useFormattedPrice(discount)
+
   return (
     <div className="cart-summary" data-cart-summary>
       <p data-cart-summary-subtotal>
         <div>Subtotal ({numberOfItems} products)</div>
         <div>{useFormattedPrice(subTotal)}</div>
       </p>
-      <p data-cart-summary-discount>
-        <div>Discount</div>
-        <div>-{useFormattedPrice(subTotal - total)}</div>
-      </p>
+      {discount > 0 && (
+        <p data-cart-summary-discount>
+          <div>Discount</div>
+          <div>-{formattedDiscount}</div>
+        </p>
+      )}
       <p className="title-subsection" data-cart-summary-total>
         <div>Total</div>
         <div>{useFormattedPrice(total)}</div>
