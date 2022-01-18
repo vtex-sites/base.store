@@ -115,7 +115,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       <section className="product-details__body">
         <header className="product-details__title">
           <ProductTitle
-            title={<h2 className="title-product">{name}</h2>}
+            title={<h1 className="title-product">{name}</h1>}
             label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} />}
             refNumber={productId}
           />
@@ -197,14 +197,14 @@ function ProductDetails({ product: staleProduct }: Props) {
             <AddToCartLoadingSkeleton />
           ) : (
             <BuyButton disabled={buyDisabled} {...buyProps}>
-              Buy Now
+              Add to Cart
             </BuyButton>
           )}
         </section>
 
         <section className="product-details__content">
           <article className="product-details__description">
-            <h3 className="title-subsection">Description</h3>
+            <h2 className="title-subsection">Description</h2>
             <p className="text-body">{description}</p>
           </article>
         </section>

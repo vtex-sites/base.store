@@ -27,16 +27,19 @@
       gap: var(--space-3);
       justify-content: space-between;
 
-      @include media(">=tablet") {
-        gap: var(--space-1);
-        justify-content: flex-start;
+      @include media(">=tablet", "<notebook") {
+        justify-content: space-between;
+        width: 50%;
+        margin-left: 0;
       }
+
+      @include media(">=tablet") { gap: var(--space-1); }
+
+      @include media(">=notebook") { justify-content: flex-start; }
     }
 
     .hero-content-info {
-      @include media(">=tablet") {
-        max-width: 42%;
-      }
+      @include media(">=notebook") { width: 42%; }
     }
 
     p {
@@ -58,8 +61,7 @@
   [data-hero-image] {
     [data-gatsby-image-wrapper] {
       width: 100%;
-
-      @include media(">=tablet") { height: 100%; }
+      height: 100%;
     }
 
     @include media(">=tablet") {
@@ -71,10 +73,10 @@
   }
 
   &[data-hero-variant="default"] {
-    min-height: 18.75rem;
+    @include media(">=tablet") { min-height: 18.75rem; }
 
     [data-hero-content] {
-      @include media(">=tablet") { padding: var(--space-13) 0; }
+      @include media(">=tablet") { padding: var(--space-9) 0; }
     }
 
     .hero-content-info {
@@ -89,14 +91,14 @@
     }
 
     [data-hero-image] {
-      [data-gatsby-image-wrapper] { min-height: 18.75rem; }
+      @include media("<tablet") { height: 15rem; }
 
       @include media(">=tablet") { width: 53%; }
     }
   }
 
   &[data-hero-variant="small"] {
-    min-height: 14.18rem;
+    @include media(">=tablet") { min-height: 14.18rem; }
 
     [data-hero-content] {
       padding: var(--space-4) 0 var(--space-3);
@@ -107,7 +109,7 @@
     }
 
     [data-hero-image] {
-      [data-gatsby-image-wrapper] { min-height: 14.18rem; }
+      @include media("<tablet") { height: 11.25rem; }
 
       @include media(">=tablet") { width: 50%; }
     }
