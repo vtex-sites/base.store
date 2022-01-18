@@ -1,5 +1,6 @@
 import type { InputHTMLAttributes, ReactNode } from 'react'
 import React from 'react'
+import { List } from '@faststore/ui'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 
 import './order-summary.scss'
@@ -21,7 +22,7 @@ function OrderSummary({
   const formattedDiscount = useFormattedPrice(discount)
 
   return (
-    <ul className="order-summary" data-order-summary>
+    <List className="order-summary" data-order-summary>
       <li>
         <span>Subtotal ({numberOfItems} products)</span>
         <span>{useFormattedPrice(subTotal)}</span>
@@ -37,7 +38,7 @@ function OrderSummary({
         <span>{useFormattedPrice(total)}</span>
       </li>
       {checkoutButton}
-    </ul>
+    </List>
   )
 }
 
