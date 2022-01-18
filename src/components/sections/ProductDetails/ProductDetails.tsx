@@ -115,7 +115,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       <section className="product-details__body">
         <header className="product-details__title">
           <ProductTitle
-            title={<h2 className="title-product">{name}</h2>}
+            title={<h1 className="title-product">{name}</h1>}
             label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} />}
             refNumber={productId}
           />
