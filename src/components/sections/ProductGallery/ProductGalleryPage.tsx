@@ -76,6 +76,12 @@ function GalleryPage({
     return null
   }
 
+  const shouldDisplaySponsoredProducts =
+    showSponsoredProducts &&
+    page === 0 &&
+    productsSponsored !== undefined &&
+    productsSponsored.length > 1
+
   return (
     <>
       <Sentinel
@@ -84,10 +90,7 @@ function GalleryPage({
         pageSize={itemsPerPage}
         title={title}
       />
-      {showSponsoredProducts &&
-      page === 0 &&
-      productsSponsored !== undefined &&
-      productsSponsored.length > 1 ? (
+      {shouldDisplaySponsoredProducts ? (
         <>
           <ProductGrid
             products={products.slice(0, middleItemIndex)}
