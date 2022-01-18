@@ -84,6 +84,24 @@
   }
 }
 
+.plp-results-sponsored {
+  margin: var(--space-1) calc(var(--padding) * -1);
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--color-neutral-0);
+
+  @include media(">=notebook") {
+    margin: var(--space-6) 0;
+    padding: 0;
+
+    [data-store-tiles] {
+      column-gap: var(--grid-gap-0);
+      row-gap: 0;
+    }
+  }
+
+  h3 { margin-bottom: var(--space-1); }
+}
+
 .plp-load-more-wrapper {
   display: flex;
   align-items: center;
