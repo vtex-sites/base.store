@@ -1,11 +1,11 @@
-import type { InputHTMLAttributes, ReactNode } from 'react'
+import type { ReactNode } from 'react'
 import React from 'react'
 import { List } from '@faststore/ui'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 
 import './order-summary.scss'
 
-interface OrderSummaryProps extends InputHTMLAttributes<HTMLDivElement> {
+interface OrderSummaryProps {
   subTotal: number
   total: number
   numberOfItems: number
