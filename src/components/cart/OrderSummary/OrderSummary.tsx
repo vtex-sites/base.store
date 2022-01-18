@@ -4,7 +4,7 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 
 import './order-summary.scss'
 
-export interface OrderSummaryProps extends InputHTMLAttributes<HTMLDivElement> {
+interface OrderSummaryProps extends InputHTMLAttributes<HTMLDivElement> {
   subTotal: number
   total: number
   numberOfItems: number
