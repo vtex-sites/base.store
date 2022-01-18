@@ -73,6 +73,12 @@ module.exports = {
     ],
     'scss/dollar-variable-colon-space-after': 'always',
     'scss/dollar-variable-colon-space-before': 'never',
+    'scss/double-slash-comment-empty-line-before': [
+      'always',
+      {
+        ignore: 'between-comments',
+      },
+    ],
     'scss/dollar-variable-pattern': /^[a-z-0-9]+$/,
     'scss/double-slash-comment-whitespace-inside': 'always',
     'scss/operator-no-newline-before': true,
