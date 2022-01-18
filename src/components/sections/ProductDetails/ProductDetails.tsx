@@ -197,7 +197,7 @@ function ProductDetails({ product: staleProduct }: Props) {
             <AddToCartLoadingSkeleton />
           ) : (
             <BuyButton disabled={buyDisabled} {...buyProps}>
-              Buy Now
+              Add to Cart
             </BuyButton>
           )}
         </section>

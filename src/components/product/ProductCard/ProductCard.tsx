@@ -116,7 +116,7 @@ function ProductCard({
       </UICardImage>
       <UICardContent>
         <div className="product-card__heading">
-          <h3 className="product-card__title">
+          <h3 className="product-card__title / title-small">
             <Link {...linkProps} title={name}>
               {name}
             </Link>
