@@ -46,11 +46,9 @@ function GalleryPage({
     [productList]
   )
 
-  /* 
+  /*
   PS.: Just for  the sake of demonstrantion, productSponsoredList was created by copying the data from
   productList, and an arbitrary page (20) was choosen to get different products.
-  TODO: Change the productSponsoredList to get the products from a specific hook that return Sponsored Products,
-  or receive these products as props.
   */
   const productSponsoredList = useProductsQuery(
     {
