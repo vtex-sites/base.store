@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
-  min-height: 29.37rem;
   background-color: var(--bg-secondary-default);
 
   @include media(">=tablet") {
@@ -74,6 +73,8 @@
   }
 
   &[data-hero-variant="default"] {
+    min-height: 29.37rem;
+
     @include media(">=tablet") { min-height: 18.75rem; }
 
     [data-hero-content] {
@@ -99,6 +100,8 @@
   }
 
   &[data-hero-variant="small"] {
+    min-height: 18.12rem;
+
     @include media(">=tablet") { min-height: 14.18rem; }
 
     [data-hero-content] {
