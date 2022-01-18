@@ -1,6 +1,6 @@
 @import "../../../styles/vendors/include-media";
 
-[data-toggle] {
+[data-base-toggle] {
   --toggle-bkg-color-active: black;
   --toggle-bkg-color: white;
 
@@ -49,7 +49,7 @@
       background-color: var(--toggle-bkg-color-active);
       border-color: var(--toggle-border-color-active);
 
-      + [data-toggle-knob] {
+      + [data-base-toggle-knob] {
         left: calc(50% + (var(--toggle-border-width) * 2));
         background-color: var(--toggle-knob-color-active);
         border-color: var(--toggle-knob-border-color-active);
@@ -60,7 +60,7 @@
   }
 }
 
-[data-toggle-container] {
+[data-base-toggle-container] {
   position: relative;
   width: calc(var(--toggle-height) * 2);
   height: var(--toggle-height);
@@ -68,7 +68,7 @@
   @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
 }
 
-[data-toggle-knob] {
+[data-base-toggle-knob] {
   position: absolute;
   top: calc(var(--toggle-border-width) * 2);
   left: calc(var(--toggle-border-width) * 2);
