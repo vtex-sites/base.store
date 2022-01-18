@@ -5,11 +5,18 @@ import type {
   IStoreSelectedFacet,
   FacetedFilter_FacetsFragment,
 } from '@generated/graphql'
-import { List as UIList, Modal as UIModal } from '@faststore/ui'
+import {
+  Icon as UIIcon,
+  List as UIList,
+  Modal as UIModal,
+  Accordion as UIAccordion,
+  AccordionItem as UIAccordionItem,
+  AccordionButton as UIAccordionButton,
+  AccordionPanel as UIAccordionPanel,
+} from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
-import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
 
 interface Props {
   facets: FacetedFilter_FacetsFragment[]
@@ -95,45 +102,47 @@ function Filter({
   const Filters = () => {
     return (
       <div data-store-filter data-testid={testId}>
-        <Accordion
-          onChange={onAccordionChange}
-          expandedIndices={expandedIndices}
-        >
+        <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
             .map(({ label, values, key }, index) => (
-              <AccordionItem
-                index={index}
-                buttonLabel={label}
-                key={`${label}-${index}`}
-                isExpanded={expandedIndices.has(index)}
-              >
-                <UIList>
-                  {values.map((item) => {
-                    const id = `${label}-${item.label}`
+              <UIAccordionItem key={`${label}-${index}`}>
+                <UIAccordionButton data-testid="filter-accordion-button">
+                  {label}
+                  <UIIcon
+                    component={
+                      expandedIndices.has(index) ? <div>-</div> : <div>+</div>
+                    }
+                  />
+                </UIAccordionButton>
+                <UIAccordionPanel>
+                  <UIList>
+                    {values.map((item) => {
+                      const id = `${label}-${item.label}`
 
-                    return (
-                      <li key={id}>
-                        <Checkbox
-                          id={id}
-                          checked={selectedFilters.some(
-                            (filter) => filter.value === item.value
-                          )}
-                          onChange={() => onCheck({ key, value: item.value })}
-                          data-testid="filter-accordion-item-checkbox"
-                          data-value={item.value}
-                          data-quantity={item.quantity}
-                        />
-                        <label htmlFor={id}>
-                          {item.label} ({item.quantity})
-                        </label>
-                      </li>
-                    )
-                  })}
-                </UIList>
-              </AccordionItem>
+                      return (
+                        <li key={id}>
+                          <Checkbox
+                            id={id}
+                            checked={selectedFilters.some(
+                              (filter) => filter.value === item.value
+                            )}
+                            onChange={() => onCheck({ key, value: item.value })}
+                            data-testid="filter-accordion-panel-checkbox"
+                            data-value={item.value}
+                            data-quantity={item.quantity}
+                          />
+                          <label htmlFor={id}>
+                            {item.label} ({item.quantity})
+                          </label>
+                        </li>
+                      )
+                    })}
+                  </UIList>
+                </UIAccordionPanel>
+              </UIAccordionItem>
             ))}
-        </Accordion>
+        </UIAccordion>
         {isMobile && (
           <div>
             <Button
