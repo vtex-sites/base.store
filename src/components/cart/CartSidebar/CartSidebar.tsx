@@ -40,7 +40,7 @@ function CartSidebar() {
           <Button
             data-cart-checkout-button
             variant="primary"
-            icon={<ArrowRightIcon />}
+            icon={<ArrowRightIcon size={18} />}
             iconPosition="right"
             {...btnProps}
           >
