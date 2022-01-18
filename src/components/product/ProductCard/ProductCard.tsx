@@ -83,7 +83,7 @@ function ProductCard({
   })
 
   return (
-    <UICard className="product-card" data-card-variant={variant}>
+    <UICard data-card-variant={variant} data-base-product-card>
       <UICardImage>
         <AspectRatio ratio={ratio}>
           <Image
@@ -103,13 +103,13 @@ function ProductCard({
         </AspectRatio>
       </UICardImage>
       <UICardContent>
-        <div className="product-card__heading">
-          <h3 className="product-card__title">
+        <div data-base-product-card-heading>
+          <h3 data-base-product-card-title>
             <Link {...linkProps} title={name}>
               {name}
             </Link>
           </h3>
-          <div className="product-card__prices">
+          <div data-base-product-card-prices>
             <Price
               value={listPrice}
               formatter={useFormattedPrice}
