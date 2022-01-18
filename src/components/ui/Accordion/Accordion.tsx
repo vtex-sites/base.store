@@ -1,21 +1,12 @@
 import React, { forwardRef } from 'react'
-import type { HTMLAttributes } from 'react'
 import { Accordion as UIAccordion } from '@faststore/ui'
+import type { AccordionProps } from '@faststore/ui'
 
-interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'onChange'> {
-  /**
-   * ID to find this component in testing tools (e.g.: cypress,
-   * testing-library, and jest).
-   */
-  testId?: string
+interface Props extends Omit<AccordionProps, 'indices'> {
   /**
    * Indices that indicate which accordion items are opened.
    */
   expandedIndices: Iterable<number>
-  /**
-   * Function that is triggered when an accordion item is opened/closed.
-   */
-  onChange: (index: number) => void
 }
 
 const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(

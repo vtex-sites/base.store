@@ -1,18 +1,13 @@
 import React, { forwardRef } from 'react'
-import type { HTMLAttributes } from 'react'
 import {
   Icon as UIIcon,
   AccordionItem as UIAccordionItem,
   AccordionPanel as UIAccordionPanel,
   AccordionButton as UIAccordionButton,
 } from '@faststore/ui'
+import type { AccordionItemProps } from '@faststore/ui'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  /**
-   * ID to find this component in testing tools (e.g.: cypress,
-   * testing-library, and jest).
-   */
-  testId?: string
+interface Props extends AccordionItemProps {
   /**
    * Attribute to check whether the item is expanded or not.
    */
@@ -21,10 +16,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
    * Label for Accordion button
    */
   buttonLabel?: string
-  /**
-   * Index of the current accordion item within the accordion.
-   */
-  index?: number
 }
 
 const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
