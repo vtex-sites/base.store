@@ -45,6 +45,7 @@ module.exports = {
     'no-unknown-animations': true,
     'color-hex-case': 'lower',
     'function-max-empty-lines': 0,
+    'max-line-length': 180,
     'function-name-case': 'lower',
     'number-no-trailing-zeros': true,
     'unit-case': 'lower',
