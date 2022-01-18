@@ -20,7 +20,7 @@ function CartSummary({
   return (
     <div className="cart-summary" data-cart-summary>
       <p data-cart-summary-subtotal>
-        <div>Subtotal ({numberOfItems}) products</div>
+        <div>Subtotal ({numberOfItems} products)</div>
         <div>{useFormattedPrice(subTotal)}</div>
       </p>
       <p data-cart-summary-discount>

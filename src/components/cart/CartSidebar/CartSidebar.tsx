@@ -3,9 +3,12 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
+import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 
 import CartItem from '../CartItem'
 import CartSummary from '../CartSummary'
+
+import './cart-sidebar.scss'
 
 function CartSidebar() {
   const btnProps = useCheckoutButton()
@@ -14,7 +17,7 @@ function CartSidebar() {
   const { items, gifts, totalItems, isValidating, subTotal, total } = cart
 
   return (
-    <div data-testid="cart-sidebar">
+    <div className="cart-sidebar" data-testid="cart-sidebar">
       <Button {...toggleProps}>Close</Button>
       <div>Cart Item Detais</div>
 
@@ -34,7 +37,13 @@ function CartSidebar() {
         total={total}
         numberOfItems={totalItems}
         checkoutButton={
-          <Button {...btnProps}>
+          <Button
+            data-cart-checkout-button
+            variant="primary"
+            icon={<ArrowRightIcon />}
+            iconPosition="right"
+            {...btnProps}
+          >
             {isValidating ? 'loading...' : 'Checkout'}
           </Button>
         }
