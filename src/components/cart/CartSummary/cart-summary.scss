@@ -1,0 +1,24 @@
+@import "../../../styles/scaffold";
+
+.cart-summary[data-cart-summary] {
+  padding: 1rem;
+
+  [data-cart-summary-subtotal] {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+  }
+
+  [data-cart-summary-discount] {
+    display: flex;
+    justify-content: space-between;
+    color: green;
+    line-height: 1.5;
+  }
+
+  [data-cart-summary-total] {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+  }
+}
