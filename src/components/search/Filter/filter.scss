@@ -80,12 +80,6 @@
   }
 }
 
-.filter-modal__body {
-  height: calc(100vh - 80px);
-  padding: var(--page-padding-phone);
-  overflow-y: auto;
-}
-
 .filter-modal__header {
   position: relative;
   display: flex;
@@ -99,6 +93,12 @@
     right: calc(-1 * var(--page-padding-phone));
     background-color: transparent;
   }
+}
+
+.filter-modal__body {
+  height: calc(100vh - 80px);
+  padding: var(--page-padding-phone);
+  overflow-y: auto;
 }
 
 .filter-modal__footer {
