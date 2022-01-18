@@ -7,6 +7,7 @@ import type { ProductsQueryQuery } from '@generated/graphql'
 
 import ProductTiles from '../ProductTiles'
 
+/* If showSponsoredProducts is true, a ProductTiles will be displayed in between two blocks of ProductGrid on the page 0 */
 interface Props {
   page: number
   display?: boolean
@@ -83,7 +84,6 @@ function GalleryPage({
         pageSize={itemsPerPage}
         title={title}
       />
-      {/* If showSponsoredProducts is on, a ProductTiles will be display in between two blocks of ProductGrid on the page 0 */}
       {showSponsoredProducts &&
       page === 0 &&
       productsSponsored !== undefined &&
