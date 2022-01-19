@@ -311,7 +311,7 @@ function MySection {
 
 ## 🖊️ Styling Components
 
-Our customized theme is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) of a `class` for each one of them. Today, we have the following files in the `src/styles` folder:
+Our customized theme is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
 
 ### `global.scss`
 
