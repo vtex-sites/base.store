@@ -180,7 +180,7 @@ describe('Infinite Scroll pagination', () => {
   })
 
   // Tests: https://developers.google.com/search/blog/2014/02/infinite-scroll-search-friendly
-  it.only('Changes the page being viewed on scroll', () => {
+  it('Changes the page being viewed on scroll', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
