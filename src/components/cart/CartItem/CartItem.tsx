@@ -30,7 +30,7 @@ function CartItem({ item }: Props) {
           alt={item.itemOffered.image[0].alternateName}
           sourceWidth={360}
           aspectRatio={1}
-          width={60}
+          width={72}
           breakpoints={[50, 100, 150]}
           layout="constrained"
           backgroundColor="#f0f0f0"
