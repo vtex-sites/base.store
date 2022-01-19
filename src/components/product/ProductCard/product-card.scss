@@ -9,6 +9,7 @@
   --product-card-padding            : var(--space-1) var(--space-1) var(--space-2);
   --product-card-min-width          : 14rem;
   --product-card-gap                : var(--grid-gap-0);
+  --product-card-shadow             : none;
 
   --product-card-border-radius      : var(--border-radius-default);
   --product-card-border-width       : 1px;
@@ -54,6 +55,7 @@
   background-color: var(--product-card-bkg-color);
   border: var(--product-card-border-width) solid var(--product-card-border-color);
   border-radius: var(--product-card-border-radius);
+  box-shadow: var(--product-card-shadow);
   transition: var(--product-card-transition-property) var(--product-card-transition-timing) var(--product-card-transition-function);
 
   &:focus-within {
