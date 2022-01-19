@@ -5,9 +5,9 @@
 </p>
 <h1 align="center">
   A starter powered by Faststore and Gatsby
-</h1>
+</h1> 
 
-Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
+Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React. 
 
 ## ⚠️ Before you start
 As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarise what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
@@ -25,7 +25,7 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 12. Promotions via utm
 13. Produt specifications
 
-## 🚀 Quick start!
+## 🚀 Quick start
 
 0. **Clone this repo**
 
@@ -148,7 +148,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 20. **`lighthouserc.js`**: Configures [Google Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci). This is where you can turn on/off lighthouse assertions to be used by Lighthouse CI Bot/hook
 
 21. **`pull_request_template.md`**: Template used when creating your Pull Requests
-
+    
 22. **`renovate.json`**: Renovate configuration file to keep your store always fresh with Faststore's latest versions
 
 23. **`.prettierignore`**: Ignore listed files when applying prettier rules
@@ -161,7 +161,7 @@ All code is inside the `src` folder. The code is split into folders that impleme
 
 The `controller` is inside the `src/sdk` folder. This is where you will find most logic for the application. This folder contains hooks for adding items to cart, making graphql queries, resizing images, etc. If you need to write a custom business logic this is probably the place to put this logic.
 
-The `views` are written in the `src/components` folder and are subdivided into domain-specific components. Cart related items are inside the `src/components/cart` folder. Search and Product related components like facets, product summary, and search results are in their respective folders. Basic building blocks components are inside the UI folder. Components like button, checkbox, and modal are good candidates for the UI folder.
+The `views` are written in the `src/components` folder and are subdivided into domain-specific components. Cart related items are inside the `src/components/cart` folder. Search and Product related components like facets, product summary, and search results are in their respective folders. Basic building blocks components are inside the UI folder. Components like button, checkbox, and modal are good candidates for the UI folder. 
 Section components are those components that occupy a whole slice on the webpage and are desirable to be changed by a CMS. Section components are Product Gallery, Carousel, Shelf and Product description.
 
 The `model`, in a website, is where the data fetching occurs. Since this project uses Jamstack, a crucial design decision was made to explicitly split where Static and Dynamic data are fetched. The files inside the `src/pages` folder use [Gatsby's File System Route API](https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/) to declare routes and fetch static data. The files inside the `src/views` folder revalidate and enrich static data with dynamic attributes.
@@ -173,9 +173,9 @@ To summarize:
 
 ## ✏️ Adding Components
 
-What better than an example for learning the best practices while adding components? In this example, we will add a button component.
+What better than an example for learning the best practices while adding components? In this example, we will add a button component. 
 Components live on the `src/components` folder. Each component may have, at most, 3 files: a component file, an export file, and a styling file.
-First, let's create a folder and the files.
+First, let's create a folder and the files. 
 
 ```sh
 mkdir src/components/ui/Button
@@ -313,7 +313,7 @@ Tailwind is a utility-first CSS framework. The goal of this starter is to make i
 > :warning: CSS modules generate extra classes in your final CSS sheet. Use them with caution.
 
 ## 🍒 Adding queries
-We use [graphql-codegen](https://www.graphql-code-generator.com/) to pre-process GraphQL queries. This compilation generates TypeScript typings and configurations for our graphql server under the folder `@generated/graphql`.
+We use [graphql-codegen](https://www.graphql-code-generator.com/) to pre-process GraphQL queries. This compilation generates TypeScript typings and configurations for our graphql server under the folder `@generated/graphql`. 
 This means we can staticaly analyse your code in search of bugs and secure your graphql server before each deploy. If, however you need to change any GraphQL Fragment, Query or Mutation, you will need to regenerate the whole thing. To do this, open your terminal and type
 
 ```sh
@@ -360,3 +360,4 @@ export const onRenderBody = ({ setHeadComponents }) => {
 ```
 
 For more information about integrating third-party scripts: [Partytown Wiki](https://github.com/BuilderIO/partytown/wiki)
+
