@@ -40,7 +40,7 @@ function ProductGallery({ title }: Props) {
   }, [screenWidth])
 
   if (!data) {
-    return <div className="temp-data-loading">loading...</div>
+    return <div className="plp-temp-data-loading">loading...</div>
   }
 
   return (
