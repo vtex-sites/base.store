@@ -9,6 +9,7 @@ const { useGraphQlJit } = require('@envelop/graphql-jit')
 const { useParserCache } = require('@envelop/parser-cache')
 const { useValidationCache } = require('@envelop/validation-cache')
 const { getContextFactory, getSchema } = require('@faststore/api')
+const { makeExecutableSchema, mergeSchemas } = require('@graphql-tools/schema')
 const { GraphQLError } = require('graphql')
 
 const persisted = require('../../@generated/graphql/persisted.json')
@@ -23,8 +24,28 @@ const apiOptions = {
   channel: storeConfig.channel,
 }
 
+const typeDefs = `
+  type Query {
+    shipping(name: String!): String!
+  }
+`
+
+const resolvers = {
+  Query: {
+    shipping: (_, { name }) => {
+      return name || 'Empty'
+    },
+  },
+}
+
+const customSchema = makeExecutableSchema({ typeDefs, resolvers })
+
 const apiSchema = getSchema(apiOptions)
 const apiContextFactory = getContextFactory(apiOptions)
+
+const getMergedSchema = async () => {
+  return mergeSchemas({ schemas: [await apiSchema, customSchema] })
+}
 
 const isBadRequestError = (err) => {
   return err.originalError && err.originalError.name === 'BadRequestError'
@@ -43,7 +64,7 @@ const formatError = (err) => {
 const getEnvelop = async () =>
   envelop({
     plugins: [
-      useSchema(await apiSchema),
+      useSchema(await getMergedSchema()),
       useExtendContext(apiContextFactory),
       useMaskedErrors({ formatError }),
       useGraphQlJit(),
@@ -83,4 +104,5 @@ module.exports = {
   execute,
   getSchema: () => apiSchema,
   getContextFactory: () => apiContextFactory,
+  getMergedSchema,
 }

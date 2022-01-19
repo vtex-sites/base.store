@@ -6,6 +6,7 @@ import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
+import MyComponent from 'src/components/MyComponent'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -48,6 +49,8 @@ function Page(props: Props) {
           },
         }}
       />
+
+      <MyComponent key="component" />
       {/*
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.

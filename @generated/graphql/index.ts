@@ -853,6 +853,7 @@ export type Query = {
   file: Maybe<File>
   product: StoreProduct
   search: StoreSearchResult
+  shipping: Scalars['String']
   site: Maybe<Site>
   siteBuildMetadata: Maybe<SiteBuildMetadata>
   siteFunction: Maybe<SiteFunction>
@@ -1025,6 +1026,10 @@ export type QuerySearchArgs = {
   selectedFacets: InputMaybe<Array<IStoreSelectedFacet>>
   sort?: InputMaybe<StoreSort>
   term?: InputMaybe<Scalars['String']>
+}
+
+export type QueryShippingArgs = {
+  name: Scalars['String']
 }
 
 export type QuerySiteArgs = {
@@ -3511,6 +3516,12 @@ export type StringQueryOperatorInput = {
   nin: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   regex: InputMaybe<Scalars['String']>
 }
+
+export type ShippingQueryVariables = Exact<{
+  name: Scalars['String']
+}>
+
+export type ShippingQuery = { shipping: string }
 
 export type ProductSummary_ProductFragment = {
   slug: string

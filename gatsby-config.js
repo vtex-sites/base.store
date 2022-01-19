@@ -2,7 +2,7 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
-const { getSchema, getContextFactory } = require('./src/server')
+const { getContextFactory, getMergedSchema } = require('./src/server')
 const config = require('./store.config')
 
 const {
@@ -126,7 +126,7 @@ module.exports = {
       options: {
         sourceProducts: true,
         sourceCollections: true,
-        getSchema,
+        getSchema: getMergedSchema,
         getContextFactory,
         // Source less products is development for better DX
         maxNumProducts: isProduction ? 2500 : 100,

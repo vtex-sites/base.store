@@ -29,6 +29,7 @@
     "@faststore/api": "^1.4.15",
     "@faststore/sdk": "^1.4.15",
     "@faststore/ui": "^1.4.15",
+    "@graphql-tools/schema": "^8.3.1",
     "@vtex/gatsby-plugin-nginx": "^1.4.15",
     "@vtex/gatsby-plugin-thumbor": "^1.4.15",
     "@vtex/gatsby-source-store": "^1.4.15",
