@@ -16,6 +16,7 @@ import type {
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 import ProductShelf from 'src/components/sections/ProductShelf'
+import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
 import '../styles/pages/plp.scss'
 
@@ -132,6 +133,10 @@ function Page(props: Props) {
           </div>
         </section>
       )}
+
+      <div className="plp-scroll-top-section">
+        <ScrollToTopButton />
+      </div>
     </SearchProvider>
   )
 }
