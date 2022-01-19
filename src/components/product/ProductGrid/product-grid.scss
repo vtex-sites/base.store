@@ -1,18 +1,17 @@
 @import "../../../styles/vendors/include-media.scss";
 
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
   --gap: 2px;
 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--gap);
-  width: 100%;
-  margin-top: var(--gap);
 
   @include media(">=notebook") {
     --gap: var(--grid-gap-0);
 
     grid-template-columns: repeat(4, 1fr);
+    margin-top: var(--gap);
   }
 
   li {
@@ -20,8 +19,6 @@
   }
 
   [data-store-card] {
-    min-width: initial;
-
     &[data-card-bordered="true"] {
       border: none;
 
