@@ -83,6 +83,8 @@
     padding: 0;
     background-color: unset;
   }
+
+  .product-card[data-store-card] { min-width: 100%; }
 }
 
 .plp-results-sponsored {
