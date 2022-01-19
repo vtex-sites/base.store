@@ -1,28 +1,39 @@
 @import "../../../styles/vendors/include-media";
 
 [data-base-toggle] {
-  --toggle-bkg-color-active: black;
-  --toggle-bkg-color: white;
 
-  --toggle-border-color-active: var(--toggle-border-color);
-  --toggle-border-color: black;
-  --toggle-border-radius: 0;
-  --toggle-border-width: 1px;
+  // Design Tokens for Input Toggle
+  // --------------------------------------------------------
 
-  --toggle-height-desk: 30px;
-  --toggle-height-mob: 48px;
-  --toggle-height: var(--toggle-height-mob);
+  /* stylelint-disable */
+  --toggle-bkg-color-active        : black;
+  --toggle-bkg-color               : white;
+
+  --toggle-border-color-active     : var(--toggle-border-color);
+  --toggle-border-color            : black;
+  --toggle-border-radius           : 0;
+  --toggle-border-width            : 1px;
+
+  --toggle-height-desk             : 30px;
+  --toggle-height-mob              : 48px;
+  --toggle-height                  : var(--toggle-height-mob);
 
   --toggle-knob-border-color-active: var(--toggle-knob-border-color);
-  --toggle-knob-border-color: black;
-  --toggle-knob-color-active: white;
-  --toggle-knob-color: black;
-  --toggle-knob-radius: 0;
-  --toggle-knob-shadow: none;
+  --toggle-knob-border-color       : black;
+  --toggle-knob-color-active       : white;
+  --toggle-knob-color              : black;
+  --toggle-knob-radius             : 0;
+  --toggle-knob-shadow             : none;
 
-  --toggle-transition-function: ease-in-out;
-  --toggle-transition-property: all;
-  --toggle-transition-timing: .15s;
+  --toggle-hover-border            : var(--toggle-border-color-active);
+
+  --toggle-transition-function     : ease-in-out;
+  --toggle-transition-property     : all;
+  --toggle-transition-timing       : .15s;
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
 
   display: flex;
   align-items: center;
@@ -56,6 +67,10 @@
     }
 
     &:focus { outline: 2px solid var(--toggle-bkg-color-active); }
+
+    @media (hover: hover) {
+      &:hover { border-color: var(--toggle-hover-border); }
+    }
   }
 }
 
