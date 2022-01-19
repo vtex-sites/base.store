@@ -34,11 +34,13 @@ function ProductDetails({ product: staleProduct }: Props) {
       brand,
       isVariantOf,
       image: productImages,
-      offers: {
-        offers: [{ price, listPrice, seller }],
-      },
+      offers,
     },
   } = data
+
+  const price = offers.offers[0]?.price
+  const listPrice = offers.offers[0]?.listPrice
+  const seller = offers.offers[0]?.seller
 
   const { currency } = useSession()
 

@@ -79,7 +79,7 @@ function Page(props: Props) {
         offersType="AggregateOffer"
         offers={{
           ...product.offers,
-          price: product.offers.offers[0].price.toString(),
+          price: product.offers.offers[0]?.price.toString(),
         }}
       />
 
