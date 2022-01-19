@@ -22,7 +22,7 @@ import {
 
 import './product-card.scss'
 
-type Structure = 'wide' | 'default' | 'horizontal'
+type Structure = 'wide' | 'default' | 'horizontal' | 'grocery'
 
 type Action = 'quantitySelector' | 'button' | ''
 

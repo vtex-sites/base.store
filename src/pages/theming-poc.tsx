@@ -72,6 +72,7 @@ function Page(props: Props) {
             product={products[0] ?? {}}
             index={0}
             action="quantitySelector"
+            structure="grocery"
             select
             moreInfo
           />
