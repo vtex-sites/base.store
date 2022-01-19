@@ -114,8 +114,8 @@ function Page(props: Props) {
         <section className="page__section">
           <Hero
             variant="small"
-            title="Headphones"
-            subtitle="All the amazing Headphones from the brands we partner with."
+            title={title}
+            subtitle={`All the amazing ${title} from the brands we partner with.`}
             imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
             imageAlt="Quest 2 Controller on a table"
             icon={<HeadphonesIcon size={48} weight="thin" />}
