@@ -1,0 +1,15 @@
+.cart-item[data-cart-item] {
+  padding: var(--space-3);
+
+  [data-cart-item-content] {
+    display: flex;
+  }
+
+  [data-cart-item-summary] {
+    margin-left: var(--space-2);
+  }
+
+  [data-cart-item-price] {
+    display: flex;
+  }
+}
