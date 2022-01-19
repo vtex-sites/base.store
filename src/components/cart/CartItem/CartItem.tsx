@@ -1,4 +1,5 @@
 import React from 'react'
+import { XCircle as XCircleIcon } from 'phosphor-react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
@@ -64,9 +65,14 @@ function CartItem({ item }: Props) {
       </div>
 
       <div data-cart-item-actions>
-        <div>
-          <Button {...btnProps}>Remove Item</Button>
-        </div>
+        <Button
+          variant="tertiary"
+          icon={<XCircleIcon size={18} />}
+          iconPosition="left"
+          {...btnProps}
+        >
+          Remove Item
+        </Button>
         <QuantitySelector
           min={1}
           initial={item.quantity}
