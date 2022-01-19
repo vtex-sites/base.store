@@ -47,7 +47,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
 
       <Navbar />
 
-      <main className="temp-cls-fix">{children}</main>
+      <main>{children}</main>
 
       <Footer />
       {displayMinicart && (
