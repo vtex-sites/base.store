@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
+import QuantitySelector from 'src/components/ui/QuantitySelector'
 import type { CartItemWithAnalytics } from 'src/sdk/cart/useBuyButton'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
@@ -62,12 +63,17 @@ function CartItem({ item }: Props) {
         </div>
       </div>
 
-      <div>sku: {item.itemOffered.sku}</div>
-      <div>id: {item.id}</div>
-      <div>seller: {item.seller.identifier}</div>
-
-      <div>quantity: {item.quantity}</div>
-      <Button {...btnProps}>Remove Item</Button>
+      <div data-cart-item-actions>
+        <div>
+          <Button {...btnProps}>Remove Item</Button>
+        </div>
+        <QuantitySelector
+          min={1}
+          initial={item.quantity}
+          max={10}
+          disabled={false}
+        />
+      </div>
     </div>
   )
 }

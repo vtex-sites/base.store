@@ -12,4 +12,10 @@
   [data-cart-item-price] {
     display: flex;
   }
+
+  [data-cart-item-actions] {
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--space-1);
+  }
 }
