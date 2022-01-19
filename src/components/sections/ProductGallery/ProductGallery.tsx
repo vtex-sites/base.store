@@ -1,6 +1,7 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React from 'react'
+import FacetedFilter from 'src/components/search/FacetedFilter'
 import Sort from 'src/components/search/Sort'
 
 import GalleryPage from './ProductGalleryPage'
@@ -24,6 +25,7 @@ function ProductGallery({ title }: Props) {
   return (
     <>
       {/* Controls */}
+      <FacetedFilter facets={data.search.facets} />
       <div className="flex items-center justify-between">
         <div data-testid="total-product-count" data-count={totalCount}>
           Total Products: {totalCount}

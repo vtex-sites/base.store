@@ -18,21 +18,16 @@ describe('Search page Filters and Sorting options', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('open-filter-button')
-      .click()
-      .getById('filter-accordion-button')
+    cy.getById('facet-filter-header')
       .first()
       .click()
-      .getById('filter-accordion-panel-checkbox')
+      .getById('facet-filter-checkbox')
       .should('exist')
       .first()
       .click()
-      .getById('apply-filters-button')
-      .click()
-      .getById('filter-accordion-panel-checkbox')
       .then(($checkbox) => {
-        const value = $checkbox.attr('data-value')
         const quantity = $checkbox.attr('data-quantity')
+        const value = $checkbox.attr('data-value')
 
         // Check if the filter applied actually ended up in the URL
         cy.location('href').should((loc) => {
