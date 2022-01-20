@@ -97,7 +97,7 @@
 }
 
 .plp-results-sponsored {
-  margin: var(--space-1) calc(var(--padding) * -1);
+  margin: var(--space-1) calc(-1 * var(--padding));
   padding: var(--space-4) var(--space-3);
   background-color: var(--bg-neutral-lightest);
 
@@ -119,7 +119,7 @@
   align-items: center;
   justify-content: center;
   min-height: 96px;
-  margin: var(--padding) calc(var(--padding) * -1) 0;
+  margin: var(--padding) calc(-1 * var(--padding)) 0;
   padding: var(--space-4);
   background-color: var(--bg-neutral-lightest);
 
