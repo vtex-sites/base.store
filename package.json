@@ -68,7 +68,6 @@
     "@vtex/tsconfig": "0.6.0",
     "autoprefixer": "^10.4.0",
     "axe-core": "^4.3.3",
-    "critical": "^4.0.1",
     "cypress-axe": "^0.13.0",
     "cypress-wait-until": "^1.7.2",
     "dotenv": "^8.2.0",
