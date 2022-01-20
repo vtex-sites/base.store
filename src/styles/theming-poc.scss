@@ -56,89 +56,119 @@
   }
 }
 
+/* stylelint-disable */
 .theming-toggle > main > div {
   &:nth-child(3) {
-    --toggle-bkg-color-active: darkseagreen;
-    --toggle-bkg-color: transparent;
-    --toggle-border-color-active: var(--toggle-border-color);
-    --toggle-border-color: black;
-    --toggle-border-radius: 0;
-    --toggle-border-style: solid;
-    --toggle-border-width: 1px;
-    --toggle-height: var(--toggle-height-mob);
+    --toggle-bkg-color-active        : darkseagreen;
+    --toggle-bkg-color               : transparent;
+    --toggle-border-color-active     : var(--toggle-border-color);
+    --toggle-border-color            : black;
+    --toggle-border-radius           : 0;
+    --toggle-border-style            : solid;
+    --toggle-border-width            : 1px;
+    --toggle-height                  : var(--toggle-height-mob);
     --toggle-knob-border-color-active: var(--toggle-knob-border-color);
-    --toggle-knob-border-color: black;
-    --toggle-knob-color-active: var(--toggle-knob-color);
-    --toggle-knob-color: black;
+    --toggle-knob-border-color       : black;
+    --toggle-knob-color-active       : var(--toggle-knob-color);
+    --toggle-knob-color              : black;
   }
 
   &:nth-child(4) {
-    --toggle-bkg-color-active: var(--bg-success);
-    --toggle-bkg-color: var(--bg-neutral-lightest);
-    --toggle-border-radius: var(--border-radius-pill);
-    --toggle-border-color-active: var(--color-success);
-    --toggle-border-color: var(--color-border-input);
+    --toggle-bkg-color-active        : var(--bg-success);
+    --toggle-bkg-color               : var(--bg-neutral-lightest);
+    --toggle-border-radius           : var(--border-radius-pill);
+    --toggle-border-color-active     : var(--color-success);
+    --toggle-border-color            : var(--color-border-input);
     --toggle-knob-border-color-active: var(--toggle-knob-border-color);
-    --toggle-knob-border-color: var(--color-border-input);
-    --toggle-knob-color-active: var(--toggle-knob-color);
-    --toggle-knob-color: var(--bg-neutral-lightest);
-    --toggle-knob-radius: var(--border-radius-pill);
-    --toggle-knob-shadow: var(--box-shadow);
+    --toggle-knob-border-color       : var(--color-border-input);
+    --toggle-knob-color-active       : var(--toggle-knob-color);
+    --toggle-knob-color              : var(--bg-neutral-lightest);
+    --toggle-knob-radius             : var(--border-radius-pill);
+    --toggle-knob-shadow             : var(--box-shadow);
   }
 
   &:nth-child(5) {
-    --toggle-border-color: var(--color-neutral-3);
-    --toggle-border-radius: var(--border-radius-default);
-    --toggle-border-color-active: var(--bg-primary-defaultt);
-    --toggle-bkg-color-active: var(--bg-primary-default);
-    --toggle-bkg-color: var(--bg-neutral-lightest);
-    --toggle-height-desk: 38px;
-    --toggle-knob-border-color: var(--color-neutral-3);
-    --toggle-knob-color-active: var(--toggle-knob-color);
-    --toggle-knob-color: var(--bg-neutral-lightest);
-    --toggle-knob-radius: var(--border-radius-default);
-    --toggle-knob-shadow: var(--box-shadow);
+    --toggle-border-color            : var(--color-neutral-3);
+    --toggle-border-radius           : var(--border-radius-default);
+    --toggle-border-color-active     : var(--bg-primary-defaultt);
+    --toggle-bkg-color-active        : var(--bg-primary-default);
+    --toggle-bkg-color               : var(--bg-neutral-lightest);
+    --toggle-height-desk             : 38px;
+    --toggle-knob-border-color       : var(--color-neutral-3);
+    --toggle-knob-color-active       : var(--toggle-knob-color);
+    --toggle-knob-color              : var(--bg-neutral-lightest);
+    --toggle-knob-radius             : var(--border-radius-default);
+    --toggle-knob-shadow             : var(--box-shadow);
   }
 
   &:nth-child(6) {
-    --toggle-bkg-color-active: darkgreen;
-    --toggle-bkg-color: var(--color-neutral-3);
-    --toggle-border-color-active: darkgreen;
-    --toggle-border-color: var(--color-neutral-3);
-    --toggle-border-radius: var(--border-radius-pill);
-    --toggle-border-width: 2px;
+    --toggle-bkg-color-active        : darkgreen;
+    --toggle-bkg-color               : var(--color-neutral-3);
+    --toggle-border-color-active     : darkgreen;
+    --toggle-border-color            : var(--color-neutral-3);
+    --toggle-border-radius           : var(--border-radius-pill);
+    --toggle-border-width            : 2px;
     --toggle-knob-border-color-active: darkgreen;
-    --toggle-knob-border-color: var(--color-neutral-3);
-    --toggle-knob-color-active: var(--toggle-knob-color);
-    --toggle-knob-color: var(--bg-neutral-lightest);
-    --toggle-knob-radius: var(--border-radius-circle);
-    --toggle-knob-shadow: none;
+    --toggle-knob-border-color       : var(--color-neutral-3);
+    --toggle-knob-color-active       : var(--toggle-knob-color);
+    --toggle-knob-color              : var(--bg-neutral-lightest);
+    --toggle-knob-radius             : var(--border-radius-circle);
+    --toggle-knob-shadow             : none;
   }
 }
 
 .theming-product-card main [data-store-card] {
   &:nth-child(5) {
-    --product-card-border-radius: var(--border-radius-flat);
-    --product-card-border-width: 2px;
-    --product-card-border-color: var(--bg-secondary-dark);
-    --product-card-border-color-active: transparent;
-
-    --product-card-bkg-color: transparent;
-    --product-card-bkg-color-active: transparent;
-
-    --product-card-img-radius: var(--border-radius-flat);
-
-    --product-card-content-bkg-color: transparent;
-
-    // --product-card-text-color: var(--color-text-inverse);
-
+    --product-card-text-color         : var(--color-text-inverse);
+    --product-card-border-radius      : var(--border-radius-flat);
+    --product-card-border-width       : 2px;
+    --product-card-border-color       : var(--bg-secondary-dark);
+    --product-card-border-color-active: var(--bg-secondary-dark);
+    --product-card-bkg-color          : var(--color-secondary-2);
+    --product-card-bkg-color-active   : var(--bg-secondary-dark);
+    --product-card-img-radius         : var(--border-radius-flat);
     --product-card-transition-function: ease;
     --product-card-transition-property: box-shadow;
-    --product-card-transition-timing: .5s;
+    --product-card-transition-timing  : .5s;
+    --product-card-hover-border       : var(--bg-secondary-light);
+    --product-card-hover-shadow       : 0 0 0 2px var(--bg-secondary-dark);
+    --product-card-hover-bkg-color    : var(--bg-secondary-dark);
+    --product-card-hover-text-color   : var(--color-text-inverse);
+  }
+  &:nth-child(4) {
+    --product-card-padding            : 0;
+    --product-card-gap                : var(--grid-gap-0);
+    --product-card-shadow             : none;
 
-    --product-card-hover-border: var(--bg-secondary-light);
-    --product-card-hover-shadow: 0 0 0 2px var(--bg-secondary-dark);
-    --product-card-hover-bkg-color: var(--bg-secondary-dark);
-    --product-card-hover-text-color: var(--color-text-inverse);
+    --product-card-border-radius      : var(--border-radius-default);
+    --product-card-border-width       : 1px;
+    --product-card-border-color       : transparent;
+    --product-card-border-color-active: transparent;
+
+    --product-card-bkg-color          : var(--bg-neutral-lightest);
+    --product-card-bkg-color-active   : var(--bg-neutral-lightest);
+
+    --product-card-img-radius         : var(--border-radius-default) 0 0 var(--border-radius-default);
+
+    --product-card-text-color         : var(--color-text);
+    --product-card-text-name          : var(--text-size-2);
+    --product-card-text-price         : var(--text-size-2);
+    --product-card-text-price-listing : var(--text-size-1);
+    --product-card-text-description   : var(--text-size-1);
+    --product-card-text-subtitle      : var(--text-size-0);
+
+    --product-card-transition-function: ease;
+    --product-card-transition-property: all;
+    --product-card-transition-timing  : .5s;
+
+    --product-card-hover-border       : var(--color-border-display);
+    --product-card-hover-shadow       : var(--box-shadow);
+    --product-card-hover-bkg-color    : var(--bg-neutral-lightest);
+    --product-card-hover-text-color   : var(--color-text);
+
+    --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest),
+                                        0 0 0 var(--border-width-2) var(--bg-focus-ring);
+    --product-card-focus-bkg-color    : var(--bg-neutral-lightest);
   }
 }
+/* stylelint-enable */
