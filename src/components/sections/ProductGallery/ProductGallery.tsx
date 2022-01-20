@@ -57,7 +57,7 @@ function ProductGallery({ title }: Props) {
         data-testid="total-product-count"
         data-count={totalCount}
       >
-        {totalCount} Results
+        <h2>{totalCount} Results</h2>
       </div>
 
       <div className="plp-sort-wrapper">
