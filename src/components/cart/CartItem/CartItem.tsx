@@ -18,14 +18,14 @@ function CartItem({ item }: Props) {
   const btnProps = useRemoveButton(item)
 
   return (
-    <div
+    <article
       className="cart-item"
       data-cart-item
       data-testid="cart-item"
       data-sku={item.itemOffered.sku}
       data-seller={item.seller.identifier}
     >
-      <div data-cart-item-content>
+      <section data-cart-item-content>
         <Image
           baseUrl={item.itemOffered.image[0].url}
           alt={item.itemOffered.image[0].alternateName}
@@ -40,7 +40,7 @@ function CartItem({ item }: Props) {
           }}
         />
         <div data-cart-item-summary>
-          <div className="text-body">{item.isVariantOf?.name}</div>
+          <p className="text-body">{item.isVariantOf?.name}</p>
           <div data-cart-item-price>
             <Price
               value={item.listPrice}
@@ -62,16 +62,16 @@ function CartItem({ item }: Props) {
             />
           </div>
         </div>
-      </div>
+      </section>
 
-      <div data-cart-item-actions>
+      <footer data-cart-item-actions>
         <Button
           variant="tertiary"
           icon={<XCircleIcon size={18} />}
           iconPosition="left"
           {...btnProps}
         >
-          Remove Item
+          Remove
         </Button>
         <QuantitySelector
           min={1}
@@ -79,8 +79,8 @@ function CartItem({ item }: Props) {
           max={10}
           disabled={false}
         />
-      </div>
-    </div>
+      </footer>
+    </article>
   )
 }
 
