@@ -104,3 +104,30 @@
     --toggle-knob-shadow: none;
   }
 }
+
+.theming-product-card [data-store-card] {
+  &:nth-child(4) {
+    --product-card-border-radius: var(--border-radius-flat);
+    --product-card-border-width: 2px;
+    --product-card-border-color: var(--bg-secondary-dark);
+    --product-card-border-color-active: transparent;
+
+    --product-card-bkg-color: transparent;
+    --product-card-bkg-color-active: transparent;
+
+    --product-card-img-radius: var(--border-radius-flat);
+
+    --product-card-content-bkg-color: transparent;
+
+    // --product-card-text-color: var(--color-text-inverse);
+
+    --product-card-transition-function: ease;
+    --product-card-transition-property: box-shadow;
+    --product-card-transition-timing: .5s;
+
+    --product-card-hover-border: var(--bg-secondary-light);
+    --product-card-hover-shadow: 0 0 0 2px var(--bg-secondary-dark);
+    --product-card-hover-bkg-color: var(--bg-secondary-dark);
+    --product-card-hover-text-color: var(--color-text-inverse);
+  }
+}

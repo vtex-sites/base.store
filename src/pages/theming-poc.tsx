@@ -67,7 +67,7 @@ function Page(props: Props) {
           </aside>
         </div>
         <hr />
-        <div className="theming-poc-content">
+        <div className="theming-poc-content theming-product-card">
           <ProductCard
             product={products[0] ?? {}}
             index={0}
