@@ -1,6 +1,7 @@
 import React from 'react'
 import { CaretUp as CareUpIcon } from 'phosphor-react'
 
+import type { UIButtonProps } from '../Button'
 import Button from '../Button'
 
 interface ScrollToTopButtonProps {
@@ -9,14 +10,28 @@ interface ScrollToTopButtonProps {
    * @default 'Scroll to top'
    */
   text?: string
+  /**
+   * Button's icon.
+   * @default <CareUpIcon size={16} />
+   */
+  icon?: UIButtonProps['icon']
+  /**
+   * Button icon's position.
+   * @default 'left'
+   */
+  iconPosition?: UIButtonProps['iconPosition']
 }
 
-function ScrollToTopButton({ text = 'Scroll to top' }: ScrollToTopButtonProps) {
+function ScrollToTopButton({
+  text = 'Scroll to top',
+  icon = <CareUpIcon size={16} />,
+  iconPosition = 'left',
+}: ScrollToTopButtonProps) {
   return (
     <Button
       variant="secondary"
-      icon={<CareUpIcon size={16} />}
-      iconPosition="left"
+      icon={icon}
+      iconPosition={iconPosition}
       onClick={() => window.scrollTo(0, 0)}
     >
       {text}
