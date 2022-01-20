@@ -111,6 +111,7 @@ function ProductCard({
             }}
             alt={img.alternateName}
             sizes="(max-width: 768px) 200px, 320px"
+            loading="lazy"
           />
         </AspectRatio>
       </UICardImage>
