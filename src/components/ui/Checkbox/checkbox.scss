@@ -11,6 +11,7 @@
   border-radius: var(--border-radius-default);
   outline: none;
   cursor: pointer;
+  transition: border .2s ease, background-color .2s ease, box-shadow .2s ease;
   appearance: none;
 
   &::before {
@@ -18,7 +19,7 @@
     top: rem(3px);
     width: rem(6px);
     height: rem(10px);
-    border: rem(2px) solid var(--bg-neutral-lightest);
+    border: var(--border-width-1) solid var(--bg-neutral-lightest);
     border-top: 0;
     border-left: 0;
     border-radius: var(--border-width-0);
@@ -60,7 +61,7 @@
       width: rem(10px);
       height: 0;
       border-width: 0;
-      border-bottom: rem(2px) solid var(--bg-secondary-dark);
+      border-bottom: var(--border-width-1) solid var(--bg-secondary-dark);
       border-radius: var(--border-width-0);
       transform: rotate(0deg);
       opacity: 1;
