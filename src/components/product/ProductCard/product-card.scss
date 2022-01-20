@@ -21,8 +21,9 @@
 
   --product-card-img-radius         : var(--border-radius-default);
 
-  --product-card-content-bkg-color  : var(--bg-neutral-lightest);
+  --product-card-content-bkg-color  : transparent;
 
+  --product-card-text-color         : var(--color-text);
   --product-card-text-name          : var(--text-size-2);
   --product-card-text-price         : var(--text-size-2);
   --product-card-text-price-listing : var(--text-size-1);
@@ -36,6 +37,7 @@
   --product-card-hover-border       : var(--color-border-display);
   --product-card-hover-shadow       : var(--box-shadow);
   --product-card-hover-bkg-color    : var(--bg-neutral-lightest);
+  --product-card-hover-text-color   : var(--color-text);
 
   --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest),
                                       0 0 0 var(--border-width-2) var(--bg-focus-ring);
@@ -69,6 +71,11 @@
       background-color: var(--product-card-hover-bkg-color);
       border-color: var(--product-card-hover-border);
       box-shadow: var(--product-card-hover-shadow);
+
+      [data-card-content] a[href],
+      [data-variant="spot"],
+      [data-base-product-card-description],
+      [data-base-product-card-footer] small { color: var(--product-card-hover-text-color); }
     }
   }
 
@@ -93,7 +100,7 @@
     a[href] {
       min-height: 100%;
       padding: 0;
-      color: inherit;
+      color: var(--product-card-text-color);
       text-decoration: none;
       outline: none;
 
@@ -119,11 +126,16 @@
   display: inline-flex;
   align-content: center;
   margin-bottom: var(--space-2);
-  [data-variant="spot"] { font-size: var(--product-card-text-price); }
+
+  [data-variant="spot"] {
+    color: var(--product-card-text-color);
+    font-size: var(--product-card-text-price);
+  }
   [data-variant="listing"] { font-size: var(--product-card-text-price-listing); }
 }
 
 [data-base-product-card-description] {
+  color: var(--product-card-text-color);
   font-size: var(--product-card-text-description);
 }
 
@@ -133,7 +145,10 @@
   align-items: center;
   justify-content: space-between;
 
-  small { display: block; }
+  small {
+    display: block;
+    color: var(--product-card-text-color);
+  }
 }
 
 // Structure Variants
