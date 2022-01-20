@@ -32,7 +32,13 @@ function Page(props: Props) {
       <div className="theming-poc">
         <div className="theming-poc-content theming-toggle">
           <header />
+          <section>
+            <h3>Layouts</h3>
+            <InputToggle structure="horizontal" />
+            <InputToggle structure="vertical" />
+          </section>
           <main>
+            <h3>Themes</h3>
             <InputToggle />
             <InputToggle />
             <InputToggle />
@@ -68,23 +74,54 @@ function Page(props: Props) {
         </div>
         <hr />
         <div className="theming-poc-content theming-product-card">
-          <ProductCard
-            product={products[0] ?? {}}
-            index={0}
-            action="quantitySelector"
-            structure="grocery"
-            select
-            moreInfo
-          />
-          <ProductCard product={products[1] ?? {}} index={1} structure="wide" />
-          <ProductCard
-            product={products[2] ?? {}}
-            index={1}
-            structure="horizontal"
-            ratio="3:4"
-            showDescription
-          />
-          <ProductCard product={products[3] ?? {}} index={1} />
+          <section>
+            <h3>Layouts</h3>
+            <ProductCard
+              product={products[0] ?? {}}
+              index={0}
+              action="quantitySelector"
+              structure="grocery"
+              select
+              moreInfo
+            />
+            <ProductCard
+              product={products[1] ?? {}}
+              index={1}
+              structure="wide"
+            />
+            <ProductCard
+              product={products[2] ?? {}}
+              index={1}
+              structure="horizontal"
+              ratio="3:4"
+              showDescription
+            />
+            <ProductCard product={products[3] ?? {}} index={1} />
+          </section>
+          <main>
+            <h3>Themes</h3>
+            <ProductCard
+              product={products[0] ?? {}}
+              index={0}
+              action="quantitySelector"
+              structure="grocery"
+              select
+              moreInfo
+            />
+            <ProductCard
+              product={products[1] ?? {}}
+              index={1}
+              structure="wide"
+            />
+            <ProductCard
+              product={products[2] ?? {}}
+              index={1}
+              structure="horizontal"
+              ratio="3:4"
+              showDescription
+            />
+            <ProductCard product={products[3] ?? {}} index={1} />
+          </main>
         </div>
       </div>
     </>
