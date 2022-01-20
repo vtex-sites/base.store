@@ -7,10 +7,14 @@ function EmptyCart() {
   const toggleProps = useCartToggleButton()
 
   return (
-    <div data-testid="cart-empty-state">
-      <ShoppingCartIcon size="32" />
-      <span>Your Cart is empty</span>
-      <Button {...toggleProps}>Start Shopping</Button>
+    <div data-testid="cart-empty-state" data-empty-cart>
+      <div data-empty-cart-title>
+        <ShoppingCartIcon size="32" />
+        <p>Your Cart is empty</p>
+      </div>
+      <Button {...toggleProps} variant="primary">
+        Start Shopping
+      </Button>
     </div>
   )
 }
