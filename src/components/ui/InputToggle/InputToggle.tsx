@@ -2,10 +2,17 @@ import React from 'react'
 
 import './input-toggle.scss'
 
-function InputToggle() {
+type Structure = 'horizontal' | 'vertical'
+
+interface Props {
+  structure?: Structure
+  text?: string
+}
+
+function InputToggle({ structure = 'horizontal', text }: Props) {
   return (
-    <div data-base-toggle>
-      <label htmlFor="input-toggle">How about this?</label>
+    <div data-base-toggle data-toggle-structure={structure}>
+      <label htmlFor="input-toggle">{text}</label>
       <div data-base-toggle-container>
         <input id="" name="input-toggle" type="checkbox" />
         <span data-base-toggle-knob />

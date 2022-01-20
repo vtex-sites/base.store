@@ -60,7 +60,6 @@
       border-color: var(--toggle-border-color-active);
 
       + [data-base-toggle-knob] {
-        left: calc(50% + (var(--toggle-border-width) * 2));
         background-color: var(--toggle-knob-color-active);
         border-color: var(--toggle-knob-border-color-active);
       }
@@ -74,26 +73,52 @@
   }
 }
 
-[data-base-toggle-container] {
-  position: relative;
-  width: calc(var(--toggle-height) * 2);
-  height: var(--toggle-height);
-
-  @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
-}
+[data-base-toggle-container] { position: relative; }
 
 [data-base-toggle-knob] {
   position: absolute;
-  top: calc(var(--toggle-border-width) * 2);
-  left: calc(var(--toggle-border-width) * 2);
   z-index: 2;
   display: block;
-  width: calc(50% - (var(--toggle-border-width) * 4));
-  height: calc(100% - (var(--toggle-border-width) * 4));
   background-color: var(--toggle-knob-color);
   border: var(--toggle-border-width) solid var(--toggle-knob-border-color);
   border-radius: var(--toggle-knob-radius);
   box-shadow: var(--toggle-knob-shadow);
   transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
   pointer-events: none;
+}
+
+[data-toggle-structure="horizontal"] {
+  input:checked + [data-base-toggle-knob] { left: calc(50% + (var(--toggle-border-width) * 2)); }
+
+  [data-base-toggle-container] {
+    width: calc(var(--toggle-height) * 2);
+    height: var(--toggle-height);
+
+    @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
+  }
+
+  [data-base-toggle-knob] {
+    top: calc(var(--toggle-border-width) * 2);
+    left: calc(var(--toggle-border-width) * 2);
+    width: calc(50% - (var(--toggle-border-width) * 4));
+    height: calc(100% - (var(--toggle-border-width) * 4));
+  }
+}
+
+[data-toggle-structure="vertical"] {
+  input:checked + [data-base-toggle-knob] { bottom: calc(50% + (var(--toggle-border-width) * 2)); }
+
+  [data-base-toggle-container] {
+    width: var(--toggle-height);
+    height: calc(var(--toggle-height) * 2);
+
+    @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
+  }
+
+  [data-base-toggle-knob] {
+    bottom: calc(var(--toggle-border-width) * 2);
+    left: calc(var(--toggle-border-width) * 2);
+    width: calc(100% - (var(--toggle-border-width) * 4));
+    height: calc(50% - (var(--toggle-border-width) * 4));
+  }
 }
