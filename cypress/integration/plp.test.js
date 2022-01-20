@@ -34,9 +34,6 @@ describe('Search page Filters and Sorting options', () => {
     // Check applied filters
     cy.getById('open-filter-button')
       .click()
-      .getById('filter-accordion-button')
-      .first()
-      .click()
       .getById('filter-accordion-panel-checkbox')
       .first()
       .click()
