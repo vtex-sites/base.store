@@ -7,15 +7,17 @@ import './quantity-selector.scss'
 interface QuantitySelectorProps {
   max: number
   min: number
+  initial?: number
   disabled: boolean
 }
 
 export function QuantitySelector({
   max,
   min,
+  initial,
   disabled,
 }: QuantitySelectorProps) {
-  const [quantity, setQuantity] = useState<number>(min)
+  const [quantity, setQuantity] = useState<number>(initial ?? min)
   const isLeftDisabled = quantity === min
   const isRightDisabled = quantity === max
 
