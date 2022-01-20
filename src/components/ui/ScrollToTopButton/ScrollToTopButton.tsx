@@ -12,7 +12,7 @@ interface ScrollToTopButtonProps {
   text?: string
   /**
    * Button's icon.
-   * @default <CareUpIcon size={16} />
+   * @default <CareUpIcon size={16} weight="bold" />
    */
   icon?: UIButtonProps['icon']
   /**
@@ -24,7 +24,7 @@ interface ScrollToTopButtonProps {
 
 function ScrollToTopButton({
   text = 'Scroll to top',
-  icon = <CareUpIcon size={16} />,
+  icon = <CareUpIcon size={16} weight="bold" />,
   iconPosition = 'left',
 }: ScrollToTopButtonProps) {
   return (
