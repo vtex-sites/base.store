@@ -1,10 +1,12 @@
 # NOTE There is currently a bug in the GitHub APIs preventing this action from automatically detecting dependent repositories, until this is tis resolved, please use additional property in the config file to manually include repositories you want to sync
 additional:
-  - "storeframework.store"
+  - "brasileiro.store"
 
 files:
   - "!package.json"
   - "!yarn.lock"
+  - "!store.config.js"
+  - "!gatsby-config.js"
    # you probably want to exclude these files:
   - "!.github/workflows/template-sync.yml"
   - "!.github/template-sync.yml"
