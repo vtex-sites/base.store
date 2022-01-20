@@ -9,11 +9,18 @@ type WidthSize = 'full' | 'partial'
 type FadeType = 'in' | 'out'
 
 interface SlideOverProps extends HTMLAttributes<HTMLDivElement> {
+  isOpen: boolean
   direction: Direction
   size: WidthSize
   children: ReactNode
-  isOpen: boolean
+  /**
+   * This function is called whenever the user clicks outside
+   * the modal content
+   */
   onDismiss?: () => void
+  /**
+   * This callback function enables the transition effect on children "close" button
+   */
   onDismissTransition: (callback: () => unknown) => unknown
 }
 
