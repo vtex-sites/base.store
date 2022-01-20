@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
-import SROnly from 'src/components/ui/SROnly'
 import Sort from 'src/components/search/Sort'
 import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
@@ -58,9 +57,6 @@ function ProductGallery({ title }: Props) {
         data-testid="total-product-count"
         data-count={totalCount}
       >
-        <h2>
-          <SROnly text="Search results" />
-        </h2>
         {totalCount} Results
       </div>
 
