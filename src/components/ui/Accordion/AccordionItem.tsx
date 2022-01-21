@@ -42,12 +42,10 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
     >
       <UIAccordionButton
         className="title-subsection"
-        data-accordion-item-button
         data-testid={`${testId}-button`}
       >
         {buttonLabel}
         <UIIcon
-          data-accordion-item-button-icon
           data-testid={`${testId}-button-icon`}
           component={
             isExpanded ? (
@@ -58,10 +56,7 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
           }
         />
       </UIAccordionButton>
-      <UIAccordionPanel
-        data-accordion-item-panel
-        data-testid={`${testId}-panel`}
-      >
+      <UIAccordionPanel data-testid={`${testId}-panel`}>
         {children}
       </UIAccordionPanel>
     </UIAccordionItem>
