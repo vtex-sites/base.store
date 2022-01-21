@@ -2,7 +2,7 @@
 
 .filter[data-store-filter] {
   > .title-small {
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-3);
 
     @include media("<notebook") {
       display: none;
