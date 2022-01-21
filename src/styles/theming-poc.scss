@@ -28,22 +28,42 @@
   align-content: flex-start;
   align-items: stretch;
   justify-content: center;
-
-  > * > h3 { font-weight: bold; }
-
-  h3 + code { margin-top: 24px; }
+  width: 100%;
+  padding: 0 96px;
 
   code {
     display: block;
     font-size: .9rem;
   }
 
+  > * > h3 { font-weight: bold; }
+
   > main, > section {
     display: flex;
+    flex-basis: 25%;
     flex-direction: column;
     gap: 24px;
     align-items: flex-start;
     justify-content: flex-start;
+  }
+}
+
+.theming-tokens {
+  flex-grow: 1;
+
+  section {
+    display: flex;
+    gap: 24px;
+    padding-top: 24px;
+    > div { width: 50%; }
+  }
+
+  h4 {
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: .8em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 }
 
@@ -114,6 +134,38 @@
     --toggle-knob-color              : var(--bg-neutral-lightest);
     --toggle-knob-radius             : var(--border-radius-circle);
     --toggle-knob-shadow             : none;
+  }
+}
+
+.theming-quantity-selector main [data-store-quantity-selector] {
+  &:nth-child(3) {
+    --qty-selector-icon-color               : var(--color-border-input-selected);
+    --qty-selector-border-radius            : var(--border-radius-default);
+    --qty-selector-border-color             : var(--color-border-input);
+    --qty-selector-transition-function      : ease;
+    --qty-selector-transition-property      : all;
+    --qty-selector-transition-timing        : .2s;
+    --qty-selector-hover-shadow             : 0 0 0 var(--qty-selector-border-width) var(--qty-selector-hover-border-color);
+    --qty-selector-hover-text-color         : var(--qty-selector-text-color);
+    --qty-selector-hover-border-color       : var(--color-border-input-selected);
+    --qty-selector-hover-button-bkg-color   : var(--bg-secondary-light);
+  }
+
+  &:nth-child(4) {
+    --qty-selector-width                    : 8rem;
+    --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
+    --qty-selector-shadow                   : var(--box-shadow);
+    --qty-selector-bkg-color                : var(--bg-neutral-lightest);
+    --qty-selector-text-color               : #506300;
+    --qty-selector-icon-color               : #506300;
+    --qty-selector-border-radius            : var(--border-radius-pill);
+    --qty-selector-border-width             : 0;
+    --qty-selector-border-color             : var(--color-border-input);
+    --qty-selector-transition-function      : ease;
+    --qty-selector-transition-property      : all;
+    --qty-selector-transition-timing        : .2s;
+    --qty-selector-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+    --qty-selector-hover-button-bkg-color   : #F1F4E6;
   }
 }
 

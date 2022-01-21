@@ -47,31 +47,16 @@ function Page(props: Props) {
             <InputToggle />
             <InputToggle />
           </main>
-          <aside>
+          <aside className="theming-tokens">
             <h3>Design Tokens</h3>
-            <code>toggle-bkg-color-active</code>
-            <code>toggle-bkg-color</code>
-            <br />
-            <code>toggle-border-color-active</code>
-            <code>toggle-border-color</code>
-            <code>toggle-border-radius</code>
-            <code>toggle-border-style</code>
-            <code>toggle-border-width</code>
-            <br />
-            <code>toggle-height-desk</code>
-            <code>toggle-height-mob</code>
-            <code>toggle-height</code>
-            <br />
-            <code>toggle-knob-border-color-active</code>
-            <code>toggle-knob-border-color</code>
-            <code>toggle-knob-color-active</code>
-            <code>toggle-knob-color</code>
-            <code>toggle-knob-radius</code>
-            <code>toggle-knob-shadow</code>
-            <br />
-            <code>toggle-transition-function</code>
-            <code>toggle-transition-property</code>
-            <code>toggle-transition-timing</code>
+            <section>
+              <div>
+                <h4>Default properties</h4>
+              </div>
+              <div>
+                <h4>Interactive states</h4>
+              </div>
+            </section>
           </aside>
         </div>
         <hr />
@@ -82,9 +67,61 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Themes</h3>
+            <QuantitySelector min={1} max={10} disabled={false} />
+            <QuantitySelector min={1} max={10} disabled={false} />
+            <QuantitySelector min={1} max={10} disabled={false} />
           </main>
-          <aside>
+          <aside className="theming-tokens">
             <h3>Design Tokens</h3>
+            <section>
+              <div>
+                <h4>Default properties</h4>
+                <code>width</code>
+                <code>height</code>
+                <code>shadow</code>
+                <br />
+                <code>bkg-color</code>
+                <br />
+                <code>text-size</code>
+                <code>text-color</code>
+                <br />
+                <code>icon-color</code>
+                <br />
+                <code>border-radius</code>
+                <code>border-width</code>
+                <code>border-color</code>
+                <br />
+                <code>button-bkg-color</code>
+                <code>button-border-radius</code>
+                <br />
+                <code>transition-function</code>
+                <code>transition-property</code>
+                <code>transition-timing</code>
+              </div>
+              <div>
+                <h4>Interactive state</h4>
+                <code>hover-shadow</code>
+                <code>hover-bkg-color</code>
+                <code>hover-text-color</code>
+                <code>hover-icon-color</code>
+                <code>hover-border-color</code>
+                <code>hover-button-bkg-color</code>
+                <br />
+                <code>focus-shadow</code>
+                <code>focus-bkg-color</code>
+                <code>focus-text-color</code>
+                <code>focus-icon-color</code>
+                <code>focus-border-color</code>
+                <code>focus-button-bkg-color</code>
+                <br />
+                <code>disabled-shadow</code>
+                <code>disabled-bkg-color</code>
+                <code>disabled-text-color</code>
+                <code>disabled-icon-color</code>
+                <code>disabled-border-color</code>
+                <code>disabled-button-bkg-color</code>
+              </div>
+            </section>
           </aside>
         </div>
         <hr />
