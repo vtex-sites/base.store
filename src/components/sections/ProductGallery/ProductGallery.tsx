@@ -42,13 +42,13 @@ function ProductGallery({ title }: Props) {
   const orderedFacets = useOrderedFacets(data)
 
   if (!orderedFacets.length) {
-    return <div className="plp-temp-data-loading">loading...</div>
+    return <div className="product-listing-temp-data-loading">loading...</div>
   }
 
   return (
     <div className="grid-content-full">
-      <div className="plp-content-grid / grid-content">
-        <div className="plp-filters-wrapper">
+      <div className="product-listing-content-grid / grid-content">
+        <div className="product-listing-filters-wrapper">
           <Filter
             isOpen={isFilterOpen}
             facets={orderedFacets}
@@ -59,14 +59,14 @@ function ProductGallery({ title }: Props) {
         {data ? (
           <>
             <div
-              className="plp-results-count-wrapper"
+              className="product-listing-results-count-wrapper"
               data-testid="total-product-count"
               data-count={totalCount}
             >
               <h2>{totalCount} Results</h2>
             </div>
 
-            <div className="plp-sort-wrapper">
+            <div className="product-listing-sort-wrapper">
               <Sort />
 
               {isMobile && (
@@ -83,7 +83,7 @@ function ProductGallery({ title }: Props) {
               )}
             </div>
 
-            <div className="plp-results-wrapper">
+            <div className="product-listing-results-wrapper">
               {/* Add link to previous page. This helps on SEO */}
               {prev !== false && (
                 <>
@@ -122,7 +122,7 @@ function ProductGallery({ title }: Props) {
 
               {/* Add link to next page. This helps on SEO */}
               {next !== false && (
-                <div className="plp-load-more-wrapper">
+                <div className="product-listing-load-more-wrapper">
                   <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
                   <LinkButton
                     data-testid="show-more"
@@ -142,7 +142,7 @@ function ProductGallery({ title }: Props) {
             </div>
           </>
         ) : (
-          <div className="plp-temp-data-loading">loading...</div>
+          <div className="product-listing-temp-data-loading">loading...</div>
         )}
       </div>
     </div>

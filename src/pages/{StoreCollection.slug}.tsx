@@ -104,14 +104,14 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <div className="plp-wrapper / grid-content">
+      <div className="product-listing-wrapper / grid-content">
         <BreadcrumbWrapper
           breadcrumbList={collection?.breadcrumbList.itemListElement}
           name={title}
         />
       </div>
 
-      <div className="plp-hero">
+      <div className="product-listing-hero">
         <section className="page__section">
           <Hero
             variant="small"
@@ -135,7 +135,7 @@ function Page(props: Props) {
         </section>
       )}
 
-      <div className="plp-scroll-top-section">
+      <div className="product-listing-scroll-top-section">
         <ScrollToTopButton />
       </div>
     </SearchProvider>
