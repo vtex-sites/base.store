@@ -162,7 +162,7 @@ function Filter({
             aria-label="Close"
             onClick={onDismiss}
           >
-            <XIcon size={18} weight="bold" />
+            <XIcon size={32} />
           </Button>
         </header>
         <Facets />
