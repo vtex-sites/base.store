@@ -125,12 +125,26 @@ function Page(props: Props) {
           </aside>
         </div>
         <hr />
-        <div className="theming-poc-content theming-product-card">
+        <div className="theming-poc-content">
           <section>
             <h3>Layouts</h3>
             <DiscountBadge small listPrice={200} spotPrice={180} />
             <DiscountBadge listPrice={200} spotPrice={180} />
           </section>
+          <main>
+            <h3>Themes</h3>
+          </main>
+          <aside className="theming-tokens">
+            <h3>Design Tokens</h3>
+            <section>
+              <div>
+                <h4>Default properties</h4>
+              </div>
+              <div>
+                <h4>Interactive states</h4>
+              </div>
+            </section>
+          </aside>
         </div>
         <hr />
         <div className="theming-poc-content theming-product-card">
