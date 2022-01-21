@@ -39,12 +39,11 @@ function CartSidebar() {
             <CartItem key={item.id} item={item} />
           ))}
 
+          {/* TODO: add conditional here */}
           <div>Gifts</div>
           {gifts.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
-
-          <div>Cart Summary</div>
 
           <OrderSummary
             subTotal={subTotal}
