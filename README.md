@@ -348,6 +348,8 @@ List of classes used to create default page grid.
 .grid-section // This class only adds default vertical margins for page sections.
 ```
 
+![grid-example-image](https://user-images.githubusercontent.com/3356699/150606030-95b1d803-83f2-4a59-8552-24cb860effe1.png)
+
 ### `typography.scss`
 
 For the typography-related tokens, we decided to use classes to add extra stylings like `font-weight` and `line-height`. In this file, you'll see all the classes for titles, paragraphs, and default settings on the body. You can create new ones here if needed.
