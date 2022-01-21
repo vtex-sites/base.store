@@ -34,10 +34,11 @@
 
 .plp-filters-wrapper {
   @include media(">=notebook") {
+    position: sticky;
+    top: var(--grid-gap-0);
     grid-row: span 2;
     grid-column: 1 / span 3;
-    order: unset;
-    padding-top: var(--space-1);
+    align-self: start;
   }
 }
 
