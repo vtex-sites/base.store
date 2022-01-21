@@ -7,6 +7,7 @@ import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 
 import CartItem from '../CartItem'
 import OrderSummary from '../OrderSummary'
+import EmptyCart from '../EmptyCart'
 
 import './cart-sidebar.scss'
 
@@ -32,22 +33,26 @@ function CartSidebar() {
 
       <div>Cart Summary</div>
 
-      <OrderSummary
-        subTotal={subTotal}
-        total={total}
-        numberOfItems={totalItems}
-        checkoutButton={
-          <Button
-            data-cart-checkout-button
-            variant="primary"
-            icon={<ArrowRightIcon size={18} />}
-            iconPosition="right"
-            {...btnProps}
-          >
-            {isValidating ? 'loading...' : 'Checkout'}
-          </Button>
-        }
-      />
+      {totalItems > 0 ? (
+        <OrderSummary
+          subTotal={subTotal}
+          total={total}
+          numberOfItems={totalItems}
+          checkoutButton={
+            <Button
+              data-cart-checkout-button
+              variant="primary"
+              icon={<ArrowRightIcon size={18} />}
+              iconPosition="right"
+              {...btnProps}
+            >
+              {isValidating ? 'loading...' : 'Checkout'}
+            </Button>
+          }
+        />
+      ) : (
+        <EmptyCart />
+      )}
     </div>
   )
 }
