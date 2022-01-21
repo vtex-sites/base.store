@@ -24,38 +24,14 @@
     }
   }
 
-  [data-accordion-item] {
-    border-bottom: 1px solid var(--color-border-display);
-
-    @include media(">=notebook") {
-      padding: 0 var(--space-4);
-
-      &:last-child {
-        border-bottom: 0;
-      }
-    }
-  }
-
   [data-accordion-item] [data-store-button] {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: var(--space-3) 0;
-    color: var(--color-text);
     font-size: var(--text-size-3);
     line-height: 1.5;
-    background-color: transparent;
-    border: 0;
 
     @include media(">=notebook") {
       font-size: var(--text-size-2);
       line-height: 1.25;
     }
-  }
-
-  [data-accordion-item] [data-store-icon] {
-    display: flex;
   }
 }
 

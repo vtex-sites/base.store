@@ -140,8 +140,8 @@ function FooterLinks() {
         <Accordion expandedIndices={indicesExpanded} onChange={onChange}>
           {links.map((section, index) => (
             <AccordionItem
-              isExpanded={indicesExpanded.has(index)}
               key={section.title}
+              isExpanded={indicesExpanded.has(index)}
               buttonLabel={section.title}
             >
               <LinksList items={section.items} />
