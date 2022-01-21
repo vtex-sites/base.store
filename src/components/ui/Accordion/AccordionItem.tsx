@@ -6,6 +6,10 @@ import {
   AccordionButton as UIAccordionButton,
 } from '@faststore/ui'
 import type { AccordionItemProps } from '@faststore/ui'
+import {
+  PlusCircle as PlusCircleIcon,
+  MinusCircle as MinusCircleIcon,
+} from 'phosphor-react'
 
 interface Props extends AccordionItemProps {
   /**
@@ -31,13 +35,13 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
 ) {
   return (
     <UIAccordionItem
-      data-store-accordion-item
       ref={ref}
       index={index}
       data-testid={testId}
       {...otherProps}
     >
       <UIAccordionButton
+        className="title-subsection"
         data-accordion-item-button
         data-testid={`${testId}-button`}
       >
@@ -45,7 +49,13 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
         <UIIcon
           data-accordion-item-button-icon
           data-testid={`${testId}-button-icon`}
-          component={isExpanded ? <div>-</div> : <div>+</div>}
+          component={
+            isExpanded ? (
+              <MinusCircleIcon size={24} />
+            ) : (
+              <PlusCircleIcon size={24} />
+            )
+          }
         />
       </UIAccordionButton>
       <UIAccordionPanel
