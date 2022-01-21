@@ -2,6 +2,8 @@ import React, { forwardRef } from 'react'
 import { Accordion as UIAccordion } from '@faststore/ui'
 import type { AccordionProps } from '@faststore/ui'
 
+import './accordion.scss'
+
 interface Props extends Omit<AccordionProps, 'indices'> {
   /**
    * Indices that indicate which accordion items are opened.
@@ -21,6 +23,7 @@ const Accordion = forwardRef<HTMLDivElement, Props>(function Accordion(
 ) {
   return (
     <UIAccordion
+      className="accordion"
       data-store-accordion
       ref={ref}
       onChange={onChange}
