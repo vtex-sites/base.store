@@ -1,16 +1,44 @@
-.discount-badge[data-store-badge] {
+[data-store-badge] {
+
+  // Design Tokens for Product Card
+  // --------------------------------------------------------
+  /* stylelint-disable */
+  --badge-padding            : var(--space-1) var(--space-2);
+  --badge-padding-small      : var(--space-0) var(--space-2);
+  --badge-shadow             : none;
+
+  --badge-border-radius      : var(--border-radius-pill);
+  --badge-border-width       : 0;
+  --badge-border-color       : transparent;
+
+  --badge-bkg-color          : var(--color-neutral-7);
+
+  --badge-text-color         : var(--color-text-inverse);
+  --badge-text-size          : var(--text-size-2);
+  --badge-text-size-small    : var(--text-size-0);
+  --badge-text-weight        : var(--text-weight-bold);
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
+
   width: fit-content;
   height: fit-content;
-  padding: var(--space-1) var(--space-2);
-  color: var(--color-text);
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-2);
+  padding: var(--badge-padding);
+  color: var(--badge-text-color);
+  font-weight: var(--badge-text-weight);
+  font-size: var(--badge-text-size);
   text-transform: uppercase;
-  background-color: var(--bg-success);
-  border-radius: var(--border-radius-pill);
+  background-color: var(--badge-bkg-color);
+  border: var(--badge-border-width) solid var(--badge-border-color);
+  border-radius: var(--badge-border-radius);
+  box-shadow: var(--badge-shadow);
+}
 
-  &[data-store-badge="small"] {
-    padding: var(--space-0) var(--space-2);
-    font-size: var(--text-size-0);
-  }
+// Structure Variants
+// --------------------------------------------------------
+
+[data-store-badge="small"] {
+  padding: var(--badge-padding-small);
+  font-size: var(--badge-text-size-small);
 }
