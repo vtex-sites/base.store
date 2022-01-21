@@ -228,7 +228,7 @@ Now, your Button component is powered by Store UI. However, if you try to use th
 touch src/components/ui/Button/Button.module.css
 ```
 
-Now, on `Button.module.css`:
+Now, on `Button.scss`:
 
 ```css
 [data-store-button] {
