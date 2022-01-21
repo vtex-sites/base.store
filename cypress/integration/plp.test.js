@@ -20,7 +20,7 @@ describe('Search page Filters and Sorting options', () => {
 
     // Apply filters
     cy.getById('open-filter-button')
-      .click()
+      .click({ force: true })
       .getById('filter-accordion-button')
       .first()
       .click()
@@ -33,7 +33,7 @@ describe('Search page Filters and Sorting options', () => {
 
     // Check applied filters
     cy.getById('open-filter-button')
-      .click()
+      .click({ force: true })
       .getById('filter-accordion-button')
       .first()
       .click()
