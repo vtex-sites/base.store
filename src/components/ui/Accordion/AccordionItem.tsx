@@ -37,7 +37,7 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
     <UIAccordionItem
       ref={ref}
       index={index}
-      data-testid={testId}
+      data-testid={`${testId}-item`}
       {...otherProps}
     >
       <UIAccordionButton
