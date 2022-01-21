@@ -11,7 +11,7 @@
   --product-card-gap                : var(--grid-gap-0);
   --product-card-shadow             : none;
 
-  --product-card-border-radius      : var(--border-radius-default);
+  --product-card-border-radius      : var(--border-radius-flat);
   --product-card-border-width       : 1px;
   --product-card-border-color       : transparent;
   --product-card-border-color-active: transparent;
@@ -19,7 +19,7 @@
   --product-card-bkg-color          : var(--bg-neutral-lightest);
   --product-card-bkg-color-active   : var(--bg-neutral-lightest);
 
-  --product-card-img-radius         : var(--border-radius-default);
+  --product-card-img-radius         : var(--border-radius-flat);
 
   --product-card-text-color         : var(--color-text);
   --product-card-text-name          : var(--text-size-2);
@@ -30,10 +30,10 @@
 
   --product-card-transition-function: ease;
   --product-card-transition-property: all;
-  --product-card-transition-timing  : .5s;
+  --product-card-transition-timing  : 0;
 
   --product-card-hover-border       : var(--color-border-display);
-  --product-card-hover-shadow       : var(--box-shadow);
+  --product-card-hover-shadow       : none;
   --product-card-hover-bkg-color    : var(--bg-neutral-lightest);
   --product-card-hover-text-color   : var(--color-text);
 
