@@ -8,6 +8,12 @@
   }
 }
 
+.product-listing__breadcrumb {
+  @include media(">=notebook") {
+    padding-top: var(--space-3);
+  }
+}
+
 // Temporary till we have skeletons.
 .product-listing__data-loading {
   display: flex;

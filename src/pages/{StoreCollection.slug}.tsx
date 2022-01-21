@@ -104,7 +104,7 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <div className="grid-content">
+      <div className="product-listing__breadcrumb / grid-content">
         <BreadcrumbWrapper
           breadcrumbList={collection?.breadcrumbList.itemListElement}
           name={title}
