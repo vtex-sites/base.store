@@ -9,6 +9,7 @@ import type {
 
 import ProductCard from '../components/product/ProductCard'
 import InputToggle from '../components/ui/InputToggle'
+import QuantitySelector from '../components/ui/QuantitySelector'
 
 import '../styles/theming-poc.scss'
 
@@ -70,6 +71,19 @@ function Page(props: Props) {
             <code>toggle-transition-function</code>
             <code>toggle-transition-property</code>
             <code>toggle-transition-timing</code>
+          </aside>
+        </div>
+        <hr />
+        <div className="theming-poc-content theming-quantity-selector">
+          <section>
+            <h3>Layout</h3>
+            <QuantitySelector min={1} max={10} disabled={false} />
+          </section>
+          <main>
+            <h3>Themes</h3>
+          </main>
+          <aside>
+            <h3>Design Tokens</h3>
           </aside>
         </div>
         <hr />
