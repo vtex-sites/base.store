@@ -3,7 +3,8 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
-import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
+import { ArrowRight as ArrowRightIcon, X as XIcon } from 'phosphor-react'
+import { Badge } from 'src/components/ui/Badge'
 
 import CartItem from '../CartItem'
 import OrderSummary from '../OrderSummary'
@@ -19,10 +20,21 @@ function CartSidebar() {
 
   return (
     <div className="cart-sidebar" data-testid="cart-sidebar">
+      <div cart-sidebar-header>
+        <p className="title-section">Your Cart</p>
+        <Badge variant="new" small>
+          {totalItems}
+        </Badge>
+        <Button
+          data-cart-checkout-button
+          variant="tertiary"
+          icon={<XIcon size={18} weight="bold" />}
+          iconPosition="right"
+          {...toggleProps}
+        />
+      </div>
       {totalItems > 0 ? (
         <>
-          <Button {...toggleProps}>Close</Button>
-
           {items.map((item) => (
             <CartItem key={item.id} item={item} />
           ))}
