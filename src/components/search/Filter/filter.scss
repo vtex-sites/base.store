@@ -68,6 +68,7 @@
   button {
     position: absolute;
     right: calc(-1 * var(--page-padding-phone));
+    color: var(--color-text);
     background-color: transparent;
   }
 }
