@@ -97,7 +97,7 @@ function GalleryPage({
             page={page}
             pageSize={middleItemIndex}
           />
-          <div className="product-listing-results-sponsored">
+          <div className="product-listing__results-sponsored">
             <h3>Sponsored</h3>
             <ProductTiles products={productsSponsored.slice(0, 2)} />
           </div>

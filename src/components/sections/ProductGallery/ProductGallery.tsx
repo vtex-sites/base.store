@@ -42,13 +42,13 @@ function ProductGallery({ title }: Props) {
   const orderedFacets = useOrderedFacets(data)
 
   if (!orderedFacets.length) {
-    return <div className="product-listing-temp-data-loading">loading...</div>
+    return <div className="product-listing__data-loading">loading...</div>
   }
 
   return (
-    <div className="product-listing-wrapper / grid-content-full">
-      <div className="product-listing-content-grid / grid-content">
-        <div className="product-listing-filters-wrapper">
+    <div className="product-listing / grid-content-full">
+      <div className="product-listing__content-grid / grid-content">
+        <div className="product-listing__filters">
           <Filter
             isOpen={isFilterOpen}
             facets={orderedFacets}
@@ -59,14 +59,14 @@ function ProductGallery({ title }: Props) {
         {data ? (
           <>
             <div
-              className="product-listing-results-count-wrapper"
+              className="product-listing__results-count"
               data-testid="total-product-count"
               data-count={totalCount}
             >
               <h2>{totalCount} Results</h2>
             </div>
 
-            <div className="product-listing-sort-wrapper">
+            <div className="product-listing__sort">
               <Sort />
 
               {isMobile && (
@@ -83,7 +83,7 @@ function ProductGallery({ title }: Props) {
               )}
             </div>
 
-            <div className="product-listing-results-wrapper">
+            <div className="product-listing__results">
               {/* Add link to previous page. This helps on SEO */}
               {prev !== false && (
                 <>
@@ -122,7 +122,7 @@ function ProductGallery({ title }: Props) {
 
               {/* Add link to next page. This helps on SEO */}
               {next !== false && (
-                <div className="product-listing-load-more-wrapper">
+                <div className="product-listing__pagination">
                   <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
                   <LinkButton
                     data-testid="show-more"
@@ -142,7 +142,7 @@ function ProductGallery({ title }: Props) {
             </div>
           </>
         ) : (
-          <div className="product-listing-temp-data-loading">loading...</div>
+          <div className="product-listing__data-loading">loading...</div>
         )}
       </div>
     </div>

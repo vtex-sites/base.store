@@ -1,6 +1,6 @@
 @import "../vendors/include-media.scss";
 
-.product-listing-wrapper {
+.product-listing {
   padding-top: 0;
 
   @include media(">=notebook") {
@@ -9,7 +9,7 @@
 }
 
 // Temporary till we have skeletons.
-.product-listing-temp-data-loading {
+.product-listing__data-loading {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,12 +17,12 @@
   min-height: 300px;
 }
 
-.product-listing-hero {
+.product-listing__hero {
   width: 100%;
   margin-top: var(--space-3);
 }
 
-.product-listing-content-grid {
+.product-listing__content-grid {
   display: flex;
   flex-direction: column;
   padding-right: 0;
@@ -38,7 +38,7 @@
   }
 }
 
-.product-listing-filters-wrapper {
+.product-listing__filters {
   @include media(">=notebook") {
     position: sticky;
     top: var(--grid-gap-0);
@@ -48,7 +48,7 @@
   }
 }
 
-.product-listing-sort-wrapper {
+.product-listing__sort {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,7 +67,7 @@
   }
 }
 
-.product-listing-results-count-wrapper {
+.product-listing__results-count {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +86,7 @@
   }
 }
 
-.product-listing-results-wrapper {
+.product-listing__results {
   --padding: var(--space-1);
 
   order: 3;
@@ -103,7 +103,7 @@
   .product-card[data-store-card] { min-width: 100%; }
 }
 
-.product-listing-results-sponsored {
+.product-listing__results-sponsored {
   margin: var(--space-1) calc(-1 * var(--padding));
   padding: var(--space-4) var(--space-3);
   background-color: var(--bg-neutral-lightest);
@@ -121,7 +121,7 @@
   h3 { margin-bottom: var(--space-1); }
 }
 
-.product-listing-load-more-wrapper {
+.product-listing__pagination {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,7 +143,7 @@
   }
 }
 
-.product-listing-scroll-top-section {
+.product-listing__scroll-top {
   display: flex;
   justify-content: center;
   width: 100%;

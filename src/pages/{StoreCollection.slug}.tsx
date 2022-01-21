@@ -111,7 +111,7 @@ function Page(props: Props) {
         />
       </div>
 
-      <div className="product-listing-hero">
+      <div className="product-listing__hero">
         <section className="page__section">
           <Hero
             variant="small"
@@ -135,7 +135,7 @@ function Page(props: Props) {
         </section>
       )}
 
-      <div className="product-listing-scroll-top-section">
+      <div className="product-listing__scroll-top">
         <ScrollToTopButton />
       </div>
     </SearchProvider>
