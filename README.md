@@ -225,7 +225,7 @@ export default Button
 Now, your Button component is powered by Store UI. However, if you try to use this on your app you will see that the button is lacking styles. To add styles, we will use CSS modules because they allow us to target data attributes. On your terminal, type:
 
 ```sh
-touch src/components/ui/Button/Button.module.css
+touch src/components/ui/Button/Button.scss
 ```
 
 Now, on `Button.scss`:
