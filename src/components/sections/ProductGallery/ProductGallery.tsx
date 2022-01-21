@@ -6,6 +6,7 @@ import Button, { LinkButton } from 'src/components/ui/Button'
 import { Icon as UIIcon } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
+import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -40,15 +41,6 @@ function ProductGallery({ title }: Props) {
 
   return (
     <>
-      {/* Controls */}
-      <div className="flex items-center justify-between">
-        <div data-testid="total-product-count" data-count={totalCount}>
-          Total Products: {totalCount}
-        </div>
-        <Sort />
-        <h2>Most Wanted</h2>
-      </div>
-
       {/* Filters */}
       <div>
         <Filter
@@ -58,13 +50,23 @@ function ProductGallery({ title }: Props) {
         />
         {isMobile && (
           <Button
+            variant="tertiary"
             data-testid="open-filter-button"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
           >
-            <UIIcon component={<div />} />
+            <UIIcon component={<FadersHorizontalIcon size={18} />} />
             Filters
           </Button>
         )}
+      </div>
+
+      {/* Controls */}
+      <div>
+        <div data-testid="total-product-count" data-count={totalCount}>
+          Total Products: {totalCount}
+        </div>
+        <Sort />
+        <h2>Most Wanted</h2>
       </div>
 
       {/* Add link to previous page. This helps on SEO */}

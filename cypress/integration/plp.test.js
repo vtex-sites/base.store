@@ -18,6 +18,7 @@ describe('Search page Filters and Sorting options', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
+    // Apply filters
     cy.getById('open-filter-button')
       .click()
       .getById('filter-accordion-button')
@@ -27,9 +28,18 @@ describe('Search page Filters and Sorting options', () => {
       .should('exist')
       .first()
       .click()
-      .getById('apply-filters-button')
+      .getById('filter-modal-button-apply')
+      .click()
+
+    // Check applied filters
+    cy.getById('open-filter-button')
+      .click()
+      .getById('filter-accordion-button')
+      .first()
       .click()
       .getById('filter-accordion-panel-checkbox')
+      .first()
+      .click()
       .then(($checkbox) => {
         const value = $checkbox.attr('data-value')
         const quantity = $checkbox.attr('data-quantity')
@@ -50,11 +60,13 @@ describe('Search page Filters and Sorting options', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
+    const priceId = '[data-testid="store-card"] [data-testid="price"]'
+
     cy.getById('search-sort')
       .should('exist')
       .select('price_asc')
       .then(() => {
-        cy.getById('price').should(($prices) => {
+        cy.get(priceId).should(($prices) => {
           const prices = Cypress._.map($prices, (price) =>
             Number(price.attributes['data-value'].value)
           )
@@ -68,11 +80,15 @@ describe('Search page Filters and Sorting options', () => {
   })
 
   it('Sort products by price_desc', () => {
+    cy.visit(pages.collection, options)
+    cy.waitForHydration()
+    const priceId = '[data-testid="store-card"] [data-testid="price"]'
+
     cy.getById('search-sort')
       .should('exist')
       .select('price_desc')
       .then(() => {
-        cy.getById('price').should(($prices) => {
+        cy.get(priceId).should(($prices) => {
           const prices = Cypress._.map($prices, (price) =>
             Number(price.attributes['data-value'].value)
           )
