@@ -47,7 +47,7 @@ function Filter({
   const { width: screenWidth } = useWindowDimensions()
   const { toggleFacet, toggleFacets, state: searchState } = useSearch()
 
-  const [expandedIndices, setExpandedIndices] = useState<Set<number>>(
+  const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
   )
 
@@ -65,14 +65,14 @@ function Filter({
   }, [screenWidth])
 
   const onAccordionChange = (index: number) => {
-    if (expandedIndices.has(index)) {
-      expandedIndices.delete(index)
-      setExpandedIndices(new Set(expandedIndices))
+    if (indicesExpanded.has(index)) {
+      indicesExpanded.delete(index)
+      setIndicesExpanded(new Set(indicesExpanded))
 
       return
     }
 
-    setExpandedIndices(new Set(expandedIndices.add(index)))
+    setIndicesExpanded(new Set(indicesExpanded.add(index)))
   }
 
   const onFilterChange = (item: IStoreSelectedFacet) => {
@@ -103,7 +103,7 @@ function Filter({
       <div className="filter" data-store-filter data-testid={testId}>
         <h2 className="title-small">Filters</h2>
         <Accordion
-          expandedIndices={expandedIndices}
+          expandedIndices={indicesExpanded}
           onChange={onAccordionChange}
         >
           {facets
@@ -112,7 +112,7 @@ function Filter({
               <AccordionItem
                 key={`${label}-${index}`}
                 testId="filter-accordion"
-                isExpanded={expandedIndices.has(index)}
+                isExpanded={indicesExpanded.has(index)}
                 buttonLabel={label}
               >
                 <UIList>
@@ -172,7 +172,7 @@ function Filter({
           variant="secondary"
           onClick={() => {
             toggleFacets(selectedFilters)
-            setExpandedIndices(new Set([]))
+            setIndicesExpanded(new Set([]))
             setSelectedFilters([])
           }}
         >
