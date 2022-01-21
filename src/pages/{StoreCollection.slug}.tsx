@@ -19,7 +19,7 @@ import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
 import '../styles/pages/index.scss'
-import '../styles/pages/plp.scss'
+import '../styles/pages/product-listing.scss'
 
 export type Props = PageProps<
   CollectionPageQueryQuery,
