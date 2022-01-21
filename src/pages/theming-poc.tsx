@@ -9,6 +9,7 @@ import type {
 
 import ProductCard from '../components/product/ProductCard'
 import InputToggle from '../components/ui/InputToggle'
+import DiscountBadge from '../components/ui/DiscountBadge'
 
 import '../styles/theming-poc.scss'
 
@@ -71,6 +72,14 @@ function Page(props: Props) {
             <code>toggle-transition-property</code>
             <code>toggle-transition-timing</code>
           </aside>
+        </div>
+        <hr />
+        <div className="theming-poc-content theming-product-card">
+          <section>
+            <h3>Layouts</h3>
+            <DiscountBadge small listPrice={200} spotPrice={180} />
+            <DiscountBadge listPrice={200} spotPrice={180} />
+          </section>
         </div>
         <hr />
         <div className="theming-poc-content theming-product-card">
