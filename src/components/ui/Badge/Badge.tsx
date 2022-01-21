@@ -1,6 +1,8 @@
 import { Badge as UIBadge } from '@faststore/ui'
 import React from 'react'
 
+import './badge.scss'
+
 export type Variant = 'success' | 'highlighted' | 'info' | 'neutral'
 
 type Props = {

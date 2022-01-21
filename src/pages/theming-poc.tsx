@@ -10,7 +10,7 @@ import type {
 import ProductCard from '../components/product/ProductCard'
 import InputToggle from '../components/ui/InputToggle'
 import QuantitySelector from '../components/ui/QuantitySelector'
-import DiscountBadge from '../components/ui/DiscountBadge'
+import Badge from '../components/ui/Badge'
 
 import '../styles/theming-poc.scss'
 
@@ -33,7 +33,6 @@ function Page(props: Props) {
       />
       <div className="theming-poc">
         <div className="theming-poc-content theming-toggle">
-          <header />
           <section>
             <h3>Layouts</h3>
             <InputToggle structure="horizontal" />
@@ -125,14 +124,42 @@ function Page(props: Props) {
           </aside>
         </div>
         <hr />
-        <div className="theming-poc-content">
+        <div className="theming-poc-content theming-badge">
           <section>
             <h3>Layouts</h3>
-            <DiscountBadge small listPrice={200} spotPrice={180} />
-            <DiscountBadge listPrice={200} spotPrice={180} />
+            <Badge small>Badge Small</Badge>
+            <Badge>Badge Big</Badge>
           </section>
           <main>
             <h3>Themes</h3>
+            <div className="theming-poc-list">
+              <Badge variant="success" small>
+                success
+              </Badge>
+              <Badge variant="highlighted" small>
+                highlighted
+              </Badge>
+              <Badge variant="info" small>
+                info
+              </Badge>
+              <Badge variant="neutral" small>
+                neutral
+              </Badge>
+            </div>
+            <div className="theming-poc-list">
+              <Badge variant="success" small>
+                success
+              </Badge>
+              <Badge variant="highlighted" small>
+                highlighted
+              </Badge>
+              <Badge variant="info" small>
+                info
+              </Badge>
+              <Badge variant="neutral" small>
+                neutral
+              </Badge>
+            </div>
           </main>
           <aside className="theming-tokens">
             <h3>Design Tokens</h3>

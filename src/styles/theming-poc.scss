@@ -38,14 +38,23 @@
 
   > * > h3 { font-weight: bold; }
 
+  > section { flex-basis: 20%; }
+  > main { flex-basis: 40%; }
+  > aside { flex-basis: 40%; }
+
   > main, > section {
     display: flex;
-    flex-basis: 25%;
     flex-direction: column;
     gap: 24px;
     align-items: flex-start;
     justify-content: flex-start;
   }
+}
+
+.theming-poc-list {
+  display: flex;
+  column-gap: 8px;
+  > * { flex-shrink: 0; }
 }
 
 .theming-tokens {
@@ -221,6 +230,36 @@
     --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest),
                                         0 0 0 var(--border-width-2) var(--bg-focus-ring);
     --product-card-focus-bkg-color    : var(--bg-neutral-lightest);
+  }
+}
+
+.theming-badge main .theming-poc-list {
+  &:nth-child(3) {
+    [data-store-badge] { --badge-border-width: 3px; }
+
+    [data-store-badge-variant="success"] {
+      --badge-success-bkg-color        : transparent;
+      --badge-success-text-color       : var(--color-text);
+      --badge-success-border-color     : var(--bg-success);
+    }
+
+    [data-store-badge-variant="highlighted"] {
+      --badge-highlighted-bkg-color    : transparent;
+      --badge-highlighted-text-color   : var(--color-text);
+      --badge-highlighted-border-color : var(--bg-highlighted);
+    }
+
+    [data-store-badge-variant="info"] {
+      --badge-info-bkg-color           : transparent;
+      --badge-info-text-color          : var(--color-text);
+      --badge-info-border-color        : var(--bg-info);
+    }
+
+    [data-store-badge-variant="neutral"] {
+      --badge-neutral-bkg-color        : transparent;
+      --badge-neutral-text-color       : var(--color-text);
+      --badge-neutral-border-color     : var(--bg-neutral);
+    }
   }
 }
 /* stylelint-enable */
