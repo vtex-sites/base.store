@@ -1,15 +1,15 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect, useMemo, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
-import type { FacetedFilter_FacetsFragment } from '@generated/graphql'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
+import { useOrderedFacets } from './useOrderedFacets'
 
 interface Props {
   title: string
@@ -18,7 +18,6 @@ interface Props {
 function ProductGallery({ title }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
-  const facets = useRef<FacetedFilter_FacetsFragment[]>([])
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
@@ -40,25 +39,9 @@ function ProductGallery({ title }: Props) {
     setIsMobile(screenWidth < parseInt(notebookBreakpoint, 10))
   }, [screenWidth])
 
-  const orderedFacets: FacetedFilter_FacetsFragment[] = useMemo(() => {
-    if (data) {
-      const orderFacets = data.search.facets.map((facet) => {
-        if (facet.type === 'BOOLEAN') {
-          facet.values = facet.values.sort((a, b) =>
-            a.label.localeCompare(b.label)
-          )
-        }
+  const orderedFacets = useOrderedFacets(data)
 
-        return facet
-      })
-
-      facets.current = orderFacets
-    }
-
-    return facets.current
-  }, [data])
-
-  if (!facets.current.length) {
+  if (!orderedFacets.length) {
     return <div className="plp-temp-data-loading">loading...</div>
   }
 
