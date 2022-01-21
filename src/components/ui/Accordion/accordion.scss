@@ -1,0 +1,34 @@
+@import "../../../styles/scaffold";
+
+.accordion[data-store-accordion] {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  [data-accordion-item] {
+    border-bottom: 1px solid var(--color-border-display);
+
+    @include media(">=notebook") {
+      padding: 0 var(--space-4);
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  [data-accordion-item] [data-store-button] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-3) 0;
+    color: var(--color-text);
+    background-color: transparent;
+    border: 0;
+  }
+
+  [data-accordion-item] [data-store-icon] {
+    display: flex;
+  }
+}

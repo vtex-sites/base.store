@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import {
-  Icon as UIIcon,
-  List as UIList,
-  Accordion as UIAccordion,
-  AccordionItem as UIAccordionItem,
-  AccordionButton as UIAccordionButton,
-  AccordionPanel as UIAccordionPanel,
-} from '@faststore/ui'
-import {
-  PlusCircle as PlusCircleIcon,
-  MinusCircle as MinusCircleIcon,
-} from 'phosphor-react'
+import { List as UIList } from '@faststore/ui'
 
 import Link from '../../ui/Link'
+import Accordion, { AccordionItem } from '../../ui/Accordion'
 import useWindowDimensions from './useWindowDimensions'
 
 const links = [
@@ -94,6 +84,29 @@ const links = [
   },
 ]
 
+type LinkItem = {
+  href: string
+  name: string
+}
+
+interface LinksListProps {
+  items: LinkItem[]
+}
+
+function LinksList({ items }: LinksListProps) {
+  return (
+    <UIList>
+      {items.map((item) => (
+        <li key={item.name}>
+          <Link variant="footer" href={item.href}>
+            {item.name}
+          </Link>
+        </li>
+      ))}
+    </UIList>
+  )
+}
+
 function FooterLinks() {
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
@@ -124,49 +137,23 @@ function FooterLinks() {
   return (
     <section className="footer__links">
       {isMobile ? (
-        <UIAccordion indices={indicesExpanded} onChange={onChange}>
+        <Accordion expandedIndices={indicesExpanded} onChange={onChange}>
           {links.map((section, index) => (
-            <UIAccordionItem key={section.title}>
-              <UIAccordionButton className="title-subsection">
-                {section.title}
-                <UIIcon
-                  component={
-                    indicesExpanded.has(index) ? (
-                      <MinusCircleIcon size={24} />
-                    ) : (
-                      <PlusCircleIcon size={24} />
-                    )
-                  }
-                />
-              </UIAccordionButton>
-              <UIAccordionPanel>
-                <UIList>
-                  {section.items.map((item) => (
-                    <li key={item.name}>
-                      <Link variant="footer" href={item.href}>
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </UIList>
-              </UIAccordionPanel>
-            </UIAccordionItem>
+            <AccordionItem
+              key={section.title}
+              isExpanded={indicesExpanded.has(index)}
+              buttonLabel={section.title}
+            >
+              <LinksList items={section.items} />
+            </AccordionItem>
           ))}
-        </UIAccordion>
+        </Accordion>
       ) : (
         <div className="footer__links-columns">
           {links.map((section) => (
             <nav key={section.title}>
               <p className="title-sub-subsection">{section.title}</p>
-              <UIList>
-                {section.items.map((item) => (
-                  <li key={item.name}>
-                    <Link variant="footer" href={item.href}>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </UIList>
+              <LinksList items={section.items} />
             </nav>
           ))}
         </div>
