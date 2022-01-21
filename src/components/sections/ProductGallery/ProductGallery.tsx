@@ -46,7 +46,7 @@ function ProductGallery({ title }: Props) {
   }
 
   return (
-    <div className="grid-content-full">
+    <div className="product-listing-wrapper / grid-content-full">
       <div className="product-listing-content-grid / grid-content">
         <div className="product-listing-filters-wrapper">
           <Filter

@@ -1,6 +1,12 @@
 @import "../vendors/include-media.scss";
 
-.product-listing-wrapper { margin-top: var(--space-3); }
+.product-listing-wrapper {
+  padding-top: 0;
+
+  @include media(">=notebook") {
+    padding-top: var(--page-padding-notebook);
+  }
+}
 
 // Temporary till we have skeletons.
 .product-listing-temp-data-loading {
