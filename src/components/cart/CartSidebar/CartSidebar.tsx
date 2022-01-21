@@ -19,37 +19,39 @@ function CartSidebar() {
 
   return (
     <div className="cart-sidebar" data-testid="cart-sidebar">
-      <Button {...toggleProps}>Close</Button>
-      <div>Cart Item Detais</div>
-
-      {items.map((item) => (
-        <CartItem key={item.id} item={item} />
-      ))}
-
-      <div>Gifts</div>
-      {gifts.map((item) => (
-        <CartItem key={item.id} item={item} />
-      ))}
-
-      <div>Cart Summary</div>
-
       {totalItems > 0 ? (
-        <OrderSummary
-          subTotal={subTotal}
-          total={total}
-          numberOfItems={totalItems}
-          checkoutButton={
-            <Button
-              data-cart-checkout-button
-              variant="primary"
-              icon={<ArrowRightIcon size={18} />}
-              iconPosition="right"
-              {...btnProps}
-            >
-              {isValidating ? 'loading...' : 'Checkout'}
-            </Button>
-          }
-        />
+        <>
+          <Button {...toggleProps}>Close</Button>
+          <div>Cart Item Detais</div>
+
+          {items.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+
+          <div>Gifts</div>
+          {gifts.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+
+          <div>Cart Summary</div>
+
+          <OrderSummary
+            subTotal={subTotal}
+            total={total}
+            numberOfItems={totalItems}
+            checkoutButton={
+              <Button
+                data-cart-checkout-button
+                variant="primary"
+                icon={<ArrowRightIcon size={18} />}
+                iconPosition="right"
+                {...btnProps}
+              >
+                {isValidating ? 'loading...' : 'Checkout'}
+              </Button>
+            }
+          />
+        </>
       ) : (
         <EmptyCart />
       )}
