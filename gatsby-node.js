@@ -2,8 +2,6 @@ const path = require('path')
 
 const fs = require('fs-extra')
 
-const { findLoader } = require('./src/utils')
-
 exports.onPreInit = ({ reporter }) => {
   reporter.info('Copying Partytown Files')
 
@@ -16,12 +14,12 @@ exports.onPreInit = ({ reporter }) => {
   )
 }
 
-exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
+exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
   const profiling = process.env.GATSBY_STORE_PROFILING === 'true'
 
   if (stage === 'build-javascript') {
     if (profiling) {
-      actions.setWebpackConfig({
+      setWebpackConfig({
         optimization: {
           minimize: false,
           moduleIds: 'named',
@@ -30,7 +28,7 @@ exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
         },
       })
     } else {
-      actions.setWebpackConfig({
+      setWebpackConfig({
         optimization: {
           runtimeChunk: {
             name: `webpack-runtime`,
@@ -47,39 +45,7 @@ exports.onCreateWebpackConfig = ({ actions, stage, getConfig }) => {
             },
           },
         },
-        // module: {
-        //   loaders: [
-        //     {
-        //       test: /\.(css|scss)$/,
-        //       loader: 'dropcss-loader',
-        //     },
-        //   ],
-        // },
       })
-
-      const config = getConfig()
-      const existingRules = config.module.rules
-
-      // const customLoader = {
-      //   loader: 'dropcss-loader',
-      //   // options: {},
-      // }
-
-      for (const rules of existingRules) {
-        for (const rule of rules.oneOf || []) {
-          if (Array.isArray(rule.use)) {
-            const index = findLoader(rule.use, /css-loader/)
-
-            // const loader = rule.use[index]
-            if (index !== -1) {
-              rule.sideEffects = false
-            }
-            // insertLoader(rule.use, index, loader)
-          }
-        }
-      }
-
-      actions.replaceWebpackConfig(config)
     }
   }
 }
