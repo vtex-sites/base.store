@@ -40,7 +40,7 @@ const SlideOver = ({
   }, [])
 
   useEffect(() => {
-    if (isOpen === undefined || isOpen) {
+    if (isOpen) {
       setFadeType('in')
     }
   }, [isOpen])
