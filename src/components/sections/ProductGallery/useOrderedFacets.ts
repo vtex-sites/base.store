@@ -11,11 +11,7 @@ export const useOrderedFacets = (data?: ProductGalleryQueryQuery) => {
     if (data) {
       const orderFacets = data.search.facets.map((facet) => {
         if (facet.type === 'BOOLEAN') {
-          const sortedValues = facet.values.sort((a, b) =>
-            a.label.localeCompare(b.label)
-          )
-
-          return { ...facet, values: sortedValues }
+          facet.values.sort((a, b) => a.label.localeCompare(b.label))
         }
 
         return facet
