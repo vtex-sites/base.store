@@ -310,24 +310,6 @@ function Button({ variant, ...props }: Props) {
 
 Now we have a styled Button component that accepts different variants!! 🎉
 
-The aforementioned guide works well for UI components. However, sections are more complex and usually don't have variants, since they usually serve a single responsibility on the page. For sections, you can use tailwind natively like:
-
-```tsx
-// components/sections/MySection/MySection.tsx
-...
-function MySection {
-  return (
-    <>
-      <div className="p-2 flex items-center">
-        <p className="h-4 p-5 mx-2">Hello World</p>
-        <Button variant="muted">
-      </div>
-    </>
-  )
-}
-...
-```
-
 ## 🖊️ Styling Components
 
 Our customized theme is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
