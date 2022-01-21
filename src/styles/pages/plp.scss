@@ -21,11 +21,11 @@
   flex-direction: column;
   padding-right: 0;
   padding-left: 0;
+  row-gap: var(--space-0);
 
   @include media(">=notebook") {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    padding-top: var(--space-4);
     padding-right: var(--page-padding-notebook);
     padding-left: var(--page-padding-notebook);
     column-gap: var(--space-4);
