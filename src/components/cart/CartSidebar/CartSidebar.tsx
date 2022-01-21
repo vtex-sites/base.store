@@ -22,7 +22,6 @@ function CartSidebar() {
       {totalItems > 0 ? (
         <>
           <Button {...toggleProps}>Close</Button>
-          <div>Cart Item Detais</div>
 
           {items.map((item) => (
             <CartItem key={item.id} item={item} />
