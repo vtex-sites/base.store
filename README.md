@@ -225,18 +225,19 @@ export default Button
 Now, your Button component is powered by Store UI. However, if you try to use this on your app you will see that the button is lacking styles. To add styles, we will use CSS modules because they allow us to target data attributes. On your terminal, type:
 
 ```sh
-touch src/components/ui/Button/Button.scss
+touch src/components/ui/Button/button.scss
 ```
 
-Now, on `Button.scss`:
+Now, on `button.scss`:
 
 ```css
 [data-store-button] {
-  @apply p-0 bg-primary-100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 ```
 
-The `@apply` directive exists because we are using [Tailwind CSS](https://tailwindcss.com/). To learn more about tailwind, [see their docs](https://tailwindcss.com/docs). To know more about our best practices on using tailwind, see the [Styling Components](#%EF%B8%8F-styling-components) section.
 This `data-store-button` is a CSS data attribute selector. To know which selectors are available, check [FastStore UI docs](https://faststoreui.netlify.app/).
 
 Now, open `Button.tsx` and import this CSS with:
@@ -246,7 +247,7 @@ import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
-import './Button.module.css'
+import './button.scss'
 
 interface Props extends ButtonProps {}
 
@@ -264,28 +265,46 @@ import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
-import './Button.module.css'
+import './button.scss'
 
 interface Props extends ButtonProps {
-  variant: 'muted' | 'primary'
+  variant: 'secondary' | 'primary'
 }
 
 function Button({ variant, ...props }: Props) {
-  return <UIButton className={variant} {...props} />
+  return <UIButton data-button-variant={variant} {...props} />
 }
 
 export default Button
 ```
 
-and then, on `Button.module.css`:
+and then, on `button.scss`:
+
+```css
+[data-store-button][data-button-variant='primary'] {
+  background: blue;
+}
+
+[data-store-button][data-button-variant='secondary'] {
+  background: pink;
+}
+```
+
+You can also use classes, if you wanted to:
+
+```tsx
+function Button({ variant, ...props }: Props) {
+  return <UIButton className={variant} {...props} />
+}
+```
 
 ```css
 .primary [data-store-button] {
-  @apply p-0 bg-primary-100;
+  background: blue;
 }
 
-.muted [data-store-button] {
-  @apply p-0 bg-muted-100;
+.secondary [data-store-button] {
+  background: pink;
 }
 ```
 
