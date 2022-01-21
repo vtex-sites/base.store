@@ -18,6 +18,7 @@ import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
+import '../styles/pages/index.scss'
 import '../styles/pages/plp.scss'
 
 export type Props = PageProps<
@@ -126,7 +127,7 @@ function Page(props: Props) {
       <ProductGallery title={title} />
 
       {haveYouMightAlsoLikeProducts && (
-        <section className="page__section page__section-shelf / grid-section">
+        <section className="page__section page__section-shelf page__section-divisor / grid-section">
           <h2 className="title-section / grid-content">You might also like</h2>
           <div className="page__section-content">
             <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
