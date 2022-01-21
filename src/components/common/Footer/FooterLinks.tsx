@@ -84,6 +84,29 @@ const links = [
   },
 ]
 
+type LinkItem = {
+  href: string
+  name: string
+}
+
+interface LinksListProps {
+  items: LinkItem[]
+}
+
+function LinksList({ items }: LinksListProps) {
+  return (
+    <UIList>
+      {items.map((item) => (
+        <li key={item.name}>
+          <Link variant="footer" href={item.href}>
+            {item.name}
+          </Link>
+        </li>
+      ))}
+    </UIList>
+  )
+}
+
 function FooterLinks() {
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
@@ -121,15 +144,7 @@ function FooterLinks() {
               key={section.title}
               buttonLabel={section.title}
             >
-              <UIList>
-                {section.items.map((item) => (
-                  <li key={item.name}>
-                    <Link variant="footer" href={item.href}>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </UIList>
+              <LinksList items={section.items} />
             </AccordionItem>
           ))}
         </Accordion>
@@ -138,15 +153,7 @@ function FooterLinks() {
           {links.map((section) => (
             <nav key={section.title}>
               <p className="title-sub-subsection">{section.title}</p>
-              <UIList>
-                {section.items.map((item) => (
-                  <li key={item.name}>
-                    <Link variant="footer" href={item.href}>
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </UIList>
+              <LinksList items={section.items} />
             </nav>
           ))}
         </div>
