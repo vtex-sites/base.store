@@ -10,7 +10,13 @@
   @include media(">=notebook") {
     --gap: var(--grid-gap-0);
 
+    $pagination-start-index: 3;
+
     grid-template-columns: repeat(4, 1fr);
+
+    &:nth-of-type(n + #{$pagination-start-index}) {
+      margin-top: var(--gap);
+    }
   }
 
   li {
