@@ -157,8 +157,9 @@ function Filter({
         <header className="filter-modal__header">
           <h2 className="title-display">Filters</h2>
           <Button
+            className="filter-modal__button"
             data-testid="filter-modal-button-close"
-            aria-label="Close"
+            aria-label="Close Filters"
             onClick={() => onDismissTransition?.()}
           >
             <XIcon size={32} />

@@ -52,6 +52,7 @@ function ProductGallery({ title }: Props) {
           <Button
             variant="tertiary"
             data-testid="open-filter-button"
+            aria-label="Open Filters"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
           >
             <UIIcon component={<FadersHorizontalIcon size={18} />} />
