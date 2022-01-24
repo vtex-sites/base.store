@@ -74,7 +74,7 @@ describe('On product description pages', () => {
 
       cy.getById('remove-from-cart-button').click()
       cy.getById('cart-item').should('not.exist')
-      cy.getById('checkout-button').should('be.enabled')
+      cy.getById('checkout-button').should('not.exist')
 
       cy.itemsInCart(0)
     })
@@ -125,7 +125,10 @@ describe('On product collection pages', () => {
       cy.getById('store-card').first().click()
       // Remove from cart
       cy.getById('buy-button').first().click()
-      cy.getById('checkout-button').should('be.enabled')
+
+      cy.waitUntil(() =>
+        cy.getById('checkout-button').then(($el) => !$el.disabled)
+      ).then((enabled) => expect(enabled).to.be.true)
 
       cy.itemsInCart(1)
 
