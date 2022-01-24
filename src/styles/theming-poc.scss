@@ -86,63 +86,74 @@
 }
 
 /* stylelint-disable */
-.theming-toggle > main > div {
+.theming-toggle > main [data-base-toggle] {
+  &:nth-child(2) {
+    --toggle-bkg-color                : transparent;
+    --toggle-border-color             : black;
+    --toggle-border-radius            : 0;
+    --toggle-border-width             : 1px;
+    --toggle-knob-bkg-color           : black;
+    --toggle-knob-border-color        : black;
+    --toggle-checked-bkg-color        : darkseagreen;
+    --toggle-checked-border-color     : var(--toggle-border-color);
+    --toggle-checked-knob-border-color: white;
+    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
+  }
+
   &:nth-child(3) {
-    --toggle-bkg-color-active        : darkseagreen;
-    --toggle-bkg-color               : transparent;
-    --toggle-border-color-active     : var(--toggle-border-color);
-    --toggle-border-color            : black;
-    --toggle-border-radius           : 0;
-    --toggle-border-style            : solid;
-    --toggle-border-width            : 1px;
-    --toggle-height                  : var(--toggle-height-mob);
-    --toggle-knob-border-color-active: var(--toggle-knob-border-color);
-    --toggle-knob-border-color       : black;
-    --toggle-knob-color-active       : var(--toggle-knob-color);
-    --toggle-knob-color              : black;
+    --toggle-bkg-color                : var(--bg-neutral-lightest);
+    --toggle-border-color             : var(--color-border-input);
+    --toggle-content                  : "on";
+    --toggle-content-color            : var(--color-border-input);
+    --toggle-border-radius            : var(--border-radius-pill);
+    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-knob-border-color        : var(--color-border-input);
+    --toggle-knob-radius              : var(--border-radius-pill);
+    --toggle-knob-shadow              : var(--box-shadow);
+    --toggle-checked-bkg-color        : var(--bg-success);
+    --toggle-checked-border-color     : var(--color-success);
+    --toggle-checked-knob-border-color: var(--toggle-knob-border-color);
+    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
   }
 
   &:nth-child(4) {
-    --toggle-bkg-color-active        : var(--bg-success);
-    --toggle-bkg-color               : var(--bg-neutral-lightest);
-    --toggle-border-radius           : var(--border-radius-pill);
-    --toggle-border-color-active     : var(--color-success);
-    --toggle-border-color            : var(--color-border-input);
-    --toggle-knob-border-color-active: var(--toggle-knob-border-color);
-    --toggle-knob-border-color       : var(--color-border-input);
-    --toggle-knob-color-active       : var(--toggle-knob-color);
-    --toggle-knob-color              : var(--bg-neutral-lightest);
-    --toggle-knob-radius             : var(--border-radius-pill);
-    --toggle-knob-shadow             : var(--box-shadow);
+    --toggle-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-height-desk         : 38px;
+    --toggle-border-color        : var(--color-neutral-3);
+    --toggle-border-radius       : var(--border-radius-default);
+    --toggle-knob-bkg-color      : var(--bg-neutral-lightest);
+    --toggle-knob-border-color   : var(--color-neutral-3);
+    --toggle-knob-radius         : var(--border-radius-default);
+    --toggle-knob-shadow         : var(--box-shadow);
+    --toggle-checked-bkg-color   : var(--bg-primary-default);
+    --toggle-checked-border-color: var(--bg-primary-default);
+    --toggle-checked-knob-color  : var(--toggle-knob-bkg-color);
+    --toggle-hover-bkg-color     : var(--toggle-bkg-color);
+    --toggle-hover-border-color  : var(--bg-primary-default);
+    --toggle-hover-knob-bkg-color: var(--bg-neutral-lightest);
+    --toggle-hover-shadow        : 0 0 0 var(--toggle-border-width) var(--bg-primary-default);
+    --toggle-focus-bkg-color     : var(--bg-primary-default);
+    --toggle-focus-border-color  : var(--bg-primary-default);
+    --toggle-focus-shadow        : 0 0 0 var(--toggle-border-width) var(--bg-primary-default);
   }
 
   &:nth-child(5) {
-    --toggle-border-color            : var(--color-neutral-3);
-    --toggle-border-radius           : var(--border-radius-default);
-    --toggle-border-color-active     : var(--bg-primary-defaultt);
-    --toggle-bkg-color-active        : var(--bg-primary-default);
-    --toggle-bkg-color               : var(--bg-neutral-lightest);
-    --toggle-height-desk             : 38px;
-    --toggle-knob-border-color       : var(--color-neutral-3);
-    --toggle-knob-color-active       : var(--toggle-knob-color);
-    --toggle-knob-color              : var(--bg-neutral-lightest);
-    --toggle-knob-radius             : var(--border-radius-default);
-    --toggle-knob-shadow             : var(--box-shadow);
-  }
-
-  &:nth-child(6) {
-    --toggle-bkg-color-active        : darkgreen;
-    --toggle-bkg-color               : var(--color-neutral-3);
-    --toggle-border-color-active     : darkgreen;
-    --toggle-border-color            : var(--color-neutral-3);
-    --toggle-border-radius           : var(--border-radius-pill);
-    --toggle-border-width            : 2px;
-    --toggle-knob-border-color-active: darkgreen;
-    --toggle-knob-border-color       : var(--color-neutral-3);
-    --toggle-knob-color-active       : var(--toggle-knob-color);
-    --toggle-knob-color              : var(--bg-neutral-lightest);
-    --toggle-knob-radius             : var(--border-radius-circle);
-    --toggle-knob-shadow             : none;
+    --toggle-bkg-color                : var(--color-neutral-3);
+    --toggle-border-color             : var(--color-neutral-3);
+    --toggle-border-radius            : var(--border-radius-pill);
+    --toggle-border-width             : 2px;
+    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-knob-border-color        : var(--color-neutral-3);
+    --toggle-knob-radius              : var(--border-radius-circle);
+    --toggle-knob-shadow              : none;
+    --toggle-checked-bkg-color        : darkgreen;
+    --toggle-checked-border-color     : darkgreen;
+    --toggle-checked-knob-border-color: darkgreen;
+    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
+    --toggle-hover-border-color       : darkgreen;
+    --toggle-hover-shadow             : 0 0 0 1px darkgreen;
+    --toggle-focus-border-color       : darkgreen;
+    --toggle-focus-shadow             : darkgreen;
   }
 }
 

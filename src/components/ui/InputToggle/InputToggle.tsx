@@ -14,7 +14,7 @@ function InputToggle({ structure = 'horizontal', text }: Props) {
     <div data-base-toggle data-toggle-structure={structure}>
       <label htmlFor="input-toggle">{text}</label>
       <div data-base-toggle-container>
-        <input id="" name="input-toggle" type="checkbox" />
+        <input id="input-toggle" name="input-toggle" type="checkbox" />
         <span data-base-toggle-knob />
       </div>
     </div>

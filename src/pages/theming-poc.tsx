@@ -44,7 +44,6 @@ function Page(props: Props) {
             <InputToggle />
             <InputToggle />
             <InputToggle />
-            <InputToggle />
           </main>
           <aside className="theming-tokens">
             <h3>Design Tokens</h3>
@@ -98,7 +97,7 @@ function Page(props: Props) {
                 <code>transition-timing</code>
               </div>
               <div>
-                <h4>Interactive state</h4>
+                <h4>Interactive states</h4>
                 <code>hover-shadow</code>
                 <code>hover-bkg-color</code>
                 <code>hover-text-color</code>

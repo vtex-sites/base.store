@@ -6,30 +6,48 @@
   // --------------------------------------------------------
 
   /* stylelint-disable */
-  --toggle-bkg-color-active        : black;
-  --toggle-bkg-color               : white;
+  // Default properties
+  --toggle-height                    : calc(var(--min-size) / 1.25);
+  --toggle-shadow                    : none;
+  --toggle-bkg-color                 : white;
 
-  --toggle-border-color-active     : var(--toggle-border-color);
-  --toggle-border-color            : black;
-  --toggle-border-radius           : 0;
-  --toggle-border-width            : 1px;
+  --toggle-content                   : "✓";
+  --toggle-content-color             : var(--toggle-checked-bkg-color);
 
-  --toggle-height-desk             : 30px;
-  --toggle-height-mob              : 34px;
-  --toggle-height                  : var(--toggle-height-mob);
+  --toggle-border-color              : black;
+  --toggle-border-radius             : 0;
+  --toggle-border-width              : 1px;
 
-  --toggle-knob-border-color-active: var(--toggle-knob-border-color);
-  --toggle-knob-border-color       : black;
-  --toggle-knob-color-active       : white;
-  --toggle-knob-color              : black;
-  --toggle-knob-radius             : 0;
-  --toggle-knob-shadow             : none;
+  --toggle-knob-radius               : 0;
+  --toggle-knob-shadow               : none;
+  --toggle-knob-bkg-color            : black;
+  --toggle-knob-border-color         : black;
 
-  --toggle-hover-border            : var(--toggle-border-color-active);
+  --toggle-transition-function       : ease-in-out;
+  --toggle-transition-property       : all;
+  --toggle-transition-timing         : .15s;
 
-  --toggle-transition-function     : ease-in-out;
-  --toggle-transition-property     : all;
-  --toggle-transition-timing       : .15s;
+  // Interactive states
+  --toggle-checked-bkg-color         : black;
+  --toggle-checked-border-color      : black;
+  --toggle-checked-knob-bkg-color    : white;
+  --toggle-checked-knob-border-color : white;
+
+  --toggle-hover-shadow              : 0 0 0 var(--toggle-border-width) var(--toggle-border-color);
+  --toggle-hover-bkg-color           : var(--toggle-bkg-color);
+  --toggle-hover-border-color        : var(--toggle-border-color);
+  --toggle-hover-knob-bkg-color      : var(--toggle-hover-border-color);
+
+  --toggle-focus-shadow              : 0 0 0 var(--toggle-border-width) var(--toggle-border-color);
+  --toggle-focus-bkg-color           : var(--toggle-hover-border-color);
+  --toggle-focus-border-color        : var(--toggle-border-color);
+  --toggle-focus-knob-bkg-color      : var(--toggle-hover-border-color);
+
+  --toggle-disabled-bkg-color        : black;
+  --toggle-disabled-border-color     : black;
+  --toggle-disabled-knob-bkg-color   : white;
+  --toggle-disabled-knob-border-color: white;
+
   /* stylelint-enable */
 
   // Structural Styles
@@ -51,40 +69,79 @@
     background-color: var(--toggle-bkg-color);
     border: var(--toggle-border-width) solid var(--toggle-border-color);
     border-radius: var(--toggle-border-radius);
+    box-shadow: var(--toggle-shadow);
     cursor: pointer;
     transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
     appearance: none;
 
-    &:checked {
-      background-color: var(--toggle-bkg-color-active);
-      border-color: var(--toggle-border-color-active);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--toggle-hover-bkg-color);
+        border-color: var(--toggle-hover-border-color);
+        box-shadow: var(--toggle-hover-shadow);
 
-      + [data-base-toggle-knob] {
-        background-color: var(--toggle-knob-color-active);
-        border-color: var(--toggle-knob-border-color-active);
+        + [data-base-toggle-knob] { background-color: var(--toggle-hover-knob-bkg-color); }
       }
     }
 
-    &:focus { outline: 2px solid var(--toggle-bkg-color-active); }
+    &:checked {
+      background-color: var(--toggle-checked-bkg-color);
+      border: 1px solid var(--toggle-checked-border-color);
 
-    @media (hover: hover) {
-      &:hover { border-color: var(--toggle-hover-border); }
+      + [data-base-toggle-knob] {
+        background-color: var(--toggle-checked-knob-bkg-color);
+        border-color: var(--toggle-checked-knob-border-color);
+        &::after { opacity: 1; }
+      }
+    }
+
+    &:disabled {
+      background-color: var(--toggle-disabled-bkg-color);
+      border-color: var(--toggle-disabled-border-color);
+
+      + [data-base-toggle-knob] {
+        background-color: var(--toggle-disabled-knob-bkg-color);
+        border-color: var(--toggle-disabled-knob-border-color);
+      }
+    }
+
+    &:focus {
+      border-color: var(--toggle-focus-border-color);
+      outline: 0;
+      box-shadow: var(--toggle-focus-shadow);
     }
   }
+
+  @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.5); }
 }
 
-[data-base-toggle-container] { position: relative; }
+[data-base-toggle-container] {
+  position: relative;
+  overflow: visible;
+}
 
 [data-base-toggle-knob] {
   position: absolute;
   z-index: 2;
   display: block;
-  background-color: var(--toggle-knob-color);
+  background-color: var(--toggle-knob-bkg-color);
   border: var(--toggle-border-width) solid var(--toggle-knob-border-color);
   border-radius: var(--toggle-knob-radius);
   box-shadow: var(--toggle-knob-shadow);
   transition: var(--toggle-transition-property) var(--toggle-transition-timing) var(--toggle-transition-function);
   pointer-events: none;
+
+  &::after {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--toggle-content-color);
+    opacity: 0;
+    content: var(--toggle-content);
+  }
 }
 
 [data-toggle-structure="horizontal"] {
@@ -93,8 +150,6 @@
   [data-base-toggle-container] {
     width: calc(var(--toggle-height) * 2);
     height: var(--toggle-height);
-
-    @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
   }
 
   [data-base-toggle-knob] {
@@ -111,8 +166,6 @@
   [data-base-toggle-container] {
     width: var(--toggle-height);
     height: calc(var(--toggle-height) * 2);
-
-    @include media(">notebook") { --toggle-height: var(--toggle-height-desk); }
   }
 
   [data-base-toggle-knob] {
