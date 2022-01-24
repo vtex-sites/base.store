@@ -22,8 +22,7 @@ import './cart-sidebar.scss'
 function CartSidebar() {
   const btnProps = useCheckoutButton()
   const cart = useCart()
-  const toggleProps = useCartToggleButton()
-  const { displayMinicart, openMinicart, closeMinicart } = useUI()
+  const { displayMinicart, closeMinicart } = useUI()
 
   const { items, gifts, totalItems, isValidating, subTotal, total } = cart
 
@@ -36,6 +35,7 @@ function CartSidebar() {
       onDismissTransition={(callback) => (onDismissTransition = callback)}
       size="partial"
       direction="rightSide"
+      className="cart-modal__content"
     >
       <div cart-sidebar data-testid="cart-sidebar">
         <div cart-sidebar-header>
@@ -47,7 +47,7 @@ function CartSidebar() {
             variant="tertiary"
             icon={<XIcon size={18} weight="bold" />}
             iconPosition="right"
-            {...toggleProps}
+            onClick={() => onDismissTransition()}
           />
           <Alert icon={<TruckIcon size={24} />}>
             Free shiping starts at $300
