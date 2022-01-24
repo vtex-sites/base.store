@@ -81,3 +81,22 @@ export const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([<Partytown key="partytown" forward={forward} />])
   }
 }
+
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
+  const headComponents = getHeadComponents()
+
+  for (const [idx, component] of headComponents.entries()) {
+    // Move the styles chunk to the beginning so styles from `global.scss`
+    // can be overwritten such as the grid ones.
+    if (/\/styles/.test(component.props['data-href'])) {
+      headComponents.splice(idx, 1)
+      headComponents.unshift(component)
+      break
+    }
+  }
+
+  replaceHeadComponents(headComponents)
+}
