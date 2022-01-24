@@ -235,30 +235,63 @@
 
 .theming-badge main .theming-poc-list {
   &:nth-child(3) {
-    [data-store-badge] { --badge-border-width: 3px; }
+    [data-store-badge] {
+      --badge-border-width             : 3px;
+      --badge-border-radius            : var(--border-radius-pill);
+    }
 
     [data-store-badge-variant="success"] {
       --badge-success-bkg-color        : transparent;
-      --badge-success-text-color       : var(--color-text);
-      --badge-success-border-color     : var(--bg-success);
+      --badge-success-text-color       : #2c6a52;
+      --badge-success-border-color     : #2c6a52;
     }
 
     [data-store-badge-variant="highlighted"] {
       --badge-highlighted-bkg-color    : transparent;
-      --badge-highlighted-text-color   : var(--color-text);
-      --badge-highlighted-border-color : var(--bg-highlighted);
+      --badge-highlighted-text-color   : #765c99;
+      --badge-highlighted-border-color : #765c99;
     }
 
     [data-store-badge-variant="info"] {
       --badge-info-bkg-color           : transparent;
-      --badge-info-text-color          : var(--color-text);
-      --badge-info-border-color        : var(--bg-info);
+      --badge-info-text-color          : #2d499e;
+      --badge-info-border-color        : #2d499e;
     }
 
     [data-store-badge-variant="neutral"] {
       --badge-neutral-bkg-color        : transparent;
-      --badge-neutral-text-color       : var(--color-text);
-      --badge-neutral-border-color     : var(--bg-neutral);
+      --badge-neutral-text-color       : #7b7f83;
+      --badge-neutral-border-color     : #7b7f83;
+    }
+  }
+  &:nth-child(4) {
+    [data-store-badge] {
+      --badge-border-radius            : var(--border-radius-small);
+      --badge-small-padding            : 2px var(--space-1);
+    }
+
+    [data-store-badge-variant="success"] {
+      --badge-success-bkg-color        : #59ab30;
+      --badge-success-text-color       : var(--color-text-inverse);
+      --badge-success-border-color     : transparent;
+    }
+
+    [data-store-badge-variant="highlighted"] {
+      --badge-highlighted-bkg-color    : #9559e4;
+      --badge-highlighted-text-color   : var(--color-text-inverse);
+      --badge-highlighted-border-color : transparent;
+    }
+
+    [data-store-badge-variant="info"] {
+      --badge-info-bkg-color           : #387bf8;
+      --badge-info-text-color          : var(--color-text-inverse);
+      --badge-info-border-color        : transparent;
+    }
+
+    [data-store-badge-variant="neutral"] {
+      --badge-neutral-bkg-color        : #a8a8a8;
+      --badge-neutral-text-color       : var(--color-text-inverse);
+      --badge-neutral-border-color     : transparent;
     }
   }
 }

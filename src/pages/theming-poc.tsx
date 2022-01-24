@@ -160,6 +160,20 @@ function Page(props: Props) {
                 neutral
               </Badge>
             </div>
+            <div className="theming-poc-list">
+              <Badge variant="success" small>
+                success
+              </Badge>
+              <Badge variant="highlighted" small>
+                highlighted
+              </Badge>
+              <Badge variant="info" small>
+                info
+              </Badge>
+              <Badge variant="neutral" small>
+                neutral
+              </Badge>
+            </div>
           </main>
           <aside className="theming-tokens">
             <h3>Design Tokens</h3>
