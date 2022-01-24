@@ -11,27 +11,27 @@
   }
 
   .navlinks {
-    @include media("<notebook") {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 3;
-      width: 100%;
-      max-width: 37.5rem;
-      height: 100%;
-      padding: var(--space-1) var(--space-3) var(--space-3);
-      background-color: var(--bg-neutral-lightest);
-      border-right: var(--border-width-0) solid var(--color-neutral-2);
-      box-shadow: var(--space-0) 0 var(--space-3) var(--color-black-transparent-5);
-      transform: translateX(-100%);
-      transition: transform .2s ease;
-      &.open { transform: translateX(0); }
+    // @include media("<notebook") {
+    //   position: fixed;
+    //   top: 0;
+    //   left: 0;
+    //   z-index: 3;
+    //   width: 100%;
+    //   max-width: 37.5rem;
+    //   height: 100%;
+    //   padding: var(--space-1) var(--space-3) var(--space-3);
+    //   background-color: var(--bg-neutral-lightest);
+    //   border-right: var(--border-width-0) solid var(--color-neutral-2);
+    //   box-shadow: var(--space-0) 0 var(--space-3) var(--color-black-transparent-5);
+    //   transform: translateX(-100%);
+    //   transition: transform .2s ease;
+    //   &.open { transform: translateX(0); }
 
-      nav {
-        padding-top: var(--space-3);
-        border-top: var(--border-width-0) solid var(--color-neutral-2);
-      }
-    }
+    //   nav {
+    //     padding-top: var(--space-3);
+    //     border-top: var(--border-width-0) solid var(--color-neutral-2);
+    //   }
+    // }
 
     > section {
       @include media("<notebook") {
@@ -43,12 +43,6 @@
 
       @include media(">=notebook") { display: none; }
     }
-  }
-
-  .navlinks__button {
-    color: var(--color-text-display);
-    background-color: transparent;
-    border: 0;
   }
 
   .navlinks__list {
@@ -78,6 +72,12 @@
       padding-left: 0;
     }
   }
+}
+
+.navlinks__button {
+  color: var(--color-text-display);
+  background-color: transparent;
+  border: 0;
 }
 
 .navbar__row {
@@ -138,5 +138,24 @@
   img {
     width: 100%;
     height: 100%;
+  }
+}
+
+.navbar__modal-body {
+  padding: var(--page-padding-phone);
+}
+
+.navbar__modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+
+  button {
+    position: absolute;
+    right: calc(-1 * var(--page-padding-phone));
+    margin-right: var(--space-0);
+    background-color: transparent;
   }
 }
