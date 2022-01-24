@@ -370,7 +370,7 @@ List of classes used to create default page grid.
 .grid-section // This class only adds default vertical margins for page sections.
 ```
 
-![grid-example-image](https://user-images.githubusercontent.com/3356699/150606030-95b1d803-83f2-4a59-8552-24cb860effe1.png)
+![grid-example-image](https://user-images.githubusercontent.com/3356699/150801221-4027dc6a-1cc4-40a7-a323-8be7a148458d.png)
 
 ### `typography.scss`
 
