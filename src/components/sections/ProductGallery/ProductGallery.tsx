@@ -1,15 +1,16 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, lazy } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import Filter from 'src/components/search/Filter'
-import Sort from 'src/components/search/Sort'
 import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
-import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
+
+const GalleryPage = lazy(() => import('./ProductGalleryPage'))
+const Sort = lazy(() => import('src/components/search/Sort'))
+const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
