@@ -20,26 +20,26 @@ describe('Search page Filters and Sorting options', () => {
 
     // Apply filters
     cy.getById('open-filter-button')
-      .click({ force: true })
+      .click()
       .getById('filter-accordion-button')
       .first()
-      .click({ force: true })
+      .click()
       .getById('filter-accordion-panel-checkbox')
       .should('exist')
       .first()
-      .click({ force: true })
+      .click()
       .getById('filter-modal-button-apply')
-      .click({ force: true })
+      .click()
 
     // Check applied filters
     cy.getById('open-filter-button')
-      .click({ force: true })
+      .click()
       .getById('filter-accordion-button')
       .first()
-      .click({ force: true })
+      .click()
       .getById('filter-accordion-panel-checkbox')
       .first()
-      .click({ force: true })
+      .click()
       .then(($checkbox) => {
         const value = $checkbox.attr('data-value')
         const quantity = $checkbox.attr('data-quantity')
