@@ -81,3 +81,22 @@ export const onRenderBody = ({ setHeadComponents }) => {
     setHeadComponents([<Partytown key="partytown" forward={forward} />])
   }
 }
+
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
+  const headComponents = getHeadComponents()
+
+  // enforce the global style before the others
+  const orderedComponents = headComponents.sort((item) => {
+    const isGlobalStyle =
+      item.type === 'style' &&
+      item.props['data-href'] &&
+      /^\/styles.[a-zA-Z0-9]*.css$/.test(item.props['data-href'])
+
+    return isGlobalStyle ? -1 : 1
+  })
+
+  replaceHeadComponents(orderedComponents)
+}
