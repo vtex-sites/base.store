@@ -9,7 +9,7 @@ interface OrderSummaryProps {
   subTotal: number
   total: number
   numberOfItems: number
-  checkoutButton: ReactNode
+  checkoutButton?: ReactNode
 }
 
 function OrderSummary({

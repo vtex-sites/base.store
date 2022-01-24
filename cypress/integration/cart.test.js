@@ -74,63 +74,7 @@ describe('On product description pages', () => {
 
       cy.getById('remove-from-cart-button').click()
       cy.getById('cart-item').should('not.exist')
-      cy.getById('checkout-button').should('be.enabled')
-
-      cy.itemsInCart(0)
-    })
-  })
-})
-
-describe('On product collection pages', () => {
-  beforeEach(() => {
-    cy.clearIDB()
-  })
-
-  context('when adding a product to cart', () => {
-    it('successfully adds the product', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      cy.getById('store-card').first().click()
-      // Add to cart
-      cy.getById('buy-button')
-        .first()
-        .click()
-        .then(($btn) => {
-          const skuId = $btn.attr('data-sku')
-          const sellerId = $btn.attr('data-seller')
-
-          // Wait for optimistic cart to kick in
-          cy.getById('checkout-button').should('be.enabled')
-
-          cy.getById('cart-item').should(($item) => {
-            expect($item.attr('data-sku')).to.eq(skuId)
-            expect($item.attr('data-seller')).to.eq(sellerId)
-          })
-        })
-
-      cy.itemsInCart(1)
-    })
-  })
-
-  context('when removing a product from cart', () => {
-    it('successfully removes the product', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      cy.getById('store-card').first().click()
-      // Remove from cart
-      cy.getById('buy-button').first().click()
-      cy.getById('checkout-button').should('be.enabled')
-
-      cy.itemsInCart(1)
-
-      cy.getById('remove-from-cart-button').first().click()
-      cy.getById('cart-item').should('not.exist')
+      cy.getById('checkout-button').should('not.exist')
 
       cy.itemsInCart(0)
     })
