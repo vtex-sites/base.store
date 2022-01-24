@@ -1,29 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import type { KeyboardEvent, MouseEvent } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
   FacetedFilter_FacetsFragment,
 } from '@generated/graphql'
-import {
-  Icon as UIIcon,
-  List as UIList,
-  Modal as UIModal,
-  Accordion as UIAccordion,
-  AccordionItem as UIAccordionItem,
-  AccordionButton as UIAccordionButton,
-  AccordionPanel as UIAccordionPanel,
-  Label as UILabel,
-} from '@faststore/ui'
+import { List as UIList, Label as UILabel } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
 import { Badge } from 'src/components/ui/Badge'
-import {
-  X as XIcon,
-  PlusCircle as PlusCircleIcon,
-  MinusCircle as MinusCircleIcon,
-} from 'phosphor-react'
+import { X as XIcon } from 'phosphor-react'
+import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
+import SlideOver from 'src/components/ui/SlideOver'
 
 import './filter.scss'
 
@@ -37,7 +25,7 @@ interface Props {
    * This function is called whenever the user hits "Escape", clicks outside
    * the filter modal or clicks in close button. (mobile only)
    */
-  onDismiss?: (event: MouseEvent | KeyboardEvent | undefined) => void
+  onDismiss?: () => void
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -54,7 +42,7 @@ function Filter({
   const { width: screenWidth } = useWindowDimensions()
   const { toggleFacet, toggleFacets, state: searchState } = useSearch()
 
-  const [expandedIndices, setExpandedIndices] = useState<Set<number>>(
+  const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
   )
 
@@ -63,6 +51,7 @@ function Filter({
   )
 
   const [isMobile, setIsMobile] = useState<boolean>(false)
+  let onDismissTransition: () => unknown
 
   useEffect(() => {
     if (screenWidth) {
@@ -72,14 +61,14 @@ function Filter({
   }, [screenWidth])
 
   const onAccordionChange = (index: number) => {
-    if (expandedIndices.has(index)) {
-      expandedIndices.delete(index)
-      setExpandedIndices(new Set(expandedIndices))
+    if (indicesExpanded.has(index)) {
+      indicesExpanded.delete(index)
+      setIndicesExpanded(new Set(indicesExpanded))
 
       return
     }
 
-    setExpandedIndices(new Set(expandedIndices.add(index)))
+    setIndicesExpanded(new Set(indicesExpanded.add(index)))
   }
 
   const onFilterChange = (item: IStoreSelectedFacet) => {
@@ -109,62 +98,59 @@ function Filter({
     return (
       <div className="filter" data-store-filter data-testid={testId}>
         <h2 className="title-small">Filters</h2>
-        <UIAccordion indices={expandedIndices} onChange={onAccordionChange}>
+        <Accordion
+          expandedIndices={indicesExpanded}
+          onChange={onAccordionChange}
+        >
           {facets
             .filter((facet) => facet.type === 'BOOLEAN')
             .map(({ label, values, key }, index) => (
-              <UIAccordionItem key={`${label}-${index}`}>
-                <UIAccordionButton data-testid="filter-accordion-button">
-                  {label}
-                  <UIIcon
-                    component={
-                      expandedIndices.has(index) ? (
-                        <MinusCircleIcon size={24} />
-                      ) : (
-                        <PlusCircleIcon size={24} />
-                      )
-                    }
-                  />
-                </UIAccordionButton>
-                <UIAccordionPanel>
-                  <UIList>
-                    {values.map((item) => {
-                      const id = `${label}-${item.label}`
+              <AccordionItem
+                key={`${label}-${index}`}
+                testId="filter-accordion"
+                isExpanded={indicesExpanded.has(index)}
+                buttonLabel={label}
+              >
+                <UIList>
+                  {values.map((item) => {
+                    const id = `${label}-${item.label}`
 
-                      return (
-                        <li key={id} className="filter__item">
-                          <Checkbox
-                            id={id}
-                            checked={selectedFilters.some(
-                              (filter) => filter.value === item.value
-                            )}
-                            onChange={() => onCheck({ key, value: item.value })}
-                            data-testid="filter-accordion-panel-checkbox"
-                            data-value={item.value}
-                            data-quantity={item.quantity}
-                          />
-                          <UILabel htmlFor={id} className="title-small">
-                            {item.label}{' '}
-                            <Badge variant="neutral" small>
-                              {item.quantity}
-                            </Badge>
-                          </UILabel>
-                        </li>
-                      )
-                    })}
-                  </UIList>
-                </UIAccordionPanel>
-              </UIAccordionItem>
+                    return (
+                      <li key={id} className="filter__item">
+                        <Checkbox
+                          id={id}
+                          checked={selectedFilters.some(
+                            (filter) => filter.value === item.value
+                          )}
+                          onChange={() => onCheck({ key, value: item.value })}
+                          data-testid="filter-accordion-panel-checkbox"
+                          data-value={item.value}
+                          data-quantity={item.quantity}
+                        />
+                        <UILabel htmlFor={id} className="title-small">
+                          {item.label}{' '}
+                          <Badge variant="neutral" small>
+                            {item.quantity}
+                          </Badge>
+                        </UILabel>
+                      </li>
+                    )
+                  })}
+                </UIList>
+              </AccordionItem>
             ))}
-        </UIAccordion>
+        </Accordion>
       </div>
     )
   }
 
   return isMobile ? (
-    <UIModal
+    <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
+      onDismissTransition={(callback) => (onDismissTransition = callback)}
+      size="partial"
+      direction="rightSide"
       className="filter-modal__content"
     >
       <div className="filter-modal__body">
@@ -173,9 +159,9 @@ function Filter({
           <Button
             data-testid="filter-modal-button-close"
             aria-label="Close"
-            onClick={onDismiss}
+            onClick={() => onDismissTransition?.()}
           >
-            <XIcon size={18} weight="bold" />
+            <XIcon size={32} />
           </Button>
         </header>
         <Facets />
@@ -185,7 +171,7 @@ function Filter({
           variant="secondary"
           onClick={() => {
             toggleFacets(selectedFilters)
-            setExpandedIndices(new Set([]))
+            setIndicesExpanded(new Set([]))
             setSelectedFilters([])
           }}
         >
@@ -194,15 +180,16 @@ function Filter({
         <Button
           variant="primary"
           data-testid="filter-modal-button-apply"
-          onClick={(e) => {
-            onDismiss?.(e)
+          onClick={() => {
             toggleFacets(selectedFilters)
+            onDismissTransition?.()
+            onDismiss?.()
           }}
         >
           View Results
         </Button>
       </footer>
-    </UIModal>
+    </SlideOver>
   ) : (
     <Facets />
   )
