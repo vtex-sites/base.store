@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
-import { ArrowRight as ArrowRightIcon, X as XIcon } from 'phosphor-react'
+import {
+  ArrowRight as ArrowRightIcon,
+  X as XIcon,
+  Truck as TruckIcon,
+} from 'phosphor-react'
 import { Badge } from 'src/components/ui/Badge'
+import Alert from 'src/components/ui/Alert'
 
 import CartItem from '../CartItem'
 import OrderSummary from '../OrderSummary'
@@ -17,21 +22,44 @@ function CartSidebar() {
   const cart = useCart()
   const toggleProps = useCartToggleButton()
   const { items, gifts, totalItems, isValidating, subTotal, total } = cart
+  const isBrowser = typeof window !== 'undefined'
+  const [showAlert, setShowAlert] = useState<boolean>(() => {
+    return (
+      (isBrowser && !window?.localStorage.getItem('dismissed-alert-ALERTID')) ||
+      true
+    )
+  })
+
+  const onAlertClose = () => {
+    setShowAlert(false)
+
+    if (isBrowser) {
+      window?.localStorage.setItem('dismissed-alert-ALERTID', 'true')
+    }
+  }
 
   return (
-    <div className="cart-sidebar" data-testid="cart-sidebar">
+    <div cart-sidebar data-testid="cart-sidebar">
       <div cart-sidebar-header>
         <p className="title-section">Your Cart</p>
         <Badge variant="new" small>
           {totalItems}
         </Badge>
         <Button
-          data-cart-checkout-button
           variant="tertiary"
           icon={<XIcon size={18} weight="bold" />}
           iconPosition="right"
           {...toggleProps}
         />
+        {showAlert && (
+          <Alert
+            icon={<TruckIcon size={24} />}
+            dismissible
+            onClose={onAlertClose}
+          >
+            Free shiping starts at $300
+          </Alert>
+        )}
       </div>
       {totalItems > 0 ? (
         <>
