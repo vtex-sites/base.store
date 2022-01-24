@@ -137,6 +137,7 @@
 }
 
 [data-base-product-card-description] {
+  margin-bottom: var(--space-1);
   color: var(--product-card-text-color);
   font-size: var(--product-card-text-description);
 }
@@ -175,6 +176,8 @@
     grid-row: 2;
     grid-column: 1 / span 2;
   }
+
+  [data-base-product-card-footer] { grid-column: 1 / span 2; }
 }
 
 [data-card-structure="horizontal"] {
