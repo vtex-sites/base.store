@@ -30,10 +30,6 @@ function Navbar() {
   const { width: screenWidth } = useWindowDimensions()
   let onDismissTransition: () => unknown
 
-  function onClose() {
-    setShowMenu(!showMenu)
-  }
-
   useEffect(() => {
     if (screenWidth) {
       // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
@@ -42,13 +38,13 @@ function Navbar() {
   }, [screenWidth])
 
   return (
-    <header className="navbar grid-content-full">
-      <div className="navbar__header grid-content">
+    <header className="navbar / grid-content-full">
+      <div className="navbar__header / grid-content">
         <section className="navbar__row">
           <Button
             className="navbar__menu"
             aria-label="Open Menu"
-            onClick={() => onClose()}
+            onClick={() => setShowMenu(true)}
           >
             <ListIcon size={32} />
           </Button>
@@ -57,11 +53,6 @@ function Navbar() {
             aria-label="Go to Faststore home"
             title="Go to Faststore home"
             className="navbar__logo"
-            // onClick={() => setShowMenu(false)}
-            // onClick={() => {
-            //   onDismissTransition?.()
-            //   setShowMenu(false)
-            // }}
           >
             <Logo />
           </LinkGatsby>
@@ -97,7 +88,6 @@ function Navbar() {
                 className="navbar__logo"
                 onClick={() => {
                   onDismissTransition?.()
-                  onClose()
                 }}
               >
                 <Logo />
@@ -107,7 +97,6 @@ function Navbar() {
                 aria-label="Close Menu"
                 onClick={() => {
                   onDismissTransition?.()
-                  onClose()
                 }}
               >
                 <XIcon size={32} />
