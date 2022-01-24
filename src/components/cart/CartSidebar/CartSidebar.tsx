@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
@@ -22,21 +22,6 @@ function CartSidebar() {
   const cart = useCart()
   const toggleProps = useCartToggleButton()
   const { items, gifts, totalItems, isValidating, subTotal, total } = cart
-  const isBrowser = typeof window !== 'undefined'
-  const [showAlert, setShowAlert] = useState<boolean>(() => {
-    return (
-      (isBrowser && !window?.localStorage.getItem('dismissed-alert-ALERTID')) ||
-      true
-    )
-  })
-
-  const onAlertClose = () => {
-    setShowAlert(false)
-
-    if (isBrowser) {
-      window?.localStorage.setItem('dismissed-alert-ALERTID', 'true')
-    }
-  }
 
   return (
     <div cart-sidebar data-testid="cart-sidebar">
@@ -51,15 +36,9 @@ function CartSidebar() {
           iconPosition="right"
           {...toggleProps}
         />
-        {showAlert && (
-          <Alert
-            icon={<TruckIcon size={24} />}
-            dismissible
-            onClose={onAlertClose}
-          >
-            Free shiping starts at $300
-          </Alert>
-        )}
+        <Alert icon={<TruckIcon size={24} />}>
+          Free shiping starts at $300
+        </Alert>
       </div>
       {totalItems > 0 ? (
         <>
