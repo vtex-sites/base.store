@@ -1,22 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import type { KeyboardEvent, MouseEvent } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
   FacetedFilter_FacetsFragment,
 } from '@generated/graphql'
-import {
-  List as UIList,
-  Modal as UIModal,
-  Label as UILabel,
-} from '@faststore/ui'
+import { List as UIList, Label as UILabel } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import Checkbox from 'src/components/ui/Checkbox'
 import { Badge } from 'src/components/ui/Badge'
 import { X as XIcon } from 'phosphor-react'
-
-import Accordion, { AccordionItem } from '../../ui/Accordion'
+import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
+import SlideOver from 'src/components/ui/SlideOver'
 
 import './filter.scss'
 
@@ -30,7 +25,7 @@ interface Props {
    * This function is called whenever the user hits "Escape", clicks outside
    * the filter modal or clicks in close button. (mobile only)
    */
-  onDismiss?: (event: MouseEvent | KeyboardEvent | undefined) => void
+  onDismiss?: () => void
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -56,6 +51,7 @@ function Filter({
   )
 
   const [isMobile, setIsMobile] = useState<boolean>(false)
+  let onDismissTransition: () => unknown
 
   useEffect(() => {
     if (screenWidth) {
@@ -149,9 +145,12 @@ function Filter({
   }
 
   return isMobile ? (
-    <UIModal
+    <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
+      onDismissTransition={(callback) => (onDismissTransition = callback)}
+      size="partial"
+      direction="rightSide"
       className="filter-modal__content"
     >
       <div className="filter-modal__body">
@@ -160,7 +159,7 @@ function Filter({
           <Button
             data-testid="filter-modal-button-close"
             aria-label="Close"
-            onClick={onDismiss}
+            onClick={() => onDismissTransition?.()}
           >
             <XIcon size={32} />
           </Button>
@@ -181,15 +180,16 @@ function Filter({
         <Button
           variant="primary"
           data-testid="filter-modal-button-apply"
-          onClick={(e) => {
-            onDismiss?.(e)
+          onClick={() => {
             toggleFacets(selectedFilters)
+            onDismissTransition?.()
+            onDismiss?.()
           }}
         >
           View Results
         </Button>
       </footer>
-    </UIModal>
+    </SlideOver>
   ) : (
     <Facets />
   )
