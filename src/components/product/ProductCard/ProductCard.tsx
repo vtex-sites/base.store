@@ -41,7 +41,9 @@ function ProductCard({ product, index, className }: Props) {
     return lowestPriceOffer
   }, [spotPrice, offers])
 
-  const { listPrice, seller } = offers[selectedOffer]
+  const selectedOfferPrice = offers[selectedOffer]
+  const listPrice = selectedOfferPrice?.listPrice
+  const seller = selectedOfferPrice?.seller
 
   const linkProps = useProductLink({ product, selectedOffer, index })
   const buyProps = useBuyButton({

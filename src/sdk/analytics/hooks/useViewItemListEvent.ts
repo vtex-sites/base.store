@@ -33,10 +33,11 @@ export const useViewItemListEvent = ({
           item_name: product.isVariantOf.name,
           item_brand: product.brand.name,
           item_variant: product.sku,
-          price: product.offers.offers[0].price,
+          price: product.offers.offers[0]?.price,
           index: page * pageSize + index + 1,
           discount:
-            product.offers.offers[0].listPrice - product.offers.offers[0].price,
+            product.offers.offers[0]?.listPrice -
+            product.offers.offers[0]?.price,
           currency: code as CurrencyCode,
           item_variant_name: product.name,
           product_reference_id: product.gtin,
