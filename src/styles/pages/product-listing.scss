@@ -9,9 +9,8 @@
 }
 
 .product-listing__breadcrumb {
-  @include media(">=notebook") {
-    padding-top: var(--space-3);
-  }
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
 }
 
 // Temporary till we have skeletons.
@@ -25,7 +24,6 @@
 
 .product-listing__hero {
   width: 100%;
-  margin-top: var(--space-3);
 }
 
 .product-listing__content-grid {
