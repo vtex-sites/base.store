@@ -16,6 +16,7 @@ module.exports = {
   checkoutUrl: 'https://chk.vtex-base1.tk/checkout',
   loginSubdomain: 'https://login.vtex-base1.tk',
   loginUrl: 'https://login.vtex-base1.tk/api/io/login',
+  accountUrl: 'https://secure.vtexfaststore.com/api/io/account',
 
   // Lighthouse CI
   lighthouse: {

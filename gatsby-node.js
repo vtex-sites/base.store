@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 
 const config = require('./store.config')
 
-const { loginUrl, loginSubdomain } = config
+const { loginUrl, loginSubdomain, accountUrl } = config
 
 exports.onPreInit = ({ reporter }) => {
   reporter.info('Copying Partytown Files')
@@ -44,6 +44,13 @@ exports.createPages = async ({ actions: { createRedirect } }) => {
   createRedirect({
     fromPath: '/login/',
     toPath: loginUrl,
+    statusCode: 301,
+    redirectInBrowser: true,
+  })
+
+  createRedirect({
+    fromPath: '/account/',
+    toPath: accountUrl,
     statusCode: 301,
     redirectInBrowser: true,
   })
