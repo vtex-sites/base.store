@@ -1,6 +1,5 @@
 import React from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
-import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
 import {
@@ -37,22 +36,22 @@ function CartSidebar() {
       direction="rightSide"
       className="cart-modal__content"
     >
-      <div cart-sidebar data-testid="cart-sidebar">
-        <div cart-sidebar-header>
-          <p className="title-section">Your Cart</p>
-          <Badge variant="new" small>
-            {totalItems}
-          </Badge>
-          <Button
-            variant="tertiary"
-            icon={<XIcon size={18} weight="bold" />}
-            iconPosition="right"
-            onClick={() => onDismissTransition()}
-          />
-          <Alert icon={<TruckIcon size={24} />}>
-            Free shiping starts at $300
-          </Alert>
-        </div>
+      <div className="cart-sidebar" data-testid="cart-sidebar">
+        <header className="cart-sidebar__header">
+          <div className="cart-modal__title">
+            <p className="title-section">Your Cart</p>
+            <Badge variant="new" small>
+              {totalItems}
+            </Badge>
+          </div>
+          <Button onClick={() => onDismissTransition()}>
+            <XIcon size={32} />
+          </Button>
+        </header>
+        <Alert icon={<TruckIcon size={24} />}>
+          Free shiping starts at $300
+        </Alert>
+
         {totalItems > 0 ? (
           <>
             {items.map((item) => (
