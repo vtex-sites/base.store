@@ -60,11 +60,11 @@ function CartSidebar() {
               <Button
                 data-cart-checkout-button
                 variant="primary"
-                icon={<ArrowRightIcon size={18} />}
+                icon={!isValidating && <ArrowRightIcon size={18} />}
                 iconPosition="right"
                 {...btnProps}
               >
-                {isValidating ? 'loading...' : 'Checkout'}
+                {isValidating ? 'Loading...' : 'Checkout'}
               </Button>
             }
           />
