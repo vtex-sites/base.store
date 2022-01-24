@@ -6,40 +6,46 @@
   // --------------------------------------------------------
 
   /* stylelint-disable */
-  --product-card-padding            : var(--space-1) var(--space-1) var(--space-2);
-  --product-card-min-width          : 14rem;
-  --product-card-gap                : var(--grid-gap-0);
-  --product-card-shadow             : none;
+  --product-card-padding                  : var(--space-1) var(--space-1) var(--space-2);
+  --product-card-min-width                : 14rem;
+  --product-card-gap                      : var(--grid-gap-0);
+  --product-card-shadow                   : none;
 
-  --product-card-border-radius      : var(--border-radius-flat);
-  --product-card-border-width       : 1px;
-  --product-card-border-color       : transparent;
-  --product-card-border-color-active: transparent;
+  --product-card-border-radius            : var(--border-radius-flat);
+  --product-card-border-width             : 1px;
+  --product-card-border-color             : transparent;
+  --product-card-border-color-active      : transparent;
 
-  --product-card-bkg-color          : var(--bg-neutral-lightest);
-  --product-card-bkg-color-active   : var(--bg-neutral-lightest);
+  --product-card-bkg-color                : var(--bg-neutral-lightest);
+  --product-card-bkg-color-active         : var(--bg-neutral-lightest);
 
-  --product-card-img-radius         : var(--border-radius-flat);
+  --product-card-img-radius               : var(--border-radius-flat);
 
-  --product-card-text-color         : var(--color-text);
-  --product-card-text-name          : var(--text-size-2);
-  --product-card-text-price         : var(--text-size-2);
-  --product-card-text-price-listing : var(--text-size-1);
-  --product-card-text-description   : var(--text-size-1);
-  --product-card-text-subtitle      : var(--text-size-0);
+  --product-card-content-padding          : var(--space-2) var(--space-1);
 
-  --product-card-transition-function: ease;
-  --product-card-transition-property: all;
-  --product-card-transition-timing  : 0;
+  --product-card-text-title-color         : var(--color-text);
+  --product-card-text-title-size          : var(--text-size-2);
+  --product-card-text-price-color         : var(--color-text);
+  --product-card-text-price-size          : var(--text-size-2);
+  --product-card-text-price-listing-color : var(--color-text-subtle);
+  --product-card-text-price-listing-size  : var(--text-size-1);
+  --product-card-text-description-color   : var(--color-text);
+  --product-card-text-description-size    : var(--text-size-1);
+  --product-card-text-subtitle-color      : var(--color-text-subtle);
+  --product-card-text-subtitle-size       : var(--text-size-0);
 
-  --product-card-hover-border       : var(--color-border-display);
-  --product-card-hover-shadow       : none;
-  --product-card-hover-bkg-color    : var(--bg-neutral-lightest);
-  --product-card-hover-text-color   : var(--color-text);
 
-  --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest),
-                                      0 0 0 var(--border-width-2) var(--bg-focus-ring);
-  --product-card-focus-bkg-color    : var(--bg-neutral-lightest);
+  --product-card-transition-function      : ease;
+  --product-card-transition-property      : all;
+  --product-card-transition-timing        : 0;
+
+  --product-card-hover-border             : var(--color-border-display);
+  --product-card-hover-shadow             : none;
+  --product-card-hover-bkg-color          : var(--bg-neutral-lightest);
+
+  --product-card-focus-shadow             : 0 0 0 1px var(--bg-neutral-lightest),
+                                            0 0 0 var(--border-width-2) var(--bg-focus-ring);
+  --product-card-focus-bkg-color          : var(--bg-neutral-lightest);
   /* stylelint-enable */
 
   // Structural Styles
@@ -69,12 +75,6 @@
       background-color: var(--product-card-hover-bkg-color);
       border-color: var(--product-card-hover-border);
       box-shadow: var(--product-card-hover-shadow);
-
-      [data-card-content] a[href],
-      [data-variant="spot"],
-      [data-variant="listing"],
-      [data-base-product-card-description],
-      [data-base-product-card-footer] small { color: var(--product-card-hover-text-color); }
     }
   }
 
@@ -93,7 +93,7 @@
   }
 
   [data-card-content] {
-    padding: var(--space-2) 0 0 0;
+    padding: var(--product-card-content-padding);
 
     a[href] {
       min-height: 100%;
@@ -116,7 +116,8 @@
 }
 
 [data-base-product-card-title] {
-  font-size: var(--product-card-text-title);
+  color: var(--product-card-text-title-color);
+  font-size: var(--product-card-text-title-size);
   line-height: 1.25;
 }
 
@@ -126,20 +127,20 @@
   margin-bottom: var(--space-2);
 
   [data-variant="spot"] {
-    color: var(--product-card-text-color);
-    font-size: var(--product-card-text-price);
+    color: var(--product-card-text-price-color);
+    font-size: var(--product-card-text-price-size);
   }
 
   [data-variant="listing"] {
-    color: var(--product-card-text-color);
-    font-size: var(--product-card-text-price-listing);
+    color: var(--product-card-text-price-listing-color);
+    font-size: var(--product-card-text-price-listing-size);
   }
 }
 
 [data-base-product-card-description] {
   margin-bottom: var(--space-1);
-  color: var(--product-card-text-color);
-  font-size: var(--product-card-text-description);
+  color: var(--product-card-text-description-color);
+  font-size: var(--product-card-text-description-size);
 }
 
 [data-base-product-card-footer] {
@@ -150,7 +151,8 @@
 
   small {
     display: block;
-    color: var(--product-card-text-color);
+    color: var(--product-card-text-subtitle-color);
+    font-size: var(--product-card-text-subtitle-size);
   }
 }
 
@@ -164,7 +166,6 @@
     display: grid;
     grid-template-columns: 1fr auto;
     gap: var(--product-card-gap);
-    padding: var(--space-3);
   }
 
   [data-store-badge] {
@@ -190,7 +191,6 @@
     display: grid;
     grid-template-rows: auto auto 1fr;
     gap: calc(var(--product-card-gap) / 2);
-    padding: calc(var(--product-card-gap) / 2) 0;
   }
 
   [data-store-badge] { align-self: end; }

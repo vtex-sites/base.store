@@ -190,44 +190,34 @@
 }
 
 .theming-product-card main [data-store-card] {
-  &:nth-child(5) {
-    --product-card-text-color         : var(--color-text-inverse);
-    --product-card-border-radius      : var(--border-radius-flat);
-    --product-card-border-width       : 2px;
-    --product-card-border-color       : var(--bg-secondary-dark);
-    --product-card-border-color-active: var(--bg-secondary-dark);
-    --product-card-bkg-color          : var(--color-secondary-2);
-    --product-card-bkg-color-active   : var(--bg-secondary-dark);
-    --product-card-img-radius         : var(--border-radius-flat);
-    --product-card-transition-function: ease;
-    --product-card-transition-property: box-shadow;
-    --product-card-transition-timing  : .5s;
-    --product-card-hover-border       : var(--bg-secondary-light);
-    --product-card-hover-shadow       : 0 0 0 2px var(--bg-secondary-dark);
-    --product-card-hover-bkg-color    : var(--bg-secondary-dark);
-    --product-card-hover-text-color   : var(--color-text-inverse);
+  &:nth-child(2) {
+    --product-card-text-color         : #688200;
+
+    --product-card-border-radius      : var(--border-radius-default);
+    --product-card-border-width       : 1px;
+    --product-card-border-color       : var(--color-border-display);
+
+    --product-card-img-radius         : var(--border-radius-default);
+
+    // --product-card-hover-text-color   : #688200;
   }
+
   &:nth-child(4) {
     --product-card-padding            : 0;
     --product-card-gap                : var(--grid-gap-0);
     --product-card-shadow             : none;
 
-    --product-card-border-radius      : var(--border-radius-default);
     --product-card-border-width       : 1px;
-    --product-card-border-color       : transparent;
+    --product-card-border-color       : var(--color-border-display);
     --product-card-border-color-active: transparent;
 
     --product-card-bkg-color          : var(--bg-neutral-lightest);
     --product-card-bkg-color-active   : var(--bg-neutral-lightest);
 
-    --product-card-img-radius         : var(--border-radius-default) 0 0 var(--border-radius-default);
+    --product-card-content-padding    : var(--space-2) var(--space-2) var(--space-2) var(--space-0);
 
     --product-card-text-color         : var(--color-text);
-    --product-card-text-name          : var(--text-size-2);
-    --product-card-text-price         : var(--text-size-2);
-    --product-card-text-price-listing : var(--text-size-1);
-    --product-card-text-description   : var(--text-size-1);
-    --product-card-text-subtitle      : var(--text-size-0);
+    --product-card-text-title         : var(--text-size-4);
 
     --product-card-transition-function: ease;
     --product-card-transition-property: all;
@@ -236,11 +226,35 @@
     --product-card-hover-border       : var(--color-border-display);
     --product-card-hover-shadow       : var(--box-shadow);
     --product-card-hover-bkg-color    : var(--bg-neutral-lightest);
-    --product-card-hover-text-color   : var(--color-text);
 
-    --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest),
-                                        0 0 0 var(--border-width-2) var(--bg-focus-ring);
+    --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
     --product-card-focus-bkg-color    : var(--bg-neutral-lightest);
+  }
+
+  &:nth-child(5) {
+    --product-card-text-color         : var(--color-text-inverse);
+
+    --product-card-border-radius      : var(--border-radius-flat);
+    --product-card-border-width       : 2px;
+    --product-card-border-color       : var(--bg-secondary-dark);
+    --product-card-border-color-active: var(--bg-secondary-dark);
+
+    --product-card-bkg-color          : var(--color-secondary-2);
+    --product-card-bkg-color-active   : var(--bg-secondary-dark);
+
+    --product-card-img-radius         : var(--border-radius-flat);
+
+    --product-card-text-price-color         : var(--color-text-inverse);
+    --product-card-text-price-listing-color : var(--color-text-inverse);
+
+    --product-card-transition-function: ease;
+    --product-card-transition-property: box-shadow;
+    --product-card-transition-timing  : .5s;
+
+    --product-card-hover-border       : var(--bg-secondary-light);
+    --product-card-hover-shadow       : 0 0 0 2px var(--bg-secondary-dark);
+    --product-card-hover-bkg-color    : var(--bg-secondary-dark);
+    --product-card-hover-text-color   : var(--color-text-inverse);
   }
 }
 
