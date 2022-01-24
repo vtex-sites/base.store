@@ -180,9 +180,9 @@ function Filter({
         <Button
           variant="primary"
           data-testid="filter-modal-button-apply"
-          onClick={async () => {
+          onClick={() => {
             toggleFacets(selectedFilters)
-            await onDismissTransition?.()
+            onDismissTransition?.()
             onDismiss?.()
           }}
         >
