@@ -258,7 +258,7 @@ function Button(props: Props) {
 export default Button
 ```
 
-For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and muted variants. To add variants to the component, update `Button.tsx`:
+For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and secondary variants. To add variants to the component, update `Button.tsx`:
 
 ```tsx
 import React from 'react'
