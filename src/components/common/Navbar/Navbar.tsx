@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link as LinkGatsby } from 'gatsby'
+import { List as UIList } from '@faststore/ui'
 import CartToggle from 'src/components/cart/CartToggle'
 import Logo from 'src/components/ui/Logo'
 import Link from 'src/components/ui/Link'
@@ -23,6 +24,22 @@ const links = [
     name: 'Office',
   },
 ]
+
+function NavLinks() {
+  return (
+    <nav className="navlinks__list">
+      <UIList>
+        {links.map((item) => (
+          <li key={item.name}>
+            <Link variant="display" key={item.href} href={item.href}>
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </UIList>
+    </nav>
+  )
+}
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
@@ -62,13 +79,7 @@ function Navbar() {
             <CartToggle />
           </div>
         </section>
-        <nav className="navlinks__list">
-          {links.map((x) => (
-            <Link variant="display" key={x.href} href={x.href}>
-              {x.name}
-            </Link>
-          ))}
-        </nav>
+        <NavLinks />
       </div>
       {isMobile && (
         <SlideOver
@@ -103,13 +114,7 @@ function Navbar() {
               </Button>
             </header>
             <div className="navlinks">
-              <nav className="navlinks__list">
-                {links.map((x) => (
-                  <Link variant="display" key={x.href} href={x.href}>
-                    {x.name}
-                  </Link>
-                ))}
-              </nav>
+              <NavLinks />
               <div className="navlinks__signin">
                 <SignInLink />
               </div>

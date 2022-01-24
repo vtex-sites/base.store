@@ -92,7 +92,7 @@
   button {
     position: absolute;
     right: calc(-1 * var(--page-padding-phone));
-    margin-right: var(--space-0);
+    margin-right: var(--space-1);
     background-color: transparent;
   }
 }
@@ -118,9 +118,11 @@
   }
 
   @include media(">=notebook") {
-    display: flex;
-    padding-top: var(--space-1);
-    column-gap: var(--space-3);
+    ul {
+      display: flex;
+      padding-top: var(--space-1);
+      column-gap: var(--space-3);
+    }
 
     a {
       width: auto;
