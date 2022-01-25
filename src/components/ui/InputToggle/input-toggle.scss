@@ -111,7 +111,7 @@
     &:focus { @include focus-ring; }
   }
 
-  @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.5); }
+  @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.25); }
 }
 
 [data-base-toggle-container] {
