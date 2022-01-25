@@ -198,8 +198,6 @@
     --product-card-border-color       : var(--color-border-display);
 
     --product-card-img-radius         : var(--border-radius-default);
-
-    // --product-card-hover-text-color   : #688200;
   }
 
   &:nth-child(4) {
@@ -291,7 +289,7 @@
   }
   &:nth-child(4) {
     [data-store-badge] {
-      --badge-border-radius            : var(--border-radius-small);
+      --badge-border-radius            : var(--border-radius-default);
       --badge-small-padding            : 2px var(--space-1);
     }
 
