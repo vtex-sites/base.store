@@ -23,7 +23,7 @@ function CartSidebar() {
   const cart = useCart()
   const { displayMinicart, closeMinicart } = useUI()
 
-  const { items, gifts, totalItems, isValidating, subTotal, total } = cart
+  const { items, totalItems, isValidating, subTotal, total } = cart
 
   let onDismissTransition: () => unknown
 
