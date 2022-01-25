@@ -10,6 +10,11 @@
   height: calc(100vh - var(--cart-summary-footer-height));
   overflow-x: hidden;
   overflow-y: auto;
+  background-color: var(--bg-neutral-light);
+
+  &.cart-sidebar__body--empty {
+    background-color: var(--bg-neutral-lightest);
+  }
 }
 
 .cart-sidebar__header {
@@ -38,9 +43,7 @@
 }
 
 .cart-sidebar__items {
-  height: 100%;
   padding: var(--page-padding-phone);
-  background-color: var(--bg-neutral-light);
 
   [data-cart-item] {
     background-color: var(--bg-neutral-lightest);

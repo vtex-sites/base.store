@@ -38,7 +38,11 @@ function CartSidebar() {
       className="cart-sidebar__content"
     >
       <div className="cart-sidebar" data-testid="cart-sidebar">
-        <div className="cart-sidebar__body">
+        <div
+          className={`cart-sidebar__body ${
+            isEmpty ? 'cart-sidebar__body--empty' : ''
+          }`}
+        >
           <header className="cart-sidebar__header">
             <div className="cart-sidebar__title">
               <p className="title-section">Your Cart</p>
