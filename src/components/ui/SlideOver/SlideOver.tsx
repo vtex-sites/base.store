@@ -40,12 +40,17 @@ const SlideOver = ({
   }, [])
 
   useEffect(() => {
+    const layout = document.getElementById('layout')
+
     if (isOpen) {
       setFadeType('in')
-      // Avoids double scroll issue
-      document.body.style.overflowY = 'hidden'
-    } else {
-      document.body.style.overflowY = 'auto'
+
+      // Avoids double scroll issue on the page
+      if (layout) {
+        layout.style.overflowY = 'hidden'
+      }
+    } else if (layout) {
+      layout.style.overflowY = 'auto'
     }
   }, [isOpen])
 
