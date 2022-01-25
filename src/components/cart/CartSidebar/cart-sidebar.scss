@@ -9,7 +9,7 @@
 }
 
 .cart-sidebar__body {
-  --cart-summary-footer-height: 160px;
+  --cart-summary-footer-height: 170px;
 
   height: calc(100vh - var(--cart-summary-footer-height));
   overflow-x: hidden;
@@ -59,4 +59,5 @@
   bottom: 0;
   width: 100%;
   background-color: var(--bg-neutral-lightest);
+  box-shadow: 0 0 6px rgb(0 0 0 / 20%);
 }
