@@ -6,11 +6,17 @@ import type {
   HomePageQueryQuery,
   // ProductSummary_ProductFragment,
 } from '@generated/graphql'
+import {
+  BellRinging as BellRingingIcon,
+  ArrowRight as ArrowRightIcon,
+} from 'phosphor-react'
 
 import ProductCard from '../components/product/ProductCard'
 import InputToggle from '../components/ui/InputToggle'
 import QuantitySelector from '../components/ui/QuantitySelector'
 import Badge from '../components/ui/Badge'
+import BuyButton from '../components/ui/BuyButton'
+import Button from '../components/ui/Button'
 
 import '../styles/theming-poc.scss'
 
@@ -172,6 +178,68 @@ function Page(props: Props) {
               <Badge variant="neutral" small>
                 neutral
               </Badge>
+            </div>
+          </main>
+          <aside className="theming-tokens">
+            <h3>Design Tokens</h3>
+            <section>
+              <div>
+                <h4>Default properties</h4>
+              </div>
+              <div>
+                <h4>Interactive states</h4>
+              </div>
+            </section>
+          </aside>
+        </div>
+        <hr />
+        <div className="theming-poc-content theming-badge">
+          <section>
+            <h3>Layouts</h3>
+            <Button
+              variant="primary"
+              icon={<BellRingingIcon size={18} weight="bold" />}
+              iconPosition="left"
+            >
+              Icon Left
+            </Button>
+            <Button
+              variant="primary"
+              icon={<ArrowRightIcon size={18} weight="bold" />}
+              iconPosition="right"
+            >
+              Icon Right
+            </Button>
+            <Button variant="primary">Default</Button>
+            <Button variant="primary" disabled>
+              Disabled
+            </Button>
+          </section>
+          <main>
+            <h3>Themes</h3>
+            <div className="theming-poc-list">
+              <BuyButton>Buy Now</BuyButton>
+              <Button
+                variant="primary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
+              >
+                Primary
+              </Button>
+              <Button
+                variant="secondary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
+              >
+                Secondary
+              </Button>
+              <Button
+                variant="tertiary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
+              >
+                Tertiary
+              </Button>
             </div>
           </main>
           <aside className="theming-tokens">
