@@ -64,7 +64,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
         type="text/partytown"
         dangerouslySetInnerHTML={{
           __html: `
-          window.sendrc=function(en,ed){window.NavigationCapture?.sendEvent(en,ed)}
+          window.sendrc=function(en,ed){window.NavigationCapture&&window.NavigationCapture.sendEvent(en,ed)};
           `,
         }}
       />,
