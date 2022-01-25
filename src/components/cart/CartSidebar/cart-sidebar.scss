@@ -35,3 +35,9 @@
 .cart-sidebar__items > * {
   margin: var(--base-font-size) var(--base-font-size) 0;
 }
+
+[data-order-summary] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
