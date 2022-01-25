@@ -8,7 +8,6 @@
 
   /* stylelint-disable */
   // Default properties
-  --select-width                    : 8rem;
   --select-height                   : calc(var(--min-size) / 1.25);
   --select-shadow                   : none;
   --select-padding                  : var(--space-1) calc(var(--space-1) + var(--select-icon-size)) var(--space-1) var(--space-2);
@@ -19,7 +18,7 @@
   --select-text-color               : var(--color-text);
 
   --select-icon-color               : black;
-  --select-icon-size                : 18px;
+  --select-icon-size                : var(--text-size-2);
 
   --select-border-radius            : 0;
   --select-border-width             : 1px;
@@ -48,13 +47,13 @@
   position: relative;
   display: flex;
   align-items: center;
-  color: var(--select-text-color);
   font-size: var(--select-text-size);
   line-height: 1.25;
 
   [data-store-select] {
     height: var(--select-height);
     padding: var(--select-padding);
+    color: var(--select-text-color);
     background-color: var(--select-bkg-color);
     border: var(--select-border-width) solid var(--select-border-color);
     border-radius: var(--select-border-radius);
