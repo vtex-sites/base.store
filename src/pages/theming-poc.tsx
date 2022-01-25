@@ -15,6 +15,7 @@ import ProductCard from '../components/product/ProductCard'
 import InputToggle from '../components/ui/InputToggle'
 import QuantitySelector from '../components/ui/QuantitySelector'
 import Badge from '../components/ui/Badge'
+import Select from '../components/ui/Select'
 import BuyButton from '../components/ui/BuyButton'
 import Button from '../components/ui/Button'
 
@@ -50,6 +51,19 @@ function Page(props: Props) {
             <InputToggle />
             <InputToggle />
             <InputToggle />
+          </main>
+        </article>
+        <hr />
+        <article className="theming-poc-content theming-select">
+          <section>
+            <h3>Layout</h3>
+            <Select />
+          </section>
+          <main>
+            <h3>Themes</h3>
+            <Select />
+            <Select />
+            <Select />
           </main>
         </article>
         <hr />

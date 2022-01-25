@@ -1,0 +1,95 @@
+@import "../../../styles/utilities";
+@import "../../../styles/vendors/include-media";
+
+[data-base-select] {
+
+  // Design Tokens for Quantity Selector
+  // --------------------------------------------------------
+
+  /* stylelint-disable */
+  // Default properties
+  --select-width                    : 8rem;
+  --select-height                   : calc(var(--min-size) / 1.25);
+  --select-shadow                   : none;
+  --select-padding                  : var(--space-1) calc(var(--space-1) + var(--select-icon-size)) var(--space-1) var(--space-2);
+
+  --select-bkg-color                : var(--bg-neutral-lightest);
+
+  --select-text-size                : var(--text-size-2);
+  --select-text-color               : var(--color-text);
+
+  --select-icon-color               : black;
+  --select-icon-size                : 18px;
+
+  --select-border-radius            : 0;
+  --select-border-width             : 1px;
+  --select-border-color             : black;
+
+  --select-transition-function      : ease;
+  --select-transition-property      : all;
+  --select-transition-timing        : .2s;
+
+  // Interactive states
+  --select-hover-shadow             : 0 0 0 var(--select-border-width) var(--select-hover-border-color);
+  --select-hover-bkg-color          : var(--select-bkg-color);
+  --select-hover-text-color         : var(--select-text-color);
+  --select-hover-icon-color         : var(--select-icon-color);
+  --select-hover-border-color       : var(--select-border-color);
+
+  --select-disabled-bkg-color       : var(--select-bkg-color);
+  --select-disabled-text-color      : var(--color-text-disabled);
+  --select-disabled-icon-color      : var(--color-text-disabled);
+  --select-disabled-border-color    : var(--select-hover-border-color);
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--select-text-color);
+  font-size: var(--select-text-size);
+  line-height: 1.25;
+
+  [data-store-select] {
+    height: var(--select-height);
+    padding: var(--select-padding);
+    background-color: var(--select-bkg-color);
+    border: var(--select-border-width) solid var(--select-border-color);
+    border-radius: var(--select-border-radius);
+    box-shadow: var(--select-shadow);
+    cursor: pointer;
+    transition: var(--select-transition-property) var(--select-transition-timing) var(--select-transition-function);
+    appearance: none;
+
+    &:hover:not(:disabled) {
+      color: var(--select-hover-text-color);
+      background-color: var(--select-hover-bkg-color);
+      box-shadow: var(--select-hover-shadow);
+
+      svg { color: var(--select-hover-icon-color); }
+    }
+
+    &:disabled {
+      color: var(--select-disabled-text-color);
+      cursor: not-allowed;
+      opacity: 1;
+      + svg { display: none; }
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+      select { outline: 0; }
+    }
+
+    @include media(">notebook") { --select-height: calc(var(--min-size) / 1.25); }
+  }
+
+  svg {
+    position: absolute;
+    right: calc(var(--select-icon-size) / 1.5);
+    color: var(--select-icon-color);
+    pointer-events: none;
+  }
+}
