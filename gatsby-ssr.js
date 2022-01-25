@@ -91,7 +91,11 @@ export const onPreRenderHTML = ({
   for (const [idx, component] of headComponents.entries()) {
     // Move the styles chunk to the beginning so styles from `global.scss`
     // can be overwritten such as the grid ones.
-    if (/\/styles/.test(component.props['data-href'])) {
+    if (
+      component &&
+      component.props &&
+      /\/styles/.test(component.props['data-href'])
+    ) {
       headComponents.splice(idx, 1)
       headComponents.unshift(component)
       break
