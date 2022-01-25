@@ -48,9 +48,11 @@ const SlideOver = ({
       // Avoids double scroll issue on the page
       if (layout) {
         layout.style.overflowY = 'hidden'
+        layout.style.position = 'fixed'
       }
     } else if (layout) {
       layout.style.overflowY = 'auto'
+      layout.style.position = 'unset'
     }
   }, [isOpen])
 
