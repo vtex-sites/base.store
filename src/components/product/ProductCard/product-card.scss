@@ -6,6 +6,7 @@
   // --------------------------------------------------------
 
   /* stylelint-disable */
+  // Default properties
   --product-card-padding                  : var(--space-1) var(--space-1) var(--space-2);
   --product-card-gap                      : var(--grid-gap-0);
   --product-card-min-width                : 14rem;
@@ -33,14 +34,12 @@
   --product-card-transition-property      : all;
   --product-card-transition-timing        : 0;
 
+  // Interactive states
   --product-card-hover-shadow             : none;
   --product-card-hover-bkg-color          : var(--bg-neutral-lightest);
   --product-card-hover-border-color       : var(--color-border-display);
 
-  --product-card-focus-shadow             : 0 0 0 1px var(--bg-neutral-lightest),
-                                            0 0 0 var(--border-width-2) var(--bg-focus-ring);
-  --product-card-focus-bkg-color          : var(--bg-neutral-lightest);
-  --product-card-focus-border-color       : transparent;
+  --product-card-focus-bkg-color          : var(--product-card-hover-bkg-color);
 
 
   /* stylelint-enable */
@@ -62,10 +61,8 @@
   transition: var(--product-card-transition-property) var(--product-card-transition-timing) var(--product-card-transition-function);
 
   &:focus-within {
+    @include focus-ring;
     background-color: var(--product-card-focus-bkg-color);
-    border-color: var(--product-card-focus-border-color);
-    outline: none;
-    box-shadow: var(--product-card-focus-shadow);
   }
 
   @media (hover: hover) {
