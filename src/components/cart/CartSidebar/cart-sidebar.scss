@@ -1,4 +1,4 @@
-.cart-modal__content {
+.cart-sidebar__content {
   width: 348px;
 }
 
@@ -8,7 +8,16 @@
   }
 }
 
+.cart-sidebar__body {
+  --cart-summary-footer-height: 160px;
+
+  height: calc(100vh - var(--cart-summary-footer-height));
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 .cart-sidebar__header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,7 +32,7 @@
   }
 }
 
-.cart-modal__title {
+.cart-sidebar__title {
   display: flex;
   align-items: center;
 

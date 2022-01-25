@@ -26,6 +26,7 @@ function CartSidebar() {
   const { items, totalItems, isValidating, subTotal, total } = cart
 
   let onDismissTransition: () => unknown
+  const isEmpty = items.length === 0
 
   return (
     <SlideOver
@@ -34,55 +35,58 @@ function CartSidebar() {
       onDismissTransition={(callback) => (onDismissTransition = callback)}
       size="partial"
       direction="rightSide"
-      className="cart-modal__content"
+      className="cart-sidebar__content"
     >
       <div className="cart-sidebar" data-testid="cart-sidebar">
-        <header className="cart-sidebar__header">
-          <div className="cart-modal__title">
-            <p className="title-section">Your Cart</p>
-            <Badge variant="new" small>
-              {totalItems}
-            </Badge>
-          </div>
-          <Button
-            data-testid="cart-sidebar-button-close"
-            onClick={() => onDismissTransition()}
-          >
-            <XIcon size={32} />
-          </Button>
-        </header>
-        <Alert icon={<TruckIcon size={24} />}>
-          Free shiping starts at $300
-        </Alert>
+        <div className="cart-sidebar__body">
+          <header className="cart-sidebar__header">
+            <div className="cart-sidebar__title">
+              <p className="title-section">Your Cart</p>
+              <Badge variant="new" small>
+                {totalItems}
+              </Badge>
+            </div>
+            <Button
+              data-testid="cart-sidebar-button-close"
+              onClick={() => onDismissTransition()}
+            >
+              <XIcon size={32} />
+            </Button>
+          </header>
+          <Alert icon={<TruckIcon size={24} />}>
+            Free shiping starts at $300
+          </Alert>
 
-        {totalItems > 0 ? (
-          <>
+          {isEmpty ? (
+            <EmptyCart />
+          ) : (
             <div className="cart-sidebar__items">
               {items.map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}
             </div>
-            <footer className="cart-sidebar__footer">
-              <OrderSummary
-                subTotal={subTotal}
-                total={total}
-                numberOfItems={totalItems}
-                checkoutButton={
-                  <Button
-                    data-cart-checkout-button
-                    variant="primary"
-                    icon={!isValidating && <ArrowRightIcon size={18} />}
-                    iconPosition="right"
-                    {...btnProps}
-                  >
-                    {isValidating ? 'Loading...' : 'Checkout'}
-                  </Button>
-                }
-              />
-            </footer>
-          </>
-        ) : (
-          <EmptyCart />
+          )}
+        </div>
+
+        {!isEmpty && (
+          <footer className="cart-sidebar__footer">
+            <OrderSummary
+              subTotal={subTotal}
+              total={total}
+              numberOfItems={totalItems}
+              checkoutButton={
+                <Button
+                  data-cart-checkout-button
+                  variant="primary"
+                  icon={!isValidating && <ArrowRightIcon size={18} />}
+                  iconPosition="right"
+                  {...btnProps}
+                >
+                  {isValidating ? 'Loading...' : 'Checkout'}
+                </Button>
+              }
+            />
+          </footer>
         )}
       </div>
     </SlideOver>
