@@ -38,9 +38,8 @@
 
   > * > h3 { font-weight: bold; }
 
-  > section { flex-basis: 20%; }
-  > main { flex-basis: 40%; }
-  > aside { flex-basis: 40%; }
+  > section { flex-basis: 30%; }
+  > main { flex-basis: 70%; }
 
   > main, > section {
     display: flex;
