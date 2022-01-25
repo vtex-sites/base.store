@@ -42,6 +42,10 @@ const SlideOver = ({
   useEffect(() => {
     if (isOpen) {
       setFadeType('in')
+      // Avoids double scroll issue
+      document.body.style.overflowY = 'hidden'
+    } else {
+      document.body.style.overflowY = 'auto'
     }
   }, [isOpen])
 
