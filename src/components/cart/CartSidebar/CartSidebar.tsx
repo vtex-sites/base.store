@@ -54,9 +54,11 @@ function CartSidebar() {
 
         {totalItems > 0 ? (
           <>
-            {items.map((item) => (
-              <CartItem key={item.id} item={item} />
-            ))}
+            <div className="cart-sidebar__items">
+              {items.map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </div>
 
             <OrderSummary
               subTotal={subTotal}

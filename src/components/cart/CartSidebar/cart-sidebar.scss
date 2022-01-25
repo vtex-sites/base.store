@@ -31,3 +31,7 @@
     margin-right: var(--space-2);
   }
 }
+
+.cart-sidebar__items > * {
+  margin: var(--base-font-size) var(--base-font-size) 0;
+}
