@@ -44,7 +44,10 @@ function CartSidebar() {
               {totalItems}
             </Badge>
           </div>
-          <Button onClick={() => onDismissTransition()}>
+          <Button
+            data-testid="cart-sidebar-button-close"
+            onClick={() => onDismissTransition()}
+          >
             <XIcon size={32} />
           </Button>
         </header>
