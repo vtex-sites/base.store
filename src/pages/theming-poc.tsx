@@ -15,7 +15,6 @@ import ProductCard from '../components/product/ProductCard'
 import InputToggle from '../components/ui/InputToggle'
 import QuantitySelector from '../components/ui/QuantitySelector'
 import Badge from '../components/ui/Badge'
-import BuyButton from '../components/ui/BuyButton'
 import Button from '../components/ui/Button'
 
 import '../styles/theming-poc.scss'
@@ -144,7 +143,6 @@ function Page(props: Props) {
           <main>
             <h3>Themes</h3>
             <div className="theming-poc-list">
-              <BuyButton>Buy Now</BuyButton>
               <Button
                 variant="primary"
                 icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -152,17 +150,35 @@ function Page(props: Props) {
               >
                 Primary
               </Button>
+              <Button variant="secondary">Secondary</Button>
               <Button
-                variant="secondary"
+                variant="tertiary"
+                icon={<BellRingingIcon size={18} weight="bold" />}
+                iconPosition="left"
+              >
+                Tertiary
+              </Button>
+            </div>
+            <div
+              className="theming-poc-list"
+              style={{ backgroundColor: '#001947', padding: '10px' }}
+            >
+              <Button
+                variant="primary"
                 icon={<ArrowRightIcon size={18} weight="bold" />}
                 iconPosition="right"
+                inverse
               >
+                Primary
+              </Button>
+              <Button variant="secondary" inverse>
                 Secondary
               </Button>
               <Button
                 variant="tertiary"
-                icon={<ArrowRightIcon size={18} weight="bold" />}
-                iconPosition="right"
+                icon={<BellRingingIcon size={18} weight="bold" />}
+                iconPosition="left"
+                inverse
               >
                 Tertiary
               </Button>

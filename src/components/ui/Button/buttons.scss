@@ -1,93 +1,233 @@
 @import "../../../styles/utilities";
 
 .button[data-store-button], .link-button[data-store-button] {
+
+  // Design Tokens for Product Card
+  // --------------------------------------------------------
+  /* stylelint-disable */
+  // Default properties
+  --button-padding                        : var(--space-1) var(--space-3);
+  --button-shadow                         : none;
+  --button-gap                            : var(--space-2);
+
+  --button-border-radius                  : var(--border-radius-flat);
+  --button-border-width                   : 0;
+  --button-border-color                   : transparent;
+
+  --button-text-size                      : var(--text-size-2);
+  --button-text-weight                    : var(--text-weight-bold);
+
+  --button-transition-function            : ease;
+  --button-transition-property            : all;
+  --button-transition-timing              : .2s;
+
+  // Semantic types & interactive states
+  --button-primary-bkg-color              : var(--bg-secondary-default);
+  --button-primary-text-color             : var(--color-text-inverse);
+  --button-primary-border-color           : transparent;
+  --button-primary-hover-shadow           : none;
+  --button-primary-hover-bkg-color        : var(--bg-secondary-hover);
+  --button-primary-hover-border-color     : transparent;
+  --button-primary-active-bkg-color       : var(--bg-secondary-pressed);
+  --button-primary-active-border-color    : transparent;
+
+  --button-primary-inverse-bkg-color              : var(--bg-neutral-lightest);
+  --button-primary-inverse-text-color             : var(--color-text-display);
+  --button-primary-inverse-border-color           : transparent;
+  --button-primary-inverse-hover-shadow           : none;
+  --button-primary-inverse-hover-bkg-color        : var(--color-secondary-0);
+  --button-primary-inverse-hover-border-color     : transparent;
+  --button-primary-inverse-active-bkg-color       : var(--color-secondary-1);
+  --button-primary-inverse-active-border-color    : transparent;
+
+  --button-secondary-bkg-color            : transparent;
+  --button-secondary-text-color           : var(--color-text-display);
+  --button-secondary-border-color         : var(--bg-secondary-default);
+  --button-secondary-hover-shadow         : none;
+  --button-secondary-hover-bkg-color      : var(--bg-darken-hover);
+  --button-secondary-hover-border-color   : var(--bg-secondary-default);
+  --button-secondary-active-bkg-color     : var(--bg-darken-pressed);
+  --button-secondary-active-border-color  : var(--bg-secondary-default);
+
+  --button-secondary-inverse-bkg-color            : transparent;
+  --button-secondary-inverse-text-color           : var(--color-text-inverse);
+  --button-secondary-inverse-border-color         : var(--color-border-light);
+  --button-secondary-inverse-hover-shadow         : none;
+  --button-secondary-inverse-hover-bkg-color      : var(--bg-lighten-hover);
+  --button-secondary-inverse-hover-border-color   : var(--color-border-light);
+  --button-secondary-inverse-active-bkg-color     : var(--bg-lighten-pressed);
+  --button-secondary-inverse-active-border-color  : var(--color-border-light);
+
+  --button-tertiary-bkg-color             : transparent;
+  --button-tertiary-text-color            : var(--color-link);
+  --button-tertiary-border-color          : transparent;
+  --button-tertiary-hover-shadow          : none;
+  --button-tertiary-hover-bkg-color       : var(--bg-secondary-light);
+  --button-tertiary-hover-border-color    : transparent;
+  --button-tertiary-active-bkg-color      : var(--color-secondary-1);
+  --button-tertiary-active-border-color   : transparent;
+
+  --button-tertiary-inverse-bkg-color             : transparent;
+  --button-tertiary-inverse-text-color            : var(--color-text-inverse);
+  --button-tertiary-inverse-border-color          : transparent;
+  --button-tertiary-inverse-hover-shadow          : none;
+  --button-tertiary-inverse-hover-bkg-color       : var(--bg-lighten-hover);
+  --button-tertiary-inverse-hover-border-color    : transparent;
+  --button-tertiary-inverse-active-bkg-color      : var(--bg-lighten-pressed);
+  --button-tertiary-inverse-active-border-color   : transparent;
+
+  --button-disabled-bkg-color             : var(--bg-disabled);
+  --button-disabled-text-color            : var(--color-neutral-6);
+
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: var(--min-size);
-  padding: var(--space-1)  var(--space-3);
+  padding: var(--button-padding);
   font-weight: var(--text-weight-bold);
+  font-size: var(--button-text-size);
   text-decoration: none;
-  column-gap: var(--space-2);
-  border: 0;
-  border-radius: var(--border-radius-default);
-  transition: background-color .5s ease;
+  column-gap: var(--button-gap);
+  border: var(--button-border-width) solid var(--button-border-color);
+  border-radius: var(--button-border-radius);
+  outline: none;
+  box-shadow: var(--button-shadow);
+  cursor: pointer;
+  transition: var(--button-transition-property) var(--button-transition-timing) var(--button-transition-function);
 
   &:focus { @include button-focus-ring; }
 
-  &:disabled, &[data-button-disabled="true"] {
-    cursor: not-allowed;
-    svg { color: var(--color-neutral-5); }
+  [data-store-icon] {
+    display: flex;
+    align-items: center;
+  }
+
+  // Structure Variants
+  // --------------------------------------------------------
+
+  &[data-button-variant="primary"],
+  &[data-button-variant="secondary"],
+  &[data-button-variant="tertiary"] {
+    &:disabled, &[data-button-disabled="true"] {
+      color: var(--button-disabled-text-color);
+      background-color: var(--button-disabled-bkg-color);
+      border: 0;
+      box-shadow: none;
+      cursor: not-allowed;
+      svg { color: var(--color-neutral-5); }
+
+      &:hover {
+        color: var(--button-disabled-text-color);
+        background-color: var(--button-disabled-bkg-color);
+      }
+    }
   }
 
   &[data-button-variant="primary"] {
-    color: var(--color-text-inverse);
-    background-color: var(--bg-secondary-default);
+    color: var(--button-primary-text-color);
+    background-color: var(--button-primary-bkg-color);
+    border: var(--border-width-2) solid var(--button-primary-border-color);
 
-    &:hover, &:focus { background-color: var(--bg-secondary-hover); }
+    &:hover, &:focus {
+      background-color: var(--button-primary-hover-bkg-color);
+      border-color: var(--button-primary-hover-border-color);
+      box-shadow: var(--button-primary-hover-shadow);
+    }
 
-    &:active { background-color: var(--bg-secondary-pressed); }
-
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
+    &:active {
+      background-color: var(--button-primary-active-bkg-color);
+      border-color: var(--button-primary-active-border-color);
     }
 
     &[data-button-inverse] {
-      color: var(--color-text-display);
-      background-color: var(--bg-neutral-lightest);
+      color: var(--button-primary-inverse-text-color);
+      background-color: var(--button-primary-inverse-bkg-color);
+      border: var(--border-width-2) solid var(--button-primary-inverse-border-color);
 
-      &:hover, &:focus { background-color: var(--color-secondary-0); }
+      &:hover, &:focus {
+        background-color: var(--button-primary-inverse-hover-bkg-color);
+        border-color: var(--button-primary-inverse-hover-border-color);
+        box-shadow: var(--button-primary-inverse-hover-shadow);
+      }
 
-      &:active { background-color: var(--color-secondary-1); }
+      &:active {
+        background-color: var(--button-primary-inverse-active-bkg-color);
+        border-color: var(--button-primary-inverse-active-border-color);
+      }
     }
   }
 
   &[data-button-variant="secondary"] {
-    color: var(--color-text-display);
-    background-color: transparent;
-    border: 2px solid var(--bg-secondary-default);
+    color: var(--button-secondary-text-color);
+    background-color: var(--button-secondary-bkg-color);
+    border: var(--border-width-2) solid var(--button-secondary-border-color);
 
-    &:hover, &:focus { background-color: var(--bg-darken-hover); }
+    &:hover, &:focus {
+      background-color: var(--button-secondary-hover-bkg-color);
+      border-color: var(--button-secondary-hover-border-color);
+      box-shadow: var(--button-secondary-hover-shadow);
+    }
 
-    &:active { background-color: var(--bg-darken-pressed); }
-
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-      border: 0;
+    &:active {
+      background-color: var(--button-secondary-active-bkg-color);
+      border-color: var(--button-secondary-active-border-color);
     }
 
     &[data-button-inverse] {
-      color: var(--color-text-inverse);
-      border-color: var(--color-border-light);
-      &:hover, &:focus { background-color: var(--bg-lighten-hover); }
-      &:active { background-color: var(--bg-lighten-pressed); }
+      color: var(--button-secondary-inverse-text-color);
+      background-color: var(--button-secondary-inverse-bkg-color);
+      border: var(--border-width-2) solid var(--button-secondary-inverse-border-color);
+
+      &:hover, &:focus {
+        background-color: var(--button-secondary-inverse-hover-bkg-color);
+        border-color: var(--button-secondary-inverse-hover-border-color);
+        box-shadow: var(--button-secondary-inverse-hover-shadow);
+      }
+
+      &:active {
+        background-color: var(--button-secondary-inverse-active-bkg-color);
+        border-color: var(--button-secondary-inverse-active-border-color);
+      }
     }
   }
 
   &[data-button-variant="tertiary"] {
-    color: var(--color-link);
+    color: var(--button-tertiary-text-color);
+    background-color: var(--button-tertiary-bkg-color);
+    border: var(--border-width-2) solid var(--button-tertiary-border-color);
+    box-shadow: none;
 
-    &:hover, &:focus { background-color: var(--bg-secondary-light); }
-
-    &:active {
-      color: var(--color-text-display);
-      background-color: var(--color-secondary-1);
+    &:hover, &:focus {
+      background-color: var(--button-tertiary-hover-bkg-color);
+      border-color: var(--button-tertiary-hover-border-color);
     }
 
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
+    &:active {
+      background-color: var(--button-tertiary-active-bkg-color);
+      border-color: var(--button-tertiary-active-border-color);
+      outline: none;
     }
 
     &[data-button-inverse] {
-      color: var(--color-text-display);
-      background-color: var(--bg-neutral-lightest);
+      color: var(--button-tertiary-inverse-text-color);
+      background-color: var(--button-tertiary-inverse-bkg-color);
+      border: var(--border-width-2) solid var(--button-tertiary-inverse-border-color);
 
-      &:hover, &:focus { background-color: var(--color-secondary-0); }
+      &:hover, &:focus {
+        background-color: var(--button-tertiary-inverse-hover-bkg-color);
+        border-color: var(--button-tertiary-inverse-hover-border-color);
+        box-shadow: var(--button-tertiary-inverse-hover-shadow);
+      }
 
-      &:active { background-color: var(--color-secondary-1); }
+      &:active {
+        background-color: var(--button-tertiary-inverse-active-bkg-color);
+        border-color: var(--button-tertiary-inverse-active-border-color);
+      }
     }
   }
 }
