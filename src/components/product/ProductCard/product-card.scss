@@ -7,21 +7,16 @@
 
   /* stylelint-disable */
   --product-card-padding                  : var(--space-1) var(--space-1) var(--space-2);
-  --product-card-min-width                : 14rem;
   --product-card-gap                      : var(--grid-gap-0);
+  --product-card-min-width                : 14rem;
   --product-card-shadow                   : none;
+  --product-card-bkg-color                : var(--bg-neutral-lightest);
+  --product-card-img-radius               : var(--border-radius-flat);
+  --product-card-content-padding          : var(--space-2) var(--space-1);
 
   --product-card-border-radius            : var(--border-radius-flat);
   --product-card-border-width             : 1px;
   --product-card-border-color             : transparent;
-  --product-card-border-color-active      : transparent;
-
-  --product-card-bkg-color                : var(--bg-neutral-lightest);
-  --product-card-bkg-color-active         : var(--bg-neutral-lightest);
-
-  --product-card-img-radius               : var(--border-radius-flat);
-
-  --product-card-content-padding          : var(--space-2) var(--space-1);
 
   --product-card-text-title-color         : var(--color-text);
   --product-card-text-title-size          : var(--text-size-2);
@@ -34,18 +29,20 @@
   --product-card-text-subtitle-color      : var(--color-text-subtle);
   --product-card-text-subtitle-size       : var(--text-size-0);
 
-
   --product-card-transition-function      : ease;
   --product-card-transition-property      : all;
   --product-card-transition-timing        : 0;
 
-  --product-card-hover-border             : var(--color-border-display);
   --product-card-hover-shadow             : none;
   --product-card-hover-bkg-color          : var(--bg-neutral-lightest);
+  --product-card-hover-border-color       : var(--color-border-display);
 
   --product-card-focus-shadow             : 0 0 0 1px var(--bg-neutral-lightest),
                                             0 0 0 var(--border-width-2) var(--bg-focus-ring);
   --product-card-focus-bkg-color          : var(--bg-neutral-lightest);
+  --product-card-focus-border-color       : transparent;
+
+
   /* stylelint-enable */
 
   // Structural Styles
@@ -66,6 +63,7 @@
 
   &:focus-within {
     background-color: var(--product-card-focus-bkg-color);
+    border-color: var(--product-card-focus-border-color);
     outline: none;
     box-shadow: var(--product-card-focus-shadow);
   }
@@ -73,7 +71,7 @@
   @media (hover: hover) {
     &:hover {
       background-color: var(--product-card-hover-bkg-color);
-      border-color: var(--product-card-hover-border);
+      border-color: var(--product-card-hover-border-color);
       box-shadow: var(--product-card-hover-shadow);
     }
   }
