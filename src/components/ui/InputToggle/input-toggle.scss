@@ -43,7 +43,6 @@
   --toggle-disabled-border-color     : black;
   --toggle-disabled-knob-bkg-color   : white;
   --toggle-disabled-knob-border-color: white;
-
   /* stylelint-enable */
 
   // Structural Styles
@@ -111,7 +110,7 @@
     &:focus { @include focus-ring; }
   }
 
-  @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.25); }
+  @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.5); }
 }
 
 [data-base-toggle-container] {
