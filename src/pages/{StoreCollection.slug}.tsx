@@ -1,8 +1,9 @@
-import Loadable from '@loadable/component'
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
+import Hero from 'src/components/sections/Hero'
+import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
@@ -13,23 +14,12 @@ import type {
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
-import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
+import ProductShelf from 'src/components/sections/ProductShelf'
+import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
 import '../styles/pages/index.scss'
 import '../styles/pages/product-listing.scss'
-
-const Hero = Loadable(() => import('src/components/sections/Hero'))
-const ProductShelf = Loadable(
-  () => import('src/components/sections/ProductShelf')
-)
-
-const ProductGallery = Loadable(
-  () => import('src/components/sections/ProductGallery'),
-  {
-    fallback: <div>Loading...</div>,
-  }
-)
 
 export type Props = PageProps<
   CollectionPageQueryQuery,
