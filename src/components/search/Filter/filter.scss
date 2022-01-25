@@ -79,7 +79,7 @@
   --filter-footer-height: 80px;
 
   height: calc(100vh - var(--filter-footer-height));
-  padding: var(--page-padding-phone) var(--page-padding-phone) var(--filter-footer-height);
+  padding: var(--page-padding-phone) var(--page-padding-phone) calc(var(--filter-footer-height) + 16px);
   overflow-y: auto;
 }
 
