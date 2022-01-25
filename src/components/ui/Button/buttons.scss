@@ -4,13 +4,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--min-size);
+  min-height: var(--tap-min-size);
   padding: var(--space-1)  var(--space-3);
   font-weight: var(--text-weight-bold);
   text-decoration: none;
   column-gap: var(--space-2);
   border: 0;
-  border-radius: var(--border-radius-default);
+  border-radius: var(--border-radius-button);
   transition: background-color .5s ease;
 
   &:focus { @include button-focus-ring; }

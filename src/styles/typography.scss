@@ -1,7 +1,7 @@
 // Default //////////////////////////
 
-// Sizes
 :root {
+  // Sizes
   --text-size-0: 12px;
   --text-size-1: 14px;
   --text-size-2: var(--base-font-size);                      // 16px
@@ -11,10 +11,15 @@
   --text-size-6: calc(var(--text-size-5) * var(--scale));    // 39px
   --text-size-7: calc(var(--text-size-6) * var(--scale));    // 48px
   --text-size-8: calc(var(--text-size-7) * var(--scale));    // 61px
+
+  // Weight
+  --text-weight-regular: 400;
+  --text-weight-bold: 700;
+  --text-weight-black: 900;
 }
 
 body {
-  font-size: var(--text-size-2);
+  font-size: var(--base-font-size);
   font-family: var(--sans-serif);
   letter-spacing: .01em;
   -webkit-font-smoothing: antialiased;
