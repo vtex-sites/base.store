@@ -59,23 +59,24 @@ function CartSidebar() {
                 <CartItem key={item.id} item={item} />
               ))}
             </div>
-
-            <OrderSummary
-              subTotal={subTotal}
-              total={total}
-              numberOfItems={totalItems}
-              checkoutButton={
-                <Button
-                  data-cart-checkout-button
-                  variant="primary"
-                  icon={!isValidating && <ArrowRightIcon size={18} />}
-                  iconPosition="right"
-                  {...btnProps}
-                >
-                  {isValidating ? 'Loading...' : 'Checkout'}
-                </Button>
-              }
-            />
+            <footer className="cart-sidebar__footer">
+              <OrderSummary
+                subTotal={subTotal}
+                total={total}
+                numberOfItems={totalItems}
+                checkoutButton={
+                  <Button
+                    data-cart-checkout-button
+                    variant="primary"
+                    icon={!isValidating && <ArrowRightIcon size={18} />}
+                    iconPosition="right"
+                    {...btnProps}
+                  >
+                    {isValidating ? 'Loading...' : 'Checkout'}
+                  </Button>
+                }
+              />
+            </footer>
           </>
         ) : (
           <EmptyCart />

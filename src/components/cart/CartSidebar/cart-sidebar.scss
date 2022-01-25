@@ -32,12 +32,22 @@
   }
 }
 
-.cart-sidebar__items > * {
-  margin: var(--base-font-size) var(--base-font-size) 0;
+.cart-sidebar__items {
+  padding: var(--page-padding-phone);
+  background-color: var(--bg-neutral-light);
+
+  [data-cart-item] {
+    background-color: var(--bg-neutral-lightest);
+
+    &:not(:first-of-type) {
+      margin-top: var(--space-3);
+    }
+  }
 }
 
-[data-order-summary] {
-  position: absolute;
+.cart-sidebar__footer {
+  position: fixed;
   bottom: 0;
   width: 100%;
+  background-color: var(--bg-neutral-lightest);
 }
