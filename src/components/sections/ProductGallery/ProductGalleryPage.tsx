@@ -1,11 +1,11 @@
 import { useSearch } from '@faststore/sdk'
-import React, { useMemo, lazy, Suspense } from 'react'
+import React, { useMemo } from 'react'
+import ProductGrid from 'src/components/product/ProductGrid'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import Sentinel from 'src/sdk/search/Sentinel'
 import type { ProductsQueryQuery } from '@generated/graphql'
 
-const ProductGrid = lazy(() => import('src/components/product/ProductGrid'))
-const ProductTiles = lazy(() => import('../ProductTiles'))
+import ProductTiles from '../ProductTiles'
 
 /* If showSponsoredProducts is true, a ProductTiles will be displayed in between two blocks of ProductGrid on the page 0 */
 interface Props {
@@ -92,26 +92,20 @@ function GalleryPage({
       />
       {shouldDisplaySponsoredProducts ? (
         <>
-          <Suspense fallback={null}>
-            <ProductGrid
-              products={products.slice(0, middleItemIndex)}
-              page={page}
-              pageSize={middleItemIndex}
-            />
-          </Suspense>
+          <ProductGrid
+            products={products.slice(0, middleItemIndex)}
+            page={page}
+            pageSize={middleItemIndex}
+          />
           <div className="product-listing__results-sponsored">
             <h3>Sponsored</h3>
-            <Suspense fallback={null}>
-              <ProductTiles products={productsSponsored.slice(0, 2)} />
-            </Suspense>
+            <ProductTiles products={productsSponsored.slice(0, 2)} />
           </div>
-          <Suspense fallback={null}>
-            <ProductGrid
-              products={products.slice(middleItemIndex, itemsPerPage)}
-              page={page}
-              pageSize={middleItemIndex}
-            />
-          </Suspense>
+          <ProductGrid
+            products={products.slice(middleItemIndex, itemsPerPage)}
+            page={page}
+            pageSize={middleItemIndex}
+          />
         </>
       ) : (
         <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
