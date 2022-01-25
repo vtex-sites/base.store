@@ -78,9 +78,10 @@
 .theming-product-card {
   flex-direction: column;
 
-  > main, > section {
-    flex-direction: row;
-    > h3 { align-self: center; }
+  .theming-poc-list {
+    justify-content: space-between;
+    width: 100%;
+    column-gap: 24px;
   }
 }
 

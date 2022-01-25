@@ -38,7 +38,7 @@ function Page(props: Props) {
         nofollow
       />
       <div className="theming-poc">
-        <div className="theming-poc-content theming-toggle">
+        <article className="theming-poc-content theming-toggle">
           <section>
             <h3>Layouts</h3>
             <InputToggle structure="horizontal" />
@@ -51,9 +51,9 @@ function Page(props: Props) {
             <InputToggle />
             <InputToggle />
           </main>
-        </div>
+        </article>
         <hr />
-        <div className="theming-poc-content theming-quantity-selector">
+        <article className="theming-poc-content theming-quantity-selector">
           <section>
             <h3>Layout</h3>
             <QuantitySelector min={1} max={10} disabled={false} />
@@ -64,9 +64,9 @@ function Page(props: Props) {
             <QuantitySelector min={1} max={10} disabled={false} />
             <QuantitySelector min={1} max={10} disabled={false} />
           </main>
-        </div>
+        </article>
         <hr />
-        <div className="theming-poc-content theming-badge">
+        <article className="theming-poc-content theming-badge">
           <section>
             <h3>Layouts</h3>
             <Badge small>Badge Small</Badge>
@@ -117,9 +117,9 @@ function Page(props: Props) {
               </Badge>
             </div>
           </main>
-        </div>
+        </article>
         <hr />
-        <div className="theming-poc-content theming-badge">
+        <article className="theming-poc-content theming-button">
           <section>
             <h3>Layouts</h3>
             <Button
@@ -168,58 +168,62 @@ function Page(props: Props) {
               </Button>
             </div>
           </main>
-        </div>
+        </article>
         <hr />
-        <div className="theming-poc-content theming-product-card">
+        <article className="theming-poc-content theming-product-card">
           <section>
             <h3>Layouts</h3>
-            <ProductCard
-              product={products[0] ?? {}}
-              index={0}
-              action="quantitySelector"
-              structure="grocery"
-              select
-              moreInfo
-            />
-            <ProductCard
-              product={products[1] ?? {}}
-              index={1}
-              structure="wide"
-            />
-            <ProductCard
-              product={products[2] ?? {}}
-              index={1}
-              structure="horizontal"
-              ratio="3:4"
-              showDescription
-            />
-            <ProductCard product={products[3] ?? {}} index={1} />
+            <div className="theming-poc-list">
+              <ProductCard
+                product={products[0] ?? {}}
+                index={0}
+                action="quantitySelector"
+                structure="grocery"
+                select
+                moreInfo
+              />
+              <ProductCard
+                product={products[1] ?? {}}
+                index={1}
+                structure="wide"
+              />
+              <ProductCard
+                product={products[2] ?? {}}
+                index={1}
+                structure="horizontal"
+                ratio="3:4"
+                showDescription
+              />
+              <ProductCard product={products[3] ?? {}} index={1} />
+            </div>
           </section>
           <main>
             <h3>Themes</h3>
-            <ProductCard
-              product={products[0] ?? {}}
-              index={0}
-              action="quantitySelector"
-              structure="grocery"
-              select
-              moreInfo
-            />
-            <ProductCard
-              product={products[1] ?? {}}
-              index={1}
-              structure="wide"
-            />
-            <ProductCard
-              product={products[2] ?? {}}
-              index={1}
-              structure="horizontal"
-              ratio="3:4"
-              showDescription
-            />
-            <ProductCard product={products[3] ?? {}} index={1} />
+            <div className="theming-poc-list">
+              <ProductCard
+                product={products[0] ?? {}}
+                index={0}
+                action="quantitySelector"
+                structure="grocery"
+                select
+                moreInfo
+              />
+              <ProductCard
+                product={products[1] ?? {}}
+                index={1}
+                structure="wide"
+              />
+              <ProductCard
+                product={products[2] ?? {}}
+                index={1}
+                structure="horizontal"
+                ratio="3:4"
+                showDescription
+              />
+              <ProductCard product={products[3] ?? {}} index={1} />
+            </div>
           </main>
-        </div>
+        </article>
       </div>
     </>
   )
