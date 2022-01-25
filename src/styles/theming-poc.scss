@@ -131,9 +131,6 @@
     --toggle-hover-border-color  : var(--bg-primary-default);
     --toggle-hover-knob-bkg-color: var(--bg-neutral-lightest);
     --toggle-hover-shadow        : 0 0 0 var(--toggle-border-width) var(--bg-primary-default);
-    --toggle-focus-bkg-color     : var(--bg-primary-default);
-    --toggle-focus-border-color  : var(--bg-primary-default);
-    --toggle-focus-shadow        : 0 0 0 var(--toggle-border-width) var(--bg-primary-default);
   }
 
   &:nth-child(5) {
@@ -151,8 +148,6 @@
     --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
     --toggle-hover-border-color       : darkgreen;
     --toggle-hover-shadow             : 0 0 0 1px darkgreen;
-    --toggle-focus-border-color       : darkgreen;
-    --toggle-focus-shadow             : darkgreen;
   }
 }
 

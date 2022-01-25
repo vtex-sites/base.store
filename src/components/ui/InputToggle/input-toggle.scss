@@ -1,3 +1,4 @@
+@import "../../../styles/utilities";
 @import "../../../styles/vendors/include-media";
 
 [data-base-toggle] {
@@ -37,11 +38,6 @@
   --toggle-hover-bkg-color           : var(--toggle-bkg-color);
   --toggle-hover-border-color        : var(--toggle-border-color);
   --toggle-hover-knob-bkg-color      : var(--toggle-hover-border-color);
-
-  --toggle-focus-shadow              : 0 0 0 var(--toggle-border-width) var(--toggle-border-color);
-  --toggle-focus-bkg-color           : var(--toggle-hover-border-color);
-  --toggle-focus-border-color        : var(--toggle-border-color);
-  --toggle-focus-knob-bkg-color      : var(--toggle-hover-border-color);
 
   --toggle-disabled-bkg-color        : black;
   --toggle-disabled-border-color     : black;
@@ -86,12 +82,19 @@
 
     &:checked {
       background-color: var(--toggle-checked-bkg-color);
-      border: 1px solid var(--toggle-checked-border-color);
+      border: var(--toggle-border-width) solid var(--toggle-checked-border-color);
 
       + [data-base-toggle-knob] {
         background-color: var(--toggle-checked-knob-bkg-color);
         border-color: var(--toggle-checked-knob-border-color);
         &::after { opacity: 1; }
+      }
+
+      @media (hover: hover) {
+        &:hover {
+          background-color: var(--toggle-checked-bkg-color);
+          border: var(--toggle-border-width) solid var(--toggle-checked-border-color);
+        }
       }
     }
 
@@ -105,11 +108,7 @@
       }
     }
 
-    &:focus {
-      border-color: var(--toggle-focus-border-color);
-      outline: 0;
-      box-shadow: var(--toggle-focus-shadow);
-    }
+    &:focus { @include focus-ring; }
   }
 
   @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.5); }
