@@ -42,21 +42,17 @@ function ProductGallery({ title }: Props) {
   const orderedFacets = useOrderedFacets(data)
 
   if (!orderedFacets.length) {
-    return <div className="product-listing__data-loading">loading...</div>
+    return <div className="product-listing__data-loading">Loading…</div>
   }
 
   return (
     <div className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <Filter
-            isOpen={isFilterOpen}
-            facets={orderedFacets}
-            onDismiss={() => setIsFilterOpen(false)}
-          />
+          <h2 className="title-small">Filters</h2>
         </div>
 
-        {data ? (
+        {data && (
           <>
             <div
               className="product-listing__results-count"
@@ -82,7 +78,19 @@ function ProductGallery({ title }: Props) {
                 </Button>
               )}
             </div>
+          </>
+        )}
 
+        <div className="product-listing__filters-bar">
+          <Filter
+            isOpen={isFilterOpen}
+            facets={orderedFacets}
+            onDismiss={() => setIsFilterOpen(false)}
+          />
+        </div>
+
+        {data ? (
+          <>
             <div className="product-listing__results">
               {/* Add link to previous page. This helps on SEO */}
               {prev !== false && (
@@ -142,7 +150,7 @@ function ProductGallery({ title }: Props) {
             </div>
           </>
         ) : (
-          <div className="product-listing__data-loading">loading...</div>
+          <div className="product-listing__data-loading">Loading…</div>
         )}
       </div>
     </div>
