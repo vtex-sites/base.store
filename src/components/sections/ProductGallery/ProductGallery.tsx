@@ -1,12 +1,13 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect, lazy, Suspense } from 'react'
+import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
+import GalleryPageStatic from './ProductGalleryPageStatic'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const Sort = lazy(() => import('src/components/search/Sort'))
@@ -21,6 +22,11 @@ function ProductGallery({ title }: Props) {
   const { data } = useGalleryQuery()
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
+  const products = useMemo(
+    () => data?.search.products.edges.map((edge) => edge.node),
+    [data]
+  )
+
   const { next, prev } = usePagination(totalCount)
   const { width: screenWidth } = useWindowDimensions()
 
@@ -116,16 +122,27 @@ function ProductGallery({ title }: Props) {
               )}
 
               {/* Render ALL products */}
-              {pages.map((page) => (
-                <Suspense fallback={null} key={`gallery-page-${page}`}>
-                  <GalleryPage
+              {pages.map((page) => {
+                return page === 0 ? (
+                  <GalleryPageStatic
                     key={`gallery-page-${page}`}
-                    fallbackData={page === searchState.page ? data : undefined}
+                    products={products}
                     page={page}
                     title={title}
                   />
-                </Suspense>
-              ))}
+                ) : (
+                  <Suspense fallback={null} key={`gallery-page-${page}`}>
+                    <GalleryPage
+                      key={`gallery-page-${page}`}
+                      fallbackData={
+                        page === searchState.page ? data : undefined
+                      }
+                      page={page}
+                      title={title}
+                    />
+                  </Suspense>
+                )
+              })}
 
               {/* Prefetch Previous and Next pages */}
               {prev !== false && (
