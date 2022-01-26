@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link as LinkGatsby } from 'gatsby'
 import { List as UIList } from '@faststore/ui'
 import CartToggle from 'src/components/cart/CartToggle'
@@ -43,16 +43,8 @@ function NavLinks() {
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
-  const [isMobile, setIsMobile] = useState<boolean>(false)
-  const { width: screenWidth } = useWindowDimensions()
+  const { isMobile } = useWindowDimensions()
   let onDismissTransition: () => unknown
-
-  useEffect(() => {
-    if (screenWidth) {
-      // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
-      setIsMobile(screenWidth < 1280)
-    }
-  }, [screenWidth])
 
   return (
     <header className="navbar / grid-content-full">

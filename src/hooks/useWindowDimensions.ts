@@ -2,16 +2,20 @@ import { useState, useEffect, useCallback } from 'react'
 
 export default function useWindowDimensions() {
   const hasWindow = typeof window !== 'undefined'
+  // See breakpoints on styles/global.scss
+  const [notebookBreakpoint, setNotebookBreakpoint] = useState('')
 
   const getWindowDimensions = useCallback(() => {
     const width = hasWindow ? window.innerWidth : null
     const height = hasWindow ? window.innerHeight : null
+    const isMobile = width ? width < parseInt(notebookBreakpoint, 10) : null
 
     return {
       width,
       height,
+      isMobile,
     }
-  }, [hasWindow])
+  }, [hasWindow, notebookBreakpoint])
 
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
@@ -25,6 +29,12 @@ export default function useWindowDimensions() {
     function handleResize() {
       setWindowDimensions(getWindowDimensions())
     }
+
+    setNotebookBreakpoint(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--breakpoint-notebook'
+      ) || '1280'
+    )
 
     window.addEventListener('resize', handleResize)
 
