@@ -28,9 +28,9 @@
   --button-primary-text-color                   : white;
   --button-primary-border-color                 : transparent;
   --button-primary-hover-shadow                 : none;
-  --button-primary-hover-bkg-color              : dimgray;
+  --button-primary-hover-bkg-color              : var(--color-neutral-6);
   --button-primary-hover-border-color           : transparent;
-  --button-primary-active-bkg-color             : gray;
+  --button-primary-active-bkg-color             : var(--color-neutral-5);
   --button-primary-active-border-color          : transparent;
 
   --button-primary-inverse-bkg-color            : var(--button-primary-text-color);
@@ -55,9 +55,9 @@
   --button-secondary-inverse-text-color         : white;
   --button-secondary-inverse-border-color       : white;
   --button-secondary-inverse-hover-shadow       : var(--button-secondary-hover-shadow);
-  --button-secondary-inverse-hover-bkg-color    : dimgray;
-  --button-secondary-inverse-hover-border-color : var(--button-secondary-hover-border-color);
-  --button-secondary-inverse-active-bkg-color   : gray;
+  --button-secondary-inverse-hover-bkg-color    : var(--bg-lighten-hover);
+  --button-secondary-inverse-hover-border-color : var(--button-secondary-inverse-border-color);
+  --button-secondary-inverse-active-bkg-color   : var(--bg-lighten-pressed);
   --button-secondary-inverse-active-border-color: var(--button-secondary-inverse-border-color);
 
   --button-tertiary-bkg-color                   : transparent;
@@ -240,4 +240,13 @@
   &[data-button-disabled="true"] {
     pointer-events: none;
   }
+}
+
+.cart-sidebar__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-5) var(--page-padding-phone) var(--space-4);
+  background-color: var(--bg-neutral-lightest);
 }
