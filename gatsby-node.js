@@ -42,12 +42,6 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
                 chunks: `initial`,
                 enforce: true,
               },
-              vendors: {
-                test: /[\\/]node_modules[\\/]/,
-                enforce: true,
-                chunks: 'all',
-                priority: 1,
-              },
             },
           },
         },
