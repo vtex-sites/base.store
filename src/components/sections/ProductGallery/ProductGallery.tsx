@@ -119,6 +119,7 @@ function ProductGallery({ title }: Props) {
               {pages.map((page) => (
                 <Suspense fallback={null} key={`gallery-page-${page}`}>
                   <GalleryPage
+                    showSponsoredProducts={false}
                     key={`gallery-page-${page}`}
                     fallbackData={page === searchState.page ? data : undefined}
                     page={page}
@@ -131,6 +132,7 @@ function ProductGallery({ title }: Props) {
               {prev !== false && (
                 <Suspense fallback={null}>
                   <GalleryPage
+                    showSponsoredProducts={false}
                     page={prev.cursor}
                     display={false}
                     title={title}
@@ -140,6 +142,7 @@ function ProductGallery({ title }: Props) {
               {next !== false && (
                 <Suspense fallback={null}>
                   <GalleryPage
+                    showSponsoredProducts={false}
                     page={next.cursor}
                     display={false}
                     title={title}
