@@ -1,4 +1,4 @@
-@import "../vendors/include-media.scss";
+@import "../scaffold.scss";
 
 .product-listing {
   padding-top: 0;
@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 300px;
+  padding-top: var(--space-5);
 }
 
 .product-listing__hero {
@@ -43,13 +43,23 @@
 }
 
 .product-listing__filters {
+  display: none;
+
   @include media(">=notebook") {
     position: sticky;
     top: var(--grid-gap-0);
-    grid-row: span 2;
+    display: flex;
+    grid-column: 1 / span 3;
+    align-items: center;
+  }
+}
+
+.product-listing__filters-bar {
+  @include media(">=notebook") {
+    position: sticky;
+    top: rem(60px);
     grid-column: 1 / span 3;
     align-self: start;
-    padding-top: var(--space-1);
   }
 }
 
