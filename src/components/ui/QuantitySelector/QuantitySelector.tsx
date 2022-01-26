@@ -9,6 +9,7 @@ interface QuantitySelectorProps {
   min: number
   initial?: number
   disabled: boolean
+  onChange?: (value: number) => void
 }
 
 export function QuantitySelector({
@@ -16,22 +17,22 @@ export function QuantitySelector({
   min,
   initial,
   disabled,
+  onChange,
 }: QuantitySelectorProps) {
   const [quantity, setQuantity] = useState<number>(initial ?? min)
   const isLeftDisabled = quantity === min
   const isRightDisabled = quantity === max
 
-  function increase() {
-    setQuantity((currentQuantity) =>
-      validateQuantityBounds(currentQuantity + 1)
-    )
+  const changeQuantity = (increaseValue: number) => {
+    const quantityValue = validateQuantityBounds(quantity + increaseValue)
+
+    onChange?.(quantityValue)
+    setQuantity(quantityValue)
   }
 
-  function decrease() {
-    setQuantity((currentQuantity) =>
-      validateQuantityBounds(currentQuantity - 1)
-    )
-  }
+  const increase = () => changeQuantity(1)
+
+  const decrease = () => changeQuantity(-1)
 
   function validateQuantityBounds(n: number): number {
     return Math.min(Math.max(n, min), max)
@@ -41,7 +42,13 @@ export function QuantitySelector({
     const val = e.currentTarget.value
 
     if (!Number.isNaN(Number(val))) {
-      setQuantity(validateQuantityBounds(Number(val)))
+      setQuantity(() => {
+        const quantityValue = validateQuantityBounds(Number(val))
+
+        onChange?.(quantityValue)
+
+        return quantityValue
+      })
     }
   }
 
