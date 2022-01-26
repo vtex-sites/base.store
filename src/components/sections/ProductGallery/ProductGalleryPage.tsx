@@ -47,7 +47,7 @@ function GalleryPage({
     [productList]
   )
 
-  const productsSponsored = useMemo(() => products?.slice(0, 2), [products])
+  const productsSponsored = products?.slice(0, 2)
 
   const middleItemIndex = Math.ceil(itemsPerPage / 2)
 
@@ -78,7 +78,7 @@ function GalleryPage({
           />
           <div className="product-listing__results-sponsored">
             <h3>Sponsored</h3>
-            <ProductTiles products={productsSponsored} />
+            <ProductTiles products={productsSponsored.slice(0, 2)} />
           </div>
           <ProductGrid
             products={products.slice(middleItemIndex, itemsPerPage)}
