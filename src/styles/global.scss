@@ -122,3 +122,12 @@ main.temp-cls-fix {
 
   min-height: calc(100vh - var(--alert-height) - var(--navbar-height));
 }
+
+// Avoids double scroll issue on the page when overlay is open
+#layout.no-scroll {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
