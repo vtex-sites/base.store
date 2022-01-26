@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
@@ -39,7 +39,7 @@ function Filter({
   isOpen = false,
   testId = 'store-filter',
 }: Props) {
-  const { width: screenWidth } = useWindowDimensions()
+  const { isMobile } = useWindowDimensions()
   const { toggleFacet, toggleFacets, state: searchState } = useSearch()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
@@ -50,15 +50,7 @@ function Filter({
     searchState.selectedFacets ?? []
   )
 
-  const [isMobile, setIsMobile] = useState<boolean>(false)
   let onDismissTransition: () => unknown
-
-  useEffect(() => {
-    if (screenWidth) {
-      // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
-      setIsMobile(screenWidth < 1280)
-    }
-  }, [screenWidth])
 
   const onAccordionChange = (index: number) => {
     if (indicesExpanded.has(index)) {
