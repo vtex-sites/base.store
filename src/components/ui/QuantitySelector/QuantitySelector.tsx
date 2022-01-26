@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
 import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
 
@@ -54,6 +54,10 @@ export function QuantitySelector({
       })
     }
   }
+
+  useEffect(() => {
+    initial && setQuantity(initial)
+  }, [initial])
 
   return (
     <UIQuantitySelector
