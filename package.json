@@ -26,7 +26,6 @@
     "@envelop/core": "^1.2.0",
     "@envelop/graphql-jit": "^1.1.1",
     "@envelop/parser-cache": "^2.2.0",
-    "@envelop/response-cache": "^0.5.0",
     "@envelop/validation-cache": "^2.2.0",
     "@faststore/api": "^1.4.15",
     "@faststore/sdk": "^1.4.15",
