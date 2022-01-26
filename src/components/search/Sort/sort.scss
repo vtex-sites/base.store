@@ -33,7 +33,7 @@
       @include focus-ring;
     }
 
-    @include media("<notebook") { min-height: var(--min-size); }
+    @include media("<notebook") { min-height: var(--tap-min-size); }
 
     @include media(">=notebook") { height: var(--space-6); }
   }

@@ -4,7 +4,6 @@ import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
 import AspectRatio from 'src/components/ui/AspectRatio'
 import Price from 'src/components/ui/Price'
-import SkuSelector from 'src/components/ui/SkuSelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
@@ -168,27 +167,6 @@ function ProductDetails({ product: staleProduct }: Props) {
             </div> */}
             <QuantitySelector min={1} max={10} disabled={false} />
           </section>
-
-          <SkuSelector
-            label="Size"
-            variant="label"
-            options={[
-              { label: 'P', value: 'p' },
-              { label: 'M', value: 'm' },
-              { label: 'G', value: 'g' },
-            ]}
-          />
-          <SkuSelector
-            label="Color"
-            variant="color"
-            options={[
-              { label: 'Yellow', value: '#f1d096' },
-              { label: 'Pink', value: '#eed0d0' },
-              { label: 'Green', value: '#b2dbcb' },
-              { label: 'Blue', value: '#bacbec' },
-              { label: 'Lilac', value: '#ebdcff', disabled: true },
-            ]}
-          />
           {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
               non-composited animation violation due to the button transitioning its
               background color when changing from its initial disabled to active state.
