@@ -414,6 +414,8 @@
 .theming-button main .theming-poc-list {
   // Semantic types & interactive states
   &:nth-child(2) .button[data-store-button] {
+    --button-border-radius                  : var(--border-radius-default);
+
     --button-primary-bkg-color              : var(--bg-secondary-default);
     --button-primary-text-color             : var(--color-text-inverse);
     --button-primary-hover-bkg-color        : var(--bg-secondary-hover);
