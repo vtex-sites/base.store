@@ -15,23 +15,10 @@
   --color-link: var(--color-secondary-2);
   --color-link-visited: var(--color-visited);
   --color-link-inverse: var(--color-neutral-0);
-  --color-text: var(--color-neutral-7);
-  --color-text-inverse: var(--color-neutral-0);
   --color-text-disabled: var(--color-neutral-6);
   --color-text-display: var(--color-secondary-4);
   --color-text-subtle: var(--color-neutral-6);
   --color-text-success: var(--color-success-dark);
-
-  // Backgrounds – Light
-  --bg-primary-light: var(--color-primary-0);
-
-  --bg-secondary-light: var(--color-secondary-0);
-
-  --bg-neutral-light: var(--color-neutral-1);
-  --bg-neutral-lightest: var(--color-neutral-0);
-
-  // Backgrounds – Dark
-  --bg-secondary-dark: var(--color-secondary-4);
 
   // Backgrounds – Interations
   --bg-primary-default: var(--color-primary-3);
@@ -75,4 +62,7 @@
 
 // Default //////////////////////////
 
-body { color: var(--color-text); }
+body {
+  color: var(--color-text);
+  background-color: var(--bg-body);
+}

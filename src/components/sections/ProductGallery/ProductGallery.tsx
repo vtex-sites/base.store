@@ -1,15 +1,16 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import Filter from 'src/components/search/Filter'
-import Sort from 'src/components/search/Sort'
 import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
 
-import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
+
+const GalleryPage = lazy(() => import('./ProductGalleryPage'))
+const Sort = lazy(() => import('src/components/search/Sort'))
+const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
@@ -63,7 +64,9 @@ function ProductGallery({ title }: Props) {
             </div>
 
             <div className="product-listing__sort">
-              <Sort />
+              <Suspense fallback={null}>
+                <Sort />
+              </Suspense>
 
               {isMobile && (
                 <Button
@@ -82,11 +85,13 @@ function ProductGallery({ title }: Props) {
         )}
 
         <div className="product-listing__filters-bar">
-          <Filter
-            isOpen={isFilterOpen}
-            facets={orderedFacets}
-            onDismiss={() => setIsFilterOpen(false)}
-          />
+          <Suspense fallback={null}>
+            <Filter
+              isOpen={isFilterOpen}
+              facets={orderedFacets}
+              onDismiss={() => setIsFilterOpen(false)}
+            />
+          </Suspense>
         </div>
 
         {data ? (
@@ -112,20 +117,37 @@ function ProductGallery({ title }: Props) {
 
               {/* Render ALL products */}
               {pages.map((page) => (
-                <GalleryPage
-                  key={`gallery-page-${page}`}
-                  fallbackData={page === searchState.page ? data : undefined}
-                  page={page}
-                  title={title}
-                />
+                <Suspense fallback={null} key={`gallery-page-${page}`}>
+                  <GalleryPage
+                    showSponsoredProducts={false}
+                    key={`gallery-page-${page}`}
+                    fallbackData={page === searchState.page ? data : undefined}
+                    page={page}
+                    title={title}
+                  />
+                </Suspense>
               ))}
 
               {/* Prefetch Previous and Next pages */}
               {prev !== false && (
-                <GalleryPage page={prev.cursor} display={false} title={title} />
+                <Suspense fallback={null}>
+                  <GalleryPage
+                    showSponsoredProducts={false}
+                    page={prev.cursor}
+                    display={false}
+                    title={title}
+                  />
+                </Suspense>
               )}
               {next !== false && (
-                <GalleryPage page={next.cursor} display={false} title={title} />
+                <Suspense fallback={null}>
+                  <GalleryPage
+                    showSponsoredProducts={false}
+                    page={next.cursor}
+                    display={false}
+                    title={title}
+                  />
+                </Suspense>
               )}
 
               {/* Add link to next page. This helps on SEO */}

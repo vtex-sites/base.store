@@ -2,6 +2,7 @@ import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
+import Loadable from '@loadable/component'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
@@ -15,11 +16,14 @@ import type {
 } from '@generated/graphql'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
-import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
 import '../styles/pages/index.scss'
 import '../styles/pages/product-listing.scss'
+
+const ProductShelf = Loadable(
+  () => import('src/components/sections/ProductShelf')
+)
 
 export type Props = PageProps<
   CollectionPageQueryQuery,

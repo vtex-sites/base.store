@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from 'react'
-import Footer from 'src/components/common/Footer'
+import Loadable from '@loadable/component'
 import Navbar from 'src/components/common/Navbar'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
@@ -11,6 +11,7 @@ import './styles/fonts.css'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 const Toast = lazy(() => import('src/components/ui/Toast'))
+const Footer = Loadable(() => import('src/components/common/Footer'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()
