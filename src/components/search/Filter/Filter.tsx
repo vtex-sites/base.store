@@ -31,6 +31,9 @@ interface Props {
    * testing-library, and jest).
    */
   testId?: string
+  /**
+   * Current page's slug to be used as fixed facet
+   */
   slug?: string
 }
 
@@ -53,11 +56,11 @@ function Filter({
     new Set([])
   )
 
-  const [selectedFilters, setSelectedFilters] = useState<IStoreSelectedFacet[]>(
+  const [selectedFacets, setSelectedFacets] = useState<IStoreSelectedFacet[]>(
     searchState.selectedFacets ?? []
   )
 
-  const [filtersToRemove, setFiltersToRemove] = useState<IStoreSelectedFacet[]>(
+  const [facetsToRemove, setFacetsToRemove] = useState<IStoreSelectedFacet[]>(
     []
   )
 
@@ -86,7 +89,7 @@ function Filter({
 
   // Ensures selected filters are up to date at opening
   useEffect(() => {
-    !isOpen && setSelectedFilters(searchState.selectedFacets)
+    !isOpen && setSelectedFacets(searchState.selectedFacets)
   }, [isOpen, searchState.selectedFacets])
 
   // Opens accordion items with active facets
@@ -109,20 +112,20 @@ function Filter({
     )
   }, [isOpen, activeFacets, filteredFacets, indicesExpanded, onAccordionChange])
 
-  const onFilterChange = (item: IStoreSelectedFacet) => {
-    if (selectedFilters.some((filter) => filter.value === item.value)) {
-      const indexToRemove = selectedFilters.findIndex(
+  const onFacetChange = (item: IStoreSelectedFacet) => {
+    if (selectedFacets.some((filter) => filter.value === item.value)) {
+      const indexToRemove = selectedFacets.findIndex(
         (f) => f.value === item.value
       )
 
-      selectedFilters.splice(indexToRemove, 1)
-      setSelectedFilters([...selectedFilters])
-      setFiltersToRemove([...filtersToRemove, item])
+      selectedFacets.splice(indexToRemove, 1)
+      setSelectedFacets([...selectedFacets])
+      setFacetsToRemove([...facetsToRemove, item])
 
       return
     }
 
-    setSelectedFilters([...selectedFilters, item])
+    setSelectedFacets([...selectedFacets, item])
   }
 
   const onCheck = ({ key, value }: IStoreSelectedFacet) => {
@@ -130,7 +133,7 @@ function Filter({
       toggleFacet({ key, value })
     }
 
-    onFilterChange({ key, value })
+    onFacetChange({ key, value })
   }
 
   const Facets = () => {
@@ -173,8 +176,8 @@ function Filter({
                         id={id}
                         checked={
                           item.value === slug ||
-                          selectedFilters.some(
-                            (filter) => filter.value === item.value
+                          selectedFacets.some(
+                            (facet) => facet.value === item.value
                           )
                         }
                         onChange={() => onCheck({ key, value: item.value })}
@@ -217,7 +220,7 @@ function Filter({
             data-testid="filter-modal-button-close"
             aria-label="Close"
             onClick={() => {
-              setSelectedFilters(searchState.selectedFacets)
+              setSelectedFacets(searchState.selectedFacets)
               onDismissTransition?.()
             }}
           >
@@ -230,10 +233,8 @@ function Filter({
         <Button
           variant="secondary"
           onClick={() => {
-            const filters = selectedFilters
-
-            setFiltersToRemove(filters)
-            setSelectedFilters([])
+            setFacetsToRemove(selectedFacets)
+            setSelectedFacets([])
           }}
         >
           Clear All
@@ -243,21 +244,21 @@ function Filter({
           data-testid="filter-modal-button-apply"
           onClick={() => {
             // Remove facets that user unchecked
-            filtersToRemove.length > 0 && toggleFacets(filtersToRemove)
+            facetsToRemove.length > 0 && toggleFacets(facetsToRemove)
 
             // Only toggle new facets and keep the current ones applied
-            const filtersToToggle = selectedFilters
+            const facetsToToggle = selectedFacets
               .map(
                 (filter) =>
                   !searchState.selectedFacets.includes(filter) && filter
               )
               .filter((m) => typeof m !== 'boolean') as IStoreSelectedFacet[]
 
-            toggleFacets(filtersToToggle)
+            toggleFacets(facetsToToggle)
 
             setActiveFacets([])
-            setFiltersToRemove([])
-            setSelectedFilters([])
+            setFacetsToRemove([])
+            setSelectedFacets([])
             setIndicesExpanded(new Set([]))
             onDismiss?.()
           }}
