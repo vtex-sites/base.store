@@ -1,84 +1,85 @@
 @import "../../../styles/utilities";
 
-.button[data-store-button], .link-button[data-store-button] {
+[data-store-button] {
 
-  // Design Tokens for Product Card
+  // Design Tokens for Buttons
   // --------------------------------------------------------
+
   /* stylelint-disable */
   // Default properties
-  --button-padding                        : var(--space-1) var(--space-3);
-  --button-shadow                         : none;
-  --button-gap                            : var(--space-2);
+  --button-padding                              : var(--space-1) var(--space-3);
+  --button-height                               : var(--min-size);
+  --button-shadow                               : none;
+  --button-gap                                  : var(--space-2);
 
-  --button-border-radius                  : var(--border-radius-flat);
-  --button-border-width                   : 0;
-  --button-border-color                   : transparent;
+  --button-border-radius                        : var(--border-radius-flat);
+  --button-border-width                         : 2px;
+  --button-border-color                         : transparent;
 
-  --button-text-size                      : var(--text-size-2);
-  --button-text-weight                    : var(--text-weight-bold);
+  --button-text-size                            : var(--text-size-2);
+  --button-text-weight                          : bold;
 
-  --button-transition-function            : ease;
-  --button-transition-property            : all;
-  --button-transition-timing              : .2s;
+  --button-transition-function                  : ease;
+  --button-transition-property                  : all;
+  --button-transition-timing                    : .2s;
 
   // Semantic types & interactive states
-  --button-primary-bkg-color              : var(--bg-secondary-default);
-  --button-primary-text-color             : var(--color-text-inverse);
-  --button-primary-border-color           : transparent;
-  --button-primary-hover-shadow           : none;
-  --button-primary-hover-bkg-color        : var(--bg-secondary-hover);
-  --button-primary-hover-border-color     : transparent;
-  --button-primary-active-bkg-color       : var(--bg-secondary-pressed);
-  --button-primary-active-border-color    : transparent;
+  --button-primary-bkg-color                    : black;
+  --button-primary-text-color                   : white;
+  --button-primary-border-color                 : transparent;
+  --button-primary-hover-shadow                 : none;
+  --button-primary-hover-bkg-color              : dimgray;
+  --button-primary-hover-border-color           : transparent;
+  --button-primary-active-bkg-color             : gray;
+  --button-primary-active-border-color          : transparent;
 
-  --button-primary-inverse-bkg-color              : var(--bg-neutral-lightest);
-  --button-primary-inverse-text-color             : var(--color-text-display);
-  --button-primary-inverse-border-color           : transparent;
-  --button-primary-inverse-hover-shadow           : none;
-  --button-primary-inverse-hover-bkg-color        : var(--color-secondary-0);
-  --button-primary-inverse-hover-border-color     : transparent;
-  --button-primary-inverse-active-bkg-color       : var(--color-secondary-1);
-  --button-primary-inverse-active-border-color    : transparent;
+  --button-primary-inverse-bkg-color            : var(--button-primary-text-color);
+  --button-primary-inverse-text-color           : var(--button-primary-bkg-color);
+  --button-primary-inverse-border-color         : var(--button-primary-border-color);
+  --button-primary-inverse-hover-shadow         : var(--button-primary-hover-shadow);
+  --button-primary-inverse-hover-bkg-color      : whitesmoke;
+  --button-primary-inverse-hover-border-color   : var(--button-primary-border-color);
+  --button-primary-inverse-active-bkg-color     : gainsboro;
+  --button-primary-inverse-active-border-color  : var(--button-primary-border-color);
 
-  --button-secondary-bkg-color            : transparent;
-  --button-secondary-text-color           : var(--color-text-display);
-  --button-secondary-border-color         : var(--bg-secondary-default);
-  --button-secondary-hover-shadow         : none;
-  --button-secondary-hover-bkg-color      : var(--bg-darken-hover);
-  --button-secondary-hover-border-color   : var(--bg-secondary-default);
-  --button-secondary-active-bkg-color     : var(--bg-darken-pressed);
-  --button-secondary-active-border-color  : var(--bg-secondary-default);
+  --button-secondary-bkg-color                  : transparent;
+  --button-secondary-text-color                 : black;
+  --button-secondary-border-color               : black;
+  --button-secondary-hover-shadow               : none;
+  --button-secondary-hover-bkg-color            : whitesmoke;
+  --button-secondary-hover-border-color         : var(--button-secondary-border-color);
+  --button-secondary-active-bkg-color           : gainsboro;
+  --button-secondary-active-border-color        : var(--button-secondary-border-color);
 
-  --button-secondary-inverse-bkg-color            : transparent;
-  --button-secondary-inverse-text-color           : var(--color-text-inverse);
-  --button-secondary-inverse-border-color         : var(--color-border-light);
-  --button-secondary-inverse-hover-shadow         : none;
-  --button-secondary-inverse-hover-bkg-color      : var(--bg-lighten-hover);
-  --button-secondary-inverse-hover-border-color   : var(--color-border-light);
-  --button-secondary-inverse-active-bkg-color     : var(--bg-lighten-pressed);
-  --button-secondary-inverse-active-border-color  : var(--color-border-light);
+  --button-secondary-inverse-bkg-color          : transparent;
+  --button-secondary-inverse-text-color         : white;
+  --button-secondary-inverse-border-color       : white;
+  --button-secondary-inverse-hover-shadow       : var(--button-secondary-hover-shadow);
+  --button-secondary-inverse-hover-bkg-color    : dimgray;
+  --button-secondary-inverse-hover-border-color : var(--button-secondary-hover-border-color);
+  --button-secondary-inverse-active-bkg-color   : gray;
+  --button-secondary-inverse-active-border-color: var(--button-secondary-inverse-border-color);
 
-  --button-tertiary-bkg-color             : transparent;
-  --button-tertiary-text-color            : var(--color-link);
-  --button-tertiary-border-color          : transparent;
-  --button-tertiary-hover-shadow          : none;
-  --button-tertiary-hover-bkg-color       : var(--bg-secondary-light);
-  --button-tertiary-hover-border-color    : transparent;
-  --button-tertiary-active-bkg-color      : var(--color-secondary-1);
-  --button-tertiary-active-border-color   : transparent;
+  --button-tertiary-bkg-color                   : transparent;
+  --button-tertiary-text-color                  : var(--button-secondary-text-color);
+  --button-tertiary-border-color                : transparent;
+  --button-tertiary-hover-shadow                : var(--button-secondary-hover-shadow);
+  --button-tertiary-hover-bkg-color             : var(--button-secondary-hover-bkg-color);
+  --button-tertiary-hover-border-color          : transparent;
+  --button-tertiary-active-bkg-color            : var(--button-secondary-active-bkg-color);
+  --button-tertiary-active-border-color         : transparent;
 
-  --button-tertiary-inverse-bkg-color             : transparent;
-  --button-tertiary-inverse-text-color            : var(--color-text-inverse);
-  --button-tertiary-inverse-border-color          : transparent;
-  --button-tertiary-inverse-hover-shadow          : none;
-  --button-tertiary-inverse-hover-bkg-color       : var(--bg-lighten-hover);
-  --button-tertiary-inverse-hover-border-color    : transparent;
-  --button-tertiary-inverse-active-bkg-color      : var(--bg-lighten-pressed);
-  --button-tertiary-inverse-active-border-color   : transparent;
+  --button-tertiary-inverse-bkg-color           : transparent;
+  --button-tertiary-inverse-text-color          : var(--button-secondary-inverse-text-color);
+  --button-tertiary-inverse-border-color        : transparent;
+  --button-tertiary-inverse-hover-shadow        : var(--button-secondary-inverse-hover-shadow);
+  --button-tertiary-inverse-hover-bkg-color     : var(--button-secondary-inverse-hover-bkg-color);
+  --button-tertiary-inverse-hover-border-color  : transparent;
+  --button-tertiary-inverse-active-bkg-color    : var(--button-secondary-inverse-active-bkg-color);
+  --button-tertiary-inverse-active-border-color : transparent;
 
-  --button-disabled-bkg-color             : var(--bg-disabled);
-  --button-disabled-text-color            : var(--color-neutral-6);
-
+  --button-disabled-bkg-color                   : var(--bg-disabled);
+  --button-disabled-text-color                  : var(--color-neutral-6);
   /* stylelint-enable */
 
   // Structural Styles
@@ -87,9 +88,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--min-size);
+  min-height: var(--button-height);
   padding: var(--button-padding);
-  font-weight: var(--text-weight-bold);
+  font-weight: var(--button-text-weight);
   font-size: var(--button-text-size);
   text-decoration: none;
   column-gap: var(--button-gap);
@@ -131,9 +132,9 @@
   &[data-button-variant="primary"] {
     color: var(--button-primary-text-color);
     background-color: var(--button-primary-bkg-color);
-    border: var(--border-width-2) solid var(--button-primary-border-color);
+    border: var(--button-border-width) solid var(--button-primary-border-color);
 
-    &:hover, &:focus {
+    &:hover {
       background-color: var(--button-primary-hover-bkg-color);
       border-color: var(--button-primary-hover-border-color);
       box-shadow: var(--button-primary-hover-shadow);
@@ -147,9 +148,9 @@
     &[data-button-inverse] {
       color: var(--button-primary-inverse-text-color);
       background-color: var(--button-primary-inverse-bkg-color);
-      border: var(--border-width-2) solid var(--button-primary-inverse-border-color);
+      border: var(--button-border-width) solid var(--button-primary-inverse-border-color);
 
-      &:hover, &:focus {
+      &:hover {
         background-color: var(--button-primary-inverse-hover-bkg-color);
         border-color: var(--button-primary-inverse-hover-border-color);
         box-shadow: var(--button-primary-inverse-hover-shadow);
@@ -165,9 +166,9 @@
   &[data-button-variant="secondary"] {
     color: var(--button-secondary-text-color);
     background-color: var(--button-secondary-bkg-color);
-    border: var(--border-width-2) solid var(--button-secondary-border-color);
+    border: var(--button-border-width) solid var(--button-secondary-border-color);
 
-    &:hover, &:focus {
+    &:hover {
       background-color: var(--button-secondary-hover-bkg-color);
       border-color: var(--button-secondary-hover-border-color);
       box-shadow: var(--button-secondary-hover-shadow);
@@ -181,9 +182,9 @@
     &[data-button-inverse] {
       color: var(--button-secondary-inverse-text-color);
       background-color: var(--button-secondary-inverse-bkg-color);
-      border: var(--border-width-2) solid var(--button-secondary-inverse-border-color);
+      border: var(--button-border-width) solid var(--button-secondary-inverse-border-color);
 
-      &:hover, &:focus {
+      &:hover {
         background-color: var(--button-secondary-inverse-hover-bkg-color);
         border-color: var(--button-secondary-inverse-hover-border-color);
         box-shadow: var(--button-secondary-inverse-hover-shadow);
@@ -199,10 +200,9 @@
   &[data-button-variant="tertiary"] {
     color: var(--button-tertiary-text-color);
     background-color: var(--button-tertiary-bkg-color);
-    border: var(--border-width-2) solid var(--button-tertiary-border-color);
-    box-shadow: none;
+    border: var(--button-border-width) solid var(--button-tertiary-border-color);
 
-    &:hover, &:focus {
+    &:hover {
       background-color: var(--button-tertiary-hover-bkg-color);
       border-color: var(--button-tertiary-hover-border-color);
     }
@@ -216,9 +216,9 @@
     &[data-button-inverse] {
       color: var(--button-tertiary-inverse-text-color);
       background-color: var(--button-tertiary-inverse-bkg-color);
-      border: var(--border-width-2) solid var(--button-tertiary-inverse-border-color);
+      border: var(--button-border-width) solid var(--button-tertiary-inverse-border-color);
 
-      &:hover, &:focus {
+      &:hover {
         background-color: var(--button-tertiary-inverse-hover-bkg-color);
         border-color: var(--button-tertiary-inverse-hover-border-color);
         box-shadow: var(--button-tertiary-inverse-hover-shadow);
