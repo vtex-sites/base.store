@@ -105,7 +105,7 @@ function Filter({
     )
 
     // Checks if accordion item is already opened
-    selectedActiveFacets.map(
+    selectedActiveFacets.forEach(
       ({ accordionIndex }) =>
         !indicesExpanded.has(accordionIndex) &&
         onAccordionChange(accordionIndex)
