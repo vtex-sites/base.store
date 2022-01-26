@@ -7,6 +7,7 @@ import QuantitySelector from 'src/components/ui/QuantitySelector'
 import type { CartItemWithAnalytics } from 'src/sdk/cart/useBuyButton'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useCart } from 'src/sdk/cart/useCart'
 
 import './cart-item.scss'
 
@@ -16,6 +17,7 @@ interface Props {
 
 function CartItem({ item }: Props) {
   const btnProps = useRemoveButton(item)
+  const { updateItemQuantity } = useCart()
 
   return (
     <article
@@ -76,8 +78,7 @@ function CartItem({ item }: Props) {
         <QuantitySelector
           min={1}
           initial={item.quantity}
-          max={10}
-          disabled={false}
+          onChange={(quantity) => updateItemQuantity(item.id, quantity)}
         />
       </footer>
     </article>
