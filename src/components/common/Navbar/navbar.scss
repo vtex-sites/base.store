@@ -89,11 +89,15 @@
   justify-content: space-between;
   padding: var(--space-3) 0;
 
-  button {
+  .navbar__button {
     position: absolute;
     right: calc(-1 * var(--page-padding-phone));
+    display: flex;
     margin-right: var(--space-1);
+    padding: var(--space-1);
+    color: var(--color-text-display);
     background-color: transparent;
+    border: 0;
   }
 }
 
@@ -134,10 +138,4 @@
     border-top: var(--border-width-0) solid var(--color-neutral-2);
     border-bottom: var(--border-width-0) solid var(--color-neutral-2);
   }
-}
-
-.navlinks__button {
-  color: var(--color-text-display);
-  background-color: transparent;
-  border: 0;
 }

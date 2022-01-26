@@ -104,7 +104,7 @@ function Navbar() {
                 <Logo />
               </LinkGatsby>
               <Button
-                className="navlinks__button"
+                className="navbar__button"
                 aria-label="Close Menu"
                 onClick={() => {
                   onDismissTransition?.()
