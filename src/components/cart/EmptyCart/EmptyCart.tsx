@@ -3,7 +3,7 @@ import Button from 'src/components/ui/Button'
 import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
-import './empty-cart.scss '
+import './empty-cart.scss'
 
 function EmptyCart() {
   const toggleProps = useCartToggleButton()

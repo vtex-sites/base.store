@@ -15,8 +15,8 @@ $base: 16px !default;
 }
 
 @mixin button-focus-ring {
-  outline: 2px solid var(--bg-focus-ring);
-  outline-offset: 1px;
+  outline: none;
+  box-shadow: 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
 }
 
 @mixin input-focus-ring {

@@ -121,8 +121,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: var(--min-size);
-      min-height: var(--min-size);
+      min-width: var(--tap-min-size);
+      min-height: var(--tap-min-size);
       padding: var(--space-1);
     }
   }
