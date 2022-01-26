@@ -13,7 +13,8 @@
   border-radius: var(--border-radius-button);
   transition: background-color .5s ease;
 
-  &:focus { @include button-focus-ring; }
+  &:focus { outline: none; }
+  &:focus-visible { @include button-focus-ring; }
 
   &:disabled, &[data-button-disabled="true"] {
     cursor: not-allowed;
