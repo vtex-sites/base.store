@@ -46,7 +46,7 @@ function CartSidebar() {
           <div className="cart-sidebar__fixed-elements">
             <header className="cart-sidebar__header">
               <div className="cart-sidebar__title">
-                <p className="title-section">Your Cart</p>
+                <p className="title-display">Your Cart</p>
                 <Badge variant="new" small>
                   {totalItems}
                 </Badge>
