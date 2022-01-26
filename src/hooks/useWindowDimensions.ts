@@ -3,7 +3,11 @@ import { useState, useEffect, useCallback } from 'react'
 export default function useWindowDimensions() {
   const hasWindow = typeof window !== 'undefined'
   // See breakpoints on styles/global.scss
-  const [notebookBreakpoint, setNotebookBreakpoint] = useState('')
+  const notebookBreakpoint = hasWindow
+    ? getComputedStyle(document.documentElement).getPropertyValue(
+        '--breakpoint-notebook'
+      )
+    : '1280'
 
   const getWindowDimensions = useCallback(() => {
     const width = hasWindow ? window.innerWidth : null
@@ -29,12 +33,6 @@ export default function useWindowDimensions() {
     function handleResize() {
       setWindowDimensions(getWindowDimensions())
     }
-
-    setNotebookBreakpoint(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--breakpoint-notebook'
-      ) || '1280'
-    )
 
     window.addEventListener('resize', handleResize)
 
