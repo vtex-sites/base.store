@@ -43,23 +43,25 @@ function CartSidebar() {
             isEmpty ? 'cart-sidebar__body--empty' : ''
           }`}
         >
-          <header className="cart-sidebar__header">
-            <div className="cart-sidebar__title">
-              <p className="title-section">Your Cart</p>
-              <Badge variant="new" small>
-                {totalItems}
-              </Badge>
-            </div>
-            <Button
-              data-testid="cart-sidebar-button-close"
-              onClick={() => onDismissTransition()}
-            >
-              <XIcon size={32} />
-            </Button>
-          </header>
-          <Alert icon={<TruckIcon size={24} />}>
-            Free shiping starts at $300
-          </Alert>
+          <div className="cart-sidebar__fixed-elements">
+            <header className="cart-sidebar__header">
+              <div className="cart-sidebar__title">
+                <p className="title-section">Your Cart</p>
+                <Badge variant="new" small>
+                  {totalItems}
+                </Badge>
+              </div>
+              <Button
+                data-testid="cart-sidebar-button-close"
+                onClick={() => onDismissTransition()}
+              >
+                <XIcon size={32} />
+              </Button>
+            </header>
+            <Alert icon={<TruckIcon size={24} />}>
+              Free shiping starts at $300
+            </Alert>
+          </div>
 
           {isEmpty ? (
             <EmptyCart />

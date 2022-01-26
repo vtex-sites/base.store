@@ -17,8 +17,13 @@
   }
 }
 
+.cart-sidebar__fixed-elements {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
 .cart-sidebar__header {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
