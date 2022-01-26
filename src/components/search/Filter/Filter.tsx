@@ -100,12 +100,12 @@ function Filter({
     }
 
     // Ensures there isn't empty facets
-    const filteredActiveFacets = activeFacets.filter(
+    const selectedActiveFacets = activeFacets.filter(
       (item) => item.facets.length > 0
     )
 
     // Checks if accordion item is already opened
-    filteredActiveFacets.map(
+    selectedActiveFacets.map(
       ({ accordionIndex }) =>
         !indicesExpanded.has(accordionIndex) &&
         onAccordionChange(accordionIndex)
@@ -151,16 +151,13 @@ function Filter({
               buttonLabel={label}
               ref={(_) => {
                 // Filter current selected facets from API
-                const filteredValues = values.filter(({ selected }) => selected)
+                const selectedValues = values.filter(({ selected }) => selected)
 
                 // Ensures only one array item for each accordion's item
                 if (activeFacets.length < filteredFacets.length) {
                   activeFacets.push({
                     accordionIndex: index,
-                    facets:
-                      filteredValues.length > 0
-                        ? filteredValues.map(({ value }) => value)
-                        : [],
+                    facets: selectedValues.map(({ value }) => value),
                   })
                   setActiveFacets(activeFacets)
                 }
