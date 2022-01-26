@@ -88,19 +88,15 @@ export const onPreRenderHTML = ({
 }) => {
   const headComponents = getHeadComponents()
 
-  for (const [idx, component] of headComponents.entries()) {
-    // Move the styles chunk to the beginning so styles from `global.scss`
-    // can be overwritten such as the grid ones.
-    if (
-      component &&
-      component.props &&
-      /\/styles/.test(component.props['data-href'])
-    ) {
-      headComponents.splice(idx, 1)
-      headComponents.unshift(component)
-      break
-    }
-  }
+  // enforce the global style before the others
+  const orderedComponents = headComponents.sort((item) => {
+    const isGlobalStyle =
+      item.type === 'style' &&
+      item.props['data-href'] &&
+      /^\/styles.[a-zA-Z0-9]*.css$/.test(item.props['data-href'])
 
-  replaceHeadComponents(headComponents)
+    return isGlobalStyle ? -1 : 1
+  })
+
+  replaceHeadComponents(orderedComponents)
 }

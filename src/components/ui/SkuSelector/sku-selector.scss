@@ -1,3 +1,5 @@
+@import "../../../styles/utilities.scss";
+
 [data-store-sku-selector] {
   display: flex;
   flex-wrap: wrap;
@@ -38,7 +40,8 @@
       &:focus-visible + span {
         border-color: var(--color-border-input-selected);
         border-width: var(--border-width-1);
-        box-shadow: 0 0 0 1px var(--color-neutral-0), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
+
+        @include focus-ring;
       }
 
       &:hover:not(:disabled):not(:checked) + span {
