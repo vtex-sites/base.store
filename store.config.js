@@ -13,7 +13,10 @@ module.exports = {
 
   // Production URLs
   storeUrl: 'https://vtexfaststore.com',
+  secureSubdomain: 'https://secure.vtexfaststore.com',
   checkoutUrl: 'https://secure.vtexfaststore.com/checkout',
+  loginUrl: 'https://secure.vtexfaststore.com/api/io/login',
+  accountUrl: 'https://secure.vtexfaststore.com/api/io/account',
 
   // Lighthouse CI
   lighthouse: {
