@@ -12,10 +12,10 @@
   --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
   --qty-selector-shadow                   : none;
 
-  --qty-selector-bkg-color                : var(--bg-neutral-lightest);
+  --qty-selector-bkg-color                : white;
 
   --qty-selector-text-size                : var(--text-size-2);
-  --qty-selector-text-color               : var(--color-text);
+  --qty-selector-text-color               : black;
 
   --qty-selector-icon-color               : black;
 
@@ -36,14 +36,14 @@
   --qty-selector-hover-text-color         : var(--qty-selector-text-color);
   --qty-selector-hover-icon-color         : var(--qty-selector-icon-color);
   --qty-selector-hover-border-color       : var(--qty-selector-border-color);
-  --qty-selector-hover-button-bkg-color   : var(--color-neutral-1);
+  --qty-selector-hover-button-bkg-color   : whitesmoke;
 
   --qty-selector-focus-button-bkg-color   : var(--qty-selector-hover-button-bkg-color);
 
-  --qty-selector-disabled-bkg-color       : var(--qty-selector-bkg-color);
-  --qty-selector-disabled-text-color      : var(--color-text);
-  --qty-selector-disabled-icon-color      : var(--color-text-disabled);
-  --qty-selector-disabled-border-color    : var(--qty-selector-hover-border-color);
+  --qty-selector-disabled-bkg-color       : transparent;
+  --qty-selector-disabled-text-color      : gray;
+  --qty-selector-disabled-icon-color      : gray;
+  --qty-selector-disabled-border-color    : gray;
   --qty-selector-disabled-button-bkg-color: var(--qty-selector-button-hover-bkg-color);
   /* stylelint-enable */
 
@@ -84,6 +84,8 @@
   [data-quantity-selector-button] {
     position: relative;
     flex: 1 1 auto;
+    min-width: var(--min-size);
+    min-height: var(--min-size);
     padding: calc(var(--qty-selector-border-width) * 2);
     background-color: var(--qty-selector-button-bkg-color);
     border: 0;
@@ -107,7 +109,12 @@
 
     &:disabled {
       cursor: not-allowed;
-      [data-store-icon] { color: var(--qty-selector-disabled-icon-color); }
+
+      [data-store-icon] {
+        color: var(--qty-selector-disabled-icon-color);
+        background-color: var(--qty-selector-disabled-bkg-color);
+        border-color: var(--qty-selector-disabled-border-color);
+      }
     }
 
     &:focus {

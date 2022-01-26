@@ -3,7 +3,7 @@
 
 [data-base-select] {
 
-  // Design Tokens for Quantity Selector
+  // Design Tokens for Select
   // --------------------------------------------------------
 
   /* stylelint-disable */
@@ -65,6 +65,7 @@
     &:hover:not(:disabled) {
       color: var(--select-hover-text-color);
       background-color: var(--select-hover-bkg-color);
+      border-color: var(--select-hover-border-color);
       box-shadow: var(--select-hover-shadow);
 
       svg { color: var(--select-hover-icon-color); }
