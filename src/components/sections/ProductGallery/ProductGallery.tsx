@@ -1,6 +1,6 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Sort from 'src/components/search/Sort'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import { Icon as UIIcon } from '@faststore/ui'
@@ -21,19 +21,9 @@ function ProductGallery({ title }: Props) {
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
-  const { width: screenWidth } = useWindowDimensions()
+  const { isMobile } = useWindowDimensions()
 
-  const [isMobile, setIsMobile] = useState<boolean>(false)
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (!screenWidth) {
-      return
-    }
-
-    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
-    setIsMobile(screenWidth < 1280)
-  }, [screenWidth])
 
   if (!data) {
     return <div className="temp-data-loading">loading...</div>
