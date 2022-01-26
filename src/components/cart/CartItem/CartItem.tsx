@@ -78,8 +78,6 @@ function CartItem({ item }: Props) {
         <QuantitySelector
           min={1}
           initial={item.quantity}
-          max={10}
-          disabled={false}
           onChange={(quantity) => updateItemQuantity(item.id, quantity)}
         />
       </footer>

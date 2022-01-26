@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
 import AspectRatio from 'src/components/ui/AspectRatio'
@@ -27,6 +27,8 @@ function ProductDetails({ product: staleProduct }: Props) {
   const { data, isValidating } = useProduct(staleProduct.id, {
     product: staleProduct,
   })
+
+  const [addQuantity, setAddQuantity] = useState(1)
 
   if (!data) {
     throw new Error('NotFound')
@@ -98,7 +100,7 @@ function ProductDetails({ product: staleProduct }: Props) {
     price,
     listPrice,
     seller,
-    quantity: 1,
+    quantity: addQuantity,
     gtin,
     itemOffered: {
       image: productImages,
@@ -165,7 +167,7 @@ function ProductDetails({ product: staleProduct }: Props) {
               <p className="price__old text-body-small">{formattedListPrice}</p>
               <p className="price__new">{isValidating ? '' : formattedPrice}</p>
             </div> */}
-            <QuantitySelector min={1} max={10} disabled={false} />
+            <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
           </section>
           {/* NOTE: A loading skeleton had to be used to avoid a Lighthouse's
               non-composited animation violation due to the button transitioning its
