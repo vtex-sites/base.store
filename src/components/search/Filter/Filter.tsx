@@ -113,7 +113,7 @@ function Filter({
   }, [isOpen, activeFacets, filteredFacets, indicesExpanded, onAccordionChange])
 
   const onFacetChange = (item: IStoreSelectedFacet) => {
-    if (selectedFacets.some((filter) => filter.value === item.value)) {
+    if (selectedFacets.some((facet) => facet.value === item.value)) {
       const indexToRemove = selectedFacets.findIndex(
         (f) => f.value === item.value
       )
@@ -244,14 +244,13 @@ function Filter({
             facetsToRemove.length > 0 && toggleFacets(facetsToRemove)
 
             // Only toggle new facets and keep the current ones applied
-            const facetsToToggle = selectedFacets
+            const facetsToAdd = selectedFacets
               .map(
-                (filter) =>
-                  !searchState.selectedFacets.includes(filter) && filter
+                (facet) => !searchState.selectedFacets.includes(facet) && facet
               )
               .filter((m) => typeof m !== 'boolean') as IStoreSelectedFacet[]
 
-            toggleFacets(facetsToToggle)
+            toggleFacets(facetsToAdd)
 
             setActiveFacets([])
             setFacetsToRemove([])
