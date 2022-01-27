@@ -1,0 +1,170 @@
+@import "../scaffold.scss";
+
+.product-listing {
+  padding-top: 0;
+
+  @include media(">=notebook") {
+    padding-top: var(--page-padding-notebook);
+  }
+}
+
+.product-listing__breadcrumb {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+}
+
+// Temporary till we have skeletons.
+.product-listing__data-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-top: var(--space-5);
+}
+
+.product-listing__hero {
+  width: 100%;
+}
+
+.product-listing__content-grid {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0;
+  padding-left: 0;
+
+  @include media(">=notebook") {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding-right: var(--page-padding-notebook);
+    padding-left: var(--page-padding-notebook);
+    column-gap: var(--space-4);
+    row-gap: var(--space-0);
+  }
+}
+
+.product-listing__filters {
+  display: none;
+
+  @include media(">=notebook") {
+    position: sticky;
+    top: var(--grid-gap-0);
+    display: flex;
+    grid-column: 1 / span 3;
+    align-items: center;
+  }
+}
+
+.product-listing__filters-bar {
+  @include media(">=notebook") {
+    position: sticky;
+    top: rem(60px);
+    grid-column: 1 / span 3;
+    align-self: start;
+  }
+}
+
+.product-listing__sort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  order: 1;
+  width: 100%;
+  min-height: 68px;
+  padding: var(--space-1) var(--space-3) var(--space-2);
+  background-color: var(--bg-neutral-lightest);
+
+  @include media(">=notebook") {
+    grid-column: 6 / span 7;
+    justify-content: right;
+    order: unset;
+    min-height: initial;
+    padding: 0;
+  }
+}
+
+.product-listing__results-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  order: 2;
+  min-height: 45px;
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--bg-neutral-light);
+
+  @include media(">=notebook") {
+    grid-column: 4 /span 2;
+    justify-content: left;
+    order: unset;
+    min-height: initial;
+    padding: 0;
+    background-color: unset;
+  }
+}
+
+.product-listing__results {
+  --padding: var(--space-1);
+
+  order: 3;
+  padding: var(--padding) var(--padding) 0;
+  background-color: var(--bg-neutral-light);
+
+  @include media(">=notebook") {
+    grid-column: 4 / span 9;
+    order: unset;
+    padding: 0;
+    background-color: unset;
+  }
+
+  .product-card[data-store-card] { min-width: 100%; }
+}
+
+.product-listing__results-sponsored {
+  margin: var(--space-1) calc(-1 * var(--padding));
+  padding: var(--space-4) var(--space-3);
+  background-color: var(--bg-neutral-lightest);
+
+  @include media(">=notebook") {
+    margin: var(--space-6) 0;
+    padding: 0;
+
+    [data-store-tiles] {
+      column-gap: var(--grid-gap-0);
+      row-gap: 0;
+    }
+  }
+
+  h3 { margin-bottom: var(--space-1); }
+}
+
+.product-listing__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 96px;
+  margin: var(--padding) calc(-1 * var(--padding)) 0;
+  padding: var(--space-4);
+  background-color: var(--bg-neutral-lightest);
+
+  @include media(">=notebook") {
+    padding: var(--space-1) var(--space-2);
+  }
+
+  [data-store-button] {
+    width: 100%;
+
+    @include media(">=notebook") {
+      width: fit-content;
+    }
+  }
+}
+
+.product-listing__scroll-top {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: var(--space-10);
+
+  @include media(">=notebook") {
+    padding-bottom: var(--space-8);
+  }
+}

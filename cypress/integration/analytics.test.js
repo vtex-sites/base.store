@@ -197,10 +197,12 @@ describe('view_item_list event', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('product-link').then(() => {
-      cy.scrollTo('top', { duration: 500 }).then(() => {
-        dataLayerHasEvent('view_item_list')
-        eventDataHasCurrencyProperty()
+    cy.get('.product-grid [data-testid=product-link]').then(() => {
+      cy.scrollTo('bottom', { duration: 500 }).then(() => {
+        cy.scrollTo('top', { duration: 500 }).then(() => {
+          dataLayerHasEvent('view_item_list')
+          eventDataHasCurrencyProperty()
+        })
       })
     })
   })

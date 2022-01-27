@@ -47,28 +47,7 @@ function GalleryPage({
     [productList]
   )
 
-  /*
-  PS.: Just for  the sake of demonstrantion, productSponsoredList was created by copying the data from
-  productList, and an arbitrary page (20) was choosen to get different products.
-  */
-  const productSponsoredList = useProductsQuery(
-    {
-      first: itemsPerPage,
-      after: (itemsPerPage * 20).toString(),
-      sort,
-      term: term ?? '',
-      selectedFacets,
-    },
-    {
-      fallbackData,
-      revalidateOnMount: fallbackData == null,
-    }
-  )
-
-  const productsSponsored = useMemo(
-    () => productSponsoredList?.edges.map((edge) => edge.node),
-    [productSponsoredList]
-  )
+  const productsSponsored = products?.slice(0, 2)
 
   const middleItemIndex = Math.ceil(itemsPerPage / 2)
 
@@ -97,10 +76,10 @@ function GalleryPage({
             page={page}
             pageSize={middleItemIndex}
           />
-          <div>
+          <div className="product-listing__results-sponsored">
             <h3>Sponsored</h3>
+            <ProductTiles products={productsSponsored.slice(0, 2)} />
           </div>
-          <ProductTiles products={productsSponsored.slice(0, 2)} />
           <ProductGrid
             products={products.slice(middleItemIndex, itemsPerPage)}
             page={page}

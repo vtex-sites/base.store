@@ -97,7 +97,6 @@ function Filter({
   const Facets = () => {
     return (
       <div className="filter" data-store-filter data-testid={testId}>
-        <h2 className="title-small">Filters</h2>
         <Accordion
           expandedIndices={indicesExpanded}
           onChange={onAccordionChange}

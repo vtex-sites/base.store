@@ -34,9 +34,6 @@ describe('Search page Filters and Sorting options', () => {
     // Check applied filters
     cy.getById('open-filter-button')
       .click()
-      .getById('filter-accordion-button')
-      .first()
-      .click()
       .getById('filter-accordion-panel-checkbox')
       .first()
       .click()
@@ -60,7 +57,7 @@ describe('Search page Filters and Sorting options', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    const priceId = '[data-testid="store-card"] [data-testid="price"]'
+    const priceId = '.product-grid [data-testid="price"]'
 
     cy.getById('search-sort')
       .should('exist')
@@ -82,7 +79,7 @@ describe('Search page Filters and Sorting options', () => {
   it('Sort products by price_desc', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
-    const priceId = '[data-testid="store-card"] [data-testid="price"]'
+    const priceId = '.product-grid [data-testid="price"]'
 
     cy.getById('search-sort')
       .should('exist')
@@ -189,15 +186,14 @@ describe('Infinite Scroll pagination', () => {
       .click({ force: true })
       .then(() => {
         // Scroll to the last product and confirm that we are on page 1
-        cy.getById('store-card')
+        cy.get('.product-grid [data-testid=store-card]')
           .last()
-          .scrollIntoView({ offset: { top: -50 } })
           .then(() => {
             cy.location('search').should('match', /page=1$/)
           })
 
         // Scroll back to the first product and confirm that we are on page 0
-        cy.getById('store-card')
+        cy.get('.product-grid [data-testid=store-card]')
           .first()
           .scrollIntoView({ offset: { top: -50 } })
           .then(() => {
