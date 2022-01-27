@@ -20,7 +20,7 @@ describe('Cart Sidebar', () => {
 
     cy.getById('cart-toggle').first().click()
     cy.getById('cart-sidebar').should('exist')
-    cy.getById('cart-toggle').first().click()
+    cy.getById('cart-sidebar-button-close').first().click()
     cy.getById('cart-sidebar').should('not.exist')
   })
 })

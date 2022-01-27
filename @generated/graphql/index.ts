@@ -1035,8 +1035,6 @@ export type QuerySiteArgs = {
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   parent: InputMaybe<NodeFilterInput>
-  pathPrefix: InputMaybe<StringQueryOperatorInput>
-  polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
 }
@@ -1140,8 +1138,6 @@ export type Site = Node & {
   id: Scalars['ID']
   internal: Internal
   parent: Maybe<Node>
-  pathPrefix: Maybe<Scalars['String']>
-  polyfill: Maybe<Scalars['Boolean']>
   port: Maybe<Scalars['Int']>
   siteMetadata: Maybe<SiteSiteMetadata>
 }
@@ -1481,8 +1477,6 @@ export type SiteFieldsEnum =
   | 'parent___parent___internal___type'
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
-  | 'pathPrefix'
-  | 'polyfill'
   | 'port'
   | 'siteMetadata___author'
   | 'siteMetadata___description'
@@ -1498,8 +1492,6 @@ export type SiteFilterInput = {
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   parent: InputMaybe<NodeFilterInput>
-  pathPrefix: InputMaybe<StringQueryOperatorInput>
-  polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
 }
@@ -3707,6 +3699,28 @@ export type CollectionPageQueryQuery = {
       }
     | null
     | undefined
+  allStoreProduct: {
+    nodes: Array<{
+      slug: string
+      sku: string
+      name: string
+      gtin: string
+      id: string
+      brand: { name: string; brandName: string }
+      isVariantOf: { productGroupID: string; name: string }
+      image: Array<{ url: string; alternateName: string }>
+      offers: {
+        lowPrice: number
+        offers: Array<{
+          availability: string
+          price: number
+          listPrice: number
+          quantity: number
+          seller: { identifier: string }
+        }>
+      }
+    }>
+  }
 }
 
 export type ProductPageQueryQueryVariables = Exact<{

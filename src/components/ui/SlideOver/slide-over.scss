@@ -1,3 +1,5 @@
+@import "src/styles/vendors/include-media";
+
 [data-modal-overlay] {
   position: fixed;
   top: 0;
@@ -22,6 +24,11 @@
   --gap-out: 48px;
 
   width: calc(100vw - var(--gap-out));
+
+  @include media(">=notebook") {
+    width: calc(100% / 3);
+    max-width: calc(var(--breakpoint-notebook) / 3);
+  }
 }
 
 [data-slide-over-direction="leftSide"] {

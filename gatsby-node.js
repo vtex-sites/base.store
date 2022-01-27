@@ -2,6 +2,10 @@ const path = require('path')
 
 const fs = require('fs-extra')
 
+const config = require('./store.config')
+
+const { secureSubdomain, loginUrl, accountUrl } = config
+
 exports.onPreInit = ({ reporter }) => {
   reporter.info('Copying Partytown Files')
 
@@ -54,5 +58,51 @@ exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: `@vtex/graphql-utils/babel`,
     options: {},
+  })
+}
+
+exports.createPages = async ({ actions: { createRedirect } }) => {
+  createRedirect({
+    fromPath: '/login/',
+    toPath: loginUrl,
+    statusCode: 301,
+    redirectInBrowser: true,
+  })
+
+  createRedirect({
+    fromPath: '/account/',
+    toPath: accountUrl,
+    statusCode: 301,
+    redirectInBrowser: true,
+  })
+
+  createRedirect({
+    fromPath: '/_v/private/graphql/*',
+    toPath: `${secureSubdomain}/_v/private/graphql/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/_v/public/graphql/*',
+    toPath: `${secureSubdomain}/_v/public/graphql/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/_v/segment/graphql/*',
+    toPath: `${secureSubdomain}/_v/segment/graphql/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/api/vtexid/*',
+    toPath: `${secureSubdomain}/api/vtexid/:splat`,
+    statusCode: 301,
+  })
+
+  createRedirect({
+    fromPath: '/api/sessions/*',
+    toPath: `${secureSubdomain}/api/sessions/:splat`,
+    statusCode: 301,
   })
 }

@@ -1,5 +1,5 @@
 import { graphql, Link } from 'gatsby'
-import React, { useMemo } from 'react'
+import React, { useMemo, memo } from 'react'
 import Button from 'src/components/ui/Button'
 import { DiscountBadge, Badge } from 'src/components/ui/Badge'
 import Price from 'src/components/ui/Price'
@@ -111,6 +111,7 @@ function ProductCard({
             }}
             alt={img.alternateName}
             sizes="(max-width: 768px) 200px, 320px"
+            loading="lazy"
           />
         </AspectRatio>
       </UICardImage>
@@ -209,4 +210,4 @@ export const fragment = graphql`
   }
 `
 
-export default ProductCard
+export default memo(ProductCard)
