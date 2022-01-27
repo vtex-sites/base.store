@@ -1,0 +1,43 @@
+@import "../../../styles/scaffold.scss";
+
+[data-store-search-input] {
+  position: relative;
+  display: inline-flex;
+  width: 100%;
+  height: var(--tap-min-size);
+
+  @include media(">=notebook") { height: var(--space-6); }
+
+  [data-store-input] {
+    width: 100%;
+    padding: var(--space-1) var(--space-7) var(--space-1) var(--space-2);
+    border: var(--border-width-0) solid var(--color-border-input);
+    border-radius: var(--border-radius-default);
+    transition: box-shadow .2s ease, border .2s ease;
+
+    &:focus { @include input-focus-ring; }
+  }
+
+  [data-store-icon] { display: block; }
+
+  [data-store-button] {
+    position: absolute;
+    right: 0;
+    width: var(--space-7);
+    height: var(--space-7);
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+
+    @include media(">=notebook") {
+      height: var(--space-6);
+      min-height: var(--space-6);
+    }
+  }
+
+  [data-store-button] svg {
+    width: var(--space-4);
+    height: var(--space-4);
+    color: var(--color-neutral-7);
+  }
+}

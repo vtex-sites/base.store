@@ -1,0 +1,35 @@
+@import "../../../styles/vendors/include-media.scss";
+
+.product-grid {
+  --gap: 2px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--gap);
+
+  @include media(">=notebook") {
+    --gap: var(--grid-gap-0);
+
+    $pagination-start-index: 3;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    &:nth-of-type(n + #{$pagination-start-index}) {
+      margin-top: var(--gap);
+    }
+  }
+
+  li {
+    background-color: var(--color-neutral-0);
+  }
+
+  [data-store-card] {
+    &[data-card-bordered="true"] {
+      border: none;
+
+      @include media(">=notebook") {
+        border: 1px solid var(--color-border-display);
+      }
+    }
+  }
+}

@@ -11,27 +11,31 @@ import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element }) => (
-  <ErrorBoundary>
-    <AnalyticsHandler>
-      <TestProvider>
-        <UIProvider
-          initialState={uiInitialState}
-          actions={uiActions}
-          effects={uiEffects}
-        >
-          <SessionProvider initialState={{ channel: storeConfig.channel }}>
-            <CartProvider mode="optimistic" onValidateCart={validateCart}>
-              {element}
-            </CartProvider>
-          </SessionProvider>
-        </UIProvider>
-      </TestProvider>
-    </AnalyticsHandler>
-  </ErrorBoundary>
-)
+export const wrapRootElement = ({ element }) => {
+  return (
+    <ErrorBoundary>
+      <AnalyticsHandler>
+        <TestProvider>
+          <UIProvider
+            initialState={uiInitialState}
+            actions={uiActions}
+            effects={uiEffects}
+          >
+            <SessionProvider initialState={{ channel: storeConfig.channel }}>
+              <CartProvider mode="optimistic" onValidateCart={validateCart}>
+                {element}
+              </CartProvider>
+            </SessionProvider>
+          </UIProvider>
+        </TestProvider>
+      </AnalyticsHandler>
+    </ErrorBoundary>
+  )
+}
 
-export const wrapPageElement = ({ element }) => <Layout>{element}</Layout>
+export const wrapPageElement = ({ element }) => {
+  return <Layout>{element}</Layout>
+}
 
 export const onRenderBody = ({ setHeadComponents }) => {
   let addPartytown = false
@@ -76,4 +80,23 @@ export const onRenderBody = ({ setHeadComponents }) => {
   if (addPartytown) {
     setHeadComponents([<Partytown key="partytown" forward={forward} />])
   }
+}
+
+export const onPreRenderHTML = ({
+  getHeadComponents,
+  replaceHeadComponents,
+}) => {
+  const headComponents = getHeadComponents()
+
+  // enforce the global style before the others
+  const orderedComponents = headComponents.sort((item) => {
+    const isGlobalStyle =
+      item.type === 'style' &&
+      item.props['data-href'] &&
+      /^\/styles.[a-zA-Z0-9]*.css$/.test(item.props['data-href'])
+
+    return isGlobalStyle ? -1 : 1
+  })
+
+  replaceHeadComponents(orderedComponents)
 }

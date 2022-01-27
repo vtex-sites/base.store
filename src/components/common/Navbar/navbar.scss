@@ -1,0 +1,141 @@
+@import "../../../styles/vendors/include-media";
+
+.navbar {
+  padding: 0;
+  border-bottom: var(--border-width-0) solid var(--color-neutral-2);
+  box-shadow: 0 var(--space-0) var(--space-3) var(--color-black-transparent-5);
+
+  [data-store-search-input] {
+    flex: 1 0 100%;
+    order: 2;
+  }
+}
+
+.navbar__row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @include media(">=notebook") {
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 37.5rem) 1fr;
+  }
+
+  @include media("<notebook") {
+    + .navlinks__list {
+      display: none;
+    }
+  }
+}
+
+.navbar__menu[data-store-button] {
+  color: var(--color-text);
+  background-color: transparent;
+  border: 0;
+
+  @include media(">=notebook") { display: none; }
+}
+
+.navbar__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  .signin-link[data-button-signin-link] {
+    display: none;
+  }
+
+  @include media(">=notebook") {
+    order: 2;
+
+    .signin-link[data-button-signin-link] {
+      display: inline-flex;
+    }
+  }
+}
+
+.navbar__header {
+  padding-top: var(--space-1);
+  padding-bottom: var(--space-2);
+
+  @include media(">=notebook") {
+    padding-top: var(--space-1);
+    padding-bottom: var(--space-1);
+  }
+}
+
+.navbar__logo {
+  width: 9.25rem;
+  height: 2.5625rem;
+  min-height: 2.5625rem;
+  padding: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.navbar__modal-body {
+  padding: var(--page-padding-phone);
+}
+
+.navbar__modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+
+  .navbar__button {
+    position: absolute;
+    right: calc(-1 * var(--page-padding-phone));
+    display: flex;
+    margin-right: var(--space-1);
+    padding: var(--space-1);
+    color: var(--color-text-display);
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+.navlinks {
+  .navlinks__signin {
+    margin-top: var(--space-2);
+    padding-top: var(--space-2);
+
+    .signin-link[data-button-signin-link] {
+      width: fit-content;
+      padding-left: 0;
+
+      @include media(">=notebook") { display: none; }
+    }
+  }
+}
+
+.navlinks__list {
+  a {
+    display: block;
+    width: 100%;
+  }
+
+  @include media(">=notebook") {
+    ul {
+      display: flex;
+      padding-top: var(--space-1);
+      column-gap: var(--space-3);
+    }
+
+    a {
+      width: auto;
+      padding: var(--space-0) 0;
+    }
+  }
+
+  @include media("<notebook") {
+    border-top: var(--border-width-0) solid var(--color-neutral-2);
+    border-bottom: var(--border-width-0) solid var(--color-neutral-2);
+  }
+}

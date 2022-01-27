@@ -56,7 +56,7 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <h1 className="absolute top-[-100px]">{title}</h1>
+      <h1>{title}</h1>
 
       <ProductGallery title="Search Results" />
     </SearchProvider>

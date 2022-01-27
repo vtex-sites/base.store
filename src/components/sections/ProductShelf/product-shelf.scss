@@ -1,0 +1,19 @@
+@import "../../../styles/vendors/include-media.scss";
+
+[data-product-shelf] {
+  display: flex;
+  align-items: stretch;
+  overflow-x: scroll;
+
+  li {
+    width: 100%;
+    &:first-child { margin-left: calc(-1 * var(--space-1)); }
+  }
+
+  @include media(">=tablet") {
+    padding-top: var(--space-0);
+    padding-bottom: var(--space-3);
+    overflow-x: auto;
+    column-gap: var(--space-2);
+  }
+}

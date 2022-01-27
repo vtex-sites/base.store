@@ -5,13 +5,16 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useMemo } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
+import ProductShelf from 'src/components/sections/ProductShelf'
+
+import '../../styles/pages/index.scss'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -21,7 +24,7 @@ export type Props = PageProps<
 function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
-    data: { product, site },
+    data: { product, site, allStoreProduct },
     location: { host },
     params: { slug },
   } = props
@@ -36,6 +39,14 @@ function Page(props: Props) {
 
   const canonical =
     host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
+
+  const youMightAlsoLikeProducts = useMemo(
+    () => allStoreProduct?.nodes,
+    [allStoreProduct]
+  )
+
+  const haveYouMightAlsoLikeProducts =
+    youMightAlsoLikeProducts && youMightAlsoLikeProducts?.length > 0
 
   return (
     <>
@@ -87,9 +98,17 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <h1 className="absolute top-[-100px]">{title}</h1>
 
       <ProductDetails product={product} />
+
+      {haveYouMightAlsoLikeProducts && (
+        <section className="page__section page__section-shelf page__section-divisor / grid-section">
+          <h2 className="title-section / grid-content">You might also like</h2>
+          <div className="page__section-content">
+            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
+          </div>
+        </section>
+      )}
     </>
   )
 }
@@ -142,10 +161,10 @@ export const querySSG = graphql`
         highPrice
         priceCurrency
         offers {
+          availability
           price
           priceValidUntil
           priceCurrency
-          availability
           itemCondition
           seller {
             identifier
@@ -154,6 +173,12 @@ export const querySSG = graphql`
       }
 
       ...ProductDetailsFragment_product
+    }
+
+    allStoreProduct(limit: 5) {
+      nodes {
+        ...ProductSummary_product
+      }
     }
   }
 `

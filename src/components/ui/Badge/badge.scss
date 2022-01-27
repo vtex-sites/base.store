@@ -1,0 +1,44 @@
+.badge[data-store-badge] {
+  width: fit-content;
+  height: fit-content;
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text);
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-2);
+  white-space: nowrap;
+  text-transform: uppercase;
+  border-radius: var(--border-radius-pill);
+
+  &[data-store-badge="small"] {
+    padding: var(--space-0) var(--space-2);
+    font-size: var(--text-size-0);
+  }
+}
+
+[data-store-badge-variant="outOfStock"] {
+  background-color: var(--bg-neutral);
+}
+
+[data-store-badge-variant="recommended"] {
+  background-color: var(--bg-highlighted);
+}
+
+[data-store-badge-variant="new"] {
+  background-color: var(--bg-info);
+}
+
+[data-store-badge-variant="neutral"] {
+  background-color: var(--bg-neutral);
+}
+
+[data-store-discount-badge-variant="low"] {
+  background-color: var(--bg-discount-low);
+}
+
+[data-store-discount-badge-variant="medium"] {
+  background-color: var(--bg-discount-medium);
+}
+
+[data-store-discount-badge-variant="high"] {
+  background-color: var(--bg-discount-high);
+}

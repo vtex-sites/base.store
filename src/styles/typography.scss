@@ -1,0 +1,121 @@
+// Default //////////////////////////
+
+:root {
+  // Sizes
+  --text-size-0: 12px;
+  --text-size-1: 14px;
+  --text-size-2: var(--base-font-size);                      // 16px
+  --text-size-3: calc(var(--base-font-size) * var(--scale)); // 20px
+  --text-size-4: calc(var(--text-size-3) * var(--scale));    // 25px
+  --text-size-5: calc(var(--text-size-4) * var(--scale));    // 31px
+  --text-size-6: calc(var(--text-size-5) * var(--scale));    // 39px
+  --text-size-7: calc(var(--text-size-6) * var(--scale));    // 48px
+  --text-size-8: calc(var(--text-size-7) * var(--scale));    // 61px
+
+  // Weight
+  --text-weight-regular: 400;
+  --text-weight-bold: 700;
+  --text-weight-black: 900;
+}
+
+body {
+  font-size: var(--base-font-size);
+  font-family: var(--sans-serif);
+  letter-spacing: .01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+// Titles ///////////////////////////
+
+.title-hero {
+  font-weight: var(--text-weight-black);
+  font-size: var(--text-size-5);
+  line-height: 1.1;
+
+  @include media(">=tablet") { font-size: var(--text-size-7); }
+}
+
+.title-hero-small {
+  font-weight: var(--text-weight-black);
+  font-size: var(--text-size-5);
+  line-height: 1.1;
+
+  @include media(">=tablet") { font-size: var(--text-size-6); }
+}
+
+.title-display-big {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-3);
+  line-height: 1.25;
+
+  @include media(">=notebook") { font-size: var(--text-size-6); }
+}
+
+.title-section {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-4);
+  line-height: 1.16;
+
+  @include media(">=notebook") { font-size: var(--text-size-5); }
+}
+
+.title-display {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-4);
+  line-height: 1.12;
+}
+
+.title-product {
+  font-weight: var(--text-weight-regular);
+  font-size: var(--text-size-4);
+  line-height: 1.12;
+}
+
+.title-subsection {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-3);
+  line-height: 1.2;
+}
+
+.title-sub-subsection {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-2);
+  line-height: 1.25;
+}
+
+.title-small {
+  font-size: var(--text-size-2);
+  line-height: 1.25;
+}
+
+// Texts ////////////////////////////
+
+.text-body-tiny {
+  font-size: var(--text-size-0);
+  line-height: 1.5;
+}
+
+.text-body-small {
+  font-size: var(--text-size-1);
+  line-height: 1.7;
+}
+
+.text-body {
+  font-size: var(--text-size-2);
+  line-height: 1.5;
+}
+
+.text-body-big {
+  font-size: var(--text-size-2);
+  line-height: 1.5;
+
+  @include media(">=notebook") {
+    font-size: var(--text-size-3);
+  }
+}

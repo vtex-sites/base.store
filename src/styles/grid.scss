@@ -1,0 +1,44 @@
+@import "../styles/vendors/include-media.scss";
+
+// Default //////////////////////////
+
+.grid-section {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+
+  @include media(">=notebook") {
+    margin-top: var(--page-padding-notebook);
+    margin-bottom: var(--page-padding-notebook);
+  }
+}
+
+.grid-content-full {
+  width: 100%;
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-4);
+
+  @include media(">=notebook") {
+    padding-top: var(--page-padding-notebook);
+    padding-bottom: var(--page-padding-notebook);
+  }
+}
+
+.grid-content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--breakpoint-notebook);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--page-padding-phone);
+  padding-left: var(--page-padding-phone);
+
+  @include media(">=tablet") {
+    padding-right: var(--page-padding-tablet);
+    padding-left: var(--page-padding-tablet);
+  }
+
+  @include media(">=notebook") {
+    padding-right: var(--page-padding-notebook);
+    padding-left: var(--page-padding-notebook);
+  }
+}

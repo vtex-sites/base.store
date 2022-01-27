@@ -1,0 +1,104 @@
+@import "../../../styles/scaffold.scss";
+
+[data-store-checkbox] {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(20px);
+  height: rem(20px);
+  border: var(--border-width-0) solid var(--color-border-input);
+  border-radius: var(--border-radius-default);
+  outline: none;
+  cursor: pointer;
+  transition: border .2s ease, background-color .2s ease, box-shadow .2s ease;
+  appearance: none;
+
+  &::before {
+    position: absolute;
+    top: rem(3px);
+    width: rem(6px);
+    height: rem(10px);
+    border: var(--border-width-1) solid var(--bg-neutral-lightest);
+    border-top: 0;
+    border-left: 0;
+    border-radius: var(--border-width-0);
+    transform: rotate(45deg);
+    opacity: 0;
+    content: "";
+  }
+
+  &:focus {
+    @include focus-ring;
+  }
+
+  &:hover {
+    background-color: var(--bg-secondary-light);
+    border-color: var(--color-text);
+  }
+
+  &:checked {
+    background-color: var(--bg-secondary-dark);
+    border-color: var(--color-border-input-selected);
+    border-width: 0;
+
+    &::before {
+      opacity: 1;
+    }
+
+    &:hover {
+      background-color: var(--bg-secondary-hover);
+    }
+  }
+
+  &[data-store-checkbox-partial="true"] {
+    background-color: var(--bg-neutral-lightest);
+    border: var(--border-width-0) solid var(--bg-secondary-dark);
+
+    &::before {
+      position: absolute;
+      top: auto;
+      width: rem(10px);
+      height: 0;
+      border-width: 0;
+      border-bottom: var(--border-width-1) solid var(--bg-secondary-dark);
+      border-radius: var(--border-width-0);
+      transform: rotate(0deg);
+      opacity: 1;
+      content: "";
+    }
+
+    &:checked {
+      &:hover {
+        background-color: var(--bg-secondary-light);
+      }
+    }
+
+    &:hover {
+      background-color: var(--bg-secondary-light);
+    }
+  }
+
+  &:disabled {
+    background-color: var(--bg-disabled);
+    border: var(--border-width-0) solid var(--color-border-input-disabled);
+    cursor: not-allowed;
+
+    &::before {
+      border-color: var(--color-border-input-disabled);
+    }
+
+    &:hover {
+      background-color: var(--bg-disabled);
+      border: var(--border-width-0) solid var(--color-border-input-disabled);
+
+      &::before {
+        border-color: var(--color-border-input-disabled);
+      }
+    }
+
+    + label {
+      color: var(--color-text-disabled);
+    }
+  }
+}

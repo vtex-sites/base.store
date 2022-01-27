@@ -1,0 +1,46 @@
+@import "../../../styles/scaffold.scss";
+
+.sort {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  label {
+    margin-right: var(--space-1);
+    color: var(--color-text-subtle);
+  }
+
+  [data-store-select] {
+    padding: var(--space-1) var(--space-5) var(--space-1) var(--space-2);
+    color: var(--color-link);
+    background: transparent;
+    border: 0;
+    border-radius: var(--border-radius-default);
+    box-shadow: 0;
+    transition: box-shadow .2s ease, background-color .2s ease;
+    appearance: none;
+
+    &:hover:not(:disabled) { background-color: var(--bg-secondary-light); }
+
+    &:disabled {
+      color: var(--color-text-disabled);
+      cursor: not-allowed;
+      opacity: 1;
+      + svg { display: none; }
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    @include media("<notebook") { min-height: var(--tap-min-size); }
+
+    @include media(">=notebook") { height: var(--space-6); }
+  }
+
+  svg {
+    position: absolute;
+    right: var(--space-2);
+    color: var(--color-link);
+  }
+}

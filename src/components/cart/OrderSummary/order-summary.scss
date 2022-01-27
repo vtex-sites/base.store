@@ -1,0 +1,15 @@
+.order-summary[data-order-summary] {
+  padding: var(--space-3);
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+
+    &[data-order-summary-discount] { color: var(--color-text-success); }
+
+    &:last-of-type {
+      margin-bottom: var(--space-2);
+    }
+  }
+}

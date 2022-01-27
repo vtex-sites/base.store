@@ -1,15 +1,20 @@
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import { useCart } from 'src/sdk/cart/useCart'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
+import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
+
+import './cart-toggle.scss'
 
 function CartToggle() {
   const btnProps = useCartToggleButton()
-  const { totalUniqueItems } = useCart()
 
   return (
-    <Button {...btnProps} className="mx-3">
-      cart: {totalUniqueItems}
+    <Button
+      {...btnProps}
+      className="cart-toggle"
+      aria-label={`Cart with ${btnProps['data-items']} items`}
+    >
+      <ShoppingCartIcon size={32} />
     </Button>
   )
 }

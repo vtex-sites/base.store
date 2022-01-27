@@ -3,6 +3,8 @@ import type { ChangeEventHandler } from 'react'
 import { Image } from 'src/components/ui/Image'
 import { RadioGroup, RadioOption, Label } from '@faststore/ui'
 
+import './sku-selector.scss'
+
 interface DefaultSkuProps {
   /**
    * Label to describe the SKU when selected.
@@ -41,7 +43,7 @@ type ImageVariant = 'image'
 
 type Sku<V> = V extends ImageVariant ? ImageSkuProps : DefaultSkuProps
 
-type Variant = 'color' | 'size' | 'image'
+type Variant = 'color' | 'label' | 'image'
 
 export interface SkuSelectorProps {
   /**
@@ -85,7 +87,7 @@ function SkuSelector({
     <div data-store-sku-selector data-testid={testId} data-variant={variant}>
       {label && (
         <Label data-sku-selector-label>
-          {label}: {selectedSku}
+          {label}: <strong>{selectedSku}</strong>
         </Label>
       )}
       <RadioGroup
@@ -99,27 +101,22 @@ function SkuSelector({
         {options.map((option, index) => {
           return (
             <RadioOption
-              data-sku-selector-option
               key={String(index)}
               label={option.label}
               value={option.label}
-              // TODO: Remove this inline style when we start to styling this component. Added just to skip "Tap Target" error (Lighthouse)
-              style={{ marginLeft: 60 }}
               disabled={option.disabled}
               checked={option.label === selectedSku}
             >
-              {variant === 'size' && (
-                // TODO: Remove this inline style when we start to styling this component. Added just to skip "Tap Target" error (Lighthouse)
-                <span style={{ padding: 48 }}>{option.label}</span>
-              )}
+              {variant === 'label' && <span>{option.label}</span>}
               {variant === 'color' && 'value' in option && (
-                <div
-                  style={{
-                    width: 40,
-                    height: 40,
-                    backgroundColor: option.value,
-                  }}
-                />
+                <span>
+                  <div
+                    data-sku-selector-color
+                    style={{
+                      backgroundColor: option.value,
+                    }}
+                  />
+                </span>
               )}
               {variant === 'image' && 'src' in option && (
                 <Image

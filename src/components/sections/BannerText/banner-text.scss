@@ -1,0 +1,36 @@
+@import "../../../styles/vendors/include-media";
+
+[data-store-banner] {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  text-align: center;
+  background-color: var(--color-secondary-4);
+
+  [data-banner-content] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2, p {
+    display: inline;
+    color: var(--color-text-inverse);
+
+    @include media(">=notebook") { display: block; }
+  }
+
+  [data-banner-link] a {
+    width: 11.25rem;
+    margin-top: var(--space-5);
+
+    @include media(">=notebook") {
+      margin-top: var(--space-7);
+      padding: var(--space-2) var(--space-4);
+    }
+  }
+
+  @include media(">=notebook") {
+    padding-top: var(--space-9);
+    padding-bottom: var(--space-9);
+  }
+}

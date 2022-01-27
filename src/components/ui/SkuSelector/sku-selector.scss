@@ -1,0 +1,99 @@
+@import "../../../styles/utilities.scss";
+
+[data-store-sku-selector] {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--text-size-1);
+  column-gap: var(--space-1);
+  row-gap: var(--space-1);
+
+  [data-sku-selector-label] {
+    width: 100%;
+    margin-bottom: var(--space-0);
+  }
+
+  [data-store-radio-option] {
+    position: relative;
+    width: var(--space-7);
+    height: var(--space-7);
+
+    span {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border: var(--border-width-0) solid var(--color-neutral-7);
+      border-radius: var(--border-radius-default);
+      box-shadow: 0;
+      transition: box-shadow .2s ease, background-color .2s ease;
+    }
+
+    input {
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      &:focus-visible + span {
+        border-color: var(--color-border-input-selected);
+        border-width: var(--border-width-1);
+
+        @include focus-ring;
+      }
+
+      &:hover:not(:disabled):not(:checked) + span {
+        border-color: var(--color-border-input-selected);
+        border-width: var(--border-width-1);
+      }
+
+      &:checked + span {
+        border-color: var(--color-border-input-selected);
+        border-width: var(--border-width-1);
+        box-shadow: 0 0 0 var(--border-width-2) var(--bg-selected-outline);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+
+        + span {
+          overflow: hidden;
+          color: var(--color-text-disabled);
+          border-color: var(--color-border-input-disabled);
+
+          &::after {
+            position: absolute;
+            width: var(--border-width-0);
+            height: 160%;
+            background-color: var(--color-border-input-disabled);
+            transform: rotate(45deg);
+            transform-origin: center;
+            content: "";
+          }
+        }
+      }
+    }
+  }
+
+  &[data-variant="label"] input {
+    &:hover:not(:disabled) + span { background-color: var(--bg-secondary-light); }
+    &:checked + span { background-color: var(--bg-secondary-light); }
+  }
+
+  &[data-variant="color"] {
+    [data-sku-selector-color] {
+      width: var(--space-6);
+      height: var(--space-6);
+      border-radius: var(--border-radius-small);
+      transform-origin: center center;
+      transition: transform .2s ease;
+    }
+
+    input {
+      &:hover:not(:disabled):not(:checked) + span [data-sku-selector-color] { transform: scale(.95); }
+      &:checked + span [data-sku-selector-color] { transform: scale(.85); }
+    }
+  }
+}

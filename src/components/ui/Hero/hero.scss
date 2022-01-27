@@ -1,0 +1,117 @@
+@import "../../../styles/vendors/include-media";
+
+[data-store-hero] {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  background-color: var(--bg-secondary-default);
+
+  @include media(">=tablet") {
+    position: relative;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  [data-hero-content] {
+    width: 100%;
+    padding: var(--space-5) 0 var(--space-6);
+    color: var(--color-text-inverse);
+
+    @include media(">=tablet") {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-content-wrapper {
+      display: flex;
+      gap: var(--space-3);
+      justify-content: space-between;
+
+      @include media(">=tablet", "<notebook") {
+        justify-content: space-between;
+        width: 50%;
+        margin-left: 0;
+      }
+
+      @include media(">=tablet") { gap: var(--space-1); }
+
+      @include media(">=notebook") { justify-content: flex-start; }
+    }
+
+    .hero-content-info {
+      @include media(">=notebook") { width: 42%; }
+    }
+
+    p {
+      margin-top: var(--space-2);
+
+      @include media(">=tablet") { margin-top: var(--space-4); }
+    }
+
+    [data-hero-link] {
+      margin-top: var(--space-6);
+
+      a {
+        justify-content: space-between;
+        width: 11.25rem;
+      }
+    }
+  }
+
+  [data-hero-image] {
+    [data-gatsby-image-wrapper] {
+      width: 100%;
+      height: 100%;
+    }
+
+    @include media(">=tablet") {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &[data-hero-variant="default"] {
+    @include media(">=tablet") { min-height: 18.75rem; }
+
+    [data-hero-content] {
+      @include media(">=tablet") { padding: var(--space-9) 0; }
+    }
+
+    .hero-content-info {
+      @include media(">=tablet") { padding-right: var(--space-9); }
+    }
+
+    [data-hero-link] a {
+      @include media(">=tablet") {
+        margin-top: var(--space-8);
+        padding: var(--space-2) var(--space-4);
+      }
+    }
+
+    [data-hero-image] {
+      @include media("<tablet") { height: 15rem; }
+
+      @include media(">=tablet") { width: 53%; }
+    }
+  }
+
+  &[data-hero-variant="small"] {
+    @include media(">=tablet") { min-height: 14.18rem; }
+
+    [data-hero-content] {
+      padding: var(--space-4) 0 var(--space-3);
+
+      @include media(">=tablet") {
+        padding: var(--space-5) 0;
+      }
+    }
+
+    [data-hero-image] {
+      @include media("<tablet") { height: 11.25rem; }
+
+      @include media(">=tablet") { width: 50%; }
+    }
+  }
+}
