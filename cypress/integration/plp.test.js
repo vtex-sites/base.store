@@ -142,6 +142,7 @@ describe('Infinite Scroll pagination', () => {
 
         cy.getById('show-more')
           .should('exist')
+          .scrollIntoView({ offset: { top: 50 }, duration: 100 })
           .click({ force: true })
           .then(() => {
             // Ensure it waits for the new page after clicking "show more"
@@ -188,6 +189,7 @@ describe('Infinite Scroll pagination', () => {
         // Scroll to the last product and confirm that we are on page 1
         cy.get('.product-grid [data-testid=store-card]')
           .last()
+          .scrollIntoView({ offset: { top: 50 } })
           .then(() => {
             cy.location('search').should('match', /page=1$/)
           })
