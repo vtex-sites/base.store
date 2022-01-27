@@ -192,7 +192,7 @@ describe('search event', () => {
     cy.visit(pages.home, options)
     cy.waitForHydration()
 
-    cy.get('form[data-store-search-input]').within(() => {
+    cy.getById('store-search-input').within(() => {
       cy.getById('store-input').click().type('shirt')
       cy.getById('store-button')
         .click()
