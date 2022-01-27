@@ -258,7 +258,7 @@ function Filter({
 
             setActiveFacets([])
             setIndicesExpanded(new Set([]))
-            onDismiss?.()
+            onDismissTransition?.()
           }}
         >
           Apply
