@@ -206,7 +206,11 @@ function Filter({
     )
   }
 
-  return isMobile ? (
+  if (!isMobile) {
+    return <Facets />
+  }
+
+  return (
     <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
@@ -265,8 +269,6 @@ function Filter({
         </Button>
       </footer>
     </SlideOver>
-  ) : (
-    <Facets />
   )
 }
 
