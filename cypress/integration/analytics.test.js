@@ -158,8 +158,6 @@ describe('select_item event', () => {
       .then(($btn) => {
         skuId = $btn.attr('data-sku')
       })
-
-      .click()
       .then(() => {
         cy.window().then((window) => {
           const event = window.dataLayer.find(
