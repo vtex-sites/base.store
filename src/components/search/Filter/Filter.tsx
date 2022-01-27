@@ -87,9 +87,12 @@ function Filter({
     [indicesExpanded]
   )
 
-  // Ensures selected filters are up to date at opening
+  // Ensures all required states are up to date at opening
   useEffect(() => {
-    !isOpen && setSelectedFacets(searchState.selectedFacets)
+    if (!isOpen) {
+      setFacetsToRemove([])
+      setSelectedFacets(searchState.selectedFacets)
+    }
   }, [isOpen, searchState.selectedFacets])
 
   // Opens accordion items with active facets
@@ -118,9 +121,12 @@ function Filter({
         (f) => f.value === item.value
       )
 
+      if (selectedFacets.some((facet) => facet.value === item.value)) {
+        setFacetsToRemove([...facetsToRemove, item])
+      }
+
       selectedFacets.splice(indexToRemove, 1)
       setSelectedFacets([...selectedFacets])
-      setFacetsToRemove([...facetsToRemove, item])
 
       return
     }
@@ -240,26 +246,22 @@ function Filter({
           variant="primary"
           data-testid="filter-modal-button-apply"
           onClick={() => {
-            // Remove facets that user unchecked
-            facetsToRemove.length > 0 && toggleFacets(facetsToRemove)
-
             // Only toggle new facets and keep the current ones applied
             const facetsToAdd = selectedFacets
               .map(
                 (facet) => !searchState.selectedFacets.includes(facet) && facet
               )
+              .concat(facetsToRemove)
               .filter((m) => typeof m !== 'boolean') as IStoreSelectedFacet[]
 
             toggleFacets(facetsToAdd)
 
             setActiveFacets([])
-            setFacetsToRemove([])
-            setSelectedFacets([])
             setIndicesExpanded(new Set([]))
             onDismiss?.()
           }}
         >
-          View Results
+          Apply
         </Button>
       </footer>
     </SlideOver>
