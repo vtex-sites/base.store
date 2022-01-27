@@ -49,9 +49,15 @@
     background-color: transparent;
     border: 2px solid var(--bg-secondary-default);
 
-    &:hover, &:focus { background-color: var(--bg-darken-hover); }
+    &:hover, &:focus {
+      color: var(--color-text-inverse);
+      background-color: var(--bg-secondary-default);
+    }
 
-    &:active { background-color: var(--bg-darken-pressed); }
+    &:active {
+      background-color: var(--bg-secondary-hover);
+      border-color: var(--bg-secondary-hover);
+    }
 
     &:disabled, &[data-button-disabled="true"] {
       color: var(--color-neutral-6);
@@ -62,8 +68,12 @@
     &[data-button-inverse] {
       color: var(--color-text-inverse);
       border-color: var(--color-border-light);
-      &:hover, &:focus { background-color: var(--bg-lighten-hover); }
-      &:active { background-color: var(--bg-lighten-pressed); }
+
+      &:hover, &:focus {
+        color: var(--color-text-display);
+        background-color: var(--bg-neutral-lightest);
+      }
+      &:active { background-color: var(--bg-secondary-light); }
     }
   }
 
