@@ -29,11 +29,6 @@
 
     &:active { background-color: var(--bg-secondary-pressed); }
 
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-    }
-
     &[data-button-inverse] {
       color: var(--color-text-display);
       background-color: var(--bg-neutral-lightest);
@@ -59,12 +54,6 @@
       border-color: var(--bg-secondary-hover);
     }
 
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-      border: 0;
-    }
-
     &[data-button-inverse] {
       color: var(--color-text-inverse);
       border-color: var(--color-border-light);
@@ -88,11 +77,6 @@
       background-color: var(--color-secondary-1);
     }
 
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-    }
-
     &[data-button-inverse] {
       color: var(--color-text-display);
       background-color: var(--bg-neutral-lightest);
@@ -100,6 +84,14 @@
       &:hover, &:focus { background-color: var(--color-secondary-0); }
 
       &:active { background-color: var(--color-secondary-1); }
+    }
+  }
+
+  &[data-button-variant] {
+    &:disabled, &[data-button-disabled="true"] {
+      color: var(--color-neutral-6);
+      background-color: var(--bg-disabled);
+      border: 0;
     }
   }
 
