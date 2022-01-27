@@ -74,25 +74,6 @@ describe('add_to_cart event', () => {
           testAddToCartEvent(skuId)
         })
     })
-
-    it('adds add_to_cart event in the data layer at the product listing page', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      // Add to cart
-      cy.getById('store-card').first().click()
-      cy.getById('buy-button')
-        .first()
-        .click()
-        .then(($btn) => {
-          cy.itemsInCart(1)
-          const skuId = $btn.attr('data-sku')
-
-          testAddToCartEvent(skuId)
-        })
-    })
   })
 })
 
