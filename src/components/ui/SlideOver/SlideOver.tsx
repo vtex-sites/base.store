@@ -34,14 +34,16 @@ const SlideOver = ({
   ...otherProps
 }: SlideOverProps) => {
   const [fadeType, setFadeType] = useState<FadeType>()
+  const layout = document.getElementById('layout')
 
   const handleClose = useCallback(() => {
     setFadeType('out')
-  }, [])
+    if (layout) {
+      layout.classList.remove('no-scroll')
+    }
+  }, [layout])
 
   useEffect(() => {
-    const layout = document.getElementById('layout')
-
     if (isOpen) {
       setFadeType('in')
 
@@ -49,10 +51,8 @@ const SlideOver = ({
       if (layout) {
         layout.classList.add('no-scroll')
       }
-    } else if (layout) {
-      layout.classList.remove('no-scroll')
     }
-  }, [isOpen])
+  }, [isOpen, layout])
 
   useEffect(() => {
     if (handleClose) {
