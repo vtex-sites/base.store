@@ -64,7 +64,7 @@ function CartSidebar() {
           </div>
 
           {isEmpty ? (
-            <EmptyCart />
+            <EmptyCart onDismiss={() => onDismissTransition()} />
           ) : (
             <div className="cart-sidebar__items">
               {items.map((item) => (
