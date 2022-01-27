@@ -11,6 +11,7 @@
   column-gap: var(--space-2);
   border: 0;
   border-radius: var(--border-radius-button);
+  cursor: default;
   transition: background-color .5s ease;
 
   &:focus { outline: none; }
