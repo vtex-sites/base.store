@@ -89,10 +89,12 @@ function Filter({
 
   // Ensures all required states are up to date at opening
   useEffect(() => {
-    if (!isOpen) {
-      setFacetsToRemove([])
-      setSelectedFacets(searchState.selectedFacets)
+    if (isOpen) {
+      return
     }
+
+    setFacetsToRemove([])
+    setSelectedFacets(searchState.selectedFacets)
   }, [isOpen, searchState.selectedFacets])
 
   // Opens accordion items with active facets
@@ -256,7 +258,9 @@ function Filter({
                 (facet) => !searchState.selectedFacets.includes(facet) && facet
               )
               .concat(facetsToRemove)
-              .filter((m) => typeof m !== 'boolean') as IStoreSelectedFacet[]
+              .filter(
+                (facet) => typeof facet !== 'boolean'
+              ) as IStoreSelectedFacet[]
 
             toggleFacets(facetsToAdd)
 
