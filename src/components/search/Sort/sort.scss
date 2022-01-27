@@ -42,5 +42,6 @@
     position: absolute;
     right: var(--space-2);
     color: var(--color-link);
+    pointer-events: none;
   }
 }
