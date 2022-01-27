@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { List as UIList } from '@faststore/ui'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 
 import Link from '../../ui/Link'
 import Accordion, { AccordionItem } from '../../ui/Accordion'
-import useWindowDimensions from './useWindowDimensions'
 
 const links = [
   {
@@ -108,6 +108,7 @@ function LinksList({ items }: LinksListProps) {
 }
 
 function FooterLinks() {
+  const { isMobile } = useWindowDimensions()
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
   )
@@ -120,19 +121,6 @@ function FooterLinks() {
       setIndicesExpanded(new Set(indicesExpanded.add(index)))
     }
   }
-
-  const [isMobile, setIsMobile] = useState<boolean>(false)
-
-  const { width: screenWidth } = useWindowDimensions()
-
-  useEffect(() => {
-    if (!screenWidth) {
-      return
-    }
-
-    // notebook breakpoint = 1280px (See breakpoints on styles/global.scss)
-    setIsMobile(screenWidth < 1280)
-  }, [screenWidth])
 
   return (
     <section className="footer__links">

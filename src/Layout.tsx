@@ -35,7 +35,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
   useCartNotificationEffect()
 
   return (
-    <>
+    <div id="layout">
       {showAlert && (
         <Alert
           icon={<BellRingingIcon size={24} />}
@@ -62,7 +62,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
           <Toast />
         </Suspense>
       )}
-    </>
+    </div>
   )
 }
 

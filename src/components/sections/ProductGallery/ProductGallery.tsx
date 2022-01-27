@@ -1,6 +1,6 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, useEffect, lazy, Suspense } from 'react'
+import React, { useState, lazy, Suspense } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
@@ -22,23 +22,9 @@ function ProductGallery({ title }: Props) {
 
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
-  const { width: screenWidth } = useWindowDimensions()
+  const { isMobile } = useWindowDimensions()
 
-  const [isMobile, setIsMobile] = useState<boolean>(false)
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (!screenWidth) {
-      return
-    }
-
-    const notebookBreakpoint =
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--breakpoint-notebook'
-      ) || '1280'
-
-    setIsMobile(screenWidth < parseInt(notebookBreakpoint, 10))
-  }, [screenWidth])
 
   const orderedFacets = useOrderedFacets(data)
 

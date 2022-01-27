@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import { Link as LinkGatsby } from 'gatsby'
+import { List as UIList } from '@faststore/ui'
 import CartToggle from 'src/components/cart/CartToggle'
 import Logo from 'src/components/ui/Logo'
 import Link from 'src/components/ui/Link'
 import Button from 'src/components/ui/Button'
 import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
+import SlideOver from 'src/components/ui/SlideOver'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 
 import SearchInput from '../SearchInput'
 
@@ -22,12 +25,30 @@ const links = [
   },
 ]
 
+function NavLinks() {
+  return (
+    <nav className="navlinks__list">
+      <UIList>
+        {links.map((item) => (
+          <li key={item.name}>
+            <Link variant="display" key={item.href} href={item.href}>
+              {item.name}
+            </Link>
+          </li>
+        ))}
+      </UIList>
+    </nav>
+  )
+}
+
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
+  const { isMobile } = useWindowDimensions()
+  let onDismissTransition: () => unknown
 
   return (
-    <header className="navbar grid-content-full">
-      <div className="navbar__header grid-content">
+    <header className="navbar / grid-content-full">
+      <div className="navbar__header / grid-content">
         <section className="navbar__row">
           <Button
             className="navbar__menu"
@@ -41,7 +62,6 @@ function Navbar() {
             aria-label="Go to Faststore home"
             title="Go to Faststore home"
             className="navbar__logo"
-            onClick={() => setShowMenu(false)}
           >
             <Logo />
           </LinkGatsby>
@@ -51,38 +71,49 @@ function Navbar() {
             <CartToggle />
           </div>
         </section>
-
-        <div className={`navlinks ${showMenu ? 'open' : ''}`}>
-          <section>
-            <LinkGatsby
-              to="/"
-              aria-label="Go to Faststore home"
-              title="Go to Faststore home"
-              className="navbar__logo"
-              onClick={() => setShowMenu(false)}
-            >
-              <Logo />
-            </LinkGatsby>
-            <Button
-              className="navlinks__button"
-              aria-label="Close Menu"
-              onClick={() => setShowMenu(false)}
-            >
-              <XIcon size={24} weight="bold" />
-            </Button>
-          </section>
-          <nav className="navlinks__list">
-            {links.map((x) => (
-              <Link variant="display" key={x.href} href={x.href}>
-                {x.name}
-              </Link>
-            ))}
-          </nav>
-          <div className="navlinks__signin">
-            <SignInLink />
-          </div>
-        </div>
+        <NavLinks />
       </div>
+      {isMobile && (
+        <SlideOver
+          isOpen={showMenu}
+          onDismiss={() => setShowMenu(false)}
+          onDismissTransition={(callback) => (onDismissTransition = callback)}
+          size="full"
+          direction="leftSide"
+          className="navbar__modal-content"
+        >
+          <div className="navbar__modal-body">
+            <header className="navbar__modal-header">
+              <LinkGatsby
+                to="/"
+                aria-label="Go to Faststore home"
+                title="Go to Faststore home"
+                className="navbar__logo"
+                onClick={() => {
+                  onDismissTransition?.()
+                }}
+              >
+                <Logo />
+              </LinkGatsby>
+              <Button
+                className="navbar__button"
+                aria-label="Close Menu"
+                onClick={() => {
+                  onDismissTransition?.()
+                }}
+              >
+                <XIcon size={32} />
+              </Button>
+            </header>
+            <div className="navlinks">
+              <NavLinks />
+              <div className="navlinks__signin">
+                <SignInLink />
+              </div>
+            </div>
+          </div>
+        </SlideOver>
+      )}
     </header>
   )
 }

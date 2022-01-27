@@ -309,7 +309,7 @@ function Button({ variant, ...props }: Props) {
 ```
 
 Now we have a styled Button component that accepts different variants!! 🎉
-The aforementioned guide works well for UI components. However, components like `Navbar` and `Footer` are more complex and usually don't have variants, since they usually serve a single responsibility on the page. For these cases, you can use [BEM-Style CSS Syntax in SCSS](http://getbem.com/introduction/) like:
+The aforementioned guide works well for UI components. However, components like `Navbar` and `Footer` are more complex and usually don't have variants, since they usually serve a single responsibility on the page. For these cases, you can use [BEM-Style CSS Syntax in SCSS](https://en.bem.info/methodology/) like:
 
 ```tsx
  // components/common/Navbar/Navbar.tsx
