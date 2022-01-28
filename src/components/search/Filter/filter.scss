@@ -28,7 +28,6 @@
     font-weight: var(--text-weight-regular);
     font-size: var(--text-size-3);
     line-height: 1.5;
-    cursor: pointer;
 
     @include media(">=notebook") {
       font-size: var(--text-size-2);
