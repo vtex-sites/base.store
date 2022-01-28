@@ -77,9 +77,9 @@ function ProductGallery({ title }: Props) {
             <div className="product-listing__results">
               {/* Add link to previous page. This helps on SEO */}
               {prev !== false && (
-                <>
+                <div className="product-listing__pagination product-listing__pagination--top">
                   <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-                  <a
+                  <LinkButton
                     onClick={(e) => {
                       e.currentTarget.blur()
                       e.preventDefault()
@@ -87,10 +87,11 @@ function ProductGallery({ title }: Props) {
                     }}
                     href={prev.link}
                     rel="prev"
+                    variant="secondary"
                   >
                     Previous Page
-                  </a>
-                </>
+                  </LinkButton>
+                </div>
               )}
 
               {/* Render ALL products */}
@@ -130,7 +131,7 @@ function ProductGallery({ title }: Props) {
 
               {/* Add link to next page. This helps on SEO */}
               {next !== false && (
-                <div className="product-listing__pagination">
+                <div className="product-listing__pagination product-listing__pagination--bottom">
                   <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
                   <LinkButton
                     data-testid="show-more"

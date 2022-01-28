@@ -131,12 +131,21 @@
   align-items: center;
   justify-content: center;
   min-height: var(--space-13);
-  margin: var(--padding) calc(-1 * var(--padding)) 0;
+  margin-right: calc(-1 * var(--padding));
+  margin-left: calc(-1 * var(--padding));
   padding: var(--space-4);
   background-color: var(--bg-neutral-lightest);
 
   @include media(">=notebook") {
     padding: var(--space-1) var(--space-2);
+  }
+
+  &--top {
+    margin-bottom: var(--padding);
+  }
+
+  &--bottom {
+    margin-top: var(--padding);
   }
 
   [data-store-button] {
