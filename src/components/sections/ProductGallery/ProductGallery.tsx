@@ -36,10 +36,16 @@ function ProductGallery({ title }: Props) {
     <div className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <h2 className="title-small">Filters</h2>
+          <Suspense fallback={null}>
+            <Filter
+              isOpen={isFilterOpen}
+              facets={orderedFacets}
+              onDismiss={() => setIsFilterOpen(false)}
+            />
+          </Suspense>
         </div>
 
-        {data && (
+        {data ? (
           <>
             <div
               className="product-listing__results-count"
@@ -67,21 +73,7 @@ function ProductGallery({ title }: Props) {
                 </Button>
               )}
             </div>
-          </>
-        )}
 
-        <div className="product-listing__filters-bar">
-          <Suspense fallback={null}>
-            <Filter
-              isOpen={isFilterOpen}
-              facets={orderedFacets}
-              onDismiss={() => setIsFilterOpen(false)}
-            />
-          </Suspense>
-        </div>
-
-        {data ? (
-          <>
             <div className="product-listing__results">
               {/* Add link to previous page. This helps on SEO */}
               {prev !== false && (
