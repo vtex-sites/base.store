@@ -18,9 +18,9 @@ const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
 module.exports = {
   siteMetadata: {
-    title: 'Fashion Store',
-    description: 'Fashion Demo Store',
-    titleTemplate: '%s | Fashion Store',
+    title: 'FastStore',
+    description: 'Fast Demo Store',
+    titleTemplate: '%s | FastStore',
     author: 'Store Framework',
     siteUrl,
   },
@@ -37,8 +37,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Fashion Demo Store',
-        short_name: 'Fashion Store',
+        name: 'Fast Demo Store',
+        short_name: 'FastStore',
         start_url: '/',
         icon: 'src/images/icon.png',
         background_color: '#E31C58',
