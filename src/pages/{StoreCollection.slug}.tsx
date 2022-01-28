@@ -128,7 +128,7 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <ProductGallery title={title} />
+      <ProductGallery title={title} slug={slug} />
 
       {haveYouMightAlsoLikeProducts && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">

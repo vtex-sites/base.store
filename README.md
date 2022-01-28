@@ -299,11 +299,11 @@ function Button({ variant, ...props }: Props) {
 ```
 
 ```css
-.primary [data-store-button] {
+.primary[data-store-button] {
   background: blue;
 }
 
-.secondary [data-store-button] {
+.secondary[data-store-button] {
   background: pink;
 }
 ```
