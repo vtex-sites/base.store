@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
@@ -66,26 +66,19 @@ function Filter({
 
   let onDismissTransition: () => unknown
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
-  const filteredFacets = useMemo(
-    () => facets.filter((facet) => facet.type === 'BOOLEAN'),
-    [facets]
-  )
+  const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
 
-  const onAccordionChange = useCallback(
-    (index: number) => {
-      if (indicesExpanded.has(index)) {
-        indicesExpanded.delete(index)
-        setIndicesExpanded(new Set(indicesExpanded))
-        setActiveFacets([])
+  const onAccordionChange = useCallback((index: number) => {
+    if (indicesExpanded.has(index)) {
+      indicesExpanded.delete(index)
+      setIndicesExpanded(new Set(indicesExpanded))
 
-        return
-      }
+      return
+    }
 
-      setActiveFacets([])
-      setIndicesExpanded(new Set(indicesExpanded.add(index)))
-    },
-    [indicesExpanded]
-  )
+    setIndicesExpanded(new Set(indicesExpanded.add(index)))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   // Ensures all required states are up to date at opening
   useEffect(() => {
@@ -93,6 +86,7 @@ function Filter({
       return
     }
 
+    setActiveFacets([])
     setFacetsToRemove([])
     setSelectedFacets(searchState.selectedFacets)
   }, [isOpen, searchState.selectedFacets])
@@ -115,7 +109,8 @@ function Filter({
         !indicesExpanded.has(accordionIndex) &&
         onAccordionChange(accordionIndex)
     )
-  }, [isOpen, activeFacets, filteredFacets, indicesExpanded, onAccordionChange])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, activeFacets])
 
   const onFacetChange = (item: IStoreSelectedFacet) => {
     if (selectedFacets.some((facet) => facet.value === item.value)) {
@@ -264,7 +259,6 @@ function Filter({
 
             toggleFacets(facetsToAdd)
 
-            setActiveFacets([])
             setIndicesExpanded(new Set([]))
             onDismissTransition?.()
           }}
