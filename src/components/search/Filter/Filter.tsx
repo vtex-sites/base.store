@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
@@ -31,6 +31,15 @@ interface Props {
    * testing-library, and jest).
    */
   testId?: string
+  /**
+   * Current page's slug to be used as fixed facet
+   */
+  slug?: string
+}
+
+type ActiveFacets = {
+  facets: string[]
+  accordionIndex: number
 }
 
 function Filter({
@@ -38,6 +47,7 @@ function Filter({
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
+  slug = '',
 }: Props) {
   const { isMobile } = useWindowDimensions()
   const { toggleFacet, toggleFacets, state: searchState } = useSearch()
@@ -46,13 +56,19 @@ function Filter({
     new Set([])
   )
 
-  const [selectedFilters, setSelectedFilters] = useState<IStoreSelectedFacet[]>(
+  const [selectedFacets, setSelectedFacets] = useState<IStoreSelectedFacet[]>(
     searchState.selectedFacets ?? []
   )
 
-  let onDismissTransition: () => unknown
+  const [facetsToRemove, setFacetsToRemove] = useState<IStoreSelectedFacet[]>(
+    []
+  )
 
-  const onAccordionChange = (index: number) => {
+  let onDismissTransition: () => unknown
+  const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
+  const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
+
+  const onAccordionChange = useCallback((index: number) => {
     if (indicesExpanded.has(index)) {
       indicesExpanded.delete(index)
       setIndicesExpanded(new Set(indicesExpanded))
@@ -61,21 +77,58 @@ function Filter({
     }
 
     setIndicesExpanded(new Set(indicesExpanded.add(index)))
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  const onFilterChange = (item: IStoreSelectedFacet) => {
-    if (selectedFilters.some((filter) => filter.value === item.value)) {
-      const indexToRemove = selectedFilters.findIndex(
+  // Ensures all required states are up to date at opening
+  useEffect(() => {
+    if (isOpen) {
+      return
+    }
+
+    setActiveFacets([])
+    setFacetsToRemove([])
+    setSelectedFacets(searchState.selectedFacets)
+  }, [isOpen, searchState.selectedFacets])
+
+  // Opens accordion items with active facets
+  useEffect(() => {
+    // Ensures all the active facets were identified
+    if (activeFacets.length !== filteredFacets.length) {
+      return
+    }
+
+    // Ensures there isn't empty facets
+    const selectedActiveFacets = activeFacets.filter(
+      (item) => item.facets.length > 0
+    )
+
+    // Checks if accordion item is already opened
+    selectedActiveFacets.forEach(
+      ({ accordionIndex }) =>
+        !indicesExpanded.has(accordionIndex) &&
+        onAccordionChange(accordionIndex)
+    )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, activeFacets])
+
+  const onFacetChange = (item: IStoreSelectedFacet) => {
+    if (selectedFacets.some((facet) => facet.value === item.value)) {
+      const indexToRemove = selectedFacets.findIndex(
         (f) => f.value === item.value
       )
 
-      selectedFilters.splice(indexToRemove, 1)
-      setSelectedFilters([...selectedFilters])
+      if (selectedFacets.some((facet) => facet.value === item.value)) {
+        setFacetsToRemove([...facetsToRemove, item])
+      }
+
+      selectedFacets.splice(indexToRemove, 1)
+      setSelectedFacets([...selectedFacets])
 
       return
     }
 
-    setSelectedFilters([...selectedFilters, item])
+    setSelectedFacets([...selectedFacets, item])
   }
 
   const onCheck = ({ key, value }: IStoreSelectedFacet) => {
@@ -83,7 +136,7 @@ function Filter({
       toggleFacet({ key, value })
     }
 
-    onFilterChange({ key, value })
+    onFacetChange({ key, value })
   }
 
   const Facets = () => {
@@ -93,49 +146,68 @@ function Filter({
           expandedIndices={indicesExpanded}
           onChange={onAccordionChange}
         >
-          {facets
-            .filter((facet) => facet.type === 'BOOLEAN')
-            .map(({ label, values, key }, index) => (
-              <AccordionItem
-                key={`${label}-${index}`}
-                testId="filter-accordion"
-                isExpanded={indicesExpanded.has(index)}
-                buttonLabel={label}
-              >
-                <UIList>
-                  {values.map((item) => {
-                    const id = `${label}-${item.label}`
+          {filteredFacets.map(({ label, values, key }, index) => (
+            <AccordionItem
+              key={`${label}-${index}`}
+              testId="filter-accordion"
+              isExpanded={indicesExpanded.has(index)}
+              buttonLabel={label}
+              ref={(_) => {
+                // Filter current selected facets from API
+                const selectedValues = values.filter(({ selected }) => selected)
 
-                    return (
-                      <li key={id} className="filter__item">
-                        <Checkbox
-                          id={id}
-                          checked={selectedFilters.some(
-                            (filter) => filter.value === item.value
-                          )}
-                          onChange={() => onCheck({ key, value: item.value })}
-                          data-testid="filter-accordion-panel-checkbox"
-                          data-value={item.value}
-                          data-quantity={item.quantity}
-                        />
-                        <UILabel htmlFor={id} className="title-small">
-                          {item.label}{' '}
-                          <Badge variant="neutral" small>
-                            {item.quantity}
-                          </Badge>
-                        </UILabel>
-                      </li>
-                    )
-                  })}
-                </UIList>
-              </AccordionItem>
-            ))}
+                // Ensures only one array item for each accordion's item
+                if (activeFacets.length < filteredFacets.length) {
+                  activeFacets.push({
+                    accordionIndex: index,
+                    facets: selectedValues.map(({ value }) => value),
+                  })
+                  setActiveFacets(activeFacets)
+                }
+              }}
+            >
+              <UIList>
+                {values.map((item) => {
+                  const id = `${label}-${item.label}`
+
+                  return (
+                    <li key={id} className="filter__item">
+                      <Checkbox
+                        id={id}
+                        checked={
+                          item.value === slug ||
+                          selectedFacets.some(
+                            (facet) => facet.value === item.value
+                          )
+                        }
+                        onChange={() => onCheck({ key, value: item.value })}
+                        data-testid="filter-accordion-panel-checkbox"
+                        data-value={item.value}
+                        data-quantity={item.quantity}
+                        disabled={item.value === slug}
+                      />
+                      <UILabel htmlFor={id} className="title-small">
+                        {item.label}{' '}
+                        <Badge variant="neutral" small>
+                          {item.quantity}
+                        </Badge>
+                      </UILabel>
+                    </li>
+                  )
+                })}
+              </UIList>
+            </AccordionItem>
+          ))}
         </Accordion>
       </div>
     )
   }
 
-  return isMobile ? (
+  if (!isMobile) {
+    return <Facets />
+  }
+
+  return (
     <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
@@ -150,8 +222,11 @@ function Filter({
           <Button
             className="filter-modal__button"
             data-testid="filter-modal-button-close"
-            aria-label="Close Filters"
-            onClick={() => onDismissTransition?.()}
+            aria-label="Close"
+            onClick={() => {
+              setSelectedFacets(searchState.selectedFacets)
+              onDismissTransition?.()
+            }}
           >
             <XIcon size={32} />
           </Button>
@@ -162,9 +237,8 @@ function Filter({
         <Button
           variant="secondary"
           onClick={() => {
-            toggleFacets(selectedFilters)
-            setIndicesExpanded(new Set([]))
-            setSelectedFilters([])
+            setFacetsToRemove(selectedFacets)
+            setSelectedFacets([])
           }}
         >
           Clear All
@@ -173,17 +247,26 @@ function Filter({
           variant="primary"
           data-testid="filter-modal-button-apply"
           onClick={() => {
-            toggleFacets(selectedFilters)
+            // Only toggle new facets and keep the current ones applied
+            const facetsToAdd = selectedFacets
+              .map(
+                (facet) => !searchState.selectedFacets.includes(facet) && facet
+              )
+              .concat(facetsToRemove)
+              .filter(
+                (facet) => typeof facet !== 'boolean'
+              ) as IStoreSelectedFacet[]
+
+            toggleFacets(facetsToAdd)
+
+            setIndicesExpanded(new Set([]))
             onDismissTransition?.()
-            onDismiss?.()
           }}
         >
-          View Results
+          Apply
         </Button>
       </footer>
     </SlideOver>
-  ) : (
-    <Facets />
   )
 }
 
