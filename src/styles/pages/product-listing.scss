@@ -65,7 +65,7 @@
 
   @include media(">=notebook") {
     grid-column: 6 / span 7;
-    justify-content: right;
+    justify-content: flex-end;
     order: unset;
     min-height: initial;
     padding: 0;
