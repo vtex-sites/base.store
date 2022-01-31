@@ -7,6 +7,7 @@ import type {
 import { List as UIList, Label as UILabel } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
+import IconButton from 'src/components/ui/IconButton'
 import Checkbox from 'src/components/ui/Checkbox'
 import { Badge } from 'src/components/ui/Badge'
 import { X as XIcon } from 'phosphor-react'
@@ -219,17 +220,16 @@ function Filter({
       <div className="filter-modal__body">
         <header className="filter-modal__header">
           <h2 className="title-display">Filters</h2>
-          <Button
-            className="filter-modal__button"
+          <IconButton
             data-testid="filter-modal-button-close"
-            aria-label="Close"
+            classes="filter-modal__button"
+            aria-label="Close Filters"
+            icon={<XIcon size={32} />}
             onClick={() => {
               setSelectedFacets(searchState.selectedFacets)
               onDismissTransition?.()
             }}
-          >
-            <XIcon size={32} />
-          </Button>
+          />
         </header>
         <Facets />
       </div>
