@@ -30,12 +30,8 @@
   padding: var(--space-5) var(--page-padding-phone) var(--space-4);
   background-color: var(--bg-neutral-lightest);
 
-  button {
-    position: absolute;
-    right: calc(-1 * var(--page-padding-phone));
-    margin-right: var(--space-0);
-    color: var(--color-text);
-    background-color: transparent;
+  .cart-sidebar__button {
+    margin-right: calc(-1 * var(--space-1));
   }
 }
 
