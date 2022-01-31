@@ -18,19 +18,23 @@
 
   --badge-success-bkg-color        : var(--bg-success);
   --badge-success-text-color       : var(--color-text);
-  --badge-success-border-color     : var(--bg-success);
+  --badge-success-border-color     : var(--badge-success-bkg-color);
 
   --badge-highlighted-bkg-color    : var(--bg-highlighted);
   --badge-highlighted-text-color   : var(--color-text);
-  --badge-highlighted-border-color : var(--bg-highlighted);
+  --badge-highlighted-border-color : var(--badge-highlighted-bkg-color);
 
   --badge-info-bkg-color           : var(--bg-info);
   --badge-info-text-color          : var(--color-text);
-  --badge-info-border-color        : var(--bg-info);
+  --badge-info-border-color        : var(--badge-info-bkg-color);
 
   --badge-neutral-bkg-color        : var(--bg-neutral);
   --badge-neutral-text-color       : var(--color-text);
-  --badge-neutral-border-color     : var(--bg-neutral);
+  --badge-neutral-border-color     : var(--badge-neutral-bkg-color);
+
+  --badge-promo-bkg-color          : #FFF68A;
+  --badge-promo-text-color         : #F2636A;
+  --badge-promo-border-color       : var(--badge-promo-bkg-color);
 
   --badge-small-text-size          : var(--text-size-0);
   --badge-small-padding            : var(--space-0) var(--space-2);
@@ -82,4 +86,10 @@
   color: var(--badge-neutral-text-color);
   background-color: var(--badge-neutral-bkg-color);
   border-color: var(--badge-neutral-border-color);
+}
+
+[data-store-badge-variant="promo"] {
+  color: var(--badge-promo-text-color);
+  background-color: var(--badge-promo-bkg-color);
+  border-color: var(--badge-promo-border-color);
 }

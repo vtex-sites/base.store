@@ -3,7 +3,7 @@ import React from 'react'
 
 import './badge.scss'
 
-export type Variant = 'success' | 'highlighted' | 'info' | 'neutral'
+export type Variant = 'success' | 'highlighted' | 'info' | 'neutral' | 'promo'
 
 type Props = {
   variant?: Variant

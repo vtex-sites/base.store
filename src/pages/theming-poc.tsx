@@ -100,19 +100,8 @@ function Page(props: Props) {
               <Badge variant="neutral" small>
                 neutral
               </Badge>
-            </div>
-            <div className="theming-poc-list">
-              <Badge variant="success" small>
-                success
-              </Badge>
-              <Badge variant="highlighted" small>
-                highlighted
-              </Badge>
-              <Badge variant="info" small>
-                info
-              </Badge>
-              <Badge variant="neutral" small>
-                neutral
+              <Badge variant="promo" small>
+                promo
               </Badge>
             </div>
             <div className="theming-poc-list">
@@ -127,6 +116,26 @@ function Page(props: Props) {
               </Badge>
               <Badge variant="neutral" small>
                 neutral
+              </Badge>
+              <Badge variant="promo" small>
+                promo
+              </Badge>
+            </div>
+            <div className="theming-poc-list">
+              <Badge variant="success" small>
+                success
+              </Badge>
+              <Badge variant="highlighted" small>
+                highlighted
+              </Badge>
+              <Badge variant="info" small>
+                info
+              </Badge>
+              <Badge variant="neutral" small>
+                neutral
+              </Badge>
+              <Badge variant="promo" small>
+                promo
               </Badge>
             </div>
           </main>
@@ -235,6 +244,7 @@ function Page(props: Props) {
                 index={0}
                 action="quantitySelector"
                 structure="grocery"
+                badgeVariant="promo"
                 select
                 moreInfo
               />

@@ -24,12 +24,15 @@ import './product-card.scss'
 
 type Structure = 'wide' | 'default' | 'horizontal' | 'grocery'
 
+type BadgeVariant = 'success' | 'highlighted' | 'info' | 'neutral' | 'promo'
+
 type Action = 'quantitySelector' | 'button' | ''
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
   structure?: Structure
+  badgeVariant?: BadgeVariant
   action?: Action
   select?: boolean
   moreInfo?: boolean
@@ -41,6 +44,7 @@ function ProductCard({
   product,
   index,
   structure = 'default',
+  badgeVariant = 'success',
   action = '',
   ratio = '1',
   select = false,
@@ -144,7 +148,7 @@ function ProductCard({
             The quick brown fox jumps over the lazy dog
           </p>
         )}
-        <Badge variant="success" small>
+        <Badge variant={badgeVariant} small>
           20% off
         </Badge>
         {(select || moreInfo) && (
