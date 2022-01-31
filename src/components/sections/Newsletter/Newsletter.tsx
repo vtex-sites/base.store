@@ -31,28 +31,30 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
     }
 
     return (
-      <Form
-        data-store-newsletter
-        ref={ref}
-        onSubmit={handleSubmit}
-        {...otherProps}
-      >
-        <div data-newsletter-content>
-          {title}
-          {Boolean(description) && description}
-        </div>
+      <section data-store-newsletter>
+        <Form
+          data-newsletter-form
+          ref={ref}
+          onSubmit={handleSubmit}
+          {...otherProps}
+        >
+          <div data-newsletter-content>
+            {title}
+            {Boolean(description) && description}
+          </div>
 
-        <div data-newsletter-controls>
-          <Label htmlFor="newsletter-email">Your email</Label>
-          <Input
-            id="newsletter-email"
-            type="email"
-            name="newsletter-email"
-            ref={emailInputRef}
-          />
-          <Button type="submit">Subscribe</Button>
-        </div>
-      </Form>
+          <div data-newsletter-controls>
+            <Label htmlFor="newsletter-email">Your email</Label>
+            <Input
+              id="newsletter-email"
+              type="email"
+              name="newsletter-email"
+              ref={emailInputRef}
+            />
+            <Button type="submit">Subscribe</Button>
+          </div>
+        </Form>
+      </section>
     )
   }
 )
