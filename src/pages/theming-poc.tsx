@@ -174,7 +174,7 @@ function Page(props: Props) {
               </Button>
             </div>
             <div
-              className="theming-poc-list"
+              className="theming-poc-list -inverse"
               style={{ backgroundColor: '#001947', padding: '10px' }}
             >
               <Button

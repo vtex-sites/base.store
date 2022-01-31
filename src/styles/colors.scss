@@ -28,6 +28,8 @@
   --bg-neutral-light: var(--color-neutral-1);
   --bg-neutral-lightest: var(--color-neutral-0);
 
+  --bg-body: var(--bg-neutral-lightest);
+
   // Backgrounds – Dark
   --bg-secondary-dark: var(--color-secondary-4);
 
@@ -73,4 +75,7 @@
 
 // Default //////////////////////////
 
-body { color: var(--color-text); }
+body {
+  color: var(--color-text);
+  background-color: var(--bg-body);
+}

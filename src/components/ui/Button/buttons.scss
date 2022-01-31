@@ -212,7 +212,7 @@
   }
 
   &[data-button-variant] {
-    &:focus { @include button-focus-ring; }
+    &:focus { @include focus-ring; }
 
     &:disabled, &[data-button-disabled="true"] {
       color: var(--button-disabled-text-color);
@@ -231,13 +231,9 @@
 }
 
 .link-button[data-store-button] {
-  &:hover {
-    text-decoration: none;
-  }
+  &:hover { text-decoration: none; }
 
-  &[data-button-disabled="true"] {
-    pointer-events: none;
-  }
+  &[data-button-disabled="true"] { pointer-events: none; }
 }
 
 .cart-sidebar__header {

@@ -56,25 +56,6 @@
   > * { flex-shrink: 0; }
 }
 
-.theming-tokens {
-  flex-grow: 1;
-
-  section {
-    display: flex;
-    gap: 24px;
-    padding-top: 24px;
-    > div { width: 50%; }
-  }
-
-  h4 {
-    margin-bottom: 12px;
-    font-weight: bold;
-    font-size: .8em;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-}
-
 .theming-product-card {
   flex-direction: column;
 
@@ -219,22 +200,88 @@
   }
 }
 
+.theming-badge main .theming-poc-list {
+  &:nth-child(3) {
+    [data-store-badge] {
+      --badge-border-width             : 3px;
+      --badge-border-radius            : var(--border-radius-pill);
+      --badge-success-bkg-color        : transparent;
+      --badge-success-text-color       : #2c6a52;
+      --badge-success-border-color     : #2c6a52;
+      --badge-highlighted-bkg-color    : transparent;
+      --badge-highlighted-text-color   : #765c99;
+      --badge-highlighted-border-color : #765c99;
+      --badge-info-bkg-color           : transparent;
+      --badge-info-text-color          : #2d499e;
+      --badge-info-border-color        : #2d499e;
+      --badge-neutral-bkg-color        : transparent;
+      --badge-neutral-text-color       : #7b7f83;
+      --badge-neutral-border-color     : #7b7f83;
+    }
+  }
+
+  &:nth-child(4) {
+    [data-store-badge] {
+      --badge-border-radius            : var(--border-radius-default);
+      --badge-small-padding            : 2px var(--space-1);
+      --badge-success-bkg-color        : #59ab30;
+      --badge-success-text-color       : var(--color-text-inverse);
+      --badge-success-border-color     : transparent;
+      --badge-highlighted-bkg-color    : #9559e4;
+      --badge-highlighted-text-color   : var(--color-text-inverse);
+      --badge-highlighted-border-color : transparent;
+      --badge-info-bkg-color           : #387bf8;
+      --badge-info-text-color          : var(--color-text-inverse);
+      --badge-info-border-color        : transparent;
+      --badge-neutral-bkg-color        : #a8a8a8;
+      --badge-neutral-text-color       : var(--color-text-inverse);
+      --badge-neutral-border-color     : transparent;
+    }
+  }
+}
+
+.theming-button main .theming-poc-list {
+  [data-store-button] {
+    --button-border-radius                  : var(--border-radius-default);
+    --button-primary-bkg-color              : var(--bg-secondary-default);
+    --button-primary-text-color             : var(--color-text-inverse);
+    --button-primary-hover-bkg-color        : var(--bg-secondary-hover);
+    --button-primary-active-bkg-color       : var(--bg-secondary-pressed);
+    --button-primary-inverse-bkg-color              : var(--bg-neutral-lightest);
+    --button-primary-inverse-text-color             : var(--color-text-display);
+    --button-primary-inverse-hover-bkg-color        : var(--color-secondary-0);
+    --button-primary-inverse-active-bkg-color       : var(--color-secondary-1);
+    --button-secondary-text-color           : var(--color-text-display);
+    --button-secondary-border-color         : var(--bg-secondary-default);
+    --button-secondary-hover-bkg-color      : var(--bg-darken-hover);
+    --button-secondary-hover-border-color   : var(--bg-secondary-default);
+    --button-secondary-active-bkg-color     : var(--bg-darken-pressed);
+    --button-secondary-active-border-color  : var(--bg-secondary-default);
+    --button-secondary-inverse-text-color           : var(--color-text-inverse);
+    --button-secondary-inverse-border-color         : var(--color-border-light);
+    --button-secondary-inverse-hover-border-color   : var(--color-border-light);
+    --button-secondary-inverse-active-border-color  : var(--color-border-light);
+    --button-tertiary-text-color            : var(--color-link);
+    --button-tertiary-hover-bkg-color       : var(--bg-secondary-light);
+    --button-tertiary-active-bkg-color      : var(--color-secondary-1);
+    --button-tertiary-inverse-text-color            : var(--color-text-inverse);
+    --button-tertiary-inverse-hover-bkg-color       : var(--bg-lighten-hover);
+    --button-tertiary-inverse-active-bkg-color      : var(--bg-lighten-pressed);
+  }
+
+  &.-inverse { --bg-body: #001947; }
+}
+
 .theming-product-card main [data-store-card] {
   &:nth-child(1) {
     --product-card-text-color         : #688200;
-
     --product-card-shadow             : var(--box-shadow);
-
     --product-card-border-radius      : var(--border-radius-default);
     --product-card-border-width       : 1px;
     --product-card-border-color       : var(--color-border-display);
-
     --product-card-transition-timing  : .5s;
     --product-card-img-radius         : var(--border-radius-default);
-
     --product-card-hover-shadow       : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-
-    [data-store-quantity-selector] [data-quantity-selector-input] { height: unset; }
 
     [data-store-quantity-selector] {
       --qty-selector-width                    : 8rem;
@@ -348,103 +395,4 @@
   }
 }
 
-.theming-badge main .theming-poc-list {
-  &:nth-child(3) {
-    [data-store-badge] {
-      --badge-border-width             : 3px;
-      --badge-border-radius            : var(--border-radius-pill);
-    }
-
-    [data-store-badge-variant="success"] {
-      --badge-success-bkg-color        : transparent;
-      --badge-success-text-color       : #2c6a52;
-      --badge-success-border-color     : #2c6a52;
-    }
-
-    [data-store-badge-variant="highlighted"] {
-      --badge-highlighted-bkg-color    : transparent;
-      --badge-highlighted-text-color   : #765c99;
-      --badge-highlighted-border-color : #765c99;
-    }
-
-    [data-store-badge-variant="info"] {
-      --badge-info-bkg-color           : transparent;
-      --badge-info-text-color          : #2d499e;
-      --badge-info-border-color        : #2d499e;
-    }
-
-    [data-store-badge-variant="neutral"] {
-      --badge-neutral-bkg-color        : transparent;
-      --badge-neutral-text-color       : #7b7f83;
-      --badge-neutral-border-color     : #7b7f83;
-    }
-  }
-  &:nth-child(4) {
-    [data-store-badge] {
-      --badge-border-radius            : var(--border-radius-default);
-      --badge-small-padding            : 2px var(--space-1);
-    }
-
-    [data-store-badge-variant="success"] {
-      --badge-success-bkg-color        : #59ab30;
-      --badge-success-text-color       : var(--color-text-inverse);
-      --badge-success-border-color     : transparent;
-    }
-
-    [data-store-badge-variant="highlighted"] {
-      --badge-highlighted-bkg-color    : #9559e4;
-      --badge-highlighted-text-color   : var(--color-text-inverse);
-      --badge-highlighted-border-color : transparent;
-    }
-
-    [data-store-badge-variant="info"] {
-      --badge-info-bkg-color           : #387bf8;
-      --badge-info-text-color          : var(--color-text-inverse);
-      --badge-info-border-color        : transparent;
-    }
-
-    [data-store-badge-variant="neutral"] {
-      --badge-neutral-bkg-color        : #a8a8a8;
-      --badge-neutral-text-color       : var(--color-text-inverse);
-      --badge-neutral-border-color     : transparent;
-    }
-  }
-}
-
-.theming-button main .theming-poc-list {
-  // Semantic types & interactive states
-  &:nth-child(2) .button[data-store-button] {
-    --button-border-radius                  : var(--border-radius-default);
-
-    --button-primary-bkg-color              : var(--bg-secondary-default);
-    --button-primary-text-color             : var(--color-text-inverse);
-    --button-primary-hover-bkg-color        : var(--bg-secondary-hover);
-    --button-primary-active-bkg-color       : var(--bg-secondary-pressed);
-
-    --button-primary-inverse-bkg-color              : var(--bg-neutral-lightest);
-    --button-primary-inverse-text-color             : var(--color-text-display);
-    --button-primary-inverse-hover-bkg-color        : var(--color-secondary-0);
-    --button-primary-inverse-active-bkg-color       : var(--color-secondary-1);
-
-    --button-secondary-text-color           : var(--color-text-display);
-    --button-secondary-border-color         : var(--bg-secondary-default);
-    --button-secondary-hover-bkg-color      : var(--bg-darken-hover);
-    --button-secondary-hover-border-color   : var(--bg-secondary-default);
-    --button-secondary-active-bkg-color     : var(--bg-darken-pressed);
-    --button-secondary-active-border-color  : var(--bg-secondary-default);
-
-    --button-secondary-inverse-text-color           : var(--color-text-inverse);
-    --button-secondary-inverse-border-color         : var(--color-border-light);
-    --button-secondary-inverse-hover-border-color   : var(--color-border-light);
-    --button-secondary-inverse-active-border-color  : var(--color-border-light);
-
-    --button-tertiary-text-color            : var(--color-link);
-    --button-tertiary-hover-bkg-color       : var(--bg-secondary-light);
-    --button-tertiary-active-bkg-color      : var(--color-secondary-1);
-
-    --button-tertiary-inverse-text-color            : var(--color-text-inverse);
-    --button-tertiary-inverse-hover-bkg-color       : var(--bg-lighten-hover);
-    --button-tertiary-inverse-active-bkg-color      : var(--bg-lighten-pressed);
-  }
-}
 /* stylelint-enable */
