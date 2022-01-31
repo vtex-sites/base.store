@@ -109,6 +109,24 @@
   // Structure Variants
   // --------------------------------------------------------
 
+  &[data-button-variant] {
+    @include focus-ring-visible;
+
+    &:disabled, &[data-button-disabled="true"] {
+      color: var(--button-disabled-text-color);
+      background-color: var(--button-disabled-bkg-color);
+      border: 0;
+      box-shadow: none;
+      cursor: not-allowed;
+      svg { color: var(--color-neutral-5); }
+
+      &:hover {
+        color: var(--button-disabled-text-color);
+        background-color: var(--button-disabled-bkg-color);
+      }
+    }
+  }
+
   &[data-button-variant="primary"] {
     color: var(--button-primary-text-color);
     background-color: var(--button-primary-bkg-color);
@@ -207,24 +225,6 @@
       &:active {
         background-color: var(--button-tertiary-inverse-active-bkg-color);
         border-color: var(--button-tertiary-inverse-active-border-color);
-      }
-    }
-  }
-
-  &[data-button-variant] {
-    &:focus { @include focus-ring; }
-
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--button-disabled-text-color);
-      background-color: var(--button-disabled-bkg-color);
-      border: 0;
-      box-shadow: none;
-      cursor: not-allowed;
-      svg { color: var(--color-neutral-5); }
-
-      &:hover {
-        color: var(--button-disabled-text-color);
-        background-color: var(--button-disabled-bkg-color);
       }
     }
   }
