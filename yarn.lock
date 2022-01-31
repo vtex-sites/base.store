@@ -1441,10 +1441,20 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.4.15":
-  version "1.4.15"
-  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.4.15.tgz#be104f8fbfed2baf6cb0494db72b178a5170d075"
-  integrity sha512-535oF1Vqc7eosH8SJy9JimKIntJ700XNO4y7g/Z4/TP4zu5ZMoXzYLiRIRQQL1zvbZ1VUsAI6NUCLQR8SlyYWg==
+"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/2e4b491d/@faststore/api":
+  version "1.4.22"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/2e4b491d/@faststore/api#f68a6c0cbc64de0a42ef721fa64d2cd0b7635be8"
+  dependencies:
+    "@graphql-tools/schema" "^8.2.0"
+    "@rollup/plugin-graphql" "^1.0.0"
+    "@sindresorhus/slugify" "^1.1.2"
+    dataloader "^2.0.0"
+    fast-deep-equal "^3.1.3"
+    isomorphic-unfetch "^3.1.0"
+
+"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/339e0664/@faststore/api":
+  version "1.4.22"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/339e0664/@faststore/api#dbf539964aa2fe84f8242963688bf424c5dea709"
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
