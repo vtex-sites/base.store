@@ -1,3 +1,20 @@
 module.exports = {
   ...require('@vtex/prettier-config'),
+  importOrder: [
+    '<THIRD_PARTY_MODULES>',
+    '^react$',
+    'phosphor-react',
+    '^@vtex/(.*)$',
+    '^@faststore/(.*)$',
+    '^@generated/(.*)$',
+    '^gatsby(.*)$',
+    '^src/components/(.*)$',
+    '^src/sdk/(.*)$',
+    '^src/styles/(.*)$',
+    '^src/hooks/(.*)$',
+    '^src/(.*)$',
+    '^[./]',
+  ],
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
 }
