@@ -18,7 +18,6 @@ import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
-import '../styles/pages/index.scss'
 import '../styles/pages/product-listing.scss'
 
 const ProductShelf = Loadable(

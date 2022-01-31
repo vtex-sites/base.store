@@ -1,4 +1,5 @@
 import './src/styles/global.scss'
+import './src/styles/layout.scss'
 
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
