@@ -27,7 +27,7 @@
   --button-primary-bkg-color                    : black;
   --button-primary-text-color                   : white;
   --button-primary-border-color                 : transparent;
-  --button-primary-hover-shadow                 : none;
+  --button-primary-hover-shadow                 : 0 0 0 1px var(--button-primary-hover-bkg-color);
   --button-primary-hover-bkg-color              : var(--color-neutral-6);
   --button-primary-hover-border-color           : transparent;
   --button-primary-active-bkg-color             : var(--color-neutral-5);
@@ -36,7 +36,7 @@
   --button-primary-inverse-bkg-color            : var(--button-primary-text-color);
   --button-primary-inverse-text-color           : var(--button-primary-bkg-color);
   --button-primary-inverse-border-color         : var(--button-primary-border-color);
-  --button-primary-inverse-hover-shadow         : var(--button-primary-hover-shadow);
+  --button-primary-inverse-hover-shadow         : 0 0 0 1px var(--button-primary-inverse-hover-bkg-color);
   --button-primary-inverse-hover-bkg-color      : whitesmoke;
   --button-primary-inverse-hover-border-color   : var(--button-primary-border-color);
   --button-primary-inverse-active-bkg-color     : gainsboro;
@@ -45,7 +45,7 @@
   --button-secondary-bkg-color                  : transparent;
   --button-secondary-text-color                 : var(--button-primary-bkg-color);
   --button-secondary-border-color               : var(--button-secondary-text-color);
-  --button-secondary-hover-shadow               : none;
+  --button-secondary-hover-shadow               : 0 0 0 1px var(--button-secondary-hover-border-color);
   --button-secondary-hover-bkg-color            : var(--button-primary-inverse-hover-bkg-color);
   --button-secondary-hover-border-color         : var(--button-secondary-border-color);
   --button-secondary-active-bkg-color           : var(--button-primary-inverse-active-bkg-color);
@@ -54,7 +54,7 @@
   --button-secondary-inverse-bkg-color          : transparent;
   --button-secondary-inverse-text-color         : white;
   --button-secondary-inverse-border-color       : white;
-  --button-secondary-inverse-hover-shadow       : var(--button-secondary-hover-shadow);
+  --button-secondary-inverse-hover-shadow       : 0 0 0 1px var(--button-secondary-inverse-hover-border-color);
   --button-secondary-inverse-hover-bkg-color    : var(--bg-lighten-hover);
   --button-secondary-inverse-hover-border-color : var(--button-secondary-inverse-border-color);
   --button-secondary-inverse-active-bkg-color   : var(--bg-lighten-pressed);
@@ -63,7 +63,7 @@
   --button-tertiary-bkg-color                   : transparent;
   --button-tertiary-text-color                  : var(--button-secondary-text-color);
   --button-tertiary-border-color                : transparent;
-  --button-tertiary-hover-shadow                : var(--button-secondary-hover-shadow);
+  --button-tertiary-hover-shadow                : 0 0 0 1px var(--button-tertiary-hover-bkg-color);
   --button-tertiary-hover-bkg-color             : var(--button-secondary-hover-bkg-color);
   --button-tertiary-hover-border-color          : transparent;
   --button-tertiary-active-bkg-color            : var(--button-secondary-active-bkg-color);
@@ -72,7 +72,7 @@
   --button-tertiary-inverse-bkg-color           : transparent;
   --button-tertiary-inverse-text-color          : var(--button-secondary-inverse-text-color);
   --button-tertiary-inverse-border-color        : transparent;
-  --button-tertiary-inverse-hover-shadow        : var(--button-secondary-inverse-hover-shadow);
+  --button-tertiary-inverse-hover-shadow        : 0 0 0 1px var(--button-tertiary-inverse-hover-border-color);
   --button-tertiary-inverse-hover-bkg-color     : var(--button-secondary-inverse-hover-bkg-color);
   --button-tertiary-inverse-hover-border-color  : transparent;
   --button-tertiary-inverse-active-bkg-color    : var(--button-secondary-inverse-active-bkg-color);
