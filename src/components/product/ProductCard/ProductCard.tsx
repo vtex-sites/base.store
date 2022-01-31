@@ -44,7 +44,7 @@ function ProductCard({
   product,
   index,
   structure = 'default',
-  badgeVariant = 'success',
+  badgeVariant = 'neutral',
   action = '',
   ratio = '1',
   select = false,
