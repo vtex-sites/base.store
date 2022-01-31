@@ -1,4 +1,11 @@
-@import "../../../styles/vendors/include-media";
+@import "../../../styles/scaffold.scss";
+
+a, [data-store-link] {
+  border-radius: var(--border-radius-default);
+  transition: box-shadow .5s ease;
+
+  @include focus-ring-visible;
+}
 
 [data-store-link] {
   min-width: auto;

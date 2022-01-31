@@ -1,5 +1,12 @@
 @import "../../../styles/utilities";
 
+[data-store-button] {
+  border-radius: var(--border-radius-button);
+  transition: background-color .5s ease, box-shadow .5s ease;
+
+  @include focus-ring-visible;
+}
+
 .button[data-store-button], .link-button[data-store-button] {
   display: inline-flex;
   align-items: center;
@@ -10,12 +17,7 @@
   text-decoration: none;
   column-gap: var(--space-2);
   border: 0;
-  border-radius: var(--border-radius-button);
   cursor: default;
-  transition: background-color .5s ease;
-
-  &:focus { outline: none; }
-  &:focus-visible { @include button-focus-ring; }
 
   &:disabled, &[data-button-disabled="true"] {
     cursor: not-allowed;
