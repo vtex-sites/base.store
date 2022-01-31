@@ -3,11 +3,11 @@ import React, { forwardRef, useRef } from 'react'
 import { Form, Label, Input, Button } from '@faststore/ui'
 
 export interface NewsletterProps
-  extends Omit<ComponentPropsWithRef<'form'>, 'onSubmit'> {
+  extends Omit<ComponentPropsWithRef<'form'>, 'title' | 'onSubmit'> {
   /**
-   * Heading for the section.
+   * Title for the section.
    */
-  heading: ReactNode
+  title: ReactNode
   /**
    * Description about the newsletter.
    */
@@ -19,7 +19,7 @@ export interface NewsletterProps
 }
 
 const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
-  function Newsletter({ heading, description, onSubmit, ...otherProps }, ref) {
+  function Newsletter({ title, description, onSubmit, ...otherProps }, ref) {
     const emailInputRef = useRef<HTMLInputElement>(null)
 
     const handleSubmit = (event: FormEvent) => {
@@ -38,7 +38,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
         {...otherProps}
       >
         <div data-newsletter-content>
-          {heading}
+          {title}
           {Boolean(description) && description}
         </div>
 
@@ -62,7 +62,7 @@ export default Newsletter
 /*
 Example of use:
 <Newsletter
-  heading={
+  title={
     <h3>
       <EnvelopIcon size={16}
       Get news and special offers
