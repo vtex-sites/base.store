@@ -38,7 +38,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
           onSubmit={handleSubmit}
           {...otherProps}
         >
-          <div data-newsletter-content>
+          <div data-newsletter-header>
             {title}
             {Boolean(description) && description}
           </div>
