@@ -244,31 +244,14 @@
 
 .theming-button main .theming-poc-list {
   [data-store-button] {
-    --button-border-radius                  : var(--border-radius-default);
-    --button-primary-bkg-color              : var(--bg-secondary-default);
-    --button-primary-text-color             : var(--color-text-inverse);
-    --button-primary-hover-bkg-color        : var(--bg-secondary-hover);
-    --button-primary-active-bkg-color       : var(--bg-secondary-pressed);
-    --button-primary-inverse-bkg-color              : var(--bg-neutral-lightest);
-    --button-primary-inverse-text-color             : var(--color-text-display);
-    --button-primary-inverse-hover-bkg-color        : var(--color-secondary-0);
-    --button-primary-inverse-active-bkg-color       : var(--color-secondary-1);
-    --button-secondary-text-color           : var(--color-text-display);
-    --button-secondary-border-color         : var(--bg-secondary-default);
-    --button-secondary-hover-bkg-color      : var(--bg-darken-hover);
-    --button-secondary-hover-border-color   : var(--bg-secondary-default);
-    --button-secondary-active-bkg-color     : var(--bg-darken-pressed);
-    --button-secondary-active-border-color  : var(--bg-secondary-default);
-    --button-secondary-inverse-text-color           : var(--color-text-inverse);
-    --button-secondary-inverse-border-color         : var(--color-border-light);
-    --button-secondary-inverse-hover-border-color   : var(--color-border-light);
-    --button-secondary-inverse-active-border-color  : var(--color-border-light);
-    --button-tertiary-text-color            : var(--color-link);
-    --button-tertiary-hover-bkg-color       : var(--bg-secondary-light);
-    --button-tertiary-active-bkg-color      : var(--color-secondary-1);
-    --button-tertiary-inverse-text-color            : var(--color-text-inverse);
-    --button-tertiary-inverse-hover-bkg-color       : var(--bg-lighten-hover);
-    --button-tertiary-inverse-active-bkg-color      : var(--bg-lighten-pressed);
+    --button-border-radius                   : var(--border-radius-default);
+    --button-primary-bkg-color               : var(--bg-secondary-default);
+    --button-primary-text-color              : var(--color-text-inverse);
+    --button-primary-hover-bkg-color         : var(--bg-secondary-hover);
+    --button-primary-active-bkg-color        : var(--bg-secondary-pressed);
+    --button-primary-inverse-hover-bkg-color : var(--color-secondary-0);
+    --button-primary-inverse-active-bkg-color: var(--color-secondary-1);
+    --button-tertiary-text-color             : var(--color-link);
   }
 
   &.-inverse { --bg-body: #001947; }
