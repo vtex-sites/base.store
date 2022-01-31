@@ -9,9 +9,9 @@ export interface NewsletterProps
    */
   title: ReactNode
   /**
-   * Description about the newsletter.
+   * A subtitle for the section.
    */
-  description?: ReactNode
+  subtitle?: ReactNode
   /**
    * Callback function when submitted.
    */
@@ -19,7 +19,7 @@ export interface NewsletterProps
 }
 
 const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
-  function Newsletter({ title, description, onSubmit, ...otherProps }, ref) {
+  function Newsletter({ title, subtitle, onSubmit, ...otherProps }, ref) {
     const emailInputRef = useRef<HTMLInputElement>(null)
 
     const handleSubmit = (event: FormEvent) => {
@@ -40,7 +40,7 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
         >
           <div data-newsletter-header>
             {title}
-            {Boolean(description) && description}
+            {Boolean(subtitle) && subtitle}
           </div>
 
           <div data-newsletter-controls>
@@ -70,7 +70,7 @@ Example of use:
       Get news and special offers
     </h3>
   }
-  description={
+  subtitle={
     <p>
       Receive our news and promotions in advance. Enjoy and get 10% off
       your first purchase. For more information{' '}
