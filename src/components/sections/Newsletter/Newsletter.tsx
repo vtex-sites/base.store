@@ -60,25 +60,3 @@ const Newsletter = forwardRef<HTMLFormElement, NewsletterProps>(
 )
 
 export default Newsletter
-
-/*
-Example of use:
-<Newsletter
-  title={
-    <h3>
-      <EnvelopIcon size={16}
-      Get news and special offers
-    </h3>
-  }
-  subtitle={
-    <p>
-      Receive our news and promotions in advance. Enjoy and get 10% off
-      your first purchase. For more information{' '}
-      <Link to="/">click here</Link>.
-    </p>
-  }
-  onSubmit={(email) => {
-    alert(`Subscribing ${email} to the newsletter.`)
-  }}
-/>
- */
