@@ -1,0 +1,31 @@
+@import "../../../styles/utilities";
+
+.icon-button[data-store-icon-button] {
+  width: var(--tap-min-size);
+  height: var(--tap-min-size);
+  color: var(--color-text);
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--border-radius-button);
+  transition: background-color .5s ease;
+
+  &:focus { outline: none; }
+  &:focus-visible { @include button-focus-ring; }
+
+  &:hover, &:focus { background-color: var(--bg-secondary-light); }
+
+  &:active {
+    color: var(--color-text-display);
+    background-color: var(--color-secondary-1);
+  }
+
+  &:disabled, &[data-button-disabled="true"] {
+    color: var(--color-neutral-6);
+    background-color: var(--bg-disabled);
+  }
+
+  [data-store-icon] {
+    display: flex;
+    justify-content: center;
+  }
+}
