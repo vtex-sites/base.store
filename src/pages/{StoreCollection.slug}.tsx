@@ -18,7 +18,6 @@ import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
-import '../styles/pages/index.scss'
 import '../styles/pages/product-listing.scss'
 
 const ProductShelf = Loadable(
@@ -128,7 +127,7 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <ProductGallery title={title} />
+      <ProductGallery title={title} slug={slug} />
 
       {haveYouMightAlsoLikeProducts && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">

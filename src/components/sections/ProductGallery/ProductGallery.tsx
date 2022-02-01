@@ -3,7 +3,10 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useState, lazy, Suspense } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
+import {
+  FadersHorizontal as FadersHorizontalIcon,
+  ArrowLeft as ArrowLeftIcon,
+} from 'phosphor-react'
 
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
@@ -14,9 +17,10 @@ const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
+  slug?: string
 }
 
-function ProductGallery({ title }: Props) {
+function ProductGallery({ title, slug }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
 
@@ -36,10 +40,17 @@ function ProductGallery({ title }: Props) {
     <div className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <h2 className="title-small">Filters</h2>
+          <Suspense fallback={null}>
+            <Filter
+              slug={slug}
+              isOpen={isFilterOpen}
+              facets={orderedFacets}
+              onDismiss={() => setIsFilterOpen(false)}
+            />
+          </Suspense>
         </div>
 
-        {data && (
+        {data ? (
           <>
             <div
               className="product-listing__results-count"
@@ -67,27 +78,13 @@ function ProductGallery({ title }: Props) {
                 </Button>
               )}
             </div>
-          </>
-        )}
 
-        <div className="product-listing__filters-bar">
-          <Suspense fallback={null}>
-            <Filter
-              isOpen={isFilterOpen}
-              facets={orderedFacets}
-              onDismiss={() => setIsFilterOpen(false)}
-            />
-          </Suspense>
-        </div>
-
-        {data ? (
-          <>
             <div className="product-listing__results">
               {/* Add link to previous page. This helps on SEO */}
               {prev !== false && (
-                <>
+                <div className="product-listing__pagination product-listing__pagination--top">
                   <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-                  <a
+                  <LinkButton
                     onClick={(e) => {
                       e.currentTarget.blur()
                       e.preventDefault()
@@ -95,10 +92,13 @@ function ProductGallery({ title }: Props) {
                     }}
                     href={prev.link}
                     rel="prev"
+                    variant="secondary"
+                    iconPosition="left"
+                    icon={<ArrowLeftIcon size={16} weight="bold" />}
                   >
                     Previous Page
-                  </a>
-                </>
+                  </LinkButton>
+                </div>
               )}
 
               {/* Render ALL products */}
@@ -138,7 +138,7 @@ function ProductGallery({ title }: Props) {
 
               {/* Add link to next page. This helps on SEO */}
               {next !== false && (
-                <div className="product-listing__pagination">
+                <div className="product-listing__pagination product-listing__pagination--bottom">
                   <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
                   <LinkButton
                     data-testid="show-more"

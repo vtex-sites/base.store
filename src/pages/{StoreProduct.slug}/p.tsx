@@ -14,8 +14,6 @@ import type {
 } from '@generated/graphql'
 import ProductShelf from 'src/components/sections/ProductShelf'
 
-import '../../styles/pages/index.scss'
-
 export type Props = PageProps<
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables
