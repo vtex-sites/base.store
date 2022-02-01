@@ -3,7 +3,10 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useState, lazy, Suspense } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import { FadersHorizontal as FadersHorizontalIcon } from 'phosphor-react'
+import {
+  FadersHorizontal as FadersHorizontalIcon,
+  ArrowLeft as ArrowLeftIcon,
+} from 'phosphor-react'
 
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
@@ -90,6 +93,8 @@ function ProductGallery({ title, slug }: Props) {
                     href={prev.link}
                     rel="prev"
                     variant="secondary"
+                    iconPosition="left"
+                    icon={<ArrowLeftIcon size={16} weight="bold" />}
                   >
                     Previous Page
                   </LinkButton>
