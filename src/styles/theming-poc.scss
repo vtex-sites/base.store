@@ -69,53 +69,21 @@
 /* stylelint-disable */
 .theming-toggle > main [data-base-toggle] {
   &:nth-child(2) {
-    --toggle-bkg-color                : transparent;
-    --toggle-border-color             : black;
-    --toggle-border-radius            : 0;
-    --toggle-border-width             : 1px;
-    --toggle-knob-bkg-color           : black;
-    --toggle-knob-border-color        : black;
-    --toggle-checked-bkg-color        : darkseagreen;
-    --toggle-checked-border-color     : var(--toggle-border-color);
-    --toggle-checked-knob-border-color: white;
+    --toggle-bkg-color                : var(--bg-neutral-lightest);
+    --toggle-height                   : calc(var(--min-size) - 4px);
+    --toggle-border-width             : 2px;
+    --toggle-content                  : "🤙";
+    --toggle-border-color             : var(--color-neutral-3);
+    --toggle-border-radius            : var(--border-radius-default);
+    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-checked-bkg-color        : var(--bg-primary-default);
+    --toggle-checked-border-color     : var(--bg-primary-default);
     --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
+    --toggle-hover-border-color       : var(--bg-primary-default);
+    --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
   }
 
   &:nth-child(3) {
-    --toggle-bkg-color                : var(--bg-neutral-lightest);
-    --toggle-border-color             : var(--color-border-input);
-    --toggle-content                  : "on";
-    --toggle-content-color            : var(--color-border-input);
-    --toggle-border-radius            : var(--border-radius-pill);
-    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
-    --toggle-knob-border-color        : var(--color-border-input);
-    --toggle-knob-radius              : var(--border-radius-pill);
-    --toggle-knob-shadow              : var(--box-shadow);
-    --toggle-checked-bkg-color        : var(--bg-success);
-    --toggle-checked-border-color     : var(--color-success);
-    --toggle-checked-knob-border-color: var(--toggle-knob-border-color);
-    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
-  }
-
-  &:nth-child(4) {
-    --toggle-bkg-color           : var(--bg-neutral-lightest);
-    --toggle-height-desk         : 38px;
-    --toggle-border-color        : var(--color-neutral-3);
-    --toggle-border-radius       : var(--border-radius-default);
-    --toggle-knob-bkg-color      : var(--bg-neutral-lightest);
-    --toggle-knob-border-color   : var(--color-neutral-3);
-    --toggle-knob-radius         : var(--border-radius-default);
-    --toggle-knob-shadow         : var(--box-shadow);
-    --toggle-checked-bkg-color   : var(--bg-primary-default);
-    --toggle-checked-border-color: var(--bg-primary-default);
-    --toggle-checked-knob-color  : var(--toggle-knob-bkg-color);
-    --toggle-hover-bkg-color     : var(--toggle-bkg-color);
-    --toggle-hover-border-color  : var(--bg-primary-default);
-    --toggle-hover-knob-bkg-color: var(--bg-neutral-lightest);
-    --toggle-hover-shadow        : 0 0 0 var(--toggle-border-width) var(--bg-primary-default);
-  }
-
-  &:nth-child(5) {
     --toggle-bkg-color                : var(--color-neutral-3);
     --toggle-border-color             : var(--color-neutral-3);
     --toggle-border-radius            : var(--border-radius-pill);
@@ -124,12 +92,22 @@
     --toggle-knob-border-color        : var(--color-neutral-3);
     --toggle-knob-radius              : var(--border-radius-circle);
     --toggle-knob-shadow              : none;
-    --toggle-checked-bkg-color        : darkgreen;
-    --toggle-checked-border-color     : darkgreen;
-    --toggle-checked-knob-border-color: darkgreen;
-    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
-    --toggle-hover-border-color       : darkgreen;
-    --toggle-hover-shadow             : 0 0 0 1px darkgreen;
+    --toggle-checked-bkg-color        : var(--color-border-input-selected);
+    --toggle-checked-knob-border-color: var(--color-border-input-selected);
+    --toggle-hover-border-color       : var(--color-border-input-selected);
+    --toggle-hover-shadow             : none;
+  }
+
+  &:nth-child(4) {
+    --toggle-shadow                   : var(--box-shadow);
+    --toggle-bkg-color                : var(--bg-neutral-lightest);
+    --toggle-border-color             : var(--color-border-input);
+    --toggle-border-radius            : var(--border-radius-pill);
+    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+    --toggle-hover-bkg-color          : #F1F4E6;
+    --toggle-hover-border-color       : #506300;
+    --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
   }
 }
 
@@ -259,13 +237,14 @@
 
 .theming-product-card main [data-store-card] {
   &:nth-child(1) {
-    --product-card-text-color         : #688200;
+    --product-card-text-title-color   : #688200;
+    --product-card-text-title-weight  : bold;
     --product-card-shadow             : var(--box-shadow);
-    --product-card-border-radius      : var(--border-radius-default);
+    --product-card-border-radius      : 14px;
     --product-card-border-width       : 1px;
     --product-card-border-color       : var(--color-border-display);
     --product-card-transition-timing  : .5s;
-    --product-card-img-radius         : var(--border-radius-default);
+    --product-card-img-radius         : 6px;
     --product-card-hover-shadow       : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
 
     [data-store-quantity-selector] {
@@ -298,85 +277,6 @@
       --badge-border-radius            : var(--border-radius-default);
       --badge-small-padding            : 2px var(--space-1);
     }
-
-    [data-store-badge-variant="success"] {
-      --badge-success-bkg-color        : #59ab30;
-      --badge-success-text-color       : var(--color-text-inverse);
-      --badge-success-border-color     : transparent;
-    }
-
-    [data-store-badge-variant="highlighted"] {
-      --badge-highlighted-bkg-color    : #9559e4;
-      --badge-highlighted-text-color   : var(--color-text-inverse);
-      --badge-highlighted-border-color : transparent;
-    }
-
-    [data-store-badge-variant="info"] {
-      --badge-info-bkg-color           : #387bf8;
-      --badge-info-text-color          : var(--color-text-inverse);
-      --badge-info-border-color        : transparent;
-    }
-
-    [data-store-badge-variant="neutral"] {
-      --badge-neutral-bkg-color        : #a8a8a8;
-      --badge-neutral-text-color       : var(--color-text-inverse);
-      --badge-neutral-border-color     : transparent;
-    }
-  }
-
-  &:nth-child(3) {
-    --product-card-padding            : 0;
-    --product-card-gap                : var(--grid-gap-0);
-    --product-card-shadow             : none;
-
-    --product-card-border-width       : 1px;
-    --product-card-border-color       : var(--color-border-display);
-    --product-card-border-color-active: transparent;
-
-    --product-card-bkg-color          : var(--bg-neutral-lightest);
-    --product-card-bkg-color-active   : var(--bg-neutral-lightest);
-
-    --product-card-content-padding    : var(--space-2) var(--space-2) var(--space-2) var(--space-0);
-
-    --product-card-text-color         : var(--color-text);
-    --product-card-text-title         : var(--text-size-4);
-
-    --product-card-transition-function: ease;
-    --product-card-transition-property: all;
-    --product-card-transition-timing  : .5s;
-
-    --product-card-hover-border       : var(--color-border-display);
-    --product-card-hover-shadow       : var(--box-shadow);
-    --product-card-hover-bkg-color    : var(--bg-neutral-lightest);
-
-    --product-card-focus-shadow       : 0 0 0 1px var(--bg-neutral-lightest), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
-    --product-card-focus-bkg-color    : var(--bg-neutral-lightest);
-  }
-
-  &:nth-child(4) {
-    --product-card-text-color         : var(--color-text-inverse);
-
-    --product-card-border-radius      : var(--border-radius-flat);
-    --product-card-border-width       : 2px;
-    --product-card-border-color       : var(--bg-secondary-dark);
-    --product-card-border-color-active: var(--bg-secondary-dark);
-
-    --product-card-bkg-color          : var(--color-secondary-2);
-    --product-card-bkg-color-active   : var(--bg-secondary-dark);
-
-    --product-card-img-radius         : var(--border-radius-flat);
-
-    --product-card-text-price-color         : var(--color-text-inverse);
-    --product-card-text-price-listing-color : var(--color-text-inverse);
-
-    --product-card-transition-function: ease;
-    --product-card-transition-property: box-shadow;
-    --product-card-transition-timing  : .5s;
-
-    --product-card-hover-border       : var(--bg-secondary-light);
-    --product-card-hover-shadow       : 0 0 0 2px var(--bg-secondary-dark);
-    --product-card-hover-bkg-color    : var(--bg-secondary-dark);
-    --product-card-hover-text-color   : var(--color-text-inverse);
   }
 }
 

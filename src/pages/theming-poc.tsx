@@ -49,7 +49,6 @@ function Page(props: Props) {
             <InputToggle />
             <InputToggle />
             <InputToggle />
-            <InputToggle />
           </main>
         </article>
         <hr />
