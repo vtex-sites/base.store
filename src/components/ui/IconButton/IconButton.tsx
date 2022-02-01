@@ -10,9 +10,13 @@ interface IconButtonProps {
 
 type Props = IconButtonProps & UIIconButtonProps
 
-function IconButton({ icon, classes, ...props }: Props) {
+function IconButton({ icon, classes, ...otherProps }: Props) {
   return (
-    <UIIconButton className={`icon-button ${classes}`} icon={icon} {...props} />
+    <UIIconButton
+      className={`icon-button ${classes}`}
+      icon={icon}
+      {...otherProps}
+    />
   )
 }
 
