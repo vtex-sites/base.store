@@ -339,6 +339,7 @@ function Page(props: Props) {
                 product={products[1] ?? {}}
                 index={1}
                 structure="wide"
+                badgeVariant="highlighted"
               />
               <ProductCard
                 product={products[2] ?? {}}

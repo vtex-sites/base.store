@@ -296,14 +296,14 @@
 
 .theming-product-card main [data-store-card] {
   &:nth-child(1) {
+    --product-card-shadow                  : var(--box-shadow);
+    --product-card-img-radius              : 6px;
     --product-card-text-title-color        : #688200;
     --product-card-text-title-weight       : bold;
-    --product-card-shadow                  : var(--box-shadow);
     --product-card-border-radius           : 14px;
     --product-card-border-width            : 1px;
     --product-card-border-color            : var(--color-neutral-2);
     --product-card-transition-timing       : .5s;
-    --product-card-img-radius              : 6px;
     --product-card-hover-shadow            : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
     --product-card-hover-bkg-color         : #F1F4E6;
     --product-card-hover-border-color      : var(--bg-neutral-lightest);
@@ -336,6 +336,24 @@
     [data-store-badge] {
       --badge-border-radius                : var(--border-radius-default);
       --badge-small-padding                : 2px var(--space-1);
+    }
+  }
+
+  &:nth-child(2) {
+    --product-card-bkg-color               : var(--bg-primary-light);
+    --product-card-text-title-color        : var(--bg-primary-default);
+    --product-card-text-price-color        : var(--bg-primary-default);
+    --product-card-border-width            : 0;
+    --product-card-transition-timing       : .5s;
+    --product-card-hover-shadow            : 0 0 0 3px var(--bg-primary-default);
+    --product-card-hover-bkg-color         : var(--product-card-bkg-color);
+
+    [data-store-badge] {
+      --badge-border-width                 : 3px;
+      --badge-border-radius                : var(--border-radius-pill);
+      --badge-highlighted-bkg-color        : transparent;
+      --badge-highlighted-text-color       : var(--bg-primary-default);
+      --badge-highlighted-border-color     : var(--bg-primary-default);
     }
   }
 }
