@@ -12,6 +12,7 @@
   gap: 48px;
   align-items: center;
   justify-content: center;
+  min-width: 1280px;
   min-height: 100vh;
   padding: 48px 0;
 
@@ -38,8 +39,8 @@
 
   > * > h3 { font-weight: bold; }
 
-  > section { flex-basis: 30%; }
-  > main { flex-basis: 70%; }
+  > section { flex-basis: 20%; }
+  > main { flex-basis: 80%; }
 
   > main, > section {
     display: flex;
