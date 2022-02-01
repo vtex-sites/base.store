@@ -15,7 +15,12 @@
     border-radius: var(--border-radius-default);
     transition: box-shadow .2s ease, border .2s ease;
 
-    &:focus { @include input-focus-ring; }
+    &:hover:not([data-store-quantity-selector="disabled"]) {
+      border-color: var(--color-border-input-selected);
+      box-shadow: 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+    }
+
+    @include input-focus-ring;
   }
 
   [data-store-icon] { display: block; }

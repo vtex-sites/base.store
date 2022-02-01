@@ -15,12 +15,29 @@ $base: 16px !default;
 }
 
 @mixin input-focus-ring {
-  border-color: var(--color-border-input-selected);
-  outline: none;
-  box-shadow:
-    0 0 0 1px var(--bg-body),
-    0 0 0 var(--border-width-2) var(--bg-focus-ring),
-    inset 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+  @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
+    @supports (-webkit-appearance:none) {         // Use `focus` instead of `focus-visible`
+      &:hover:focus,
+      &:focus {                                   // due to Safari's lack of support
+        border-color: var(--color-border-input-selected);
+        outline: none;
+        box-shadow:
+          0 0 0 1px var(--bg-body),
+          0 0 0 var(--border-width-2) var(--bg-focus-ring),
+          inset 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+      }
+    }
+  }
+
+  &:focus-visible,
+  &:hover:focus-visible {
+    border-color: var(--color-border-input-selected);
+    outline: none;
+    box-shadow:
+      0 0 0 1px var(--bg-body),
+      0 0 0 var(--border-width-2) var(--bg-focus-ring),
+      inset 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+  }
 }
 
 @mixin focus-ring {
