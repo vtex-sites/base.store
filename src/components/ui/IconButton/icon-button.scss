@@ -1,6 +1,9 @@
 @import "../../../styles/utilities";
 
 .icon-button[data-store-icon-button] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: var(--tap-min-size);
   height: var(--tap-min-size);
   color: var(--color-text);
@@ -22,10 +25,5 @@
   &:disabled, &[data-button-disabled="true"] {
     color: var(--color-neutral-6);
     background-color: var(--bg-disabled);
-  }
-
-  [data-store-icon] {
-    display: flex;
-    justify-content: center;
   }
 }
