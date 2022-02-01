@@ -98,6 +98,8 @@
     --toggle-checked-knob-border-color: var(--color-border-input-selected);
     --toggle-hover-border-color       : var(--color-border-input-selected);
     --toggle-hover-shadow             : none;
+    --toggle-hover-bkg-color          : var(--bg-secondary-light);
+    --toggle-hover-knob-border-color          : var(--bg-secondary-light);
   }
 
   &:nth-child(4) {
