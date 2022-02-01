@@ -1,6 +1,6 @@
 @import "../../../styles/utilities";
 
-.icon-button[data-store-icon-button] {
+[data-store-icon-button] {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@
   }
 
   &:disabled, &[data-button-disabled="true"] {
-    color: var(--color-neutral-6);
+    color: var(--color-text-disabled);
     background-color: var(--bg-disabled);
   }
 }
