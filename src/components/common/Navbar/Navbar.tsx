@@ -53,7 +53,7 @@ function Navbar() {
           <IconButton
             classes="navbar__menu"
             aria-label="Open Menu"
-            icon={<ListIcon size={48} />}
+            icon={<ListIcon size={32} />}
             onClick={() => setShowMenu(true)}
           />
           <LinkGatsby
@@ -98,7 +98,7 @@ function Navbar() {
               <IconButton
                 classes="navbar__button"
                 aria-label="Close Menu"
-                icon={<XIcon size={48} />}
+                icon={<XIcon size={32} />}
                 onClick={() => {
                   onDismissTransition?.()
                 }}
