@@ -252,45 +252,46 @@
 
 .theming-product-card main [data-store-card] {
   &:nth-child(1) {
-    --product-card-text-title-color   : #688200;
-    --product-card-text-title-weight  : bold;
-    --product-card-shadow             : var(--box-shadow);
-    --product-card-border-radius      : 14px;
-    --product-card-border-width       : 1px;
-    --product-card-border-color       : var(--color-border-display);
-    --product-card-transition-timing  : .5s;
-    --product-card-img-radius         : 6px;
-    --product-card-hover-shadow       : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+    --product-card-text-title-color        : #688200;
+    --product-card-text-title-weight       : bold;
+    --product-card-shadow                  : var(--box-shadow);
+    --product-card-border-radius           : 14px;
+    --product-card-border-width            : 1px;
+    --product-card-border-color            : var(--color-neutral-2);
+    --product-card-transition-timing       : .5s;
+    --product-card-img-radius              : 6px;
+    --product-card-hover-shadow            : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+    --product-card-hover-bkg-color         : #F1F4E6;
+    --product-card-hover-border-color      : var(--bg-neutral-lightest);
 
     [data-store-quantity-selector] {
-      --qty-selector-width                    : 8rem;
-      --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
-      --qty-selector-shadow                   : var(--box-shadow);
-      --qty-selector-bkg-color                : var(--bg-neutral-lightest);
-      --qty-selector-text-color               : #506300;
-      --qty-selector-icon-color               : #506300;
-      --qty-selector-border-radius            : var(--border-radius-pill);
-      --qty-selector-border-width             : 0;
-      --qty-selector-border-color             : var(--color-border-input);
-      --qty-selector-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-      --qty-selector-hover-button-bkg-color   : #F1F4E6;
+      --qty-selector-height                : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
+      --qty-selector-shadow                : var(--box-shadow);
+      --qty-selector-bkg-color             : var(--bg-neutral-lightest);
+      --qty-selector-text-color            : #506300;
+      --qty-selector-icon-color            : #506300;
+      --qty-selector-border-radius         : var(--border-radius-pill);
+      --qty-selector-border-color          : var(--color-neutral-2);
+      --qty-selector-hover-shadow          : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+      --qty-selector-hover-button-bkg-color: #F1F4E6;
     }
 
     [data-base-select] {
-      --select-shadow                   : var(--box-shadow);
-      --select-text-color               : #506300;
-      --select-icon-color               : #506300;
-      --select-border-radius            : var(--border-radius-pill);
-      --select-border-width             : 0;
-      --select-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-      --select-hover-icon-color         : #506300;
-      --select-hover-text-color         : #506300;
-      --select-hover-border-color       : var(--color-border-input-selected);
+      --select-shadow                      : var(--box-shadow);
+      --select-text-color                  : #506300;
+      --select-icon-color                  : #506300;
+      --select-border-radius               : var(--border-radius-pill);
+      --select-border-color                : var(--color-neutral-2);
+      --select-hover-shadow                : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+      --select-hover-icon-color            : #506300;
+      --select-hover-text-color            : #506300;
+      --select-hover-bkg-color             : #F1F4E6;
+      --select-hover-border-color          : var(--bg-neutral-lightest);
     }
 
     [data-store-badge] {
-      --badge-border-radius            : var(--border-radius-default);
-      --badge-small-padding            : 2px var(--space-1);
+      --badge-border-radius                : var(--border-radius-default);
+      --badge-small-padding                : 2px var(--space-1);
     }
   }
 }
