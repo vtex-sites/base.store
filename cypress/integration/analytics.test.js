@@ -74,25 +74,6 @@ describe('add_to_cart event', () => {
           testAddToCartEvent(skuId)
         })
     })
-
-    it('adds add_to_cart event in the data layer at the product listing page', () => {
-      cy.visit(pages.collection, options)
-      cy.waitForHydration()
-
-      cy.itemsInCart(0)
-
-      // Add to cart
-      cy.getById('store-card').first().click()
-      cy.getById('buy-button')
-        .first()
-        .click()
-        .then(($btn) => {
-          cy.itemsInCart(1)
-          const skuId = $btn.attr('data-sku')
-
-          testAddToCartEvent(skuId)
-        })
-    })
   })
 })
 
@@ -177,8 +158,6 @@ describe('select_item event', () => {
       .then(($btn) => {
         skuId = $btn.attr('data-sku')
       })
-
-      .click()
       .then(() => {
         cy.window().then((window) => {
           const event = window.dataLayer.find(
@@ -213,7 +192,7 @@ describe('search event', () => {
     cy.visit(pages.home, options)
     cy.waitForHydration()
 
-    cy.get('form[data-store-search-input]').within(() => {
+    cy.getById('store-search-input').within(() => {
       cy.getById('store-input').click().type('shirt')
       cy.getById('store-button')
         .click()
