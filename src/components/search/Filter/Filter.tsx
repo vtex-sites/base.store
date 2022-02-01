@@ -132,10 +132,7 @@ function Filter({
   }
 
   const onCheck = ({ key, value }: IStoreSelectedFacet) => {
-    if (!isMobile) {
-      toggleFacet({ key, value })
-    }
-
+    !isMobile && toggleFacet({ key, value })
     onFacetChange({ key, value })
   }
 
