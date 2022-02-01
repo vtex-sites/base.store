@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import type { LinkProps } from '@faststore/ui'
 import { Icon as UIIcon, Link as UILink } from '@faststore/ui'
 
@@ -21,13 +21,21 @@ function LinkButton({
   className = '',
   ...otherProps
 }: Props) {
+  const linkRef = useRef<HTMLAnchorElement | null>(null)
+
   return (
     <UILink
+      ref={linkRef}
       data-store-button
       className={`link-button ${className}`}
       data-button-variant={variant}
       data-button-inverse={inverse}
       data-button-disabled={disabled}
+      onFocus={(e: { preventDefault: () => void }) => {
+        e.preventDefault()
+
+        disabled && linkRef.current?.blur()
+      }}
       {...otherProps}
     >
       {iconPosition === 'left' && <UIIcon component={icon} />}

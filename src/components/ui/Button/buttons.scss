@@ -45,7 +45,7 @@
   &[data-button-variant="secondary"] {
     color: var(--color-text-display);
     background-color: transparent;
-    border: 2px solid var(--bg-secondary-default);
+    border: var(--border-width-1) solid var(--bg-secondary-default);
 
     &:hover, &:focus {
       color: var(--color-text-inverse);
@@ -108,7 +108,7 @@
     text-decoration: none;
   }
 
-  &[data-button-disabled="true"] {
+  &[data-button-disabled="true"]:active {
     pointer-events: none;
   }
 }
