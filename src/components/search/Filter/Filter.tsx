@@ -4,19 +4,17 @@ import type {
   IStoreSelectedFacet,
   FacetedFilter_FacetsFragment,
 } from '@generated/graphql'
-import { List as UIList, Label as UILabel } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
-import Checkbox from 'src/components/ui/Checkbox'
-import { Badge } from 'src/components/ui/Badge'
 import { X as XIcon } from 'phosphor-react'
-import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
 import SlideOver from 'src/components/ui/SlideOver'
+
+import Facets from './Facets'
 
 import './filter.scss'
 
-interface Props {
+interface FilterProps {
   facets: FacetedFilter_FacetsFragment[]
   /*
    * Control whether the filter modal is open. (mobile only)
@@ -49,9 +47,9 @@ function Filter({
   isOpen = false,
   testId = 'store-filter',
   slug = '',
-}: Props) {
+}: FilterProps) {
   const { isMobile } = useWindowDimensions()
-  const { toggleFacet, toggleFacets, state: searchState } = useSearch()
+  const { toggleFacets, state: searchState } = useSearch()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
@@ -119,9 +117,8 @@ function Filter({
         (f) => f.value === item.value
       )
 
-      if (selectedFacets.some((facet) => facet.value === item.value)) {
+      selectedFacets.some((facet) => facet.value === item.value) &&
         setFacetsToRemove([...facetsToRemove, item])
-      }
 
       selectedFacets.splice(indexToRemove, 1)
       setSelectedFacets([...selectedFacets])
@@ -132,83 +129,50 @@ function Filter({
     setSelectedFacets([...selectedFacets, item])
   }
 
-  const onCheck = ({ key, value }: IStoreSelectedFacet) => {
-    if (!isMobile) {
-      toggleFacet({ key, value })
+  const onAccordionItemMount = (
+    index: number,
+    values: FacetedFilter_FacetsFragment['values']
+  ) => {
+    // Ensures only one array item for each accordion's item
+    if (activeFacets.length >= filteredFacets.length) {
+      return
     }
 
-    onFacetChange({ key, value })
+    // Filter current selected facets from API
+    const selectedValues = values.filter(({ selected }) => selected)
+
+    activeFacets.push({
+      accordionIndex: index,
+      facets: selectedValues.map(({ value }) => value),
+    })
+    setActiveFacets(activeFacets)
   }
 
-  const Facets = () => {
-    return (
-      <div className="filter" data-store-filter data-testid={testId}>
-        <Accordion
-          expandedIndices={indicesExpanded}
-          onChange={onAccordionChange}
-        >
-          {filteredFacets.map(({ label, values, key }, index) => (
-            <AccordionItem
-              key={`${label}-${index}`}
-              testId="filter-accordion"
-              isExpanded={indicesExpanded.has(index)}
-              buttonLabel={label}
-              ref={(_) => {
-                // Filter current selected facets from API
-                const selectedValues = values.filter(({ selected }) => selected)
+  const onApply = () => {
+    // Only toggle new facets and keep the current ones applied
+    const facetsToAdd = selectedFacets
+      .map((facet) => !searchState.selectedFacets.includes(facet) && facet)
+      .concat(facetsToRemove)
+      .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
 
-                // Ensures only one array item for each accordion's item
-                if (activeFacets.length < filteredFacets.length) {
-                  activeFacets.push({
-                    accordionIndex: index,
-                    facets: selectedValues.map(({ value }) => value),
-                  })
-                  setActiveFacets(activeFacets)
-                }
-              }}
-            >
-              <UIList>
-                {values.map((item) => {
-                  const id = `${label}-${item.label}`
+    toggleFacets(facetsToAdd)
 
-                  return (
-                    <li key={id} className="filter__item">
-                      <Checkbox
-                        id={id}
-                        checked={
-                          item.value === slug ||
-                          selectedFacets.some(
-                            (facet) => facet.value === item.value
-                          )
-                        }
-                        onChange={() => onCheck({ key, value: item.value })}
-                        data-testid="filter-accordion-panel-checkbox"
-                        data-value={item.value}
-                        data-quantity={item.quantity}
-                        disabled={item.value === slug}
-                      />
-                      <UILabel htmlFor={id} className="title-small">
-                        {item.label}{' '}
-                        <Badge variant="neutral" small>
-                          {item.quantity}
-                        </Badge>
-                      </UILabel>
-                    </li>
-                  )
-                })}
-              </UIList>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
-    )
+    setIndicesExpanded(new Set([]))
+    onDismissTransition?.()
   }
 
-  if (!isMobile) {
-    return <Facets />
-  }
-
-  return (
+  return !isMobile ? (
+    <Facets
+      slug={slug}
+      testId={testId}
+      selectedFacets={selectedFacets}
+      filteredFacets={filteredFacets}
+      indicesExpanded={indicesExpanded}
+      onFacetChange={onFacetChange}
+      onAccordionChange={onAccordionChange}
+      onAccordionItemMount={onAccordionItemMount}
+    />
+  ) : (
     <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
@@ -231,7 +195,16 @@ function Filter({
             }}
           />
         </header>
-        <Facets />
+        <Facets
+          slug={slug}
+          testId={testId}
+          selectedFacets={selectedFacets}
+          filteredFacets={filteredFacets}
+          indicesExpanded={indicesExpanded}
+          onFacetChange={onFacetChange}
+          onAccordionChange={onAccordionChange}
+          onAccordionItemMount={onAccordionItemMount}
+        />
       </div>
       <footer className="filter-modal__footer">
         <Button
@@ -246,22 +219,7 @@ function Filter({
         <Button
           variant="primary"
           data-testid="filter-modal-button-apply"
-          onClick={() => {
-            // Only toggle new facets and keep the current ones applied
-            const facetsToAdd = selectedFacets
-              .map(
-                (facet) => !searchState.selectedFacets.includes(facet) && facet
-              )
-              .concat(facetsToRemove)
-              .filter(
-                (facet) => typeof facet !== 'boolean'
-              ) as IStoreSelectedFacet[]
-
-            toggleFacets(facetsToAdd)
-
-            setIndicesExpanded(new Set([]))
-            onDismissTransition?.()
-          }}
+          onClick={() => onApply()}
         >
           Apply
         </Button>
