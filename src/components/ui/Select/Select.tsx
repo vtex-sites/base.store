@@ -4,9 +4,13 @@ import { CaretDown as CaretDownIcon } from 'phosphor-react'
 
 import './select.scss'
 
-function Select() {
+interface Props {
+  classes?: string
+}
+
+function Select({ classes = '' }: Props) {
   return (
-    <div data-base-select>
+    <div className={classes} data-base-select>
       <UISelect
         data-testid="search-sort"
         aria-label="Product Sort"

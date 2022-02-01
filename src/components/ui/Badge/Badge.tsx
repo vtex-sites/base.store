@@ -9,11 +9,13 @@ type Props = {
   variant?: Variant
   small?: boolean
   children: string
+  classes?: string
 }
 
-const Badge = ({ variant, children, small = false }: Props) => {
+const Badge = ({ variant, children, small = false, classes = '' }: Props) => {
   return (
     <UIBadge
+      className={classes}
       data-store-badge-variant={variant}
       data-store-badge={small ? 'small' : ''}
     >

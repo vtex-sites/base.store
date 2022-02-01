@@ -38,6 +38,7 @@ interface Props {
   moreInfo?: boolean
   showDescription?: boolean
   ratio?: AspectRatioProps['ratio']
+  classes?: string
 }
 
 function ProductCard({
@@ -50,6 +51,7 @@ function ProductCard({
   select = false,
   moreInfo = false,
   showDescription = false,
+  classes = '',
 }: Props) {
   const {
     id,
@@ -97,7 +99,11 @@ function ProductCard({
   })
 
   return (
-    <UICard data-card-structure={structure} data-base-product-card>
+    <UICard
+      className={classes}
+      data-card-structure={structure}
+      data-base-product-card
+    >
       <UICardImage>
         <AspectRatio ratio={ratio}>
           <Image

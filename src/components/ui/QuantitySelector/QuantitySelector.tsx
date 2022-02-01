@@ -8,12 +8,14 @@ interface QuantitySelectorProps {
   max: number
   min: number
   disabled: boolean
+  classes?: string
 }
 
 export function QuantitySelector({
   max,
   min,
   disabled,
+  classes = '',
 }: QuantitySelectorProps) {
   const [quantity, setQuantity] = useState<number>(min)
   const isLeftDisabled = quantity === min
@@ -45,6 +47,7 @@ export function QuantitySelector({
 
   return (
     <UIQuantitySelector
+      className={classes}
       data-store-quantity-selector={disabled ? 'disabled' : 'true'}
       quantity={quantity}
       leftButtonProps={{

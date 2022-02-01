@@ -15,6 +15,7 @@ export type UIButtonProps = {
   inverse?: boolean
   icon?: ReactNode
   iconPosition?: IconPosition
+  classes?: string
 }
 
 type Props = ButtonProps & UIButtonProps
@@ -26,11 +27,12 @@ function Button({
   icon,
   iconPosition,
   children,
+  classes = '',
   ...props
 }: Props) {
   return (
     <UIButton
-      className="button"
+      className={`button ${classes}`}
       data-button-size={size}
       data-button-variant={variant}
       data-button-inverse={inverse}
