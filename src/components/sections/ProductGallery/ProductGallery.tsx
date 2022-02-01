@@ -14,9 +14,10 @@ const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
+  slug?: string
 }
 
-function ProductGallery({ title }: Props) {
+function ProductGallery({ title, slug }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
 
@@ -73,6 +74,7 @@ function ProductGallery({ title }: Props) {
         <div className="product-listing__filters-bar">
           <Suspense fallback={null}>
             <Filter
+              slug={slug}
               isOpen={isFilterOpen}
               facets={orderedFacets}
               onDismiss={() => setIsFilterOpen(false)}

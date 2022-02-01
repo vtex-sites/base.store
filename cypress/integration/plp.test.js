@@ -36,7 +36,7 @@ describe('Search page Filters and Sorting options', () => {
       .click()
       .getById('filter-accordion-panel-checkbox')
       .first()
-      .click()
+      .click({ force: true })
       .then(($checkbox) => {
         const value = $checkbox.attr('data-value')
         const quantity = $checkbox.attr('data-quantity')
