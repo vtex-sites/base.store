@@ -31,7 +31,7 @@
   --qty-selector-transition-timing        : .2s;
 
   // Interactive states
-  --qty-selector-hover-shadow             : 0 0 0 var(--qty-selector-border-width) var(--qty-selector-hover-border-color);
+  --qty-selector-hover-shadow             : 0 0 0 1px var(--qty-selector-hover-border-color);
   --qty-selector-hover-bkg-color          : var(--qty-selector-bkg-color);
   --qty-selector-hover-text-color         : var(--qty-selector-text-color);
   --qty-selector-hover-icon-color         : var(--qty-selector-icon-color);
@@ -78,7 +78,7 @@
     background-color: transparent;
     border-width: 0;
 
-    &:focus { outline: 0; }
+    &:focus-visible { outline: 0; }
   }
 
   [data-quantity-selector-button] {
@@ -117,7 +117,7 @@
       }
     }
 
-    &:focus {
+    &:focus-visible {
       outline: none;
 
       [data-store-icon] {
@@ -127,15 +127,13 @@
     }
   }
 
-  &:focus-within {
-    @include focus-ring;
-  }
-
-  &:hover:not([data-store-quantity-selector="disabled"]) {
+  &:hover {
     background-color: var(--qty-selector-hover-bkg-color);
     border-color: var(--qty-selector-hover-border-color);
     box-shadow: var(--qty-selector-hover-shadow);
   }
+
+  &:focus-within, &:hover:focus-within { @include focus-ring; }
 }
 
 [data-store-quantity-selector="disabled"] {
