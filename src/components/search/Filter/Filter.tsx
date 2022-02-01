@@ -139,6 +139,25 @@ function Filter({
     onFacetChange({ key, value })
   }
 
+  const onAccordionItemMount = (
+    index: number,
+    values: FacetedFilter_FacetsFragment['values']
+  ) => {
+    // Ensures only one array item for each accordion's item
+    if (activeFacets.length >= filteredFacets.length) {
+      return
+    }
+
+    // Filter current selected facets from API
+    const selectedValues = values.filter(({ selected }) => selected)
+
+    activeFacets.push({
+      accordionIndex: index,
+      facets: selectedValues.map(({ value }) => value),
+    })
+    setActiveFacets(activeFacets)
+  }
+
   const Facets = () => {
     return (
       <div className="filter" data-store-filter data-testid={testId}>
@@ -152,19 +171,7 @@ function Filter({
               testId="filter-accordion"
               isExpanded={indicesExpanded.has(index)}
               buttonLabel={label}
-              ref={(_) => {
-                // Filter current selected facets from API
-                const selectedValues = values.filter(({ selected }) => selected)
-
-                // Ensures only one array item for each accordion's item
-                if (activeFacets.length < filteredFacets.length) {
-                  activeFacets.push({
-                    accordionIndex: index,
-                    facets: selectedValues.map(({ value }) => value),
-                  })
-                  setActiveFacets(activeFacets)
-                }
-              }}
+              ref={(_) => onAccordionItemMount(index, values)}
             >
               <UIList>
                 {values.map((item) => {
