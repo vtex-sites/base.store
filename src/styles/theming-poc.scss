@@ -69,16 +69,18 @@
 /* stylelint-disable */
 .theming-toggle > main [data-base-toggle] {
   &:nth-child(2) {
-    --toggle-bkg-color                : var(--bg-neutral-lightest);
-    --toggle-height                   : calc(var(--min-size) - 4px);
+    --toggle-height                   : calc(var(--min-size) - 6px);
     --toggle-border-width             : 2px;
     --toggle-content                  : "🤙";
-    --toggle-border-color             : var(--color-neutral-3);
+    --toggle-bkg-color                : var(--bg-primary-light);
+    --toggle-border-color             : var(--bg-primary-light);
     --toggle-border-radius            : var(--border-radius-default);
     --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-knob-border-color        : var(--color-neutral-3);
     --toggle-checked-bkg-color        : var(--bg-primary-default);
     --toggle-checked-border-color     : var(--bg-primary-default);
     --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
+    --toggle-hover-shadow             : none;
     --toggle-hover-border-color       : var(--bg-primary-default);
     --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
   }
@@ -100,24 +102,31 @@
 
   &:nth-child(4) {
     --toggle-shadow                   : var(--box-shadow);
-    --toggle-bkg-color                : var(--bg-neutral-lightest);
-    --toggle-border-color             : var(--color-border-input);
+    --toggle-bkg-color                : var(--color-neutral-1);
+    --toggle-border-color             : var(--color-neutral-2);
     --toggle-border-radius            : var(--border-radius-pill);
     --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
+    --toggle-knob-border-color        : var(--color-neutral-2);
+    --toggle-knob-shadow              : 0 2px 6px rgb(0 0 0 / 5%), 0 6px 12px rgb(0 0 0 / 5%), 0 10px 20px rgb(0 0 0 / 5%);
+    --toggle-checked-bkg-color        : #506300;
+    --toggle-checked-border-color     : #506300;
     --toggle-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
     --toggle-hover-bkg-color          : #F1F4E6;
-    --toggle-hover-border-color       : #506300;
+    --toggle-hover-border-color       : var(--bg-neutral-lightest);
     --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
   }
 }
 
 .theming-select main [data-base-select] {
   &:nth-child(2) {
+    --select-height                   : calc(var(--min-size) - 4px);
+    --select-width                    : 7rem;
     --select-text-color               : var(--bg-primary-default);
     --select-icon-color               : var(--bg-primary-default);
+    --select-bkg-color                : var(--bg-primary-light);
     --select-border-radius            : var(--border-radius-default);
     --select-border-width             : 2px;
-    --select-border-color             : var(--color-neutral-3);
+    --select-border-color             : var(--bg-primary-light);
     --select-hover-shadow             : none;
     --select-hover-bkg-color          : var(--bg-primary-light);
     --select-hover-border-color       : var(--bg-primary-default);
@@ -125,8 +134,9 @@
   &:nth-child(3) {
     --select-icon-color               : var(--color-border-input-selected);
     --select-border-radius            : var(--border-radius-default);
-    --select-border-color             : var(--color-border-input);
-    --select-hover-shadow             : 0 0 0 var(--select-border-width) var(--select-hover-border-color);
+    --select-border-color             : var(--color-neutral-3);
+    --select-border-width             : 2px;
+    --select-hover-shadow             : none;
     --select-hover-bkg-color          : var(--bg-secondary-light);
     --select-hover-border-color       : var(--color-border-input-selected);
   }
@@ -135,44 +145,47 @@
     --select-text-color               : #506300;
     --select-icon-color               : #506300;
     --select-border-radius            : var(--border-radius-pill);
-    --select-border-width             : 0;
+    --select-border-color             : var(--color-neutral-2);
     --select-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
     --select-hover-icon-color         : #506300;
     --select-hover-text-color         : #506300;
-    --select-hover-border-color       : var(--color-border-input-selected);
+    --select-hover-bkg-color          : #F1F4E6;
+    --select-hover-border-color       : var(--bg-neutral-lightest);
   }
 }
 
 .theming-quantity-selector main [data-store-quantity-selector] {
   &:nth-child(2) {
+    --qty-selector-height                   : calc(var(--min-size) + 10px);
+    --qty-selector-width                    : 9rem;
+    --qty-selector-bkg-color                : var(--bg-primary-light);
     --qty-selector-text-color               : var(--bg-primary-default);
     --qty-selector-icon-color               : var(--bg-primary-default);
     --qty-selector-border-radius            : var(--border-radius-default);
     --qty-selector-border-width             : 2px;
-    --qty-selector-border-color             : var(--color-neutral-3);
+    --qty-selector-border-color             : var(--bg-primary-light);
     --qty-selector-hover-shadow             : none;
-    --qty-selector-hover-button-bkg-color   : var(--bg-primary-light);
+    --qty-selector-hover-button-bkg-color   : var(--bg-neutral-lightest);
     --qty-selector-hover-border-color       : var(--bg-primary-default);
   }
   &:nth-child(3) {
     --qty-selector-icon-color               : var(--color-border-input-selected);
     --qty-selector-border-radius            : var(--border-radius-default);
-    --qty-selector-border-color             : var(--color-border-input);
-    --qty-selector-hover-shadow             : 0 0 0 var(--qty-selector-border-width) var(--qty-selector-hover-border-color);
+    --qty-selector-border-color             : var(--color-neutral-3);
+    --qty-selector-border-width             : 2px;
+    --qty-selector-hover-shadow             : none;
     --qty-selector-hover-text-color         : var(--qty-selector-text-color);
     --qty-selector-hover-border-color       : var(--color-border-input-selected);
     --qty-selector-hover-button-bkg-color   : var(--bg-secondary-light);
   }
   &:nth-child(4) {
-    --qty-selector-width                    : 8rem;
     --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
     --qty-selector-shadow                   : var(--box-shadow);
     --qty-selector-bkg-color                : var(--bg-neutral-lightest);
     --qty-selector-text-color               : #506300;
     --qty-selector-icon-color               : #506300;
     --qty-selector-border-radius            : var(--border-radius-pill);
-    --qty-selector-border-width             : 0;
-    --qty-selector-border-color             : var(--color-border-input);
+    --qty-selector-border-color             : var(--color-neutral-2);
     --qty-selector-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
     --qty-selector-hover-button-bkg-color   : #F1F4E6;
   }
