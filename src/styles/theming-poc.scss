@@ -76,7 +76,7 @@
     --toggle-content                  : "🤙";
     --toggle-bkg-color                : var(--bg-primary-light);
     --toggle-border-color             : var(--bg-primary-light);
-    --toggle-border-radius            : var(--border-radius-default);
+    --toggle-border-radius            : var(--border-radius-flat);
     --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
     --toggle-knob-border-color        : var(--color-neutral-3);
     --toggle-checked-bkg-color        : var(--bg-primary-default);
@@ -90,7 +90,7 @@
   &:nth-child(3) {
     --toggle-bkg-color                : var(--color-neutral-3);
     --toggle-border-color             : var(--color-neutral-3);
-    --toggle-border-radius            : var(--border-radius-pill);
+    --toggle-border-radius            : var(--border-radius-default);
     --toggle-border-width             : 2px;
     --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
     --toggle-knob-border-color        : var(--color-neutral-3);
@@ -128,7 +128,7 @@
     --select-text-color               : var(--bg-primary-default);
     --select-icon-color               : var(--bg-primary-default);
     --select-bkg-color                : var(--bg-primary-light);
-    --select-border-radius            : var(--border-radius-default);
+    --select-border-radius            : var(--border-radius-flat);
     --select-border-width             : 2px;
     --select-border-color             : var(--bg-primary-light);
     --select-hover-shadow             : none;
@@ -165,7 +165,7 @@
     --qty-selector-bkg-color                : var(--bg-primary-light);
     --qty-selector-text-color               : var(--bg-primary-default);
     --qty-selector-icon-color               : var(--bg-primary-default);
-    --qty-selector-border-radius            : var(--border-radius-default);
+    --qty-selector-border-radius            : var(--border-radius-flat);
     --qty-selector-border-width             : 2px;
     --qty-selector-border-color             : var(--bg-primary-light);
     --qty-selector-hover-shadow             : none;
@@ -240,6 +240,29 @@
 .theming-button main {
   .theme-button-1 {
     [data-store-button] {
+      --button-border-radius                    : var(--border-radius-flat);
+      --button-primary-bkg-color                : var(--bg-primary-default);
+      --button-primary-text-color               : var(--color-text-inverse);
+      --button-primary-hover-bkg-color          : var(--bg-primary-hover);
+      --button-primary-active-bkg-color         : var(--bg-primary-pressed);
+      --button-primary-inverse-hover-bkg-color  : var(--bg-primary-light);
+      --button-primary-inverse-active-bkg-color : #e2cffc;
+
+      --button-secondary-bkg-color              : var(--bg-primary-light);
+      --button-secondary-border-color           : transparent;
+
+      --button-secondary-inverse-bkg-color      : var(--bg-primary-hover);
+      --button-secondary-inverse-border-color   : transparent;
+
+      --button-tertiary-text-color              : var(--bg-primary-default);
+      --button-tertiary-inverse-hover-bkg-color : var(--bg-primary-hover);
+    }
+
+    .-inverse { --bg-body: #001947; }
+  }
+
+  .theme-button-2 {
+    [data-store-button] {
       --button-border-radius                   : var(--border-radius-default);
       --button-primary-bkg-color               : var(--bg-secondary-default);
       --button-primary-text-color              : var(--color-text-inverse);
@@ -253,7 +276,7 @@
     .-inverse { --bg-body: #001947; }
   }
 
-  .theme-button-2 {
+  .theme-button-3 {
     [data-store-button] {
       --button-border-radius                   : var(--border-radius-pill);
       --button-primary-bkg-color               : #506300;
