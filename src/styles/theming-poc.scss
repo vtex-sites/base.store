@@ -94,6 +94,7 @@
   --border-radius            : 0;
   --border-width             : 2px;
   --shadow                   : none;
+  --text-color               : var(--color-primary-darker);
   --shadow-hover             : none;
 }
 
@@ -155,8 +156,8 @@
     --select-height                   : calc(var(--min-size) - 4px);
     --select-width                    : 7rem;
     --select-shadow                   : var(--shadow);
-    --select-text-color               : var(--bkg-primary-darker);
-    --select-icon-color               : var(--bkg-primary-darker);
+    --select-text-color               : var(--text-color);
+    --select-icon-color               : var(--text-color);
     --select-bkg-color                : var(--bkg-primary-light);
     --select-border-radius            : var(--border-radius);
     --select-border-width             : var(--border-width);
@@ -193,8 +194,8 @@
     --qty-selector-height                   : calc(var(--min-size) + 10px);
     --qty-selector-width                    : 9rem;
     --qty-selector-bkg-color                : var(--bkg-primary-light);
-    --qty-selector-text-color               : var(--bkg-primary-darker);
-    --qty-selector-icon-color               : var(--bkg-primary-darker);
+    --qty-selector-text-color               : var(--text-color);
+    --qty-selector-icon-color               : var(--text-color);
     --qty-selector-border-radius            : var(--border-radius);
     --qty-selector-border-width             : var(--border-width);
     --qty-selector-border-color             : var(--bkg-primary-light);
@@ -279,6 +280,7 @@
       --button-primary-inverse-active-bkg-color : #e2cffc;
 
       --button-secondary-bkg-color              : var(--bkg-primary-light);
+      --button-secondary-text-color             : var(--text-color);
       --button-secondary-border-color           : transparent;
 
       --button-secondary-inverse-bkg-color      : var(--bkg-primary-dark);
@@ -286,7 +288,7 @@
       --button-secondary-inverse-active-bkg-color : #965ffc;
       --button-secondary-inverse-border-color   : transparent;
 
-      --button-tertiary-text-color              : var(--bkg-primary-darker);
+      --button-tertiary-text-color              : var(--text-color);
       --button-tertiary-inverse-hover-bkg-color : var(--bkg-primary-dark);
     }
 
@@ -329,8 +331,8 @@
 .theming-product-card main [data-store-card] {
   &:nth-child(1) {
     --product-card-bkg-color               : var(--bkg-primary-light);
-    --product-card-text-title-color        : var(--color-primary-darker);
-    --product-card-text-price-color        : var(--color-primary-darker);
+    --product-card-text-title-color        : var(--text-color);
+    --product-card-text-price-color        : var(--text-color);
     --product-card-text-price-listing-color: var(--color-primary);
     --product-card-border-radius           : var(--border-radius);
     --product-card-img-radius              : var(--product-card-border-radius);
