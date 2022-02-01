@@ -1,8 +1,10 @@
 import React from 'react'
+import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
   FacetedFilter_FacetsFragment,
 } from '@generated/graphql'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { List as UIList, Label as UILabel } from '@faststore/ui'
 import Checkbox from 'src/components/ui/Checkbox'
 import { Badge } from 'src/components/ui/Badge'
@@ -16,7 +18,7 @@ interface FacetsProps {
   selectedFacets: IStoreSelectedFacet[]
   filteredFacets: FacetedFilter_FacetsFragment[]
   indicesExpanded: Set<number>
-  onSelectFacet: ({ key, value }: IStoreSelectedFacet) => void
+  onFacetChange: (item: IStoreSelectedFacet) => void
   onAccordionChange: (index: number) => void
   onAccordionItemMount: (
     index: number,
@@ -30,10 +32,21 @@ function Facets({
   selectedFacets,
   filteredFacets,
   indicesExpanded,
-  onSelectFacet,
+  onFacetChange,
   onAccordionChange,
   onAccordionItemMount,
 }: FacetsProps) {
+  const { toggleFacet } = useSearch()
+  const { isMobile } = useWindowDimensions()
+
+  const onSelectFacet = ({ key, value }: IStoreSelectedFacet) => {
+    if (!isMobile) {
+      toggleFacet({ key, value })
+    }
+
+    onFacetChange({ key, value })
+  }
+
   return (
     <div className="filter" data-store-filter data-testid={testId}>
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>

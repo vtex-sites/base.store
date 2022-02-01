@@ -48,7 +48,7 @@ function Filter({
   slug = '',
 }: FilterProps) {
   const { isMobile } = useWindowDimensions()
-  const { toggleFacet, toggleFacets, state: searchState } = useSearch()
+  const { toggleFacets, state: searchState } = useSearch()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
@@ -116,9 +116,8 @@ function Filter({
         (f) => f.value === item.value
       )
 
-      if (selectedFacets.some((facet) => facet.value === item.value)) {
+      selectedFacets.some((facet) => facet.value === item.value) &&
         setFacetsToRemove([...facetsToRemove, item])
-      }
 
       selectedFacets.splice(indexToRemove, 1)
       setSelectedFacets([...selectedFacets])
@@ -127,11 +126,6 @@ function Filter({
     }
 
     setSelectedFacets([...selectedFacets, item])
-  }
-
-  const onSelectFacet = ({ key, value }: IStoreSelectedFacet) => {
-    !isMobile && toggleFacet({ key, value })
-    onFacetChange({ key, value })
   }
 
   const onAccordionItemMount = (
@@ -173,7 +167,7 @@ function Filter({
       selectedFacets={selectedFacets}
       filteredFacets={filteredFacets}
       indicesExpanded={indicesExpanded}
-      onSelectFacet={onSelectFacet}
+      onFacetChange={onFacetChange}
       onAccordionChange={onAccordionChange}
       onAccordionItemMount={onAccordionItemMount}
     />
@@ -207,7 +201,7 @@ function Filter({
           selectedFacets={selectedFacets}
           filteredFacets={filteredFacets}
           indicesExpanded={indicesExpanded}
-          onSelectFacet={onSelectFacet}
+          onFacetChange={onFacetChange}
           onAccordionChange={onAccordionChange}
           onAccordionItemMount={onAccordionItemMount}
         />
