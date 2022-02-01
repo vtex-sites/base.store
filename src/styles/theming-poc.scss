@@ -252,6 +252,8 @@
       --button-secondary-border-color           : transparent;
 
       --button-secondary-inverse-bkg-color      : var(--bg-primary-hover);
+      --button-secondary-inverse-hover-bkg-color : var(--color-primary-1);
+      --button-secondary-inverse-active-bkg-color : #965ffc;
       --button-secondary-inverse-border-color   : transparent;
 
       --button-tertiary-text-color              : var(--bg-primary-default);
@@ -356,6 +358,39 @@
       --badge-highlighted-text-color       : var(--bg-primary-default);
       --badge-highlighted-border-color     : var(--bg-primary-default);
     }
+  }
+
+  &:nth-child(3),
+  &:nth-child(4) {
+    --product-card-text-title-weight       : bold;
+    --product-card-border-radius           : 4px;
+    --product-card-border-width            : 1px;
+    --product-card-border-color            : var(--color-border-display);
+    --product-card-transition-timing       : .5s;
+    --product-card-img-radius              : 4px;
+    --product-card-hover-shadow            : var(--box-shadow);
+    --product-card-hover-border-color      : var(--color-border-display);
+
+    [data-store-badge] {
+      --badge-neutral-bkg-color            : var(--bg-success);
+    }
+
+    [data-store-button] {
+      --button-border-radius                   : var(--border-radius-default);
+      --button-primary-bkg-color               : var(--bg-secondary-default);
+      --button-primary-text-color              : var(--color-text-inverse);
+      --button-primary-hover-bkg-color         : var(--bg-secondary-hover);
+      --button-primary-active-bkg-color        : var(--bg-secondary-pressed);
+      --button-primary-inverse-hover-bkg-color : var(--color-secondary-0);
+      --button-primary-inverse-active-bkg-color: var(--color-secondary-1);
+    }
+  }
+
+  &:nth-child(3) {
+    --product-card-padding                 : var(--space-2);
+  }
+  &:nth-child(4) {
+    --product-card-padding                 : var(--space-2) var(--space-2) var(--space-3);
   }
 }
 

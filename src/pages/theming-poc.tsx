@@ -320,7 +320,11 @@ function Page(props: Props) {
                 ratio="3:4"
                 showDescription
               />
-              <ProductCard product={products[3] ?? {}} index={1} />
+              <ProductCard
+                product={products[3] ?? {}}
+                index={1}
+                action="button"
+              />
             </div>
           </section>
           <main>
@@ -348,7 +352,11 @@ function Page(props: Props) {
                 ratio="3:4"
                 showDescription
               />
-              <ProductCard product={products[3] ?? {}} index={1} />
+              <ProductCard
+                product={products[3] ?? {}}
+                index={1}
+                action="button"
+              />
             </div>
           </main>
         </article>
