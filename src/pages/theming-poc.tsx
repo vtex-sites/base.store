@@ -143,24 +143,54 @@ function Page(props: Props) {
         <article className="theming-poc-content theming-button">
           <section>
             <h3>Layouts</h3>
-            <Button
-              variant="primary"
-              icon={<BellRingingIcon size={18} weight="bold" />}
-              iconPosition="left"
-            >
-              Icon Left
-            </Button>
-            <Button
-              variant="primary"
-              icon={<ArrowRightIcon size={18} weight="bold" />}
-              iconPosition="right"
-            >
-              Icon Right
-            </Button>
-            <Button variant="primary">Default</Button>
-            <Button variant="primary" disabled>
-              Disabled
-            </Button>
+            <div className="theming-poc-list">
+              <Button
+                variant="primary"
+                icon={<BellRingingIcon size={18} weight="bold" />}
+                iconPosition="left"
+              >
+                Icon Left
+              </Button>
+              <Button
+                variant="primary"
+                icon={<BellRingingIcon size={18} weight="bold" />}
+                iconPosition="left"
+                size="small"
+              >
+                Icon Left
+              </Button>
+            </div>
+            <div className="theming-poc-list">
+              <Button
+                variant="primary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
+              >
+                Icon Right
+              </Button>
+              <Button
+                variant="primary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
+                size="small"
+              >
+                Icon Right
+              </Button>
+            </div>
+            <div className="theming-poc-list">
+              <Button variant="primary">Default</Button>
+              <Button variant="primary" size="small">
+                Default
+              </Button>
+            </div>
+            <div className="theming-poc-list">
+              <Button variant="primary" disabled>
+                Disabled
+              </Button>
+              <Button variant="primary" size="small" disabled>
+                Disabled
+              </Button>
+            </div>
           </section>
           <main>
             <h3>Themes</h3>

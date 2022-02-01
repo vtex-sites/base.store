@@ -1,4 +1,4 @@
-@import "../../../styles/utilities";
+@import "../../../styles/scaffold.scss";
 
 [data-store-button] {
 
@@ -124,6 +124,15 @@
         color: var(--button-disabled-text-color);
         background-color: var(--button-disabled-bkg-color);
       }
+    }
+  }
+
+  &[data-button-size="small"] {
+    padding: 0 var(--space-2);
+    font-size: var(--text-size-1);
+
+    @media (any-pointer: fine) {
+      --min-size: 38px;
     }
   }
 

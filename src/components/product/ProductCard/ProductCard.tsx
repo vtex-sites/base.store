@@ -173,6 +173,7 @@ function ProductCard({
             iconPosition="left"
             aria-label="Add to cart"
             title="Add to cart"
+            size="small"
           >
             Add
           </Button>

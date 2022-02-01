@@ -7,9 +7,11 @@ import './buttons.scss'
 
 export type Variant = 'primary' | 'secondary' | 'tertiary'
 export type IconPosition = 'left' | 'right'
+export type Size = 'small' | 'default'
 
 export type UIButtonProps = {
   variant?: Variant
+  size?: Size
   inverse?: boolean
   icon?: ReactNode
   iconPosition?: IconPosition
@@ -19,6 +21,7 @@ type Props = ButtonProps & UIButtonProps
 
 function Button({
   variant,
+  size = 'default',
   inverse,
   icon,
   iconPosition,
@@ -28,6 +31,7 @@ function Button({
   return (
     <UIButton
       className="button"
+      data-button-size={size}
       data-button-variant={variant}
       data-button-inverse={inverse}
       {...props}
