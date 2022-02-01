@@ -19,25 +19,27 @@
   --toggle-border-radius             : 0;
   --toggle-border-width              : 1px;
 
-  --toggle-knob-radius               : 0;
+  --toggle-knob-radius               : var(--toggle-border-radius);
   --toggle-knob-shadow               : none;
-  --toggle-knob-bkg-color            : black;
-  --toggle-knob-border-color         : black;
+  --toggle-knob-bkg-color            : var(--toggle-border-color);
+  --toggle-knob-border-color         : var(--toggle-border-color);
+  --toggle-knob-border-width         : var(--toggle-border-width);
 
   --toggle-transition-function       : ease-in-out;
   --toggle-transition-property       : all;
   --toggle-transition-timing         : .15s;
 
   // Interactive states
-  --toggle-checked-bkg-color         : black;
-  --toggle-checked-border-color      : black;
+  --toggle-checked-bkg-color         : var(--toggle-hover-border-color);
+  --toggle-checked-border-color      : var(--toggle-hover-border-color);
   --toggle-checked-knob-bkg-color    : white;
-  --toggle-checked-knob-border-color : white;
+  --toggle-checked-knob-border-color : var(--toggle-checked-knob-bkg-color);
 
-  --toggle-hover-shadow              : 0 0 0 var(--toggle-border-width) var(--toggle-border-color);
+  --toggle-hover-shadow              : 0 0 0 1px var(--toggle-hover-border-color);
   --toggle-hover-bkg-color           : var(--toggle-bkg-color);
   --toggle-hover-border-color        : var(--toggle-border-color);
   --toggle-hover-knob-bkg-color      : var(--toggle-hover-border-color);
+  --toggle-hover-knob-border-color   : var(--toggle-knob-border-color);
 
   --toggle-disabled-bkg-color        : black;
   --toggle-disabled-border-color     : black;
@@ -56,6 +58,7 @@
   outline: 0;
 
   input {
+    @include focus-ring-visible;
     position: absolute;
     z-index: 1;
     display: block;
@@ -75,7 +78,10 @@
         border-color: var(--toggle-hover-border-color);
         box-shadow: var(--toggle-hover-shadow);
 
-        + [data-base-toggle-knob] { background-color: var(--toggle-hover-knob-bkg-color); }
+        + [data-base-toggle-knob] {
+          background-color: var(--toggle-hover-knob-bkg-color);
+          border-color: var(--toggle-hover-knob-border-color);
+        }
       }
     }
 
@@ -106,8 +112,6 @@
         border-color: var(--toggle-disabled-knob-border-color);
       }
     }
-
-    &:focus { @include focus-ring; }
   }
 
   @include media(">notebook") { --toggle-height: calc(var(--min-size) / 1.5); }
