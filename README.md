@@ -299,11 +299,11 @@ function Button({ variant, ...props }: Props) {
 ```
 
 ```css
-.primary [data-store-button] {
+.primary[data-store-button] {
   background: blue;
 }
 
-.secondary [data-store-button] {
+.secondary[data-store-button] {
   background: pink;
 }
 ```
@@ -335,7 +335,7 @@ The aforementioned guide works well for UI components. However, components like 
 
 Our customized theme is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
 
-### `global.scss`
+### `theme.scss`
 
 Here you'll find the basic structure to build your theme (font base, color palette, spacing, color-text, body background color...), feel free to update it with your brand guidelines.
 
