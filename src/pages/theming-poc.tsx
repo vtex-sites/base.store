@@ -164,46 +164,91 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Themes</h3>
-            <div className="theming-poc-list">
-              <Button
-                variant="primary"
-                icon={<ArrowRightIcon size={18} weight="bold" />}
-                iconPosition="right"
+            <div className="theming-poc-list theme-button-1">
+              <div className="theming-poc-list">
+                <Button
+                  variant="primary"
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
+                >
+                  Primary
+                </Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button
+                  variant="tertiary"
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
+                >
+                  Tertiary
+                </Button>
+              </div>
+              <div
+                className="theming-poc-list -inverse"
+                style={{ backgroundColor: '#001947', padding: '10px' }}
               >
-                Primary
-              </Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button
-                variant="tertiary"
-                icon={<BellRingingIcon size={18} weight="bold" />}
-                iconPosition="left"
-              >
-                Tertiary
-              </Button>
+                <Button
+                  variant="primary"
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
+                  inverse
+                >
+                  Primary
+                </Button>
+                <Button variant="secondary" inverse>
+                  Secondary
+                </Button>
+                <Button
+                  variant="tertiary"
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
+                  inverse
+                >
+                  Tertiary
+                </Button>
+              </div>
             </div>
-            <div
-              className="theming-poc-list -inverse"
-              style={{ backgroundColor: '#001947', padding: '10px' }}
-            >
-              <Button
-                variant="primary"
-                icon={<ArrowRightIcon size={18} weight="bold" />}
-                iconPosition="right"
-                inverse
+            <div className="theming-poc-list theme-button-2">
+              <div className="theming-poc-list">
+                <Button
+                  variant="primary"
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
+                >
+                  Primary
+                </Button>
+                <Button variant="secondary">Secondary</Button>
+                <Button
+                  variant="tertiary"
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
+                >
+                  Tertiary
+                </Button>
+              </div>
+              <div
+                className="theming-poc-list -inverse"
+                style={{ backgroundColor: '#66584A', padding: '10px' }}
               >
-                Primary
-              </Button>
-              <Button variant="secondary" inverse>
-                Secondary
-              </Button>
-              <Button
-                variant="tertiary"
-                icon={<BellRingingIcon size={18} weight="bold" />}
-                iconPosition="left"
-                inverse
-              >
-                Tertiary
-              </Button>
+                <Button
+                  variant="primary"
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
+                  inverse
+                >
+                  Primary
+                </Button>
+                <Button variant="secondary" inverse>
+                  Secondary
+                </Button>
+                <Button
+                  variant="tertiary"
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
+                  inverse
+                >
+                  Tertiary
+                </Button>
+              </div>
             </div>
           </main>
         </article>

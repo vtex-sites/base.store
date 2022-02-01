@@ -52,6 +52,7 @@
 
 .theming-poc-list {
   display: flex;
+  align-items: center;
   column-gap: 8px;
   > * { flex-shrink: 0; }
 }
@@ -235,19 +236,38 @@
   }
 }
 
-.theming-button main .theming-poc-list {
-  [data-store-button] {
-    --button-border-radius                   : var(--border-radius-default);
-    --button-primary-bkg-color               : var(--bg-secondary-default);
-    --button-primary-text-color              : var(--color-text-inverse);
-    --button-primary-hover-bkg-color         : var(--bg-secondary-hover);
-    --button-primary-active-bkg-color        : var(--bg-secondary-pressed);
-    --button-primary-inverse-hover-bkg-color : var(--color-secondary-0);
-    --button-primary-inverse-active-bkg-color: var(--color-secondary-1);
-    --button-tertiary-text-color             : var(--color-link);
+.theming-button main {
+  .theme-button-1 {
+    [data-store-button] {
+      --button-border-radius                   : var(--border-radius-default);
+      --button-primary-bkg-color               : var(--bg-secondary-default);
+      --button-primary-text-color              : var(--color-text-inverse);
+      --button-primary-hover-bkg-color         : var(--bg-secondary-hover);
+      --button-primary-active-bkg-color        : var(--bg-secondary-pressed);
+      --button-primary-inverse-hover-bkg-color : var(--color-secondary-0);
+      --button-primary-inverse-active-bkg-color: var(--color-secondary-1);
+      --button-tertiary-text-color             : var(--color-link);
+    }
+
+    .-inverse { --bg-body: #001947; }
   }
 
-  &.-inverse { --bg-body: #001947; }
+  .theme-button-2 {
+    [data-store-button] {
+      --button-border-radius                   : var(--border-radius-pill);
+      --button-primary-bkg-color               : #506300;
+      --button-primary-text-color              : var(--color-text-inverse);
+      --button-primary-hover-bkg-color         : #688200;
+      --button-primary-active-bkg-color        : #94A843;
+      --button-primary-inverse-hover-bkg-color : #F1F4E6;
+      --button-primary-inverse-active-bkg-color: #E0E8B4;
+      --button-tertiary-text-color             : #506300;
+      --button-secondary-inverse-text-color    : #CCDC8B;
+      --button-secondary-inverse-border-color  : #CCDC8B;
+    }
+
+    .-inverse { --bg-body: #001947; }
+  }
 }
 
 .theming-product-card main [data-store-card] {
