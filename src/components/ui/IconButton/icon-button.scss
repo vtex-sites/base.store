@@ -12,8 +12,13 @@
   border-radius: var(--border-radius-button);
   transition: background-color .5s ease;
 
-  &:focus { outline: none; }
-  &:focus-visible { @include button-focus-ring; }
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include focus-ring-visible;
 
   &:hover, &:focus { background-color: var(--bg-secondary-light); }
 
