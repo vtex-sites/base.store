@@ -11,6 +11,10 @@ type SelectOptions = {
 
 interface UISelectProps extends SelectProps {
   /*
+   * Defines the CSS class string that will be forwarded to the wrapping div "className" prop.
+   */
+  classes?: string
+  /*
    * Defines the options available in the select. The SelectOptions object
    * keys are the property names, while the values correspond  to the text that
    * will be displayed in the UI
@@ -29,11 +33,11 @@ export default function Select({
   labelText,
   value,
   'aria-label': ariaLabel,
-  className,
+  classes,
   testId,
 }: UISelectProps) {
   return (
-    <div data-select className={className}>
+    <div data-select className={classes}>
       {labelText && <label htmlFor="ui-select">{labelText}</label>}
       <UISelect
         data-testid={testId}

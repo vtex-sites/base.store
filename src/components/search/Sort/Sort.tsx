@@ -23,7 +23,7 @@ function Sort() {
 
   return (
     <Select
-      className="sort / title-small"
+      classes="sort / title-small"
       labelText="Sort by"
       options={OptionsMap}
       onChange={(e) => setSort(keys[e.target.selectedIndex])}
