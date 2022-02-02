@@ -1,9 +1,14 @@
 import React from 'react'
 import Icon from 'src/components/ui/Icon'
+import { useSession } from '@faststore/sdk'
 
 import { LinkButton } from '../Button'
 
 const SignInLink: React.FC = () => {
+  const { user } = useSession()
+
+  const isAuthenticated = user !== null
+
   return (
     <LinkButton
       data-button-signin-link
@@ -12,7 +17,7 @@ const SignInLink: React.FC = () => {
       variant="tertiary"
     >
       <Icon name="User" width={18} height={18} weight="bold" />
-      <span>Sign In</span>
+      <span>{isAuthenticated ? 'My Account' : 'Sign In'}</span>
     </LinkButton>
   )
 }
