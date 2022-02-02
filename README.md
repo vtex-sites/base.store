@@ -342,7 +342,7 @@ The aforementioned guide works well for UI components. However, components like 
 
 ## 🖊️ Styling Components
 
-Our customized themes is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
+Our customized themes are based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
 
 ### `global.scss`
 
