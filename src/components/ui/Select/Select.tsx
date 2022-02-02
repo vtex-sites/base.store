@@ -33,7 +33,7 @@ export default function Select({
   testId,
 }: UISelectProps) {
   return (
-    <div data-ui-select className={className}>
+    <div data-select className={className}>
       {labelText && <label htmlFor="ui-select">{labelText}</label>}
       <UISelect
         data-testid={testId}
