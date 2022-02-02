@@ -19,6 +19,7 @@ import Select from '../components/ui/Select'
 import Button from '../components/ui/Button'
 
 import '../styles/theming-poc.scss'
+import '../styles/theming-poc-custom.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -37,124 +38,98 @@ function Page(props: Props) {
         noindex
         nofollow
       />
-      <div className="theming-poc">
-        <article className="theming-poc-content theming-toggle">
-          <main>
-            <h3>Toggle</h3>
-            <Toggle classes="theme-1" />
-          </main>
+      <div className="theming-poc-custom">
+        <article className="theming-toggle">
+          <Toggle classes="theme-1" />
         </article>
-        <hr />
-        <article className="theming-poc-content theming-select">
-          <main>
-            <h3>Select</h3>
-            <Select classes="theme-1" />
-          </main>
+        <article className="theming-select">
+          <Select classes="theme-1" />
         </article>
-        <hr />
-        <article className="theming-poc-content theming-quantity-selector">
-          <main>
-            <h3>Quantity Selector</h3>
-            <QuantitySelector
-              classes="theme-1"
-              min={1}
-              max={10}
-              disabled={false}
-            />
-          </main>
+        <article className="theming-quantity-selector">
+          <QuantitySelector
+            classes="theme-1"
+            min={1}
+            max={10}
+            disabled={false}
+          />
         </article>
-        <hr />
-        <article className="theming-poc-content theming-badge">
-          <main>
-            <h3>Badges</h3>
-            <div className="theming-poc-list">
-              <Badge classes="theme-1" variant="success" small>
-                success
-              </Badge>
-              <Badge classes="theme-1" variant="highlighted" small>
-                highlighted
-              </Badge>
-              <Badge classes="theme-1" variant="info" small>
-                info
-              </Badge>
-              <Badge classes="theme-1" variant="neutral" small>
-                neutral
-              </Badge>
-              <Badge classes="theme-1" variant="promo" small>
-                promo
-              </Badge>
-            </div>
-          </main>
+        <article className="theming-badge">
+          <div className="theming-poc-list">
+            <Badge classes="theme-1" variant="success" small>
+              success
+            </Badge>
+            <Badge classes="theme-1" variant="highlighted" small>
+              highlighted
+            </Badge>
+            <Badge classes="theme-1" variant="info" small>
+              info
+            </Badge>
+            <Badge classes="theme-1" variant="neutral" small>
+              neutral
+            </Badge>
+            <Badge classes="theme-1" variant="promo" small>
+              promo
+            </Badge>
+          </div>
         </article>
-        <hr />
-        <article className="theming-poc-content theming-button">
-          <main>
-            <h3>Buttons</h3>
-            <div className="theming-poc-list theme-button-1">
-              <div className="theming-poc-list">
-                <Button
-                  variant="primary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                  classes="theme-1"
-                >
-                  Primary
-                </Button>
-                <Button variant="secondary" classes="theme-1">
-                  Secondary
-                </Button>
-                <Button
-                  variant="tertiary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                  classes="theme-1"
-                >
-                  Tertiary
-                </Button>
-              </div>
-              <div
-                className="theming-poc-list -inverse"
-                style={{ backgroundColor: '#5900c8', padding: '10px' }}
+        <article className="theming-button">
+          <div className="theming-poc-list theme-button-1">
+            <div className="theming-poc-list theme-1">
+              <Button
+                variant="primary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
               >
-                <Button
-                  variant="primary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                  classes="theme-1"
-                  inverse
-                >
-                  Primary
-                </Button>
-                <Button variant="secondary" classes="theme-1" inverse>
-                  Secondary
-                </Button>
-                <Button
-                  variant="tertiary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                  classes="theme-1"
-                  inverse
-                >
-                  Tertiary
-                </Button>
-              </div>
+                Primary
+              </Button>
+              <Button variant="secondary" classes="theme-1">
+                Secondary
+              </Button>
+              <Button
+                variant="tertiary"
+                icon={<BellRingingIcon size={18} weight="bold" />}
+                iconPosition="left"
+              >
+                Tertiary
+              </Button>
             </div>
-          </main>
+          </div>
         </article>
-        <hr />
-        <article className="theming-poc-content theming-product-card">
-          <main>
-            <h3>Product Card</h3>
-            <div className="theming-poc-list">
-              <ProductCard
-                product={products[1] ?? {}}
-                index={1}
-                structure="wide"
-                badgeVariant="highlighted"
-                classes="theme-1"
-              />
+        <article className="theming-button">
+          <div className="theming-poc-list theme-button-1">
+            <div className="theming-poc-list -inverse theme-1">
+              <Button
+                variant="primary"
+                icon={<ArrowRightIcon size={18} weight="bold" />}
+                iconPosition="right"
+                inverse
+              >
+                Primary
+              </Button>
+              <Button variant="secondary" inverse>
+                Secondary
+              </Button>
+              <Button
+                variant="tertiary"
+                icon={<BellRingingIcon size={18} weight="bold" />}
+                iconPosition="left"
+                inverse
+              >
+                Tertiary
+              </Button>
             </div>
-          </main>
+          </div>
+        </article>
+        <article className="theming-product-card">
+          <div className="theming-poc-list">
+            <ProductCard
+              product={products[1] ?? {}}
+              index={1}
+              structure="wide"
+              badgeVariant="highlighted"
+              classes="theme-1"
+            />
+          </div>
         </article>
       </div>
     </>

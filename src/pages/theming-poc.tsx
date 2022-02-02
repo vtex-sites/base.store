@@ -19,6 +19,7 @@ import Select from '../components/ui/Select'
 import Button from '../components/ui/Button'
 
 import '../styles/theming-poc.scss'
+import '../styles/theming-poc-custom.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -48,9 +49,9 @@ function Page(props: Props) {
             <h3>Theme 1</h3>
             <Toggle classes="theme-1" />
             <h3>Theme 2</h3>
-            <Toggle />
+            <Toggle classes="theme-2" />
             <h3>Theme 3</h3>
-            <Toggle />
+            <Toggle classes="theme-3" />
           </main>
         </article>
         <hr />
@@ -63,9 +64,9 @@ function Page(props: Props) {
             <h3>Theme 1</h3>
             <Select classes="theme-1" />
             <h3>Theme 2</h3>
-            <Select />
+            <Select classes="theme-2" />
             <h3>Theme 3</h3>
-            <Select />
+            <Select classes="theme-3" />
           </main>
         </article>
         <hr />
@@ -83,9 +84,19 @@ function Page(props: Props) {
               disabled={false}
             />
             <h3>Theme 2</h3>
-            <QuantitySelector min={1} max={10} disabled={false} />
+            <QuantitySelector
+              classes="theme-2"
+              min={1}
+              max={10}
+              disabled={false}
+            />
             <h3>Theme 3</h3>
-            <QuantitySelector min={1} max={10} disabled={false} />
+            <QuantitySelector
+              classes="theme-3"
+              min={1}
+              max={10}
+              disabled={false}
+            />
           </main>
         </article>
         <hr />
@@ -116,37 +127,37 @@ function Page(props: Props) {
             </div>
             <h3>Theme 2</h3>
             <div className="theming-poc-list">
-              <Badge variant="success" small>
+              <Badge classes="theme-2" variant="success" small>
                 success
               </Badge>
-              <Badge variant="highlighted" small>
+              <Badge classes="theme-2" variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge variant="info" small>
+              <Badge classes="theme-2" variant="info" small>
                 info
               </Badge>
-              <Badge variant="neutral" small>
+              <Badge classes="theme-2" variant="neutral" small>
                 neutral
               </Badge>
-              <Badge variant="promo" small>
+              <Badge classes="theme-2" variant="promo" small>
                 promo
               </Badge>
             </div>
             <h3>Theme 3</h3>
             <div className="theming-poc-list">
-              <Badge variant="success" small>
+              <Badge classes="theme-3" variant="success" small>
                 success
               </Badge>
-              <Badge variant="highlighted" small>
+              <Badge classes="theme-3" variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge variant="info" small>
+              <Badge classes="theme-3" variant="info" small>
                 info
               </Badge>
-              <Badge variant="neutral" small>
+              <Badge classes="theme-3" variant="neutral" small>
                 neutral
               </Badge>
-              <Badge variant="promo" small>
+              <Badge classes="theme-3" variant="promo" small>
                 promo
               </Badge>
             </div>
@@ -156,7 +167,7 @@ function Page(props: Props) {
         <article className="theming-poc-content theming-button">
           <section>
             <h3>Layouts</h3>
-            <div className="theming-poc-list">
+            <div className="theming-poc-list" style={{ paddingTop: '10px' }}>
               <Button
                 variant="primary"
                 icon={<BellRingingIcon size={18} weight="bold" />}
@@ -208,12 +219,11 @@ function Page(props: Props) {
           <main>
             <h3>Theme 1</h3>
             <div className="theming-poc-list theme-button-1">
-              <div className="theming-poc-list">
+              <div className="theming-poc-list theme-1">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
                   iconPosition="right"
-                  classes="theme-1"
                 >
                   Primary
                 </Button>
@@ -224,32 +234,26 @@ function Page(props: Props) {
                   variant="tertiary"
                   icon={<BellRingingIcon size={18} weight="bold" />}
                   iconPosition="left"
-                  classes="theme-1"
                 >
                   Tertiary
                 </Button>
               </div>
-              <div
-                className="theming-poc-list -inverse"
-                style={{ backgroundColor: '#5900c8', padding: '10px' }}
-              >
+              <div className="theming-poc-list -inverse theme-1">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
                   iconPosition="right"
-                  classes="theme-1"
                   inverse
                 >
                   Primary
                 </Button>
-                <Button variant="secondary" classes="theme-1" inverse>
+                <Button variant="secondary" inverse>
                   Secondary
                 </Button>
                 <Button
                   variant="tertiary"
                   icon={<BellRingingIcon size={18} weight="bold" />}
                   iconPosition="left"
-                  classes="theme-1"
                   inverse
                 >
                   Tertiary
@@ -275,10 +279,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div
-                className="theming-poc-list -inverse"
-                style={{ backgroundColor: '#001947', padding: '10px' }}
-              >
+              <div className="theming-poc-list -inverse">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -319,10 +320,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div
-                className="theming-poc-list -inverse"
-                style={{ backgroundColor: '#66584A', padding: '10px' }}
-              >
+              <div className="theming-poc-list -inverse">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -396,6 +394,7 @@ function Page(props: Props) {
                 badgeVariant="promo"
                 select
                 moreInfo
+                classes="theme-2"
               />
               <ProductCard
                 product={products[2] ?? {}}
@@ -403,11 +402,13 @@ function Page(props: Props) {
                 structure="horizontal"
                 ratio="3:4"
                 showDescription
+                classes="theme-3"
               />
               <ProductCard
                 product={products[3] ?? {}}
                 index={1}
                 action="button"
+                classes="theme-3"
               />
             </div>
           </main>
