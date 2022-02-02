@@ -127,21 +127,24 @@
     --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
   }
 
-  .theme-2 {
-    --toggle-bkg-color                : var(--color-neutral-3);
-    --toggle-border-color             : var(--color-neutral-3);
-    --toggle-border-radius            : var(--border-radius-default);
-    --toggle-border-width             : 2px;
-    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
-    --toggle-knob-border-color        : var(--color-neutral-3);
+  .base-store {
+    --toggle-bkg-color                : var(--neutral-bkg);
+    --toggle-border-color             : var(--neutral-bkg);
+    --toggle-border-radius            : var(--border-radius);
+    --toggle-border-width             : var(--border-width-input);
+    --toggle-transition-timing        : var(--transition-timing);
+    --toggle-transition-property      : var(--transition-property);
+    --toggle-transition-function      : var(--transition-function);
+    --toggle-knob-bkg-color           : var(--body-bkg);
+    --toggle-knob-border-color        : var(--neutral-bkg);
     --toggle-knob-radius              : var(--border-radius-circle);
-    --toggle-knob-shadow              : none;
-    --toggle-checked-bkg-color        : var(--color-border-input-selected);
-    --toggle-checked-knob-border-color: var(--color-border-input-selected);
-    --toggle-hover-border-color       : var(--color-border-input-selected);
-    --toggle-hover-shadow             : none;
-    --toggle-hover-bkg-color          : var(--bg-secondary-light);
-    --toggle-hover-knob-border-color          : var(--bg-secondary-light);
+    --toggle-knob-shadow              : var(--shadow);
+    --toggle-checked-bkg-color        : var(--interactive);
+    --toggle-checked-knob-border-color: var(--interactive);
+    --toggle-hover-border-color       : var(--interactive);
+    --toggle-hover-shadow             : var(--shadow-hover);
+    --toggle-hover-bkg-color          : var(--secondary-bkg-hover);
+    --toggle-hover-knob-border-color  : var(--secondary-bkg-hover);
   }
 
   .theme-3 {
@@ -176,15 +179,21 @@
     --select-hover-bkg-color          : var(--bkg-primary-light);
     --select-hover-border-color       : var(--bkg-primary-darker);
   }
-  .theme-2 {
-    --select-icon-color               : var(--color-border-input-selected);
-    --select-border-radius            : var(--border-radius-default);
-    --select-border-color             : var(--color-neutral-3);
-    --select-border-width             : 2px;
-    --select-hover-shadow             : none;
-    --select-hover-bkg-color          : var(--bg-secondary-light);
-    --select-hover-border-color       : var(--color-border-input-selected);
+
+  .base-store {
+    --select-icon-color               : var(--interactive);
+    --select-border-radius            : var(--border-radius);
+    --select-border-color             : var(--border-color-input);
+    --select-border-width             : var(--border-width-input);
+    --select-shadow                   : var(--shadow);
+    --select-hover-shadow             : var(--shadow-hover);
+    --select-hover-bkg-color          : var(--secondary-bkg-hover);
+    --select-hover-border-color       : var(--interactive);
+    --select-transition-timing        : var(--transition-timing);
+    --select-transition-property      : var(--transition-property);
+    --select-transition-function      : var(--transition-function);
   }
+
   .theme-3 {
     --select-shadow                   : var(--box-shadow);
     --select-text-color               : #506300;
@@ -213,16 +222,22 @@
     --qty-selector-hover-button-bkg-color   : var(--bkg-neutral-light);
     --qty-selector-hover-border-color       : var(--bkg-primary-darker);
   }
-  .theme-2 {
-    --qty-selector-icon-color               : var(--color-border-input-selected);
-    --qty-selector-border-radius            : var(--border-radius-default);
-    --qty-selector-border-color             : var(--color-neutral-3);
-    --qty-selector-border-width             : 2px;
-    --qty-selector-hover-shadow             : none;
+
+  .base-store {
+    --qty-selector-icon-color               : var(--interactive);
+    --qty-selector-border-radius            : var(--border-radius);
+    --qty-selector-border-color             : var(--border-color-input);
+    --qty-selector-border-width             : var(--border-width-input);
+    --qty-selector-shadow                   : var(--shadow);
+    --qty-selector-hover-shadow             : var(--shadow-hover);
     --qty-selector-hover-text-color         : var(--qty-selector-text-color);
-    --qty-selector-hover-border-color       : var(--color-border-input-selected);
-    --qty-selector-hover-button-bkg-color   : var(--bg-secondary-light);
+    --qty-selector-hover-border-color       : var(--interactive);
+    --qty-selector-hover-button-bkg-color   : var(--secondary-bkg-hover);
+    --qty-selector-transition-timing        : var(--transition-timing);
+    --qty-selector-transition-property      : var(--transition-property);
+    --qty-selector-transition-function      : var(--transition-function);
   }
+
   .theme-3 {
     --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
     --qty-selector-shadow                   : var(--box-shadow);
@@ -256,6 +271,20 @@
     --badge-promo-border-color       : var(--color-promo);
   }
 
+  .base-store {
+    --badge-border-radius            : var(--border-radius);
+    --badge-success-bkg-color        : var(--success-bkg);
+    --badge-success-text-color       : var(--text);
+    --badge-highlighted-bkg-color    : var(--highlighted-bkg);
+    --badge-highlighted-text-color   : var(--text);
+    --badge-info-bkg-color           : var(--info-bkg);
+    --badge-info-text-color          : var(--text);
+    --badge-neutral-bkg-color        : var(--neutral-bkg);
+    --badge-neutral-text-color       : var(--text);
+    --badge-promo-bkg-color          : var(--promo-bkg);
+    --badge-promo-text-color         : var(--promo-text);
+  }
+
   .theme-3 {
     --badge-border-radius            : var(--border-radius-default);
     --badge-small-padding            : 2px var(--space-1);
@@ -279,7 +308,8 @@
     background-color: var(--bg-body);
     padding: 10px;
   }
-  .theme-button-1 {
+
+  .theme-1 {
     [data-store-button] {
       --button-border-radius                    : var(--border-radius);
       --button-primary-bkg-color                : var(--bkg-primary-darker);
@@ -293,34 +323,37 @@
       --button-secondary-text-color             : var(--text-color);
       --button-secondary-border-color           : transparent;
 
-      --button-secondary-inverse-bkg-color      : var(--bkg-primary-dark);
-      --button-secondary-inverse-hover-bkg-color : var(--bkg-primary);
+      --button-secondary-inverse-bkg-color        : var(--bkg-primary-dark);
+      --button-secondary-inverse-hover-bkg-color  : var(--bkg-primary);
       --button-secondary-inverse-active-bkg-color : #965ffc;
-      --button-secondary-inverse-border-color   : transparent;
+      --button-secondary-inverse-border-color     : transparent;
 
       --button-tertiary-text-color              : var(--text-color);
       --button-tertiary-inverse-hover-bkg-color : var(--bkg-primary-dark);
     }
 
-    .-inverse { --bg-body: var(--bkg-primary-darker); }
+    &.-inverse { --bg-body: var(--bkg-primary-darker); }
   }
 
-  .theme-button-2 {
+  .base-store {
     [data-store-button] {
-      --button-border-radius                   : var(--border-radius-default);
-      --button-primary-bkg-color               : var(--bg-secondary-default);
-      --button-primary-text-color              : var(--color-text-inverse);
-      --button-primary-hover-bkg-color         : var(--bg-secondary-hover);
-      --button-primary-active-bkg-color        : var(--bg-secondary-pressed);
-      --button-primary-inverse-hover-bkg-color : var(--color-secondary-0);
-      --button-primary-inverse-active-bkg-color: var(--color-secondary-1);
-      --button-tertiary-text-color             : var(--color-link);
+      --button-border-radius                   : var(--border-radius);
+      --button-primary-bkg-color               : var(--primary-bkg);
+      --button-primary-text-color              : var(--text-inverse);
+      --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
+      --button-primary-active-bkg-color        : var(--primary-bkg-active);
+      --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
+      --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
+      --button-tertiary-text-color             : var(--link);
+      --button-transition-timing               : var(--transition-timing);
+      --button-transition-property             : var(--transition-property);
+      --button-transition-function             : var(--transition-function);
     }
 
-    .-inverse { --bg-body: #001947; }
+    &.-inverse { --bg-body: #001947; }
   }
 
-  .theme-button-3 {
+  .theme-3 {
     [data-store-button] {
       --button-border-radius                   : var(--border-radius-pill);
       --button-primary-bkg-color               : #506300;
@@ -334,7 +367,7 @@
       --button-secondary-inverse-border-color  : #CCDC8B;
     }
 
-    .-inverse { --bg-body: #66584A; }
+    &.-inverse { --bg-body: #66584A; }
   }
 }
 
@@ -357,6 +390,16 @@
       --badge-highlighted-bkg-color        : transparent;
       --badge-highlighted-text-color       : var(--color-highlighted);
       --badge-highlighted-border-color     : var(--color-highlighted);
+    }
+
+    [data-store-button] {
+      --button-border-radius                    : var(--border-radius);
+      --button-primary-bkg-color                : var(--bkg-primary-darker);
+      --button-primary-text-color               : var(--color-neutral-light);
+      --button-primary-hover-bkg-color          : var(--bkg-primary-dark);
+      --button-primary-active-bkg-color         : var(--bkg-primary);
+      --button-primary-inverse-hover-bkg-color  : var(--bkg-primary-light);
+      --button-primary-inverse-active-bkg-color : #e2cffc;
     }
   }
 
@@ -404,33 +447,36 @@
     }
   }
 
-  .theme-3 {
+  .base-store {
     --product-card-padding                 : var(--space-2) var(--space-2) var(--space-3);
     --product-card-text-title-weight       : bold;
-    --product-card-border-radius           : 4px;
-    --product-card-border-width            : 1px;
-    --product-card-border-color            : var(--color-border-display);
-    --product-card-transition-timing       : .5s;
-    --product-card-img-radius              : 4px;
-    --product-card-hover-shadow            : var(--box-shadow);
-    --product-card-hover-border-color      : var(--color-border-display);
+    --product-card-border-radius           : var(--border-radius);
+    --product-card-border-width            : var(--border-width-card);
+    --product-card-border-color            : var(--border-color-card);
+    --product-card-transition-timing       : var(--transition-timing);
+    --product-card-transition-property     : var(--transition-property);
+    --product-card-transition-function     : var(--transition-function);
+    --product-card-img-radius              : var(--border-radius);
+    --product-card-hover-shadow            : var(--shadow-hover);
+    --product-card-hover-border-color      : var(--border-color-card);
 
     &[data-card-structure="horizontal"] {
       --product-card-padding               : var(--space-2);
     }
 
     [data-store-badge] {
-      --badge-neutral-bkg-color            : var(--bg-success);
+      --badge-border-radius                : var(--border-radius);
+      --badge-highlighted-bkg-color        : var(--highlighted-bkg);
     }
 
     [data-store-button] {
-      --button-border-radius                   : var(--border-radius-default);
-      --button-primary-bkg-color               : var(--bg-secondary-default);
-      --button-primary-text-color              : var(--color-text-inverse);
-      --button-primary-hover-bkg-color         : var(--bg-secondary-hover);
-      --button-primary-active-bkg-color        : var(--bg-secondary-pressed);
-      --button-primary-inverse-hover-bkg-color : var(--color-secondary-0);
-      --button-primary-inverse-active-bkg-color: var(--color-secondary-1);
+      --button-border-radius                   : var(--border-radius);
+      --button-primary-bkg-color               : var(--primary-bkg);
+      --button-primary-text-color              : var(--text-inverse);
+      --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
+      --button-primary-active-bkg-color        : var(--primary-bkg-active);
+      --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
+      --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
     }
   }
 

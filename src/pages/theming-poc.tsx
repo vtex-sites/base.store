@@ -49,7 +49,7 @@ function Page(props: Props) {
             <h3>Theme 1</h3>
             <Toggle classes="theme-1" />
             <h3>Theme 2</h3>
-            <Toggle classes="theme-2" />
+            <Toggle classes="base-store" />
             <h3>Theme 3</h3>
             <Toggle classes="theme-3" />
           </main>
@@ -64,7 +64,7 @@ function Page(props: Props) {
             <h3>Theme 1</h3>
             <Select classes="theme-1" />
             <h3>Theme 2</h3>
-            <Select classes="theme-2" />
+            <Select classes="base-store" />
             <h3>Theme 3</h3>
             <Select classes="theme-3" />
           </main>
@@ -85,7 +85,7 @@ function Page(props: Props) {
             />
             <h3>Theme 2</h3>
             <QuantitySelector
-              classes="theme-2"
+              classes="base-store"
               min={1}
               max={10}
               disabled={false}
@@ -127,19 +127,19 @@ function Page(props: Props) {
             </div>
             <h3>Theme 2</h3>
             <div className="theming-poc-list">
-              <Badge classes="theme-2" variant="success" small>
+              <Badge classes="base-store" variant="success" small>
                 success
               </Badge>
-              <Badge classes="theme-2" variant="highlighted" small>
+              <Badge classes="base-store" variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge classes="theme-2" variant="info" small>
+              <Badge classes="base-store" variant="info" small>
                 info
               </Badge>
-              <Badge classes="theme-2" variant="neutral" small>
+              <Badge classes="base-store" variant="neutral" small>
                 neutral
               </Badge>
-              <Badge classes="theme-2" variant="promo" small>
+              <Badge classes="base-store" variant="promo" small>
                 promo
               </Badge>
             </div>
@@ -218,7 +218,7 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Theme 1</h3>
-            <div className="theming-poc-list theme-button-1">
+            <div className="theming-poc-list">
               <div className="theming-poc-list theme-1">
                 <Button
                   variant="primary"
@@ -261,8 +261,8 @@ function Page(props: Props) {
               </div>
             </div>
             <h3>Theme 2</h3>
-            <div className="theming-poc-list theme-button-2">
-              <div className="theming-poc-list">
+            <div className="theming-poc-list">
+              <div className="theming-poc-list base-store">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -279,7 +279,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list -inverse">
+              <div className="theming-poc-list -inverse base-store">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -302,8 +302,8 @@ function Page(props: Props) {
               </div>
             </div>
             <h3>Theme 3</h3>
-            <div className="theming-poc-list theme-button-3">
-              <div className="theming-poc-list">
+            <div className="theming-poc-list">
+              <div className="theming-poc-list theme-3">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -320,7 +320,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list -inverse">
+              <div className="theming-poc-list -inverse theme-3">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -402,13 +402,13 @@ function Page(props: Props) {
                 structure="horizontal"
                 ratio="3:4"
                 showDescription
-                classes="theme-3"
+                classes="base-store"
               />
               <ProductCard
                 product={products[3] ?? {}}
                 index={1}
                 action="button"
-                classes="theme-3"
+                classes="base-store"
               />
             </div>
           </main>

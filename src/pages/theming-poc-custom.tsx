@@ -28,6 +28,8 @@ function Page(props: Props) {
     data: { allStoreProduct },
   } = props
 
+  const theme = ''
+
   const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
 
   return (
@@ -40,41 +42,36 @@ function Page(props: Props) {
       />
       <div className="theming-poc-custom">
         <article className="theming-toggle">
-          <Toggle classes="theme-1" />
+          <Toggle classes={theme} />
         </article>
         <article className="theming-select">
-          <Select classes="theme-1" />
+          <Select classes={theme} />
         </article>
         <article className="theming-quantity-selector">
-          <QuantitySelector
-            classes="theme-1"
-            min={1}
-            max={10}
-            disabled={false}
-          />
+          <QuantitySelector classes={theme} min={1} max={10} disabled={false} />
         </article>
         <article className="theming-badge">
           <div className="theming-poc-list">
-            <Badge classes="theme-1" variant="success" small>
+            <Badge classes={theme} variant="success" small>
               success
             </Badge>
-            <Badge classes="theme-1" variant="highlighted" small>
+            <Badge classes={theme} variant="highlighted" small>
               highlighted
             </Badge>
-            <Badge classes="theme-1" variant="info" small>
+            <Badge classes={theme} variant="info" small>
               info
             </Badge>
-            <Badge classes="theme-1" variant="neutral" small>
+            <Badge classes={theme} variant="neutral" small>
               neutral
             </Badge>
-            <Badge classes="theme-1" variant="promo" small>
+            <Badge classes={theme} variant="promo" small>
               promo
             </Badge>
           </div>
         </article>
         <article className="theming-button">
-          <div className="theming-poc-list theme-button-1">
-            <div className="theming-poc-list theme-1">
+          <div className="theming-poc-list">
+            <div className={`theming-poc-list ${theme}`}>
               <Button
                 variant="primary"
                 icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -82,7 +79,7 @@ function Page(props: Props) {
               >
                 Primary
               </Button>
-              <Button variant="secondary" classes="theme-1">
+              <Button variant="secondary" classes={theme}>
                 Secondary
               </Button>
               <Button
@@ -97,7 +94,7 @@ function Page(props: Props) {
         </article>
         <article className="theming-button">
           <div className="theming-poc-list theme-button-1">
-            <div className="theming-poc-list -inverse theme-1">
+            <div className={`theming-poc-list -inverse ${theme}`}>
               <Button
                 variant="primary"
                 icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -123,11 +120,11 @@ function Page(props: Props) {
         <article className="theming-product-card">
           <div className="theming-poc-list">
             <ProductCard
-              product={products[1] ?? {}}
+              product={products[3] ?? {}}
               index={1}
-              structure="wide"
+              action="button"
+              classes={theme}
               badgeVariant="highlighted"
-              classes="theme-1"
             />
           </div>
         </article>
