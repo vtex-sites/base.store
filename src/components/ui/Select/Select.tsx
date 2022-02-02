@@ -16,7 +16,7 @@ interface UISelectProps extends SelectProps {
   classes?: string
   /*
    * Defines the options available in the select. The SelectOptions object
-   * keys are the property names, while the values correspond  to the text that
+   * keys are the property names, while the values correspond to the text that
    * will be displayed in the UI
    */
   options: SelectOptions
