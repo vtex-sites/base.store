@@ -2,6 +2,7 @@ import React from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
+import IconButton from 'src/components/ui/IconButton'
 import {
   ArrowRight as ArrowRightIcon,
   X as XIcon,
@@ -51,12 +52,13 @@ function CartSidebar() {
                   {totalItems}
                 </Badge>
               </div>
-              <Button
+              <IconButton
                 data-testid="cart-sidebar-button-close"
+                classes="cart-sidebar__button"
+                aria-label="Close Cart"
+                icon={<XIcon size={32} />}
                 onClick={() => onDismissTransition()}
-              >
-                <XIcon size={32} />
-              </Button>
+              />
             </header>
             <Alert icon={<TruckIcon size={24} />}>
               Free shiping starts at $300
