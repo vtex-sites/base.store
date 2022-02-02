@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Loadable from '@loadable/component'
+import loadable from '@loadable/component'
 import Navbar from 'src/components/common/Navbar'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
@@ -9,11 +9,11 @@ import type { PropsWithChildren } from 'react'
 import Alert from './components/ui/Alert'
 import './styles/fonts.css'
 
-const CartSidebar = Loadable(() => import('src/components/cart/CartSidebar'))
+const CartSidebar = loadable(() => import('src/components/cart/CartSidebar'))
 
-const Toast = Loadable(() => import('src/components/ui/Toast'))
+const Toast = loadable(() => import('src/components/ui/Toast'))
 
-const Footer = Loadable(() => import('src/components/common/Footer'))
+const Footer = loadable(() => import('src/components/common/Footer'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()

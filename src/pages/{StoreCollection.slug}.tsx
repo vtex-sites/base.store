@@ -2,7 +2,7 @@ import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
-import Loadable from '@loadable/component'
+import loadable from '@loadable/component'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
@@ -18,15 +18,15 @@ import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 
 import '../styles/pages/product-listing.scss'
 
-const ScrollToTopButton = Loadable(
+const ScrollToTopButton = loadable(
   () => import('src/components/ui/ScrollToTopButton')
 )
 
-const ProductGallery = Loadable(
+const ProductGallery = loadable(
   () => import('src/components/sections/ProductGallery')
 )
 
-const ProductShelf = Loadable(
+const ProductShelf = loadable(
   () => import('src/components/sections/ProductShelf')
 )
 
