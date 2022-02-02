@@ -35,7 +35,9 @@ function LinkButton({
       onFocus={(e: FocusEvent) => {
         e.preventDefault()
 
-        if (disabled) linkRef.current?.blur()
+        if (disabled) {
+          linkRef.current?.blur()
+        }
       }}
       {...otherProps}
     >
