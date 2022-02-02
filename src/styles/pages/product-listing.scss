@@ -1,7 +1,7 @@
 @import "../scaffold.scss";
 
 .product-listing {
-  --product-listing-grid: 2181px;
+  --product-listing-grid: 2197px;
 
   min-height: var(--product-listing-grid);
   padding-top: 0;
@@ -18,7 +18,7 @@
 
 // Temporary till we have skeletons.
 .product-listing__data-loading {
-  --product-listing-grid: 2181px;
+  --product-listing-grid: 2197px;
   --product-listing-grid-header: 40px;
 
   min-height: calc(var(--product-listing-grid) - var(--product-listing-grid-header));
@@ -95,7 +95,7 @@
 }
 
 .product-listing__results {
-  --product-listing-grid: 2181px;
+  --product-listing-grid: 2197px;
   --product-listing-grid-header: 40px;
   --padding: var(--space-1);
 
