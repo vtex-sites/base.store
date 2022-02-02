@@ -2,7 +2,7 @@
 
 <em>Considering the context, what is the problem we'll solve? Where in VTEX's big picture our issue fits in? Write a tweet about the context and the problem itself.</em>
 
-## How it works?
+## How does it work?
 
 <em>Tell us the role of the new feature, or component, in its context.</em>
 
