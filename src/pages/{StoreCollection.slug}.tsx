@@ -135,7 +135,7 @@ function Page(props: Props) {
 
       <div className="product-listing / grid-content-full">
         <div className="product-listing__content-grid / grid-content">
-          <ProductGallery title={title} />
+          <ProductGallery title={title} slug={slug} />
         </div>
       </div>
 
