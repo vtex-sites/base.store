@@ -3,22 +3,28 @@ import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
 import Loadable from '@loadable/component'
-import Hero from 'src/components/sections/Hero'
-import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
+import Hero from 'src/components/sections/Hero'
 import type { SearchState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
-import Breadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
-import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 
 import '../styles/pages/product-listing.scss'
+
+const ScrollToTopButton = Loadable(
+  () => import('src/components/ui/ScrollToTopButton')
+)
+
+const ProductGallery = Loadable(
+  () => import('src/components/sections/ProductGallery')
+)
 
 const ProductShelf = Loadable(
   () => import('src/components/sections/ProductShelf')
@@ -127,7 +133,11 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <ProductGallery title={title} slug={slug} />
+      <div className="product-listing / grid-content-full">
+        <div className="product-listing__content-grid / grid-content">
+          <ProductGallery title={title} />
+        </div>
+      </div>
 
       {haveYouMightAlsoLikeProducts && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">

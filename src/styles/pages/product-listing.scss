@@ -1,6 +1,9 @@
 @import "../scaffold.scss";
 
 .product-listing {
+  --product-listing-grid: 2181px;
+
+  min-height: var(--product-listing-grid);
   padding-top: 0;
 
   @include media(">=notebook") {
@@ -15,11 +18,10 @@
 
 // Temporary till we have skeletons.
 .product-listing__data-loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding-top: var(--space-5);
+  --product-listing-grid: 2181px;
+  --product-listing-grid-header: 40px;
+
+  min-height: calc(var(--product-listing-grid) - var(--product-listing-grid-header));
 }
 
 .product-listing__hero {
@@ -29,6 +31,7 @@
 .product-listing__content-grid {
   display: flex;
   flex-direction: column;
+  height: 100%;
   padding-right: 0;
   padding-left: 0;
 
@@ -92,9 +95,12 @@
 }
 
 .product-listing__results {
+  --product-listing-grid: 2181px;
+  --product-listing-grid-header: 40px;
   --padding: var(--space-1);
 
   order: 3;
+  min-height: calc(var(--product-listing-grid) - var(--product-listing-grid-header));
   padding: var(--padding) var(--padding) 0;
   background-color: var(--bg-neutral-light);
 
