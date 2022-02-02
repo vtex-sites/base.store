@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import type { LinkProps } from '@faststore/ui'
 import { Icon as UIIcon, Link as UILink } from '@faststore/ui'
+import type { FocusEvent } from 'react'
 
 import type { UIButtonProps } from './Button'
 
@@ -31,7 +32,7 @@ function LinkButton({
       data-button-variant={variant}
       data-button-inverse={inverse}
       data-button-disabled={disabled}
-      onFocus={(e: { preventDefault: () => void }) => {
+      onFocus={(e: FocusEvent) => {
         e.preventDefault()
 
         disabled && linkRef.current?.blur()
