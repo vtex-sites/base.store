@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Loadable from '@loadable/component'
 import Navbar from 'src/components/common/Navbar'
+import IntersectionObserver from 'src/components/ui/IntersectionObserver'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
 import { useUI } from 'src/sdk/ui'
@@ -51,8 +52,9 @@ function Layout({ children }: PropsWithChildren<unknown>) {
       <Navbar />
 
       <main>{children}</main>
-
-      <Footer />
+      <IntersectionObserver>
+        <Footer />
+      </IntersectionObserver>
       {displayMinicart && <CartSidebar />}
 
       {toasts.length > 0 && <Toast />}
