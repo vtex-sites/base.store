@@ -39,6 +39,7 @@ function Page(props: Props) {
         nofollow
       />
       <div className="theming-poc">
+        <h2>Toggle</h2>
         <article className="theming-poc-content theming-toggle">
           <section>
             <h3>Layouts</h3>
@@ -46,60 +47,69 @@ function Page(props: Props) {
             <Toggle structure="vertical" />
           </section>
           <main>
-            <h3>Theme 1</h3>
-            <Toggle classes="theme-1" />
-            <h3>Theme 2</h3>
+            <h3>Theme: Base Store</h3>
             <Toggle classes="base-store" />
-            <h3>Theme 3</h3>
-            <Toggle classes="theme-3" />
+            <h3>Theme: NuCommerce</h3>
+            <Toggle classes="nucommerce" />
+            <h3>Theme: Grocery</h3>
+            <Toggle classes="grocery" />
           </main>
         </article>
+
         <hr />
+
+        <h2>Select</h2>
         <article className="theming-poc-content theming-select">
           <section>
             <h3>Layout</h3>
             <Select />
           </section>
           <main>
-            <h3>Theme 1</h3>
-            <Select classes="theme-1" />
-            <h3>Theme 2</h3>
+            <h3>Theme: Base Store</h3>
             <Select classes="base-store" />
-            <h3>Theme 3</h3>
-            <Select classes="theme-3" />
+            <h3>Theme: NuCommerce</h3>
+            <Select classes="nucommerce" />
+            <h3>Theme: Grocery</h3>
+            <Select classes="grocery" />
           </main>
         </article>
+
         <hr />
+
+        <h2>Quantity Selector (Stepper)</h2>
         <article className="theming-poc-content theming-quantity-selector">
           <section>
             <h3>Layout</h3>
             <QuantitySelector min={1} max={10} disabled={false} />
           </section>
           <main>
-            <h3>Theme 1</h3>
-            <QuantitySelector
-              classes="theme-1"
-              min={1}
-              max={10}
-              disabled={false}
-            />
-            <h3>Theme 2</h3>
+            <h3>Theme: Base Store</h3>
             <QuantitySelector
               classes="base-store"
               min={1}
               max={10}
               disabled={false}
             />
-            <h3>Theme 3</h3>
+            <h3>Theme: NuCommerce</h3>
             <QuantitySelector
-              classes="theme-3"
+              classes="nucommerce"
+              min={1}
+              max={10}
+              disabled={false}
+            />
+            <h3>Theme: Grocery</h3>
+            <QuantitySelector
+              classes="grocery"
               min={1}
               max={10}
               disabled={false}
             />
           </main>
         </article>
+
         <hr />
+
+        <h2>Badge</h2>
         <article className="theming-poc-content theming-badge">
           <section>
             <h3>Layouts</h3>
@@ -107,25 +117,7 @@ function Page(props: Props) {
             <Badge>Badge Big</Badge>
           </section>
           <main>
-            <h3>Theme 1</h3>
-            <div className="theming-poc-list">
-              <Badge classes="theme-1" variant="success" small>
-                success
-              </Badge>
-              <Badge classes="theme-1" variant="highlighted" small>
-                highlighted
-              </Badge>
-              <Badge classes="theme-1" variant="info" small>
-                info
-              </Badge>
-              <Badge classes="theme-1" variant="neutral" small>
-                neutral
-              </Badge>
-              <Badge classes="theme-1" variant="promo" small>
-                promo
-              </Badge>
-            </div>
-            <h3>Theme 2</h3>
+            <h3>Theme: Base Store</h3>
             <div className="theming-poc-list">
               <Badge classes="base-store" variant="success" small>
                 success
@@ -143,31 +135,52 @@ function Page(props: Props) {
                 promo
               </Badge>
             </div>
-            <h3>Theme 3</h3>
+            <h3>Theme: NuCommerce</h3>
             <div className="theming-poc-list">
-              <Badge classes="theme-3" variant="success" small>
+              <Badge classes="nucommerce" variant="success" small>
                 success
               </Badge>
-              <Badge classes="theme-3" variant="highlighted" small>
+              <Badge classes="nucommerce" variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge classes="theme-3" variant="info" small>
+              <Badge classes="nucommerce" variant="info" small>
                 info
               </Badge>
-              <Badge classes="theme-3" variant="neutral" small>
+              <Badge classes="nucommerce" variant="neutral" small>
                 neutral
               </Badge>
-              <Badge classes="theme-3" variant="promo" small>
+              <Badge classes="nucommerce" variant="promo" small>
+                promo
+              </Badge>
+            </div>
+            <h3>Theme: Grocery</h3>
+            <div className="theming-poc-list">
+              <Badge classes="grocery" variant="success" small>
+                success
+              </Badge>
+              <Badge classes="grocery" variant="highlighted" small>
+                highlighted
+              </Badge>
+              <Badge classes="grocery" variant="info" small>
+                info
+              </Badge>
+              <Badge classes="grocery" variant="neutral" small>
+                neutral
+              </Badge>
+              <Badge classes="grocery" variant="promo" small>
                 promo
               </Badge>
             </div>
           </main>
         </article>
+
         <hr />
+
+        <h2>Button</h2>
         <article className="theming-poc-content theming-button">
           <section>
             <h3>Layouts</h3>
-            <div className="theming-poc-list" style={{ paddingTop: '10px' }}>
+            <div className="theming-poc-stack">
               <Button
                 variant="primary"
                 icon={<BellRingingIcon size={18} weight="bold" />}
@@ -184,7 +197,7 @@ function Page(props: Props) {
                 Icon Left
               </Button>
             </div>
-            <div className="theming-poc-list">
+            <div className="theming-poc-stack">
               <Button
                 variant="primary"
                 icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -201,13 +214,13 @@ function Page(props: Props) {
                 Icon Right
               </Button>
             </div>
-            <div className="theming-poc-list">
+            <div className="theming-poc-stack">
               <Button variant="primary">Default</Button>
               <Button variant="primary" size="small">
                 Default
               </Button>
             </div>
-            <div className="theming-poc-list">
+            <div className="theming-poc-stack">
               <Button variant="primary" disabled>
                 Disabled
               </Button>
@@ -217,52 +230,12 @@ function Page(props: Props) {
             </div>
           </section>
           <main>
-            <h3>Theme 1</h3>
-            <div className="theming-poc-list">
-              <div className="theming-poc-list theme-1">
-                <Button
-                  variant="primary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                >
-                  Primary
-                </Button>
-                <Button variant="secondary" classes="theme-1">
-                  Secondary
-                </Button>
-                <Button
-                  variant="tertiary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                >
-                  Tertiary
-                </Button>
-              </div>
-              <div className="theming-poc-list inverse theme-1">
-                <Button
-                  variant="primary"
-                  icon={<ArrowRightIcon size={18} weight="bold" />}
-                  iconPosition="right"
-                  inverse
-                >
-                  Primary
-                </Button>
-                <Button variant="secondary" inverse>
-                  Secondary
-                </Button>
-                <Button
-                  variant="tertiary"
-                  icon={<BellRingingIcon size={18} weight="bold" />}
-                  iconPosition="left"
-                  inverse
-                >
-                  Tertiary
-                </Button>
-              </div>
-            </div>
-            <h3>Theme 2</h3>
-            <div className="theming-poc-list">
-              <div className="theming-poc-list base-store">
+            <h3>Theme: Base Store</h3>
+            <div className="theming-poc-stack">
+              <div
+                className="theming-poc-list base-store"
+                style={{ paddingLeft: '10px' }}
+              >
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -301,9 +274,58 @@ function Page(props: Props) {
                 </Button>
               </div>
             </div>
-            <h3>Theme 3</h3>
-            <div className="theming-poc-list">
-              <div className="theming-poc-list theme-3">
+            <h3>Theme: NuCommerce</h3>
+            <div className="theming-poc-stack">
+              <div
+                className="theming-poc-list nucommerce"
+                style={{ paddingLeft: '10px' }}
+              >
+                <Button
+                  variant="primary"
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
+                >
+                  Primary
+                </Button>
+                <Button variant="secondary" classes="nucommerce">
+                  Secondary
+                </Button>
+                <Button
+                  variant="tertiary"
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
+                >
+                  Tertiary
+                </Button>
+              </div>
+              <div className="theming-poc-list inverse nucommerce">
+                <Button
+                  variant="primary"
+                  icon={<ArrowRightIcon size={18} weight="bold" />}
+                  iconPosition="right"
+                  inverse
+                >
+                  Primary
+                </Button>
+                <Button variant="secondary" inverse>
+                  Secondary
+                </Button>
+                <Button
+                  variant="tertiary"
+                  icon={<BellRingingIcon size={18} weight="bold" />}
+                  iconPosition="left"
+                  inverse
+                >
+                  Tertiary
+                </Button>
+              </div>
+            </div>
+            <h3>Theme: Grocery</h3>
+            <div className="theming-poc-stack">
+              <div
+                className="theming-poc-list grocery"
+                style={{ paddingLeft: '10px' }}
+              >
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -320,7 +342,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list inverse theme-3">
+              <div className="theming-poc-list inverse grocery">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -344,16 +366,79 @@ function Page(props: Props) {
             </div>
           </main>
         </article>
+
         <hr />
+
+        <h2>Product Card</h2>
         <article className="theming-poc-content theming-product-card">
-          <section>
-            <h3>Layouts</h3>
-            <div className="theming-poc-list">
+          <article className="theming-poc-content">
+            <section>
+              <h3>Layout: Default</h3>
+              <ProductCard
+                product={products[3] ?? {}}
+                index={1}
+                action="button"
+              />
+            </section>
+            <div className="main">
+              <h3>Theme: Base Store</h3>
+              <ProductCard
+                product={products[3] ?? {}}
+                index={1}
+                action="button"
+                classes="base-store"
+              />
+            </div>
+          </article>
+
+          <article className="theming-poc-content">
+            <section>
+              <h3>Layout: Horizontal</h3>
+              <ProductCard
+                product={products[2] ?? {}}
+                index={1}
+                structure="horizontal"
+                ratio="3:4"
+                showDescription
+              />
+            </section>
+            <div className="main">
+              <h3>Theme: Base Store</h3>
+              <ProductCard
+                product={products[2] ?? {}}
+                index={1}
+                structure="horizontal"
+                ratio="3:4"
+                showDescription
+                classes="base-store"
+              />
+            </div>
+          </article>
+
+          <article className="theming-poc-content">
+            <section>
+              <h3>Layout: Wide</h3>
               <ProductCard
                 product={products[1] ?? {}}
                 index={1}
                 structure="wide"
               />
+            </section>
+            <div className="main">
+              <h3>Theme: NuCommerce</h3>
+              <ProductCard
+                product={products[1] ?? {}}
+                index={1}
+                structure="wide"
+                badgeVariant="highlighted"
+                classes="nucommerce"
+              />
+            </div>
+          </article>
+
+          <article className="theming-poc-content">
+            <section>
+              <h3>Layout: Grocery</h3>
               <ProductCard
                 product={products[0] ?? {}}
                 index={0}
@@ -362,30 +447,9 @@ function Page(props: Props) {
                 select
                 moreInfo
               />
-              <ProductCard
-                product={products[2] ?? {}}
-                index={1}
-                structure="horizontal"
-                ratio="3:4"
-                showDescription
-              />
-              <ProductCard
-                product={products[3] ?? {}}
-                index={1}
-                action="button"
-              />
-            </div>
-          </section>
-          <main>
-            <h3>Themes</h3>
-            <div className="theming-poc-list">
-              <ProductCard
-                product={products[1] ?? {}}
-                index={1}
-                structure="wide"
-                badgeVariant="highlighted"
-                classes="theme-1"
-              />
+            </section>
+            <div className="main">
+              <h3>Theme: Grocery</h3>
               <ProductCard
                 product={products[0] ?? {}}
                 index={0}
@@ -394,24 +458,10 @@ function Page(props: Props) {
                 badgeVariant="promo"
                 select
                 moreInfo
-                classes="theme-2"
-              />
-              <ProductCard
-                product={products[2] ?? {}}
-                index={1}
-                structure="horizontal"
-                ratio="3:4"
-                showDescription
-                classes="base-store"
-              />
-              <ProductCard
-                product={products[3] ?? {}}
-                index={1}
-                action="button"
-                classes="base-store"
+                classes="grocery"
               />
             </div>
-          </main>
+          </article>
         </article>
       </div>
     </>

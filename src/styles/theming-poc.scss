@@ -6,13 +6,16 @@
   --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 }
 
+// Page Layout
+// ----------------------------------------------------------
+
 .theming-poc {
   display: flex;
   flex-direction: column;
   gap: 48px;
-  align-items: center;
-  justify-content: center;
-  min-width: 1280px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 1000px;
   min-height: 100vh;
   padding: 48px 0;
 
@@ -20,6 +23,13 @@
     width: 100%;
     margin: 0;
     border-top: 1px solid var(--color-border-display);
+  }
+
+  h2 {
+    padding: 0 96px;
+    font-weight: bold;
+    font-size: 2em;
+    letter-spacing: -.5px;
   }
 }
 
@@ -37,7 +47,7 @@
   display: flex;
   gap: 48px;
   align-content: flex-start;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   padding: 0 96px;
@@ -47,12 +57,18 @@
     font-size: .9rem;
   }
 
-  > * > h3 { font-weight: bold; }
+  > * > h3 {
+    color: gray;
+    font-weight: bold;
+    font-size: .8em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
 
-  > section { flex-basis: 20%; }
-  > main { flex-basis: 80%; }
+  > section { flex-basis: 25%; }
+  > main, > .main { flex-basis: 75%; }
 
-  > main, > section {
+  > main, > section, > .main {
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -68,8 +84,22 @@
   > * { flex-shrink: 0; }
 }
 
+.theming-poc-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 10px;
+}
+
 .theming-product-card {
   flex-direction: column;
+  gap: 30px;
+
+  > .theming-poc-content {
+    padding: 0;
+    > section { flex-basis: 42%; }
+    > main, > .main { flex-basis: 58%; }
+  }
 
   .theming-poc-list {
     justify-content: space-between;
@@ -78,8 +108,11 @@
   }
 }
 
+// Themes
+// ----------------------------------------------------------
+
 /* stylelint-disable */
-.theme-1 {
+.nucommerce {
   --color-neutral-light      : #fff;
   --color-neutral            : #c7ccd1;
   --color-neutral-dark       : #7b7f83;
@@ -108,26 +141,11 @@
   --shadow-hover             : none;
 }
 
-.theming-toggle {
-  .theme-1 {
-    --toggle-height                   : calc(var(--min-size) - 6px);
-    --toggle-shadow                   : var(--shadow);
-    --toggle-border-width             : var(--border-width);
-    --toggle-content                  : "🤙";
-    --toggle-bkg-color                : var(--bkg-primary-light);
-    --toggle-border-color             : var(--bkg-primary-light);
-    --toggle-border-radius            : var(--border-radius);
-    --toggle-knob-bkg-color           : var(--bkg-neutral-light);
-    --toggle-knob-border-color        : var(--bkg-neutral);
-    --toggle-checked-bkg-color        : var(--bkg-primary-darker);
-    --toggle-checked-border-color     : var(--bkg-primary-darker);
-    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
-    --toggle-hover-shadow             : var(--shadow-hover);
-    --toggle-hover-border-color       : var(--bkg-primary-darker);
-    --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
-  }
+// Toggle
+// ----------------------------------------------------------
 
-  .base-store {
+.theming-toggle {
+    .base-store {
     --toggle-bkg-color                : var(--neutral-bkg);
     --toggle-border-color             : var(--neutral-bkg);
     --toggle-border-radius            : var(--border-radius);
@@ -147,7 +165,25 @@
     --toggle-hover-knob-border-color  : var(--secondary-bkg-hover);
   }
 
-  .theme-3 {
+  .nucommerce {
+    --toggle-height                   : calc(var(--min-size) - 6px);
+    --toggle-shadow                   : var(--shadow);
+    --toggle-border-width             : var(--border-width);
+    --toggle-content                  : "🤙";
+    --toggle-bkg-color                : var(--bkg-primary-light);
+    --toggle-border-color             : var(--bkg-primary-light);
+    --toggle-border-radius            : var(--border-radius);
+    --toggle-knob-bkg-color           : var(--bkg-neutral-light);
+    --toggle-knob-border-color        : var(--bkg-neutral);
+    --toggle-checked-bkg-color        : var(--bkg-primary-darker);
+    --toggle-checked-border-color     : var(--bkg-primary-darker);
+    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
+    --toggle-hover-shadow             : var(--shadow-hover);
+    --toggle-hover-border-color       : var(--bkg-primary-darker);
+    --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
+  }
+
+  .grocery {
     --toggle-shadow                   : var(--box-shadow);
     --toggle-bkg-color                : var(--color-neutral-1);
     --toggle-border-color             : var(--color-neutral-2);
@@ -164,22 +200,10 @@
   }
 }
 
-.theming-select {
-  .theme-1 {
-    --select-height                   : calc(var(--min-size) - 4px);
-    --select-width                    : 7rem;
-    --select-shadow                   : var(--shadow);
-    --select-text-color               : var(--text-color);
-    --select-icon-color               : var(--text-color);
-    --select-bkg-color                : var(--bkg-primary-light);
-    --select-border-radius            : var(--border-radius);
-    --select-border-width             : var(--border-width);
-    --select-border-color             : var(--bkg-primary-light);
-    --select-hover-shadow             : var(--shadow-hover);
-    --select-hover-bkg-color          : var(--bkg-primary-light);
-    --select-hover-border-color       : var(--bkg-primary-darker);
-  }
+// Select
+// ----------------------------------------------------------
 
+.theming-select {
   .base-store {
     --select-icon-color               : var(--interactive);
     --select-border-radius            : var(--border-radius);
@@ -194,7 +218,22 @@
     --select-transition-function      : var(--transition-function);
   }
 
-  .theme-3 {
+  .nucommerce {
+    --select-height                   : calc(var(--min-size) - 4px);
+    --select-width                    : 7rem;
+    --select-shadow                   : var(--shadow);
+    --select-text-color               : var(--text-color);
+    --select-icon-color               : var(--text-color);
+    --select-bkg-color                : var(--bkg-primary-light);
+    --select-border-radius            : var(--border-radius);
+    --select-border-width             : var(--border-width);
+    --select-border-color             : var(--bkg-primary-light);
+    --select-hover-shadow             : var(--shadow-hover);
+    --select-hover-bkg-color          : var(--bkg-primary-light);
+    --select-hover-border-color       : var(--bkg-primary-darker);
+  }
+
+  .grocery {
     --select-shadow                   : var(--box-shadow);
     --select-text-color               : #506300;
     --select-icon-color               : #506300;
@@ -208,21 +247,10 @@
   }
 }
 
-.theming-quantity-selector {
-  .theme-1 {
-    --qty-selector-height                   : calc(var(--min-size) + 10px);
-    --qty-selector-width                    : 9rem;
-    --qty-selector-bkg-color                : var(--bkg-primary-light);
-    --qty-selector-text-color               : var(--text-color);
-    --qty-selector-icon-color               : var(--text-color);
-    --qty-selector-border-radius            : var(--border-radius);
-    --qty-selector-border-width             : var(--border-width);
-    --qty-selector-border-color             : var(--bkg-primary-light);
-    --qty-selector-hover-shadow             : var(--shadow-hover);
-    --qty-selector-hover-button-bkg-color   : var(--bkg-neutral-light);
-    --qty-selector-hover-border-color       : var(--bkg-primary-darker);
-  }
+// Quantity Selector / Stepper
+// ----------------------------------------------------------
 
+.theming-quantity-selector {
   .base-store {
     --qty-selector-icon-color               : var(--interactive);
     --qty-selector-border-radius            : var(--border-radius);
@@ -238,7 +266,21 @@
     --qty-selector-transition-function      : var(--transition-function);
   }
 
-  .theme-3 {
+  .nucommerce {
+    --qty-selector-height                   : calc(var(--min-size) + 10px);
+    --qty-selector-width                    : 9rem;
+    --qty-selector-bkg-color                : var(--bkg-primary-light);
+    --qty-selector-text-color               : var(--text-color);
+    --qty-selector-icon-color               : var(--text-color);
+    --qty-selector-border-radius            : var(--border-radius);
+    --qty-selector-border-width             : var(--border-width);
+    --qty-selector-border-color             : var(--bkg-primary-light);
+    --qty-selector-hover-shadow             : var(--shadow-hover);
+    --qty-selector-hover-button-bkg-color   : var(--bkg-neutral-light);
+    --qty-selector-hover-border-color       : var(--bkg-primary-darker);
+  }
+
+  .grocery {
     --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
     --qty-selector-shadow                   : var(--box-shadow);
     --qty-selector-bkg-color                : var(--bg-neutral-lightest);
@@ -251,8 +293,25 @@
   }
 }
 
+// Badge
+// ----------------------------------------------------------
+
 .theming-badge {
-  .theme-1 {
+  .base-store {
+    --badge-border-radius            : var(--border-radius);
+    --badge-success-bkg-color        : var(--success-bkg);
+    --badge-success-text-color       : var(--text);
+    --badge-highlighted-bkg-color    : var(--highlighted-bkg);
+    --badge-highlighted-text-color   : var(--text);
+    --badge-info-bkg-color           : var(--info-bkg);
+    --badge-info-text-color          : var(--text);
+    --badge-neutral-bkg-color        : var(--neutral-bkg);
+    --badge-neutral-text-color       : var(--text);
+    --badge-promo-bkg-color          : var(--promo-bkg);
+    --badge-promo-text-color         : var(--promo-text);
+  }
+
+  .nucommerce {
     --badge-border-width             : 3px;
     --badge-border-radius            : var(--border-radius-pill);
     --badge-success-bkg-color        : transparent;
@@ -271,21 +330,7 @@
     --badge-promo-border-color       : var(--color-promo);
   }
 
-  .base-store {
-    --badge-border-radius            : var(--border-radius);
-    --badge-success-bkg-color        : var(--success-bkg);
-    --badge-success-text-color       : var(--text);
-    --badge-highlighted-bkg-color    : var(--highlighted-bkg);
-    --badge-highlighted-text-color   : var(--text);
-    --badge-info-bkg-color           : var(--info-bkg);
-    --badge-info-text-color          : var(--text);
-    --badge-neutral-bkg-color        : var(--neutral-bkg);
-    --badge-neutral-text-color       : var(--text);
-    --badge-promo-bkg-color          : var(--promo-bkg);
-    --badge-promo-text-color         : var(--promo-text);
-  }
-
-  .theme-3 {
+  .grocery {
     --badge-border-radius            : var(--border-radius-default);
     --badge-small-padding            : 2px var(--space-1);
     --badge-success-bkg-color        : #59ab30;
@@ -303,6 +348,9 @@
   }
 }
 
+// Button
+// ----------------------------------------------------------
+
 .theming-button {
   .inverse {
     --bkg-dark: #000;
@@ -310,7 +358,25 @@
     padding: 10px;
   }
 
-  .theme-1 {
+  .base-store {
+    [data-store-button] {
+      --button-border-radius                   : var(--border-radius);
+      --button-primary-bkg-color               : var(--primary-bkg);
+      --button-primary-text-color              : var(--text-inverse);
+      --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
+      --button-primary-active-bkg-color        : var(--primary-bkg-active);
+      --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
+      --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
+      --button-tertiary-text-color             : var(--link);
+      --button-transition-timing               : var(--transition-timing);
+      --button-transition-property             : var(--transition-property);
+      --button-transition-function             : var(--transition-function);
+    }
+
+    &.inverse { --bkg-dark: #001947; }
+  }
+
+  .nucommerce {
     [data-store-button] {
       --button-border-radius                    : var(--border-radius);
       --button-primary-bkg-color                : var(--bkg-primary-darker);
@@ -336,25 +402,7 @@
     &.inverse { --bkg-dark: var(--bkg-primary-darker); }
   }
 
-  .base-store {
-    [data-store-button] {
-      --button-border-radius                   : var(--border-radius);
-      --button-primary-bkg-color               : var(--primary-bkg);
-      --button-primary-text-color              : var(--text-inverse);
-      --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
-      --button-primary-active-bkg-color        : var(--primary-bkg-active);
-      --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
-      --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
-      --button-tertiary-text-color             : var(--link);
-      --button-transition-timing               : var(--transition-timing);
-      --button-transition-property             : var(--transition-property);
-      --button-transition-function             : var(--transition-function);
-    }
-
-    &.inverse { --bkg-dark: #001947; }
-  }
-
-  .theme-3 {
+  .grocery {
     [data-store-button] {
       --button-border-radius                   : var(--border-radius-pill);
       --button-primary-bkg-color               : #506300;
@@ -372,8 +420,45 @@
   }
 }
 
+// Product Card
+// ----------------------------------------------------------
+
 .theming-product-card {
-  .theme-1 {
+  .base-store {
+    --product-card-padding                 : var(--space-2) var(--space-2) var(--space-3);
+    --product-card-text-title-weight       : bold;
+    --product-card-border-radius           : var(--border-radius);
+    --product-card-border-width            : var(--border-width-card);
+    --product-card-border-color            : var(--border-color-card);
+    --product-card-transition-timing       : var(--transition-timing);
+    --product-card-transition-property     : var(--transition-property);
+    --product-card-transition-function     : var(--transition-function);
+    --product-card-img-radius              : var(--border-radius);
+    --product-card-hover-shadow            : var(--shadow-hover);
+    --product-card-hover-border-color      : var(--border-color-card);
+
+    &[data-card-structure="horizontal"] {
+      --product-card-padding               : var(--space-2);
+    }
+
+    [data-store-badge] {
+      --badge-border-radius                : var(--border-radius);
+      --badge-highlighted-bkg-color        : var(--highlighted-bkg);
+    }
+
+    [data-store-button] {
+      --button-border-radius                   : var(--border-radius);
+      --button-primary-bkg-color               : var(--primary-bkg);
+      --button-primary-text-color              : var(--text-inverse);
+      --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
+      --button-primary-active-bkg-color        : var(--primary-bkg-active);
+      --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
+      --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
+    }
+  }
+
+  .nucommerce {
+    --product-card-min-width               : 20rem;
     --product-card-bkg-color               : var(--bkg-primary-light);
     --product-card-text-title-color        : var(--text-color);
     --product-card-text-price-color        : var(--text-color);
@@ -404,7 +489,7 @@
     }
   }
 
-  .theme-2 {
+  .grocery {
     --product-card-shadow                  : var(--box-shadow);
     --product-card-img-radius              : 6px;
     --product-card-text-title-color        : #688200;
@@ -447,40 +532,6 @@
       --badge-small-padding                : 2px var(--space-1);
     }
   }
-
-  .base-store {
-    --product-card-padding                 : var(--space-2) var(--space-2) var(--space-3);
-    --product-card-text-title-weight       : bold;
-    --product-card-border-radius           : var(--border-radius);
-    --product-card-border-width            : var(--border-width-card);
-    --product-card-border-color            : var(--border-color-card);
-    --product-card-transition-timing       : var(--transition-timing);
-    --product-card-transition-property     : var(--transition-property);
-    --product-card-transition-function     : var(--transition-function);
-    --product-card-img-radius              : var(--border-radius);
-    --product-card-hover-shadow            : var(--shadow-hover);
-    --product-card-hover-border-color      : var(--border-color-card);
-
-    &[data-card-structure="horizontal"] {
-      --product-card-padding               : var(--space-2);
-    }
-
-    [data-store-badge] {
-      --badge-border-radius                : var(--border-radius);
-      --badge-highlighted-bkg-color        : var(--highlighted-bkg);
-    }
-
-    [data-store-button] {
-      --button-border-radius                   : var(--border-radius);
-      --button-primary-bkg-color               : var(--primary-bkg);
-      --button-primary-text-color              : var(--text-inverse);
-      --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
-      --button-primary-active-bkg-color        : var(--primary-bkg-active);
-      --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
-      --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
-    }
-  }
-
 }
 
 /* stylelint-enable */
