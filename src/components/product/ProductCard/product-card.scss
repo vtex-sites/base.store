@@ -10,7 +10,7 @@
   // Default properties
   --product-card-padding                  : var(--space-1) var(--space-1) var(--space-2);
   --product-card-gap                      : var(--grid-gap-0);
-  --product-card-min-width                : 14rem;
+  --product-card-min-width                : 13rem;
   --product-card-shadow                   : none;
   --product-card-bkg-color                : var(--bg-neutral-lightest);
   --product-card-img-radius               : var(--border-radius-flat);
@@ -85,7 +85,7 @@
 
   [data-card-actions] {
     position: relative;
-    margin-top: auto;
+    margin-top: var(--product-card-gap);
     padding-top: var(--space-0);
   }
 
@@ -135,8 +135,6 @@
   }
 }
 
-[data-store-badge] { margin-bottom: var(--product-card-gap); }
-
 [data-base-product-card-description] {
   margin-bottom: var(--space-1);
   color: var(--product-card-text-description-color);
@@ -184,6 +182,7 @@
 
 [data-card-structure="horizontal"] {
   grid-auto-flow: column;
+  grid-template-rows: auto;
   grid-template-columns: 40% 1fr;
   gap: var(--product-card-gap);
   min-width: calc(var(--product-card-min-width) * 1.5);
@@ -193,7 +192,6 @@
   [data-card-content] {
     display: grid;
     grid-row: 1;
-    grid-template-rows: auto auto 1fr;
     gap: calc(var(--product-card-gap) / 2);
   }
 
