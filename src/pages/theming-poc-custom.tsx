@@ -94,7 +94,7 @@ function Page(props: Props) {
         </article>
         <article className="theming-button">
           <div className="theming-poc-list theme-button-1">
-            <div className={`theming-poc-list -inverse ${theme}`}>
+            <div className={`theming-poc-list inverse ${theme}`}>
               <Button
                 variant="primary"
                 icon={<ArrowRightIcon size={18} weight="bold" />}

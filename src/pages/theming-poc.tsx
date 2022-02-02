@@ -238,7 +238,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list -inverse theme-1">
+              <div className="theming-poc-list inverse theme-1">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -279,7 +279,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list -inverse base-store">
+              <div className="theming-poc-list inverse base-store">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -320,7 +320,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list -inverse theme-3">
+              <div className="theming-poc-list inverse theme-3">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}

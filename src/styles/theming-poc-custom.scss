@@ -59,12 +59,12 @@
   --color-primary-3         : #002c71;
   --color-primary-4         : #001947;
 
-  --transition-timing       : .5s;
+  --transition-timing       : .3s;
   --transition-property     : all;
   --transition-function     : ease-in-out;
 
   --interactive             : var(--color-primary-2);
-  --link                    : var(--color-interactive);
+  --link                    : var(--interactive);
   --text                    : var(--color-neutral-3);
   --text-inverse            : var(--color-neutral-0);
 

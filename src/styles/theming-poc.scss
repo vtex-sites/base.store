@@ -304,8 +304,9 @@
 }
 
 .theming-button {
-  .-inverse {
-    background-color: var(--bg-body);
+  .inverse {
+    --bkg-dark: #000;
+    background-color: var(--bkg-dark);
     padding: 10px;
   }
 
@@ -332,7 +333,7 @@
       --button-tertiary-inverse-hover-bkg-color : var(--bkg-primary-dark);
     }
 
-    &.-inverse { --bg-body: var(--bkg-primary-darker); }
+    &.inverse { --bkg-dark: var(--bkg-primary-darker); }
   }
 
   .base-store {
@@ -350,7 +351,7 @@
       --button-transition-function             : var(--transition-function);
     }
 
-    &.-inverse { --bg-body: #001947; }
+    &.inverse { --bkg-dark: #001947; }
   }
 
   .theme-3 {
@@ -367,7 +368,7 @@
       --button-secondary-inverse-border-color  : #CCDC8B;
     }
 
-    &.-inverse { --bg-body: #66584A; }
+    &.inverse { --bkg-dark: #66584A; }
   }
 }
 
