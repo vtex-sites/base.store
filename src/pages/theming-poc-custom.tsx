@@ -12,7 +12,7 @@ import {
 } from 'phosphor-react'
 
 import ProductCard from '../components/product/ProductCard'
-import InputToggle from '../components/ui/InputToggle'
+import Toggle from '../components/ui/Toggle'
 import QuantitySelector from '../components/ui/QuantitySelector'
 import Badge from '../components/ui/Badge'
 import Select from '../components/ui/Select'
@@ -41,7 +41,7 @@ function Page(props: Props) {
         <article className="theming-poc-content theming-toggle">
           <main>
             <h3>Toggle</h3>
-            <InputToggle classes="theme-1" />
+            <Toggle classes="theme-1" />
           </main>
         </article>
         <hr />
