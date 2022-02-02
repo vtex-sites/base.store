@@ -79,34 +79,6 @@
 }
 
 /* stylelint-disable */
-.theme-1 {
-  --color-neutral-light      : #fff;
-  --color-neutral            : #c7ccd1;
-  --color-neutral-dark       : #7b7f83;
-
-  --color-primary-light      : #ebdcff;
-  --color-primary            : #020202;
-  --color-primary-dark       : #732fe2;
-  --color-primary-darker     : #5900c8;
-
-  --color-success            : #2c6a52;
-  --color-highlighted        : var(--color-primary-darker);
-  --color-info               : #2d499e;
-  --color-promo              : #FFF68A;
-
-  --bkg-neutral-light        : var(--color-neutral-light);
-  --bkg-neutral              : var(--color-neutral);
-  --bkg-primary-light        : var(--color-primary-light);
-  --bkg-primary              : var(--color-primary);
-  --bkg-primary-dark         : var(--color-primary-dark);
-  --bkg-primary-darker       : var(--color-primary-darker);
-
-  --border-radius            : 0;
-  --border-width             : 2px;
-  --shadow                   : none;
-  --text-color               : var(--color-primary-darker);
-  --shadow-hover             : none;
-}
 
 .theming-toggle {
   .theme-1 {
@@ -312,25 +284,30 @@
 
   .theme-1 {
     [data-store-button] {
-      --button-border-radius                    : var(--border-radius);
-      --button-primary-bkg-color                : var(--bkg-primary-darker);
-      --button-primary-text-color               : var(--color-neutral-light);
-      --button-primary-hover-bkg-color          : var(--bkg-primary-dark);
-      --button-primary-active-bkg-color         : var(--bkg-primary);
-      --button-primary-inverse-hover-bkg-color  : var(--bkg-primary-light);
-      --button-primary-inverse-active-bkg-color : #e2cffc;
+      --button-border-radius                         : var(--border-radius);
+      --button-primary-bkg-color                     : var(--bkg-primary-darker);
+      --button-primary-text-color                    : var(--color-neutral-light);
+      --button-primary-hover-bkg-color               : var(--bkg-primary-dark);
+      --button-primary-active-bkg-color              : var(--bkg-primary);
+      --button-primary-inverse-hover-bkg-color       : var(--bkg-primary-light);
+      --button-primary-inverse-active-bkg-color      : var(--color-primary-light);
 
-      --button-secondary-bkg-color              : var(--bkg-primary-light);
-      --button-secondary-text-color             : var(--text-color);
-      --button-secondary-border-color           : transparent;
+      --button-secondary-bkg-color                   : var(--bkg-primary-light);
+      --button-secondary-text-color                  : var(--text-color);
+      --button-secondary-border-color                : transparent;
+      --button-secondary-hover-border-color          : var(--color-primary-darker);
+      --button-secondary-active-border-color         : var(--color-primary-darker);
 
-      --button-secondary-inverse-bkg-color        : var(--bkg-primary-dark);
-      --button-secondary-inverse-hover-bkg-color  : var(--bkg-primary);
-      --button-secondary-inverse-active-bkg-color : #965ffc;
-      --button-secondary-inverse-border-color     : transparent;
+      --button-secondary-inverse-bkg-color           : var(--bkg-primary-dark);
+      --button-secondary-inverse-active-bkg-color    : var(--bkg-primary);
+      --button-secondary-inverse-border-color        : transparent;
+      --button-secondary-inverse-hover-border-color  : var(--color-neutral-light);
+      --button-secondary-inverse-active-border-color : var(--color-neutral-light);
 
-      --button-tertiary-text-color              : var(--text-color);
-      --button-tertiary-inverse-hover-bkg-color : var(--bkg-primary-dark);
+      --button-tertiary-text-color                   : var(--text-color);
+      --button-tertiary-hover-bkg-color              : var(--bkg-primary-light);
+      --button-tertiary-active-bkg-color             : var(--color-primary-light);
+      --button-tertiary-inverse-hover-bkg-color      : var(--bkg-primary-dark);
     }
 
     &.inverse { --bkg-dark: var(--bkg-primary-darker); }
@@ -351,7 +328,7 @@
       --button-transition-function             : var(--transition-function);
     }
 
-    &.inverse { --bkg-dark: #001947; }
+    &.inverse { --bkg-dark: var(--color-primary-4); }
   }
 
   .theme-3 {
@@ -458,6 +435,7 @@
     --product-card-transition-property     : var(--transition-property);
     --product-card-transition-function     : var(--transition-function);
     --product-card-img-radius              : var(--border-radius);
+    --product-card-shadow                  : var(--shadow);
     --product-card-hover-shadow            : var(--shadow-hover);
     --product-card-hover-border-color      : var(--border-color-card);
 
