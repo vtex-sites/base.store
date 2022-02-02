@@ -2,10 +2,6 @@
 
 @import "vendors/include-media";
 
-:root {
-  --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
-}
-
 .theming-poc-custom {
   display: flex;
   flex-direction: column;
@@ -17,34 +13,6 @@
 }
 
 /* stylelint-disable */
-.nucommerce {
-  --color-neutral-light      : #fff;
-  --color-neutral            : #c7ccd1;
-  --color-neutral-dark       : #7b7f83;
-
-  --color-primary-light      : #ebdcff;
-  --color-primary            : #8d50fd;
-  --color-primary-dark       : #732fe2;
-  --color-primary-darker     : #5900c8;
-
-  --color-success            : #2c6a52;
-  --color-highlighted        : var(--color-primary-darker);
-  --color-info               : #2d499e;
-  --color-promo              : #FFF68A;
-
-  --bkg-neutral-light        : var(--color-neutral-light);
-  --bkg-neutral              : var(--color-neutral);
-  --bkg-primary-light        : var(--color-primary-light);
-  --bkg-primary              : var(--color-primary);
-  --bkg-primary-dark         : var(--color-primary-dark);
-  --bkg-primary-darker       : var(--color-primary-darker);
-
-  --border-radius            : 0;
-  --border-width             : 2px;
-  --shadow                   : none;
-  --text-color               : var(--color-primary-darker);
-  --shadow-hover             : none;
-}
 
 .base-store {
   --color-neutral-0         : #fff;
@@ -115,3 +83,5 @@
 
   --focus-ring-color        : #8db6fa;
 }
+
+/* stylelint-enable */
