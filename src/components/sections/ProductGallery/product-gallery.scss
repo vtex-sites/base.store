@@ -26,8 +26,8 @@
 
   @include media(">=notebook") {
     display: grid;
+    grid-template-rows: var(--product-listing-row-height) auto;
     grid-template-columns: repeat(12, 1fr);
-    grid-templat-rows: var(--product-listing-row-height) auto;
     padding-right: var(--page-padding-notebook);
     padding-left: var(--page-padding-notebook);
     column-gap: var(--space-4);
