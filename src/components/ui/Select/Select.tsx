@@ -11,6 +11,11 @@ type SelectOptions = {
 
 interface UISelectProps extends SelectProps {
   /*
+   * Redefines the id property to be required when using the Select component. The
+   * id will be used to link the UISelect component and its label.
+   */
+  id: string
+  /*
    * Defines the CSS class string that will be forwarded to the wrapping div "className" prop.
    */
   classes?: string
@@ -28,6 +33,7 @@ interface UISelectProps extends SelectProps {
 }
 
 export default function Select({
+  id,
   options,
   onChange,
   labelText,
@@ -38,13 +44,13 @@ export default function Select({
 }: UISelectProps) {
   return (
     <div data-select className={classes}>
-      {labelText && <label htmlFor="ui-select">{labelText}</label>}
+      {labelText && <label htmlFor={id}>{labelText}</label>}
       <UISelect
         data-testid={testId}
         onChange={onChange}
         value={value}
         aria-label={ariaLabel}
-        id="ui-select"
+        id={id}
       >
         {Object.keys(options).map((key) => (
           <option key={key} value={key}>

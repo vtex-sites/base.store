@@ -23,6 +23,7 @@ function Sort() {
 
   return (
     <Select
+      id="sort-select"
       classes="sort / title-small"
       labelText="Sort by"
       options={OptionsMap}
