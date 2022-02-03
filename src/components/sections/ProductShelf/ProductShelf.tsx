@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../../product/ProductCard'
@@ -21,4 +21,4 @@ function ProductShelf({ products }: ProductShelfProps) {
   )
 }
 
-export default ProductShelf
+export default memo(ProductShelf)

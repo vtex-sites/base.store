@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import type { ReactNode } from 'react'
 import UIHero, {
   HeroContent,
@@ -75,4 +75,4 @@ const Hero = ({
   )
 }
 
-export default Hero
+export default memo(Hero)
