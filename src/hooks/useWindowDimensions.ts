@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 
 export default function useWindowDimensions() {
   const hasWindow = typeof window !== 'undefined'
-  // See breakpoints on styles/global.scss
+  // See breakpoints on styles/theme.scss
   const notebookBreakpoint = hasWindow
     ? getComputedStyle(document.documentElement).getPropertyValue(
         '--breakpoint-notebook'

@@ -1,19 +1,7 @@
 @import "../../../styles/utilities.scss";
 
-.cart-toggle[data-store-button] {
+.cart-toggle[data-store-icon-button] {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: var(--tap-min-size);
-  min-height: var(--tap-min-size);
-  background-color: transparent;
-  border-width: 0;
-  border-radius: var(--border-radius-button);
-  cursor: pointer;
-  transition: background-color .5s ease;
-
-  svg { color: var(--color-text); }
 
   &::after {
     --cart-toggle-size: var(--space-3);
@@ -33,9 +21,5 @@
     background: var(--bg-secondary-default);
     border-radius: var(--border-radius-pill);
     content: attr(data-items);
-  }
-
-  &:hover {
-    background-color: var(--bg-secondary-light);
   }
 }

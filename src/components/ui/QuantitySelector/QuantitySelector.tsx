@@ -36,9 +36,8 @@ export function QuantitySelector({
 
   function validateQuantityBounds(n: number): number {
     const maxValue = min ? Math.max(n, min) : n
-    const minValue = max ? Math.min(maxValue, max) : maxValue
 
-    return minValue
+    return max ? Math.min(maxValue, max) : maxValue
   }
 
   function validateInput(e: React.FormEvent<HTMLInputElement>) {

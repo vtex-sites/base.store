@@ -10,8 +10,6 @@ import Hero from 'src/components/sections/Hero'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
-import '../styles/pages/index.scss'
-
 export type Props = PageProps<HomePageQueryQuery>
 
 function Page(props: Props) {
