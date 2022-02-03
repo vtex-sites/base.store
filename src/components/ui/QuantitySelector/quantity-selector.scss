@@ -1,3 +1,34 @@
+@import "../../../styles/utilities";
+
+@mixin quantity-selector-focus-ring {
+  @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
+    @supports (-webkit-appearance:none) {
+      // Use `focus` instead of `focus-visible` due to Safari's lack of support
+      &:focus {
+        outline: none;
+        box-shadow: none;
+
+        [data-store-icon] {
+          @include focus-ring;
+
+          background-color: var(--bg-secondary-light);
+        }
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: none;
+
+    [data-store-icon] {
+      @include focus-ring;
+
+      background-color: var(--bg-secondary-light);
+    }
+  }
+}
+
 [data-store-quantity-selector] {
   display: flex;
   flex-direction: row;
@@ -35,6 +66,8 @@
     border: 0;
     border-radius: var(--border-radius-default);
 
+    @include quantity-selector-focus-ring;
+
     [data-store-icon] {
       display: flex;
       align-items: center;
@@ -50,14 +83,6 @@
     &:disabled {
       cursor: not-allowed;
       [data-store-icon] { color: var(--color-border-input-disabled); }
-    }
-
-    &:focus-visible {
-      outline: none;
-
-      [data-store-icon] {
-        box-shadow: inset 0 0 0 var(--border-width-1) var(--color-border-input-selected);
-      }
     }
   }
 
