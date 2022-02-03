@@ -14,6 +14,8 @@
   transition: border .2s ease, background-color .2s ease, box-shadow .2s ease;
   appearance: none;
 
+  @include input-focus-ring;
+
   &::before {
     position: absolute;
     top: rem(3px);
@@ -28,13 +30,10 @@
     content: "";
   }
 
-  &:focus {
-    @include focus-ring;
-  }
-
   &:hover {
     background-color: var(--bg-secondary-light);
     border-color: var(--color-text);
+    box-shadow: 0 0 0 var(--border-width-0) var(--color-border-input-selected);
   }
 
   &:checked {
@@ -48,6 +47,7 @@
 
     &:hover {
       background-color: var(--bg-secondary-hover);
+      box-shadow: none;
     }
   }
 
