@@ -12,6 +12,8 @@ import type {
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import SROnly from 'src/components/ui/SROnly'
 
+import '../styles/pages/search.scss'
+
 export type Props = PageProps<
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables
@@ -58,7 +60,12 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
       <SROnly as="h1" text={title} />
-      <ProductGallery title="Search Results" />
+
+      <div className="product-listing / grid-content-full">
+        <div className="product-listing__content-grid / grid-content">
+          <ProductGallery title="Search Results" />
+        </div>
+      </div>
     </SearchProvider>
   )
 }
