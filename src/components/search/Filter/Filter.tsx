@@ -65,7 +65,12 @@ function Filter({
 
   let onDismissTransition: () => unknown
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
-  const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
+  const filteredFacets = facets.filter((facet) => {
+    const hasOthersThanSlug = facet.values.some(({ value }) => value !== slug)
+    const isBoolean = facet.type === 'BOOLEAN'
+
+    return isBoolean && hasOthersThanSlug
+  })
 
   const onAccordionChange = useCallback((index: number) => {
     if (indicesExpanded.has(index)) {
