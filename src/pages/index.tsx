@@ -8,6 +8,7 @@ import type { HomePageQueryQuery } from '@generated/graphql'
 import Hero from 'src/components/sections/Hero'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
+import Slider from 'src/components/ui/Slider'
 
 const BannerText = loadable(() => import('src/components/sections/BannerText'))
 const ProductTiles = loadable(
@@ -28,6 +29,8 @@ function Page(props: Props) {
   const siteUrl = `https://${host}${pathname}`
   const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
   const haveProducts = products && products?.length > 0
+
+  const sliderProducts = products.slice(0, 10)
 
   return (
     <>
@@ -111,6 +114,11 @@ function Page(props: Props) {
           </div>
         </section>
       )}
+
+      <section className="page__section / grid-section grid-content">
+        <p>Simple Slider</p>
+        <Slider products={sliderProducts} />
+      </section>
     </>
   )
 }

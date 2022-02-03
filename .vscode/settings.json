@@ -4,4 +4,8 @@
   "editor.quickSuggestions": {
       "strings": true
     },
+    "workbench.colorCustomizations": {
+      "sideBar.background": "#000",
+      "list.hoverBackground": "#033c59",
+  }
 }

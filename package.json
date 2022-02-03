@@ -32,6 +32,7 @@
     "@faststore/ui": "^1.4.15",
     "@loadable/component": "^5.15.2",
     "@vtex/gatsby-plugin-nginx": "^1.4.23",
+    "@types/react-slick": "^0.23.8",
     "@vtex/gatsby-plugin-thumbor": "^1.4.15",
     "@vtex/gatsby-source-store": "^1.4.15",
     "@vtex/graphql-utils": "^1.4.15",
@@ -53,7 +54,9 @@
     "react-dom": "^17.0.2",
     "react-helmet-async": "^1.2.2",
     "react-intersection-observer": "^8.32.5",
+    "react-slick": "^0.28.1",
     "sass": "^1.44.0",
+    "slick-carousel": "^1.8.1",
     "swr": "^1.1.0"
   },
   "devDependencies": {
