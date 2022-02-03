@@ -2,7 +2,10 @@
 
 .filter[data-store-filter] {
   > .title-small {
-    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    height: var(--product-listing-row-height);
+    margin-bottom: var(--space-0);
 
     @include media("<notebook") {
       display: none;
