@@ -11,6 +11,8 @@ import {
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
 
+import './product-gallery.scss'
+
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const Sort = lazy(() => import('src/components/search/Sort'))
 const Filter = lazy(() => import('src/components/search/Filter'))
