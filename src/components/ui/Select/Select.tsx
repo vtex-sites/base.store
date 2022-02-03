@@ -5,10 +5,6 @@ import { CaretDown as CaretDownIcon } from 'phosphor-react'
 
 import './select.scss'
 
-type SelectOptions = {
-  [key: string]: string
-}
-
 interface UISelectProps extends SelectProps {
   /*
    * Redefines the id property to be required when using the Select component. The
@@ -24,7 +20,7 @@ interface UISelectProps extends SelectProps {
    * keys are the property names, while the values correspond to the text that
    * will be displayed in the UI
    */
-  options: SelectOptions
+  options: Record<string, string>
   /*
    * Specifies the text that will be displayed in the label right next to the Select.
    * If omitted, the label will not be rendered.
