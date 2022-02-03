@@ -28,7 +28,6 @@ function Sort() {
       options={OptionsMap}
       onChange={(e) => setSort(keys[e.target.selectedIndex])}
       value={sort}
-      aria-label="Product Sort"
       testId="search-sort"
     />
   )
