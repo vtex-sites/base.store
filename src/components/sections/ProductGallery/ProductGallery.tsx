@@ -13,6 +13,8 @@ import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
 import { useTotalCount } from './useTotalCount'
 
+import './product-gallery.scss'
+
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const Filter = lazy(() => import('src/components/search/Filter'))
 
