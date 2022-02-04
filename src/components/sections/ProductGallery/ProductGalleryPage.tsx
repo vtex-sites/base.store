@@ -1,11 +1,12 @@
 import { useSearch } from '@faststore/sdk'
-import React, { useMemo } from 'react'
-import ProductGrid from 'src/components/product/ProductGrid'
+import React, { useMemo, lazy, Suspense } from 'react'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import Sentinel from 'src/sdk/search/Sentinel'
 import type { ProductsQueryQuery } from '@generated/graphql'
 
 import ProductTiles from '../ProductTiles'
+
+const ProductGrid = lazy(() => import('src/components/product/ProductGrid'))
 
 /* If showSponsoredProducts is true, a ProductTiles will be displayed in between two blocks of ProductGrid on the page 0 */
 interface Props {
@@ -87,7 +88,17 @@ function GalleryPage({
           />
         </>
       ) : (
-        <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
+        <Suspense
+          fallback={
+            <div className="product-listing__data-loading">Loading...</div>
+          }
+        >
+          <ProductGrid
+            products={products}
+            page={page}
+            pageSize={itemsPerPage}
+          />
+        </Suspense>
       )}
     </>
   )

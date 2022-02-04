@@ -1,0 +1,32 @@
+@import "../../../styles/vendors/include-media";
+
+// Check it after apply Skeletons.
+.product-listing {
+  --product-listing-grid-height: 2197px;
+  --product-listing-row-height: var(--space-6);
+
+  min-height: var(--product-listing-grid-height);
+  padding-top: 0;
+
+  @include media(">=notebook") {
+    padding-top: var(--page-padding-notebook);
+  }
+}
+
+.product-listing__content-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-right: 0;
+  padding-left: 0;
+
+  @include media(">=notebook") {
+    display: grid;
+    grid-template-rows: var(--product-listing-row-height) auto;
+    grid-template-columns: repeat(12, 1fr);
+    padding-right: var(--page-padding-notebook);
+    padding-left: var(--page-padding-notebook);
+    column-gap: var(--space-4);
+    row-gap: var(--space-0);
+  }
+}
