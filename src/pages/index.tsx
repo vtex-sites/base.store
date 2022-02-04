@@ -2,13 +2,17 @@ import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
+import loadable from '@loadable/component'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
-import BannerText from 'src/components/sections/BannerText'
-import ProductTiles from 'src/components/sections/ProductTiles'
 import Hero from 'src/components/sections/Hero'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
+
+const BannerText = loadable(() => import('src/components/sections/BannerText'))
+const ProductTiles = loadable(
+  () => import('src/components/sections/ProductTiles')
+)
 
 export type Props = PageProps<HomePageQueryQuery>
 
