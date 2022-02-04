@@ -411,7 +411,7 @@ This project has strict performance budgets. Right out of the box, this project 
 
 So First, try to use the native `lazy`/`Suspense` alternative. But if there is some Server Side Rendered dependency, switch to using the `loadable-components`.
 
-Finally, for that pages that can use both `lazy` and `loadable`, let's keep the preference to use only `loadable` for the sake of avoiding loading two different things for the same purpose.
+Finally, for that pages that can use both `lazy` and `loadable`, keep the preference to use only `loadable` for the sake of avoiding loading two different things for the same purpose.
 
 ## Adding third party scripts
 
