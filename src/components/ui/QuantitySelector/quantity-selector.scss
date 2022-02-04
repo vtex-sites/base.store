@@ -8,7 +8,7 @@
 
   /* stylelint-disable */
   // Default properties
-  --qty-selector-width                    : 8rem;
+  --qty-selector-width                    : calc(var(--min-size) * 2.66);
   --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
   --qty-selector-shadow                   : none;
 
@@ -70,6 +70,7 @@
 
   [data-quantity-selector-input] {
     width: 100%;
+    min-width: 28px;
     height: unset;
     padding: 0;
     color: var(--qty-selector-text-color);
