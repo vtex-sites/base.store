@@ -403,6 +403,16 @@ Looking for more guidance? Full documentation for Faststore lives [on this GitHu
 
 This project has strict performance budgets. Right out of the box, this project performs around 95 on Google's Page Speed Insights website, which usually is way more strict than your laptop's chrome lighthouse. Every time you commit to the repository, our QA bots will run and evaluate your code quality. We recommend you NEVER put in production a code that breaks any of the bots. If a bot breaks and still you need to put the code into production, change the bot config (`lighthouserc.js`, `cypress.json`) to make it pass and merge. This way you ensure your website will keep performing well during the years to come.
 
+### Lazy loading components
+
+[According to Gatsby](https://www.gatsbyjs.com/docs/how-to/performance/improving-site-performance/#step-5-on-critical-paths-lazy-load-below-the-fold-components):
+
+> `loadable-components` is the recommended lazy-loading solution for all server-side-rendered React applications, including Gatsby websites.
+
+So First, Try to use the native `lazy`/`Suspense` alternative. But if there is some Server Side Rendered dependency, switch to using the `loadable-components`.
+
+Finally, for that pages that can use both `lazy` and `loadable`, let's keep the preference to use only `loadable` for the sake of avoiding loading two different things for the same purpose.
+
 ## Adding third party scripts
 
 Adding third-party scripts to a webpage usually makes it slow. To maintain great performance while third-party scripts are added, this project uses [Partytown](https://github.com/BuilderIO/partytown/), a lazy-load library that helps relocate intensive scripts into a web worker and off of the main thread.
