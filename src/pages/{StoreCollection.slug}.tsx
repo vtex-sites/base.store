@@ -8,6 +8,7 @@ import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
+import ProductListing from 'src/components/sections/ProductListing'
 import type { SearchState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
@@ -16,14 +17,10 @@ import type {
 } from '@generated/graphql'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 
-import '../styles/pages/product-listing.scss'
+import '../styles/pages/product-listing-page.scss'
 
 const ScrollToTopButton = loadable(
   () => import('src/components/ui/ScrollToTopButton')
-)
-
-const ProductGallery = loadable(
-  () => import('src/components/sections/ProductGallery')
 )
 
 const ProductShelf = loadable(
@@ -133,11 +130,7 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <div className="product-listing / grid-content-full">
-        <div className="product-listing__content-grid / grid-content">
-          <ProductGallery title={title} slug={slug} />
-        </div>
-      </div>
+      <ProductListing title={title} slug={slug} />
 
       {haveYouMightAlsoLikeProducts && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">
