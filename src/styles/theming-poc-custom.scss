@@ -14,7 +14,10 @@
 
 /* stylelint-disable */
 
+// Theme: Base Store
+// ----------------------------------------------------------
 .base-store {
+  // Color palette
   --color-neutral-0         : #fff;
   --color-neutral-1         : #c7ccd1;
   --color-neutral-2         : #9099a2;
@@ -25,19 +28,16 @@
   --color-primary-1         : #d8e2ff;
   --color-primary-2         : #00419e;
   --color-primary-3         : #002c71;
-  --color-primary-4         : #001947;
+  --color-primary-4         : #4b74c2;
 
-  --transition-timing       : .3s;
-  --transition-property     : all;
-  --transition-function     : ease-in-out;
+  --color-interactive       : var(--color-primary-2);
+  --color-link              : var(--color-interactive);
+  --color-text              : var(--color-neutral-3);
+  --color-text-inverse      : var(--color-neutral-0);
+  --color-body-bkg          : var(--color-neutral-0);
+  --color-focus-ring        : #8db6fa;
 
-  --interactive             : var(--color-primary-2);
-  --link                    : var(--interactive);
-  --text                    : var(--color-neutral-3);
-  --text-inverse            : var(--color-neutral-0);
-
-  --body-bkg                : var(--color-neutral-0);
-
+  // Semantic colors
   --success-bkg             : #cee8de;
   --success-text            : var(--text-color);
 
@@ -52,7 +52,6 @@
 
   --promo-bkg               : #fff68a;
   --promo-text              : #f2636a;
-
 
   --primary-bkg             : var(--color-primary-4);
   --primary-bkg-hover       : var(--color-primary-3);
@@ -69,19 +68,24 @@
   --tertiary-bkg-active     : var(--secondary-bkg-active);
   --tertiary-text           : var(--text-color-link);
 
+  // Components properties
+  --min-size                : 48px;
 
-  --border-radius           : 4px;
+  --border-radius           : 10px;
   --border-radius-circle    : 100%;
   --border-color-input      : var(--color-neutral-2);
   --border-color-input-hover: var(--color-primary-4);
   --border-color-card       : var(--color-neutral-1);
   --border-width-input      : 2px;
-  --border-width-card       : 1px;
+  --border-width-card       : 2px;
 
-  --shadow                  : none;
+  // Interactive properties
+  --transition-timing       : .3s;
+  --transition-property     : all;
+  --transition-function     : ease-in-out;
+
+  --shadow                  : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
   --shadow-hover            : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
-
-  --focus-ring-color        : #8db6fa;
 }
 
 /* stylelint-enable */
