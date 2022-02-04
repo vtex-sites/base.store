@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Price as UIPrice } from '@faststore/ui'
 import type { PriceProps } from '@faststore/ui'
 
@@ -26,4 +26,4 @@ function Price({ classes, SRText, ...props }: Props) {
   )
 }
 
-export default Price
+export default memo(Price)

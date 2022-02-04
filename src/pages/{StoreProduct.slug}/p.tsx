@@ -5,7 +5,7 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
+import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import type { PageProps } from 'gatsby'
 import type {
@@ -22,7 +22,11 @@ export type Props = PageProps<
 function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
-    data: { product, site, allStoreProduct },
+    data: {
+      product,
+      site,
+      allStoreProduct: { nodes: youMightAlsoLikeProducts },
+    },
     location: { host },
     params: { slug },
   } = props
@@ -37,14 +41,6 @@ function Page(props: Props) {
 
   const canonical =
     host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
-
-  const youMightAlsoLikeProducts = useMemo(
-    () => allStoreProduct?.nodes,
-    [allStoreProduct]
-  )
-
-  const haveYouMightAlsoLikeProducts =
-    youMightAlsoLikeProducts && youMightAlsoLikeProducts?.length > 0
 
   return (
     <>
@@ -99,7 +95,7 @@ function Page(props: Props) {
 
       <ProductDetails product={product} />
 
-      {haveYouMightAlsoLikeProducts && (
+      {youMightAlsoLikeProducts?.length > 0 && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">
           <h2 className="title-section / grid-content">You might also like</h2>
           <div className="page__section-content">

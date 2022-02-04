@@ -1,7 +1,7 @@
 import { SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { memo, useMemo } from 'react'
+import React from 'react'
 import loadable from '@loadable/component'
 import Hero from 'src/components/sections/Hero'
 import { ITEMS_PER_PAGE } from 'src/constants'
@@ -22,11 +22,13 @@ const ProductShelf = loadable(
   () => import('src/components/sections/ProductShelf')
 )
 
-const HeadphonesIconMemo = memo(HeadphonesIcon)
-
 function Page(props: Props) {
   const {
-    data: { site, collection, allStoreProduct },
+    data: {
+      site,
+      collection,
+      allStoreProduct: { nodes: youMightAlsoLikeProducts },
+    },
     location: { host },
     params: { slug },
   } = props
@@ -41,11 +43,6 @@ function Page(props: Props) {
     host !== undefined
       ? `https://${host}/${slug}/${pageQuery}`
       : `/${slug}/${pageQuery}`
-
-  const youMightAlsoLikeProducts = useMemo(
-    () => allStoreProduct?.nodes,
-    [allStoreProduct]
-  )
 
   return (
     <SearchProvider
@@ -90,7 +87,7 @@ function Page(props: Props) {
             subtitle={`All the amazing ${title} from the brands we partner with.`}
             imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
             imageAlt="Quest 2 Controller on a table"
-            icon={<HeadphonesIconMemo size={48} weight="thin" />}
+            icon={<HeadphonesIcon size={48} weight="thin" />}
           />
         </section>
       </div>

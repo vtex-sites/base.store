@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../../product/ProductCard'
@@ -14,11 +14,11 @@ function ProductShelf({ products }: ProductShelfProps) {
     <ul data-product-shelf className="grid-content">
       {products.map((product, idx) => (
         <li key={`${product.id}`}>
-          <ProductCard product={product} index={idx + 1} showActions={false} />
+          <ProductCard product={product} index={idx + 1} />
         </li>
       ))}
     </ul>
   )
 }
 
-export default memo(ProductShelf)
+export default ProductShelf
