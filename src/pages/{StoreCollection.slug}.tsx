@@ -16,7 +16,7 @@ import type {
 } from '@generated/graphql'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 
-import '../styles/pages/product-listing.scss'
+import '../styles/pages/product-listing-page.scss'
 
 const ScrollToTopButton = loadable(
   () => import('src/components/ui/ScrollToTopButton')

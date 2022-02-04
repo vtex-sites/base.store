@@ -1,14 +1,5 @@
 @import "../vendors/include-media";
 
-.product-listing__breadcrumb {
-  padding-top: var(--space-3);
-  padding-bottom: var(--space-3);
-}
-
-.product-listing__hero {
-  width: 100%;
-}
-
 .product-listing {
   --product-listing-grid-height: 2197px;
   --product-listing-row-height: var(--space-6);
@@ -36,16 +27,5 @@
     padding-left: var(--page-padding-notebook);
     column-gap: var(--space-4);
     row-gap: var(--space-0);
-  }
-}
-
-.product-listing__scroll-top {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding-bottom: var(--space-10);
-
-  @include media(">=notebook") {
-    padding-bottom: var(--space-8);
   }
 }
