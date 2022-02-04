@@ -409,7 +409,7 @@ This project has strict performance budgets. Right out of the box, this project 
 
 > `loadable-components` is the recommended lazy-loading solution for all server-side-rendered React applications, including Gatsby websites.
 
-So First, Try to use the native `lazy`/`Suspense` alternative. But if there is some Server Side Rendered dependency, switch to using the `loadable-components`.
+So First, try to use the native `lazy`/`Suspense` alternative. But if there is some Server Side Rendered dependency, switch to using the `loadable-components`.
 
 Finally, for that pages that can use both `lazy` and `loadable`, let's keep the preference to use only `loadable` for the sake of avoiding loading two different things for the same purpose.
 
