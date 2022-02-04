@@ -78,6 +78,12 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 
     Open the `awesome.store` directory in your code editor of choice and edit `src/pages/index.tsx`. Save your changes and the browser will update in real-time!
 
+## :technologist: Contributing
+
+1. **Keep the CHANGELOG updated**
+   We use a CHANGELOG to keep the history of all notable changes made to this repository.
+   Each PR must have at least one entry on the `[UNRELEASED]` section of the `CHANGELOG.md` file.
+
 ## 🧐 What's inside?
 
 A quick look at the top-level files and directories you'll see in a Gatsby project.
@@ -98,6 +104,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     ├── tsconfig.json
     ├── store.config.js
     ├── README.md
+    ├── CHANGELOG.md
     ├── __generated__
     ├── babel.config.js
     ├── cypress
@@ -135,27 +142,29 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 13. **`README.md`**: A text file containing useful reference information about your project.
 
-14. **`__generated__`**: Where TypeScript typings are generated for your GraphQL queries. You can use these files for strongly typing your App
+14. **`CHANGELOG.md`**: A text file containing all notable changes to the project.
 
-15. **`babel.config.js`**: [Babel configurations](https://babeljs.io/docs/en/configuration#babelrcjson) for you app. This is where you can change the targeted browsers.
+15. **`__generated__`**: Where TypeScript typings are generated for your GraphQL queries. You can use these files for strongly typing your App
 
-16. **`cypress`**: End to End(e2e) tests using Cypress. Most of the scenarios are covered here. Add your custom flows to avoid regressions
+16. **`babel.config.js`**: [Babel configurations](https://babeljs.io/docs/en/configuration#babelrcjson) for you app. This is where you can change the targeted browsers.
 
-17. **`cypress.json`**: [Cypress configuration file](https://docs.cypress.io/guides/references/configuration)
+17. **`cypress`**: End to End(e2e) tests using Cypress. Most of the scenarios are covered here. Add your custom flows to avoid regressions
 
-18. **`gatsby-browser.js`**: Lets you respond to Gatsby-specific events within the browser, and wrap your page components in additional global components. The Gatsby Browser API gives you many options for interacting with the client-side of Gatsby. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/
+18. **`cypress.json`**: [Cypress configuration file](https://docs.cypress.io/guides/references/configuration)
 
-19. **`gatsby-ssr.js`**: Lets you respond to Gatsby-specific events during SSG and SSR, and wrap your page components in additional global components. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
+19. **`gatsby-browser.js`**: Lets you respond to Gatsby-specific events within the browser, and wrap your page components in additional global components. The Gatsby Browser API gives you many options for interacting with the client-side of Gatsby. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/
 
-20. **`lighthouserc.js`**: Configures [Google Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci). This is where you can turn on/off lighthouse assertions to be used by Lighthouse CI Bot/hook
+20. **`gatsby-ssr.js`**: Lets you respond to Gatsby-specific events during SSG and SSR, and wrap your page components in additional global components. More info at: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/
 
-21. **`pull_request_template.md`**: Template used when creating your Pull Requests
+21. **`lighthouserc.js`**: Configures [Google Lighthouse CI](https://github.com/GoogleChrome/lighthouse-ci). This is where you can turn on/off lighthouse assertions to be used by Lighthouse CI Bot/hook
 
-22. **`renovate.json`**: Renovate configuration file to keep your store always fresh with Faststore's latest versions
+22. **`pull_request_template.md`**: Template used when creating your Pull Requests
 
-23. **`.prettierignore`**: Ignore listed files when applying prettier rules
+23. **`renovate.json`**: Renovate configuration file to keep your store always fresh with Faststore's latest versions
 
-24. **`.eslintignore`**: Ignore listed files when applying eslint rules
+24. **`.prettierignore`**: Ignore listed files when applying prettier rules
+
+25. **`.eslintignore`**: Ignore listed files when applying eslint rules
 
 ## 💻 Code Structure
 
@@ -333,7 +342,7 @@ The aforementioned guide works well for UI components. However, components like 
 
 ## 🖊️ Styling Components
 
-Our customized theme is based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
+Our customized themes are based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
 
 ### `theme.scss`
 
