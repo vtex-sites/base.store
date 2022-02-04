@@ -3683,6 +3683,33 @@ export type SearchPageQueryQuery = {
     | undefined
 }
 
+export type SlidersPageQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type SlidersPageQueryQuery = {
+  allStoreProduct: {
+    nodes: Array<{
+      slug: string
+      sku: string
+      name: string
+      gtin: string
+      id: string
+      brand: { name: string; brandName: string }
+      isVariantOf: { productGroupID: string; name: string }
+      image: Array<{ url: string; alternateName: string }>
+      offers: {
+        lowPrice: number
+        offers: Array<{
+          availability: string
+          price: number
+          listPrice: number
+          quantity: number
+          seller: { identifier: string }
+        }>
+      }
+    }>
+  }
+}
+
 export type CollectionPageQueryQueryVariables = Exact<{
   id: Scalars['String']
 }>
