@@ -37,9 +37,7 @@ function handlePageFocus() {
     const allSentinels = document.querySelectorAll('[data-sentinel=false]')
 
     if (allSentinels.length > 0) {
-      allSentinels[allSentinels.length - 1].scrollIntoView({
-        behavior: 'smooth',
-      })
+      allSentinels[allSentinels.length - 1].scrollIntoView()
     }
   }
 }
