@@ -122,7 +122,6 @@
 [data-base-product-card-prices] {
   display: inline-flex;
   align-content: center;
-  margin-bottom: var(--space-2);
 
   [data-variant="spot"] {
     color: var(--product-card-text-price-color);
@@ -134,6 +133,8 @@
     font-size: var(--product-card-text-price-listing-size);
   }
 }
+
+[data-store-badge] { margin-top: var(--space-1); }
 
 [data-base-product-card-description] {
   margin-bottom: var(--space-1);
@@ -171,6 +172,7 @@
   [data-store-badge] {
     grid-row: 1;
     grid-column: 2;
+    margin-top: 0;
   }
 
   [data-base-product-card-description] {
