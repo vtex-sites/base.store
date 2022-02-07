@@ -86,6 +86,10 @@
 
   --shadow                  : none;
   --shadow-hover            : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
+
+  // Typography
+  --sans-serif: "Lato";
+  font-family: var(--sans-serif);
 }
 
 /* stylelint-enable */

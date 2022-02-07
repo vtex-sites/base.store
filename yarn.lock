@@ -1462,6 +1462,16 @@
     react-swipeable "^6.1.2"
     tabbable "^5.2.1"
 
+"@fontsource/roboto-mono@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.1.tgz#8b1b38ad7d2c202968ffd87bee3e471152b437e9"
+  integrity sha512-uP/GMF9N2XaxrB9flM1LiZUdcrG/3YdYpGJddY2d7rvsqqitZ8fWBckbdW717WMty4V96N+k1EArilYwQOvN3A==
+
+"@fontsource/roboto@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.2.tgz#98dd67e579984e255fac4315b496520d890ae989"
+  integrity sha512-KkMqloXIM64EvaVPOqC5Mkms0qdOWvx4nRvQBIMCoG0GGsDa8tFfNwhyowHeR9k09P0LuT5u09d29Y21JhaA6Q==
+
 "@gatsbyjs/reach-router@^1.3.6":
   version "1.3.6"
   resolved "https://registry.yarnpkg.com/@gatsbyjs/reach-router/-/reach-router-1.3.6.tgz#4e8225836959be247890b66f21a3198a0589e34d"

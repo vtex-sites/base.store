@@ -141,6 +141,14 @@
   --shadow                  : none;
   --text-color              : var(--color-primary-darker);
   --shadow-hover            : none;
+
+  --sans-serif: "Roboto Mono";
+  font-family: var(--sans-serif);
+}
+
+.grocery {
+  --sans-serif: "Roboto";
+  font-family: var(--sans-serif);
 }
 
 // Toggle

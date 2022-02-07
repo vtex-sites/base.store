@@ -1,5 +1,11 @@
 import './src/styles/global.scss'
 
+import '@fontsource/roboto-mono'
+import '@fontsource/roboto-mono/700.css'
+
+import '@fontsource/roboto'
+import '@fontsource/roboto/700.css'
+
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
 
