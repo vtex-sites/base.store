@@ -18,7 +18,6 @@ function ProductGrid({ products, page, pageSize }: Props) {
           <ProductCard
             product={product}
             index={pageSize * page + idx + 1}
-            showActions={false}
             bordered
             outOfStock={
               product.offers.offers?.[0].availability !==
