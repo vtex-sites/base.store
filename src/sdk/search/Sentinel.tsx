@@ -44,6 +44,14 @@ function Sentinel({
 }: PropsWithChildren<Props>) {
   const viewedRef = useRef(false)
   const { ref, inView } = useInView({
+    /*
+     * Defines extra breakpoints on the children that will be wrapped
+     * by the Sentinel. This helps on infinite pagination when scrolling
+     * up and down between pages, making the page updates smoother and
+     * more precise. We add more granular breakpoints at the edges so it
+     * handles better the page edges (when only just a tiny bit of the page
+     * is entering or leaving the view)
+     */
     threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
   })
 
