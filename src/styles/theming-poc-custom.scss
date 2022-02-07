@@ -16,6 +16,7 @@
 
 // Theme: Base Store
 // ----------------------------------------------------------
+
 .base-store {
   // Color palette
   --color-neutral-0         : #fff;
@@ -80,7 +81,7 @@
   --border-width-card       : 1px;
 
   // Interactive properties
-  --transition-timing       : .3s;
+  --transition-timing       : .2s;
   --transition-property     : all;
   --transition-function     : ease-in-out;
 
@@ -88,8 +89,8 @@
   --shadow-hover            : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
 
   // Typography
-  --sans-serif: "Lato";
-  font-family: var(--sans-serif);
+  --font-family: "Lato";
+  font-family: var(--font-family);
 }
 
 /* stylelint-enable */

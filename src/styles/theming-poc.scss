@@ -3,7 +3,7 @@
 @import "vendors/include-media";
 
 :root {
-  --sans-serif: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
 }
 
 // Page Layout
@@ -142,13 +142,13 @@
   --text-color              : var(--color-primary-darker);
   --shadow-hover            : none;
 
-  --sans-serif: "Roboto Mono";
-  font-family: var(--sans-serif);
+  --font-family: "Roboto Mono";
+  font-family: var(--font-family);
 }
 
 .grocery {
-  --sans-serif: "Roboto";
-  font-family: var(--sans-serif);
+  --font-family: "Roboto";
+  font-family: var(--font-family);
 }
 
 // Toggle
@@ -163,13 +163,13 @@
     --toggle-transition-timing        : var(--transition-timing);
     --toggle-transition-property      : var(--transition-property);
     --toggle-transition-function      : var(--transition-function);
-    --toggle-knob-bkg-color           : var(--body-bkg);
+    --toggle-knob-bkg-color           : var(--color-body-bkg);
     --toggle-knob-border-color        : var(--neutral-bkg);
     --toggle-knob-radius              : var(--border-radius-circle);
     --toggle-knob-shadow              : var(--shadow);
-    --toggle-checked-bkg-color        : var(--interactive);
-    --toggle-checked-knob-border-color: var(--interactive);
-    --toggle-hover-border-color       : var(--interactive);
+    --toggle-checked-bkg-color        : var(--color-interactive);
+    --toggle-checked-knob-border-color: var(--color-interactive);
+    --toggle-hover-border-color       : var(--color-interactive);
     --toggle-hover-shadow             : var(--shadow-hover);
     --toggle-hover-bkg-color          : var(--secondary-bkg-hover);
     --toggle-hover-knob-border-color  : var(--secondary-bkg-hover);
@@ -215,14 +215,14 @@
 
 .theming-select {
   .base-store {
-    --select-icon-color               : var(--interactive);
+    --select-icon-color               : var(--color-interactive);
     --select-border-radius            : var(--border-radius);
     --select-border-color             : var(--border-color-input);
     --select-border-width             : var(--border-width-input);
     --select-shadow                   : var(--shadow);
     --select-hover-shadow             : var(--shadow-hover);
     --select-hover-bkg-color          : var(--secondary-bkg-hover);
-    --select-hover-border-color       : var(--interactive);
+    --select-hover-border-color       : var(--color-interactive);
     --select-transition-timing        : var(--transition-timing);
     --select-transition-property      : var(--transition-property);
     --select-transition-function      : var(--transition-function);
@@ -262,14 +262,14 @@
 
 .theming-quantity-selector {
   .base-store {
-    --qty-selector-icon-color               : var(--interactive);
+    --qty-selector-icon-color               : var(--color-interactive);
     --qty-selector-border-radius            : var(--border-radius);
     --qty-selector-border-color             : var(--border-color-input);
     --qty-selector-border-width             : var(--border-width-input);
     --qty-selector-shadow                   : var(--shadow);
     --qty-selector-hover-shadow             : var(--shadow-hover);
     --qty-selector-hover-text-color         : var(--qty-selector-text-color);
-    --qty-selector-hover-border-color       : var(--interactive);
+    --qty-selector-hover-border-color       : var(--color-interactive);
     --qty-selector-hover-button-bkg-color   : var(--secondary-bkg-hover);
     --qty-selector-transition-timing        : var(--transition-timing);
     --qty-selector-transition-property      : var(--transition-property);
@@ -377,7 +377,7 @@
       --button-primary-active-bkg-color        : var(--primary-bkg-active);
       --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
       --button-primary-inverse-active-bkg-color: var(--secondary-bkg-active);
-      --button-tertiary-text-color             : var(--link);
+      --button-tertiary-text-color             : var(--color-link);
       --button-transition-timing               : var(--transition-timing);
       --button-transition-property             : var(--transition-property);
       --button-transition-function             : var(--transition-function);
@@ -465,7 +465,7 @@
     [data-store-button] {
       --button-border-radius                   : var(--border-radius);
       --button-primary-bkg-color               : var(--primary-bkg);
-      --button-primary-text-color              : var(--text-inverse);
+      --button-primary-text-color              : var(--color-text-inverse);
       --button-primary-hover-bkg-color         : var(--primary-bkg-hover);
       --button-primary-active-bkg-color        : var(--primary-bkg-active);
       --button-primary-inverse-hover-bkg-color : var(--secondary-bkg-hover);
