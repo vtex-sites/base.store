@@ -63,13 +63,12 @@ function GalleryPage({
     productsSponsored.length > 1
 
   return (
-    <>
-      <Sentinel
-        products={products}
-        page={page}
-        pageSize={itemsPerPage}
-        title={title}
-      />
+    <Sentinel
+      products={products}
+      page={page}
+      pageSize={itemsPerPage}
+      title={title}
+    >
       {shouldDisplaySponsoredProducts ? (
         <>
           <ProductGrid
@@ -100,7 +99,7 @@ function GalleryPage({
           />
         </Suspense>
       )}
-    </>
+    </Sentinel>
   )
 }
 

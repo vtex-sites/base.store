@@ -1,4 +1,5 @@
 import { useSearch } from '@faststore/sdk'
+import type { PropsWithChildren } from 'react'
 import React, { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
@@ -34,9 +35,18 @@ const replacePagination = (page: number) => {
  * Also, this component's name is kind of curious. Wikipedia calls is Page Break(https://en.wikipedia.org/wiki/Page_break)
  * however all codes I've seen online use Sentinel
  */
-function Sentinel({ page, pageSize, products, title }: Props) {
+function Sentinel({
+  children,
+  page,
+  pageSize,
+  products,
+  title,
+}: PropsWithChildren<Props>) {
   const viewedRef = useRef(false)
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInView({
+    threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+  })
+
   const { state: searchState, pages } = useSearch()
 
   const { sendViewItemListEvent } = useViewItemListEvent({
@@ -59,7 +69,11 @@ function Sentinel({ page, pageSize, products, title }: Props) {
     }
   }, [inView, page, pages.length, searchState, sendViewItemListEvent])
 
-  return <div ref={ref} />
+  return (
+    <div data-sentinel={inView} ref={ref}>
+      {children}
+    </div>
+  )
 }
 
 export default Sentinel
