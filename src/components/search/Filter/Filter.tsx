@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useMemo } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
@@ -65,12 +65,14 @@ function Filter({
 
   let onDismissTransition: () => unknown
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
-  const filteredFacets = facets.filter((facet) => {
-    const hasSlug = facet.values.some(({ value }) => value === slug)
-    const isBoolean = facet.type === 'BOOLEAN'
+  const filteredFacets = useMemo(() => {
+    return facets.filter((facet) => {
+      const hasSlug = facet.values.some(({ value }) => value === slug)
+      const isBoolean = facet.type === 'BOOLEAN'
 
-    return isBoolean && !hasSlug
-  })
+      return isBoolean && !hasSlug
+    })
+  }, [facets, slug])
 
   const onAccordionChange = useCallback((index: number) => {
     if (indicesExpanded.has(index)) {
