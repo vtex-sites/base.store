@@ -7,15 +7,16 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 type Props = {
   products: ProductSummary_ProductFragment[]
+  show?: number
 }
 
-function Slider({ products }: Props) {
+function Slider({ products, show = 3 }: Props) {
   // TODO: Make controll settings via props
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: show,
     slidesToScroll: 3,
   }
 

@@ -16,8 +16,15 @@ function Page(props: Props) {
   return (
     <>
       <section className="page__section / grid-section grid-content">
-        <p>Simple Slider</p>
+        <h1>React Slick</h1>
+
+        <p>Total: 10 | Show: 3</p>
         <Slider products={products.slice(0, 10)} />
+        <br />
+        <br />
+
+        <p>Total: 3 | Show: 3</p>
+        <Slider show={3} products={products.slice(3, 6)} />
       </section>
     </>
   )
