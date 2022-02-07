@@ -48,11 +48,14 @@ function Sentinel({
      * Defines extra breakpoints on the children that will be wrapped
      * by the Sentinel. This helps on infinite pagination when scrolling
      * up and down between pages, making the page updates smoother and
-     * more precise. We add more granular breakpoints at the edges so it
-     * handles better the page edges (when only just a tiny bit of the page
-     * is entering or leaving the view)
+     * more precise. We add more granular breakpoints at the edges for
+     * compatibility with mobile devices, where less content is shown on
+     * screen and higher thresholds are harder to reach.
      */
-    threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+    threshold: [
+      0.01, 0.02, 0.03, 0.04, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9,
+      0.95, 0.96, 0.97, 0.98, 0.99, 1,
+    ],
   })
 
   const { state: searchState, pages } = useSearch()
