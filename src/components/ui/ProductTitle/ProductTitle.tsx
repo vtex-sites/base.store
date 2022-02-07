@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import React from 'react'
+import React, { memo } from 'react'
 
 import './product-title.scss'
 
@@ -35,4 +35,4 @@ function ProductTitle({ title, label, refNumber }: ProductTitleProp) {
   )
 }
 
-export default ProductTitle
+export default memo(ProductTitle)

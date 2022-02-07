@@ -1,5 +1,5 @@
-import React, { lazy, Suspense, useState } from 'react'
-import Loadable from '@loadable/component'
+import React, { useState } from 'react'
+import loadable from '@loadable/component'
 import Navbar from 'src/components/common/Navbar'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
@@ -9,9 +9,11 @@ import type { PropsWithChildren } from 'react'
 import Alert from './components/ui/Alert'
 import './styles/fonts.css'
 
-const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
-const Toast = lazy(() => import('src/components/ui/Toast'))
-const Footer = Loadable(() => import('src/components/common/Footer'))
+const CartSidebar = loadable(() => import('src/components/cart/CartSidebar'))
+
+const Toast = loadable(() => import('src/components/ui/Toast'))
+
+const Footer = loadable(() => import('src/components/common/Footer'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()
@@ -51,17 +53,9 @@ function Layout({ children }: PropsWithChildren<unknown>) {
       <main>{children}</main>
 
       <Footer />
-      {displayMinicart && (
-        <Suspense fallback={null}>
-          <CartSidebar />
-        </Suspense>
-      )}
+      {displayMinicart && <CartSidebar />}
 
-      {toasts.length > 0 && (
-        <Suspense fallback={null}>
-          <Toast />
-        </Suspense>
-      )}
+      {toasts.length > 0 && <Toast />}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
 import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
 
@@ -81,4 +81,4 @@ export function QuantitySelector({
   )
 }
 
-export default QuantitySelector
+export default memo(QuantitySelector)
