@@ -19,6 +19,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Security
 
+## [0.1.1] - 2022-02-07
+
+### Added
+
+- Feat: Style IconButton (#290)
+
+### Changed
+
+- Chore: tweaks search page (#293)
+- Extract UISelect from Sort to its own component (#299)
+- Feat: lazy loading and improvements (CLS) (#300)
+
+### Fixed
+
+- SonarQube warning (#297)
+- General fixes on Beta component (#287)
+- Fix/Adjust inappropriate rerenders (#304)
+
 ## [0.1.0] - 2022-02-01
 
 Version released for the Closed Beta
