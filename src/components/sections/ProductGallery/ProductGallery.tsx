@@ -1,6 +1,6 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, lazy, Suspense } from 'react'
+import React, { useState, lazy, Suspense, useEffect } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import Sort from 'src/components/search/Sort'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
@@ -23,6 +23,27 @@ interface Props {
   slug?: string
 }
 
+/*
+ * Method that handles an edge case of pagination: when user clicks to
+ * load more products at the bottom of the page, this logic takes care of
+ * reading the rendered sentinels (one per page) state, and, if no sentinel
+ * is currently in view, the page scrolls back to the last sentinel
+ * (that is, the page that just loaded.)
+ */
+function handlePageFocus() {
+  const sentinelsInView = document.querySelectorAll('[data-sentinel=true]')
+
+  if (sentinelsInView.length === 0) {
+    const allSentinels = document.querySelectorAll('[data-sentinel=false]')
+
+    if (allSentinels.length > 0) {
+      allSentinels[allSentinels.length - 1].scrollIntoView({
+        behavior: 'smooth',
+      })
+    }
+  }
+}
+
 function ProductGallery({ title, slug }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
@@ -35,6 +56,10 @@ function ProductGallery({ title, slug }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
 
   const orderedFacets = useOrderedFacets(data)
+
+  useEffect(() => {
+    handlePageFocus()
+  }, [searchState])
 
   return (
     <>
