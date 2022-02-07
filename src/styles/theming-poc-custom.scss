@@ -28,7 +28,7 @@
   --color-primary-1         : #d8e2ff;
   --color-primary-2         : #00419e;
   --color-primary-3         : #002c71;
-  --color-primary-4         : #4b74c2;
+  --color-primary-4         : #001947;
 
   --color-interactive       : var(--color-primary-2);
   --color-link              : var(--color-interactive);
@@ -71,20 +71,20 @@
   // Components properties
   --min-size                : 48px;
 
-  --border-radius           : 10px;
+  --border-radius           : 4px;
   --border-radius-circle    : 100%;
   --border-color-input      : var(--color-neutral-2);
   --border-color-input-hover: var(--color-primary-4);
   --border-color-card       : var(--color-neutral-1);
   --border-width-input      : 2px;
-  --border-width-card       : 2px;
+  --border-width-card       : 1px;
 
   // Interactive properties
   --transition-timing       : .3s;
   --transition-property     : all;
   --transition-function     : ease-in-out;
 
-  --shadow                  : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
+  --shadow                  : none;
   --shadow-hover            : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
 }
 
