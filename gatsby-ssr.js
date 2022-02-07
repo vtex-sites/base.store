@@ -4,7 +4,7 @@ import React from 'react'
 import { Partytown } from '@builder.io/partytown/react'
 
 import Layout from './src/Layout'
-import AnalyticsHandler from './src/sdk/analytics'
+import AnalyticsHandler, { googleTagManager } from './src/sdk/analytics'
 import { validateCart } from './src/sdk/cart/validate'
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
@@ -39,9 +39,40 @@ export const onRenderBody = ({ setHeadComponents }) => {
   const forward = []
 
   if (storeConfig.analytics.gtmContainerId) {
-    // The actual script is added by AnalyticsHandler to allow for
-    // query string flagging for debug
     addPartytown = true
+    forward.push('dataLayer.push')
+
+    // The first script adds the GTM script to partytown. It is meant for when regular users
+    // are browsing the website, so that loading and executing it doesn't affect performance
+    //
+    // The second script is meant for GTM debugging. Since debugging GTM inside partytown still doesn't work,
+    // it is only executed when the url includes the gtm_debug query string.
+    //
+    // Since the query string isn't accessible during SSR, the decision of which script should be executed
+    // is bundled with the script, and that's why we need to include both. The script isn't GTM itself, but
+    // the code who will, after being executed, add the GTM script to the page.
+    setHeadComponents([
+      <script
+        key="gtm.partytown"
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: googleTagManager({
+            containerId: storeConfig.analytics.gtmContainerId,
+            partytownScript: true,
+          }),
+        }}
+      />,
+      <script
+        key="gtm"
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: googleTagManager({
+            containerId: storeConfig.analytics.gtmContainerId,
+            partytownScript: false,
+          }),
+        }}
+      />,
+    ])
   } else if (process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line
     console.warn('Check the analytics section on your store.config.js file.')
