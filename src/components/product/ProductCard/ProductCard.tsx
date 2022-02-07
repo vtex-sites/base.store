@@ -1,16 +1,14 @@
 import { graphql, Link } from 'gatsby'
+import type { ReactNode } from 'react'
 import React, { useMemo, memo } from 'react'
-import Button from 'src/components/ui/Button'
 import { DiscountBadge, Badge } from 'src/components/ui/Badge'
 import Price from 'src/components/ui/Price'
 import AspectRatio from 'src/components/ui/AspectRatio'
 import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
 import { Image } from 'src/components/ui/Image'
-import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
 import {
   Card as UICard,
   CardImage as UICardImage,
@@ -28,27 +26,21 @@ interface Props {
   bordered?: boolean
   outOfStock?: boolean
   variant?: Variant
-  showActions?: boolean
   ratio?: AspectRatioProps['ratio']
+  buyButton?: ReactNode
 }
 
 function ProductCard({
   product,
   index,
   variant = 'vertical',
-  showActions = true,
   ratio = '1',
   bordered = false,
   outOfStock = false,
+  buyButton,
   ...otherProps
 }: Props) {
   const {
-    id,
-    sku,
-    gtin,
-    name: variantName,
-    brand,
-    isVariantOf,
     isVariantOf: { name },
     image: [img],
     offers: { lowPrice: spotPrice, offers },
@@ -68,24 +60,9 @@ function ProductCard({
     return lowestPriceOffer
   }, [spotPrice, offers])
 
-  const { listPrice, seller } = offers[selectedOffer]
+  const { listPrice } = offers[selectedOffer]
 
   const linkProps = useProductLink({ product, selectedOffer, index })
-  const buyProps = useBuyButton({
-    id,
-    brand,
-    price: spotPrice,
-    listPrice,
-    seller,
-    quantity: 1,
-    isVariantOf,
-    gtin,
-    itemOffered: {
-      name: variantName,
-      image: [img],
-      sku,
-    },
-  })
 
   return (
     <UICard
@@ -93,7 +70,6 @@ function ProductCard({
       data-card-variant={variant}
       data-card-bordered={bordered}
       data-card-out-of-stock={outOfStock}
-      data-sku={buyProps['data-sku']}
       {...otherProps}
     >
       <UICardImage>
@@ -152,20 +128,7 @@ function ProductCard({
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
       </UICardContent>
-      {showActions && (
-        <UICardActions>
-          <Button
-            {...buyProps}
-            variant="primary"
-            icon={<ShoppingCartIcon size={18} weight="bold" />}
-            iconPosition="left"
-            aria-label="Add to cart"
-            title="Add to cart"
-          >
-            Add
-          </Button>
-        </UICardActions>
-      )}
+      {!!buyButton && <UICardActions>{buyButton}</UICardActions>}
     </UICard>
   )
 }

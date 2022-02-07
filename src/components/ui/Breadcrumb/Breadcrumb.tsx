@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Breadcrumb as UIBreadcrumb } from '@faststore/ui'
 import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
@@ -41,4 +41,4 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
   )
 }
 
-export default Breadcrumb
+export default memo(Breadcrumb)

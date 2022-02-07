@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { memo, useState } from 'react'
 import { Link as LinkGatsby } from 'gatsby'
 import { List as UIList } from '@faststore/ui'
 import CartToggle from 'src/components/cart/CartToggle'
@@ -117,4 +117,4 @@ function Navbar() {
   )
 }
 
-export default Navbar
+export default memo(Navbar)
