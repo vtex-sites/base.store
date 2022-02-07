@@ -8,6 +8,10 @@
   li {
     width: 100%;
     &:first-child { margin-left: calc(-1 * var(--space-1)); }
+
+    [data-store-card] {
+      @include media(">=tablet") { grid-template-rows: 70% 30%; }
+    }
   }
 
   @include media(">=notebook") {
