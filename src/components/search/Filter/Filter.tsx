@@ -66,10 +66,10 @@ function Filter({
   let onDismissTransition: () => unknown
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
   const filteredFacets = facets.filter((facet) => {
-    const hasOthersThanSlug = facet.values.some(({ value }) => value !== slug)
+    const hasSlug = facet.values.some(({ value }) => value === slug)
     const isBoolean = facet.type === 'BOOLEAN'
 
-    return isBoolean && hasOthersThanSlug
+    return isBoolean && !hasSlug
   })
 
   const onAccordionChange = useCallback((index: number) => {
