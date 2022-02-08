@@ -45,29 +45,7 @@
       @include media(">=tablet") { margin-top: var(--space-4); }
     }
 
-    [data-hero-link] {
-
-      // TODO: Repassar estilização para Link Button
-      margin-top: var(--space-6);
-
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 11.25rem;
-        padding: var(--space-1) var(--space-4);
-        color: var(--color-secondary-4);
-        font-weight: var(--text-weight-bold);
-        font-size: var(--space-3);
-        text-decoration: none;
-        background: var(--bg-neutral-lightest);
-        border-radius: var(--border-radius-default);
-
-        @include media(">=tablet") {
-          padding: var(--space-2) var(--space-4);
-        }
-      }
-    }
+    [data-store-button] { margin-top: var(--space-6); }
   }
 
   [data-hero-image] {
@@ -96,11 +74,8 @@
       @include media(">=tablet") { padding-right: var(--space-9); }
     }
 
-    [data-hero-link] a {
-      @include media(">=tablet") {
-        margin-top: var(--space-8);
-        padding: var(--space-2) var(--space-4);
-      }
+    [data-store-button] {
+      @include media(">=tablet") { margin-top: var(--space-8); }
     }
 
     [data-hero-image] {
