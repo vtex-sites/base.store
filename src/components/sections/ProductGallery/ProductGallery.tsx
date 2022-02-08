@@ -1,22 +1,21 @@
+import './product-gallery.scss'
+
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, lazy, Suspense } from 'react'
-import Button, { LinkButton } from 'src/components/ui/Button'
-import Sort from 'src/components/search/Sort'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import {
-  FadersHorizontal as FadersHorizontalIcon,
   ArrowLeft as ArrowLeftIcon,
+  FadersHorizontal as FadersHorizontalIcon,
 } from 'phosphor-react'
+import React, { useState } from 'react'
+import Filter from 'src/components/search/Filter'
+import Sort from 'src/components/search/Sort'
+import Button, { LinkButton } from 'src/components/ui/Button'
+import useWindowDimensions from 'src/hooks/useWindowDimensions'
 
+import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
 import { useTotalCount } from './useTotalCount'
-
-import './product-gallery.scss'
-
-const GalleryPage = lazy(() => import('./ProductGalleryPage'))
-const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
@@ -39,14 +38,12 @@ function ProductGallery({ title, slug }: Props) {
   return (
     <>
       <div className="product-listing__filters">
-        <Suspense fallback={null}>
-          <Filter
-            slug={slug}
-            isOpen={isFilterOpen}
-            facets={orderedFacets}
-            onDismiss={() => setIsFilterOpen(false)}
-          />
-        </Suspense>
+        <Filter
+          slug={slug}
+          isOpen={isFilterOpen}
+          facets={orderedFacets}
+          onDismiss={() => setIsFilterOpen(false)}
+        />
       </div>
 
       <div
@@ -97,47 +94,36 @@ function ProductGallery({ title, slug }: Props) {
         )}
 
         {/* Render ALL products */}
-        {pages.map((page) => {
-          return data ? (
-            <Suspense
-              fallback={
-                <div className="product-listing__data-loading">Loading…</div>
-              }
+        {data ? (
+          pages.map((page) => (
+            <GalleryPage
               key={`gallery-page-${page}`}
-            >
-              <GalleryPage
-                showSponsoredProducts={false}
-                key={`gallery-page-${page}`}
-                fallbackData={page === searchState.page ? data : undefined}
-                page={page}
-                title={title}
-              />
-            </Suspense>
-          ) : (
-            <div className="product-listing__data-loading">Loading…</div>
-          )
-        })}
+              showSponsoredProducts={false}
+              fallbackData={page === searchState.page ? data : undefined}
+              page={page}
+              title={title}
+            />
+          ))
+        ) : (
+          <div className="product-listing__data-loading">Loading…</div>
+        )}
 
         {/* Prefetch Previous and Next pages */}
         {prev !== false && (
-          <Suspense fallback={null}>
-            <GalleryPage
-              showSponsoredProducts={false}
-              page={prev.cursor}
-              display={false}
-              title={title}
-            />
-          </Suspense>
+          <GalleryPage
+            showSponsoredProducts={false}
+            page={prev.cursor}
+            display={false}
+            title={title}
+          />
         )}
         {next !== false && (
-          <Suspense fallback={null}>
-            <GalleryPage
-              showSponsoredProducts={false}
-              page={next.cursor}
-              display={false}
-              title={title}
-            />
-          </Suspense>
+          <GalleryPage
+            showSponsoredProducts={false}
+            page={next.cursor}
+            display={false}
+            title={title}
+          />
         )}
 
         {/* Add link to next page. This helps on SEO */}
