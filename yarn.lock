@@ -1154,10 +1154,10 @@
     "@babel/helper-validator-identifier" "^7.15.7"
     to-fast-properties "^2.0.0"
 
-"@builder.io/partytown@^0.2.4":
-  version "0.2.4"
-  resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.2.4.tgz#93751bc5b5f47da4514b84fe5bc9b81b98ba6f9a"
-  integrity sha512-v7STRrBiy9O4gawqBV5daaLBipbz8juvfA+V5GohjktC0sjb9c//lB5gvTc2qXCoBqTmPu7Ap+B0ZbwIErtmXQ==
+"@builder.io/partytown@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@builder.io/partytown/-/partytown-0.3.2.tgz#5453c05cb71f7a521206f4782c77c595ffa74695"
+  integrity sha512-VrMAbhxnPRbDaze7YsaPaZMl4ozFD/s9D55pL4yuxg2oDAjIqb1Hbydmr5AIRVY34DaApZSUeQ0SBTtGDnMbyA==
 
 "@bundle-stats/cli-utils@^3.2.1":
   version "3.2.1"
