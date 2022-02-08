@@ -24,7 +24,7 @@ function Page(props: Props) {
   const haveProducts = products && products?.length > 0
 
   return (
-    <>
+    <div className="base-store">
       <GatsbySeo
         title="UI Theming: Proof of Concept"
         language="en"
@@ -81,7 +81,7 @@ function Page(props: Props) {
           </div>
         </section>
       )}
-    </>
+    </div>
   )
 }
 
