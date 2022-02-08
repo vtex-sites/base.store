@@ -2,7 +2,10 @@
 
 .filter[data-store-filter] {
   > .title-small {
-    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    height: var(--product-listing-row-height);
+    margin-bottom: var(--space-0);
 
     @include media("<notebook") {
       display: none;
@@ -64,17 +67,8 @@
   align-items: center;
   justify-content: space-between;
 
-  h2 { padding: var(--space-3) 0; }
-
   .filter-modal__button {
-    position: absolute;
-    right: calc(-1 * var(--page-padding-phone));
-    display: flex;
-    margin-right: var(--space-0);
-    padding: var(--space-1);
-    color: var(--color-text);
-    background-color: transparent;
-    border: 0;
+    margin-right: calc(-1 * var(--space-1));
   }
 }
 

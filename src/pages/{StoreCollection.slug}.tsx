@@ -1,61 +1,34 @@
-import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
+import { SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
-import Loadable from '@loadable/component'
+import React from 'react'
+import loadable from '@loadable/component'
 import Hero from 'src/components/sections/Hero'
-import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import type { SearchState } from '@faststore/sdk'
-import type { PageProps } from 'gatsby'
-import type {
-  CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables,
-} from '@generated/graphql'
-import Breadcrumb from 'src/components/ui/Breadcrumb'
-import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
-import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
+import { BreadcrumbWrapper } from 'src/components/ui/Breadcrumb'
+import type { Props } from 'src/hooks/useSearchParams'
+import { useSearchParams } from 'src/hooks/useSearchParams'
+import ProductListing from 'src/components/sections/ProductListing'
 
-import '../styles/pages/product-listing.scss'
+import '../styles/pages/product-listing-page.scss'
 
-const ProductShelf = Loadable(
+const ScrollToTopButton = loadable(
+  () => import('src/components/ui/ScrollToTopButton')
+)
+
+const ProductShelf = loadable(
   () => import('src/components/sections/ProductShelf')
 )
 
-export type Props = PageProps<
-  CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables
-> & { slug: string }
-
-const useSearchParams = (props: Props): SearchState => {
-  const {
-    location: { href, pathname },
-    data,
-  } = props
-
-  const selectedFacets = data?.collection?.meta.selectedFacets
-
-  return useMemo(() => {
-    const maybeState = href ? parseSearchState(new URL(href)) : null
-
-    return {
-      page: maybeState?.page ?? 0,
-      base: maybeState?.base ?? pathname,
-      selectedFacets:
-        maybeState && maybeState.selectedFacets.length > 0
-          ? maybeState.selectedFacets
-          : selectedFacets ?? [],
-      term: maybeState?.term ?? null,
-      sort: maybeState?.sort ?? 'score_desc',
-    }
-  }, [href, pathname, selectedFacets])
-}
-
 function Page(props: Props) {
   const {
-    data: { site, collection, allStoreProduct },
+    data: {
+      site,
+      collection,
+      allStoreProduct: { nodes: youMightAlsoLikeProducts },
+    },
     location: { host },
     params: { slug },
   } = props
@@ -70,14 +43,6 @@ function Page(props: Props) {
     host !== undefined
       ? `https://${host}/${slug}/${pageQuery}`
       : `/${slug}/${pageQuery}`
-
-  const youMightAlsoLikeProducts = useMemo(
-    () => allStoreProduct?.nodes,
-    [allStoreProduct]
-  )
-
-  const haveYouMightAlsoLikeProducts =
-    youMightAlsoLikeProducts && youMightAlsoLikeProducts?.length > 0
 
   return (
     <SearchProvider
@@ -127,9 +92,9 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <ProductGallery title={title} slug={slug} />
+      <ProductListing title={title} slug={slug} />
 
-      {haveYouMightAlsoLikeProducts && (
+      {youMightAlsoLikeProducts?.length > 0 && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">
           <h2 className="title-section / grid-content">You might also like</h2>
           <div className="page__section-content">
@@ -143,18 +108,6 @@ function Page(props: Props) {
       </div>
     </SearchProvider>
   )
-}
-
-interface BreadcrumbWrapperProps
-  extends Partial<Pick<BreadcrumbProps, 'breadcrumbList'>> {
-  name: string
-}
-
-function BreadcrumbWrapper({ breadcrumbList, name }: BreadcrumbWrapperProps) {
-  const fallback = [{ item: '/', name, position: 1 }]
-  const list = breadcrumbList ?? fallback
-
-  return <Breadcrumb breadcrumbList={list} />
 }
 
 /**

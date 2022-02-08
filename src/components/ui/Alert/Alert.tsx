@@ -1,5 +1,5 @@
 import type { ReactNode, MouseEvent } from 'react'
-import React from 'react'
+import React, { memo } from 'react'
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
 import type { AlertProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
@@ -56,4 +56,4 @@ function Alert({
   )
 }
 
-export default Alert
+export default memo(Alert)

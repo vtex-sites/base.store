@@ -1,0 +1,34 @@
+@import "../../../styles/utilities";
+
+[data-store-icon-button] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--tap-min-size);
+  height: var(--tap-min-size);
+  color: var(--color-text);
+  background-color: transparent;
+  border: 0;
+  border-radius: var(--border-radius-button);
+  transition: background-color .5s ease;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include focus-ring-visible;
+
+  &:hover, &:focus { background-color: var(--bg-secondary-light); }
+
+  &:active {
+    color: var(--color-text-display);
+    background-color: var(--color-secondary-1);
+  }
+
+  &:disabled, &[data-button-disabled="true"] {
+    color: var(--color-text-disabled);
+    background-color: var(--bg-disabled);
+  }
+}

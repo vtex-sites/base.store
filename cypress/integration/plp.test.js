@@ -28,28 +28,30 @@ describe('Search page Filters and Sorting options', () => {
       .should('exist')
       .first()
       .click()
-      .getById('filter-modal-button-apply')
-      .click()
-
-    // Check applied filters
-    cy.getById('open-filter-button')
-      .click()
-      .getById('filter-accordion-panel-checkbox')
-      .first()
-      .click({ force: true })
       .then(($checkbox) => {
         const value = $checkbox.attr('data-value')
         const quantity = $checkbox.attr('data-quantity')
 
-        // Check if the filter applied actually ended up in the URL
-        cy.location('href').should((loc) => {
-          expect(loc).to.include(value)
-        })
+        cy.getById('filter-modal-button-apply')
+          .click()
+          .then(() => {
+            // Check if the filter applied actually ended up in the URL
+            cy.location('href').should((loc) => {
+              expect(loc).to.include(value)
+            })
 
-        // Check if the filter applied actually brought the number of products it said it would
-        cy.getById('total-product-count').then(($countDiv) => {
-          expect(Number($countDiv.attr('data-count'))).to.eq(Number(quantity))
-        })
+            // Check if the filter applied actually brought the number of products it said it would
+
+            cy.waitUntil(() => {
+              return cy.get('.product-grid').should('exist')
+            }).then(() => {
+              cy.getById('total-product-count').then(($countDiv) => {
+                expect(Number($countDiv.attr('data-count'))).to.eq(
+                  Number(quantity)
+                )
+              })
+            })
+          })
       })
   })
 

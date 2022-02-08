@@ -1,9 +1,6 @@
 import { useSearch } from '@faststore/sdk'
 import React from 'react'
-import { Select as UISelect } from '@faststore/ui'
-import { CaretDown as CaretDownIcon } from 'phosphor-react'
-
-import './sort.scss'
+import Select from 'src/components/ui/Select'
 
 const OptionsMap = {
   price_desc: 'Price, descending',
@@ -25,23 +22,15 @@ function Sort() {
   } = useSearch()
 
   return (
-    <div className="sort / title-small">
-      <label htmlFor="select-sort">Sort by</label>
-      <UISelect
-        data-testid="search-sort"
-        onChange={(e) => setSort(keys[e.target.selectedIndex])}
-        value={sort}
-        aria-label="Product Sort"
-        id="select-sort"
-      >
-        {keys.map((key) => (
-          <option key={key} value={key}>
-            {OptionsMap[key]}
-          </option>
-        ))}
-      </UISelect>
-      <CaretDownIcon size={18} weight="bold" />
-    </div>
+    <Select
+      id="sort-select"
+      className="sort / title-small"
+      labelText="Sort by"
+      options={OptionsMap}
+      onChange={(e) => setSort(keys[e.target.selectedIndex])}
+      value={sort}
+      testId="search-sort"
+    />
   )
 }
 

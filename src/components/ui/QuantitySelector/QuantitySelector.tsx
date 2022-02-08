@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { memo, useEffect, useState } from 'react'
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
 import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
 
@@ -36,9 +36,8 @@ export function QuantitySelector({
 
   function validateQuantityBounds(n: number): number {
     const maxValue = min ? Math.max(n, min) : n
-    const minValue = max ? Math.min(maxValue, max) : maxValue
 
-    return minValue
+    return max ? Math.min(maxValue, max) : maxValue
   }
 
   function validateInput(e: React.FormEvent<HTMLInputElement>) {
@@ -82,4 +81,4 @@ export function QuantitySelector({
   )
 }
 
-export default QuantitySelector
+export default memo(QuantitySelector)

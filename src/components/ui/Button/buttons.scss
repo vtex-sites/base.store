@@ -1,5 +1,12 @@
 @import "../../../styles/utilities";
 
+[data-store-button] {
+  border-radius: var(--border-radius-button);
+  transition: background-color .5s ease, box-shadow .5s ease;
+
+  @include focus-ring-visible;
+}
+
 .button[data-store-button], .link-button[data-store-button] {
   display: inline-flex;
   align-items: center;
@@ -10,11 +17,7 @@
   text-decoration: none;
   column-gap: var(--space-2);
   border: 0;
-  border-radius: var(--border-radius-button);
-  transition: background-color .5s ease;
-
-  &:focus { outline: none; }
-  &:focus-visible { @include button-focus-ring; }
+  cursor: default;
 
   &:disabled, &[data-button-disabled="true"] {
     cursor: not-allowed;
@@ -29,11 +32,6 @@
 
     &:active { background-color: var(--bg-secondary-pressed); }
 
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-    }
-
     &[data-button-inverse] {
       color: var(--color-text-display);
       background-color: var(--bg-neutral-lightest);
@@ -47,23 +45,27 @@
   &[data-button-variant="secondary"] {
     color: var(--color-text-display);
     background-color: transparent;
-    border: 2px solid var(--bg-secondary-default);
+    border: var(--border-width-1) solid var(--bg-secondary-default);
 
-    &:hover, &:focus { background-color: var(--bg-darken-hover); }
+    &:hover, &:focus {
+      color: var(--color-text-inverse);
+      background-color: var(--bg-secondary-default);
+    }
 
-    &:active { background-color: var(--bg-darken-pressed); }
-
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-      border: 0;
+    &:active {
+      background-color: var(--bg-secondary-hover);
+      border-color: var(--bg-secondary-hover);
     }
 
     &[data-button-inverse] {
       color: var(--color-text-inverse);
       border-color: var(--color-border-light);
-      &:hover, &:focus { background-color: var(--bg-lighten-hover); }
-      &:active { background-color: var(--bg-lighten-pressed); }
+
+      &:hover, &:focus {
+        color: var(--color-text-display);
+        background-color: var(--bg-neutral-lightest);
+      }
+      &:active { background-color: var(--bg-secondary-light); }
     }
   }
 
@@ -78,11 +80,6 @@
       background-color: var(--color-secondary-1);
     }
 
-    &:disabled, &[data-button-disabled="true"] {
-      color: var(--color-neutral-6);
-      background-color: var(--bg-disabled);
-    }
-
     &[data-button-inverse] {
       color: var(--color-text-display);
       background-color: var(--bg-neutral-lightest);
@@ -90,6 +87,14 @@
       &:hover, &:focus { background-color: var(--color-secondary-0); }
 
       &:active { background-color: var(--color-secondary-1); }
+    }
+  }
+
+  &[data-button-variant] {
+    &:disabled, &[data-button-disabled="true"] {
+      color: var(--color-text-disabled);
+      background-color: var(--bg-disabled);
+      border: 0;
     }
   }
 
@@ -103,7 +108,7 @@
     text-decoration: none;
   }
 
-  &[data-button-disabled="true"] {
+  &[data-button-disabled="true"]:active {
     pointer-events: none;
   }
 }

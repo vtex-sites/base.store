@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
 import Badge from './Badge'
@@ -44,4 +44,4 @@ const DiscountBadge = ({
   )
 }
 
-export default DiscountBadge
+export default memo(DiscountBadge)
