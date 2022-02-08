@@ -1,0 +1,60 @@
+@import "../../../styles/vendors/include-media.scss";
+
+[data-store-product-card-skeleton] {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 14rem;
+  height: 100%;
+  padding: var(--space-1) var(--space-1) var(--space-2);
+  overflow: hidden;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-default);
+
+  &[data-bordered="true"] { border: 1px solid var(--color-border-display); }
+
+  &[data-variant="vertical"] {
+    [data-card-content] { padding-top: var(--space-2); }
+  }
+
+  &[data-variant="horizontal"] {
+    [data-card-content] {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: var(--space-3);
+    }
+  }
+
+  [data-element-variant="image"] {
+    min-width: 100%;
+    min-height: 162px;
+    max-height: 607px;
+
+    @include media(">=notebook") { height: 190px; }
+  }
+
+  [data-product-card-skeleton-content] {
+    position: relative;
+    height: 20%;
+    margin-top: var(--space-2);
+
+    [data-element-variant="text"] { margin-bottom: var(--space-2); }
+
+    [data-element-variant="button"] { margin-top: var(--space-4); }
+
+    [data-element-variant="badge"] {
+      min-width: 30%;
+
+      @include media(">=notebook") {
+        min-height: 30px;
+        margin-top: var(--space-4);
+      }
+
+      @include media(">=tablet") {
+        min-width: 20%;
+        max-width: 20%;
+      }
+    }
+  }
+}
