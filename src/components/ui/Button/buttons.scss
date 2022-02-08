@@ -212,6 +212,7 @@
     &:hover {
       background-color: var(--button-tertiary-hover-bkg-color);
       border-color: var(--button-tertiary-hover-border-color);
+      box-shadow: var(--button-tertiary-hover-shadow);
     }
 
     &:active {
