@@ -1,5 +1,3 @@
-import './product-gallery.scss'
-
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import {
@@ -16,6 +14,8 @@ import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
 import { useTotalCount } from './useTotalCount'
+
+import './product-gallery.scss'
 
 interface Props {
   title: string
