@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
@@ -19,21 +19,23 @@ import EmptyCart from '../EmptyCart'
 
 import './cart-sidebar.scss'
 
+type Callback = () => unknown
+
 function CartSidebar() {
   const btnProps = useCheckoutButton()
   const cart = useCart()
   const { displayMinicart, closeMinicart } = useUI()
+  const dismissTransition = useRef<Callback | undefined>()
 
   const { items, totalItems, isValidating, subTotal, total } = cart
 
-  let onDismissTransition: () => unknown
   const isEmpty = items.length === 0
 
   return (
     <SlideOver
       isOpen={displayMinicart}
       onDismiss={closeMinicart}
-      onDismissTransition={(callback) => (onDismissTransition = callback)}
+      onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
       className="cart-sidebar__content"
@@ -57,7 +59,7 @@ function CartSidebar() {
                 classes="cart-sidebar__button"
                 aria-label="Close Cart"
                 icon={<XIcon size={32} />}
-                onClick={() => onDismissTransition()}
+                onClick={() => dismissTransition.current?.()}
               />
             </header>
             <Alert icon={<TruckIcon size={24} />}>
@@ -66,7 +68,7 @@ function CartSidebar() {
           </div>
 
           {isEmpty ? (
-            <EmptyCart onDismiss={() => onDismissTransition()} />
+            <EmptyCart onDismiss={() => dismissTransition.current?.()} />
           ) : (
             <div className="cart-sidebar__items">
               {items.map((item) => (

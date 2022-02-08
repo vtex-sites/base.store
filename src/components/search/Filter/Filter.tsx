@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback, useMemo } from 'react'
+import React, { useEffect, useState, useCallback, useRef, useMemo } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
@@ -41,6 +41,8 @@ type ActiveFacets = {
   accordionIndex: number
 }
 
+type Callback = () => unknown
+
 function Filter({
   facets,
   onDismiss,
@@ -50,6 +52,7 @@ function Filter({
 }: FilterProps) {
   const { isMobile } = useWindowDimensions()
   const { toggleFacets, state: searchState } = useSearch()
+  const dismissTransition = useRef<Callback | undefined>()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
@@ -63,7 +66,6 @@ function Filter({
     []
   )
 
-  let onDismissTransition: () => unknown
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
   const filteredFacets = useMemo(() => {
     return facets.filter((facet) => {
@@ -163,7 +165,7 @@ function Filter({
       .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
 
     toggleFacets(facetsToAdd)
-    onDismissTransition?.()
+    dismissTransition.current?.()
   }
 
   return !isMobile ? (
@@ -181,7 +183,7 @@ function Filter({
     <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
-      onDismissTransition={(callback) => (onDismissTransition = callback)}
+      onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
       className="filter-modal__content"
@@ -196,7 +198,7 @@ function Filter({
             icon={<XIcon size={32} />}
             onClick={() => {
               setSelectedFacets(searchState.selectedFacets)
-              onDismissTransition?.()
+              dismissTransition.current?.()
             }}
           />
         </header>
