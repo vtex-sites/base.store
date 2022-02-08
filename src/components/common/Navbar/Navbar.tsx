@@ -9,23 +9,15 @@ import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
+import { useStoreCollection } from 'src/hooks/useStoreCollection'
 
 import SearchInput from '../SearchInput'
 
 import './navbar.scss'
 
-const links = [
-  {
-    href: '/apparel-and-accessories',
-    name: 'Apparel',
-  },
-  {
-    href: '/office',
-    name: 'Office',
-  },
-]
-
 function NavLinks() {
+  const links = useStoreCollection()
+
   return (
     <nav className="navlinks__list">
       <UIList>
