@@ -1,5 +1,5 @@
 import { useSearch } from '@faststore/sdk'
-import React, { Suspense, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import Sentinel from 'src/sdk/search/Sentinel'
@@ -87,17 +87,7 @@ function GalleryPage({
           />
         </>
       ) : (
-        <Suspense
-          fallback={
-            <div className="product-listing__data-loading">Loading...</div>
-          }
-        >
-          <ProductGrid
-            products={products}
-            page={page}
-            pageSize={itemsPerPage}
-          />
-        </Suspense>
+        <ProductGrid products={products} page={page} pageSize={itemsPerPage} />
       )}
     </>
   )
