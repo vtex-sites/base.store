@@ -1,30 +1,39 @@
-import React from 'react'
+import './filter.scss'
+
 import { useSearch } from '@faststore/sdk'
+import { Label as UILabel, List as UIList } from '@faststore/ui'
+import { graphql } from 'gatsby'
+import React from 'react'
+import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
+import { Badge } from 'src/components/ui/Badge'
+import Checkbox from 'src/components/ui/Checkbox'
 import type {
   IStoreSelectedFacet,
-  FacetedFilter_FacetsFragment,
+  Facets_FilteredFacetsFragment,
 } from '@generated/graphql'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import { List as UIList, Label as UILabel } from '@faststore/ui'
-import Checkbox from 'src/components/ui/Checkbox'
-import { Badge } from 'src/components/ui/Badge'
-import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
-
-import './filter.scss'
 
 interface FacetsProps {
   slug: string
   testId: string
   selectedFacets: IStoreSelectedFacet[]
-  filteredFacets: FacetedFilter_FacetsFragment[]
+  filteredFacets: Facets_FilteredFacetsFragment[]
   indicesExpanded: Set<number>
   onFacetChange: (item: IStoreSelectedFacet) => void
   onAccordionChange: (index: number) => void
   onAccordionItemMount: (
     index: number,
-    values: FacetedFilter_FacetsFragment['values']
+    values: Facets_FilteredFacetsFragment['values']
   ) => void
 }
+
+const isMobile = () =>
+  window.innerWidth <
+  parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue(
+      '--breakpoint-notebook'
+    ),
+    10
+  )
 
 function Facets({
   slug,
@@ -37,10 +46,9 @@ function Facets({
   onAccordionItemMount,
 }: FacetsProps) {
   const { toggleFacet } = useSearch()
-  const { isMobile } = useWindowDimensions()
 
   const onSelectFacet = ({ key, value }: IStoreSelectedFacet) => {
-    if (!isMobile) {
+    if (!isMobile()) {
       toggleFacet({ key, value })
     }
 
@@ -95,5 +103,19 @@ function Facets({
     </div>
   )
 }
+
+export const fragment = graphql`
+  fragment Facets_filteredFacets on StoreFacet {
+    key
+    label
+    type
+    values {
+      label
+      value
+      selected
+      quantity
+    }
+  }
+`
 
 export default Facets

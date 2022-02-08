@@ -8,7 +8,6 @@ import Button from 'src/components/ui/Button'
 import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 
 import SearchInput from '../SearchInput'
 
@@ -43,7 +42,6 @@ function NavLinks() {
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
-  const { isMobile } = useWindowDimensions()
   let onDismissTransition: () => unknown
 
   return (
@@ -73,7 +71,7 @@ function Navbar() {
         </section>
         <NavLinks />
       </div>
-      {isMobile && (
+      <div className="display-mobile">
         <SlideOver
           isOpen={showMenu}
           onDismiss={() => setShowMenu(false)}
@@ -113,7 +111,7 @@ function Navbar() {
             </div>
           </div>
         </SlideOver>
-      )}
+      </div>
     </header>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import type { ReactNode, HTMLAttributes } from 'react'
 import { Modal as UIModal } from '@faststore/ui'
 
@@ -34,25 +34,29 @@ const SlideOver = ({
   ...otherProps
 }: SlideOverProps) => {
   const [fadeType, setFadeType] = useState<FadeType>()
-  const layout = document.getElementById('layout')
+  const layout = useRef<HTMLElement | null>(null)
 
   const handleClose = useCallback(() => {
     setFadeType('out')
-    if (layout) {
-      layout.classList.remove('no-scroll')
+    if (layout.current) {
+      layout.current.classList.remove('no-scroll')
     }
   }, [layout])
+
+  useEffect(() => {
+    layout.current = document.getElementById('layout')
+  }, [])
 
   useEffect(() => {
     if (isOpen) {
       setFadeType('in')
 
       // Avoids double scroll issue on the page
-      if (layout) {
-        layout.classList.add('no-scroll')
+      if (layout.current) {
+        layout.current.classList.add('no-scroll')
       }
     }
-  }, [isOpen, layout])
+  }, [isOpen])
 
   useEffect(() => {
     if (handleClose) {

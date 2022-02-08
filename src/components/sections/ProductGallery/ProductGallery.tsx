@@ -1,19 +1,16 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState, lazy, Suspense } from 'react'
-import Button, { LinkButton } from 'src/components/ui/Button'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import {
-  FadersHorizontal as FadersHorizontalIcon,
   ArrowLeft as ArrowLeftIcon,
+  FadersHorizontal as FadersHorizontalIcon,
 } from 'phosphor-react'
+import React, { useState } from 'react'
+import Filter from 'src/components/search/Filter'
+import Sort from 'src/components/search/Sort'
+import Button, { LinkButton } from 'src/components/ui/Button'
 
+import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
-import { useOrderedFacets } from './useOrderedFacets'
-
-const GalleryPage = lazy(() => import('./ProductGalleryPage'))
-const Sort = lazy(() => import('src/components/search/Sort'))
-const Filter = lazy(() => import('src/components/search/Filter'))
 
 interface Props {
   title: string
@@ -24,15 +21,12 @@ function ProductGallery({ title, slug }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
 
+  const facets = data?.search.facets
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
-  const { isMobile } = useWindowDimensions()
-
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
 
-  const orderedFacets = useOrderedFacets(data)
-
-  if (!orderedFacets.length) {
+  if (!facets?.length) {
     return <div className="product-listing__data-loading">Loading…</div>
   }
 
@@ -40,14 +34,12 @@ function ProductGallery({ title, slug }: Props) {
     <div className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <Suspense fallback={null}>
-            <Filter
-              slug={slug}
-              isOpen={isFilterOpen}
-              facets={orderedFacets}
-              onDismiss={() => setIsFilterOpen(false)}
-            />
-          </Suspense>
+          <Filter
+            slug={slug}
+            isOpen={isFilterOpen}
+            facets={facets}
+            onDismiss={() => setIsFilterOpen(false)}
+          />
         </div>
 
         {data ? (
@@ -61,22 +53,19 @@ function ProductGallery({ title, slug }: Props) {
             </div>
 
             <div className="product-listing__sort">
-              <Suspense fallback={null}>
-                <Sort />
-              </Suspense>
+              <Sort />
 
-              {isMobile && (
-                <Button
-                  variant="tertiary"
-                  data-testid="open-filter-button"
-                  icon={<FadersHorizontalIcon size={16} />}
-                  iconPosition="left"
-                  aria-label="Open Filters"
-                  onClick={() => setIsFilterOpen(!isFilterOpen)}
-                >
-                  Filters
-                </Button>
-              )}
+              <Button
+                className="button display-mobile"
+                variant="tertiary"
+                data-testid="open-filter-button"
+                icon={<FadersHorizontalIcon size={16} />}
+                iconPosition="left"
+                aria-label="Open Filters"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+              >
+                Filters
+              </Button>
             </div>
 
             <div className="product-listing__results">
@@ -103,37 +92,31 @@ function ProductGallery({ title, slug }: Props) {
 
               {/* Render ALL products */}
               {pages.map((page) => (
-                <Suspense fallback={null} key={`gallery-page-${page}`}>
-                  <GalleryPage
-                    showSponsoredProducts={false}
-                    key={`gallery-page-${page}`}
-                    fallbackData={page === searchState.page ? data : undefined}
-                    page={page}
-                    title={title}
-                  />
-                </Suspense>
+                <GalleryPage
+                  showSponsoredProducts={false}
+                  key={`gallery-page-${page}`}
+                  fallbackData={page === searchState.page ? data : undefined}
+                  page={page}
+                  title={title}
+                />
               ))}
 
               {/* Prefetch Previous and Next pages */}
               {prev !== false && (
-                <Suspense fallback={null}>
-                  <GalleryPage
-                    showSponsoredProducts={false}
-                    page={prev.cursor}
-                    display={false}
-                    title={title}
-                  />
-                </Suspense>
+                <GalleryPage
+                  showSponsoredProducts={false}
+                  page={prev.cursor}
+                  display={false}
+                  title={title}
+                />
               )}
               {next !== false && (
-                <Suspense fallback={null}>
-                  <GalleryPage
-                    showSponsoredProducts={false}
-                    page={next.cursor}
-                    display={false}
-                    title={title}
-                  />
-                </Suspense>
+                <GalleryPage
+                  showSponsoredProducts={false}
+                  page={next.cursor}
+                  display={false}
+                  title={title}
+                />
               )}
 
               {/* Add link to next page. This helps on SEO */}

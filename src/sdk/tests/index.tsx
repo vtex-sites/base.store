@@ -12,11 +12,13 @@ let renders = 0
 function TestProvider({ children }: PropsWithChildren<unknown>) {
   const [id, setId] = useState('')
 
-  renders++
-
   useEffect(() => {
     setId('react-hydrated')
   }, [])
+
+  useEffect(() => {
+    renders++
+  })
 
   return (
     <div data-testid={id} data-render-count={renders}>

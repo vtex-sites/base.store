@@ -36,7 +36,7 @@ export const query = gql`
         }
       }
       facets {
-        ...FacetedFilter_facets
+        ...Facets_filteredFacets
       }
     }
   }

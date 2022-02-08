@@ -1035,6 +1035,8 @@ export type QuerySiteArgs = {
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   parent: InputMaybe<NodeFilterInput>
+  pathPrefix: InputMaybe<StringQueryOperatorInput>
+  polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
 }
@@ -1138,6 +1140,8 @@ export type Site = Node & {
   id: Scalars['ID']
   internal: Internal
   parent: Maybe<Node>
+  pathPrefix: Maybe<Scalars['String']>
+  polyfill: Maybe<Scalars['Boolean']>
   port: Maybe<Scalars['Int']>
   siteMetadata: Maybe<SiteSiteMetadata>
 }
@@ -1477,6 +1481,8 @@ export type SiteFieldsEnum =
   | 'parent___parent___internal___type'
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
+  | 'pathPrefix'
+  | 'polyfill'
   | 'port'
   | 'siteMetadata___author'
   | 'siteMetadata___description'
@@ -1492,6 +1498,8 @@ export type SiteFilterInput = {
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   parent: InputMaybe<NodeFilterInput>
+  pathPrefix: InputMaybe<StringQueryOperatorInput>
+  polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
 }
@@ -3525,7 +3533,7 @@ export type ProductSummary_ProductFragment = {
   }
 }
 
-export type FacetedFilter_FacetsFragment = {
+export type Facets_FilteredFacetsFragment = {
   key: string
   label: string
   type: StoreFacetType
