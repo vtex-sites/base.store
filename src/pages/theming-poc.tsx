@@ -48,11 +48,17 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Theme: Base Store</h3>
-            <Toggle classes="base-store" />
+            <div className="base-store">
+              <Toggle />
+            </div>
             <h3>Theme: NuCommerce</h3>
-            <Toggle classes="nucommerce" />
+            <div className="nucommerce">
+              <Toggle />
+            </div>
             <h3>Theme: Grocery</h3>
-            <Toggle classes="grocery" />
+            <div className="grocery">
+              <Toggle />
+            </div>
           </main>
         </article>
 
@@ -66,11 +72,17 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Theme: Base Store</h3>
-            <Select classes="base-store" />
+            <div className="base-store">
+              <Select />
+            </div>
             <h3>Theme: NuCommerce</h3>
-            <Select classes="nucommerce" />
+            <div className="nucommerce">
+              <Select />
+            </div>
             <h3>Theme: Grocery</h3>
-            <Select classes="grocery" />
+            <div className="grocery">
+              <Select />
+            </div>
           </main>
         </article>
 
@@ -84,26 +96,17 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Theme: Base Store</h3>
-            <QuantitySelector
-              classes="base-store"
-              min={1}
-              max={10}
-              disabled={false}
-            />
+            <div className="base-store">
+              <QuantitySelector min={1} max={10} disabled={false} />
+            </div>
             <h3>Theme: NuCommerce</h3>
-            <QuantitySelector
-              classes="nucommerce"
-              min={1}
-              max={10}
-              disabled={false}
-            />
+            <div className="nucommerce">
+              <QuantitySelector min={1} max={10} disabled={false} />
+            </div>
             <h3>Theme: Grocery</h3>
-            <QuantitySelector
-              classes="grocery"
-              min={1}
-              max={10}
-              disabled={false}
-            />
+            <div className="grocery">
+              <QuantitySelector min={1} max={10} disabled={false} />
+            </div>
           </main>
         </article>
 
@@ -118,56 +121,56 @@ function Page(props: Props) {
           </section>
           <main>
             <h3>Theme: Base Store</h3>
-            <div className="theming-poc-list">
-              <Badge classes="base-store" variant="success" small>
+            <div className="theming-poc-list / base-store">
+              <Badge variant="success" small>
                 success
               </Badge>
-              <Badge classes="base-store" variant="highlighted" small>
+              <Badge variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge classes="base-store" variant="info" small>
+              <Badge variant="info" small>
                 info
               </Badge>
-              <Badge classes="base-store" variant="neutral" small>
+              <Badge variant="neutral" small>
                 neutral
               </Badge>
-              <Badge classes="base-store" variant="promo" small>
+              <Badge variant="promo" small>
                 promo
               </Badge>
             </div>
             <h3>Theme: NuCommerce</h3>
-            <div className="theming-poc-list">
-              <Badge classes="nucommerce" variant="success" small>
+            <div className="theming-poc-list / nucommerce">
+              <Badge variant="success" small>
                 success
               </Badge>
-              <Badge classes="nucommerce" variant="highlighted" small>
+              <Badge variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge classes="nucommerce" variant="info" small>
+              <Badge variant="info" small>
                 info
               </Badge>
-              <Badge classes="nucommerce" variant="neutral" small>
+              <Badge variant="neutral" small>
                 neutral
               </Badge>
-              <Badge classes="nucommerce" variant="promo" small>
+              <Badge variant="promo" small>
                 promo
               </Badge>
             </div>
             <h3>Theme: Grocery</h3>
-            <div className="theming-poc-list">
-              <Badge classes="grocery" variant="success" small>
+            <div className="theming-poc-list / grocery">
+              <Badge variant="success" small>
                 success
               </Badge>
-              <Badge classes="grocery" variant="highlighted" small>
+              <Badge variant="highlighted" small>
                 highlighted
               </Badge>
-              <Badge classes="grocery" variant="info" small>
+              <Badge variant="info" small>
                 info
               </Badge>
-              <Badge classes="grocery" variant="neutral" small>
+              <Badge variant="neutral" small>
                 neutral
               </Badge>
-              <Badge classes="grocery" variant="promo" small>
+              <Badge variant="promo" small>
                 promo
               </Badge>
             </div>
@@ -233,7 +236,7 @@ function Page(props: Props) {
             <h3>Theme: Base Store</h3>
             <div className="theming-poc-stack">
               <div
-                className="theming-poc-list base-store"
+                className="theming-poc-list / base-store"
                 style={{ paddingLeft: '10px' }}
               >
                 <Button
@@ -252,7 +255,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list inverse base-store">
+              <div className="theming-poc-list / inverse / base-store">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -277,7 +280,7 @@ function Page(props: Props) {
             <h3>Theme: NuCommerce</h3>
             <div className="theming-poc-stack">
               <div
-                className="theming-poc-list nucommerce"
+                className="theming-poc-list / nucommerce"
                 style={{ paddingLeft: '10px' }}
               >
                 <Button
@@ -287,9 +290,7 @@ function Page(props: Props) {
                 >
                   Primary
                 </Button>
-                <Button variant="secondary" classes="nucommerce">
-                  Secondary
-                </Button>
+                <Button variant="secondary">Secondary</Button>
                 <Button
                   variant="tertiary"
                   icon={<BellRingingIcon size={18} weight="bold" />}
@@ -298,7 +299,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list inverse nucommerce">
+              <div className="theming-poc-list / inverse / nucommerce">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -323,7 +324,7 @@ function Page(props: Props) {
             <h3>Theme: Grocery</h3>
             <div className="theming-poc-stack">
               <div
-                className="theming-poc-list grocery"
+                className="theming-poc-list / grocery"
                 style={{ paddingLeft: '10px' }}
               >
                 <Button
@@ -342,7 +343,7 @@ function Page(props: Props) {
                   Tertiary
                 </Button>
               </div>
-              <div className="theming-poc-list inverse grocery">
+              <div className="theming-poc-list / inverse / grocery">
                 <Button
                   variant="primary"
                   icon={<ArrowRightIcon size={18} weight="bold" />}
@@ -380,13 +381,12 @@ function Page(props: Props) {
                 action="button"
               />
             </section>
-            <div className="main">
+            <div className="main / base-store">
               <h3>Theme: Base Store</h3>
               <ProductCard
                 product={products[3] ?? {}}
                 index={1}
                 action="button"
-                classes="base-store"
               />
             </div>
           </article>
@@ -402,7 +402,7 @@ function Page(props: Props) {
                 showDescription
               />
             </section>
-            <div className="main">
+            <div className="main / base-store">
               <h3>Theme: Base Store</h3>
               <ProductCard
                 product={products[2] ?? {}}
@@ -410,7 +410,6 @@ function Page(props: Props) {
                 structure="horizontal"
                 ratio="3:4"
                 showDescription
-                classes="base-store"
               />
             </div>
           </article>
@@ -424,14 +423,13 @@ function Page(props: Props) {
                 structure="wide"
               />
             </section>
-            <div className="main">
+            <div className="main / nucommerce">
               <h3>Theme: NuCommerce</h3>
               <ProductCard
                 product={products[1] ?? {}}
                 index={1}
                 structure="wide"
                 badgeVariant="highlighted"
-                classes="nucommerce"
               />
             </div>
           </article>
@@ -448,7 +446,7 @@ function Page(props: Props) {
                 moreInfo
               />
             </section>
-            <div className="main">
+            <div className="main / grocery">
               <h3>Theme: Grocery</h3>
               <ProductCard
                 product={products[0] ?? {}}
@@ -458,7 +456,6 @@ function Page(props: Props) {
                 badgeVariant="promo"
                 select
                 moreInfo
-                classes="grocery"
               />
             </div>
           </article>
