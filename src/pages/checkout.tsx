@@ -5,7 +5,7 @@ import storeConfig from '../../store.config'
 
 function Page() {
   useEffect(() => {
-    window.location.href = storeConfig.accountUrl
+    window.location.href = storeConfig.checkoutUrl
   }, [])
 
   return (
