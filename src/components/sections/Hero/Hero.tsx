@@ -33,10 +33,8 @@ const Hero = ({
       <HeroContent aria-labelledby="hero-heading">
         <div className="grid-content" data-hero-wrapper>
           <div data-hero-info>
-            <h1 id="hero-heading" className="title-hero">
-              {title}
-            </h1>
-            <p className="text-body-big">{subtitle}</p>
+            <h1 id="hero-heading">{title}</h1>
+            <p>{subtitle}</p>
             {!!link && (
               <LinkButton href={link} variant="primary" inverse>
                 {linkText} <ArrowRightIcon size={24} />

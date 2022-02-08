@@ -569,4 +569,15 @@
     }
   }
 }
+
+// Product Card
+// ----------------------------------------------------------
+
+.base-store {
+  [data-store-hero] {
+    --hero-bkg-color          : var(--primary-bkg);
+    --hero-text-color         : var(--color-text-inverse);
+  }
+}
+
 /* stylelint-enable */

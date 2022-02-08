@@ -1,10 +1,34 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-hero] {
+
+  // Design Tokens for Hero Section
+  // --------------------------------------------------------
+
+  /* stylelint-disable */
+  // Default properties
+  --hero-bkg-color          : black;
+  --hero-text-color         : white;
+
+  --hero-title-color        : var(--hero-text-color);
+  --hero-title-size         : var(--text-size-5);
+  --hero-title-size-desk    : var(--text-size-7);
+  --hero-title-line         : 1.1;
+
+  --hero-paragraph-color    : var(--hero-text-color);
+  --hero-paragraph-size     : var(--text-size-2);
+  --hero-paragraph-size-desk: var(--text-size-3);
+  --hero-paragraph-line     : 1.5;
+
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
+
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
-  background-color: var(--bg-secondary-default);
+  background-color: var(--hero-bkg-color);
 
   @include media(">=tablet") {
     position: relative;
@@ -15,35 +39,48 @@
   [data-hero-content] {
     width: 100%;
     padding: var(--space-5) 0 var(--space-6);
-    color: var(--color-text-inverse);
+
+    h1 {
+      color: var(--hero-title-color);
+      font-weight: var(--text-weight-black);
+      font-size: var(--hero-title-size);
+      line-height: var(--hero-title-line);
+
+      @include media(">=notebook") { font-size: var(--hero-title-size-desk); }
+    }
+
+    p {
+      margin-top: var(--space-2);
+      color: var(--hero-paragraph-color);
+      font-size: var(--hero-paragraph-size);
+      line-height: var(--hero-paragraph-line);
+
+      @include media(">=tablet") { margin-top: var(--space-4); }
+
+      @include media(">=notebook") { font-size: var(--hero-paragraph-size-desk); }
+    }
 
     @include media(">=tablet") {
       width: 100%;
       height: 100%;
     }
 
-    p {
-      margin-top: var(--space-2);
-
-      @include media(">=tablet") { margin-top: var(--space-4); }
-    }
-
     [data-store-button] { margin-top: var(--space-6); }
+  }
 
-    [data-hero-wrapper] {
-      display: flex;
-      gap: var(--space-3);
-      justify-content: space-between;
+  [data-hero-wrapper] {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: space-between;
 
-      @include media(">=tablet") {
-        gap: var(--space-1);
-        justify-content: flex-start;
-      }
+    @include media(">=tablet") {
+      gap: var(--space-1);
+      justify-content: flex-start;
     }
+  }
 
-    [data-hero-info] {
-      @include media(">=tablet") { max-width: 42%; }
-    }
+  [data-hero-info] {
+    @include media(">=tablet") { max-width: 42%; }
   }
 
   [data-hero-image] {
@@ -60,42 +97,42 @@
       overflow: hidden;
     }
   }
+}
 
-  &[data-hero-variant="default"] {
-    min-height: 18.75rem;
+[data-hero-variant="default"] {
+  min-height: 18.75rem;
 
-    [data-hero-content] {
-      @include media(">=tablet") { padding: var(--space-13) 0; }
-    }
-
-    [data-store-button] {
-      @include media(">=tablet") { margin-top: var(--space-8); }
-    }
-
-    [data-hero-image] {
-      [data-gatsby-image-wrapper] { min-height: 18.75rem; }
-
-      @include media(">=tablet") { width: 53%; }
-    }
-
-    [data-hero-info] {
-      @include media(">=tablet") { padding-right: var(--space-9); }
-    }
+  [data-hero-content] {
+    @include media(">=tablet") { padding: var(--space-13) 0; }
   }
 
-  &[data-hero-variant="small"] {
-    min-height: 14.18rem;
+  [data-store-button] {
+    @include media(">=tablet") { margin-top: var(--space-8); }
+  }
 
-    [data-hero-content] {
-      padding: var(--space-4) 0 var(--space-3);
+  [data-hero-image] {
+    [data-gatsby-image-wrapper] { min-height: 18.75rem; }
 
-      @include media(">=tablet") { padding: var(--space-5) 0; }
-    }
+    @include media(">=tablet") { width: 53%; }
+  }
 
-    [data-hero-image] {
-      [data-gatsby-image-wrapper] { min-height: 14.18rem; }
+  [data-hero-info] {
+    @include media(">=tablet") { padding-right: var(--space-9); }
+  }
+}
 
-      @include media(">=tablet") { width: 50%; }
-    }
+[data-hero-variant="small"] {
+  min-height: 14.18rem;
+
+  [data-hero-content] {
+    padding: var(--space-4) 0 var(--space-3);
+
+    @include media(">=tablet") { padding: var(--space-5) 0; }
+  }
+
+  [data-hero-image] {
+    [data-gatsby-image-wrapper] { min-height: 14.18rem; }
+
+    @include media(">=tablet") { width: 50%; }
   }
 }
