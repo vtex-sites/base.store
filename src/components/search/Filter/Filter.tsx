@@ -41,7 +41,7 @@ type ActiveFacets = {
   accordionIndex: number
 }
 
-type CB = () => unknown
+type Callback = () => unknown
 
 function Filter({
   facets,
@@ -52,7 +52,7 @@ function Filter({
 }: FilterProps) {
   const { isMobile } = useWindowDimensions()
   const { toggleFacets, state: searchState } = useSearch()
-  const dismissTransition = useRef<CB | undefined>()
+  const dismissTransition = useRef<Callback | undefined>()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])

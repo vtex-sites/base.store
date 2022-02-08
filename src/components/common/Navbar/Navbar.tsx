@@ -15,7 +15,7 @@ import SearchInput from '../SearchInput'
 
 import './navbar.scss'
 
-type CB = () => unknown
+type Callback = () => unknown
 
 function NavLinks() {
   const links = useStoreCollection()
@@ -38,7 +38,7 @@ function NavLinks() {
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
   const { isMobile } = useWindowDimensions()
-  const dismissTransition = useRef<CB | undefined>()
+  const dismissTransition = useRef<Callback | undefined>()
 
   return (
     <header className="navbar / grid-content-full">
@@ -70,7 +70,9 @@ function Navbar() {
         <SlideOver
           isOpen={showMenu}
           onDismiss={() => setShowMenu(false)}
-          onDismissTransition={(cb) => (dismissTransition.current = cb)}
+          onDismissTransition={(callback) =>
+            (dismissTransition.current = callback)
+          }
           size="full"
           direction="leftSide"
           className="navbar__modal-content"

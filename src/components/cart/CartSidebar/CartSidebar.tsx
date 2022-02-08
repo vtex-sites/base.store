@@ -19,13 +19,13 @@ import EmptyCart from '../EmptyCart'
 
 import './cart-sidebar.scss'
 
-type CB = () => unknown
+type Callback = () => unknown
 
 function CartSidebar() {
   const btnProps = useCheckoutButton()
   const cart = useCart()
   const { displayMinicart, closeMinicart } = useUI()
-  const dismissTransition = useRef<CB | undefined>()
+  const dismissTransition = useRef<Callback | undefined>()
 
   const { items, totalItems, isValidating, subTotal, total } = cart
 
@@ -35,7 +35,7 @@ function CartSidebar() {
     <SlideOver
       isOpen={displayMinicart}
       onDismiss={closeMinicart}
-      onDismissTransition={(cb) => (dismissTransition.current = cb)}
+      onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
       className="cart-sidebar__content"
