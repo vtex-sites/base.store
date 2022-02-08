@@ -136,7 +136,7 @@ function FooterLinks() {
         </Accordion>
       </div>
 
-      <div className="footer__links-columns">
+      <div className="hidden-mobile footer__links-columns">
         {links.map((section) => (
           <nav key={section.title}>
             <p className="title-sub-subsection">{section.title}</p>
