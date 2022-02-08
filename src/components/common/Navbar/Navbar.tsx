@@ -8,7 +8,6 @@ import IconButton from 'src/components/ui/IconButton'
 import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { useStoreCollection } from 'src/hooks/useStoreCollection'
 
 import SearchInput from '../SearchInput'
@@ -37,7 +36,6 @@ function NavLinks() {
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
-  const { isMobile } = useWindowDimensions()
   const dismissTransition = useRef<CB | undefined>()
 
   return (
@@ -66,43 +64,42 @@ function Navbar() {
         </section>
         <NavLinks />
       </div>
-      {isMobile && (
-        <SlideOver
-          isOpen={showMenu}
-          onDismiss={() => setShowMenu(false)}
-          onDismissTransition={(cb) => (dismissTransition.current = cb)}
-          size="full"
-          direction="leftSide"
-          className="navbar__modal-content"
-        >
-          <div className="navbar__modal-body">
-            <header className="navbar__modal-header">
-              <LinkGatsby
-                to="/"
-                aria-label="Go to Faststore home"
-                title="Go to Faststore home"
-                className="navbar__logo"
-                onClick={() => dismissTransition.current?.()}
-              >
-                <Logo />
-              </LinkGatsby>
 
-              <IconButton
-                classes="navbar__button"
-                aria-label="Close Menu"
-                icon={<XIcon size={32} />}
-                onClick={() => dismissTransition.current?.()}
-              />
-            </header>
-            <div className="navlinks">
-              <NavLinks />
-              <div className="navlinks__signin">
-                <SignInLink />
-              </div>
+      <SlideOver
+        isOpen={showMenu}
+        onDismiss={() => setShowMenu(false)}
+        onDismissTransition={(cb) => (dismissTransition.current = cb)}
+        size="full"
+        direction="leftSide"
+        className="navbar__modal-content"
+      >
+        <div className="navbar__modal-body">
+          <header className="navbar__modal-header">
+            <LinkGatsby
+              to="/"
+              aria-label="Go to Faststore home"
+              title="Go to Faststore home"
+              className="navbar__logo"
+              onClick={() => dismissTransition.current?.()}
+            >
+              <Logo />
+            </LinkGatsby>
+
+            <IconButton
+              classes="navbar__button"
+              aria-label="Close Menu"
+              icon={<XIcon size={32} />}
+              onClick={() => dismissTransition.current?.()}
+            />
+          </header>
+          <div className="navlinks">
+            <NavLinks />
+            <div className="navlinks__signin">
+              <SignInLink />
             </div>
           </div>
-        </SlideOver>
-      )}
+        </div>
+      </SlideOver>
     </header>
   )
 }
