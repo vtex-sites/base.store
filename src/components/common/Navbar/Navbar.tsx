@@ -70,9 +70,9 @@ function Navbar() {
         <SlideOver
           isOpen={showMenu}
           onDismiss={() => setShowMenu(false)}
-          onDismissTransition={(callback) =>
-            (dismissTransition.current = callback)
-          }
+          onDismissTransition={(callback) => {
+            dismissTransition.current = callback
+          }}
           size="full"
           direction="leftSide"
           className="navbar__modal-content"
