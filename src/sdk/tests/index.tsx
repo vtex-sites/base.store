@@ -12,9 +12,8 @@ let renders = 0
 function TestProvider({ children }: PropsWithChildren<unknown>) {
   const [id, setId] = useState('')
 
-  renders++
-
   useEffect(() => {
+    renders++
     setId('react-hydrated')
   }, [])
 
