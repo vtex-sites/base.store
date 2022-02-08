@@ -6,7 +6,7 @@
   "browserslist": "supports es6-module and not dead",
   "scripts": {
     "generate": "graphql-codegen",
-    "build": "gatsby build --log-pages",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
