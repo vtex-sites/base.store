@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import { Link as LinkGatsby } from 'gatsby'
 import { List as UIList } from '@faststore/ui'
 import CartToggle from 'src/components/cart/CartToggle'
@@ -14,6 +14,8 @@ import { useStoreCollection } from 'src/hooks/useStoreCollection'
 import SearchInput from '../SearchInput'
 
 import './navbar.scss'
+
+type CB = () => unknown
 
 function NavLinks() {
   const links = useStoreCollection()
@@ -36,7 +38,7 @@ function NavLinks() {
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
   const { isMobile } = useWindowDimensions()
-  let onDismissTransition: () => unknown
+  const dismissTransition = useRef<CB | undefined>()
 
   return (
     <header className="navbar / grid-content-full">
@@ -68,7 +70,7 @@ function Navbar() {
         <SlideOver
           isOpen={showMenu}
           onDismiss={() => setShowMenu(false)}
-          onDismissTransition={(callback) => (onDismissTransition = callback)}
+          onDismissTransition={(cb) => (dismissTransition.current = cb)}
           size="full"
           direction="leftSide"
           className="navbar__modal-content"
@@ -80,9 +82,7 @@ function Navbar() {
                 aria-label="Go to Faststore home"
                 title="Go to Faststore home"
                 className="navbar__logo"
-                onClick={() => {
-                  onDismissTransition?.()
-                }}
+                onClick={() => dismissTransition.current?.()}
               >
                 <Logo />
               </LinkGatsby>
@@ -91,9 +91,7 @@ function Navbar() {
                 classes="navbar__button"
                 aria-label="Close Menu"
                 icon={<XIcon size={32} />}
-                onClick={() => {
-                  onDismissTransition?.()
-                }}
+                onClick={() => dismissTransition.current?.()}
               />
             </header>
             <div className="navlinks">
