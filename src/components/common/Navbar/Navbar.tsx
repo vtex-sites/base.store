@@ -14,6 +14,8 @@ import SearchInput from '../SearchInput'
 
 import './navbar.scss'
 
+type CB = () => unknown
+
 const links = [
   {
     href: '/apparel-and-accessories',
@@ -44,7 +46,9 @@ function NavLinks() {
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
   const { isMobile } = useWindowDimensions()
-  let onDismissTransition: () => unknown
+  const [dismissTransition, setDismissTransition] = useState<CB | undefined>(
+    undefined
+  )
 
   return (
     <header className="navbar / grid-content-full">
@@ -76,7 +80,7 @@ function Navbar() {
         <SlideOver
           isOpen={showMenu}
           onDismiss={() => setShowMenu(false)}
-          onDismissTransition={(callback) => (onDismissTransition = callback)}
+          onDismissTransition={setDismissTransition}
           size="full"
           direction="leftSide"
           className="navbar__modal-content"
@@ -88,9 +92,7 @@ function Navbar() {
                 aria-label="Go to Faststore home"
                 title="Go to Faststore home"
                 className="navbar__logo"
-                onClick={() => {
-                  onDismissTransition?.()
-                }}
+                onClick={dismissTransition}
               >
                 <Logo />
               </LinkGatsby>
@@ -99,9 +101,7 @@ function Navbar() {
                 classes="navbar__button"
                 aria-label="Close Menu"
                 icon={<XIcon size={32} />}
-                onClick={() => {
-                  onDismissTransition?.()
-                }}
+                onClick={dismissTransition}
               />
             </header>
             <div className="navlinks">
