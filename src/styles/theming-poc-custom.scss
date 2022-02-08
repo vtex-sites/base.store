@@ -19,78 +19,78 @@
 
 .base-store {
   // Color palette
-  --color-neutral-0         : #fff;
-  --color-neutral-1         : #c7ccd1;
-  --color-neutral-2         : #9099a2;
-  --color-neutral-3         : #171a1c;
-  --color-neutral-4         : #000;
+  --color-neutral-0           : #fff;
+  --color-neutral-1           : #c7ccd1;
+  --color-neutral-2           : #9099a2;
+  --color-neutral-3           : #171a1c;
+  --color-neutral-4           : #000;
 
-  --color-primary-0         : #ecf0ff;
-  --color-primary-1         : #d8e2ff;
-  --color-primary-2         : #00419e;
-  --color-primary-3         : #002c71;
-  --color-primary-4         : #001947;
-
-  --color-interactive       : var(--color-primary-2);
-  --color-link              : var(--color-interactive);
-  --color-text              : var(--color-neutral-3);
-  --color-text-inverse      : var(--color-neutral-0);
-  --color-body-bkg          : var(--color-neutral-0);
-  --color-focus-ring        : #8db6fa;
+  --color-primary-0           : #ecf0ff;
+  --color-primary-1           : #d8e2ff;
+  --color-primary-2           : #00419e;
+  --color-primary-3           : #002c71;
+  --color-primary-4           : #001947;
 
   // Semantic colors
-  --success-bkg             : #cee8de;
-  --success-text            : var(--text-color);
+  --color-interactive         : var(--color-primary-2);
+  --color-link                : var(--color-interactive);
+  --color-text                : var(--color-neutral-3);
+  --color-text-inverse        : var(--color-neutral-0);
+  --color-body-bkg            : var(--color-neutral-0);
+  --color-focus-ring          : #8db6fa;
 
-  --highlighted-bkg         : #ebdcff;
-  --highlighted-text        : var(--text-color);
+  --color-success-bkg         : #cee8de;
+  --color-success-text        : var(--text-color);
 
-  --info-bkg                : var(--color-primary-0);
-  --info-text               : var(--text-color);
+  --color-highlighted-bkg     : #ebdcff;
+  --color-highlighted-text    : var(--text-color);
 
-  --neutral-bkg             : var(--color-neutral-1);
-  --neutral-text            : var(--text-color);
+  --color-info-bkg            : var(--color-primary-0);
+  --color-info-text           : var(--text-color);
 
-  --promo-bkg               : #fff68a;
-  --promo-text              : #f2636a;
+  --color-neutral-bkg         : var(--color-neutral-1);
+  --color-neutral-text        : var(--text-color);
 
-  --primary-bkg             : var(--color-primary-4);
-  --primary-bkg-hover       : var(--color-primary-3);
-  --primary-bkg-active      : var(--color-primary-2);
-  --primary-text            : var(--bkg-body)
+  --color-promo-bkg           : #fff68a;
+  --color-promo-text          : #f2636a;
 
-  --secondary-bkg           : var(--bkg-body);
-  --secondary-bkg-hover     : var(--color-primary-0);
-  --secondary-bkg-active    : var(--color-primary-1);
-  --secondary-text          : var(--color-primary-3);
+  --color-primary-bkg         : var(--color-primary-4);
+  --color-primary-bkg-hover   : var(--color-primary-3);
+  --color-primary-bkg-active  : var(--color-primary-2);
+  --color-primary-text        : var(--bkg-body)
 
-  --tertiary-bkg            : var(--bkg-body);
-  --tertiary-bkg-hover      : var(--secondary-bkg-hover);
-  --tertiary-bkg-active     : var(--secondary-bkg-active);
-  --tertiary-text           : var(--text-color-link);
+  --color-secondary-bkg       : var(--bkg-body);
+  --color-secondary-bkg-hover : var(--color-primary-0);
+  --color-secondary-bkg-active: var(--color-primary-1);
+  --color-secondary-text      : var(--color-primary-3);
+
+  --color-tertiary-bkg        : var(--bkg-body);
+  --color-tertiary-bkg-hover  : var(--color-secondary-bkg-hover);
+  --color-tertiary-bkg-active : var(--color-secondary-bkg-active);
+  --color-tertiary-text       : var(--text-color-link);
 
   // Components properties
-  --min-size                : 48px;
+  --min-size                  : 48px;
 
-  --border-radius           : 4px;
-  --border-radius-circle    : 100%;
-  --border-color-input      : var(--color-neutral-2);
-  --border-color-input-hover: var(--color-primary-4);
-  --border-color-card       : var(--color-neutral-1);
-  --border-width-input      : 2px;
-  --border-width-card       : 1px;
+  --border-radius             : 4px;
+  --border-radius-circle      : 100%;
+  --border-color-input        : var(--color-neutral-2);
+  --border-color-input-hover  : var(--color-primary-4);
+  --border-color-card         : var(--color-neutral-1);
+  --border-width-input        : 2px;
+  --border-width-card         : 1px;
 
   // Interactive properties
-  --transition-timing       : .2s;
-  --transition-property     : all;
-  --transition-function     : ease-in-out;
+  --transition-timing         : .2s;
+  --transition-property       : all;
+  --transition-function       : ease-in-out;
 
-  --shadow                  : none;
-  --shadow-hover            : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
+  --shadow                    : none;
+  --shadow-hover              : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
 
   // Typography
-  --font-family: "Lato";
-  font-family: var(--font-family);
+  --font-family               : "Lato";
+  font-family                 : var(--font-family);
 }
 
 /* stylelint-enable */
