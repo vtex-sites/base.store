@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
@@ -41,6 +41,8 @@ type ActiveFacets = {
   accordionIndex: number
 }
 
+type CB = () => unknown
+
 function Filter({
   facets,
   onDismiss,
@@ -50,6 +52,7 @@ function Filter({
 }: FilterProps) {
   const { isMobile } = useWindowDimensions()
   const { toggleFacets, state: searchState } = useSearch()
+  const dismissTransition = useRef<CB | undefined>()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
@@ -63,7 +66,6 @@ function Filter({
     []
   )
 
-  let onDismissTransition: () => unknown
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
   const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
 
@@ -158,7 +160,7 @@ function Filter({
     toggleFacets(facetsToAdd)
 
     setIndicesExpanded(new Set([]))
-    onDismissTransition?.()
+    dismissTransition.current?.()
   }
 
   return !isMobile ? (
@@ -176,7 +178,7 @@ function Filter({
     <SlideOver
       isOpen={isOpen}
       onDismiss={onDismiss}
-      onDismissTransition={(callback) => (onDismissTransition = callback)}
+      onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
       className="filter-modal__content"
@@ -191,7 +193,7 @@ function Filter({
             icon={<XIcon size={32} />}
             onClick={() => {
               setSelectedFacets(searchState.selectedFacets)
-              onDismissTransition?.()
+              dismissTransition.current?.()
             }}
           />
         </header>
