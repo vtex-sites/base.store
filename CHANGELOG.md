@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
+- Replaces `let` declarations for `useRef` for better React compatibility
 
 ### Deprecated
 
