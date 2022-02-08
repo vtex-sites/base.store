@@ -30,7 +30,7 @@
 
     [data-store-button] { margin-top: var(--space-6); }
 
-    .hero-content-wrapper {
+    [data-hero-wrapper] {
       display: flex;
       gap: var(--space-3);
       justify-content: space-between;
@@ -41,7 +41,7 @@
       }
     }
 
-    .hero-content-info {
+    [data-hero-info] {
       @include media(">=tablet") { max-width: 42%; }
     }
   }
@@ -78,7 +78,7 @@
       @include media(">=tablet") { width: 53%; }
     }
 
-    .hero-content-info {
+    [data-hero-info] {
       @include media(">=tablet") { padding-right: var(--space-9); }
     }
   }

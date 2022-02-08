@@ -31,8 +31,8 @@ const Hero = ({
   return (
     <UIHero data-hero-variant={variant}>
       <HeroContent aria-labelledby="hero-heading">
-        <div className="hero-content-wrapper / grid-content">
-          <div className="hero-content-info">
+        <div className="grid-content" data-hero-wrapper>
+          <div data-hero-info>
             <h1 id="hero-heading" className="title-hero">
               {title}
             </h1>
@@ -43,7 +43,7 @@ const Hero = ({
               </LinkButton>
             )}
           </div>
-          {!!icon && <div className="hero-content-icon">{icon}</div>}
+          {!!icon && <div data-hero-icon>{icon}</div>}
         </div>
       </HeroContent>
       <HeroImage>
