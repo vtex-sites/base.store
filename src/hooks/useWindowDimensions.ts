@@ -1,17 +1,25 @@
 import { useState, useEffect, useCallback } from 'react'
 
+/**
+ * This hook should only be used client-side. If used server side, this should throw
+ */
 export default function useWindowDimensions() {
-  const hasWindow = typeof window !== 'undefined'
+  if (process.env.NODE_ENV === 'development' && typeof window === 'undefined') {
+    console.error(
+      'Depending on window dimentions on the server is an anti-pattern and will lead to hydration mismatches. Please refer to the React docs for more info: https://reactjs.org/docs/react-dom.html#hydrate'
+    )
+
+    throw new Error('BadReactUsage')
+  }
+
   // See breakpoints on styles/theme.scss
-  const notebookBreakpoint = hasWindow
-    ? getComputedStyle(document.documentElement).getPropertyValue(
-        '--breakpoint-notebook'
-      )
-    : '1280'
+  const notebookBreakpoint = getComputedStyle(
+    document.documentElement
+  ).getPropertyValue('--breakpoint-notebook')
 
   const getWindowDimensions = useCallback(() => {
-    const width = hasWindow ? window.innerWidth : null
-    const height = hasWindow ? window.innerHeight : null
+    const width = window.innerWidth
+    const height = window.innerHeight
     const isMobile = width ? width < parseInt(notebookBreakpoint, 10) : null
 
     return {
@@ -19,17 +27,13 @@ export default function useWindowDimensions() {
       height,
       isMobile,
     }
-  }, [hasWindow, notebookBreakpoint])
+  }, [notebookBreakpoint])
 
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   )
 
   useEffect(() => {
-    if (!hasWindow) {
-      return undefined
-    }
-
     function handleResize() {
       setWindowDimensions(getWindowDimensions())
     }
@@ -37,7 +41,7 @@ export default function useWindowDimensions() {
     window.addEventListener('resize', handleResize)
 
     return () => window.removeEventListener('resize', handleResize)
-  }, [hasWindow, getWindowDimensions])
+  }, [getWindowDimensions])
 
   return windowDimensions
 }

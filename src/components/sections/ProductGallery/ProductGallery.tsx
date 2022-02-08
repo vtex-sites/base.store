@@ -3,7 +3,6 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useState, lazy, Suspense } from 'react'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import Sort from 'src/components/search/Sort'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import {
   FadersHorizontal as FadersHorizontalIcon,
   ArrowLeft as ArrowLeftIcon,
@@ -30,7 +29,6 @@ function ProductGallery({ title, slug }: Props) {
   const totalCount = useTotalCount(data)
 
   const { next, prev } = usePagination(totalCount)
-  const { isMobile } = useWindowDimensions()
 
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
 
@@ -60,18 +58,17 @@ function ProductGallery({ title, slug }: Props) {
       <div className="product-listing__sort">
         <Sort />
 
-        {isMobile && (
-          <Button
-            variant="tertiary"
-            data-testid="open-filter-button"
-            icon={<FadersHorizontalIcon size={16} />}
-            iconPosition="left"
-            aria-label="Open Filters"
-            onClick={() => setIsFilterOpen(!isFilterOpen)}
-          >
-            Filters
-          </Button>
-        )}
+        <Button
+          className="button display-mobile"
+          variant="tertiary"
+          data-testid="open-filter-button"
+          icon={<FadersHorizontalIcon size={16} />}
+          iconPosition="left"
+          aria-label="Open Filters"
+          onClick={() => setIsFilterOpen(!isFilterOpen)}
+        >
+          Filters
+        </Button>
       </div>
 
       <div className="product-listing__results">
