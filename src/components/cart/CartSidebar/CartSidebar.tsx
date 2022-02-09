@@ -46,8 +46,8 @@ function CartSidebar() {
             isEmpty ? 'cart-sidebar__body--empty' : ''
           }`}
         >
-          <div className="cart-sidebar__fixed-elements">
-            <header className="cart-sidebar__header">
+          <section className="cart-sidebar__fixed-elements">
+            <header>
               <div className="cart-sidebar__title">
                 <p className="title-display">Your Cart</p>
                 <Badge variant="new" small>
@@ -65,7 +65,7 @@ function CartSidebar() {
             <Alert icon={<TruckIcon size={24} />}>
               Free shiping starts at $300
             </Alert>
-          </div>
+          </section>
 
           {isEmpty ? (
             <EmptyCart onDismiss={() => dismissTransition.current?.()} />
@@ -81,7 +81,7 @@ function CartSidebar() {
         </div>
 
         {!isEmpty && (
-          <footer className="cart-sidebar__footer">
+          <footer>
             <OrderSummary
               subTotal={subTotal}
               total={total}
