@@ -39,7 +39,6 @@ function CartSidebar() {
       onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
-      className="cart-sidebar__content"
     >
       <div className="cart-sidebar" data-testid="cart-sidebar">
         <div
