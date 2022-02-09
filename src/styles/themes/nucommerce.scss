@@ -1,0 +1,193 @@
+// ----------------------------------------------------------
+// Theme: NuCommerce
+// ----------------------------------------------------------
+
+/* stylelint-disable */
+.nucommerce {
+  --color-neutral-light     : #fff;
+  --color-neutral           : #c7ccd1;
+  --color-neutral-dark      : #7b7f83;
+
+  --color-primary-lighter   : #ebdcff;
+  --color-primary-light     : #e2cffc;
+  --color-primary           : #8d50fd;
+  --color-primary-dark      : #732fe2;
+  --color-primary-darker    : #5900c8;
+
+  --color-success           : #2c6a52;
+  --color-highlighted       : var(--color-primary-darker);
+  --color-info              : #2d499e;
+  --color-promo             : #FFF68A;
+
+  --bkg-neutral-light       : var(--color-neutral-light);
+  --bkg-neutral             : var(--color-neutral);
+  --bkg-primary-light       : var(--color-primary-lighter);
+  --bkg-primary             : var(--color-primary);
+  --bkg-primary-dark        : var(--color-primary-dark);
+  --bkg-primary-darker      : var(--color-primary-darker);
+
+  --border-radius           : 0;
+  --border-width            : 2px;
+  --shadow                  : none;
+  --text-color              : var(--color-primary-darker);
+  --shadow-hover            : none;
+
+  --font-family: "Roboto Mono";
+  font-family: var(--font-family);
+
+  // Toggle
+  // ----------------------------------------------------------
+
+  [data-base-toggle] {
+    --toggle-height                   : calc(var(--min-size) - 6px);
+    --toggle-shadow                   : var(--shadow);
+    --toggle-border-width             : var(--border-width);
+    --toggle-content                  : "🤙";
+    --toggle-bkg-color                : var(--bkg-primary-light);
+    --toggle-border-color             : var(--bkg-primary-light);
+    --toggle-border-radius            : var(--border-radius);
+    --toggle-knob-bkg-color           : var(--bkg-neutral-light);
+    --toggle-knob-border-color        : var(--bkg-neutral);
+    --toggle-checked-bkg-color        : var(--bkg-primary-darker);
+    --toggle-checked-border-color     : var(--bkg-primary-darker);
+    --toggle-checked-knob-color       : var(--toggle-knob-bkg-color);
+    --toggle-hover-shadow             : var(--shadow-hover);
+    --toggle-hover-border-color       : var(--bkg-primary-darker);
+    --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
+  }
+
+  // Select
+  // ----------------------------------------------------------
+
+  [data-base-select] {
+    --select-height                   : calc(var(--min-size) - 4px);
+    --select-width                    : 7rem;
+    --select-shadow                   : var(--shadow);
+    --select-text-color               : var(--text-color);
+    --select-icon-color               : var(--text-color);
+    --select-bkg-color                : var(--bkg-primary-light);
+    --select-border-radius            : var(--border-radius);
+    --select-border-width             : var(--border-width);
+    --select-border-color             : var(--bkg-primary-light);
+    --select-hover-shadow             : var(--shadow-hover);
+    --select-hover-bkg-color          : var(--bkg-primary-light);
+    --select-hover-border-color       : var(--bkg-primary-darker);
+  }
+
+  // Quantity Selector / Stepper
+  // ----------------------------------------------------------
+
+  [data-store-quantity-selector] {
+    --qty-selector-height                   : calc(var(--min-size) + 10px);
+    --qty-selector-width                    : 9rem;
+    --qty-selector-bkg-color                : var(--bkg-primary-light);
+    --qty-selector-text-color               : var(--text-color);
+    --qty-selector-icon-color               : var(--text-color);
+    --qty-selector-border-radius            : var(--border-radius);
+    --qty-selector-border-width             : var(--border-width);
+    --qty-selector-border-color             : var(--bkg-primary-light);
+    --qty-selector-hover-shadow             : var(--shadow-hover);
+    --qty-selector-hover-button-bkg-color   : var(--bkg-neutral-light);
+    --qty-selector-hover-border-color       : var(--bkg-primary-darker);
+  }
+
+  // Badge
+  // ----------------------------------------------------------
+
+  [data-store-badge] {
+    --badge-border-width             : 3px;
+    --badge-border-radius            : var(--border-radius-pill);
+    --badge-success-bkg-color        : transparent;
+    --badge-success-text-color       : var(--color-success);
+    --badge-success-border-color     : var(--color-success);
+    --badge-highlighted-bkg-color    : transparent;
+    --badge-highlighted-text-color   : var(--color-highlighted);
+    --badge-highlighted-border-color : var(--color-highlighted);
+    --badge-info-bkg-color           : transparent;
+    --badge-info-text-color          : var(--color-info);
+    --badge-info-border-color        : var(--color-info);
+    --badge-neutral-bkg-color        : transparent;
+    --badge-neutral-text-color       : var(--color-neutral-dark);
+    --badge-neutral-border-color     : var(--color-neutral-dark);
+    --badge-promo-bkg-color          : transparent;
+    --badge-promo-border-color       : var(--color-promo);
+  }
+
+  // Button
+  // ----------------------------------------------------------
+
+  [data-store-button] {
+    --button-border-radius                         : var(--border-radius);
+    --button-primary-bkg-color                     : var(--bkg-primary-darker);
+    --button-primary-text-color                    : var(--color-neutral-light);
+    --button-primary-hover-bkg-color               : var(--bkg-primary-dark);
+    --button-primary-active-bkg-color              : var(--bkg-primary);
+    --button-primary-inverse-hover-bkg-color       : var(--bkg-primary-light);
+    --button-primary-inverse-active-bkg-color      : var(--color-primary-light);
+
+    --button-secondary-bkg-color                   : var(--bkg-primary-light);
+    --button-secondary-text-color                  : var(--text-color);
+    --button-secondary-border-color                : transparent;
+    --button-secondary-hover-border-color          : var(--color-primary-darker);
+    --button-secondary-active-border-color         : var(--color-primary-darker);
+
+    --button-secondary-inverse-bkg-color           : var(--bkg-primary-dark);
+    --button-secondary-inverse-active-bkg-color    : var(--bkg-primary);
+    --button-secondary-inverse-border-color        : transparent;
+    --button-secondary-inverse-hover-border-color  : var(--color-neutral-light);
+    --button-secondary-inverse-active-border-color : var(--color-neutral-light);
+
+    --button-tertiary-text-color                   : var(--text-color);
+    --button-tertiary-hover-bkg-color              : var(--bkg-primary-light);
+    --button-tertiary-active-bkg-color             : var(--color-primary-light);
+    --button-tertiary-inverse-hover-bkg-color      : var(--bkg-primary-dark);
+  }
+
+  &.inverse { --bkg-dark: var(--bkg-primary-darker); }
+
+  // Product Card
+  // ----------------------------------------------------------
+
+  [data-base-product-card] {
+    --product-card-min-width                   : 20rem;
+    --product-card-bkg-color                   : var(--bkg-primary-light);
+    --product-card-text-title-color            : var(--text-color);
+    --product-card-text-price-color            : var(--text-color);
+    --product-card-text-price-listing-color    : var(--color-primary);
+    --product-card-border-radius               : var(--border-radius);
+    --product-card-img-radius                  : var(--product-card-border-radius);
+    --product-card-border-width                : 0;
+    --product-card-transition-timing           : .5s;
+    --product-card-hover-shadow                : 0 0 0 3px var(--bkg-primary-darker);
+    --product-card-hover-bkg-color             : var(--product-card-bkg-color);
+  }
+
+  // Hero Section
+  // ----------------------------------------------------------
+
+  [data-store-hero] {
+    --hero-bkg-color : var(--color-primary-bkg);
+    --hero-text-color: var(--color-text-inverse);
+  }
+
+  // Incentives
+  // ----------------------------------------------------------
+
+  [data-base-incentives] {
+    --incentives-text-color       : var(--color-primary-darker);
+    --incentives-text-size        : var(--text-size-0);
+    --incentives-colored-bkg-color: var(--color-primary-lighter);
+    --incentives-divider-color    : var(--color-primary);
+  }
+
+  // Banner
+  // ----------------------------------------------------------
+
+  [data-store-banner] {
+    --banner-text-color       : var(--color-neutral-light);
+    --banner-text-size        : var(--text-size-0);
+    --banner-bkg-color        : var(--color-primary-darker);
+    --banner-divider-color    : var(--color-primary);
+  }
+}
+/* stylelint-enable */

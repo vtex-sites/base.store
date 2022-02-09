@@ -11,7 +11,6 @@ import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeade
 
 import '../styles/pages/index.scss'
 import '../styles/theming-poc.scss'
-import '../styles/theming-poc-custom.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
 

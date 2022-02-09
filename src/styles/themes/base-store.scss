@@ -1,0 +1,223 @@
+// ----------------------------------------------------------
+// Theme: Base Store
+// ----------------------------------------------------------
+
+/* stylelint-disable */
+.base-store {
+  // Color palette
+  --color-neutral-0           : #f1f2f3;
+  --color-neutral-1           : #c7ccd1;
+  --color-neutral-2           : #9099a2;
+  --color-neutral-3           : #171a1c;
+  --color-neutral-4           : #000;
+
+  --color-primary-0           : #ecf0ff;
+  --color-primary-1           : #d8e2ff;
+  --color-primary-2           : #00419e;
+  --color-primary-3           : #002c71;
+  --color-primary-4           : #001947;
+
+  // Semantic colors
+  --color-interactive         : var(--color-primary-2);
+  --color-link                : var(--color-interactive);
+  --color-text                : var(--color-neutral-3);
+  --color-text-inverse        : white;
+  --color-body-bkg            : white;
+  --color-focus-ring          : #8db6fa;
+
+  --color-success-bkg         : #cee8de;
+  --color-success-text        : var(--text-color);
+
+  --color-highlighted-bkg     : #ebdcff;
+  --color-highlighted-text    : var(--text-color);
+
+  --color-info-bkg            : var(--color-primary-0);
+  --color-info-text           : var(--text-color);
+
+  --color-neutral-bkg         : var(--color-neutral-0);
+  --color-neutral-text        : var(--text-color);
+
+  --color-promo-bkg           : #fff68a;
+  --color-promo-text          : #f2636a;
+
+  --color-primary-bkg         : var(--color-primary-4);
+  --color-primary-bkg-hover   : var(--color-primary-3);
+  --color-primary-bkg-active  : var(--color-primary-2);
+  --color-primary-text        : var(--bkg-body)
+
+  --color-secondary-bkg       : var(--bkg-body);
+  --color-secondary-bkg-hover : var(--color-primary-0);
+  --color-secondary-bkg-active: var(--color-primary-1);
+  --color-secondary-text      : var(--color-primary-3);
+
+  --color-tertiary-bkg        : var(--bkg-body);
+  --color-tertiary-bkg-hover  : var(--color-secondary-bkg-hover);
+  --color-tertiary-bkg-active : var(--color-secondary-bkg-active);
+  --color-tertiary-text       : var(--text-color-link);
+
+  // Components properties
+  --min-size                  : 48px;
+
+  --border-radius             : 4px;
+  --border-radius-circle      : 100%;
+  --border-color-input        : var(--color-neutral-2);
+  --border-color-input-hover  : var(--color-primary-4);
+  --border-color-card         : var(--color-neutral-1);
+  --border-color-display      : var(--color-neutral-1);
+  --border-width-input        : 2px;
+  --border-width-card         : 1px;
+
+  // Interactive properties
+  --transition-timing         : .2s;
+  --transition-property       : all;
+  --transition-function       : ease-in-out;
+
+  --shadow                    : none;
+  --shadow-hover              : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
+
+  // Typography
+  --font-family               : "Lato";
+  font-family                 : var(--font-family);
+
+  // Toggle
+  // ----------------------------------------------------------
+
+  [data-base-toggle] {
+    --toggle-bkg-color                : var(--color-neutral-1);
+    --toggle-border-color             : var(--color-neutral-1);
+    --toggle-border-radius            : var(--border-radius);
+    --toggle-border-width             : var(--border-width-input);
+    --toggle-transition-timing        : var(--transition-timing);
+    --toggle-transition-property      : var(--transition-property);
+    --toggle-transition-function      : var(--transition-function);
+    --toggle-knob-bkg-color           : var(--color-body-bkg);
+    --toggle-knob-border-color        : var(--color-body-bkg);
+    --toggle-knob-radius              : var(--border-radius-circle);
+    --toggle-knob-shadow              : var(--shadow);
+    --toggle-checked-bkg-color        : var(--color-interactive);
+    --toggle-checked-knob-border-color: var(--color-interactive);
+    --toggle-hover-border-color       : var(--color-interactive);
+    --toggle-hover-shadow             : var(--shadow-hover);
+    --toggle-hover-bkg-color          : var(--color-secondary-bkg-hover);
+    --toggle-hover-knob-border-color  : var(--color-secondary-bkg-hover);
+  }
+
+  // Select
+  // ----------------------------------------------------------
+
+  [data-base-select] {
+    --select-icon-color               : var(--color-interactive);
+    --select-border-radius            : var(--border-radius);
+    --select-border-color             : var(--border-color-input);
+    --select-border-width             : var(--border-width-input);
+    --select-shadow                   : var(--shadow);
+    --select-hover-shadow             : var(--shadow-hover);
+    --select-hover-bkg-color          : var(--color-secondary-bkg-hover);
+    --select-hover-border-color       : var(--color-interactive);
+    --select-transition-timing        : var(--transition-timing);
+    --select-transition-property      : var(--transition-property);
+    --select-transition-function      : var(--transition-function);
+  }
+
+  // Quantity Selector / Stepper
+  // ----------------------------------------------------------
+
+  [data-store-quantity-selector] {
+    --qty-selector-height                   : calc(var(--min-size) + 10px);
+    --qty-selector-width                    : 9rem;
+    --qty-selector-bkg-color                : var(--bkg-primary-light);
+    --qty-selector-text-color               : var(--text-color);
+    --qty-selector-icon-color               : var(--text-color);
+    --qty-selector-border-radius            : var(--border-radius);
+    --qty-selector-border-width             : var(--border-width-input);
+    --qty-selector-border-color             : var(--border-color-input);
+    --qty-selector-hover-shadow             : var(--shadow-hover);
+    --qty-selector-hover-button-bkg-color   : var(--bkg-neutral-light);
+    --qty-selector-hover-border-color       : var(--color-interactive);
+  }
+
+  // Badge
+  // ----------------------------------------------------------
+
+  [data-store-badge] {
+    --badge-border-radius            : var(--border-radius);
+    --badge-success-bkg-color        : var(--color-success-bkg);
+    --badge-success-text-color       : var(--text);
+    --badge-highlighted-bkg-color    : var(--color-highlighted-bkg);
+    --badge-highlighted-text-color   : var(--text);
+    --badge-info-bkg-color           : var(--color-info-bkg);
+    --badge-info-text-color          : var(--text);
+    --badge-neutral-bkg-color        : var(--color-neutral-bkg);
+    --badge-neutral-text-color       : var(--text);
+    --badge-promo-bkg-color          : var(--color-promo-bkg);
+    --badge-promo-text-color         : var(--color-promo-text);
+  }
+
+  // Button
+  // ----------------------------------------------------------
+
+  [data-store-button] {
+    --button-border-radius                         : var(--border-radius);
+    --button-primary-bkg-color                     : var(--color-primary-bkg);
+    --button-primary-text-color                    : var(--color-text-inverse);
+    --button-primary-hover-bkg-color               : var(--color-primary-bkg-hover);
+    --button-primary-active-bkg-color              : var(--color-primary-bkg-active);
+    --button-primary-inverse-hover-bkg-color       : var(--color-secondary-bkg-hover);
+    --button-primary-inverse-active-bkg-color      : var(--color-secondary-bkg-active);
+    --button-tertiary-text-color                   : var(--color-link);
+    --button-transition-timing                     : var(--transition-timing);
+    --button-transition-property                   : var(--transition-property);
+    --button-transition-function                   : var(--transition-function);
+  }
+
+  &.inverse { --bkg-dark: var(--color-primary-4); }
+
+  // Product Card
+  // ----------------------------------------------------------
+
+  [data-base-product-card] {
+    --product-card-padding                     : var(--space-2) var(--space-2) var(--space-3);
+    --product-card-text-title-weight           : bold;
+    --product-card-border-radius               : var(--border-radius);
+    --product-card-border-width                : var(--border-width-card);
+    --product-card-border-color                : transparent;
+    --product-card-transition-timing           : var(--transition-timing);
+    --product-card-transition-property         : var(--transition-property);
+    --product-card-transition-function         : var(--transition-function);
+    --product-card-img-radius                  : var(--border-radius);
+    --product-card-shadow                      : var(--shadow);
+    --product-card-hover-shadow                : var(--shadow-hover);
+    --product-card-hover-border-color          : var(--border-color-card);
+
+    &[data-card-structure="horizontal"] {
+      --product-card-padding                   : var(--space-2);
+    }
+  }
+
+  // Hero Section
+  // ----------------------------------------------------------
+
+  [data-store-hero] {
+    --hero-bkg-color : var(--color-primary-bkg);
+    --hero-text-color: var(--color-text-inverse);
+  }
+
+  // Incentives
+  // ----------------------------------------------------------
+
+  [data-base-incentives] {
+    --incentives-text-color       : var(--color-text);
+    --incentives-colored-bkg-color: var(--color-info-bkg);
+    --incentives-divider-color    : var(--border-color-display);
+  }
+
+  // Banner
+  // ----------------------------------------------------------
+
+  [data-store-banner] {
+    --banner-text-color       : var(--color-text-inverse);
+    --banner-bkg-color        : var(--color-primary-bkg);
+    --banner-divider-color    : var(--border-color-display);
+  }
+}
+/* stylelint-enable */

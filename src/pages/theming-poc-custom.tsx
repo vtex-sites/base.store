@@ -19,7 +19,6 @@ import Select from '../components/ui/Select'
 import Button from '../components/ui/Button'
 
 import '../styles/theming-poc.scss'
-import '../styles/theming-poc-custom.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
 
