@@ -65,7 +65,11 @@
       height: 100%;
     }
 
-    [data-store-button] { margin-top: var(--space-6); }
+    [data-store-button] {
+      justify-content: space-between;
+      min-width: 11.25rem;
+      margin-top: var(--space-6);
+    }
   }
 
   [data-hero-wrapper] {
