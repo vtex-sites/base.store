@@ -600,4 +600,24 @@
   }
 }
 
+// Banner
+// ----------------------------------------------------------
+
+.base-store {
+  [data-store-banner] {
+    --banner-text-color       : var(--color-text-inverse);
+    --banner-bkg-color        : var(--color-primary-bkg);
+    --banner-divider-color    : var(--border-color-display);
+  }
+}
+
+.nucommerce {
+  [data-store-banner] {
+    --banner-text-color       : var(--color-neutral-light);
+    --banner-text-size        : var(--text-size-0);
+    --banner-bkg-color        : var(--color-primary-darker);
+    --banner-divider-color    : var(--color-primary);
+  }
+}
+
 /* stylelint-enable */
