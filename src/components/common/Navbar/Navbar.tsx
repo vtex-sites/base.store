@@ -9,7 +9,7 @@ import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import { useStoreCollection } from 'src/hooks/useStoreCollection'
+import { useStoreCollection } from 'src/hooks/useAllCollections'
 
 import SearchInput from '../SearchInput'
 
@@ -24,9 +24,13 @@ function NavLinks() {
     <nav className="navlinks__list">
       <UIList>
         {links.map((item) => (
-          <li key={item.name}>
-            <Link variant="display" key={item.href} href={item.href}>
-              {item.name}
+          <li key={item.node.seo.title}>
+            <Link
+              variant="display"
+              key={item.node.slug}
+              href={`/${item.node.slug}`}
+            >
+              {item.node.seo.title}
             </Link>
           </li>
         ))}
