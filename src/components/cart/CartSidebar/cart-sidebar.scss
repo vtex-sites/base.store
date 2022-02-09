@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: auto;
   background-color: var(--bg-neutral-light);
 
   &.cart-sidebar--empty {
