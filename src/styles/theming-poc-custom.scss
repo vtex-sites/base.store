@@ -19,7 +19,7 @@
 
 .base-store {
   // Color palette
-  --color-neutral-0           : #fff;
+  --color-neutral-0           : #f1f2f3;
   --color-neutral-1           : #c7ccd1;
   --color-neutral-2           : #9099a2;
   --color-neutral-3           : #171a1c;
@@ -35,8 +35,8 @@
   --color-interactive         : var(--color-primary-2);
   --color-link                : var(--color-interactive);
   --color-text                : var(--color-neutral-3);
-  --color-text-inverse        : var(--color-neutral-0);
-  --color-body-bkg            : var(--color-neutral-0);
+  --color-text-inverse        : white;
+  --color-body-bkg            : white;
   --color-focus-ring          : #8db6fa;
 
   --color-success-bkg         : #cee8de;
@@ -48,7 +48,7 @@
   --color-info-bkg            : var(--color-primary-0);
   --color-info-text           : var(--text-color);
 
-  --color-neutral-bkg         : var(--color-neutral-1);
+  --color-neutral-bkg         : var(--color-neutral-0);
   --color-neutral-text        : var(--text-color);
 
   --color-promo-bkg           : #fff68a;
