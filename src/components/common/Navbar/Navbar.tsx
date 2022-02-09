@@ -23,10 +23,10 @@ function NavLinks() {
   return (
     <nav className="navlinks__list">
       <UIList>
-        {links.map((item) => (
-          <li key={item.node.seo.title}>
-            <Link variant="display" href={`/${item.node.slug}`}>
-              {item.node.seo.title}
+        {links.map(({ node: link }) => (
+          <li key={link.seo.title}>
+            <Link variant="display" href={`/${link.slug}`}>
+              {link.seo.title}
             </Link>
           </li>
         ))}
