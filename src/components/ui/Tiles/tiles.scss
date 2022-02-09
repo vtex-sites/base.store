@@ -19,7 +19,10 @@
   height: 24rem;
   border-radius: var(--border-radius-default);
 
-  [data-store-card] {
+  [data-base-product-card] {
+    --product-card-bkg-color: var(--color-neutral-bkg);
+    --product-card-hover-bkg-color: var(--color-neutral-bkg);
+
     width: 100%;
     min-width: 100%;
     max-width: 100%;
@@ -58,7 +61,11 @@
       }
     }
 
-    [data-card-image] { overflow: hidden; }
+    [data-card-image] {
+      overflow: hidden;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
 
     [data-card-content] {
       flex-direction: column;
