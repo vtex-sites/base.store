@@ -40,7 +40,10 @@ function CartSidebar() {
       size="partial"
       direction="rightSide"
     >
-      <div className="cart-sidebar" data-testid="cart-sidebar">
+      <div
+        className={`cart-sidebar ${isEmpty ? 'cart-sidebar--empty' : ''}`}
+        data-testid="cart-sidebar"
+      >
         <header>
           <div className="cart-sidebar__title">
             <p className="title-display">Your Cart</p>
@@ -60,14 +63,10 @@ function CartSidebar() {
           Free shiping starts at $300
         </Alert>
 
-        <div
-          className={`cart-sidebar__body ${
-            isEmpty ? 'cart-sidebar__body--empty' : ''
-          }`}
-        >
-          {isEmpty ? (
-            <EmptyCart onDismiss={() => dismissTransition.current?.()} />
-          ) : (
+        {isEmpty ? (
+          <EmptyCart onDismiss={() => dismissTransition.current?.()} />
+        ) : (
+          <>
             <List>
               {items.map((item) => (
                 <li key={item.id}>
@@ -75,28 +74,26 @@ function CartSidebar() {
                 </li>
               ))}
             </List>
-          )}
-        </div>
 
-        {!isEmpty && (
-          <footer>
-            <OrderSummary
-              subTotal={subTotal}
-              total={total}
-              numberOfItems={totalItems}
-              checkoutButton={
-                <Button
-                  data-cart-checkout-button
-                  variant="primary"
-                  icon={!isValidating && <ArrowRightIcon size={18} />}
-                  iconPosition="right"
-                  {...btnProps}
-                >
-                  {isValidating ? 'Loading...' : 'Checkout'}
-                </Button>
-              }
-            />
-          </footer>
+            <footer>
+              <OrderSummary
+                subTotal={subTotal}
+                total={total}
+                numberOfItems={totalItems}
+                checkoutButton={
+                  <Button
+                    data-cart-checkout-button
+                    variant="primary"
+                    icon={!isValidating && <ArrowRightIcon size={18} />}
+                    iconPosition="right"
+                    {...btnProps}
+                  >
+                    {isValidating ? 'Loading...' : 'Checkout'}
+                  </Button>
+                }
+              />
+            </footer>
+          </>
         )}
       </div>
     </SlideOver>

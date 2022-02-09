@@ -8,6 +8,10 @@
   height: 100%;
   background-color: var(--bg-neutral-light);
 
+  &.cart-sidebar--empty {
+    background-color: var(--bg-neutral-lightest);
+  }
+
   header {
     display: flex;
     align-items: center;
@@ -30,22 +34,15 @@
     }
   }
 
-  .cart-sidebar__body {
+  > [data-store-list] {
+    padding: var(--page-padding-phone);
     overflow: auto;
 
-    &.cart-sidebar__body--empty {
+    li {
       background-color: var(--bg-neutral-lightest);
-    }
 
-    [data-store-list] {
-      padding: var(--page-padding-phone);
-
-      li {
-        background-color: var(--bg-neutral-lightest);
-
-        &:not(:first-of-type) {
-          margin-top: var(--space-3);
-        }
+      &:not(:first-of-type) {
+        margin-top: var(--space-3);
       }
     }
   }
