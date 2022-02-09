@@ -12,8 +12,6 @@ import useWindowDimensions from 'src/hooks/useWindowDimensions'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
-import { useOrderedFacets } from './useOrderedFacets'
-import { useTotalCount } from './useTotalCount'
 
 import './product-gallery.scss'
 
@@ -25,15 +23,10 @@ interface Props {
 function ProductGallery({ title, slug }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
-
-  const totalCount = useTotalCount(data)
-
+  const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
   const { isMobile } = useWindowDimensions()
-
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-
-  const orderedFacets = useOrderedFacets(data)
 
   return (
     <>
@@ -41,7 +34,7 @@ function ProductGallery({ title, slug }: Props) {
         <Filter
           slug={slug}
           isOpen={isFilterOpen}
-          facets={orderedFacets}
+          facets={data?.search.facets ?? []}
           onDismiss={() => setIsFilterOpen(false)}
         />
       </div>
