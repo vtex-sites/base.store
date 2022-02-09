@@ -1,8 +1,4 @@
 .cart-sidebar {
-  [data-cart-checkout-button] {
-    width: 100%;
-  }
-
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -51,5 +47,9 @@
     margin-top: auto;
     background-color: var(--bg-neutral-lightest);
     box-shadow: 0 0 6px rgb(0 0 0 / 20%);
+
+    [data-store-button] {
+      width: 100%;
+    }
   }
 }

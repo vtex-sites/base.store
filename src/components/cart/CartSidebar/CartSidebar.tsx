@@ -82,7 +82,6 @@ function CartSidebar() {
                 numberOfItems={totalItems}
                 checkoutButton={
                   <Button
-                    data-cart-checkout-button
                     variant="primary"
                     icon={!isValidating && <ArrowRightIcon size={18} />}
                     iconPosition="right"
