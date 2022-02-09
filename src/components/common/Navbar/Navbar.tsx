@@ -2,6 +2,7 @@ import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
 import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import React, { useRef, useState } from 'react'
+import type { AnchorHTMLAttributes } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import IconButton from 'src/components/ui/IconButton'
 import Link from 'src/components/ui/Link'
@@ -10,7 +11,7 @@ import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
-import type { AnchorHTMLAttributes } from 'react'
+import RegionInput from 'src/components/common/Region/RegionInput'
 
 import SearchInput from '../SearchInput'
 
@@ -70,6 +71,7 @@ function Navbar() {
           </div>
         </section>
         <NavLinks />
+        <RegionInput />
       </div>
 
       <SlideOver
@@ -103,6 +105,7 @@ function Navbar() {
           </header>
           <div className="navlinks">
             <NavLinks onClickLink={handleCloseSlideOver} />
+            <RegionInput />
             <div className="navlinks__signin">
               <SignInLink />
             </div>
