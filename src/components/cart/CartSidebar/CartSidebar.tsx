@@ -12,6 +12,7 @@ import { Badge } from 'src/components/ui/Badge'
 import Alert from 'src/components/ui/Alert'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useUI } from 'src/sdk/ui'
+import { List } from '@faststore/ui'
 
 import CartItem from '../CartItem'
 import OrderSummary from '../OrderSummary'
@@ -70,11 +71,13 @@ function CartSidebar() {
           {isEmpty ? (
             <EmptyCart onDismiss={() => dismissTransition.current?.()} />
           ) : (
-            <div className="cart-sidebar__items">
+            <List className="cart-sidebar__items">
               {items.map((item) => (
-                <CartItem key={item.id} item={item} />
+                <li key={item.id}>
+                  <CartItem item={item} />
+                </li>
               ))}
-            </div>
+            </List>
           )}
         </div>
 
