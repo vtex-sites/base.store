@@ -15,6 +15,18 @@
   &.cart-sidebar__body--empty {
     background-color: var(--bg-neutral-lightest);
   }
+
+  [data-store-list] {
+    padding: var(--page-padding-phone);
+
+    li {
+      background-color: var(--bg-neutral-lightest);
+
+      &:not(:first-of-type) {
+        margin-top: var(--space-3);
+      }
+    }
+  }
 }
 
 .cart-sidebar__fixed-elements {
@@ -42,18 +54,6 @@
   p {
     margin-right: var(--space-2);
     line-height: 1.35;
-  }
-}
-
-.cart-sidebar__items {
-  padding: var(--page-padding-phone);
-
-  li {
-    background-color: var(--bg-neutral-lightest);
-
-    &:not(:first-of-type) {
-      margin-top: var(--space-3);
-    }
   }
 }
 

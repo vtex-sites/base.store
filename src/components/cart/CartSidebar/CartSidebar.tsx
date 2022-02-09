@@ -71,7 +71,7 @@ function CartSidebar() {
           {isEmpty ? (
             <EmptyCart onDismiss={() => dismissTransition.current?.()} />
           ) : (
-            <List className="cart-sidebar__items">
+            <List>
               {items.map((item) => (
                 <li key={item.id}>
                   <CartItem item={item} />
