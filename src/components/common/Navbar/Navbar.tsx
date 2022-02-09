@@ -11,7 +11,7 @@ import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
-import RegionInput from 'src/components/common/Region/RegionInput'
+import PostalCodeInput from 'src/components/common/PostalCode'
 
 import SearchInput from '../SearchInput'
 
@@ -71,9 +71,10 @@ function Navbar() {
           </div>
         </section>
         <NavLinks />
-        <RegionInput />
+        <PostalCodeInput />
       </div>
 
+<<<<<<< HEAD
       <SlideOver
         isOpen={showMenu}
         onDismiss={handleCloseSlideOver}
@@ -108,6 +109,21 @@ function Navbar() {
             <RegionInput />
             <div className="navlinks__signin">
               <SignInLink />
+=======
+              <IconButton
+                classes="navbar__button"
+                aria-label="Close Menu"
+                icon={<XIcon size={32} />}
+                onClick={() => dismissTransition.current?.()}
+              />
+            </header>
+            <div className="navlinks">
+              <NavLinks onClickLink={handleCloseSlideOver} />
+              <PostalCodeInput />
+              <div className="navlinks__signin">
+                <SignInLink />
+              </div>
+>>>>>>> e665bfec (Rename from Region to PostalCode)
             </div>
           </div>
         </div>

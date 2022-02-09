@@ -3,9 +3,9 @@ import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import type { ChangeEvent, KeyboardEvent } from 'react'
 import useRegion from 'src/hooks/useRegion'
 
-const REGION_INPUT_ID = 'region-input'
+const REGION_INPUT_ID = 'postal-code-input'
 
-export default function RegionInput() {
+export default function PostalCodeInput() {
   const [postalCode, setPostalCodeState] = useState<string>('')
   const [, setPostalCode] = useRegion()
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
