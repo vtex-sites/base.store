@@ -1,10 +1,33 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-banner] {
+
+  // Design Tokens for Banner Section
+  // --------------------------------------------------------
+
+  /* stylelint-disable */
+  // Default properties
+  --banner-bkg-color          : black;
+  --banner-text-color         : white;
+
+  --banner-title-color        : var(--banner-text-color);
+  --banner-title-size         : var(--text-size-3);
+  --banner-title-size-desk    : var(--text-size-6);
+  --banner-title-line         : 1.25;
+
+  --banner-caption-color      : var(--banner-text-color);
+  --banner-caption-size       : var(--text-size-2);
+  --banner-caption-size-desk  : var(--text-size-4);
+  --banner-caption-line       : 1.5;
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
+
   padding-top: var(--space-6);
   padding-bottom: var(--space-6);
   text-align: center;
-  background-color: var(--color-secondary-4);
+  background-color: var(--banner-bkg-color);
 
   [data-banner-content] {
     display: flex;
@@ -13,25 +36,29 @@
   }
 
   h2, p {
-    display: inline;
-    color: var(--color-text-inverse);
-
-    @include media(">=notebook") { display: block; }
+    color: var(--banner-text-color);
   }
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 11.25rem;
-    margin-top: var(--space-5);
-    padding: var(--space-1) var(--space-4);
-    color: var(--color-secondary-4);
+  h2 {
+    color: var(--banner-title-color);
     font-weight: var(--text-weight-bold);
-    font-size: var(--space-3);
-    text-decoration: none;
-    background: var(--bg-neutral-lightest);
-    border-radius: var(--border-radius-default);
+    font-size: var(--banner-title-size);
+    line-height: var(--banner-title-line);
+
+    @include media(">=notebook") { font-size: var(--banner-title-size-desk); }
+  }
+
+  p {
+    margin-top: var(--space-0);
+    color: var(--banner-caption-color);
+    font-size: var(--banner-caption-size);
+    line-height: var(--banner-caption-line);
+
+    @include media(">=notebook") { font-size: var(--banner-caption-size-desk); }
+  }
+
+  [data-banner-link] a {
+    margin-top: var(--space-5);
 
     @include media(">=notebook") {
       margin-top: var(--space-7);
