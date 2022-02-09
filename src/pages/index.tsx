@@ -24,7 +24,6 @@ function Page(props: Props) {
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
   const products = allStoreProduct?.nodes
-  const haveProducts = products && products?.length > 0
 
   return (
     <>
@@ -73,23 +72,19 @@ function Page(props: Props) {
         <IncentivesHeader />
       </section>
 
-      {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Most Wanted</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products.slice(0, 5)} />
-          </div>
-        </section>
-      )}
+      <section className="page__section page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Most Wanted</h2>
+        <div className="page__section-content">
+          <ProductShelf products={products?.slice(0, 5)} />
+        </div>
+      </section>
 
-      {haveProducts && (
-        <section className="page__section / grid-section grid-content">
-          <h2 className="title-section">Just Arrived</h2>
-          <div className="page__section-content">
-            <ProductTiles products={products.slice(5, 8)} />
-          </div>
-        </section>
-      )}
+      <section className="page__section / grid-section grid-content">
+        <h2 className="title-section">Just Arrived</h2>
+        <div className="page__section-content">
+          <ProductTiles products={products?.slice(5, 8)} />
+        </div>
+      </section>
 
       <section className="page__section / grid-section">
         <BannerText
@@ -100,14 +95,12 @@ function Page(props: Props) {
         />
       </section>
 
-      {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Deals & Promotions</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products.slice(9, 14)} />
-          </div>
-        </section>
-      )}
+      <section className="page__section page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Deals & Promotions</h2>
+        <div className="page__section-content">
+          <ProductShelf products={products?.slice(9, 14)} />
+        </div>
+      </section>
     </>
   )
 }

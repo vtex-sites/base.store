@@ -2,6 +2,13 @@ import React from 'react'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 import ProductCard from 'src/components/product/ProductCard'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import ProductTileSkeleton from 'src/components/skeletons/ProductTileSkeleton'
+
+const SKELETON_PRODUCTS: Readonly<JSX.Element[]> = [
+  <ProductTileSkeleton key="0" tileIndex={1} variant="horizontal" />,
+  <ProductTileSkeleton key="1" tileIndex={2} variant="horizontal" />,
+  <ProductTileSkeleton key="2" tileIndex={3} variant="horizontal" />,
+]
 
 interface TilesProps {
   products: ProductSummary_ProductFragment[]
