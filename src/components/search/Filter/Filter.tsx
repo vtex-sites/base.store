@@ -72,10 +72,9 @@ function Filter({
     const checkFacetIsSlug = ({ value }: { value: string }) => value === slug
 
     return facets.filter((facet) => {
-      const hasSlug = facet.values.some(checkFacetIsSlug)
       const isBoolean = facet.type === 'BOOLEAN'
 
-      return isBoolean && !hasSlug
+      return isBoolean && !facet.values.some(checkFacetIsSlug)
     })
   }, [facets, slug])
 
