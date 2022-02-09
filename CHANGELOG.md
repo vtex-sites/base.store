@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 - Unnecessary map at hooks
+- Unnecessary hooks from plp
 - API style redirects from `/_v/private/graphql` since they have no effect
 
 ### Fixed
