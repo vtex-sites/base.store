@@ -14,11 +14,16 @@ interface Incentive {
 interface Props {
   incentives: Incentive[]
   classes?: string
+  colored?: boolean
 }
 
-function Incentives({ incentives, classes = '' }: Props) {
+function Incentives({ incentives, colored, classes = '' }: Props) {
   return (
-    <div className={`incentives ${classes} / grid-content-full`}>
+    <div
+      data-base-incentives="true"
+      data-base-incentives-colored={colored}
+      className={`incentives ${classes} / grid-content-full`}
+    >
       <UIList variant="unordered" className="grid-content">
         {incentives.map((incentive, index) => (
           <li key={String(index)}>

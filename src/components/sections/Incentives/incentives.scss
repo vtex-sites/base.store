@@ -1,6 +1,36 @@
 @import "../../../styles/scaffold";
 
-.incentives {
+[data-base-incentives] {
+
+  // Design Tokens for Incentives Section
+  // --------------------------------------------------------
+
+  /* stylelint-disable */
+  // Default properties
+  --incentives-text-color           : var(--color-neutral-7);
+  --incentives-text-size            : var(--text-size-1);
+  --incentives-bkg-color            : transparent;
+
+  --incentives-colored-bkg-color    : var(--color-neutral-0);
+
+  --incentives-divider-color        : var(--color-neutral-2);
+
+  --incentives-icon-color           : var(--incentives-text-color);
+
+  --incentives-title-color          : var(--incentives-text-color);
+  --incentives-title-size           : var(--incentives-text-size);
+  --incentives-title-line           : 1.42;
+
+  --incentives-description-color    : var(--incentives-text-color);
+  --incentives-description-size     : var(--incentives-text-size);
+  --incentives-description-line     : 1.14;
+  /* stylelint-enable */
+
+  // Structural Styles
+  // --------------------------------------------------------
+
+  background-color: var(--incentives-bkg-color);
+
   [data-store-list] {
     display: flex;
     overflow-x: auto;
@@ -37,7 +67,7 @@
 
     li {
       &:not(:last-child) {
-        border-right: 1px solid var(--color-border-display);
+        border-right: 1px solid var(--incentives-divider-color);
       }
     }
   }
@@ -48,28 +78,29 @@
     align-items: center;
     justify-content: center;
 
-    p, span {
-      font-size: var(--text-size-1);
+    [data-incentive-content] {
+      font-size: var(--incentives-text-size);
+      text-align: center;
     }
 
+    svg { color: var(--incentives-icon-color); }
+
     p {
+      color: var(--incentives-title-color);
       font-weight: var(--text-weight-bold);
-      line-height: 1.42;
+      font-size: var(--incentives-title-size);
+      line-height: var(--incentives-title-line);
     }
 
     span {
       display: block;
-      line-height: 1.14;
+      color: var(--incentives-description-color);
+      font-size: var(--incentives-description-size);
+      line-height: var(--incentives-description-line);
       white-space: nowrap;
     }
 
-    [data-incentive-content] {
-      text-align: center;
-    }
-
-    @include media("<notebook") {
-      row-gap: var(--space-0);
-    }
+    @include media("<notebook") { row-gap: var(--space-0); }
 
     @include media(">=notebook") {
       flex-direction: row;
@@ -81,8 +112,6 @@
       }
     }
   }
-
-  &.incentives--colored {
-    background-color: var(--bg-secondary-light);
-  }
 }
+
+[data-base-incentives-colored="true"] { background-color: var(--incentives-colored-bkg-color); }
