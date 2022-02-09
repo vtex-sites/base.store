@@ -853,6 +853,7 @@ export type Query = {
   file: Maybe<File>
   product: StoreProduct
   search: StoreSearchResult
+  session: Session
   site: Maybe<Site>
   siteBuildMetadata: Maybe<SiteBuildMetadata>
   siteFunction: Maybe<SiteFunction>
@@ -1131,6 +1132,10 @@ export type QueryStoreProductArgs = {
   seo: InputMaybe<StoreSeoFilterInput>
   sku: InputMaybe<StringQueryOperatorInput>
   slug: InputMaybe<StringQueryOperatorInput>
+}
+
+export type Session = {
+  id: Scalars['String']
 }
 
 export type Site = Node & {
@@ -3953,3 +3958,7 @@ export type ProductsQueryQuery = {
     }
   }
 }
+
+export type SessionQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type SessionQueryQuery = { session: { id: string } }

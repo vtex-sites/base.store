@@ -1,13 +1,11 @@
 import React from 'react'
 import Icon from 'src/components/ui/Icon'
-import { useSession } from '@faststore/sdk'
+import { useSessionQuery } from 'src/sdk/session/useSessionQuery'
 
 import { LinkButton } from '../Button'
 
 const SignInLink: React.FC = () => {
-  const { user } = useSession()
-
-  const isAuthenticated = user !== null
+  const session = useSessionQuery()
 
   return (
     <LinkButton
@@ -17,7 +15,7 @@ const SignInLink: React.FC = () => {
       variant="tertiary"
     >
       <Icon name="User" width={18} height={18} weight="bold" />
-      <span>{isAuthenticated ? 'My Account' : 'Sign In'}</span>
+      <span>{session ? 'My Account' : 'Sign In'}</span>
     </LinkButton>
   )
 }
