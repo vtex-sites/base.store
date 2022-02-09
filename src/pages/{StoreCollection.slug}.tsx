@@ -7,7 +7,7 @@ import Hero from 'src/components/sections/Hero'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import { BreadcrumbWrapper } from 'src/components/ui/Breadcrumb'
+import Breadcrumb from 'src/components/sections/Breadcrumb'
 import type { Props } from 'src/hooks/useSearchParams'
 import { useSearchParams } from 'src/hooks/useSearchParams'
 import ProductListing from 'src/components/sections/ProductListing'
@@ -73,10 +73,12 @@ function Page(props: Props) {
       */}
 
       <div className="product-listing__breadcrumb / grid-content">
-        <BreadcrumbWrapper
-          breadcrumbList={collection?.breadcrumbList.itemListElement}
-          name={title}
-        />
+        <section>
+          <Breadcrumb
+            breadcrumbList={collection?.breadcrumbList.itemListElement}
+            name={title}
+          />
+        </section>
       </div>
 
       <div className="product-listing__hero">
