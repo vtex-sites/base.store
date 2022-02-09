@@ -1,5 +1,6 @@
 import React from 'react'
 import { XCircle as XCircleIcon } from 'phosphor-react'
+import { Card } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
@@ -20,7 +21,7 @@ function CartItem({ item }: Props) {
   const { updateItemQuantity } = useCart()
 
   return (
-    <article
+    <Card
       className="cart-item"
       data-cart-item
       data-testid="cart-item"
@@ -81,7 +82,7 @@ function CartItem({ item }: Props) {
           onChange={(quantity) => updateItemQuantity(item.id, quantity)}
         />
       </footer>
-    </article>
+    </Card>
   )
 }
 
