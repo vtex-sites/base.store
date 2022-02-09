@@ -1,10 +1,9 @@
-import type { StoreCollectionQuery } from '@generated/graphql'
 import { graphql, useStaticQuery } from 'gatsby'
-import { useMemo } from 'react'
+import type { StoreCollectionQuery } from '@generated/graphql'
 
 export const useStoreCollection = () => {
   const {
-    allStoreCollection: { edges },
+    allStoreCollection: { edges: collections },
   } = useStaticQuery<StoreCollectionQuery>(graphql`
     query StoreCollection {
       allStoreCollection(filter: { type: { eq: Department } }) {
@@ -20,12 +19,5 @@ export const useStoreCollection = () => {
     }
   `)
 
-  return useMemo(
-    () =>
-      edges.map((e) => ({
-        name: e.node.seo.title,
-        href: `/${e.node.slug}`,
-      })),
-    [edges]
-  )
+  return collections
 }
