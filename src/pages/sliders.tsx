@@ -3,6 +3,7 @@ import Slider from 'src/components/ui/Slider'
 import { graphql } from 'gatsby'
 import type { PageProps } from 'gatsby'
 import type { SlidersPageQueryQuery } from '@generated/graphql'
+import { Image } from 'src/components/ui/Image'
 
 export type Props = PageProps<SlidersPageQueryQuery>
 
@@ -19,12 +20,40 @@ function Page(props: Props) {
         <h1>React Slick</h1>
 
         <p>Total: 10 | Show: 3</p>
-        <Slider products={products.slice(0, 10)} />
+        <Slider>
+          {products.slice(0, 10).map((product) => (
+            <Image
+              baseUrl={product.image[0].url}
+              alt={product.name}
+              key={`${product.id}`}
+              layout="fullWidth"
+              backgroundColor="#f0f0f0"
+              loading="eager"
+              options={{
+                fitIn: true,
+              }}
+            />
+          ))}
+        </Slider>
         <br />
         <br />
 
-        <p>Total: 3 | Show: 3</p>
-        <Slider show={3} products={products.slice(3, 6)} />
+        <p>Total: 6 | Show: 3</p>
+        <Slider>
+          {products.slice(0, 7).map((product) => (
+            <Image
+              baseUrl={product.image[0].url}
+              alt={product.name}
+              key={`${product.id}`}
+              layout="fullWidth"
+              backgroundColor="#f0f0f0"
+              loading="eager"
+              options={{
+                fitIn: true,
+              }}
+            />
+          ))}
+        </Slider>
       </section>
     </>
   )
