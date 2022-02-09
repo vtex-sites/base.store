@@ -4,7 +4,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 14rem;
   height: 100%;
   padding: var(--space-1) var(--space-1) var(--space-2);
   overflow: hidden;
@@ -22,16 +21,17 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding: var(--space-3);
     }
   }
 
   [data-element-variant="image"] {
     min-width: 100%;
-    min-height: 162px;
-    max-height: 607px;
+    min-height: 45vw;
 
-    @include media(">=notebook") { height: 190px; }
+    @include media(">=notebook") {
+      height: 190px;
+      min-height: unset;
+    }
   }
 
   [data-product-card-skeleton-content] {
