@@ -41,32 +41,30 @@ function CartSidebar() {
       direction="rightSide"
     >
       <div className="cart-sidebar" data-testid="cart-sidebar">
+        <header>
+          <div className="cart-sidebar__title">
+            <p className="title-display">Your Cart</p>
+            <Badge variant="new" small>
+              {totalItems}
+            </Badge>
+          </div>
+          <IconButton
+            data-testid="cart-sidebar-button-close"
+            classes="cart-sidebar__button"
+            aria-label="Close Cart"
+            icon={<XIcon size={32} />}
+            onClick={() => dismissTransition.current?.()}
+          />
+        </header>
+        <Alert icon={<TruckIcon size={24} />}>
+          Free shiping starts at $300
+        </Alert>
+
         <div
           className={`cart-sidebar__body ${
             isEmpty ? 'cart-sidebar__body--empty' : ''
           }`}
         >
-          <section className="cart-sidebar__fixed-elements">
-            <header>
-              <div className="cart-sidebar__title">
-                <p className="title-display">Your Cart</p>
-                <Badge variant="new" small>
-                  {totalItems}
-                </Badge>
-              </div>
-              <IconButton
-                data-testid="cart-sidebar-button-close"
-                classes="cart-sidebar__button"
-                aria-label="Close Cart"
-                icon={<XIcon size={32} />}
-                onClick={() => dismissTransition.current?.()}
-              />
-            </header>
-            <Alert icon={<TruckIcon size={24} />}>
-              Free shiping starts at $300
-            </Alert>
-          </section>
-
           {isEmpty ? (
             <EmptyCart onDismiss={() => dismissTransition.current?.()} />
           ) : (
