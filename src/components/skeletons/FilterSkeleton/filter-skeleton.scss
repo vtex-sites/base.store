@@ -1,9 +1,9 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-filter-skeleton] {
-  @include media("<notebook") {
-    display: none;
-  }
+  margin-top: var(--space-1);
+
+  @include media("<notebook") { display: none; }
 
   [data-filter-skeleton-content] {
     position: relative;
