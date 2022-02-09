@@ -580,4 +580,24 @@
   }
 }
 
+// Incentives
+// ----------------------------------------------------------
+
+.base-store {
+  [data-base-incentives] {
+    --incentives-text-color       : var(--color-text);
+    --incentives-colored-bkg-color: var(--color-info-bkg);
+    --incentives-divider-color    : var(--border-color-display);
+  }
+}
+
+.nucommerce {
+  [data-base-incentives] {
+    --incentives-text-color       : var(--color-primary-darker);
+    --incentives-text-size        : var(--text-size-0);
+    --incentives-colored-bkg-color: var(--color-primary-lighter);
+    --incentives-divider-color    : var(--color-primary);
+  }
+}
+
 /* stylelint-enable */
