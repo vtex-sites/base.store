@@ -1,37 +1,35 @@
 /* eslint-disable react/jsx-filename-extension */
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
-import { GoogleTagManager, Partytown } from '@builder.io/partytown/react'
+import { Partytown } from '@builder.io/partytown/react'
 
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
+import { googleTagManager } from './src/sdk/analytics/googleTagManager'
 import { validateCart } from './src/sdk/cart/validate'
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element }) => {
-  return (
-    <ErrorBoundary>
-      <AnalyticsHandler>
-        <TestProvider>
-          <UIProvider
-            initialState={uiInitialState}
-            actions={uiActions}
-            effects={uiEffects}
-          >
-            <SessionProvider initialState={{ channel: storeConfig.channel }}>
-              <CartProvider mode="optimistic" onValidateCart={validateCart}>
-                {element}
-              </CartProvider>
-            </SessionProvider>
-          </UIProvider>
-        </TestProvider>
-      </AnalyticsHandler>
-    </ErrorBoundary>
-  )
-}
+export const wrapRootElement = ({ element }) => (
+  <ErrorBoundary>
+    <AnalyticsHandler />
+    <TestProvider>
+      <UIProvider
+        initialState={uiInitialState}
+        actions={uiActions}
+        effects={uiEffects}
+      >
+        <SessionProvider initialState={{ channel: storeConfig.channel }}>
+          <CartProvider mode="optimistic" onValidateCart={validateCart}>
+            {element}
+          </CartProvider>
+        </SessionProvider>
+      </UIProvider>
+    </TestProvider>
+  </ErrorBoundary>
+)
 
 export const wrapPageElement = ({ element }) => {
   return <Layout>{element}</Layout>
@@ -43,11 +41,37 @@ export const onRenderBody = ({ setHeadComponents }) => {
 
   if (storeConfig.analytics.gtmContainerId) {
     addPartytown = true
+    forward.push('dataLayer.push')
+
+    // The first script adds the GTM script to partytown. It is meant for when regular users
+    // are browsing the website, so that loading and executing it doesn't affect performance
+    //
+    // The second script is meant for GTM debugging. Since debugging GTM inside partytown still doesn't work,
+    // it is only executed when the url includes the gtm_debug query string.
+    //
+    // Since the query string isn't accessible during SSR, the decision of which script should be executed
+    // is bundled with the script, and that's why we need to include both. The script isn't GTM itself, but
+    // the code who will, after being executed, add the GTM script to the page.
     setHeadComponents([
-      <GoogleTagManager
+      <script
+        key="gtm.partytown"
+        type="text/partytown"
+        dangerouslySetInnerHTML={{
+          __html: googleTagManager({
+            containerId: storeConfig.analytics.gtmContainerId,
+            partytownScript: true,
+          }),
+        }}
+      />,
+      <script
         key="gtm"
-        containerId={storeConfig.analytics.gtmContainerId}
-        enablePartytown
+        type="text/javascript"
+        dangerouslySetInnerHTML={{
+          __html: googleTagManager({
+            containerId: storeConfig.analytics.gtmContainerId,
+            partytownScript: false,
+          }),
+        }}
       />,
     ])
   } else if (process.env.NODE_ENV === 'development') {

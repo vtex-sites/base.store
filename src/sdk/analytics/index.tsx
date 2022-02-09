@@ -1,6 +1,5 @@
 import type { AnalyticsEvent } from '@faststore/sdk'
 import { useAnalyticsEvent } from '@faststore/sdk'
-import type { PropsWithChildren } from 'react'
 
 import storeConfig from '../../../store.config'
 
@@ -8,8 +7,14 @@ if (typeof window !== 'undefined') {
   window.dataLayer = window.dataLayer ?? []
 }
 
-export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
+export const AnalyticsHandler = () => {
   useAnalyticsEvent((event: AnalyticsEvent) => {
+    // Cleans the ecommerce object before pushing a new one
+    // This prevents the new data from getting perged with the previous one
+    // which could lead do inacurate and old data being sent with events
+    //
+    // source: https://developers.google.com/tag-manager/ecommerce-ga4?hl=pt-br#clearing_the_ecommerce_object
+    window.dataLayer.push({ ecommerce: null })
     window.dataLayer.push({ event: event.name, ecommerce: event.params })
 
     import(`./platform/${storeConfig.platform}`).then(
@@ -19,7 +24,7 @@ export const AnalyticsHandler = ({ children }: PropsWithChildren<unknown>) => {
     )
   })
 
-  return children
+  return null
 }
 
 export default AnalyticsHandler
