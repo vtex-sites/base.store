@@ -25,11 +25,7 @@ function NavLinks() {
       <UIList>
         {links.map((item) => (
           <li key={item.node.seo.title}>
-            <Link
-              variant="display"
-              key={item.node.slug}
-              href={`/${item.node.slug}`}
-            >
+            <Link variant="display" href={`/${item.node.slug}`}>
               {item.node.seo.title}
             </Link>
           </li>
