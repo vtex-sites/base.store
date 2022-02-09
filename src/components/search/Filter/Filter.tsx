@@ -67,9 +67,12 @@ function Filter({
   )
 
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
+
   const filteredFacets = useMemo(() => {
+    const checkFacetIsSlug = ({ value }: { value: string }) => value === slug
+
     return facets.filter((facet) => {
-      const hasSlug = facet.values.some(({ value }) => value === slug)
+      const hasSlug = facet.values.some(checkFacetIsSlug)
       const isBoolean = facet.type === 'BOOLEAN'
 
       return isBoolean && !hasSlug
