@@ -31,7 +31,6 @@
     "@faststore/sdk": "https://pkg.csb.dev/vtex/faststore/commit/d900804c/@faststore/sdk",
     "@faststore/ui": "https://pkg.csb.dev/vtex/faststore/commit/d900804c/@faststore/ui",
     "@loadable/component": "^5.15.2",
-    "@vtex/gatsby-plugin-cms": "https://pkg.csb.dev/vtex/faststore/commit/d900804c/@vtex/gatsby-plugin-cms",
     "@vtex/gatsby-plugin-nginx": "https://pkg.csb.dev/vtex/faststore/commit/d900804c/@vtex/gatsby-plugin-nginx",
     "@vtex/gatsby-plugin-onesignal": "https://pkg.csb.dev/vtex/faststore/commit/d900804c/@vtex/gatsby-plugin-onesignal",
     "@vtex/gatsby-plugin-thumbor": "https://pkg.csb.dev/vtex/faststore/commit/d900804c/@vtex/gatsby-plugin-thumbor",
