@@ -23,7 +23,6 @@ function CartItem({ item }: Props) {
   return (
     <Card
       className="cart-item"
-      data-cart-item
       data-testid="cart-item"
       data-sku={item.itemOffered.sku}
       data-seller={item.seller.identifier}
@@ -46,7 +45,7 @@ function CartItem({ item }: Props) {
         </CardImage>
         <div data-cart-item-summary>
           <p className="text-body">{item.isVariantOf?.name}</p>
-          <div data-cart-item-price>
+          <span data-cart-item-price>
             <Price
               value={item.listPrice}
               formatter={useFormattedPrice}
@@ -65,7 +64,7 @@ function CartItem({ item }: Props) {
               classes="title-subsection"
               SRText="Price:"
             />
-          </div>
+          </span>
         </div>
       </CardContent>
 
