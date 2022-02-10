@@ -82,7 +82,7 @@ function ProductGallery({ title, slug }: Props) {
                 e.preventDefault()
                 addPrevPage()
               }}
-              href={prev.link}
+              to={prev.link}
               rel="prev"
               variant="secondary"
               iconPosition="left"
@@ -137,7 +137,7 @@ function ProductGallery({ title, slug }: Props) {
                 e.preventDefault()
                 addNextPage()
               }}
-              href={next.link}
+              to={next.link}
               rel="next"
               variant="secondary"
             >

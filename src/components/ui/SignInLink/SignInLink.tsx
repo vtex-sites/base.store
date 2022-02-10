@@ -7,7 +7,7 @@ const SignInLink: React.FC = () => {
   return (
     <LinkButton
       data-button-signin-link
-      href="/"
+      to="/"
       className="title-sub-subsection signin-link"
       variant="tertiary"
     >

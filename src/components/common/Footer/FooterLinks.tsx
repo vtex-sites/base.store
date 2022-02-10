@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { List as UIList } from '@faststore/ui'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
-
-import Link from '../../ui/Link'
-import Accordion, { AccordionItem } from '../../ui/Accordion'
+import Link from 'src/components/ui/Link'
+import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
 
 const links = [
   {
@@ -98,7 +97,7 @@ function LinksList({ items }: LinksListProps) {
     <UIList>
       {items.map((item) => (
         <li key={item.name}>
-          <Link variant="footer" href={item.href}>
+          <Link variant="footer" to={item.href}>
             {item.name}
           </Link>
         </li>

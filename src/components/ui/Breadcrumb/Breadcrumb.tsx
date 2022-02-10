@@ -24,7 +24,7 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
 
   return (
     <UIBreadcrumb divider="">
-      <Link aria-label="home" href="/">
+      <Link aria-label="home" to="/">
         <HouseIcon size={18} weight="bold" />
       </Link>
 
@@ -32,7 +32,7 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
         return breadcrumbList.length === index + 1 ? (
           <span key={String(index)}>{name}</span>
         ) : (
-          <Link href={buildUrl(item)} key={String(index)}>
+          <Link to={buildUrl(item)} key={String(index)}>
             {name}
           </Link>
         )

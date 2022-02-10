@@ -40,7 +40,7 @@ function Footer() {
           <UIList variant="unordered">
             <li>
               <Link
-                href="https://www.facebook.com/"
+                to="https://www.facebook.com/"
                 title="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -50,7 +50,7 @@ function Footer() {
             </li>
             <li>
               <Link
-                href="https://www.instagram.com/"
+                to="https://www.instagram.com/"
                 title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -60,7 +60,7 @@ function Footer() {
             </li>
             <li>
               <Link
-                href="https://www.pinterest.com/"
+                to="https://www.pinterest.com/"
                 title="Pinterest"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -70,7 +70,7 @@ function Footer() {
             </li>
             <li>
               <Link
-                href="https://twitter.com/"
+                to="https://twitter.com/"
                 title="Twitter"
                 target="_blank"
                 rel="noopener noreferrer"
