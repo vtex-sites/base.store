@@ -6,12 +6,14 @@ import './product-card-skeleton.scss'
 
 interface Props {
   bordered?: boolean
+  sectioned?: boolean
   showActions?: boolean
   variant?: 'vertical' | 'horizontal'
 }
 
 const ProductCardSkeleton = ({
   bordered,
+  sectioned = false,
   showActions = false,
   variant = 'vertical',
 }: Props) => {
@@ -21,7 +23,7 @@ const ProductCardSkeleton = ({
       data-bordered={bordered}
       data-variant={variant}
     >
-      <div>
+      <div data-product-card-skeleton-image data-sectioned={sectioned}>
         <ElementSkeleton type="image" />
       </div>
       <div data-product-card-skeleton-content>

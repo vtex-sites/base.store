@@ -4,6 +4,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: 14vw;
   height: 100%;
   padding: var(--space-1) var(--space-1) var(--space-2);
   overflow: hidden;
@@ -24,13 +25,22 @@
     }
   }
 
-  [data-element-variant="image"] {
-    min-width: 100%;
-    min-height: 45vw;
+  [data-product-card-skeleton-image] {
+    [data-element-variant="image"] {
+      height: 45vw;
 
-    @include media(">=notebook") {
-      height: 190px;
-      min-height: unset;
+      @include media(">=notebook") {
+        height: 195px;
+      }
+    }
+
+    &[data-sectioned="true"] {
+      [data-element-variant="image"] {
+        min-width: 13rem;
+        height: 195px;
+
+        @include media(">=notebook") { height: 195px; }
+      }
     }
   }
 

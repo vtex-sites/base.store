@@ -7,11 +7,11 @@ import ProductCard from '../../product/ProductCard'
 import './product-shelf.scss'
 
 const SKELETON_PRODUCTS: Readonly<JSX.Element[]> = [
-  <ProductCardSkeleton key="0" />,
-  <ProductCardSkeleton key="1" />,
-  <ProductCardSkeleton key="2" />,
-  <ProductCardSkeleton key="3" />,
-  <ProductCardSkeleton key="4" />,
+  <ProductCardSkeleton key="0" sectioned />,
+  <ProductCardSkeleton key="1" sectioned />,
+  <ProductCardSkeleton key="2" sectioned />,
+  <ProductCardSkeleton key="3" sectioned />,
+  <ProductCardSkeleton key="4" sectioned />,
 ]
 
 interface ProductShelfProps {
