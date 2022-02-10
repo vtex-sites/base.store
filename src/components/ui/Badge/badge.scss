@@ -1,39 +1,39 @@
 [data-store-badge] {
-
-  // Design Tokens for Product Card
-  // --------------------------------------------------------
   /* stylelint-disable */
-  --badge-padding                  : var(--space-1) var(--space-2);
-  --badge-shadow                   : none;
 
-  --badge-border-radius            : var(--border-radius-flat);
-  --badge-border-width             : 0;
+  // Design Tokens for Badge
+  // --------------------------------------------------------
+  --badge-padding                  : var(--space-1) var(--space-2);
+  --badge-shadow                   : var(--shadow);
+
+  --badge-border-radius            : var(--border-radius-default);
+  --badge-border-width             : var(--border-width-default);
   --badge-border-color             : transparent;
 
-  --badge-bkg-color                : var(--color-neutral-1);
+  --badge-bkg-color                : var(--color-neutral-bkg);
 
   --badge-text-color               : var(--color-text);
   --badge-text-size                : var(--text-size-2);
   --badge-text-weight              : var(--text-weight-bold);
 
-  --badge-success-bkg-color        : var(--bg-success);
-  --badge-success-text-color       : var(--color-text);
+  --badge-success-bkg-color        : var(--color-success-bkg);
+  --badge-success-text-color       : var(--color-success-text);
   --badge-success-border-color     : var(--badge-success-bkg-color);
 
-  --badge-highlighted-bkg-color    : var(--bg-highlighted);
-  --badge-highlighted-text-color   : var(--color-text);
+  --badge-highlighted-bkg-color    : var(--color-highlighted-bkg);
+  --badge-highlighted-text-color   : var(--color-highlighted-text);
   --badge-highlighted-border-color : var(--badge-highlighted-bkg-color);
 
-  --badge-info-bkg-color           : var(--bg-info);
-  --badge-info-text-color          : var(--color-text);
+  --badge-info-bkg-color           : var(--color-info-bkg);
+  --badge-info-text-color          : var(--color-info-text);
   --badge-info-border-color        : var(--badge-info-bkg-color);
 
-  --badge-neutral-bkg-color        : var(--bg-neutral);
-  --badge-neutral-text-color       : var(--color-text);
+  --badge-neutral-bkg-color        : var(--color-neutral-bkg);
+  --badge-neutral-text-color       : var(--color-neutral-text);
   --badge-neutral-border-color     : var(--badge-neutral-bkg-color);
 
-  --badge-promo-bkg-color          : #FFF68A;
-  --badge-promo-text-color         : #F2636A;
+  --badge-promo-bkg-color          : var(--color-promo-bkg);
+  --badge-promo-text-color         : var(--color-promo-text);
   --badge-promo-border-color       : var(--badge-promo-bkg-color);
 
   --badge-small-text-size          : var(--text-size-0);

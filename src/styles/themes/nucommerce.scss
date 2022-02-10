@@ -26,7 +26,7 @@
   --bkg-primary-dark        : var(--color-primary-dark);
   --bkg-primary-darker      : var(--color-primary-darker);
 
-  --border-radius           : 0;
+  --border-radius-default           : 0;
   --border-width            : 2px;
   --shadow                  : none;
   --text-color              : var(--color-primary-darker);
@@ -45,7 +45,7 @@
     --toggle-content                  : "🤙";
     --toggle-bkg-color                : var(--bkg-primary-light);
     --toggle-border-color             : var(--bkg-primary-light);
-    --toggle-border-radius            : var(--border-radius);
+    --toggle-border-radius            : var(--border-radius-default);
     --toggle-knob-bkg-color           : var(--bkg-neutral-light);
     --toggle-knob-border-color        : var(--bkg-neutral);
     --toggle-checked-bkg-color        : var(--bkg-primary-darker);
@@ -66,7 +66,7 @@
     --select-text-color               : var(--text-color);
     --select-icon-color               : var(--text-color);
     --select-bkg-color                : var(--bkg-primary-light);
-    --select-border-radius            : var(--border-radius);
+    --select-border-radius            : var(--border-radius-default);
     --select-border-width             : var(--border-width);
     --select-border-color             : var(--bkg-primary-light);
     --select-hover-shadow             : var(--shadow-hover);
@@ -83,7 +83,7 @@
     --qty-selector-bkg-color                : var(--bkg-primary-light);
     --qty-selector-text-color               : var(--text-color);
     --qty-selector-icon-color               : var(--text-color);
-    --qty-selector-border-radius            : var(--border-radius);
+    --qty-selector-border-radius            : var(--border-radius-default);
     --qty-selector-border-width             : var(--border-width);
     --qty-selector-border-color             : var(--bkg-primary-light);
     --qty-selector-hover-shadow             : var(--shadow-hover);
@@ -117,7 +117,7 @@
   // ----------------------------------------------------------
 
   [data-store-button] {
-    --button-border-radius                         : var(--border-radius);
+    --button-border-radius                         : var(--border-radius-default);
     --button-primary-bkg-color                     : var(--bkg-primary-darker);
     --button-primary-text-color                    : var(--color-neutral-light);
     --button-primary-hover-bkg-color               : var(--bkg-primary-dark);
@@ -154,7 +154,7 @@
     --product-card-text-title-color            : var(--text-color);
     --product-card-text-price-color            : var(--text-color);
     --product-card-text-price-listing-color    : var(--color-primary);
-    --product-card-border-radius               : var(--border-radius);
+    --product-card-border-radius               : var(--border-radius-default);
     --product-card-img-radius                  : var(--product-card-border-radius);
     --product-card-border-width                : 0;
     --product-card-transition-timing           : .5s;

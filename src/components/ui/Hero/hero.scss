@@ -1,14 +1,14 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-hero] {
+  /* stylelint-disable */
 
   // Design Tokens for Hero Section
   // --------------------------------------------------------
 
-  /* stylelint-disable */
   // Default properties
-  --hero-bkg-color          : black;
-  --hero-text-color         : white;
+  --hero-bkg-color          : var(--color-primary-bkg);
+  --hero-text-color         : var(--color-primary-text);
 
   --hero-title-color        : var(--hero-text-color);
   --hero-title-size         : var(--text-size-5);

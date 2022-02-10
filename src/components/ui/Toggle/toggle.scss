@@ -2,32 +2,32 @@
 @import "../../../styles/vendors/include-media";
 
 [data-base-toggle] {
+  /* stylelint-disable */
 
   // Design Tokens for Input Toggle
   // --------------------------------------------------------
 
-  /* stylelint-disable */
   // Default properties
   --toggle-height                    : calc(var(--min-size) / 1.25);
-  --toggle-shadow                    : none;
-  --toggle-bkg-color                 : white;
+  --toggle-shadow                    : var(--shadow);
+  --toggle-bkg-color                 : var(--input-bkg-color);
 
   --toggle-content                   : "✓";
   --toggle-content-color             : var(--toggle-checked-bkg-color);
 
-  --toggle-border-color              : black;
-  --toggle-border-radius             : 0;
-  --toggle-border-width              : 1px;
+  --toggle-border-color              : var(--border-color-default);
+  --toggle-border-radius             : var(--border-radius-default);
+  --toggle-border-width              : var(--border-width-default);
 
   --toggle-knob-radius               : var(--toggle-border-radius);
-  --toggle-knob-shadow               : none;
-  --toggle-knob-bkg-color            : var(--toggle-border-color);
-  --toggle-knob-border-color         : var(--toggle-border-color);
+  --toggle-knob-shadow               : var(--shadow);
+  --toggle-knob-bkg-color            : var(--color-link);
+  --toggle-knob-border-color         : var(--color-link);
   --toggle-knob-border-width         : var(--toggle-border-width);
 
-  --toggle-transition-function       : ease-in-out;
-  --toggle-transition-property       : all;
-  --toggle-transition-timing         : .15s;
+  --toggle-transition-function       : var(--transition-function);
+  --toggle-transition-property       : var(--transition-property);
+  --toggle-transition-timing         : var(--transition-timing);
 
   // Interactive states
   --toggle-checked-bkg-color         : var(--toggle-hover-border-color);
@@ -35,11 +35,11 @@
   --toggle-checked-knob-bkg-color    : white;
   --toggle-checked-knob-border-color : var(--toggle-checked-knob-bkg-color);
 
-  --toggle-hover-shadow              : 0 0 0 1px var(--toggle-hover-border-color);
-  --toggle-hover-bkg-color           : var(--toggle-bkg-color);
-  --toggle-hover-border-color        : var(--toggle-border-color);
+  --toggle-hover-shadow              : var(--shadow-hover);
+  --toggle-hover-bkg-color           : var(--input-hover-bkg-color);
+  --toggle-hover-border-color        : var(--border-hover-color-default);
   --toggle-hover-knob-bkg-color      : var(--toggle-hover-border-color);
-  --toggle-hover-knob-border-color   : var(--toggle-knob-border-color);
+  --toggle-hover-knob-border-color   : var(--toggle-hover-border-color);
 
   --toggle-disabled-bkg-color        : black;
   --toggle-disabled-border-color     : black;

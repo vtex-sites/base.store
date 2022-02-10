@@ -1,19 +1,17 @@
 @import "../../../styles/scaffold";
 
 [data-base-incentives] {
+  /* stylelint-disable */
 
   // Design Tokens for Incentives Section
   // --------------------------------------------------------
 
-  /* stylelint-disable */
   // Default properties
-  --incentives-text-color           : var(--color-neutral-7);
+  --incentives-text-color           : var(--color-text);
   --incentives-text-size            : var(--text-size-1);
-  --incentives-bkg-color            : transparent;
+  --incentives-bkg-color            : var(--color-info-bkg);
 
-  --incentives-colored-bkg-color    : var(--color-neutral-0);
-
-  --incentives-divider-color        : var(--color-neutral-2);
+  --incentives-divider-color        : var(--color-neutral-1);
 
   --incentives-icon-color           : var(--incentives-text-color);
 
@@ -29,7 +27,7 @@
   // Structural Styles
   // --------------------------------------------------------
 
-  background-color: var(--incentives-bkg-color);
+  background-color: transparent;
 
   [data-store-list] {
     display: flex;
@@ -66,9 +64,7 @@
     }
 
     li {
-      &:not(:last-child) {
-        border-right: 1px solid var(--incentives-divider-color);
-      }
+      &:not(:last-child) { border-right: 1px solid var(--incentives-divider-color); }
     }
   }
 
@@ -117,4 +113,4 @@
 // Variants
 // --------------------------------------------------------
 
-[data-base-incentives-colored="true"] { background-color: var(--incentives-colored-bkg-color); }
+[data-base-incentives-colored="true"] { background-color: var(--incentives-bkg-color); }

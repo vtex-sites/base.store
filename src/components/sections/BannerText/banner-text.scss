@@ -1,14 +1,14 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-banner] {
+  /* stylelint-disable */
 
   // Design Tokens for Banner Section
   // --------------------------------------------------------
 
-  /* stylelint-disable */
   // Default properties
-  --banner-bkg-color          : black;
-  --banner-text-color         : white;
+  --banner-bkg-color          : var(--color-primary-bkg);
+  --banner-text-color         : var(--color-primary-text);
 
   --banner-title-color        : var(--banner-text-color);
   --banner-title-size         : var(--text-size-3);

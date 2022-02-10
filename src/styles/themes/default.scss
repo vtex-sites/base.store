@@ -2,24 +2,93 @@
 // Theme: Default
 // ----------------------------------------------------------
 
-/* stylelint-disable */
+:root {
+  /* stylelint-disable */
 
-// Toggle
-// ----------------------------------------------------------
-// Select
-// ----------------------------------------------------------
-// Quantity Selector / Stepper
-// ----------------------------------------------------------
-// Badge
-// ----------------------------------------------------------
-// Button
-// ----------------------------------------------------------
-// Product Card
-// ----------------------------------------------------------
-// Product Card
-// ----------------------------------------------------------
-// Incentives
-// ----------------------------------------------------------
-// Banner
-// ----------------------------------------------------------
+  // Color palette
+  // --------------------------------------------------------
+
+  --color-neutral-0           : white;
+  --color-neutral-1           : white;
+  --color-neutral-2           : white;
+  --color-neutral-3           : #c7ccd1;
+  --color-neutral-4           : #9099a2;
+
+  --color-primary-0           : #00000099; // 60%
+  --color-primary-1           : #000000b3; // 70%
+  --color-primary-2           : #000000cc; // 80%
+  --color-primary-3           : #000000e6; // 90%
+  --color-primary-4           : #000000;
+
+  // Semantic colors
+  // --------------------------------------------------------
+
+  --color-link                : var(--color-primary-4);
+  --color-text                : var(--color-primary-4);
+  --color-text-subtle         : var(--color-neutral-4);
+  --color-text-inverse        : var(--color-neutral-0);
+  --color-body-bkg            : var(--color-neutral-0);
+  --color-focus-ring          : #8db6fa;
+
+  --color-success-bkg         : #cee8de;
+  --color-success-text        : var(--text-color);
+  --color-highlighted-bkg     : #ebdcff;
+  --color-highlighted-text    : var(--text-color);
+  --color-info-bkg            : var(--color-primary-4);
+  --color-info-text           : var(--text-color);
+  --color-neutral-bkg         : var(--color-neutral-3);
+  --color-neutral-text        : var(--text-color);
+  --color-promo-bkg           : #fff68a;
+  --color-promo-text          : #f2636a;
+
+  --color-primary-bkg         : var(--color-primary-4);
+  --color-primary-text        : var(--color-body-bkg);
+  --color-primary-hover-bkg   : var(--color-primary-3);
+  --color-primary-active-bkg  : var(--color-primary-2);
+
+  --color-secondary-bkg       : var(--color-body-bkg);
+  --color-secondary-text      : var(--color-primary-4);
+  --color-secondary-hover-bkg : var(--color-body-bkg);
+  --color-secondary-active-bkg: var(--color-primary-4);
+
+  --color-tertiary-bkg        : var(--color-body-bkg);
+  --color-tertiary-text       : var(--text-color-link);
+  --color-tertiary-hover-bkg  : var(--color-secondary-hover-bkg);
+  --color-tertiary-active-bkg : var(--color-secondary-active-bkg);
+
+  // Sizing & scale
+  // --------------------------------------------------------
+
+  --min-size                  : 48px;
+
+  // Borders
+  // --------------------------------------------------------
+
+  --border-radius-default     : 0;
+  --border-color-default      : var(--color-primary-4);
+  --border-color-subtle       : var(--color-primary-4);
+  --border-width-default      : 1px;
+  --border-width-subtle       : 1px;
+  --border-hover-color-default: var(--color-primary-4);
+  --border-hover-color-subtle : var(--color-primary-4);
+
+  // Interactive properties
+  // --------------------------------------------------------
+
+  --transition-timing         : .2s;
+  --transition-property       : all;
+  --transition-function       : ease-in-out;
+
+  --input-bkg-color           : var(--color-secondary-bkg);
+  --input-hover-bkg-color     : var(--color-secondary-hover-bkg);
+
+  --shadow                    : none;
+  --shadow-hover              : 0 0 0 1px var(--border-hover-color-default);
+
+  // Typography
+  // --------------------------------------------------------
+
+  --font-family               : -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  font-family                 : var(--font-family);
+}
 /* stylelint-enable */

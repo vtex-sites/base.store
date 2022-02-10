@@ -12,18 +12,18 @@
 
   [data-base-toggle] {
     --toggle-shadow                   : var(--box-shadow);
-    --toggle-bkg-color                : var(--color-neutral-1);
-    --toggle-border-color             : var(--color-neutral-2);
+    --toggle-bkg-color                : #f1f2f3;
+    --toggle-border-color             : #e3e6e8;
     --toggle-border-radius            : var(--border-radius-pill);
-    --toggle-knob-bkg-color           : var(--bg-neutral-lightest);
-    --toggle-knob-border-color        : var(--color-neutral-2);
+    --toggle-knob-bkg-color           : white;
+    --toggle-knob-border-color        : #e3e6e8;
     --toggle-knob-shadow              : 0 2px 6px rgb(0 0 0 / 5%), 0 6px 12px rgb(0 0 0 / 5%), 0 10px 20px rgb(0 0 0 / 5%);
     --toggle-checked-bkg-color        : #506300;
     --toggle-checked-border-color     : #506300;
     --toggle-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-    --toggle-hover-bkg-color          : #F1F4E6;
-    --toggle-hover-border-color       : var(--bg-neutral-lightest);
-    --toggle-hover-knob-bkg-color     : var(--bg-neutral-lightest);
+    --toggle-hover-bkg-color          : #f1f4e6;
+    --toggle-hover-border-color       : white;
+    --toggle-hover-knob-bkg-color     : white;
   }
 
   // Select
@@ -34,12 +34,12 @@
     --select-text-color               : #506300;
     --select-icon-color               : #506300;
     --select-border-radius            : var(--border-radius-pill);
-    --select-border-color             : var(--color-neutral-2);
+    --select-border-color             : #e3e6e8;
     --select-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
     --select-hover-icon-color         : #506300;
     --select-hover-text-color         : #506300;
-    --select-hover-bkg-color          : #F1F4E6;
-    --select-hover-border-color       : var(--bg-neutral-lightest);
+    --select-hover-bkg-color          : #f1f4e6;
+    --select-hover-border-color       : white;
   }
 
   // Quantity Selector / Stepper
@@ -48,13 +48,13 @@
   [data-store-quantity-selector] {
     --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
     --qty-selector-shadow                   : var(--box-shadow);
-    --qty-selector-bkg-color                : var(--bg-neutral-lightest);
+    --qty-selector-bkg-color                : white;
     --qty-selector-text-color               : #506300;
     --qty-selector-icon-color               : #506300;
     --qty-selector-border-radius            : var(--border-radius-pill);
-    --qty-selector-border-color             : var(--color-neutral-2);
+    --qty-selector-border-color             : #e3e6e8;
     --qty-selector-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-    --qty-selector-hover-button-bkg-color   : #F1F4E6;
+    --qty-selector-hover-button-bkg-color   : #f1f4e6;
   }
 
   // Badge
@@ -86,7 +86,7 @@
     --button-primary-text-color                    : var(--color-text-inverse);
     --button-primary-hover-bkg-color               : #688200;
     --button-primary-active-bkg-color              : #94A843;
-    --button-primary-inverse-hover-bkg-color       : #F1F4E6;
+    --button-primary-inverse-hover-bkg-color       : #f1f4e6;
     --button-primary-inverse-active-bkg-color      : #E0E8B4;
     --button-tertiary-text-color                   : #506300;
     --button-secondary-inverse-text-color          : #CCDC8B;
@@ -105,11 +105,11 @@
     --product-card-text-title-weight       : bold;
     --product-card-border-radius           : 14px;
     --product-card-border-width            : 1px;
-    --product-card-border-color            : var(--color-neutral-2);
+    --product-card-border-color            : #e3e6e8;
     --product-card-transition-timing       : .5s;
     --product-card-hover-shadow            : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-    --product-card-hover-bkg-color         : #F1F4E6;
-    --product-card-hover-border-color      : var(--bg-neutral-lightest);
+    --product-card-hover-bkg-color         : #f1f4e6;
+    --product-card-hover-border-color      : white;
   }
 
   // Hero Section

@@ -2,41 +2,41 @@
 @import "../../../styles/vendors/include-media";
 
 [data-store-quantity-selector] {
+  /* stylelint-disable */
 
   // Design Tokens for Quantity Selector
   // --------------------------------------------------------
 
-  /* stylelint-disable */
   // Default properties
   --qty-selector-width                    : calc(var(--min-size) * 2.7);
   --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
-  --qty-selector-shadow                   : none;
+  --qty-selector-shadow                   : var(--shadow);
 
-  --qty-selector-bkg-color                : white;
+  --qty-selector-bkg-color                : var(--input-bkg-color);
 
   --qty-selector-text-size                : var(--text-size-2);
-  --qty-selector-text-color               : black;
+  --qty-selector-text-color               : var(--color-text);
 
-  --qty-selector-icon-color               : black;
+  --qty-selector-icon-color               : var(--color-link);
 
-  --qty-selector-border-radius            : 0;
-  --qty-selector-border-width             : 1px;
-  --qty-selector-border-color             : black;
+  --qty-selector-border-radius            : var(--border-radius-default);
+  --qty-selector-border-width             : var(--border-width-default);
+  --qty-selector-border-color             : var(--border-color-default);
 
   --qty-selector-button-bkg-color         : var(--qty-selector-bkg-color);
   --qty-selector-button-border-radius     : var(--qty-selector-border-radius);
 
-  --qty-selector-transition-function      : ease;
-  --qty-selector-transition-property      : all;
-  --qty-selector-transition-timing        : .2s;
+  --qty-selector-transition-function      : var(--transition-function);
+  --qty-selector-transition-property      : var(--transition-property);
+  --qty-selector-transition-timing        : var(--transition-timing);
 
   // Interactive states
-  --qty-selector-hover-shadow             : 0 0 0 1px var(--qty-selector-hover-border-color);
-  --qty-selector-hover-bkg-color          : var(--qty-selector-bkg-color);
+  --qty-selector-hover-shadow             : var(--shadow-hover);
+  --qty-selector-hover-bkg-color          : var(--input-bkg-color);
   --qty-selector-hover-text-color         : var(--qty-selector-text-color);
   --qty-selector-hover-icon-color         : var(--qty-selector-icon-color);
-  --qty-selector-hover-border-color       : var(--qty-selector-border-color);
-  --qty-selector-hover-button-bkg-color   : whitesmoke;
+  --qty-selector-hover-border-color       : var(--border-hover-color-default);
+  --qty-selector-hover-button-bkg-color   : var(--input-hover-bkg-color);
 
   --qty-selector-focus-button-bkg-color   : var(--qty-selector-hover-button-bkg-color);
 

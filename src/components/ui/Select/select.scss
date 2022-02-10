@@ -2,39 +2,39 @@
 @import "../../../styles/vendors/include-media";
 
 [data-base-select] {
+  /* stylelint-disable */
 
   // Design Tokens for Select
   // --------------------------------------------------------
 
-  /* stylelint-disable */
   // Default properties
   --select-height                   : calc(var(--min-size) / 1.25);
   --select-width                    : auto;
   --select-shadow                   : none;
   --select-padding                  : var(--space-1) calc(var(--space-1) + var(--select-icon-size)) var(--space-1) var(--space-2);
 
-  --select-bkg-color                : var(--bg-neutral-lightest);
+  --select-bkg-color                : var(--input-bkg-color);
 
   --select-text-size                : var(--text-size-2);
   --select-text-color               : var(--color-text);
 
-  --select-icon-color               : black;
+  --select-icon-color               : var(--color-link);
   --select-icon-size                : var(--text-size-2);
 
-  --select-border-radius            : 0;
-  --select-border-width             : 1px;
-  --select-border-color             : black;
+  --select-border-radius            : var(--border-radius-default);
+  --select-border-width             : var(--border-width-default);
+  --select-border-color             : var(--border-color-default);
 
-  --select-transition-function      : ease;
-  --select-transition-property      : all;
-  --select-transition-timing        : .2s;
+  --select-transition-function      : var(--transition-function);
+  --select-transition-property      : var(--transition-property);
+  --select-transition-timing        : var(--transition-timing);
 
   // Interactive states
-  --select-hover-shadow             : 0 0 0 1px var(--select-hover-border-color);
-  --select-hover-bkg-color          : var(--select-bkg-color);
+  --select-hover-shadow             : var(--shadow-hover);
+  --select-hover-bkg-color          : var(--input-hover-bkg-color);
   --select-hover-text-color         : var(--select-text-color);
   --select-hover-icon-color         : var(--select-icon-color);
-  --select-hover-border-color       : var(--select-border-color);
+  --select-hover-border-color       : var(--border-hover-color-default);
 
   --select-disabled-bkg-color       : var(--select-bkg-color);
   --select-disabled-text-color      : var(--color-text-disabled);

@@ -4,8 +4,8 @@
 @import "themes/nucommerce";
 @import "themes/grocery";
 
-:root {
-  --font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+body {
+  background-color: var(--color-body-bkg);
 }
 
 .theming-poc {
