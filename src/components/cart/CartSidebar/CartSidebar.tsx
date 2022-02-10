@@ -40,9 +40,8 @@ function CartSidebar() {
       size="partial"
       direction="rightSide"
       className={`cart-sidebar ${isEmpty ? 'cart-sidebar--empty' : ''}`}
-      data-testid="cart-sidebar"
     >
-      <header>
+      <header data-testid="cart-sidebar">
         <div className="cart-sidebar__title">
           <p className="title-display">Your Cart</p>
           <Badge variant="new" small>
