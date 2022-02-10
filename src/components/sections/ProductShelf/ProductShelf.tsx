@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import { ITEMS_PER_SECTION } from 'src/constants'
-import ProductCardSkeleton from 'src/components/skeletons/ProductCardSkeleton'
+import SkeletonProductCard from 'src/components/skeletons/SkeletonProductCard'
 
 import ProductCard from '../../product/ProductCard'
 
@@ -24,7 +24,7 @@ function ProductShelf({ products }: ProductShelfProps) {
           ))
         : Array.from({ length: ITEMS_PER_SECTION }, (_, index) => (
             <li key={String(index)}>
-              <ProductCardSkeleton sectioned />
+              <SkeletonProductCard sectioned />
             </li>
           ))}
     </ul>

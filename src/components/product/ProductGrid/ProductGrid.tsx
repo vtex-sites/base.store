@@ -1,7 +1,7 @@
 import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import { ITEMS_PER_PAGE } from 'src/constants'
-import ProductCardSkeleton from 'src/components/skeletons/ProductCardSkeleton'
+import SkeletonProductCard from 'src/components/skeletons/SkeletonProductCard'
 
 import ProductCard from '../ProductCard'
 import './product-grid.scss'
@@ -33,7 +33,7 @@ function ProductGrid({ products, page, pageSize }: Props) {
           ))
         : Array.from({ length: ITEMS_PER_PAGE }, (_, index) => (
             <li key={String(index)}>
-              <ProductCardSkeleton bordered />
+              <SkeletonProductCard bordered />
             </li>
           ))}
     </ul>

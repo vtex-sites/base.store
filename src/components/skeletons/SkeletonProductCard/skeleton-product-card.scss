@@ -1,6 +1,6 @@
 @import "../../../styles/scaffold";
 
-[data-store-product-card-skeleton] {
+[data-store-skeleton-product-card] {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
     }
   }
 
-  [data-product-card-skeleton-image] {
+  [data-skeleton-product-card-image] {
     [data-element-variant="image"] {
       height: 45vw;
 
@@ -44,7 +44,7 @@
     }
   }
 
-  [data-product-card-skeleton-content] {
+  [data-skeleton-product-card-content] {
     position: relative;
     height: 20%;
     margin-top: var(--space-2);

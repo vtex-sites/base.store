@@ -1,10 +1,10 @@
-[data-store-element-skeleton] {
+[data-store-skeleton-element] {
   &[data-shimmer="true"] {
     position: relative;
     overflow: hidden;
   }
 
-  [data-element-skeleton] {
+  [data-skeleton-element-content] {
     overflow: hidden;
     background: var(--color-neutral-2);
     border-radius: var(--border-radius-default);
