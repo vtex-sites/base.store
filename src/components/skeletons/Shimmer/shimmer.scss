@@ -1,7 +1,9 @@
 [data-store-shimmer] {
-  /* parent: position relative & overflow hidden */
+  /*
+   * Parent must have `position: relative` and `overflow: hidden`
+   * in order to the effect to work properly.
+   */
   position: absolute;
-
   top: 0;
   left: 0;
   width: 100%;
@@ -12,8 +14,8 @@
     width: 50%;
     height: 100%;
     background: rgb(255 255 255 / 20%);
-    transform: skewX(-20deg);
     box-shadow: 0 0 var(--space-5) var(--space-5) rgb(255 255 255 / 20%);
+    transform: skewX(-20deg);
   }
 }
 
