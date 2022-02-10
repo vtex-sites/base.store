@@ -72,14 +72,12 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <div className="product-listing__breadcrumb / grid-content">
-        <section>
-          <Breadcrumb
-            breadcrumbList={collection?.breadcrumbList.itemListElement}
-            name={title}
-          />
-        </section>
-      </div>
+      <section className="product-listing__breadcrumb / grid-content">
+        <Breadcrumb
+          breadcrumbList={collection?.breadcrumbList.itemListElement}
+          name={title}
+        />
+      </section>
 
       <div className="product-listing__hero">
         <section className="page__section">
