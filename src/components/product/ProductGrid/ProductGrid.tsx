@@ -1,24 +1,10 @@
 import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { ITEMS_PER_PAGE } from 'src/constants'
 import ProductCardSkeleton from 'src/components/skeletons/ProductCardSkeleton'
 
 import ProductCard from '../ProductCard'
 import './product-grid.scss'
-
-const SKELETON_PRODUCTS: Readonly<JSX.Element[]> = [
-  <ProductCardSkeleton bordered key="0" />,
-  <ProductCardSkeleton bordered key="1" />,
-  <ProductCardSkeleton bordered key="2" />,
-  <ProductCardSkeleton bordered key="3" />,
-  <ProductCardSkeleton bordered key="4" />,
-  <ProductCardSkeleton bordered key="5" />,
-  <ProductCardSkeleton bordered key="6" />,
-  <ProductCardSkeleton bordered key="7" />,
-  <ProductCardSkeleton bordered key="8" />,
-  <ProductCardSkeleton bordered key="9" />,
-  <ProductCardSkeleton bordered key="10" />,
-  <ProductCardSkeleton bordered key="11" />,
-]
 
 interface Props {
   products: ProductSummary_ProductFragment[]
@@ -45,8 +31,10 @@ function ProductGrid({ products, page, pageSize }: Props) {
               />
             </li>
           ))
-        : SKELETON_PRODUCTS.map((skeleton, index) => (
-            <li key={String(index)}>{skeleton}</li>
+        : Array.from({ length: ITEMS_PER_PAGE }, (_, index) => (
+            <li key={String(index)}>
+              <ProductCardSkeleton bordered />
+            </li>
           ))}
     </ul>
   )

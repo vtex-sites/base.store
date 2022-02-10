@@ -1,18 +1,11 @@
 import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { ITEMS_PER_SECTION } from 'src/constants'
 import ProductCardSkeleton from 'src/components/skeletons/ProductCardSkeleton'
 
 import ProductCard from '../../product/ProductCard'
 
 import './product-shelf.scss'
-
-const SKELETON_PRODUCTS: Readonly<JSX.Element[]> = [
-  <ProductCardSkeleton key="0" sectioned />,
-  <ProductCardSkeleton key="1" sectioned />,
-  <ProductCardSkeleton key="2" sectioned />,
-  <ProductCardSkeleton key="3" sectioned />,
-  <ProductCardSkeleton key="4" sectioned />,
-]
 
 interface ProductShelfProps {
   products: ProductSummary_ProductFragment[]
@@ -23,13 +16,15 @@ function ProductShelf({ products }: ProductShelfProps) {
 
   return (
     <ul data-product-shelf className="grid-content">
-      {!haveProducts
-        ? SKELETON_PRODUCTS.map((skeleton, index) => (
-            <li key={String(index)}>{skeleton}</li>
-          ))
-        : products.map((product, idx) => (
+      {haveProducts
+        ? products.map((product, idx) => (
             <li key={`${product.id}`}>
               <ProductCard product={product} index={idx + 1} />
+            </li>
+          ))
+        : Array.from({ length: ITEMS_PER_SECTION }, (_, index) => (
+            <li key={String(index)}>
+              <ProductCardSkeleton sectioned />
             </li>
           ))}
     </ul>
