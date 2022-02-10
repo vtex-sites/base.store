@@ -27,7 +27,7 @@
 
     &[data-element-variant="badge"] {
       width: 40%;
-      height: 30px;
+      height: var(--space-5);
       border-radius: var(--border-radius-pill);
     }
   }

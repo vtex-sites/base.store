@@ -63,7 +63,7 @@
   background-color: var(--bg-neutral-lightest);
 
   [data-element-variant="text"] {
-    min-width: 225px;
+    min-width: rem(225px);
     min-height: var(--space-5);
   }
 
@@ -99,7 +99,7 @@
   }
 
   [data-element-variant="text"] {
-    min-width: 130px;
+    min-width: rem(130px);
   }
 }
 

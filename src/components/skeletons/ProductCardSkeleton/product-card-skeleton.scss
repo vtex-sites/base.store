@@ -1,4 +1,4 @@
-@import "../../../styles/vendors/include-media.scss";
+@import "../../../styles/scaffold";
 
 [data-store-product-card-skeleton] {
   position: relative;
@@ -8,12 +8,12 @@
   height: 100%;
   padding: var(--space-1) var(--space-1) var(--space-2);
   overflow: hidden;
-  border: 1px solid transparent;
+  border: var(--border-width-0) solid transparent;
   border-radius: var(--border-radius-default);
 
   @include media(">=notebook") { min-width: 12rem; }
 
-  &[data-bordered="true"] { border: 1px solid var(--color-border-display); }
+  &[data-bordered="true"] { border: var(--border-width-0) solid var(--color-border-display); }
 
   &[data-variant="vertical"] {
     [data-card-content] { padding-top: var(--space-2); }
@@ -32,16 +32,14 @@
       height: 45vw;
 
       @include media(">=notebook") {
-        height: 195px;
+        height: rem(195px);
       }
     }
 
     &[data-sectioned="true"] {
       [data-element-variant="image"] {
         min-width: 13rem;
-        height: 195px;
-
-        @include media(">=notebook") { height: 195px; }
+        height: rem(195px);
       }
     }
   }
@@ -59,7 +57,7 @@
       min-width: 30%;
 
       @include media(">=notebook") {
-        min-height: 30px;
+        min-height: var(--space-5);
         margin-top: var(--space-4);
       }
 
