@@ -1,5 +1,4 @@
 import React, { lazy, Suspense, useEffect } from 'react'
-import { useMark } from 'src/hooks/useMark'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useUI } from 'src/sdk/ui'
 
@@ -8,8 +7,6 @@ const UIToast = lazy(() => import('src/components/ui/Toast'))
 function Toast() {
   const { toasts, pushToast } = useUI()
   const { messages } = useCart()
-
-  useMark('Toast')
 
   /**
    * Send cart notifications to toast in case the cart

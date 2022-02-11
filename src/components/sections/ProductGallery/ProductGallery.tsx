@@ -8,7 +8,6 @@ import React, { useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import Button, { LinkButton } from 'src/components/ui/Button'
-import { useMark } from 'src/hooks/useMark'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -29,8 +28,6 @@ function ProductGallery({ title, slug }: Props) {
   const totalCount = useTotalCount(data)
   const orderedFacets = useOrderedFacets(data)
   const { next, prev } = usePagination(totalCount)
-
-  useMark('ProductGallery')
 
   return (
     <div className="product-listing / grid-content-full">

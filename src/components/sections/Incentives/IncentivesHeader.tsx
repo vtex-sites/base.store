@@ -6,7 +6,6 @@ import {
   Storefront as StorefrontIcon,
   ShieldCheck as ShieldCheckIcon,
 } from 'phosphor-react'
-import { useMark } from 'src/hooks/useMark'
 
 import Incentives from './Incentives'
 
@@ -39,8 +38,6 @@ const incentives = [
 ]
 
 function IncentivesHeader() {
-  useMark('Incentives')
-
   return <Incentives incentives={incentives} classes="incentives--colored" />
 }
 

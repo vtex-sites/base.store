@@ -1,7 +1,6 @@
 import type { ReactNode, MouseEvent } from 'react'
 import React, { useCallback } from 'react'
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
-import { useMark } from 'src/hooks/useMark'
 import type { AlertProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import { X as XIcon } from 'phosphor-react'
@@ -27,8 +26,6 @@ function Alert({
   onClose,
   ...otherProps
 }: Props) {
-  useMark('Alert')
-
   const handleClose = useCallback(
     (event: MouseEvent<HTMLElement>) => {
       if (event.defaultPrevented) {

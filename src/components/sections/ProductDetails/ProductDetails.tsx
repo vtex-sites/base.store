@@ -15,7 +15,6 @@ import QuantitySelector from 'src/components/ui/QuantitySelector'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
-import { useMark } from 'src/hooks/useMark'
 
 import './product-details.scss'
 
@@ -37,7 +36,6 @@ const imgOptions = {
 }
 
 function ProductDetails({ product: staleProduct }: Props) {
-  useMark('ProductDetails')
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
 

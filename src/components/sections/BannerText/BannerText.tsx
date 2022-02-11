@@ -2,7 +2,6 @@ import { Banner, BannerContent, BannerLink } from '@faststore/ui'
 import type { InputHTMLAttributes } from 'react'
 import React from 'react'
 import { LinkButton } from 'src/components/ui/Button'
-import { useMark } from 'src/hooks/useMark'
 
 import './banner-text.scss'
 
@@ -34,8 +33,6 @@ function BannerText({
   actionPath,
   actionLabel,
 }: BannerTextProps) {
-  useMark('BannerText')
-
   return (
     <Banner>
       <BannerContent className="grid-content">

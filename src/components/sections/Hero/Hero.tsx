@@ -8,7 +8,6 @@ import UIHero, {
 import Image from 'src/components/ui/Image/Image'
 import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 import { LinkButton } from 'src/components/ui/Button'
-import { useMark } from 'src/hooks/useMark'
 
 type Variant = 'default' | 'small'
 
@@ -33,8 +32,6 @@ const Hero = ({
   imageAlt,
   imageSrc,
 }: HeroProps) => {
-  useMark('Hero')
-
   return (
     <UIHero data-hero-variant={variant}>
       <HeroContent aria-labelledby="hero-heading">
