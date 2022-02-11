@@ -16,25 +16,25 @@
   --badge-text-size                : var(--font-size-base);
   --badge-text-weight              : var(--text-weight-bold);
 
-  --badge-success-bkg-color        : var(--color-success-bkg);
+  --badge-success-bkg-color        : var(--color-success);
   --badge-success-text-color       : var(--color-success-text);
-  --badge-success-border-color     : var(--badge-success-bkg-color);
+  --badge-success-border-color     : var(--color-success);
 
-  --badge-highlighted-bkg-color    : var(--color-highlighted-bkg);
+  --badge-highlighted-bkg-color    : var(--color-highlighted);
   --badge-highlighted-text-color   : var(--color-highlighted-text);
-  --badge-highlighted-border-color : var(--badge-highlighted-bkg-color);
+  --badge-highlighted-border-color : var(--color-highlighted);
 
-  --badge-info-bkg-color           : var(--color-info-bkg);
+  --badge-info-bkg-color           : var(--color-info);
   --badge-info-text-color          : var(--color-info-text);
-  --badge-info-border-color        : var(--badge-info-bkg-color);
+  --badge-info-border-color        : var(--color-info);
 
-  --badge-neutral-bkg-color        : var(--color-neutral-bkg);
+  --badge-neutral-bkg-color        : var(--color-neutral);
   --badge-neutral-text-color       : var(--color-neutral-text);
-  --badge-neutral-border-color     : var(--badge-neutral-bkg-color);
+  --badge-neutral-border-color     : var(--color-neutral);
 
-  --badge-promo-bkg-color          : var(--color-promo-bkg);
+  --badge-promo-bkg-color          : var(--color-promo);
   --badge-promo-text-color         : var(--color-promo-text);
-  --badge-promo-border-color       : var(--badge-promo-bkg-color);
+  --badge-promo-border-color       : var(--color-promo);
 
   --badge-small-text-size          : var(--font-size-tiny);
   --badge-small-padding            : var(--space-0) var(--space-2);
