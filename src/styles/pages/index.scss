@@ -8,7 +8,14 @@ main {
 .page__section {
   display: inline-block;
   width: 100%;
-  .title-section { margin-bottom: var(--space-3); }
+
+  > h2 {
+    margin-bottom: var(--space-3);
+    font-weight: var(--text-weight-bold);
+    font-size: var(--font-size-heading);
+    font-family: var(--font-family-title);
+    line-height: 1.16;
+  }
 }
 
 .page__section-shelf {

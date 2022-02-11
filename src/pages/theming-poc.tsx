@@ -112,7 +112,7 @@ function Page(props: Props) {
         <hr />
 
         <h2>Badge</h2>
-        <article className="theming-poc-content theming-badge">
+        <article className="theming-poc-content / theming-badge">
           <section>
             <h3>Layouts</h3>
             <Badge small>Badge Small</Badge>
@@ -179,7 +179,7 @@ function Page(props: Props) {
         <hr />
 
         <h2>Button</h2>
-        <article className="theming-poc-content theming-button">
+        <article className="theming-poc-content / theming-button">
           <section>
             <h3>Layouts</h3>
             <div className="theming-poc-stack">
@@ -370,7 +370,7 @@ function Page(props: Props) {
         <hr />
 
         <h2>Product Card</h2>
-        <article className="theming-poc-content theming-product-card">
+        <article className="theming-poc-content / theming-product-card">
           <article className="theming-poc-content">
             <section>
               <h3>Layout: Default</h3>
@@ -458,6 +458,37 @@ function Page(props: Props) {
               />
             </div>
           </article>
+        </article>
+
+        <hr />
+
+        <article className="theming-poc-content / theming-typography">
+          <div>
+            <h1>New Products Available</h1>
+            <p className="lead">
+              At FastStore you can shop the best tech of 2022. Enjoy and get 10%
+              off on your first purchase.
+            </p>
+            <p>
+              Buy online Get Free Shipping Free return 30 days to return Gift
+              cards $20 / $30 / $50 Physical Stores +40 Stores in Brazil Buy
+              online Get Free Shipping
+            </p>
+            <hr />
+            <h2>Just Arrived</h2>
+            <p>
+              Buy online Get Free Shipping Free return 30 days to return Gift
+              cards $20 / $30 / $50 Physical Stores +40 Stores in Brazil Buy
+              online Get Free Shipping
+            </p>
+            <hr />
+            <p className="superheading">
+              Receive our news and promotions in advance.
+            </p>
+            <p className="superlead">
+              Enjoy and get 10% off on your first purchase.
+            </p>
+          </div>
         </article>
       </div>
     </>

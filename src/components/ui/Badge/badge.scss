@@ -13,7 +13,7 @@
   --badge-bkg-color                : var(--color-neutral-bkg);
 
   --badge-text-color               : var(--color-text);
-  --badge-text-size                : var(--text-size-2);
+  --badge-text-size                : var(--font-size-base);
   --badge-text-weight              : var(--text-weight-bold);
 
   --badge-success-bkg-color        : var(--color-success-bkg);
@@ -36,7 +36,7 @@
   --badge-promo-text-color         : var(--color-promo-text);
   --badge-promo-border-color       : var(--badge-promo-bkg-color);
 
-  --badge-small-text-size          : var(--text-size-0);
+  --badge-small-text-size          : var(--font-size-tiny);
   --badge-small-padding            : var(--space-0) var(--space-2);
   /* stylelint-enable */
 

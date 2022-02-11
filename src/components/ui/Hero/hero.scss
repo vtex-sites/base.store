@@ -11,13 +11,11 @@
   --hero-text-color         : var(--color-primary-text);
 
   --hero-title-color        : var(--hero-text-color);
-  --hero-title-size         : var(--text-size-5);
-  --hero-title-size-desk    : var(--text-size-7);
+  --hero-title-size         : var(--font-size-hero);
   --hero-title-line         : 1.1;
 
   --hero-paragraph-color    : var(--hero-text-color);
-  --hero-paragraph-size     : var(--text-size-2);
-  --hero-paragraph-size-desk: var(--text-size-3);
+  --hero-paragraph-size     : var(--font-size-lead);
   --hero-paragraph-line     : 1.5;
   /* stylelint-enable */
 
@@ -44,8 +42,6 @@
       font-weight: var(--text-weight-black);
       font-size: var(--hero-title-size);
       line-height: var(--hero-title-line);
-
-      @include media(">=notebook") { font-size: var(--hero-title-size-desk); }
     }
 
     p {
@@ -55,8 +51,6 @@
       line-height: var(--hero-paragraph-line);
 
       @include media(">=tablet") { margin-top: var(--space-4); }
-
-      @include media(">=notebook") { font-size: var(--hero-paragraph-size-desk); }
     }
 
     @include media(">=tablet") {

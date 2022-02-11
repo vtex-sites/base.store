@@ -115,3 +115,20 @@ body {
     background-color: var(--bkg-dark);
   }
 }
+
+.theming-typography {
+  h1, h2 {
+    margin: 0 0 .5rem;
+    padding: 0;
+    font-weight: bold;
+  }
+
+  h1 { font-size: var(--font-size-hero); }
+  h2 { font-size: var(--font-size-heading); }
+  hr { margin: 2rem auto; }
+  p + p { margin-top: .5rem; }
+
+  .lead { font-size: var(--font-size-lead); }
+  .superlead { font-size: var(--font-size-superlead); }
+  .superheading { font-size: var(--font-size-superheading); }
+}

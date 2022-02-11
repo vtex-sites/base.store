@@ -47,7 +47,7 @@ function Page(props: Props) {
 
       {haveProducts && (
         <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Most Wanted</h2>
+          <h2 className="grid-content">Most Wanted</h2>
           <div className="page__section-content">
             <ProductShelf products={products.slice(0, 5)} />
           </div>
@@ -56,7 +56,7 @@ function Page(props: Props) {
 
       {haveProducts && (
         <section className="page__section / grid-section">
-          <h2 className="title-section grid-content">Just Arrived</h2>
+          <h2 className="grid-content">Just Arrived</h2>
           <div className="page__section-content grid-content">
             <ProductTiles products={products.slice(5, 8)} />
           </div>
@@ -74,7 +74,7 @@ function Page(props: Props) {
 
       {haveProducts && (
         <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Deals & Promotions</h2>
+          <h2 className="grid-content">Deals & Promotions</h2>
           <div className="page__section-content">
             <ProductShelf products={products.slice(9, 14)} />
           </div>

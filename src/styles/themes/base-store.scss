@@ -87,8 +87,37 @@
   // Typography
   // --------------------------------------------------------
 
-  --font-family               : "Lato";
+  --type-scale-mobile         : 1.15;
+  --type-scale-desk           : 1.25;
+  --type-scale                : var(--type-scale-mobile);
+  @include media(">=notebook") {
+    --type-scale              : var(--type-scale-desk);
+  }
+
+  // By size
+  --font-size-tiny            : 12px;
+  --font-size-small           : 14px;
+  --font-size-base            : 16px;                                              // mobile   desk
+  --font-size-medium          : calc(var(--font-size-base) * var(--type-scale));   // 18px     20px
+  --font-size-big             : calc(var(--font-size-medium) * var(--type-scale)); // 21px     25px
+  --font-size-bigger          : calc(var(--font-size-big) * var(--type-scale));    // 24px     31px
+  --font-size-huge            : calc(var(--font-size-bigger) * var(--type-scale)); // 27px     39px
+  --font-size-huger           : calc(var(--font-size-huge) * var(--type-scale));   // 32px     48px
+  --font-size-titan           : calc(var(--font-size-huger) * var(--type-scale));  // 37px     61px
+
+  // By role
+  --font-size-body            : var(--font-size-base);
+  --font-size-lead            : var(--font-size-medium);
+  --font-size-superlead       : var(--font-size-big);
+  --font-size-heading         : var(--font-size-bigger);
+  --font-size-superheading    : var(--font-size-huge);
+  --font-size-hero            : var(--font-size-huger);
+
+  --font-family               : "Lato", sans-serif;
+  --font-family-title         : var(--font-family);
+
   font-family                 : var(--font-family);
+  font-size                   : var(--font-size-body);
 
   &.inverse { --bkg-dark: var(--color-primary-4); }
 }

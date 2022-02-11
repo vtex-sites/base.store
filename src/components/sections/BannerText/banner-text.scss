@@ -11,13 +11,11 @@
   --banner-text-color         : var(--color-primary-text);
 
   --banner-title-color        : var(--banner-text-color);
-  --banner-title-size         : var(--text-size-3);
-  --banner-title-size-desk    : var(--text-size-6);
+  --banner-title-size         : var(--font-size-superheading);
   --banner-title-line         : 1.25;
 
   --banner-caption-color      : var(--banner-text-color);
-  --banner-caption-size       : var(--text-size-2);
-  --banner-caption-size-desk  : var(--text-size-4);
+  --banner-caption-size       : var(--font-size-superlead);
   --banner-caption-line       : 1.5;
   /* stylelint-enable */
 
@@ -44,8 +42,6 @@
     font-weight: var(--text-weight-bold);
     font-size: var(--banner-title-size);
     line-height: var(--banner-title-line);
-
-    @include media(">=notebook") { font-size: var(--banner-title-size-desk); }
   }
 
   p {
@@ -53,8 +49,6 @@
     color: var(--banner-caption-color);
     font-size: var(--banner-caption-size);
     line-height: var(--banner-caption-line);
-
-    @include media(">=notebook") { font-size: var(--banner-caption-size-desk); }
   }
 
   [data-banner-link] a {
