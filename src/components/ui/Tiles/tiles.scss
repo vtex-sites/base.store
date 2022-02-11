@@ -91,7 +91,8 @@
   @include media(">=tablet") { height: 28rem; }
 }
 
-[data-store-tiles="expanded-first"], [data-store-tiles="expanded-first-two"] {
+[data-store-tiles="expanded-first"],
+[data-store-tiles="expanded-first-two"] {
   grid-template-rows: auto 1fr;
 }
 
