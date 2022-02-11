@@ -31,15 +31,15 @@
   --color-focus-ring                               : #8db6fa;
 
   --color-success-text                             : #2c6a52;
-  --color-success                                  : var(--color-success-text);
+  --color-success-bkg                              : var(--color-success-text);
   --color-highlighted-text                         : var(--color-primary-4);
-  --color-highlighted                              : var(--color-highlighted-text);
+  --color-highlighted-bkg                          : var(--color-highlighted-text);
   --color-info-text                                : #2d499e;
-  --color-info                                     : var(--color-info-text);
+  --color-info-bkg                                 : var(--color-info-text);
   --color-neutral-text                             : var(--color-neutral-2);
-  --color-neutral                                  : var(--color-neutral-text);
+  --color-neutral-bkg                              : var(--color-neutral-text);
   --color-promo-text                               : #f2636a;
-  --color-promo                                    : #fff68a;
+  --color-promo-bkg                                : #fff68a;
 
   --color-primary-bkg                              : var(--color-primary-4);
   --color-primary-text                             : var(--color-body-bkg);
@@ -132,16 +132,16 @@
   // ----------------------------------------------------------
 
   [data-store-button] {
+    --button-transition-timing                     : .2s;
+
     --button-secondary-border-color                : transparent;
     --button-secondary-hover-border-color          : var(--color-primary-bkg);
-    --button-secondary-active-border-color         : var(--color-primary-bkg);
 
     --button-secondary-inverse-bkg-color           : var(--color-primary-hover-bkg);
     --button-secondary-inverse-hover-bkg-color     : var(--button-secondary-inverse-bkg-color);
     --button-secondary-inverse-active-bkg-color    : var(--color-primary-active-bkg);
     --button-secondary-inverse-border-color        : transparent;
     --button-secondary-inverse-hover-border-color  : var(--color-body-bkg);
-    --button-secondary-inverse-active-border-color : var(--color-body-bkg);
 
     --button-tertiary-active-bkg-color             : var(--color-secondary-active-bkg);
 
