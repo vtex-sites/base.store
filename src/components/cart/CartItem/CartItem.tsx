@@ -45,7 +45,7 @@ function CartItem({ item }: Props) {
         </CardImage>
         <div data-cart-item-summary>
           <p className="text-body">{item.isVariantOf?.name}</p>
-          <span data-cart-item-price>
+          <span data-cart-item-prices>
             <Price
               value={item.listPrice}
               formatter={useFormattedPrice}
