@@ -10,12 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
+- Refactors cart sidebar
 
 ### Deprecated
 
 ### Removed
+
 - Unnecessary map at hooks
 - API style redirects from `/_v/private/graphql` since they have no effect
 
