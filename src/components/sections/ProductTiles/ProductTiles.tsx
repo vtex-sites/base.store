@@ -35,6 +35,7 @@ const ProductTiles = ({ products }: TilesProps) => {
             index={idx + 1}
             structure="wide"
             ratio={getRatio(idx)}
+            badgeVariant="highlighted"
           />
         </Tile>
       ))}

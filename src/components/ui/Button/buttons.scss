@@ -49,7 +49,7 @@
   --button-secondary-hover-bkg-color            : var(--color-secondary-hover-bkg);
   --button-secondary-hover-border-color         : var(--button-secondary-border-color);
   --button-secondary-active-bkg-color           : var(--color-secondary-active-bkg);
-  --button-secondary-active-border-color        : var(--button-secondary-border-color);
+  --button-secondary-active-border-color        : var(--button-secondary-hover-border-color);
 
   --button-secondary-inverse-bkg-color          : transparent;
   --button-secondary-inverse-text-color         : var(--color-text-inverse);
@@ -58,7 +58,7 @@
   --button-secondary-inverse-hover-bkg-color    : rgba(255, 255, 255, .1);
   --button-secondary-inverse-hover-border-color : var(--button-secondary-inverse-border-color);
   --button-secondary-inverse-active-bkg-color   : rgba(255, 255, 255, .2);
-  --button-secondary-inverse-active-border-color: var(--button-secondary-inverse-border-color);
+  --button-secondary-inverse-active-border-color: var(--button-secondary-inverse-hover-border-color);
 
   --button-tertiary-bkg-color                  : var(--color-tertiary-bkg);
   --button-tertiary-text-color                 : var(--color-tertiary-text);
@@ -76,7 +76,7 @@
   --button-tertiary-inverse-hover-bkg-color    : var(--button-secondary-inverse-hover-bkg-color);
   --button-tertiary-inverse-hover-border-color : var(--button-tertiary-inverse-border-color);
   --button-tertiary-inverse-active-bkg-color   : var(--button-secondary-inverse-active-bkg-color);
-  --button-tertiary-inverse-active-border-color: var(--button-tertiary-inverse-border-color);
+  --button-tertiary-inverse-active-border-color: var(--button-tertiary-inverse-hover-border-color);
 
 
   --button-disabled-bkg-color                   : var(--bg-disabled);
