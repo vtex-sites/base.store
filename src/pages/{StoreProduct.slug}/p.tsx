@@ -13,6 +13,7 @@ import type {
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
 import ProductShelf from 'src/components/sections/ProductShelf'
+import { useMark } from 'src/hooks/useMark'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -41,6 +42,8 @@ function Page(props: Props) {
 
   const canonical =
     host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
+
+  useMark('PDP')
 
   return (
     <>

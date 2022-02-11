@@ -1,6 +1,7 @@
 import { useSearch } from '@faststore/sdk'
 import React, { useMemo } from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
+import { useMark } from 'src/hooks/useMark'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import Sentinel from 'src/sdk/search/Sentinel'
 import type { ProductsQueryQuery } from '@generated/graphql'
@@ -23,6 +24,8 @@ function GalleryPage({
   fallbackData,
   showSponsoredProducts = true,
 }: Props) {
+  useMark(`GalleryPage-${page}`)
+
   const {
     itemsPerPage,
     state: { sort, term, selectedFacets },

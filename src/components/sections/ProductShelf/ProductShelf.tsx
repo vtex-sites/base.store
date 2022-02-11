@@ -1,4 +1,5 @@
 import React from 'react'
+import { useMark } from 'src/hooks/useMark'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../../product/ProductCard'
@@ -10,6 +11,8 @@ interface ProductShelfProps {
 }
 
 function ProductShelf({ products }: ProductShelfProps) {
+  useMark('ProductShelf')
+
   return (
     <ul data-product-shelf className="grid-content">
       {products.map((product, idx) => (

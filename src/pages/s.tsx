@@ -1,7 +1,7 @@
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useMemo } from 'react'
-import ProductListing from 'src/components/sections/ProductListing'
+import ProductGallery from 'src/components/sections/ProductGallery'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import type { PageProps } from 'gatsby'
@@ -59,7 +59,7 @@ function Page(props: Props) {
       */}
       <SROnly as="h1" text={title} />
 
-      <ProductListing title="Search Results" />
+      <ProductGallery title="Search Results" />
     </SearchProvider>
   )
 }

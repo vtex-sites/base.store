@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import {
   List as UIList,
   Icon as UIIcon,
@@ -137,4 +137,4 @@ function Footer() {
   )
 }
 
-export default memo(Footer)
+export default Footer

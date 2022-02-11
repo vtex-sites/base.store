@@ -92,7 +92,7 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server: 'https://thumbor-dev-server.vtex.io',
+        server: 'https://thumbor-server.vtex.io',
       },
     },
     {
@@ -130,8 +130,8 @@ module.exports = {
         getSchema,
         getContextFactory,
         // Source less products is development for better DX
-        maxNumProducts: isProduction ? 2500 : 100,
-        maxNumCollections: isProduction ? 2500 : 100,
+        maxNumProducts: 100,
+        maxNumCollections: 100,
       },
     },
     {

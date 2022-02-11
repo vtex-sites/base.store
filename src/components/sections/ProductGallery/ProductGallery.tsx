@@ -8,7 +8,7 @@ import React, { useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import Button, { LinkButton } from 'src/components/ui/Button'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
+import { useMark } from 'src/hooks/useMark'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -23,42 +23,40 @@ interface Props {
 }
 
 function ProductGallery({ title, slug }: Props) {
+  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
-
   const totalCount = useTotalCount(data)
-
-  const { next, prev } = usePagination(totalCount)
-  const { isMobile } = useWindowDimensions()
-
-  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-
   const orderedFacets = useOrderedFacets(data)
+  const { next, prev } = usePagination(totalCount)
+
+  useMark('ProductGallery')
 
   return (
-    <>
-      <div className="product-listing__filters">
-        <Filter
-          slug={slug}
-          isOpen={isFilterOpen}
-          facets={orderedFacets}
-          onDismiss={() => setIsFilterOpen(false)}
-        />
-      </div>
+    <div className="product-listing / grid-content-full">
+      <div className="product-listing__content-grid / grid-content">
+        <div className="product-listing__filters">
+          <Filter
+            slug={slug}
+            isOpen={isFilterOpen}
+            facets={orderedFacets}
+            onDismiss={() => setIsFilterOpen(false)}
+          />
+        </div>
 
-      <div
-        className="product-listing__results-count"
-        data-testid="total-product-count"
-        data-count={totalCount}
-      >
-        <h2>{totalCount} Results</h2>
-      </div>
+        <div
+          className="product-listing__results-count"
+          data-testid="total-product-count"
+          data-count={totalCount}
+        >
+          <h2>{totalCount} Results</h2>
+        </div>
 
-      <div className="product-listing__sort">
-        <Sort />
+        <div className="product-listing__sort">
+          <Sort />
 
-        {isMobile && (
           <Button
+            className="button display-mobile"
             variant="tertiary"
             data-testid="open-filter-button"
             icon={<FadersHorizontalIcon size={16} />}
@@ -68,85 +66,84 @@ function ProductGallery({ title, slug }: Props) {
           >
             Filters
           </Button>
-        )}
-      </div>
+        </div>
 
-      <div className="product-listing__results">
-        {/* Add link to previous page. This helps on SEO */}
-        {prev !== false && (
-          <div className="product-listing__pagination product-listing__pagination--top">
-            <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-            <LinkButton
-              onClick={(e) => {
-                e.currentTarget.blur()
-                e.preventDefault()
-                addPrevPage()
-              }}
-              href={prev.link}
-              rel="prev"
-              variant="secondary"
-              iconPosition="left"
-              icon={<ArrowLeftIcon size={16} weight="bold" />}
-            >
-              Previous Page
-            </LinkButton>
+        <div className="product-listing__results">
+          {/* Add link to previous page. This helps on SEO */}
+          {prev !== false && (
+            <div className="product-listing__pagination product-listing__pagination--top">
+              <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
+              <LinkButton
+                onClick={(e) => {
+                  e.currentTarget.blur()
+                  e.preventDefault()
+                  addPrevPage()
+                }}
+                href={prev.link}
+                rel="prev"
+                variant="secondary"
+                iconPosition="left"
+                icon={<ArrowLeftIcon size={16} weight="bold" />}
+              >
+                Previous Page
+              </LinkButton>
+            </div>
+          )}
+
+          {/* Render ALL products */}
+          <div className="product-listing__data-grid">
+            {data &&
+              pages.map((page) => (
+                <GalleryPage
+                  key={`gallery-page-${page}`}
+                  showSponsoredProducts={false}
+                  fallbackData={page === searchState.page ? data : undefined}
+                  page={page}
+                  title={title}
+                />
+              ))}
           </div>
-        )}
 
-        {/* Render ALL products */}
-        {data ? (
-          pages.map((page) => (
+          {/* Prefetch Previous and Next pages */}
+          {prev !== false && (
             <GalleryPage
-              key={`gallery-page-${page}`}
               showSponsoredProducts={false}
-              fallbackData={page === searchState.page ? data : undefined}
-              page={page}
+              page={prev.cursor}
+              display={false}
               title={title}
             />
-          ))
-        ) : (
-          <div className="product-listing__data-loading">Loading…</div>
-        )}
+          )}
+          {next !== false && (
+            <GalleryPage
+              showSponsoredProducts={false}
+              page={next.cursor}
+              display={false}
+              title={title}
+            />
+          )}
 
-        {/* Prefetch Previous and Next pages */}
-        {prev !== false && (
-          <GalleryPage
-            showSponsoredProducts={false}
-            page={prev.cursor}
-            display={false}
-            title={title}
-          />
-        )}
-        {next !== false && (
-          <GalleryPage
-            showSponsoredProducts={false}
-            page={next.cursor}
-            display={false}
-            title={title}
-          />
-        )}
-
-        {/* Add link to next page. This helps on SEO */}
-        {next !== false && (
-          <div className="product-listing__pagination product-listing__pagination--bottom">
-            <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
-            <LinkButton
-              data-testid="show-more"
-              onClick={(e) => {
-                e.currentTarget.blur()
-                e.preventDefault()
-                addNextPage()
-              }}
-              href={next.link}
-              rel="next"
-              variant="secondary"
-            >
-              Load more products
-            </LinkButton>
-          </div>
-        )}
+          {/* Add link to next page. This helps on SEO */}
+          {next !== false && (
+            <div className="product-listing__pagination product-listing__pagination--bottom">
+              <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
+              <LinkButton
+                data-testid="show-more"
+                onClick={(e) => {
+                  e.currentTarget.blur()
+                  e.preventDefault()
+                  addNextPage()
+                }}
+                href={next.link}
+                rel="next"
+                variant="secondary"
+              >
+                Load more products
+              </LinkButton>
+            </div>
+          )}
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 
