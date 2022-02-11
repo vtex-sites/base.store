@@ -145,4 +145,6 @@ export const query = graphql`
   }
 `
 
+Page.displayName = 'Page'
+
 export default mark(Page)

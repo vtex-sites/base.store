@@ -28,4 +28,6 @@ function Alert({ children }: PropsWithChildren<unknown>) {
   )
 }
 
+Alert.displayName = 'Alert'
+
 export default mark(Alert)
