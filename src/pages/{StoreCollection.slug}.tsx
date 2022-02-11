@@ -7,7 +7,7 @@ import Hero from 'src/components/sections/Hero'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import { BreadcrumbWrapper } from 'src/components/ui/Breadcrumb'
+import Breadcrumb from 'src/components/sections/Breadcrumb'
 import type { Props } from 'src/hooks/useSearchParams'
 import { useSearchParams } from 'src/hooks/useSearchParams'
 import ProductListing from 'src/components/sections/ProductListing'
@@ -72,12 +72,12 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <div className="product-listing__breadcrumb / grid-content">
-        <BreadcrumbWrapper
+      <section className="product-listing__breadcrumb / grid-content">
+        <Breadcrumb
           breadcrumbList={collection?.breadcrumbList.itemListElement}
           name={title}
         />
-      </div>
+      </section>
 
       <div className="product-listing__hero">
         <section className="page__section">
