@@ -7,6 +7,7 @@ import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
+import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 
@@ -129,4 +130,4 @@ export const query = graphql`
   }
 `
 
-export default Page
+export default mark(Page)

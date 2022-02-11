@@ -13,6 +13,7 @@ import type {
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
 import ProductShelf from 'src/components/sections/ProductShelf'
+import { mark } from 'src/sdk/tests/mark'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -177,4 +178,4 @@ export const querySSG = graphql`
   }
 `
 
-export default Page
+export default mark(Page)

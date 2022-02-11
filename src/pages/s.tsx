@@ -11,6 +11,7 @@ import type {
 } from '@generated/graphql'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import SROnly from 'src/components/ui/SROnly'
+import { mark } from 'src/sdk/tests/mark'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
@@ -76,4 +77,4 @@ export const query = graphql`
   }
 `
 
-export default Page
+export default mark(Page)

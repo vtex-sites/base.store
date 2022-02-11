@@ -2,6 +2,7 @@ import { useStorage } from '@faststore/sdk'
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import React, { useCallback } from 'react'
 import UIAlert from 'src/components/ui/Alert'
+import { mark } from 'src/sdk/tests/mark'
 import type { PropsWithChildren } from 'react'
 
 function Alert({ children }: PropsWithChildren<unknown>) {
@@ -27,4 +28,4 @@ function Alert({ children }: PropsWithChildren<unknown>) {
   )
 }
 
-export default Alert
+export default mark(Alert)

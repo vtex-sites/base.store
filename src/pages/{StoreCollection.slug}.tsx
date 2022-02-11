@@ -11,6 +11,7 @@ import { ITEMS_PER_PAGE } from 'src/constants'
 import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
+import { mark } from 'src/sdk/tests/mark'
 import type { Props } from 'src/hooks/useSearchParams'
 
 import '../styles/pages/product-listing-page.scss'
@@ -144,4 +145,4 @@ export const query = graphql`
   }
 `
 
-export default Page
+export default mark(Page)

@@ -4,6 +4,7 @@ import {
   Icon as UIIcon,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
+import { mark } from 'src/sdk/tests/mark'
 
 import FooterLinks from './FooterLinks'
 import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
@@ -137,4 +138,4 @@ function Footer() {
   )
 }
 
-export default Footer
+export default mark(Footer)
