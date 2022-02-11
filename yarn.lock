@@ -1462,6 +1462,11 @@
     react-swipeable "^6.1.2"
     tabbable "^5.2.1"
 
+"@fontsource/orelega-one@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/orelega-one/-/orelega-one-4.5.2.tgz#e69c1cfa24bbee5d08dbd726094e0e7e18b211e1"
+  integrity sha512-cm9uCKI1YEd36tHC6O7SkSFQmOMjd7ZaAUz06vFkCm9VxIEQEhUSo795161H/+xjmzsOeqpDpv0k45RSiU9Luw==
+
 "@fontsource/roboto-mono@^4.5.1":
   version "4.5.1"
   resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.1.tgz#8b1b38ad7d2c202968ffd87bee3e471152b437e9"

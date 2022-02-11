@@ -1,5 +1,7 @@
 import './src/styles/global.scss'
 
+import '@fontsource/orelega-one'
+
 import '@fontsource/roboto-mono'
 import '@fontsource/roboto-mono/700.css'
 
