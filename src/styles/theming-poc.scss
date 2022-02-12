@@ -108,11 +108,11 @@ body {
 }
 
 .theming-button {
-  --bkg-dark: #000;
+  --color-body-bkg: #000;
 
   .inverse {
     padding: 10px;
-    background-color: var(--bkg-dark);
+    background-color: var(--color-body-bkg);
   }
 }
 

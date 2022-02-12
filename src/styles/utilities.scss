@@ -15,14 +15,14 @@ $base: 16px !default;
 }
 
 @mixin focus-ring-outline {
-  outline: 2px solid var(--bg-focus-ring);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 1px;
 }
 
 // Supports Safari browsers
 @mixin focus-ring {
   outline: none;
-  box-shadow: 0 0 0 1px var(--bg-body), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
+  box-shadow: 0 0 0 1px var(--color-body-bkg), 0 0 0 var(--border-width-2) var(--color-focus-ring);
 }
 
 @mixin focus-ring-visible {

@@ -42,7 +42,7 @@
   --color-promo-text          : #f2636a;
 
   --color-primary-bkg         : var(--color-primary-4);
-  --color-primary-text        : var(--color-body-bkg);
+  --color-primary-text        : var(--color-text-inverse);
   --color-primary-hover-bkg   : var(--color-primary-3);
   --color-primary-active-bkg  : var(--color-primary-2);
 
@@ -90,6 +90,6 @@
   --font-family               : "Lato", sans-serif;
   --font-family-title         : var(--font-family);
 
-  &.inverse { --bkg-dark: var(--color-primary-4); }
+  &.inverse { --color-body-bkg: var(--color-primary-4); }
 }
 /* stylelint-enable */
