@@ -2,8 +2,8 @@
 // Theme: Grocery
 // ----------------------------------------------------------
 
+/* stylelint-disable */
 .grocery {
-  /* stylelint-disable */
 
   // Color palette
   // --------------------------------------------------------
@@ -85,13 +85,16 @@
 
   --min-size                  : 48px;
 
-  --type-scale-mobile         : 1.15;
-  --type-scale-desk           : 1.25;
+  @at-root :root {
+    --type-scale-mobile         : 1.15;
+    --type-scale-desk           : 1.3;
 
-  --font-size-base            : 16px; // 1rem
+    --font-size-base            : 16px; // 1rem
 
-  --font-family               : "Roboto", sans-serif;
-  --font-family-title         : "Orelega One";
+    --font-family               : "Roboto", sans-serif;
+    --font-family-title         : "Orelega One";
+  }
+
 
   h1, h2 { font-weight: normal !important; }
 
