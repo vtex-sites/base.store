@@ -33,13 +33,13 @@
   --color-focus-ring          : #8db6fa;
 
   --color-success-bkg         : #cee8de;
-  --color-success-text        : var(--text-color);
+  --color-success-text        : var(--color-text);
   --color-highlighted-bkg     : #ebdcff;
-  --color-highlighted-text    : var(--text-color);
+  --color-highlighted-text    : var(--color-text);
   --color-info-bkg            : var(--color-neutral-3);
-  --color-info-text           : var(--text-color);
+  --color-info-text           : var(--color-text);
   --color-neutral-bkg         : var(--color-neutral-3);
-  --color-neutral-text        : var(--text-color);
+  --color-neutral-text        : var(--color-text);
   --color-promo-bkg           : #fff68a;
   --color-promo-text          : #f2636a;
 
@@ -54,27 +54,11 @@
   --color-secondary-active-bkg: var(--color-primary-4);
 
   --color-tertiary-bkg        : var(--color-body-bkg);
-  --color-tertiary-text       : var(--text-color-link);
+  --color-tertiary-text       : var(--color-text-link);
   --color-tertiary-hover-bkg  : var(--color-secondary-hover-bkg);
   --color-tertiary-active-bkg : var(--color-secondary-active-bkg);
 
-  // Sizing & scale
-  // --------------------------------------------------------
-
-  --min-size                  : 48px;
-
-  // Borders
-  // --------------------------------------------------------
-
-  --border-radius-default     : 0;
-  --border-color-default      : var(--color-primary-4);
-  --border-color-subtle       : var(--color-primary-4);
-  --border-width-default      : 1px;
-  --border-width-subtle       : 1px;
-  --border-hover-color-default: var(--color-primary-4);
-  --border-hover-color-subtle : var(--color-primary-4);
-
-  // Interactive properties
+  // Properties
   // --------------------------------------------------------
 
   --transition-timing         : .2s;
@@ -84,11 +68,21 @@
   --input-bkg-color           : var(--color-secondary-bkg);
   --input-hover-bkg-color     : var(--color-secondary-hover-bkg);
 
+  --border-radius-default     : 0;
+  --border-color-default      : var(--color-primary-4);
+  --border-color-subtle       : var(--color-primary-4);
+  --border-width-default      : 1px;
+  --border-width-subtle       : 1px;
+  --border-hover-color-default: var(--color-primary-4);
+  --border-hover-color-subtle : var(--color-primary-4);
+
   --shadow                    : none;
   --shadow-hover              : 0 0 0 1px var(--border-hover-color-default);
 
-  // Typography
+  // Typography & scale
   // --------------------------------------------------------
+
+  --min-size                  : 48px;
 
   --type-scale-mobile         : 1.15;
   --type-scale-desk           : 1.25;
@@ -103,13 +97,13 @@
   // By size
   --font-size-0               : 12px;
   --font-size-1               : 14px;
-  --font-size-2               : var(--font-size-base);                           // mobile   desk
-  --font-size-3               : calc(var(--font-size-2) * var(--type-scale));    // 18px     20px
-  --font-size-4               : calc(var(--font-size-3) * var(--type-scale));    // 21px     25px
-  --font-size-5               : calc(var(--font-size-4) * var(--type-scale));    // 24px     31px
-  --font-size-6               : calc(var(--font-size-5) * var(--type-scale));    // 27px     39px
-  --font-size-7               : calc(var(--font-size-6) * var(--type-scale));    // 32px     48px
-  --font-size-8               : calc(var(--font-size-7) * var(--type-scale));// 37px     61px
+  --font-size-2               : var(--font-size-base);                        // mobile   desk
+  --font-size-3               : calc(var(--font-size-2) * var(--type-scale)); // 18px     20px
+  --font-size-4               : calc(var(--font-size-3) * var(--type-scale)); // 21px     25px
+  --font-size-5               : calc(var(--font-size-4) * var(--type-scale)); // 24px     31px
+  --font-size-6               : calc(var(--font-size-5) * var(--type-scale)); // 27px     39px
+  --font-size-7               : calc(var(--font-size-6) * var(--type-scale)); // 32px     48px
+  --font-size-8               : calc(var(--font-size-7) * var(--type-scale)); // 37px     61px
 
   // By role
   --font-size-tiny            : var(--font-size-0);
@@ -121,7 +115,7 @@
   --font-size-superheading    : var(--font-size-6);
   --font-size-hero            : var(--font-size-7);
 
-  --font-family               : "Lato", sans-serif;
+  --font-family               : -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --font-family-title         : var(--font-family);
 
   font-family                 : var(--font-family);
