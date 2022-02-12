@@ -4,7 +4,6 @@
   // Design Tokens for Badge
   // --------------------------------------------------------
   --badge-padding                  : var(--space-1) var(--space-2);
-  --badge-shadow                   : var(--shadow);
 
   --badge-border-radius            : var(--border-radius-default);
   --badge-border-width             : var(--border-width-default);
@@ -54,7 +53,6 @@
   background-color: var(--badge-bkg-color);
   border: var(--badge-border-width) solid var(--badge-border-color);
   border-radius: var(--badge-border-radius);
-  box-shadow: var(--badge-shadow);
 }
 
 // Structure Variants
