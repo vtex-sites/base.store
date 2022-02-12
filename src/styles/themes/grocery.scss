@@ -86,29 +86,30 @@
   --min-size                  : 48px;
 
   @at-root :root {
-    --type-scale-mobile         : 1.15;
-    --type-scale-desk           : 1.3;
+    --type-scale-mobile       : 1.15;
+    --type-scale-desk         : 1.3;
 
-    --font-size-base            : 16px; // 1rem
+    --font-size-base          : 16px; // 1rem
 
-    --font-family               : "Roboto", sans-serif;
-    --font-family-title         : "Orelega One";
+    --font-family             : "Roboto", sans-serif;
+    --font-family-title       : "Orelega One";
   }
 
 
   h1, h2 { font-weight: normal !important; }
 
+
   // Toggle
   // ----------------------------------------------------------
 
   [data-base-toggle] {
-    --toggle-bkg-color                : var(--color-secondary-hover-bkg);
-    --toggle-border-radius            : 100px;
-    --toggle-knob-bkg-color           : white;
-    --toggle-knob-border-color        : white;
-    --toggle-checked-bkg-color        : var(--color-primary-active-bkg);
-    --toggle-hover-bkg-color          : var(--color-secondary-hover-bkg);
-    --toggle-hover-knob-bkg-color     : white;
+    --toggle-bkg-color                     : var(--color-secondary-hover-bkg);
+    --toggle-border-radius                 : 100px;
+    --toggle-knob-bkg-color                : white;
+    --toggle-knob-border-color             : white;
+    --toggle-checked-bkg-color             : var(--color-primary-active-bkg);
+    --toggle-hover-bkg-color               : var(--color-secondary-hover-bkg);
+    --toggle-hover-knob-bkg-color          : white;
   }
 
   // Badge
@@ -143,7 +144,6 @@
     --button-tertiary-inverse-text-color   : var(--color-primary-1);
   }
 
-
   // Product Card
   // ----------------------------------------------------------
 
@@ -166,6 +166,13 @@
     --hero-bkg-color                       : var(--color-primary-1);
     --hero-text-color                      : var(--color-alternate-3);
     --hero-title-line                      : 1;
+  }
+
+  // Page Section
+  // ----------------------------------------------------------
+
+  [data-base-section-shelf] {
+    h2 { font-size: var(--font-size-superlead); }
   }
 
   // Incentives
