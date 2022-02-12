@@ -10,7 +10,7 @@
   // Default properties
   --select-height                   : calc(var(--min-size) / 1.25);
   --select-width                    : auto;
-  --select-shadow                   : none;
+  --select-shadow                   : var(--shadow);
   --select-padding                  : var(--space-1) calc(var(--space-1) + var(--select-icon-size)) var(--space-1) var(--space-2);
 
   --select-bkg-color                : var(--input-bkg-color);

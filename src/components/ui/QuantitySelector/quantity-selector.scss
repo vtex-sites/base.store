@@ -23,6 +23,7 @@
   --qty-selector-border-width             : var(--border-width-default);
   --qty-selector-border-color             : var(--border-color-default);
 
+  --qty-selector-button-shadow            : none;
   --qty-selector-button-bkg-color         : var(--qty-selector-bkg-color);
   --qty-selector-button-border-radius     : var(--qty-selector-border-radius);
 
@@ -36,6 +37,7 @@
   --qty-selector-hover-text-color         : var(--qty-selector-text-color);
   --qty-selector-hover-icon-color         : var(--qty-selector-icon-color);
   --qty-selector-hover-border-color       : var(--border-hover-color-default);
+  --qty-selector-hover-button-shadow      : none;
   --qty-selector-hover-button-bkg-color   : var(--input-hover-bkg-color);
 
   --qty-selector-focus-button-bkg-color   : var(--qty-selector-hover-button-bkg-color);
@@ -91,6 +93,7 @@
     background-color: var(--qty-selector-button-bkg-color);
     border: 0;
     border-radius: var(--qty-selector-button-border-radius);
+    box-shadow: none;
     cursor: pointer;
 
     [data-store-icon] {
@@ -100,12 +103,14 @@
       width: 100%;
       height: 100%;
       border-radius: var(--qty-selector-button-border-radius);
+      box-shadow: var(--qty-selector-button-shadow);
       transition: var(--qty-selector-transition-property) var(--qty-selector-transition-timing) var(--qty-selector-transition-function);
     }
 
     &:hover:not(:disabled) [data-store-icon] {
       color: var(--qty-selector-hover-icon-color);
       background-color: var(--qty-selector-hover-button-bkg-color);
+      box-shadow: var(--qty-selector-hover-button-shadow);
     }
 
     &:disabled {
