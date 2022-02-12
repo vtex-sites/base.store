@@ -71,7 +71,7 @@
 
   --border-radius-default     : 8px;
   --border-color-default      : var(--color-neutral-1);
-  --border-color-subtle       : transparent;
+  --border-color-subtle       : var(--color-neutral-1);
   --border-width-default      : 1px;
   --border-width-subtle       : 1px;
   --border-hover-color-default: var(--color-primary-2);
@@ -92,6 +92,8 @@
 
   --font-family               : "Roboto", sans-serif;
   --font-family-title         : "Orelega One";
+
+  h1, h2 { font-weight: normal !important; }
 
   // Toggle
   // ----------------------------------------------------------
@@ -143,6 +145,8 @@
   // ----------------------------------------------------------
 
   [data-base-product-card] {
+    --shadow                               : none;
+    --shadow-hover                         : none;
     --product-card-img-radius              : 6px;
     --product-card-text-title-color        : #688200;
     --product-card-text-title-weight       : bold;
@@ -150,22 +154,65 @@
     --product-card-price-color             : var(--color-text-subtle);
     --product-card-hover-bkg-color         : #f1f4e6;
     --product-card-hover-border-color      : var(--color-primary-2);
-    [data-base-select] {
-      --shadow: none;
-      --shadow-hover: none;
-    }
-    // [data-store-quantity-selector] { --qty-selector-width: calc(100% - (var(--product-card-padding) * 4)); }
   }
 
   // Hero Section
   // ----------------------------------------------------------
 
+  [data-store-hero] {
+    --hero-bkg-color                       : var(--color-primary-1);
+    --hero-text-color                      : var(--color-alternate-3);
+    --hero-title-line                      : 1;
+  }
+
   // Incentives
   // ----------------------------------------------------------
+
+  [data-base-incentives] {
+    --incentives-bkg-color                 : var(--color-neutral-1);
+    --incentives-text-color                : var(--color-alternate-3);
+    --incentives-divider-color             : var(--color-neutral-2);
+  }
+
+  // Shelf
+  // ----------------------------------------------------------
+
+  [data-product-shelf] {
+    column-gap: 0;
+
+    li {
+      &:first-child > * {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &:last-child > * {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      &:not(:first-child):not(:last-child) > * { border-radius: 0; }
+      &:not(:last-child) > * { border-right-color: transparent; }
+
+      @media (hover: hover) {
+        &:hover {
+          > * { border-right-color: var(--product-card-hover-border-color); }
+          + li > * { border-left-color: transparent; }
+        }
+      }
+    }
+  }
 
   // Banner
   // ----------------------------------------------------------
 
+  [data-store-banner] {
+    --banner-bkg-color                     : var(--color-alternate-4);
+    --banner-text-color                    : var(--color-primary-1);
+  }
+
   &.inverse { --color-body-bkg: #66584A; }
+
+  background-color: var(--color-body-bkg);
 }
 /* stylelint-enable */

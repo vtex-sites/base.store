@@ -46,10 +46,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2 {
+h1 {
+  font-family: var(--font-family-title);
+  letter-spacing: -1px;
+}
+
+h2 {
   font-weight: var(--text-weight-bold);
   font-size: var(--font-size-heading);
-  font-family: var(--font-family-title);
   line-height: 1.16;
 }
 
