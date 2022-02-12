@@ -2,114 +2,188 @@
 // Theme: Grocery
 // ----------------------------------------------------------
 
-/* stylelint-disable */
 .grocery {
-  --font-family: "Roboto";
-  font-family: var(--font-family);
+  /* stylelint-disable */
+
+  // Color palette
+  // --------------------------------------------------------
+
+  --color-neutral-0           : #f7f7f6;
+  --color-neutral-1           : #dadada;
+  --color-neutral-2           : #cececd;
+  --color-neutral-3           : #84837e;
+  --color-neutral-4           : #383029;
+
+  --color-primary-0           : #f1f4e6;
+  --color-primary-1           : #ccdc8b;
+  --color-primary-2           : #94a843;
+  --color-primary-3           : #688200;
+  --color-primary-4           : #506300;
+
+  --color-alternate-3         : #534636;
+  --color-alternate-4         : #3b2f22;
+
+  // Semantic colors
+  // --------------------------------------------------------
+
+  --color-link                : var(--color-primary-4);
+  --color-text                : var(--color-neutral-4);
+  --color-text-subtle         : var(--color-neutral-3);
+  --color-text-inverse        : white;
+  --color-body-bkg            : var(--color-neutral-0);
+  --color-focus-ring          : #ccdc8b;
+
+  --color-success-bkg         : #e8f5e9;
+  --color-success-text        : #2f5830;
+  --color-highlighted-bkg     : #fefaca;
+  --color-highlighted-text    : var(--color-text);
+  --color-info-bkg            : #f0eaf6;
+  --color-info-text           : #6c3fa7;
+  --color-neutral-bkg         : var(--color-neutral-1);
+  --color-neutral-text        : var(--color-text);
+  --color-promo-bkg           : #fff68a;
+  --color-promo-text          : #dd4b49;
+
+  --color-primary-bkg         : var(--color-primary-3);
+  --color-primary-text        : var(--color-text-inverse);
+  --color-primary-hover-bkg   : var(--color-primary-4);
+  --color-primary-active-bkg  : var(--color-primary-4);
+
+  --color-secondary-bkg       : transparent;
+  --color-secondary-text      : var(--color-primary-4);
+  --color-secondary-hover-bkg : var(--color-primary-0);
+  --color-secondary-active-bkg: var(--color-primary-0);
+
+  --color-tertiary-bkg        : transparent;
+  --color-tertiary-text       : var(--color-link);
+  --color-tertiary-hover-bkg  : var(--color-secondary-hover-bkg);
+  --color-tertiary-active-bkg : var(--color-secondary-active-bkg);
+
+  // Properties
+  // --------------------------------------------------------
+
+  --transition-timing         : .2s;
+  --transition-property       : all;
+  --transition-function       : ease-in-out;
+
+  --input-bkg-color           : white;
+  --input-hover-bkg-color     : var(--color-secondary-hover-bkg);
+
+  --border-radius-default     : 8px;
+  --border-color-default      : var(--color-neutral-1);
+  --border-color-subtle       : transparent;
+  --border-width-default      : 1px;
+  --border-width-subtle       : 1px;
+  --border-hover-color-default: var(--color-primary-2);
+  --border-hover-color-subtle : var(--color-primary-2);
+
+  --shadow                    : 0 2px 6px rgb(0 0 0 / 5%), 0 6px 12px rgb(0 0 0 / 5%), 0 10px 20px rgb(0 0 0 / 5%);
+  --shadow-hover              : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+
+  // Typography & scale
+  // --------------------------------------------------------
+
+  --min-size                  : 48px;
+
+  --type-scale-mobile         : 1.15;
+  --type-scale-desk           : 1.25;
+  --type-scale                : var(--type-scale-mobile);
+  @include media(">=notebook") {
+    --type-scale              : var(--type-scale-desk);
+  }
+
+  // Base size = 1rem
+  --font-size-base            : 16px;
+
+  // By size
+  --font-size-0               : 12px;
+  --font-size-1               : 14px;
+  --font-size-2               : var(--font-size-base);                        // mobile   desk
+  --font-size-3               : calc(var(--font-size-2) * var(--type-scale)); // 18px     20px
+  --font-size-4               : calc(var(--font-size-3) * var(--type-scale)); // 21px     25px
+  --font-size-5               : calc(var(--font-size-4) * var(--type-scale)); // 24px     31px
+  --font-size-6               : calc(var(--font-size-5) * var(--type-scale)); // 27px     39px
+  --font-size-7               : calc(var(--font-size-6) * var(--type-scale)); // 32px     48px
+  --font-size-8               : calc(var(--font-size-7) * var(--type-scale)); // 37px     61px
+
+  // By role
+  --font-size-tiny            : var(--font-size-0);
+  --font-size-small           : var(--font-size-1);
+  --font-size-body            : var(--font-size-base);
+  --font-size-lead            : var(--font-size-3);
+  --font-size-superlead       : var(--font-size-4);
+  --font-size-heading         : var(--font-size-5);
+  --font-size-superheading    : var(--font-size-6);
+  --font-size-hero            : var(--font-size-7);
+
+  --font-family               : "Roboto", sans-serif;
+  --font-family-title         : "Orelega One";
+
+  font-family                 : var(--font-family);
+  font-size                   : var(--font-size-body);
 
   // Toggle
   // ----------------------------------------------------------
 
   [data-base-toggle] {
-    --toggle-shadow                   : var(--box-shadow);
-    --toggle-bkg-color                : #f1f2f3;
-    --toggle-border-color             : #e3e6e8;
-    --toggle-border-radius            : var(--border-radius-pill);
+    --toggle-bkg-color                : var(--color-secondary-hover-bkg);
+    --toggle-border-radius            : 100px;
     --toggle-knob-bkg-color           : white;
-    --toggle-knob-border-color        : #e3e6e8;
-    --toggle-knob-shadow              : 0 2px 6px rgb(0 0 0 / 5%), 0 6px 12px rgb(0 0 0 / 5%), 0 10px 20px rgb(0 0 0 / 5%);
-    --toggle-checked-bkg-color        : #506300;
-    --toggle-checked-border-color     : #506300;
-    --toggle-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-    --toggle-hover-bkg-color          : #f1f4e6;
-    --toggle-hover-border-color       : white;
+    --toggle-knob-border-color        : white;
+    --toggle-checked-bkg-color        : var(--color-primary-active-bkg);
+    --toggle-hover-bkg-color          : var(--color-secondary-hover-bkg);
     --toggle-hover-knob-bkg-color     : white;
-  }
-
-  // Select
-  // ----------------------------------------------------------
-
-  [data-base-select] {
-    --select-shadow                   : var(--box-shadow);
-    --select-text-color               : #506300;
-    --select-icon-color               : #506300;
-    --select-border-radius            : var(--border-radius-pill);
-    --select-border-color             : #e3e6e8;
-    --select-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-    --select-hover-icon-color         : #506300;
-    --select-hover-text-color         : #506300;
-    --select-hover-bkg-color          : #f1f4e6;
-    --select-hover-border-color       : white;
-  }
-
-  // Quantity Selector / Stepper
-  // ----------------------------------------------------------
-
-  [data-store-quantity-selector] {
-    --qty-selector-height                   : calc(var(--min-size) + (var(--qty-selector-border-width) * 2));
-    --qty-selector-shadow                   : var(--box-shadow);
-    --qty-selector-bkg-color                : white;
-    --qty-selector-text-color               : #506300;
-    --qty-selector-icon-color               : #506300;
-    --qty-selector-border-radius            : var(--border-radius-pill);
-    --qty-selector-border-color             : #e3e6e8;
-    --qty-selector-hover-shadow             : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
-    --qty-selector-hover-button-bkg-color   : #f1f4e6;
   }
 
   // Badge
   // ----------------------------------------------------------
 
-  [data-store-badge] {
-    --badge-border-radius            : var(--border-radius-default);
-    --badge-small-padding            : 2px var(--space-1);
-    --badge-success-bkg-color        : #59ab30;
-    --badge-success-text-color       : var(--color-text-inverse);
-    --badge-success-border-color     : transparent;
-    --badge-highlighted-bkg-color    : #9559e4;
-    --badge-highlighted-text-color   : var(--color-text-inverse);
-    --badge-highlighted-border-color : transparent;
-    --badge-info-bkg-color           : #387bf8;
-    --badge-info-text-color          : var(--color-text-inverse);
-    --badge-info-border-color        : transparent;
-    --badge-neutral-bkg-color        : #a8a8a8;
-    --badge-neutral-text-color       : var(--color-text-inverse);
-    --badge-neutral-border-color     : transparent;
+  [data-store-badge] { --badge-border-radius: 100px; }
+
+  // Select
+  // ----------------------------------------------------------
+
+  [data-base-select] {
+    --select-text-color                    : var(--color-link);
+    --select-border-radius                 : var(--border-radius-pill);
   }
+
+  // Quantity Selector / Stepper
+  // ----------------------------------------------------------
+
+  [data-store-quantity-selector] { --qty-selector-border-radius: 100px; }
 
   // Button
   // ----------------------------------------------------------
 
   [data-store-button] {
-    --button-border-radius                         : var(--border-radius-pill);
-    --button-primary-bkg-color                     : #506300;
-    --button-primary-text-color                    : var(--color-text-inverse);
-    --button-primary-hover-bkg-color               : #688200;
-    --button-primary-active-bkg-color              : #94A843;
-    --button-primary-inverse-hover-bkg-color       : #f1f4e6;
-    --button-primary-inverse-active-bkg-color      : #E0E8B4;
-    --button-tertiary-text-color                   : #506300;
-    --button-secondary-inverse-text-color          : #CCDC8B;
-    --button-secondary-inverse-border-color        : #CCDC8B;
+    --shadow-hover                         : none;
+    --button-shadow                        : none;
+    --button-border-radius                 : var(--border-radius-pill);
+    --button-primary-inverse-text-color    : var(--color-link);
+    --button-secondary-border-color        : var(--color-primary-2);
+    --button-secondary-inverse-text-color  : var(--color-primary-1);
+    --button-secondary-inverse-border-color: var(--color-primary-1);
+    --button-tertiary-inverse-text-color   : var(--color-primary-1);
   }
 
-  &.inverse { --bkg-dark: #66584A; }
 
   // Product Card
   // ----------------------------------------------------------
 
   [data-base-product-card] {
-    --product-card-shadow                  : var(--box-shadow);
     --product-card-img-radius              : 6px;
     --product-card-text-title-color        : #688200;
     --product-card-text-title-weight       : bold;
-    --product-card-border-radius           : 14px;
-    --product-card-border-width            : 1px;
-    --product-card-border-color            : #e3e6e8;
-    --product-card-transition-timing       : .5s;
-    --product-card-hover-shadow            : 0 2px 6px rgb(0 0 0 / 10%), 0 6px 12px rgb(0 0 0 / 10%), 0 10px 20px rgb(0 0 0 / 10%);
+    --product-card-bkg-color               : white;
+    --product-card-price-color             : var(--color-text-subtle);
     --product-card-hover-bkg-color         : #f1f4e6;
-    --product-card-hover-border-color      : white;
+    --product-card-hover-border-color      : var(--color-primary-2);
+    [data-base-select] {
+      --shadow: none;
+      --shadow-hover: none;
+    }
+    // [data-store-quantity-selector] { --qty-selector-width: calc(100% - (var(--product-card-padding) * 4)); }
   }
 
   // Hero Section
@@ -120,5 +194,7 @@
 
   // Banner
   // ----------------------------------------------------------
+
+  &.inverse { --bkg-dark: #66584A; }
 }
 /* stylelint-enable */
