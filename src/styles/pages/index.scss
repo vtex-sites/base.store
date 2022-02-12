@@ -9,13 +9,7 @@ main {
   display: inline-block;
   width: 100%;
 
-  > h2 {
-    margin-bottom: var(--space-3);
-    font-weight: var(--text-weight-bold);
-    font-size: var(--font-size-heading);
-    font-family: var(--font-family-title);
-    line-height: 1.16;
-  }
+  > h2 { margin-bottom: var(--space-3); }
 }
 
 .page__section-shelf {

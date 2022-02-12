@@ -2,102 +2,58 @@
 
 // Sizes
 :root {
-  --text-size-0: 12px;
-  --text-size-1: 14px;
-  --text-size-2: var(--base-font-size);                      // 16px
-  --text-size-3: calc(var(--base-font-size) * var(--scale)); // 20px
-  --text-size-4: calc(var(--text-size-3) * var(--scale));    // 25px
-  --text-size-5: calc(var(--text-size-4) * var(--scale));    // 31px
-  --text-size-6: calc(var(--text-size-5) * var(--scale));    // 39px
-  --text-size-7: calc(var(--text-size-6) * var(--scale));    // 48px
-  --text-size-8: calc(var(--text-size-7) * var(--scale));    // 61px
+  --type-scale-mobile: 1.15;
+  --type-scale-desk: 1.25;
+  --type-scale: var(--type-scale-mobile);
+
+  @include media(">=notebook") {
+    --type-scale: var(--type-scale-desk);
+  }
+
+  // Base size = 1rem
+  --font-size-base: 16px;
+
+  // By size
+  --font-size-0: 12px;
+  --font-size-1: 14px;
+  --font-size-2: var(--font-size-base);                        // mobile   desk
+  --font-size-3: calc(var(--font-size-2) * var(--type-scale)); // 18px     20px
+  --font-size-4: calc(var(--font-size-3) * var(--type-scale)); // 21px     25px
+  --font-size-5: calc(var(--font-size-4) * var(--type-scale)); // 24px     31px
+  --font-size-6: calc(var(--font-size-5) * var(--type-scale)); // 27px     39px
+  --font-size-7: calc(var(--font-size-6) * var(--type-scale)); // 32px     48px
+  --font-size-8: calc(var(--font-size-7) * var(--type-scale)); // 37px     61px
+
+  // By role
+  --font-size-tiny: var(--font-size-0);
+  --font-size-small: var(--font-size-1);
+  --font-size-body: var(--font-size-base);
+  --font-size-lead: var(--font-size-3);
+  --font-size-superlead: var(--font-size-4);
+  --font-size-heading: var(--font-size-5);
+  --font-size-superheading: var(--font-size-6);
+  --font-size-hero: var(--font-size-7);
+
+  --font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --font-family-title: var(--font-family);
 }
 
 body {
-  font-size: var(--text-size-2);
+  font-size: var(--font-size-body);
   font-family: var(--font-family);
   letter-spacing: .01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h2 {
+  font-weight: var(--text-weight-bold);
+  font-size: var(--font-size-heading);
+  font-family: var(--font-family-title);
+  line-height: 1.16;
+}
+
 h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0;
   padding: 0;
-}
-
-// Titles ///////////////////////////
-
-.title-hero {
-  font-weight: var(--text-weight-black);
-  font-size: var(--text-size-5);
-  line-height: 1.1;
-
-  @include media(">=tablet") { font-size: var(--text-size-7); }
-}
-
-.title-display-big {
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-3);
-  line-height: 1.25;
-
-  @include media(">=notebook") { font-size: var(--text-size-6); }
-}
-
-.title-section {
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-4);
-  line-height: 1.16;
-
-  @include media(">=notebook") { font-size: var(--text-size-5); }
-}
-
-.title-display {
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-4);
-  line-height: 1.12;
-}
-
-.title-product {
-  font-weight: var(--text-weight-regular);
-  font-size: var(--text-size-4);
-  line-height: 1.12;
-}
-
-.title-subsection {
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-3);
-  line-height: 1.2;
-}
-
-.title-sub-subsection {
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-2);
-  line-height: 1.25;
-}
-
-// Texts ////////////////////////////
-
-.text-body-tiny {
-  font-size: var(--text-size-0);
-  line-height: 1.5;
-}
-
-.text-body-small {
-  font-size: var(--text-size-1);
-  line-height: 1.7;
-}
-
-.text-body {
-  font-size: var(--text-size-2);
-  line-height: 1.5;
-}
-
-.text-body-big {
-  font-size: var(--text-size-2);
-  line-height: 1.5;
-
-  @include media(">=notebook") {
-    font-size: var(--text-size-3);
-  }
 }

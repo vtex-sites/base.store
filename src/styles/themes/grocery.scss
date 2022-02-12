@@ -87,40 +87,11 @@
 
   --type-scale-mobile         : 1.15;
   --type-scale-desk           : 1.25;
-  --type-scale                : var(--type-scale-mobile);
-  @include media(">=notebook") {
-    --type-scale              : var(--type-scale-desk);
-  }
 
-  // Base size = 1rem
-  --font-size-base            : 16px;
-
-  // By size
-  --font-size-0               : 12px;
-  --font-size-1               : 14px;
-  --font-size-2               : var(--font-size-base);                        // mobile   desk
-  --font-size-3               : calc(var(--font-size-2) * var(--type-scale)); // 18px     20px
-  --font-size-4               : calc(var(--font-size-3) * var(--type-scale)); // 21px     25px
-  --font-size-5               : calc(var(--font-size-4) * var(--type-scale)); // 24px     31px
-  --font-size-6               : calc(var(--font-size-5) * var(--type-scale)); // 27px     39px
-  --font-size-7               : calc(var(--font-size-6) * var(--type-scale)); // 32px     48px
-  --font-size-8               : calc(var(--font-size-7) * var(--type-scale)); // 37px     61px
-
-  // By role
-  --font-size-tiny            : var(--font-size-0);
-  --font-size-small           : var(--font-size-1);
-  --font-size-body            : var(--font-size-base);
-  --font-size-lead            : var(--font-size-3);
-  --font-size-superlead       : var(--font-size-4);
-  --font-size-heading         : var(--font-size-5);
-  --font-size-superheading    : var(--font-size-6);
-  --font-size-hero            : var(--font-size-7);
+  --font-size-base            : 16px; // 1rem
 
   --font-family               : "Roboto", sans-serif;
   --font-family-title         : "Orelega One";
-
-  font-family                 : var(--font-family);
-  font-size                   : var(--font-size-body);
 
   // Toggle
   // ----------------------------------------------------------
