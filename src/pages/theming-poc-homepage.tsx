@@ -9,7 +9,7 @@ import Hero from 'src/components/sections/Hero'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 
-import '../styles/pages/index.scss'
+import '../styles/pages/homepage.scss'
 import '../styles/theming-poc.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
@@ -30,7 +30,7 @@ function Page(props: Props) {
         noindex
         nofollow
       />
-      <section className="page__section">
+      <section data-base-section>
         <Hero
           title="New Products Available"
           subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
@@ -41,12 +41,16 @@ function Page(props: Props) {
         />
       </section>
 
-      <section className="page__section">
+      <section data-base-section>
         <IncentivesHeader />
       </section>
 
       {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
+        <section
+          data-base-section
+          data-base-section-shelf
+          className="grid-section"
+        >
           <h2 className="grid-content">Most Wanted</h2>
           <div className="page__section-content">
             <ProductShelf products={products.slice(0, 5)} />
@@ -55,15 +59,19 @@ function Page(props: Props) {
       )}
 
       {haveProducts && (
-        <section className="page__section / grid-section">
+        <section
+          data-base-section
+          data-base-section-shelf
+          className="grid-section"
+        >
           <h2 className="grid-content">Just Arrived</h2>
-          <div className="page__section-content grid-content">
+          <div data-base-section-content className="grid-content">
             <ProductTiles products={products.slice(5, 8)} />
           </div>
         </section>
       )}
 
-      <section className="page__section / grid-section">
+      <section data-base-section className="grid-section">
         <BannerText
           title="Receive our news and promotions in advance."
           caption="Enjoy and get 10% off on your first purchase."
@@ -73,9 +81,13 @@ function Page(props: Props) {
       </section>
 
       {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
+        <section
+          data-base-section
+          data-base-section-shelf
+          className="grid-section"
+        >
           <h2 className="grid-content">Deals & Promotions</h2>
-          <div className="page__section-content">
+          <div data-base-section-content>
             <ProductShelf products={products.slice(9, 14)} />
           </div>
         </section>

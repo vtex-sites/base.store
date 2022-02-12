@@ -1,0 +1,24 @@
+@import "../../styles/vendors/include-media";
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+[data-base-section] {
+  display: inline-block;
+  width: 100%;
+
+  > h2 { margin-bottom: var(--space-3); }
+}
+
+[data-base-section-shelf] {
+  [data-base-section-content] {
+    min-height: 21.06rem;
+
+    @include media(">=notebook") {
+      margin-top: calc(-1 * var(--space-0));
+      margin-bottom: calc(-1 * var(--space-3));
+    }
+  }
+}
