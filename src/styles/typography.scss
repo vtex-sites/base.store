@@ -16,13 +16,13 @@ body {
   // By size
   --font-size-0: 12px;
   --font-size-1: 14px;
-  --font-size-2: var(--font-size-base);                        // mobile   desk
-  --font-size-3: calc(var(--font-size-2) * var(--type-scale)); // 18px     20px
-  --font-size-4: calc(var(--font-size-3) * var(--type-scale)); // 21px     25px
-  --font-size-5: calc(var(--font-size-4) * var(--type-scale)); // 24px     31px
-  --font-size-6: calc(var(--font-size-5) * var(--type-scale)); // 27px     39px
-  --font-size-7: calc(var(--font-size-6) * var(--type-scale)); // 32px     48px
-  --font-size-8: calc(var(--font-size-7) * var(--type-scale)); // 37px     61px
+  --font-size-2: var(--font-size-base);
+  --font-size-3: calc(var(--font-size-2) * var(--type-scale));
+  --font-size-4: calc(var(--font-size-3) * var(--type-scale));
+  --font-size-5: calc(var(--font-size-4) * var(--type-scale));
+  --font-size-6: calc(var(--font-size-5) * var(--type-scale));
+  --font-size-7: calc(var(--font-size-6) * var(--type-scale));
+  --font-size-8: calc(var(--font-size-7) * var(--type-scale));
 
   // By role
   --font-size-tiny: var(--font-size-0);
@@ -36,6 +36,7 @@ body {
 
   --font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --font-family-title: var(--font-family);
+
   font-size: var(--font-size-body);
   font-family: var(--font-family);
   letter-spacing: .01em;
@@ -43,10 +44,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  font-family: var(--font-family-title);
-  letter-spacing: -1px;
-}
+h1, h2 { font-family: var(--font-family-title); }
 
 h2 {
   font-weight: var(--text-weight-bold);

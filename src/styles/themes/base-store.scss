@@ -82,13 +82,13 @@
 
   --min-size                  : 48px;
 
-  --type-scale-mobile       : 1.15;
-  --type-scale-desk         : 1.25;
+  --type-scale-mobile         : 1.15;
+  --type-scale-desk           : 1.25;
 
-  --font-size-base          : 16px; // 1rem
+  --font-size-base            : 16px; // 1rem
 
-  --font-family             : "Lato", sans-serif;
-  --font-family-title       : var(--font-family);
+  --font-family               : "Lato", sans-serif;
+  --font-family-title         : var(--font-family);
 
   &.inverse { --color-body-bkg: var(--color-primary-4); }
 }

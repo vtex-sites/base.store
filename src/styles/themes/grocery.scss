@@ -85,15 +85,17 @@
 
   --min-size                  : 48px;
 
-  --type-scale-mobile       : 1.15;
-  --type-scale-desk         : 1.35;
+  --type-scale-mobile         : 1.2;
+  --type-scale-desk           : 1.35;
 
-  --font-size-base          : 16px; // 1rem
+  --font-size-base            : 16px; // 1rem
 
-  --font-family             : "Roboto", sans-serif;
-  --font-family-title       : "Orelega One";
+  --font-family               : "Roboto", sans-serif;
+  --font-family-title         : "Orelega One";
 
   h1, h2 { font-weight: normal !important; }
+  h1 { letter-spacing: -2px; }
+
 
 
   // Toggle
@@ -160,8 +162,8 @@
   // ----------------------------------------------------------
 
   [data-store-hero] {
-    --hero-bkg-color                       : var(--color-primary-1);
-    --hero-text-color                      : var(--color-alternate-3);
+    --hero-bkg-color                       : var(--color-alternate-4);
+    --hero-text-color                      : var(--color-primary-1);
     --hero-title-line                      : 1;
   }
 
@@ -169,14 +171,17 @@
   // ----------------------------------------------------------
 
   [data-base-section-shelf] {
-    h2 { font-size: var(--font-size-superlead); }
+    h2 {
+      font-family: var(--font-family);
+      font-size: var(--font-size-superlead);
+    }
   }
 
   // Incentives
   // ----------------------------------------------------------
 
   [data-base-incentives] {
-    --incentives-bkg-color                 : var(--color-neutral-1);
+    --incentives-bkg-color                 : #e9e9e9;
     --incentives-text-color                : var(--color-alternate-3);
     --incentives-divider-color             : var(--color-neutral-2);
   }
@@ -214,12 +219,11 @@
   // ----------------------------------------------------------
 
   [data-store-banner] {
-    --banner-bkg-color                     : var(--color-alternate-4);
-    --banner-text-color                    : var(--color-primary-1);
+    --banner-bkg-color                     : var(--color-primary-1);
+    --banner-text-color                    : var(--color-alternate-3);
+    h2 { letter-spacing: -1px; }
   }
 
   &.inverse { --color-body-bkg: #66584A; }
-
-  background-color: var(--color-body-bkg);
 }
 /* stylelint-enable */
