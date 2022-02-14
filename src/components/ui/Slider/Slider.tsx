@@ -10,7 +10,7 @@ type Props = {
   children: ReactNode
 }
 
-function Slider({ children }: Props) {
+function Slider({ children, show = 3 }: Props) {
   // TODO: Make controll settings via props
   const sliderRef = useRef<ReactSlick>(null)
   const [showNextArrow, setshowNextArrow] = useState<boolean>(true)
@@ -35,7 +35,7 @@ function Slider({ children }: Props) {
     dots: true,
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: show,
     slidesToScroll: 3,
     afterChange: handleChangeSlide,
     appendDots: (dots) => (

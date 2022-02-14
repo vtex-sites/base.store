@@ -13,25 +13,28 @@ function Page(props: Props) {
   } = props
 
   const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
+  const baseImageProps = {
+    layout: 'fullWidth' as const,
+    backgroundColor: '#f0f0f0',
+    loading: 'eager' as const,
+    options: {
+      fitIn: true,
+    },
+  }
 
   return (
     <>
       <section className="page__section / grid-section grid-content">
         <h1>React Slick</h1>
 
-        <p>Total: 10 | Show: 3</p>
+        <p>Total: 15 | Show: 4</p>
         <Slider>
-          {products.slice(0, 10).map((product) => (
+          {products.slice(0, 15).map((product) => (
             <Image
               baseUrl={product.image[0].url}
               alt={product.name}
               key={`${product.id}`}
-              layout="fullWidth"
-              backgroundColor="#f0f0f0"
-              loading="eager"
-              options={{
-                fitIn: true,
-              }}
+              {...baseImageProps}
             />
           ))}
         </Slider>
@@ -39,18 +42,27 @@ function Page(props: Props) {
         <br />
 
         <p>Total: 6 | Show: 3</p>
-        <Slider>
-          {products.slice(0, 7).map((product) => (
+        <Slider show={3}>
+          {products.slice(0, 6).map((product) => (
             <Image
               baseUrl={product.image[0].url}
               alt={product.name}
               key={`${product.id}`}
-              layout="fullWidth"
-              backgroundColor="#f0f0f0"
-              loading="eager"
-              options={{
-                fitIn: true,
-              }}
+              {...baseImageProps}
+            />
+          ))}
+        </Slider>
+        <br />
+        <br />
+
+        <p>Total: 5 | Show: 5</p>
+        <Slider show={5}>
+          {products.slice(0, 5).map((product) => (
+            <Image
+              baseUrl={product.image[0].url}
+              alt={product.name}
+              key={`${product.id}`}
+              {...baseImageProps}
             />
           ))}
         </Slider>
