@@ -3044,6 +3044,10 @@
   resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.4.15.tgz#b7d4f1e4d1cdcaad7b09c9201a8ac7717b0335ec"
   integrity sha512-3L/UGCwGFCoHwGSYkWA3nbjHsjDbD5tsqDCTjxzGBhPAaOGmYicaDSKnjlG4PcW7loJz8NrKvnBkFx72stwN4Q==
 
+"@vtex/lighthouse-config@https://pkg.csb.dev/vtex/faststore/commit/8eecc015/@vtex/lighthouse-config":
+  version "1.5.5"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/8eecc015/@vtex/lighthouse-config#4667696e8fca14213a0e1e9c16bc9a7a196b733a"
+
 "@vtex/prettier-config@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@vtex/prettier-config/-/prettier-config-1.0.0.tgz#a7a7091ecff1da340d398000f4855dc9910aa9c9"
