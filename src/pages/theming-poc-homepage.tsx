@@ -3,6 +3,7 @@ import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
+import Helmet from 'react-helmet'
 import BannerText from 'src/components/sections/BannerText'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import Hero from 'src/components/sections/Hero'
@@ -23,7 +24,12 @@ function Page(props: Props) {
   const haveProducts = products && products?.length > 0
 
   return (
-    <div className="grocery">
+    <div>
+      <Helmet
+        bodyAttributes={{
+          class: 'base-store',
+        }}
+      />
       <GatsbySeo
         title="UI Theming: Proof of Concept"
         language="en"

@@ -1,7 +1,7 @@
 // Default //////////////////////////
 
 // Sizes
-:root {
+body {
   --type-scale-mobile: 1.15;
   --type-scale-desk: 1.25;
   --type-scale: var(--type-scale-mobile);
@@ -36,9 +36,6 @@
 
   --font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --font-family-title: var(--font-family);
-}
-
-body {
   font-size: var(--font-size-body);
   font-family: var(--font-family);
   letter-spacing: .01em;
