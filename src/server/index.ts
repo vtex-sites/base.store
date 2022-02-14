@@ -12,8 +12,8 @@ import { useValidationCache } from '@envelop/validation-cache'
 import { getContextFactory, getSchema } from '@faststore/api'
 import type { Options as APIOptions } from '@faststore/api'
 import { GraphQLError } from 'graphql'
-import storeConfig from 'src/store.config'
 
+import storeConfig from '../store.config'
 import persisted from '../../@generated/graphql/persisted.json'
 
 interface ExecuteOptions {
