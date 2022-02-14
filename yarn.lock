@@ -1446,6 +1446,12 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
+"@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/b6003f88/@faststore/sdk":
+  version "1.5.3"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/b6003f88/@faststore/sdk#50d049f27297f895542b66fa0e29b93bae4b34a2"
+  dependencies:
+    idb-keyval "^5.1.3"
+
 "@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/ef864216/@faststore/sdk":
   version "1.5.3"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/ef864216/@faststore/sdk#b3b9b520c2894b45b5281550491ef619c819f396"
