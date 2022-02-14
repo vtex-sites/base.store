@@ -18,7 +18,7 @@ const {
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
-module.exports = {
+export default {
   siteMetadata: {
     title: 'FastStore',
     description: 'Fast Demo Store',
