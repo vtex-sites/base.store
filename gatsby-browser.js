@@ -10,7 +10,7 @@ import { validateCart } from './src/sdk/cart/validate'
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
-import storeConfig from './store.config'
+import storeConfig from './src/store.config'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>

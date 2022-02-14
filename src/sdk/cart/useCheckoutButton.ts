@@ -1,5 +1,6 @@
+import storeConfig from 'src/store.config'
+
 import { useCart } from './useCart'
-import * as storeConfig from '../../../store.config'
 
 const { checkoutUrl } = storeConfig
 

@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-
-import storeConfig from '../../store.config'
+import storeConfig from 'src/store.config'
 
 function Page() {
   useEffect(() => {
