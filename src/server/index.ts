@@ -1,22 +1,30 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-const {
+import type { FormatErrorHandler } from '@envelop/core'
+import {
   envelop,
   useExtendContext,
   useMaskedErrors,
   useSchema,
-} = require('@envelop/core')
-const { useGraphQlJit } = require('@envelop/graphql-jit')
-const { useParserCache } = require('@envelop/parser-cache')
-const { useValidationCache } = require('@envelop/validation-cache')
-const { getContextFactory, getSchema } = require('@faststore/api')
-const { GraphQLError } = require('graphql')
+} from '@envelop/core'
+import { useGraphQlJit } from '@envelop/graphql-jit'
+import { useParserCache } from '@envelop/parser-cache'
+import { useValidationCache } from '@envelop/validation-cache'
+import { getContextFactory, getSchema } from '@faststore/api'
+import type { Options as APIOptions } from '@faststore/api'
+import { GraphQLError } from 'graphql'
+import storeConfig from 'src/store.config'
 
-const persisted = require('../../@generated/graphql/persisted.json')
-const storeConfig = require('../../store.config')
+import persisted from '../../@generated/graphql/persisted.json'
+
+interface ExecuteOptions {
+  operationName: string
+  variables: Record<string, unknown>
+  query: string | null
+}
 
 const persistedQueries = new Map(Object.entries(persisted))
 
-const apiOptions = {
+const apiOptions: APIOptions = {
   platform: storeConfig.platform,
   account: storeConfig.api.storeId,
   environment: storeConfig.api.environment,
@@ -26,11 +34,11 @@ const apiOptions = {
 const apiSchema = getSchema(apiOptions)
 const apiContextFactory = getContextFactory(apiOptions)
 
-const isBadRequestError = (err) => {
+const isBadRequestError = (err: GraphQLError) => {
   return err.originalError && err.originalError.name === 'BadRequestError'
 }
 
-const formatError = (err) => {
+const formatError: FormatErrorHandler = (err) => {
   console.error(err)
 
   if (err instanceof GraphQLError && isBadRequestError(err)) {
@@ -54,9 +62,12 @@ const getEnvelop = async () =>
 
 const envelopPromise = getEnvelop()
 
-const execute = async (options, envelopContext = {}) => {
+export const getApiSchema = () => apiSchema
+export const getApiContextFactory = () => apiContextFactory
+
+export const execute = async (options: ExecuteOptions, envelopContext = {}) => {
   const { operationName, variables, query: maybeQuery } = options
-  const query = maybeQuery || persistedQueries.get(operationName)
+  const query = maybeQuery ?? persistedQueries.get(operationName)
 
   if (query == null) {
     throw new Error(`No query found for operationName: ${operationName}`)
@@ -77,10 +88,4 @@ const execute = async (options, envelopContext = {}) => {
     contextValue: await contextFactory({}),
     operationName,
   })
-}
-
-module.exports = {
-  execute,
-  getSchema: () => apiSchema,
-  getContextFactory: () => apiContextFactory,
 }
