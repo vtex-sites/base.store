@@ -2,7 +2,6 @@ require('dotenv').config({ path: 'vtex.env' })
 
 const { join, resolve } = require('path')
 
-const { getSchema, getContextFactory } = require('./src/server')
 const config = require('./store.config')
 
 const {
@@ -10,7 +9,6 @@ const {
   URL = config.storeUrl,
   DEPLOY_PRIME_URL = URL,
   CONTEXT: ENV = NODE_ENV,
-  VTEX_WEBOPS: isWebOps,
 } = process.env
 
 const isProduction = ENV === 'production'
@@ -88,7 +86,7 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server: 'https://thumbor-dev-server.vtex.io',
+        server: 'https://thumbor-server.vtex.io',
       },
     },
     {
@@ -115,43 +113,6 @@ module.exports = {
         outDir: `.`,
         stats: {
           context: join(__dirname, 'src'),
-        },
-      },
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-nginx',
-      options: {
-        httpOptions: [
-          ['merge_slashes', 'off'],
-          ['proxy_http_version', '1.1'],
-          ['absolute_redirect', 'off'],
-        ],
-        serverOptions: isWebOps
-          ? [['resolver', '169.254.169.253']]
-          : [['resolver', '8.8.8.8']],
-        locations: {
-          append: {
-            cmd: ['location', '/'],
-            children: [
-              {
-                cmd: [
-                  'add_header',
-                  'Cache-Control',
-                  '"public, max-age=0, must-revalidate"',
-                ],
-              },
-              {
-                cmd: [
-                  'try_files',
-                  '$uri',
-                  '$uri/',
-                  '$uri/index.html',
-                  '$uri.html',
-                  '=404',
-                ],
-              },
-            ],
-          },
         },
       },
     },

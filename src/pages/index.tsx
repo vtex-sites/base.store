@@ -1,12 +1,8 @@
 import { useSession } from '@faststore/sdk'
-import loadable from '@loadable/component'
 import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
-import Hero from 'src/components/sections/Hero'
-import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
-import ProductShelf from 'src/components/sections/ProductShelf'
+import React, { lazy, Suspense, useMemo } from 'react'
 import { execute } from 'src/server'
 import type { PageProps } from 'gatsby'
 import type {
@@ -14,9 +10,12 @@ import type {
   ServerHomePageQueryQuery,
 } from '@generated/graphql'
 
-const BannerText = loadable(() => import('src/components/sections/BannerText'))
-const ProductTiles = loadable(
-  () => import('src/components/sections/ProductTiles')
+const Hero = lazy(() => import('src/components/sections/Hero'))
+const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
+const BannerText = lazy(() => import('src/components/sections/BannerText'))
+const ProductTiles = lazy(() => import('src/components/sections/ProductTiles'))
+const IncentivesHeader = lazy(
+  () => import('src/components/sections/Incentives/IncentivesHeader')
 )
 
 export type Props = PageProps<
@@ -72,60 +71,74 @@ function Page(props: Props) {
           },
         }}
       />
+
       {/*
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <section className="page__section">
-        <Hero
-          title="New Products Available"
-          subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
-          linkText="See all"
-          link="/"
-          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-          imageAlt="Quest 2 Controller on a table"
-        />
-      </section>
 
-      <section className="page__section">
-        <IncentivesHeader />
-      </section>
-
-      {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Most Wanted</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products.slice(0, 5)} />
-          </div>
+      <Suspense fallback={null}>
+        <section className="page__section">
+          <Hero
+            title="New Products Available"
+            subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
+            linkText="See all"
+            link="/"
+            imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+            imageAlt="Quest 2 Controller on a table"
+          />
         </section>
-      )}
+      </Suspense>
 
-      {haveProducts && (
-        <section className="page__section / grid-section grid-content">
-          <h2 className="title-section">Just Arrived</h2>
-          <div className="page__section-content">
-            <ProductTiles products={products.slice(5, 8)} />
-          </div>
+      <Suspense fallback={null}>
+        <section className="page__section">
+          <IncentivesHeader />
         </section>
-      )}
+      </Suspense>
 
-      <section className="page__section / grid-section">
-        <BannerText
-          title="Receive our news and promotions in advance."
-          caption="Enjoy and get 10% off on your first purchase."
-          actionPath="/"
-          actionLabel="Call to action"
-        />
-      </section>
+      <Suspense fallback={null}>
+        {haveProducts && (
+          <section className="page__section page__section-shelf / grid-section">
+            <h2 className="title-section / grid-content">Most Wanted</h2>
+            <div className="page__section-content">
+              <ProductShelf products={products.slice(0, 5)} />
+            </div>
+          </section>
+        )}
+      </Suspense>
 
-      {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Deals & Promotions</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products.slice(9, 14)} />
-          </div>
+      <Suspense fallback={null}>
+        {haveProducts && (
+          <section className="page__section / grid-section grid-content">
+            <h2 className="title-section">Just Arrived</h2>
+            <div className="page__section-content">
+              <ProductTiles products={products.slice(5, 8)} />
+            </div>
+          </section>
+        )}
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <section className="page__section / grid-section">
+          <BannerText
+            title="Receive our news and promotions in advance."
+            caption="Enjoy and get 10% off on your first purchase."
+            actionPath="/"
+            actionLabel="Call to action"
+          />
         </section>
-      )}
+      </Suspense>
+
+      <Suspense fallback={null}>
+        {haveProducts && (
+          <section className="page__section page__section-shelf / grid-section">
+            <h2 className="title-section / grid-content">Deals & Promotions</h2>
+            <div className="page__section-content">
+              <ProductShelf products={products.slice(9, 14)} />
+            </div>
+          </section>
+        )}
+      </Suspense>
     </>
   )
 }

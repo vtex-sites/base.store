@@ -1,5 +1,5 @@
 import React from 'react'
-import loadable from '@loadable/component'
+import ProductGallery from 'src/components/sections/ProductGallery'
 
 import './product-listing.scss'
 
@@ -7,10 +7,6 @@ type Props = {
   title: string
   slug?: string
 }
-
-const ProductGallery = loadable(
-  () => import('src/components/sections/ProductGallery')
-)
 
 function ProductListing({ title, slug }: Props) {
   return (

@@ -1,7 +1,8 @@
 const path = require('path')
-const { schema } = require('./src/server')
 
 const { copyLibFiles } = require('@builder.io/partytown/utils')
+
+const { schema } = require('./src/server')
 
 exports.onPreInit = async ({ reporter }) => {
   reporter.info('Copying Partytown Files')
@@ -20,25 +21,6 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
           moduleIds: 'named',
           chunkIds: 'named',
           concatenateModules: false,
-        },
-      })
-    } else {
-      setWebpackConfig({
-        optimization: {
-          runtimeChunk: {
-            name: `webpack-runtime`,
-          },
-          splitChunks: {
-            name: false,
-            cacheGroups: {
-              styles: {
-                name: `styles`,
-                test: /\.(css|scss)$/,
-                chunks: `initial`,
-                enforce: true,
-              },
-            },
-          },
         },
       })
     }

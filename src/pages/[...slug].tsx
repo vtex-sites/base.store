@@ -1,12 +1,9 @@
-import '../styles/pages/product-listing-page.scss'
-
 import { SearchProvider, useSession } from '@faststore/sdk'
-import loadable from '@loadable/component'
 import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import React, { useEffect, useMemo } from 'react'
+import React, { lazy, useEffect, useMemo } from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductListing from 'src/components/sections/ProductListing'
@@ -21,6 +18,8 @@ import type {
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
 
+import '../styles/pages/product-listing-page.scss'
+
 export type Props = PageProps<
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
@@ -28,13 +27,11 @@ export type Props = PageProps<
   ServerCollectionPageQueryQuery
 > & { slug: string }
 
-const ScrollToTopButton = loadable(
+const ScrollToTopButton = lazy(
   () => import('src/components/ui/ScrollToTopButton')
 )
 
-const ProductShelf = loadable(
-  () => import('src/components/sections/ProductShelf')
-)
+const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
 
 function Page(props: Props) {
   const {

@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import loadable from '@loadable/component'
-import Navbar from 'src/components/common/Navbar'
+// eslint-disable-next-line spaced-comment
+/// <reference types="react/experimental" />
+
 import { BellRinging as BellRingingIcon } from 'phosphor-react'
+import React, { lazy, Suspense, useState } from 'react'
+import Footer from 'src/components/common/Footer'
+import Navbar from 'src/components/common/Navbar'
+import Alert from 'src/components/ui/Alert'
 import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
-import Alert from './components/ui/Alert'
 import './styles/fonts.css'
 
-const CartSidebar = loadable(() => import('src/components/cart/CartSidebar'))
-
-const Toast = loadable(() => import('src/components/ui/Toast'))
-
-const Footer = loadable(() => import('src/components/common/Footer'))
+const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
+const Toast = lazy(() => import('src/components/ui/Toast'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart, toasts } = useUI()
@@ -53,9 +53,18 @@ function Layout({ children }: PropsWithChildren<unknown>) {
       <main>{children}</main>
 
       <Footer />
-      {displayMinicart && <CartSidebar />}
 
-      {toasts.length > 0 && <Toast />}
+      {displayMinicart && (
+        <Suspense fallback={null}>
+          <CartSidebar />
+        </Suspense>
+      )}
+
+      {toasts.length > 0 && (
+        <Suspense fallback={null}>
+          <Toast />
+        </Suspense>
+      )}
     </div>
   )
 }
