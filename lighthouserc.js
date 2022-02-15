@@ -1,6 +1,6 @@
 const VTEXLHConfig = require('@vtex/lighthouse-config').default
 
-const { lighthouse: lh } = require('./store.config')
+const { lighthouse: lh } = require('./src/store.config')
 
 module.exports = VTEXLHConfig({
   urls: Object.values(lh.pages),
