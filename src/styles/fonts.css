@@ -3,7 +3,7 @@
   font-weight: 400;
   font-family: "Lato";
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
   src: url("../fonts/lato-v20-latin-regular.eot"); /* IE9 Compat Modes */
   src: local(""),
     url("../fonts/lato-v20-latin-regular.eot?#iefix") format("embedded-opentype"),
@@ -11,6 +11,8 @@
     url("../fonts/lato-v20-latin-regular.woff") format("woff"),
     url("../fonts/lato-v20-latin-regular.ttf") format("truetype"),
     url("../fonts/lato-v20-latin-regular.svg#Lato") format("svg"); /* Legacy iOS */
+
+  unicode-range: U+0020-U+007F;
 }
 
 /* lato-700 - latin */
@@ -18,7 +20,7 @@
   font-weight: 700;
   font-family: "Lato";
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
   src: url("../fonts/lato-v20-latin-700.eot"); /* IE9 Compat Modes */
   src: local(""),
     url("../fonts/lato-v20-latin-700.eot?#iefix") format("embedded-opentype"),
@@ -26,6 +28,7 @@
     url("../fonts/lato-v20-latin-700.woff") format("woff"),
     url("../fonts/lato-v20-latin-700.ttf") format("truetype"),
     url("../fonts/lato-v20-latin-700.svg#Lato") format("svg"); /* Legacy iOS */
+  unicode-range: U+0020-U+007F;
 }
 
 /* lato-900 - latin */
@@ -33,7 +36,7 @@
   font-weight: 900;
   font-family: "Lato";
   font-style: normal;
-  font-display: swap;
+  font-display: fallback;
   src: url("../fonts/lato-v20-latin-900.eot"); /* IE9 Compat Modes */
   src: local(""),
     url("../fonts/lato-v20-latin-900.eot?#iefix") format("embedded-opentype"),
@@ -41,4 +44,5 @@
     url("../fonts/lato-v20-latin-900.woff") format("woff"),
     url("../fonts/lato-v20-latin-900.ttf") format("truetype"),
     url("../fonts/lato-v20-latin-900.svg#Lato") format("svg"); /* Legacy iOS */
+  unicode-range: U+0020-U+007F;
 }
