@@ -1,7 +1,7 @@
 import { Partytown } from '@builder.io/partytown/react'
 import React from 'react'
+import storeConfig from 'src/store.config'
 
-import storeConfig from '../../../store.config'
 import GoogleTagManager from './GoogleTagManager'
 import VTEX from './vtex'
 
