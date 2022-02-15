@@ -49,7 +49,7 @@ const Hero = ({
             <p className="text-body-big">{subtitle}</p>
             {!!link && (
               <HeroLink>
-                <LinkButton href={link} inverse>
+                <LinkButton to={link} inverse>
                   {linkText} <ArrowRightIcon size={24} />
                 </LinkButton>
               </HeroLink>

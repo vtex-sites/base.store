@@ -1,3 +1,4 @@
+import type { AnchorHTMLAttributes } from 'react'
 import React, { memo, useRef, useState } from 'react'
 import { Link as LinkGatsby } from 'gatsby'
 import { List as UIList } from '@faststore/ui'
@@ -17,7 +18,11 @@ import './navbar.scss'
 
 type Callback = () => unknown
 
-function NavLinks() {
+interface NavLinksProps {
+  onClickLink?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
+}
+
+function NavLinks({ onClickLink }: NavLinksProps) {
   const links = useStoreCollection()
 
   return (
@@ -25,7 +30,7 @@ function NavLinks() {
       <UIList>
         {links.map(({ node: link }) => (
           <li key={link.seo.title}>
-            <Link variant="display" href={`/${link.slug}`}>
+            <Link variant="display" to={`/${link.slug}`} onClick={onClickLink}>
               {link.seo.title}
             </Link>
           </li>
@@ -39,6 +44,7 @@ function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
   const { isMobile } = useWindowDimensions()
   const dismissTransition = useRef<Callback | undefined>()
+  const handleCloseSlideOver = () => setShowMenu(false)
 
   return (
     <header className="navbar / grid-content-full">
@@ -69,7 +75,7 @@ function Navbar() {
       {isMobile && (
         <SlideOver
           isOpen={showMenu}
-          onDismiss={() => setShowMenu(false)}
+          onDismiss={handleCloseSlideOver}
           onDismissTransition={(callback) => {
             dismissTransition.current = callback
           }}
@@ -97,7 +103,7 @@ function Navbar() {
               />
             </header>
             <div className="navlinks">
-              <NavLinks />
+              <NavLinks onClickLink={handleCloseSlideOver} />
               <div className="navlinks__signin">
                 <SignInLink />
               </div>
