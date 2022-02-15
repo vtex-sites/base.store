@@ -17,6 +17,8 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
+    "gatsby-ssr.tsx",
+    "gatsby-browser.tsx",
     "@generated/**/*.ts",
     "src/store.config.js"
   ],
