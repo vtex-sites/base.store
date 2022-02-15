@@ -1,11 +1,45 @@
 @import "../../../styles/scaffold";
 
 // Check it after apply Skeletons.
-.product-listing__data-loading {
-  --product-listing-grid-height: 1164px;
+.product-listing {
+  --product-listing-row-height: var(--space-6);
+
+  padding-top: 0;
+
+  @include media(">=notebook") {
+    padding-top: var(--page-padding-notebook);
+  }
+}
+
+.product-listing__content-grid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-right: 0;
+  padding-left: 0;
+
+  @include media(">=notebook") {
+    display: grid;
+    grid-template-rows: var(--product-listing-row-height) auto;
+    grid-template-columns: repeat(12, 1fr);
+    padding-right: var(--page-padding-notebook);
+    padding-left: var(--page-padding-notebook);
+    column-gap: var(--space-4);
+    row-gap: var(--space-0);
+  }
+}
+
+.product-listing__data-grid {
+  --product-listing-grid-height: 1822px;
   --product-listing-row-height: var(--space-6);
 
   min-height: calc(var(--product-listing-grid-height) - var(--product-listing-row-height));
+  contain-intrinsic-size: calc(var(--product-listing-grid-height) - var(--product-listing-row-height));
+  content-visibility: auto;
+
+  @include media(">=notebook") {
+    --product-listing-grid-height: 1164px;
+  }
 }
 
 .product-listing__filters {

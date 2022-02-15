@@ -129,3 +129,19 @@
   left: 0;
   overflow: hidden;
 }
+
+.display-mobile {
+  display: block;
+
+  @include media(">=notebook") {
+    display: none;
+  }
+}
+
+.hidden-mobile {
+  display: block;
+
+  @include media("<notebook") {
+    display: none;
+  }
+}
