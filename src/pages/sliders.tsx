@@ -7,12 +7,8 @@ import { Image } from 'src/components/ui/Image'
 
 export type Props = PageProps<SlidersPageQueryQuery>
 
-function Page(props: Props) {
-  const {
-    data: { allStoreProduct },
-  } = props
-
-  const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
+type ProductsType = SlidersPageQueryQuery['allStoreProduct']['nodes']
+function createSlider(products: ProductsType, show?: number) {
   const baseImageProps = {
     layout: 'fullWidth' as const,
     backgroundColor: '#f0f0f0',
@@ -23,49 +19,44 @@ function Page(props: Props) {
   }
 
   return (
+    <Slider show={show}>
+      {products.slice(0, 15).map((product) => (
+        <Image
+          baseUrl={product.image[0].url}
+          alt={product.name}
+          key={`${product.id}`}
+          {...baseImageProps}
+        />
+      ))}
+    </Slider>
+  )
+}
+
+function Page(props: Props) {
+  const {
+    data: { allStoreProduct },
+  } = props
+
+  const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
+
+  return (
     <>
       <section className="page__section / grid-section grid-content">
         <h1>React Slick</h1>
-
-        <p>Total: 15 | Show: 4</p>
-        <Slider>
-          {products.slice(0, 15).map((product) => (
-            <Image
-              baseUrl={product.image[0].url}
-              alt={product.name}
-              key={`${product.id}`}
-              {...baseImageProps}
-            />
-          ))}
-        </Slider>
+        <p>Total: 10 | Show: 4</p>
+        {createSlider(products.slice(0, 10))}
         <br />
         <br />
 
-        <p>Total: 6 | Show: 3</p>
-        <Slider show={3}>
-          {products.slice(0, 6).map((product) => (
-            <Image
-              baseUrl={product.image[0].url}
-              alt={product.name}
-              key={`${product.id}`}
-              {...baseImageProps}
-            />
-          ))}
-        </Slider>
+        <p>Total: 14 | Show: 5</p>
+        {createSlider(products.slice(0, 14), 5)}
         <br />
         <br />
 
         <p>Total: 5 | Show: 5</p>
-        <Slider show={5}>
-          {products.slice(0, 5).map((product) => (
-            <Image
-              baseUrl={product.image[0].url}
-              alt={product.name}
-              key={`${product.id}`}
-              {...baseImageProps}
-            />
-          ))}
-        </Slider>
+        {createSlider(products.slice(0, 5), 5)}
+        <br />
+        <br />
       </section>
     </>
   )
