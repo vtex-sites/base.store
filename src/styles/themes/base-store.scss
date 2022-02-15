@@ -91,5 +91,12 @@
   --font-family-title         : var(--font-family);
 
   &.inverse { --color-body-bkg: var(--color-primary-4); }
+
+  // Product Card
+  // ----------------------------------------------------------
+
+  [data-base-product-card] {
+    --product-card-padding    : var(--space-1);
+  }
 }
 /* stylelint-enable */
