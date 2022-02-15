@@ -12,7 +12,7 @@ const gtmContainerId = storeConfig.analytics?.gtmContainerId
 const includeGTM = typeof gtmContainerId === 'string'
 const includeVTEX = storeConfig.platform === 'vtex'
 
-function ThirdPartyScripts() {
+function ThirdyPartyScripts() {
   if (process.env.NODE_ENV === 'development' && !includeGTM) {
     console.warn(
       'No GTM container id found. Check the analytics section on your store.config.js file for enhanced observability of your store.'
@@ -36,4 +36,4 @@ function ThirdPartyScripts() {
   )
 }
 
-export default ThirdPartyScripts
+export default ThirdyPartyScripts
