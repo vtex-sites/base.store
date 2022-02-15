@@ -29,9 +29,9 @@ function ThirdyPartyScripts() {
 
   return (
     <>
-      <Partytown key="partytown" forward={forward} />
       {includeGTM && <GoogleTagManager containerId={gtmContainerId} />}
       {includeVTEX && <VTEX />}
+      <Partytown key="partytown" forward={forward} />
     </>
   )
 }
