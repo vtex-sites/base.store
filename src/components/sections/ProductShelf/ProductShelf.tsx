@@ -18,6 +18,7 @@ function ProductShelf({ products }: ProductShelfProps) {
             product={product}
             index={idx + 1}
             badgeVariant="highlighted"
+            action="button"
           />
         </li>
       ))}
