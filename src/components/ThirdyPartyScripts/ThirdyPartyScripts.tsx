@@ -19,19 +19,18 @@ function ThirdyPartyScripts() {
     )
   }
 
-  /**
-   * Variables to forward to from main to worker
-   */
-  const forward = [
-    includeGTM && 'dataLayer.push',
-    includeVTEX && 'sendrc',
-  ].filter(isString)
-
   return (
     <>
       {includeGTM && <GoogleTagManager containerId={gtmContainerId} />}
       {includeVTEX && <VTEX />}
-      <Partytown key="partytown" forward={forward} />
+      <Partytown
+        key="partytown"
+        // Variables to forward to from main to worker
+        forward={[
+          includeGTM && 'dataLayer.push',
+          includeVTEX && 'sendrc',
+        ].filter(isString)}
+      />
     </>
   )
 }
