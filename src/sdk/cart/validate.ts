@@ -64,7 +64,7 @@ export const getItemId = (
   item: Pick<CartItem, 'itemOffered' | 'seller' | 'price'>
 ) => `${item.itemOffered.sku}:${item.seller.identifier}:${item.price}`
 
-export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
+export const validateCart = async (cart: Cart<CartItem>) => {
   const { validateCart: validated } = await request<
     ValidateCartMutationMutation,
     ValidateCartMutationMutationVariables
@@ -91,16 +91,20 @@ export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
     },
   })
 
+  if (!validated) {
+    return null
+  }
+
   const mappedItems = cart.items.reduce((acc, item) => {
     acc[item.id] = item
 
     return acc
-  }, {} as Record<string, Item>)
+  }, {} as Record<string, CartItem>)
 
   return (
     validated && {
       id: validated.order.orderNumber,
-      items: validated.order.acceptedOffer.map((item): Item => {
+      items: validated.order.acceptedOffer.map((item) => {
         const id = getItemId(item)
 
         return {
