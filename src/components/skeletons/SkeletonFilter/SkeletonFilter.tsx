@@ -4,8 +4,13 @@ import Shimmer from '../Shimmer'
 import SkeletonElement from '../SkeletonElement'
 import './skeleton-filter.scss'
 
-function SkeletonFilter() {
-  return (
+interface Props {
+  loading?: boolean
+  children?: JSX.Element
+}
+
+function SkeletonFilter({ children, loading = true }: Props) {
+  return loading ? (
     <div data-store-skeleton-filter>
       <SkeletonElement shimmer type="text" />
 
@@ -16,6 +21,8 @@ function SkeletonFilter() {
         <Shimmer />
       </div>
     </div>
+  ) : (
+    children ?? null
   )
 }
 
