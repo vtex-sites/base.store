@@ -1,4 +1,4 @@
-import storeConfig from '../store.config'
+import storeConfig from '../src/store.config'
 
 export const { pages } = storeConfig.cypress
 
