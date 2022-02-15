@@ -3,10 +3,7 @@ import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import React, { lazy, useEffect, useMemo } from 'react'
-import Breadcrumb from 'src/components/sections/Breadcrumb'
-import Hero from 'src/components/sections/Hero'
-import ProductListing from 'src/components/sections/ProductListing'
+import React, { lazy, Suspense, useEffect, useMemo } from 'react'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
@@ -27,11 +24,16 @@ export type Props = PageProps<
   ServerCollectionPageQueryQuery
 > & { slug: string }
 
+const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
+const Breadcrumb = lazy(() => import('src/components/sections/Breadcrumb'))
+const Hero = lazy(() => import('src/components/sections/Hero'))
+const ProductListing = lazy(
+  () => import('src/components/sections/ProductListing')
+)
+
 const ScrollToTopButton = lazy(
   () => import('src/components/ui/ScrollToTopButton')
 )
-
-const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
 
 function Page(props: Props) {
   const {
@@ -99,40 +101,52 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <section className="product-listing__breadcrumb / grid-content">
-        <Breadcrumb
-          breadcrumbList={collection?.breadcrumbList.itemListElement}
-          name={title}
-        />
-      </section>
-
-      <div className="product-listing__hero">
-        <section className="page__section">
-          <Hero
-            variant="small"
-            title={title}
-            subtitle={`All the amazing ${title} from the brands we partner with.`}
-            imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-            imageAlt="Quest 2 Controller on a table"
-            icon={<HeadphonesIcon size={48} weight="thin" />}
+      <Suspense fallback={null}>
+        <section className="product-listing__breadcrumb / grid-content">
+          <Breadcrumb
+            breadcrumbList={collection?.breadcrumbList.itemListElement}
+            name={title}
           />
         </section>
-      </div>
+      </Suspense>
 
-      <ProductListing title={title} slug={slug} />
+      <Suspense fallback={null}>
+        <div className="product-listing__hero">
+          <section className="page__section">
+            <Hero
+              variant="small"
+              title={title}
+              subtitle={`All the amazing ${title} from the brands we partner with.`}
+              imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+              imageAlt="Quest 2 Controller on a table"
+              icon={<HeadphonesIcon size={48} weight="thin" />}
+            />
+          </section>
+        </div>
+      </Suspense>
 
-      {youMightAlsoLikeProducts?.length > 0 && (
-        <section className="page__section page__section-shelf page__section-divisor / grid-section">
-          <h2 className="title-section / grid-content">You might also like</h2>
-          <div className="page__section-content">
-            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
-          </div>
-        </section>
-      )}
+      <Suspense fallback={null}>
+        <ProductListing title={title} slug={slug} />
+      </Suspense>
 
-      <div className="product-listing__scroll-top">
-        <ScrollToTopButton />
-      </div>
+      <Suspense fallback={null}>
+        {youMightAlsoLikeProducts?.length > 0 && (
+          <section className="page__section page__section-shelf page__section-divisor / grid-section">
+            <h2 className="title-section / grid-content">
+              You might also like
+            </h2>
+            <div className="page__section-content">
+              <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
+            </div>
+          </section>
+        )}
+      </Suspense>
+
+      <Suspense fallback={null}>
+        <div className="product-listing__scroll-top">
+          <ScrollToTopButton />
+        </div>
+      </Suspense>
     </SearchProvider>
   )
 }

@@ -6,8 +6,7 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React, { useEffect, useMemo } from 'react'
-import ProductDetails from 'src/components/sections/ProductDetails'
+import React, { lazy, Suspense, useEffect, useMemo } from 'react'
 import { execute } from 'src/server'
 import type { PageProps } from 'gatsby'
 import type {
@@ -15,7 +14,11 @@ import type {
   ServerProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
-import ProductShelf from 'src/components/sections/ProductShelf'
+
+const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
+const ProductDetails = lazy(
+  () => import('src/components/sections/ProductDetails')
+)
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -109,16 +112,22 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <ProductDetails product={product} />
+      <Suspense fallback={null}>
+        <ProductDetails product={product} />
+      </Suspense>
 
-      {youMightAlsoLikeProducts?.length > 0 && (
-        <section className="page__section page__section-shelf page__section-divisor / grid-section">
-          <h2 className="title-section / grid-content">You might also like</h2>
-          <div className="page__section-content">
-            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
-          </div>
-        </section>
-      )}
+      <Suspense fallback={null}>
+        {youMightAlsoLikeProducts?.length > 0 && (
+          <section className="page__section page__section-shelf page__section-divisor / grid-section">
+            <h2 className="title-section / grid-content">
+              You might also like
+            </h2>
+            <div className="page__section-content">
+              <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
+            </div>
+          </section>
+        )}
+      </Suspense>
     </>
   )
 }
