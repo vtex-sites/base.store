@@ -25,9 +25,9 @@ interface ExecuteOptions {
 const persistedQueries = new Map(Object.entries(persisted))
 
 const apiOptions: APIOptions = {
-  platform: storeConfig.platform,
+  platform: storeConfig.platform as APIOptions['platform'],
   account: storeConfig.api.storeId,
-  environment: storeConfig.api.environment,
+  environment: storeConfig.api.environment as APIOptions['environment'],
   channel: storeConfig.channel,
 }
 

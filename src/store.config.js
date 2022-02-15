@@ -1,13 +1,11 @@
-import type { Options } from '@faststore/api'
-
-export default {
+module.exports = {
   // Ecommerce Platform
-  platform: 'vtex' as Options['platform'],
+  platform: 'vtex',
 
   // Platform specific configs for API
   api: {
     storeId: 'storeframework',
-    environment: 'vtexcommercestable' as Options['environment'],
+    environment: 'vtexcommercestable',
   },
 
   // Default channel
@@ -22,7 +20,7 @@ export default {
 
   // Lighthouse CI
   lighthouse: {
-    server: process.env.BASE_SITE_URL ?? 'http://localhost:9000',
+    server: process.env.BASE_SITE_URL || 'http://localhost:9000',
     pages: {
       home: '/',
       pdp: '/sleek-metal-pizza-24041857/p',
