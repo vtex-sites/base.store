@@ -6,7 +6,7 @@ import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductListing from 'src/components/sections/ProductListing'
@@ -14,7 +14,6 @@ import { ITEMS_PER_PAGE } from 'src/constants'
 import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
 import { execute } from 'src/server'
-import type { Props } from 'src/hooks/useSearchParams'
 import type { PageProps } from 'gatsby'
 import type {
   CollectionPageQueryQuery,
@@ -40,16 +39,17 @@ const ProductShelf = loadable(
 function Page(props: Props) {
   const {
     data: { site },
-    serverData: {
-      collection,
-      allStoreProduct: { nodes: youMightAlsoLikeProducts },
-    },
+    serverData: { collection, allProducts },
     location: { host },
     params: { slug },
   } = props
 
   const { locale } = useSession()
   const searchParams = useSearchParams(props)
+  const youMightAlsoLikeProducts = useMemo(
+    () => allProducts?.edges.map((edge) => edge.node),
+    [allProducts]
+  )
 
   const { page } = searchParams
   const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
@@ -180,9 +180,11 @@ export const querySSR = gql`
       }
     }
 
-    allStoreProduct(limit: 5) {
-      nodes {
-        ...ProductSummary_product
+    allProducts(first: 6, after: "0") {
+      edges {
+        node {
+          ...ProductSummary_product
+        }
       }
     }
   }

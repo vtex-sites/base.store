@@ -34,15 +34,15 @@
     "@vtex/gatsby-plugin-nginx": "^1.5.6",
     "@vtex/gatsby-plugin-thumbor": "^1.5.6",
     "@vtex/graphql-utils": "^1.5.6",
-    "gatsby": "^4.5.1",
-    "gatsby-plugin-gatsby-cloud": "^4.4.0",
-    "gatsby-plugin-image": "^2.4.0",
-    "gatsby-plugin-manifest": "^4.4.0",
-    "gatsby-plugin-netlify": "^4.0.0-next.0",
-    "gatsby-plugin-next-seo": "^1.9.0",
-    "gatsby-plugin-nprogress": "^4.4.0",
-    "gatsby-plugin-offline": "^5.4.0",
-    "gatsby-plugin-robots-txt": "^1.6.14",
+    "gatsby": "^4.7.2",
+    "gatsby-plugin-gatsby-cloud": "^4.7.0",
+    "gatsby-plugin-image": "^2.7.0",
+    "gatsby-plugin-manifest": "^4.7.0",
+    "gatsby-plugin-netlify": "^4.1.0",
+    "gatsby-plugin-next-seo": "^1.10.0",
+    "gatsby-plugin-nprogress": "^4.7.0",
+    "gatsby-plugin-offline": "^5.7.0",
+    "gatsby-plugin-robots-txt": "^1.7.0",
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-plugin-sass": "^5.3.0",
     "include-media": "^1.4.10",
@@ -52,6 +52,7 @@
     "react-helmet-async": "^1.2.2",
     "react-intersection-observer": "^8.32.5",
     "sass": "^1.44.0",
+    "setimmediate": "^1.0.5",
     "swr": "^1.1.0"
   },
   "devDependencies": {
@@ -87,8 +88,7 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.1",
-    "typescript": "^4.5.2",
-    "webpack-merge": "^5.7.3"
+    "typescript": "^4.5.2"
   },
   "resolutions": {
     "@typescript-eslint/parser": "^4",

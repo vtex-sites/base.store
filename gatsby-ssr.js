@@ -35,7 +35,7 @@ export const wrapPageElement = ({ element }) => {
 }
 
 export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents(<ThirdyPartyScripts />)
+  setHeadComponents(<ThirdyPartyScripts key="ThirdyPartyScripts" />)
 }
 
 export const onPreRenderHTML = ({

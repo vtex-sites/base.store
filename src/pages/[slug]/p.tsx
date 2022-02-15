@@ -6,7 +6,7 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import { execute } from 'src/server'
 import type { PageProps } from 'gatsby'
@@ -28,13 +28,15 @@ function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
     data: { site },
-    serverData: {
-      product,
-      allStoreProduct: { nodes: youMightAlsoLikeProducts },
-    },
+    serverData: { product, allProducts },
     location: { host },
     params: { slug },
   } = props
+
+  const youMightAlsoLikeProducts = useMemo(
+    () => allProducts?.edges.map((edge) => edge.node),
+    [allProducts]
+  )
 
   const notFound = !product
   const title = product?.seo.title ?? site?.siteMetadata?.title ?? ''
@@ -187,9 +189,11 @@ export const querySSR = gql`
       ...ProductDetailsFragment_product
     }
 
-    allStoreProduct(limit: 5) {
-      nodes {
-        ...ProductSummary_product
+    allProducts(first: 6, after: "0") {
+      edges {
+        node {
+          ...ProductSummary_product
+        }
       }
     }
   }

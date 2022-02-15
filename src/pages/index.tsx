@@ -1,24 +1,35 @@
 import { useSession } from '@faststore/sdk'
+import loadable from '@loadable/component'
+import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
-import loadable from '@loadable/component'
-import type { PageProps } from 'gatsby'
-import type { HomePageQueryQuery } from '@generated/graphql'
 import Hero from 'src/components/sections/Hero'
-import ProductShelf from 'src/components/sections/ProductShelf'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
+import ProductShelf from 'src/components/sections/ProductShelf'
+import { execute } from 'src/server'
+import type { PageProps } from 'gatsby'
+import type {
+  HomePageQueryQuery,
+  ServerHomePageQueryQuery,
+} from '@generated/graphql'
 
 const BannerText = loadable(() => import('src/components/sections/BannerText'))
 const ProductTiles = loadable(
   () => import('src/components/sections/ProductTiles')
 )
 
-export type Props = PageProps<HomePageQueryQuery>
+export type Props = PageProps<
+  HomePageQueryQuery,
+  unknown,
+  unknown,
+  ServerHomePageQueryQuery
+>
 
 function Page(props: Props) {
   const {
-    data: { site, allStoreProduct },
+    data: { site },
+    serverData: { allProducts },
     location: { pathname, host },
   } = props
 
@@ -26,7 +37,11 @@ function Page(props: Props) {
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
-  const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
+  const products = useMemo(
+    () => allProducts?.edges.map((edge) => edge.node),
+    [allProducts]
+  )
+
   const haveProducts = products && products?.length > 0
 
   return (
@@ -115,7 +130,7 @@ function Page(props: Props) {
   )
 }
 
-export const query = graphql`
+export const querySSG = graphql`
   query HomePageQuery {
     site {
       siteMetadata {
@@ -124,13 +139,53 @@ export const query = graphql`
         titleTemplate
       }
     }
+  }
+`
 
-    allStoreProduct(limit: 14) {
-      nodes {
-        ...ProductSummary_product
+/**
+ * This query is run during SSR
+ * */
+export const querySSR = gql`
+  query ServerHomePageQuery {
+    allProducts(first: 15, after: "0") {
+      edges {
+        node {
+          ...ProductSummary_product
+        }
       }
     }
   }
 `
+
+export const getServerData = async ({
+  params: { slug },
+}: {
+  params: Record<string, string>
+}) => {
+  try {
+    const { data } = await execute({
+      operationName: querySSR,
+      variables: { slug },
+    })
+
+    return {
+      status: 200,
+      props: data ?? {},
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+      },
+    }
+  } catch (err) {
+    console.error(err)
+
+    return {
+      status: 500,
+      props: {},
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+      },
+    }
+  }
+}
 
 export default Page

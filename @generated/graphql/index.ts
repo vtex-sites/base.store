@@ -1023,6 +1023,7 @@ export type QuerySiteArgs = {
   polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
+  trailingSlash: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySiteBuildMetadataArgs = {
@@ -1090,6 +1091,7 @@ export type Site = Node & {
   polyfill: Maybe<Scalars['Boolean']>
   port: Maybe<Scalars['Int']>
   siteMetadata: Maybe<SiteSiteMetadata>
+  trailingSlash: Maybe<Scalars['String']>
 }
 
 export type SiteBuildTimeArgs = {
@@ -1432,6 +1434,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___title'
   | 'siteMetadata___titleTemplate'
+  | 'trailingSlash'
 
 export type SiteFilterInput = {
   buildTime: InputMaybe<DateQueryOperatorInput>
@@ -1446,6 +1449,7 @@ export type SiteFilterInput = {
   polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
+  trailingSlash: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SiteFlags = {
@@ -2384,14 +2388,6 @@ export type StringQueryOperatorInput = {
   regex: InputMaybe<Scalars['String']>
 }
 
-export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
-
-export type StoreCollectionQuery = {
-  allStoreCollection: {
-    edges: Array<{ node: { slug: string; seo: { title: string } } }>
-  }
-}
-
 export type ProductSummary_ProductFragment = {
   slug: string
   sku: string
@@ -2513,28 +2509,6 @@ export type CollectionPageQueryQuery = {
       }
     | null
     | undefined
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
 }
 
 export type ServerCollectionPageQueryQueryVariables = Exact<{
@@ -2548,6 +2522,30 @@ export type ServerCollectionPageQueryQuery = {
       itemListElement: Array<{ item: string; name: string; position: number }>
     }
     meta: { selectedFacets: Array<{ key: string; value: string }> }
+  }
+  allProducts: {
+    edges: Array<{
+      node: {
+        slug: string
+        sku: string
+        name: string
+        gtin: string
+        id: string
+        brand: { name: string; brandName: string }
+        isVariantOf: { productGroupID: string; name: string }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          offers: Array<{
+            availability: string
+            price: number
+            listPrice: number
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }
+    }>
   }
 }
 
@@ -2593,16 +2591,40 @@ export type ServerProductPageQueryQuery = {
       highPrice: number
       priceCurrency: string
       offers: Array<{
+        availability: string
         price: number
         priceValidUntil: string
         priceCurrency: string
-        availability: string
         itemCondition: string
         listPrice: number
         seller: { identifier: string }
       }>
     }
     isVariantOf: { productGroupID: string; name: string }
+  }
+  allProducts: {
+    edges: Array<{
+      node: {
+        slug: string
+        sku: string
+        name: string
+        gtin: string
+        id: string
+        brand: { name: string; brandName: string }
+        isVariantOf: { productGroupID: string; name: string }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          offers: Array<{
+            availability: string
+            price: number
+            listPrice: number
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }
+    }>
   }
 }
 
@@ -2622,39 +2644,32 @@ export type HomePageQueryQuery = {
       }
     | null
     | undefined
-  collection:
-    | {
-        seo: { title: string; description: string }
-        breadcrumbList: {
-          itemListElement: Array<{
-            item: string
-            name: string
-            position: number
+}
+
+export type ServerHomePageQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type ServerHomePageQueryQuery = {
+  allProducts: {
+    edges: Array<{
+      node: {
+        slug: string
+        sku: string
+        name: string
+        gtin: string
+        id: string
+        brand: { name: string; brandName: string }
+        isVariantOf: { productGroupID: string; name: string }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          offers: Array<{
+            availability: string
+            price: number
+            listPrice: number
+            quantity: number
+            seller: { identifier: string }
           }>
         }
-        meta: { selectedFacets: Array<{ key: string; value: string }> }
-      }
-    | null
-    | undefined
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
       }
     }>
   }
@@ -2676,64 +2691,6 @@ export type SearchPageQueryQuery = {
       }
     | null
     | undefined
-  product:
-    | {
-        slug: string
-        sku: string
-        gtin: string
-        name: string
-        description: string
-        id: string
-        seo: { title: string; description: string }
-        brand: { name: string }
-        breadcrumbList: {
-          itemListElement: Array<{
-            item: string
-            name: string
-            position: number
-          }>
-        }
-        image: Array<{ url: string; alternateName: string }>
-        offers: {
-          lowPrice: number
-          highPrice: number
-          priceCurrency: string
-          offers: Array<{
-            availability: string
-            price: number
-            priceValidUntil: string
-            priceCurrency: string
-            itemCondition: string
-            listPrice: number
-            seller: { identifier: string }
-          }>
-        }
-        isVariantOf: { productGroupID: string; name: string }
-      }
-    | null
-    | undefined
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
 }
 
 export type ValidateCartMutationMutationVariables = Exact<{
