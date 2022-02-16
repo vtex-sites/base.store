@@ -1,9 +1,10 @@
 import React from 'react'
 import type { ReactNode } from 'react'
-import UIHero, { HeroContent, HeroImage } from 'src/components/ui/Hero'
 import { LinkButton } from 'src/components/ui/Button'
 import Image from 'src/components/ui/Image/Image'
 import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
+
+import './hero.scss'
 
 type Variant = 'default' | 'small'
 
@@ -29,8 +30,8 @@ const Hero = ({
   imageSrc,
 }: HeroProps) => {
   return (
-    <UIHero data-hero-variant={variant}>
-      <HeroContent aria-labelledby="hero-heading">
+    <article data-store-hero data-hero-variant={variant}>
+      <section data-hero-content aria-labelledby="hero-heading">
         <div className="grid-content" data-hero-wrapper>
           <div data-hero-info>
             <h1 id="hero-heading">{title}</h1>
@@ -43,8 +44,8 @@ const Hero = ({
           </div>
           {!!icon && <div data-hero-icon>{icon}</div>}
         </div>
-      </HeroContent>
-      <HeroImage>
+      </section>
+      <div data-hero-image>
         <Image
           baseUrl={imageSrc}
           alt={imageAlt}
@@ -56,8 +57,8 @@ const Hero = ({
             fitIn: true,
           }}
         />
-      </HeroImage>
-    </UIHero>
+      </div>
+    </article>
   )
 }
 
