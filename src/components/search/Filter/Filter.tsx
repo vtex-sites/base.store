@@ -1,15 +1,14 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { useSearch } from '@faststore/sdk'
+import { graphql } from 'gatsby'
+import { X as XIcon } from 'phosphor-react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import Button from 'src/components/ui/Button'
+import IconButton from 'src/components/ui/IconButton'
+import SlideOver from 'src/components/ui/SlideOver'
 import type {
   IStoreSelectedFacet,
   Filter_FacetsFragment,
 } from '@generated/graphql'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
-import Button from 'src/components/ui/Button'
-import IconButton from 'src/components/ui/IconButton'
-import { X as XIcon } from 'phosphor-react'
-import SlideOver from 'src/components/ui/SlideOver'
-import { graphql } from 'gatsby'
 
 import Facets from './Facets'
 
@@ -51,8 +50,7 @@ function Filter({
   testId = 'store-filter',
   slug = '',
 }: FilterProps) {
-  const { isMobile } = useWindowDimensions()
-  const { toggleFacets, state: searchState } = useSearch()
+  const { toggleFacets, toggleFacet, state: searchState } = useSearch()
   const dismissTransition = useRef<Callback | undefined>()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
@@ -164,70 +162,78 @@ function Filter({
     dismissTransition.current?.()
   }
 
-  return !isMobile ? (
-    <Facets
-      slug={slug}
-      testId={testId}
-      selectedFacets={selectedFacets}
-      filteredFacets={filteredFacets}
-      indicesExpanded={indicesExpanded}
-      onFacetChange={onFacetChange}
-      onAccordionChange={onAccordionChange}
-      onAccordionItemMount={onAccordionItemMount}
-    />
-  ) : (
-    <SlideOver
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      onDismissTransition={(callback) => (dismissTransition.current = callback)}
-      size="partial"
-      direction="rightSide"
-      className="filter-modal__content"
-    >
-      <div className="filter-modal__body">
-        <header className="filter-modal__header">
-          <h2 className="title-display">Filters</h2>
-          <IconButton
-            data-testid="filter-modal-button-close"
-            classes="filter-modal__button"
-            aria-label="Close Filters"
-            icon={<XIcon size={32} />}
-            onClick={() => {
-              setSelectedFacets(searchState.selectedFacets)
-              dismissTransition.current?.()
-            }}
-          />
-        </header>
+  return (
+    <>
+      <div className="hidden-mobile">
         <Facets
+          variant="desktop"
           slug={slug}
           testId={testId}
           selectedFacets={selectedFacets}
           filteredFacets={filteredFacets}
           indicesExpanded={indicesExpanded}
-          onFacetChange={onFacetChange}
+          onFacetChange={toggleFacet}
           onAccordionChange={onAccordionChange}
           onAccordionItemMount={onAccordionItemMount}
         />
       </div>
-      <footer className="filter-modal__footer">
-        <Button
-          variant="secondary"
-          onClick={() => {
-            setFacetsToRemove(selectedFacets)
-            setSelectedFacets([])
-          }}
-        >
-          Clear All
-        </Button>
-        <Button
-          variant="primary"
-          data-testid="filter-modal-button-apply"
-          onClick={() => onApply()}
-        >
-          Apply
-        </Button>
-      </footer>
-    </SlideOver>
+
+      <SlideOver
+        isOpen={isOpen}
+        onDismiss={onDismiss}
+        onDismissTransition={(callback) =>
+          (dismissTransition.current = callback)
+        }
+        size="partial"
+        direction="rightSide"
+        className="filter-modal__content"
+      >
+        <div className="filter-modal__body">
+          <header className="filter-modal__header">
+            <h2 className="title-display">Filters</h2>
+            <IconButton
+              data-testid="filter-modal-button-close"
+              classes="filter-modal__button"
+              aria-label="Close Filters"
+              icon={<XIcon size={32} />}
+              onClick={() => {
+                setSelectedFacets(searchState.selectedFacets)
+                dismissTransition.current?.()
+              }}
+            />
+          </header>
+          <Facets
+            variant="mobile"
+            slug={slug}
+            testId={testId}
+            selectedFacets={selectedFacets}
+            filteredFacets={filteredFacets}
+            indicesExpanded={indicesExpanded}
+            onFacetChange={onFacetChange}
+            onAccordionChange={onAccordionChange}
+            onAccordionItemMount={onAccordionItemMount}
+          />
+        </div>
+        <footer className="filter-modal__footer">
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setFacetsToRemove(selectedFacets)
+              setSelectedFacets([])
+            }}
+          >
+            Clear All
+          </Button>
+          <Button
+            variant="primary"
+            data-testid="filter-modal-button-apply"
+            onClick={() => onApply()}
+          >
+            Apply
+          </Button>
+        </footer>
+      </SlideOver>
+    </>
   )
 }
 
