@@ -11,13 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GatsbyLink` to `Link` ui component.
 
 ### Changed
-
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
 - Refactors cart sidebar
 - `BreadcrumbWrapper` from components/ui folder to `Breadcrumb` at components/sections
 
 ### Deprecated
+- useWindowDimensions hook
 
 ### Removed
 
@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API style redirects from `/_v/private/graphql` since they have no effect
 
 ### Fixed
+- React tree re-rendering
+- Footer rendering pipeline
 
 ### Security
 

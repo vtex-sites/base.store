@@ -1,9 +1,10 @@
-import React, { memo } from 'react'
+import React from 'react'
 import {
   List as UIList,
   Icon as UIIcon,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
+import { mark } from 'src/sdk/tests/mark'
 
 import FooterLinks from './FooterLinks'
 import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
@@ -141,4 +142,6 @@ function Footer() {
   )
 }
 
-export default memo(Footer)
+Footer.displayName = 'Footer'
+
+export default mark(Footer)

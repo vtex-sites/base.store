@@ -1,16 +1,16 @@
-import type { AnchorHTMLAttributes } from 'react'
-import React, { memo, useRef, useState } from 'react'
-import { Link as LinkGatsby } from 'gatsby'
 import { List as UIList } from '@faststore/ui'
-import CartToggle from 'src/components/cart/CartToggle'
-import Logo from 'src/components/ui/Logo'
-import Link from 'src/components/ui/Link'
-import IconButton from 'src/components/ui/IconButton'
+import { Link as LinkGatsby } from 'gatsby'
 import { List as ListIcon, X as XIcon } from 'phosphor-react'
+import React, { useRef, useState } from 'react'
+import CartToggle from 'src/components/cart/CartToggle'
+import IconButton from 'src/components/ui/IconButton'
+import Link from 'src/components/ui/Link'
+import Logo from 'src/components/ui/Logo'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
+import { mark } from 'src/sdk/tests/mark'
+import type { AnchorHTMLAttributes } from 'react'
 
 import SearchInput from '../SearchInput'
 
@@ -42,7 +42,6 @@ function NavLinks({ onClickLink }: NavLinksProps) {
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
-  const { isMobile } = useWindowDimensions()
   const dismissTransition = useRef<Callback | undefined>()
   const handleCloseSlideOver = () => setShowMenu(false)
 
@@ -72,47 +71,48 @@ function Navbar() {
         </section>
         <NavLinks />
       </div>
-      {isMobile && (
-        <SlideOver
-          isOpen={showMenu}
-          onDismiss={handleCloseSlideOver}
-          onDismissTransition={(callback) => {
-            dismissTransition.current = callback
-          }}
-          size="full"
-          direction="leftSide"
-          className="navbar__modal-content"
-        >
-          <div className="navbar__modal-body">
-            <header className="navbar__modal-header">
-              <LinkGatsby
-                to="/"
-                aria-label="Go to Faststore home"
-                title="Go to Faststore home"
-                className="navbar__logo"
-                onClick={() => dismissTransition.current?.()}
-              >
-                <Logo />
-              </LinkGatsby>
 
-              <IconButton
-                classes="navbar__button"
-                aria-label="Close Menu"
-                icon={<XIcon size={32} />}
-                onClick={() => dismissTransition.current?.()}
-              />
-            </header>
-            <div className="navlinks">
-              <NavLinks onClickLink={handleCloseSlideOver} />
-              <div className="navlinks__signin">
-                <SignInLink />
-              </div>
+      <SlideOver
+        isOpen={showMenu}
+        onDismiss={handleCloseSlideOver}
+        onDismissTransition={(callback) => {
+          dismissTransition.current = callback
+        }}
+        size="full"
+        direction="leftSide"
+        className="navbar__modal-content"
+      >
+        <div className="navbar__modal-body">
+          <header className="navbar__modal-header">
+            <LinkGatsby
+              to="/"
+              aria-label="Go to Faststore home"
+              title="Go to Faststore home"
+              className="navbar__logo"
+              onClick={() => dismissTransition.current?.()}
+            >
+              <Logo />
+            </LinkGatsby>
+
+            <IconButton
+              classes="navbar__button"
+              aria-label="Close Menu"
+              icon={<XIcon size={32} />}
+              onClick={() => dismissTransition.current?.()}
+            />
+          </header>
+          <div className="navlinks">
+            <NavLinks onClickLink={handleCloseSlideOver} />
+            <div className="navlinks__signin">
+              <SignInLink />
             </div>
           </div>
-        </SlideOver>
-      )}
+        </div>
+      </SlideOver>
     </header>
   )
 }
 
-export default memo(Navbar)
+Navbar.displayName = 'Navbar'
+
+export default mark(Navbar)

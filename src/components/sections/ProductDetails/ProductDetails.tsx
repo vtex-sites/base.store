@@ -22,13 +22,27 @@ interface Props {
   product: ProductDetailsFragment_ProductFragment
 }
 
+const imgOptions = {
+  width: 720,
+  sourceWidth: 720,
+  loading: 'eager' as const,
+  layout: 'constrained' as const,
+  backgroundColor: '#f0f0f0',
+  breakpoints: [250, 360, 480, 720],
+  aspectRatio: 1,
+  options: {
+    fitIn: true,
+  },
+}
+
 function ProductDetails({ product: staleProduct }: Props) {
+  const { currency } = useSession()
+  const [addQuantity, setAddQuantity] = useState(1)
+
   // Stale while revalidate the product for fetching the new price etc
   const { data, isValidating } = useProduct(staleProduct.id, {
     product: staleProduct,
   })
-
-  const [addQuantity, setAddQuantity] = useState(1)
 
   if (!data) {
     throw new Error('NotFound')
@@ -39,7 +53,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       id,
       sku,
       gtin,
-      description: productDescription,
+      description,
       name: variantName,
       brand,
       isVariantOf,
@@ -47,14 +61,29 @@ function ProductDetails({ product: staleProduct }: Props) {
       image: productImages,
       offers: {
         offers: [{ availability, price, listPrice, seller }],
-        lowPrice: spotPrice,
+        lowPrice,
       },
-      breadcrumbList,
+      breadcrumbList: breadcrumbs,
     },
   } = data
 
-  const { currency } = useSession()
   const buyDisabled = availability !== 'https://schema.org/InStock'
+
+  const buyProps = useBuyButton({
+    id,
+    brand,
+    isVariantOf,
+    price,
+    listPrice,
+    seller,
+    quantity: addQuantity,
+    gtin,
+    itemOffered: {
+      image: productImages,
+      name: variantName,
+      sku,
+    },
+  })
 
   useEffect(() => {
     sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
@@ -89,26 +118,6 @@ function ProductDetails({ product: staleProduct }: Props) {
     gtin,
   ])
 
-  const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
-  const description = productDescription ?? staleProduct.description
-  const lowPrice = spotPrice ?? staleProduct.offers.lowPrice
-
-  const buyProps = useBuyButton({
-    id,
-    brand,
-    isVariantOf,
-    price,
-    listPrice,
-    seller,
-    quantity: addQuantity,
-    gtin,
-    itemOffered: {
-      image: productImages,
-      name: variantName,
-      sku,
-    },
-  })
-
   return (
     <div className="product-details / grid-content grid-section">
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
@@ -126,17 +135,8 @@ function ProductDetails({ product: staleProduct }: Props) {
           <AspectRatio ratio="4:3">
             <Image
               baseUrl={productImages[0].url}
-              sourceWidth={720}
-              aspectRatio={1}
-              width={720}
-              breakpoints={[250, 360, 480, 720]}
-              layout="constrained"
-              backgroundColor="#f0f0f0"
-              options={{
-                fitIn: true,
-              }}
               alt={productImages[0].alternateName}
-              loading="eager"
+              {...imgOptions}
             />
           </AspectRatio>
         </section>

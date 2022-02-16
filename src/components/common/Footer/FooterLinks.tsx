@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { List as UIList } from '@faststore/ui'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Link from 'src/components/ui/Link'
 import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
 
@@ -107,7 +106,6 @@ function LinksList({ items }: LinksListProps) {
 }
 
 function FooterLinks() {
-  const { isMobile } = useWindowDimensions()
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
     new Set([])
   )
@@ -123,7 +121,7 @@ function FooterLinks() {
 
   return (
     <section className="footer__links">
-      {isMobile ? (
+      <div className="display-mobile">
         <Accordion expandedIndices={indicesExpanded} onChange={onChange}>
           {links.map((section, index) => (
             <AccordionItem
@@ -135,7 +133,9 @@ function FooterLinks() {
             </AccordionItem>
           ))}
         </Accordion>
-      ) : (
+      </div>
+
+      <div className="hidden-mobile">
         <div className="footer__links-columns">
           {links.map((section) => (
             <nav key={section.title}>
@@ -144,7 +144,7 @@ function FooterLinks() {
             </nav>
           ))}
         </div>
-      )}
+      </div>
     </section>
   )
 }
