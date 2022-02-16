@@ -36,6 +36,11 @@ Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiU
 - [Button.tsx](./src/components/ui/Button/Button.tsx)
 - [button.scss](./src/components/ui/Button/buttons.scss)
 
+### Badge
+
+- [Badge.tsx](./src/components/ui/Badge/Badge.tsx)
+- [Badge.scss](./src/components/ui/Badge/badge.scss)
+
 ### Hero
 
 - [Hero.tsx](./src/components/sections/Hero/Hero.tsx)
