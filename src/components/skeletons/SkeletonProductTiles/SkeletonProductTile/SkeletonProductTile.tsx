@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Shimmer from '../Shimmer'
-import SkeletonElement from '../SkeletonElement'
+import Shimmer from '../../Shimmer'
+import SkeletonElement from '../../SkeletonElement'
 import './skeleton-product-tile.scss'
 
 interface Props {
