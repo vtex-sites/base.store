@@ -66,7 +66,6 @@
   --input-bkg-color           : var(--color-secondary-bkg);
   --input-hover-bkg-color     : var(--color-secondary-hover-bkg);
 
-  --border-radius-pill        : 3rem;
   --border-radius-default     : 0;
   --border-color-default      : transparent;
   --border-color-subtle       : var(--color-neutral-1);
@@ -118,7 +117,7 @@
   // ----------------------------------------------------------
 
   [data-store-badge] {
-    --badge-border-radius                          : var(--border-radius-pill);
+    --badge-border-radius                          : 3rem;
     --badge-success-bkg-color                      : transparent;
     --badge-highlighted-bkg-color                  : transparent;
     --badge-info-bkg-color                         : transparent;

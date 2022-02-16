@@ -121,7 +121,7 @@
 
   [data-base-select] {
     --select-text-color                    : var(--color-link);
-    --select-border-radius                 : var(--border-radius-pill);
+    --select-border-radius                 : 100px;
   }
 
   // Quantity Selector / Stepper
@@ -135,7 +135,8 @@
   [data-store-button] {
     --shadow-hover                         : none;
     --button-shadow                        : none;
-    --button-border-radius                 : var(--border-radius-pill);
+    --button-padding-small                 : 0 var(--space-3);
+    --button-border-radius                 : 100px;
     --button-primary-inverse-text-color    : var(--color-link);
     --button-secondary-border-color        : var(--color-primary-2);
     --button-secondary-inverse-text-color  : var(--color-primary-1);
