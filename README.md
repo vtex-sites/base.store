@@ -13,6 +13,8 @@ Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiU
 
 # Arquivos Customizáveis
 
+`Por favor, use apenas os componentes listados abaixo.`
+
 ## Homepage
 
 - [theming-poc-homepage.tsx](./src/pages/theming-poc-homepage.tsx) -> Página a ser customizada
@@ -20,8 +22,8 @@ Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiU
 
 ## Design Tokens Primários
 
-- [global.scss](./src/styles/global.scss)
-- [typography.scss](./src/styles/typography.scss)
+- [spacing.scss](./src/styles/spacing.scss) -> Tokens de espaçamento
+- [typography.scss](./src/styles/typography.scss) -> Tokens tipográficos
 
 ## Temas & Exemplos
 
