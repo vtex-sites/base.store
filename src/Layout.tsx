@@ -1,12 +1,19 @@
 import './styles/fonts.css'
 
+import loadable from '@loadable/component'
 import React, { lazy, Suspense } from 'react'
 import Alert from 'src/components/common/Alert'
-import Footer from 'src/components/common/Footer'
-import Navbar from 'src/components/common/Navbar'
 import Toast from 'src/components/common/Toast'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
+
+const Footer = loadable(() => import('src/components/common/Footer'), {
+  ssr: true,
+})
+
+const Navbar = loadable(() => import('src/components/common/Navbar'), {
+  ssr: true,
+})
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
