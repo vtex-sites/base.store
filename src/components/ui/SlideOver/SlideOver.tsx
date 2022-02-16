@@ -56,6 +56,10 @@ const SlideOver = ({
         layout.current.classList.add('no-scroll')
       }
     }
+
+    return () => {
+      layout.current?.classList?.remove('no-scroll')
+    }
   }, [isOpen, layout])
 
   useEffect(() => {
