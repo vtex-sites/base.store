@@ -1,6 +1,5 @@
 // Default //////////////////////////
 
-// Sizes
 body {
   --type-scale-mobile: 1.15;
   --type-scale-desk: 1.25;
@@ -36,6 +35,11 @@ body {
 
   --font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --font-family-title: var(--font-family);
+
+  // Weight
+  --text-weight-regular: 400;
+  --text-weight-bold: 700;
+  --text-weight-black: 900;
 
   font-size: var(--font-size-body);
   font-family: var(--font-family);

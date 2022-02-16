@@ -6,56 +6,10 @@
 @import "resets/reset";
 
 // Styles ///////////////////////////
-@import "colors";
 @import "typography";
 @import "grid";
 
-// Tokens ///////////////////////////
-
-:root {
-
-  // Colors /////////////////////////
-
-  // Brand
-  --color-primary-0: #ebdcff;
-  --color-primary-1: #8d50fd;
-  --color-primary-2: #732fe2;
-  --color-primary-3: #5900c8;
-  --color-secondary-0: #ecf0ff;
-  --color-secondary-1: #d8e2ff;
-  --color-secondary-2: #00419e;
-  --color-secondary-3: #002c71;
-  --color-secondary-4: #001947;
-  --color-neutral-0: #ffffff;
-  --color-neutral-1: #f1f2f3;
-  --color-neutral-2: #e3e6e8;
-  --color-neutral-3: #c7ccd1;
-  --color-neutral-4: #9099a2;
-  --color-neutral-5: #74808b;
-  --color-neutral-6: #5d666f;
-  --color-neutral-7: #171a1c;
-
-  // Contextual Colors ////////////////
-  --color-success: #cee8de;
-  --color-warning: #f6e0ba;
-  --color-error: #fee1e1;
-
-  // Typography /////////////////////
-
-  // Family
-  --font-family: "Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
-
-  // Base
-  font-size: 16px;
-  --base-font-size: 1rem;
-  --scale: 1.25;
-
-  // Weight
-  --text-weight-regular: 400;
-  --text-weight-bold: 700;
-  --text-weight-black: 900;
-
-  // Spacing ////////////////////////
+body {
 
   // Sizes
   --space-0: .25rem; //  4px
@@ -84,19 +38,6 @@
   --box-shadow: 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
   --box-shadow-dark: 0 0 10px rgb(0 0 0 / 20%);
 
-  // Border /////////////////////////
-
-  --border-radius-flat: 0;
-  --border-radius-small: .125rem;
-  --border-radius-default: .25rem;
-  --border-radius-pill: 100px;
-  --border-radius-circle: 100%;
-
-  // Width
-  --border-width-0: 1px;
-  --border-width-1: 2px;
-  --border-width-2: 3px;
-
   // Grid ///////////////////////////
 
   // Gaps
@@ -110,4 +51,6 @@
   --breakpoint-tablet: 768px;
   --breakpoint-notebook: 1280px;
   --breakpoint-desktop: 1440px;
+
+  background-color: var(--color-body-bkg);
 }
