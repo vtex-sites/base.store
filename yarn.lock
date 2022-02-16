@@ -1441,10 +1441,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.5.6.tgz#3d77aca933b4808cca029eca7d98f43517924986"
-  integrity sha512-3yHhIA0tFDBTU0GsTy/bzdY7FFl/ZXu3jTj8UDIK3c/kCUb+tH9Clcg5V+4/JMI9HZS96d0a/I44hUSzi34sSw==
+"@faststore/api@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.5.9.tgz#7c980d41c1554ad805e635e963899fd8f9d55dd4"
+  integrity sha512-GXHqpgqa5nB1bz9C+++GHsSvLyeQQTAD6Pq2t1YLsjgktScyOoWbgYdxyudOBXe0XZzgLn6pbg/G49xUtBM0zw==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1459,10 +1459,10 @@
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.5.6.tgz#4c85f8cb76c7bad4669a1804f3b0a6020cc5080e"
-  integrity sha512-U5zkDGEUVitbP/u4cghCxUjDXhLd2qJzGyNkhj+SrKzSFt6/lvyCO96SW/4UaOTR1Vcj6T3QdWV5+Ux1YADHpA==
+"@faststore/ui@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.5.9.tgz#982c3bd7c7a4f627908103a056ccfe8d0b9687a9"
+  integrity sha512-vTCG/AcV/oS2HWPP+n5XvlJ3+gyj3GvP/5/qQYHD2Y0ombHvdU1agcfSOG9CHAy4rK50EtI7iwpwcHLo4srXdQ==
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
@@ -3001,30 +3001,30 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/gatsby-plugin-nginx@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.6.tgz#f8edcbd214805467af618bc7053d4e02a7a67a45"
-  integrity sha512-LY2x8yj3NGzm7B48g0V8hF8uWTailK0yTY+zm2BaHPFE5jo08cKGhc1Y2wcyHlKlDnZJFNV0p9MDoHkBaIh6fA==
+"@vtex/gatsby-plugin-nginx@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.9.tgz#5e69e41b76e439ffa391e10dae023300137898ec"
+  integrity sha512-7AMGtOGQfG9QXgmetjlHSvzGNdeXFTs71nAXiSmxYbCQKWktnhrFDSEk+tro314B1uOV8pJoq67VMw4aYnv5cg==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.6.tgz#e51b4a12bcb261e71e1ef4fd53a1cfc1b50d30a2"
-  integrity sha512-zgrHSIwS/cYOtsKe0dTB9GYhQKncMXMqSFlx/3YNDZM94PF4sRnWE+LfaJZxBoFt/XexGg2klC0jGL1I9rNqvA==
+"@vtex/gatsby-plugin-thumbor@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.9.tgz#50d4070feb95ad36e4bf6e532b32d981c112d95a"
+  integrity sha512-+Rm+cF3tctZ+CzXEI3gisBSG7kh/+74sbveNmL/y4MvNOQyAd86e7lAbpgdd0XbJqobiu8u/ElaaFwoTrKLfRQ==
 
-"@vtex/gatsby-source-store@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.5.6.tgz#5730e334847f0cb95b568c9a6be5fdf9fe268584"
-  integrity sha512-twKa6CXC6YT2jI6yH0nt3btOFdwSkXRMG9QcImg5pOG2DJI1h8LWTcj7na79YxRDC/jPl6wKkyEfZpsX3CljvQ==
+"@vtex/gatsby-source-store@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.5.9.tgz#840b109dc00301dddc8c91b28b432c6a3a90b8cf"
+  integrity sha512-kbkTTaDBPrRgzXRDcx9TE+iwLaiEF7q19rXkUYmqdsUM+0vRkSXKx3Pi6tnqyZzVPeEYVsrIUqpnYn3s6397Gg==
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/graphql-utils@^1.5.6":
-  version "1.5.6"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.5.6.tgz#f37025f25e396baca800bb8a2fc2ed45af6d0b31"
-  integrity sha512-GszEXqTtfH+p8QEe5uBrz3YLvEHi5YpVtXgJnLZnBGteFNy3GgC9KhmzC3dGBQhKQvXjDPc/hLsiJAWuTehLoQ==
+"@vtex/graphql-utils@^1.5.9":
+  version "1.5.9"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.5.9.tgz#47197ec8a75986b437f162c5aeba4a1058be71e8"
+  integrity sha512-kGB/6c/rNlSdGH33j+QtuD1EBe0y+ZQNbcFdGnbLMu7mJWQp8W6I0rgY086X5se/bf2/71tlEbwNejivHCKk1w==
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
