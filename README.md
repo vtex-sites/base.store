@@ -2,14 +2,14 @@
 
 Este é o nosso teste de temificação e customização da FastStore para frente de lojas.
 
-- Sua missão é aplicar o tema [BaseStore](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) em [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
+- Sua missão é criar um [novo tema](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) em [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
 - A customização é feita, primariamente, através de design tokens (variáveis CSS).
 - O seu ponto de partida será o arquivo do tema [default](./src/styles/themes/default.scss).
 - Dentro dos arquivos CSS de cada componente, você achará os design tokens específicos (escopados).
 - Busque expressar seus pensamentos e dúvidas em voz alta.
 
 Vamos lá?
-Comece apagando a classe `base-store` em [theming-poc-homepage.tsx](./src/pages/theming-poc-homepage.tsx) (`:30`)
+Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) e edite o [default.scss](./src/styles/themes/default.scss) para criar esse novo tema.
 
 # Arquivos Customizáveis
 

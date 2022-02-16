@@ -27,7 +27,7 @@ function Page(props: Props) {
     <div>
       <Helmet
         bodyAttributes={{
-          class: 'base-store',
+          class: '',
         }}
       />
       <GatsbySeo
