@@ -2,7 +2,7 @@
 
 Esse é o nosso teste de temificação e customização da FastStore para frete de lojas.
 
-- Sua missão é aplicar um tema nessa homepage [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
+- Sua missão é aplicar o tema [BaseStore](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) nessa homepage [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
 - Sinta-se livre para mexer nos tokens que achar necessário.
 - Você também pode aplicar mudanças diretamente nos arquivos listados abaixo.
 
