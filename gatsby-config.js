@@ -33,6 +33,12 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
+    {
+      resolve: 'gatsby-plugin-loadable-components-ssr',
+      options: {
+        useHydrate: true,
+      },
+    },
     `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-plugin-manifest',

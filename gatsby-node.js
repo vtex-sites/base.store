@@ -21,25 +21,6 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
           concatenateModules: false,
         },
       })
-    } else {
-      setWebpackConfig({
-        optimization: {
-          runtimeChunk: {
-            name: `webpack-runtime`,
-          },
-          splitChunks: {
-            name: false,
-            cacheGroups: {
-              styles: {
-                name: `styles`,
-                test: /\.(css|scss)$/,
-                chunks: `initial`,
-                enforce: true,
-              },
-            },
-          },
-        },
-      })
     }
   }
 }
