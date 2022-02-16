@@ -1,26 +1,20 @@
 import { SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React from 'react'
-import loadable from '@loadable/component'
-import Hero from 'src/components/sections/Hero'
-import { ITEMS_PER_PAGE } from 'src/constants'
-import { applySearchState } from 'src/sdk/search/state'
 import { Headphones as HeadphonesIcon } from 'phosphor-react'
-import Breadcrumb from 'src/components/sections/Breadcrumb'
-import type { Props } from 'src/hooks/useSearchParams'
+import React from 'react'
+import Hero from 'src/components/sections/Hero'
+import ProductGallery from 'src/components/sections/ProductGallery'
+import ProductShelf from 'src/components/sections/ProductShelf'
+import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
+import { ITEMS_PER_PAGE } from 'src/constants'
 import { useSearchParams } from 'src/hooks/useSearchParams'
-import ProductListing from 'src/components/sections/ProductListing'
+import { applySearchState } from 'src/sdk/search/state'
+import Breadcrumb from 'src/components/sections/Breadcrumb'
+import { mark } from 'src/sdk/tests/mark'
+import type { Props } from 'src/hooks/useSearchParams'
 
 import '../styles/pages/product-listing-page.scss'
-
-const ScrollToTopButton = loadable(
-  () => import('src/components/ui/ScrollToTopButton')
-)
-
-const ProductShelf = loadable(
-  () => import('src/components/sections/ProductShelf')
-)
 
 function Page(props: Props) {
   const {
@@ -92,7 +86,7 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <ProductListing title={title} slug={slug} />
+      <ProductGallery title={title} slug={slug} />
 
       {youMightAlsoLikeProducts?.length > 0 && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">
@@ -151,4 +145,6 @@ export const query = graphql`
   }
 `
 
-export default Page
+Page.displayName = 'Page'
+
+export default mark(Page)

@@ -9,35 +9,35 @@ import {
 
 import Incentives from './Incentives'
 
-function IncentivesHeader() {
-  const incentives = [
-    {
-      icon: <TruckIcon size={32} />,
-      title: 'Buy online',
-      firstLineText: 'Get Free Shipping',
-    },
-    {
-      icon: <CalendarIcon size={32} />,
-      title: 'Free return',
-      firstLineText: '30 days to return',
-    },
-    {
-      icon: <GiftIcon size={32} />,
-      title: 'Gift cards',
-      firstLineText: '$20 / $30 / $50',
-    },
-    {
-      icon: <StorefrontIcon size={32} />,
-      title: 'Physical Stores',
-      firstLineText: '+40 Stores in Brazil',
-    },
-    {
-      icon: <ShieldCheckIcon size={32} />,
-      title: 'Buy online',
-      firstLineText: 'Get Free Shipping',
-    },
-  ]
+const incentives = [
+  {
+    icon: <TruckIcon size={32} />,
+    title: 'Buy online',
+    firstLineText: 'Get Free Shipping',
+  },
+  {
+    icon: <CalendarIcon size={32} />,
+    title: 'Free return',
+    firstLineText: '30 days to return',
+  },
+  {
+    icon: <GiftIcon size={32} />,
+    title: 'Gift cards',
+    firstLineText: '$20 / $30 / $50',
+  },
+  {
+    icon: <StorefrontIcon size={32} />,
+    title: 'Physical Stores',
+    firstLineText: '+40 Stores in Brazil',
+  },
+  {
+    icon: <ShieldCheckIcon size={32} />,
+    title: 'Buy online',
+    firstLineText: 'Get Free Shipping',
+  },
+]
 
+function IncentivesHeader() {
   return <Incentives incentives={incentives} classes="incentives--colored" />
 }
 
