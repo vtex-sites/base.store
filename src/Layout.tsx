@@ -7,7 +7,6 @@ import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
 import Alert from './components/ui/Alert'
-import './styles/fonts.css'
 
 const CartSidebar = loadable(() => import('src/components/cart/CartSidebar'))
 
