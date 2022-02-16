@@ -2,7 +2,7 @@
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
 
-import ThirdyPartyScripts from './src/components/ThirdyPartyScripts'
+import ThirdPartyScripts from './src/components/ThirdPartyScripts'
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
 import { validateCart } from './src/sdk/cart/validate'
@@ -35,7 +35,7 @@ export const wrapPageElement = ({ element }) => {
 }
 
 export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents(<ThirdyPartyScripts />)
+  setHeadComponents([<ThirdPartyScripts key="ThirdPartyScripts" />])
 }
 
 export const onPreRenderHTML = ({
