@@ -8,6 +8,7 @@
 
   // Default properties
   --button-padding                              : var(--space-1) var(--space-3);
+  --button-padding-small                        : 0 var(--space-1);
   --button-height                               : var(--min-size);
   --button-shadow                               : var(--shadow);
   --button-gap                                  : var(--space-2);
@@ -129,7 +130,7 @@
   }
 
   &[data-button-size="small"] {
-    padding: 0 var(--space-1);
+    padding: var(--button-padding-small);
     font-size: var(--text-size-1);
 
     @media (any-pointer: fine) {
