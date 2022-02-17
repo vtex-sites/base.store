@@ -18,8 +18,6 @@ export type Scalars = {
   Float: number
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any
-  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSON: any
 }
 
 export type BooleanQueryOperatorInput = {
@@ -1017,13 +1015,11 @@ export type QuerySiteArgs = {
   host: InputMaybe<StringQueryOperatorInput>
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
-  jsxRuntime: InputMaybe<StringQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   pathPrefix: InputMaybe<StringQueryOperatorInput>
   polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
-  trailingSlash: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySiteBuildMetadataArgs = {
@@ -1055,11 +1051,12 @@ export type QuerySitePageArgs = {
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   internalComponentName: InputMaybe<StringQueryOperatorInput>
+  isCreatedByStatefulCreatePages: InputMaybe<BooleanQueryOperatorInput>
   matchPath: InputMaybe<StringQueryOperatorInput>
-  pageContext: InputMaybe<JsonQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   path: InputMaybe<StringQueryOperatorInput>
   pluginCreator: InputMaybe<SitePluginFilterInput>
+  pluginCreatorId: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySitePluginArgs = {
@@ -1069,10 +1066,10 @@ export type QuerySitePluginArgs = {
   internal: InputMaybe<InternalFilterInput>
   name: InputMaybe<StringQueryOperatorInput>
   nodeAPIs: InputMaybe<StringQueryOperatorInput>
-  packageJson: InputMaybe<JsonQueryOperatorInput>
+  packageJson: InputMaybe<SitePluginPackageJsonFilterInput>
   parent: InputMaybe<NodeFilterInput>
   pluginFilepath: InputMaybe<StringQueryOperatorInput>
-  pluginOptions: InputMaybe<JsonQueryOperatorInput>
+  pluginOptions: InputMaybe<SitePluginPluginOptionsFilterInput>
   resolve: InputMaybe<StringQueryOperatorInput>
   ssrAPIs: InputMaybe<StringQueryOperatorInput>
   version: InputMaybe<StringQueryOperatorInput>
@@ -1085,13 +1082,11 @@ export type Site = Node & {
   host: Maybe<Scalars['String']>
   id: Scalars['ID']
   internal: Internal
-  jsxRuntime: Maybe<Scalars['String']>
   parent: Maybe<Node>
   pathPrefix: Maybe<Scalars['String']>
   polyfill: Maybe<Scalars['Boolean']>
   port: Maybe<Scalars['Int']>
   siteMetadata: Maybe<SiteSiteMetadata>
-  trailingSlash: Maybe<Scalars['String']>
 }
 
 export type SiteBuildTimeArgs = {
@@ -1434,7 +1429,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___title'
   | 'siteMetadata___titleTemplate'
-  | 'trailingSlash'
 
 export type SiteFilterInput = {
   buildTime: InputMaybe<DateQueryOperatorInput>
@@ -1443,13 +1437,11 @@ export type SiteFilterInput = {
   host: InputMaybe<StringQueryOperatorInput>
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
-  jsxRuntime: InputMaybe<StringQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   pathPrefix: InputMaybe<StringQueryOperatorInput>
   polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
-  trailingSlash: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SiteFlags = {
@@ -1709,11 +1701,12 @@ export type SitePage = Node & {
   id: Scalars['ID']
   internal: Internal
   internalComponentName: Scalars['String']
+  isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>
   matchPath: Maybe<Scalars['String']>
-  pageContext: Maybe<Scalars['JSON']>
   parent: Maybe<Node>
   path: Scalars['String']
   pluginCreator: Maybe<SitePlugin>
+  pluginCreatorId: Maybe<Scalars['String']>
 }
 
 export type SitePageConnection = {
@@ -1892,7 +1885,40 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___parent___parent___children'
   | 'pluginCreator___parent___parent___id'
   | 'pluginCreator___pluginFilepath'
-  | 'pluginCreator___pluginOptions'
+  | 'pluginCreator___pluginOptions____generated'
+  | 'pluginCreator___pluginOptions___allExtensions'
+  | 'pluginCreator___pluginOptions___appendScript'
+  | 'pluginCreator___pluginOptions___background_color'
+  | 'pluginCreator___pluginOptions___baseline'
+  | 'pluginCreator___pluginOptions___cache_busting_mode'
+  | 'pluginCreator___pluginOptions___color'
+  | 'pluginCreator___pluginOptions___compare'
+  | 'pluginCreator___pluginOptions___crossOrigin'
+  | 'pluginCreator___pluginOptions___defer'
+  | 'pluginCreator___pluginOptions___display'
+  | 'pluginCreator___pluginOptions___html'
+  | 'pluginCreator___pluginOptions___httpOptions'
+  | 'pluginCreator___pluginOptions___icon'
+  | 'pluginCreator___pluginOptions___include_favicon'
+  | 'pluginCreator___pluginOptions___isTSX'
+  | 'pluginCreator___pluginOptions___json'
+  | 'pluginCreator___pluginOptions___jsxPragma'
+  | 'pluginCreator___pluginOptions___legacy'
+  | 'pluginCreator___pluginOptions___name'
+  | 'pluginCreator___pluginOptions___outDir'
+  | 'pluginCreator___pluginOptions___path'
+  | 'pluginCreator___pluginOptions___pathCheck'
+  | 'pluginCreator___pluginOptions___precachePages'
+  | 'pluginCreator___pluginOptions___server'
+  | 'pluginCreator___pluginOptions___serverOptions'
+  | 'pluginCreator___pluginOptions___short_name'
+  | 'pluginCreator___pluginOptions___showSpinner'
+  | 'pluginCreator___pluginOptions___src'
+  | 'pluginCreator___pluginOptions___start_url'
+  | 'pluginCreator___pluginOptions___stats___context'
+  | 'pluginCreator___pluginOptions___theme_color'
+  | 'pluginCreator___pluginOptions___theme_color_in_head'
+  | 'pluginCreator___pluginOptions___workboxConfig___globPatterns'
   | 'pluginCreator___resolve'
   | 'pluginCreator___ssrAPIs'
   | 'pluginCreator___version'
@@ -1904,11 +1930,12 @@ export type SitePageFilterInput = {
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   internalComponentName: InputMaybe<StringQueryOperatorInput>
+  isCreatedByStatefulCreatePages: InputMaybe<BooleanQueryOperatorInput>
   matchPath: InputMaybe<StringQueryOperatorInput>
-  pageContext: InputMaybe<JsonQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   path: InputMaybe<StringQueryOperatorInput>
   pluginCreator: InputMaybe<SitePluginFilterInput>
+  pluginCreatorId: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePageGroupConnection = {
@@ -1959,10 +1986,10 @@ export type SitePlugin = Node & {
   internal: Internal
   name: Maybe<Scalars['String']>
   nodeAPIs: Maybe<Array<Maybe<Scalars['String']>>>
-  packageJson: Maybe<Scalars['JSON']>
+  packageJson: Maybe<SitePluginPackageJson>
   parent: Maybe<Node>
   pluginFilepath: Maybe<Scalars['String']>
-  pluginOptions: Maybe<Scalars['JSON']>
+  pluginOptions: Maybe<SitePluginPluginOptions>
   resolve: Maybe<Scalars['String']>
   ssrAPIs: Maybe<Array<Maybe<Scalars['String']>>>
   version: Maybe<Scalars['String']>
@@ -2100,7 +2127,45 @@ export type SitePluginFieldsEnum =
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
   | 'pluginFilepath'
-  | 'pluginOptions'
+  | 'pluginOptions____generated'
+  | 'pluginOptions___allExtensions'
+  | 'pluginOptions___appendScript'
+  | 'pluginOptions___background_color'
+  | 'pluginOptions___baseline'
+  | 'pluginOptions___cache_busting_mode'
+  | 'pluginOptions___color'
+  | 'pluginOptions___compare'
+  | 'pluginOptions___crossOrigin'
+  | 'pluginOptions___defer'
+  | 'pluginOptions___display'
+  | 'pluginOptions___env___branch_deploy___policy'
+  | 'pluginOptions___env___deploy_preview___policy'
+  | 'pluginOptions___env___production___policy'
+  | 'pluginOptions___html'
+  | 'pluginOptions___httpOptions'
+  | 'pluginOptions___icon'
+  | 'pluginOptions___include_favicon'
+  | 'pluginOptions___isTSX'
+  | 'pluginOptions___json'
+  | 'pluginOptions___jsxPragma'
+  | 'pluginOptions___legacy'
+  | 'pluginOptions___locations___append___children'
+  | 'pluginOptions___locations___append___cmd'
+  | 'pluginOptions___name'
+  | 'pluginOptions___outDir'
+  | 'pluginOptions___path'
+  | 'pluginOptions___pathCheck'
+  | 'pluginOptions___precachePages'
+  | 'pluginOptions___server'
+  | 'pluginOptions___serverOptions'
+  | 'pluginOptions___short_name'
+  | 'pluginOptions___showSpinner'
+  | 'pluginOptions___src'
+  | 'pluginOptions___start_url'
+  | 'pluginOptions___stats___context'
+  | 'pluginOptions___theme_color'
+  | 'pluginOptions___theme_color_in_head'
+  | 'pluginOptions___workboxConfig___globPatterns'
   | 'resolve'
   | 'ssrAPIs'
   | 'version'
@@ -2112,10 +2177,10 @@ export type SitePluginFilterInput = {
   internal: InputMaybe<InternalFilterInput>
   name: InputMaybe<StringQueryOperatorInput>
   nodeAPIs: InputMaybe<StringQueryOperatorInput>
-  packageJson: InputMaybe<JsonQueryOperatorInput>
+  packageJson: InputMaybe<SitePluginPackageJsonFilterInput>
   parent: InputMaybe<NodeFilterInput>
   pluginFilepath: InputMaybe<StringQueryOperatorInput>
-  pluginOptions: InputMaybe<JsonQueryOperatorInput>
+  pluginOptions: InputMaybe<SitePluginPluginOptionsFilterInput>
   resolve: InputMaybe<StringQueryOperatorInput>
   ssrAPIs: InputMaybe<StringQueryOperatorInput>
   version: InputMaybe<StringQueryOperatorInput>
@@ -2155,6 +2220,276 @@ export type SitePluginGroupConnectionMinArgs = {
 
 export type SitePluginGroupConnectionSumArgs = {
   field: SitePluginFieldsEnum
+}
+
+export type SitePluginPackageJson = {
+  dependencies: Maybe<Array<Maybe<SitePluginPackageJsonDependencies>>>
+  description: Maybe<Scalars['String']>
+  devDependencies: Maybe<Array<Maybe<SitePluginPackageJsonDevDependencies>>>
+  keywords: Maybe<Array<Maybe<Scalars['String']>>>
+  license: Maybe<Scalars['String']>
+  main: Maybe<Scalars['String']>
+  name: Maybe<Scalars['String']>
+  peerDependencies: Maybe<Array<Maybe<SitePluginPackageJsonPeerDependencies>>>
+  version: Maybe<Scalars['String']>
+}
+
+export type SitePluginPackageJsonDependencies = {
+  name: Maybe<Scalars['String']>
+  version: Maybe<Scalars['String']>
+}
+
+export type SitePluginPackageJsonDependenciesFilterInput = {
+  name: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPackageJsonDependenciesFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPackageJsonDependenciesFilterInput>
+}
+
+export type SitePluginPackageJsonDevDependencies = {
+  name: Maybe<Scalars['String']>
+  version: Maybe<Scalars['String']>
+}
+
+export type SitePluginPackageJsonDevDependenciesFilterInput = {
+  name: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPackageJsonDevDependenciesFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPackageJsonDevDependenciesFilterInput>
+}
+
+export type SitePluginPackageJsonFilterInput = {
+  dependencies: InputMaybe<SitePluginPackageJsonDependenciesFilterListInput>
+  description: InputMaybe<StringQueryOperatorInput>
+  devDependencies: InputMaybe<SitePluginPackageJsonDevDependenciesFilterListInput>
+  keywords: InputMaybe<StringQueryOperatorInput>
+  license: InputMaybe<StringQueryOperatorInput>
+  main: InputMaybe<StringQueryOperatorInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  peerDependencies: InputMaybe<SitePluginPackageJsonPeerDependenciesFilterListInput>
+  version: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPackageJsonPeerDependencies = {
+  name: Maybe<Scalars['String']>
+  version: Maybe<Scalars['String']>
+}
+
+export type SitePluginPackageJsonPeerDependenciesFilterInput = {
+  name: InputMaybe<StringQueryOperatorInput>
+  version: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPackageJsonPeerDependenciesFilterInput>
+}
+
+export type SitePluginPluginOptions = {
+  _generated: Maybe<Scalars['String']>
+  allExtensions: Maybe<Scalars['Boolean']>
+  appendScript: Maybe<Scalars['String']>
+  background_color: Maybe<Scalars['String']>
+  baseline: Maybe<Scalars['Boolean']>
+  cache_busting_mode: Maybe<Scalars['String']>
+  color: Maybe<Scalars['String']>
+  compare: Maybe<Scalars['Boolean']>
+  crossOrigin: Maybe<Scalars['String']>
+  defer: Maybe<Scalars['Boolean']>
+  display: Maybe<Scalars['String']>
+  env: Maybe<SitePluginPluginOptionsEnv>
+  html: Maybe<Scalars['Boolean']>
+  httpOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
+  icon: Maybe<Scalars['String']>
+  include_favicon: Maybe<Scalars['Boolean']>
+  isTSX: Maybe<Scalars['Boolean']>
+  json: Maybe<Scalars['Boolean']>
+  jsxPragma: Maybe<Scalars['String']>
+  legacy: Maybe<Scalars['Boolean']>
+  locations: Maybe<SitePluginPluginOptionsLocations>
+  name: Maybe<Scalars['String']>
+  outDir: Maybe<Scalars['String']>
+  path: Maybe<Scalars['String']>
+  pathCheck: Maybe<Scalars['Boolean']>
+  precachePages: Maybe<Array<Maybe<Scalars['String']>>>
+  server: Maybe<Scalars['String']>
+  serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
+  short_name: Maybe<Scalars['String']>
+  showSpinner: Maybe<Scalars['Boolean']>
+  src: Maybe<Scalars['String']>
+  start_url: Maybe<Scalars['String']>
+  stats: Maybe<SitePluginPluginOptionsStats>
+  theme_color: Maybe<Scalars['String']>
+  theme_color_in_head: Maybe<Scalars['Boolean']>
+  workboxConfig: Maybe<SitePluginPluginOptionsWorkboxConfig>
+}
+
+export type SitePluginPluginOptionsEnv = {
+  branch_deploy: Maybe<SitePluginPluginOptionsEnvBranch_Deploy>
+  deploy_preview: Maybe<SitePluginPluginOptionsEnvDeploy_Preview>
+  production: Maybe<SitePluginPluginOptionsEnvProduction>
+}
+
+export type SitePluginPluginOptionsEnvBranch_Deploy = {
+  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvBranch_DeployPolicy>>>
+}
+
+export type SitePluginPluginOptionsEnvBranch_DeployFilterInput = {
+  policy: InputMaybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput>
+}
+
+export type SitePluginPluginOptionsEnvBranch_DeployPolicy = {
+  disallow: Maybe<Array<Maybe<Scalars['String']>>>
+  userAgent: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput = {
+  disallow: InputMaybe<StringQueryOperatorInput>
+  userAgent: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsEnvBranch_DeployPolicyFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPluginOptionsEnvBranch_DeployPolicyFilterInput>
+}
+
+export type SitePluginPluginOptionsEnvDeploy_Preview = {
+  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicy>>>
+}
+
+export type SitePluginPluginOptionsEnvDeploy_PreviewFilterInput = {
+  policy: InputMaybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput>
+}
+
+export type SitePluginPluginOptionsEnvDeploy_PreviewPolicy = {
+  disallow: Maybe<Array<Maybe<Scalars['String']>>>
+  userAgent: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput = {
+  disallow: InputMaybe<StringQueryOperatorInput>
+  userAgent: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPluginOptionsEnvDeploy_PreviewPolicyFilterInput>
+}
+
+export type SitePluginPluginOptionsEnvFilterInput = {
+  branch_deploy: InputMaybe<SitePluginPluginOptionsEnvBranch_DeployFilterInput>
+  deploy_preview: InputMaybe<SitePluginPluginOptionsEnvDeploy_PreviewFilterInput>
+  production: InputMaybe<SitePluginPluginOptionsEnvProductionFilterInput>
+}
+
+export type SitePluginPluginOptionsEnvProduction = {
+  policy: Maybe<Array<Maybe<SitePluginPluginOptionsEnvProductionPolicy>>>
+}
+
+export type SitePluginPluginOptionsEnvProductionFilterInput = {
+  policy: InputMaybe<SitePluginPluginOptionsEnvProductionPolicyFilterListInput>
+}
+
+export type SitePluginPluginOptionsEnvProductionPolicy = {
+  allow: Maybe<Scalars['String']>
+  disallow: Maybe<Array<Maybe<Scalars['String']>>>
+  userAgent: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsEnvProductionPolicyFilterInput = {
+  allow: InputMaybe<StringQueryOperatorInput>
+  disallow: InputMaybe<StringQueryOperatorInput>
+  userAgent: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsEnvProductionPolicyFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPluginOptionsEnvProductionPolicyFilterInput>
+}
+
+export type SitePluginPluginOptionsFilterInput = {
+  _generated: InputMaybe<StringQueryOperatorInput>
+  allExtensions: InputMaybe<BooleanQueryOperatorInput>
+  appendScript: InputMaybe<StringQueryOperatorInput>
+  background_color: InputMaybe<StringQueryOperatorInput>
+  baseline: InputMaybe<BooleanQueryOperatorInput>
+  cache_busting_mode: InputMaybe<StringQueryOperatorInput>
+  color: InputMaybe<StringQueryOperatorInput>
+  compare: InputMaybe<BooleanQueryOperatorInput>
+  crossOrigin: InputMaybe<StringQueryOperatorInput>
+  defer: InputMaybe<BooleanQueryOperatorInput>
+  display: InputMaybe<StringQueryOperatorInput>
+  env: InputMaybe<SitePluginPluginOptionsEnvFilterInput>
+  html: InputMaybe<BooleanQueryOperatorInput>
+  httpOptions: InputMaybe<StringQueryOperatorInput>
+  icon: InputMaybe<StringQueryOperatorInput>
+  include_favicon: InputMaybe<BooleanQueryOperatorInput>
+  isTSX: InputMaybe<BooleanQueryOperatorInput>
+  json: InputMaybe<BooleanQueryOperatorInput>
+  jsxPragma: InputMaybe<StringQueryOperatorInput>
+  legacy: InputMaybe<BooleanQueryOperatorInput>
+  locations: InputMaybe<SitePluginPluginOptionsLocationsFilterInput>
+  name: InputMaybe<StringQueryOperatorInput>
+  outDir: InputMaybe<StringQueryOperatorInput>
+  path: InputMaybe<StringQueryOperatorInput>
+  pathCheck: InputMaybe<BooleanQueryOperatorInput>
+  precachePages: InputMaybe<StringQueryOperatorInput>
+  server: InputMaybe<StringQueryOperatorInput>
+  serverOptions: InputMaybe<StringQueryOperatorInput>
+  short_name: InputMaybe<StringQueryOperatorInput>
+  showSpinner: InputMaybe<BooleanQueryOperatorInput>
+  src: InputMaybe<StringQueryOperatorInput>
+  start_url: InputMaybe<StringQueryOperatorInput>
+  stats: InputMaybe<SitePluginPluginOptionsStatsFilterInput>
+  theme_color: InputMaybe<StringQueryOperatorInput>
+  theme_color_in_head: InputMaybe<BooleanQueryOperatorInput>
+  workboxConfig: InputMaybe<SitePluginPluginOptionsWorkboxConfigFilterInput>
+}
+
+export type SitePluginPluginOptionsLocations = {
+  append: Maybe<SitePluginPluginOptionsLocationsAppend>
+}
+
+export type SitePluginPluginOptionsLocationsAppend = {
+  children: Maybe<Array<Maybe<SitePluginPluginOptionsLocationsAppendChildren>>>
+  cmd: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type SitePluginPluginOptionsLocationsAppendChildren = {
+  cmd: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type SitePluginPluginOptionsLocationsAppendChildrenFilterInput = {
+  cmd: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsLocationsAppendChildrenFilterListInput = {
+  elemMatch: InputMaybe<SitePluginPluginOptionsLocationsAppendChildrenFilterInput>
+}
+
+export type SitePluginPluginOptionsLocationsAppendFilterInput = {
+  children: InputMaybe<SitePluginPluginOptionsLocationsAppendChildrenFilterListInput>
+  cmd: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsLocationsFilterInput = {
+  append: InputMaybe<SitePluginPluginOptionsLocationsAppendFilterInput>
+}
+
+export type SitePluginPluginOptionsStats = {
+  context: Maybe<Scalars['String']>
+}
+
+export type SitePluginPluginOptionsStatsFilterInput = {
+  context: InputMaybe<StringQueryOperatorInput>
+}
+
+export type SitePluginPluginOptionsWorkboxConfig = {
+  globPatterns: Maybe<Array<Maybe<Scalars['String']>>>
+}
+
+export type SitePluginPluginOptionsWorkboxConfigFilterInput = {
+  globPatterns: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePluginSortInput = {
@@ -2313,7 +2648,6 @@ export type StorePageInfo = {
 }
 
 export type StoreProduct = {
-  additionalProperty: Array<StorePropertyValue>
   aggregateRating: StoreAggregateRating
   brand: StoreBrand
   breadcrumbList: StoreBreadcrumbList
@@ -2341,15 +2675,9 @@ export type StoreProductEdge = {
 }
 
 export type StoreProductGroup = {
-  additionalProperty: Array<StorePropertyValue>
   hasVariant: Array<StoreProduct>
   name: Scalars['String']
   productGroupID: Scalars['String']
-}
-
-export type StorePropertyValue = {
-  name: Scalars['String']
-  value: Scalars['String']
 }
 
 export type StoreReview = {
@@ -2700,6 +3028,24 @@ export type SearchPageQueryQuery = {
     | undefined
 }
 
+export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type SearchPageQueryQuery = {
+  site:
+    | {
+        siteMetadata:
+          | {
+              titleTemplate: string | null | undefined
+              title: string | null | undefined
+              description: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+}
+
 export type ValidateCartMutationMutationVariables = Exact<{
   cart: IStoreCart
 }>
@@ -2717,10 +3063,7 @@ export type ValidateCartMutationMutation = {
             itemOffered: {
               sku: string
               name: string
-              gtin: string
               image: Array<{ url: string; alternateName: string }>
-              brand: { name: string }
-              isVariantOf: { productGroupID: string; name: string }
             }
           }>
         }
