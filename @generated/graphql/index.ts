@@ -3512,14 +3512,6 @@ export type StringQueryOperatorInput = {
   regex: InputMaybe<Scalars['String']>
 }
 
-export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
-
-export type StoreCollectionQuery = {
-  allStoreCollection: {
-    edges: Array<{ node: { slug: string; seo: { title: string } } }>
-  }
-}
-
 export type ProductSummary_ProductFragment = {
   slug: string
   sku: string
@@ -3541,7 +3533,7 @@ export type ProductSummary_ProductFragment = {
   }
 }
 
-export type FacetedFilter_FacetsFragment = {
+export type Filter_FacetsFragment = {
   key: string
   label: string
   type: StoreFacetType
@@ -3622,6 +3614,14 @@ export type ProductGalleryQueryQuery = {
         quantity: number
       }>
     }>
+  }
+}
+
+export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
+
+export type StoreCollectionQuery = {
+  allStoreCollection: {
+    edges: Array<{ node: { slug: string; seo: { title: string } } }>
   }
 }
 
