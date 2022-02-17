@@ -58,7 +58,9 @@ const SlideOver = ({
     }
 
     return () => {
-      layout.current?.classList?.remove('no-scroll')
+      if (layout.current) {
+        layout.current.classList.remove('no-scroll')
+      }
     }
   }, [isOpen, layout])
 
