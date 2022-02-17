@@ -63,9 +63,7 @@ const SlideOver = ({
   }, [isOpen, layout])
 
   useEffect(() => {
-    if (handleClose) {
-      onDismissTransition(() => handleClose())
-    }
+    onDismissTransition(() => handleClose())
   }, [handleClose, onDismissTransition])
 
   const handleTransitionEnd = () => {
