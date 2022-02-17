@@ -74,7 +74,6 @@ function Navbar() {
         <PostalCodeInput />
       </div>
 
-<<<<<<< HEAD
       <SlideOver
         isOpen={showMenu}
         onDismiss={handleCloseSlideOver}
@@ -106,24 +105,9 @@ function Navbar() {
           </header>
           <div className="navlinks">
             <NavLinks onClickLink={handleCloseSlideOver} />
-            <RegionInput />
+            <PostalCodeInput />
             <div className="navlinks__signin">
               <SignInLink />
-=======
-              <IconButton
-                classes="navbar__button"
-                aria-label="Close Menu"
-                icon={<XIcon size={32} />}
-                onClick={() => dismissTransition.current?.()}
-              />
-            </header>
-            <div className="navlinks">
-              <NavLinks onClickLink={handleCloseSlideOver} />
-              <PostalCodeInput />
-              <div className="navlinks__signin">
-                <SignInLink />
-              </div>
->>>>>>> e665bfec (Rename from Region to PostalCode)
             </div>
           </div>
         </div>
