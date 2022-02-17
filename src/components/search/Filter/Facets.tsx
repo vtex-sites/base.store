@@ -11,7 +11,6 @@ import type {
 import './filter.scss'
 
 interface FacetsProps {
-  variant: 'mobile' | 'desktop'
   slug: string
   testId: string
   selectedFacets: IStoreSelectedFacet[]
@@ -26,7 +25,6 @@ interface FacetsProps {
 }
 
 function Facets({
-  variant,
   slug,
   testId,
   selectedFacets,
@@ -42,16 +40,16 @@ function Facets({
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>
         {filteredFacets.map(({ label, values, key }, index) => (
           <AccordionItem
-            prefixId={variant}
             key={`${label}-${index}`}
-            testId="filter-accordion"
+            prefixId={testId}
+            testId={`${testId}-accordion`}
             isExpanded={indicesExpanded.has(index)}
             buttonLabel={label}
             ref={(_) => onAccordionItemMount(index, values)}
           >
             <UIList>
               {values.map((item) => {
-                const id = `${variant}-${label}-${item.label}`
+                const id = `${testId}-${label}-${item.label}`
 
                 return (
                   <li key={id} className="filter__item">
@@ -64,7 +62,7 @@ function Facets({
                         )
                       }
                       onChange={() => onFacetChange({ key, value: item.value })}
-                      data-testid="filter-accordion-panel-checkbox"
+                      data-testid={`${testId}-accordion-panel-checkbox`}
                       data-value={item.value}
                       data-quantity={item.quantity}
                       disabled={item.value === slug}

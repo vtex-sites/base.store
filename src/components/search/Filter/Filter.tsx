@@ -166,9 +166,8 @@ function Filter({
     <>
       <div className="hidden-mobile">
         <Facets
-          variant="desktop"
           slug={slug}
-          testId={testId}
+          testId={`desktop-${testId}`}
           selectedFacets={selectedFacets}
           filteredFacets={filteredFacets}
           indicesExpanded={indicesExpanded}
@@ -203,9 +202,8 @@ function Filter({
             />
           </header>
           <Facets
-            variant="mobile"
             slug={slug}
-            testId={testId}
+            testId={`mobile-${testId}`}
             selectedFacets={selectedFacets}
             filteredFacets={filteredFacets}
             indicesExpanded={indicesExpanded}
