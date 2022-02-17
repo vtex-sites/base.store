@@ -12,6 +12,7 @@ import { Badge } from 'src/components/ui/Badge'
 import Alert from 'src/components/ui/Alert'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useUI } from 'src/sdk/ui'
+import { List } from '@faststore/ui'
 
 import CartItem from '../CartItem'
 import OrderSummary from '../OrderSummary'
@@ -38,55 +39,43 @@ function CartSidebar() {
       onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
-      className="cart-sidebar__content"
+      className={`cart-sidebar ${isEmpty ? 'cart-sidebar--empty' : ''}`}
     >
-      <div className="cart-sidebar" data-testid="cart-sidebar">
-        <div
-          className={`cart-sidebar__body ${
-            isEmpty ? 'cart-sidebar__body--empty' : ''
-          }`}
-        >
-          <div className="cart-sidebar__fixed-elements">
-            <header className="cart-sidebar__header">
-              <div className="cart-sidebar__title">
-                <p className="title-display">Your Cart</p>
-                <Badge variant="new" small>
-                  {totalItems}
-                </Badge>
-              </div>
-              <IconButton
-                data-testid="cart-sidebar-button-close"
-                classes="cart-sidebar__button"
-                aria-label="Close Cart"
-                icon={<XIcon size={32} />}
-                onClick={() => dismissTransition.current?.()}
-              />
-            </header>
-            <Alert icon={<TruckIcon size={24} />}>
-              Free shiping starts at $300
-            </Alert>
-          </div>
-
-          {isEmpty ? (
-            <EmptyCart onDismiss={() => dismissTransition.current?.()} />
-          ) : (
-            <div className="cart-sidebar__items">
-              {items.map((item) => (
-                <CartItem key={item.id} item={item} />
-              ))}
-            </div>
-          )}
+      <header data-testid="cart-sidebar">
+        <div className="cart-sidebar__title">
+          <p className="title-display">Your Cart</p>
+          <Badge variant="new" small>
+            {totalItems}
+          </Badge>
         </div>
+        <IconButton
+          data-testid="cart-sidebar-button-close"
+          aria-label="Close Cart"
+          icon={<XIcon size={32} />}
+          onClick={() => dismissTransition.current?.()}
+        />
+      </header>
+      <Alert icon={<TruckIcon size={24} />}>Free shiping starts at $300</Alert>
 
-        {!isEmpty && (
-          <footer className="cart-sidebar__footer">
+      {isEmpty ? (
+        <EmptyCart onDismiss={() => dismissTransition.current?.()} />
+      ) : (
+        <>
+          <List>
+            {items.map((item) => (
+              <li key={item.id}>
+                <CartItem item={item} />
+              </li>
+            ))}
+          </List>
+
+          <footer>
             <OrderSummary
               subTotal={subTotal}
               total={total}
               numberOfItems={totalItems}
               checkoutButton={
                 <Button
-                  data-cart-checkout-button
                   variant="primary"
                   icon={!isValidating && <ArrowRightIcon size={18} />}
                   iconPosition="right"
@@ -97,8 +86,8 @@ function CartSidebar() {
               }
             />
           </footer>
-        )}
-      </div>
+        </>
+      )}
     </SlideOver>
   )
 }

@@ -3,6 +3,13 @@
 .footer {
   background-color: var(--bg-neutral-light);
   .incentives { padding-top: 0; }
+
+  content-visibility: auto;
+  contain-intrinsic-size: rem(860px);
+
+  @include media(">=notebook") {
+    contain-intrinsic-size: rem(546px);
+  }
 }
 
 .footer__note,

@@ -92,7 +92,7 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server: 'https://thumbor-dev-server.vtex.io',
+        server: 'https://thumbor-server.vtex.io',
       },
     },
     {

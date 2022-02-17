@@ -1,9 +1,10 @@
-import React, { memo } from 'react'
+import React from 'react'
 import {
   List as UIList,
   Icon as UIIcon,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
+import { mark } from 'src/sdk/tests/mark'
 
 import FooterLinks from './FooterLinks'
 import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
@@ -40,6 +41,7 @@ function Footer() {
           <UIList variant="unordered">
             <li>
               <Link
+                as="a"
                 href="https://www.facebook.com/"
                 title="Facebook"
                 target="_blank"
@@ -50,6 +52,7 @@ function Footer() {
             </li>
             <li>
               <Link
+                as="a"
                 href="https://www.instagram.com/"
                 title="Instagram"
                 target="_blank"
@@ -60,6 +63,7 @@ function Footer() {
             </li>
             <li>
               <Link
+                as="a"
                 href="https://www.pinterest.com/"
                 title="Pinterest"
                 target="_blank"
@@ -70,6 +74,7 @@ function Footer() {
             </li>
             <li>
               <Link
+                as="a"
                 href="https://twitter.com/"
                 title="Twitter"
                 target="_blank"
@@ -137,4 +142,6 @@ function Footer() {
   )
 }
 
-export default memo(Footer)
+Footer.displayName = 'Footer'
+
+export default mark(Footer)

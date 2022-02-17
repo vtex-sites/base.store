@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import type { ReactNode } from 'react'
 import UIHero, {
   HeroContent,
@@ -49,7 +49,7 @@ const Hero = ({
             <p className="text-body-big">{subtitle}</p>
             {!!link && (
               <HeroLink>
-                <LinkButton href={link} inverse>
+                <LinkButton to={link} inverse>
                   {linkText} <ArrowRightIcon size={24} />
                 </LinkButton>
               </HeroLink>
@@ -75,4 +75,4 @@ const Hero = ({
   )
 }
 
-export default memo(Hero)
+export default Hero

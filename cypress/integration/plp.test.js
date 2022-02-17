@@ -21,10 +21,10 @@ describe('Search page Filters and Sorting options', () => {
     // Apply filters
     cy.getById('open-filter-button')
       .click()
-      .getById('filter-accordion-button')
+      .getById('mobile-store-filter-accordion-button')
       .first()
       .click()
-      .getById('filter-accordion-panel-checkbox')
+      .getById('mobile-store-filter-accordion-panel-checkbox')
       .should('exist')
       .first()
       .click()

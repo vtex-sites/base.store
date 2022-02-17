@@ -1,5 +1,7 @@
 @import "scaffold.scss";
 
+body { min-height: 100vh; }
+
 main {
   display: flex;
   flex-wrap: wrap;

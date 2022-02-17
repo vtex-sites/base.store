@@ -1,6 +1,3 @@
-/**
- * TODO: Add analytics events here
- * */
 import { useCallback } from 'react'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import type { CurrencyCode, RemoveFromCartEvent } from '@faststore/sdk'
