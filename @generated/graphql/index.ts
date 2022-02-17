@@ -18,6 +18,8 @@ export type Scalars = {
   Float: number
   /** A date string, such as 2007-12-03, compliant with the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
+  JSON: any
 }
 
 export type BooleanQueryOperatorInput = {
@@ -25,16 +27,6 @@ export type BooleanQueryOperatorInput = {
   in: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>
   ne: InputMaybe<Scalars['Boolean']>
   nin: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>
-}
-
-export type BrowserStoreCollectionConnection = {
-  edges: Array<StoreCollectionEdge>
-  pageInfo: StorePageInfo
-}
-
-export type BrowserStoreProductConnection = {
-  edges: Array<StoreProductEdge>
-  pageInfo: StorePageInfo
 }
 
 export type DateQueryOperatorInput = {
@@ -789,6 +781,15 @@ export type InternalFilterInput = {
   type: InputMaybe<StringQueryOperatorInput>
 }
 
+export type JsonQueryOperatorInput = {
+  eq: InputMaybe<Scalars['JSON']>
+  glob: InputMaybe<Scalars['JSON']>
+  in: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  ne: InputMaybe<Scalars['JSON']>
+  nin: InputMaybe<Array<InputMaybe<Scalars['JSON']>>>
+  regex: InputMaybe<Scalars['JSON']>
+}
+
 export type Mutation = {
   updateSession: StoreSession
   validateCart: Maybe<StoreCart>
@@ -832,17 +833,15 @@ export type PageInfo = {
 }
 
 export type Query = {
-  allCollections: BrowserStoreCollectionConnection
+  allCollections: StoreCollectionConnection
   allDirectory: DirectoryConnection
   allFile: FileConnection
-  allProducts: BrowserStoreProductConnection
+  allProducts: StoreProductConnection
   allSite: SiteConnection
   allSiteBuildMetadata: SiteBuildMetadataConnection
   allSiteFunction: SiteFunctionConnection
   allSitePage: SitePageConnection
   allSitePlugin: SitePluginConnection
-  allStoreCollection: StoreCollectionConnection
-  allStoreProduct: StoreProductConnection
   collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
@@ -854,8 +853,6 @@ export type Query = {
   siteFunction: Maybe<SiteFunction>
   sitePage: Maybe<SitePage>
   sitePlugin: Maybe<SitePlugin>
-  storeCollection: Maybe<StoreCollection>
-  storeProduct: Maybe<StoreProduct>
 }
 
 export type QueryAllCollectionsArgs = {
@@ -915,20 +912,6 @@ export type QueryAllSitePluginArgs = {
   limit: InputMaybe<Scalars['Int']>
   skip: InputMaybe<Scalars['Int']>
   sort: InputMaybe<SitePluginSortInput>
-}
-
-export type QueryAllStoreCollectionArgs = {
-  filter: InputMaybe<StoreCollectionFilterInput>
-  limit: InputMaybe<Scalars['Int']>
-  skip: InputMaybe<Scalars['Int']>
-  sort: InputMaybe<StoreCollectionSortInput>
-}
-
-export type QueryAllStoreProductArgs = {
-  filter: InputMaybe<StoreProductFilterInput>
-  limit: InputMaybe<Scalars['Int']>
-  skip: InputMaybe<Scalars['Int']>
-  sort: InputMaybe<StoreProductSortInput>
 }
 
 export type QueryCollectionArgs = {
@@ -1030,11 +1013,13 @@ export type QuerySiteArgs = {
   host: InputMaybe<StringQueryOperatorInput>
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
+  jsxRuntime: InputMaybe<StringQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   pathPrefix: InputMaybe<StringQueryOperatorInput>
   polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
+  trailingSlash: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySiteBuildMetadataArgs = {
@@ -1063,16 +1048,14 @@ export type QuerySitePageArgs = {
   children: InputMaybe<NodeFilterListInput>
   component: InputMaybe<StringQueryOperatorInput>
   componentChunkName: InputMaybe<StringQueryOperatorInput>
-  context: InputMaybe<SitePageContextFilterInput>
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   internalComponentName: InputMaybe<StringQueryOperatorInput>
-  isCreatedByStatefulCreatePages: InputMaybe<BooleanQueryOperatorInput>
   matchPath: InputMaybe<StringQueryOperatorInput>
+  pageContext: InputMaybe<JsonQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   path: InputMaybe<StringQueryOperatorInput>
   pluginCreator: InputMaybe<SitePluginFilterInput>
-  pluginCreatorId: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QuerySitePluginArgs = {
@@ -1082,51 +1065,13 @@ export type QuerySitePluginArgs = {
   internal: InputMaybe<InternalFilterInput>
   name: InputMaybe<StringQueryOperatorInput>
   nodeAPIs: InputMaybe<StringQueryOperatorInput>
-  packageJson: InputMaybe<SitePluginPackageJsonFilterInput>
+  packageJson: InputMaybe<JsonQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   pluginFilepath: InputMaybe<StringQueryOperatorInput>
-  pluginOptions: InputMaybe<SitePluginPluginOptionsFilterInput>
+  pluginOptions: InputMaybe<JsonQueryOperatorInput>
   resolve: InputMaybe<StringQueryOperatorInput>
   ssrAPIs: InputMaybe<StringQueryOperatorInput>
   version: InputMaybe<StringQueryOperatorInput>
-}
-
-export type QueryStoreCollectionArgs = {
-  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
-  children: InputMaybe<NodeFilterListInput>
-  gatsbyPath: InputMaybe<StringQueryOperatorInput>
-  id: InputMaybe<StringQueryOperatorInput>
-  internal: InputMaybe<InternalFilterInput>
-  meta: InputMaybe<StoreCollectionMetaFilterInput>
-  parent: InputMaybe<NodeFilterInput>
-  remoteId: InputMaybe<DateQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  seo: InputMaybe<StoreSeoFilterInput>
-  slug: InputMaybe<StringQueryOperatorInput>
-  type: InputMaybe<StoreCollectionTypeQueryOperatorInput>
-}
-
-export type QueryStoreProductArgs = {
-  additionalProperty: InputMaybe<StorePropertyValueFilterListInput>
-  aggregateRating: InputMaybe<StoreAggregateRatingFilterInput>
-  brand: InputMaybe<StoreBrandFilterInput>
-  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
-  children: InputMaybe<NodeFilterListInput>
-  description: InputMaybe<StringQueryOperatorInput>
-  gtin: InputMaybe<StringQueryOperatorInput>
-  id: InputMaybe<StringQueryOperatorInput>
-  image: InputMaybe<StoreImageFilterListInput>
-  internal: InputMaybe<InternalFilterInput>
-  isVariantOf: InputMaybe<StoreProductGroupFilterInput>
-  name: InputMaybe<StringQueryOperatorInput>
-  offers: InputMaybe<StoreAggregateOfferFilterInput>
-  parent: InputMaybe<NodeFilterInput>
-  productID: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  review: InputMaybe<StoreReviewFilterListInput>
-  seo: InputMaybe<StoreSeoFilterInput>
-  sku: InputMaybe<StringQueryOperatorInput>
-  slug: InputMaybe<StringQueryOperatorInput>
 }
 
 export type Site = Node & {
@@ -1136,11 +1081,13 @@ export type Site = Node & {
   host: Maybe<Scalars['String']>
   id: Scalars['ID']
   internal: Internal
+  jsxRuntime: Maybe<Scalars['String']>
   parent: Maybe<Node>
   pathPrefix: Maybe<Scalars['String']>
   polyfill: Maybe<Scalars['Boolean']>
   port: Maybe<Scalars['Int']>
   siteMetadata: Maybe<SiteSiteMetadata>
+  trailingSlash: Maybe<Scalars['String']>
 }
 
 export type SiteBuildTimeArgs = {
@@ -1424,12 +1371,8 @@ export type SiteFieldsEnum =
   | 'children___parent___internal___type'
   | 'children___parent___parent___children'
   | 'children___parent___parent___id'
-  | 'flags___DEV_SSR'
   | 'flags___FAST_DEV'
-  | 'flags___LMDB_STORE'
-  | 'flags___PARALLEL_QUERY_RUNNING'
   | 'flags___PARALLEL_SOURCING'
-  | 'flags___PRESERVE_FILE_DOWNLOAD_CACHE'
   | 'host'
   | 'id'
   | 'internal___content'
@@ -1440,6 +1383,7 @@ export type SiteFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
+  | 'jsxRuntime'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -1486,6 +1430,7 @@ export type SiteFieldsEnum =
   | 'siteMetadata___siteUrl'
   | 'siteMetadata___title'
   | 'siteMetadata___titleTemplate'
+  | 'trailingSlash'
 
 export type SiteFilterInput = {
   buildTime: InputMaybe<DateQueryOperatorInput>
@@ -1494,29 +1439,23 @@ export type SiteFilterInput = {
   host: InputMaybe<StringQueryOperatorInput>
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
+  jsxRuntime: InputMaybe<StringQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   pathPrefix: InputMaybe<StringQueryOperatorInput>
   polyfill: InputMaybe<BooleanQueryOperatorInput>
   port: InputMaybe<IntQueryOperatorInput>
   siteMetadata: InputMaybe<SiteSiteMetadataFilterInput>
+  trailingSlash: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SiteFlags = {
-  DEV_SSR: Maybe<Scalars['Boolean']>
   FAST_DEV: Maybe<Scalars['Boolean']>
-  LMDB_STORE: Maybe<Scalars['Boolean']>
-  PARALLEL_QUERY_RUNNING: Maybe<Scalars['Boolean']>
   PARALLEL_SOURCING: Maybe<Scalars['Boolean']>
-  PRESERVE_FILE_DOWNLOAD_CACHE: Maybe<Scalars['Boolean']>
 }
 
 export type SiteFlagsFilterInput = {
-  DEV_SSR: InputMaybe<BooleanQueryOperatorInput>
   FAST_DEV: InputMaybe<BooleanQueryOperatorInput>
-  LMDB_STORE: InputMaybe<BooleanQueryOperatorInput>
-  PARALLEL_QUERY_RUNNING: InputMaybe<BooleanQueryOperatorInput>
   PARALLEL_SOURCING: InputMaybe<BooleanQueryOperatorInput>
-  PRESERVE_FILE_DOWNLOAD_CACHE: InputMaybe<BooleanQueryOperatorInput>
 }
 
 export type SiteFunction = Node & {
@@ -1763,16 +1702,14 @@ export type SitePage = Node & {
   children: Array<Node>
   component: Scalars['String']
   componentChunkName: Scalars['String']
-  context: Maybe<SitePageContext>
   id: Scalars['ID']
   internal: Internal
   internalComponentName: Scalars['String']
-  isCreatedByStatefulCreatePages: Maybe<Scalars['Boolean']>
   matchPath: Maybe<Scalars['String']>
+  pageContext: Maybe<Scalars['JSON']>
   parent: Maybe<Node>
   path: Scalars['String']
   pluginCreator: Maybe<SitePlugin>
-  pluginCreatorId: Maybe<Scalars['String']>
 }
 
 export type SitePageConnection = {
@@ -1807,26 +1744,6 @@ export type SitePageConnectionMinArgs = {
 
 export type SitePageConnectionSumArgs = {
   field: SitePageFieldsEnum
-}
-
-export type SitePageContext = {
-  _xparams: Maybe<SitePageContext_Xparams>
-  id: Maybe<Scalars['String']>
-  slug: Maybe<Scalars['String']>
-}
-
-export type SitePageContextFilterInput = {
-  _xparams: InputMaybe<SitePageContext_XparamsFilterInput>
-  id: InputMaybe<StringQueryOperatorInput>
-  slug: InputMaybe<StringQueryOperatorInput>
-}
-
-export type SitePageContext_Xparams = {
-  slug: Maybe<Scalars['String']>
-}
-
-export type SitePageContext_XparamsFilterInput = {
-  slug: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePageEdge = {
@@ -1877,9 +1794,6 @@ export type SitePageFieldsEnum =
   | 'children___parent___parent___id'
   | 'component'
   | 'componentChunkName'
-  | 'context____xparams___slug'
-  | 'context___id'
-  | 'context___slug'
   | 'id'
   | 'internalComponentName'
   | 'internal___content'
@@ -1890,8 +1804,8 @@ export type SitePageFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'isCreatedByStatefulCreatePages'
   | 'matchPath'
+  | 'pageContext'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -1931,7 +1845,6 @@ export type SitePageFieldsEnum =
   | 'parent___parent___parent___children'
   | 'parent___parent___parent___id'
   | 'path'
-  | 'pluginCreatorId'
   | 'pluginCreator___browserAPIs'
   | 'pluginCreator___children'
   | 'pluginCreator___children___children'
@@ -1959,21 +1872,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___internal___type'
   | 'pluginCreator___name'
   | 'pluginCreator___nodeAPIs'
-  | 'pluginCreator___packageJson___dependencies'
-  | 'pluginCreator___packageJson___dependencies___name'
-  | 'pluginCreator___packageJson___dependencies___version'
-  | 'pluginCreator___packageJson___description'
-  | 'pluginCreator___packageJson___devDependencies'
-  | 'pluginCreator___packageJson___devDependencies___name'
-  | 'pluginCreator___packageJson___devDependencies___version'
-  | 'pluginCreator___packageJson___keywords'
-  | 'pluginCreator___packageJson___license'
-  | 'pluginCreator___packageJson___main'
-  | 'pluginCreator___packageJson___name'
-  | 'pluginCreator___packageJson___peerDependencies'
-  | 'pluginCreator___packageJson___peerDependencies___name'
-  | 'pluginCreator___packageJson___peerDependencies___version'
-  | 'pluginCreator___packageJson___version'
+  | 'pluginCreator___packageJson'
   | 'pluginCreator___parent___children'
   | 'pluginCreator___parent___children___children'
   | 'pluginCreator___parent___children___id'
@@ -2034,16 +1933,14 @@ export type SitePageFilterInput = {
   children: InputMaybe<NodeFilterListInput>
   component: InputMaybe<StringQueryOperatorInput>
   componentChunkName: InputMaybe<StringQueryOperatorInput>
-  context: InputMaybe<SitePageContextFilterInput>
   id: InputMaybe<StringQueryOperatorInput>
   internal: InputMaybe<InternalFilterInput>
   internalComponentName: InputMaybe<StringQueryOperatorInput>
-  isCreatedByStatefulCreatePages: InputMaybe<BooleanQueryOperatorInput>
   matchPath: InputMaybe<StringQueryOperatorInput>
+  pageContext: InputMaybe<JsonQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   path: InputMaybe<StringQueryOperatorInput>
   pluginCreator: InputMaybe<SitePluginFilterInput>
-  pluginCreatorId: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SitePageGroupConnection = {
@@ -2094,10 +1991,10 @@ export type SitePlugin = Node & {
   internal: Internal
   name: Maybe<Scalars['String']>
   nodeAPIs: Maybe<Array<Maybe<Scalars['String']>>>
-  packageJson: Maybe<SitePluginPackageJson>
+  packageJson: Maybe<Scalars['JSON']>
   parent: Maybe<Node>
   pluginFilepath: Maybe<Scalars['String']>
-  pluginOptions: Maybe<SitePluginPluginOptions>
+  pluginOptions: Maybe<Scalars['JSON']>
   resolve: Maybe<Scalars['String']>
   ssrAPIs: Maybe<Array<Maybe<Scalars['String']>>>
   version: Maybe<Scalars['String']>
@@ -2195,21 +2092,7 @@ export type SitePluginFieldsEnum =
   | 'internal___type'
   | 'name'
   | 'nodeAPIs'
-  | 'packageJson___dependencies'
-  | 'packageJson___dependencies___name'
-  | 'packageJson___dependencies___version'
-  | 'packageJson___description'
-  | 'packageJson___devDependencies'
-  | 'packageJson___devDependencies___name'
-  | 'packageJson___devDependencies___version'
-  | 'packageJson___keywords'
-  | 'packageJson___license'
-  | 'packageJson___main'
-  | 'packageJson___name'
-  | 'packageJson___peerDependencies'
-  | 'packageJson___peerDependencies___name'
-  | 'packageJson___peerDependencies___version'
-  | 'packageJson___version'
+  | 'packageJson'
   | 'parent___children'
   | 'parent___children___children'
   | 'parent___children___children___children'
@@ -2302,10 +2185,10 @@ export type SitePluginFilterInput = {
   internal: InputMaybe<InternalFilterInput>
   name: InputMaybe<StringQueryOperatorInput>
   nodeAPIs: InputMaybe<StringQueryOperatorInput>
-  packageJson: InputMaybe<SitePluginPackageJsonFilterInput>
+  packageJson: InputMaybe<JsonQueryOperatorInput>
   parent: InputMaybe<NodeFilterInput>
   pluginFilepath: InputMaybe<StringQueryOperatorInput>
-  pluginOptions: InputMaybe<SitePluginPluginOptionsFilterInput>
+  pluginOptions: InputMaybe<JsonQueryOperatorInput>
   resolve: InputMaybe<StringQueryOperatorInput>
   ssrAPIs: InputMaybe<StringQueryOperatorInput>
   version: InputMaybe<StringQueryOperatorInput>
@@ -2649,58 +2532,24 @@ export type StoreAggregateOffer = {
   offerCount: Scalars['Int']
   offers: Array<StoreOffer>
   priceCurrency: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
-}
-
-export type StoreAggregateOfferFilterInput = {
-  highPrice: InputMaybe<FloatQueryOperatorInput>
-  lowPrice: InputMaybe<FloatQueryOperatorInput>
-  offerCount: InputMaybe<IntQueryOperatorInput>
-  offers: InputMaybe<StoreOfferFilterListInput>
-  priceCurrency: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreAggregateRating = {
   ratingValue: Scalars['Float']
-  remoteTypeName: Maybe<Scalars['String']>
   reviewCount: Scalars['Int']
-}
-
-export type StoreAggregateRatingFilterInput = {
-  ratingValue: InputMaybe<FloatQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  reviewCount: InputMaybe<IntQueryOperatorInput>
 }
 
 export type StoreAuthor = {
   name: Scalars['String']
 }
 
-export type StoreAuthorFilterInput = {
-  name: InputMaybe<StringQueryOperatorInput>
-}
-
 export type StoreBrand = {
   name: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
-}
-
-export type StoreBrandFilterInput = {
-  name: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreBreadcrumbList = {
   itemListElement: Array<StoreListItem>
   numberOfItems: Scalars['Int']
-  remoteTypeName: Maybe<Scalars['String']>
-}
-
-export type StoreBreadcrumbListFilterInput = {
-  itemListElement: InputMaybe<StoreListItemFilterListInput>
-  numberOfItems: InputMaybe<IntQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
 }
 
 export type StoreCart = {
@@ -2713,64 +2562,18 @@ export type StoreCartMessage = {
   text: Scalars['String']
 }
 
-export type StoreCollection = Node & {
+export type StoreCollection = {
   breadcrumbList: StoreBreadcrumbList
-  children: Array<Node>
-  gatsbyPath: Maybe<Scalars['String']>
   id: Scalars['ID']
-  internal: Internal
   meta: StoreCollectionMeta
-  parent: Maybe<Node>
-  remoteId: Maybe<Scalars['Date']>
-  remoteTypeName: Maybe<Scalars['String']>
   seo: StoreSeo
   slug: Scalars['String']
   type: StoreCollectionType
 }
 
-export type StoreCollectionGatsbyPathArgs = {
-  filePath: InputMaybe<Scalars['String']>
-}
-
-export type StoreCollectionRemoteIdArgs = {
-  difference: InputMaybe<Scalars['String']>
-  formatString: InputMaybe<Scalars['String']>
-  fromNow: InputMaybe<Scalars['Boolean']>
-  locale: InputMaybe<Scalars['String']>
-}
-
 export type StoreCollectionConnection = {
-  distinct: Array<Scalars['String']>
   edges: Array<StoreCollectionEdge>
-  group: Array<StoreCollectionGroupConnection>
-  max: Maybe<Scalars['Float']>
-  min: Maybe<Scalars['Float']>
-  nodes: Array<StoreCollection>
-  pageInfo: PageInfo
-  sum: Maybe<Scalars['Float']>
-  totalCount: Scalars['Int']
-}
-
-export type StoreCollectionConnectionDistinctArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionConnectionGroupArgs = {
-  field: StoreCollectionFieldsEnum
-  limit: InputMaybe<Scalars['Int']>
-  skip: InputMaybe<Scalars['Int']>
-}
-
-export type StoreCollectionConnectionMaxArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionConnectionMinArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionConnectionSumArgs = {
-  field: StoreCollectionFieldsEnum
+  pageInfo: StorePageInfo
 }
 
 export type StoreCollectionEdge = {
@@ -2780,18 +2583,74 @@ export type StoreCollectionEdge = {
 
 export type StoreCollectionFacet = {
   key: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
   value: Scalars['String']
 }
 
-export type StoreCollectionFacetFilterInput = {
-  key: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  value: InputMaybe<StringQueryOperatorInput>
+export type StoreCollectionMeta = {
+  selectedFacets: Array<StoreCollectionFacet>
 }
 
-export type StoreCollectionFacetFilterListInput = {
-  elemMatch: InputMaybe<StoreCollectionFacetFilterInput>
+export type StoreCollectionType =
+  | 'Brand'
+  | 'Category'
+  | 'Cluster'
+  | 'Department'
+
+export type StoreFacet = {
+  key: Scalars['String']
+  label: Scalars['String']
+  type: StoreFacetType
+  values: Array<StoreFacetValue>
+}
+
+export type StoreFacetType = 'BOOLEAN' | 'RANGE'
+
+export type StoreFacetValue = {
+  label: Scalars['String']
+  quantity: Scalars['Int']
+  selected: Scalars['Boolean']
+  value: Scalars['String']
+}
+
+export type StoreImage = {
+  alternateName: Scalars['String']
+  url: Scalars['String']
+}
+
+export type StoreListItem = {
+  item: Scalars['String']
+  name: Scalars['String']
+  position: Scalars['Int']
+}
+
+export type StoreOffer = {
+  availability: Scalars['String']
+  itemCondition: Scalars['String']
+  itemOffered: StoreProduct
+  listPrice: Scalars['Float']
+  price: Scalars['Float']
+  priceCurrency: Scalars['String']
+  priceValidUntil: Scalars['String']
+  quantity: Scalars['Int']
+  seller: StoreOrganization
+  sellingPrice: Scalars['Float']
+}
+
+export type StoreOrder = {
+  acceptedOffer: Array<StoreOffer>
+  orderNumber: Scalars['String']
+}
+
+export type StoreOrganization = {
+  identifier: Scalars['String']
+}
+
+export type StorePageInfo = {
+  endCursor: Scalars['String']
+  hasNextPage: Scalars['Boolean']
+  hasPreviousPage: Scalars['Boolean']
+  startCursor: Scalars['String']
+  totalCount: Scalars['Int']
 }
 
 export type StoreCollectionFieldsEnum =
@@ -3100,18 +2959,13 @@ export type StoreProduct = Node & {
   aggregateRating: StoreAggregateRating
   brand: StoreBrand
   breadcrumbList: StoreBreadcrumbList
-  children: Array<Node>
   description: Scalars['String']
   gtin: Scalars['String']
-  id: Scalars['ID']
   image: Array<StoreImage>
-  internal: Internal
   isVariantOf: StoreProductGroup
   name: Scalars['String']
   offers: StoreAggregateOffer
-  parent: Maybe<Node>
   productID: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
   review: Array<StoreReview>
   seo: StoreSeo
   sku: Scalars['String']
@@ -3119,37 +2973,8 @@ export type StoreProduct = Node & {
 }
 
 export type StoreProductConnection = {
-  distinct: Array<Scalars['String']>
   edges: Array<StoreProductEdge>
-  group: Array<StoreProductGroupConnection>
-  max: Maybe<Scalars['Float']>
-  min: Maybe<Scalars['Float']>
-  nodes: Array<StoreProduct>
-  pageInfo: PageInfo
-  sum: Maybe<Scalars['Float']>
-  totalCount: Scalars['Int']
-}
-
-export type StoreProductConnectionDistinctArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductConnectionGroupArgs = {
-  field: StoreProductFieldsEnum
-  limit: InputMaybe<Scalars['Int']>
-  skip: InputMaybe<Scalars['Int']>
-}
-
-export type StoreProductConnectionMaxArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductConnectionMinArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductConnectionSumArgs = {
-  field: StoreProductFieldsEnum
+  pageInfo: StorePageInfo
 }
 
 export type StoreProductEdge = {
@@ -3404,56 +3229,6 @@ export type StoreProductGroup = {
   hasVariant: Array<StoreProduct>
   name: Scalars['String']
   productGroupID: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
-}
-
-export type StoreProductGroupConnection = {
-  distinct: Array<Scalars['String']>
-  edges: Array<StoreProductEdge>
-  field: Scalars['String']
-  fieldValue: Maybe<Scalars['String']>
-  group: Array<StoreProductGroupConnection>
-  max: Maybe<Scalars['Float']>
-  min: Maybe<Scalars['Float']>
-  nodes: Array<StoreProduct>
-  pageInfo: PageInfo
-  sum: Maybe<Scalars['Float']>
-  totalCount: Scalars['Int']
-}
-
-export type StoreProductGroupConnectionDistinctArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductGroupConnectionGroupArgs = {
-  field: StoreProductFieldsEnum
-  limit: InputMaybe<Scalars['Int']>
-  skip: InputMaybe<Scalars['Int']>
-}
-
-export type StoreProductGroupConnectionMaxArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductGroupConnectionMinArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductGroupConnectionSumArgs = {
-  field: StoreProductFieldsEnum
-}
-
-export type StoreProductGroupFilterInput = {
-  additionalProperty: InputMaybe<StorePropertyValueFilterListInput>
-  hasVariant: InputMaybe<StoreProductFilterListInput>
-  name: InputMaybe<StringQueryOperatorInput>
-  productGroupID: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-}
-
-export type StoreProductSortInput = {
-  fields: InputMaybe<Array<InputMaybe<StoreProductFieldsEnum>>>
-  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
 }
 
 export type StorePropertyValue = {
@@ -3477,34 +3252,19 @@ export type StoreReview = {
   reviewRating: StoreReviewRating
 }
 
-export type StoreReviewFilterInput = {
-  author: InputMaybe<StoreAuthorFilterInput>
-  reviewRating: InputMaybe<StoreReviewRatingFilterInput>
-}
-
-export type StoreReviewFilterListInput = {
-  elemMatch: InputMaybe<StoreReviewFilterInput>
-}
-
 export type StoreReviewRating = {
   bestRating: Scalars['Float']
   ratingValue: Scalars['Float']
 }
 
-export type StoreReviewRatingFilterInput = {
-  bestRating: InputMaybe<FloatQueryOperatorInput>
-  ratingValue: InputMaybe<FloatQueryOperatorInput>
-}
-
 export type StoreSearchResult = {
   facets: Array<StoreFacet>
-  products: BrowserStoreProductConnection
+  products: StoreProductConnection
 }
 
 export type StoreSeo = {
   canonical: Scalars['String']
   description: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
   title: Scalars['String']
   titleTemplate: Scalars['String']
 }
@@ -3677,7 +3437,7 @@ export type HomePageQueryQuery = {
   } | null
 }
 
-export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
+export type ProductPageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type SearchPageQueryQuery = {
   site: {
@@ -3689,8 +3449,8 @@ export type SearchPageQueryQuery = {
   } | null
 }
 
-export type CollectionPageQueryQueryVariables = Exact<{
-  id: Scalars['String']
+export type ServerProductPageQueryQueryVariables = Exact<{
+  slug: Scalars['String']
 }>
 
 export type CollectionPageQueryQuery = {
@@ -3710,9 +3470,7 @@ export type CollectionPageQueryQuery = {
   } | null
 }
 
-export type ProductPageQueryQueryVariables = Exact<{
-  id: Scalars['String']
-}>
+export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type ProductPageQueryQuery = {
   site: {
@@ -3752,6 +3510,24 @@ export type ProductPageQueryQuery = {
     }
     isVariantOf: { productGroupID: string; name: string }
   } | null
+}
+
+export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type SearchPageQueryQuery = {
+  site:
+    | {
+        siteMetadata:
+          | {
+              titleTemplate: string | null | undefined
+              title: string | null | undefined
+              description: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
 }
 
 export type ValidateCartMutationMutationVariables = Exact<{
