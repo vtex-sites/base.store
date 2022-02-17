@@ -77,6 +77,10 @@
     .button[data-store-button] {
       display: none;
     }
+
+    [data-element-variant="button"] {
+      display: none;
+    }
   }
 }
 
