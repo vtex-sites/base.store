@@ -8,9 +8,9 @@ import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeade
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
+import { ITEMS_PER_SECTION } from 'src/constants'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
-import { ITEMS_PER_SECTION } from 'src/constants'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -104,7 +104,7 @@ function Page(props: Props) {
   )
 }
 
-export const query = graphql`
+export const querySSG = graphql`
   query HomePageQuery {
     site {
       siteMetadata {
