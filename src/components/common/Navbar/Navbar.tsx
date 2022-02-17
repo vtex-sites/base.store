@@ -105,7 +105,6 @@ function Navbar() {
           </header>
           <div className="navlinks">
             <NavLinks onClickLink={handleCloseSlideOver} />
-            <PostalCodeInput />
             <div className="navlinks__signin">
               <SignInLink />
             </div>
