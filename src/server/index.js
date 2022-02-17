@@ -1,4 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
+
+/**
+ * Polyfill for dataloader. Remove it once this is fixed: https://github.com/graphql/dataloader/issues/249
+ * */
+require('setimmediate')
+
 const {
   envelop,
   useExtendContext,
@@ -81,6 +87,5 @@ const execute = async (options, envelopContext = {}) => {
 
 module.exports = {
   execute,
-  getSchema: () => apiSchema,
-  getContextFactory: () => apiContextFactory,
+  schema: apiSchema,
 }

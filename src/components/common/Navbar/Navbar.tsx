@@ -14,7 +14,6 @@ import {
 } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
-import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
 import PostalCodeInput from 'src/components/common/PostalCode'
 
@@ -28,16 +27,33 @@ interface NavLinksProps {
   onClickLink?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
 }
 
-function NavLinks({ onClickLink }: NavLinksProps) {
-  const links = useStoreCollection()
+const collections = [
+  {
+    name: 'Office',
+    href: '/office',
+  },
+  {
+    name: 'Home Appliances',
+    href: '/kitchen-and-home-appliances',
+  },
+  {
+    name: 'Computer and Software',
+    href: '/computer-and-software',
+  },
+  {
+    name: 'Technology',
+    href: '/technology',
+  },
+]
 
+function NavLinks({ onClickLink }: NavLinksProps) {
   return (
     <nav className="navlinks__list">
       <UIList>
-        {links.map(({ node: link }) => (
-          <li key={link.seo.title}>
-            <Link variant="display" to={`/${link.slug}`} onClick={onClickLink}>
-              {link.seo.title}
+        {collections.map(({ href, name }) => (
+          <li key={name}>
+            <Link variant="display" to={href} onClick={onClickLink}>
+              {name}
             </Link>
           </li>
         ))}
