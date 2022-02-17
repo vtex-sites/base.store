@@ -11,7 +11,7 @@ interface ProductShelfProps {
 }
 
 function ProductShelf({ products }: ProductShelfProps) {
-  const haveProducts = products && products?.length > 0
+  const haveProducts = products?.length > 0
 
   return (
     <SkeletonProductShelf loading={!haveProducts}>

@@ -12,7 +12,7 @@ interface Props {
 }
 
 function ProductGrid({ products, page, pageSize }: Props) {
-  const haveProducts = products && products?.length > 0
+  const haveProducts = products?.length > 0
 
   return (
     <SkeletonProductGrid loading={!haveProducts}>
