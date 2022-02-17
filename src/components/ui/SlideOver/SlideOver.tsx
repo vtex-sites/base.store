@@ -56,12 +56,16 @@ const SlideOver = ({
         layout.current.classList.add('no-scroll')
       }
     }
+
+    return () => {
+      if (layout.current) {
+        layout.current.classList.remove('no-scroll')
+      }
+    }
   }, [isOpen, layout])
 
   useEffect(() => {
-    if (handleClose) {
-      onDismissTransition(() => handleClose())
-    }
+    onDismissTransition(() => handleClose())
   }, [handleClose, onDismissTransition])
 
   const handleTransitionEnd = () => {

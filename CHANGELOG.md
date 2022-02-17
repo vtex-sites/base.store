@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - React tree re-rendering
 - Footer rendering pipeline
+- Scroll lock when transitioning pages on mobile via `SlideOver` component navigation
 
 ### Security
 
