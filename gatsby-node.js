@@ -19,3 +19,9 @@ exports.onCreateBabelConfig = ({ actions }) => {
     options: {},
   })
 }
+
+exports.createSchemaCustomization = async (gatsbyApi) => {
+  const { actions } = gatsbyApi
+
+  actions.addThirdPartySchema({ schema: await schema })
+}
