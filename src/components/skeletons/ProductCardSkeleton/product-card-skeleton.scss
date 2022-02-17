@@ -1,6 +1,6 @@
 @import "../../../styles/scaffold";
 
-[data-store-skeleton-product-card] {
+[data-store-product-card-skeleton] {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -15,19 +15,7 @@
 
   &[data-bordered="true"] { border: var(--border-width-0) solid var(--color-border-display); }
 
-  &[data-variant="vertical"] {
-    [data-card-content] { padding-top: var(--space-2); }
-  }
-
-  &[data-variant="horizontal"] {
-    [data-card-content] {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-  }
-
-  [data-skeleton-product-card-image] {
+  [data-product-card-skeleton-image] {
     [data-element-variant="image"] {
       height: 45vw;
 
@@ -44,7 +32,7 @@
     }
   }
 
-  [data-skeleton-product-card-content] {
+  [data-product-card-skeleton-content] {
     position: relative;
     height: 20%;
     margin-top: var(--space-2);

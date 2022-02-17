@@ -2,19 +2,19 @@ import React from 'react'
 
 import Shimmer from '../Shimmer'
 import SkeletonElement from '../SkeletonElement'
-import './skeleton-filter.scss'
+import './filter-skeleton.scss'
 
 interface Props {
   loading?: boolean
   children?: JSX.Element
 }
 
-function SkeletonFilter({ children, loading = true }: Props) {
+function FilterSkeleton({ children, loading = true }: Props) {
   return loading ? (
-    <div data-store-skeleton-filter>
+    <div data-store-filter-skeleton>
       <SkeletonElement shimmer type="text" />
 
-      <div data-skeleton-filter-content>
+      <div data-filter-skeleton-content>
         <SkeletonElement type="text" />
         <SkeletonElement type="text" />
         <SkeletonElement type="text" />
@@ -26,4 +26,4 @@ function SkeletonFilter({ children, loading = true }: Props) {
   )
 }
 
-export default SkeletonFilter
+export default FilterSkeleton

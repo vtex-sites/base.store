@@ -9,7 +9,7 @@ import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
-import SkeletonFilter from 'src/components/skeletons/SkeletonFilter'
+import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
 
 import GalleryPage from './ProductGalleryPage'
@@ -36,14 +36,14 @@ function ProductGallery({ title, slug }: Props) {
     <div className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <SkeletonFilter loading={orderedFacets?.length === 0}>
+          <FilterSkeleton loading={orderedFacets?.length === 0}>
             <Filter
               slug={slug}
               isOpen={isFilterOpen}
               facets={orderedFacets}
               onDismiss={() => setIsFilterOpen(false)}
             />
-          </SkeletonFilter>
+          </FilterSkeleton>
         </div>
 
         <div className="product-listing__results-count" data-count={totalCount}>

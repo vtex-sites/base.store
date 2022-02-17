@@ -2,14 +2,14 @@ import React from 'react'
 import type { PropsWithChildren } from 'react'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 
-import SkeletonProductTile from './SkeletonProductTile'
+import ProductTileSkeleton from './ProductTileSkeleton'
 
 interface Props {
   loading?: boolean
   variant?: 'vertical' | 'horizontal'
 }
 
-function SkeletonProductTiles({
+function ProductTilesSkeleton({
   children,
   loading = true,
   variant = 'vertical',
@@ -18,7 +18,7 @@ function SkeletonProductTiles({
     <Tiles>
       {Array.from({ length: 3 }, (_, index) => (
         <Tile key={String(index)}>
-          <SkeletonProductTile tileIndex={index + 1} variant={variant} />
+          <ProductTileSkeleton tileIndex={index + 1} variant={variant} />
         </Tile>
       ))}
     </Tiles>
@@ -27,4 +27,4 @@ function SkeletonProductTiles({
   )
 }
 
-export default SkeletonProductTiles
+export default ProductTilesSkeleton

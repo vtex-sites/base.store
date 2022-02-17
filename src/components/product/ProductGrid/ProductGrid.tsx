@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import SkeletonProductGrid from 'src/components/skeletons/SkeletonProductGrid'
+import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 
 import ProductCard from '../ProductCard'
 import './product-grid.scss'
@@ -13,7 +13,7 @@ interface Props {
 
 function ProductGrid({ products, page, pageSize }: Props) {
   return (
-    <SkeletonProductGrid loading={products?.length === 0}>
+    <ProductGridSkeleton loading={products?.length === 0}>
       <ul className="product-grid">
         {products.map((product, idx) => (
           <li key={`${product.id}`}>
@@ -29,7 +29,7 @@ function ProductGrid({ products, page, pageSize }: Props) {
           </li>
         ))}
       </ul>
-    </SkeletonProductGrid>
+    </ProductGridSkeleton>
   )
 }
 

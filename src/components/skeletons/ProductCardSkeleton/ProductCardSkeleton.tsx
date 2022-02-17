@@ -2,7 +2,7 @@ import React from 'react'
 
 import Shimmer from '../Shimmer'
 import SkeletonElement from '../SkeletonElement'
-import './skeleton-product-card.scss'
+import './product-card-skeleton.scss'
 
 interface Props {
   bordered?: boolean
@@ -11,7 +11,7 @@ interface Props {
   variant?: 'vertical' | 'horizontal'
 }
 
-const SkeletonProductCard = ({
+const ProductCardSkeleton = ({
   bordered,
   sectioned = false,
   showActions = false,
@@ -19,14 +19,14 @@ const SkeletonProductCard = ({
 }: Props) => {
   return (
     <div
-      data-store-skeleton-product-card
+      data-store-product-card-skeleton
       data-bordered={bordered}
       data-variant={variant}
     >
-      <div data-skeleton-product-card-image data-sectioned={sectioned}>
+      <div data-product-card-skeleton-image data-sectioned={sectioned}>
         <SkeletonElement type="image" />
       </div>
-      <div data-skeleton-product-card-content>
+      <div data-product-card-skeleton-content>
         <SkeletonElement type="text" />
         <SkeletonElement type="text" />
         <SkeletonElement type="badge" />
@@ -37,4 +37,4 @@ const SkeletonProductCard = ({
   )
 }
 
-export default SkeletonProductCard
+export default ProductCardSkeleton

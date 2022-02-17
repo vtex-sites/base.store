@@ -2,7 +2,7 @@ import React from 'react'
 import type { PropsWithChildren } from 'react'
 import { ITEMS_PER_PAGE } from 'src/constants'
 
-import SkeletonProductCard from '../SkeletonProductCard'
+import ProductCardSkeleton from '../ProductCardSkeleton'
 
 import 'src/components/product/ProductGrid/product-grid.scss'
 
@@ -10,7 +10,7 @@ interface Props {
   loading?: boolean
 }
 
-function SkeletonProductGrid({
+function ProductGridSkeleton({
   children,
   loading = true,
 }: PropsWithChildren<Props>) {
@@ -18,7 +18,7 @@ function SkeletonProductGrid({
     <ul className="product-grid">
       {Array.from({ length: ITEMS_PER_PAGE }, (_, index) => (
         <li key={String(index)}>
-          <SkeletonProductCard bordered />
+          <ProductCardSkeleton bordered />
         </li>
       ))}
     </ul>
@@ -27,4 +27,4 @@ function SkeletonProductGrid({
   )
 }
 
-export default SkeletonProductGrid
+export default ProductGridSkeleton

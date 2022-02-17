@@ -2,7 +2,7 @@ import React from 'react'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 import ProductCard from 'src/components/product/ProductCard'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-import SkeletonProductTiles from 'src/components/skeletons/SkeletonProductTiles'
+import ProductTilesSkeleton from 'src/components/skeletons/ProductTilesSkeleton'
 
 interface TilesProps {
   products: ProductSummary_ProductFragment[]
@@ -27,7 +27,7 @@ const getRatio = (products: number, idx: number) => {
 
 const ProductTiles = ({ products }: TilesProps) => {
   return (
-    <SkeletonProductTiles variant="horizontal" loading={products?.length === 0}>
+    <ProductTilesSkeleton variant="horizontal" loading={products?.length === 0}>
       <Tiles>
         {products.map((product, idx) => (
           <Tile key={product.id}>
@@ -41,7 +41,7 @@ const ProductTiles = ({ products }: TilesProps) => {
           </Tile>
         ))}
       </Tiles>
-    </SkeletonProductTiles>
+    </ProductTilesSkeleton>
   )
 }
 

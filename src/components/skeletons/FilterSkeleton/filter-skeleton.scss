@@ -1,11 +1,11 @@
 @import "../../../styles/scaffold";
 
-[data-store-skeleton-filter] {
+[data-store-filter-skeleton] {
   margin-top: var(--space-1);
 
   @include media("<notebook") { display: none; }
 
-  [data-skeleton-filter-content] {
+  [data-filter-skeleton-content] {
     position: relative;
     display: flex;
     flex-direction: column;
