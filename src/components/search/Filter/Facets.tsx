@@ -42,6 +42,7 @@ function Facets({
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>
         {filteredFacets.map(({ label, values, key }, index) => (
           <AccordionItem
+            prefixId={variant}
             key={`${label}-${index}`}
             testId="filter-accordion"
             isExpanded={indicesExpanded.has(index)}
