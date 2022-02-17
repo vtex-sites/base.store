@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription
+	xmlns="http://a9.com/-/spec/opensearch/1.1/">
+	<ShortName>Base</ShortName>
+	<Description>Search products on Base Store</Description>
+	<Tags>base search</Tags>
+	<Image height="16" width="16" type="image/vnd.microsoft.icon">https://base.vtex.app/favicon.ico</Image>
+	<Url type="text/html" template="https://base.vtex.app/s/?q={searchTerms}&amp;sort=score_desc&amp;page=0&amp;page={startPage?}&amp;utm_source=opensearch"></Url>
+	<Query role="example" searchTerms="sleek"></Query>
+</OpenSearchDescription>
