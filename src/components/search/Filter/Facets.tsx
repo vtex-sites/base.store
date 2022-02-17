@@ -2,7 +2,7 @@ import React from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
-  FacetedFilter_FacetsFragment,
+  Filter_FacetsFragment,
 } from '@generated/graphql'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { List as UIList, Label as UILabel } from '@faststore/ui'
@@ -16,13 +16,13 @@ interface FacetsProps {
   slug: string
   testId: string
   selectedFacets: IStoreSelectedFacet[]
-  filteredFacets: FacetedFilter_FacetsFragment[]
+  filteredFacets: Filter_FacetsFragment[]
   indicesExpanded: Set<number>
   onFacetChange: (item: IStoreSelectedFacet) => void
   onAccordionChange: (index: number) => void
   onAccordionItemMount: (
     index: number,
-    values: FacetedFilter_FacetsFragment['values']
+    values: Filter_FacetsFragment['values']
   ) => void
 }
 

@@ -1094,13 +1094,6 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.7.7":
-  version "7.17.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.17.2.tgz#66f68591605e59da47523c631416b18508779941"
-  integrity sha512-hzeyJyMA1YGdJTuWU0e/j4wKXrU4OMFvY2MSlaI9B7VQb0r5cxTE3EAIS2Q7Tn2RIcDkRvTA/v2JsAEhxe99uw==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
 "@babel/standalone@^7.15.5":
   version "7.16.4"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.16.4.tgz#f62a5b14fc0e881668f26739f28bcdaacedd3080"
@@ -2062,15 +2055,6 @@
     "@types/node" "*"
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
-
-"@loadable/component@^5.15.2":
-  version "5.15.2"
-  resolved "https://registry.yarnpkg.com/@loadable/component/-/component-5.15.2.tgz#b6c418d592e0a64f16b1d614ca9d3b1443d3b498"
-  integrity sha512-ryFAZOX5P2vFkUdzaAtTG88IGnr9qxSdvLRvJySXcUA4B4xVWurUNADu3AnKPksxOZajljqTrDEDcYjeL4lvLw==
-  dependencies:
-    "@babel/runtime" "^7.7.7"
-    hoist-non-react-statics "^3.3.1"
-    react-is "^16.12.0"
 
 "@mdx-js/util@^2.0.0-next.8":
   version "2.0.0-next.8"
@@ -8792,7 +8776,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1:
+hoist-non-react-statics@^3.3.0:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==

@@ -30,7 +30,6 @@
     "@faststore/api": "^1.5.9",
     "@faststore/sdk": "^1.5.9",
     "@faststore/ui": "^1.5.9",
-    "@loadable/component": "^5.15.2",
     "@vtex/gatsby-plugin-nginx": "^1.5.9",
     "@vtex/gatsby-plugin-thumbor": "^1.5.9",
     "@vtex/gatsby-source-store": "^1.5.9",
