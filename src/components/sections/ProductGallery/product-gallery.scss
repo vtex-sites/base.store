@@ -69,7 +69,7 @@
     min-height: initial;
     padding: 0;
 
-    .button {
+    .button[data-store-button] {
       display: none;
     }
   }
