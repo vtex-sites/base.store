@@ -2,20 +2,21 @@ import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { useSearch } from '@faststore/sdk'
 import type {
   IStoreSelectedFacet,
-  FacetedFilter_FacetsFragment,
+  Filter_FacetsFragment,
 } from '@generated/graphql'
 import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
 import { X as XIcon } from 'phosphor-react'
 import SlideOver from 'src/components/ui/SlideOver'
+import { graphql } from 'gatsby'
 
 import Facets from './Facets'
 
 import './filter.scss'
 
 interface FilterProps {
-  facets: FacetedFilter_FacetsFragment[]
+  facets: Filter_FacetsFragment[]
   /*
    * Control whether the filter modal is open. (mobile only)
    */
@@ -133,7 +134,7 @@ function Filter({
 
   const onAccordionItemMount = (
     index: number,
-    values: FacetedFilter_FacetsFragment['values']
+    values: Filter_FacetsFragment['values']
   ) => {
     // Ensures only one array item for each accordion's item
     if (activeFacets.length >= filteredFacets.length) {
@@ -229,5 +230,19 @@ function Filter({
     </SlideOver>
   )
 }
+
+export const fragment = graphql`
+  fragment Filter_facets on StoreFacet {
+    key
+    label
+    type
+    values {
+      label
+      value
+      selected
+      quantity
+    }
+  }
+`
 
 export default Filter
