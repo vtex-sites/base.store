@@ -12,6 +12,7 @@ import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeade
 
 import '../styles/pages/homepage.scss'
 import '../styles/theming-poc.scss'
+import '../styles/themes/new-theme.scss'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -27,7 +28,7 @@ function Page(props: Props) {
     <div>
       <Helmet
         bodyAttributes={{
-          class: '',
+          class: 'new-theme',
         }}
       />
       <GatsbySeo

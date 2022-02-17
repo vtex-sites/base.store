@@ -2,14 +2,14 @@
 
 Este é o nosso teste de temificação e customização da FastStore para frente de lojas.
 
-- Sua missão é criar um [novo tema](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) em [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
+- Sua missão é criar um `novo tema` para essa homepage: [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
 - A customização é feita, primariamente, através de design tokens (variáveis CSS).
-- O seu ponto de partida será o arquivo do tema [default](./src/styles/themes/default.scss).
+- O seu ponto de partida será o arquivo do tema [new-theme](./src/styles/themes/new-theme.scss).
 - Dentro dos arquivos CSS de cada componente, você achará os design tokens específicos (escopados).
 - Busque expressar seus pensamentos e dúvidas em voz alta.
 
 Vamos lá?
-Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) e edite o [default.scss](./src/styles/themes/default.scss) para criar esse novo tema.
+Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) e edite o [new-theme.scss](./src/styles/themes/new-theme.scss) para criar esse novo tema.
 
 # Arquivos Customizáveis
 
@@ -27,7 +27,8 @@ Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiU
 
 ## Temas & Exemplos
 
-- [default.scss](./src/styles/themes/default.scss) -> Arquivo temático: comece por aqui
+- [new-theme.scss](./src/styles/themes/new-theme.scss) -> Arquivo temático: comece por aqui
+- [default.scss](./src/styles/themes/default.scss) -> Tema base
 - [nucommerce.scss](./src/styles/themes/nucommerce.scss) -> Exemplo de tema #1
 - [grocery.scss](./src/styles/themes/grocery.scss) -> Exemplo de tema #2
 
