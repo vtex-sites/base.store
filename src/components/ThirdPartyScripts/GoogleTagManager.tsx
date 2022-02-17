@@ -37,7 +37,6 @@ function GoogleTagManager(props: Props) {
   return (
     <>
       <script
-        key="gtm.partytown"
         type="text/partytown"
         dangerouslySetInnerHTML={{
           __html: useSnippet({
@@ -47,7 +46,6 @@ function GoogleTagManager(props: Props) {
         }}
       />
       <script
-        key="gtm"
         type="text/javascript"
         dangerouslySetInnerHTML={{
           __html: useSnippet({

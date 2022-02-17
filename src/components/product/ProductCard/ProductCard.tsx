@@ -35,6 +35,7 @@ function ProductCard({
   ...otherProps
 }: Props) {
   const {
+    sku,
     isVariantOf: { name },
     image: [img],
     offers: {
@@ -51,6 +52,7 @@ function ProductCard({
       data-fs-product-card
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
+      data-sku={sku}
       {...otherProps}
     >
       <UICardImage>

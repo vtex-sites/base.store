@@ -1,7 +1,9 @@
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
+import { gql } from '@vtex/graphql-utils'
+import IconSVG from 'src/components/common/IconSVG'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
@@ -13,14 +15,18 @@ import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import type {
   CollectionPageQueryQuery,
+  ServerCollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
 } from '@generated/graphql'
 import type { PageProps } from 'gatsby'
 import type { SearchState } from '@faststore/sdk'
+import { execute } from 'src/server'
 
 type Props = PageProps<
   CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables
+  CollectionPageQueryQueryVariables,
+  unknown,
+  ServerCollectionPageQueryQuery
 > & { slug: string }
 
 const useSearchParams = (props: Props): SearchState => {
@@ -56,6 +62,10 @@ function Page(props: Props) {
 
   const { locale } = useSession()
   const searchParams = useSearchParams(props)
+  const youMightAlsoLikeProducts = useMemo(
+    () => allProducts?.edges.map((edge) => edge.node),
+    [allProducts]
+  )
 
   const { page } = searchParams
   const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
@@ -64,6 +74,21 @@ function Page(props: Props) {
     host !== undefined
       ? `https://${host}/${slug}/${pageQuery}`
       : `/${slug}/${pageQuery}`
+
+  const notFound = !collection
+
+  useEffect(() => {
+    if (notFound) {
+      window.location.href = `/404/?from=${encodeURIComponent(
+        window.location.pathname
+      )}`
+    }
+  }, [notFound])
+
+  // Collection not found
+  if (notFound) {
+    return null
+  }
 
   return (
     <SearchProvider
@@ -130,8 +155,8 @@ function Page(props: Props) {
 /**
  * This query is run during SSG
  * */
-export const query = graphql`
-  query CollectionPageQuery($id: String!) {
+export const querySSG = graphql`
+  query CollectionPageQuery {
     site {
       siteMetadata {
         titleTemplate
@@ -139,8 +164,15 @@ export const query = graphql`
         description
       }
     }
+  }
+`
 
-    collection: storeCollection(id: { eq: $id }) {
+/**
+ * This query is run during SSG
+ * */
+export const querySSR = gql`
+  query ServerCollectionPageQuery($slug: String!) {
+    collection(slug: $slug) {
       seo {
         title
         description
@@ -162,6 +194,36 @@ export const query = graphql`
   }
 `
 
-Page.displayName = 'Page'
+export const getServerData = async ({
+  params: { slug },
+}: {
+  params: Record<string, string>
+}) => {
+  try {
+    const { data } = await execute({
+      operationName: querySSR,
+      variables: { slug },
+    })
 
+    return {
+      status: 200,
+      props: data ?? {},
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+      },
+    }
+  } catch (err) {
+    console.error(err)
+
+    return {
+      status: 500,
+      props: {},
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+      },
+    }
+  }
+}
+
+Page.displayName = 'Page'
 export default mark(Page)

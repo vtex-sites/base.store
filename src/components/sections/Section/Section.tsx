@@ -1,12 +1,9 @@
-import React from 'react'
-import type { PropsWithChildren } from 'react'
+import type { DetailedHTMLProps } from 'react'
 
-interface Props {
-  className?: string
-}
+type Props = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
 
-function Section({ children, className = '' }: PropsWithChildren<Props>) {
-  return <section className={`section ${className}`}>{children}</section>
+function Section({ className = '', ...otherProps }: Props) {
+  return <section className={`section ${className}`} {...otherProps} />
 }
 
 export default Section

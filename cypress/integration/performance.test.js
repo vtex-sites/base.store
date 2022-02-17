@@ -12,7 +12,6 @@ const { pages } = cypress
 const paths = [
   pages.pdp,
   pages.home,
-  pages.search,
   pages.collection,
   pages.collection_filtered,
 ]

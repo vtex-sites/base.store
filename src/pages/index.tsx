@@ -1,18 +1,28 @@
 import { useSession } from '@faststore/sdk'
+import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useMemo } from 'react'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
-import type { PageProps } from 'gatsby'
-import type { HomePageQueryQuery } from '@generated/graphql'
+import { execute } from 'src/server'
 import { ITEMS_PER_SECTION } from 'src/constants'
+import type { PageProps } from 'gatsby'
+import type {
+  HomePageQueryQuery,
+  ServerHomePageQueryQuery,
+} from '@generated/graphql'
 
-export type Props = PageProps<HomePageQueryQuery>
+export type Props = PageProps<
+  HomePageQueryQuery,
+  unknown,
+  unknown,
+  ServerHomePageQueryQuery
+>
 
 function Page(props: Props) {
   const {
@@ -104,7 +114,7 @@ function Page(props: Props) {
   )
 }
 
-export const query = graphql`
+export const querySSG = graphql`
   query HomePageQuery {
     site {
       siteMetadata {
@@ -115,6 +125,37 @@ export const query = graphql`
     }
   }
 `
+
+export const getServerData = async ({
+  params: { slug },
+}: {
+  params: Record<string, string>
+}) => {
+  try {
+    const { data } = await execute({
+      operationName: querySSR,
+      variables: { slug },
+    })
+
+    return {
+      status: 200,
+      props: data ?? {},
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+      },
+    }
+  } catch (err) {
+    console.error(err)
+
+    return {
+      status: 500,
+      props: {},
+      headers: {
+        'cache-control': 'public, max-age=0, must-revalidate',
+      },
+    }
+  }
+}
 
 Page.displayName = 'Page'
 export default mark(Page)
