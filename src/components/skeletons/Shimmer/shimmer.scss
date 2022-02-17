@@ -6,9 +6,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 200vw;
   height: 100%;
-  animation: loading 1.2s infinite;
+  animation: loading 800ms infinite linear;
 
   [data-shimmer] {
     width: 50%;
@@ -19,7 +19,6 @@
 }
 
 @keyframes loading {
-  0% { transform: translate3d(-15vw, 0, 0); }
-  50% { transform: translate3d(-6vw, 0, 0); }
-  100% { transform: translate3d(15vw, 0, 0); }
+  0% { transform: translate3d(-100vw, 0, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
