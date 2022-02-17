@@ -11,10 +11,8 @@ interface ProductShelfProps {
 }
 
 function ProductShelf({ products }: ProductShelfProps) {
-  const haveProducts = products?.length > 0
-
   return (
-    <SkeletonProductShelf loading={!haveProducts}>
+    <SkeletonProductShelf loading={products?.length === 0}>
       <ul data-product-shelf className="grid-content">
         {products.map((product, idx) => (
           <li key={`${product.id}`}>

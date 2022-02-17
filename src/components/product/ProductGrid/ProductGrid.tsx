@@ -12,10 +12,8 @@ interface Props {
 }
 
 function ProductGrid({ products, page, pageSize }: Props) {
-  const haveProducts = products?.length > 0
-
   return (
-    <SkeletonProductGrid loading={!haveProducts}>
+    <SkeletonProductGrid loading={products?.length === 0}>
       <ul className="product-grid">
         {products.map((product, idx) => (
           <li key={`${product.id}`}>
