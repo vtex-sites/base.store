@@ -2,6 +2,8 @@ const path = require('path')
 
 const { copyLibFiles } = require('@builder.io/partytown/utils')
 
+const { schema } = require('./src/server')
+
 exports.onPreInit = async ({ reporter }) => {
   reporter.info('Copying Partytown Files')
 
@@ -49,4 +51,10 @@ exports.onCreateBabelConfig = ({ actions }) => {
     name: `@vtex/graphql-utils/babel`,
     options: {},
   })
+}
+
+exports.createSchemaCustomization = async (gatsbyApi) => {
+  const { actions } = gatsbyApi
+
+  actions.addThirdPartySchema({ schema: await schema })
 }
