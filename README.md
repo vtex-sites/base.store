@@ -4,35 +4,32 @@ Este é o nosso teste de temificação e customização da FastStore para frente
 
 - Sua missão é criar um `novo tema` para essa homepage: [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
 - A customização é feita, primariamente, através de design tokens (variáveis CSS).
-- O seu ponto de partida será o arquivo do tema [new-theme](./src/styles/themes/new-theme.scss).
+- O seu ponto de partida será o arquivo do tema [new-theme](./src/styles/themes/new-theme.scss) onde você achará os design tokens globais.
 - Dentro dos arquivos CSS de cada componente, você achará os design tokens específicos (escopados).
 - Busque expressar seus pensamentos e dúvidas em voz alta.
 
 Vamos lá?
-Comece abrindo as [especificações do tema](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) e edite o [new-theme.scss](./src/styles/themes/new-theme.scss) para criar esse novo tema.
 
-# Arquivos Customizáveis
+Comece abrindo as [especificações do Figma](https://www.figma.com/file/24H9bpiUDXUtnntdg2kSoU/Theming-POC?node-id=0%3A1) e edite o [new-theme.scss](./src/styles/themes/new-theme.scss) para criar esse novo tema.
+
+**O primeiro passo é colocar sua paleta de cores.**
+
+---
+
+## Arquivos Customizáveis
 
 `Por favor, use apenas os componentes listados abaixo.`
 
-## Homepage
+### Design Tokens Primários
 
-- [theming-poc-homepage.tsx](./src/pages/theming-poc-homepage.tsx) -> Página a ser customizada
-- [homepage.scss](./src/styles/pages/homepage.scss)
-
-## Design Tokens Primários
-
+- [new-theme.scss](./src/styles/themes/new-theme.scss) -> Arquivo temático: comece por aqui
 - [spacing.scss](./src/styles/spacing.scss) -> Tokens de espaçamento
 - [typography.scss](./src/styles/typography.scss) -> Tokens tipográficos
 
-## Temas & Exemplos
+### Homepage
 
-- [new-theme.scss](./src/styles/themes/new-theme.scss) -> Arquivo temático: comece por aqui
-- [default.scss](./src/styles/themes/default.scss) -> Tema base
-- [nucommerce.scss](./src/styles/themes/nucommerce.scss) -> Exemplo de tema #1
-- [grocery.scss](./src/styles/themes/grocery.scss) -> Exemplo de tema #2
-
-## Componentes & Design Tokens Escopados
+- [theming-poc-homepage.tsx](./src/pages/theming-poc-homepage.tsx) -> Página a ser customizada
+- [homepage.scss](./src/styles/pages/homepage.scss)
 
 ### Button
 
