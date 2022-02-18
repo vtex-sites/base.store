@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `GatsbyLink` to `Link` ui component.
+- `PostalCodeInput` component and useRegion hook.
 
 ### Changed
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
