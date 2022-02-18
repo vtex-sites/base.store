@@ -11,12 +11,20 @@ export interface SuggestionsTopSearchProps
    * ID to find this component in testing tools (e.g.: cypress, testing library, and jest).
    */
   testId?: string
+  /**
+   * List of top searched items
+   */
+  // TODO: Find out what object this will receive
+  searchedItems: string[]
 }
 
 const SuggestionsTopSearch = forwardRef<
   HTMLDivElement,
   SuggestionsTopSearchProps
->(function TopSearch({ testId = 'top-search', children, ...otherProps }, ref) {
+>(function TopSearch(
+  { testId = 'top-search', searchedItems, ...otherProps },
+  ref
+) {
   return (
     <section
       ref={ref}
@@ -26,24 +34,14 @@ const SuggestionsTopSearch = forwardRef<
     >
       <p className="suggestions__title">Top Search</p>
       <UIList variant="ordered">
-        <li>
-          <Badge variant="new" small>
-            1
-          </Badge>
-          Office Supplies
-        </li>
-        <li>
-          <Badge variant="new" small>
-            1
-          </Badge>
-          Office Supplies
-        </li>
-        <li>
-          <Badge variant="new" small>
-            1
-          </Badge>
-          Office Supplies
-        </li>
+        {searchedItems.map((item, index) => (
+          <li key={index}>
+            <Badge variant="new" small>
+              {index}
+            </Badge>
+            {item}
+          </li>
+        ))}
       </UIList>
     </section>
   )
