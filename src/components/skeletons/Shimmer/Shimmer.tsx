@@ -2,7 +2,7 @@ import React from 'react'
 
 import './shimmer.scss'
 
-const Shimmer = () => {
+function Shimmer() {
   return (
     <div data-store-shimmer>
       <div data-shimmer />

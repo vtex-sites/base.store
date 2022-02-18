@@ -11,12 +11,12 @@ interface Props {
   variant?: 'vertical' | 'horizontal'
 }
 
-const ProductCardSkeleton = ({
+function ProductCardSkeleton({
   bordered,
   sectioned = false,
   showActions = false,
   variant = 'vertical',
-}: Props) => {
+}: Props) {
   return (
     <div
       data-store-product-card-skeleton

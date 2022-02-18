@@ -9,11 +9,11 @@ interface Props {
   variant?: 'vertical' | 'horizontal'
 }
 
-const ProductTileSkeleton = ({
+function ProductTileSkeleton({
   tileIndex,
   bordered,
   variant = 'vertical',
-}: Props) => {
+}: Props) {
   return (
     <div
       data-store-product-tile-skeleton
