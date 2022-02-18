@@ -26,8 +26,8 @@ const imgOptions = {
   backgroundColor: '#f0f0f0',
   layout: 'constrained' as const,
   loading: 'eager' as const,
-  sizes: '(max-width: 768px) 100vw, 860px',
-  breakpoints: [360, 720],
+  sizes: '(max-width: 768px) 25vw, 50vw',
+  breakpoints: [360, 720, 1024],
   aspectRatio: 4 / 3,
 }
 

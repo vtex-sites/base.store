@@ -30,12 +30,12 @@ interface Props {
 
 const imgOptions = {
   vertical: {
-    sizes: '(max-width: 768px) 230px, 320px',
-    breakpoints: [250, 360],
+    sizes: '(max-width: 768px) 25vw, 320px',
+    breakpoints: [360, 720, 1024],
   },
   horizontal: {
-    sizes: '(max-width: 768px) 100vw, 600px',
-    breakpoints: [360, 480],
+    sizes: '(max-width: 768px) 25vw, 600px',
+    breakpoints: [360, 480, 720, 1024],
   },
 }
 
