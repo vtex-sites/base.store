@@ -5,11 +5,11 @@ import {
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
 import { mark } from 'src/sdk/tests/mark'
+import IncentivesFooter from 'src/components/sections/Incentives/IncentivesFooter'
+import SROnly from 'src/components/ui/SROnly'
+import Link from 'src/components/ui/Link'
 
 import FooterLinks from './FooterLinks'
-import IncentivesFooter from '../../sections/Incentives/IncentivesFooter'
-import SROnly from '../../ui/SROnly'
-import Link from '../../ui/Link'
 import {
   FacebookIcon,
   InstagramIcon,
