@@ -29,14 +29,12 @@ interface Props {
 }
 
 const imgOptions = {
-  vertical: {
-    sizes: '(max-width: 768px) 25vw, 320px',
-    breakpoints: [360, 720, 1024],
-  },
-  horizontal: {
-    sizes: '(max-width: 768px) 25vw, 600px',
-    breakpoints: [360, 480, 720, 1024],
-  },
+  sourceWidth: 1024,
+  backgroundColor: '#f0f0f0',
+  layout: 'constrained' as const,
+  loading: 'lazy' as const,
+  sizes: '(max-width: 768px) 25vw, 30vw',
+  breakpoints: [360, 480, 720, 1024],
 }
 
 function ProductCard({
@@ -87,11 +85,7 @@ function ProductCard({
           baseUrl={img.url}
           alt={img.alternateName}
           aspectRatio={aspectRatio}
-          sourceWidth={1024}
-          backgroundColor="#f0f0f0"
-          layout="constrained"
-          loading="lazy"
-          {...imgOptions[variant]}
+          {...imgOptions}
         />
       </UICardImage>
       <UICardContent>
