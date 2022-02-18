@@ -1,19 +1,18 @@
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useEffect, useState } from 'react'
+import { DiscountBadge } from 'src/components/ui/Badge'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
-import AspectRatio from 'src/components/ui/AspectRatio'
 import Price from 'src/components/ui/Price'
+import ProductTitle from 'src/components/ui/ProductTitle'
+import QuantitySelector from 'src/components/ui/QuantitySelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
-import Breadcrumb from 'src/components/ui/Breadcrumb'
-import ProductTitle from 'src/components/ui/ProductTitle'
-import { DiscountBadge } from 'src/components/ui/Badge'
-import QuantitySelector from 'src/components/ui/QuantitySelector'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
-import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 import './product-details.scss'
@@ -23,16 +22,13 @@ interface Props {
 }
 
 const imgOptions = {
-  width: 720,
-  sourceWidth: 720,
-  loading: 'eager' as const,
-  layout: 'constrained' as const,
+  width: 1024,
+  sourceWidth: 1024,
   backgroundColor: '#f0f0f0',
+  layout: 'constrained' as const,
+  loading: 'eager' as const,
+  sizes: '(max-width: 768px) 100w, 720px',
   breakpoints: [250, 360, 480, 720],
-  aspectRatio: 1,
-  options: {
-    fitIn: true,
-  },
 }
 
 function ProductDetails({ product: staleProduct }: Props) {
@@ -132,13 +128,12 @@ function ProductDetails({ product: staleProduct }: Props) {
         </header>
 
         <section className="product-details__image">
-          <AspectRatio ratio="4:3">
-            <Image
-              baseUrl={productImages[0].url}
-              alt={productImages[0].alternateName}
-              {...imgOptions}
-            />
-          </AspectRatio>
+          <Image
+            baseUrl={productImages[0].url}
+            alt={productImages[0].alternateName}
+            aspectRatio={4 / 3}
+            {...imgOptions}
+          />
         </section>
 
         <section className="product-details__settings">
