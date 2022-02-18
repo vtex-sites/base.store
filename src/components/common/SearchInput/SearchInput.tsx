@@ -12,7 +12,9 @@ import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
 
 import './search-input.scss'
 
-declare type SearchInputProps = Omit<UISearchInputProps, 'onSubmit'>
+declare type SearchInputProps = {
+  onMagnifierClick?: () => void
+} & Omit<UISearchInputProps, 'onSubmit'>
 
 const doSearch = async (term: string) => {
   const { pathname, search } = formatSearchState(
@@ -30,10 +32,10 @@ const doSearch = async (term: string) => {
   navigate(`${pathname}${search}`)
 }
 
-function SearchInput(props: SearchInputProps) {
+function SearchInput({ onMagnifierClick, ...props }: SearchInputProps) {
   return (
     <UISearchInput
-      icon={<MagnifyingGlassIcon />}
+      icon={<MagnifyingGlassIcon onClick={onMagnifierClick} />}
       placeholder="Search everything at the store"
       onSubmit={doSearch}
       {...props}

@@ -1,12 +1,12 @@
 import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
-import { List as ListIcon, X as XIcon } from 'phosphor-react'
 import React, { useRef, useState } from 'react'
 import type { AnchorHTMLAttributes } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import IconButton from 'src/components/ui/IconButton'
 import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
+import { CaretLeft, List as ListIcon, X as XIcon } from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
@@ -43,6 +43,7 @@ function NavLinks({ onClickLink }: NavLinksProps) {
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
+  const [searchExpanded, setSearchExpanded] = useState(false)
   const dismissTransition = useRef<Callback | undefined>()
   const handleCloseSlideOver = () => setShowMenu(false)
 
@@ -50,23 +51,41 @@ function Navbar() {
     <header className="navbar / grid-content-full">
       <div className="navbar__header / grid-content">
         <section className="navbar__row">
-          <IconButton
-            classes="navbar__menu"
-            aria-label="Open Menu"
-            icon={<ListIcon size={32} />}
-            onClick={() => setShowMenu(true)}
-          />
-          <LinkGatsby
-            to="/"
-            aria-label="Go to Faststore home"
-            title="Go to Faststore home"
-            className="navbar__logo"
-          >
-            <Logo />
-          </LinkGatsby>
+          {!searchExpanded && (
+            <>
+              <IconButton
+                classes="navbar__menu"
+                aria-label="Open Menu"
+                icon={<ListIcon size={32} />}
+                onClick={() => setShowMenu(true)}
+              />
+              <LinkGatsby
+                to="/"
+                aria-label="Go to Faststore home"
+                title="Go to Faststore home"
+                className="navbar__logo"
+              >
+                <Logo />
+              </LinkGatsby>
+            </>
+          )}
           <SearchInput />
-          <div className="navbar__buttons">
-            <SignInLink />
+          <div
+            className="navbar__buttons"
+            data-store-search-expanded={searchExpanded}
+          >
+            {searchExpanded && (
+              <IconButton
+                classes="retract__button"
+                aria-label="Retract Searchbar"
+                icon={<CaretLeft size={32} />}
+                onClick={() => setSearchExpanded(false)}
+              />
+            )}
+            <SearchInput
+              placeholder=""
+              onMagnifierClick={() => setSearchExpanded(true)}
+            />
             <CartToggle />
           </div>
         </section>
