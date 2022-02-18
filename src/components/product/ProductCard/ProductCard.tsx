@@ -37,7 +37,7 @@ const imgOptions = {
   horizontal: {
     width: 700,
     sizes: '(max-width: 768px) 360px, 600px',
-    breakpoints: [360, 720, 1024],
+    breakpoints: [360, 480, 720, 1024],
   },
 }
 
