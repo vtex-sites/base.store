@@ -22,13 +22,13 @@ interface Props {
 }
 
 const imgOptions = {
-  width: 1024,
   sourceWidth: 1024,
   backgroundColor: '#f0f0f0',
   layout: 'constrained' as const,
   loading: 'eager' as const,
-  sizes: '(max-width: 768px) 100w, 720px',
-  breakpoints: [250, 360, 480, 720],
+  sizes: '(max-width: 768px) 100vw, 860px',
+  breakpoints: [360, 720],
+  aspectRatio: 4 / 3,
 }
 
 function ProductDetails({ product: staleProduct }: Props) {
@@ -131,7 +131,6 @@ function ProductDetails({ product: staleProduct }: Props) {
           <Image
             baseUrl={productImages[0].url}
             alt={productImages[0].alternateName}
-            aspectRatio={4 / 3}
             {...imgOptions}
           />
         </section>
