@@ -6,15 +6,14 @@ import {
 } from '@faststore/ui'
 import { graphql, Link } from 'gatsby'
 import React, { memo, useMemo } from 'react'
-import AspectRatio from 'src/components/ui/AspectRatio'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
-import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
+
 import './product-card.scss'
 
 type Variant = 'horizontal' | 'vertical'
@@ -25,30 +24,25 @@ interface Props {
   bordered?: boolean
   outOfStock?: boolean
   variant?: Variant
-  ratio?: AspectRatioProps['ratio']
+  aspectRatio?: number
   buyButton?: ReactNode
 }
 
 const imgOptions = {
-  sourceWidth: 480,
-  aspectRatio: 1,
-  width: 360,
+  sourceWidth: 1024,
   backgroundColor: '#f0f0f0',
   layout: 'constrained' as const,
   loading: 'lazy' as const,
-  sizes: '(max-width: 768px) 200px, 320px',
-  breakpoints: [250, 360, 480],
-  options: {
-    fitIn: true,
-  },
+  sizes: '(max-width: 768px) 25vw, 30vw',
+  breakpoints: [360, 480, 720, 1024],
 }
 
 function ProductCard({
   product,
   index,
   variant = 'vertical',
-  ratio = '1',
   bordered = false,
+  aspectRatio = 1,
   outOfStock = false,
   buyButton,
   ...otherProps
@@ -87,9 +81,12 @@ function ProductCard({
       {...otherProps}
     >
       <UICardImage>
-        <AspectRatio ratio={ratio}>
-          <Image baseUrl={img.url} alt={img.alternateName} {...imgOptions} />
-        </AspectRatio>
+        <Image
+          baseUrl={img.url}
+          alt={img.alternateName}
+          aspectRatio={aspectRatio}
+          {...imgOptions}
+        />
       </UICardImage>
       <UICardContent>
         <div className="product-card__heading">
