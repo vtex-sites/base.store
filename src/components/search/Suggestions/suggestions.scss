@@ -14,4 +14,17 @@
   ol {
     margin-top: rem(20px);
   }
+
+  li {
+    display: flex;
+    align-items: center;
+    font-size: var(--text-size-2);
+    line-height: 1.25;
+
+    [data-store-badge] {
+      margin-right: var(--space-1);
+    }
+
+    &:not(:first-child) { margin-top: var(--space-4); }
+  }
 }

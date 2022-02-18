@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 import { List as UIList } from '@faststore/ui'
+import { Badge } from 'src/components/ui/Badge'
 
 import './suggestions.scss'
 
@@ -25,7 +26,24 @@ const SuggestionsTopSearch = forwardRef<
     >
       <p className="suggestions__title">Top Search</p>
       <UIList variant="ordered">
-        <li>Office Supplies</li>
+        <li>
+          <Badge variant="new" small>
+            1
+          </Badge>
+          Office Supplies
+        </li>
+        <li>
+          <Badge variant="new" small>
+            1
+          </Badge>
+          Office Supplies
+        </li>
+        <li>
+          <Badge variant="new" small>
+            1
+          </Badge>
+          Office Supplies
+        </li>
       </UIList>
     </section>
   )
