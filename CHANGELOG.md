@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaces `let` declarations for `useRef` for better React compatibility
 - Refactors cart sidebar
 - `BreadcrumbWrapper` from components/ui folder to `Breadcrumb` at components/sections
+- Replace relative stylesheets imports with absolute path
 
 ### Deprecated
 - useWindowDimensions hook
