@@ -81,7 +81,7 @@
       }
 
       [data-store-icon] {
-        margin-right: -1.25rem;
+        margin-right: 0;
         line-height: 0;
 
         svg {
@@ -94,6 +94,10 @@
 
   &[data-store-search-expanded="true"] {
     width: 100%;
+
+    .retract__button {
+      margin-left: calc(var(--space-4) * -1);
+    }
 
     [data-store-search-input] {
       flex: 1 1;
