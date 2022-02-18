@@ -12,7 +12,7 @@ interface ProductShelfProps {
 
 function ProductShelf({ products }: ProductShelfProps) {
   return (
-    <ProductShelfSkeleton loading={products?.length === 0}>
+    <ProductShelfSkeleton loading={products.length === 0}>
       <ul data-product-shelf className="grid-content">
         {products.map((product, idx) => (
           <li key={`${product.id}`}>

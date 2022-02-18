@@ -27,7 +27,7 @@ const getRatio = (products: number, idx: number) => {
 
 const ProductTiles = ({ products }: TilesProps) => {
   return (
-    <ProductTilesSkeleton variant="horizontal" loading={products?.length === 0}>
+    <ProductTilesSkeleton variant="horizontal" loading={products.length === 0}>
       <Tiles>
         {products.map((product, idx) => (
           <Tile key={product.id}>
