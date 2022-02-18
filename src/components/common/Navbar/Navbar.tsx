@@ -84,6 +84,8 @@ function Navbar() {
             )}
             <SearchInput
               placeholder=""
+              testId="store-input-mobile"
+              buttonTestId="store-input-mobile-button"
               onMagnifierClick={() => setSearchExpanded(true)}
             />
             <CartToggle />

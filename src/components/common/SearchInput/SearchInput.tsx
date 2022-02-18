@@ -14,6 +14,7 @@ import './search-input.scss'
 
 declare type SearchInputProps = {
   onMagnifierClick?: () => void
+  buttonTestId?: string
 } & Omit<UISearchInputProps, 'onSubmit'>
 
 const doSearch = async (term: string) => {
@@ -32,10 +33,19 @@ const doSearch = async (term: string) => {
   navigate(`${pathname}${search}`)
 }
 
-function SearchInput({ onMagnifierClick, ...props }: SearchInputProps) {
+function SearchInput({
+  onMagnifierClick,
+  buttonTestId = 'store-search-button',
+  ...props
+}: SearchInputProps) {
   return (
     <UISearchInput
-      icon={<MagnifyingGlassIcon onClick={onMagnifierClick} />}
+      icon={
+        <MagnifyingGlassIcon
+          onClick={onMagnifierClick}
+          data-testid={buttonTestId}
+        />
+      }
       placeholder="Search everything at the store"
       onSubmit={doSearch}
       {...props}
