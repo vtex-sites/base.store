@@ -1,4 +1,5 @@
 import React from 'react'
+import type { PropsWithChildren } from 'react'
 
 import Shimmer from '../Shimmer'
 
@@ -10,7 +11,6 @@ interface Props {
   loading?: boolean
   shimmer?: boolean
   type: ElementVariant
-  children?: JSX.Element
 }
 
 function SkeletonElement({
@@ -18,14 +18,14 @@ function SkeletonElement({
   children,
   loading = true,
   shimmer = false,
-}: Props) {
+}: PropsWithChildren<Props>) {
   return loading ? (
     <div data-store-skeleton-element data-shimmer={shimmer}>
       <div data-skeleton-element-content data-element-variant={type} />
       {shimmer && <Shimmer />}
     </div>
   ) : (
-    children ?? null
+    <>{children}</>
   )
 }
 

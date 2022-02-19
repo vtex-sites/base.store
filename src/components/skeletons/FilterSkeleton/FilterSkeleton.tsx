@@ -1,4 +1,5 @@
 import React from 'react'
+import type { PropsWithChildren } from 'react'
 
 import Shimmer from '../Shimmer'
 import SkeletonElement from '../SkeletonElement'
@@ -6,10 +7,12 @@ import './filter-skeleton.scss'
 
 interface Props {
   loading?: boolean
-  children?: JSX.Element
 }
 
-function FilterSkeleton({ children, loading = true }: Props) {
+function FilterSkeleton({
+  children,
+  loading = true,
+}: PropsWithChildren<Props>) {
   return loading ? (
     <div data-store-filter-skeleton>
       <SkeletonElement shimmer type="text" />
@@ -22,7 +25,7 @@ function FilterSkeleton({ children, loading = true }: Props) {
       </div>
     </div>
   ) : (
-    children ?? null
+    <>{children}</>
   )
 }
 
