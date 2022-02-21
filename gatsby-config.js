@@ -33,6 +33,7 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-plugin-manifest',
