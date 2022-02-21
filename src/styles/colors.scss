@@ -8,8 +8,8 @@
   --color-black-transparent-5: rgb(0 0 0 / 5%);
   --color-black-transparent-10: rgb(0 0 0 / 10%);
   --color-black-transparent-20: rgb(0 0 0 / 20%);
-  --color-white-transparent-10: rgb(0 0 0 / 10%);
-  --color-white-transparent-20: rgb(0 0 0 / 20%);
+  --color-white-transparent-10: rgb(255 255 255 / 10%);
+  --color-white-transparent-20: rgb(255 255 255 / 20%);
 
   // Text
   --color-link: var(--color-secondary-2);
@@ -38,6 +38,7 @@
   --bg-disabled: var(--color-neutral-2);
   --bg-focus-ring: var(--color-emphasis);
   --bg-selected-outline: var(--color-emphasis-transparent-80);
+  --bg-skeleton-loading: var(--bg-disabled);
 
   // Backgrounds – Contextual
   --bg-success: var(--color-success);

@@ -1,0 +1,34 @@
+[data-store-skeleton-element] {
+  &[data-shimmer="true"] {
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-skeleton-element-content] {
+    overflow: hidden;
+    background: var(--bg-skeleton-loading);
+    border-radius: var(--border-radius-default);
+
+    &[data-element-variant="text"] {
+      width: 100%;
+      height: var(--space-4);
+    }
+
+    &[data-element-variant="button"] {
+      width: var(--space-13);
+      min-height: var(--space-5);
+      column-gap: var(--space-2);
+      border-radius: var(--border-radius-button);
+    }
+
+    &[data-element-variant="image"] {
+      border-radius: var(--border-radius-default);
+    }
+
+    &[data-element-variant="badge"] {
+      width: 40%;
+      height: var(--space-5);
+      border-radius: var(--border-radius-pill);
+    }
+  }
+}
