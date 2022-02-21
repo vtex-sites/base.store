@@ -27,7 +27,7 @@ type LinkItem = {
 const SuggestionsTopSearch = forwardRef<
   HTMLDivElement,
   SuggestionsTopSearchProps
->(function TopSearch(
+>(function SuggestionsTopSearch(
   { testId = 'top-search', searchedItems, ...otherProps },
   ref
 ) {
