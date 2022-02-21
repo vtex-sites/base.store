@@ -118,6 +118,7 @@ module.exports = {
       options: {
         analyzerMode: 'static',
         openAnalyzer: false,
+        reportFilename: 'bundle-analyser.html',
       },
     },
     {
