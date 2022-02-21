@@ -1,6 +1,5 @@
 @import "src/styles/scaffold";
 
-// Check it after apply Skeletons.
 .product-listing {
   --product-listing-row-height: var(--space-6);
 
@@ -29,19 +28,6 @@
   }
 }
 
-.product-listing__data-grid {
-  --product-listing-grid-height: 1750px;
-  --product-listing-row-height: var(--space-6);
-
-  min-height: calc(var(--product-listing-grid-height) - var(--product-listing-row-height));
-  contain-intrinsic-size: calc(var(--product-listing-grid-height) - var(--product-listing-row-height));
-  content-visibility: auto;
-
-  @include media(">=notebook") {
-    --product-listing-grid-height: 1016px;
-  }
-}
-
 .product-listing__filters {
   @include media(">=notebook") {
     position: sticky;
@@ -62,6 +48,11 @@
   padding: var(--space-1) var(--space-3) var(--space-2);
   background-color: var(--bg-neutral-lightest);
 
+  [data-element-variant="text"] {
+    min-width: rem(225px);
+    min-height: var(--space-5);
+  }
+
   @include media(">=notebook") {
     grid-column: 6 / span 7;
     justify-content: flex-end;
@@ -70,6 +61,10 @@
     padding: 0;
 
     .button[data-store-button] {
+      display: none;
+    }
+
+    [data-element-variant="button"] {
       display: none;
     }
   }
@@ -92,9 +87,12 @@
     padding: 0;
     background-color: unset;
   }
+
+  [data-element-variant="text"] {
+    min-width: rem(130px);
+  }
 }
 
-// Check it after apply Skeletons.
 .product-listing__results {
   --padding: var(--space-1);
 
