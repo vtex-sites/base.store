@@ -14,7 +14,7 @@ interface FacetsProps {
   slug: string
   testId: string
   selectedFacets: IStoreSelectedFacet[]
-  filteredFacets: Filter_FacetsFragment[]
+  facets: Filter_FacetsFragment[]
   indicesExpanded: Set<number>
   onFacetChange: (item: IStoreSelectedFacet) => void
   onAccordionChange: (index: number) => void
@@ -28,7 +28,7 @@ function Facets({
   slug,
   testId,
   selectedFacets,
-  filteredFacets,
+  facets,
   indicesExpanded,
   onFacetChange,
   onAccordionChange,
@@ -38,7 +38,7 @@ function Facets({
     <div className="filter" data-store-filter data-testid={testId}>
       <h2 className="title-small">Filters</h2>
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>
-        {filteredFacets.map(({ label, values, key }, index) => (
+        {facets.map(({ label, values, key }, index) => (
           <AccordionItem
             key={`${label}-${index}`}
             prefixId={testId}

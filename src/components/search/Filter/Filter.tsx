@@ -1,7 +1,7 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { X as XIcon } from 'phosphor-react'
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
@@ -67,16 +67,6 @@ function Filter({
 
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
 
-  const filteredFacets = useMemo(() => {
-    const checkFacetIsSlug = ({ value }: { value: string }) => value === slug
-
-    return facets.filter((facet) => {
-      const isBoolean = facet.type === 'BOOLEAN'
-
-      return isBoolean && !facet.values.some(checkFacetIsSlug)
-    })
-  }, [facets, slug])
-
   const onAccordionChange = useCallback((index: number) => {
     if (indicesExpanded.has(index)) {
       indicesExpanded.delete(index)
@@ -103,7 +93,7 @@ function Filter({
   // Opens accordion items with active facets
   useEffect(() => {
     // Ensures all the active facets were identified
-    if (activeFacets.length !== filteredFacets.length) {
+    if (activeFacets.length !== facets.length) {
       return
     }
 
@@ -144,7 +134,7 @@ function Filter({
     values: Filter_FacetsFragment['values']
   ) => {
     // Ensures only one array item for each accordion's item
-    if (activeFacets.length >= filteredFacets.length) {
+    if (activeFacets.length >= facets.length) {
       return
     }
 
@@ -176,7 +166,7 @@ function Filter({
           slug={slug}
           testId={`desktop-${testId}`}
           selectedFacets={selectedFacets}
-          filteredFacets={filteredFacets}
+          facets={facets}
           indicesExpanded={indicesExpanded}
           onFacetChange={toggleFacet}
           onAccordionChange={onAccordionChange}
@@ -212,7 +202,7 @@ function Filter({
             slug={slug}
             testId={`mobile-${testId}`}
             selectedFacets={selectedFacets}
-            filteredFacets={filteredFacets}
+            facets={facets}
             indicesExpanded={indicesExpanded}
             onFacetChange={onFacetChange}
             onAccordionChange={onAccordionChange}
