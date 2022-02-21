@@ -1,15 +1,10 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, { lazy, Suspense } from 'react'
+import usePerformanceTestFlag from 'src/hooks/usePerformanceTestFlag'
 
 const PostalCodeInput = lazy(() => import('./PostalCodeInput'))
 
-function PostalCodeWrapper() {
-  const [renderPostalCode, setRenderPostalCode] = useState(false)
-
-  useEffect(() => {
-    if (!window.location.search.includes('__performanceTest')) {
-      setRenderPostalCode(true)
-    }
-  }, [])
+export default function PostalCodeWrapper() {
+  const renderPostalCode = usePerformanceTestFlag()
 
   if (!renderPostalCode) {
     return null
@@ -21,5 +16,3 @@ function PostalCodeWrapper() {
     </Suspense>
   )
 }
-
-export default PostalCodeWrapper
