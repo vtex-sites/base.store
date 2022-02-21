@@ -36,22 +36,18 @@ class ErrorBoundary extends Component {
     // prevent infinite loop
     if (
       window.location.pathname.startsWith('/404') ||
-      window.location.pathname.startsWith('/500') ||
-      window.location.pathname.startsWith('/offline')
+      window.location.pathname.startsWith('/500')
     ) {
       return
     }
 
     const from = encodeURIComponent(window.location.pathname)
 
-    const isOffline = !window.navigator.onLine
     const is404 = error?.extensions?.exception?.status === 404
 
     if (isFrameworkLevelError(error) && canRecover()) {
       setReloads(getReloads() + 1)
       window.location.reload()
-    } else if (isOffline) {
-      window.location.href = `/offline?from=${from}`
     } else if (is404) {
       window.location.href = `/404?from=${from}`
     } else {
