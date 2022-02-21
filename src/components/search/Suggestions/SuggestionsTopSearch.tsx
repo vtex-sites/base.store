@@ -2,6 +2,7 @@ import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 import { List as UIList } from '@faststore/ui'
 import { Badge } from 'src/components/ui/Badge'
+import Link from 'src/components/ui/Link'
 
 import './suggestions.scss'
 
@@ -14,8 +15,13 @@ export interface SuggestionsTopSearchProps
   /**
    * List of top searched items
    */
-  // TODO: Find out what object this will receive
-  searchedItems: string[]
+  // TODO: Adapts for the real received data type
+  searchedItems: LinkItem[]
+}
+
+type LinkItem = {
+  href: string
+  name: string
 }
 
 const SuggestionsTopSearch = forwardRef<
@@ -37,10 +43,12 @@ const SuggestionsTopSearch = forwardRef<
       <UIList variant="ordered">
         {searchedItems.map((item, index) => (
           <li key={index}>
-            <Badge variant="new" small>
-              {index + 1}
-            </Badge>
-            {item}
+            <Link variant="display" to={item.href}>
+              <Badge variant="new" small>
+                {index + 1}
+              </Badge>
+              {item.name}
+            </Link>
           </li>
         ))}
       </UIList>

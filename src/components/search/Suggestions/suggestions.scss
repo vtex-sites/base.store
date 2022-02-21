@@ -12,19 +12,20 @@
 
 [data-suggestions-top-search] {
   ol {
-    margin-top: rem(20px);
+    margin-top: var(--space-1);
   }
 
   li {
-    display: flex;
-    align-items: center;
     font-size: var(--text-size-2);
     line-height: 1.25;
+
+    [data-store-link] {
+      display: inline-flex;
+      align-items: center;
+    }
 
     [data-store-badge] {
       margin-right: var(--space-1);
     }
-
-    &:not(:first-child) { margin-top: var(--space-4); }
   }
 }
