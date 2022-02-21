@@ -1,7 +1,7 @@
 import type { SearchInputRef } from '@faststore/ui'
 import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
-import React, { useRef, useState } from 'react'
+import React, { lazy, useRef, useState } from 'react'
 import type { AnchorHTMLAttributes } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import IconButton from 'src/components/ui/IconButton'
@@ -16,11 +16,13 @@ import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
-import PostalCodeInput from 'src/components/common/PostalCode'
+import PreventLoadComponent from 'src/components/common/PreventLoadComponent'
 
 import SearchInput from '../SearchInput'
 
 import './navbar.scss'
+
+const PostalCodeInput = lazy(() => import('src/components/common/PostalCode'))
 
 type Callback = () => unknown
 
@@ -105,7 +107,7 @@ function Navbar() {
           </div>
         </section>
         <NavLinks />
-        <PostalCodeInput />
+        <PreventLoadComponent fallback={null} component={PostalCodeInput} />
       </div>
 
       <SlideOver
