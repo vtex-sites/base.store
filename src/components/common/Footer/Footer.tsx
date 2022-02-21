@@ -10,21 +10,6 @@ import SROnly from 'src/components/ui/SROnly'
 import Link from 'src/components/ui/Link'
 
 import FooterLinks from './FooterLinks'
-import {
-  FacebookIcon,
-  InstagramIcon,
-  PinterestIcon,
-  TwitterIcon,
-  FastStoreIcon,
-  VisaCardIcon,
-  DinersClubIcon,
-  PayPalIcon,
-  MastercardIcon,
-  StripeIcon,
-  GooglePayIcon,
-  EloCardIcon,
-  ApplePayIcon,
-} from './Icons'
 
 import './footer.scss'
 
@@ -47,7 +32,17 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon component={<FacebookIcon />} />
+                <UIIcon
+                  component={
+                    <img
+                      src="/icons/Facebook.svg"
+                      alt="facebook icon"
+                      width="24px"
+                      height="24px"
+                      loading="lazy"
+                    />
+                  }
+                />
               </Link>
             </li>
             <li>
@@ -58,7 +53,17 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon component={<InstagramIcon />} />
+                <UIIcon
+                  component={
+                    <img
+                      src="/icons/Instagram.svg"
+                      alt="Instagram icon"
+                      width="24px"
+                      height="24px"
+                      loading="lazy"
+                    />
+                  }
+                />
               </Link>
             </li>
             <li>
@@ -69,7 +74,17 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon component={<PinterestIcon />} />
+                <UIIcon
+                  component={
+                    <img
+                      src="/icons/Pinterest.svg"
+                      alt="Pinterest icon"
+                      width="24px"
+                      height="24px"
+                      loading="lazy"
+                    />
+                  }
+                />
               </Link>
             </li>
             <li>
@@ -80,7 +95,17 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon component={<TwitterIcon />} />
+                <UIIcon
+                  component={
+                    <img
+                      src="/icons/Twitter.svg"
+                      alt="Twitter icon"
+                      width="24px"
+                      height="24px"
+                      loading="lazy"
+                    />
+                  }
+                />
               </Link>
             </li>
           </UIList>
@@ -88,41 +113,99 @@ function Footer() {
       </div>
 
       <div className="footer__note / grid-content">
-        <UIIcon component={<FastStoreIcon />} />
+        <UIIcon
+          component={
+            <img
+              src="/logo.png"
+              alt="FastStore icon"
+              width="124px"
+              height="34px"
+              loading="lazy"
+            />
+          }
+        />
 
         <UIPaymentMethods>
           <p className="title-sub-subsection">Payment Methods</p>
           <UIList>
             <li>
-              <VisaCardIcon />
+              <img
+                src="/icons/Visa.svg"
+                alt="Visa icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Visa" />
             </li>
             <li>
-              <DinersClubIcon />
+              <img
+                src="/icons/Diners.svg"
+                alt="DinersClub icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Diners Club" />
             </li>
             <li>
-              <MastercardIcon />
+              <img
+                src="/icons/Mastercard.svg"
+                alt="Mastercard icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Mastercard" />
             </li>
             <li>
-              <EloCardIcon />
+              <img
+                src="/icons/EloCard.svg"
+                alt="Elo card icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Elo Card" />
             </li>
             <li>
-              <PayPalIcon />
+              <img
+                src="/icons/PayPal.svg"
+                alt="PayPal icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="PayPal" />
             </li>
             <li>
-              <StripeIcon />
+              <img
+                src="/icons/Stripe.svg"
+                alt="Stripe icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Stripe" />
             </li>
             <li>
-              <GooglePayIcon />
+              <img
+                src="/icons/GooglePay.svg"
+                alt="GooglePay icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Google Pay" />
             </li>
             <li>
-              <ApplePayIcon />
+              <img
+                src="/icons/ApplePay.svg"
+                alt="ApplePay icon"
+                width="34px"
+                height="24px"
+                loading="lazy"
+              />
               <SROnly text="Apple Pay" />
             </li>
           </UIList>
