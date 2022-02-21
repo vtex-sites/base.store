@@ -94,9 +94,9 @@ function ProductGallery({ title, slug }: Props) {
           )}
 
           {/* Render ALL products */}
-          <div className="product-listing__data-grid">
-            {data ? (
-              pages.map((page) => (
+          {data ? (
+            <>
+              {pages.map((page) => (
                 <GalleryPage
                   key={`gallery-page-${page}`}
                   showSponsoredProducts={false}
@@ -104,11 +104,11 @@ function ProductGallery({ title, slug }: Props) {
                   page={page}
                   title={title}
                 />
-              ))
-            ) : (
-              <ProductGrid page={0} pageSize={0} products={[]} />
-            )}
-          </div>
+              ))}
+            </>
+          ) : (
+            <ProductGrid page={0} pageSize={0} products={[]} />
+          )}
 
           {/* Prefetch Previous and Next pages */}
           {prev !== false && (
