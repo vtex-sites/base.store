@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removes unused `<FacetedFilter/>` component
 - Unnecessary map at hooks
 - API style redirects from `/_v/private/graphql` since they have no effect
+- Display box from `<ProductCard/>` component
 
 ### Fixed
 - React tree re-rendering
