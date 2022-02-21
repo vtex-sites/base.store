@@ -76,8 +76,8 @@ function Navbar() {
           >
             {searchExpanded && (
               <IconButton
-                classes="retract__button"
-                aria-label="Retract Searchbar"
+                classes="navbar__collapse"
+                aria-label="Collapse search bar"
                 icon={<CaretLeft size={32} />}
                 onClick={() => setSearchExpanded(false)}
               />
@@ -86,8 +86,9 @@ function Navbar() {
               placeholder=""
               testId="store-input-mobile"
               buttonTestId="store-input-mobile-button"
-              onMagnifierClick={() => setSearchExpanded(true)}
+              onSearchClick={() => setSearchExpanded(true)}
             />
+            <SignInLink />
             <CartToggle />
           </div>
         </section>

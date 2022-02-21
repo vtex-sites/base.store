@@ -13,7 +13,7 @@ import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
 import './search-input.scss'
 
 declare type SearchInputProps = {
-  onMagnifierClick?: () => void
+  onSearchClick?: () => void
   buttonTestId?: string
 } & Omit<UISearchInputProps, 'onSubmit'>
 
@@ -34,7 +34,7 @@ const doSearch = async (term: string) => {
 }
 
 function SearchInput({
-  onMagnifierClick,
+  onSearchClick,
   buttonTestId = 'store-search-button',
   ...props
 }: SearchInputProps) {
@@ -42,7 +42,7 @@ function SearchInput({
     <UISearchInput
       icon={
         <MagnifyingGlassIcon
-          onClick={onMagnifierClick}
+          onClick={onSearchClick}
           data-testid={buttonTestId}
         />
       }

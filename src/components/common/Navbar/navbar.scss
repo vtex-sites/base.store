@@ -43,8 +43,8 @@
   align-items: center;
   justify-content: flex-end;
 
-  .retract__button {
-    margin-left: calc(var(--space-3) * -1);
+  .navbar__collapse {
+    margin-left: calc(-1 * var(--space-3));
   }
 
   .signin-link[data-button-signin-link] {
@@ -95,16 +95,12 @@
   &[data-store-search-expanded="true"] {
     width: 100%;
 
-    .retract__button {
-      margin-left: calc(var(--space-4) * -1);
-    }
-
     [data-store-search-input] {
       flex: 1 1;
       margin-right: 0.625rem;
 
       [data-store-input] {
-        width: 100%;
+        width: calc(100% - var(--space-7));
       }
 
       [data-store-icon] {
