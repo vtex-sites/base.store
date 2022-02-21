@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
 - `Skeleton` loading components.
 
 ### Changed
+- Moves icons to `/static/icons` folder
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
 - Refactors cart sidebar
