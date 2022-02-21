@@ -7,15 +7,15 @@ import './postal-code-input.scss'
 const REGION_INPUT_ID = 'postal-code-input'
 
 export default function PostalCodeInput() {
-  const [postalCode, setPostalCodeState] = useState<string>('')
+  const [postalCodeState, setPostalCodeState] = useState<string>('')
   const [, setPostalCode] = useRegion()
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setPostalCodeState(event.target.value)
   }
 
   const handleSubmit = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && Boolean(postalCode)) {
-      setPostalCode(postalCode)
+    if (event.key === 'Enter' && Boolean(postalCodeState)) {
+      setPostalCode(postalCodeState)
     }
   }
 
