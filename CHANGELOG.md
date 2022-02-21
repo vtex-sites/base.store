@@ -11,12 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GatsbyLink` to `Link` ui component.
 
 ### Changed
-
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
 - Refactors cart sidebar
 - `BreadcrumbWrapper` from components/ui folder to `Breadcrumb` at components/sections
-- Filters the department item from the Filter component on PLP based on slug
+- Moves some `Filter` component logic to the backend (API)
 
 ### Deprecated
 - useWindowDimensions hook
