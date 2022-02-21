@@ -100,7 +100,7 @@ function Footer() {
         <UIIcon
           component={
             <img
-              src="/logo.png"
+              src="/icons/FastStore.png"
               alt="FastStore icon"
               width="124px"
               height="34px"
