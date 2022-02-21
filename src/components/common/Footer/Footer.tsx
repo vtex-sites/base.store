@@ -13,6 +13,30 @@ import FooterLinks from './FooterLinks'
 
 import './footer.scss'
 
+function SocialIcon({ name }: { name: string }) {
+  return (
+    <img
+      src={`/icons/${name}.svg`}
+      alt={`${name} icon`}
+      width="24px"
+      height="24px"
+      loading="lazy"
+    />
+  )
+}
+
+function PaymentIcon({ name }: { name: string }) {
+  return (
+    <img
+      src={`/icons/${name}.svg`}
+      alt={`${name} icon`}
+      width="34px"
+      height="24px"
+      loading="lazy"
+    />
+  )
+}
+
 function Footer() {
   return (
     <footer className="footer / grid-content-full">
@@ -32,17 +56,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon
-                  component={
-                    <img
-                      src="/icons/Facebook.svg"
-                      alt="facebook icon"
-                      width="24px"
-                      height="24px"
-                      loading="lazy"
-                    />
-                  }
-                />
+                <UIIcon component={<SocialIcon name="Facebook" />} />
               </Link>
             </li>
             <li>
@@ -53,17 +67,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon
-                  component={
-                    <img
-                      src="/icons/Instagram.svg"
-                      alt="Instagram icon"
-                      width="24px"
-                      height="24px"
-                      loading="lazy"
-                    />
-                  }
-                />
+                <UIIcon component={<SocialIcon name="Instagram" />} />
               </Link>
             </li>
             <li>
@@ -74,17 +78,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon
-                  component={
-                    <img
-                      src="/icons/Pinterest.svg"
-                      alt="Pinterest icon"
-                      width="24px"
-                      height="24px"
-                      loading="lazy"
-                    />
-                  }
-                />
+                <UIIcon component={<SocialIcon name="Pinterest" />} />
               </Link>
             </li>
             <li>
@@ -95,17 +89,7 @@ function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <UIIcon
-                  component={
-                    <img
-                      src="/icons/Twitter.svg"
-                      alt="Twitter icon"
-                      width="24px"
-                      height="24px"
-                      loading="lazy"
-                    />
-                  }
-                />
+                <UIIcon component={<SocialIcon name="Twitter" />} />
               </Link>
             </li>
           </UIList>
@@ -129,83 +113,35 @@ function Footer() {
           <p className="title-sub-subsection">Payment Methods</p>
           <UIList>
             <li>
-              <img
-                src="/icons/Visa.svg"
-                alt="Visa icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="Visa" />
               <SROnly text="Visa" />
             </li>
             <li>
-              <img
-                src="/icons/Diners.svg"
-                alt="DinersClub icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="Diners" />
               <SROnly text="Diners Club" />
             </li>
             <li>
-              <img
-                src="/icons/Mastercard.svg"
-                alt="Mastercard icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="Mastercard" />
               <SROnly text="Mastercard" />
             </li>
             <li>
-              <img
-                src="/icons/EloCard.svg"
-                alt="Elo card icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="EloCard" />
               <SROnly text="Elo Card" />
             </li>
             <li>
-              <img
-                src="/icons/PayPal.svg"
-                alt="PayPal icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="PayPal" />
               <SROnly text="PayPal" />
             </li>
             <li>
-              <img
-                src="/icons/Stripe.svg"
-                alt="Stripe icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="Stripe" />
               <SROnly text="Stripe" />
             </li>
             <li>
-              <img
-                src="/icons/GooglePay.svg"
-                alt="GooglePay icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="GooglePay" />
               <SROnly text="Google Pay" />
             </li>
             <li>
-              <img
-                src="/icons/ApplePay.svg"
-                alt="ApplePay icon"
-                width="34px"
-                height="24px"
-                loading="lazy"
-              />
+              <PaymentIcon name="ApplePay" />
               <SROnly text="Apple Pay" />
             </li>
           </UIList>
