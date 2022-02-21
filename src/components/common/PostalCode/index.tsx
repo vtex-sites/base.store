@@ -1,1 +1,1 @@
-export { default } from './PostalCodeInput'
+export { default } from './PostalCodeWrapper'
