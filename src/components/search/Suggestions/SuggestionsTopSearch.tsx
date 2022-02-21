@@ -29,7 +29,8 @@ const SuggestionsTopSearch = forwardRef<
     <section
       ref={ref}
       data-testid={testId}
-      className="suggestions__section / suggestions__top-search"
+      data-suggestions-top-search
+      className="suggestions__section"
       {...otherProps}
     >
       <p className="suggestions__title">Top Search</p>

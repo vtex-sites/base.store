@@ -10,7 +10,7 @@
   background-color: var(--bg-neutral-lightest);
 }
 
-.suggestions__top-search {
+[data-suggestions-top-search] {
   ol {
     margin-top: rem(20px);
   }
