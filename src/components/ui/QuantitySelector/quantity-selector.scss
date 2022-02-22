@@ -1,4 +1,4 @@
-@import "../../../styles/utilities";
+@import "src/styles/scaffold";
 
 @mixin quantity-selector-focus-ring {
   @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers

@@ -8,23 +8,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
+- `Skeleton` loading components.
 
 ### Changed
+- Moves icons to `/static/icons` folder
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
 - Refactors cart sidebar
 - `BreadcrumbWrapper` from components/ui folder to `Breadcrumb` at components/sections
-- Moves some `Filter` component logic to the backend (API)
+- Replace relative stylesheets imports with absolute path
+- Moves some `Filter` component logic to the API
 
 ### Deprecated
 - useWindowDimensions hook
 
 ### Removed
+- gatsby-plugin-offline due to CLS on recurrent users
 - useWindowDimensions hook
 - Removes unused `<FacetedFilter/>` component
 - Unnecessary map at hooks
 - API style redirects from `/_v/private/graphql` since they have no effect
+- Display box from `<ProductCard/>` component
 
 ### Fixed
 - React tree re-rendering

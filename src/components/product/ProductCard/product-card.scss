@@ -1,4 +1,4 @@
-@import "../../../styles/utilities";
+@import "src/styles/scaffold";
 
 .product-card[data-store-card] {
   position: relative;
@@ -61,8 +61,6 @@
 
   [data-card-content] a[href] {
     display: -webkit-box;
-    display: -moz-box;
-    display: box;
     min-height: 100%;
     max-height: var(--space-6);
     padding: 0;
