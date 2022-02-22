@@ -50,11 +50,19 @@ function ProductGallery({ title }: Props) {
         </div>
 
         <div className="product-listing__sort">
-          <SkeletonElement shimmer type="text" loading={!data}>
+          <SkeletonElement
+            shimmer
+            type="text"
+            loading={orderedFacets?.length === 0}
+          >
             <Sort />
           </SkeletonElement>
 
-          <SkeletonElement shimmer type="button" loading={!data}>
+          <SkeletonElement
+            shimmer
+            type="button"
+            loading={orderedFacets?.length === 0}
+          >
             <Button
               variant="tertiary"
               data-testid="open-filter-button"
