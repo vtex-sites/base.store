@@ -1446,6 +1446,18 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
 
+"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/7a381219/@faststore/api":
+  version "1.5.11"
+  resolved "https://pkg.csb.dev/vtex/faststore/commit/7a381219/@faststore/api#d126d4f16c77aee4140f09766656a3f2130ab738"
+  dependencies:
+    "@graphql-tools/schema" "^8.2.0"
+    "@rollup/plugin-graphql" "^1.0.0"
+    "@sindresorhus/slugify" "^1.1.2"
+    dataloader "^2.0.0"
+    fast-deep-equal "^3.1.3"
+    isomorphic-unfetch "^3.1.0"
+    p-limit "^3.1.0"
+
 "@faststore/sdk@^1.5.10":
   version "1.5.10"
   resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.5.10.tgz#d59a6a2292b4a237ffa778d880cb01d6e2f7e710"
@@ -11975,7 +11987,7 @@ p-finally@^1.0.0:
   resolved "https://registry.yarnpkg.com/p-finally/-/p-finally-1.0.0.tgz#3fbcfb15b899a44123b34b6dcc18b724336a2cae"
   integrity sha1-P7z7FbiZpEEjs0ttzBi3JDNqLK4=
 
-p-limit@3.1.0, p-limit@^3.0.2:
+p-limit@3.1.0, p-limit@^3.0.2, p-limit@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-3.1.0.tgz#e1daccbe78d0d1388ca18c64fea38e3e57e3706b"
   integrity sha512-TYOanM3wGwNGsZN2cVTYPArw454xnXj5qmWF1bEoAc4+cU/ol7GVh7odevjp1FNHduHc3KZMcFduxU5Xc6uJRQ==
