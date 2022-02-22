@@ -1434,9 +1434,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/c15fe4c0/@faststore/api":
-  version "1.5.11"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/c15fe4c0/@faststore/api#ec89020590834abe20ddba062c89912b55134a79"
+"@faststore/api@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.5.16.tgz#a8eb480fa43d5677f315112efe8a98f10e0aaf47"
+  integrity sha512-gS1J4/Bu4r16UUPo1DuKhEt4IV9tVBswqi1MYsBUyng43vffkn5XebwXtYXT2jnfxji+esdiZS2tRuRSluBiMg==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1446,29 +1447,17 @@
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
 
-"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/ead7d41f/@faststore/api":
-  version "1.5.14"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/ead7d41f/@faststore/api#053b282f6976293b08bea292d5ed291222d395e8"
-  dependencies:
-    "@graphql-tools/schema" "^8.2.0"
-    "@rollup/plugin-graphql" "^1.0.0"
-    "@sindresorhus/slugify" "^1.1.2"
-    dataloader "^2.0.0"
-    fast-deep-equal "^3.1.3"
-    isomorphic-unfetch "^3.1.0"
-    p-limit "^3.1.0"
-
-"@faststore/sdk@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.5.10.tgz#d59a6a2292b4a237ffa778d880cb01d6e2f7e710"
-  integrity sha512-u+Xg+XYgJzFUxY76Wn2Z22TbhMykzd9PmHHhFQbZETDd0fJq0Mg+VwkBkGXJrzdi1VRhAHg4KE4hJMM7bYCWkw==
+"@faststore/sdk@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.5.16.tgz#21077b6690905f0695bcaf258e296a1b28b6afbc"
+  integrity sha512-KbIDEy2gSRgjbuykG02EVso02pNGxl7Pk+Sg5XqRqiupfe4eSmn96BdSWUyRazq9ikNJ5uqaDcbG2pCL5FBOxg==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.5.10.tgz#0d939fd1dbf9bd5a98377aa2940aa03fbe5dec9c"
-  integrity sha512-Dscwhr6yQqBX+1an0Y8aaTOgLixquB77JM5wUYscHkv8Y5eX/TMj9U9ZVF3MKrNLGTY4NXzrMrNCS8OB2f+NRw==
+"@faststore/ui@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.5.16.tgz#48732206cbd87e6973080723b9984e5e249bee71"
+  integrity sha512-WXVWK55NSCq4R3E580+FWLvUdzzNs8EGwQ+D8tEKzOEUuuYrpg0cmV98PcIvOTwmCFaAegAQJ9w3MHwpYyJSfQ==
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
@@ -1800,9 +1789,9 @@
     tslib "~2.3.0"
 
 "@graphql-tools/merge@^8.2.1":
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.2.1.tgz#bf83aa06a0cfc6a839e52a58057a84498d0d51ff"
-  integrity sha512-Q240kcUszhXiAYudjuJgNuLgy9CryDP3wp83NOZQezfA6h3ByYKU7xI6DiKrdjyVaGpYN3ppUmdj0uf5GaXzMA==
+  version "8.2.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.2.2.tgz#433566c662a33f5a9c3cc5f3ce3753fb0019477a"
+  integrity sha512-2DyqhIOMUMKbCPqo8p6xSdll2OBcBxGdOrxlJJlFQvinsSaYqp/ct3dhAxNtzaIcvSVgXvttQqfD7O2ziFtE7Q==
   dependencies:
     "@graphql-tools/utils" "^8.5.1"
     tslib "~2.3.0"
@@ -1925,7 +1914,7 @@
   dependencies:
     tslib "~2.3.0"
 
-"@graphql-tools/utils@8.5.3", "@graphql-tools/utils@^8.1.1", "@graphql-tools/utils@^8.3.0", "@graphql-tools/utils@^8.5.1", "@graphql-tools/utils@^8.5.2", "@graphql-tools/utils@^8.5.3":
+"@graphql-tools/utils@8.5.3", "@graphql-tools/utils@^8.1.1", "@graphql-tools/utils@^8.3.0", "@graphql-tools/utils@^8.5.2", "@graphql-tools/utils@^8.5.3":
   version "8.5.3"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.5.3.tgz#404062e62cae9453501197039687749c4885356e"
   integrity sha512-HDNGWFVa8QQkoQB0H1lftvaO1X5xUaUDk1zr1qDe0xN1NL0E/CrQdJ5UKLqOvH4hkqVUPxQsyOoAZFkaH6rLHg==
@@ -1940,6 +1929,13 @@
     "@ardatan/aggregate-error" "0.0.6"
     camel-case "4.1.2"
     tslib "~2.2.0"
+
+"@graphql-tools/utils@^8.5.1":
+  version "8.6.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.6.1.tgz#52c7eb108f2ca2fd01bdba8eef85077ead1bf882"
+  integrity sha512-uxcfHCocp4ENoIiovPxUWZEHOnbXqj3ekWc0rm7fUhW93a1xheARNHcNKhwMTR+UKXVJbTFQdGI1Rl5XdyvDBg==
+  dependencies:
+    tslib "~2.3.0"
 
 "@graphql-tools/wrap@^7.0.4":
   version "7.0.8"
@@ -2192,9 +2188,9 @@
     graphql-tag "^2.2.2"
 
 "@rollup/pluginutils@^4.0.0":
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.1.1.tgz#1d4da86dd4eded15656a57d933fda2b9a08d47ec"
-  integrity sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.1.2.tgz#ed5821c15e5e05e32816f5fb9ec607cdf5a75751"
+  integrity sha512-ROn4qvkxP9SyPeHaf7uQC/GPFY6L/OWy9+bd9AwcjOAWQwxRscoEyAUD8qCY5o5iL4jqQwoLk2kaTKJPb/HwzQ==
   dependencies:
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
@@ -3003,40 +2999,40 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/gatsby-plugin-nginx@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.10.tgz#2fdd1662791773caa012b2e980cd039237c43a35"
-  integrity sha512-1oKzF7E9Efv6Axo5cDPpv1VEAUSmQsf8sN3VSe0uGYkZUis6UnWnV/6QfRxNA6ee/TQFFAhTypDL2KtOJ+dsgw==
+"@vtex/gatsby-plugin-nginx@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.16.tgz#e158ad99ab1e83dc80d57229897a2b6df6094995"
+  integrity sha512-K5Py17ATgGt/ohmfDpVgWdQS27/4T3PSBGyqmxy8WhX28su/3RB5osaDaPWBpFrEcxkb5JXGCVTyMZz/8elINw==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.10.tgz#a0dda939fe3796bda435a9a797c879883786cbde"
-  integrity sha512-yBWKcIObYUNLxOKcC0FZQKXc9otO7SIRXKIuoZkIibXsBMaCyg23f6iGDi7J2MuVj++LKh75LRe2H3BF+rQp/g==
+"@vtex/gatsby-plugin-thumbor@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.16.tgz#2cc2f7e270c1e3d843a26812a1bd8b3be42c3edb"
+  integrity sha512-hPG+TRy8sL3HakbueAD/8HWv3dpyvPmOElmKD7aDh4/hJuskH75WnGCY566dQ42t0YBuCdpCeao/Jk7+FYIhuw==
 
-"@vtex/gatsby-source-store@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.5.10.tgz#581fc519d94d49a3c5afe0cff9c86232612c7ac7"
-  integrity sha512-2uzl9KyRIcthsjGKCat0HAGoBtEwhs22/ufkz+RWe4jR7W0ScKUfIzDSqz06eICErHZy/TRWo4sBydJeAHTCFg==
+"@vtex/gatsby-source-store@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.5.16.tgz#999168d411696fb9518cdb83a9ed34be6bd0f868"
+  integrity sha512-DpKOVAzlXVXfCMh+EOg5nvJkrmzQkuqhAUWMm2szDGVXTdUEoSwaLupJHGEA9JsXVKFU+ET2DbZV9/YSF4i+mg==
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/graphql-utils@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.5.10.tgz#36d3e01ffcee5af4b1b2a3b63fe047e0f66be30e"
-  integrity sha512-xjjZWsFNbHkelCODRbQtY58MKgAnjJ60sqqusP2ggOKRpbi+tjm1HpUbfvd8+qoT8Zmddm8vD7IJlkDENZKlVA==
+"@vtex/graphql-utils@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.5.16.tgz#b0df9754f88541a21fbaaf50ab324e3030529209"
+  integrity sha512-PLX6q+6Ovp1k2AAGQTPnvuT8eMrq0Z/pj9Or2ob+gXg+bD8dPW1P36DBRjzP9VXL2eeibKEkqOq6/HAZqSVsKQ==
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
-"@vtex/lighthouse-config@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.5.10.tgz#c85cc5bcc7adef9b41e356505f958addaf557942"
-  integrity sha512-5zm0nbPENieCHWSU6CBdaiTGxXHwDKVMUx5nByA89RP0jMrYEMjE4GCaATK3ic6eUrpL8+Iy38tobeG9pIJW6A==
+"@vtex/lighthouse-config@^1.5.16":
+  version "1.5.16"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.5.16.tgz#b1f38f4f0d38e2aea01a312dfcffb29f33dfe983"
+  integrity sha512-bbG1C9Lu/PGTKwZ+tgbbWGBNnKxdbsO4Do6wknovvKDOHA4RhBdBhv60Pe9VRlxSiiYsO+pEUKv4X4Slab6pKQ==
 
 "@vtex/prettier-config@1.0.0":
   version "1.0.0"
@@ -11596,10 +11592,17 @@ node-fetch@2.6.1:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
-node-fetch@^2.5.0, node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.5:
+node-fetch@^2.5.0, node-fetch@^2.6.0, node-fetch@^2.6.5:
   version "2.6.6"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.6.tgz#1751a7c01834e8e1697758732e9efb6eeadfaf89"
   integrity sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==
+  dependencies:
+    whatwg-url "^5.0.0"
+
+node-fetch@^2.6.1:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
+  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
   dependencies:
     whatwg-url "^5.0.0"
 
@@ -12390,10 +12393,15 @@ picocolors@^1.0.0:
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
-picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.2, picomatch@^2.2.3:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
   integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
+
+picomatch@^2.2.2:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
+  integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
 pify@^2.2.0:
   version "2.3.0"
