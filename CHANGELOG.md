@@ -8,11 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
 - `Skeleton` loading components.
 - `SuggestionsTopSearch` component
+- `PostalCodeInput` component and `usePostalCode` hook.
 
 ### Changed
+- Moves icons to `/static/icons` folder
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
 - Refactors cart sidebar
@@ -28,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removes unused `<FacetedFilter/>` component
 - Unnecessary map at hooks
 - API style redirects from `/_v/private/graphql` since they have no effect
+- Display box from `<ProductCard/>` component
 
 ### Fixed
 - React tree re-rendering
