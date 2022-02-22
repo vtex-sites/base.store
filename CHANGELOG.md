@@ -33,6 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Display box from `<ProductCard/>` component
 
 ### Fixed
+- useBuyButton/useRemoveButton hooks with inconsistent typings/behaviors
 - React tree re-rendering
 - Footer rendering pipeline
 - Scroll lock when transitioning pages on mobile via `SlideOver` component navigation
