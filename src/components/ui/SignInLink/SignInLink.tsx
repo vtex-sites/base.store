@@ -10,7 +10,7 @@ const SignInLink: React.FC = () => {
   return (
     <LinkButton
       data-button-signin-link
-      to="/"
+      to="/login"
       className="title-sub-subsection signin-link"
       variant="tertiary"
     >
