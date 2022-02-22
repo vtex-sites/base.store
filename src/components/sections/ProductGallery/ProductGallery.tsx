@@ -15,7 +15,6 @@ import ProductGrid from 'src/components/product/ProductGrid'
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
-import { useTotalCount } from './useTotalCount'
 
 import './product-gallery.scss'
 
@@ -27,7 +26,7 @@ function ProductGallery({ title }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
-  const totalCount = useTotalCount(data)
+  const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const orderedFacets = useOrderedFacets(data)
   const { next, prev } = usePagination(totalCount)
 
