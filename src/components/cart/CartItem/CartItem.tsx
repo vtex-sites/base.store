@@ -1,19 +1,19 @@
-import React from 'react'
-import { XCircle as XCircleIcon } from 'phosphor-react'
 import { Card, CardActions, CardContent, CardImage } from '@faststore/ui'
+import { XCircle as XCircleIcon } from 'phosphor-react'
+import React from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import QuantitySelector from 'src/components/ui/QuantitySelector'
-import type { CartItemWithAnalytics } from 'src/sdk/cart/useBuyButton'
+import { useCart } from 'src/sdk/cart/useCart'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import { useCart } from 'src/sdk/cart/useCart'
+import type { CartItem as ICartItem } from 'src/sdk/cart/validate'
 
 import './cart-item.scss'
 
 interface Props {
-  item: CartItemWithAnalytics
+  item: ICartItem
 }
 
 function CartItem({ item }: Props) {
@@ -44,7 +44,7 @@ function CartItem({ item }: Props) {
           />
         </CardImage>
         <div data-cart-item-summary>
-          <p className="text-body">{item.isVariantOf?.name}</p>
+          <p className="text-body">{item.itemOffered.isVariantOf.name}</p>
           <span data-cart-item-prices>
             <Price
               value={item.listPrice}
