@@ -12,6 +12,7 @@ import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
+import HydrationProvider from './src/sdk/client-side/HydrationProvider'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
@@ -24,7 +25,7 @@ export const wrapRootElement = ({ element }) => (
       >
         <SessionProvider initialState={{ channel: storeConfig.channel }}>
           <CartProvider mode="optimistic" onValidateCart={validateCart}>
-            {element}
+            <HydrationProvider>{element}</HydrationProvider>
           </CartProvider>
         </SessionProvider>
       </UIProvider>

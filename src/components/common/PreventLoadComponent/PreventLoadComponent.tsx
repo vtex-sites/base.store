@@ -4,21 +4,23 @@ import type {
   SuspenseProps,
 } from 'react'
 import React, { Suspense } from 'react'
-import usePerformanceTestFlag from 'src/hooks/usePerformanceTestFlag'
+import { useHydration } from 'src/sdk/client-side/HydrationProvider'
 
 interface Props<C> {
   fallback: SuspenseProps['fallback']
+  preventLoadComponentCallback: () => boolean
   component: C
 }
 
 export default function PreventLoadComponent<C extends ElementType>({
   fallback,
   component: Component,
+  preventLoadComponentCallback,
   ...componentProps
 }: Props<C> & ComponentPropsWithoutRef<C>) {
-  const renderComponent = usePerformanceTestFlag()
+  const hydrated = useHydration()
 
-  if (!renderComponent) {
+  if (!hydrated || !preventLoadComponentCallback()) {
     return null
   }
 

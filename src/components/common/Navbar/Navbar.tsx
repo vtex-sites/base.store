@@ -17,6 +17,7 @@ import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
 import PreventLoadComponent from 'src/components/common/PreventLoadComponent'
+import { PERFORMANCE_TEST_FLAG } from 'src/constants'
 
 import SearchInput from '../SearchInput'
 
@@ -107,7 +108,13 @@ function Navbar() {
           </div>
         </section>
         <NavLinks />
-        <PreventLoadComponent fallback={null} component={PostalCodeInput} />
+        <PreventLoadComponent
+          preventLoadComponentCallback={() =>
+            !window.location.search.includes(PERFORMANCE_TEST_FLAG)
+          }
+          fallback={null}
+          component={PostalCodeInput}
+        />
       </div>
 
       <SlideOver
