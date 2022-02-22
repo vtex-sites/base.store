@@ -1,31 +1,19 @@
 import { gql } from '@vtex/graphql-utils'
-import type { CartItem as ICartItem } from '@faststore/sdk'
-import type { IStoreProduct, IStoreOffer } from '@faststore/api'
+import type { CartItem as SDKCartItem, Cart as SDKCart } from '@faststore/sdk'
 import type {
   ValidateCartMutationMutation,
   ValidateCartMutationMutationVariables,
+  CartItemFragment,
+  CartMessageFragment,
 } from '@generated/graphql'
+import type { IStoreOffer } from '@faststore/api'
 
 import { request } from '../graphql/request'
 
-export interface CartItem extends ICartItem {
-  seller: {
-    identifier: string
-  }
-  price: number
-  listPrice: number
-  itemOffered: IStoreProduct
-}
+export interface CartItem extends SDKCartItem, CartItemFragment {}
 
-export interface CartMessages {
-  status: 'error'
-  text: string
-}
-
-export interface Cart<Item> {
-  id: string
-  items: Item[]
-  messages?: CartMessages[]
+export interface Cart extends SDKCart<CartItem> {
+  messages?: CartMessageFragment[]
 }
 
 export const ValidateCartMutation = gql`
@@ -34,26 +22,42 @@ export const ValidateCartMutation = gql`
       order {
         orderNumber
         acceptedOffer {
-          seller {
-            identifier
-          }
-          quantity
-          price
-          listPrice
-          itemOffered {
-            sku
-            name
-            image {
-              url
-              alternateName
-            }
-          }
+          ...CartItem
         }
       }
       messages {
-        text
-        status
+        ...CartMessage
       }
+    }
+  }
+
+  fragment CartMessage on StoreCartMessage {
+    text
+    status
+  }
+
+  fragment CartItem on StoreOffer {
+    seller {
+      identifier
+    }
+    quantity
+    price
+    listPrice
+    itemOffered {
+      sku
+      name
+      image {
+        url
+        alternateName
+      }
+      brand {
+        name
+      }
+      isVariantOf {
+        productGroupID
+        name
+      }
+      gtin
     }
   }
 `
@@ -64,8 +68,8 @@ export const getItemId = (
   item: Pick<CartItem, 'itemOffered' | 'seller' | 'price'>
 ) => `${item.itemOffered.sku}:${item.seller.identifier}:${item.price}`
 
-export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
-  const { validateCart: validated } = await request<
+export const validateCart = async (cart: Cart): Promise<Cart | null> => {
+  const { validateCart: validated = null } = await request<
     ValidateCartMutationMutation,
     ValidateCartMutationMutationVariables
   >(ValidateCartMutation, {
@@ -84,31 +88,24 @@ export const validateCart = async <Item extends CartItem>(cart: Cart<Item>) => {
             listPrice,
             seller,
             quantity,
-            itemOffered,
+            itemOffered: {
+              sku: itemOffered.sku,
+              image: itemOffered.image,
+              name: itemOffered.name,
+            },
           })
         ),
       },
     },
   })
 
-  const mappedItems = cart.items.reduce((acc, item) => {
-    acc[item.id] = item
-
-    return acc
-  }, {} as Record<string, Item>)
-
   return (
     validated && {
       id: validated.order.orderNumber,
-      items: validated.order.acceptedOffer.map((item): Item => {
-        const id = getItemId(item)
-
-        return {
-          ...(mappedItems[id] ?? {}),
-          ...item,
-          id,
-        }
-      }),
+      items: validated.order.acceptedOffer.map((item) => ({
+        ...item,
+        id: getItemId(item),
+      })),
       messages: validated.messages,
     }
   )

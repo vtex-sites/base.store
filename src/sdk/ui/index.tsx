@@ -4,7 +4,7 @@ import type { Dispatch } from 'react'
 
 export interface Toast {
   message: string
-  status: 'error' | 'warn' | 'info'
+  status: 'ERROR' | 'WARNING' | 'INFO'
 }
 
 interface InitialState {
