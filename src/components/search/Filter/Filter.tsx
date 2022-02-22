@@ -152,8 +152,6 @@ function Filter({
       .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
 
     toggleFacets(facetsToAdd)
-
-    setIndicesExpanded(new Set([]))
     dismissTransition.current?.()
   }
 
