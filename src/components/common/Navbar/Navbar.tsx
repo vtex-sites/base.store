@@ -1,26 +1,26 @@
 import type { SearchInputRef } from '@faststore/ui'
 import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
-import React, { useRef, useState } from 'react'
-import type { AnchorHTMLAttributes } from 'react'
+import React, { lazy, useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import IconButton from 'src/components/ui/IconButton'
 import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
-import {
-  CaretLeft as CaretLeftIcon,
-  List as ListIcon,
-  X as XIcon,
-} from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
 import PostalCodeInput from 'src/components/common/PostalCode'
+import type { AnchorHTMLAttributes } from 'react'
+import LazyIcon from 'src/components/common/LazyIcon'
 
 import SearchInput from '../SearchInput'
 
 import './navbar.scss'
+
+const ListIcon = lazy(() => import('phosphor-react/src/icons/List'))
+const XIcon = lazy(() => import('phosphor-react/src/icons/X'))
+const CaretLeftIcon = lazy(() => import('phosphor-react/src/icons/CaretLeft'))
 
 type Callback = () => unknown
 
@@ -67,7 +67,7 @@ function Navbar() {
               <IconButton
                 classes="navbar__menu"
                 aria-label="Open Menu"
-                icon={<ListIcon size={32} />}
+                icon={<LazyIcon icon={ListIcon} size={32} />}
                 onClick={() => setShowMenu(true)}
               />
               <LinkGatsby
@@ -89,7 +89,7 @@ function Navbar() {
               <IconButton
                 classes="navbar__collapse"
                 aria-label="Collapse search bar"
-                icon={<CaretLeftIcon size={32} />}
+                icon={<LazyIcon icon={CaretLeftIcon} size={32} />}
                 onClick={() => setSearchExpanded(false)}
               />
             )}
@@ -133,7 +133,7 @@ function Navbar() {
             <IconButton
               classes="navbar__button"
               aria-label="Close Menu"
-              icon={<XIcon size={32} />}
+              icon={<LazyIcon icon={XIcon} size={32} />}
               onClick={() => dismissTransition.current?.()}
             />
           </header>

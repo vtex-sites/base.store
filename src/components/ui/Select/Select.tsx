@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { Select as UISelect } from '@faststore/ui'
 import type { SelectProps } from '@faststore/ui'
-import { CaretDown as CaretDownIcon } from 'phosphor-react'
+import LazyIcon from 'src/components/common/LazyIcon'
 
+import 'src/styles/icons.scss'
 import './select.scss'
+
+const CaretDownIcon = lazy(() => import('phosphor-react/src/icons/CaretDown'))
 
 interface UISelectProps extends SelectProps {
   /*
@@ -50,7 +53,7 @@ export default function Select({
           </option>
         ))}
       </UISelect>
-      <CaretDownIcon size={18} weight="bold" />
+      <LazyIcon icon={CaretDownIcon} size={18} weight="bold" />
     </div>
   )
 }

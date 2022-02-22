@@ -69,6 +69,11 @@
 
   .filter-modal__button {
     margin-right: calc(-1 * var(--space-1));
+
+    [data-store-icon] {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }
 

@@ -35,7 +35,14 @@
 }
 
 .navbar__menu[data-store-button] {
-  @include media(">=notebook") { display: none; }
+  [data-store-icon] {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  @include media(">=notebook") {
+    display: none;
+  }
 }
 
 .navbar__buttons {
@@ -49,6 +56,11 @@
 
   .signin-link[data-button-signin-link] {
     display: none;
+  }
+
+  .signin-link [data-store-icon] {
+    width: 1.125rem;
+    height: 1.125rem;
   }
 
   @include media(">=notebook") {
@@ -151,6 +163,11 @@
 
   .navbar__button {
     margin-right: calc(-1 * var(--space-1));
+
+    [data-store-icon] {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 }
 
@@ -163,7 +180,9 @@
       width: fit-content;
       padding-left: 0;
 
-      @include media(">=notebook") { display: none; }
+      @include media(">=notebook") {
+        display: none;
+      }
     }
   }
 }

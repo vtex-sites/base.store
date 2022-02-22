@@ -1,5 +1,5 @@
-import type { ElementType, PropsWithChildren } from 'react'
-import React, { lazy, Suspense } from 'react'
+import React, { lazy } from 'react'
+import LazyIcon from 'src/components/common/LazyIcon'
 
 import Incentives from './Incentives'
 
@@ -11,43 +11,29 @@ const ShieldCheckIcon = lazy(
   () => import('phosphor-react/src/icons/ShieldCheck')
 )
 
-const LazyIcon = ({
-  icon: Icon,
-}: PropsWithChildren<{ icon: ElementType<{ size: number }> }>) => {
-  if (typeof window === 'undefined') {
-    return null
-  }
-
-  return (
-    <Suspense fallback={null}>
-      <Icon size={32} />
-    </Suspense>
-  )
-}
-
 const incentives = [
   {
-    icon: <LazyIcon icon={TruckIcon} />,
+    icon: <LazyIcon icon={TruckIcon} size={32} />,
     title: 'Buy online',
     firstLineText: 'Get Free Shipping',
   },
   {
-    icon: <LazyIcon icon={CalendarIcon} />,
+    icon: <LazyIcon icon={CalendarIcon} size={32} />,
     title: 'Free return',
     firstLineText: '30 days to return',
   },
   {
-    icon: <LazyIcon icon={GiftIcon} />,
+    icon: <LazyIcon icon={GiftIcon} size={32} />,
     title: 'Gift cards',
     firstLineText: '$20 / $30 / $50',
   },
   {
-    icon: <LazyIcon icon={StorefrontIcon} />,
+    icon: <LazyIcon icon={StorefrontIcon} size={32} />,
     title: 'Physical Stores',
     firstLineText: '+40 Stores in Brazil',
   },
   {
-    icon: <LazyIcon icon={ShieldCheckIcon} />,
+    icon: <LazyIcon icon={ShieldCheckIcon} size={32} />,
     title: 'Buy online',
     firstLineText: 'Get Free Shipping',
   },

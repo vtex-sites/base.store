@@ -1,5 +1,4 @@
-import { List } from '@faststore/ui'
-import React, { lazy, Suspense, useRef } from 'react'
+import React, { lazy, useRef } from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import Button from 'src/components/ui/Button'
@@ -8,36 +7,21 @@ import { Badge } from 'src/components/ui/Badge'
 import Alert from 'src/components/ui/Alert'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useUI } from 'src/sdk/ui'
+import { List } from '@faststore/ui'
+import LazyIcon from 'src/components/common/LazyIcon'
 
 import CartItem from '../CartItem'
 import EmptyCart from '../EmptyCart'
 import OrderSummary from '../OrderSummary'
 
 import './cart-sidebar.scss'
+import 'src/styles/icons.scss'
 
 type Callback = () => unknown
 
 const ArrowRightIcon = lazy(() => import('phosphor-react/src/icons/ArrowRight'))
 const XIcon = lazy(() => import('phosphor-react/src/icons/X'))
 const TruckIcon = lazy(() => import('phosphor-react/src/icons/Truck'))
-
-const LazyIcon = ({
-  icon: Icon,
-  size = 32,
-}: PropsWithChildren<{
-  size?: number
-  icon: ElementType<{ size: number }>
-}>) => {
-  if (typeof window === 'undefined') {
-    return null
-  }
-
-  return (
-    <Suspense fallback={null}>
-      <Icon size={size} />
-    </Suspense>
-  )
-}
 
 function CartSidebar() {
   const btnProps = useCheckoutButton()
@@ -68,17 +52,13 @@ function CartSidebar() {
         <IconButton
           data-testid="cart-sidebar-button-close"
           aria-label="Close Cart"
-          icon={
-            <div style={{ width: '32px', height: '32px' }}>
-              <LazyIcon icon={XIcon} />
-            </div>
-          }
+          icon={<LazyIcon icon={XIcon} size={32} />}
           onClick={() => dismissTransition.current?.()}
         />
       </header>
       <Alert
         icon={
-          <div style={{ width: '24px', height: '24px' }}>
+          <div className="icon__24">
             <LazyIcon icon={TruckIcon} size={24} />
           </div>
         }
@@ -108,7 +88,7 @@ function CartSidebar() {
                   variant="primary"
                   icon={
                     !isValidating && (
-                      <div style={{ width: '18px', height: '18px' }}>
+                      <div className="icon__18">
                         <LazyIcon icon={ArrowRightIcon} size={18} />
                       </div>
                     )

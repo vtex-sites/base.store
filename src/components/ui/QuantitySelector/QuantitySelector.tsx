@@ -1,8 +1,11 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { lazy, memo, useEffect, useState } from 'react'
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
-import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
+import LazyIcon from 'src/components/common/LazyIcon'
 
 import './quantity-selector.scss'
+
+const PlusIcon = lazy(() => import('phosphor-react/src/icons/Plus'))
+const MinusIcon = lazy(() => import('phosphor-react/src/icons/Minus'))
 
 interface QuantitySelectorProps {
   max?: number
@@ -65,12 +68,12 @@ export function QuantitySelector({
       leftButtonProps={{
         onClick: decrease,
         disabled: isLeftDisabled || disabled,
-        icon: <MinusIcon size={16} weight="bold" />,
+        icon: <LazyIcon icon={MinusIcon} size={16} weight="bold" />,
       }}
       rightButtonProps={{
         onClick: increase,
         disabled: isRightDisabled || disabled,
-        icon: <PlusIcon size={16} weight="bold" />,
+        icon: <LazyIcon icon={PlusIcon} size={16} weight="bold" />,
       }}
       inputProps={{
         onChange: validateInput,

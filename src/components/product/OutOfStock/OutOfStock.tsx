@@ -1,8 +1,10 @@
 import type { ReactElement } from 'react'
-import React, { useState } from 'react'
+import React, { lazy, useState } from 'react'
 import { Input } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
-import { Bell as BellIcon } from 'phosphor-react'
+import LazyIcon from 'src/components/common/LazyIcon'
+
+const BellIcon = lazy(() => import('phosphor-react/src/icons/Bell'))
 
 export interface OutOfStockProps {
   /**
@@ -58,7 +60,7 @@ function OutOfStock(props: OutOfStockProps) {
       />
       <Button
         variant="primary"
-        icon={<BellIcon size={16} />}
+        icon={<LazyIcon icon={BellIcon} size={16} />}
         iconPosition="left"
         onClick={() => onSubmit(email)}
       >

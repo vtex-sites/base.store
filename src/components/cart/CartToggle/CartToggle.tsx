@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import IconButton from 'src/components/ui/IconButton'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
-import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
+import LazyIcon from 'src/components/common/LazyIcon'
 
 import './cart-toggle.scss'
+
+const ShoppingCartIcon = lazy(
+  () => import('phosphor-react/src/icons/ShoppingCart')
+)
 
 function CartToggle() {
   const btnProps = useCartToggleButton()
@@ -13,7 +17,7 @@ function CartToggle() {
       {...btnProps}
       className="cart-toggle"
       aria-label={`Cart with ${btnProps['data-items']} items`}
-      icon={<ShoppingCartIcon size={32} />}
+      icon={<LazyIcon icon={ShoppingCartIcon} size={32} />}
     />
   )
 }

@@ -3,6 +3,11 @@
 .cart-toggle[data-store-icon-button] {
   position: relative;
 
+  [data-store-icon] {
+    width: 2rem;
+    height: 2rem;
+  }
+
   &::after {
     --cart-toggle-size: var(--space-3);
 
