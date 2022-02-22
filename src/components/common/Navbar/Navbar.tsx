@@ -107,14 +107,16 @@ function Navbar() {
             <CartToggle />
           </div>
         </section>
-        <NavLinks />
-        <PreventLoadComponent
-          preventLoadComponentCallback={() =>
-            window.location.search.includes(PERFORMANCE_TEST_FLAG)
-          }
-          fallback={null}
-          component={PostalCodeInput}
-        />
+        <section className="navbar__submenu">
+          <NavLinks />
+          <PreventLoadComponent
+            preventLoadComponentCallback={() =>
+              window.location.search.includes(PERFORMANCE_TEST_FLAG)
+            }
+            fallback={null}
+            component={PostalCodeInput}
+          />
+        </section>
       </div>
 
       <SlideOver

@@ -38,6 +38,15 @@
   @include media(">=notebook") { display: none; }
 }
 
+.navbar__submenu {
+  display: flex;
+  justify-content: space-between;
+  height: var(--tap-min-size);
+
+  // Lighthouse
+  margin-top: 1rem;
+}
+
 .navbar__buttons {
   display: flex;
   align-items: center;
