@@ -110,7 +110,7 @@ function Navbar() {
         <NavLinks />
         <PreventLoadComponent
           preventLoadComponentCallback={() =>
-            !window.location.search.includes(PERFORMANCE_TEST_FLAG)
+            window.location.search.includes(PERFORMANCE_TEST_FLAG)
           }
           fallback={null}
           component={PostalCodeInput}

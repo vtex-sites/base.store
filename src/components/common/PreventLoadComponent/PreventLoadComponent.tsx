@@ -20,7 +20,7 @@ export default function PreventLoadComponent<C extends ElementType>({
 }: Props<C> & ComponentPropsWithoutRef<C>) {
   const hydrated = useHydration()
 
-  if (!hydrated || !preventLoadComponentCallback()) {
+  if (!hydrated || preventLoadComponentCallback()) {
     return null
   }
 
