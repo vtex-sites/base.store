@@ -1,17 +1,12 @@
 import { List } from '@faststore/ui'
-import {
-  ArrowRight as ArrowRightIcon,
-  Truck as TruckIcon,
-  X as XIcon,
-} from 'phosphor-react'
-import React, { useRef } from 'react'
-import Alert from 'src/components/ui/Alert'
-import { Badge } from 'src/components/ui/Badge'
-import Button from 'src/components/ui/Button'
-import IconButton from 'src/components/ui/IconButton'
-import SlideOver from 'src/components/ui/SlideOver'
+import React, { lazy, Suspense, useRef } from 'react'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
+import Button from 'src/components/ui/Button'
+import IconButton from 'src/components/ui/IconButton'
+import { Badge } from 'src/components/ui/Badge'
+import Alert from 'src/components/ui/Alert'
+import SlideOver from 'src/components/ui/SlideOver'
 import { useUI } from 'src/sdk/ui'
 
 import CartItem from '../CartItem'
@@ -21,6 +16,28 @@ import OrderSummary from '../OrderSummary'
 import './cart-sidebar.scss'
 
 type Callback = () => unknown
+
+const ArrowRightIcon = lazy(() => import('phosphor-react/src/icons/ArrowRight'))
+const XIcon = lazy(() => import('phosphor-react/src/icons/X'))
+const TruckIcon = lazy(() => import('phosphor-react/src/icons/Truck'))
+
+const LazyIcon = ({
+  icon: Icon,
+  size = 32,
+}: PropsWithChildren<{
+  size?: number
+  icon: ElementType<{ size: number }>
+}>) => {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  return (
+    <Suspense fallback={null}>
+      <Icon size={size} />
+    </Suspense>
+  )
+}
 
 function CartSidebar() {
   const btnProps = useCheckoutButton()
@@ -51,11 +68,23 @@ function CartSidebar() {
         <IconButton
           data-testid="cart-sidebar-button-close"
           aria-label="Close Cart"
-          icon={<XIcon size={32} />}
+          icon={
+            <div style={{ width: '32px', height: '32px' }}>
+              <LazyIcon icon={XIcon} />
+            </div>
+          }
           onClick={() => dismissTransition.current?.()}
         />
       </header>
-      <Alert icon={<TruckIcon size={24} />}>Free shiping starts at $300</Alert>
+      <Alert
+        icon={
+          <div style={{ width: '24px', height: '24px' }}>
+            <LazyIcon icon={TruckIcon} size={24} />
+          </div>
+        }
+      >
+        Free shiping starts at $300
+      </Alert>
 
       {isEmpty ? (
         <EmptyCart onDismiss={() => dismissTransition.current?.()} />
@@ -77,7 +106,13 @@ function CartSidebar() {
               checkoutButton={
                 <Button
                   variant="primary"
-                  icon={!isValidating && <ArrowRightIcon size={18} />}
+                  icon={
+                    !isValidating && (
+                      <div style={{ width: '18px', height: '18px' }}>
+                        <LazyIcon icon={ArrowRightIcon} size={18} />
+                      </div>
+                    )
+                  }
                   iconPosition="right"
                   {...btnProps}
                 >
