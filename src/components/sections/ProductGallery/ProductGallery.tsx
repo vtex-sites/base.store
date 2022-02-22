@@ -18,10 +18,9 @@ import './product-gallery.scss'
 
 interface Props {
   title: string
-  slug?: string
 }
 
-function ProductGallery({ title, slug }: Props) {
+function ProductGallery({ title }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
@@ -34,7 +33,6 @@ function ProductGallery({ title, slug }: Props) {
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
           <Filter
-            slug={slug}
             isOpen={isFilterOpen}
             facets={orderedFacets}
             onDismiss={() => setIsFilterOpen(false)}

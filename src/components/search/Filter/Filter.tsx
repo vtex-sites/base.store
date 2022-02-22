@@ -30,10 +30,6 @@ interface FilterProps {
    * testing-library, and jest).
    */
   testId?: string
-  /**
-   * Current page's slug to be used as fixed facet
-   */
-  slug?: string
 }
 
 type ActiveFacets = {
@@ -48,7 +44,6 @@ function Filter({
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
-  slug = '',
 }: FilterProps) {
   const { toggleFacets, toggleFacet, state: searchState } = useSearch()
   const dismissTransition = useRef<Callback | undefined>()
@@ -163,7 +158,6 @@ function Filter({
     <>
       <div className="hidden-mobile">
         <Facets
-          slug={slug}
           testId={`desktop-${testId}`}
           selectedFacets={selectedFacets}
           facets={facets}
@@ -199,7 +193,6 @@ function Filter({
             />
           </header>
           <Facets
-            slug={slug}
             testId={`mobile-${testId}`}
             selectedFacets={selectedFacets}
             facets={facets}
