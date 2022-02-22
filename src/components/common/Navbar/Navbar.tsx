@@ -1,3 +1,4 @@
+import type { SearchInputRef } from '@faststore/ui'
 import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
 import React, { useRef, useState } from 'react'
@@ -6,7 +7,11 @@ import CartToggle from 'src/components/cart/CartToggle'
 import IconButton from 'src/components/ui/IconButton'
 import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
-import { CaretLeft, List as ListIcon, X as XIcon } from 'phosphor-react'
+import {
+  CaretLeft as CaretLeftIcon,
+  List as ListIcon,
+  X as XIcon,
+} from 'phosphor-react'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
@@ -44,8 +49,14 @@ function NavLinks({ onClickLink }: NavLinksProps) {
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
+  const searchMobileRef = useRef<SearchInputRef>(null)
   const dismissTransition = useRef<Callback | undefined>()
   const handleCloseSlideOver = () => setShowMenu(false)
+
+  const handlerExpandSearch = () => {
+    setSearchExpanded(true)
+    searchMobileRef.current?.inputRef?.focus()
+  }
 
   return (
     <header className="navbar / grid-content-full">
@@ -78,15 +89,16 @@ function Navbar() {
               <IconButton
                 classes="navbar__collapse"
                 aria-label="Collapse search bar"
-                icon={<CaretLeft size={32} />}
+                icon={<CaretLeftIcon size={32} />}
                 onClick={() => setSearchExpanded(false)}
               />
             )}
             <SearchInput
               placeholder=""
+              ref={searchMobileRef}
               testId="store-input-mobile"
               buttonTestId="store-input-mobile-button"
-              onSearchClick={() => setSearchExpanded(true)}
+              onSearchClick={handlerExpandSearch}
             />
             <SignInLink />
             <CartToggle />

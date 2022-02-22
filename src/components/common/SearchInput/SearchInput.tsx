@@ -7,7 +7,10 @@ import {
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
 import React from 'react'
-import type { SearchInputProps as UISearchInputProps } from '@faststore/ui'
+import type {
+  SearchInputProps as UISearchInputProps,
+  SearchInputRef,
+} from '@faststore/ui'
 import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
 
 import './search-input.scss'
@@ -33,24 +36,26 @@ const doSearch = async (term: string) => {
   navigate(`${pathname}${search}`)
 }
 
-function SearchInput({
-  onSearchClick,
-  buttonTestId = 'store-search-button',
-  ...props
-}: SearchInputProps) {
-  return (
-    <UISearchInput
-      icon={
-        <MagnifyingGlassIcon
-          onClick={onSearchClick}
-          data-testid={buttonTestId}
-        />
-      }
-      placeholder="Search everything at the store"
-      onSubmit={doSearch}
-      {...props}
-    />
-  )
-}
+const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
+  function SearchInput(
+    { onSearchClick, buttonTestId = 'store-search-button', ...props },
+    ref
+  ) {
+    return (
+      <UISearchInput
+        ref={ref}
+        icon={
+          <MagnifyingGlassIcon
+            onClick={onSearchClick}
+            data-testid={buttonTestId}
+          />
+        }
+        placeholder="Search everything at the store"
+        onSubmit={doSearch}
+        {...props}
+      />
+    )
+  }
+)
 
 export default SearchInput
