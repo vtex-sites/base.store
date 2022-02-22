@@ -61,6 +61,7 @@ function Filter({
   )
 
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
+  const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
 
   const onAccordionChange = useCallback((index: number) => {
     if (indicesExpanded.has(index)) {
@@ -88,7 +89,7 @@ function Filter({
   // Opens accordion items with active facets
   useEffect(() => {
     // Ensures all the active facets were identified
-    if (activeFacets.length !== facets.length) {
+    if (activeFacets.length !== filteredFacets.length) {
       return
     }
 
@@ -129,7 +130,7 @@ function Filter({
     values: Filter_FacetsFragment['values']
   ) => {
     // Ensures only one array item for each accordion's item
-    if (activeFacets.length >= facets.length) {
+    if (activeFacets.length >= filteredFacets.length) {
       return
     }
 
@@ -151,6 +152,8 @@ function Filter({
       .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
 
     toggleFacets(facetsToAdd)
+
+    setIndicesExpanded(new Set([]))
     dismissTransition.current?.()
   }
 
@@ -160,7 +163,7 @@ function Filter({
         <Facets
           testId={`desktop-${testId}`}
           selectedFacets={selectedFacets}
-          facets={facets}
+          filteredFacets={filteredFacets}
           indicesExpanded={indicesExpanded}
           onFacetChange={toggleFacet}
           onAccordionChange={onAccordionChange}
@@ -195,7 +198,7 @@ function Filter({
           <Facets
             testId={`mobile-${testId}`}
             selectedFacets={selectedFacets}
-            facets={facets}
+            filteredFacets={filteredFacets}
             indicesExpanded={indicesExpanded}
             onFacetChange={onFacetChange}
             onAccordionChange={onAccordionChange}

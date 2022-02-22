@@ -13,7 +13,7 @@ import './filter.scss'
 interface FacetsProps {
   testId: string
   selectedFacets: IStoreSelectedFacet[]
-  facets: Filter_FacetsFragment[]
+  filteredFacets: Filter_FacetsFragment[]
   indicesExpanded: Set<number>
   onFacetChange: (item: IStoreSelectedFacet) => void
   onAccordionChange: (index: number) => void
@@ -26,7 +26,7 @@ interface FacetsProps {
 function Facets({
   testId,
   selectedFacets,
-  facets,
+  filteredFacets,
   indicesExpanded,
   onFacetChange,
   onAccordionChange,
@@ -36,7 +36,7 @@ function Facets({
     <div className="filter" data-store-filter data-testid={testId}>
       <h2 className="title-small">Filters</h2>
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>
-        {facets.map(({ label, values, key }, index) => (
+        {filteredFacets.map(({ label, values, key }, index) => (
           <AccordionItem
             key={`${label}-${index}`}
             prefixId={testId}
