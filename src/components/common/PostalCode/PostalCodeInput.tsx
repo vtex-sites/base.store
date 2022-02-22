@@ -1,29 +1,29 @@
 import React, { useState } from 'react'
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import type { ChangeEvent, KeyboardEvent } from 'react'
-import useRegion from 'src/hooks/useRegion'
+import usePostalCode from 'src/hooks/usePostalCode'
 import './postal-code-input.scss'
 
-const REGION_INPUT_ID = 'postal-code-input'
+const POSTAL_CODE_INPUT_ID = 'postal-code-input'
 
 export default function PostalCodeInput() {
-  const [postalCodeState, setPostalCodeState] = useState<string>('')
-  const [, setPostalCode] = useRegion()
+  const [localPostalCode, setLocalPostalCode] = useState<string>('')
+  const [, setPostalCode] = usePostalCode()
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPostalCodeState(event.target.value)
+    setLocalPostalCode(event.target.value)
   }
 
   const handleSubmit = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter' && Boolean(postalCodeState)) {
-      setPostalCode(postalCodeState)
+    if (event.key === 'Enter' && Boolean(localPostalCode)) {
+      setPostalCode(localPostalCode)
     }
   }
 
   return (
     <div className="postal-code-input">
-      <UILabel htmlFor={REGION_INPUT_ID}>Postal Code: </UILabel>
+      <UILabel htmlFor={POSTAL_CODE_INPUT_ID}>Postal Code: </UILabel>
       <UIInput
-        id={REGION_INPUT_ID}
+        id={POSTAL_CODE_INPUT_ID}
         onChange={handleChange}
         onKeyDown={handleSubmit}
       />

@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
 - `Skeleton` loading components.
-- `PostalCodeInput` component and useRegion hook.
+- `PostalCodeInput` component and `usePostalCode` hook.
 
 ### Changed
 - Moves icons to `/static/icons` folder

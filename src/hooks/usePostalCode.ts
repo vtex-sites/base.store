@@ -2,7 +2,6 @@ import { useStorage } from '@faststore/sdk'
 
 const storageKey = 'main::store::postalCode'
 
-export default function useRegion() {
+export default function usePostalCode() {
   return useStorage<string>(storageKey, '')
-  // TODO: get region id here
 }
