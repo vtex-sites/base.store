@@ -8,6 +8,9 @@ import React, { useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import Button, { LinkButton } from 'src/components/ui/Button'
+import SkeletonElement from 'src/components/skeletons/SkeletonElement'
+import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
+import ProductGrid from 'src/components/product/ProductGrid'
 
 import GalleryPage from './ProductGalleryPage'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -32,34 +35,38 @@ function ProductGallery({ title }: Props) {
     <div className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <Filter
-            isOpen={isFilterOpen}
-            facets={orderedFacets}
-            onDismiss={() => setIsFilterOpen(false)}
-          />
+          <FilterSkeleton loading={orderedFacets?.length === 0}>
+            <Filter
+              isOpen={isFilterOpen}
+              facets={orderedFacets}
+              onDismiss={() => setIsFilterOpen(false)}
+            />
+          </FilterSkeleton>
         </div>
 
-        <div
-          className="product-listing__results-count"
-          data-testid="total-product-count"
-          data-count={totalCount}
-        >
-          <h2>{totalCount} Results</h2>
+        <div className="product-listing__results-count" data-count={totalCount}>
+          <SkeletonElement shimmer type="text" loading={!data}>
+            <h2 data-testid="total-product-count">{totalCount} Results</h2>
+          </SkeletonElement>
         </div>
 
         <div className="product-listing__sort">
-          <Sort />
+          <SkeletonElement shimmer type="text" loading={!data}>
+            <Sort />
+          </SkeletonElement>
 
-          <Button
-            variant="tertiary"
-            data-testid="open-filter-button"
-            icon={<FadersHorizontalIcon size={16} />}
-            iconPosition="left"
-            aria-label="Open Filters"
-            onClick={() => setIsFilterOpen(!isFilterOpen)}
-          >
-            Filters
-          </Button>
+          <SkeletonElement shimmer type="button" loading={!data}>
+            <Button
+              variant="tertiary"
+              data-testid="open-filter-button"
+              icon={<FadersHorizontalIcon size={16} />}
+              iconPosition="left"
+              aria-label="Open Filters"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+            >
+              Filters
+            </Button>
+          </SkeletonElement>
         </div>
 
         <div className="product-listing__results">
@@ -85,9 +92,9 @@ function ProductGallery({ title }: Props) {
           )}
 
           {/* Render ALL products */}
-          <div className="product-listing__data-grid">
-            {data &&
-              pages.map((page) => (
+          {data ? (
+            <>
+              {pages.map((page) => (
                 <GalleryPage
                   key={`gallery-page-${page}`}
                   showSponsoredProducts={false}
@@ -96,7 +103,10 @@ function ProductGallery({ title }: Props) {
                   title={title}
                 />
               ))}
-          </div>
+            </>
+          ) : (
+            <ProductGrid page={0} pageSize={0} products={[]} />
+          )}
 
           {/* Prefetch Previous and Next pages */}
           {prev !== false && (
