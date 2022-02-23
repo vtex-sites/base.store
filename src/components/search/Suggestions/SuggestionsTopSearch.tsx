@@ -35,7 +35,7 @@ const SuggestionsTopSearch = forwardRef<
     <section
       ref={ref}
       data-testid={testId}
-      data-suggestions-top-search
+      data-store-suggestions-top-search
       className="suggestions__section"
       {...otherProps}
     >
