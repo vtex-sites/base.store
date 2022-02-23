@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GatsbyLink` to `Link` ui component.
 - `Skeleton` loading components.
 - `PostalCodeInput` component and `usePostalCode` hook.
+- `PreventLoadComponent` component.
+- `__performanceTest` flag to disable components using query string.
 
 ### Changed
 - Moves icons to `/static/icons` folder
