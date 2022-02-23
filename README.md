@@ -2,7 +2,7 @@
 
 Este é o nosso teste de temificação e customização da FastStore para frente de lojas.
 
-- Sua missão é criar um `novo tema` para essa homepage: [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us32.gitpod.io/theming-poc-homepage/).
+- Sua missão é criar um `novo tema` para essa homepage: [/theming-poc-homepage](https://8000-vtexsites-basestore-6ikje0f3a5e.ws-us33.gitpod.io/theming-poc-homepage/).
 - A customização é feita, primariamente, através de design tokens (variáveis CSS).
 - O seu ponto de partida será o arquivo do tema [new-theme](./src/styles/themes/new-theme.scss) onde você achará os design tokens globais.
 - Dentro dos arquivos CSS de cada componente, você achará os design tokens específicos (escopados).
