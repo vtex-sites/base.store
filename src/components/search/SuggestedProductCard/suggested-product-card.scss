@@ -1,14 +1,13 @@
+@import "src/styles/scaffold";
+
 .suggested-product-card {
   padding: var(--space-1) var(--space-3);
 
   [data-card-content] {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: rem(56px) repeat(4, 1fr);
     align-items: center;
-  }
-
-  [data-card-image] {
-    margin-right: var(--space-3);
+    column-gap: rem(16px);
   }
 
   [data-gatsby-image-wrapper] {
