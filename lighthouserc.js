@@ -8,5 +8,15 @@ module.exports = VTEXLHConfig({
   assertions: {
     'csp-xss': 'off',
     'legacy-javascript': ['error', { maxLength: 1 }],
+    /*
+     * Lazy components with dynamic import will create another a new script resource,
+     * then this test may fail, so change the maxNumericValue
+     */
+    'resource-summary:script:count': [
+      'error',
+      {
+        maxNumericValue: 26,
+      },
+    ],
   },
 })
