@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import { Card, CardActions, CardContent, CardImage } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
@@ -8,11 +8,9 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { CartItem as ICartItem } from 'src/sdk/cart/validate'
-import LazyIcon from 'src/components/common/LazyIcon'
+import { XCircle as XCircleIcon } from 'phosphor-react'
 
 import './cart-item.scss'
-
-const XCircleIcon = lazy(() => import('phosphor-react/src/icons/XCircle'))
 
 interface Props {
   item: ICartItem
@@ -73,7 +71,7 @@ function CartItem({ item }: Props) {
       <CardActions>
         <Button
           variant="tertiary"
-          icon={<LazyIcon icon={XCircleIcon} size={18} />}
+          icon={<XCircleIcon size={18} />}
           iconPosition="left"
           {...btnProps}
         >
