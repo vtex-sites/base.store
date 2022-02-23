@@ -22,9 +22,9 @@ module.exports = {
   lighthouse: {
     server: process.env.BASE_SITE_URL || 'http://localhost:9000',
     pages: {
-      home: '/?__performanceTest',
-      pdp: '/sleek-metal-pizza-24041857/p?__performanceTest',
-      collection: '/office?__performanceTest',
+      home: '/',
+      pdp: '/sleek-metal-pizza-24041857/p',
+      collection: '/office',
     },
   },
 
