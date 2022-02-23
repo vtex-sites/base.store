@@ -192,13 +192,17 @@ describe('search event', () => {
     cy.visit(pages.home, options)
     cy.waitForHydration()
 
-    cy.getById('store-search-input').within(() => {
-      cy.getById('store-input').click().type('shirt')
-      cy.getById('store-button')
-        .click()
-        .then(() => {
-          dataLayerHasEvent('search')
-        })
-    })
+    cy.getById('store-input-mobile-button').click({ force: true })
+
+    cy.getById('store-input-mobile')
+      .click()
+      .type('shirt')
+      .within(() => {
+        cy.getById('store-button')
+          .click()
+          .then(() => {
+            dataLayerHasEvent('search')
+          })
+      })
   })
 })
