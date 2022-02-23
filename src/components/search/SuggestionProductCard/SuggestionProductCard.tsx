@@ -4,7 +4,7 @@ import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 
-import './suggested-product-card.scss'
+import './suggestion-product-card.scss'
 
 // TODO: Remove it when integration is complete
 const PRODUCTS = [
@@ -21,7 +21,7 @@ const PRODUCTS = [
   },
 ]
 
-function SuggestedProductCard({
+function SuggestionProductCard({
   // TODO: Add Props interface and define `product` type
   product = PRODUCTS,
 }) {
@@ -36,8 +36,8 @@ function SuggestedProductCard({
 
   return (
     <Card
-      className="suggested-product-card"
-      data-testid="suggested-product-card"
+      className="suggestion-product-card"
+      data-testid="suggestion-product-card"
     >
       <CardContent>
         <CardImage>
@@ -55,11 +55,14 @@ function SuggestedProductCard({
             }}
           />
         </CardImage>
-        <div data-suggested-product-card-summary>
-          <div data-suggested-product-card-title>
-            <p className="title-sub-subsection">{name}</p>
-          </div>
-          <span data-suggested-product-card-prices>
+        <div data-suggestion-product-card-summary>
+          <p
+            className="title-sub-subsection"
+            data-suggestion-product-card-title
+          >
+            {name}
+          </p>
+          <span data-suggestion-product-card-prices>
             <Price
               value={listPrice}
               formatter={useFormattedPrice}
@@ -85,4 +88,4 @@ function SuggestedProductCard({
   )
 }
 
-export default SuggestedProductCard
+export default SuggestionProductCard
