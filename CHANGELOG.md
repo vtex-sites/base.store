@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Skeleton` loading components.
 - `SuggestionsTopSearch` component
 - `PostalCodeInput` component and `usePostalCode` hook.
+- `SuggestedProductCard` component.
 
 ### Changed
 - Moves icons to `/static/icons` folder
