@@ -6,14 +6,18 @@ import {
 } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
-import React from 'react'
+import React, { lazy } from 'react'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
 } from '@faststore/ui'
-import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
+import LazyIcon from 'src/components/common/LazyIcon'
 
 import './search-input.scss'
+
+const MagnifyingGlassIcon = lazy(
+  () => import('phosphor-react/src/icons/MagnifyingGlass')
+)
 
 declare type SearchInputProps = {
   onSearchClick?: () => void
@@ -45,7 +49,8 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
       <UISearchInput
         ref={ref}
         icon={
-          <MagnifyingGlassIcon
+          <LazyIcon
+            icon={MagnifyingGlassIcon}
             onClick={onSearchClick}
             data-testid={buttonTestId}
           />
