@@ -44,6 +44,7 @@ function SuggestedProductCard({
           <Image
             baseUrl={img.url}
             alt={img.alternateName}
+            width={56}
             sourceWidth={360}
             aspectRatio={1}
             breakpoints={[50, 100, 150]}
@@ -56,7 +57,7 @@ function SuggestedProductCard({
         </CardImage>
         <div data-suggested-product-card-summary>
           <div data-suggested-product-card-title>
-            <p className="text-body">{name}</p>
+            <p className="title-sub-subsection">{name}</p>
           </div>
           <span data-suggested-product-card-prices>
             <Price
@@ -74,7 +75,7 @@ function SuggestedProductCard({
               testId="price"
               data-value={price}
               variant="spot"
-              classes="title-subsection"
+              classes="title-sub-subsection"
               SRText="Price:"
             />
           </span>
