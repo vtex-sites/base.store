@@ -69,6 +69,8 @@ const Hero = ({
           options={{
             fitIn: true,
           }}
+          // for mobile load 100vw image, for desktop load half img
+          sizes="(max-width: 768px) 100vw, 50vw"
         />
       </HeroImage>
     </UIHero>
