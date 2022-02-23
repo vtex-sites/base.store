@@ -11,7 +11,6 @@ import type {
 import './filter.scss'
 
 interface FacetsProps {
-  slug: string
   testId: string
   selectedFacets: IStoreSelectedFacet[]
   filteredFacets: Filter_FacetsFragment[]
@@ -25,7 +24,6 @@ interface FacetsProps {
 }
 
 function Facets({
-  slug,
   testId,
   selectedFacets,
   filteredFacets,
@@ -55,17 +53,13 @@ function Facets({
                   <li key={id} className="filter__item">
                     <Checkbox
                       id={id}
-                      checked={
-                        item.value === slug ||
-                        selectedFacets.some(
-                          (facet) => facet.value === item.value
-                        )
-                      }
+                      checked={selectedFacets.some(
+                        (facet) => facet.value === item.value
+                      )}
                       onChange={() => onFacetChange({ key, value: item.value })}
                       data-testid={`${testId}-accordion-panel-checkbox`}
                       data-value={item.value}
                       data-quantity={item.quantity}
-                      disabled={item.value === slug}
                     />
                     <UILabel htmlFor={id} className="title-small">
                       {item.label}{' '}

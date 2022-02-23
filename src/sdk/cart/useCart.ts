@@ -3,14 +3,12 @@ import { useCallback, useMemo } from 'react'
 
 import { getItemId, isGift } from './validate'
 import type { Cart, CartItem } from './validate'
-import type { CartItemWithAnalytics } from './useBuyButton'
 
 export const useCart = () => {
-  const { addItem: addItemToCart, ...cart } =
-    useSDKCart<CartItemWithAnalytics>()
+  const { addItem: addItemToCart, ...cart } = useSDKCart<CartItem>()
 
   const addItem = useCallback(
-    <Item extends Omit<CartItemWithAnalytics, 'id'>>(item: Item) => {
+    (item: Omit<CartItem, 'id'>) => {
       const cartItem = {
         ...item,
         id: getItemId(item),
@@ -25,7 +23,7 @@ export const useCart = () => {
     () => ({
       ...cart,
       addItem,
-      messages: (cart as Cart<CartItem>).messages,
+      messages: (cart as Cart).messages,
       gifts: cart.items.filter((item) => isGift(item)),
       items: cart.items.filter((item) => !isGift(item)),
       totalUniqueItems: cart.items.length,

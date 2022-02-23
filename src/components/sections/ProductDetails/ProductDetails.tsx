@@ -67,17 +67,17 @@ function ProductDetails({ product: staleProduct }: Props) {
 
   const buyProps = useBuyButton({
     id,
-    brand,
-    isVariantOf,
     price,
     listPrice,
     seller,
     quantity: addQuantity,
-    gtin,
     itemOffered: {
-      image: productImages,
-      name: variantName,
       sku,
+      name: variantName,
+      gtin,
+      image: productImages,
+      brand,
+      isVariantOf,
     },
   })
 

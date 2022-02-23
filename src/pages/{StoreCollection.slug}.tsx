@@ -86,7 +86,7 @@ function Page(props: Props) {
         </section>
       </div>
 
-      <ProductGallery title={title} slug={slug} />
+      <ProductGallery title={title} />
 
       {youMightAlsoLikeProducts?.length > 0 && (
         <section className="page__section page__section-shelf page__section-divisor / grid-section">

@@ -1,22 +1,22 @@
-import React, { useRef } from 'react'
-import { useCart } from 'src/sdk/cart/useCart'
-import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
-import Button from 'src/components/ui/Button'
-import IconButton from 'src/components/ui/IconButton'
+import { List } from '@faststore/ui'
 import {
   ArrowRight as ArrowRightIcon,
-  X as XIcon,
   Truck as TruckIcon,
+  X as XIcon,
 } from 'phosphor-react'
-import { Badge } from 'src/components/ui/Badge'
+import React, { useRef } from 'react'
 import Alert from 'src/components/ui/Alert'
+import { Badge } from 'src/components/ui/Badge'
+import Button from 'src/components/ui/Button'
+import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
+import { useCart } from 'src/sdk/cart/useCart'
+import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useUI } from 'src/sdk/ui'
-import { List } from '@faststore/ui'
 
 import CartItem from '../CartItem'
-import OrderSummary from '../OrderSummary'
 import EmptyCart from '../EmptyCart'
+import OrderSummary from '../OrderSummary'
 
 import './cart-sidebar.scss'
 

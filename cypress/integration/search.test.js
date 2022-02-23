@@ -21,11 +21,14 @@ describe('Search input', () => {
       cy.visit(pages.home, options)
       cy.waitForHydration()
 
-      cy.get('form[data-store-search-input]').within(() => {
-        cy.getById('store-input').click().type(term)
+      cy.getById('store-input-mobile-button').click({ force: true })
 
-        cy.getById('store-button').click()
-      })
+      cy.getById('store-input-mobile')
+        .click()
+        .type(term)
+        .within(() => {
+          cy.getById('store-button').click()
+        })
 
       cy.location('search').should((loc) => {
         expect(loc).to.include(`q=${term}`)
