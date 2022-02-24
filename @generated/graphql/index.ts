@@ -851,9 +851,9 @@ export type Query = {
   collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
+  person: Maybe<StorePerson>
   product: StoreProduct
   search: StoreSearchResult
-  session: Session
   site: Maybe<Site>
   siteBuildMetadata: Maybe<SiteBuildMetadata>
   siteFunction: Maybe<SiteFunction>
@@ -1132,10 +1132,6 @@ export type QueryStoreProductArgs = {
   seo: InputMaybe<StoreSeoFilterInput>
   sku: InputMaybe<StringQueryOperatorInput>
   slug: InputMaybe<StringQueryOperatorInput>
-}
-
-export type Session = {
-  id: Scalars['String']
 }
 
 export type Site = Node & {
@@ -3101,6 +3097,14 @@ export type StorePageInfo = {
   totalCount: Scalars['Int']
 }
 
+export type StorePerson = {
+  email: Maybe<Scalars['String']>
+  familyName: Maybe<Scalars['String']>
+  givenName: Maybe<Scalars['String']>
+  id: Maybe<Scalars['String']>
+  isAuthenticated: Maybe<Scalars['Boolean']>
+}
+
 export type StoreProduct = Node & {
   additionalProperty: Array<StorePropertyValue>
   aggregateRating: StoreAggregateRating
@@ -3892,6 +3896,21 @@ export type CartItemFragment = {
   }
 }
 
+export type PersonQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type PersonQueryQuery = {
+  person:
+    | {
+        id: string | null | undefined
+        email: string | null | undefined
+        givenName: string | null | undefined
+        familyName: string | null | undefined
+        isAuthenticated: boolean | null | undefined
+      }
+    | null
+    | undefined
+}
+
 export type BrowserProductQueryQueryVariables = Exact<{
   locator: Array<IStoreSelectedFacet> | IStoreSelectedFacet
 }>
@@ -3958,7 +3977,3 @@ export type ProductsQueryQuery = {
     }
   }
 }
-
-export type SessionQueryQueryVariables = Exact<{ [key: string]: never }>
-
-export type SessionQueryQuery = { session: { id: string } }

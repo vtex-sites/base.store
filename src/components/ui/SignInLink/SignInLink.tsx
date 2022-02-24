@@ -1,21 +1,21 @@
 import React from 'react'
 import Icon from 'src/components/ui/Icon'
-import { useSessionQuery } from 'src/sdk/session/useSessionQuery'
+import { usePersonQuery } from 'src/sdk/person/usePersonQuery'
 
 import { LinkButton } from '../Button'
 
 const SignInLink: React.FC = () => {
-  const session = useSessionQuery()
+  const person = usePersonQuery()
 
   return (
     <LinkButton
       data-button-signin-link
-      to="/login"
+      to={person?.isAuthenticated ? '/account' : '/login'}
       className="title-sub-subsection signin-link"
       variant="tertiary"
     >
       <Icon name="User" width={18} height={18} weight="bold" />
-      <span>{session ? 'My Account' : 'Sign In'}</span>
+      <span>{person?.isAuthenticated ? 'My Account' : 'Sign In'}</span>
     </LinkButton>
   )
 }
