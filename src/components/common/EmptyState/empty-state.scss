@@ -1,9 +1,32 @@
+@import "src/styles/scaffold";
+
 .empty-state[data-empty-state] {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  margin-right: rem(101px);
+  margin-left: rem(101px);
+  padding-top: rem(95px);
+  padding-bottom: rem(95px);
   background-color: var(--bg-neutral);
   row-gap: var(--space-3);
+
+  > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-disabled);
+    row-gap: var(--space-1);
+
+    p {
+      font-size: var(--text-size-3);
+    }
+  }
+
+  button {
+    width: rem(190px);
+  }
 }

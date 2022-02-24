@@ -3,8 +3,6 @@ import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
 import Button from 'src/components/ui/Button'
 import EmptyState from 'src/components/common/EmptyState'
 
-import './empty-cart.scss'
-
 interface Props {
   /**
    * This function is called when `Start Shopping` button is clicked
