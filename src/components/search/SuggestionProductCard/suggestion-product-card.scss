@@ -18,26 +18,16 @@
   [data-suggestion-product-card-summary] {
     flex-direction: column;
     grid-column: 2 / span 4;
+  }
 
-    p {
-      margin-bottom: var(--space-0);
-      color: inherit;
-      line-height: 1.2;
-      text-decoration: none;
-      text-overflow: -o-ellipsis-lastline;
-      text-overflow: ellipsis;
-      outline: none;
+  [data-suggestion-product-card-title] {
+    margin-bottom: var(--space-0);
+    color: inherit;
+    line-height: 1.2;
+    text-decoration: none;
+    outline: none;
 
-      &[data-suggestion-product-card-title] {
-        display: -webkit-box;
-        padding: 0;
-        overflow: hidden;
-        -webkit-box-orient: vertical;
-        -moz-box-orient: vertical;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-      }
-    }
+    @include truncate-title;
   }
 
   [data-suggested-product-card-prices] {
