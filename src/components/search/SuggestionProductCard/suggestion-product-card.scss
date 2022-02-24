@@ -7,7 +7,7 @@
     display: grid;
     grid-template-columns: rem(56px) repeat(4, 1fr);
     align-items: center;
-    column-gap: rem(16px);
+    column-gap: var(--grid-gap-0);
   }
 
   [data-gatsby-image-wrapper] {
