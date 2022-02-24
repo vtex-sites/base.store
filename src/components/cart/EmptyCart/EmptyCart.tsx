@@ -17,7 +17,7 @@ function EmptyCart({ onDismiss }: Props) {
         <ShoppingCartIcon size="32" />
         <p>Your Cart is empty</p>
       </header>
-      <Button onClick={onDismiss} variant="primary">
+      <Button onClick={onDismiss} variant="secondary">
         Start Shopping
       </Button>
     </EmptyState>
