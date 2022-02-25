@@ -4,11 +4,18 @@ import type {
   PropsWithChildren,
 } from 'react'
 import React, { Suspense, useEffect, useState } from 'react'
+import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 
-export default function LazyIcon<C extends ElementType>({
+import 'src/styles/icons.scss'
+
+interface Props<C> {
+  icon: C
+}
+
+function LazyIcon<C extends ElementType>({
   icon: Icon,
   ...props
-}: PropsWithChildren<{ icon: C } & ComponentPropsWithoutRef<C>>) {
+}: PropsWithChildren<Props<C> & ComponentPropsWithoutRef<C>>) {
   const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
@@ -16,7 +23,11 @@ export default function LazyIcon<C extends ElementType>({
   }, [])
 
   if (!hydrated) {
-    return null
+    return (
+      <div className={`icon__${props?.size ?? 24}`}>
+        <SkeletonElement type="text" shimmer loading />
+      </div>
+    )
   }
 
   return (
@@ -25,3 +36,5 @@ export default function LazyIcon<C extends ElementType>({
     </Suspense>
   )
 }
+
+export default LazyIcon

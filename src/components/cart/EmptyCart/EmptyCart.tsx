@@ -4,8 +4,6 @@ import EmptyState from 'src/components/common/EmptyState'
 import 'src/styles/icons.scss'
 import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
 
-import './empty-cart.scss'
-
 interface Props {
   /**
    * This function is called when `Start Shopping` button is clicked
