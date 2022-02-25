@@ -34,7 +34,7 @@ function ProductGallery({ title }: Props) {
 
   if (data && totalCount === 0) {
     return (
-      <div className="product-listing / grid-content-full">
+      <div className="product-listing / grid-content">
         <EmptyGallery />
       </div>
     )
