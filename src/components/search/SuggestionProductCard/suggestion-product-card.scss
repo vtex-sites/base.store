@@ -1,0 +1,37 @@
+@import "src/styles/scaffold";
+
+.suggestion-product-card {
+  padding: var(--space-1) var(--space-3);
+
+  [data-card-content] {
+    display: grid;
+    grid-template-columns: rem(56px) repeat(4, 1fr);
+    align-items: center;
+    column-gap: var(--grid-gap-0);
+  }
+
+  [data-gatsby-image-wrapper] {
+    flex-shrink: 0;
+    border-radius: var(--border-radius-default);
+  }
+
+  [data-suggestion-product-card-summary] {
+    flex-direction: column;
+    grid-column: 2 / span 4;
+  }
+
+  [data-suggestion-product-card-title] {
+    margin-bottom: var(--space-0);
+    color: inherit;
+    line-height: 1.2;
+    text-decoration: none;
+    outline: none;
+
+    @include truncate-title;
+  }
+
+  [data-suggestion-product-card-prices] {
+    display: flex;
+    align-items: baseline;
+  }
+}

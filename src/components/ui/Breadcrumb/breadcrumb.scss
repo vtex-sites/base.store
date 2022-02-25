@@ -9,6 +9,8 @@
     overflow-x: hidden;
 
     li {
+      display: inline-flex;
+
       &:first-child a {
         display: flex;
         align-items: center;
