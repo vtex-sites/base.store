@@ -2,8 +2,11 @@ import { useStorage } from '@faststore/sdk'
 
 const storageKey = 'main::store::searchHistory'
 
-export default function useSearchHistory() {
-  const MAX_HISTORY_SIZE = 5
+const MAX_HISTORY_SIZE = 5
+
+export default function useSearchHistory(
+  maxHistorySize: number = MAX_HISTORY_SIZE
+) {
   const [searchHistory, setSearchHistory] = useStorage<string[]>(storageKey, [])
 
   function addToSearchHistory(term: string) {
@@ -13,7 +16,7 @@ export default function useSearchHistory() {
 
     const newHistory = [term, ...historySet]
 
-    if (newHistory.length > MAX_HISTORY_SIZE) {
+    if (newHistory.length > maxHistorySize) {
       newHistory.pop()
     }
 
