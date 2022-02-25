@@ -11,10 +11,10 @@ export default function useSearchHistory() {
 
     historySet.delete(term)
 
-    const newHistory = [...historySet, term]
+    const newHistory = [term, ...historySet]
 
     if (newHistory.length > MAX_HISTORY_SIZE) {
-      newHistory.shift()
+      newHistory.pop()
     }
 
     setSearchHistory(newHistory)
@@ -25,7 +25,7 @@ export default function useSearchHistory() {
   }
 
   return {
-    searchHistory: searchHistory.reverse(),
+    searchHistory,
     addToSearchHistory,
     clearSearchHistory,
   }
