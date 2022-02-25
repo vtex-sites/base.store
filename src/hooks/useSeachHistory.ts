@@ -7,11 +7,9 @@ export default function useSearchHistory() {
   const [searchHistory, setSearchHistory] = useStorage<string[]>(storageKey, [])
 
   function addToSearchHistory(term: string) {
-    const historySet = new Set([...searchHistory])
+    const historySet = new Set(searchHistory)
 
-    if (historySet.has(term)) {
-      historySet.delete(term)
-    }
+    historySet.delete(term)
 
     const newHistory = [...historySet, term]
 
@@ -27,7 +25,7 @@ export default function useSearchHistory() {
   }
 
   return {
-    searchHistory,
+    searchHistory: searchHistory.reverse(),
     addToSearchHistory,
     clearSearchHistory,
   }
