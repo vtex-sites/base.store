@@ -3,7 +3,7 @@ import {
   CircleWavyWarning as CircleWavyWarningIcon,
   RocketLaunch as RocketLaunchIcon,
 } from 'phosphor-react'
-import Button from 'src/components/ui/Button'
+import { LinkButton } from 'src/components/ui/Button'
 import EmptyState from 'src/components/common/EmptyState'
 
 function EmptyGallery() {
@@ -14,20 +14,22 @@ function EmptyGallery() {
         <p>Nothing matches with your search</p>
       </header>
 
-      <Button
+      <LinkButton
+        to="/office"
         variant="secondary"
         icon={<CircleWavyWarningIcon size={18} />}
         iconPosition="left"
       >
         Browse Offers
-      </Button>
-      <Button
+      </LinkButton>
+      <LinkButton
+        to="/technology"
         variant="secondary"
         icon={<RocketLaunchIcon size={18} />}
         iconPosition="left"
       >
         Just Arrived
-      </Button>
+      </LinkButton>
     </EmptyState>
   )
 }
