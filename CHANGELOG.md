@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replace relative stylesheets imports with absolute path
 - Moves some `Filter` component logic to the API
 - Implements the expanded mode of `Searchbar` in mobile devices.
-- Changes the Lighthouse and Cypress URL
+- Updates Lighthouse and Cypress URL with valid product links
 
 ### Deprecated
 - useWindowDimensions hook
