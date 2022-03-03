@@ -17,7 +17,7 @@ function EmptyGallery() {
       <LinkButton
         to="/office"
         variant="secondary"
-        icon={<CircleWavyWarningIcon size={18} />}
+        icon={<CircleWavyWarningIcon size={18} weight="bold" />}
         iconPosition="left"
       >
         Browse Offers
@@ -25,7 +25,7 @@ function EmptyGallery() {
       <LinkButton
         to="/technology"
         variant="secondary"
-        icon={<RocketLaunchIcon size={18} />}
+        icon={<RocketLaunchIcon size={18} weight="bold" />}
         iconPosition="left"
       >
         Just Arrived
