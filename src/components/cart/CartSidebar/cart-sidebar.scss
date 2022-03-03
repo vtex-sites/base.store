@@ -5,10 +5,6 @@
   overflow: auto;
   background-color: var(--bg-neutral-light);
 
-  &.cart-sidebar--empty {
-    background-color: var(--bg-neutral-lightest);
-  }
-
   > header {
     display: flex;
     align-items: center;
