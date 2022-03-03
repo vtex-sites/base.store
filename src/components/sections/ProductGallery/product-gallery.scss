@@ -3,10 +3,10 @@
 .product-listing {
   --product-listing-row-height: var(--space-6);
 
-  padding-top: 0;
+  height: 100%;
 
-  @include media(">=notebook") {
-    padding-top: var(--page-padding-notebook);
+  @include media("<notebook") {
+    padding-top: 0;
   }
 }
 
