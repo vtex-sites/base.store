@@ -7,10 +7,12 @@
   justify-content: center;
   height: 100%;
   min-height: 50vh;
-  margin: var(--space-3);
-  background-color: var(--bg-body);
+  margin: var(--space-3) 0;
+  background-color: var(--bg-neutral);
   border-radius: var(--border-radius-default);
   row-gap: var(--space-3);
+
+  @include media(">=notebook") { margin: var(--space-5) 0; }
 
   > header {
     display: flex;
