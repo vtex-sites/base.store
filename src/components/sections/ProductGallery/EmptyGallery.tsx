@@ -10,7 +10,7 @@ function EmptyGallery() {
   return (
     <EmptyState>
       <header>
-        <CircleWavyWarningIcon size={46} weight="thin" />
+        <CircleWavyWarningIcon size={56} weight="thin" />
         <p>Nothing matches with your search</p>
       </header>
 
