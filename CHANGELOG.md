@@ -23,7 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `BreadcrumbWrapper` from components/ui folder to `Breadcrumb` at components/sections
 - Replace relative stylesheets imports with absolute path
 - Moves some `Filter` component logic to the API
--  Implements the expanded mode of `Searchbar` in mobile devices.
+- Implements the expanded mode of `Searchbar` in mobile devices.
+- Changes the Lighthouse and Cypress URL
 
 ### Deprecated
 - useWindowDimensions hook
