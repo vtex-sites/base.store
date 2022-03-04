@@ -3,8 +3,12 @@ import './section.scss'
 import React from 'react'
 import type { PropsWithChildren } from 'react'
 
-function Section({ children }: PropsWithChildren<unknown>) {
-  return <section className="pages__section">{children}</section>
+interface Props {
+  className?: string
+}
+
+function Section({ children, className = '' }: PropsWithChildren<Props>) {
+  return <section className={`section ${className}`}>{children}</section>
 }
 
 export default Section

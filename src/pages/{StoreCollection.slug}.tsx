@@ -67,26 +67,22 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <Section>
-        <div className="product-listing__breadcrumb / grid-content">
-          <Breadcrumb
-            breadcrumbList={collection?.breadcrumbList.itemListElement}
-            name={title}
-          />
-        </div>
+      <Section className="product-listing__breadcrumb / grid-content">
+        <Breadcrumb
+          breadcrumbList={collection?.breadcrumbList.itemListElement}
+          name={title}
+        />
       </Section>
 
-      <Section>
-        <div className="product-listing__hero">
-          <Hero
-            variant="small"
-            title={title}
-            subtitle={`All the amazing ${title} from the brands we partner with.`}
-            imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-            imageAlt="Quest 2 Controller on a table"
-            icon={<HeadphonesIcon size={48} weight="thin" />}
-          />
-        </div>
+      <Section className="product-listing__hero">
+        <Hero
+          variant="small"
+          title={title}
+          subtitle={`All the amazing ${title} from the brands we partner with.`}
+          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+          imageAlt="Quest 2 Controller on a table"
+          icon={<HeadphonesIcon size={48} weight="thin" />}
+        />
       </Section>
 
       <Section>
@@ -94,22 +90,16 @@ function Page(props: Props) {
       </Section>
 
       {youMightAlsoLikeProducts?.length > 0 && (
-        <Section>
-          <div className="page__section-shelf page__section-divisor / grid-section">
-            <h2 className="title-section / grid-content">
-              You might also like
-            </h2>
-            <div className="page__section-content">
-              <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
-            </div>
+        <Section className="page__section-shelf page__section-divisor / grid-section">
+          <h2 className="title-section / grid-content">You might also like</h2>
+          <div className="page__section-content">
+            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
           </div>
         </Section>
       )}
 
-      <Section>
-        <div className="product-listing__scroll-top">
-          <ScrollToTopButton />
-        </div>
+      <Section className="product-listing__scroll-top">
+        <ScrollToTopButton />
       </Section>
     </SearchProvider>
   )

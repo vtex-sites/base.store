@@ -73,42 +73,34 @@ function Page(props: Props) {
         <IncentivesHeader />
       </Section>
 
-      <Section>
-        <section className="page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Most Wanted</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products?.slice(0, 5)} />
-          </div>
-        </section>
+      <Section className="page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Most Wanted</h2>
+        <div className="page__section-content">
+          <ProductShelf products={products?.slice(0, 5)} />
+        </div>
       </Section>
 
-      <Section>
-        <section className="grid-section grid-content">
-          <h2 className="title-section">Just Arrived</h2>
-          <div className="page__section-content">
-            <ProductTiles products={products?.slice(5, 8)} />
-          </div>
-        </section>
+      <Section className="grid-section grid-content">
+        <h2 className="title-section">Just Arrived</h2>
+        <div className="page__section-content">
+          <ProductTiles products={products?.slice(5, 8)} />
+        </div>
       </Section>
 
-      <Section>
-        <section className="grid-section">
-          <BannerText
-            title="Receive our news and promotions in advance."
-            caption="Enjoy and get 10% off on your first purchase."
-            actionPath="/"
-            actionLabel="Call to action"
-          />
-        </section>
+      <Section className="grid-section">
+        <BannerText
+          title="Receive our news and promotions in advance."
+          caption="Enjoy and get 10% off on your first purchase."
+          actionPath="/"
+          actionLabel="Call to action"
+        />
       </Section>
 
-      <Section>
-        <section className="page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Deals & Promotions</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products?.slice(9, 14)} />
-          </div>
-        </section>
+      <Section className="page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Deals & Promotions</h2>
+        <div className="page__section-content">
+          <ProductShelf products={products?.slice(9, 14)} />
+        </div>
       </Section>
     </>
   )
