@@ -1,11 +1,6 @@
-@import "../vendors/include-media";
+@import "src/styles/scaffold";
 
-.product-listing__breadcrumb {
-  padding-top: var(--space-3);
-  padding-bottom: var(--space-3);
-}
-
-.product-listing__scroll-top {
+.scroll-to-top-button {
   display: flex;
   justify-content: center;
   width: 100%;

@@ -4,6 +4,8 @@ import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 
 import Section from '../Section'
 
+import './breadcrumb.scss'
+
 interface BreadcrumbWrapperProps
   extends Partial<Pick<BreadcrumbProps, 'breadcrumbList'>> {
   name: string
@@ -14,7 +16,7 @@ function Breadcrumb({ breadcrumbList, name }: BreadcrumbWrapperProps) {
   const list = breadcrumbList ?? fallback
 
   return (
-    <Section className="product-listing__breadcrumb / grid-content">
+    <Section className="breadcrumb / grid-content">
       <UIBreadcrumb breadcrumbList={list} />
     </Section>
   )
