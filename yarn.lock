@@ -2956,14 +2956,6 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/gatsby-plugin-nginx@^1.5.10":
-  version "1.5.10"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.10.tgz#2fdd1662791773caa012b2e980cd039237c43a35"
-  integrity sha512-1oKzF7E9Efv6Axo5cDPpv1VEAUSmQsf8sN3VSe0uGYkZUis6UnWnV/6QfRxNA6ee/TQFFAhTypDL2KtOJ+dsgw==
-  dependencies:
-    kebab-hash "^0.1.2"
-    webpack-assets-manifest "^5.0.6"
-
 "@vtex/gatsby-plugin-thumbor@^1.5.10":
   version "1.5.10"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.10.tgz#a0dda939fe3796bda435a9a797c879883786cbde"
