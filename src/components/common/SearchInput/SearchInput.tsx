@@ -12,7 +12,7 @@ import type {
   SearchInputRef,
 } from '@faststore/ui'
 import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
-import useSearchHistory from 'src/hooks/useSeachHistory'
+import useSearchHistory from 'src/sdk/search/useSeachHistory'
 import './search-input.scss'
 
 declare type SearchInputProps = {
