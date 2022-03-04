@@ -1,10 +1,18 @@
-import './Section.scss'
+import './section.scss'
 
 import React from 'react'
 import type { PropsWithChildren } from 'react'
 
-function Section({ children }: PropsWithChildren<unknown>) {
-  return <section className="pages__section">{children}</section>
+interface Props {
+  variant?: 'default' | 'divisor'
+}
+
+function Section({ children, variant = 'default' }: PropsWithChildren<Props>) {
+  return (
+    <section data-store-section data-variant={variant} className="section">
+      {children}
+    </section>
+  )
 }
 
 export default Section

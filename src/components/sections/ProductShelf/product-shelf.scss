@@ -17,3 +17,31 @@
     column-gap: var(--space-2);
   }
 }
+
+.product-shelf {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+
+  @include media(">=notebook") {
+    margin-top: var(--page-padding-notebook);
+    margin-bottom: var(--page-padding-notebook);
+  }
+}
+
+.product-shelf__title {
+  margin-bottom: var(--space-3);
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-4);
+  line-height: 1.16;
+
+  @include media(">=notebook") { font-size: var(--text-size-5); }
+}
+
+.product-shelf__products {
+  min-height: 21.06rem;
+
+  @include media(">=notebook") {
+    margin-top: calc(-1 * var(--space-0));
+    margin-bottom: calc(-1 * var(--space-3));
+  }
+}

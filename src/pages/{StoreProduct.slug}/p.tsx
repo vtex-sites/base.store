@@ -100,15 +100,11 @@ function Page(props: Props) {
       </Section>
 
       {youMightAlsoLikeProducts?.length > 0 && (
-        <Section>
-          <div className="page__section-shelf page__section-divisor / grid-section">
-            <h2 className="title-section / grid-content">
-              You might also like
-            </h2>
-            <div className="page__section-content">
-              <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
-            </div>
-          </div>
+        <Section variant="divisor">
+          <ProductShelf
+            products={youMightAlsoLikeProducts.slice(0, 5)}
+            title="You might also like"
+          />
         </Section>
       )}
     </>

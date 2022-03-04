@@ -1,0 +1,25 @@
+@import "src/styles/scaffold";
+
+.product-tiles {
+  width: 100%;
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+
+  @include media(">=notebook") {
+    margin-top: var(--page-padding-notebook);
+    margin-bottom: var(--page-padding-notebook);
+    padding-top: var(--page-padding-notebook);
+    padding-bottom: var(--page-padding-notebook);
+  }
+}
+
+.product-tiles__title {
+  margin-bottom: var(--space-3);
+  font-weight: var(--text-weight-bold);
+  font-size: var(--text-size-4);
+  line-height: 1.16;
+
+  @include media(">=notebook") {
+    font-size: var(--text-size-5);
+  }
+}

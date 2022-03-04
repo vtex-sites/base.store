@@ -1,5 +1,15 @@
 @import "src/styles/scaffold";
 
+.banner-text {
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+
+  @include media(">=notebook") {
+    margin-top: var(--page-padding-notebook);
+    margin-bottom: var(--page-padding-notebook);
+  }
+}
+
 [data-store-banner] {
   padding-top: var(--space-6);
   padding-bottom: var(--space-6);

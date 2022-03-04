@@ -7,15 +7,13 @@ import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductShelf from 'src/components/sections/ProductShelf'
+import ScrollToTop from 'src/components/sections/ScrollToTop'
 import Section from 'src/components/sections/Section'
-import ScrollToTopButton from 'src/components/ui/ScrollToTopButton'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import type { Props } from 'src/hooks/useSearchParams'
-
-import '../styles/pages/product-listing-page.scss'
 
 function Page(props: Props) {
   const {
@@ -77,16 +75,14 @@ function Page(props: Props) {
       </Section>
 
       <Section>
-        <div className="product-listing__hero">
-          <Hero
-            variant="small"
-            title={title}
-            subtitle={`All the amazing ${title} from the brands we partner with.`}
-            imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-            imageAlt="Quest 2 Controller on a table"
-            icon={<HeadphonesIcon size={48} weight="thin" />}
-          />
-        </div>
+        <Hero
+          variant="small"
+          title={title}
+          subtitle={`All the amazing ${title} from the brands we partner with.`}
+          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+          imageAlt="Quest 2 Controller on a table"
+          icon={<HeadphonesIcon size={48} weight="thin" />}
+        />
       </Section>
 
       <Section>
@@ -94,22 +90,16 @@ function Page(props: Props) {
       </Section>
 
       {youMightAlsoLikeProducts?.length > 0 && (
-        <Section>
-          <div className="page__section-shelf page__section-divisor / grid-section">
-            <h2 className="title-section / grid-content">
-              You might also like
-            </h2>
-            <div className="page__section-content">
-              <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
-            </div>
-          </div>
+        <Section variant="divisor">
+          <ProductShelf
+            products={youMightAlsoLikeProducts.slice(0, 5)}
+            title="You might also like"
+          />
         </Section>
       )}
 
       <Section>
-        <div className="product-listing__scroll-top">
-          <ScrollToTopButton />
-        </div>
+        <ScrollToTop />
       </Section>
     </SearchProvider>
   )

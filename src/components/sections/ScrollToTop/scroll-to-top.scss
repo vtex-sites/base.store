@@ -1,0 +1,12 @@
+@import "src/styles/scaffold";
+
+.scroll-to-top {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding-bottom: var(--space-10);
+
+  @include media(">=notebook") {
+    padding-bottom: var(--space-8);
+  }
+}

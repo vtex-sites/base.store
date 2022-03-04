@@ -1,9 +1,16 @@
-.pages__section {
+@import "src/styles/scaffold";
+
+.section {
   width: 100vw;
   content-visibility: auto;
   contain-intrinsic-size: 2px 1024px;
+}
 
-  .title-section {
-    margin-bottom: var(--space-3);
+[data-store-section][data-variant="divisor"] {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--color-border-display);
+
+  @include media(">=notebook") {
+    margin-top: var(--space-9);
   }
 }

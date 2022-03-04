@@ -8,14 +8,12 @@ import './buttons.scss'
 export type Variant = 'primary' | 'secondary' | 'tertiary'
 export type IconPosition = 'left' | 'right'
 
-export type UIButtonProps = {
+export type UIButtonProps = ButtonProps & {
   variant?: Variant
   inverse?: boolean
   icon?: ReactNode
   iconPosition?: IconPosition
 }
-
-type Props = ButtonProps & UIButtonProps
 
 function Button({
   variant,
@@ -24,7 +22,7 @@ function Button({
   iconPosition,
   children,
   ...props
-}: Props) {
+}: UIButtonProps) {
   return (
     <UIButton
       className="button"
