@@ -1485,7 +1485,6 @@
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
 
-<<<<<<< HEAD
 "@faststore/sdk@^1.5.20":
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.5.20.tgz#2c0dc75bf2a922d91dbfdbac9719447b9867c252"
@@ -1497,19 +1496,6 @@
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.5.20.tgz#89a245e7c19a86e5e29123eb56697cd5c051deda"
   integrity sha512-Lwn32143eSMXpSSBqO48Ws3GTWtW4/IcalBGSo8LU0iFe1++qDXkQCIZ6PjRystq4t24aggrB4gaZyx2tUkqeQ==
-=======
-"@faststore/sdk@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.5.17.tgz#bb5dced7445b869714e640e4c44777c0fa28f5ba"
-  integrity sha512-GxvtAllcQIZfOViHZ9GCtDxLfW9eTOt7T+lUDvM6st1UDcoW9VDXcC0PTOxnv1zGq5H1YXanivMmFq3HlrB1lQ==
-  dependencies:
-    idb-keyval "^5.1.3"
-
-"@faststore/ui@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.5.17.tgz#1116ee42f247d1038521447a1df3fe3f448defb2"
-  integrity sha512-BYfFPMUuxXVLujwOvPYMRWcMm5UsXd86ecWInDucoQk5gTF+CwCfhUR6ZpHOIl4JiNWIEGSMMcVQipBe+GkcYw==
->>>>>>> 1fd8eb2 (Lazyload Phosphor-react icons)
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
@@ -3061,22 +3047,14 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-<<<<<<< HEAD
 "@vtex/gatsby-plugin-nginx@^1.5.20":
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.20.tgz#26c91252da78c9cd5ddd93d72f9bb92e80c53f62"
   integrity sha512-lXmNr4xCop8rg/+kAik0McO3oDjNQT8AvdCRNcWehzctEv6V0a8egACu2o3WOvvkt71aeEA72iX9typO/YwaMg==
-=======
-"@vtex/gatsby-plugin-nginx@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.5.17.tgz#0e86570a28a1f2f1a6ab836c42a8ef22cb7e11e9"
-  integrity sha512-OprBsitXteFPS/tdWMHqDB8R3azLtOkC695hQedrOM6Cq0O95o1BfAsCHMoqjn1jMa22v4pzViAZjUSXxGzmMg==
->>>>>>> 1fd8eb2 (Lazyload Phosphor-react icons)
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-<<<<<<< HEAD
 "@vtex/gatsby-plugin-thumbor@^1.5.20":
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.20.tgz#3d9f708f2a461af9ffdb5ada86cdca7986b6ee74"
@@ -3093,41 +3071,16 @@
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.5.20.tgz#e3172cb9a7e1a94d6c7f0f56f449dc0669f8cb3e"
   integrity sha512-bu+qZMtiQbx60FeWFNDGc+lBn6H0wSutShzn5OJVN60wSZPW6SPBppb1NVRZMbzX34g7LYDsz28+z16DXy5meg==
-=======
-"@vtex/gatsby-plugin-thumbor@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.5.17.tgz#af926a04d0f02d890d9c13eed6b1b05e894d9078"
-  integrity sha512-D9uVaMRP+4f4RfVUvZB1zuorgmcZBN6AMqj0N+TRiJhRBmN9WoxhNKoxv8Nkha2Fz4IeKFzEWByX5t/OjfaFyg==
-
-"@vtex/gatsby-source-store@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.5.17.tgz#24fdc7be485b01215858b941b7393eab18f90624"
-  integrity sha512-Rt+3PIpxvarsmpHkiBnucDUOMzwomebdVkhC1TTQDFiBbK7gBXptg3RwWjZyKPfBBEurN/xuCKWq2dlTxk8j6Q==
-  dependencies:
-    gatsby-graphql-source-toolkit "^2.0.1"
-
-"@vtex/graphql-utils@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.5.17.tgz#4482424befd41126b5a8044f75a9903f3c41a5de"
-  integrity sha512-0oKDh6TQchYXpdAZUZrGdb4rpcsHroW66fh0Ln8fa0RXWT2EokxnXYfh8GPGLbK+AZ3d7XHTxiU9qXC8Z9lKhw==
->>>>>>> 1fd8eb2 (Lazyload Phosphor-react icons)
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
-<<<<<<< HEAD
 "@vtex/lighthouse-config@^1.5.20":
   version "1.5.20"
   resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.5.20.tgz#898510e2c871a76384f393cc2396b8df698eca88"
   integrity sha512-FyJkhcZzVVRZ6MrEKwvzYQnvzYOFX3SXacVh7mJPJqxQDKmxhfOjr9wuQ8DNbuP8FKf0XDqRJLAUTsG4Vu/bpg==
-=======
-"@vtex/lighthouse-config@^1.5.17":
-  version "1.5.17"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.5.17.tgz#1edcb8134676d327f9b2155d2feaf25f95264267"
-  integrity sha512-GghUNSJ1z7xAN9IlF3Q9vrXdjqciXIKV71cfxlpg+GW4Wx8sE9+Turf8/M51h0U23ym2Yyk8ToRXv93hbybWrw==
->>>>>>> 1fd8eb2 (Lazyload Phosphor-react icons)
 
 "@vtex/prettier-config@1.0.0":
   version "1.0.0"

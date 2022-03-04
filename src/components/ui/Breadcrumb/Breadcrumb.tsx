@@ -1,13 +1,11 @@
-import React, { lazy, memo } from 'react'
+import React, { memo } from 'react'
 import { Breadcrumb as UIBreadcrumb } from '@faststore/ui'
 import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
-import LazyIcon from 'src/components/common/LazyIcon'
+import IconSVG from 'src/components/common/IconSVG'
 
 import 'src/styles/icons.scss'
 import './breadcrumb.scss'
-
-const HouseIcon = lazy(() => import('phosphor-react/src/icons/House'))
 
 type ItemElement = {
   item: string
@@ -22,9 +20,7 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
   return (
     <UIBreadcrumb divider="">
       <Link aria-label="home" to="/">
-        <span className="icon__18">
-          <LazyIcon icon={HouseIcon} size={18} weight="bold" />
-        </span>
+        <IconSVG name="House" width="18px" height="18px" loading="eager" />
       </Link>
 
       {breadcrumbList.map(({ item, name }, index) => {

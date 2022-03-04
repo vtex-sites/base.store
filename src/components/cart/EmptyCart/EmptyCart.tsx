@@ -2,7 +2,7 @@ import React from 'react'
 import Button from 'src/components/ui/Button'
 import EmptyState from 'src/components/common/EmptyState'
 import 'src/styles/icons.scss'
-import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 interface Props {
   /**
@@ -15,7 +15,7 @@ function EmptyCart({ onDismiss }: Props) {
   return (
     <EmptyState>
       <header data-empty-cart-title>
-        <ShoppingCartIcon size="56" weight="thin" />
+        <IconSVG name="ShoppingCartThinDisabled" width="56px" height="56px" />
         <p>Your Cart is empty</p>
       </header>
       <Button onClick={onDismiss} variant="secondary">

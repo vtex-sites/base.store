@@ -1,4 +1,4 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import type { ReactNode } from 'react'
 import UIHero, {
   HeroContent,
@@ -7,9 +7,7 @@ import UIHero, {
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
 import { LinkButton } from 'src/components/ui/Button'
-import LazyIcon from 'src/components/common/LazyIcon'
-
-const ArrowRightIcon = lazy(() => import('phosphor-react/src/icons/ArrowRight'))
+import IconSVG from 'src/components/common/IconSVG'
 
 type Variant = 'default' | 'small'
 
@@ -52,7 +50,13 @@ const Hero = ({
             {!!link && (
               <HeroLink>
                 <LinkButton to={link} inverse>
-                  {linkText} <LazyIcon icon={ArrowRightIcon} size={24} />
+                  {linkText}{' '}
+                  <IconSVG
+                    name="ArrowRightDarkBlue"
+                    width="24px"
+                    height="24px"
+                    loading="eager"
+                  />
                 </LinkButton>
               </HeroLink>
             )}

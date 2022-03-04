@@ -1,9 +1,7 @@
-import React, { lazy } from 'react'
-import LazyIcon from 'src/components/common/LazyIcon'
+import React from 'react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import { LinkButton } from '../Button'
-
-const UserIcon = lazy(() => import('phosphor-react/src/icons/User'))
 
 const SignInLink: React.FC = () => {
   return (
@@ -12,7 +10,7 @@ const SignInLink: React.FC = () => {
       to="/"
       className="title-sub-subsection signin-link"
       variant="tertiary"
-      icon={<LazyIcon icon={UserIcon} size={18} weight="bold" />}
+      icon={<IconSVG name="User" width="18px" height="18px" loading="eager" />}
       iconPosition="left"
     >
       <span>Sign In</span>

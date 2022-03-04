@@ -1,6 +1,6 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React, { lazy, useCallback, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
@@ -8,13 +8,11 @@ import type {
   IStoreSelectedFacet,
   Filter_FacetsFragment,
 } from '@generated/graphql'
-import LazyIcon from 'src/components/common/LazyIcon'
+import IconSVG from 'src/components/common/IconSVG'
 
 import Facets from './Facets'
 
 import './filter.scss'
-
-const XIcon = lazy(() => import('phosphor-react/src/icons/X'))
 
 interface FilterProps {
   facets: Filter_FacetsFragment[]
@@ -190,7 +188,14 @@ function Filter({
               data-testid="filter-modal-button-close"
               classes="filter-modal__button"
               aria-label="Close Filters"
-              icon={<LazyIcon icon={XIcon} size={32} />}
+              icon={
+                <IconSVG
+                  name="XThin"
+                  width="32px"
+                  height="32px"
+                  loading="lazy"
+                />
+              }
               onClick={() => {
                 setSelectedFacets(searchState.selectedFacets)
                 dismissTransition.current?.()

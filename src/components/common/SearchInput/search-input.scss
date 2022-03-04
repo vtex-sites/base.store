@@ -6,14 +6,16 @@
   width: 100%;
   height: var(--tap-min-size);
 
-  @include media(">=notebook") { height: var(--space-6); }
+  @include media(">=notebook") {
+    height: var(--space-6);
+  }
 
   [data-store-input] {
     width: 100%;
     padding: var(--space-1) var(--space-7) var(--space-1) var(--space-2);
     border: var(--border-width-0) solid var(--color-border-input);
     border-radius: var(--border-radius-default);
-    transition: box-shadow .2s ease, border .2s ease;
+    transition: box-shadow 0.2s ease, border 0.2s ease;
 
     &:hover {
       border-color: var(--color-border-input-selected);
@@ -23,7 +25,9 @@
     @include input-focus-ring;
   }
 
-  [data-store-icon] { display: block; }
+  [data-store-icon] {
+    display: block;
+  }
 
   [data-store-button] {
     position: absolute;
@@ -40,9 +44,14 @@
     }
   }
 
-  [data-store-button] svg {
-    width: var(--space-4);
-    height: var(--space-4);
+  [data-store-button] img {
+    width: var(--space-5);
+    height: var(--space-5);
     color: var(--color-neutral-7);
+
+    @include media(">=notebook") {
+      width: var(--space-4);
+      height: var(--space-4);
+    }
   }
 }

@@ -30,7 +30,7 @@
       color: var(--color-text-disabled);
       cursor: not-allowed;
       opacity: 1;
-      + svg { display: none; }
+      + img { display: none; }
     }
 
     @include media("<notebook") { min-height: var(--tap-min-size); }
@@ -38,7 +38,7 @@
     @include media(">=notebook") { height: var(--space-6); }
   }
 
-  svg {
+  img {
     position: absolute;
     right: var(--space-2);
     color: var(--color-link);

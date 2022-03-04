@@ -2,7 +2,7 @@ import { SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
-import React, { lazy } from 'react'
+import React from 'react'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductShelf from 'src/components/sections/ProductShelf'
@@ -13,11 +13,9 @@ import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import type { Props } from 'src/hooks/useSearchParams'
-import LazyIcon from 'src/components/common/LazyIcon'
+import IconSVG from 'src/components/common/IconSVG'
 
 import 'src/styles/pages/product-listing-page.scss'
-
-const HeadphonesIcon = lazy(() => import('phosphor-react/src/icons/Headphones'))
 
 function Page(props: Props) {
   const {
@@ -83,7 +81,14 @@ function Page(props: Props) {
           subtitle={`All the amazing ${title} from the brands we partner with.`}
           imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
           imageAlt="Quest 2 Controller on a table"
-          icon={<LazyIcon icon={HeadphonesIcon} size={48} weight="thin" />}
+          icon={
+            <IconSVG
+              name="HeadphonesThinNeutral"
+              width="48px"
+              height="48px"
+              loading="eager"
+            />
+          }
         />
       </Section>
 

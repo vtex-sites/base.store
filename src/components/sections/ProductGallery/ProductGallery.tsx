@@ -8,6 +8,7 @@ import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
 import LazyIcon from 'src/components/common/LazyIcon'
+import IconSVG from 'src/components/common/IconSVG'
 
 import GalleryPage from './ProductGalleryPage'
 import EmptyGallery from './EmptyGallery'
@@ -18,9 +19,6 @@ import { useTotalCount } from './useTotalCount'
 import './product-gallery.scss'
 
 const ArrowLeftIcon = lazy(() => import('phosphor-react/src/icons/ArrowLeft'))
-const FadersHorizontalIcon = lazy(
-  () => import('phosphor-react/src/icons/FadersHorizontal')
-)
 
 interface Props {
   title: string
@@ -70,7 +68,14 @@ function ProductGallery({ title }: Props) {
             <Button
               variant="tertiary"
               data-testid="open-filter-button"
-              icon={<LazyIcon icon={FadersHorizontalIcon} size={16} />}
+              icon={
+                <IconSVG
+                  name="FadersHorizontalDarkBlue"
+                  width="16px"
+                  height="16px"
+                  loading="eager"
+                />
+              }
               iconPosition="left"
               aria-label="Open Filters"
               onClick={() => setIsFilterOpen(!isFilterOpen)}

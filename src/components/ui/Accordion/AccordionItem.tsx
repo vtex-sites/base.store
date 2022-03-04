@@ -1,4 +1,4 @@
-import React, { forwardRef, lazy } from 'react'
+import React, { forwardRef } from 'react'
 import {
   Icon as UIIcon,
   AccordionItem as UIAccordionItem,
@@ -6,12 +6,7 @@ import {
   AccordionButton as UIAccordionButton,
 } from '@faststore/ui'
 import type { AccordionItemProps } from '@faststore/ui'
-import LazyIcon from 'src/components/common/LazyIcon'
-
-const PlusCircleIcon = lazy(() => import('phosphor-react/src/icons/PlusCircle'))
-const MinusCircleIcon = lazy(
-  () => import('phosphor-react/src/icons/MinusCircle')
-)
+import IconSVG from 'src/components/common/IconSVG'
 
 interface Props extends AccordionItemProps {
   /**
@@ -51,9 +46,19 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
           data-testid={`${testId}-button-icon`}
           component={
             isExpanded ? (
-              <LazyIcon icon={MinusCircleIcon} size={24} />
+              <IconSVG
+                name="MinusCircle"
+                width="24px"
+                height="24px"
+                loading="eager"
+              />
             ) : (
-              <LazyIcon icon={PlusCircleIcon} size={24} />
+              <IconSVG
+                name="PlusCircle"
+                width="24px"
+                height="24px"
+                loading="eager"
+              />
             )
           }
         />

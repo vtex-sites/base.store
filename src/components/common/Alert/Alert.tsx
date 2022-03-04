@@ -1,12 +1,9 @@
-import React, { lazy, useCallback, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import UIAlert from 'src/components/ui/Alert'
 import { mark } from 'src/sdk/tests/mark'
 import type { PropsWithChildren } from 'react'
-import LazyIcon from 'src/components/common/LazyIcon'
 
-const BellRingingIcon = lazy(
-  () => import('phosphor-react/src/icons/BellRinging')
-)
+import IconSVG from '../IconSVG'
 
 function Alert({ children }: PropsWithChildren<unknown>) {
   const [displayAlert, setDisplayAlert] = useState(true)
@@ -23,7 +20,14 @@ function Alert({ children }: PropsWithChildren<unknown>) {
   return (
     <UIAlert
       className="alert"
-      icon={<LazyIcon icon={BellRingingIcon} size={24} />}
+      icon={
+        <IconSVG
+          name="BellRinging"
+          width="24px"
+          height="24px"
+          loading="eager"
+        />
+      }
       dismissible
       onClose={onAlertClose}
     >

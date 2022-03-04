@@ -1,39 +1,37 @@
-import React, { lazy } from 'react'
-import LazyIcon from 'src/components/common/LazyIcon'
+import React from 'react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import Incentives from './Incentives'
 
-const TruckIcon = lazy(() => import('phosphor-react/src/icons/Truck'))
-const CalendarIcon = lazy(() => import('phosphor-react/src/icons/Calendar'))
-const GiftIcon = lazy(() => import('phosphor-react/src/icons/Gift'))
-const StorefrontIcon = lazy(() => import('phosphor-react/src/icons/Storefront'))
-const ShieldCheckIcon = lazy(
-  () => import('phosphor-react/src/icons/ShieldCheck')
-)
-
 const incentives = [
   {
-    icon: <LazyIcon icon={TruckIcon} size={32} />,
+    icon: <IconSVG name="Truck" width="32px" height="32px" loading="eager" />,
     title: 'Buy online',
     firstLineText: 'Get Free Shipping',
   },
   {
-    icon: <LazyIcon icon={CalendarIcon} size={32} />,
+    icon: (
+      <IconSVG name="Calendar" width="32px" height="32px" loading="eager" />
+    ),
     title: 'Free return',
     firstLineText: '30 days to return',
   },
   {
-    icon: <LazyIcon icon={GiftIcon} size={32} />,
+    icon: <IconSVG name="Gift" width="32px" height="32px" loading="eager" />,
     title: 'Gift cards',
     firstLineText: '$20 / $30 / $50',
   },
   {
-    icon: <LazyIcon icon={StorefrontIcon} size={32} />,
+    icon: (
+      <IconSVG name="Storefront" width="32px" height="32px" loading="eager" />
+    ),
     title: 'Physical Stores',
     firstLineText: '+40 Stores in Brazil',
   },
   {
-    icon: <LazyIcon icon={ShieldCheckIcon} size={32} />,
+    icon: (
+      <IconSVG name="ShieldCheck" width="32px" height="32px" loading="eager" />
+    ),
     title: 'Buy online',
     firstLineText: 'Get Free Shipping',
   },

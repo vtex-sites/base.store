@@ -1,44 +1,43 @@
-import React, { lazy } from 'react'
-import LazyIcon from 'src/components/common/LazyIcon'
+import React from 'react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import Incentives from './Incentives'
-
-const ShieldCheckIcon = lazy(
-  () => import('phosphor-react/src/icons/ShieldCheck')
-)
-
-const MedalIcon = lazy(() => import('phosphor-react/src/icons/Medal'))
-const CircleWavyCheckIcon = lazy(
-  () => import('phosphor-react/src/icons/CircleWavyCheck')
-)
-
-const StorefrontIcon = lazy(() => import('phosphor-react/src/icons/Storefront'))
-const TruckIcon = lazy(() => import('phosphor-react/src/icons/Truck'))
 
 function IncentivesFooter() {
   const incentives = [
     {
-      icon: <LazyIcon icon={ShieldCheckIcon} size={32} />,
+      icon: (
+        <IconSVG name="ShieldCheck" width="32px" height="32px" loading="lazy" />
+      ),
       firstLineText: 'Trusted',
       secondLineText: 'by SafeCon',
     },
     {
-      icon: <LazyIcon icon={MedalIcon} size={32} />,
+      icon: <IconSVG name="Medal" width="32px" height="32px" loading="lazy" />,
       firstLineText: 'Quality',
       secondLineText: 'Products',
     },
     {
-      icon: <LazyIcon icon={CircleWavyCheckIcon} size={32} />,
+      icon: (
+        <IconSVG
+          name="CircleWavyCheck"
+          width="32px"
+          height="32px"
+          loading="lazy"
+        />
+      ),
       firstLineText: '3-years',
       secondLineText: 'Guarantee',
     },
     {
-      icon: <LazyIcon icon={StorefrontIcon} size={32} />,
+      icon: (
+        <IconSVG name="Storefront" width="32px" height="32px" loading="lazy" />
+      ),
       firstLineText: 'Pickup',
       secondLineText: 'Options',
     },
     {
-      icon: <LazyIcon icon={TruckIcon} size={32} />,
+      icon: <IconSVG name="Truck" width="32px" height="32px" loading="lazy" />,
       firstLineText: 'Free',
       secondLineText: 'Shipping',
     },

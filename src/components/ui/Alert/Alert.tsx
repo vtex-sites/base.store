@@ -1,15 +1,12 @@
 import type { ReactNode, MouseEvent } from 'react'
-import React, { lazy, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
 import type { AlertProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import { Link } from 'gatsby'
-import LazyIcon from 'src/components/common/LazyIcon'
-
+import IconSVG from 'src/components/common/IconSVG'
 import 'src/styles/icons.scss'
 import './alert.scss'
-
-const XIcon = lazy(() => import('phosphor-react/src/icons/X'))
 
 type Props = AlertProps & {
   icon?: ReactNode
@@ -54,9 +51,7 @@ function Alert({
 
       {dismissible && (
         <Button data-alert-button aria-label="Close" onClick={handleClose}>
-          <span className="icon__18">
-            <LazyIcon icon={XIcon} size={18} weight="bold" />
-          </span>
+          <IconSVG name="X" width="18px" height="18px" loading="eager" />
         </Button>
       )}
     </UIAlert>

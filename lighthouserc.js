@@ -12,10 +12,10 @@ module.exports = VTEXLHConfig({
      * Lazy components with dynamic import will create another a new script resource,
      * then this test may fail, so change the maxNumericValue
      */
-    'resource-summary:script:count': [
+    'resource-summary:image:count': [
       'error',
       {
-        maxNumericValue: 26,
+        maxNumericValue: 27,
       },
     ],
   },
