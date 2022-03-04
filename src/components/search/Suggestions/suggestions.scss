@@ -29,3 +29,31 @@
     }
   }
 }
+
+[data-store-suggestions] {
+  .suggestions__suggested-products-title {
+    margin-bottom: var(--space-1);
+    color: var(--color-neutral-7);
+    font-size: var(--text-size-3);
+  }
+
+  .suggestions__bold-term {
+    color: var(--color-neutral-7);
+    font-weight: --text-weight-bold;
+  }
+
+  [data-store-link] {
+    p {
+      color: var(--color-text-subtle);
+      font-size: var(--text-size-2);
+      line-height: 1.25;
+      text-decoration: none;
+      text-decoration-line: none;
+    }
+  }
+}
+
+[data-suggestions-suggested-products] {
+  padding: var(--space-3) var(--space-2);
+  border-top: var(--border-width-0) solid var(--color-border-display);
+}
