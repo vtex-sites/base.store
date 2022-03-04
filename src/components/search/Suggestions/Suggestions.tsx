@@ -52,7 +52,7 @@ export interface SuggestionsProps extends HTMLAttributes<HTMLDivElement> {
 
 const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
   function Suggestions(
-    { testId = 'suggestions', term = 'ny', ...otherProps },
+    { testId = 'suggestions', term = '', ...otherProps },
     ref
   ) {
     const boldTerm = (suggestion: string, _term: string) => {
