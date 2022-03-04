@@ -16,6 +16,7 @@ import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 import './product-details.scss'
+import Section from '../Section'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
@@ -115,7 +116,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   ])
 
   return (
-    <div className="product-details / grid-content grid-section">
+    <Section className="product-details / grid-content grid-section">
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
       <section className="product-details__body">
@@ -183,7 +184,7 @@ function ProductDetails({ product: staleProduct }: Props) {
           </article>
         </section>
       </section>
-    </div>
+    </Section>
   )
 }
 

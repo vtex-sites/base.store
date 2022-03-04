@@ -7,7 +7,6 @@ import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
-import Section from 'src/components/sections/Section'
 import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
@@ -58,50 +57,32 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <Section>
-        <Hero
-          title="New Products Available"
-          subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
-          linkText="See all"
-          link="/"
-          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-          imageAlt="Quest 2 Controller on a table"
-        />
-      </Section>
+      <Hero
+        title="New Products Available"
+        subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
+        linkText="See all"
+        link="/"
+        imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+        imageAlt="Quest 2 Controller on a table"
+      />
 
-      <Section>
-        <IncentivesHeader />
-      </Section>
+      <IncentivesHeader />
 
-      <Section className="page__section-shelf / grid-section">
-        <h2 className="title-section / grid-content">Most Wanted</h2>
-        <div className="page__section-content">
-          <ProductShelf products={products?.slice(0, 5)} />
-        </div>
-      </Section>
+      <ProductShelf products={products?.slice(0, 5)} title="Most Wanted" />
 
-      <Section className="grid-section grid-content">
-        <h2 className="title-section">Just Arrived</h2>
-        <div className="page__section-content">
-          <ProductTiles products={products?.slice(5, 8)} />
-        </div>
-      </Section>
+      <ProductTiles products={products?.slice(5, 8)} title="Just Arrived" />
 
-      <Section className="grid-section">
-        <BannerText
-          title="Receive our news and promotions in advance."
-          caption="Enjoy and get 10% off on your first purchase."
-          actionPath="/"
-          actionLabel="Call to action"
-        />
-      </Section>
+      <BannerText
+        title="Receive our news and promotions in advance."
+        caption="Enjoy and get 10% off on your first purchase."
+        actionPath="/"
+        actionLabel="Call to action"
+      />
 
-      <Section className="page__section-shelf / grid-section">
-        <h2 className="title-section / grid-content">Deals & Promotions</h2>
-        <div className="page__section-content">
-          <ProductShelf products={products?.slice(9, 14)} />
-        </div>
-      </Section>
+      <ProductShelf
+        products={products?.slice(9, 14)}
+        title="Deals & Promotions"
+      />
     </>
   )
 }
