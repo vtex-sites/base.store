@@ -1,7 +1,7 @@
 .pages__section {
   width: 100vw;
   content-visibility: auto;
-  contain-intrinsic-size: 2px 1024px;
+  contain-intrinsic-size: rem(2px) rem(1024px);
 
   .title-section {
     margin-bottom: var(--space-3);
