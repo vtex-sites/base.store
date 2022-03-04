@@ -32,16 +32,14 @@ const imgOptions = {
 
 function SuggestionProductCard({
   // TODO: Add Props interface and define `product` type
-  product = PRODUCTS,
+  product = PRODUCTS[0],
 }) {
-  const [
-    {
-      name,
-      listPrice,
-      price,
-      image: [img],
-    },
-  ] = product
+  const {
+    name,
+    listPrice,
+    price,
+    image: [img],
+  } = product
 
   return (
     <Card
