@@ -14,8 +14,6 @@ import { mark } from 'src/sdk/tests/mark'
 import type { Props } from 'src/hooks/useSearchParams'
 import IconSVG from 'src/components/common/IconSVG'
 
-import '../styles/pages/product-listing-page.scss'
-
 function Page(props: Props) {
   const {
     data: {
