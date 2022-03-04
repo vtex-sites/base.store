@@ -29,7 +29,7 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 
 ## 🚀 Quick start
 
-0. **Clone this repo**
+0. **Clone this repo***
 
    Get up and running by cloning this repo.
 
