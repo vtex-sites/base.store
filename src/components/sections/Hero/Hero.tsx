@@ -69,6 +69,13 @@ const Hero = ({
           options={{
             fitIn: true,
           }}
+          // reset gatsby image default style
+          style={{
+            overflow: undefined,
+            position: undefined,
+          }}
+          // for mobile load 100vw image, for desktop load half img
+          sizes="(max-width: 768px) 100vw, 53vw"
         />
       </HeroImage>
     </UIHero>
