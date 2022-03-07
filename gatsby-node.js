@@ -23,6 +23,19 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
       })
     } else {
       setWebpackConfig({
+        resolve: {
+          alias: {
+            '@faststore/ui': path.resolve(
+              './node_modules/@faststore/ui/src/index.ts'
+            ),
+            '@faststore/sdk': path.resolve(
+              './node_modules/@faststore/sdk/src/index.ts'
+            ),
+            'gatsby-plugin-next-seo': path.resolve(
+              './node_modules/gatsby-plugin-next-seo/src/index.tsx'
+            ),
+          },
+        },
         optimization: {
           runtimeChunk: {
             name: `webpack-runtime`,
