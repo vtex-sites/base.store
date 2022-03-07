@@ -28,11 +28,17 @@ export const usePersonQuery = (options?: QueryOptions) => {
     options
   )
 
-  const { setSession, ...session } = useSession()
+  const { setSession, user, ...session } = useSession()
+  const person = data?.person
 
   useEffect(() => {
-    if (data?.person) setSession({ ...session, user: data?.person })
-  }, [data?.person, session, setSession])
+    if (person !== null && person !== undefined && person !== user) {
+      setSession({
+        ...session,
+        user: person,
+      })
+    }
+  })
 
-  return session.user
+  return person
 }
