@@ -34,7 +34,7 @@ const imgProps = {
     position: undefined,
   },
   backgroundColor: '#f0f0f0',
-  breakpoints: [720, 1080, 1440],
+  breakpoints: [720, 1080, 1440, 1920],
 }
 
 const Hero = ({
