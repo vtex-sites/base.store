@@ -23,7 +23,7 @@ interface HeroProps {
 }
 
 const imgProps = {
-  aspectRatio: 2,
+  aspectRatio: 3 / 2,
   layout: 'fullWidth' as const,
   loading: 'eager' as const,
   // for mobile load 100vw image, for desktop load half img
