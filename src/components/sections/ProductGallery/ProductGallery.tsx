@@ -1,13 +1,12 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { lazy, useState } from 'react'
+import React, { useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
-import LazyIcon from 'src/components/common/LazyIcon'
 import IconSVG from 'src/components/common/IconSVG'
 
 import GalleryPage from './ProductGalleryPage'
@@ -17,8 +16,6 @@ import { useOrderedFacets } from './useOrderedFacets'
 import { useTotalCount } from './useTotalCount'
 
 import './product-gallery.scss'
-
-const ArrowLeftIcon = lazy(() => import('phosphor-react/src/icons/ArrowLeft'))
 
 interface Props {
   title: string
@@ -100,7 +97,15 @@ function ProductGallery({ title }: Props) {
                 rel="prev"
                 variant="secondary"
                 iconPosition="left"
-                icon={<LazyIcon icon={ArrowLeftIcon} size={16} weight="bold" />}
+                icon={
+                  <IconSVG
+                    data-icon
+                    name="ArrowLeftBold"
+                    width="16px"
+                    height="16px"
+                    loading="eager"
+                  />
+                }
               >
                 Previous Page
               </LinkButton>

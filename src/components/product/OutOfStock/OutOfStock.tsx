@@ -1,10 +1,8 @@
 import type { ReactElement } from 'react'
-import React, { lazy, useState } from 'react'
+import React, { useState } from 'react'
 import { Input } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
-import LazyIcon from 'src/components/common/LazyIcon'
-
-const BellIcon = lazy(() => import('phosphor-react/src/icons/Bell'))
+import IconSVG from 'src/components/common/IconSVG'
 
 export interface OutOfStockProps {
   /**
@@ -39,7 +37,9 @@ function OutOfStock(props: OutOfStockProps) {
     title = 'Out of Stock',
     notificationMsg = 'Notify me when available',
     buttonTxt = 'Send',
-    icon = <BellIcon />,
+    icon = (
+      <IconSVG name="BellRinging" width="16px" height="16px" loading="eager" />
+    ),
     onSubmit,
     testId = 'store-out-of-stock',
   } = props
@@ -60,7 +60,14 @@ function OutOfStock(props: OutOfStockProps) {
       />
       <Button
         variant="primary"
-        icon={<LazyIcon icon={BellIcon} size={16} />}
+        icon={
+          <IconSVG
+            name="BellRinging"
+            width="16px"
+            height="16px"
+            loading="eager"
+          />
+        }
         iconPosition="left"
         onClick={() => onSubmit(email)}
       >

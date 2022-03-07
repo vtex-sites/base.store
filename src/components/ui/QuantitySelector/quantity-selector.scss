@@ -1,8 +1,9 @@
 @import "src/styles/scaffold";
 
 @mixin quantity-selector-focus-ring {
-  @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
-    @supports (-webkit-appearance:none) {
+  @media not all and (min-resolution: 0.001dpcm) {
+    // Target only Safari browsers
+    @supports (-webkit-appearance: none) {
       // Use `focus` instead of `focus-visible` due to Safari's lack of support
       &:focus {
         outline: none;
@@ -39,12 +40,14 @@
   background-color: var(--bg-neutral-lightest);
   border-radius: var(--border-radius-default);
   box-shadow: 0 0 0 var(--border-width-0) var(--color-border-input);
-  transition: box-shadow .2s ease;
+  transition: box-shadow 0.2s ease;
 
   [data-store-icon] {
     margin: 0;
-    color: var(--color-border-input-selected);
     line-height: 0;
+    filter:
+      invert(16%) sepia(44%) saturate(5278%) hue-rotate(207deg)
+      brightness(96%) contrast(104%);
   }
 
   [data-quantity-selector-input] {
@@ -55,7 +58,9 @@
     background-color: transparent;
     border-width: 0;
 
-    &:focus { outline: 0; }
+    &:focus {
+      outline: 0;
+    }
   }
 
   [data-quantity-selector-button] {
@@ -75,14 +80,21 @@
       width: 100%;
       height: 100%;
       border-radius: var(--border-radius-default);
-      transition: background-color .2s ease;
+      transition: background-color 0.2s ease;
     }
 
-    &:hover:not(:disabled) [data-store-icon] { background-color: var(--bg-secondary-light); }
+    &:hover:not(:disabled) [data-store-icon] {
+      background-color: var(--bg-secondary-light);
+    }
 
     &:disabled {
       cursor: not-allowed;
-      [data-store-icon] { color: var(--color-border-input-disabled); }
+
+      [data-store-icon] {
+        filter:
+          invert(39%) sepia(10%) saturate(483%) hue-rotate(169deg)
+          brightness(97%) contrast(88%);
+      }
     }
   }
 
@@ -95,5 +107,7 @@
   background-color: var(--bg-disabled);
   box-shadow: 0 0 0 var(--border-width-0) var(--bg-disabled);
 
-  [data-quantity-selector-button]:hover [data-store-icon] { background-color: transparent; }
+  [data-quantity-selector-button]:hover [data-store-icon] {
+    background-color: transparent;
+  }
 }

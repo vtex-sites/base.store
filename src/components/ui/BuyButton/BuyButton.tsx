@@ -1,23 +1,22 @@
-import React, { lazy } from 'react'
+import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
-import LazyIcon from 'src/components/common/LazyIcon'
+import IconSVG from 'src/components/common/IconSVG'
 
-import 'src/styles/icons.scss'
 import './buy-button.scss'
-
-const ShoppingCartIcon = lazy(
-  () => import('phosphor-react/src/icons/ShoppingCart')
-)
 
 type Props = ButtonProps
 
 function BuyButton({ children, ...props }: Props) {
   return (
     <UIButton className="button" data-store-buy-button {...props}>
-      <span className="icon__18">
-        <LazyIcon icon={ShoppingCartIcon} size="18" weight="bold" />
-      </span>
+      <IconSVG
+        data-icon
+        name="ShoppingCartBold"
+        width="18px"
+        height="18px"
+        loading="eager"
+      />
       {children}
     </UIButton>
   )

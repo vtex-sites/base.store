@@ -3,7 +3,6 @@ import { Select as UISelect } from '@faststore/ui'
 import type { SelectProps } from '@faststore/ui'
 import IconSVG from 'src/components/common/IconSVG'
 
-import 'src/styles/icons.scss'
 import './select.scss'
 
 interface UISelectProps extends SelectProps {

@@ -4,12 +4,29 @@
   color: var(--color-text-inverse);
   background-color: var(--bg-primary-default);
 
-  &:hover { background-color: var(--bg-primary-hover); }
+  &:hover {
+    background-color: var(--bg-primary-hover);
+  }
 
-  &:active { background-color: var(--bg-primary-pressed); }
+  &:active {
+    background-color: var(--bg-primary-pressed);
+  }
+
+  [data-icon] {
+    // color var(--color-text-inverse)
+    filter:
+      invert(100%) sepia(0%) saturate(2%) hue-rotate(80deg)
+      brightness(107%) contrast(101%);
+  }
 
   &:disabled {
     color: var(--color-neutral-6);
     background-color: var(--bg-disabled);
+
+    [data-icon] {
+      filter:
+        invert(39%) sepia(13%) saturate(383%) hue-rotate(169deg)
+        brightness(95%) contrast(90%);
+    }
   }
 }

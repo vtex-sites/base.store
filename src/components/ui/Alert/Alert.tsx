@@ -5,7 +5,6 @@ import type { AlertProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import { Link } from 'gatsby'
 import IconSVG from 'src/components/common/IconSVG'
-import 'src/styles/icons.scss'
 import './alert.scss'
 
 type Props = AlertProps & {

@@ -7,6 +7,12 @@
   font-size: var(--text-size-1);
   background-color: var(--bg-primary-light);
 
+  [data-icon] {
+    filter:
+      invert(12%) sepia(39%) saturate(2653%) hue-rotate(198deg)
+      brightness(92%) contrast(112%);
+  }
+
   [data-store-icon] {
     width: calc(1.5rem + var(--space-1));
     height: 1.5rem;
@@ -20,7 +26,9 @@
     text-overflow: ellipsis;
   }
 
-  span { font-weight: var(--text-weight-bold); }
+  span {
+    font-weight: var(--text-weight-bold);
+  }
 
   [data-alert-link] {
     min-width: var(--space-8);
@@ -38,7 +46,9 @@
       color: var(--color-secondary-4);
       font-weight: var(--text-weight-bold);
 
-      &:visited { color: var(--color-secondary-4); }
+      &:visited {
+        color: var(--color-secondary-4);
+      }
     }
   }
 
@@ -50,6 +60,8 @@
     background-color: transparent;
     border: none;
 
-    &:hover { background-color: var(--bg-darken-hover); }
+    &:hover {
+      background-color: var(--bg-darken-hover);
+    }
   }
 }

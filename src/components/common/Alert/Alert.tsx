@@ -22,6 +22,7 @@ function Alert({ children }: PropsWithChildren<unknown>) {
       className="alert"
       icon={
         <IconSVG
+          data-icon
           name="BellRinging"
           width="24px"
           height="24px"

@@ -4,7 +4,6 @@ import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
 import IconSVG from 'src/components/common/IconSVG'
 
-import 'src/styles/icons.scss'
 import './breadcrumb.scss'
 
 type ItemElement = {

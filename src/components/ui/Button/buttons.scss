@@ -19,6 +19,10 @@
   border: 0;
   cursor: default;
 
+  [data-icon] {
+    filter: invert(6%) sepia(54%) saturate(6801%) hue-rotate(205deg) brightness(89%) contrast(108%);
+  }
+
   &:disabled, &[data-button-disabled="true"] {
     cursor: not-allowed;
     svg { color: var(--color-neutral-5); }
@@ -50,6 +54,10 @@
     &:hover, &:focus {
       color: var(--color-text-inverse);
       background-color: var(--bg-secondary-default);
+
+      [data-icon] {
+        filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+      }
     }
 
     &:active {

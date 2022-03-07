@@ -24,7 +24,7 @@ function Incentives({ incentives, classes = '' }: Props) {
         {incentives.map((incentive, index) => (
           <li key={String(index)}>
             <UIIncentive>
-              <div className="icon__32">{incentive.icon}</div>
+              {incentive.icon}
               <div data-incentive-content>
                 {incentive.title && <p>{incentive.title}</p>}
                 <span>{incentive.firstLineText}</span>

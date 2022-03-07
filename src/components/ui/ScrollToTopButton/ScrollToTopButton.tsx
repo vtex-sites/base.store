@@ -1,10 +1,8 @@
-import React, { lazy } from 'react'
-import LazyIcon from 'src/components/common/LazyIcon'
+import React from 'react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import type { UIButtonProps } from '../Button'
 import Button from '../Button'
-
-const CareUpIcon = lazy(() => import('phosphor-react/src/icons/CaretUp'))
 
 interface ScrollToTopButtonProps {
   /**
@@ -26,7 +24,15 @@ interface ScrollToTopButtonProps {
 
 function ScrollToTopButton({
   text = 'Scroll to top',
-  icon = <LazyIcon icon={CareUpIcon} size={16} weight="bold" />,
+  icon = (
+    <IconSVG
+      data-icon
+      name="CaretUpBold"
+      width="16px"
+      height="16px"
+      loading="eager"
+    />
+  ),
   iconPosition = 'left',
 }: ScrollToTopButtonProps) {
   return (
