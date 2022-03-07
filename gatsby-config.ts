@@ -1,8 +1,11 @@
-require('dotenv').config({ path: 'vtex.env' })
+import { join, resolve } from 'path'
 
-const { join, resolve } = require('path')
+import type { GatsbyConfig } from 'gatsby'
+import dotenv from 'dotenv'
 
-const config = require('./store.config')
+import config from './store.config'
+
+dotenv.config({ path: 'vtex.env' })
 
 const {
   NODE_ENV,
@@ -15,7 +18,7 @@ const {
 const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
-module.exports = {
+const gatsbyConfig: GatsbyConfig = {
   siteMetadata: {
     title: 'FastStore',
     description: 'Fast Demo Store',
@@ -156,3 +159,5 @@ module.exports = {
     },
   ],
 }
+
+export default gatsbyConfig

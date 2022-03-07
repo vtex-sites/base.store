@@ -1,16 +1,20 @@
-const path = require('path')
+import path from 'path'
 
-const { copyLibFiles } = require('@builder.io/partytown/utils')
+import type { GatsbyNode } from 'gatsby'
+import { copyLibFiles } from '@builder.io/partytown/utils'
 
-const { schema } = require('./src/server')
+import { apiSchema } from './src/server'
 
-exports.onPreInit = async ({ reporter }) => {
+export const onPreInit: GatsbyNode['onPreInit'] = async ({ reporter }) => {
   reporter.info('Copying Partytown Files')
 
   await copyLibFiles(path.resolve('./public/~partytown'))
 }
 
-exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
+export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
+  actions: { setWebpackConfig },
+  stage,
+}) => {
   const profiling = process.env.GATSBY_STORE_PROFILING === 'true'
 
   if (stage === 'build-javascript') {
@@ -46,15 +50,18 @@ exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
   }
 }
 
-exports.onCreateBabelConfig = ({ actions }) => {
+export const onCreateBabelConfig: GatsbyNode['onCreateBabelConfig'] = ({
+  actions,
+}) => {
   actions.setBabelPlugin({
     name: `@vtex/graphql-utils/babel`,
     options: {},
   })
 }
 
-exports.createSchemaCustomization = async (gatsbyApi) => {
-  const { actions } = gatsbyApi
+export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
+  async (gatsbyApi) => {
+    const { actions } = gatsbyApi
 
-  actions.addThirdPartySchema({ schema: await schema })
-}
+    actions.addThirdPartySchema({ schema: await apiSchema })
+  }
