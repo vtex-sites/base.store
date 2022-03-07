@@ -20,9 +20,6 @@ const detailsImage = {
   breakpoints: [250, 360, 480, 720],
   layout: 'constrained' as const,
   backgroundColor: '#f0f0f0',
-  options: {
-    fitIn: true,
-  },
 }
 
 function ImageGallery({ images }: ImageGalleryProps) {
