@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
 - `Skeleton` loading components.
@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moves some `Filter` component logic to the API
 - Implements the expanded mode of `Searchbar` in mobile devices.
 - Updates Lighthouse and Cypress URL with valid product links
+- `Hero` image responsive sizes for mobile and desktop.
 
 ### Deprecated
 
