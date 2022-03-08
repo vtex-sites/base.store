@@ -1,4 +1,4 @@
-<p align="center">
+ip align="center">
   <a href="https://github.com/vtex/faststore">
     <img alt="Store Framework" src="https://emoji.slack-edge.com/T02BCPD0X/store-framework/7547b127e929c376.png" width="75" />
   </a>
@@ -7,7 +7,7 @@
   A starter powered by Faststore and Gatsby
 </h1>
 
-Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
+aKickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
 
 ## ⚠️ Before you start
 
