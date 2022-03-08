@@ -25,7 +25,7 @@ export const usePersonQuery = (options?: QueryOptions) => {
   const { data } = useQuery<PersonQueryQuery, PersonQueryQueryVariables>(
     query,
     {},
-    options
+    { ...options, fetchOptions: { ...options?.fetchOptions, method: 'POST' } }
   )
 
   const { setSession, user, ...session } = useSession()
