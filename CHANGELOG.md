@@ -27,6 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `BreadcrumbWrapper` from components/ui folder to `Breadcrumb` at components/sections
 - Replace relative stylesheets imports with absolute path
 - Moves some `Filter` component logic to the API
+- `Sort` and `Button Filter` (Mobile) `Skeleton's` loading criteria
+- Keep the latest `Filter` component state (Mobile)
 - Implements the expanded mode of `Searchbar` in mobile devices.
 - Updates Lighthouse and Cypress URL with valid product links
 - `Hero` image responsive sizes for mobile and desktop.
@@ -43,6 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Unnecessary map at hooks
 - API style redirects from `/_v/private/graphql` since they have no effect
 - Display box from `<ProductCard/>` component
+- `useTotalCount` hook
 
 ### Fixed
 
