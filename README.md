@@ -9,6 +9,8 @@
 
 Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
 
+asdfasdf
+
 ## ⚠️ Before you start
 
 As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarise what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
