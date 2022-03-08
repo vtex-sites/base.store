@@ -1,21 +1,21 @@
-import type { SearchInputRef } from '@faststore/ui'
+import './navbar.scss'
+
 import { List as UIList } from '@faststore/ui'
-import { Link as LinkGatsby } from 'gatsby'
+import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'
-import type { AnchorHTMLAttributes } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
+import IconSVG from 'src/components/common/IconSVG'
+import PostalCodeInput from 'src/components/common/PostalCode'
+import SearchInput from 'src/components/common/SearchInput'
 import IconButton from 'src/components/ui/IconButton'
 import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
-import { useStoreCollection } from 'src/hooks/useAllCollections'
 import { mark } from 'src/sdk/tests/mark'
-import PostalCodeInput from 'src/components/common/PostalCode'
-import IconSVG from 'src/components/common/IconSVG'
-import SearchInput from 'src/components/common/SearchInput'
-
-import './navbar.scss'
+import type { AnchorHTMLAttributes } from 'react'
+import type { SearchInputRef } from '@faststore/ui'
+import type { StoreCollectionQuery } from '@generated/graphql'
 
 type Callback = () => unknown
 
@@ -24,7 +24,22 @@ interface NavLinksProps {
 }
 
 function NavLinks({ onClickLink }: NavLinksProps) {
-  const links = useStoreCollection()
+  const {
+    allStoreCollection: { edges: links },
+  } = useStaticQuery<StoreCollectionQuery>(graphql`
+    query StoreCollection {
+      allStoreCollection(filter: { type: { eq: Department } }) {
+        edges {
+          node {
+            slug
+            seo {
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <nav className="navlinks__list">
