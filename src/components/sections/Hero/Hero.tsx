@@ -27,11 +27,6 @@ const imgProps = {
   layout: 'fullWidth' as const,
   loading: 'eager' as const,
   sizes: '(max-width: 768px) 70vw, 50vw',
-  // reset gatsby image default style
-  style: {
-    overflow: undefined,
-    position: undefined,
-  },
   backgroundColor: '#f0f0f0',
   breakpoints: [720, 1080, 1440, 1920],
 }
