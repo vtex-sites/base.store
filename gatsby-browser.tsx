@@ -8,6 +8,7 @@ import './src/styles/fonts.css'
 
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
+import type { GatsbyBrowser } from 'gatsby'
 
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
@@ -17,7 +18,9 @@ import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element }) => (
+export const wrapRootElement: GatsbyBrowser['wrapRootElement'] = ({
+  element,
+}) => (
   <ErrorBoundary>
     <AnalyticsHandler />
     <TestProvider>
@@ -36,6 +39,8 @@ export const wrapRootElement = ({ element }) => (
   </ErrorBoundary>
 )
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement: GatsbyBrowser['wrapPageElement'] = ({
+  element,
+}) => {
   return <Layout>{element}</Layout>
 }
