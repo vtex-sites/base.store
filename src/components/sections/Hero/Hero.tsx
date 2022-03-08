@@ -26,8 +26,7 @@ const imgProps = {
   aspectRatio: 3 / 2,
   layout: 'fullWidth' as const,
   loading: 'eager' as const,
-  // for mobile load 100vw image, for desktop load half img
-  sizes: '(max-width: 768px) 100vw, 53vw',
+  sizes: '(max-width: 768px) 70vw, 50vw',
   // reset gatsby image default style
   style: {
     overflow: undefined,
