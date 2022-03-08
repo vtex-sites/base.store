@@ -1,8 +1,8 @@
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
+import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useEffect, useMemo } from 'react'
-import { gql } from '@vtex/graphql-utils'
 import IconSVG from 'src/components/common/IconSVG'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
@@ -13,6 +13,7 @@ import Icon from 'src/components/ui/Icon'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
+import { execute } from 'src/server'
 import type {
   CollectionPageQueryQuery,
   ServerCollectionPageQueryQuery,
@@ -20,7 +21,6 @@ import type {
 } from '@generated/graphql'
 import type { PageProps } from 'gatsby'
 import type { SearchState } from '@faststore/sdk'
-import { execute } from 'src/server'
 
 type Props = PageProps<
   CollectionPageQueryQuery,
@@ -32,10 +32,10 @@ type Props = PageProps<
 const useSearchParams = (props: Props): SearchState => {
   const {
     location: { href, pathname },
-    data,
+    serverData,
   } = props
 
-  const selectedFacets = data?.collection?.meta.selectedFacets
+  const selectedFacets = serverData?.collection?.meta.selectedFacets
 
   return useMemo(() => {
     const maybeState = href ? parseSearchState(new URL(href)) : null

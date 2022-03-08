@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-filename-extension */
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
+import type { GatsbySSR, PreRenderHTMLArgs } from 'gatsby'
 
 import ThirdPartyScripts from './src/components/ThirdPartyScripts'
 import Layout from './src/Layout'
@@ -11,7 +11,17 @@ import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element }) => (
+// Gatsby types the returned elements from `getHeadComponents` as
+// `React.ReactNode`, but this is inaccurate. The attributes defined below
+// are present in those elements.
+interface HeadComponents
+  extends ReturnType<PreRenderHTMLArgs['getHeadComponents']> {
+  type: string
+  key: string
+  props?: Record<string, unknown>
+}
+
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => (
   <ErrorBoundary>
     <AnalyticsHandler />
     <TestProvider>
@@ -30,11 +40,13 @@ export const wrapRootElement = ({ element }) => (
   </ErrorBoundary>
 )
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({ element }) => {
   return <Layout>{element}</Layout>
 }
 
-export const onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody: GatsbySSR['onRenderBody'] = ({
+  setHeadComponents,
+}) => {
   setHeadComponents([<ThirdPartyScripts key="ThirdPartyScripts" />])
 }
 
@@ -46,7 +58,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
  * A workaround described in https://github.com/gatsbyjs/gatsby/issues/1526 is
  * implemented below
  */
-export const onPreRenderHTML = ({
+export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
   getHeadComponents,
   replaceHeadComponents,
 }) => {
@@ -54,7 +66,7 @@ export const onPreRenderHTML = ({
     return
   }
 
-  const transformedHeadComponents = getHeadComponents().map((node) => {
+  const transformedHeadComponents = getHeadComponents().map((node: any) => {
     if (node.type === 'style') {
       const globalStyleHref = node.props['data-href']
 
