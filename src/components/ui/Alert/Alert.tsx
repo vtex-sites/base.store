@@ -50,7 +50,13 @@ function Alert({
 
       {dismissible && (
         <Button data-alert-button aria-label="Close" onClick={handleClose}>
-          <IconSVG name="X" width="18px" height="18px" loading="eager" />
+          <IconSVG
+            data-icon
+            name="X"
+            width="18px"
+            height="18px"
+            loading="eager"
+          />
         </Button>
       )}
     </UIAlert>

@@ -23,6 +23,10 @@
     color: var(--color-text-disabled);
     row-gap: var(--space-1);
 
+    [data-icon] {
+      filter: var(--filter-color-neutral-6);
+    }
+
     p {
       font-size: var(--text-size-3);
       text-align: center;

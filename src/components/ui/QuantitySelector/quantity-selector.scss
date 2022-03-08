@@ -45,9 +45,7 @@
   [data-store-icon] {
     margin: 0;
     line-height: 0;
-    filter:
-      invert(16%) sepia(44%) saturate(5278%) hue-rotate(207deg)
-      brightness(96%) contrast(104%);
+    filter: var(--filter-color-secondary-2);
   }
 
   [data-quantity-selector-input] {
@@ -91,9 +89,7 @@
       cursor: not-allowed;
 
       [data-store-icon] {
-        filter:
-          invert(39%) sepia(10%) saturate(483%) hue-rotate(169deg)
-          brightness(97%) contrast(88%);
+        filter: var(--filter-color-neutral-6);
       }
     }
   }

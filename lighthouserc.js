@@ -15,7 +15,7 @@ module.exports = VTEXLHConfig({
     'resource-summary:image:count': [
       'error',
       {
-        maxNumericValue: 27,
+        maxNumericValue: 30,
       },
     ],
   },

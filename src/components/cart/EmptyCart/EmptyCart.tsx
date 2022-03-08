@@ -15,7 +15,12 @@ function EmptyCart({ onDismiss }: Props) {
   return (
     <EmptyState>
       <header data-empty-cart-title>
-        <IconSVG name="ShoppingCartThinDisabled" width="56px" height="56px" />
+        <IconSVG
+          data-icon
+          name="ShoppingCartThinDisabled"
+          width="56px"
+          height="56px"
+        />
         <p>Your Cart is empty</p>
       </header>
       <Button onClick={onDismiss} variant="secondary">

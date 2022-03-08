@@ -16,7 +16,7 @@ export function QuantitySelector({
   max,
   min = 1,
   initial,
-  disabled = true,
+  disabled = false,
   onChange,
 }: QuantitySelectorProps) {
   const [quantity, setQuantity] = useState<number>(initial ?? min)

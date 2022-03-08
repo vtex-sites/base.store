@@ -34,6 +34,14 @@
   --color-neutral-6: #5d666f;
   --color-neutral-7: #171a1c;
 
+  // Brand Color as Filter
+  // https://codepen.io/sosuke/pen/Pjoqqp
+  --filter-color-secondary-2: invert(14%) sepia(72%) saturate(3077%) hue-rotate(208deg) brightness(108%) contrast(101%);
+  --filter-color-secondary-4: invert(8%) sepia(40%) saturate(4789%) hue-rotate(207deg) brightness(95%) contrast(107%);
+  --filter-color-neutral-0: invert(100%) sepia(0%) saturate(2%) hue-rotate(80deg) brightness(107%) contrast(101%);
+  --filter-color-neutral-5: invert(50%) sepia(23%) saturate(206%) hue-rotate(167deg) brightness(95%) contrast(94%);
+  --filter-color-neutral-6: invert(41%) sepia(20%) saturate(245%) hue-rotate(169deg) brightness(90%) contrast(90%);
+
   // State
   --color-success: #cee8de;
   --color-success-dark: #368369;

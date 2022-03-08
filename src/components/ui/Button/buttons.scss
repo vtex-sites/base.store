@@ -19,10 +19,6 @@
   border: 0;
   cursor: default;
 
-  [data-icon] {
-    filter: invert(6%) sepia(54%) saturate(6801%) hue-rotate(205deg) brightness(89%) contrast(108%);
-  }
-
   &:disabled, &[data-button-disabled="true"] {
     cursor: not-allowed;
     svg { color: var(--color-neutral-5); }
