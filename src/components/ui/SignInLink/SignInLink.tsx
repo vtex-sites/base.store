@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from 'src/components/ui/Icon'
-import { usePersonQuery } from 'src/sdk/person/usePersonQuery'
+import usePersonQuery from 'src/sdk/person/usePersonQuery'
 
 import { LinkButton } from '../Button'
 

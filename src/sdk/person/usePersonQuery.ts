@@ -21,7 +21,7 @@ export const query = gql`
   }
 `
 
-export const usePersonQuery = (options?: QueryOptions) => {
+const usePersonQuery = (options?: QueryOptions) => {
   const { data } = useQuery<PersonQueryQuery, PersonQueryQueryVariables>(
     query,
     {},
@@ -38,7 +38,9 @@ export const usePersonQuery = (options?: QueryOptions) => {
         user: person,
       })
     }
-  })
+  }, [person, session, setSession, user])
 
   return person
 }
+
+export default usePersonQuery
