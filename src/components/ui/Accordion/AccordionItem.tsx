@@ -6,10 +6,7 @@ import {
   AccordionButton as UIAccordionButton,
 } from '@faststore/ui'
 import type { AccordionItemProps } from '@faststore/ui'
-import {
-  PlusCircle as PlusCircleIcon,
-  MinusCircle as MinusCircleIcon,
-} from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 interface Props extends AccordionItemProps {
   /**
@@ -49,9 +46,9 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
           data-testid={`${testId}-button-icon`}
           component={
             isExpanded ? (
-              <MinusCircleIcon size={24} />
+              <IconSVG name="MinusCircle" width={24} height={24} />
             ) : (
-              <PlusCircleIcon size={24} />
+              <IconSVG name="PlusCircle" width={24} height={24} />
             )
           }
         />

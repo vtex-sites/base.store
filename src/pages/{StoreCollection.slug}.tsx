@@ -1,7 +1,6 @@
 import { SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import { Headphones as HeadphonesIcon } from 'phosphor-react'
 import React from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
@@ -14,6 +13,7 @@ import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import type { Props } from 'src/hooks/useSearchParams'
+import IconSVG from 'src/components/common/IconSVG'
 
 import '../styles/pages/product-listing-page.scss'
 
@@ -81,7 +81,9 @@ function Page(props: Props) {
           subtitle={`All the amazing ${title} from the brands we partner with.`}
           imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
           imageAlt="Quest 2 Controller on a table"
-          icon={<HeadphonesIcon size={48} weight="thin" />}
+          icon={
+            <IconSVG name="Headphones" width={48} height={48} weight="thin" />
+          }
         />
       </Section>
 

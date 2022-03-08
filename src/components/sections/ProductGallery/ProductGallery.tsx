@@ -1,9 +1,5 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import {
-  ArrowLeft as ArrowLeftIcon,
-  FadersHorizontal as FadersHorizontalIcon,
-} from 'phosphor-react'
 import React, { useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
@@ -11,6 +7,7 @@ import Button, { LinkButton } from 'src/components/ui/Button'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
+import IconSVG from 'src/components/common/IconSVG'
 
 import GalleryPage from './ProductGalleryPage'
 import EmptyGallery from './EmptyGallery'
@@ -75,7 +72,7 @@ function ProductGallery({ title }: Props) {
             <Button
               variant="tertiary"
               data-testid="open-filter-button"
-              icon={<FadersHorizontalIcon size={16} />}
+              icon={<IconSVG name="FadersHorizontal" width={16} height={16} />}
               iconPosition="left"
               aria-label="Open Filters"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -100,7 +97,14 @@ function ProductGallery({ title }: Props) {
                 rel="prev"
                 variant="secondary"
                 iconPosition="left"
-                icon={<ArrowLeftIcon size={16} weight="bold" />}
+                icon={
+                  <IconSVG
+                    name="ArrowLeft"
+                    width={16}
+                    height={16}
+                    weight="bold"
+                  />
+                }
               >
                 Previous Page
               </LinkButton>

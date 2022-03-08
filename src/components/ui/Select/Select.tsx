@@ -1,7 +1,7 @@
 import React from 'react'
 import { Select as UISelect } from '@faststore/ui'
 import type { SelectProps } from '@faststore/ui'
-import { CaretDown as CaretDownIcon } from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import './select.scss'
 
@@ -50,7 +50,7 @@ export default function Select({
           </option>
         ))}
       </UISelect>
-      <CaretDownIcon size={18} weight="bold" />
+      <IconSVG name="CaretDown" width={18} height={18} weight="bold" />
     </div>
   )
 }

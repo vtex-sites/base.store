@@ -1,5 +1,4 @@
 import { Card, CardActions, CardContent, CardImage } from '@faststore/ui'
-import { XCircle as XCircleIcon } from 'phosphor-react'
 import React from 'react'
 import Button from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
@@ -9,6 +8,7 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { CartItem as ICartItem } from 'src/sdk/cart/validate'
+import IconSVG from 'src/components/common/IconSVG'
 
 import './cart-item.scss'
 
@@ -72,7 +72,7 @@ function CartItem({ item }: Props) {
       <CardActions>
         <Button
           variant="tertiary"
-          icon={<XCircleIcon size={18} />}
+          icon={<IconSVG name="XCircle" width={18} height={18} />}
           iconPosition="left"
           {...btnProps}
         >

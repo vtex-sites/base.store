@@ -1,5 +1,5 @@
 import React from 'react'
-import { CaretUp as CareUpIcon } from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import type { UIButtonProps } from '../Button'
 import Button from '../Button'
@@ -12,7 +12,7 @@ interface ScrollToTopButtonProps {
   text?: string
   /**
    * Button's icon.
-   * @default <CareUpIcon size={16} weight="bold" />
+   * @default <IconSVG name="CaretUp" width={16} height={16} weight="bold" />
    */
   icon?: UIButtonProps['icon']
   /**
@@ -24,7 +24,7 @@ interface ScrollToTopButtonProps {
 
 function ScrollToTopButton({
   text = 'Scroll to top',
-  icon = <CareUpIcon size={16} weight="bold" />,
+  icon = <IconSVG name="CaretUp" width={16} height={16} weight="bold" />,
   iconPosition = 'left',
 }: ScrollToTopButtonProps) {
   return (

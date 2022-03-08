@@ -1,6 +1,5 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import { X as XIcon } from 'phosphor-react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
@@ -9,6 +8,7 @@ import type {
   IStoreSelectedFacet,
   Filter_FacetsFragment,
 } from '@generated/graphql'
+import IconSVG from 'src/components/common/IconSVG'
 
 import Facets from './Facets'
 
@@ -186,7 +186,7 @@ function Filter({
               data-testid="filter-modal-button-close"
               classes="filter-modal__button"
               aria-label="Close Filters"
-              icon={<XIcon size={32} />}
+              icon={<IconSVG name="X" width={32} height={32} />}
               onClick={() => {
                 setSelectedFacets(searchState.selectedFacets)
                 dismissTransition.current?.()
