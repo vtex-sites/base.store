@@ -21,6 +21,15 @@ const PRODUCTS = [
   },
 ]
 
+const imgOptions = {
+  width: 56,
+  sourceWidth: 360,
+  aspectRatio: 1,
+  breakpoints: [50, 100, 150],
+  layout: 'constrained' as const,
+  backgroundColor: '#f0f0f0',
+}
+
 function SuggestionProductCard({
   // TODO: Add Props interface and define `product` type
   product = PRODUCTS,
@@ -41,19 +50,7 @@ function SuggestionProductCard({
     >
       <CardContent>
         <CardImage>
-          <Image
-            baseUrl={img.url}
-            alt={img.alternateName}
-            width={56}
-            sourceWidth={360}
-            aspectRatio={1}
-            breakpoints={[50, 100, 150]}
-            layout="constrained"
-            backgroundColor="#f0f0f0"
-            options={{
-              fitIn: true,
-            }}
-          />
+          <Image baseUrl={img.url} alt={img.alternateName} {...imgOptions} />
         </CardImage>
         <div data-suggestion-product-card-summary>
           <p
