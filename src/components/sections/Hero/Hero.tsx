@@ -22,6 +22,15 @@ interface HeroProps {
   imageAlt: string
 }
 
+const imgProps = {
+  aspectRatio: 3 / 2,
+  layout: 'fullWidth' as const,
+  loading: 'eager' as const,
+  sizes: '(max-width: 768px) 70vw, 50vw',
+  backgroundColor: '#f0f0f0',
+  breakpoints: [720, 1080, 1440, 1920],
+}
+
 const Hero = ({
   title,
   subtitle,
@@ -59,17 +68,7 @@ const Hero = ({
         </div>
       </HeroContent>
       <HeroImage>
-        <Image
-          baseUrl={imageSrc}
-          alt={imageAlt}
-          aspectRatio={2}
-          layout="fullWidth"
-          backgroundColor="#f0f0f0"
-          loading="eager"
-          options={{
-            fitIn: true,
-          }}
-        />
+        <Image baseUrl={imageSrc} alt={imageAlt} {...imgProps} />
       </HeroImage>
     </UIHero>
   )

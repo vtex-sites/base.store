@@ -13,6 +13,7 @@ import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
 
 import GalleryPage from './ProductGalleryPage'
+import EmptyGallery from './EmptyGallery'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
 
@@ -29,6 +30,14 @@ function ProductGallery({ title }: Props) {
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const orderedFacets = useOrderedFacets(data)
   const { next, prev } = usePagination(totalCount)
+
+  if (data && totalCount === 0) {
+    return (
+      <div className="product-listing / grid-content">
+        <EmptyGallery />
+      </div>
+    )
+  }
 
   return (
     <div className="product-listing / grid-content-full">

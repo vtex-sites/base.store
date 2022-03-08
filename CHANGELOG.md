@@ -8,12 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
 - `Skeleton` loading components.
+- `SuggestionsTopSearch` component
 - `PostalCodeInput` component and `usePostalCode` hook.
+- `SuggestionProductCard` component.
+- `EmptyState` component.
+- `EmptyState` at the `ProductGallery` section.
 
 ### Changed
+- Removed fit-in property from image component
 - Moves icons to `/static/icons` folder
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
@@ -23,11 +29,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Moves some `Filter` component logic to the API
 - `Sort` and `Button Filter` (Mobile) `Skeleton's` loading criteria
 - Keep the latest `Filter` component state (Mobile)
+- Implements the expanded mode of `Searchbar` in mobile devices.
+- Updates Lighthouse and Cypress URL with valid product links
+- `Hero` image responsive sizes for mobile and desktop.
 
 ### Deprecated
+
 - useWindowDimensions hook
 
 ### Removed
+
 - gatsby-plugin-offline due to CLS on recurrent users
 - useWindowDimensions hook
 - Removes unused `<FacetedFilter/>` component
@@ -37,6 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useTotalCount` hook
 
 ### Fixed
+
+- The divisor for the `Breadcrumb` component not rendering valid HTML.
 - useBuyButton/useRemoveButton hooks with inconsistent typings/behaviors
 - React tree re-rendering
 - Footer rendering pipeline

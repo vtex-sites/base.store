@@ -73,6 +73,15 @@ export interface SkuSelectorProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
+const imgOptions = {
+  sourceWidth: 720,
+  aspectRatio: 1,
+  width: 40,
+  breakpoints: [20, 40, 80],
+  layout: 'constrained' as const,
+  backgroundColor: '#f0f0f0',
+}
+
 function SkuSelector({
   label,
   variant,
@@ -119,19 +128,7 @@ function SkuSelector({
                 </span>
               )}
               {variant === 'image' && 'src' in option && (
-                <Image
-                  baseUrl={option.src}
-                  alt={option.alt}
-                  sourceWidth={720}
-                  aspectRatio={1}
-                  width={40}
-                  breakpoints={[20, 40, 80]}
-                  layout="constrained"
-                  backgroundColor="#f0f0f0"
-                  options={{
-                    fitIn: true,
-                  }}
-                />
+                <Image baseUrl={option.src} alt={option.alt} {...imgOptions} />
               )}
             </RadioOption>
           )
