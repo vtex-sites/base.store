@@ -112,6 +112,14 @@ const gatsbyConfig: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+      options: {
+        analyzerMode: 'static',
+        openAnalyzer: false,
+        reportFilename: 'bundle-analyser.html',
+      },
+    },
+    {
       resolve: '@vtex/gatsby-plugin-nginx',
       options: {
         httpOptions: [
