@@ -10,17 +10,13 @@ export default function useSearchHistory(
   const [searchHistory, setSearchHistory] = useStorage<string[]>(storageKey, [])
 
   function addToSearchHistory(term: string) {
-    const historySet = new Set(searchHistory)
+    const newHistory = [...new Set([term, ...searchHistory])]
 
-    historySet.delete(term)
-
-    const newHistory = [term, ...historySet]
-
-    if (newHistory.length > maxHistorySize) {
-      newHistory.pop()
-    }
-
-    setSearchHistory(newHistory)
+    setSearchHistory(
+      newHistory.length > maxHistorySize
+        ? newHistory.slice(0, maxHistorySize)
+        : newHistory
+    )
   }
 
   function clearSearchHistory() {
