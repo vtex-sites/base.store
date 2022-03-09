@@ -345,7 +345,9 @@ Icons help build web pages by illustrating concepts and improving website naviga
 
 In the following steps, learn how to add and use a new SVG icon and avoid decreasing page performance while using an icon.
 
-> :warning: This is a suggestion, evaluate if this fits your scenario.
+> ⚠️ Warning
+>
+> This is a recommendation while using icons on a web page. Evaluate if this fits in your project.
 
 #### Adding an SVG icon
 1. In the SVG file, change the `svg` tag to `symbol`.
