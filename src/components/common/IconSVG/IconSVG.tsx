@@ -14,7 +14,7 @@ interface Props extends SVGProps<SVGSVGElement> {
   /**
    * Symbol id from element to render. Take a look at `/static/icons/icons.svg`.
    *
-   * Exemple: <IconSVG name="Bell" />
+   * Example: <IconSVG name="Bell" />
    */
   name: string
   /**
