@@ -360,7 +360,11 @@ import React from 'react'
 import IconSVG from 'src/components/common/IconSVG' // this path can be outdated.
 
 function IconButton() {
-  <button><IconSVG name="<<symbol_id>>" weight="thin" /></button>
+  return (
+    <button>
+      <IconSVG name="<<symbol_id>>" weight="thin" />
+    </button>
+  )
 }
 
 export default IconButton
