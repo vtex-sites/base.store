@@ -340,6 +340,34 @@ The aforementioned guide works well for UI components. However, components like 
    )
 ```
 
+### Adding SVG Icons
+Icons are very useful and they help build beautiful web pages, but sometimes the way we put them into the web page, they can decrease the page performance and don't exist the unique technique that will allow add them decreasing the least possible. So, this project suggest use SVGs from unique SVG and load them with the `IconSVG` component.
+
+So, follow those steps to add or use a new SVG icon:
+
+> :warning: This is a suggestion, evaluate if this fit for your scenario.
+
+1. If the SVG does not exists on SVG file, add them there as `<symbol>`. If existes jump to step 2.
+1.1. Change the `symbol` tag to `symbol`
+1.2. Add unique `id` to the symbol. Pay attention to not use duplicated ids.
+1.3. Remove unecessary html properties to allow you style and decrease the final file size, like `fill`, `stroke-width`, `width`, `height`, `color`.
+
+2. Using this svg into a React component. You need the symbol `id` that is in the SVG icon file.
+
+```tsx
+// src/components/ui/MyIconButton/MyIconButton.tsx
+import React from 'react'
+import IconSVG from 'src/components/common/IconSVG' // this path can be outdated.
+
+function IconButton() {
+  <button><IconSVG name="<<symbol_id>>" weight="thin" /></button>
+}
+
+export default IconButton
+```
+
+This project uses SVGs from [phosphor icons](https://phosphoricons.com/)
+
 ## 🖊️ Styling Components
 
 Our customized themes are based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
