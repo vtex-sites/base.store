@@ -343,7 +343,7 @@ The aforementioned guide works well for UI components. However, components like 
 ### Managing SVG Icons
 Icons help build web pages by illustrating concepts and improving website navigation. However, using icons can decrease the page's performance. One option to avoid the decrease of the page's performance is to use SVGs from a single SVG file, located in `/static/icons/icons.svg`, and load them with the `IconSVG` component.
 
-So, follow these steps to add or use a new SVG icon:
+In the following steps, learn how to add and use a new SVG icon and avoid decreasing page performance while using an icon.
 
 > :warning: This is a suggestion, evaluate if this fits your scenario.
 
