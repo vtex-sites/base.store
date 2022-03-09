@@ -13,7 +13,13 @@
 
   @include media(">=notebook") { min-width: 12rem; }
 
-  &[data-bordered="true"] { border: var(--border-width-0) solid var(--color-border-display); }
+  &[data-bordered="true"] {
+    border: none;
+
+    @include media(">=notebook") {
+      border: var(--border-width-0) solid var(--color-border-display);
+    }
+  }
 
   [data-product-card-skeleton-image] {
     [data-element-variant="image"] {

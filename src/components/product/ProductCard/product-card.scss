@@ -7,7 +7,7 @@
   min-width: 14rem;
   height: 100%;
   padding: var(--space-1) var(--space-1) var(--space-2);
-  border: 1px solid transparent;
+  border: var(--border-width-0) solid transparent;
   border-radius: var(--border-radius-default);
   transition: box-shadow .5s ease, border .5s ease;
 
@@ -20,7 +20,7 @@
 
   @media (hover: hover) {
     &:hover {
-      border: 1px solid var(--color-border-display);
+      border: var(--border-width-0) solid var(--color-border-display);
       box-shadow: var(--box-shadow);
     }
   }
@@ -46,7 +46,11 @@
   }
 
   &[data-card-bordered="true"] {
-    border: 1px solid var(--color-border-display);
+    border: none;
+
+    @include media(">=notebook") {
+      border: var(--border-width-0) solid var(--color-border-display);
+    }
   }
 
   &[data-card-out-of-stock="true"] {
