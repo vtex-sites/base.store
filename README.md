@@ -340,22 +340,22 @@ The aforementioned guide works well for UI components. However, components like 
    )
 ```
 
-### Adding SVG Icons
+### Managing SVG Icons
 Icons are handy and help build beautiful web pages, but sometimes, including them can decrease performance. There isn't a silver bullet solution that allows them to be added while not decreasing the performance. So, this project suggests using SVGs from a single SVG file, located in `/static/icons/icons.svg`, and loading them with the `IconSVG` component.
 
 So, follow these steps to add or use a new SVG icon:
 
 > :warning: This is a suggestion, evaluate if this fits your scenario.
 
-1. If the SVG does not exist on the SVG file, add them there as `<symbol>`. If it exists, jump to step 2.
+#### Adding an SVG icon
+1. In the SVG file, change the `svg` tag to `symbol`.
+2. Add an `id` to the symbol. Remember to use an unique `id` and do not replicate it.
+3. Remove unnecessary HTML/SVG properties to allow you to style and decrease the final file size, such as `fill`, `stroke-width`, `width`, `height`, and `color`.
 
-   1.1. Change the `svg` tag to `symbol`.
+#### Using an SVG icon
 
-   1.2. Add unique `id` to the symbol. Pay attention not to use duplicated IDs!
-
-   1.3. Remove unnecessary HTML/SVG properties to allow you to style and decrease the final file size, like `fill`, `stroke-width`, `width`, `height`, and `color`.
-
-2. Using this SVG in a React component. You need the symbol `id` that is in the SVG icon file.
+1. Get the icon's `id` that you created in the SVG icon file.
+2. Add the `id` in the React component that you desire to use the SVG icon. For example
 
 ```tsx
 // src/components/ui/MyIconButton/MyIconButton.tsx
@@ -372,7 +372,6 @@ function IconButton() {
 
 export default IconButton
 ```
-
 This project uses SVGs from [Phosphor icons](https://phosphoricons.com/).
 
 ## 🖊️ Styling Components
