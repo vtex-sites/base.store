@@ -16,7 +16,6 @@ import GalleryPage from './ProductGalleryPage'
 import EmptyGallery from './EmptyGallery'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useOrderedFacets } from './useOrderedFacets'
-import { useTotalCount } from './useTotalCount'
 
 import './product-gallery.scss'
 
@@ -28,7 +27,7 @@ function ProductGallery({ title }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
-  const totalCount = useTotalCount(data)
+  const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const orderedFacets = useOrderedFacets(data)
   const { next, prev } = usePagination(totalCount)
 
@@ -60,11 +59,19 @@ function ProductGallery({ title }: Props) {
         </div>
 
         <div className="product-listing__sort">
-          <SkeletonElement shimmer type="text" loading={!data}>
+          <SkeletonElement
+            shimmer
+            type="text"
+            loading={orderedFacets?.length === 0}
+          >
             <Sort />
           </SkeletonElement>
 
-          <SkeletonElement shimmer type="button" loading={!data}>
+          <SkeletonElement
+            shimmer
+            type="button"
+            loading={orderedFacets?.length === 0}
+          >
             <Button
               variant="tertiary"
               data-testid="open-filter-button"
