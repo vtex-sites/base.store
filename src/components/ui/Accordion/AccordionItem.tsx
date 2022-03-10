@@ -45,11 +45,20 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
         <UIIcon
           data-testid={`${testId}-button-icon`}
           component={
-            isExpanded ? (
-              <IconSVG name="MinusCircle" width={24} height={24} />
-            ) : (
-              <IconSVG name="PlusCircle" width={24} height={24} />
-            )
+            <>
+              <IconSVG
+                data-icon={isExpanded ? 'expanded' : true}
+                name="MinusCircle"
+                width={24}
+                height={24}
+              />
+              <IconSVG
+                data-icon={isExpanded ? true : 'collapsed'}
+                name="PlusCircle"
+                width={24}
+                height={24}
+              />
+            </>
           }
         />
       </UIAccordionButton>
