@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
@@ -19,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `EmptyState` at the `ProductGallery` section.
 
 ### Changed
+
 - Removed fit-in property from image component
 - Moves icons to `/static/icons` folder
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
@@ -49,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix border style for Product Card and its skeleton on mobile
 - The divisor for the `Breadcrumb` component not rendering valid HTML.
 - useBuyButton/useRemoveButton hooks with inconsistent typings/behaviors
 - React tree re-rendering
