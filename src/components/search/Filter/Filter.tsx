@@ -78,7 +78,7 @@ function Filter({
     }
 
     setActiveFacets([])
-    setSelectedFacets(searchState.selectedFacets)
+    setSelectedFacets([...searchState.selectedFacets])
   }, [isOpen, searchState.selectedFacets])
 
   // Opens accordion items with active facets
