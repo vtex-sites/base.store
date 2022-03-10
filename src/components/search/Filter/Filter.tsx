@@ -140,13 +140,26 @@ function Filter({
   }
 
   const onApply = () => {
-    // Only toggle new facets and keep the current ones applied
-    const facetsToAdd = selectedFacets
-      .map((facet) => !searchState.selectedFacets.includes(facet) && facet)
-      .concat(facetsToRemove)
-      .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
+    // Only toggle new facets added and old facets removed and keep the current ones applied
+    const facetsToAdd = selectedFacets.filter((facet) => {
+      const isSameFacet = (f: IStoreSelectedFacet) =>
+        f.value === facet.value && f.key === facet.key
 
-    toggleFacets(facetsToAdd)
+      const searchStateHasFacet = searchState.selectedFacets.some(isSameFacet)
+
+      return !searchStateHasFacet
+    })
+
+    const facetsToRemove = searchState.selectedFacets.filter((facet) => {
+      const isSameFacet = (f: IStoreSelectedFacet) =>
+        f.value === facet.value && f.key === facet.key
+
+      const isFacetSelected = selectedFacets.some(isSameFacet)
+
+      return !isFacetSelected
+    })
+
+    toggleFacets([...facetsToAdd, ...facetsToRemove])
     dismissTransition.current?.()
   }
 
