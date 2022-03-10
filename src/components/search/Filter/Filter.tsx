@@ -39,6 +39,20 @@ type ActiveFacets = {
 
 type Callback = () => unknown
 
+function filterFacetsDiff(
+  firstFacets: IStoreSelectedFacet[],
+  secondFacets: IStoreSelectedFacet[]
+) {
+  return firstFacets.filter((facet) => {
+    const isSameFacet = (f: IStoreSelectedFacet) =>
+      f.value === facet.value && f.key === facet.key
+
+    const isFacetPresent = secondFacets.some(isSameFacet)
+
+    return !isFacetPresent
+  })
+}
+
 function Filter({
   facets,
   onDismiss,
@@ -141,23 +155,15 @@ function Filter({
 
   const onApply = () => {
     // Only toggle new facets added and old facets removed and keep the current ones applied
-    const facetsToAdd = selectedFacets.filter((facet) => {
-      const isSameFacet = (f: IStoreSelectedFacet) =>
-        f.value === facet.value && f.key === facet.key
+    const facetsToAdd = filterFacetsDiff(
+      selectedFacets,
+      searchState.selectedFacets
+    )
 
-      const searchStateHasFacet = searchState.selectedFacets.some(isSameFacet)
-
-      return !searchStateHasFacet
-    })
-
-    const facetsToRemove = searchState.selectedFacets.filter((facet) => {
-      const isSameFacet = (f: IStoreSelectedFacet) =>
-        f.value === facet.value && f.key === facet.key
-
-      const isFacetSelected = selectedFacets.some(isSameFacet)
-
-      return !isFacetSelected
-    })
+    const facetsToRemove = filterFacetsDiff(
+      searchState.selectedFacets,
+      selectedFacets
+    )
 
     toggleFacets([...facetsToAdd, ...facetsToRemove])
     dismissTransition.current?.()
