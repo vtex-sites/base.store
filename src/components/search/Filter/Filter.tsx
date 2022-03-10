@@ -103,21 +103,21 @@ function Filter({
   }, [isOpen, activeFacets])
 
   const onFacetChange = (item: IStoreSelectedFacet) => {
-    if (selectedFacets.some((facet) => facet.value === item.value)) {
-      const indexToRemove = selectedFacets.findIndex(
-        (f) => f.value === item.value
-      )
+    const indexToRemove = selectedFacets.findIndex(
+      (facet) => facet.value === item.value
+    )
 
-      selectedFacets.some((facet) => facet.value === item.value) &&
-        setFacetsToRemove([...facetsToRemove, item])
+    const shouldRemoveFacet = indexToRemove !== -1
 
-      selectedFacets.splice(indexToRemove, 1)
-      setSelectedFacets([...selectedFacets])
+    setSelectedFacets((previousSelectedFacets) => {
+      if (shouldRemoveFacet) {
+        previousSelectedFacets.splice(indexToRemove, 1)
 
-      return
-    }
+        return [...previousSelectedFacets]
+      }
 
-    setSelectedFacets([...selectedFacets, item])
+      return [...previousSelectedFacets, item]
+    })
   }
 
   const onAccordionItemMount = (
