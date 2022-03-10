@@ -56,10 +56,6 @@ function Filter({
     searchState.selectedFacets ?? []
   )
 
-  const [facetsToRemove, setFacetsToRemove] = useState<IStoreSelectedFacet[]>(
-    []
-  )
-
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
   const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
 
@@ -82,7 +78,6 @@ function Filter({
     }
 
     setActiveFacets([])
-    setFacetsToRemove([])
     setSelectedFacets(searchState.selectedFacets)
   }, [isOpen, searchState.selectedFacets])
 
@@ -207,7 +202,6 @@ function Filter({
           <Button
             variant="secondary"
             onClick={() => {
-              setFacetsToRemove(selectedFacets)
               setSelectedFacets([])
             }}
           >
