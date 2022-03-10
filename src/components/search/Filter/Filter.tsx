@@ -53,7 +53,7 @@ function Filter({
   )
 
   const [selectedFacets, setSelectedFacets] = useState<IStoreSelectedFacet[]>(
-    searchState.selectedFacets ?? []
+    [...searchState.selectedFacets] ?? []
   )
 
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
