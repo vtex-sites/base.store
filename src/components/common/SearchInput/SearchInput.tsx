@@ -12,7 +12,7 @@ import type {
   SearchInputRef,
 } from '@faststore/ui'
 import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
-
+import useSearchHistory from 'src/sdk/search/useSeachHistory'
 import './search-input.scss'
 
 declare type SearchInputProps = {
@@ -41,6 +41,12 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
     ref
   ) {
+    const { addToSearchHistory } = useSearchHistory()
+    const handleSearch = (term: string) => {
+      addToSearchHistory(term)
+      doSearch(term)
+    }
+
     return (
       <UISearchInput
         ref={ref}
@@ -51,7 +57,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
           />
         }
         placeholder="Search everything at the store"
-        onSubmit={doSearch}
+        onSubmit={handleSearch}
         {...props}
       />
     )
