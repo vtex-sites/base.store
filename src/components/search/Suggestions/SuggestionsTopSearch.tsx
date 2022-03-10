@@ -44,7 +44,7 @@ const SuggestionsTopSearch = forwardRef<
         {searchedItems.map((item, index) => (
           <li key={index}>
             <Link variant="display" to={item.href}>
-              <Badge variant="new" small>
+              <Badge variant="info" small>
                 {index + 1}
               </Badge>
               {item.name}
