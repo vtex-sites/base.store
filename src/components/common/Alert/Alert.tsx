@@ -1,8 +1,8 @@
-import { BellRinging as BellRingingIcon } from 'phosphor-react'
 import React, { useCallback, useState } from 'react'
 import UIAlert from 'src/components/ui/Alert'
 import { mark } from 'src/sdk/tests/mark'
 import type { PropsWithChildren } from 'react'
+import IconSVG from 'src/components/common/IconSVG'
 
 function Alert({ children }: PropsWithChildren<unknown>) {
   const [displayAlert, setDisplayAlert] = useState(true)
@@ -18,7 +18,7 @@ function Alert({ children }: PropsWithChildren<unknown>) {
 
   return (
     <UIAlert
-      icon={<BellRingingIcon size={24} />}
+      icon={<IconSVG name="BellRinging" width={24} height={24} />}
       dismissible
       onClose={onAlertClose}
     >

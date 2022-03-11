@@ -1,6 +1,5 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import { X as XIcon } from 'phosphor-react'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
@@ -9,6 +8,7 @@ import type {
   IStoreSelectedFacet,
   Filter_FacetsFragment,
 } from '@generated/graphql'
+import IconSVG from 'src/components/common/IconSVG'
 
 import Facets from './Facets'
 
@@ -39,6 +39,20 @@ type ActiveFacets = {
 
 type Callback = () => unknown
 
+function filterFacetsDiff(
+  firstFacets: IStoreSelectedFacet[],
+  secondFacets: IStoreSelectedFacet[]
+) {
+  return firstFacets.filter((facet) => {
+    const isSameFacet = (f: IStoreSelectedFacet) =>
+      f.value === facet.value && f.key === facet.key
+
+    const isFacetPresent = secondFacets.some(isSameFacet)
+
+    return !isFacetPresent
+  })
+}
+
 function Filter({
   facets,
   onDismiss,
@@ -53,11 +67,7 @@ function Filter({
   )
 
   const [selectedFacets, setSelectedFacets] = useState<IStoreSelectedFacet[]>(
-    searchState.selectedFacets ?? []
-  )
-
-  const [facetsToRemove, setFacetsToRemove] = useState<IStoreSelectedFacet[]>(
-    []
+    [...searchState.selectedFacets] ?? []
   )
 
   const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
@@ -82,8 +92,7 @@ function Filter({
     }
 
     setActiveFacets([])
-    setFacetsToRemove([])
-    setSelectedFacets(searchState.selectedFacets)
+    setSelectedFacets([...searchState.selectedFacets])
   }, [isOpen, searchState.selectedFacets])
 
   // Opens accordion items with active facets
@@ -108,21 +117,21 @@ function Filter({
   }, [isOpen, activeFacets])
 
   const onFacetChange = (item: IStoreSelectedFacet) => {
-    if (selectedFacets.some((facet) => facet.value === item.value)) {
-      const indexToRemove = selectedFacets.findIndex(
-        (f) => f.value === item.value
-      )
+    const indexToRemove = selectedFacets.findIndex(
+      (facet) => facet.value === item.value
+    )
 
-      selectedFacets.some((facet) => facet.value === item.value) &&
-        setFacetsToRemove([...facetsToRemove, item])
+    const shouldRemoveFacet = indexToRemove !== -1
 
-      selectedFacets.splice(indexToRemove, 1)
-      setSelectedFacets([...selectedFacets])
+    setSelectedFacets((previousSelectedFacets) => {
+      if (shouldRemoveFacet) {
+        previousSelectedFacets.splice(indexToRemove, 1)
 
-      return
-    }
+        return [...previousSelectedFacets]
+      }
 
-    setSelectedFacets([...selectedFacets, item])
+      return [...previousSelectedFacets, item]
+    })
   }
 
   const onAccordionItemMount = (
@@ -145,13 +154,18 @@ function Filter({
   }
 
   const onApply = () => {
-    // Only toggle new facets and keep the current ones applied
-    const facetsToAdd = selectedFacets
-      .map((facet) => !searchState.selectedFacets.includes(facet) && facet)
-      .concat(facetsToRemove)
-      .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
+    // Only toggle new facets added and old facets removed and keep the current ones applied
+    const facetsToAdd = filterFacetsDiff(
+      selectedFacets,
+      searchState.selectedFacets
+    )
 
-    toggleFacets(facetsToAdd)
+    const facetsToRemove = filterFacetsDiff(
+      searchState.selectedFacets,
+      selectedFacets
+    )
+
+    toggleFacets([...facetsToAdd, ...facetsToRemove])
     dismissTransition.current?.()
   }
 
@@ -186,7 +200,7 @@ function Filter({
               data-testid="filter-modal-button-close"
               classes="filter-modal__button"
               aria-label="Close Filters"
-              icon={<XIcon size={32} />}
+              icon={<IconSVG name="X" width={32} height={32} />}
               onClick={() => {
                 setSelectedFacets(searchState.selectedFacets)
                 dismissTransition.current?.()
@@ -207,7 +221,6 @@ function Filter({
           <Button
             variant="secondary"
             onClick={() => {
-              setFacetsToRemove(selectedFacets)
               setSelectedFacets([])
             }}
           >

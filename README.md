@@ -340,6 +340,50 @@ The aforementioned guide works well for UI components. However, components like 
    )
 ```
 
+### Managing SVG Icons
+Icons help build web pages by illustrating concepts and improving website navigation. However, using icons can decrease the page's performance. One option to avoid the decrease of the page's performance is to use SVGs from a single SVG file, located in `/static/icons/icons.svg`, and load them with the `IconSVG` component.
+
+In the following steps, learn how to add and use a new SVG icon and avoid decreasing page performance while using an icon.
+
+> ⚠️ Warning
+>
+> This is a recommendation while using icons on a web page. Evaluate if this fits in your project.
+
+#### Adding an SVG icon
+1. In the SVG file, change the `svg` tag to `symbol`.
+2. Add an `id` to the symbol. Remember to use an unique `id` and do not replicate it.
+3. Remove unnecessary HTML/SVG properties to allow you to style and decrease the final file size, such as `fill`, `stroke-width`, `width`, `height`, and `color`.
+
+An example adding Bell icon:
+
+```svg
+<svg style="display:none">
+<symbol id="Bell" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M56.2,104a71.9,71.9,0,0,1,72.3-72c39.6.3,71.3,33.2,71.3,72.9V112c0,35.8,7.5,56.6,14.1,68a8,8,0,0,1-6.9,12H49a8,8,0,0,1-6.9-12c6.6-11.4,14.1-32.2,14.1-68Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path><path d="M96,192v8a32,32,0,0,0,64,0v-8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path></symbol>
+</svg>
+```
+
+#### Using an SVG icon
+
+1. Get the icon's `id` that you created in the SVG icon file.
+2. Add the `id` in the React component that you desire to use the SVG icon. For example
+
+```tsx
+// src/components/ui/MyIconButton/MyIconButton.tsx
+import React from 'react'
+import IconSVG from 'src/components/common/IconSVG' // this path can be outdated.
+
+function IconButton() {
+  return (
+    <button>
+      <IconSVG name="<<symbol_id>>" weight="thin" />
+    </button>
+  )
+}
+
+export default IconButton
+```
+This project uses SVGs from [Phosphor icons](https://phosphoricons.com/).
+
 ## 🖊️ Styling Components
 
 Our customized themes are based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:

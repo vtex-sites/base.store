@@ -2,7 +2,7 @@ import type { ReactElement } from 'react'
 import React, { useState } from 'react'
 import { Input } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
-import { Bell as BellIcon } from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 export interface OutOfStockProps {
   /**
@@ -24,6 +24,7 @@ export interface OutOfStockProps {
   title?: string
   /**
    * Notification icon.
+   * @default <IconSVG name="Bell" />
    */
   icon?: ReactElement
   /**
@@ -37,7 +38,7 @@ function OutOfStock(props: OutOfStockProps) {
     title = 'Out of Stock',
     notificationMsg = 'Notify me when available',
     buttonTxt = 'Send',
-    icon = <BellIcon />,
+    icon = <IconSVG name="Bell" />,
     onSubmit,
     testId = 'store-out-of-stock',
   } = props
@@ -58,7 +59,7 @@ function OutOfStock(props: OutOfStockProps) {
       />
       <Button
         variant="primary"
-        icon={<BellIcon size={16} />}
+        icon={<IconSVG name="Bell" width={16} height={16} />}
         iconPosition="left"
         onClick={() => onSubmit(email)}
       >

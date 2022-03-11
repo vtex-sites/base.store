@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SuggestionProductCard` component.
 - `EmptyState` component.
 - `EmptyState` at the `ProductGallery` section.
+- `IconSVG` component to load SVG Icons.
 
 ### Changed
 
@@ -49,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - API style redirects from `/_v/private/graphql` since they have no effect
 - Display box from `<ProductCard/>` component
 - `useTotalCount` hook
+- Phosphor-react library
 
 ### Fixed
 
@@ -59,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Footer rendering pipeline
 - Scroll lock when transitioning pages on mobile via `SlideOver` component navigation
 - Filter Button specificity on desktop
+- Filter facets are not being selected on mobile
 
 ### Security
 

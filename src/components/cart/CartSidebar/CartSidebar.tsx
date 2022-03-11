@@ -1,9 +1,4 @@
 import { List } from '@faststore/ui'
-import {
-  ArrowRight as ArrowRightIcon,
-  Truck as TruckIcon,
-  X as XIcon,
-} from 'phosphor-react'
 import React, { useRef } from 'react'
 import Alert from 'src/components/ui/Alert'
 import { Badge } from 'src/components/ui/Badge'
@@ -13,6 +8,7 @@ import SlideOver from 'src/components/ui/SlideOver'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useUI } from 'src/sdk/ui'
+import IconSVG from 'src/components/common/IconSVG'
 
 import CartItem from '../CartItem'
 import EmptyCart from '../EmptyCart'
@@ -51,11 +47,13 @@ function CartSidebar() {
         <IconButton
           data-testid="cart-sidebar-button-close"
           aria-label="Close Cart"
-          icon={<XIcon size={32} />}
+          icon={<IconSVG name="X" width={32} height={32} />}
           onClick={() => dismissTransition.current?.()}
         />
       </header>
-      <Alert icon={<TruckIcon size={24} />}>Free shiping starts at $300</Alert>
+      <Alert icon={<IconSVG name="Truck" width={24} height={24} />}>
+        Free shiping starts at $300
+      </Alert>
 
       {isEmpty ? (
         <EmptyCart onDismiss={() => dismissTransition.current?.()} />
@@ -77,7 +75,11 @@ function CartSidebar() {
               checkoutButton={
                 <Button
                   variant="primary"
-                  icon={!isValidating && <ArrowRightIcon size={18} />}
+                  icon={
+                    !isValidating && (
+                      <IconSVG name="ArrowRight" width={18} height={18} />
+                    )
+                  }
                   iconPosition="right"
                   {...btnProps}
                 >

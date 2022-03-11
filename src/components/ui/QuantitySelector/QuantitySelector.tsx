@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
-import { Plus as PlusIcon, Minus as MinusIcon } from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import './quantity-selector.scss'
 
@@ -65,12 +65,12 @@ export function QuantitySelector({
       leftButtonProps={{
         onClick: decrease,
         disabled: isLeftDisabled || disabled,
-        icon: <MinusIcon size={16} weight="bold" />,
+        icon: <IconSVG name="Minus" width={16} height={16} weight="bold" />,
       }}
       rightButtonProps={{
         onClick: increase,
         disabled: isRightDisabled || disabled,
-        icon: <PlusIcon size={16} weight="bold" />,
+        icon: <IconSVG name="Plus" width={16} height={16} weight="bold" />,
       }}
       inputProps={{
         onChange: validateInput,
