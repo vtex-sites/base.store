@@ -1,8 +1,11 @@
 import React from 'react'
 import IconSVG from 'src/components/common/IconSVG'
 
-import type { UIButtonProps } from '../Button'
-import Button from '../Button'
+import Button from '../../ui/Button'
+import Section from '../Section'
+import type { UIButtonProps } from '../../ui/Button'
+
+import './scroll-to-top-button.scss'
 
 interface ScrollToTopButtonProps {
   /**
@@ -28,14 +31,16 @@ function ScrollToTopButton({
   iconPosition = 'left',
 }: ScrollToTopButtonProps) {
   return (
-    <Button
-      variant="secondary"
-      icon={icon}
-      iconPosition={iconPosition}
-      onClick={() => window.scrollTo(0, 0)}
-    >
-      {text}
-    </Button>
+    <Section className="scroll-to-top-button">
+      <Button
+        variant="secondary"
+        icon={icon}
+        iconPosition={iconPosition}
+        onClick={() => window.scrollTo(0, 0)}
+      >
+        {text}
+      </Button>
+    </Section>
   )
 }
 

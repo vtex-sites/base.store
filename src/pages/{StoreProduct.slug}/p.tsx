@@ -8,7 +8,6 @@ import {
 import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
-import Section from 'src/components/sections/Section'
 import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type {
@@ -94,18 +93,14 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-
-      <Section>
-        <ProductDetails product={product} />
-      </Section>
+      <ProductDetails product={product} />
 
       {youMightAlsoLikeProducts?.length > 0 && (
-        <Section className="page__section-shelf page__section-divisor / grid-section">
-          <h2 className="title-section / grid-content">You might also like</h2>
-          <div className="page__section-content">
-            <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
-          </div>
-        </Section>
+        <ProductShelf
+          products={youMightAlsoLikeProducts.slice(0, 5)}
+          title="You might also like"
+          withDivisor
+        />
       )}
     </>
   )

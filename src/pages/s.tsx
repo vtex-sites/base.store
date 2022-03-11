@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
 import ProductGallery from 'src/components/sections/ProductGallery'
-import Section from 'src/components/sections/Section'
 import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
@@ -61,9 +60,7 @@ function Page(props: Props) {
       */}
       <SROnly as="h1" text={title} />
 
-      <Section>
-        <ProductGallery title="Search Results" />
-      </Section>
+      <ProductGallery title="Search Results" />
     </SearchProvider>
   )
 }
