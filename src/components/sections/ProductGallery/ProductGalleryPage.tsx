@@ -78,6 +78,12 @@ function GalleryPage({
           />
           <div className="product-listing__results-sponsored">
             <h3>Sponsored</h3>
+            {/*
+              TODO: Refactor this bit of code
+
+              Sections should be self contained and should not import other sections.
+              We should remove/refactor this section from here
+            */}
             <ProductTiles products={productsSponsored.slice(0, 2)} title="" />
           </div>
           <ProductGrid
