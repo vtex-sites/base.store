@@ -118,7 +118,7 @@ function ProductCard({
         </div>
 
         {outOfStock ? (
-          <Badge small variant="outOfStock">
+          <Badge small variant="neutral">
             Out of stock
           </Badge>
         ) : (

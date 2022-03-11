@@ -40,7 +40,7 @@ function CartSidebar() {
       <header data-testid="cart-sidebar">
         <div className="cart-sidebar__title">
           <p className="title-display">Your Cart</p>
-          <Badge variant="new" small>
+          <Badge variant="info" small>
             {totalItems}
           </Badge>
         </div>
