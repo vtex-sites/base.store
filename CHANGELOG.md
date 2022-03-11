@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updates Lighthouse and Cypress URL with valid product links
 - `Hero` image responsive sizes for mobile and desktop.
 - `Badge` variants names
+- `Tiles` and `Tile` to use semantic list elements.
 
 ### Deprecated
 

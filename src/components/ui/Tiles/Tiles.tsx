@@ -5,7 +5,7 @@ import Tile from './Tile'
 
 import './tiles.scss'
 
-export interface TilesProps extends HTMLAttributes<HTMLDivElement> {
+export interface TilesProps extends HTMLAttributes<HTMLUListElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress,
    * testing-library, and jest).
@@ -18,7 +18,7 @@ const MAX_CHILDREN = 4
 const NUMBER_ITEMS_TO_EXPAND_FIRST_TWO = 2
 const NUMBER_ITEMS_TO_EXPAND_FIRST = 3
 
-const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
+const Tiles = forwardRef<HTMLUListElement, TilesProps>(function Tiles(
   { testId = 'store-tiles', children, ...otherProps },
   ref
 ) {
@@ -51,14 +51,14 @@ const Tiles = forwardRef<HTMLDivElement, TilesProps>(function Tiles(
       : ''
 
   return (
-    <div
+    <ul
       ref={ref}
       data-store-tiles={expandedClass}
       data-testid={testId}
       {...otherProps}
     >
       {children}
-    </div>
+    </ul>
   )
 })
 
