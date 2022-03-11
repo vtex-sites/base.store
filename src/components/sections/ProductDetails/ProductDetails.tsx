@@ -1,19 +1,18 @@
+import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useEffect, useState } from 'react'
+import { DiscountBadge } from 'src/components/ui/Badge'
+import Breadcrumb from 'src/components/ui/Breadcrumb'
 import BuyButton from 'src/components/ui/BuyButton'
 import { Image } from 'src/components/ui/Image'
-import AspectRatio from 'src/components/ui/AspectRatio'
 import Price from 'src/components/ui/Price'
+import ProductTitle from 'src/components/ui/ProductTitle'
+import QuantitySelector from 'src/components/ui/QuantitySelector'
 import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
-import Breadcrumb from 'src/components/ui/Breadcrumb'
-import ProductTitle from 'src/components/ui/ProductTitle'
-import { DiscountBadge } from 'src/components/ui/Badge'
-import QuantitySelector from 'src/components/ui/QuantitySelector'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
-import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
 
 import './product-details.scss'
@@ -22,13 +21,24 @@ interface Props {
   product: ProductDetailsFragment_ProductFragment
 }
 
+const imgOptions = {
+  sourceWidth: 1024,
+  backgroundColor: '#f0f0f0',
+  layout: 'constrained' as const,
+  loading: 'eager' as const,
+  sizes: '(max-width: 768px) 25vw, 50vw',
+  breakpoints: [360, 720, 1024],
+  aspectRatio: 4 / 3,
+}
+
 function ProductDetails({ product: staleProduct }: Props) {
+  const { currency } = useSession()
+  const [addQuantity, setAddQuantity] = useState(1)
+
   // Stale while revalidate the product for fetching the new price etc
   const { data, isValidating } = useProduct(staleProduct.id, {
     product: staleProduct,
   })
-
-  const [addQuantity, setAddQuantity] = useState(1)
 
   if (!data) {
     throw new Error('NotFound')
@@ -39,7 +49,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       id,
       sku,
       gtin,
-      description: productDescription,
+      description,
       name: variantName,
       brand,
       isVariantOf,
@@ -47,14 +57,29 @@ function ProductDetails({ product: staleProduct }: Props) {
       image: productImages,
       offers: {
         offers: [{ availability, price, listPrice, seller }],
-        lowPrice: spotPrice,
+        lowPrice,
       },
-      breadcrumbList,
+      breadcrumbList: breadcrumbs,
     },
   } = data
 
-  const { currency } = useSession()
   const buyDisabled = availability !== 'https://schema.org/InStock'
+
+  const buyProps = useBuyButton({
+    id,
+    price,
+    listPrice,
+    seller,
+    quantity: addQuantity,
+    itemOffered: {
+      sku,
+      name: variantName,
+      gtin,
+      image: productImages,
+      brand,
+      isVariantOf,
+    },
+  })
 
   useEffect(() => {
     sendAnalyticsEvent<ViewItemEvent<AnalyticsItem>>({
@@ -89,26 +114,6 @@ function ProductDetails({ product: staleProduct }: Props) {
     gtin,
   ])
 
-  const breadcrumbs = breadcrumbList ?? staleProduct.breadcrumbList
-  const description = productDescription ?? staleProduct.description
-  const lowPrice = spotPrice ?? staleProduct.offers.lowPrice
-
-  const buyProps = useBuyButton({
-    id,
-    brand,
-    isVariantOf,
-    price,
-    listPrice,
-    seller,
-    quantity: addQuantity,
-    gtin,
-    itemOffered: {
-      image: productImages,
-      name: variantName,
-      sku,
-    },
-  })
-
   return (
     <div className="product-details / grid-content grid-section">
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
@@ -123,22 +128,11 @@ function ProductDetails({ product: staleProduct }: Props) {
         </header>
 
         <section className="product-details__image">
-          <AspectRatio ratio="4:3">
-            <Image
-              baseUrl={productImages[0].url}
-              sourceWidth={720}
-              aspectRatio={1}
-              width={720}
-              breakpoints={[250, 360, 480, 720]}
-              layout="constrained"
-              backgroundColor="#f0f0f0"
-              options={{
-                fitIn: true,
-              }}
-              alt={productImages[0].alternateName}
-              loading="eager"
-            />
-          </AspectRatio>
+          <Image
+            baseUrl={productImages[0].url}
+            alt={productImages[0].alternateName}
+            {...imgOptions}
+          />
         </section>
 
         <section className="product-details__settings">

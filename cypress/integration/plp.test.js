@@ -21,10 +21,10 @@ describe('Search page Filters and Sorting options', () => {
     // Apply filters
     cy.getById('open-filter-button')
       .click()
-      .getById('filter-accordion-button')
+      .getById('mobile-store-filter-accordion-button')
       .first()
       .click()
-      .getById('filter-accordion-panel-checkbox')
+      .getById('mobile-store-filter-accordion-panel-checkbox')
       .should('exist')
       .first()
       .click()
@@ -43,13 +43,15 @@ describe('Search page Filters and Sorting options', () => {
             // Check if the filter applied actually brought the number of products it said it would
 
             cy.waitUntil(() => {
-              return cy.get('.product-grid').should('exist')
+              return cy.getById('total-product-count').should('exist')
             }).then(() => {
-              cy.getById('total-product-count').then(($countDiv) => {
-                expect(Number($countDiv.attr('data-count'))).to.eq(
-                  Number(quantity)
-                )
-              })
+              cy.getById('total-product-count')
+                .parent()
+                .then(($countDiv) => {
+                  expect(Number($countDiv.attr('data-count'))).to.eq(
+                    Number(quantity)
+                  )
+                })
             })
           })
       })

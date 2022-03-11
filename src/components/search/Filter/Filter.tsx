@@ -1,21 +1,21 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
 import { useSearch } from '@faststore/sdk'
-import type {
-  IStoreSelectedFacet,
-  FacetedFilter_FacetsFragment,
-} from '@generated/graphql'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
+import { graphql } from 'gatsby'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
-import { X as XIcon } from 'phosphor-react'
 import SlideOver from 'src/components/ui/SlideOver'
+import type {
+  IStoreSelectedFacet,
+  Filter_FacetsFragment,
+} from '@generated/graphql'
+import IconSVG from 'src/components/common/IconSVG'
 
 import Facets from './Facets'
 
 import './filter.scss'
 
 interface FilterProps {
-  facets: FacetedFilter_FacetsFragment[]
+  facets: Filter_FacetsFragment[]
   /*
    * Control whether the filter modal is open. (mobile only)
    */
@@ -30,10 +30,6 @@ interface FilterProps {
    * testing-library, and jest).
    */
   testId?: string
-  /**
-   * Current page's slug to be used as fixed facet
-   */
-  slug?: string
 }
 
 type ActiveFacets = {
@@ -48,10 +44,8 @@ function Filter({
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
-  slug = '',
 }: FilterProps) {
-  const { isMobile } = useWindowDimensions()
-  const { toggleFacets, state: searchState } = useSearch()
+  const { toggleFacets, toggleFacet, state: searchState } = useSearch()
   const dismissTransition = useRef<Callback | undefined>()
 
   const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
@@ -133,7 +127,7 @@ function Filter({
 
   const onAccordionItemMount = (
     index: number,
-    values: FacetedFilter_FacetsFragment['values']
+    values: Filter_FacetsFragment['values']
   ) => {
     // Ensures only one array item for each accordion's item
     if (activeFacets.length >= filteredFacets.length) {
@@ -158,76 +152,92 @@ function Filter({
       .filter((facet) => typeof facet !== 'boolean') as IStoreSelectedFacet[]
 
     toggleFacets(facetsToAdd)
-
-    setIndicesExpanded(new Set([]))
     dismissTransition.current?.()
   }
 
-  return !isMobile ? (
-    <Facets
-      slug={slug}
-      testId={testId}
-      selectedFacets={selectedFacets}
-      filteredFacets={filteredFacets}
-      indicesExpanded={indicesExpanded}
-      onFacetChange={onFacetChange}
-      onAccordionChange={onAccordionChange}
-      onAccordionItemMount={onAccordionItemMount}
-    />
-  ) : (
-    <SlideOver
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      onDismissTransition={(callback) => (dismissTransition.current = callback)}
-      size="partial"
-      direction="rightSide"
-      className="filter-modal__content"
-    >
-      <div className="filter-modal__body">
-        <header className="filter-modal__header">
-          <h2 className="title-display">Filters</h2>
-          <IconButton
-            data-testid="filter-modal-button-close"
-            classes="filter-modal__button"
-            aria-label="Close Filters"
-            icon={<XIcon size={32} />}
-            onClick={() => {
-              setSelectedFacets(searchState.selectedFacets)
-              dismissTransition.current?.()
-            }}
-          />
-        </header>
+  return (
+    <>
+      <div className="hidden-mobile">
         <Facets
-          slug={slug}
-          testId={testId}
+          testId={`desktop-${testId}`}
           selectedFacets={selectedFacets}
           filteredFacets={filteredFacets}
           indicesExpanded={indicesExpanded}
-          onFacetChange={onFacetChange}
+          onFacetChange={toggleFacet}
           onAccordionChange={onAccordionChange}
           onAccordionItemMount={onAccordionItemMount}
         />
       </div>
-      <footer className="filter-modal__footer">
-        <Button
-          variant="secondary"
-          onClick={() => {
-            setFacetsToRemove(selectedFacets)
-            setSelectedFacets([])
-          }}
-        >
-          Clear All
-        </Button>
-        <Button
-          variant="primary"
-          data-testid="filter-modal-button-apply"
-          onClick={() => onApply()}
-        >
-          Apply
-        </Button>
-      </footer>
-    </SlideOver>
+
+      <SlideOver
+        isOpen={isOpen}
+        onDismiss={onDismiss}
+        onDismissTransition={(callback) =>
+          (dismissTransition.current = callback)
+        }
+        size="partial"
+        direction="rightSide"
+        className="filter-modal__content"
+      >
+        <div className="filter-modal__body">
+          <header className="filter-modal__header">
+            <h2 className="title-display">Filters</h2>
+            <IconButton
+              data-testid="filter-modal-button-close"
+              classes="filter-modal__button"
+              aria-label="Close Filters"
+              icon={<IconSVG name="X" width={32} height={32} />}
+              onClick={() => {
+                setSelectedFacets(searchState.selectedFacets)
+                dismissTransition.current?.()
+              }}
+            />
+          </header>
+          <Facets
+            testId={`mobile-${testId}`}
+            selectedFacets={selectedFacets}
+            filteredFacets={filteredFacets}
+            indicesExpanded={indicesExpanded}
+            onFacetChange={onFacetChange}
+            onAccordionChange={onAccordionChange}
+            onAccordionItemMount={onAccordionItemMount}
+          />
+        </div>
+        <footer className="filter-modal__footer">
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setFacetsToRemove(selectedFacets)
+              setSelectedFacets([])
+            }}
+          >
+            Clear All
+          </Button>
+          <Button
+            variant="primary"
+            data-testid="filter-modal-button-apply"
+            onClick={() => onApply()}
+          >
+            Apply
+          </Button>
+        </footer>
+      </SlideOver>
+    </>
   )
 }
+
+export const fragment = graphql`
+  fragment Filter_facets on StoreFacet {
+    key
+    label
+    type
+    values {
+      label
+      value
+      selected
+      quantity
+    }
+  }
+`
 
 export default Filter

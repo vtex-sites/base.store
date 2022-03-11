@@ -1,16 +1,18 @@
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
+import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useMemo } from 'react'
-import ProductListing from 'src/components/sections/ProductListing'
+import ProductGallery from 'src/components/sections/ProductGallery'
+import Section from 'src/components/sections/Section'
+import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
+import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
 } from '@generated/graphql'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import SROnly from 'src/components/ui/SROnly'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
@@ -59,7 +61,9 @@ function Page(props: Props) {
       */}
       <SROnly as="h1" text={title} />
 
-      <ProductListing title="Search Results" />
+      <Section>
+        <ProductGallery title="Search Results" />
+      </Section>
     </SearchProvider>
   )
 }
@@ -76,4 +80,6 @@ export const query = graphql`
   }
 `
 
-export default Page
+Page.displayName = 'Page'
+
+export default mark(Page)

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import type { ReactNode } from 'react'
 import UIHero, {
   HeroContent,
@@ -6,8 +6,8 @@ import UIHero, {
   HeroLink,
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
-import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 import { LinkButton } from 'src/components/ui/Button'
+import IconSVG from 'src/components/common/IconSVG'
 
 type Variant = 'default' | 'small'
 
@@ -20,6 +20,15 @@ interface HeroProps {
   icon?: ReactNode
   imageSrc: string
   imageAlt: string
+}
+
+const imgProps = {
+  aspectRatio: 3 / 2,
+  layout: 'fullWidth' as const,
+  loading: 'eager' as const,
+  sizes: '(max-width: 768px) 70vw, 50vw',
+  backgroundColor: '#f0f0f0',
+  breakpoints: [720, 1080, 1440, 1920],
 }
 
 const Hero = ({
@@ -49,8 +58,9 @@ const Hero = ({
             <p className="text-body-big">{subtitle}</p>
             {!!link && (
               <HeroLink>
-                <LinkButton href={link} inverse>
-                  {linkText} <ArrowRightIcon size={24} />
+                <LinkButton to={link} inverse>
+                  {linkText}{' '}
+                  <IconSVG name="ArrowRight" width={24} height={24} />
                 </LinkButton>
               </HeroLink>
             )}
@@ -59,20 +69,10 @@ const Hero = ({
         </div>
       </HeroContent>
       <HeroImage>
-        <Image
-          baseUrl={imageSrc}
-          alt={imageAlt}
-          aspectRatio={2}
-          layout="fullWidth"
-          backgroundColor="#f0f0f0"
-          loading="eager"
-          options={{
-            fitIn: true,
-          }}
-        />
+        <Image baseUrl={imageSrc} alt={imageAlt} {...imgProps} />
       </HeroImage>
     </UIHero>
   )
 }
 
-export default memo(Hero)
+export default Hero

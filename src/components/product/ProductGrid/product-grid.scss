@@ -1,4 +1,4 @@
-@import "../../../styles/vendors/include-media.scss";
+@import "src/styles/scaffold";
 
 .product-grid {
   --gap: 2px;
@@ -21,15 +21,5 @@
 
   li {
     background-color: var(--color-neutral-0);
-  }
-
-  [data-store-card] {
-    &[data-card-bordered="true"] {
-      border: none;
-
-      @include media(">=notebook") {
-        border: 1px solid var(--color-border-display);
-      }
-    }
   }
 }

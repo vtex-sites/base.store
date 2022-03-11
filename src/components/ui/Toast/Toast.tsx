@@ -3,9 +3,9 @@ import React, { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
 
 const state = {
-  error: 'bg-red',
-  warn: 'bg-yellow',
-  info: 'bg-green',
+  ERROR: 'bg-red',
+  WARNING: 'bg-yellow',
+  INFO: 'bg-green',
 }
 
 function Toast() {

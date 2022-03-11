@@ -7,12 +7,14 @@ import {
 } from 'gatsby-plugin-next-seo'
 import React from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
+import ProductShelf from 'src/components/sections/ProductShelf'
+import Section from 'src/components/sections/Section'
+import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
-import ProductShelf from 'src/components/sections/ProductShelf'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -93,15 +95,17 @@ function Page(props: Props) {
         Do not import or render components from any other folder in here.
       */}
 
-      <ProductDetails product={product} />
+      <Section>
+        <ProductDetails product={product} />
+      </Section>
 
       {youMightAlsoLikeProducts?.length > 0 && (
-        <section className="page__section page__section-shelf page__section-divisor / grid-section">
+        <Section className="page__section-shelf page__section-divisor / grid-section">
           <h2 className="title-section / grid-content">You might also like</h2>
           <div className="page__section-content">
             <ProductShelf products={youMightAlsoLikeProducts.slice(0, 5)} />
           </div>
-        </section>
+        </Section>
       )}
     </>
   )
@@ -177,4 +181,6 @@ export const querySSG = graphql`
   }
 `
 
-export default Page
+Page.displayName = 'Page'
+
+export default mark(Page)

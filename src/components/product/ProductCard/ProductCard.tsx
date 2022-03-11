@@ -1,20 +1,18 @@
-import { graphql, Link } from 'gatsby'
-import type { ReactNode } from 'react'
-import React, { useMemo, memo } from 'react'
-import { DiscountBadge, Badge } from 'src/components/ui/Badge'
-import Price from 'src/components/ui/Price'
-import AspectRatio from 'src/components/ui/AspectRatio'
-import type { AspectRatioProps } from 'src/components/ui/AspectRatio'
-import { Image } from 'src/components/ui/Image'
-import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-import { useProductLink } from 'src/sdk/product/useProductLink'
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import {
   Card as UICard,
-  CardImage as UICardImage,
-  CardContent as UICardContent,
   CardActions as UICardActions,
+  CardContent as UICardContent,
+  CardImage as UICardImage,
 } from '@faststore/ui'
+import { graphql, Link } from 'gatsby'
+import React, { memo, useMemo } from 'react'
+import { Badge, DiscountBadge } from 'src/components/ui/Badge'
+import { Image } from 'src/components/ui/Image'
+import Price from 'src/components/ui/Price'
+import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useProductLink } from 'src/sdk/product/useProductLink'
+import type { ReactNode } from 'react'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import './product-card.scss'
 
@@ -26,16 +24,25 @@ interface Props {
   bordered?: boolean
   outOfStock?: boolean
   variant?: Variant
-  ratio?: AspectRatioProps['ratio']
+  aspectRatio?: number
   buyButton?: ReactNode
+}
+
+const imgOptions = {
+  sourceWidth: 1024,
+  backgroundColor: '#f0f0f0',
+  layout: 'constrained' as const,
+  loading: 'lazy' as const,
+  sizes: '(max-width: 768px) 25vw, 30vw',
+  breakpoints: [360, 480, 720, 1024],
 }
 
 function ProductCard({
   product,
   index,
   variant = 'vertical',
-  ratio = '1',
   bordered = false,
+  aspectRatio = 1,
   outOfStock = false,
   buyButton,
   ...otherProps
@@ -46,6 +53,7 @@ function ProductCard({
     offers: { lowPrice: spotPrice, offers },
   } = product
 
+  // TODO: Move this computation to the backend
   const selectedOffer = useMemo(() => {
     const lowestPriceOffer = offers.findIndex((x) => x.price === spotPrice)
 
@@ -73,23 +81,12 @@ function ProductCard({
       {...otherProps}
     >
       <UICardImage>
-        <AspectRatio ratio={ratio}>
-          <Image
-            baseUrl={img.url}
-            sourceWidth={480}
-            aspectRatio={1}
-            width={360}
-            breakpoints={[250, 360, 480]}
-            layout="constrained"
-            backgroundColor="#f0f0f0"
-            options={{
-              fitIn: true,
-            }}
-            alt={img.alternateName}
-            sizes="(max-width: 768px) 200px, 320px"
-            loading="lazy"
-          />
-        </AspectRatio>
+        <Image
+          baseUrl={img.url}
+          alt={img.alternateName}
+          aspectRatio={aspectRatio}
+          {...imgOptions}
+        />
       </UICardImage>
       <UICardContent>
         <div className="product-card__heading">

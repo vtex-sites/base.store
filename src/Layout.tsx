@@ -1,61 +1,35 @@
-import React, { useState } from 'react'
-import loadable from '@loadable/component'
+import React, { lazy, Suspense } from 'react'
+import Alert from 'src/components/common/Alert'
+import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
-import { BellRinging as BellRingingIcon } from 'phosphor-react'
-import { useCartNotificationEffect } from 'src/sdk/cart/useCartNotificationEffect'
+import Toast from 'src/components/common/Toast'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
-import Alert from './components/ui/Alert'
-import './styles/fonts.css'
-
-const CartSidebar = loadable(() => import('src/components/cart/CartSidebar'))
-
-const Toast = loadable(() => import('src/components/ui/Toast'))
-
-const Footer = loadable(() => import('src/components/common/Footer'))
+const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
-  const { displayMinicart, toasts } = useUI()
-
-  const isBrowser = typeof window !== 'undefined'
-  const [showAlert, setShowAlert] = useState<boolean>(() => {
-    return (
-      (isBrowser && !window?.localStorage.getItem('dismissed-alert-ALERTID')) ||
-      true
-    )
-  })
-
-  const onAlertClose = () => {
-    setShowAlert(false)
-
-    if (isBrowser) {
-      window?.localStorage.setItem('dismissed-alert-ALERTID', 'true')
-    }
-  }
-
-  useCartNotificationEffect()
+  const { displayMinicart } = useUI()
 
   return (
     <div id="layout">
-      {showAlert && (
-        <Alert
-          icon={<BellRingingIcon size={24} />}
-          dismissible
-          onClose={onAlertClose}
-        >
-          Get 10% off today:&nbsp;<span>NEW10</span>
-        </Alert>
-      )}
+      <Alert>
+        Get 10% off today:&nbsp;<span>NEW10</span>
+      </Alert>
 
       <Navbar />
 
       <main>{children}</main>
 
       <Footer />
-      {displayMinicart && <CartSidebar />}
 
-      {toasts.length > 0 && <Toast />}
+      <Toast />
+
+      {displayMinicart && (
+        <Suspense fallback={null}>
+          <CartSidebar />
+        </Suspense>
+      )}
     </div>
   )
 }

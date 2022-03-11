@@ -1,0 +1,11 @@
+@import "src/styles/scaffold";
+
+.section {
+  width: 100vw;
+  content-visibility: auto;
+  contain-intrinsic-size: rem(2px) rem(1024px);
+
+  .title-section {
+    margin-bottom: var(--space-3);
+  }
+}

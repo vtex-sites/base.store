@@ -1,8 +1,18 @@
-@import "../../../styles/scaffold";
+@import "src/styles/scaffold";
 
 .footer {
   background-color: var(--bg-neutral-light);
-  .incentives { padding-top: 0; }
+
+  .incentives {
+    padding-top: 0;
+  }
+
+  content-visibility: auto;
+  contain-intrinsic-size: rem(860px);
+
+  @include media(">=notebook") {
+    contain-intrinsic-size: rem(546px);
+  }
 }
 
 .footer__note,
@@ -46,7 +56,10 @@
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    &::before { padding-bottom: var(--space-4); }
+
+    &::before {
+      padding-bottom: var(--space-4);
+    }
   }
 
   @include media(">=notebook") {
@@ -65,7 +78,9 @@
   }
 
   [data-store-icon] {
-    @include media(">=notebook") { grid-column: span 2; }
+    @include media(">=notebook") {
+      grid-column: span 2;
+    }
   }
 
   [data-payment-methods-flags] {
@@ -84,7 +99,9 @@
       justify-content: space-between;
       row-gap: var(--space-1);
 
-      @include media("<notebook") { column-gap: var(--grid-gap-0); }
+      @include media("<notebook") {
+        column-gap: var(--grid-gap-0);
+      }
     }
   }
 }
@@ -97,7 +114,9 @@
     padding: var(--space-4) 0 var(--space-3);
   }
 
-  @include media(">=notebook") { grid-column: 11 / span 2; }
+  @include media(">=notebook") {
+    grid-column: 11 / span 2;
+  }
 
   .title-sub-subsection {
     text-align: center;
@@ -132,7 +151,10 @@
   p + p {
     margin: var(--space-2) auto;
   }
-  address { font-style: normal; }
+
+  address {
+    font-style: normal;
+  }
 
   @include media(">=notebook") {
     grid-column: span 6;
@@ -145,19 +167,38 @@
 }
 
 .footer__links {
-  [data-store-list] { margin-bottom: var(--space-2); }
+  [data-store-list] {
+    margin-bottom: var(--space-2);
+  }
 
   [data-store-link] {
     display: inline-block;
     padding-left: 0;
   }
 
-  @include media(">=notebook") { grid-column: span 8; }
+  @include media(">=notebook") {
+    grid-column: span 8;
+  }
+
+  [data-store-icon] [data-icon] {
+    display: none;
+  }
+
+  [data-store-icon] [data-icon="expanded"] {
+    display: initial;
+  }
+
+  [data-store-icon] [data-icon="collapsed"] {
+    display: initial;
+  }
 }
 
 .footer__links-columns {
   display: grid;
   grid-gap: var(--grid-gap-1);
   grid-template-columns: repeat(4, 1fr);
-  .title-sub-subsection { margin-bottom: var(--space-1); }
+
+  .title-sub-subsection {
+    margin-bottom: var(--space-1);
+  }
 }

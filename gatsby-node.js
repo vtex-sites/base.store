@@ -1,17 +1,11 @@
 const path = require('path')
 
-const fs = require('fs-extra')
+const { copyLibFiles } = require('@builder.io/partytown/utils')
 
-exports.onPreInit = ({ reporter }) => {
+exports.onPreInit = async ({ reporter }) => {
   reporter.info('Copying Partytown Files')
 
-  // Copy @builder.io/partytown lib files to the <rootPath>/static/~partytown.
-  // Those files are used by the Partytown component.
-  fs.ensureDirSync(path.resolve('./static'))
-  fs.copySync(
-    path.resolve('./node_modules/@builder.io/partytown/lib'),
-    path.resolve('./static/~partytown')
-  )
+  await copyLibFiles(path.resolve('./public/~partytown'))
 }
 
 exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {

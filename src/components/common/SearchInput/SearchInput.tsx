@@ -7,12 +7,19 @@ import {
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
 import React from 'react'
-import type { SearchInputProps as UISearchInputProps } from '@faststore/ui'
-import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
+import type {
+  SearchInputProps as UISearchInputProps,
+  SearchInputRef,
+} from '@faststore/ui'
+import useSearchHistory from 'src/sdk/search/useSeachHistory'
+import IconSVG from 'src/components/common/IconSVG'
 
 import './search-input.scss'
 
-declare type SearchInputProps = Omit<UISearchInputProps, 'onSubmit'>
+declare type SearchInputProps = {
+  onSearchClick?: () => void
+  buttonTestId?: string
+} & Omit<UISearchInputProps, 'onSubmit'>
 
 const doSearch = async (term: string) => {
   const { pathname, search } = formatSearchState(
@@ -30,15 +37,33 @@ const doSearch = async (term: string) => {
   navigate(`${pathname}${search}`)
 }
 
-function SearchInput(props: SearchInputProps) {
-  return (
-    <UISearchInput
-      icon={<MagnifyingGlassIcon />}
-      placeholder="Search everything at the store"
-      onSubmit={doSearch}
-      {...props}
-    />
-  )
-}
+const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
+  function SearchInput(
+    { onSearchClick, buttonTestId = 'store-search-button', ...props },
+    ref
+  ) {
+    const { addToSearchHistory } = useSearchHistory()
+    const handleSearch = (term: string) => {
+      addToSearchHistory(term)
+      doSearch(term)
+    }
+
+    return (
+      <UISearchInput
+        ref={ref}
+        icon={
+          <IconSVG
+            name="MagnifyingGlass"
+            onClick={onSearchClick}
+            data-testid={buttonTestId}
+          />
+        }
+        placeholder="Search everything at the store"
+        onSubmit={handleSearch}
+        {...props}
+      />
+    )
+  }
+)
 
 export default SearchInput

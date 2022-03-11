@@ -41,7 +41,7 @@ function BannerText({
           <p>{caption}</p>
         </div>
         <BannerLink>
-          <LinkButton href={actionPath} inverse>
+          <LinkButton to={actionPath} inverse>
             {actionLabel}
           </LinkButton>
         </BannerLink>

@@ -1,4 +1,4 @@
-@import "../../../styles/vendors/include-media";
+@import "src/styles/scaffold";
 
 [data-store-breadcrumb] {
   width: 100%;
@@ -9,6 +9,8 @@
     overflow-x: hidden;
 
     li {
+      display: inline-flex;
+
       &:first-child a {
         display: flex;
         align-items: center;

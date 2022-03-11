@@ -1,18 +1,16 @@
 import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
-import loadable from '@loadable/component'
+import React from 'react'
+import BannerText from 'src/components/sections/BannerText'
+import Hero from 'src/components/sections/Hero'
+import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
+import ProductShelf from 'src/components/sections/ProductShelf'
+import ProductTiles from 'src/components/sections/ProductTiles'
+import Section from 'src/components/sections/Section'
+import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
-import Hero from 'src/components/sections/Hero'
-import ProductShelf from 'src/components/sections/ProductShelf'
-import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
-
-const BannerText = loadable(() => import('src/components/sections/BannerText'))
-const ProductTiles = loadable(
-  () => import('src/components/sections/ProductTiles')
-)
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -26,8 +24,7 @@ function Page(props: Props) {
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
-  const products = useMemo(() => allStoreProduct?.nodes, [allStoreProduct])
-  const haveProducts = products && products?.length > 0
+  const products = allStoreProduct?.nodes
 
   return (
     <>
@@ -61,7 +58,7 @@ function Page(props: Props) {
         Sections: Components imported from '../components/sections' only.
         Do not import or render components from any other folder in here.
       */}
-      <section className="page__section">
+      <Section>
         <Hero
           title="New Products Available"
           subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
@@ -70,47 +67,41 @@ function Page(props: Props) {
           imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
           imageAlt="Quest 2 Controller on a table"
         />
-      </section>
+      </Section>
 
-      <section className="page__section">
+      <Section>
         <IncentivesHeader />
-      </section>
+      </Section>
 
-      {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Most Wanted</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products.slice(0, 5)} />
-          </div>
-        </section>
-      )}
+      <Section className="page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Most Wanted</h2>
+        <div className="page__section-content">
+          <ProductShelf products={products?.slice(0, 5)} />
+        </div>
+      </Section>
 
-      {haveProducts && (
-        <section className="page__section / grid-section grid-content">
-          <h2 className="title-section">Just Arrived</h2>
-          <div className="page__section-content">
-            <ProductTiles products={products.slice(5, 8)} />
-          </div>
-        </section>
-      )}
+      <Section className="grid-section grid-content">
+        <h2 className="title-section">Just Arrived</h2>
+        <div className="page__section-content">
+          <ProductTiles products={products?.slice(5, 8)} />
+        </div>
+      </Section>
 
-      <section className="page__section / grid-section">
+      <Section className="grid-section">
         <BannerText
           title="Receive our news and promotions in advance."
           caption="Enjoy and get 10% off on your first purchase."
           actionPath="/"
           actionLabel="Call to action"
         />
-      </section>
+      </Section>
 
-      {haveProducts && (
-        <section className="page__section page__section-shelf / grid-section">
-          <h2 className="title-section / grid-content">Deals & Promotions</h2>
-          <div className="page__section-content">
-            <ProductShelf products={products.slice(9, 14)} />
-          </div>
-        </section>
-      )}
+      <Section className="page__section-shelf / grid-section">
+        <h2 className="title-section / grid-content">Deals & Promotions</h2>
+        <div className="page__section-content">
+          <ProductShelf products={products?.slice(9, 14)} />
+        </div>
+      </Section>
     </>
   )
 }
@@ -133,4 +124,6 @@ export const query = graphql`
   }
 `
 
-export default Page
+Page.displayName = 'Page'
+
+export default mark(Page)

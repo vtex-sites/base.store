@@ -1,23 +1,15 @@
 import type {
-  FacetedFilter_FacetsFragment,
+  Filter_FacetsFragment,
   ProductGalleryQueryQuery,
 } from '@generated/graphql'
 import { useMemo, useRef } from 'react'
 
 export const useOrderedFacets = (data?: ProductGalleryQueryQuery) => {
-  const facets = useRef<FacetedFilter_FacetsFragment[]>([])
+  const facets = useRef<Filter_FacetsFragment[]>([])
 
   return useMemo(() => {
     if (data) {
-      const orderFacets = data.search.facets.map((facet) => {
-        if (facet.type === 'BOOLEAN') {
-          facet.values.sort((a, b) => a.label.localeCompare(b.label))
-        }
-
-        return facet
-      })
-
-      facets.current = orderFacets
+      facets.current = data.search.facets
     }
 
     return facets.current

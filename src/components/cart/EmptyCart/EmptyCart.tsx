@@ -1,8 +1,7 @@
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import { ShoppingCart as ShoppingCartIcon } from 'phosphor-react'
-
-import './empty-cart.scss'
+import EmptyState from 'src/components/common/EmptyState'
+import IconSVG from 'src/components/common/IconSVG'
 
 interface Props {
   /**
@@ -13,15 +12,15 @@ interface Props {
 
 function EmptyCart({ onDismiss }: Props) {
   return (
-    <div data-testid="cart-empty-state" data-empty-cart>
-      <div data-empty-cart-title>
-        <ShoppingCartIcon size="32" />
+    <EmptyState>
+      <header data-empty-cart-title>
+        <IconSVG name="ShoppingCart" width={56} height={56} weight="thin" />
         <p>Your Cart is empty</p>
-      </div>
-      <Button onClick={onDismiss} variant="primary">
+      </header>
+      <Button onClick={onDismiss} variant="secondary">
         Start Shopping
       </Button>
-    </div>
+    </EmptyState>
   )
 }
 

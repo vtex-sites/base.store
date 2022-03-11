@@ -1,23 +1,29 @@
-import React, { memo, useRef, useState } from 'react'
-import { Link as LinkGatsby } from 'gatsby'
+import type { SearchInputRef } from '@faststore/ui'
 import { List as UIList } from '@faststore/ui'
+import { Link as LinkGatsby } from 'gatsby'
+import React, { useRef, useState } from 'react'
+import type { AnchorHTMLAttributes } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
-import Logo from 'src/components/ui/Logo'
-import Link from 'src/components/ui/Link'
 import IconButton from 'src/components/ui/IconButton'
-import { List as ListIcon, X as XIcon } from 'phosphor-react'
+import Link from 'src/components/ui/Link'
+import Logo from 'src/components/ui/Logo'
 import SignInLink from 'src/components/ui/SignInLink'
 import SlideOver from 'src/components/ui/SlideOver'
-import useWindowDimensions from 'src/hooks/useWindowDimensions'
 import { useStoreCollection } from 'src/hooks/useAllCollections'
-
-import SearchInput from '../SearchInput'
+import { mark } from 'src/sdk/tests/mark'
+import PostalCodeInput from 'src/components/common/PostalCode'
+import IconSVG from 'src/components/common/IconSVG'
+import SearchInput from 'src/components/common/SearchInput'
 
 import './navbar.scss'
 
 type Callback = () => unknown
 
-function NavLinks() {
+interface NavLinksProps {
+  onClickLink?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
+}
+
+function NavLinks({ onClickLink }: NavLinksProps) {
   const links = useStoreCollection()
 
   return (
@@ -25,7 +31,7 @@ function NavLinks() {
       <UIList>
         {links.map(({ node: link }) => (
           <li key={link.seo.title}>
-            <Link variant="display" href={`/${link.slug}`}>
+            <Link variant="display" to={`/${link.slug}`} onClick={onClickLink}>
               {link.seo.title}
             </Link>
           </li>
@@ -37,76 +43,107 @@ function NavLinks() {
 
 function Navbar() {
   const [showMenu, setShowMenu] = useState(false)
-  const { isMobile } = useWindowDimensions()
+  const [searchExpanded, setSearchExpanded] = useState(false)
+  const searchMobileRef = useRef<SearchInputRef>(null)
   const dismissTransition = useRef<Callback | undefined>()
+  const handleCloseSlideOver = () => setShowMenu(false)
+
+  const handlerExpandSearch = () => {
+    setSearchExpanded(true)
+    searchMobileRef.current?.inputRef?.focus()
+  }
 
   return (
     <header className="navbar / grid-content-full">
       <div className="navbar__header / grid-content">
         <section className="navbar__row">
-          <IconButton
-            classes="navbar__menu"
-            aria-label="Open Menu"
-            icon={<ListIcon size={32} />}
-            onClick={() => setShowMenu(true)}
-          />
-          <LinkGatsby
-            to="/"
-            aria-label="Go to Faststore home"
-            title="Go to Faststore home"
-            className="navbar__logo"
-          >
-            <Logo />
-          </LinkGatsby>
-          <SearchInput />
-          <div className="navbar__buttons">
-            <SignInLink />
-            <CartToggle />
-          </div>
-        </section>
-        <NavLinks />
-      </div>
-      {isMobile && (
-        <SlideOver
-          isOpen={showMenu}
-          onDismiss={() => setShowMenu(false)}
-          onDismissTransition={(callback) => {
-            dismissTransition.current = callback
-          }}
-          size="full"
-          direction="leftSide"
-          className="navbar__modal-content"
-        >
-          <div className="navbar__modal-body">
-            <header className="navbar__modal-header">
+          {!searchExpanded && (
+            <>
+              <IconButton
+                classes="navbar__menu"
+                aria-label="Open Menu"
+                icon={<IconSVG name="List" width={32} height={32} />}
+                onClick={() => setShowMenu(true)}
+              />
               <LinkGatsby
                 to="/"
                 aria-label="Go to Faststore home"
                 title="Go to Faststore home"
                 className="navbar__logo"
-                onClick={() => dismissTransition.current?.()}
               >
                 <Logo />
               </LinkGatsby>
-
+            </>
+          )}
+          <SearchInput />
+          <div
+            className="navbar__buttons"
+            data-store-search-expanded={searchExpanded}
+          >
+            {searchExpanded && (
               <IconButton
-                classes="navbar__button"
-                aria-label="Close Menu"
-                icon={<XIcon size={32} />}
-                onClick={() => dismissTransition.current?.()}
+                classes="navbar__collapse"
+                aria-label="Collapse search bar"
+                icon={<IconSVG name="CaretLeft" width={32} height={32} />}
+                onClick={() => setSearchExpanded(false)}
               />
-            </header>
-            <div className="navlinks">
-              <NavLinks />
-              <div className="navlinks__signin">
-                <SignInLink />
-              </div>
+            )}
+            <SearchInput
+              placeholder=""
+              ref={searchMobileRef}
+              testId="store-input-mobile"
+              buttonTestId="store-input-mobile-button"
+              onSearchClick={handlerExpandSearch}
+            />
+            <SignInLink />
+            <CartToggle />
+          </div>
+        </section>
+        <NavLinks />
+        <PostalCodeInput />
+      </div>
+
+      <SlideOver
+        isOpen={showMenu}
+        onDismiss={handleCloseSlideOver}
+        onDismissTransition={(callback) => {
+          dismissTransition.current = callback
+        }}
+        size="full"
+        direction="leftSide"
+        className="navbar__modal-content"
+      >
+        <div className="navbar__modal-body">
+          <header className="navbar__modal-header">
+            <LinkGatsby
+              to="/"
+              aria-label="Go to Faststore home"
+              title="Go to Faststore home"
+              className="navbar__logo"
+              onClick={() => dismissTransition.current?.()}
+            >
+              <Logo />
+            </LinkGatsby>
+
+            <IconButton
+              classes="navbar__button"
+              aria-label="Close Menu"
+              icon={<IconSVG name="X" width={32} height={32} />}
+              onClick={() => dismissTransition.current?.()}
+            />
+          </header>
+          <div className="navlinks">
+            <NavLinks onClickLink={handleCloseSlideOver} />
+            <div className="navlinks__signin">
+              <SignInLink />
             </div>
           </div>
-        </SlideOver>
-      )}
+        </div>
+      </SlideOver>
     </header>
   )
 }
 
-export default memo(Navbar)
+Navbar.displayName = 'Navbar'
+
+export default mark(Navbar)

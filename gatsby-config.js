@@ -33,6 +33,7 @@ module.exports = {
     PRESERVE_FILE_DOWNLOAD_CACHE: false,
   },
   plugins: [
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-sass`,
     {
       resolve: 'gatsby-plugin-manifest',
@@ -45,16 +46,6 @@ module.exports = {
         theme_color: '#ffffff',
         display: 'standalone',
         cache_busting_mode: 'none',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        precachePages: [`/offline`],
-        appendScript: 'src/custom-sw-code.js',
-        workboxConfig: {
-          globPatterns: ['**/offline/*'],
-        },
       },
     },
     {
@@ -92,7 +83,7 @@ module.exports = {
     {
       resolve: '@vtex/gatsby-plugin-thumbor',
       options: {
-        server: 'https://thumbor-dev-server.vtex.io',
+        server: 'https://thumbor-server.vtex.io',
       },
     },
     {
@@ -120,6 +111,14 @@ module.exports = {
         stats: {
           context: join(__dirname, 'src'),
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
+      options: {
+        analyzerMode: 'static',
+        openAnalyzer: false,
+        reportFilename: 'bundle-analyser.html',
       },
     },
     {
