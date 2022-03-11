@@ -7,7 +7,8 @@ import SuggestionProductCard from '../SuggestionProductCard'
 
 import './suggestions.scss'
 
-const MAX_SUGGESTIONS = 5
+const MAX_SUGGESTIONS = 10
+const MAX_SUGGESTIONS_WITH_PRODUCTS = 5
 const MAX_SUGGESTED_PRODUCTS = 4
 const SUGGESTED_PRODUCTS = [
   {
@@ -36,6 +37,25 @@ const SUGGESTED_PRODUCTS = [
 
 const SUGGESTIONS = ['Sony MX', 'Sony MV-100 Headphone', 'Sony M2000 Earbuds']
 
+function formatSearchTerm(
+  indexSubstring: number,
+  searchTerm: string,
+  suggestion: string
+) {
+  if (indexSubstring === 0) {
+    return searchTerm
+      .split('')
+      .map((char, idx) =>
+        idx === 0 && suggestion.indexOf(char.toUpperCase()) === 0
+          ? char.toUpperCase()
+          : char.toLowerCase()
+      )
+      .join('')
+  }
+
+  return searchTerm.toLowerCase()
+}
+
 export interface SuggestionsProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress, testing library, and jest).
@@ -49,13 +69,13 @@ export interface SuggestionsProps extends HTMLAttributes<HTMLDivElement> {
 
 const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
   function Suggestions(
-    { testId = 'suggestions', term = '', ...otherProps },
+    { testId = 'suggestions', term = 'Son', ...otherProps },
     ref
   ) {
     const suggestions =
       SUGGESTED_PRODUCTS.length > 0
-        ? SUGGESTIONS.slice(0, MAX_SUGGESTIONS)
-        : SUGGESTIONS
+        ? SUGGESTIONS.slice(0, MAX_SUGGESTIONS_WITH_PRODUCTS)
+        : SUGGESTIONS.slice(0, MAX_SUGGESTIONS)
 
     const handleSuggestions = (suggestion: string, searchTerm: string) => {
       const suggestionSubstring = suggestion
@@ -64,33 +84,19 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
 
       return (
         <p>
-          {suggestionSubstring.map((substring, indexSubstring) => {
-            const formatSearchTerm = () => {
-              if (indexSubstring === 0) {
-                return searchTerm
-                  .split('')
-                  .map((char, idx) =>
-                    idx === 0 && suggestion.indexOf(char.toUpperCase()) === 0
-                      ? char.toUpperCase()
-                      : char.toLowerCase()
-                  )
-              }
-
-              return searchTerm.toLowerCase()
-            }
-
-            return (
-              <>
+          {suggestionSubstring.map((substring, indexSubstring) => (
+            <>
+              {substring.length > 0 && (
                 <b className="suggestions__suggestion-bold">
                   {indexSubstring === 0
                     ? substring.charAt(0).toUpperCase() + substring.slice(1)
                     : substring}
                 </b>
-                {indexSubstring !== suggestionSubstring.length - 1 &&
-                  formatSearchTerm()}
-              </>
-            )
-          })}
+              )}
+              {indexSubstring !== suggestionSubstring.length - 1 &&
+                formatSearchTerm(indexSubstring, searchTerm, suggestion)}
+            </>
+          ))}
         </p>
       )
     }
@@ -103,28 +109,35 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
         className="suggestions"
         {...otherProps}
       >
-        <UIList data-suggestions-list className="suggestions__section">
-          {suggestions.map((suggestion, index) => (
-            <Button
-              key={index}
-              onClick={() => null}
-              className="suggestions__suggestion"
-            >
-              {handleSuggestions(suggestion, term)}
-            </Button>
-          ))}
-        </UIList>
-
-        <div className="suggestions__section">
-          <p className="suggestions__title">Suggested Products</p>
-          <UIList>
-            {SUGGESTED_PRODUCTS.slice(0, MAX_SUGGESTED_PRODUCTS).map(
-              (product, index) => (
-                <SuggestionProductCard key={index} product={product} />
-              )
-            )}
+        {suggestions.length > 0 && (
+          <UIList data-suggestions-list className="suggestions__section">
+            {suggestions?.map((suggestion, index) => (
+              <li key={index}>
+                <Button
+                  onClick={() => null}
+                  className="suggestions__suggestion"
+                >
+                  {handleSuggestions(suggestion, term)}
+                </Button>
+              </li>
+            ))}
           </UIList>
-        </div>
+        )}
+
+        {SUGGESTED_PRODUCTS.length > 0 && (
+          <div className="suggestions__section">
+            <p className="suggestions__title">Suggested Products</p>
+            <UIList>
+              {SUGGESTED_PRODUCTS.slice(0, MAX_SUGGESTED_PRODUCTS).map(
+                (product, index) => (
+                  <li key={index}>
+                    <SuggestionProductCard product={product} />
+                  </li>
+                )
+              )}
+            </UIList>
+          </div>
+        )}
       </section>
     )
   }
