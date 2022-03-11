@@ -9,14 +9,17 @@ const POSTAL_CODE_STORAGE_KEY = 'main::store::postalCode'
 const POSTAL_CODE_INPUT_ID = 'postal-code-input'
 
 export default function PostalCodeInput() {
-  const [code, setPostalCode] = useStorage<string>(POSTAL_CODE_STORAGE_KEY, '')
   const ref = useRef<HTMLInputElement>(null)
+  const [postalCode, setPostalCode] = useStorage<string>(
+    POSTAL_CODE_STORAGE_KEY,
+    ''
+  )
 
   const handleSubmit = (event: KeyboardEvent<HTMLInputElement>) => {
-    const val = ref.current?.value
+    const value = ref.current?.value
 
-    if (event.key === 'Enter' && typeof val === 'string') {
-      setPostalCode(val)
+    if (event.key === 'Enter' && typeof value === 'string') {
+      setPostalCode(value)
     }
   }
 
@@ -27,7 +30,7 @@ export default function PostalCodeInput() {
         id={POSTAL_CODE_INPUT_ID}
         ref={ref}
         onKeyDown={handleSubmit}
-        defaultValue={code}
+        defaultValue={postalCode}
       />
     </div>
   )
