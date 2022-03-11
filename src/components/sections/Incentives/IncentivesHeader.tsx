@@ -2,6 +2,7 @@ import React from 'react'
 import IconSVG from 'src/components/common/IconSVG'
 
 import Incentives from './Incentives'
+import Section from '../Section'
 
 const incentives = [
   {
@@ -32,7 +33,11 @@ const incentives = [
 ]
 
 function IncentivesHeader() {
-  return <Incentives incentives={incentives} classes="incentives--colored" />
+  return (
+    <Section>
+      <Incentives incentives={incentives} classes="incentives--colored" />
+    </Section>
+  )
 }
 
 export default IncentivesHeader

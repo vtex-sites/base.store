@@ -9,6 +9,7 @@ import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
 import IconSVG from 'src/components/common/IconSVG'
 
+import Section from '../Section'
 import GalleryPage from './ProductGalleryPage'
 import EmptyGallery from './EmptyGallery'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -30,14 +31,14 @@ function ProductGallery({ title }: Props) {
 
   if (data && totalCount === 0) {
     return (
-      <div className="product-listing / grid-content">
+      <Section className="product-listing / grid-content">
         <EmptyGallery />
-      </div>
+      </Section>
     )
   }
 
   return (
-    <div className="product-listing / grid-content-full">
+    <Section className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
           <FilterSkeleton loading={orderedFacets?.length === 0}>
@@ -167,7 +168,7 @@ function ProductGallery({ title }: Props) {
           )}
         </div>
       </div>
-    </div>
+    </Section>
   )
 }
 
