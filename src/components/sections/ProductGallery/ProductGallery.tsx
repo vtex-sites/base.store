@@ -117,7 +117,7 @@ function ProductGallery({ title }: Props) {
               {pages.map((page) => (
                 <GalleryPage
                   key={`gallery-page-${page}`}
-                  showSponsoredProducts={false}
+                  showSponsoredProducts
                   fallbackData={page === searchState.page ? data : undefined}
                   page={page}
                   title={title}
@@ -131,7 +131,7 @@ function ProductGallery({ title }: Props) {
           {/* Prefetch Previous and Next pages */}
           {prev !== false && (
             <GalleryPage
-              showSponsoredProducts={false}
+              showSponsoredProducts
               page={prev.cursor}
               display={false}
               title={title}
@@ -139,7 +139,7 @@ function ProductGallery({ title }: Props) {
           )}
           {next !== false && (
             <GalleryPage
-              showSponsoredProducts={false}
+              showSponsoredProducts
               page={next.cursor}
               display={false}
               title={title}
