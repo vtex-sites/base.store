@@ -11,8 +11,9 @@ import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
 } from '@faststore/ui'
-import { MagnifyingGlass as MagnifyingGlassIcon } from 'phosphor-react'
 import useSearchHistory from 'src/sdk/search/useSeachHistory'
+import IconSVG from 'src/components/common/IconSVG'
+
 import './search-input.scss'
 
 declare type SearchInputProps = {
@@ -51,7 +52,8 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
       <UISearchInput
         ref={ref}
         icon={
-          <MagnifyingGlassIcon
+          <IconSVG
+            name="MagnifyingGlass"
             onClick={onSearchClick}
             data-testid={buttonTestId}
           />

@@ -6,8 +6,8 @@ import UIHero, {
   HeroLink,
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
-import { ArrowRight as ArrowRightIcon } from 'phosphor-react'
 import { LinkButton } from 'src/components/ui/Button'
+import IconSVG from 'src/components/common/IconSVG'
 
 type Variant = 'default' | 'small'
 
@@ -59,7 +59,8 @@ const Hero = ({
             {!!link && (
               <HeroLink>
                 <LinkButton to={link} inverse>
-                  {linkText} <ArrowRightIcon size={24} />
+                  {linkText}{' '}
+                  <IconSVG name="ArrowRight" width={24} height={24} />
                 </LinkButton>
               </HeroLink>
             )}

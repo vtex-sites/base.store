@@ -1,5 +1,5 @@
 import React from 'react'
-import { User as UserIcon } from 'phosphor-react'
+import IconSVG from 'src/components/common/IconSVG'
 
 import { LinkButton } from '../Button'
 
@@ -11,7 +11,7 @@ const SignInLink: React.FC = () => {
       className="title-sub-subsection signin-link"
       variant="tertiary"
     >
-      <UserIcon size={18} weight="bold" />
+      <IconSVG name="User" width={18} height={18} weight="bold" />
       <span>Sign In</span>
     </LinkButton>
   )
