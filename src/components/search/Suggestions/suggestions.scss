@@ -60,4 +60,10 @@
     background-color: transparent;
     cursor: pointer;
   }
+
+  [data-store-link] {
+    padding: var(--space-2) 0;
+    text-decoration: none;
+    outline: none;
+  }
 }

@@ -2,6 +2,7 @@ import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 import { List as UIList } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
+import Link from 'src/components/ui/Link'
 
 import SuggestionProductCard from '../SuggestionProductCard'
 
@@ -128,7 +129,9 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
               {SUGGESTED_PRODUCTS.slice(0, MAX_SUGGESTED_PRODUCTS).map(
                 (product, index) => (
                   <li key={index} className="suggestions__item">
-                    <SuggestionProductCard product={product} />
+                    <Link to="/" variant="display">
+                      <SuggestionProductCard product={product} />
+                    </Link>
                   </li>
                 )
               )}
