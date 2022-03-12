@@ -69,7 +69,7 @@ export interface SuggestionsProps extends HTMLAttributes<HTMLDivElement> {
 
 const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
   function Suggestions(
-    { testId = 'suggestions', term = 'Son', ...otherProps },
+    { testId = 'suggestions', term = '', ...otherProps },
     ref
   ) {
     const suggestions =
@@ -87,7 +87,7 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
           {suggestionSubstring.map((substring, indexSubstring) => (
             <>
               {substring.length > 0 && (
-                <b className="suggestions__suggestion-bold">
+                <b className="suggestions__item-bold">
                   {indexSubstring === 0
                     ? substring.charAt(0).toUpperCase() + substring.slice(1)
                     : substring}

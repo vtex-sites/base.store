@@ -46,7 +46,7 @@
 }
 
 [data-store-suggestions] {
-  .suggestions__suggestion-bold {
+  .suggestions__item-bold {
     color: var(--color-neutral-7);
     font-weight: var(--text-weight-bold);
   }
@@ -54,8 +54,10 @@
   .button[data-store-button] {
     padding: var(--space-2) 0;
     color: var(--color-text-subtle);
+    font-weight: var(--text-weight-regular);
     font-size: var(--text-size-2);
     line-height: 1.25;
     background-color: transparent;
+    cursor: pointer;
   }
 }
