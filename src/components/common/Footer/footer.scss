@@ -94,8 +94,8 @@
     }
 
     svg {
-      border: 1px solid #bbc1c6;
-      border-radius: 3px;
+      border: var(--border-width-0) solid var(--color-neutral-3);
+      border-radius: var(--border-radius-small);
     }
 
     [data-store-list] {
