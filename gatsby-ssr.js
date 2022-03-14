@@ -13,25 +13,22 @@ import storeConfig from './store.config'
 import { LoadFonts } from './src/components/FontsLoader'
 
 export const wrapRootElement = ({ element }) => (
-  <>
-    <ErrorBoundary>
-      <AnalyticsHandler />
-      <TestProvider>
-        <UIProvider
-          initialState={uiInitialState}
-          actions={uiActions}
-          effects={uiEffects}
-        >
-          <SessionProvider initialState={{ channel: storeConfig.channel }}>
-            <CartProvider mode="optimistic" onValidateCart={validateCart}>
-              {element}
-            </CartProvider>
-          </SessionProvider>
-        </UIProvider>
-      </TestProvider>
-    </ErrorBoundary>
-    <LoadFonts key="RemoveFauxFont" />,
-  </>
+  <ErrorBoundary>
+    <AnalyticsHandler />
+    <TestProvider>
+      <UIProvider
+        initialState={uiInitialState}
+        actions={uiActions}
+        effects={uiEffects}
+      >
+        <SessionProvider initialState={{ channel: storeConfig.channel }}>
+          <CartProvider mode="optimistic" onValidateCart={validateCart}>
+            {element}
+          </CartProvider>
+        </SessionProvider>
+      </UIProvider>
+    </TestProvider>
+  </ErrorBoundary>
 )
 
 export const wrapPageElement = ({ element }) => {
