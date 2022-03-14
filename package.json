@@ -34,6 +34,7 @@
     "@vtex/gatsby-plugin-thumbor": "^1.6.7",
     "@vtex/gatsby-source-store": "^1.6.7",
     "@vtex/graphql-utils": "^1.6.7",
+    "classnames": "^2.3.1",
     "gatsby": "^3.14.3",
     "gatsby-plugin-gatsby-cloud": "^3.2.0",
     "gatsby-plugin-image": "^1.14.1",
