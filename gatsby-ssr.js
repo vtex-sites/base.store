@@ -35,7 +35,15 @@ export const wrapPageElement = ({ element }) => {
 }
 
 export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents([<ThirdPartyScripts key="ThirdPartyScripts" />])
+  setHeadComponents([
+    <script
+      key="font-load"
+      dangerouslySetInnerHTML={{
+        __html: `const fontR = new FontFace("Lato","url(/fonts/lato-v20-latin-regular-subset.woff2)",{style:'normal',weight: '400'});fontR.load().then(() => {document.fonts.add(fontR);document.body.classList.add("body-font")});const font7 = new FontFace("Lato","url(/fonts/lato-v20-latin-700-subset.woff2)",{style:'normal',weight: '700'});font7.load().then(() => {document.fonts.add(font7);});const font9 = new FontFace("Lato","url(/fonts/lato-v20-latin-900-subset.woff2)",{style:'normal',weight: '900'});font9.load().then(() => {document.fonts.add(font9);});`,
+      }}
+    />,
+    <ThirdPartyScripts key="ThirdPartyScripts" />,
+  ])
 }
 
 export const onPreRenderHTML = ({
