@@ -32,7 +32,7 @@ const usePersonQuery = (options?: QueryOptions) => {
   const person = data?.person
 
   useEffect(() => {
-    if (person !== null && person !== undefined && person !== user) {
+    if (!!person && person !== user) {
       setSession({
         ...session,
         user: person,
