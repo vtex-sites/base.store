@@ -1,7 +1,7 @@
 import React from 'react'
 import { Select as UISelect } from '@faststore/ui'
 import type { SelectProps } from '@faststore/ui'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
 import './select.scss'
 
@@ -50,7 +50,7 @@ export default function Select({
           </option>
         ))}
       </UISelect>
-      <IconSVG name="CaretDown" width={18} height={18} weight="bold" />
+      <Icon name="CaretDown" width={18} height={18} weight="bold" />
     </div>
   )
 }

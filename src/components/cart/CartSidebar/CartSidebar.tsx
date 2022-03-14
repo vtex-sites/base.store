@@ -8,7 +8,7 @@ import SlideOver from 'src/components/ui/SlideOver'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useUI } from 'src/sdk/ui'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
 import CartItem from '../CartItem'
 import EmptyCart from '../EmptyCart'
@@ -47,11 +47,11 @@ function CartSidebar() {
         <IconButton
           data-testid="cart-sidebar-button-close"
           aria-label="Close Cart"
-          icon={<IconSVG name="X" width={32} height={32} />}
+          icon={<Icon name="X" width={32} height={32} />}
           onClick={() => dismissTransition.current?.()}
         />
       </header>
-      <Alert icon={<IconSVG name="Truck" width={24} height={24} />}>
+      <Alert icon={<Icon name="Truck" width={24} height={24} />}>
         Free shiping starts at $300
       </Alert>
 
@@ -77,7 +77,7 @@ function CartSidebar() {
                   variant="primary"
                   icon={
                     !isValidating && (
-                      <IconSVG name="ArrowRight" width={18} height={18} />
+                      <Icon name="ArrowRight" width={18} height={18} />
                     )
                   }
                   iconPosition="right"

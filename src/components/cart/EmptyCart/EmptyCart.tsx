@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from 'src/components/ui/Button'
-import EmptyState from 'src/components/common/EmptyState'
-import IconSVG from 'src/components/common/IconSVG'
+import EmptyState from 'src/components/ui/EmptyState'
+import Icon from 'src/components/ui/Icon'
 
 interface Props {
   /**
@@ -14,7 +14,7 @@ function EmptyCart({ onDismiss }: Props) {
   return (
     <EmptyState>
       <header data-empty-cart-title>
-        <IconSVG name="ShoppingCart" width={56} height={56} weight="thin" />
+        <Icon name="ShoppingCart" width={56} height={56} weight="thin" />
         <p>Your Cart is empty</p>
       </header>
       <Button onClick={onDismiss} variant="secondary">

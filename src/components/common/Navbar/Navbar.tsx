@@ -4,9 +4,9 @@ import { List as UIList } from '@faststore/ui'
 import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
-import IconSVG from 'src/components/common/IconSVG'
 import PostalCodeInput from 'src/components/common/PostalCode'
 import SearchInput from 'src/components/common/SearchInput'
+import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
 import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
@@ -77,7 +77,7 @@ function Navbar() {
               <IconButton
                 classes="navbar__menu"
                 aria-label="Open Menu"
-                icon={<IconSVG name="List" width={32} height={32} />}
+                icon={<Icon name="List" width={32} height={32} />}
                 onClick={() => setShowMenu(true)}
               />
               <LinkGatsby
@@ -99,7 +99,7 @@ function Navbar() {
               <IconButton
                 classes="navbar__collapse"
                 aria-label="Collapse search bar"
-                icon={<IconSVG name="CaretLeft" width={32} height={32} />}
+                icon={<Icon name="CaretLeft" width={32} height={32} />}
                 onClick={() => setSearchExpanded(false)}
               />
             )}
@@ -143,7 +143,7 @@ function Navbar() {
             <IconButton
               classes="navbar__button"
               aria-label="Close Menu"
-              icon={<IconSVG name="X" width={32} height={32} />}
+              icon={<Icon name="X" width={32} height={32} />}
               onClick={() => dismissTransition.current?.()}
             />
           </header>
