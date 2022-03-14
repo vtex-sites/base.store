@@ -9,12 +9,14 @@ import React, { memo, useMemo } from 'react'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
+import cn from 'classnames'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import './product-card.scss'
+import * as style from './product-card.module.scss'
 
 type Variant = 'horizontal' | 'vertical'
 
@@ -74,13 +76,15 @@ function ProductCard({
 
   return (
     <UICard
-      className="product-card"
-      data-card-variant={variant}
-      data-card-bordered={bordered}
-      data-card-out-of-stock={outOfStock}
+      className={cn(style.container, {
+        [style.vertical]: variant === 'vertical',
+        [style.horizontal]: variant === 'horizontal',
+        [style.bordered]: bordered,
+        [style['out-of-stock']]: outOfStock,
+      })}
       {...otherProps}
     >
-      <UICardImage>
+      <UICardImage className={style.image}>
         <Image
           baseUrl={img.url}
           alt={img.alternateName}
@@ -88,14 +92,14 @@ function ProductCard({
           {...imgOptions}
         />
       </UICardImage>
-      <UICardContent>
-        <div className="product-card__heading">
-          <h3 className="product-card__title / title-small">
+      <UICardContent className={style.content}>
+        <div className={style.heading}>
+          <h3 className={cn(style.title, 'title-small')}>
             <Link {...linkProps} title={name}>
               {name}
             </Link>
           </h3>
-          <div className="product-card__prices">
+          <div className={style.prices}>
             <Price
               value={listPrice}
               formatter={useFormattedPrice}
@@ -125,7 +129,9 @@ function ProductCard({
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
       </UICardContent>
-      {!!buyButton && <UICardActions>{buyButton}</UICardActions>}
+      {!!buyButton && (
+        <UICardActions className={style.actions}>{buyButton}</UICardActions>
+      )}
     </UICard>
   )
 }

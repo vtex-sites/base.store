@@ -1,0 +1,98 @@
+@import "src/styles/scaffold";
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 14rem;
+  height: 100%;
+  padding: var(--space-1) var(--space-1) var(--space-2);
+  border: var(--border-width-0) solid transparent;
+  border-radius: var(--border-radius-default);
+  transition: box-shadow .5s ease, border .5s ease;
+
+  &:hover,
+  &:focus {
+    background-color: var(--bg-neutral-lightest);
+  }
+
+  &:focus-within { @include focus-ring; }
+
+  @media (hover: hover) {
+    &:hover {
+      border: var(--border-width-0) solid var(--color-border-display);
+      box-shadow: var(--box-shadow);
+    }
+  }
+}
+
+.heading {
+  margin-right: var(--space-1);
+}
+
+.prices {
+  display: inline-flex;
+  align-content: center;
+  margin-bottom: var(--space-2);
+}
+
+.vertical {
+  .content {
+    padding-top: var(--space-2);
+  }
+}
+
+.horizontal {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: var(--space-3);
+    background-color: var(--bg-neutral-light);
+  }
+}
+
+.bordered {
+  border: none;
+
+  @include media(">=notebook") {
+    border: var(--border-width-0) solid var(--color-border-display);
+  }
+}
+
+.out-of-stock {
+  background-color: var(--bg-neutral-light);
+}
+
+.image {
+  overflow: hidden;
+  border-radius: var(--border-radius-default);
+  transform: translate3d(0, 0, 0);
+}
+
+.content a[href] {
+  min-height: 100%;
+  max-height: var(--space-6);
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+
+  @include truncate-title;
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    content: "";
+  }
+}
+
+.actions {
+  position: relative;
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
