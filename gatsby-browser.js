@@ -12,7 +12,6 @@ import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
-import { LoadFauxFont } from './src/components/FontsLoader'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
@@ -34,10 +33,5 @@ export const wrapRootElement = ({ element }) => (
 )
 
 export const wrapPageElement = ({ element }) => {
-  return (
-    <>
-      <LoadFauxFont />
-      <Layout>{element}</Layout>
-    </>
-  )
+  return <Layout>{element}</Layout>
 }
