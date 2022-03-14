@@ -10,7 +10,7 @@ import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import storeConfig from './store.config'
-import { LoadFauxFont, RemoveFauxFont } from './src/components/FontsLoader'
+import { LoadFonts } from './src/components/FontsLoader'
 
 export const wrapRootElement = ({ element }) => (
   <ErrorBoundary>
@@ -32,17 +32,12 @@ export const wrapRootElement = ({ element }) => (
 )
 
 export const wrapPageElement = ({ element }) => {
-  return (
-    <>
-      <LoadFauxFont />
-      <Layout>{element}</Layout>
-    </>
-  )
+  return <Layout>{element}</Layout>
 }
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
-    <RemoveFauxFont key="RemoveFauxFont" />,
+    <LoadFonts key="RemoveFauxFont" />,
     <ThirdPartyScripts key="ThirdPartyScripts" />,
   ])
 }
