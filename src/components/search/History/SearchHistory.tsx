@@ -11,7 +11,7 @@ const SearchHistory = () => {
   const { searchHistory, clearSearchHistory } = useSearchHistory()
 
   return (
-    <section className="history__section">
+    <section data-store-search-history className="history__section">
       <div className="history__header">
         <p className="history__title">History</p>
         <Button variant="tertiary" onClick={clearSearchHistory}>
@@ -22,10 +22,12 @@ const SearchHistory = () => {
         {searchHistory.map((item, index) => (
           <li key={index}>
             <Link variant="display" to="/">
-              <UIIcon
-                component={<IconSVG name="Clock" width={18} height={18} />}
-              />
-              {item}
+              <div>
+                <UIIcon
+                  component={<IconSVG name="Clock" width={18} height={18} />}
+                />
+                {item}
+              </div>
               <UIIcon
                 component={
                   <IconSVG name="ArrowUpRight" width={13.5} height={13.5} />
