@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Removed fit-in property from image component
+- Sections are now self-contained
 - Moves icons to `/static/icons` folder
 - Replaces page type redirects, a.k.a. `/account`, `/login` to a corresponding file in `/pages` folder
 - Replaces `let` declarations for `useRef` for better React compatibility
@@ -35,6 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implements the expanded mode of `Searchbar` in mobile devices.
 - Updates Lighthouse and Cypress URL with valid product links
 - `Hero` image responsive sizes for mobile and desktop.
+- `Badge` variants names
+- `Tiles` and `Tile` to use semantic list elements.
 
 ### Deprecated
 
@@ -60,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Footer rendering pipeline
 - Scroll lock when transitioning pages on mobile via `SlideOver` component navigation
 - Filter Button specificity on desktop
+- Filter facets are not being selected on mobile
 
 ### Security
 

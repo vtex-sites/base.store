@@ -1,11 +1,14 @@
 import React from 'react'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 import ProductCard from 'src/components/product/ProductCard'
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import ProductTilesSkeleton from 'src/components/skeletons/ProductTilesSkeleton'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
+
+import Section from '../Section'
 
 interface TilesProps {
   products: ProductSummary_ProductFragment[]
+  title: string | JSX.Element
 }
 
 const NUMBER_ITEMS_TO_EXPAND_FIRST = 3
@@ -25,23 +28,31 @@ const getRatio = (products: number, idx: number) => {
   return 3 / 4
 }
 
-const ProductTiles = ({ products }: TilesProps) => {
+const ProductTiles = ({ products, title }: TilesProps) => {
   return (
-    <ProductTilesSkeleton variant="horizontal" loading={products.length === 0}>
-      <Tiles>
-        {products.map((product, idx) => (
-          <Tile key={product.id}>
-            <ProductCard
-              data-testid="tile-card"
-              product={product}
-              index={idx + 1}
-              variant="horizontal"
-              aspectRatio={getRatio(products.length, idx)}
-            />
-          </Tile>
-        ))}
-      </Tiles>
-    </ProductTilesSkeleton>
+    <Section className="grid-section grid-content">
+      <h2 className="title-section">{title}</h2>
+      <div className="page__section-content">
+        <ProductTilesSkeleton
+          variant="horizontal"
+          loading={products.length === 0}
+        >
+          <Tiles>
+            {products.map((product, idx) => (
+              <Tile key={product.id}>
+                <ProductCard
+                  data-testid="tile-card"
+                  product={product}
+                  index={idx + 1}
+                  variant="horizontal"
+                  aspectRatio={getRatio(products.length, idx)}
+                />
+              </Tile>
+            ))}
+          </Tiles>
+        </ProductTilesSkeleton>
+      </div>
+    </Section>
   )
 }
 
