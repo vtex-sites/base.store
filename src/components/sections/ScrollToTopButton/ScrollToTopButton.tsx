@@ -1,5 +1,5 @@
 import React from 'react'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
 import Button from '../../ui/Button'
 import Section from '../Section'
@@ -15,7 +15,7 @@ interface ScrollToTopButtonProps {
   text?: string
   /**
    * Button's icon.
-   * @default <IconSVG name="CaretUp" width={16} height={16} weight="bold" />
+   * @default <Icon name="CaretUp" width={16} height={16} weight="bold" />
    */
   icon?: UIButtonProps['icon']
   /**
@@ -27,7 +27,7 @@ interface ScrollToTopButtonProps {
 
 function ScrollToTopButton({
   text = 'Scroll to top',
-  icon = <IconSVG name="CaretUp" width={16} height={16} weight="bold" />,
+  icon = <Icon name="CaretUp" width={16} height={16} weight="bold" />,
   iconPosition = 'left',
 }: ScrollToTopButtonProps) {
   return (

@@ -12,9 +12,9 @@ const mapWeightToValue: Record<IconWeight, number> = {
 
 interface Props extends SVGProps<SVGSVGElement> {
   /**
-   * Symbol id from element to render. Take a look at `/static/icons/icons.svg`.
+   * Symbol id from element to render. Take a look at `/static/icons.svg`.
    *
-   * Example: <IconSVG name="Bell" />
+   * Example: <Icon name="Bell" />
    */
   name: string
   /**
@@ -25,12 +25,12 @@ interface Props extends SVGProps<SVGSVGElement> {
   weight?: IconWeight
 }
 
-function IconSVG({ name, weight = 'regular', ...otherProps }: Props) {
+function Icon({ name, weight = 'regular', ...otherProps }: Props) {
   return (
     <svg {...otherProps} strokeWidth={mapWeightToValue[weight]}>
-      <use href={`/icons/icons.svg#${name}`} />
+      <use href={`/icons.svg#${name}`} />
     </svg>
   )
 }
 
-export default IconSVG
+export default Icon

@@ -6,7 +6,7 @@ import {
   AccordionButton as UIAccordionButton,
 } from '@faststore/ui'
 import type { AccordionItemProps } from '@faststore/ui'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
 interface Props extends AccordionItemProps {
   /**
@@ -46,13 +46,13 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
           data-testid={`${testId}-button-icon`}
           component={
             <>
-              <IconSVG
+              <Icon
                 data-icon={isExpanded ? 'expanded' : true}
                 name="MinusCircle"
                 width={24}
                 height={24}
               />
-              <IconSVG
+              <Icon
                 data-icon={isExpanded ? true : 'collapsed'}
                 name="PlusCircle"
                 width={24}

@@ -7,10 +7,10 @@ import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/sections/ScrollToTopButton'
+import Icon from 'src/components/ui/Icon'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import IconSVG from 'src/components/common/IconSVG'
 import type {
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,
@@ -107,9 +107,7 @@ function Page(props: Props) {
         subtitle={`All the amazing ${title} from the brands we partner with.`}
         imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
         imageAlt="Quest 2 Controller on a table"
-        icon={
-          <IconSVG name="Headphones" width={48} height={48} weight="thin" />
-        }
+        icon={<Icon name="Headphones" width={48} height={48} weight="thin" />}
       />
 
       <ProductGallery title={title} />

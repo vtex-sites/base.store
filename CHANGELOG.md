@@ -21,7 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `IconSVG` component to load SVG Icons.
 
 ### Changed
-
+- Moved all icons to use Icon component
+- Moved common/IconsSVG to ui/Icons
+- Moved EmptyState from common to ui folder
 - Removed fit-in property from image component
 - Sections are now self-contained
 - Moves icons to `/static/icons` folder

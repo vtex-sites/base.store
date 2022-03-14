@@ -93,6 +93,11 @@
       }
     }
 
+    svg {
+      border: var(--border-width-0) solid var(--color-neutral-3);
+      border-radius: var(--border-radius-small);
+    }
+
     [data-store-list] {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, max-content));
