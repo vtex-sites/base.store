@@ -19,6 +19,15 @@
 }
 
 body {
+  font-size: 16px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Class Applied when font loads */
+.body-font {
   font-size: var(--base-font-size);
   font-family: var(--sans-serif);
   letter-spacing: .01em;
