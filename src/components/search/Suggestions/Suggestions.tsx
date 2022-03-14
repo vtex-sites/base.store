@@ -57,6 +57,30 @@ function formatSearchTerm(
   return searchTerm.toLowerCase()
 }
 
+function handleSuggestions(suggestion: string, searchTerm: string) {
+  const suggestionSubstring = suggestion
+    .toLowerCase()
+    .split(searchTerm.toLowerCase())
+
+  return (
+    <p>
+      {suggestionSubstring.map((substring, indexSubstring) => (
+        <>
+          {substring.length > 0 && (
+            <b className="suggestions__item-bold">
+              {indexSubstring === 0
+                ? substring.charAt(0).toUpperCase() + substring.slice(1)
+                : substring}
+            </b>
+          )}
+          {indexSubstring !== suggestionSubstring.length - 1 &&
+            formatSearchTerm(indexSubstring, searchTerm, suggestion)}
+        </>
+      ))}
+    </p>
+  )
+}
+
 export interface SuggestionsProps extends HTMLAttributes<HTMLDivElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress, testing library, and jest).
@@ -77,30 +101,6 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
       SUGGESTED_PRODUCTS.length > 0
         ? SUGGESTIONS.slice(0, MAX_SUGGESTIONS_WITH_PRODUCTS)
         : SUGGESTIONS.slice(0, MAX_SUGGESTIONS)
-
-    const handleSuggestions = (suggestion: string, searchTerm: string) => {
-      const suggestionSubstring = suggestion
-        .toLowerCase()
-        .split(searchTerm.toLowerCase())
-
-      return (
-        <p>
-          {suggestionSubstring.map((substring, indexSubstring) => (
-            <>
-              {substring.length > 0 && (
-                <b className="suggestions__item-bold">
-                  {indexSubstring === 0
-                    ? substring.charAt(0).toUpperCase() + substring.slice(1)
-                    : substring}
-                </b>
-              )}
-              {indexSubstring !== suggestionSubstring.length - 1 &&
-                formatSearchTerm(indexSubstring, searchTerm, suggestion)}
-            </>
-          ))}
-        </p>
-      )
-    }
 
     return (
       <section
