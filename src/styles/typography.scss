@@ -18,13 +18,13 @@
   --text-weight-black: 900;
 }
 
-// body {
-// font-size: var(--base-font-size);
-// font-family: var(--sans-serif);
-// letter-spacing: .01em;
-// -webkit-font-smoothing: antialiased;
-// -moz-osx-font-smoothing: grayscale;
-// }
+body {
+  font-size: var(--base-font-size);
+  font-family: var(--sans-serif);
+  letter-spacing: .01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0;
