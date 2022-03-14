@@ -851,7 +851,7 @@ export type Query = {
   collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
-  person: Maybe<StorePerson>
+  person: StorePerson
   product: StoreProduct
   search: StoreSearchResult
   site: Maybe<Site>
@@ -3098,11 +3098,10 @@ export type StorePageInfo = {
 }
 
 export type StorePerson = {
-  email: Maybe<Scalars['String']>
-  familyName: Maybe<Scalars['String']>
-  givenName: Maybe<Scalars['String']>
-  id: Maybe<Scalars['String']>
-  isAuthenticated: Maybe<Scalars['Boolean']>
+  email: Scalars['String']
+  familyName: Scalars['String']
+  givenName: Scalars['String']
+  id: Scalars['String']
 }
 
 export type StoreProduct = Node & {
@@ -3899,16 +3898,7 @@ export type CartItemFragment = {
 export type PersonQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type PersonQueryQuery = {
-  person:
-    | {
-        id: string | null | undefined
-        email: string | null | undefined
-        givenName: string | null | undefined
-        familyName: string | null | undefined
-        isAuthenticated: boolean | null | undefined
-      }
-    | null
-    | undefined
+  person: { id: string; email: string; givenName: string; familyName: string }
 }
 
 export type BrowserProductQueryQueryVariables = Exact<{

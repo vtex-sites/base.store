@@ -16,7 +16,6 @@ export const query = gql`
       email
       givenName
       familyName
-      isAuthenticated
     }
   }
 `
@@ -38,7 +37,7 @@ const usePersonQuery = (options?: QueryOptions) => {
         user: person,
       })
     }
-  }, [person, session, setSession, user])
+  }, [person, user, session, setSession])
 
   return person
 }

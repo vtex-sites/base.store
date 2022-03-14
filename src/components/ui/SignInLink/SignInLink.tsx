@@ -10,12 +10,12 @@ const SignInLink: React.FC = () => {
   return (
     <LinkButton
       data-button-signin-link
-      to={person?.isAuthenticated ? '/account' : '/login'}
+      to={person?.id ? '/account' : '/login'}
       className="title-sub-subsection signin-link"
       variant="tertiary"
     >
       <Icon name="User" width={18} height={18} weight="bold" />
-      <span>{person?.isAuthenticated ? 'My Account' : 'Sign In'}</span>
+      <span>{person?.id ? 'My Account' : 'Sign In'}</span>
     </LinkButton>
   )
 }
