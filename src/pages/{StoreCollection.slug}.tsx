@@ -1,18 +1,51 @@
-import { SearchProvider, useSession } from '@faststore/sdk'
+import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useMemo } from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/sections/ScrollToTopButton'
 import { ITEMS_PER_PAGE } from 'src/constants'
-import { useSearchParams } from 'src/hooks/useSearchParams'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import type { Props } from 'src/hooks/useSearchParams'
 import IconSVG from 'src/components/common/IconSVG'
+import type {
+  CollectionPageQueryQuery,
+  CollectionPageQueryQueryVariables,
+} from '@generated/graphql'
+import type { PageProps } from 'gatsby'
+import type { SearchState } from '@faststore/sdk'
+
+type Props = PageProps<
+  CollectionPageQueryQuery,
+  CollectionPageQueryQueryVariables
+> & { slug: string }
+
+const useSearchParams = (props: Props): SearchState => {
+  const {
+    location: { href, pathname },
+    data,
+  } = props
+
+  const selectedFacets = data?.collection?.meta.selectedFacets
+
+  return useMemo(() => {
+    const maybeState = href ? parseSearchState(new URL(href)) : null
+
+    return {
+      page: maybeState?.page ?? 0,
+      base: maybeState?.base ?? pathname,
+      selectedFacets:
+        maybeState && maybeState.selectedFacets.length > 0
+          ? maybeState.selectedFacets
+          : selectedFacets ?? [],
+      term: maybeState?.term ?? null,
+      sort: maybeState?.sort ?? 'score_desc',
+    }
+  }, [href, pathname, selectedFacets])
+}
 
 function Page(props: Props) {
   const {

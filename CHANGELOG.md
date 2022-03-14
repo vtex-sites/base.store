@@ -44,7 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - useWindowDimensions hook
 
 ### Removed
-
+- Removing hooks folder and migrating these hooks to sdk ou inline them on components
 - gatsby-plugin-offline due to CLS on recurrent users
 - useWindowDimensions hook
 - Removes unused `<FacetedFilter/>` component
