@@ -1,1 +1,1 @@
-export { default as SuggestionsTopSearch } from './SearchHistory'
+export { default as SearchHistory } from './SearchHistory'
