@@ -5,15 +5,15 @@ import './product-title.scss'
 
 interface ProductTitleProp {
   /**
-   * A text such as the product's name.
+   * A react component to be used as the product title, e.g. an <h1>
    */
   title: ReactNode
   /**
-   * A text to be used with a label such to be used with a label
+   * A react component to be used as the product label, e.g. a <DiscountBadge>
    */
   label?: ReactNode
   /**
-   * A text to be used below such as the product's reference number.
+   * A text to be used below the title and the label, such as the product's reference number.
    */
   refNumber?: string
 }
