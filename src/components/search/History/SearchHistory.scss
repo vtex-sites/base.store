@@ -23,11 +23,11 @@
 
   li {
     font-size: var(--text-size-2);
-    line-height: 1.25;
 
     [data-store-link] {
       display: flex;
       justify-content: space-between;
+      color: var(--color-neutral-6);
     }
 
     [data-store-icon] {
