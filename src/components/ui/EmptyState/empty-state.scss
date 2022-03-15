@@ -8,8 +8,6 @@
   height: 100%;
   min-height: 50vh;
   margin: var(--space-3) 0;
-  background-color: var(--bg-neutral);
-  border-radius: var(--border-radius-default);
   row-gap: var(--space-3);
 
   @include media(">=notebook") { margin: var(--space-5) 0; }
@@ -24,8 +22,25 @@
     row-gap: var(--space-1);
 
     p {
-      font-size: var(--text-size-3);
+      font-size: var(--text-size-5);
       text-align: center;
+
+      span {
+        font-weight: var(--text-weight-bold);
+      }
+
+      p {
+        font-size: var(--text-size-3);
+      }
+    }
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    [data-store-button] {
+      margin: var(--space-2);
     }
   }
 

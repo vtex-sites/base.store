@@ -14,24 +14,33 @@ function EmptyGallery({ searchTerm }: { searchTerm: string }) {
         </p>
       </header>
 
-      <LinkButton
-        to="/office"
-        variant="secondary"
-        icon={
-          <Icon name="CircleWavyWarning" width={18} height={18} weight="bold" />
-        }
-        iconPosition="left"
-      >
-        Browse Offers
-      </LinkButton>
-      <LinkButton
-        to="/technology"
-        variant="secondary"
-        icon={<Icon name="RocketLaunch" width={18} height={18} weight="bold" />}
-        iconPosition="left"
-      >
-        Just Arrived
-      </LinkButton>
+      <div>
+        <LinkButton
+          to="/office"
+          variant="secondary"
+          icon={
+            <Icon
+              name="CircleWavyWarning"
+              width={18}
+              height={18}
+              weight="bold"
+            />
+          }
+          iconPosition="left"
+        >
+          Browse Offers
+        </LinkButton>
+        <LinkButton
+          to="/technology"
+          variant="secondary"
+          icon={
+            <Icon name="RocketLaunch" width={18} height={18} weight="bold" />
+          }
+          iconPosition="left"
+        >
+          Just Arrived
+        </LinkButton>
+      </div>
     </EmptyState>
   )
 }
