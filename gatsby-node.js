@@ -8,8 +8,25 @@ exports.onPreInit = async ({ reporter }) => {
   await copyLibFiles(path.resolve('./public/~partytown'))
 }
 
-exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
+exports.onCreateWebpackConfig = ({
+  actions: { setWebpackConfig, replaceWebpackConfig },
+  stage,
+  getConfig,
+}) => {
   const profiling = process.env.GATSBY_STORE_PROFILING === 'true'
+
+  if (stage === 'develop') {
+    const config = getConfig()
+    const miniCssExtractPlugin = config.plugins.find(
+      (plugin) => plugin.constructor.name === 'MiniCssExtractPlugin'
+    )
+
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true
+    }
+
+    replaceWebpackConfig(config)
+  }
 
   if (stage === 'build-javascript') {
     if (profiling) {
