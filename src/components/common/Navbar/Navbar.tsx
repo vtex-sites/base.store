@@ -16,9 +16,6 @@ import { mark } from 'src/sdk/tests/mark'
 import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
 import type { StoreCollectionQuery } from '@generated/graphql'
-import SearchHistory from 'src/components/search/History/SearchHistory'
-import useSearchHistory from 'src/sdk/search/useSeachHistory'
-import { SuggestionsTopSearch } from 'src/components/search/Suggestions'
 
 type Callback = () => unknown
 
@@ -60,7 +57,7 @@ function NavLinks({ onClickLink }: NavLinksProps) {
 }
 
 function Navbar() {
-  const { searchHistory, clearSearchHistory } = useSearchHistory()
+  // const { searchHistory, clearSearchHistory } = useSearchHistory()
 
   const [showMenu, setShowMenu] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
@@ -95,10 +92,7 @@ function Navbar() {
               </LinkGatsby>
             </>
           )}
-          <SearchInput
-            onBlur={() => setSearchExpanded(false)}
-            onFocus={() => setSearchExpanded(true)}
-          />
+          <SearchInput />
           <div
             className="navbar__buttons"
             data-store-search-expanded={searchExpanded}
@@ -121,19 +115,6 @@ function Navbar() {
             <SignInLink />
             <CartToggle />
           </div>
-          {searchExpanded && searchHistory.length > 0 && (
-            <SearchHistory onClear={() => clearSearchHistory()} />
-          )}
-          {searchExpanded && searchHistory.length === 0 && (
-            <SuggestionsTopSearch
-              searchedItems={[
-                {
-                  href: 'http://localhost:8000/tasty-granite-towels-tasty-18643698/p',
-                  name: 'Tasty Granite Towels Tasty',
-                },
-              ]}
-            />
-          )}
         </section>
         <NavLinks />
         <PostalCodeInput />
