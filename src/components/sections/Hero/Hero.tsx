@@ -1,5 +1,4 @@
 import React from 'react'
-import type { ReactNode } from 'react'
 import UIHero, {
   HeroContent,
   HeroImage,
@@ -7,7 +6,9 @@ import UIHero, {
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
 import { LinkButton } from 'src/components/ui/Button'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
+
+import Section from '../Section'
 
 type Variant = 'default' | 'small'
 
@@ -17,7 +18,7 @@ interface HeroProps {
   variant?: Variant
   linkText?: string
   link?: string
-  icon?: ReactNode
+  icon?: JSX.Element
   imageSrc: string
   imageAlt: string
 }
@@ -42,36 +43,37 @@ const Hero = ({
   imageSrc,
 }: HeroProps) => {
   return (
-    <UIHero data-hero-variant={variant}>
-      <HeroContent aria-labelledby="hero-heading">
-        <div className="hero-content-wrapper / grid-content">
-          <div className="hero-content-info">
-            <h1
-              id="hero-heading"
-              className={
-                variant === 'default' ? 'title-hero' : 'title-hero-small'
-              }
-            >
-              {title}
-            </h1>
+    <Section>
+      <UIHero data-hero-variant={variant}>
+        <HeroContent aria-labelledby="hero-heading">
+          <div className="hero-content-wrapper / grid-content">
+            <div className="hero-content-info">
+              <h1
+                id="hero-heading"
+                className={
+                  variant === 'default' ? 'title-hero' : 'title-hero-small'
+                }
+              >
+                {title}
+              </h1>
 
-            <p className="text-body-big">{subtitle}</p>
-            {!!link && (
-              <HeroLink>
-                <LinkButton to={link} inverse>
-                  {linkText}{' '}
-                  <IconSVG name="ArrowRight" width={24} height={24} />
-                </LinkButton>
-              </HeroLink>
-            )}
+              <p className="text-body-big">{subtitle}</p>
+              {!!link && (
+                <HeroLink>
+                  <LinkButton to={link} inverse>
+                    {linkText} <Icon name="ArrowRight" width={24} height={24} />
+                  </LinkButton>
+                </HeroLink>
+              )}
+            </div>
+            {!!icon && <div className="hero-content-icon">{icon}</div>}
           </div>
-          {!!icon && <div className="hero-content-icon">{icon}</div>}
-        </div>
-      </HeroContent>
-      <HeroImage>
-        <Image baseUrl={imageSrc} alt={imageAlt} {...imgProps} />
-      </HeroImage>
-    </UIHero>
+        </HeroContent>
+        <HeroImage>
+          <Image baseUrl={imageSrc} alt={imageAlt} {...imgProps} />
+        </HeroImage>
+      </UIHero>
+    </Section>
   )
 }
 

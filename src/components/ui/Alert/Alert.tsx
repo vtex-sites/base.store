@@ -4,7 +4,7 @@ import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
 import type { AlertProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import { Link } from 'gatsby'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
 import './alert.scss'
 
@@ -51,7 +51,7 @@ function Alert({
 
       {dismissible && (
         <Button data-alert-button aria-label="Close" onClick={handleClose}>
-          <IconSVG name="X" width={18} height={18} weight="bold" />
+          <Icon name="X" width={18} height={18} weight="bold" />
         </Button>
       )}
     </UIAlert>

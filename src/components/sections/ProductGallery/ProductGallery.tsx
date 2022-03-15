@@ -7,8 +7,9 @@ import Button, { LinkButton } from 'src/components/ui/Button'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGrid from 'src/components/product/ProductGrid'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
+import Section from '../Section'
 import GalleryPage from './ProductGalleryPage'
 import EmptyGallery from './EmptyGallery'
 import { useGalleryQuery } from './useGalleryQuery'
@@ -30,14 +31,14 @@ function ProductGallery({ title }: Props) {
 
   if (data && totalCount === 0) {
     return (
-      <div className="product-listing / grid-content">
+      <Section className="product-listing / grid-content">
         <EmptyGallery />
-      </div>
+      </Section>
     )
   }
 
   return (
-    <div className="product-listing / grid-content-full">
+    <Section className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
           <FilterSkeleton loading={orderedFacets?.length === 0}>
@@ -72,7 +73,7 @@ function ProductGallery({ title }: Props) {
             <Button
               variant="tertiary"
               data-testid="open-filter-button"
-              icon={<IconSVG name="FadersHorizontal" width={16} height={16} />}
+              icon={<Icon name="FadersHorizontal" width={16} height={16} />}
               iconPosition="left"
               aria-label="Open Filters"
               onClick={() => setIsFilterOpen(!isFilterOpen)}
@@ -98,12 +99,7 @@ function ProductGallery({ title }: Props) {
                 variant="secondary"
                 iconPosition="left"
                 icon={
-                  <IconSVG
-                    name="ArrowLeft"
-                    width={16}
-                    height={16}
-                    weight="bold"
-                  />
+                  <Icon name="ArrowLeft" width={16} height={16} weight="bold" />
                 }
               >
                 Previous Page
@@ -167,7 +163,7 @@ function ProductGallery({ title }: Props) {
           )}
         </div>
       </div>
-    </div>
+    </Section>
   )
 }
 

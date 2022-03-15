@@ -15,20 +15,16 @@
   }
 }
 
-[data-store-badge-variant="outOfStock"] {
+[data-store-badge-variant="neutral"] {
   background-color: var(--bg-neutral);
 }
 
-[data-store-badge-variant="recommended"] {
+[data-store-badge-variant="highlighted"] {
   background-color: var(--bg-highlighted);
 }
 
-[data-store-badge-variant="new"] {
+[data-store-badge-variant="info"] {
   background-color: var(--bg-info);
-}
-
-[data-store-badge-variant="neutral"] {
-  background-color: var(--bg-neutral);
 }
 
 [data-store-discount-badge-variant="low"] {

@@ -1,7 +1,9 @@
 import { Banner, BannerContent, BannerLink } from '@faststore/ui'
-import type { InputHTMLAttributes } from 'react'
 import React from 'react'
 import { LinkButton } from 'src/components/ui/Button'
+import type { InputHTMLAttributes } from 'react'
+
+import Section from '../Section'
 
 import './banner-text.scss'
 
@@ -34,19 +36,21 @@ function BannerText({
   actionLabel,
 }: BannerTextProps) {
   return (
-    <Banner>
-      <BannerContent className="grid-content">
-        <div className="title-display-big">
-          <h2>{title}</h2>
-          <p>{caption}</p>
-        </div>
-        <BannerLink>
-          <LinkButton to={actionPath} inverse>
-            {actionLabel}
-          </LinkButton>
-        </BannerLink>
-      </BannerContent>
-    </Banner>
+    <Section className="grid-section">
+      <Banner>
+        <BannerContent className="grid-content">
+          <div className="title-display-big">
+            <h2>{title}</h2>
+            <p>{caption}</p>
+          </div>
+          <BannerLink>
+            <LinkButton to={actionPath} inverse>
+              {actionLabel}
+            </LinkButton>
+          </BannerLink>
+        </BannerContent>
+      </Banner>
+    </Section>
   )
 }
 
