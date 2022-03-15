@@ -1,6 +1,6 @@
 @import "src/styles/scaffold";
 
-[data-store-breadcrumb] {
+.container {
   width: 100%;
 
   [data-breadcrumb-list] {
@@ -45,17 +45,17 @@
       border-left: var(--border-width-0) solid var(--color-border-display);
     }
 
-    [data-store-link] {
-      display: inline;
-      padding: 0;
-
-      &:visited {
-        color: var(--color-link);
-      }
-    }
-
     [data-breadcrumb-item="current"] {
       color: var(--color-text-disabled);
     }
+  }
+}
+
+.link {
+  display: inline;
+  padding: 0;
+
+  &:visited {
+    color: var(--color-link);
   }
 }

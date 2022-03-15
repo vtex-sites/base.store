@@ -15,7 +15,6 @@ import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import './product-card.scss'
 import * as style from './product-card.module.scss'
 
 type Variant = 'horizontal' | 'vertical'
@@ -80,7 +79,7 @@ function ProductCard({
         [style.vertical]: variant === 'vertical',
         [style.horizontal]: variant === 'horizontal',
         [style.bordered]: bordered,
-        [style['out-of-stock']]: outOfStock,
+        [style.outOfStock]: outOfStock,
       })}
       {...otherProps}
     >
@@ -94,7 +93,7 @@ function ProductCard({
       </UICardImage>
       <UICardContent className={style.content}>
         <div className={style.heading}>
-          <h3 className={cn(style.title, 'title-small')}>
+          <h3 className="title-small">
             <Link {...linkProps} title={name}>
               {name}
             </Link>

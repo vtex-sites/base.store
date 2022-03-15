@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
+import cn from 'classnames'
 
 import Badge from './Badge'
-
-import './badge.scss'
+import * as style from './badge.module.scss'
 
 type Props = {
   listPrice: number
@@ -38,7 +38,14 @@ const DiscountBadge = ({
       : 'high'
 
   return (
-    <Badge small={small} data-store-discount-badge-variant={discountVariant}>
+    <Badge
+      small={small}
+      className={cn({
+        [style.discountLow]: discountVariant === 'low',
+        [style.discountMedium]: discountVariant === 'medium',
+        [style.discountHigh]: discountVariant === 'high',
+      })}
+    >
       {discountPercent}% off
     </Badge>
   )

@@ -4,7 +4,7 @@ import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
 import IconSVG from 'src/components/common/IconSVG'
 
-import './breadcrumb.scss'
+import * as style from './breadcrumb.module.scss'
 
 type ItemElement = {
   item: string
@@ -17,8 +17,8 @@ export interface BreadcrumbProps extends UIBreadcrumbProps {
 
 function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
   return (
-    <UIBreadcrumb divider="">
-      <Link aria-label="home" to="/">
+    <UIBreadcrumb divider="" className={style.container}>
+      <Link className={style.link} aria-label="home" to="/">
         <IconSVG name="House" width={18} height={18} weight="bold" />
       </Link>
 
@@ -26,7 +26,7 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
         return breadcrumbList.length === index + 1 ? (
           <span key={String(index)}>{name}</span>
         ) : (
-          <Link to={item} key={String(index)}>
+          <Link className={style.link} to={item} key={String(index)}>
             {name}
           </Link>
         )
