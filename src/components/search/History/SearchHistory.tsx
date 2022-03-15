@@ -5,25 +5,18 @@ import './SearchHistory.scss'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
 import useSearchHistory from 'src/sdk/search/useSeachHistory'
-// import {
-//   formatSearchState,
-//   initSearchState,
-//   // sendAnalyticsEvent,
-// } from '@faststore/sdk'
-// import { navigate } from 'gatsby'
+import { formatSearchState, initSearchState } from '@faststore/sdk'
 
-// import { SuggestionsTopSearch as Suggestions } from '../Suggestions'
+const doSearch = (term: string) => {
+  const { pathname, search } = formatSearchState(
+    initSearchState({
+      term,
+      base: '/s',
+    })
+  )
 
-// const doSearch = async (term: string) => {
-//   const { pathname, search } = formatSearchState(
-//     initSearchState({
-//       term,
-//       base: '/s',
-//     })
-//   )
-
-//   return `${pathname}${search}`
-// }
+  return `${pathname}${search}`
+}
 
 interface SearchHistoryProps {
   onClear: () => void
@@ -43,7 +36,7 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
       <UIList variant="ordered">
         {searchHistory.map((item, index) => (
           <li key={index}>
-            <Link variant="display" to="/">
+            <Link variant="display" to={doSearch(item)}>
               <div>
                 <UIIcon
                   component={<Icon name="Clock" width={18} height={18} />}
