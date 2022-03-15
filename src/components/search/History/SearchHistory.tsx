@@ -1,10 +1,9 @@
 import React from 'react'
-// import IconSVG from 'src/components/common/IconSVG'
 import { Icon as UIIcon, List as UIList } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import './SearchHistory.scss'
 import Link from 'src/components/ui/Link'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 import useSearchHistory from 'src/sdk/search/useSeachHistory'
 
 const SearchHistory = () => {
@@ -24,13 +23,13 @@ const SearchHistory = () => {
             <Link variant="display" to="/">
               <div>
                 <UIIcon
-                  component={<IconSVG name="Clock" width={18} height={18} />}
+                  component={<Icon name="Clock" width={18} height={18} />}
                 />
                 {item}
               </div>
               <UIIcon
                 component={
-                  <IconSVG name="ArrowUpRight" width={13.5} height={13.5} />
+                  <Icon name="ArrowUpRight" width={13.5} height={13.5} />
                 }
               />
             </Link>
