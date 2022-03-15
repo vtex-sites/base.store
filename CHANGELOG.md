@@ -44,6 +44,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Hero` image responsive sizes for mobile and desktop.
 - `Badge` variants names
 - `Tiles` and `Tile` to use semantic list elements.
+- `postalCode` from storage to Session context.
 
 ### Deprecated
 
@@ -60,6 +61,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Display box from `<ProductCard/>` component
 - `useTotalCount` hook
 - Phosphor-react library
+- `main::store::postalCode` value from storage.
 
 ### Fixed
 
