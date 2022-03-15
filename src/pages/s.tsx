@@ -60,7 +60,10 @@ function Page(props: Props) {
       */}
       <SROnly as="h1" text={title} />
 
-      <ProductGallery title="Search Results" />
+      <ProductGallery
+        title="Search Results"
+        searchTerm={searchParams.term ?? undefined}
+      />
     </SearchProvider>
   )
 }

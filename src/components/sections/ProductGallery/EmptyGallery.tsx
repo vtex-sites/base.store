@@ -3,12 +3,15 @@ import { LinkButton } from 'src/components/ui/Button'
 import EmptyState from 'src/components/ui/EmptyState'
 import Icon from 'src/components/ui/Icon'
 
-function EmptyGallery() {
+function EmptyGallery({ searchTerm }: { searchTerm: string }) {
   return (
     <EmptyState>
       <header>
         <Icon name="CircleWavyWarning" width={56} height={56} weight="thin" />
-        <p>Nothing matches with your search</p>
+        <p>
+          We couldn&apos;t find results for: <span>{searchTerm}</span>
+          <p>Try searching for a shorter term: Brand, Name or Feature.</p>
+        </p>
       </header>
 
       <LinkButton
