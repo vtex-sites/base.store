@@ -13,6 +13,15 @@ interface ImageGalleryProps {
   images: ImageElementData[]
 }
 
+// const imgOptions = {
+//   sourceWidth: 1024,
+//   backgroundColor: '#f0f0f0',
+//   layout: 'constrained' as const,
+//   sizes: '(max-width: 768px) 25vw, 50vw',
+//   breakpoints: [360, 720, 1024],
+//   aspectRatio: 4 / 3,
+// }
+
 function ImageGallery({ images }: ImageGalleryProps) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const currentImage = images[selectedImageIdx]
