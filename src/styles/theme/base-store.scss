@@ -94,7 +94,7 @@ body {
   --fs-text-weight-black          : 900;
 
   // TYPOGRAPHY SCALE
-  // Use a type scale to add rythm to your text sizes and
+  // Use a type scale to add rythm to your typography and
   // ensure consistency throughout the project.
   // Access https://type-scale.com/ and pick a scale that
   // suits the store's branding.
@@ -194,12 +194,24 @@ body {
   }
 
   // APPEARANCE
-  --fs-control-bkg                : var(--fs-tap-size);
+  --fs-control-bkg-default        : var(--fs-tap-size);
   --fs-control-bkg-hover          : var(--fs-tap-size);
   --fs-control-bkg-active         : var(--fs-tap-size);
   --fs-control-bkg-disabled       : var(--fs-tap-size);
 
   --fs-control-min-height         : var(--fs-tap-size);
+}
+
+
+// --------------------------------------------------------
+// Refinements
+// --------------------------------------------------------
+
+body {
+  // MOTION
+  --fs-transition-timing         : .2s;
+  --fs-transition-property       : all;
+  --fs-transition-function       : ease-in-out;
 
   // BORDERS
   --fs-border-radius-circle       : 100px;
@@ -214,22 +226,6 @@ body {
 
   --fs-border-width-light         : 1px;
   --fs-border-width-default       : 1px;
-}
-
-
-// --------------------------------------------------------
-// Refinements
-// --------------------------------------------------------
-
-body {
-  // MOTION
-  --fs-transition-timing         : .2s;
-  --fs-transition-property       : all;
-  --fs-transition-function       : ease-in-out;
-
-  // RADIUS
-  --fs-input-bkg-color           : var(--fs-color-secondary-bkg);
-  --fs-input-bkg-hover-color     : var(--fs-color-secondary-bkg-hover);
 
   // SHADOW
   --fs-shadow                    : none;
