@@ -7,11 +7,10 @@ function EmptyGallery({ searchTerm }: { searchTerm: string }) {
   return (
     <EmptyState>
       <header>
-        <Icon name="CircleWavyWarning" width={56} height={56} weight="thin" />
         <p>
-          We couldn&apos;t find results for: <span>{searchTerm}</span>
-          <p>Try searching for a shorter term: Brand, Name or Feature.</p>
+          We couldn&apos;t find results for <span>{searchTerm}</span>
         </p>
+        <p>Try searching for a shorter term: Brand, Name or Feature.</p>
       </header>
 
       <div>
