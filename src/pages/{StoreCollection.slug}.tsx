@@ -92,10 +92,6 @@ function Page(props: Props) {
         itemListElements={collection?.breadcrumbList.itemListElement ?? []}
       />
 
-      {/*
-        Sections: Components imported from '../components/sections' only.
-        Do not import or render components from any other folder in here.
-      */}
       <Breadcrumb
         breadcrumbList={collection?.breadcrumbList.itemListElement}
         name={title}
