@@ -35,7 +35,7 @@ function ProductGallery({ title, searchTerm }: Props) {
   if (data && totalCount === 0) {
     return (
       <Section className="product-listing / grid-content">
-        <EmptyGallery searchTerm={searchTerm ?? ''} />
+        <EmptyGallery />
       </Section>
     )
   }
