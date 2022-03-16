@@ -13,8 +13,8 @@
 
 body {
   // PALETTE
-  // Values must range from lightest to darkest tones
-  // `0` is more suitable for backgrounds, and `4` for texts
+  // Values must range from lightest to darkest tones.
+  // `0` is more suitable for backgrounds, and `4` for texts.
   --fs-color-main-0               : #00000099; // Lightest
   --fs-color-main-1               : #000000b3;
   --fs-color-main-2               : #000000cc;
@@ -83,15 +83,6 @@ body {
 // --------------------------------------------------------
 
 body {
-  // TYPOGRAPHY SCALE
-  --fs-text-scale-mobile          : 1.15;
-  --fs-text-scale-desk            : 1.25;
-
-  --fs-scale                      : var(--fs-text-scale-mobile);
-  @include media(">notebook") {
-    --fs-scale                    : var(--fs-text-scale-desk);
-  }
-
   // FACE
   --fs-text-face-body             : -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --fs-text-face-title            : var(--fs-text-face-body);
@@ -102,18 +93,40 @@ body {
   --fs-text-weight-bold           : 700;
   --fs-text-weight-black          : 900;
 
-  // SIZING
+  // TYPOGRAPHY SCALE
+  // Use a type scale to add rythm to your text sizes and
+  // ensure consistency throughout the project.
+  // Access https://type-scale.com/ and pick a scale that
+  // suits the store's branding.
+  --fs-text-scale-mobile          : 1.15;
+  --fs-text-scale-desk            : 1.25;
+
+  --fs-scale                      : var(--fs-text-scale-mobile);
+  @include media(">notebook") {
+    --fs-scale                    : var(--fs-text-scale-desk);
+  }
+
+  // NUMERIC SCALE
   --fs-text-size-base             : 16px; // 1rem
 
   --fs-text-size-0                : 12px; // Smallest
-  --fs-text-size-1                : 14px; // Smaller
-  --fs-text-size-2                : var(--fs-text-size-base); // 16px = 1rem
-  --fs-text-size-3                : calc(var(--fs-text-size-2) * var(--scale));
-  --fs-text-size-4                : calc(var(--fs-text-size-3) * var(--scale));
-  --fs-text-size-5                : calc(var(--fs-text-size-4) * var(--scale));
-  --fs-text-size-6                : calc(var(--fs-text-size-5) * var(--scale));
-  --fs-text-size-7                : calc(var(--fs-text-size-6) * var(--scale));
-  --fs-text-size-8                : calc(var(--fs-text-size-7) * var(--scale));
+  --fs-text-size-1                : 14px; // Smaller                               // Mob    Desk
+  --fs-text-size-2                : var(--fs-text-size-base);                      // 16px   16px
+  --fs-text-size-3                : calc(var(--fs-text-size-2) * var(--fs-scale)); // 18px   20px
+  --fs-text-size-4                : calc(var(--fs-text-size-3) * var(--fs-scale)); // 21px   25px
+  --fs-text-size-5                : calc(var(--fs-text-size-4) * var(--fs-scale)); // 24px   31px
+  --fs-text-size-6                : calc(var(--fs-text-size-5) * var(--fs-scale)); // 28px   39px
+  --fs-text-size-7                : calc(var(--fs-text-size-6) * var(--fs-scale)); // 32px   48px
+  --fs-text-size-8                : calc(var(--fs-text-size-7) * var(--fs-scale)); // 37px   61px
+
+  // HIERARCHY SCALE
+  --fs-text-size-title-page       : var(--fs-text-size-6);
+  --fs-text-size-title-section    : var(--fs-text-size-4);
+  --fs-text-size-lead             : var(--fs-text-size-4);
+  --fs-text-size-menu             : var(--fs-text-size-base);
+  --fs-text-size-body             : var(--fs-text-size-base);
+  --fs-text-size-legend           : var(--fs-text-size-1);
+  --fs-text-size-tiny             : var(--fs-text-size-0);
 }
 
 
@@ -174,8 +187,8 @@ body {
 
 body {
   // TAP
-  --fs-tap-size                   : var(--fs-spacing-7); // 3rem = 48px
   --fs-tap-size-smallest          : calc(var(--fs-tap-size) / 2);
+  --fs-tap-size                   : var(--fs-spacing-7); // 3rem = 48px
   @include media(">notebook") {
     --fs-tap-size                 : var(--fs-spacing-6); // 2.5rem = 40px
   }
