@@ -4,6 +4,8 @@ import { Image } from 'src/components/ui/Image'
 
 import { ImageGallerySelector, ImageZoom } from '.'
 
+import './image-gallery.scss'
+
 export interface ImageElementData {
   url: string
   alternateName: string
@@ -27,7 +29,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
   const currentImage = images[selectedImageIdx]
 
   return (
-    <div>
+    <section data-image-gallery>
       <ImageZoom>
         <Image
           src={currentImage.url}
@@ -62,7 +64,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
           )
         })}
       </ImageGallerySelector>
-    </div>
+    </section>
   )
 }
 

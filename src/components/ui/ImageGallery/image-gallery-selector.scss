@@ -1,0 +1,10 @@
+[data-image-gallery-selector] {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  > div {
+    display: flex;
+    justify-content: space-around;
+  }
+}

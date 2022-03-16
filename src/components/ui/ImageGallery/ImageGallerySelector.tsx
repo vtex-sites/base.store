@@ -4,6 +4,8 @@ import type { HTMLAttributes, PropsWithChildren } from 'react'
 
 import { BackwardArrowIcon, ForwardArrowIcon } from './Icons'
 
+import './image-gallery-selector.scss'
+
 interface Props extends HTMLAttributes<HTMLDivElement> {
   itemsPerPage: number
 }
@@ -42,7 +44,11 @@ function ImageGallerySelector({
   }
 
   return (
-    <section aria-roledescription="carousel" aria-label="Product images">
+    <section
+      data-image-gallery-selector
+      aria-roledescription="carousel"
+      aria-label="Product images"
+    >
       <IconButton
         aria-label="backward slide image selector"
         icon={<BackwardArrowIcon color="#323845" />}
@@ -54,18 +60,6 @@ function ImageGallerySelector({
           slide('previous', sliderDispatch)
         }}
       />
-      <IconButton
-        aria-label="forward slide image selector"
-        icon={<ForwardArrowIcon color="#323845" />}
-        onClick={() => {
-          if (sliderState.sliding) {
-            return
-          }
-
-          slide('next', sliderDispatch)
-        }}
-      />
-
       <div {...otherProps} {...handlers}>
         <div
           data-carousel-track
@@ -108,14 +102,23 @@ function ImageGallerySelector({
           {elements.map((el, idx) => {
             return (
               <div key={idx} style={{ width: `${100 / elementCount}%` }}>
-                <div className="flex justify-center items-center w-full">
-                  {el}
-                </div>
+                <div>{el}</div>
               </div>
             )
           })}
         </div>
       </div>
+      <IconButton
+        aria-label="forward slide image selector"
+        icon={<ForwardArrowIcon color="#323845" />}
+        onClick={() => {
+          if (sliderState.sliding) {
+            return
+          }
+
+          slide('next', sliderDispatch)
+        }}
+      />
     </section>
   )
 }

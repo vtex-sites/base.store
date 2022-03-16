@@ -120,9 +120,7 @@ function ProductDetails({ product: staleProduct }: Props) {
           />
         </header>
 
-        <section className="product-details__image">
-          <ImageGallery images={productImages} />
-        </section>
+        <ImageGallery images={productImages} />
 
         <section className="product-details__settings">
           <section className="product-details__values">
