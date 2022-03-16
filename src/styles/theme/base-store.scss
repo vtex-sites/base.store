@@ -1,0 +1,226 @@
+// ----------------------------------------------------------
+// GLOBAL TOKENS
+// Base Store Theme
+// ----------------------------------------------------------
+
+@import "../vendors/include-media";
+
+/* stylelint-disable */
+
+// --------------------------------------------------------
+// Colors (Branding Core)
+// --------------------------------------------------------
+
+body {
+  // PALETTE
+  // Values must range from lightest to darkest tones
+  // `0` is more suitable for backgrounds, and `4` for texts
+  --fs-color-main-0               : #00000099; // Lightest
+  --fs-color-main-1               : #000000b3;
+  --fs-color-main-2               : #000000cc;
+  --fs-color-main-3               : #000000e6;
+  --fs-color-main-4               : #000000;   // Darkest
+
+  --fs-color-accent-0             : #00000099;
+  --fs-color-accent-1             : #000000b3;
+  --fs-color-accent-2             : #000000cc;
+  --fs-color-accent-3             : #000000e6;
+  --fs-color-accent-4             : #000000;
+
+  --fs-color-neutral-0            : white;
+  --fs-color-neutral-1            : white;
+  --fs-color-neutral-2            : white;
+  --fs-color-neutral-3            : #c7ccd1;
+  --fs-color-neutral-4            : #9099a2;
+
+  // HIERARCHY
+  --fs-color-primary-bkg          : var(--fs-color-main-4);
+  --fs-color-primary-text         : var(--fs-color-neutral-0);
+  --fs-color-primary-bkg-hover    : var(--fs-color-main-3);
+  --fs-color-primary-bkg-active   : var(--fs-color-main-2);
+
+  --fs-color-secondary-bkg        : var(--fs-color-neutral-0);
+  --fs-color-secondary-text       : var(--fs-color-main-4);
+  --fs-color-secondary-bkg-hover  : var(--fs-color-neutral-0);
+  --fs-color-secondary-bkg-active : var(--fs-color-main-4);
+
+  --fs-color-tertiary-bkg         : var(--fs-color-neutral-0);
+  --fs-color-tertiary-text        : var(--fs-color-text-link);
+  --fs-color-tertiary-bkg-hover   : var(--fs-color-secondary-bkg-hover);
+  --fs-color-tertiary-bkg-active  : var(--fs-color-secondary-bkg-active);
+
+  // COMPONENTS & STATES
+  --fs-color-link                 : var(--fs-color-main-4);
+  --fs-color-text                 : var(--fs-color-main-4);
+  --fs-color-text-subtle          : var(--fs-color-neutral-4);
+  --fs-color-text-inverse         : var(--fs-color-neutral-0);
+  --fs-color-body-bkg             : var(--fs-color-neutral-0);
+  --fs-color-focus-ring           : #8db6fa;
+
+  // SITUATIONS
+  --fs-color-success-bkg          : #cee8de;
+  --fs-color-success-text         : var(--fs-color-text);
+
+  --fs-color-danger-bkg           : #cee8de;
+  --fs-color-danger-text          : var(--fs-color-text);
+
+  --fs-color-highlight-bkg        : #ebdcff;
+  --fs-color-highlight-text       : var(--fs-color-text);
+
+  --fs-color-info-bkg             : var(--fs-color-neutral-3);
+  --fs-color-info-text            : var(--fs-color-text);
+
+  --fs-color-neutral-bkg          : var(--fs-color-neutral-3);
+  --fs-color-neutral-text         : var(--fs-color-text);
+
+  --fs-color-promo-bkg            : #fff68a;
+  --fs-color-promo-text           : #f2636a;
+}
+
+
+// --------------------------------------------------------
+// Typography (Branding Core)
+// --------------------------------------------------------
+
+body {
+  // TYPOGRAPHY SCALE
+  --fs-text-scale-mobile          : 1.15;
+  --fs-text-scale-desk            : 1.25;
+
+  --fs-scale                      : var(--fs-text-scale-mobile);
+  @include media(">notebook") {
+    --fs-scale                    : var(--fs-text-scale-desk);
+  }
+
+  // FACE
+  --fs-text-face-body             : -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --fs-text-face-title            : var(--fs-text-face-body);
+
+  // WEIGHT
+  --fs-text-weight-light          : 300;
+  --fs-text-weight-regular        : 400;
+  --fs-text-weight-bold           : 700;
+  --fs-text-weight-black          : 900;
+
+  // SIZING
+  --fs-text-size-base             : 16px; // 1rem
+
+  --fs-text-size-0                : 12px; // Smallest
+  --fs-text-size-1                : 14px; // Smaller
+  --fs-text-size-2                : var(--fs-text-size-base); // 16px = 1rem
+  --fs-text-size-3                : calc(var(--fs-text-size-2) * var(--scale));
+  --fs-text-size-4                : calc(var(--fs-text-size-3) * var(--scale));
+  --fs-text-size-5                : calc(var(--fs-text-size-4) * var(--scale));
+  --fs-text-size-6                : calc(var(--fs-text-size-5) * var(--scale));
+  --fs-text-size-7                : calc(var(--fs-text-size-6) * var(--scale));
+  --fs-text-size-8                : calc(var(--fs-text-size-7) * var(--scale));
+}
+
+
+// --------------------------------------------------------
+// Spacing (UI Essentials)
+// --------------------------------------------------------
+
+body {
+  // NUMERIC SCALE
+  --fs-spacing-0                  : .25rem; //  4px
+  --fs-spacing-1                  : .5rem;  //  8px
+  --fs-spacing-2                  : .75rem; // 12px
+  --fs-spacing-3                  : 1rem;   // 16px (--fs-text-size-base)
+  --fs-spacing-4                  : 1.5rem; // 24px
+  --fs-spacing-5                  : 2rem;   // 32px
+  --fs-spacing-6                  : 2.5rem; // 40px
+  --fs-spacing-7                  : 3rem;   // 48px
+  --fs-spacing-8                  : 3.5rem; // 56px
+  --fs-spacing-9                  : 4rem;   // 64px
+  --fs-spacing-10                 : 4.5rem; // 72px
+  --fs-spacing-11                 : 5rem;   // 80px
+  --fs-spacing-12                 : 5.5rem; // 88px
+  --fs-spacing-13                 : 6rem;   // 96px
+}
+
+
+// --------------------------------------------------------
+// Grid (UI Essentials)
+// --------------------------------------------------------
+
+body {
+  // PADDINGS
+  --fs-grid-padding-page          : var(--fs-spacing-3);
+  @include media(">tablet") {
+    --fs-grid-padding-page        : var(--fs-spacing-4);
+  }
+  @include media(">notebook") {
+    --fs-grid-padding-page        : var(--fs-spacing-5);
+  }
+
+  // GAPS
+  --fs-grid-gap-0                 : var(--fs-spacing-3);
+  --fs-grid-gap-1                 : var(--fs-spacing-4);
+  --fs-grid-gap-2                 : var(--fs-spacing-5);
+
+  // BREAKPOINTS
+  --fs-grid-breakpoint-phone      : map-get($breakpoints, "phone");
+  --fs-grid-breakpoint-phonemid   : map-get($breakpoints, "phonemid");
+  --fs-grid-breakpoint-tablet     : map-get($breakpoints, "tablet");
+  --fs-grid-breakpoint-notebook   : map-get($breakpoints, "notebook");
+  --fs-grid-breakpoint-desktop    : map-get($breakpoints, "desktop");
+}
+
+
+// --------------------------------------------------------
+// Interactive Controls (UI Essentials)
+// --------------------------------------------------------
+
+body {
+  // TAP
+  --fs-tap-size                   : var(--fs-spacing-7); // 3rem = 48px
+  --fs-tap-size-smallest          : calc(var(--fs-tap-size) / 2);
+  @include media(">notebook") {
+    --fs-tap-size                 : var(--fs-spacing-6); // 2.5rem = 40px
+  }
+
+  // APPEARANCE
+  --fs-control-bkg                : var(--fs-tap-size);
+  --fs-control-bkg-hover          : var(--fs-tap-size);
+  --fs-control-bkg-active         : var(--fs-tap-size);
+  --fs-control-bkg-disabled       : var(--fs-tap-size);
+
+  --fs-control-min-height         : var(--fs-tap-size);
+
+  // BORDERS
+  --fs-border-radius-circle       : 100px;
+  --fs-border-radius-pill         : 100%;
+  --fs-border-radius-small        : .125rem;
+  --fs-border-radius-default      : .25rem;
+
+  --fs-border-color-default       : var(--fs-color-main-4);
+  --fs-border-color-default-hover : var(--fs-color-main-4);
+  --fs-border-color-light         : var(--fs-color-main-4);
+  --fs-border-color-light-hover   : var(--fs-color-main-4);
+
+  --fs-border-width-light         : 1px;
+  --fs-border-width-default       : 1px;
+}
+
+
+// --------------------------------------------------------
+// Refinements
+// --------------------------------------------------------
+
+body {
+  // MOTION
+  --fs-transition-timing         : .2s;
+  --fs-transition-property       : all;
+  --fs-transition-function       : ease-in-out;
+
+  // RADIUS
+  --fs-input-bkg-color           : var(--fs-color-secondary-bkg);
+  --fs-input-bkg-hover-color     : var(--fs-color-secondary-bkg-hover);
+
+  // SHADOW
+  --fs-shadow                    : none;
+  --fs-shadow-hover              : 0 0 0 1px var(--border-color-default-hover);
+}
+
+/* stylelint-enable */
