@@ -12,6 +12,7 @@ import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
 } from '@generated/graphql'
+import Breadcrumb from 'src/components/sections/Breadcrumb'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
@@ -54,11 +55,9 @@ function Page(props: Props) {
         }}
       />
 
-      {/*
-        Sections: Components imported from '../components/sections' only.
-        Do not import or render components from any other folder in here.
-      */}
       <SROnly as="h1" text={title} />
+
+      <Breadcrumb name="All Products" />
 
       <ProductGallery
         title="Search Results"

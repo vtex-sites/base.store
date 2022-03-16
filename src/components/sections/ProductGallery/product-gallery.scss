@@ -12,10 +12,7 @@
 }
 
 .product-listing__search-term {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin: 41.5px auto;
+  margin-bottom: var(--space-3);
 
   h1 {
     font-size: var(--text-size-5);
