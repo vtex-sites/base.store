@@ -43,11 +43,11 @@ function ProductGallery({ title, searchTerm }: Props) {
   return (
     <Section className="product-listing / grid-content-full">
       {searchTerm && (
-        <div className="product-listing__search-term / grid-content">
+        <header className="product-listing__search-term / grid-content">
           <h1>
             Showing results for: <span>{searchTerm}</span>
           </h1>
-        </div>
+        </header>
       )}
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
