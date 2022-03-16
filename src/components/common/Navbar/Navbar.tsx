@@ -57,8 +57,6 @@ function NavLinks({ onClickLink }: NavLinksProps) {
 }
 
 function Navbar() {
-  // const { searchHistory, clearSearchHistory } = useSearchHistory()
-
   const [showMenu, setShowMenu] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
   const searchMobileRef = useRef<SearchInputRef>(null)
