@@ -42,6 +42,7 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
               />
               {item}
               <UIIcon
+                data-store-search-history-arrow
                 component={
                   <Icon name="ArrowUpRight" width={13.5} height={13.5} />
                 }

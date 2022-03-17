@@ -5,6 +5,8 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--space-1);
+  padding-right: var(--space-3);
+  padding-left: var(--space-3);
 }
 
 [data-store-search-history-title] {
@@ -21,6 +23,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: var(--space-3);
+    padding-left: var(--space-3);
     color: var(--color-neutral-6);
     font-size: var(--text-size-2);
   }
@@ -28,6 +32,14 @@
   [data-store-icon] {
     display: flex;
     &:first-of-type { margin-right: var(--space-1); }
-    &:last-of-type { margin-left: auto; }
   }
+}
+
+[data-store-search-history-arrow] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--space-4);
+  height: var(--space-4);
+  margin-left: auto;
 }
