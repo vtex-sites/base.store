@@ -15,7 +15,9 @@
   margin-bottom: var(--space-3);
 
   h1 {
-    font-size: var(--text-size-5);
+    font-size: var(--text-size-4);
+
+    @include media(">=tablet") { font-size: var(--text-size-5); }
 
     span {
       font-weight: var(--text-weight-bold);
