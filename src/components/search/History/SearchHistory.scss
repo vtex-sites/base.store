@@ -1,14 +1,13 @@
 @import "src/styles/scaffold";
 
-.history__title {
-  align-self: center;
-  font-size: var(--text-size-3);
-  line-height: 1.5;
-}
-
 .history__header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.history__title {
+  font-size: var(--text-size-3);
 }
 
 .history__section {
@@ -26,12 +25,19 @@
 
     [data-store-link] {
       display: flex;
+      align-items: center;
       justify-content: space-between;
       color: var(--color-neutral-6);
+
+      div {
+        display: flex;
+        align-items: center;
+      }
     }
 
     [data-store-icon] {
-      margin-right: var(--space-1);
+      display: flex;
+      &:first-child { margin-right: var(--space-1); }
     }
   }
 }
