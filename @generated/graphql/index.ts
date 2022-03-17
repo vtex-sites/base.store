@@ -2324,6 +2324,7 @@ export type StorePageInfo = {
   totalCount: Scalars['Int']
 }
 
+<<<<<<< HEAD
 export type StoreCollectionFieldsEnum =
   | 'breadcrumbList___itemListElement'
   | 'breadcrumbList___itemListElement___item'
@@ -2618,6 +2619,8 @@ export type StorePageInfo = {
   totalCount: Scalars['Int']
 }
 
+=======
+>>>>>>> 060cceac (upgrade deps)
 export type StorePerson = {
   email: Scalars['String']
   familyName: Scalars['String']
@@ -2625,7 +2628,11 @@ export type StorePerson = {
   id: Scalars['String']
 }
 
+<<<<<<< HEAD
 export type StoreProduct = Node & {
+=======
+export type StoreProduct = {
+>>>>>>> 060cceac (upgrade deps)
   additionalProperty: Array<StorePropertyValue>
   aggregateRating: StoreAggregateRating
   brand: StoreBrand
@@ -2935,14 +2942,27 @@ export type CollectionPageQueryQuery = {
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type ProductPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      title: string | null
-      description: string | null
-      titleTemplate: string | null
-      siteUrl: string | null
-    } | null
-  } | null
+  site:
+    | {
+        siteMetadata:
+          | {
+              title: string | null | undefined
+              description: string | null | undefined
+              titleTemplate: string | null | undefined
+              siteUrl: string | null | undefined
+            }
+          | null
+          | undefined
+      }
+    | null
+    | undefined
+}
+
+export type ServerProductPageQueryQueryVariables = Exact<{
+  id: Scalars['String']
+}>
+
+export type ServerProductPageQueryQuery = {
   product: {
     slug: string
     sku: string
