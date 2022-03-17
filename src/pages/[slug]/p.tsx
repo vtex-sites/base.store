@@ -130,6 +130,9 @@ function Page(props: Props) {
   )
 }
 
+/**
+ * This query is run during SSG
+ * */
 export const querySSG = graphql`
   query ProductPageQuery {
     site {
@@ -143,6 +146,9 @@ export const querySSG = graphql`
   }
 `
 
+/**
+ * This query is run during SSR
+ * */
 export const querySSR = gql`
   query ServerProductPageQuery($slug: String!) {
     product(locator: [{ key: "slug", value: $slug }]) {
@@ -221,7 +227,7 @@ export const getServerData = async ({
       status: 200,
       props: data ?? {},
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
+        'cache-control': 'public, max-age=0, stale-while-revalidate=10',
       },
     }
   } catch (err) {
