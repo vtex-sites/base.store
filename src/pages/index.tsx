@@ -114,6 +114,9 @@ function Page(props: Props) {
   )
 }
 
+/**
+ * This query is run during SSG
+ * */
 export const querySSG = graphql`
   query HomePageQuery {
     site {
@@ -132,6 +135,7 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
+    const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
       variables: { slug },
@@ -141,7 +145,7 @@ export const getServerData = async ({
       status: 200,
       props: data ?? {},
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
+        'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
       },
     }
   } catch (err) {
