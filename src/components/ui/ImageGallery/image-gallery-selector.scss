@@ -1,10 +1,23 @@
+@import "src/styles/scaffold";
+
 [data-image-gallery-selector] {
   display: flex;
   align-items: center;
   justify-content: space-around;
 
-  > div {
+  [data-carousel-track] {
     display: flex;
     justify-content: space-around;
+  }
+
+  [data-store-button] {
+    padding: 0;
+    border: 0;
+  }
+
+  [data-gatsby-image-wrapper] {
+    width: rem(56px);
+    border-radius: var(--border-radius-default);
+    transform: translate3d(0, 0, 0);
   }
 }

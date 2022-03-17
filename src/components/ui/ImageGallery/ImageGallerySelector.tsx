@@ -28,7 +28,6 @@ function getTransformValue(
 function ImageGallerySelector({
   itemsPerPage,
   children,
-  ...otherProps
 }: PropsWithChildren<Props>) {
   const elements = Children.toArray(children)
   const elementCount = elements.length
@@ -60,53 +59,52 @@ function ImageGallerySelector({
           slide('previous', sliderDispatch)
         }}
       />
-      <div {...otherProps} {...handlers}>
-        <div
-          data-carousel-track
-          style={{
-            display: 'flex',
-            transition: sliderState.sliding ? `transform 400ms` : undefined,
-            width: `${(elementCount * 100) / itemsPerPage}%`,
-            transform: `translate3d(${getTransformValue(
-              elementCount,
-              sliderState.currentPage,
-              itemsPerPage
-            )}%, 0, 0)`,
-          }}
-          onTransitionEnd={() => {
+      <div
+        data-carousel-track
+        style={{
+          display: 'flex',
+          transition: sliderState.sliding ? `transform 400ms` : undefined,
+          width: `${(elementCount * 100) / itemsPerPage}%`,
+          transform: `translate3d(${getTransformValue(
+            elementCount,
+            sliderState.currentPage,
+            itemsPerPage
+          )}%, 0, 0)`,
+        }}
+        onTransitionEnd={() => {
+          sliderDispatch({
+            type: 'STOP_SLIDE',
+          })
+
+          if (sliderState.currentItem >= elementCount) {
             sliderDispatch({
-              type: 'STOP_SLIDE',
+              type: 'GO_TO_PAGE',
+              payload: {
+                pageIndex: 0,
+                shouldSlide: false,
+              },
             })
+          }
 
-            if (sliderState.currentItem >= elementCount) {
-              sliderDispatch({
-                type: 'GO_TO_PAGE',
-                payload: {
-                  pageIndex: 0,
-                  shouldSlide: false,
-                },
-              })
-            }
-
-            if (sliderState.currentItem < 0) {
-              sliderDispatch({
-                type: 'GO_TO_PAGE',
-                payload: {
-                  pageIndex: sliderState.totalPages - 1,
-                  shouldSlide: false,
-                },
-              })
-            }
-          }}
-        >
-          {elements.map((el, idx) => {
-            return (
-              <div key={idx} style={{ width: `${100 / elementCount}%` }}>
-                <div>{el}</div>
-              </div>
-            )
-          })}
-        </div>
+          if (sliderState.currentItem < 0) {
+            sliderDispatch({
+              type: 'GO_TO_PAGE',
+              payload: {
+                pageIndex: sliderState.totalPages - 1,
+                shouldSlide: false,
+              },
+            })
+          }
+        }}
+        {...handlers}
+      >
+        {elements.map((el, idx) => {
+          return (
+            <div data-image-gallery-selector-thumb-image key={idx}>
+              {el}
+            </div>
+          )
+        })}
       </div>
       <IconButton
         aria-label="forward slide image selector"

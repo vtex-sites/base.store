@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   width: calc(100% + (2 * var(--fs-grid-padding)));
-  row-gap: var(--space-1);
+  row-gap: var(--space-2);
 
   @include media(">=notebook") {
     display: flex;
