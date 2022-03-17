@@ -10,12 +10,10 @@
   font-size: var(--text-size-3);
 }
 
-.history__section {
+[data-store-search-history] {
   padding: var(--space-1) var(--space-3) var(--space-2);
   background-color: var(--bg-neutral-lightest);
-}
 
-[data-store-search-history] {
   ol {
     margin-top: var(--space-1);
   }

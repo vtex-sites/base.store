@@ -26,7 +26,7 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
   const { searchHistory } = useSearchHistory()
 
   return (
-    <section data-store-search-history className="history__section">
+    <section data-store-search-history>
       <div className="history__header">
         <p className="history__title">History</p>
         <Button variant="tertiary" onClick={onClear}>
