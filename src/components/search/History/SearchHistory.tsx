@@ -7,6 +7,10 @@ import Icon from 'src/components/ui/Icon'
 import useSearchHistory from 'src/sdk/search/useSeachHistory'
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 
+interface SearchHistoryProps {
+  onClear: () => void
+}
+
 const doSearch = (term: string) => {
   const { pathname, search } = formatSearchState(
     initSearchState({
@@ -16,10 +20,6 @@ const doSearch = (term: string) => {
   )
 
   return `${pathname}${search}`
-}
-
-interface SearchHistoryProps {
-  onClear: () => void
 }
 
 const SearchHistory = ({ onClear }: SearchHistoryProps) => {
