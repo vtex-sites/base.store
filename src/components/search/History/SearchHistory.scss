@@ -1,41 +1,33 @@
 @import "src/styles/scaffold";
 
-.history__header {
+[data-store-search-history-header] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: var(--space-1);
 }
 
-.history__title {
+[data-store-search-history-title] {
   font-size: var(--text-size-3);
 }
 
 [data-store-search-history] {
   padding: var(--space-1) var(--space-3) var(--space-2);
   background-color: var(--bg-neutral-lightest);
+}
 
-  ol {
-    margin-top: var(--space-1);
+[data-store-search-history-item] {
+  [data-store-link] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-neutral-6);
+    font-size: var(--text-size-2);
   }
 
-  li {
-    font-size: var(--text-size-2);
-
-    [data-store-link] {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      color: var(--color-neutral-6);
-
-      div {
-        display: flex;
-        align-items: center;
-      }
-    }
-
-    [data-store-icon] {
-      display: flex;
-      &:first-child { margin-right: var(--space-1); }
-    }
+  [data-store-icon] {
+    display: flex;
+    &:first-of-type { margin-right: var(--space-1); }
+    &:last-of-type { margin-left: auto; }
   }
 }

@@ -27,22 +27,20 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
 
   return (
     <section data-store-search-history>
-      <div className="history__header">
-        <p className="history__title">History</p>
+      <div data-store-search-history-header>
+        <h4 data-store-search-history-title>History</h4>
         <Button variant="tertiary" onClick={onClear}>
           Clear
         </Button>
       </div>
       <UIList variant="ordered">
         {searchHistory.map((item, index) => (
-          <li key={index}>
+          <li data-store-search-history-item key={index}>
             <Link variant="display" to={doSearch(item)}>
-              <div>
-                <UIIcon
-                  component={<Icon name="Clock" width={18} height={18} />}
-                />
-                {item}
-              </div>
+              <UIIcon
+                component={<Icon name="Clock" width={18} height={18} />}
+              />
+              {item}
               <UIIcon
                 component={
                   <Icon name="ArrowUpRight" width={13.5} height={13.5} />
