@@ -10,7 +10,6 @@ import React, { useEffect, useMemo } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import { mark } from 'src/sdk/tests/mark'
-import { execute } from 'src/server'
 import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,
@@ -24,14 +23,14 @@ export type Props = PageProps<
   ProductPageQueryQueryVariables,
   unknown,
   ServerProductPageQueryQuery
->
+> & { slug: string }
 
 function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
     data: { product, site },
     location: { host },
-    params: { slug },
+    slug,
   } = props
 
   const youMightAlsoLikeProducts = useMemo(
@@ -129,6 +128,9 @@ function Page(props: Props) {
   )
 }
 
+/**
+ * This query is run during SSG
+ * */
 export const querySSG = graphql`
   query ProductPageQuery {
     site {
@@ -142,9 +144,12 @@ export const querySSG = graphql`
   }
 `
 
+/**
+ * This query is run during SSR
+ * */
 export const querySSR = gql`
-  query ServerProductPageQuery($slug: String!) {
-    product(locator: [{ key: "slug", value: $slug }]) {
+  query ServerProductPageQuery($id: String!) {
+    product(locator: [{ key: "id", value: $id }]) {
       id: productID
       slug
 
@@ -203,16 +208,19 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
+    const id = slug.split('-').pop()
+
+    const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
-      variables: { slug },
+      variables: { id },
     })
 
     return {
       status: 200,
       props: data ?? {},
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
+        'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
       },
     }
   } catch (err) {

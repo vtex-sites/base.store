@@ -2653,300 +2653,6 @@ export type StorePageInfo = {
   totalCount: Scalars['Int']
 }
 
-export type StoreCollectionFieldsEnum =
-  | 'breadcrumbList___itemListElement'
-  | 'breadcrumbList___itemListElement___item'
-  | 'breadcrumbList___itemListElement___name'
-  | 'breadcrumbList___itemListElement___position'
-  | 'breadcrumbList___itemListElement___remoteTypeName'
-  | 'breadcrumbList___numberOfItems'
-  | 'breadcrumbList___remoteTypeName'
-  | 'children'
-  | 'children___children'
-  | 'children___children___children'
-  | 'children___children___children___children'
-  | 'children___children___children___id'
-  | 'children___children___id'
-  | 'children___children___internal___content'
-  | 'children___children___internal___contentDigest'
-  | 'children___children___internal___description'
-  | 'children___children___internal___fieldOwners'
-  | 'children___children___internal___ignoreType'
-  | 'children___children___internal___mediaType'
-  | 'children___children___internal___owner'
-  | 'children___children___internal___type'
-  | 'children___children___parent___children'
-  | 'children___children___parent___id'
-  | 'children___id'
-  | 'children___internal___content'
-  | 'children___internal___contentDigest'
-  | 'children___internal___description'
-  | 'children___internal___fieldOwners'
-  | 'children___internal___ignoreType'
-  | 'children___internal___mediaType'
-  | 'children___internal___owner'
-  | 'children___internal___type'
-  | 'children___parent___children'
-  | 'children___parent___children___children'
-  | 'children___parent___children___id'
-  | 'children___parent___id'
-  | 'children___parent___internal___content'
-  | 'children___parent___internal___contentDigest'
-  | 'children___parent___internal___description'
-  | 'children___parent___internal___fieldOwners'
-  | 'children___parent___internal___ignoreType'
-  | 'children___parent___internal___mediaType'
-  | 'children___parent___internal___owner'
-  | 'children___parent___internal___type'
-  | 'children___parent___parent___children'
-  | 'children___parent___parent___id'
-  | 'gatsbyPath'
-  | 'id'
-  | 'internal___content'
-  | 'internal___contentDigest'
-  | 'internal___description'
-  | 'internal___fieldOwners'
-  | 'internal___ignoreType'
-  | 'internal___mediaType'
-  | 'internal___owner'
-  | 'internal___type'
-  | 'meta___remoteTypeName'
-  | 'meta___selectedFacets'
-  | 'meta___selectedFacets___key'
-  | 'meta___selectedFacets___remoteTypeName'
-  | 'meta___selectedFacets___value'
-  | 'parent___children'
-  | 'parent___children___children'
-  | 'parent___children___children___children'
-  | 'parent___children___children___id'
-  | 'parent___children___id'
-  | 'parent___children___internal___content'
-  | 'parent___children___internal___contentDigest'
-  | 'parent___children___internal___description'
-  | 'parent___children___internal___fieldOwners'
-  | 'parent___children___internal___ignoreType'
-  | 'parent___children___internal___mediaType'
-  | 'parent___children___internal___owner'
-  | 'parent___children___internal___type'
-  | 'parent___children___parent___children'
-  | 'parent___children___parent___id'
-  | 'parent___id'
-  | 'parent___internal___content'
-  | 'parent___internal___contentDigest'
-  | 'parent___internal___description'
-  | 'parent___internal___fieldOwners'
-  | 'parent___internal___ignoreType'
-  | 'parent___internal___mediaType'
-  | 'parent___internal___owner'
-  | 'parent___internal___type'
-  | 'parent___parent___children'
-  | 'parent___parent___children___children'
-  | 'parent___parent___children___id'
-  | 'parent___parent___id'
-  | 'parent___parent___internal___content'
-  | 'parent___parent___internal___contentDigest'
-  | 'parent___parent___internal___description'
-  | 'parent___parent___internal___fieldOwners'
-  | 'parent___parent___internal___ignoreType'
-  | 'parent___parent___internal___mediaType'
-  | 'parent___parent___internal___owner'
-  | 'parent___parent___internal___type'
-  | 'parent___parent___parent___children'
-  | 'parent___parent___parent___id'
-  | 'remoteId'
-  | 'remoteTypeName'
-  | 'seo___canonical'
-  | 'seo___description'
-  | 'seo___remoteTypeName'
-  | 'seo___title'
-  | 'seo___titleTemplate'
-  | 'slug'
-  | 'type'
-
-export type StoreCollectionFilterInput = {
-  breadcrumbList: InputMaybe<StoreBreadcrumbListFilterInput>
-  children: InputMaybe<NodeFilterListInput>
-  gatsbyPath: InputMaybe<StringQueryOperatorInput>
-  id: InputMaybe<StringQueryOperatorInput>
-  internal: InputMaybe<InternalFilterInput>
-  meta: InputMaybe<StoreCollectionMetaFilterInput>
-  parent: InputMaybe<NodeFilterInput>
-  remoteId: InputMaybe<DateQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  seo: InputMaybe<StoreSeoFilterInput>
-  slug: InputMaybe<StringQueryOperatorInput>
-  type: InputMaybe<StoreCollectionTypeQueryOperatorInput>
-}
-
-export type StoreCollectionGroupConnection = {
-  distinct: Array<Scalars['String']>
-  edges: Array<StoreCollectionEdge>
-  field: Scalars['String']
-  fieldValue: Maybe<Scalars['String']>
-  group: Array<StoreCollectionGroupConnection>
-  max: Maybe<Scalars['Float']>
-  min: Maybe<Scalars['Float']>
-  nodes: Array<StoreCollection>
-  pageInfo: PageInfo
-  sum: Maybe<Scalars['Float']>
-  totalCount: Scalars['Int']
-}
-
-export type StoreCollectionGroupConnectionDistinctArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionGroupConnectionGroupArgs = {
-  field: StoreCollectionFieldsEnum
-  limit: InputMaybe<Scalars['Int']>
-  skip: InputMaybe<Scalars['Int']>
-}
-
-export type StoreCollectionGroupConnectionMaxArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionGroupConnectionMinArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionGroupConnectionSumArgs = {
-  field: StoreCollectionFieldsEnum
-}
-
-export type StoreCollectionMeta = {
-  remoteTypeName: Maybe<Scalars['String']>
-  selectedFacets: Array<StoreCollectionFacet>
-}
-
-export type StoreCollectionMetaFilterInput = {
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  selectedFacets: InputMaybe<StoreCollectionFacetFilterListInput>
-}
-
-export type StoreCollectionSortInput = {
-  fields: InputMaybe<Array<InputMaybe<StoreCollectionFieldsEnum>>>
-  order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>
-}
-
-export type StoreCollectionType =
-  | 'Brand'
-  | 'Category'
-  | 'Cluster'
-  | 'Department'
-
-export type StoreCollectionTypeQueryOperatorInput = {
-  eq: InputMaybe<StoreCollectionType>
-  in: InputMaybe<Array<InputMaybe<StoreCollectionType>>>
-  ne: InputMaybe<StoreCollectionType>
-  nin: InputMaybe<Array<InputMaybe<StoreCollectionType>>>
-}
-
-export type StoreFacet = {
-  key: Scalars['String']
-  label: Scalars['String']
-  type: StoreFacetType
-  values: Array<StoreFacetValue>
-}
-
-export type StoreFacetType = 'BOOLEAN' | 'RANGE'
-
-export type StoreFacetValue = {
-  label: Scalars['String']
-  quantity: Scalars['Int']
-  selected: Scalars['Boolean']
-  value: Scalars['String']
-}
-
-export type StoreImage = {
-  alternateName: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
-  url: Scalars['String']
-}
-
-export type StoreImageFilterInput = {
-  alternateName: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  url: InputMaybe<StringQueryOperatorInput>
-}
-
-export type StoreImageFilterListInput = {
-  elemMatch: InputMaybe<StoreImageFilterInput>
-}
-
-export type StoreListItem = {
-  item: Scalars['String']
-  name: Scalars['String']
-  position: Scalars['Int']
-  remoteTypeName: Maybe<Scalars['String']>
-}
-
-export type StoreListItemFilterInput = {
-  item: InputMaybe<StringQueryOperatorInput>
-  name: InputMaybe<StringQueryOperatorInput>
-  position: InputMaybe<IntQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-}
-
-export type StoreListItemFilterListInput = {
-  elemMatch: InputMaybe<StoreListItemFilterInput>
-}
-
-export type StoreOffer = {
-  availability: Scalars['String']
-  itemCondition: Scalars['String']
-  itemOffered: StoreProduct
-  listPrice: Scalars['Float']
-  price: Scalars['Float']
-  priceCurrency: Scalars['String']
-  priceValidUntil: Scalars['String']
-  quantity: Scalars['Int']
-  remoteTypeName: Maybe<Scalars['String']>
-  seller: StoreOrganization
-  sellingPrice: Scalars['Float']
-}
-
-export type StoreOfferFilterInput = {
-  availability: InputMaybe<StringQueryOperatorInput>
-  itemCondition: InputMaybe<StringQueryOperatorInput>
-  itemOffered: InputMaybe<StoreProductFilterInput>
-  listPrice: InputMaybe<FloatQueryOperatorInput>
-  price: InputMaybe<FloatQueryOperatorInput>
-  priceCurrency: InputMaybe<StringQueryOperatorInput>
-  priceValidUntil: InputMaybe<StringQueryOperatorInput>
-  quantity: InputMaybe<IntQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  seller: InputMaybe<StoreOrganizationFilterInput>
-  sellingPrice: InputMaybe<FloatQueryOperatorInput>
-}
-
-export type StoreOfferFilterListInput = {
-  elemMatch: InputMaybe<StoreOfferFilterInput>
-}
-
-export type StoreOrder = {
-  acceptedOffer: Array<StoreOffer>
-  orderNumber: Scalars['String']
-}
-
-export type StoreOrganization = {
-  identifier: Scalars['String']
-  remoteTypeName: Maybe<Scalars['String']>
-}
-
-export type StoreOrganizationFilterInput = {
-  identifier: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-}
-
-export type StorePageInfo = {
-  endCursor: Scalars['String']
-  hasNextPage: Scalars['Boolean']
-  hasPreviousPage: Scalars['Boolean']
-  startCursor: Scalars['String']
-  totalCount: Scalars['Int']
-}
-
 export type StorePerson = {
   email: Scalars['String']
   familyName: Scalars['String']
@@ -2954,7 +2660,7 @@ export type StorePerson = {
   id: Scalars['String']
 }
 
-export type StoreProduct = Node & {
+export type StoreProduct = {
   additionalProperty: Array<StorePropertyValue>
   aggregateRating: StoreAggregateRating
   brand: StoreBrand
@@ -3269,14 +2975,6 @@ export type StoreSeo = {
   titleTemplate: Scalars['String']
 }
 
-export type StoreSeoFilterInput = {
-  canonical: InputMaybe<StringQueryOperatorInput>
-  description: InputMaybe<StringQueryOperatorInput>
-  remoteTypeName: InputMaybe<StringQueryOperatorInput>
-  title: InputMaybe<StringQueryOperatorInput>
-  titleTemplate: InputMaybe<StringQueryOperatorInput>
-}
-
 export type StoreSession = {
   channel: Maybe<Scalars['String']>
   country: Maybe<Scalars['String']>
@@ -3302,14 +3000,6 @@ export type StringQueryOperatorInput = {
   ne: InputMaybe<Scalars['String']>
   nin: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   regex: InputMaybe<Scalars['String']>
-}
-
-export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
-
-export type StoreCollectionQuery = {
-  allStoreCollection: {
-    edges: Array<{ node: { slug: string; seo: { title: string } } }>
-  }
 }
 
 export type UpdateSessionMutationMutationVariables = Exact<{
@@ -3439,7 +3129,7 @@ export type HomePageQueryQuery = {
 
 export type ProductPageQueryQueryVariables = Exact<{ [key: string]: never }>
 
-export type SearchPageQueryQuery = {
+export type CollectionPageQueryQuery = {
   site: {
     siteMetadata: {
       titleTemplate: string | null
@@ -3449,18 +3139,11 @@ export type SearchPageQueryQuery = {
   } | null
 }
 
-export type ServerProductPageQueryQueryVariables = Exact<{
+export type ServerCollectionPageQueryQueryVariables = Exact<{
   slug: Scalars['String']
 }>
 
-export type CollectionPageQueryQuery = {
-  site: {
-    siteMetadata: {
-      titleTemplate: string | null
-      title: string | null
-      description: string | null
-    } | null
-  } | null
+export type ServerCollectionPageQueryQuery = {
   collection: {
     seo: { title: string; description: string }
     breadcrumbList: {
@@ -3470,7 +3153,7 @@ export type CollectionPageQueryQuery = {
   } | null
 }
 
-export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
+export type ProductPageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type ProductPageQueryQuery = {
   site: {
@@ -3481,6 +3164,13 @@ export type ProductPageQueryQuery = {
       siteUrl: string | null
     } | null
   } | null
+}
+
+export type ServerProductPageQueryQueryVariables = Exact<{
+  id: Scalars['String']
+}>
+
+export type ServerProductPageQueryQuery = {
   product: {
     slug: string
     sku: string
@@ -3509,25 +3199,55 @@ export type ProductPageQueryQuery = {
       }>
     }
     isVariantOf: { productGroupID: string; name: string }
+  }
+  allProducts: {
+    edges: Array<{
+      node: {
+        slug: string
+        sku: string
+        name: string
+        gtin: string
+        id: string
+        brand: { name: string; brandName: string }
+        isVariantOf: { productGroupID: string; name: string }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          offers: Array<{
+            availability: string
+            price: number
+            listPrice: number
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }
+    }>
+  }
+}
+
+export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
+
+export type HomePageQueryQuery = {
+  site: {
+    siteMetadata: {
+      title: string | null
+      description: string | null
+      titleTemplate: string | null
+    } | null
   } | null
 }
 
 export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type SearchPageQueryQuery = {
-  site:
-    | {
-        siteMetadata:
-          | {
-              titleTemplate: string | null | undefined
-              title: string | null | undefined
-              description: string | null | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
+  site: {
+    siteMetadata: {
+      titleTemplate: string | null
+      title: string | null
+      description: string | null
+    } | null
+  } | null
 }
 
 export type ValidateCartMutationMutationVariables = Exact<{

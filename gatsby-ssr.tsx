@@ -1,6 +1,6 @@
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
-import type { GatsbySSR, PreRenderHTMLArgs } from 'gatsby'
+import type { GatsbySSR } from 'gatsby'
 
 import ThirdPartyScripts from './src/components/ThirdPartyScripts'
 import Layout from './src/Layout'
@@ -11,16 +11,6 @@ import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
 import { ModalProvider } from './src/sdk/ui/modal'
 import storeConfig from './store.config'
-
-// Gatsby types the returned elements from `getHeadComponents` as
-// `React.ReactNode`, but this is inaccurate. The attributes defined below
-// are present in those elements.
-interface HeadComponents
-  extends ReturnType<PreRenderHTMLArgs['getHeadComponents']> {
-  type: string
-  key: string
-  props?: Record<string, unknown>
-}
 
 export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => (
   <ErrorBoundary>

@@ -3,7 +3,6 @@ import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { useEffect, useMemo } from 'react'
-import IconSVG from 'src/components/common/IconSVG'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
@@ -13,7 +12,6 @@ import Icon from 'src/components/ui/Icon'
 import { ITEMS_PER_PAGE, ITEMS_PER_SECTION } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import { execute } from 'src/server'
 import type {
   CollectionPageQueryQuery,
   ServerCollectionPageQueryQuery,
@@ -57,7 +55,7 @@ function Page(props: Props) {
   const {
     data: { site, collection },
     location: { host },
-    params: { slug },
+    slug,
   } = props
 
   const { locale } = useSession()
@@ -168,7 +166,7 @@ export const querySSG = graphql`
 `
 
 /**
- * This query is run during SSG
+ * This query is run during SSR
  * */
 export const querySSR = gql`
   query ServerCollectionPageQuery($slug: String!) {
@@ -200,6 +198,7 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
+    const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
       variables: { slug },
@@ -209,7 +208,7 @@ export const getServerData = async ({
       status: 200,
       props: data ?? {},
       headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
+        'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
       },
     }
   } catch (err) {
