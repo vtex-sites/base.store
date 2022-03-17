@@ -150,8 +150,8 @@ export const querySSG = graphql`
  * This query is run during SSR
  * */
 export const querySSR = gql`
-  query ServerProductPageQuery($slug: String!) {
-    product(locator: [{ key: "slug", value: $slug }]) {
+  query ServerProductPageQuery($id: String!) {
+    product(locator: [{ key: "id", value: $id }]) {
       id: productID
       slug
 
@@ -218,9 +218,11 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
+    const id = slug.split('-').pop()
+
     const { data } = await execute({
       operationName: querySSR,
-      variables: { slug },
+      variables: { id },
     })
 
     return {
