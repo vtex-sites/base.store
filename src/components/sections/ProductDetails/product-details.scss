@@ -42,7 +42,7 @@
 
 .product-details__content {
   margin-top: var(--space-3);
-  .product-details__description .title-subsection { margin-bottom: var(--space-3); }
+  .product-details__description .text__title-subsection { margin-bottom: var(--space-3); }
 
   @include media(">=tablet") {
     grid-column: span 7;

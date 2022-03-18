@@ -122,7 +122,7 @@ function ProductDetails({ product: staleProduct }: Props) {
       <section className="product-details__body">
         <header className="product-details__title">
           <ProductTitle
-            title={<h1 className="title-product">{name}</h1>}
+            title={<h1 className="text__title-product">{name}</h1>}
             label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} />}
             refNumber={productId}
           />
@@ -145,7 +145,7 @@ function ProductDetails({ product: staleProduct }: Props) {
                 testId="list-price"
                 data-value={listPrice}
                 variant="listing"
-                classes="text-body-small"
+                classes="text__legend"
                 SRText="Original price:"
               />
               <Price
@@ -154,12 +154,12 @@ function ProductDetails({ product: staleProduct }: Props) {
                 testId="price"
                 data-value={lowPrice}
                 variant="spot"
-                classes="title-display"
+                classes="text__lead"
                 SRText="Sale Price:"
               />
             </div>
             {/* <div className="prices">
-              <p className="price__old text-body-small">{formattedListPrice}</p>
+              <p className="price__old text__legend">{formattedListPrice}</p>
               <p className="price__new">{isValidating ? '' : formattedPrice}</p>
             </div> */}
             <QuantitySelector min={1} max={10} onChange={setAddQuantity} />
@@ -179,8 +179,8 @@ function ProductDetails({ product: staleProduct }: Props) {
 
         <section className="product-details__content">
           <article className="product-details__description">
-            <h2 className="title-subsection">Description</h2>
-            <p className="text-body">{description}</p>
+            <h2 className="text__title-subsection">Description</h2>
+            <p className="text__body">{description}</p>
           </article>
         </section>
       </section>

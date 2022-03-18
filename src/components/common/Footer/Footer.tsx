@@ -23,7 +23,7 @@ function Footer() {
         <FooterLinks />
 
         <section className="footer__social">
-          <p className="title-sub-subsection">Follow us</p>
+          <p className="text__title-mini">Follow us</p>
           <UIList variant="unordered">
             <li>
               <Link
@@ -101,7 +101,7 @@ function Footer() {
         />
 
         <UIPaymentMethods>
-          <p className="title-sub-subsection">Payment Methods</p>
+          <p className="text__title-mini">Payment Methods</p>
           <UIList>
             <li>
               <Icon width="34px" height="24px" name="Visa" />
@@ -138,7 +138,7 @@ function Footer() {
           </UIList>
         </UIPaymentMethods>
 
-        <div className="footer__copyright / text-body-small">
+        <div className="footer__copyright / text__legend">
           <p>This website uses VTEX technology</p>
           <p>
             In-store price may vary. Prices and offers are subject to change.

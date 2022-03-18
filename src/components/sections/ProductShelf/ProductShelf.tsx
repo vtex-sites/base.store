@@ -20,7 +20,7 @@ function ProductShelf({
 }: ProductShelfProps) {
   return (
     <Section className={`grid-section ${withDivisor ? 'shelf__divisor' : ''}`}>
-      <h2 className="title-section / grid-content">{title}</h2>
+      <h2 className="text__title-section / grid-content">{title}</h2>
       <div data-product-shelf-content>
         <ProductShelfSkeleton loading={products.length === 0}>
           <ul data-product-shelf-items className="grid-content">

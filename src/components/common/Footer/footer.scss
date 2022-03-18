@@ -84,7 +84,7 @@
   }
 
   [data-payment-methods-flags] {
-    .title-sub-subsection {
+    .text__title-mini {
       margin-bottom: var(--space-3);
       text-align: center;
 
@@ -123,7 +123,7 @@
     grid-column: 11 / span 2;
   }
 
-  .title-sub-subsection {
+  .text__title-mini {
     text-align: center;
 
     @include media(">=notebook") {
@@ -203,7 +203,7 @@
   grid-gap: var(--grid-gap-1);
   grid-template-columns: repeat(4, 1fr);
 
-  .title-sub-subsection {
+  .text__title-mini {
     margin-bottom: var(--space-1);
   }
 }
