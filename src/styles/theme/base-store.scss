@@ -13,7 +13,7 @@
 
 body {
   // PALETTE
-  // Values must range from lightest to darkest tones.
+  // Tone values must range from lightest to darkest.
   // `0` is more suitable for backgrounds, and `4` for texts.
   --fs-color-main-0               : #00000099; // Lightest
   --fs-color-main-1               : #000000b3;
@@ -51,9 +51,13 @@ body {
 
   // COMPONENTS & STATES
   --fs-color-link                 : var(--fs-color-main-4);
+  --fs-color-link-visited         : var(--fs-color-main-4);
+  --fs-color-link-inverse         : var(--fs-color-main-4);
+
   --fs-color-text                 : var(--fs-color-main-4);
-  --fs-color-text-subtle          : var(--fs-color-neutral-4);
+  --fs-color-text-light           : var(--fs-color-neutral-4);
   --fs-color-text-inverse         : var(--fs-color-neutral-0);
+
   --fs-color-body-bkg             : var(--fs-color-neutral-0);
   --fs-color-focus-ring           : #8db6fa;
 
@@ -61,14 +65,17 @@ body {
   --fs-color-success-bkg          : #cee8de;
   --fs-color-success-text         : var(--fs-color-text);
 
+  --fs-color-warning-bkg          : #cee8de;
+  --fs-color-warning-text         : var(--fs-color-text);
+
   --fs-color-danger-bkg           : #cee8de;
   --fs-color-danger-text          : var(--fs-color-text);
 
-  --fs-color-highlight-bkg        : #ebdcff;
-  --fs-color-highlight-text       : var(--fs-color-text);
-
   --fs-color-info-bkg             : var(--fs-color-neutral-3);
   --fs-color-info-text            : var(--fs-color-text);
+
+  --fs-color-highlight-bkg        : #ebdcff;
+  --fs-color-highlight-text       : var(--fs-color-text);
 
   --fs-color-neutral-bkg          : var(--fs-color-neutral-3);
   --fs-color-neutral-text         : var(--fs-color-text);
@@ -121,7 +128,10 @@ body {
 
   // HIERARCHY SCALE
   --fs-text-size-title-page       : var(--fs-text-size-6);
+  --fs-text-size-title-product    : var(--fs-text-size-4);
   --fs-text-size-title-section    : var(--fs-text-size-4);
+  --fs-text-size-title-subsection : var(--fs-text-size-4);
+  --fs-text-size-title-mini       : var(--fs-text-size-4);
   --fs-text-size-lead             : var(--fs-text-size-4);
   --fs-text-size-menu             : var(--fs-text-size-base);
   --fs-text-size-body             : var(--fs-text-size-base);
@@ -154,7 +164,7 @@ body {
 
 
 // --------------------------------------------------------
-// Grid (UI Essentials)
+// Grid & Layout (UI Essentials)
 // --------------------------------------------------------
 
 body {
@@ -166,6 +176,9 @@ body {
   @include media(">notebook") {
     --fs-grid-padding-page        : var(--fs-spacing-5);
   }
+
+  // CONTAINER
+  --fs-grid-max-width             : var(--fs-grid-breakpoint-notebook);
 
   // GAPS
   --fs-grid-gap-0                 : var(--fs-spacing-3);
@@ -221,8 +234,11 @@ body {
 
   --fs-border-color-default       : var(--fs-color-main-4);
   --fs-border-color-default-hover : var(--fs-color-main-4);
+  --fs-border-color-default-active: var(--fs-color-main-4);
+
   --fs-border-color-light         : var(--fs-color-main-4);
   --fs-border-color-light-hover   : var(--fs-color-main-4);
+  --fs-border-color-light-active  : var(--fs-color-main-4);
 
   --fs-border-width-light         : 1px;
   --fs-border-width-default       : 1px;
