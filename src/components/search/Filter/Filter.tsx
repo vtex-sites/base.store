@@ -8,7 +8,7 @@ import type {
   IStoreSelectedFacet,
   Filter_FacetsFragment,
 } from '@generated/graphql'
-import IconSVG from 'src/components/common/IconSVG'
+import Icon from 'src/components/ui/Icon'
 
 import Facets from './Facets'
 
@@ -200,7 +200,7 @@ function Filter({
               data-testid="filter-modal-button-close"
               classes="filter-modal__button"
               aria-label="Close Filters"
-              icon={<IconSVG name="X" width={32} height={32} />}
+              icon={<Icon name="X" width={32} height={32} />}
               onClick={() => {
                 setSelectedFacets(searchState.selectedFacets)
                 dismissTransition.current?.()

@@ -42,7 +42,7 @@ const SuggestionsTopSearch = forwardRef<
       <p className="suggestions__title">Top Search</p>
       <UIList variant="ordered">
         {searchedItems.map((item, index) => (
-          <li key={index}>
+          <li key={index} className="suggestions__item">
             <Link variant="display" to={item.href}>
               <Badge variant="info" small>
                 {index + 1}
