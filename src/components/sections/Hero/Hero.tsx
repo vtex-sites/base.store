@@ -46,7 +46,7 @@ const Hero = ({
     <Section>
       <UIHero data-hero-variant={variant}>
         <HeroContent aria-labelledby="hero-heading">
-          <div data-hero-wrapper className="grid-content">
+          <div data-hero-wrapper className="layout__content">
             <div data-hero-info>
               <h1 id="hero-heading">{title}</h1>
 

@@ -116,7 +116,7 @@ function ProductDetails({ product: staleProduct }: Props) {
   ])
 
   return (
-    <Section className="product-details / grid-content grid-section">
+    <Section className="product-details layout__content layout__section">
       <Breadcrumb breadcrumbList={breadcrumbs.itemListElement} />
 
       <section className="product-details__body">

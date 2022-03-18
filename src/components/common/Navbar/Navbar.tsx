@@ -69,8 +69,8 @@ function Navbar() {
   }
 
   return (
-    <header className="navbar / grid-content-full">
-      <div className="navbar__header / grid-content">
+    <header className="navbar layout__content-full">
+      <div className="navbar__header layout__content">
         <section className="navbar__row">
           {!searchExpanded && (
             <>

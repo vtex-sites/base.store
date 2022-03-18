@@ -36,9 +36,9 @@ function BannerText({
   actionLabel,
 }: BannerTextProps) {
   return (
-    <Section className="grid-section">
+    <Section className="layout__section">
       <Banner>
-        <BannerContent className="grid-content">
+        <BannerContent className="layout__content">
           <div data-banner-text>
             <h2>{title}</h2>
             <p>{caption}</p>

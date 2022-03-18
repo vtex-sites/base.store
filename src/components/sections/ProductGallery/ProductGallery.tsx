@@ -33,15 +33,15 @@ function ProductGallery({ title }: Props) {
 
   if (data && totalCount === 0) {
     return (
-      <Section className="product-listing / grid-content">
+      <Section className="product-listing layout__content">
         <EmptyGallery />
       </Section>
     )
   }
 
   return (
-    <Section className="product-listing / grid-content-full">
-      <div className="product-listing__content-grid / grid-content">
+    <Section className="product-listing layout__content-full">
+      <div className="product-listing__content-grid layout__content">
         <div className="product-listing__filters">
           <FilterSkeleton loading={facets?.length === 0}>
             <Filter

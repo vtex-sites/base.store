@@ -16,10 +16,10 @@ import './footer.scss'
 
 function Footer() {
   return (
-    <footer className="footer / grid-content-full">
+    <footer className="footer layout__content-full">
       <IncentivesFooter />
 
-      <div className="footer__section / grid-content">
+      <div className="footer__section layout__content">
         <FooterLinks />
 
         <section className="footer__social">
@@ -87,7 +87,7 @@ function Footer() {
         </section>
       </div>
 
-      <div className="footer__note / grid-content">
+      <div className="footer__note layout__content">
         <UIIcon
           component={
             <img

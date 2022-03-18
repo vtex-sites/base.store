@@ -30,9 +30,9 @@ const getRatio = (products: number, idx: number) => {
 
 const ProductTiles = ({ products, title }: TilesProps) => {
   return (
-    <Section className="grid-section grid-content">
+    <Section className="layout__section layout__content">
       <h2 className="text__title-section">{title}</h2>
-      <div className="page__section-content">
+      <div>
         <ProductTilesSkeleton
           variant="horizontal"
           loading={products.length === 0}
