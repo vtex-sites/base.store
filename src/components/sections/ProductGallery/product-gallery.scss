@@ -21,8 +21,8 @@
     display: grid;
     grid-template-rows: var(--product-listing-row-height) auto;
     grid-template-columns: repeat(12, 1fr);
-    padding-right: var(--fs-grid-padding-page);
-    padding-left: var(--fs-grid-padding-page);
+    padding-right: var(--fs-grid-padding);
+    padding-left: var(--fs-grid-padding);
     column-gap: var(--fs-spacing-4);
     row-gap: var(--fs-spacing-0);
   }

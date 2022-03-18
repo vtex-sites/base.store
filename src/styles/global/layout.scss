@@ -27,8 +27,8 @@ main,
   margin-bottom: var(--fs-spacing-4);
 
   @include media(">=notebook") {
-    margin-top: var(--fs-grid-padding-page);
-    margin-bottom: var(--fs-grid-padding-page);
+    margin-top: var(--fs-grid-padding);
+    margin-bottom: var(--fs-grid-padding);
   }
 }
 
@@ -39,8 +39,8 @@ main,
   padding-bottom: var(--fs-spacing-4);
 
   @include media(">=notebook") {
-    padding-top: var(--fs-grid-padding-page);
-    padding-bottom: var(--fs-grid-padding-page);
+    padding-top: var(--fs-grid-padding);
+    padding-bottom: var(--fs-grid-padding);
   }
 }
 
@@ -50,8 +50,8 @@ main,
   max-width: var(--fs-grid-breakpoint-notebook);
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--fs-grid-padding-page);
-  padding-left: var(--fs-grid-padding-page);
+  padding-right: var(--fs-grid-padding);
+  padding-left: var(--fs-grid-padding);
 }
 
 // Avoids double scroll issue on the page when overlay is open

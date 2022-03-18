@@ -4,7 +4,7 @@
   position: relative;
   display: inline-flex;
   width: 100%;
-  height: var(--fs-tap-size);
+  height: var(--fs-control-tap-size);
 
   @include media(">=notebook") { height: var(--fs-spacing-6); }
 

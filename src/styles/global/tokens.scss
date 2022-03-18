@@ -169,12 +169,12 @@ body {
 
 body {
   // PADDINGS
-  --fs-grid-padding-page          : var(--fs-spacing-3);
+  --fs-grid-padding               : var(--fs-spacing-3);
   @include media(">=tablet") {
-    --fs-grid-padding-page        : var(--fs-spacing-4);
+    --fs-grid-padding             : var(--fs-spacing-4);
   }
   @include media(">=notebook") {
-    --fs-grid-padding-page        : var(--fs-spacing-5);
+    --fs-grid-padding             : var(--fs-spacing-5);
   }
 
   // CONTAINER
@@ -200,19 +200,19 @@ body {
 
 body {
   // TAP
-  --fs-tap-size-smallest          : calc(var(--fs-tap-size) / 2);
-  --fs-tap-size                   : var(--fs-spacing-7); // 3rem = 48px
+  --fs-control-tap-size-smallest  : calc(var(--fs-control-tap-size) / 2);
+  --fs-control-tap-size           : var(--fs-spacing-7); // 3rem = 48px
   @include media(">=notebook") {
-    --fs-tap-size                 : var(--fs-spacing-7); // This value can be smaller on desktops
+    --fs-control-tap-size         : var(--fs-spacing-7); // This value can be smaller on desktops
   }
 
   // APPEARANCE
-  --fs-control-bkg-default        : var(--fs-tap-size);
-  --fs-control-bkg-hover          : var(--fs-tap-size);
-  --fs-control-bkg-active         : var(--fs-tap-size);
-  --fs-control-bkg-disabled       : var(--fs-tap-size);
+  --fs-control-bkg-default        : var(--fs-control-tap-size);
+  --fs-control-bkg-hover          : var(--fs-control-tap-size);
+  --fs-control-bkg-active         : var(--fs-control-tap-size);
+  --fs-control-bkg-disabled       : var(--fs-control-tap-size);
 
-  --fs-control-min-height         : var(--fs-tap-size);
+  --fs-control-min-height         : var(--fs-control-tap-size);
 }
 
 
@@ -221,7 +221,7 @@ body {
 // --------------------------------------------------------
 
 body {
-  // MOTION
+  // TRANSITION
   --fs-transition-timing         : .2s;
   --fs-transition-property       : all;
   --fs-transition-function       : ease-in-out;

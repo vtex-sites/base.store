@@ -33,7 +33,7 @@
       + svg { display: none; }
     }
 
-    @include media("<notebook") { min-height: var(--fs-tap-size); }
+    @include media("<notebook") { min-height: var(--fs-control-tap-size); }
 
     @include media(">=notebook") { height: var(--fs-spacing-6); }
   }

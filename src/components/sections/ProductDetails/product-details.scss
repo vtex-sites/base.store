@@ -19,8 +19,8 @@
 
 .product-details__image {
   position: relative;
-  left: calc(-1 * var(--fs-grid-padding-page));
-  width: calc(100% + (2 * var(--fs-grid-padding-page)));
+  left: calc(-1 * var(--fs-grid-padding));
+  width: calc(100% + (2 * var(--fs-grid-padding)));
 
   [data-gatsby-image-wrapper] {
     @include media(">=tablet") {
