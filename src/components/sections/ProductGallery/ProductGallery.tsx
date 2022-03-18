@@ -17,12 +17,11 @@ import { useGalleryQuery } from './useGalleryQuery'
 import './product-gallery.scss'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
+const GalleryPageSkeleton = <ProductGrid page={0} pageSize={0} products={[]} />
 
 interface Props {
   title: string
 }
-
-const GalleryPageSkeleton = <ProductGrid page={0} pageSize={0} products={[]} />
 
 function ProductGallery({ title }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
