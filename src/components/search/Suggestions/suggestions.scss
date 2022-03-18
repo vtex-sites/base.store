@@ -3,7 +3,7 @@
 .suggestions__title {
   margin-bottom: var(--space-1);
   padding: 0 var(--space-3);
-  font-size: var(--text-size-3);
+  font-size: var(--fs-text-size-3);
   line-height: 1.5;
 }
 
@@ -31,7 +31,7 @@
   }
 
   .suggestions__item {
-    font-size: var(--text-size-2);
+    font-size: var(--fs-text-size-2);
     line-height: 1.25;
 
     [data-store-link] {
@@ -55,7 +55,7 @@
     padding: var(--space-2) 0;
     color: var(--color-text-subtle);
     font-weight: var(--text-weight-regular);
-    font-size: var(--text-size-2);
+    font-size: var(--fs-text-size-2);
     line-height: 1.25;
     background-color: transparent;
     cursor: pointer;

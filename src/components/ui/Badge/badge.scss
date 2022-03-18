@@ -4,14 +4,14 @@
   padding: var(--space-1) var(--space-2);
   color: var(--color-text);
   font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-2);
+  font-size: var(--fs-text-size-2);
   white-space: nowrap;
   text-transform: uppercase;
   border-radius: var(--border-radius-pill);
 
   &[data-store-badge="small"] {
     padding: var(--space-0) var(--space-2);
-    font-size: var(--text-size-0);
+    font-size: var(--fs-text-size-0);
   }
 }
 

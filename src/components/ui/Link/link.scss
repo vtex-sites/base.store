@@ -37,7 +37,7 @@ a, [data-store-link] {
 
 [data-link-variant="footer"] {
   color: var(--color-text);
-  font-size: var(--text-size-1);
+  font-size: var(--fs-text-size-1);
 
   @include media(">=notebook") { padding: var(--space-1) var(--space-0); }
 }

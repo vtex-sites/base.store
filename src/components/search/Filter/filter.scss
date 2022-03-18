@@ -29,11 +29,11 @@
 
   [data-accordion-item] [data-store-button] {
     font-weight: var(--text-weight-regular);
-    font-size: var(--text-size-3);
+    font-size: var(--fs-text-size-3);
     line-height: 1.5;
 
     @include media(">=notebook") {
-      font-size: var(--text-size-2);
+      font-size: var(--fs-text-size-2);
       line-height: 1.25;
     }
 
