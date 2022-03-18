@@ -1,4 +1,7 @@
-// Mixins & functions utilities  //////////////////////////
+// ----------------------------------------------------------
+// GLOBAL STYLES
+// Utilities
+// ----------------------------------------------------------
 
 /* SQ-DISABLE */
 @use "sass:math";
@@ -17,8 +20,8 @@ $base: 16px !default;
 @mixin input-focus-ring {
   @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
     @supports (-webkit-appearance:none) {         // Use `focus` instead of `focus-visible`
-      &:hover:focus,
-      &:focus {                                   // due to Safari's lack of support
+      &:hover:focus,                              // due to Safari's lack of support
+      &:focus {
         border-color: var(--color-border-input-selected);
         outline: none;
         box-shadow:
@@ -47,8 +50,8 @@ $base: 16px !default;
 
 @mixin focus-ring-visible {
   @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
-    @supports (-webkit-appearance:none) {        // Use `focus` instead of `focus-visible`
-      &:focus { @include focus-ring; }           // due to Safari's lack of support
+    @supports (-webkit-appearance:none) {         // Use `focus` instead of `focus-visible`
+      &:focus { @include focus-ring; }            // due to Safari's lack of support
     }
   }
   &:focus-visible { @include focus-ring; }

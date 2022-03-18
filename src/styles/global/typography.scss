@@ -1,0 +1,125 @@
+// ----------------------------------------------------------
+// GLOBAL STYLES
+// Typography
+// ----------------------------------------------------------
+
+@import "src/styles/scaffold";
+
+// OBS: Old classes are displayed here just for reference.
+// Remove them after the new theming architecture is done.
+
+body {
+  font-size: var(--fs-text-size-base);
+  font-family: var(--fs-text-face-body);
+  line-height: 1.5;
+  letter-spacing: .01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0;
+  padding: 0;
+}
+
+// .title-hero,
+.text__title-page {
+  font-weight: var(--fs-text-weight-black);
+  font-size: var(--fs-text-size-5);
+  line-height: 1.1;
+
+  @include media(">=tablet") { font-size: var(--fs-text-size-7); }
+}
+
+// TODO: Move this style to `Hero`. It's only used there.
+// .title-hero-small,
+.text__title-page-alt {
+  font-weight: var(--fs-text-weight-black);
+  font-size: var(--fs-text-size-5);
+  line-height: 1.1;
+
+  @include media(">=tablet") { font-size: var(--fs-text-size-6); }
+}
+
+// TODO: Move this style to `BannerText`. It's only used there.
+// .title-display-big,
+.text__lead-big {
+  font-weight: var(--fs-text-weight-bold);
+  font-size: var(--fs-text-size-3);
+  line-height: 1.25;
+
+  @include media(">=notebook") { font-size: var(--fs-text-size-6); }
+}
+
+// .title-product,
+.text__title-product {
+  font-weight: var(--fs-text-weight-regular);
+  font-size: var(--fs-text-size-4);
+  line-height: 1.12;
+}
+
+// .title-section,
+.text__title-section {
+  font-weight: var(--fs-text-weight-bold);
+  font-size: var(--fs-text-size-4);
+  line-height: 1.16;
+
+  @include media(">=notebook") { font-size: var(--fs-text-size-5); }
+}
+
+// .title-subsection,
+.text__title-subsection {
+  font-weight: var(--fs-text-weight-bold);
+  font-size: var(--fs-text-size-3);
+  line-height: 1.2;
+}
+
+// .title-sub-subsection,
+.text__title-mini {
+  font-weight: var(--fs-text-weight-bold);
+  font-size: var(--fs-text-size-2);
+  line-height: 1.25;
+}
+
+// TODO: Can we replace this with `.text__body`?
+// .title-small,
+.text__title-mini-alt {
+  font-size: var(--fs-text-size-2);
+  line-height: 1.25;
+}
+
+// .title-display,
+.text__lead {
+  font-weight: var(--fs-text-weight-bold);
+  font-size: var(--fs-text-size-4);
+  line-height: 1.12;
+}
+
+// TODO: Move this style to `Hero`. It's only used there.
+// .text-body-big,
+.text__body-big {
+  font-size: var(--fs-text-size-2);
+  line-height: 1.5;
+
+  @include media(">=notebook") {
+    font-size: var(--fs-text-size-3);
+  }
+}
+
+// .text-body,
+.text__body {
+  font-size: var(--fs-text-size-2);
+  line-height: 1.5;
+}
+
+// .text-body-small,
+.text__legend {
+  font-size: var(--fs-text-size-1);
+  line-height: 1.7;
+}
+
+// .text-body-tiny,
+.text__tiny {
+  font-size: var(--fs-text-size-0);
+  line-height: 1.5;
+}
