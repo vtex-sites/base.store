@@ -36,7 +36,7 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
       <UIList variant="ordered">
         {searchHistory.map((item, index) => (
           <li data-store-search-history-item key={index}>
-            <Link variant="display" to={doSearch(item)}>
+            <Link variant="display" to={doSearch(item)} target="_blank">
               <UIIcon
                 component={<Icon name="Clock" width={18} height={18} />}
               />
