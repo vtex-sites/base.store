@@ -22,35 +22,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
   padding: 0;
 }
 
-// .title-hero,
-.text__title-page {
-  font-weight: var(--fs-text-weight-black);
-  font-size: var(--fs-text-size-5);
-  line-height: 1.1;
-
-  @include media(">=tablet") { font-size: var(--fs-text-size-7); }
-}
-
-// TODO: Move this style to `Hero`. It's only used there.
-// .title-hero-small,
-.text__title-page-alt {
-  font-weight: var(--fs-text-weight-black);
-  font-size: var(--fs-text-size-5);
-  line-height: 1.1;
-
-  @include media(">=tablet") { font-size: var(--fs-text-size-6); }
-}
-
-// TODO: Move this style to `BannerText`. It's only used there.
-// .title-display-big,
-.text__lead-big {
-  font-weight: var(--fs-text-weight-bold);
-  font-size: var(--fs-text-size-3);
-  line-height: 1.25;
-
-  @include media(">=notebook") { font-size: var(--fs-text-size-6); }
-}
-
 // .title-product,
 .text__title-product {
   font-weight: var(--fs-text-weight-regular);
@@ -93,17 +64,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-4);
   line-height: 1.12;
-}
-
-// TODO: Move this style to `Hero`. It's only used there.
-// .text-body-big,
-.text__body-big {
-  font-size: var(--fs-text-size-2);
-  line-height: 1.5;
-
-  @include media(">=notebook") {
-    font-size: var(--fs-text-size-3);
-  }
 }
 
 // .text-body,

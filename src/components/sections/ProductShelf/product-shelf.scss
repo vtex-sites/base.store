@@ -1,6 +1,6 @@
 @import "src/styles/scaffold";
 
-[data-product-shelf] {
+[data-product-shelf-items] {
   display: flex;
   align-items: stretch;
   overflow-x: scroll;
@@ -16,4 +16,27 @@
     overflow-x: auto;
     column-gap: var(--space-2);
   }
+}
+
+[data-product-shelf-content] {
+  min-height: 21.06rem;
+
+  @include media(">=notebook") {
+    margin-top: calc(-1 * var(--fs-spacing-0));
+    margin-bottom: calc(-1 * var(--fs-spacing-3));
+  }
+}
+
+[data-product-shelf-divisor] {
+  padding-top: var(--fs-spacing-5);
+  border-top: 1px solid var(--color-border-display);
+
+  @include media(">=notebook") { padding-top: var(--fs-spacing-9); }
+}
+
+.shelf__divisor {
+  padding-top: var(--fs-spacing-5);
+  border-top: 1px solid var(--color-border-display);
+
+  @include media(">=notebook") { padding-top: var(--fs-spacing-9); }
 }

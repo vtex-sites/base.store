@@ -39,7 +39,7 @@ function BannerText({
     <Section className="grid-section">
       <Banner>
         <BannerContent className="grid-content">
-          <div className="title-display-big">
+          <div data-banner-text>
             <h2>{title}</h2>
             <p>{caption}</p>
           </div>

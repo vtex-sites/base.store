@@ -19,15 +19,11 @@ function ProductShelf({
   withDivisor = false,
 }: ProductShelfProps) {
   return (
-    <Section
-      className={`page__section-shelf / grid-section ${
-        withDivisor ? 'page__section-divisor' : ''
-      }`}
-    >
+    <Section className={`grid-section ${withDivisor ? 'shelf__divisor' : ''}`}>
       <h2 className="title-section / grid-content">{title}</h2>
-      <div className="page__section-content">
+      <div data-product-shelf-content>
         <ProductShelfSkeleton loading={products.length === 0}>
-          <ul data-product-shelf className="grid-content">
+          <ul data-product-shelf-items className="grid-content">
             {products.map((product, idx) => (
               <li key={`${product.id}`}>
                 <ProductCard product={product} index={idx + 1} />
