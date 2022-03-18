@@ -1472,10 +1472,12 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+
 "@faststore/api@^1.6.13":
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.6.13.tgz#e7300a3da55114a17e21871681584f955e8ca061"
   integrity sha512-vkV+N0MfGHbo4ZKMECObFh33ItFdBSF/wJfFMg9X6YjLQiVsdXTcUAuo3jWGIwv7M7bkCTWZgxmZScKIpLJRDw==
+
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1484,6 +1486,7 @@
     fast-deep-equal "^3.1.3"
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
+
 
 "@faststore/sdk@^1.6.13":
   version "1.6.13"
@@ -1496,6 +1499,9 @@
   version "1.6.13"
   resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.6.13.tgz#df12a2ee8233586d9d81c9660a256bf8bd1c2c2b"
   integrity sha512-+of3WWk1Ey6Yw678G/L3mR6ELIuGvcUQsxlV0EpHLRiTgvQpY1UHZDmoFWshvfIVCtCXySyMDcD4RrCAVTRaag==
+
+
+
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
