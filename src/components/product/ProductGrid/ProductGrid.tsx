@@ -1,8 +1,9 @@
 import React from 'react'
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../ProductCard'
+
 import './product-grid.scss'
 
 interface Props {
