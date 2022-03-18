@@ -8,13 +8,23 @@ import './badge.scss'
 
 export type BadgeVariants = 'info' | 'highlighted' | 'neutral'
 
+type InteractiveBadge =
+  | {
+      interactive: true
+      onClose?: () => void
+    }
+  | {
+      interactive?: false
+      onClose?: never
+    }
+
 type Props = {
   small?: boolean
   variant?: BadgeVariants
   children: ReactNode
   onClose?: () => void
   interactive?: boolean
-}
+} & InteractiveBadge
 
 const Badge = ({
   variant,
@@ -33,7 +43,7 @@ const Badge = ({
       {...otherProps}
     >
       <span>{children}</span>
-      {(interactive || onClose) && (
+      {interactive && (
         <IconButton
           onClick={onClose}
           aria-label="Remove badge"
