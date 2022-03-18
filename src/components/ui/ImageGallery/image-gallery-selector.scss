@@ -3,16 +3,25 @@
 [data-image-gallery-selector] {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
 
-  [data-carousel-track] {
-    display: flex;
-    justify-content: space-around;
+  > [data-store-button] {
+    z-index: 9999;
+    background-color: var(--bg-neutral);
+    border-radius: var(--border-radius-circle);
+    box-shadow: var(--box-shadow);
   }
 
-  [data-store-button] {
-    padding: 0;
-    border: 0;
+  [data-carousel-track] {
+    // min-width: 100%;
+    display: flex;
+    justify-content: center;
+    column-gap: var(--space-2);
+
+    [data-store-button] {
+      padding: 0;
+      border: 0;
+    }
   }
 
   [data-gatsby-image-wrapper] {

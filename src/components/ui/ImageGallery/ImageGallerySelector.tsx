@@ -47,24 +47,40 @@ function ImageGallerySelector({
       data-image-gallery-selector
       aria-roledescription="carousel"
       aria-label="Product images"
+      {...handlers}
     >
-      <IconButton
-        aria-label="backward slide image selector"
-        icon={<BackwardArrowIcon color="#323845" />}
-        onClick={() => {
-          if (sliderState.sliding) {
-            return
-          }
+      {elementCount > itemsPerPage && (
+        <>
+          <IconButton
+            aria-label="backward slide image selector"
+            icon={<BackwardArrowIcon color="#323845" />}
+            onClick={() => {
+              if (sliderState.sliding) {
+                return
+              }
 
-          slide('previous', sliderDispatch)
-        }}
-      />
+              slide('previous', sliderDispatch)
+            }}
+          />
+          <IconButton
+            aria-label="forward slide image selector"
+            icon={<ForwardArrowIcon color="#323845" />}
+            onClick={() => {
+              if (sliderState.sliding) {
+                return
+              }
+
+              slide('next', sliderDispatch)
+            }}
+          />
+        </>
+      )}
       <div
         data-carousel-track
         style={{
           display: 'flex',
           transition: sliderState.sliding ? `transform 400ms` : undefined,
-          width: `${(elementCount * 100) / itemsPerPage}%`,
+          // width: `${(elementCount * 100) / itemsPerPage}%`,
           transform: `translate3d(${getTransformValue(
             elementCount,
             sliderState.currentPage,
@@ -96,27 +112,11 @@ function ImageGallerySelector({
             })
           }
         }}
-        {...handlers}
       >
         {elements.map((el, idx) => {
-          return (
-            <div data-image-gallery-selector-thumb-image key={idx}>
-              {el}
-            </div>
-          )
+          return <div key={idx}>{el}</div>
         })}
       </div>
-      <IconButton
-        aria-label="forward slide image selector"
-        icon={<ForwardArrowIcon color="#323845" />}
-        onClick={() => {
-          if (sliderState.sliding) {
-            return
-          }
-
-          slide('next', sliderDispatch)
-        }}
-      />
     </section>
   )
 }
