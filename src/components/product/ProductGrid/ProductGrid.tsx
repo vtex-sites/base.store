@@ -1,6 +1,5 @@
 import React from 'react'
 import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
-import { mark } from 'src/sdk/tests/mark'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../ProductCard'
@@ -35,5 +34,4 @@ function ProductGrid({ products, page, pageSize }: Props) {
   )
 }
 
-ProductGrid.displayName = 'ProductGrid'
-export default mark(ProductGrid)
+export default ProductGrid

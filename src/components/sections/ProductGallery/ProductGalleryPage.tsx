@@ -3,7 +3,6 @@ import React, { useMemo } from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import Sentinel from 'src/sdk/search/Sentinel'
-import { mark } from 'src/sdk/tests/mark'
 import type { ProductsQueryQuery } from '@generated/graphql'
 
 import ProductTiles from '../ProductTiles'
@@ -100,5 +99,4 @@ function GalleryPage({
   )
 }
 
-GalleryPage.displayName = 'GalleryPage'
-export default mark(GalleryPage)
+export default GalleryPage
