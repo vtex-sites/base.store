@@ -36,6 +36,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
           alt={currentImage.alternateName}
           width={250}
           height={250}
+          loading="eager"
         />
       </ImageZoom>
       <ImageGallerySelector itemsPerPage={4}>
