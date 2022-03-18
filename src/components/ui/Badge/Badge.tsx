@@ -6,20 +6,22 @@ import Icon from 'src/components/ui/Icon'
 
 import './badge.scss'
 
-export type BadgeVariants = 'info' | 'highlighted' | 'neutral' | 'interactive'
+export type BadgeVariants = 'info' | 'highlighted' | 'neutral'
 
 type Props = {
   small?: boolean
   variant?: BadgeVariants
   children: ReactNode
   onClose?: () => void
+  interactive?: boolean
 }
 
 const Badge = ({
-  small = false,
   variant,
   children,
   onClose,
+  small = false,
+  interactive = false,
   ...otherProps
 }: Props) => {
   return (
@@ -27,10 +29,11 @@ const Badge = ({
       className="badge"
       data-store-badge={small ? 'small' : ''}
       data-store-badge-variant={variant}
+      data-store-badge-interactive={interactive}
       {...otherProps}
     >
       <span>{children}</span>
-      {variant === 'interactive' && (
+      {(interactive || onClose) && (
         <IconButton
           onClick={onClose}
           aria-label="Remove badge"
