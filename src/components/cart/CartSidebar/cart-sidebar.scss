@@ -9,11 +9,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: var(--space-2) var(--page-padding-phone) var(--space-2);
+    padding: var(--fs-spacing-2) var(--fs-spacing-3) var(--fs-spacing-2);
     background-color: var(--bg-neutral-lightest);
 
     [data-store-icon-button] {
-      margin-right: calc(-1 * var(--space-1));
+      margin-right: calc(-1 * var(--fs-spacing-1));
     }
   }
 
@@ -22,7 +22,7 @@
     align-items: center;
 
     p {
-      margin-right: var(--space-2);
+      margin-right: var(--fs-spacing-2);
       line-height: 1.35;
     }
   }
@@ -30,9 +30,9 @@
   > [data-store-list] {
     display: flex;
     flex-direction: column;
-    padding: var(--page-padding-phone);
+    padding: var(--fs-spacing-3);
     overflow: auto;
-    row-gap: var(--space-2);
+    row-gap: var(--fs-spacing-2);
   }
 
   > footer {

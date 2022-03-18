@@ -18,7 +18,7 @@
 
       &:not(:first-child) {
         display: inline;
-        min-width: var(--space-7);
+        min-width: var(--fs-spacing-7);
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -40,9 +40,9 @@
     }
 
     [data-breadcrumb-divider] {
-      height: var(--space-3);
-      margin: 0 var(--space-2) 0 var(--space-1);
-      border-left: var(--border-width-0) solid var(--color-border-display);
+      height: var(--fs-spacing-3);
+      margin: 0 var(--fs-spacing-2) 0 var(--fs-spacing-1);
+      border-left: var(--fs-border-width-default) solid var(--color-border-display);
     }
 
     [data-store-link] {

@@ -26,8 +26,8 @@ $base: 16px !default;
         outline: none;
         box-shadow:
           0 0 0 1px var(--bg-body),
-          0 0 0 var(--border-width-2) var(--bg-focus-ring),
-          inset 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+          0 0 0 var(--fs-border-width-thickest) var(--bg-focus-ring),
+          inset 0 0 0 var(--fs-border-width-default) var(--color-border-input-selected);
       }
     }
   }
@@ -38,14 +38,14 @@ $base: 16px !default;
     outline: none;
     box-shadow:
       0 0 0 1px var(--bg-body),
-      0 0 0 var(--border-width-2) var(--bg-focus-ring),
-      inset 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+      0 0 0 var(--fs-border-width-thickest) var(--bg-focus-ring),
+      inset 0 0 0 var(--fs-border-width-default) var(--color-border-input-selected);
   }
 }
 
 @mixin focus-ring {
   outline: none;
-  box-shadow: 0 0 0 1px var(--bg-body), 0 0 0 var(--border-width-2) var(--bg-focus-ring);
+  box-shadow: 0 0 0 1px var(--bg-body), 0 0 0 var(--fs-border-width-thickest) var(--bg-focus-ring);
 }
 
 @mixin focus-ring-visible {

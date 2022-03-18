@@ -27,7 +27,7 @@
 
   @include media(">=notebook") {
     width: calc(100% / 3);
-    max-width: calc(var(--breakpoint-notebook) / 3);
+    max-width: calc(var(--fs-grid-breakpoint-notebook) / 3);
   }
 }
 

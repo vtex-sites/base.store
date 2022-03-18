@@ -39,18 +39,42 @@ main,
   padding-bottom: var(--fs-spacing-4);
 
   @include media(">=notebook") {
-    padding-top: var(--page-padding-notebook);
-    padding-bottom: var(--page-padding-notebook);
+    padding-top: var(--fs-grid-padding-page);
+    padding-bottom: var(--fs-grid-padding-page);
   }
 }
 
-// .grid-content,
 .layout__content {
   box-sizing: border-box;
   width: 100%;
-  max-width: var(--breakpoint-notebook);
+  max-width: var(--fs-grid-breakpoint-notebook);
   margin-right: auto;
   margin-left: auto;
   padding-right: var(--fs-grid-padding-page);
   padding-left: var(--fs-grid-padding-page);
+}
+
+// Avoids double scroll issue on the page when overlay is open
+#layout.no-scroll {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+// Helper class
+.display-mobile {
+  @include media(">=notebook") {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+// Helper class
+.hidden-mobile {
+  @include media("<notebook") {
+    display: none;
+    visibility: hidden;
+  }
 }

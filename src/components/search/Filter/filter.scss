@@ -5,7 +5,7 @@
     display: flex;
     align-items: center;
     height: var(--product-listing-row-height);
-    margin-bottom: var(--space-0);
+    margin-bottom: var(--fs-spacing-0);
 
     @include media("<notebook") {
       display: none;
@@ -14,21 +14,21 @@
 
   [data-store-accordion] {
     [data-store-list] {
-      padding-bottom: var(--space-3);
+      padding-bottom: var(--fs-spacing-3);
 
       li:not(:last-child) {
-        margin-bottom: var(--space-3);
+        margin-bottom: var(--fs-spacing-3);
       }
     }
 
     @include media(">=notebook") {
       border: 1px solid var(--color-border-display);
-      border-radius: var(--border-radius-default);
+      border-radius: var(--fs-border-radius-default);
     }
   }
 
   [data-accordion-item] [data-store-button] {
-    font-weight: var(--text-weight-regular);
+    font-weight: var(--fs-text-weight-regular);
     font-size: var(--fs-text-size-3);
     line-height: 1.5;
 
@@ -65,11 +65,11 @@
     display: flex;
     align-items: center;
     width: 100%;
-    margin-left: var(--space-1);
+    margin-left: var(--fs-spacing-1);
   }
 
   [data-store-badge] {
-    margin-left: var(--space-1);
+    margin-left: var(--fs-spacing-1);
   }
 }
 
@@ -80,7 +80,7 @@
   justify-content: space-between;
 
   .filter-modal__button {
-    margin-right: calc(-1 * var(--space-1));
+    margin-right: calc(-1 * var(--fs-spacing-1));
   }
 }
 
@@ -88,7 +88,7 @@
   --filter-footer-height: 80px;
 
   height: calc(100vh - var(--filter-footer-height));
-  padding: var(--page-padding-phone) var(--page-padding-phone) calc(var(--filter-footer-height) + var(--space-3));
+  padding: var(--fs-spacing-3) var(--fs-spacing-3) calc(var(--filter-footer-height) + var(--fs-spacing-3));
   overflow-y: auto;
 }
 
@@ -98,14 +98,14 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: var(--space-3);
+  padding: var(--fs-spacing-3);
   background-color: var(--bg-neutral-lightest);
   box-shadow: 0 0 6px rgb(0 0 0 / 20%);
 
   .button {
     &[data-button-variant="secondary"] {
       width: 40%;
-      margin-right: var(--space-3);
+      margin-right: var(--fs-spacing-3);
     }
 
     &[data-button-variant="primary"] {

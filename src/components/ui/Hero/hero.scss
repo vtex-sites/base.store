@@ -15,7 +15,7 @@
 
 [data-hero-content] {
   width: 100%;
-  padding: var(--space-5) 0 var(--space-6);
+  padding: var(--fs-spacing-5) 0 var(--fs-spacing-6);
   color: var(--color-text-inverse);
 
   @include media(">=tablet") {
@@ -24,13 +24,13 @@
   }
 
   p {
-    margin-top: var(--space-2);
+    margin-top: var(--fs-spacing-2);
 
-    @include media(">=tablet") { margin-top: var(--space-4); }
+    @include media(">=tablet") { margin-top: var(--fs-spacing-4); }
   }
 
   [data-hero-link] {
-    margin-top: var(--space-6);
+    margin-top: var(--fs-spacing-6);
 
     a {
       justify-content: space-between;
@@ -41,7 +41,7 @@
 
 [data-hero-wrapper] {
   display: flex;
-  gap: var(--space-3);
+  gap: var(--fs-spacing-3);
   justify-content: space-between;
 
   @include media(">=tablet", "<notebook") {
@@ -50,7 +50,7 @@
     margin-left: 0;
   }
 
-  @include media(">=tablet") { gap: var(--space-1); }
+  @include media(">=tablet") { gap: var(--fs-spacing-1); }
 
   @include media(">=notebook") { justify-content: flex-start; }
 }
@@ -85,17 +85,17 @@
   }
 
   [data-hero-content] {
-    @include media(">=tablet") { padding: var(--space-9) 0; }
+    @include media(">=tablet") { padding: var(--fs-spacing-9) 0; }
   }
 
   [data-hero-info] {
-    @include media(">=tablet") { padding-right: var(--space-9); }
+    @include media(">=tablet") { padding-right: var(--fs-spacing-9); }
   }
 
   [data-hero-link] a {
     @include media(">=tablet") {
-      margin-top: var(--space-8);
-      padding: var(--space-2) var(--space-4);
+      margin-top: var(--fs-spacing-8);
+      padding: var(--fs-spacing-2) var(--fs-spacing-4);
     }
   }
 
@@ -118,10 +118,10 @@
   }
 
   [data-hero-content] {
-    padding: var(--space-4) 0 var(--space-3);
+    padding: var(--fs-spacing-4) 0 var(--fs-spacing-3);
 
     @include media(">=tablet") {
-      padding: var(--space-5) 0;
+      padding: var(--fs-spacing-5) 0;
     }
   }
 

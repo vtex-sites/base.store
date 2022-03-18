@@ -4,7 +4,7 @@
   position: relative;
 
   &::after {
-    --cart-toggle-size: var(--space-3);
+    --cart-toggle-size: var(--fs-spacing-3);
 
     position: absolute;
     top: rem(6px);
@@ -14,12 +14,12 @@
     justify-content: center;
     min-width: var(--cart-toggle-size);
     height: var(--cart-toggle-size);
-    padding: var(--space-0);
+    padding: var(--fs-spacing-0);
     color: var(--color-text-inverse);
-    font-weight: var(--text-weight-bold);
+    font-weight: var(--fs-text-weight-bold);
     font-size: var(--fs-text-size-0);
     background: var(--bg-secondary-default);
-    border-radius: var(--border-radius-pill);
+    border-radius: var(--fs-border-radius-pill);
     content: attr(data-items);
   }
 }

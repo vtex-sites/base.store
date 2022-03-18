@@ -1,7 +1,7 @@
 @import "src/styles/scaffold";
 
 a, [data-store-link] {
-  border-radius: var(--border-radius-default);
+  border-radius: var(--fs-border-radius-default);
   transition: box-shadow .5s ease;
 
   @include focus-ring-visible;
@@ -10,7 +10,7 @@ a, [data-store-link] {
 [data-store-link] {
   min-width: auto;
   min-height: auto;
-  padding: var(--space-2) var(--space-0);
+  padding: var(--fs-spacing-2) var(--fs-spacing-0);
   text-decoration: none;
   &:hover { text-decoration: underline; }
   &:visited { color: var(--color-link-visited); }
@@ -39,7 +39,7 @@ a, [data-store-link] {
   color: var(--color-text);
   font-size: var(--fs-text-size-1);
 
-  @include media(">=notebook") { padding: var(--space-1) var(--space-0); }
+  @include media(">=notebook") { padding: var(--fs-spacing-1) var(--fs-spacing-0); }
 }
 
 [data-link-inverse] {

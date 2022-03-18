@@ -109,7 +109,7 @@ body {
   --fs-text-scale-desk            : 1.25;
 
   --fs-scale                      : var(--fs-text-scale-mobile);
-  @include media(">notebook") {
+  @include media(">=notebook") {
     --fs-scale                    : var(--fs-text-scale-desk);
   }
 
@@ -170,10 +170,10 @@ body {
 body {
   // PADDINGS
   --fs-grid-padding-page          : var(--fs-spacing-3);
-  @include media(">tablet") {
+  @include media(">=tablet") {
     --fs-grid-padding-page        : var(--fs-spacing-4);
   }
-  @include media(">notebook") {
+  @include media(">=notebook") {
     --fs-grid-padding-page        : var(--fs-spacing-5);
   }
 
@@ -186,11 +186,11 @@ body {
   --fs-grid-gap-2                 : var(--fs-spacing-5);
 
   // BREAKPOINTS
-  --fs-grid-breakpoint-phone      : map-get($breakpoints, "phone");
-  --fs-grid-breakpoint-phonemid   : map-get($breakpoints, "phonemid");
-  --fs-grid-breakpoint-tablet     : map-get($breakpoints, "tablet");
-  --fs-grid-breakpoint-notebook   : map-get($breakpoints, "notebook");
-  --fs-grid-breakpoint-desktop    : map-get($breakpoints, "desktop");
+  --fs-grid-breakpoint-phone      : #{map-get($breakpoints, "phone")};
+  --fs-grid-breakpoint-phonemid   : #{map-get($breakpoints, "phonemid")};
+  --fs-grid-breakpoint-tablet     : #{map-get($breakpoints, "tablet")};
+  --fs-grid-breakpoint-notebook   : #{map-get($breakpoints, "notebook")};
+  --fs-grid-breakpoint-desktop    : #{map-get($breakpoints, "desktop")};
 }
 
 
@@ -202,8 +202,8 @@ body {
   // TAP
   --fs-tap-size-smallest          : calc(var(--fs-tap-size) / 2);
   --fs-tap-size                   : var(--fs-spacing-7); // 3rem = 48px
-  @include media(">notebook") {
-    --fs-tap-size                 : var(--fs-spacing-6); // 2.5rem = 40px
+  @include media(">=notebook") {
+    --fs-tap-size                 : var(--fs-spacing-7); // This value can be smaller on desktops
   }
 
   // APPEARANCE
@@ -227,8 +227,8 @@ body {
   --fs-transition-function       : ease-in-out;
 
   // BORDERS
-  --fs-border-radius-circle       : 100px;
-  --fs-border-radius-pill         : 100%;
+  --fs-border-radius-circle       : 100%;
+  --fs-border-radius-pill         : 100px;
   --fs-border-radius-small        : .125rem;
   --fs-border-radius-default      : .25rem;
 
@@ -240,12 +240,14 @@ body {
   --fs-border-color-light-hover   : var(--fs-color-main-4);
   --fs-border-color-light-active  : var(--fs-color-main-4);
 
-  --fs-border-width-light         : 1px;
   --fs-border-width-default       : 1px;
+  --fs-border-width-thick         : 2px;
+  --fs-border-width-thickest      : 3px;
 
   // SHADOW
-  --fs-shadow                    : none;
-  --fs-shadow-hover              : 0 0 0 1px var(--border-color-default-hover);
+  --fs-shadow                    : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
+  --fs-shadow-darker             : 0 0 10px rgb(0 0 0 / 20%);
+  --fs-shadow-hover              : var(--fs-shadow);
 }
 
 /* stylelint-enable */

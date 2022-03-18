@@ -1,7 +1,7 @@
 @import "../../../styles/utilities";
 
 [data-store-button] {
-  border-radius: var(--border-radius-button);
+  border-radius: var(--fs-border-radius-default);
   transition: background-color .5s ease, box-shadow .5s ease;
 
   @include focus-ring-visible;
@@ -11,11 +11,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: var(--tap-min-size);
-  padding: var(--space-1)  var(--space-3);
-  font-weight: var(--text-weight-bold);
+  min-height: var(--fs-tap-size);
+  padding: var(--fs-spacing-1)  var(--fs-spacing-3);
+  font-weight: var(--fs-text-weight-bold);
   text-decoration: none;
-  column-gap: var(--space-2);
+  column-gap: var(--fs-spacing-2);
   border: 0;
   cursor: default;
 
@@ -45,7 +45,7 @@
   &[data-button-variant="secondary"] {
     color: var(--color-text-display);
     background-color: transparent;
-    border: var(--border-width-1) solid var(--bg-secondary-default);
+    border: var(--fs-border-width-thick) solid var(--bg-secondary-default);
 
     &:hover, &:focus {
       color: var(--color-text-inverse);
