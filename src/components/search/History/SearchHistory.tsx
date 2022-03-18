@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon as UIIcon, List as UIList } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
-import './SearchHistory.scss'
+import './search-history.scss'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
 import useSearchHistory from 'src/sdk/search/useSeachHistory'
