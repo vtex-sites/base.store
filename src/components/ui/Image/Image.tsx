@@ -1,5 +1,4 @@
 import { useGetThumborImageData } from '@vtex/gatsby-plugin-thumbor'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import React, { memo, useMemo } from 'react'
 import type { ThumborImageOptions } from '@vtex/gatsby-plugin-thumbor'
 import type { GatsbyImageProps } from 'gatsby-plugin-image'
@@ -52,7 +51,20 @@ function Image({
     ]
   )
 
-  return <GatsbyImage {...imgProps} image={image} />
+  return (
+    <img
+      data-store-img
+      width={image.width}
+      height={image.height}
+      src={image.images.fallback?.src}
+      sizes={image.images.fallback?.sizes}
+      srcSet={image.images.fallback?.srcSet}
+      {...imgProps}
+      alt={imgProps.alt}
+    />
+  )
+
+  // return <GatsbyImage {...imgProps} image={image} />
 }
 
 export default memo(Image)
