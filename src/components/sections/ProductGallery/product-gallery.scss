@@ -6,13 +6,15 @@
   height: 100%;
   padding-top: 0;
 
-  @include media("<notebook") {
-    padding-top: 0;
+  @include media(">=notebook") {
+    padding-top: var(--space-5);
   }
 }
 
 .product-listing__search-term {
-  margin-bottom: var(--space-3);
+  @include media(">=notebook") {
+    padding-bottom: var(--space-6);
+  }
 
   h1 {
     font-size: var(--text-size-4);
