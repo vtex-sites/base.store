@@ -91,7 +91,7 @@ body {
 
 body {
   // FACE
-  --fs-text-face-body             : -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+  --fs-text-face-body             : "Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --fs-text-face-title            : var(--fs-text-face-body);
 
   // WEIGHT
@@ -105,7 +105,7 @@ body {
   // ensure consistency throughout the project.
   // Access https://type-scale.com/ and pick a scale that
   // suits the store's branding.
-  --fs-text-scale-mobile          : 1.15;
+  --fs-text-scale-mobile          : 1.25;
   --fs-text-scale-desk            : 1.25;
 
   --fs-scale                      : var(--fs-text-scale-mobile);
@@ -119,12 +119,12 @@ body {
   --fs-text-size-0                : 12px; // Smallest
   --fs-text-size-1                : 14px; // Smaller                               // Mob    Desk
   --fs-text-size-2                : var(--fs-text-size-base);                      // 16px   16px
-  --fs-text-size-3                : calc(var(--fs-text-size-2) * var(--fs-scale)); // 18px   20px
-  --fs-text-size-4                : calc(var(--fs-text-size-3) * var(--fs-scale)); // 21px   25px
-  --fs-text-size-5                : calc(var(--fs-text-size-4) * var(--fs-scale)); // 24px   31px
-  --fs-text-size-6                : calc(var(--fs-text-size-5) * var(--fs-scale)); // 28px   39px
-  --fs-text-size-7                : calc(var(--fs-text-size-6) * var(--fs-scale)); // 32px   48px
-  --fs-text-size-8                : calc(var(--fs-text-size-7) * var(--fs-scale)); // 37px   61px
+  --fs-text-size-3                : calc(var(--fs-text-size-2) * var(--fs-scale)); // 20px   20px
+  --fs-text-size-4                : calc(var(--fs-text-size-3) * var(--fs-scale)); // 25px   25px
+  --fs-text-size-5                : calc(var(--fs-text-size-4) * var(--fs-scale)); // 31px   31px
+  --fs-text-size-6                : calc(var(--fs-text-size-5) * var(--fs-scale)); // 39px   39px
+  --fs-text-size-7                : calc(var(--fs-text-size-6) * var(--fs-scale)); // 48px   48px
+  --fs-text-size-8                : calc(var(--fs-text-size-7) * var(--fs-scale)); // 61px   61px
 
   // HIERARCHY SCALE
   --fs-text-size-title-page       : var(--fs-text-size-6);
