@@ -851,6 +851,7 @@ export type Query = {
   collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
+  person: StorePerson
   product: StoreProduct
   search: StoreSearchResult
   site: Maybe<Site>
@@ -3096,6 +3097,13 @@ export type StorePageInfo = {
   totalCount: Scalars['Int']
 }
 
+export type StorePerson = {
+  email: Scalars['String']
+  familyName: Scalars['String']
+  givenName: Scalars['String']
+  id: Scalars['String']
+}
+
 export type StoreProduct = Node & {
   additionalProperty: Array<StorePropertyValue>
   aggregateRating: StoreAggregateRating
@@ -3534,6 +3542,14 @@ export type StringQueryOperatorInput = {
   regex: InputMaybe<Scalars['String']>
 }
 
+export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
+
+export type StoreCollectionQuery = {
+  allStoreCollection: {
+    edges: Array<{ node: { slug: string; seo: { title: string } } }>
+  }
+}
+
 export type ProductSummary_ProductFragment = {
   slug: string
   sku: string
@@ -3636,14 +3652,6 @@ export type ProductGalleryQueryQuery = {
         quantity: number
       }>
     }>
-  }
-}
-
-export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
-
-export type StoreCollectionQuery = {
-  allStoreCollection: {
-    edges: Array<{ node: { slug: string; seo: { title: string } } }>
   }
 }
 
