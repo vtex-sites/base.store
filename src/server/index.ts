@@ -3,19 +3,21 @@
  * Polyfill for dataloader. Remove it once this is fixed: https://github.com/graphql/dataloader/issues/249
  * */
 import 'setimmediate'
+
 import {
   envelop,
+  useAsyncSchema,
   useExtendContext,
   useMaskedErrors,
-  useAsyncSchema,
 } from '@envelop/core'
-import type { FormatErrorHandler } from '@envelop/core'
 import { useGraphQlJit } from '@envelop/graphql-jit'
 import { useParserCache } from '@envelop/parser-cache'
 import { useValidationCache } from '@envelop/validation-cache'
 import { getContextFactory, getSchema } from '@faststore/api'
-import type { Options as APIOptions } from '@faststore/api'
 import { GraphQLError } from 'graphql'
+import type { FormatErrorHandler } from '@envelop/core'
+import type { Options as APIOptions } from '@faststore/api'
+import type { GatsbyFunctionRequest } from 'gatsby'
 
 import persisted from '../../@generated/graphql/persisted.json'
 import storeConfig from '../../store.config'
@@ -69,13 +71,13 @@ const getEnvelop = async () =>
 
 const envelopPromise = getEnvelop()
 
-export const execute = async (options: ExecuteOptions, envelopContext = {}) => {
+export const execute = async (
+  options: ExecuteOptions,
+  envelopContext: { req?: GatsbyFunctionRequest } = {}
+) => {
   const { operationName, variables, query: maybeQuery } = options
   const query = maybeQuery ?? persistedQueries.get(operationName)
-
-  const {
-    req: { headers },
-  } = envelopContext
+  const headers = envelopContext.req?.headers
 
   if (query == null) {
     throw new Error(`No query found for operationName: ${operationName}`)
