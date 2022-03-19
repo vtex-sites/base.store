@@ -5,9 +5,6 @@
 
 @import "src/styles/scaffold";
 
-// OBS: Old classes are displayed here just for reference.
-// Remove them after the new theming architecture is done.
-
 body {
   font-size: var(--fs-text-size-base);
   font-family: var(--fs-text-face-body);
@@ -21,14 +18,12 @@ h1, h2, h3, h4, h5, h6, p, ul {
   padding: 0;
 }
 
-// .title-product,
 .text__title-product {
   font-weight: var(--fs-text-weight-regular);
   font-size: var(--fs-text-size-4);
   line-height: 1.12;
 }
 
-// .title-section,
 .text__title-section {
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-4);
@@ -37,14 +32,12 @@ h1, h2, h3, h4, h5, h6, p, ul {
   @include media(">=notebook") { font-size: var(--fs-text-size-5); }
 }
 
-// .title-subsection,
 .text__title-subsection {
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-3);
   line-height: 1.2;
 }
 
-// .title-sub-subsection,
 .text__title-mini {
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-2);
@@ -52,32 +45,27 @@ h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 // TODO: Can we replace this with `.text__body`?
-// .title-small,
 .text__title-mini-alt {
   font-size: var(--fs-text-size-2);
   line-height: 1.25;
 }
 
-// .title-display,
 .text__lead {
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-4);
   line-height: 1.12;
 }
 
-// .text-body,
 .text__body {
   font-size: var(--fs-text-size-2);
   line-height: 1.5;
 }
 
-// .text-body-small,
 .text__legend {
   font-size: var(--fs-text-size-1);
   line-height: 1.7;
 }
 
-// .text-body-tiny,
 .text__tiny {
   font-size: var(--fs-text-size-0);
   line-height: 1.5;
