@@ -1,21 +1,23 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
+import ProductGrid from 'src/components/product/ProductGrid'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
-import Button, { LinkButton } from 'src/components/ui/Button'
-import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
-import ProductGrid from 'src/components/product/ProductGrid'
+import SkeletonElement from 'src/components/skeletons/SkeletonElement'
+import Button, { LinkButton } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
 import Section from '../Section'
-import GalleryPage from './ProductGalleryPage'
 import EmptyGallery from './EmptyGallery'
+import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
-import { useOrderedFacets } from './useOrderedFacets'
 
 import './product-gallery.scss'
+
+const GalleryPage = lazy(() => import('./ProductGalleryPage'))
+const GalleryPageSkeleton = <ProductGrid page={0} pageSize={0} products={[]} />
 
 interface Props {
   title: string
@@ -25,8 +27,8 @@ function ProductGallery({ title }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
+  const facets = useDelayedFacets(data)
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
-  const orderedFacets = useOrderedFacets(data)
   const { next, prev } = usePagination(totalCount)
 
   if (data && totalCount === 0) {
@@ -41,10 +43,10 @@ function ProductGallery({ title }: Props) {
     <Section className="product-listing / grid-content-full">
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
-          <FilterSkeleton loading={orderedFacets?.length === 0}>
+          <FilterSkeleton loading={facets?.length === 0}>
             <Filter
               isOpen={isFilterOpen}
-              facets={orderedFacets}
+              facets={facets}
               onDismiss={() => setIsFilterOpen(false)}
             />
           </FilterSkeleton>
@@ -57,19 +59,11 @@ function ProductGallery({ title }: Props) {
         </div>
 
         <div className="product-listing__sort">
-          <SkeletonElement
-            shimmer
-            type="text"
-            loading={orderedFacets?.length === 0}
-          >
+          <SkeletonElement shimmer type="text" loading={facets?.length === 0}>
             <Sort />
           </SkeletonElement>
 
-          <SkeletonElement
-            shimmer
-            type="button"
-            loading={orderedFacets?.length === 0}
-          >
+          <SkeletonElement shimmer type="button" loading={facets?.length === 0}>
             <Button
               variant="tertiary"
               data-testid="open-filter-button"
@@ -109,7 +103,7 @@ function ProductGallery({ title }: Props) {
 
           {/* Render ALL products */}
           {data ? (
-            <>
+            <Suspense fallback={GalleryPageSkeleton}>
               {pages.map((page) => (
                 <GalleryPage
                   key={`gallery-page-${page}`}
@@ -119,27 +113,31 @@ function ProductGallery({ title }: Props) {
                   title={title}
                 />
               ))}
-            </>
+            </Suspense>
           ) : (
-            <ProductGrid page={0} pageSize={0} products={[]} />
+            GalleryPageSkeleton
           )}
 
           {/* Prefetch Previous and Next pages */}
           {prev !== false && (
-            <GalleryPage
-              showSponsoredProducts={false}
-              page={prev.cursor}
-              display={false}
-              title={title}
-            />
+            <Suspense fallback={null}>
+              <GalleryPage
+                showSponsoredProducts={false}
+                page={prev.cursor}
+                display={false}
+                title={title}
+              />
+            </Suspense>
           )}
           {next !== false && (
-            <GalleryPage
-              showSponsoredProducts={false}
-              page={next.cursor}
-              display={false}
-              title={title}
-            />
+            <Suspense fallback={null}>
+              <GalleryPage
+                showSponsoredProducts={false}
+                page={next.cursor}
+                display={false}
+                title={title}
+              />
+            </Suspense>
           )}
 
           {/* Add link to next page. This helps on SEO */}
