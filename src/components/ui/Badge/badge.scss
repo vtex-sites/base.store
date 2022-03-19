@@ -23,12 +23,6 @@
     }
   }
 
-  &[data-store-badge-interactive="true"] {
-    > span {
-      padding-right: 0;
-    }
-  }
-
   [data-store-icon-button] {
     width: var(--tap-min-size);
     height: auto;
@@ -36,8 +30,9 @@
     border-top-right-radius: var(--border-radius-pill);
     border-bottom-right-radius: var(--border-radius-pill);
 
-    &:hover {
-      background-color: var(--color-secondary-1);
+    &:hover, &:focus {
+      background-color: var(--color-black-transparent-10);
+      background-blend-mode: multiply;
     }
   }
 }
