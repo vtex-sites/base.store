@@ -174,7 +174,7 @@ body {
 // --------------------------------------------------------
 
 body {
-  // PADDINGS
+  // PADDING
   --fs-grid-padding               : var(--fs-spacing-3);
   @include media(">=tablet") {
     --fs-grid-padding             : var(--fs-spacing-4);
@@ -212,12 +212,13 @@ body {
     --fs-control-tap-size         : var(--fs-spacing-7); // This value can be smaller on desktops
   }
 
-  // APPEARANCE
+  // STATES
   --fs-control-bkg-default        : var(--fs-control-tap-size);
   --fs-control-bkg-hover          : var(--fs-control-tap-size);
   --fs-control-bkg-active         : var(--fs-control-tap-size);
   --fs-control-bkg-disabled       : var(--fs-control-tap-size);
 
+  // SIZING
   --fs-control-min-height         : var(--fs-control-tap-size);
 }
 
