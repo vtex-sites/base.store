@@ -15,34 +15,37 @@ body {
   // PALETTE
   // Tone values must range from lightest to darkest.
   // `0` is more suitable for backgrounds, and `4` for texts.
-  --fs-color-main-0               : #00000099; // Lightest
-  --fs-color-main-1               : #000000b3;
-  --fs-color-main-2               : #000000cc;
-  --fs-color-main-3               : #000000e6;
-  --fs-color-main-4               : #000000;   // Darkest
+  --fs-color-main-0               : #ecf0ff;
+  --fs-color-main-1               : #d8e2ff;
+  --fs-color-main-2               : #00419e;
+  --fs-color-main-3               : #002c71;
+  --fs-color-main-4               : #001947;
 
-  --fs-color-accent-0             : #00000099;
-  --fs-color-accent-1             : #000000b3;
-  --fs-color-accent-2             : #000000cc;
-  --fs-color-accent-3             : #000000e6;
-  --fs-color-accent-4             : #000000;
+  --fs-color-accent-0             : #ebdcff; // Lightest
+  --fs-color-accent-1             : #8d50fd;
+  --fs-color-accent-2             : #732fe2;
+  --fs-color-accent-3             : #5900c8;
+  --fs-color-accent-4             : darken(#5900c8, 5%); // Darkest
 
-  --fs-color-neutral-0            : white;
-  --fs-color-neutral-1            : white;
-  --fs-color-neutral-2            : white;
+  --fs-color-neutral-0            : #ffffff;
+  --fs-color-neutral-1            : #f1f2f3;
+  --fs-color-neutral-2            : #e3e6e8;
   --fs-color-neutral-3            : #c7ccd1;
   --fs-color-neutral-4            : #9099a2;
+  --fs-color-neutral-5            : #74808b;
+  --fs-color-neutral-6            : #5d666f;
+  --fs-color-neutral-7            : #171a1c;
 
   // HIERARCHY
-  --fs-color-primary-bkg          : var(--fs-color-main-4);
+  --fs-color-primary-bkg          : var(--fs-color-main-3);
   --fs-color-primary-text         : var(--fs-color-neutral-0);
-  --fs-color-primary-bkg-hover    : var(--fs-color-main-3);
+  --fs-color-primary-bkg-hover    : var(--fs-color-main-4);
   --fs-color-primary-bkg-active   : var(--fs-color-main-2);
 
-  --fs-color-secondary-bkg        : var(--fs-color-neutral-0);
-  --fs-color-secondary-text       : var(--fs-color-main-4);
-  --fs-color-secondary-bkg-hover  : var(--fs-color-neutral-0);
-  --fs-color-secondary-bkg-active : var(--fs-color-main-4);
+  --fs-color-secondary-bkg        : var(--fs-color-accent-3);
+  --fs-color-secondary-text       : var(--fs-color-neutral-0);
+  --fs-color-secondary-bkg-hover  : var(--fs-color-accent-3);
+  --fs-color-secondary-bkg-active : var(--fs-color-accent-2);
 
   --fs-color-tertiary-bkg         : var(--fs-color-neutral-0);
   --fs-color-tertiary-text        : var(--fs-color-text-link);
@@ -50,12 +53,12 @@ body {
   --fs-color-tertiary-bkg-active  : var(--fs-color-secondary-bkg-active);
 
   // COMPONENTS & STATES
-  --fs-color-link                 : var(--fs-color-main-4);
-  --fs-color-link-visited         : var(--fs-color-main-4);
-  --fs-color-link-inverse         : var(--fs-color-main-4);
+  --fs-color-link                 : var(--fs-color-main-2);
+  --fs-color-link-visited         : #6058ba;
+  --fs-color-link-inverse         : var(--fs-color-neutral-0);
 
-  --fs-color-text                 : var(--fs-color-main-4);
-  --fs-color-text-light           : var(--fs-color-neutral-4);
+  --fs-color-text                 : var(--fs-color-neutral-7);
+  --fs-color-text-light           : var(--fs-color-neutral-6);
   --fs-color-text-inverse         : var(--fs-color-neutral-0);
 
   --fs-color-body-bkg             : var(--fs-color-neutral-0);
@@ -65,23 +68,26 @@ body {
   --fs-color-success-bkg          : #cee8de;
   --fs-color-success-text         : var(--fs-color-text);
 
-  --fs-color-warning-bkg          : #cee8de;
+  --fs-color-warning-bkg          : #f6e0ba;
   --fs-color-warning-text         : var(--fs-color-text);
 
-  --fs-color-danger-bkg           : #cee8de;
+  --fs-color-danger-bkg           : #fee1e1;
   --fs-color-danger-text          : var(--fs-color-text);
 
-  --fs-color-info-bkg             : var(--fs-color-neutral-3);
+  --fs-color-info-bkg             : var(--fs-color-main-1);
   --fs-color-info-text            : var(--fs-color-text);
 
-  --fs-color-highlight-bkg        : #ebdcff;
+  --fs-color-highlight-bkg        : var(--fs-color-accent-0);
   --fs-color-highlight-text       : var(--fs-color-text);
 
-  --fs-color-neutral-bkg          : var(--fs-color-neutral-3);
+  --fs-color-neutral-bkg          : var(--fs-color-neutral-1);
   --fs-color-neutral-text         : var(--fs-color-text);
 
   --fs-color-promo-bkg            : #fff68a;
   --fs-color-promo-text           : #f2636a;
+
+  --fs-color-disabled-bkg         : var(--fs-color-neutral-2);
+  --fs-color-disabled-text        : var(--fs-color-neutral-6);
 }
 
 
