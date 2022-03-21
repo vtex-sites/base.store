@@ -93,8 +93,15 @@ function Page(props: Props) {
       />
 
       {/*
-        Sections: Components imported from '../components/sections' only.
-        Do not import or render components from any other folder in here.
+        WARNING: Do not import or render components from any
+        other folder than '../components/sections' in here.
+
+        This is necessary to keep the integration with the CMS
+        easy and consistent, enabling the change and reorder
+        of elements on this page.
+
+        If needed, wrap your component in a <Section /> component
+        (not the HTML tag) before rendering it here.
       */}
       <Breadcrumb
         breadcrumbList={collection?.breadcrumbList.itemListElement}
