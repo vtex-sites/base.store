@@ -13,8 +13,7 @@ jobs:
       - run: yarn install
       - name: Setup BASE_SITE_URL Env Var.
         run: |
-          echo "PR_HEAD_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
-          echo "BASE_SITE_URL=https://sfj-$(git rev-parse --short HEAD)--base.preview.vtex.app" >> $GITHUB_ENV
+          echo "BASE_SITE_URL=https://sfj-$(git rev-parse --short ${{ github.event.pull_request.head.sha }})--base.preview.vtex.app" >> $GITHUB_ENV
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
