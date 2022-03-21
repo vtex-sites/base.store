@@ -12,6 +12,7 @@ import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
 } from '@generated/graphql'
+import Breadcrumb from 'src/components/sections/Breadcrumb'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
@@ -54,13 +55,25 @@ function Page(props: Props) {
         }}
       />
 
-      {/*
-        Sections: Components imported from '../components/sections' only.
-        Do not import or render components from any other folder in here.
-      */}
       <SROnly as="h1" text={title} />
 
-      <ProductGallery title="Search Results" />
+      {/*
+        WARNING: Do not import or render components from any
+        other folder than '../components/sections' in here.
+
+        This is necessary to keep the integration with the CMS
+        easy and consistent, enabling the change and reorder
+        of elements on this page.
+
+        If needed, wrap your component in a <Section /> component
+        (not the HTML tag) before rendering it here.
+      */}
+      <Breadcrumb name="All Products" />
+
+      <ProductGallery
+        title="Search Results"
+        searchTerm={searchParams.term ?? undefined}
+      />
     </SearchProvider>
   )
 }
