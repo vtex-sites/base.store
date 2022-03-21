@@ -4,7 +4,8 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     env:
-      BASE_SITE_URL: https://base.vtex.app
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      BASE_SITE_URL: https://preview-${{PR_NUMBER}}--base.preview.vtex.app/
     steps:
       - uses: actions/checkout@v2
       - name: Use node 14
@@ -16,8 +17,6 @@ jobs:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
-          urls: |
-            https://base.vtex.app/office
           configPath: ./lighthouserc.js
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true 
