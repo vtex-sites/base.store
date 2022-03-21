@@ -14,6 +14,8 @@ jobs:
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
+          urls: |
+            https://base.vtex.app/office
           configPath: ./lighthouserc.js
           uploadArtifacts: true # save results as an action artifacts
           temporaryPublicStorage: true 
