@@ -15,10 +15,10 @@
     min-width: var(--cart-toggle-size);
     height: var(--cart-toggle-size);
     padding: var(--fs-spacing-0);
-    color: var(--color-text-inverse);
+    color: var(--fs-color-text-inverse);
     font-weight: var(--fs-text-weight-bold);
     font-size: var(--fs-text-size-0);
-    background: var(--bg-secondary-default);
+    background: var(--fs-color-primary-bkg);
     border-radius: var(--fs-border-radius-pill);
     content: attr(data-items);
   }

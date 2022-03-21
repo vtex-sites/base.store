@@ -6,7 +6,7 @@
 
   [data-skeleton-element-content] {
     overflow: hidden;
-    background: var(--bg-skeleton-loading);
+    background: var(--fs-color-disabled-bkg);
     border-radius: var(--fs-border-radius-default);
 
     &[data-element-variant="text"] {

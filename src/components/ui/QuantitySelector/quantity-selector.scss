@@ -11,7 +11,7 @@
         [data-store-icon] {
           @include focus-ring;
 
-          background-color: var(--bg-secondary-light);
+          background-color: var(--fs-color-primary-bkg-light);
         }
       }
     }
@@ -24,7 +24,7 @@
     [data-store-icon] {
       @include focus-ring;
 
-      background-color: var(--bg-secondary-light);
+      background-color: var(--fs-color-primary-bkg-light);
     }
   }
 }
@@ -36,14 +36,14 @@
   justify-content: center;
   width: 8.125rem;
   height: var(--fs-spacing-7);
-  background-color: var(--bg-neutral-lightest);
+  background-color: var(--fs-color-neutral-0);
   border-radius: var(--fs-border-radius-default);
-  box-shadow: 0 0 0 var(--fs-border-width-default) var(--color-border-input);
+  box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default);
   transition: box-shadow .2s ease;
 
   [data-store-icon] {
     margin: 0;
-    color: var(--color-border-input-selected);
+    color: var(--fs-border-color-default-active);
     line-height: 0;
   }
 
@@ -78,22 +78,22 @@
       transition: background-color .2s ease;
     }
 
-    &:hover:not(:disabled) [data-store-icon] { background-color: var(--bg-secondary-light); }
+    &:hover:not(:disabled) [data-store-icon] { background-color: var(--fs-color-primary-bkg-light); }
 
     &:disabled {
       cursor: not-allowed;
-      [data-store-icon] { color: var(--color-border-input-disabled); }
+      [data-store-icon] { color: var(--fs-border-color-default-disabled); }
     }
   }
 
   &:hover:not([data-store-quantity-selector="disabled"]) {
-    box-shadow: 0 0 0 var(--fs-border-width-thick) var(--color-border-input-selected);
+    box-shadow: 0 0 0 var(--fs-border-width-thick) var(--fs-border-color-default-active);
   }
 }
 
 [data-store-quantity-selector="disabled"] {
-  background-color: var(--bg-disabled);
-  box-shadow: 0 0 0 var(--fs-border-width-default) var(--bg-disabled);
+  background-color: var(--fs-color-disabled-bkg);
+  box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-color-disabled-bkg);
 
   [data-quantity-selector-button]:hover [data-store-icon] { background-color: transparent; }
 }

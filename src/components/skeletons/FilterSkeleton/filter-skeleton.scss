@@ -11,7 +11,7 @@
     flex-direction: column;
     padding: var(--fs-spacing-1) var(--fs-spacing-1) var(--fs-spacing-0);
     overflow: hidden;
-    border: var(--fs-border-width-default) solid var(--color-border-display);
+    border: var(--fs-border-width-default) solid var(--fs-border-color-light);
     border-radius: var(--fs-border-radius-default);
 
     [data-element-variant="text"] {

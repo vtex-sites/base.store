@@ -18,7 +18,7 @@
 
   &[data-variant="horizontal"] {
     [data-product-tile-skeleton-content] {
-      background-color: var(--bg-neutral-light);
+      background-color: var(--fs-color-neutral-bkg);
 
       @include media(">=tablet") {
         padding: var(--fs-spacing-2) var(--fs-spacing-3) var(--fs-spacing-3);

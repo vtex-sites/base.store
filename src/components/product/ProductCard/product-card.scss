@@ -13,14 +13,14 @@
 
   &:hover,
   &:focus {
-    background-color: var(--bg-neutral-lightest);
+    background-color: var(--fs-color-neutral-0);
   }
 
   &:focus-within { @include focus-ring; }
 
   @media (hover: hover) {
     &:hover {
-      border: var(--fs-border-width-default) solid var(--color-border-display);
+      border: var(--fs-border-width-default) solid var(--fs-border-color-light);
       box-shadow: var(--fs-shadow);
     }
   }
@@ -37,7 +37,7 @@
       flex-wrap: wrap;
       justify-content: space-between;
       padding: var(--fs-spacing-3);
-      background-color: var(--bg-neutral-light);
+      background-color: var(--fs-color-neutral-bkg);
     }
 
     .product-card__heading {
@@ -49,12 +49,12 @@
     border: none;
 
     @include media(">=notebook") {
-      border: var(--fs-border-width-default) solid var(--color-border-display);
+      border: var(--fs-border-width-default) solid var(--fs-border-color-light);
     }
   }
 
   &[data-card-out-of-stock="true"] {
-    background-color: var(--bg-neutral-light);
+    background-color: var(--fs-color-neutral-bkg);
   }
 
   [data-card-image] {

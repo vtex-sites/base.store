@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column-reverse;
   width: 100%;
-  background-color: var(--bg-secondary-default);
+  background-color: var(--fs-color-primary-bkg);
 
   @include media(">=tablet") {
     position: relative;
@@ -16,7 +16,7 @@
 [data-hero-content] {
   width: 100%;
   padding: var(--fs-spacing-5) 0 var(--fs-spacing-6);
-  color: var(--color-text-inverse);
+  color: var(--fs-color-text-inverse);
 
   @include media(">=tablet") {
     width: 100%;

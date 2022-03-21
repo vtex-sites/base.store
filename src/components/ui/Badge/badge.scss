@@ -2,7 +2,7 @@
   width: fit-content;
   height: fit-content;
   padding: var(--fs-spacing-1) var(--fs-spacing-2);
-  color: var(--color-text);
+  color: var(--fs-color-text);
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-2);
   white-space: nowrap;
@@ -16,25 +16,25 @@
 }
 
 [data-store-badge-variant="neutral"] {
-  background-color: var(--bg-neutral);
+  background-color: var(--fs-color-neutral-bkg);
 }
 
 [data-store-badge-variant="highlighted"] {
-  background-color: var(--bg-highlighted);
+  background-color: var(--fs-color-highlight-bkg);
 }
 
 [data-store-badge-variant="info"] {
-  background-color: var(--bg-info);
+  background-color: var(--fs-color-info-bkg);
 }
 
 [data-store-discount-badge-variant="low"] {
-  background-color: var(--bg-discount-low);
+  background-color: var(--fs-color-success-bkg);
 }
 
 [data-store-discount-badge-variant="medium"] {
-  background-color: var(--bg-discount-medium);
+  background-color: var(--fs-color-warning-bkg);
 }
 
 [data-store-discount-badge-variant="high"] {
-  background-color: var(--bg-discount-high);
+  background-color: var(--fs-color-danger-bkg);
 }

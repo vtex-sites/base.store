@@ -1,7 +1,7 @@
 .cart-item {
   padding: var(--fs-spacing-3);
-  background-color: var(--bg-neutral-lightest);
-  border: var(--fs-border-width-default) solid var(--color-border-display);
+  background-color: var(--fs-color-neutral-0);
+  border: var(--fs-border-width-default) solid var(--fs-border-color-light);
   border-radius: var(--fs-border-radius-default);
 
   [data-card-content] {

@@ -38,7 +38,7 @@
 
     li {
       &:not(:last-child) {
-        border-right: 1px solid var(--color-border-display);
+        border-right: 1px solid var(--fs-border-color-light);
       }
     }
   }
@@ -86,6 +86,6 @@
   &.incentives--colored {
     padding-top: var(--fs-spacing-4);
     padding-bottom: var(--fs-spacing-4);
-    background-color: var(--bg-secondary-light);
+    background-color: var(--fs-color-primary-bkg-light);
   }
 }

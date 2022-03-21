@@ -3,14 +3,14 @@
   flex-direction: column;
   height: 100%;
   overflow: auto;
-  background-color: var(--bg-neutral-light);
+  background-color: var(--fs-color-neutral-bkg);
 
   > header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: var(--fs-spacing-2) var(--fs-spacing-3) var(--fs-spacing-2);
-    background-color: var(--bg-neutral-lightest);
+    background-color: var(--fs-color-neutral-0);
 
     [data-store-icon-button] {
       margin-right: calc(-1 * var(--fs-spacing-1));
@@ -37,7 +37,7 @@
 
   > footer {
     margin-top: auto;
-    background-color: var(--bg-neutral-lightest);
+    background-color: var(--fs-color-neutral-0);
     box-shadow: 0 0 6px rgb(0 0 0 / 20%);
 
     [data-store-button] {

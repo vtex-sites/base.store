@@ -29,11 +29,11 @@
   --bg-secondary-hover: var(--color-secondary-3);
   --bg-secondary-pressed: var(--color-secondary-2);
 
-  --bg-darken-hover: var(--color-black-transparent-5);
-  --bg-darken-pressed: var(--color-black-transparent-10);
+  --bg-darken-hover: var(--color-black-transparent-5); // TODO: Create an equivalent global token
+  --bg-darken-pressed: var(--color-black-transparent-10); // TODO: Create an equivalent global token
 
-  --bg-lighten-hover: var(--color-white-transparent-10);
-  --bg-lighten-pressed: var(--color-white-transparent-20);
+  --bg-lighten-hover: var(--color-white-transparent-10); // TODO: Create an equivalent global token
+  --bg-lighten-pressed: var(--color-white-transparent-20); // TODO: Create an equivalent global token
 
   --bg-disabled: var(--color-neutral-2);
   --bg-focus-ring: var(--color-emphasis);

@@ -9,10 +9,10 @@
 
 .suggestions__section {
   padding: var(--fs-spacing-2) 0;
-  background-color: var(--bg-neutral-lightest);
+  background-color: var(--fs-color-neutral-0);
 
   &:not(:last-child) {
-    border-bottom: var(--fs-border-width-default) solid var(--color-border-display);
+    border-bottom: var(--fs-border-width-default) solid var(--fs-border-color-light);
   }
 }
 
@@ -21,7 +21,7 @@
   padding-left: var(--fs-spacing-3);
 
   &:hover {
-    background-color: var(--color-secondary-0);
+    background-color: var(--fs-color-main-0);
   }
 }
 
@@ -47,13 +47,13 @@
 
 [data-store-suggestions] {
   .suggestions__item-bold {
-    color: var(--color-neutral-7);
+    color: var(--fs-color-neutral-7);
     font-weight: var(--fs-text-weight-bold);
   }
 
   .button[data-store-button] {
     padding: var(--fs-spacing-2) 0;
-    color: var(--color-text-subtle);
+    color: var(--fs-color-text-light);
     font-weight: var(--fs-text-weight-regular);
     font-size: var(--fs-text-size-2);
     line-height: 1.25;

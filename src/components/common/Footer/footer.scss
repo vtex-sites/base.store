@@ -1,7 +1,7 @@
 @import "src/styles/scaffold";
 
 .footer {
-  background-color: var(--bg-neutral-light);
+  background-color: var(--fs-color-neutral-bkg);
 
   .incentives {
     padding-top: 0;
@@ -32,7 +32,7 @@
 
   &::before {
     width: 100%;
-    border-top: 1px solid var(--color-border-display);
+    border-top: 1px solid var(--fs-border-color-light);
     content: "";
 
     @include media(">=notebook") {
@@ -94,7 +94,7 @@
     }
 
     svg {
-      border: var(--fs-border-width-default) solid var(--color-neutral-3);
+      border: var(--fs-border-width-default) solid var(--fs-color-neutral-3);
       border-radius: var(--fs-border-radius-small);
     }
 

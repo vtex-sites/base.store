@@ -4,11 +4,11 @@
   padding-top: var(--fs-spacing-6);
   padding-bottom: var(--fs-spacing-6);
   text-align: center;
-  background-color: var(--color-secondary-4);
+  background-color: var(--fs-color-main-4);
 
   h2, p {
     display: inline;
-    color: var(--color-text-inverse);
+    color: var(--fs-color-text-inverse);
 
     @include media(">=notebook") { display: block; }
   }

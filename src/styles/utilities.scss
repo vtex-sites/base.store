@@ -22,30 +22,30 @@ $base: 16px !default;
     @supports (-webkit-appearance:none) {         // Use `focus` instead of `focus-visible`
       &:hover:focus,                              // due to Safari's lack of support
       &:focus {
-        border-color: var(--color-border-input-selected);
+        border-color: var(--fs-border-color-default-active);
         outline: none;
         box-shadow:
-          0 0 0 1px var(--bg-body),
-          0 0 0 var(--fs-border-width-thickest) var(--bg-focus-ring),
-          inset 0 0 0 var(--fs-border-width-default) var(--color-border-input-selected);
+          0 0 0 1px var(--fs-color-body-bkg),
+          0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring),
+          inset 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
       }
     }
   }
 
   &:focus-visible,
   &:hover:focus-visible {
-    border-color: var(--color-border-input-selected);
+    border-color: var(--fs-border-color-default-active);
     outline: none;
     box-shadow:
-      0 0 0 1px var(--bg-body),
-      0 0 0 var(--fs-border-width-thickest) var(--bg-focus-ring),
-      inset 0 0 0 var(--fs-border-width-default) var(--color-border-input-selected);
+      0 0 0 1px var(--fs-color-body-bkg),
+      0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring),
+      inset 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
   }
 }
 
 @mixin focus-ring {
   outline: none;
-  box-shadow: 0 0 0 1px var(--bg-body), 0 0 0 var(--fs-border-width-thickest) var(--bg-focus-ring);
+  box-shadow: 0 0 0 1px var(--fs-color-body-bkg), 0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring);
 }
 
 @mixin focus-ring-visible {

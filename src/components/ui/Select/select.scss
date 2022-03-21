@@ -7,12 +7,12 @@
 
   label {
     margin-right: var(--fs-spacing-1);
-    color: var(--color-text-subtle);
+    color: var(--fs-color-text-light);
   }
 
   [data-store-select] {
     padding: var(--fs-spacing-1) var(--fs-spacing-5) var(--fs-spacing-1) var(--fs-spacing-2);
-    color: var(--color-link);
+    color: var(--fs-color-link);
     background: transparent;
     border: 0;
     border-radius: var(--fs-border-radius-default);
@@ -22,12 +22,12 @@
 
     @include focus-ring-visible;
 
-    &:focus { background-color: var(--bg-secondary-light); }
+    &:focus { background-color: var(--fs-color-primary-bkg-light); }
 
-    &:hover:not(:disabled) { background-color: var(--bg-secondary-light); }
+    &:hover:not(:disabled) { background-color: var(--fs-color-primary-bkg-light); }
 
     &:disabled {
-      color: var(--color-text-disabled);
+      color: var(--fs-color-text-disabled);
       cursor: not-allowed;
       opacity: 1;
       + svg { display: none; }
@@ -41,7 +41,7 @@
   svg {
     position: absolute;
     right: var(--fs-spacing-2);
-    color: var(--color-link);
+    color: var(--fs-color-link);
     pointer-events: none;
   }
 }

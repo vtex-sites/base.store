@@ -17,7 +17,7 @@
     border: none;
 
     @include media(">=notebook") {
-      border: var(--fs-border-width-default) solid var(--color-border-display);
+      border: var(--fs-border-width-default) solid var(--fs-border-color-light);
     }
   }
 
