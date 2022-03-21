@@ -176,7 +176,11 @@ function ProductDetails({ product: staleProduct }: Props) {
               Add to Cart
             </BuyButton>
           )}
-          <OutOfStock onSubmit={() => {}} />
+          <OutOfStock
+            onSubmit={() => {
+              console.info('test')
+            }}
+          />
         </section>
 
         <section className="product-details__content">
