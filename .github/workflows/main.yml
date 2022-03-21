@@ -11,6 +11,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           checkName: Build
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          intervalSeconds: 120
 
       - uses: actions/checkout@v2
         if: steps.wait-for-build.outputs.conclusion == 'success'
