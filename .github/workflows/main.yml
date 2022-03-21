@@ -1,0 +1,13 @@
+name: Lighthouse CI
+on: push
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        with:
+          configPath: ./lighthouserc.js
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true 
