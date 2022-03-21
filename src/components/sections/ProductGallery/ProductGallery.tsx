@@ -21,10 +21,9 @@ const GalleryPageSkeleton = <ProductGrid page={0} pageSize={0} products={[]} />
 
 interface Props {
   title: string
-  searchTerm?: string
 }
 
-function ProductGallery({ title, searchTerm }: Props) {
+function ProductGallery({ title }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
@@ -42,13 +41,6 @@ function ProductGallery({ title, searchTerm }: Props) {
 
   return (
     <Section className="product-listing / grid-content-full">
-      {searchTerm && (
-        <header className="product-listing__search-term / grid-content">
-          <h1>
-            Showing results for: <span>{searchTerm}</span>
-          </h1>
-        </header>
-      )}
       <div className="product-listing__content-grid / grid-content">
         <div className="product-listing__filters">
           <FilterSkeleton loading={facets?.length === 0}>
