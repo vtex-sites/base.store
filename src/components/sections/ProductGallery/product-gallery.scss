@@ -4,9 +4,26 @@
   --product-listing-row-height: var(--space-6);
 
   height: 100%;
+  padding-top: 0;
 
-  @include media("<notebook") {
-    padding-top: 0;
+  @include media(">=notebook") {
+    padding-top: var(--space-5);
+  }
+}
+
+.product-listing__search-term {
+  @include media(">=notebook") {
+    padding-bottom: var(--space-6);
+  }
+
+  h1 {
+    font-size: var(--text-size-4);
+
+    @include media(">=tablet") { font-size: var(--text-size-5); }
+
+    span {
+      font-weight: var(--text-weight-bold);
+    }
   }
 }
 

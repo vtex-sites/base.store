@@ -8,6 +8,7 @@ function EmptyGallery() {
     <EmptyState>
       <header>
         <Icon name="CircleWavyWarning" width={56} height={56} weight="thin" />
+
         <p>Nothing matches with your search</p>
       </header>
 
