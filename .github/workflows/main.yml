@@ -3,6 +3,8 @@ on: push
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
+    env:
+      BASE_SITE_URL: https://base.vtex.app
     steps:
       - uses: actions/checkout@v2
       - name: Use node 14
