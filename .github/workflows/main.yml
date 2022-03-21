@@ -1,11 +1,8 @@
 name: Lighthouse CI
-on: push
+on: pull_request
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
-    env:
-      PR_NUMBER: ${{ github.event.pull_request.number }}
-      BASE_SITE_URL: https://preview-${{PR_NUMBER}}--base.preview.vtex.app/
     steps:
       - uses: actions/checkout@v2
       - name: Use node 14
@@ -14,6 +11,10 @@ jobs:
           node-version: '14'
           cache: 'yarn'
       - run: yarn install
+      - name: Setup BASE_SITE_URL Env Var.
+        run: |
+          echo "PR_HEAD_HASH=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+          echo "BASE_SITE_URL=https://sfj-$(git rev-parse --short HEAD)--base.preview.vtex.app" >> $GITHUB_ENV
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
