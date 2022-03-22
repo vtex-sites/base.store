@@ -39,32 +39,34 @@ function ImageGallery({ images }: ImageGalleryProps) {
           loading="eager"
         />
       </ImageZoom>
-      <ImageGallerySelector itemsPerPage={4}>
-        {images.map((image, idx) => {
-          return (
-            <Button
-              key={idx}
-              data-thumbnail-button={
-                idx === selectedImageIdx ? 'selected' : 'true'
-              }
-              aria-label={`Load ${image.alternateName} - Image ${idx + 1} of ${
-                images.length
-              }`}
-              onClick={() => {
-                setSelectedImageIdx(idx)
-              }}
-            >
-              <Image
-                src={image.url}
-                alt={image.alternateName}
-                loading={idx === 0 ? 'eager' : 'lazy'}
-                width={250}
-                height={250}
-              />
-            </Button>
-          )
-        })}
-      </ImageGallerySelector>
+      {images.length > 1 && (
+        <ImageGallerySelector itemsPerPage={4}>
+          {images.map((image, idx) => {
+            return (
+              <Button
+                key={idx}
+                data-thumbnail-button={
+                  idx === selectedImageIdx ? 'selected' : 'true'
+                }
+                aria-label={`Load ${image.alternateName} - Image ${
+                  idx + 1
+                } of ${images.length}`}
+                onClick={() => {
+                  setSelectedImageIdx(idx)
+                }}
+              >
+                <Image
+                  src={image.url}
+                  alt={image.alternateName}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                  width={250}
+                  height={250}
+                />
+              </Button>
+            )
+          })}
+        </ImageGallerySelector>
+      )}
     </section>
   )
 }
