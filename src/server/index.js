@@ -21,6 +21,7 @@ const apiOptions = {
   account: storeConfig.api.storeId,
   environment: storeConfig.api.environment,
   channel: storeConfig.channel,
+  hideUnavailableItems: storeConfig.api.hideUnavailableItems,
 }
 
 const apiSchema = getSchema(apiOptions)
