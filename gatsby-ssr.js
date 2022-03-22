@@ -38,21 +38,42 @@ export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([<ThirdPartyScripts key="ThirdPartyScripts" />])
 }
 
+/**
+ * Gatsby inlines all styles from the app inside a `<style/>` tag. This decreases
+ * FCP, but increases TBT. Since we are having trouble with TBT, replacing `<style/>`
+ * with `<link/>` tags should lower TBT. This switch, however is not supported by
+ * Gatsby.
+ * A workaround described in https://github.com/gatsbyjs/gatsby/issues/1526 is
+ * implemented below
+ */
 export const onPreRenderHTML = ({
   getHeadComponents,
   replaceHeadComponents,
 }) => {
-  const headComponents = getHeadComponents()
+  if (process.env.NODE_ENV !== 'production') {
+    return
+  }
 
-  // enforce the global style before the others
-  const orderedComponents = headComponents.sort((item) => {
-    const isGlobalStyle =
-      item.type === 'style' &&
-      item.props['data-href'] &&
-      /^\/styles.[a-zA-Z0-9]*.css$/.test(item.props['data-href'])
+  const transformedHeadComponents = getHeadComponents().map((node) => {
+    if (node.type === 'style') {
+      const globalStyleHref = node.props['data-href']
 
-    return isGlobalStyle ? -1 : 1
+      if (globalStyleHref) {
+        return (
+          <link
+            href={globalStyleHref}
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+          />
+        )
+      }
+
+      return node
+    }
+
+    return node
   })
 
-  replaceHeadComponents(orderedComponents)
+  replaceHeadComponents(transformedHeadComponents)
 }
