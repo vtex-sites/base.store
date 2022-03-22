@@ -59,7 +59,14 @@ export const onPreRenderHTML = ({
       const globalStyleHref = node.props['data-href']
 
       if (globalStyleHref) {
-        return <link href={globalStyleHref} rel="stylesheet" type="text/css" />
+        return (
+          <link
+            href={globalStyleHref}
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+          />
+        )
       }
 
       return node
