@@ -10,8 +10,8 @@ if (typeof window !== 'undefined') {
 export const AnalyticsHandler = () => {
   useAnalyticsEvent((event: AnalyticsEvent) => {
     // Cleans the ecommerce object before pushing a new one
-    // This prevents the new data from getting perged with the previous one
-    // which could lead do inacurate and old data being sent with events
+    // This prevents the new data from getting merged with the previous one
+    // which could lead do inaccurate and old data being sent with events
     //
     // source: https://developers.google.com/tag-manager/ecommerce-ga4?hl=pt-br#clearing_the_ecommerce_object
     window.dataLayer.push({ ecommerce: null })
