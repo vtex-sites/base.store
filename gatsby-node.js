@@ -9,38 +9,17 @@ exports.onPreInit = async ({ reporter }) => {
 }
 
 exports.onCreateWebpackConfig = ({ actions: { setWebpackConfig }, stage }) => {
-  const profiling = process.env.GATSBY_STORE_PROFILING === 'true'
+  const isProfilingEnabled = process.env.GATSBY_STORE_PROFILING === 'true'
 
-  if (stage === 'build-javascript') {
-    if (profiling) {
-      setWebpackConfig({
-        optimization: {
-          minimize: false,
-          moduleIds: 'named',
-          chunkIds: 'named',
-          concatenateModules: false,
-        },
-      })
-    } else {
-      setWebpackConfig({
-        optimization: {
-          runtimeChunk: {
-            name: `webpack-runtime`,
-          },
-          splitChunks: {
-            name: false,
-            cacheGroups: {
-              styles: {
-                name: `styles`,
-                test: /\.(css|scss)$/,
-                chunks: `initial`,
-                enforce: true,
-              },
-            },
-          },
-        },
-      })
-    }
+  if (stage === 'build-javascript' && isProfilingEnabled) {
+    setWebpackConfig({
+      optimization: {
+        minimize: false,
+        moduleIds: 'named',
+        chunkIds: 'named',
+        concatenateModules: false,
+      },
+    })
   }
 }
 
