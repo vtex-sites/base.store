@@ -1,7 +1,9 @@
 .badge[data-store-badge] {
+  display: flex;
+  align-content: stretch;
+  align-items: stretch;
   width: fit-content;
   height: fit-content;
-  padding: var(--fs-spacing-1) var(--fs-spacing-2);
   color: var(--fs-color-text);
   font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-2);
@@ -9,9 +11,29 @@
   text-transform: uppercase;
   border-radius: var(--fs-border-radius-pill);
 
+  > span {
+    padding: var(--fs-spacing-1) var(--fs-spacing-2);
+  }
+
   &[data-store-badge="small"] {
-    padding: var(--fs-spacing-0) var(--fs-spacing-2);
     font-size: var(--fs-text-size-0);
+
+    > span {
+      padding: var(--fs-spacing-0) var(--fs-spacing-2);
+    }
+  }
+
+  [data-store-icon-button] {
+    width: var(--fs-control-tap-size);
+    height: auto;
+    color: var(--fs-color-neutral-7);
+    border-top-right-radius: var(--fs-border-radius-pill);
+    border-bottom-right-radius: var(--fs-border-radius-pill);
+
+    &:hover, &:focus {
+      background-color: rgb(0 0 0 / 10%);
+      background-blend-mode: multiply;
+    }
   }
 }
 
