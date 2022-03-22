@@ -1,7 +1,9 @@
 .badge[data-store-badge] {
+  display: flex;
+  align-content: stretch;
+  align-items: stretch;
   width: fit-content;
   height: fit-content;
-  padding: var(--space-1) var(--space-2);
   color: var(--color-text);
   font-weight: var(--text-weight-bold);
   font-size: var(--text-size-2);
@@ -9,9 +11,29 @@
   text-transform: uppercase;
   border-radius: var(--border-radius-pill);
 
+  > span {
+    padding: var(--space-1) var(--space-2);
+  }
+
   &[data-store-badge="small"] {
-    padding: var(--space-0) var(--space-2);
     font-size: var(--text-size-0);
+
+    > span {
+      padding: var(--space-0) var(--space-2);
+    }
+  }
+
+  [data-store-icon-button] {
+    width: var(--tap-min-size);
+    height: auto;
+    color: var(--color-neutral-7);
+    border-top-right-radius: var(--border-radius-pill);
+    border-bottom-right-radius: var(--border-radius-pill);
+
+    &:hover, &:focus {
+      background-color: var(--color-black-transparent-10);
+      background-blend-mode: multiply;
+    }
   }
 }
 
