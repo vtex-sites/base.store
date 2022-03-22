@@ -1,7 +1,7 @@
 @import "src/styles/scaffold";
 
 .filter[data-store-filter] {
-  > .title-small {
+  > .text__title-mini-alt {
     display: flex;
     align-items: center;
     height: var(--product-listing-row-height);
