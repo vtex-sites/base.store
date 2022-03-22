@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SearchHistory` component.
 
 ### Changed
-
+- Move inline styles to external stylesheet to improve TBT
 - Changed ProductGallery and EmptyGallery styles to make the search results page
 - Moved all icons to use Icon component
 - Moved common/IconsSVG to ui/Icons
@@ -48,6 +48,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Hero` image responsive sizes for mobile and desktop.
 - `Badge` variants names
 - `Tiles` and `Tile` to use semantic list elements.
+- `postalCode` from storage to Session context.
 
 ### Deprecated
 
@@ -64,6 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Display box from `<ProductCard/>` component
 - `useTotalCount` hook
 - Phosphor-react library
+- `main::store::postalCode` value from storage.
 
 ### Fixed
 
