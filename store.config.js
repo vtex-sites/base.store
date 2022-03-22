@@ -6,6 +6,7 @@ module.exports = {
   api: {
     storeId: 'storeframework',
     environment: 'vtexcommercestable',
+    hideUnavailableItems: true,
   },
 
   // Default channel

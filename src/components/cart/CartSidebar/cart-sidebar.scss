@@ -12,8 +12,10 @@
     padding: var(--fs-spacing-2) var(--fs-spacing-3) var(--fs-spacing-2);
     background-color: var(--fs-color-neutral-0);
 
-    [data-store-icon-button] {
-      margin-right: calc(-1 * var(--fs-spacing-1));
+    > [data-store-icon-button] {
+      &:last-of-type {
+        margin-right: calc(-1 * var(--fs-spacing-1));
+      }
     }
   }
 
