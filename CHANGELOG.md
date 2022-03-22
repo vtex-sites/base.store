@@ -21,8 +21,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `IconSVG` component to load SVG Icons.
 - `Suggestions` component.
 - `SearchHistory` component.
+- New folder `styles/global` containing all global styles.
 
 ### Changed
+
 - Move inline styles to external stylesheet to improve TBT
 - Changed ProductGallery and EmptyGallery styles to make the search results page
 - Moved all icons to use Icon component
@@ -45,6 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Badge` variants names
 - `Tiles` and `Tile` to use semantic list elements.
 - `postalCode` from storage to Session context.
+- Updates all tokens naming and simplifies the global styles.
+- Changes `theme.scss` file to `global/tokens.scss`.
 
 ### Deprecated
 
