@@ -11,6 +11,7 @@
   @include media(">=notebook") {
     display: flex;
     flex-direction: row-reverse;
+    column-gap: var(--space-3);
   }
 
   [data-gatsby-image-wrapper] {

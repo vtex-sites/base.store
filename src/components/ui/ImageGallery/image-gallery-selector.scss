@@ -7,9 +7,17 @@
 
   > [data-store-button] {
     z-index: 9999;
-    background-color: var(--bg-neutral);
+    background-color: var(--bg-neutral-lightest);
     border-radius: var(--border-radius-circle);
     box-shadow: var(--box-shadow);
+  }
+
+  @include media(">=notebook") {
+    flex-direction: column;
+
+    [data-store-icon] {
+      transform: rotate(90deg);
+    }
   }
 
   [data-carousel-track] {
@@ -22,11 +30,20 @@
       padding: 0;
       border: 0;
     }
+
+    @include media(">=notebook") {
+      flex-direction: column;
+      row-gap: var(--space-2);
+    }
   }
 
   [data-gatsby-image-wrapper] {
     width: rem(56px);
     border-radius: var(--border-radius-default);
     transform: translate3d(0, 0, 0);
+
+    @include media(">=notebook") {
+      width: rem(72px);
+    }
   }
 }
