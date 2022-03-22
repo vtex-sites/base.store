@@ -27,7 +27,7 @@
     &:hover:not(:disabled) { background-color: var(--fs-color-primary-bkg-light); }
 
     &:disabled {
-      color: var(--fs-color-text-disabled);
+      color: var(--fs-color-disabled-text);
       cursor: not-allowed;
       opacity: 1;
       + svg { display: none; }
