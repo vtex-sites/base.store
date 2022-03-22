@@ -11,7 +11,7 @@ Kickoff your store with this boilerplate. This starter ships with the main Fasts
 
 ## ⚠️ Before you start
 
-As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarise what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
+As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarize what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
 
 1. Support up to 2.5K SKUs. If you have more than 2.5K SKUs, you have two options. Either reduce the number of skus on your catalog to fall below 2.5K SKUs or use Client Side Rendering (CSR) for all SKUs. (Note that CSR makes your SKUs not indexable by Search Engines and harms performance considerably)
 2. Multiple CMS Previews. Only one user is allowed to preview content from the CMS at a time. If two users preview any content from any page at the CMS, the previews are not consistent and one user may see data from the other.
@@ -25,7 +25,7 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 10. Sitemap
 11. Sku selector on PDP
 12. Promotions via utm
-13. Produt specifications
+13. Product specifications
 
 ## 🚀 Quick start
 
@@ -432,7 +432,7 @@ For the typography-related tokens, we decided to use classes to add extra stylin
 ## 🍒 Adding queries
 
 We use [graphql-codegen](https://www.graphql-code-generator.com/) to pre-process GraphQL queries. This compilation generates TypeScript typings and configurations for our graphql server under the folder `@generated/graphql`.
-This means we can staticaly analyse your code in search of bugs and secure your graphql server before each deploy. If, however you need to change any GraphQL Fragment, Query or Mutation, you will need to regenerate the whole thing. To do this, open your terminal and type
+This means we can statically analyse your code in search of bugs and secure your graphql server before each deploy. If, however you need to change any GraphQL Fragment, Query or Mutation, you will need to regenerate the whole thing. To do this, open your terminal and type
 
 ```sh
 $ yarn develop
