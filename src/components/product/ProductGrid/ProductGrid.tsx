@@ -22,10 +22,6 @@ function ProductGrid({ products, page, pageSize }: Props) {
               product={product}
               index={pageSize * page + idx + 1}
               bordered
-              outOfStock={
-                product.offers.offers?.[0].availability !==
-                'https://schema.org/InStock'
-              }
             />
           </li>
         ))}
