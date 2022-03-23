@@ -12,8 +12,10 @@
     padding: var(--space-2) var(--page-padding-phone) var(--space-2);
     background-color: var(--bg-neutral-lightest);
 
-    [data-store-icon-button] {
-      margin-right: calc(-1 * var(--space-1));
+    > [data-store-icon-button] {
+      &:last-of-type {
+        margin-right: calc(-1 * var(--space-1));
+      }
     }
   }
 

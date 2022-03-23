@@ -22,11 +22,9 @@ const DiscountBadge = ({
   thresholdLow = 15,
   thresholdHigh = 40,
 }: Props) => {
-  const discountPercent = Math.round(
-    Number(useDiscountPercent(listPrice, spotPrice))
-  )
+  const discountPercent = useDiscountPercent(listPrice, spotPrice)
 
-  if (!discountPercent) {
+  if (discountPercent === 0) {
     return <></>
   }
 

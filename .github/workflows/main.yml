@@ -1,0 +1,40 @@
+name: Lighthouse CI
+on: pull_request
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for build to succeed
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          checkName: Build
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          intervalSeconds: 120
+
+      - uses: actions/checkout@v2
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+
+      - name: Use node 14
+        uses: actions/setup-node@v2
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        with:
+          node-version: '14'
+          cache: 'yarn'
+
+      - run: yarn install
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+
+      - name: Setup BASE_SITE_URL Env Var.
+        run: |
+          echo "BASE_SITE_URL=https://sfj-$(git rev-parse --short ${{ github.event.pull_request.head.sha }})--base.preview.vtex.app" >> $GITHUB_ENV
+
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v9
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        with:
+          runs: 3
+          configPath: ./lighthouserc.js
+          uploadArtifacts: true # save results as an action artifacts
+          temporaryPublicStorage: true 

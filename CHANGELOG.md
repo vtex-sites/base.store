@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Add hideUnavailableItems at store.config
 - Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
 - `GatsbyLink` to `Link` ui component.
@@ -21,9 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `IconSVG` component to load SVG Icons.
 - `Suggestions` component.
 - `SearchHistory` component.
+- `Badge` interactive variation.
 
 ### Changed
-
+- Move inline styles to external stylesheet to improve TBT
 - Changed ProductGallery and EmptyGallery styles to make the search results page
 - Moved all icons to use Icon component
 - Moved common/IconsSVG to ui/Icons
@@ -44,13 +46,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Hero` image responsive sizes for mobile and desktop.
 - `Badge` variants names
 - `Tiles` and `Tile` to use semantic list elements.
+- `postalCode` from storage to Session context.
 
 ### Deprecated
 
 - useWindowDimensions hook
 
 ### Removed
-
+- Frontend computation in favor of backend processing
 - Removing hooks folder and migrating these hooks to sdk ou inline them on components
 - gatsby-plugin-offline due to CLS on recurrent users
 - useWindowDimensions hook
@@ -60,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Display box from `<ProductCard/>` component
 - `useTotalCount` hook
 - Phosphor-react library
+- `main::store::postalCode` value from storage.
 
 ### Fixed
 
@@ -71,6 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Scroll lock when transitioning pages on mobile via `SlideOver` component navigation
 - Filter Button specificity on desktop
 - Filter facets are not being selected on mobile
+- `CartItem` image size and truncate long product's title
 
 ### Security
 
