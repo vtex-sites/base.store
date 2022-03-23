@@ -58,6 +58,9 @@ const envelopPromise = getEnvelop()
 const execute = async (options, envelopContext = {}) => {
   const { operationName, variables, query: maybeQuery } = options
   const query = maybeQuery || persistedQueries.get(operationName)
+  const {
+    req: { headers },
+  } = envelopContext
 
   if (query == null) {
     throw new Error(`No query found for operationName: ${operationName}`)
@@ -75,7 +78,7 @@ const execute = async (options, envelopContext = {}) => {
     schema,
     document: parse(query),
     variableValues: variables,
-    contextValue: await contextFactory({}),
+    contextValue: await contextFactory({ headers }),
     operationName,
   })
 }

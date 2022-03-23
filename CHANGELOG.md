@@ -57,7 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - useWindowDimensions hook
 
 ### Removed
-
+- Frontend computation in favor of backend processing
 - Removing hooks folder and migrating these hooks to sdk ou inline them on components
 - gatsby-plugin-offline due to CLS on recurrent users
 - useWindowDimensions hook
@@ -79,6 +79,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Scroll lock when transitioning pages on mobile via `SlideOver` component navigation
 - Filter Button specificity on desktop
 - Filter facets are not being selected on mobile
+- `CartItem` image size and truncate long product's title
 
 ### Security
 

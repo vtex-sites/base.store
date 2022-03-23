@@ -45,7 +45,9 @@ function CartItem({ item }: Props) {
           />
         </CardImage>
         <div data-cart-item-summary>
-          <p className="text__body">{item.itemOffered.isVariantOf.name}</p>
+          <p className="text__body" data-cart-item-title>
+            {item.itemOffered.isVariantOf.name}
+          </p>
           <span data-cart-item-prices>
             <Price
               value={item.listPrice}
