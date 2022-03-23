@@ -42,81 +42,82 @@ function ImageGallerySelector({
     return null
   }
 
+  const transformValue = getTransformValue(
+    elementCount,
+    sliderState.currentPage,
+    itemsPerPage
+  )
+
   return (
     <section
       data-image-gallery-selector
       aria-roledescription="carousel"
       aria-label="Product images"
-      {...handlers}
     >
-      {elementCount > itemsPerPage && (
-        <>
-          <IconButton
-            aria-label="backward slide image selector"
-            icon={<BackwardArrowIcon color="#323845" />}
-            onClick={() => {
-              if (sliderState.sliding) {
-                return
-              }
+      {elementCount > itemsPerPage && sliderState.currentPage !== 0 && (
+        <IconButton
+          aria-label="backward slide image selector"
+          icon={<BackwardArrowIcon color="#323845" />}
+          onClick={() => {
+            if (sliderState.sliding) {
+              return
+            }
 
-              slide('previous', sliderDispatch)
-            }}
-          />
-          <IconButton
-            aria-label="forward slide image selector"
-            icon={<ForwardArrowIcon color="#323845" />}
-            onClick={() => {
-              if (sliderState.sliding) {
-                return
-              }
-
-              slide('next', sliderDispatch)
-            }}
-          />
-        </>
+            slide('previous', sliderDispatch)
+          }}
+        />
       )}
-      <div
-        data-carousel-track
-        style={{
-          display: 'flex',
-          transition: sliderState.sliding ? `transform 400ms` : undefined,
-          // width: `${(elementCount * 100) / itemsPerPage}%`,
-          transform: `translate3d(${getTransformValue(
-            elementCount,
-            sliderState.currentPage,
-            itemsPerPage
-          )}%, 0, 0)`,
-        }}
-        onTransitionEnd={() => {
-          sliderDispatch({
-            type: 'STOP_SLIDE',
-          })
-
-          if (sliderState.currentItem >= elementCount) {
+      <div data-carousel-track-container {...handlers}>
+        <div
+          data-carousel-track
+          style={{
+            width: `${(elementCount * 100) / itemsPerPage}%`,
+            transform: `translate3d(${transformValue}%, 0, 0)`,
+          }}
+          onTransitionEnd={() => {
             sliderDispatch({
-              type: 'GO_TO_PAGE',
-              payload: {
-                pageIndex: 0,
-                shouldSlide: false,
-              },
+              type: 'STOP_SLIDE',
             })
-          }
 
-          if (sliderState.currentItem < 0) {
-            sliderDispatch({
-              type: 'GO_TO_PAGE',
-              payload: {
-                pageIndex: sliderState.totalPages - 1,
-                shouldSlide: false,
-              },
-            })
-          }
-        }}
-      >
-        {elements.map((el, idx) => {
-          return <div key={idx}>{el}</div>
-        })}
+            if (sliderState.currentItem >= elementCount) {
+              sliderDispatch({
+                type: 'GO_TO_PAGE',
+                payload: {
+                  pageIndex: 0,
+                  shouldSlide: false,
+                },
+              })
+            }
+
+            if (sliderState.currentItem < 0) {
+              sliderDispatch({
+                type: 'GO_TO_PAGE',
+                payload: {
+                  pageIndex: sliderState.totalPages - 1,
+                  shouldSlide: false,
+                },
+              })
+            }
+          }}
+        >
+          {elements.map((el, idx) => {
+            return <div key={idx}>{el}</div>
+          })}
+        </div>
       </div>
+      {elementCount > itemsPerPage && (
+        <IconButton
+          aria-label="forward slide image selector"
+          icon={<ForwardArrowIcon color="#323845" />}
+          onClick={() => {
+            if (sliderState.sliding) {
+              return
+            }
+
+            slide('next', sliderDispatch)
+          }}
+        />
+      )}
     </section>
   )
 }
