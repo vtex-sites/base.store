@@ -49,6 +49,7 @@ function OutOfStock(props: OutOfStockProps) {
   const [btTxt, setBtTxt] = useState(defaultButtonTxt)
   const [disabled, setDisabled] = useState(false)
   const [iconButton, setIconButton] = useState(defaultIcon)
+  const [email, setEmail] = useState('')
 
   const {
     title = 'Out of Stock',
@@ -64,9 +65,11 @@ function OutOfStock(props: OutOfStockProps) {
     setIconButton(defaultIcon)
     setBtTxt(defaultButtonTxt)
     setDisabled(false)
+
+    setEmail('')
   }
 
-  const handleSubmit = async (email: string) => {
+  const handleSubmit = async () => {
     setDisabled(true)
     setIconButton(<Icon name="Ellipsis" weight="bold" width={16} height={16} />)
     // TODO: Timeout to simulate loading state. Remove it.
@@ -88,8 +91,6 @@ function OutOfStock(props: OutOfStockProps) {
     }
   }
 
-  const [email, setEmail] = useState('')
-
   return (
     <div data-store-out-of-stock data-testid={testId} aria-live="polite">
       <div className="title-subsection">{title}</div>
@@ -110,7 +111,7 @@ function OutOfStock(props: OutOfStockProps) {
           variant="primary"
           icon={icon}
           iconPosition="left"
-          onClick={() => handleSubmit(email)}
+          onClick={() => handleSubmit()}
         >
           {buttonTxt}
         </Button>
