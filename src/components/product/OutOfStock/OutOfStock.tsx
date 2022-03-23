@@ -30,20 +30,63 @@ export interface OutOfStockProps {
    */
   icon?: ReactElement
   /**
+   * Notification icon.
+   * @default <Icon name="BellRinging" />
+   */
+  notificationIcon?: ReactElement
+  /**
    *
    */
   onSubmit: (value: string) => void
 }
 
 function OutOfStock(props: OutOfStockProps) {
+  const defaultButtonTxt = 'Notify me'
+  const defaultIcon = (
+    <Icon name="BellRinging" weight="bold" width={16} height={16} />
+  )
+
+  const [btTxt, setBtTxt] = useState(defaultButtonTxt)
+  const [disabled, setDisabled] = useState(false)
+  const [iconButton, setIconButton] = useState(defaultIcon)
+
   const {
     title = 'Out of Stock',
     notificationMsg = 'Notify me when available',
-    buttonTxt = 'Notify Me',
-    icon = <Icon name="BellRinging" weight="bold" width={16} height={16} />,
+    buttonTxt = btTxt,
+    icon = iconButton,
+    notificationIcon = defaultIcon,
     onSubmit,
     testId = 'store-out-of-stock',
   } = props
+
+  const reset = () => {
+    setIconButton(defaultIcon)
+    setBtTxt(defaultButtonTxt)
+    setDisabled(false)
+  }
+
+  const handleSubmit = async (email: string) => {
+    setDisabled(true)
+    setIconButton(<Icon name="Ellipsis" weight="bold" width={16} height={16} />)
+    // TODO: Timeout to simulate loading state. Remove it.
+    await new Promise((r) => setTimeout(r, 2000))
+
+    try {
+      onSubmit(email)
+      setIconButton(
+        <Icon name="Checked" weight="bold" width={16} height={16} />
+      )
+      setBtTxt('Subscribed successfully')
+
+      // Return to original state after 2s
+      await new Promise((r) => setTimeout(r, 2000)).then(reset)
+    } catch (err) {
+      // TODO: Display error below Input
+      console.error(err.Message)
+      reset()
+    }
+  }
 
   const [email, setEmail] = useState('')
 
@@ -51,7 +94,7 @@ function OutOfStock(props: OutOfStockProps) {
     <div data-store-out-of-stock data-testid={testId} aria-live="polite">
       <div className="title-subsection">{title}</div>
       <div>
-        {icon} {notificationMsg}
+        {notificationIcon} {notificationMsg}
       </div>
       <div className="out-of-stock_icon">
         <Input
@@ -62,16 +105,16 @@ function OutOfStock(props: OutOfStockProps) {
           placeholder="Email"
         />
         <Button
+          disabled={disabled}
           data-store-out-of-stock-button
           variant="primary"
           icon={icon}
           iconPosition="left"
-          onClick={() => onSubmit(email)}
+          onClick={() => handleSubmit(email)}
         >
           {buttonTxt}
         </Button>
       </div>
-      {/* TODO: Display success alert if onSubmit succeed */}
     </div>
   )
 }
