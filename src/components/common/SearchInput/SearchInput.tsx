@@ -49,19 +49,21 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     }
 
     return (
-      <UISearchInput
-        ref={ref}
-        icon={
-          <Icon
-            name="MagnifyingGlass"
-            onClick={onSearchClick}
-            data-testid={buttonTestId}
-          />
-        }
-        placeholder="Search everything at the store"
-        onSubmit={handleSearch}
-        {...props}
-      />
+      <>
+        <UISearchInput
+          ref={ref}
+          icon={
+            <Icon
+              name="MagnifyingGlass"
+              onClick={onSearchClick}
+              data-testid={buttonTestId}
+            />
+          }
+          placeholder="Search everything at the store"
+          onSubmit={handleSearch}
+          {...props}
+        />
+      </>
     )
   }
 )
