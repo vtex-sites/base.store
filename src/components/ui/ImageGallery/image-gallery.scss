@@ -7,6 +7,7 @@
   flex-direction: column;
   width: calc(100% + (2 * var(--fs-grid-padding)));
   row-gap: var(--space-2);
+  max-height: rem(450px);
 
   @include media(">=notebook") {
     display: flex;

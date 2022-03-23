@@ -20,16 +20,11 @@
     }
   }
 
-  [data-carousel-track-container] {
-    width: 100%;
-    overflow: hidden;
-  }
-
   [data-carousel-track] {
     display: flex;
-    justify-content: space-between;
-    overflow: hidden;
-    transition: transform 400ms;
+    overflow: auto;
+    column-gap: var(--space-1);
+    scroll-behavior: smooth;
 
     [data-store-button] {
       background-color: transparent;
