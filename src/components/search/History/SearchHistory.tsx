@@ -4,7 +4,7 @@ import Button from 'src/components/ui/Button'
 import './search-history.scss'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
-import useSearchHistory from 'src/sdk/search/useSeachHistory'
+import useSearchHistory from 'src/sdk/search/useSearchHistory'
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 
 interface SearchHistoryProps {
@@ -36,7 +36,12 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
       <UIList variant="ordered">
         {searchHistory.map((item, index) => (
           <li data-store-search-history-item key={index}>
-            <Link variant="display" to={doSearch(item)} target="_blank">
+            <Link
+              variant="display"
+              to={doSearch(item)}
+              target="_blank"
+              rel="noreferrer"
+            >
               <UIIcon
                 component={<Icon name="Clock" width={18} height={18} />}
               />

@@ -67,6 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix typos found across the codebase
 - Fix border style for Product Card and its skeleton on mobile
 - The divisor for the `Breadcrumb` component not rendering valid HTML.
 - useBuyButton/useRemoveButton hooks with inconsistent typings/behaviors

@@ -11,7 +11,7 @@ import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
 } from '@faststore/ui'
-import useSearchHistory from 'src/sdk/search/useSeachHistory'
+import useSearchHistory from 'src/sdk/search/useSearchHistory'
 import Icon from 'src/components/ui/Icon'
 
 import './search-input.scss'
