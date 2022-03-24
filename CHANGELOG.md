@@ -47,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Badge` variants names
 - `Tiles` and `Tile` to use semantic list elements.
 - `postalCode` from storage to Session context.
+- `OutOfStock` add style and success message.
 
 ### Deprecated
 
