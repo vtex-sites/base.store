@@ -72,8 +72,6 @@ function OutOfStock(props: OutOfStockProps) {
   const handleSubmit = async () => {
     setDisabled(true)
     setIconButton(<Icon name="Ellipsis" weight="bold" width={16} height={16} />)
-    // TODO: Timeout to simulate loading state. Remove it.
-    await new Promise((r) => setTimeout(r, 2000))
 
     try {
       onSubmit(email)
@@ -85,7 +83,7 @@ function OutOfStock(props: OutOfStockProps) {
       // Return to original state after 2s
       await new Promise((r) => setTimeout(r, 2000)).then(reset)
     } catch (err) {
-      // TODO: Display error below Input
+      // TODO: Display error below Input component
       console.error(err.Message)
       reset()
     }
