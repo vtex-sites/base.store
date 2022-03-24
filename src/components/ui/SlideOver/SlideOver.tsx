@@ -38,13 +38,11 @@ const SlideOver = ({
 
   const handleClose = useCallback(() => {
     setFadeType('out')
-    if (layout.current) {
-      layout.current.classList.remove('no-scroll')
-    }
+    layout.current?.classList.remove('no-scroll')
   }, [layout])
 
   useEffect(() => {
-    layout.current = document.getElementById('layout')
+    layout.current = document.body
   }, [])
 
   useEffect(() => {
@@ -52,15 +50,11 @@ const SlideOver = ({
       setFadeType('in')
 
       // Avoids double scroll issue on the page
-      if (layout.current) {
-        layout.current.classList.add('no-scroll')
-      }
+      layout.current?.classList.add('no-scroll')
     }
 
     return () => {
-      if (layout.current) {
-        layout.current.classList.remove('no-scroll')
-      }
+      layout.current?.classList.remove('no-scroll')
     }
   }, [isOpen, layout])
 
