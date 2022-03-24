@@ -37,7 +37,7 @@ export const query = gql`
 `
 
 /**
- * Use this hook for fetching a list of products, like in search results and shelfs
+ * Use this hook for fetching a list of products, like in search results and shelves
  */
 export const useProductsQuery = (
   variables: ProductsQueryQueryVariables,

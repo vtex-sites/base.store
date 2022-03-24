@@ -4,7 +4,7 @@ import Button from 'src/components/ui/Button'
 import './search-history.scss'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
-import useSearchHistory from 'src/sdk/search/useSeachHistory'
+import useSearchHistory from 'src/sdk/search/useSearchHistory'
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 
 interface SearchHistoryProps {
