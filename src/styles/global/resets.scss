@@ -1,0 +1,48 @@
+// ----------------------------------------------------------
+// GLOBAL STYLES
+// Resets
+// ----------------------------------------------------------
+
+@import "../vendors/modern-normalize.css";
+
+// Reset default styles
+body {
+  margin: 0;
+  padding: 0;
+}
+
+// Remove all of the default margins
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+// Remove heading elements default style
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+// Remove list elements default style
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

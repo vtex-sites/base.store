@@ -34,7 +34,7 @@ function Facets({
 }: FacetsProps) {
   return (
     <div className="filter" data-store-filter data-testid={testId}>
-      <h2 className="title-small">Filters</h2>
+      <h2 className="text__title-mini-alt">Filters</h2>
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>
         {filteredFacets.map(({ label, values, key }, index) => (
           <AccordionItem
@@ -61,7 +61,7 @@ function Facets({
                       data-value={item.value}
                       data-quantity={item.quantity}
                     />
-                    <UILabel htmlFor={id} className="title-small">
+                    <UILabel htmlFor={id} className="text__title-mini-alt">
                       {item.label}{' '}
                       <Badge variant="neutral" small>
                         {item.quantity}

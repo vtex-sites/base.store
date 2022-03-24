@@ -4,59 +4,59 @@
   align-items: stretch;
   width: fit-content;
   height: fit-content;
-  color: var(--color-text);
-  font-weight: var(--text-weight-bold);
-  font-size: var(--text-size-2);
+  color: var(--fs-color-text);
+  font-weight: var(--fs-text-weight-bold);
+  font-size: var(--fs-text-size-2);
   white-space: nowrap;
   text-transform: uppercase;
-  border-radius: var(--border-radius-pill);
+  border-radius: var(--fs-border-radius-pill);
 
   > span {
-    padding: var(--space-1) var(--space-2);
+    padding: var(--fs-spacing-1) var(--fs-spacing-2);
   }
 
   &[data-store-badge="small"] {
-    font-size: var(--text-size-0);
+    font-size: var(--fs-text-size-0);
 
     > span {
-      padding: var(--space-0) var(--space-2);
+      padding: var(--fs-spacing-0) var(--fs-spacing-2);
     }
   }
 
   [data-store-icon-button] {
-    width: var(--tap-min-size);
+    width: var(--fs-control-tap-size);
     height: auto;
-    color: var(--color-neutral-7);
-    border-top-right-radius: var(--border-radius-pill);
-    border-bottom-right-radius: var(--border-radius-pill);
+    color: var(--fs-color-neutral-7);
+    border-top-right-radius: var(--fs-border-radius-pill);
+    border-bottom-right-radius: var(--fs-border-radius-pill);
 
     &:hover, &:focus {
-      background-color: var(--color-black-transparent-10);
+      background-color: rgb(0 0 0 / 10%);
       background-blend-mode: multiply;
     }
   }
 }
 
 [data-store-badge-variant="neutral"] {
-  background-color: var(--bg-neutral);
+  background-color: var(--fs-color-neutral-bkg);
 }
 
 [data-store-badge-variant="highlighted"] {
-  background-color: var(--bg-highlighted);
+  background-color: var(--fs-color-highlight-bkg);
 }
 
 [data-store-badge-variant="info"] {
-  background-color: var(--bg-info);
+  background-color: var(--fs-color-info-bkg);
 }
 
 [data-store-discount-badge-variant="low"] {
-  background-color: var(--bg-discount-low);
+  background-color: var(--fs-color-success-bkg);
 }
 
 [data-store-discount-badge-variant="medium"] {
-  background-color: var(--bg-discount-medium);
+  background-color: var(--fs-color-warning-bkg);
 }
 
 [data-store-discount-badge-variant="high"] {
-  background-color: var(--bg-discount-high);
+  background-color: var(--fs-color-danger-bkg);
 }

@@ -11,7 +11,7 @@ const SignInLink: React.FC = () => {
     <LinkButton
       data-button-signin-link
       to={person?.id ? '/account' : '/login'}
-      className="title-sub-subsection signin-link"
+      className="text__title-mini signin-link"
       variant="tertiary"
     >
       <Icon name="User" width={18} height={18} weight="bold" />

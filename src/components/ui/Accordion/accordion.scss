@@ -6,7 +6,7 @@
   justify-content: space-around;
 
   [data-accordion-item] {
-    border-bottom: 1px solid var(--color-border-display);
+    border-bottom: 1px solid var(--fs-border-color-light);
 
     @include media(">=notebook") {
       &:last-child {
@@ -17,8 +17,8 @@
 
   [data-accordion-panel] {
     @include media(">=notebook") {
-      padding-right: var(--space-4);
-      padding-left: var(--space-4);
+      padding-right: var(--fs-spacing-4);
+      padding-left: var(--fs-spacing-4);
     }
   }
 
@@ -27,15 +27,15 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: var(--space-3) 0;
-    color: var(--color-text);
+    padding: var(--fs-spacing-3) 0;
+    color: var(--fs-color-text);
     background-color: transparent;
     border: 0;
     cursor: pointer;
 
     @include media(">=notebook") {
-      padding-right: var(--space-4);
-      padding-left: var(--space-4);
+      padding-right: var(--fs-spacing-4);
+      padding-left: var(--fs-spacing-4);
     }
   }
 

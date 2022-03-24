@@ -39,7 +39,7 @@ function CartSidebar() {
     >
       <header data-testid="cart-sidebar">
         <div className="cart-sidebar__title">
-          <p className="title-display">Your Cart</p>
+          <p className="text__lead">Your Cart</p>
           <Badge variant="info" small>
             {totalItems}
           </Badge>

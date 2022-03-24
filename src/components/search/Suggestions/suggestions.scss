@@ -1,37 +1,37 @@
 @import "src/styles/scaffold";
 
 .suggestions__title {
-  margin-bottom: var(--space-1);
-  padding: 0 var(--space-3);
-  font-size: var(--text-size-3);
+  margin-bottom: var(--fs-spacing-1);
+  padding: 0 var(--fs-spacing-3);
+  font-size: var(--fs-text-size-3);
   line-height: 1.5;
 }
 
 .suggestions__section {
-  padding: var(--space-2) 0;
-  background-color: var(--bg-neutral-lightest);
+  padding: var(--fs-spacing-2) 0;
+  background-color: var(--fs-color-neutral-0);
 
   &:not(:last-child) {
-    border-bottom: var(--border-width-0) solid var(--color-border-display);
+    border-bottom: var(--fs-border-width-default) solid var(--fs-border-color-light);
   }
 }
 
 .suggestions__item {
-  padding-right: var(--space-3);
-  padding-left: var(--space-3);
+  padding-right: var(--fs-spacing-3);
+  padding-left: var(--fs-spacing-3);
 
   &:hover {
-    background-color: var(--color-secondary-0);
+    background-color: var(--fs-color-main-0);
   }
 }
 
 [data-store-suggestions-top-search] {
   ol {
-    margin-top: var(--space-1);
+    margin-top: var(--fs-spacing-1);
   }
 
   .suggestions__item {
-    font-size: var(--text-size-2);
+    font-size: var(--fs-text-size-2);
     line-height: 1.25;
 
     [data-store-link] {
@@ -40,29 +40,29 @@
     }
 
     [data-store-badge] {
-      margin-right: var(--space-1);
+      margin-right: var(--fs-spacing-1);
     }
   }
 }
 
 [data-store-suggestions] {
   .suggestions__item-bold {
-    color: var(--color-neutral-7);
-    font-weight: var(--text-weight-bold);
+    color: var(--fs-color-neutral-7);
+    font-weight: var(--fs-text-weight-bold);
   }
 
   .button[data-store-button] {
-    padding: var(--space-2) 0;
-    color: var(--color-text-subtle);
-    font-weight: var(--text-weight-regular);
-    font-size: var(--text-size-2);
+    padding: var(--fs-spacing-2) 0;
+    color: var(--fs-color-text-light);
+    font-weight: var(--fs-text-weight-regular);
+    font-size: var(--fs-text-size-2);
     line-height: 1.25;
     background-color: transparent;
     cursor: pointer;
   }
 
   [data-store-link] {
-    padding: var(--space-2) 0;
+    padding: var(--fs-spacing-2) 0;
     text-decoration: none;
     outline: none;
   }

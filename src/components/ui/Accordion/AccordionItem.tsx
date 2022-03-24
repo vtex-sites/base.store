@@ -38,7 +38,7 @@ const AccordionItem = forwardRef<HTMLDivElement, Props>(function AccordionItem(
       {...otherProps}
     >
       <UIAccordionButton
-        className="title-subsection"
+        className="text__title-subsection"
         data-testid={`${testId}-button`}
       >
         {buttonLabel}

@@ -75,7 +75,7 @@ function ProductCard({
       </UICardImage>
       <UICardContent>
         <div className="product-card__heading">
-          <h3 className="product-card__title / title-small">
+          <h3 className="product-card__title / text__title-mini-alt">
             <Link {...linkProps} title={name}>
               {name}
             </Link>
@@ -87,7 +87,7 @@ function ProductCard({
               testId="list-price"
               data-value={listPrice}
               variant="listing"
-              classes="text-body-small"
+              classes="text__legend"
               SRText="Original price:"
             />
             <Price
@@ -96,7 +96,7 @@ function ProductCard({
               testId="price"
               data-value={spotPrice}
               variant="spot"
-              classes="text-body"
+              classes="text__body"
               SRText="Sale Price:"
             />
           </div>

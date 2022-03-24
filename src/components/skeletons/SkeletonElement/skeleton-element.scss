@@ -6,29 +6,29 @@
 
   [data-skeleton-element-content] {
     overflow: hidden;
-    background: var(--bg-skeleton-loading);
-    border-radius: var(--border-radius-default);
+    background: var(--fs-color-disabled-bkg);
+    border-radius: var(--fs-border-radius-default);
 
     &[data-element-variant="text"] {
       width: 100%;
-      height: var(--space-4);
+      height: var(--fs-spacing-4);
     }
 
     &[data-element-variant="button"] {
-      width: var(--space-13);
-      min-height: var(--space-5);
-      column-gap: var(--space-2);
-      border-radius: var(--border-radius-button);
+      width: var(--fs-spacing-13);
+      min-height: var(--fs-spacing-5);
+      column-gap: var(--fs-spacing-2);
+      border-radius: var(--fs-border-radius-default);
     }
 
     &[data-element-variant="image"] {
-      border-radius: var(--border-radius-default);
+      border-radius: var(--fs-border-radius-default);
     }
 
     &[data-element-variant="badge"] {
       width: 40%;
-      height: var(--space-5);
-      border-radius: var(--border-radius-pill);
+      height: var(--fs-spacing-5);
+      border-radius: var(--fs-border-radius-pill);
     }
   }
 }

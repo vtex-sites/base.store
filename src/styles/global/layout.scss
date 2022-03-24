@@ -1,0 +1,75 @@
+// ----------------------------------------------------------
+// GLOBAL STYLES
+// Layout
+// ----------------------------------------------------------
+
+@import "src/styles/scaffold";
+
+body {
+  min-height: 100vh;
+  color: var(--fs-color-text);
+  background-color: var(--fs-color-body-bkg);
+}
+
+main,
+.layout__main {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: var(--fs-color-body-bkg);
+}
+
+.layout__section {
+  margin-top: var(--fs-spacing-4);
+  margin-bottom: var(--fs-spacing-4);
+
+  @include media(">=notebook") {
+    margin-top: var(--fs-grid-padding);
+    margin-bottom: var(--fs-grid-padding);
+  }
+}
+
+.layout__content-full {
+  width: 100%;
+  padding-top: var(--fs-spacing-4);
+  padding-bottom: var(--fs-spacing-4);
+
+  @include media(">=notebook") {
+    padding-top: var(--fs-grid-padding);
+    padding-bottom: var(--fs-grid-padding);
+  }
+}
+
+.layout__content {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--fs-grid-breakpoint-notebook);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--fs-grid-padding);
+  padding-left: var(--fs-grid-padding);
+}
+
+// Avoids double scroll issue on the page when overlay is open
+#layout.no-scroll {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+// Helper class
+.display-mobile {
+  @include media(">=notebook") {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+// Helper class
+.hidden-mobile {
+  @include media("<notebook") {
+    display: none;
+    visibility: hidden;
+  }
+}

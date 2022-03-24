@@ -8,7 +8,7 @@
   gap: var(--gap);
 
   @include media(">=notebook") {
-    --gap: var(--grid-gap-0);
+    --gap: var(--fs-grid-gap-0);
 
     $pagination-start-index: 2;
 
@@ -20,6 +20,6 @@
   }
 
   li {
-    background-color: var(--color-neutral-0);
+    background-color: var(--fs-color-neutral-0);
   }
 }

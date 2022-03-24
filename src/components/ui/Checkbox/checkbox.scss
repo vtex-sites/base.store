@@ -7,8 +7,8 @@
   justify-content: center;
   width: rem(20px);
   height: rem(20px);
-  border: var(--border-width-0) solid var(--color-border-input);
-  border-radius: var(--border-radius-default);
+  border: var(--fs-border-width-default) solid var(--fs-border-color-default);
+  border-radius: var(--fs-border-radius-default);
   outline: none;
   cursor: pointer;
   transition: border .2s ease, background-color .2s ease, box-shadow .2s ease;
@@ -21,24 +21,24 @@
     top: rem(3px);
     width: rem(6px);
     height: rem(10px);
-    border: var(--border-width-1) solid var(--bg-neutral-lightest);
+    border: var(--fs-border-width-thick) solid var(--fs-color-neutral-0);
     border-top: 0;
     border-left: 0;
-    border-radius: var(--border-width-0);
+    border-radius: var(--fs-border-width-default);
     transform: rotate(45deg);
     opacity: 0;
     content: "";
   }
 
   &:hover {
-    background-color: var(--bg-secondary-light);
-    border-color: var(--color-text);
-    box-shadow: 0 0 0 var(--border-width-0) var(--color-border-input-selected);
+    background-color: var(--fs-color-primary-bkg-light);
+    border-color: var(--fs-color-text);
+    box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
   }
 
   &:checked {
-    background-color: var(--bg-secondary-dark);
-    border-color: var(--color-border-input-selected);
+    background-color: var(--fs-color-primary-bkg);
+    border-color: var(--fs-border-color-default-active);
     border-width: 0;
 
     &::before {
@@ -46,14 +46,14 @@
     }
 
     &:hover {
-      background-color: var(--bg-secondary-hover);
+      background-color: var(--fs-color-primary-bkg-hover);
       box-shadow: none;
     }
   }
 
   &[data-store-checkbox-partial="true"] {
-    background-color: var(--bg-neutral-lightest);
-    border: var(--border-width-0) solid var(--bg-secondary-dark);
+    background-color: var(--fs-color-neutral-0);
+    border: var(--fs-border-width-default) solid var(--fs-color-primary-bkg);
 
     &::before {
       position: absolute;
@@ -61,8 +61,8 @@
       width: rem(10px);
       height: 0;
       border-width: 0;
-      border-bottom: var(--border-width-1) solid var(--bg-secondary-dark);
-      border-radius: var(--border-width-0);
+      border-bottom: var(--fs-border-width-thick) solid var(--fs-color-primary-bkg);
+      border-radius: var(--fs-border-width-default);
       transform: rotate(0deg);
       opacity: 1;
       content: "";
@@ -70,35 +70,35 @@
 
     &:checked {
       &:hover {
-        background-color: var(--bg-secondary-light);
+        background-color: var(--fs-color-primary-bkg-light);
       }
     }
 
     &:hover {
-      background-color: var(--bg-secondary-light);
+      background-color: var(--fs-color-primary-bkg-light);
     }
   }
 
   &:disabled {
-    background-color: var(--bg-disabled);
-    border: var(--border-width-0) solid var(--color-border-input-disabled);
+    background-color: var(--fs-color-disabled-bkg);
+    border: var(--fs-border-width-default) solid var(--fs-border-color-default-disabled);
     cursor: not-allowed;
 
     &::before {
-      border-color: var(--color-border-input-disabled);
+      border-color: var(--fs-border-color-default-disabled);
     }
 
     &:hover {
-      background-color: var(--bg-disabled);
-      border: var(--border-width-0) solid var(--color-border-input-disabled);
+      background-color: var(--fs-color-disabled-bkg);
+      border: var(--fs-border-width-default) solid var(--fs-border-color-default-disabled);
 
       &::before {
-        border-color: var(--color-border-input-disabled);
+        border-color: var(--fs-border-color-default-disabled);
       }
     }
 
     + label {
-      color: var(--color-text-disabled);
+      color: var(--fs-color-disabled-text);
     }
   }
 }
