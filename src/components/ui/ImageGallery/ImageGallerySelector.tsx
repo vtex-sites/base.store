@@ -1,8 +1,7 @@
-import { IconButton, useSlider } from '@faststore/ui'
 import { Children } from 'react'
 import type { HTMLAttributes, PropsWithChildren } from 'react'
-
-import { BackwardArrowIcon, ForwardArrowIcon } from './Icons'
+import { IconButton } from '@faststore/ui'
+import Icon from 'src/components/ui/Icon'
 
 import './image-gallery-selector.scss'
 
@@ -30,7 +29,7 @@ function ImageGallerySelector({
       {elementCount > itemsPerPage && (
         <IconButton
           aria-label="backward slide image selector"
-          icon={<BackwardArrowIcon color="#323845" />}
+          icon={<Icon name="ArrowLeft" />}
           onClick={() => {
             const container = document.getElementById('myScrollSlider')
 
@@ -52,7 +51,7 @@ function ImageGallerySelector({
       {elementCount > itemsPerPage && (
         <IconButton
           aria-label="forward slide image selector"
-          icon={<ForwardArrowIcon color="#323845" />}
+          icon={<Icon name="ArrowRight" />}
           onClick={() => {
             const container = document.getElementById('myScrollSlider')
 
