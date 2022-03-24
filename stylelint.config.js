@@ -1,13 +1,7 @@
 module.exports = {
-  extends: [
-    'stylelint-config-standard-scss',
-    'stylelint-config-rational-order',
-  ],
-  plugins: [
-    'stylelint-scss',
-    'stylelint-order',
-    'stylelint-config-rational-order/plugin',
-  ],
+  extends: ['stylelint-config-standard-scss', 'stylelint-config-recess-order'],
+
+  plugins: ['stylelint-scss', 'stylelint-order'],
   rules: {
     'color-hex-length': null,
     'number-leading-zero': null,
