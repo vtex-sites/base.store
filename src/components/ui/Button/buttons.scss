@@ -17,7 +17,6 @@
   text-decoration: none;
   column-gap: var(--fs-spacing-2);
   border: 0;
-  cursor: default;
 
   &:disabled, &[data-button-disabled="true"] {
     cursor: not-allowed;
