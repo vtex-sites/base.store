@@ -7,11 +7,11 @@
   }
 
   [data-store-input] {
-    border: var(--border-width-0) solid var(--color-border-input);
-    border-radius: var(--border-radius-default);
+    border: var(--fs-border-width-default) solid var(--fs-border-color-default);
+    border-radius: var(--fs-border-radius-default);
 
     // Lighthouse
-    height: var(--tap-min-size); /* stylelint-disable-line */
+    height: var(--fs-control-tap-size); /* stylelint-disable-line */
     margin-left: 1rem;
     font-family: Arial; /* stylelint-disable-line */ // prevent layout shift
   }

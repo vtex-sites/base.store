@@ -45,7 +45,7 @@ function CartItem({ item }: Props) {
           />
         </CardImage>
         <div data-cart-item-summary>
-          <p className="text-body" data-cart-item-title>
+          <p className="text__body" data-cart-item-title>
             {item.itemOffered.isVariantOf.name}
           </p>
           <span data-cart-item-prices>
@@ -55,7 +55,7 @@ function CartItem({ item }: Props) {
               testId="list-price"
               data-value={item.listPrice}
               variant="listing"
-              classes="text-body-small"
+              classes="text__legend"
               SRText="Original price:"
             />
             <Price
@@ -64,7 +64,7 @@ function CartItem({ item }: Props) {
               testId="price"
               data-value={item.price}
               variant="spot"
-              classes="title-subsection"
+              classes="text__title-subsection"
               SRText="Price:"
             />
           </span>

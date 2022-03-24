@@ -6,15 +6,15 @@
   justify-content: center;
   height: 100%;
   min-height: 50vh;
-  margin: var(--space-3) 0;
-  padding: 0 var(--space-8);
-  background-color: var(--bg-neutral);
-  border-radius: var(--border-radius-default);
-  row-gap: var(--space-3);
+  margin: var(--fs-spacing-3) 0;
+  padding: 0 var(--fs-spacing-8);
+  background-color: var(--fs-color-neutral-bkg);
+  border-radius: var(--fs-border-radius-default);
+  row-gap: var(--fs-spacing-3);
 
-  @include media(">=tablet") {
+  @include media(">=notebook") {
     align-items: center;
-    margin: var(--space-5) 0;
+    margin: var(--fs-spacing-5) 0;
   }
 
   > header {
@@ -22,12 +22,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: var(--space-2);
-    color: var(--color-text-disabled);
-    row-gap: var(--space-1);
+    margin-bottom: var(--fs-spacing-2);
+    color: var(--fs-color-disabled-text);
+    row-gap: var(--fs-spacing-1);
 
     p {
-      font-size: var(--text-size-3);
+      font-size: var(--fs-text-size-3);
       text-align: center;
     }
   }

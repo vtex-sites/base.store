@@ -33,7 +33,7 @@ function OrderSummary({
           <span>-{formattedDiscount}</span>
         </li>
       )}
-      <li className="title-subsection">
+      <li className="text__title-subsection">
         <span>Total</span>
         <span>{useFormattedPrice(total)}</span>
       </li>

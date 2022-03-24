@@ -5,8 +5,8 @@
     @supports (-webkit-appearance:none) {
       // Use `focus` instead of `focus-visible` due to Safari's lack of support
       &:focus + span {
-        border-color: var(--color-border-input-selected);
-        border-width: var(--border-width-1);
+        border-color: var(--fs-border-color-default-active);
+        border-width: var(--fs-border-width-thick);
 
         @include focus-ring;
       }
@@ -14,8 +14,8 @@
   }
 
   &:focus-visible + span {
-    border-color: var(--color-border-input-selected);
-    border-width: var(--border-width-1);
+    border-color: var(--fs-border-color-default-active);
+    border-width: var(--fs-border-width-thick);
 
     @include focus-ring;
   }
@@ -24,19 +24,19 @@
 [data-store-sku-selector] {
   display: flex;
   flex-wrap: wrap;
-  font-size: var(--text-size-1);
-  column-gap: var(--space-1);
-  row-gap: var(--space-1);
+  font-size: var(--fs-text-size-1);
+  column-gap: var(--fs-spacing-1);
+  row-gap: var(--fs-spacing-1);
 
   [data-sku-selector-label] {
     width: 100%;
-    margin-bottom: var(--space-0);
+    margin-bottom: var(--fs-spacing-0);
   }
 
   [data-store-radio-option] {
     position: relative;
-    width: var(--space-7);
-    height: var(--space-7);
+    width: var(--fs-spacing-7);
+    height: var(--fs-spacing-7);
 
     span {
       position: relative;
@@ -45,8 +45,8 @@
       justify-content: center;
       width: 100%;
       height: 100%;
-      border: var(--border-width-0) solid var(--color-neutral-7);
-      border-radius: var(--border-radius-default);
+      border: var(--fs-border-width-default) solid var(--fs-color-neutral-7);
+      border-radius: var(--fs-border-radius-default);
       box-shadow: 0;
       transition: box-shadow .2s ease, background-color .2s ease;
     }
@@ -61,14 +61,14 @@
       @include sku-selector-focus-ring;
 
       &:hover:not(:disabled):not(:checked) + span {
-        border-color: var(--color-border-input-selected);
-        border-width: var(--border-width-1);
+        border-color: var(--fs-border-color-default-active);
+        border-width: var(--fs-border-width-thick);
       }
 
       &:checked + span {
-        border-color: var(--color-border-input-selected);
-        border-width: var(--border-width-1);
-        box-shadow: 0 0 0 var(--border-width-2) var(--bg-selected-outline);
+        border-color: var(--fs-border-color-default-active);
+        border-width: var(--fs-border-width-thick);
+        box-shadow: 0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring-outline);
       }
 
       &:disabled {
@@ -76,14 +76,14 @@
 
         + span {
           overflow: hidden;
-          color: var(--color-text-disabled);
-          border-color: var(--color-border-input-disabled);
+          color: var(--fs-color-disabled-text);
+          border-color: var(--fs-border-color-default-disabled);
 
           &::after {
             position: absolute;
-            width: var(--border-width-0);
+            width: var(--fs-border-width-default);
             height: 160%;
-            background-color: var(--color-border-input-disabled);
+            background-color: var(--fs-border-color-default-disabled);
             transform: rotate(45deg);
             transform-origin: center;
             content: "";
@@ -94,15 +94,15 @@
   }
 
   &[data-variant="label"] input {
-    &:hover:not(:disabled) + span { background-color: var(--bg-secondary-light); }
-    &:checked + span { background-color: var(--bg-secondary-light); }
+    &:hover:not(:disabled) + span { background-color: var(--fs-color-primary-bkg-light); }
+    &:checked + span { background-color: var(--fs-color-primary-bkg-light); }
   }
 
   &[data-variant="color"] {
     [data-sku-selector-color] {
-      width: var(--space-6);
-      height: var(--space-6);
-      border-radius: var(--border-radius-small);
+      width: var(--fs-spacing-6);
+      height: var(--fs-spacing-6);
+      border-radius: var(--fs-border-radius-small);
       transform-origin: center center;
       transition: transform .2s ease;
     }

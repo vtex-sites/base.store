@@ -46,18 +46,11 @@ const Hero = ({
     <Section>
       <UIHero data-hero-variant={variant}>
         <HeroContent aria-labelledby="hero-heading">
-          <div className="hero-content-wrapper / grid-content">
-            <div className="hero-content-info">
-              <h1
-                id="hero-heading"
-                className={
-                  variant === 'default' ? 'title-hero' : 'title-hero-small'
-                }
-              >
-                {title}
-              </h1>
+          <div data-hero-wrapper className="layout__content">
+            <div data-hero-info>
+              <h1 id="hero-heading">{title}</h1>
 
-              <p className="text-body-big">{subtitle}</p>
+              <p data-hero-text-body>{subtitle}</p>
               {!!link && (
                 <HeroLink>
                   <LinkButton to={link} inverse>
@@ -66,7 +59,7 @@ const Hero = ({
                 </HeroLink>
               )}
             </div>
-            {!!icon && <div className="hero-content-icon">{icon}</div>}
+            {!!icon && <div data-hero-icon>{icon}</div>}
           </div>
         </HeroContent>
         <HeroImage>

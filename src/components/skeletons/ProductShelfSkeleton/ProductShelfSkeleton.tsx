@@ -15,7 +15,7 @@ function ProductShelfSkeleton({
   loading = true,
 }: PropsWithChildren<Props>) {
   return loading ? (
-    <ul data-product-shelf className="grid-content">
+    <ul data-product-shelf className="layout__content">
       {Array.from({ length: ITEMS_PER_SECTION }, (_, index) => (
         <li key={String(index)}>
           <ProductCardSkeleton sectioned />
