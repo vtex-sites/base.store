@@ -163,11 +163,6 @@
 
   @include media(">=notebook") {
     grid-column: span 6;
-
-    .text-body-small {
-      font-size: var(--fs-text-size-0);
-      line-height: 1.5;
-    }
   }
 }
 
