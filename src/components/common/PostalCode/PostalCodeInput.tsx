@@ -3,7 +3,7 @@ import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import React, { useRef } from 'react'
 import type { KeyboardEvent } from 'react'
 
-import './postal-code-input.scss'
+import './postal-code.scss'
 
 const POSTAL_CODE_INPUT_ID = 'postal-code-input'
 
