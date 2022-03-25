@@ -11,7 +11,7 @@
   --fs-product-card-gap                      : var(--fs-grid-gap-0);
   --fs-product-card-min-width                : 13rem;
 
-  --fs-product-card-shadow                   : var(--fs-shadow);
+  --fs-product-card-shadow                   : none;
   --fs-product-card-shadow-hover             : var(--fs-shadow-hover);
 
   --fs-product-card-bkg-color                : var(--fs-color-body-bkg);
@@ -25,7 +25,7 @@
   --fs-product-card-border-width             : var(--fs-border-width-default);
 
   --fs-product-card-border-color             : transparent;
-  --fs-product-card-border-color-hover       : var(--fs-border-color-default);
+  --fs-product-card-border-color-hover       : var(--fs-border-color-light);
 
   --fs-product-card-text-title-color         : var(--fs-color-text);
   --fs-product-card-text-title-size          : var(--fs-text-size-base);
