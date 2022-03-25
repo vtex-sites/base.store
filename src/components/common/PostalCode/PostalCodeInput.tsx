@@ -9,13 +9,13 @@ const POSTAL_CODE_INPUT_ID = 'postal-code-input'
 
 export default function PostalCodeInput() {
   const ref = useRef<HTMLInputElement>(null)
-  const { setSession, postalCode } = useSession()
+  const { postalCode } = useSession()
 
   const handleSubmit = (event: KeyboardEvent<HTMLInputElement>) => {
     const value = ref.current?.value
 
     if (event.key === 'Enter' && typeof value === 'string') {
-      setSession({ postalCode: value })
+      // setSession({ postalCode: value })
     }
   }
 
