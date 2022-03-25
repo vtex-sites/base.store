@@ -59,10 +59,10 @@ function RegionalizationModal({
           data-testid="regionalization-modal-button-close"
           icon={<Icon name="X" width={30} height={30} />}
         />
-        <p className="title-subsection" data-regionalization-modal-title>
+        <p className="text__title-subsection" data-regionalization-modal-title>
           Set your location
         </p>
-        <p className="text-body" data-regionalization-modal-description>
+        <p className="text__body" data-regionalization-modal-description>
           Prices, offers and availability may vary according to your location.
         </p>
       </header>
