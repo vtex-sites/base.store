@@ -4,7 +4,7 @@ import { List as UIList } from '@faststore/ui'
 import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
-import PostalCodeInput from 'src/components/common/PostalCode'
+import PostalCodeBar from 'src/components/common/PostalCode'
 import SearchInput from 'src/components/common/SearchInput'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
@@ -115,7 +115,7 @@ function Navbar() {
           </div>
         </section>
         <NavLinks />
-        <PostalCodeInput />
+        <PostalCodeBar />
       </div>
 
       <SlideOver
