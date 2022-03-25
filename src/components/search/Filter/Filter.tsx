@@ -1,20 +1,20 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useReducer, useRef } from 'react'
 import Button from 'src/components/ui/Button'
+import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
 import type {
   IStoreSelectedFacet,
   Filter_FacetsFragment,
 } from '@generated/graphql'
-import Icon from 'src/components/ui/Icon'
 
 import Facets from './Facets'
 
 import './filter.scss'
 
-interface FilterProps {
+interface Props {
   facets: Filter_FacetsFragment[]
   /*
    * Control whether the filter modal is open. (mobile only)
@@ -32,154 +32,115 @@ interface FilterProps {
   testId?: string
 }
 
-type ActiveFacets = {
-  facets: string[]
-  accordionIndex: number
-}
-
 type Callback = () => unknown
 
-function filterFacetsDiff(
-  firstFacets: IStoreSelectedFacet[],
-  secondFacets: IStoreSelectedFacet[]
-) {
-  return firstFacets.filter((facet) => {
-    const isSameFacet = (f: IStoreSelectedFacet) =>
-      f.value === facet.value && f.key === facet.key
+interface State {
+  expanded: Set<number>
+  selected: IStoreSelectedFacet[]
+}
 
-    const isFacetPresent = secondFacets.some(isSameFacet)
+type Action =
+  | {
+      type: 'toggleExpanded'
+      payload: number
+    }
+  | {
+      type: 'selectFacets'
+      payload: IStoreSelectedFacet[]
+    }
+  | {
+      type: 'toggleFacet'
+      payload: IStoreSelectedFacet
+    }
 
-    return !isFacetPresent
-  })
+const reducer = (state: State, action: Action) => {
+  const { expanded, selected } = state
+  const { type, payload } = action
+
+  if (type === 'toggleExpanded') {
+    if (expanded.has(payload)) {
+      expanded.delete(payload)
+    } else {
+      expanded.add(payload)
+    }
+
+    return {
+      ...state,
+      expanded: new Set(expanded),
+    }
+  }
+
+  if (type === 'selectFacets' && payload !== selected) {
+    return {
+      ...state,
+      selected: payload,
+    }
+  }
+
+  if (type === 'toggleFacet') {
+    const index = state.selected.findIndex(
+      (facet) => facet.key === payload.key && facet.value === payload.value
+    )
+
+    if (index > -1) {
+      state.selected.splice(index, 1)
+
+      return {
+        ...state,
+        selected: [...state.selected],
+      }
+    }
+
+    return {
+      ...state,
+      selected: [...state.selected, payload],
+    }
+  }
+
+  return state
 }
 
 function Filter({
-  facets,
+  facets: allFacets,
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
-}: FilterProps) {
-  const { toggleFacets, toggleFacet, state: searchState } = useSearch()
+}: Props) {
+  const { setFacets, toggleFacet, state: searchState } = useSearch()
+
+  const [state, dispatch] = useReducer(reducer, null, () => ({
+    expanded: new Set([]),
+    selected: searchState.selectedFacets,
+  }))
+
+  const facets = useMemo(
+    () => allFacets.filter((facet) => facet.type === 'BOOLEAN'),
+    [allFacets]
+  )
+
+  const { expanded, selected } = state
+
   const dismissTransition = useRef<Callback | undefined>()
 
-  const [indicesExpanded, setIndicesExpanded] = useState<Set<number>>(
-    new Set([])
-  )
-
-  const [selectedFacets, setSelectedFacets] = useState<IStoreSelectedFacet[]>(
-    [...searchState.selectedFacets] ?? []
-  )
-
-  const [activeFacets, setActiveFacets] = useState<ActiveFacets[]>([])
-  const filteredFacets = facets.filter((facet) => facet.type === 'BOOLEAN')
-
-  const onAccordionChange = useCallback((index: number) => {
-    if (indicesExpanded.has(index)) {
-      indicesExpanded.delete(index)
-      setIndicesExpanded(new Set(indicesExpanded))
-
-      return
-    }
-
-    setIndicesExpanded(new Set(indicesExpanded.add(index)))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
-
-  // Ensures all required states are up to date at opening
   useEffect(() => {
-    if (isOpen) {
-      return
-    }
-
-    setActiveFacets([])
-    setSelectedFacets([...searchState.selectedFacets])
-  }, [isOpen, searchState.selectedFacets])
-
-  // Opens accordion items with active facets
-  useEffect(() => {
-    // Ensures all the active facets were identified
-    if (activeFacets.length !== filteredFacets.length) {
-      return
-    }
-
-    // Ensures there isn't empty facets
-    const selectedActiveFacets = activeFacets.filter(
-      (item) => item.facets.length > 0
-    )
-
-    // Checks if accordion item is already opened
-    selectedActiveFacets.forEach(
-      ({ accordionIndex }) =>
-        !indicesExpanded.has(accordionIndex) &&
-        onAccordionChange(accordionIndex)
-    )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, activeFacets])
-
-  const onFacetChange = (item: IStoreSelectedFacet) => {
-    const indexToRemove = selectedFacets.findIndex(
-      (facet) => facet.value === item.value
-    )
-
-    const shouldRemoveFacet = indexToRemove !== -1
-
-    setSelectedFacets((previousSelectedFacets) => {
-      if (shouldRemoveFacet) {
-        previousSelectedFacets.splice(indexToRemove, 1)
-
-        return [...previousSelectedFacets]
-      }
-
-      return [...previousSelectedFacets, item]
+    dispatch({
+      type: 'selectFacets',
+      payload: searchState.selectedFacets,
     })
-  }
-
-  const onAccordionItemMount = (
-    index: number,
-    values: Filter_FacetsFragment['values']
-  ) => {
-    // Ensures only one array item for each accordion's item
-    if (activeFacets.length >= filteredFacets.length) {
-      return
-    }
-
-    // Filter current selected facets from API
-    const selectedValues = values.filter(({ selected }) => selected)
-
-    activeFacets.push({
-      accordionIndex: index,
-      facets: selectedValues.map(({ value }) => value),
-    })
-    setActiveFacets(activeFacets)
-  }
-
-  const onApply = () => {
-    // Only toggle new facets added and old facets removed and keep the current ones applied
-    const facetsToAdd = filterFacetsDiff(
-      selectedFacets,
-      searchState.selectedFacets
-    )
-
-    const facetsToRemove = filterFacetsDiff(
-      searchState.selectedFacets,
-      selectedFacets
-    )
-
-    toggleFacets([...facetsToAdd, ...facetsToRemove])
-    dismissTransition.current?.()
-  }
+  }, [searchState.selectedFacets])
 
   return (
     <>
       <div className="hidden-mobile">
         <Facets
+          facets={facets}
           testId={`desktop-${testId}`}
-          selectedFacets={selectedFacets}
-          filteredFacets={filteredFacets}
-          indicesExpanded={indicesExpanded}
+          selectedFacets={selected}
+          indicesExpanded={expanded}
           onFacetChange={toggleFacet}
-          onAccordionChange={onAccordionChange}
-          onAccordionItemMount={onAccordionItemMount}
+          onAccordionChange={(index) =>
+            dispatch({ type: 'toggleExpanded', payload: index })
+          }
         />
       </div>
 
@@ -202,34 +163,42 @@ function Filter({
               aria-label="Close Filters"
               icon={<Icon name="X" width={32} height={32} />}
               onClick={() => {
-                setSelectedFacets(searchState.selectedFacets)
+                dispatch({
+                  type: 'selectFacets',
+                  payload: searchState.selectedFacets,
+                })
+
                 dismissTransition.current?.()
               }}
             />
           </header>
           <Facets
+            facets={facets}
             testId={`mobile-${testId}`}
-            selectedFacets={selectedFacets}
-            filteredFacets={filteredFacets}
-            indicesExpanded={indicesExpanded}
-            onFacetChange={onFacetChange}
-            onAccordionChange={onAccordionChange}
-            onAccordionItemMount={onAccordionItemMount}
+            selectedFacets={selected}
+            indicesExpanded={expanded}
+            onFacetChange={(facet) =>
+              dispatch({ type: 'toggleFacet', payload: facet })
+            }
+            onAccordionChange={(index) =>
+              dispatch({ type: 'toggleExpanded', payload: index })
+            }
           />
         </div>
         <footer className="filter-modal__footer">
           <Button
             variant="secondary"
-            onClick={() => {
-              setSelectedFacets([])
-            }}
+            onClick={() => dispatch({ type: 'selectFacets', payload: [] })}
           >
             Clear All
           </Button>
           <Button
             variant="primary"
             data-testid="filter-modal-button-apply"
-            onClick={() => onApply()}
+            onClick={() => {
+              setFacets(state.selected)
+              onDismiss?.()
+            }}
           >
             Apply
           </Button>
