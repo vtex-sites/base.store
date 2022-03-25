@@ -7,9 +7,9 @@
   // Design Tokens for Product Card
   // --------------------------------------------------------
 
-  --fs-product-card-padding                  : var(--fs-spacing-1);
+  --fs-product-card-padding                  : var(--fs-spacing-1) var(--fs-spacing-1) var(--fs-spacing-2) var(--fs-spacing-1);
   --fs-product-card-gap                      : var(--fs-grid-gap-0);
-  --fs-product-card-min-width                : 13rem;
+  --fs-product-card-min-width                : 14rem;
 
   --fs-product-card-shadow                   : none;
   --fs-product-card-shadow-hover             : var(--fs-shadow-hover);
@@ -64,7 +64,7 @@
   &:focus-within {
     @include focus-ring;
 
-    background-color: var(--fs-product-card-focus-bkg-color);
+    background-color: var(--fs-product-card-bkg-color-focus);
   }
 
   @media (hover: hover) {
@@ -156,11 +156,24 @@
   --fs-product-card-padding: 0;
   --fs-product-card-content-padding: var(--fs-spacing-2);
   --fs-product-card-bkg-color: var(--fs-color-neutral-bkg);
+  --fs-product-card-min-width: 9rem;
+
+  grid-template-rows: 1fr auto;
+
+  @include media(">=tablet") {
+    grid-template-rows: 7fr 3fr;
+  }
+
+  @include media(">=notebook") {
+    grid-template-rows: 8fr 2fr;
+  }
 
   [data-fs-product-card-content] {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: var(--fs-product-card-gap);
+    @include media(">=notebook") {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--fs-product-card-gap);
+    }
   }
 
   [data-card-image] {
@@ -168,9 +181,11 @@
   }
 
   [data-store-badge] {
-    grid-row: 1;
-    grid-column: 2;
-    margin-top: 0;
+    @include media(">=notebook") {
+      grid-row: 1;
+      grid-column: 2;
+      margin-top: 0;
+    }
   }
 }
 
