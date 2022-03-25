@@ -16,3 +16,7 @@
     font-family: Arial; /* stylelint-disable-line */ // prevent layout shift
   }
 }
+
+[data-store-alert] {
+  background-color: var(--fs-color-neutral-0);
+}
