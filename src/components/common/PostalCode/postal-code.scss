@@ -17,6 +17,14 @@
   }
 }
 
-[data-store-alert] {
-  background-color: var(--fs-color-neutral-0);
+.postal-code-bar {
+  [data-store-alert] {
+    align-items: center;
+    background-color: var(--fs-color-neutral-0);
+  }
+
+  [data-alert-content] {
+    display: flex;
+    align-items: center;
+  }
 }
