@@ -1569,10 +1569,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.6.16.tgz#929178f68434a3c498f17d7e804c45e10fc83c75"
-  integrity sha512-Qpq7LtMg9F5YIN0xX3VB29s0MaMHA9Qu7T92T+HX0JqxuRDek4/IoUNPQmIFzaMuJnZMvj9tIl5W6NDgl3ppvg==
+"@faststore/api@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.6.21.tgz#628e08d508bd497fde95a93d57cf2482b2a56479"
+  integrity sha512-UWGcz4vh/Bigvfsy1P1LSo1Qf7VsgF8YHXqlZmfdVAt6WCldn8rKVUkSALHREHk/Vhk0Pu+ppqLrhMmmpyT1SA==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1582,29 +1582,17 @@
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
 
-"@faststore/api@https://pkg.csb.dev/vtex/faststore/commit/60cdb1f2/@faststore/api":
-  version "1.6.20"
-  resolved "https://pkg.csb.dev/vtex/faststore/commit/60cdb1f2/@faststore/api#68d2cc821a7b701567964b1703a0adb0c3483b5c"
-  dependencies:
-    "@graphql-tools/schema" "^8.2.0"
-    "@rollup/plugin-graphql" "^1.0.0"
-    "@sindresorhus/slugify" "^1.1.2"
-    dataloader "^2.0.0"
-    fast-deep-equal "^3.1.3"
-    isomorphic-unfetch "^3.1.0"
-    p-limit "^3.1.0"
-
-"@faststore/sdk@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.6.16.tgz#be2a638a3b35773eb481585a340582a82be516b8"
-  integrity sha512-RQRkOMI8FD1aJeDVYYMJDCE36Fc+Uq1cN3PFWKdfPMwhlrmCyId2ZtECBZpFFQvztKo6+EeFkuahs3Xh98nlZw==
+"@faststore/sdk@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.6.21.tgz#4e87c44968821784ae9fa35a197dcf51690b3394"
+  integrity sha512-XD8xFDZ4lYgm06ORoLnoBPYLQN6R9lKykhVKdyVYO9f2k0YpTYRk6QvK6JOHel9y5lAcUklXVcMv5LdPdy4DAg==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.6.16.tgz#aa4e4dbba6258061c2682321df0785a413ea76fb"
-  integrity sha512-dCA0pFMD9CUsB7TMIqIdW04QwxmKv8NRPiTzWCjIP4pBkPOVr2w3rph9J9WQqMnCBuBE5rD7TkOFbS0eEChA/g==
+"@faststore/ui@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.6.21.tgz#ef4d603dcb3f91802bcd24194c0b95dc90cd71b1"
+  integrity sha512-+5tj1kFOT3Z3m1aKKDr6DXxsYjwdVACgUgZ3kNulTjgPkEx00/3B0D9gzmafgHb0rhQvBYOC+NFGcVOu7xkRnA==
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
@@ -3222,40 +3210,40 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/gatsby-plugin-nginx@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.6.16.tgz#3113ab6f118a5b3a8fa8e9c750d9fb0e880a7fb2"
-  integrity sha512-6rfHOAtkVHjGfVSMDl5XwgLagXZq13ArLRyzR+FsuYms6iTH6StbHO+PghD9NVA02YHL3FeLNemFLw7fRjmI0Q==
+"@vtex/gatsby-plugin-nginx@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-nginx/-/gatsby-plugin-nginx-1.6.21.tgz#37be38c0bdeb4ada24af44159534da081ab0c0ae"
+  integrity sha512-ZrtPUsv9iUhOcDXgmcKrRMK9jrhUnaSkR+O76DIIUi6RRotUqb4eoUcY6O5nc/aa2clYm8ovvgpGfa+7w8GUoQ==
   dependencies:
     kebab-hash "^0.1.2"
     webpack-assets-manifest "^5.0.6"
 
-"@vtex/gatsby-plugin-thumbor@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.6.16.tgz#1212228f9fbc791bf27f95b6be5f226d7851cfee"
-  integrity sha512-WRi7pCrDsaODekPgjKGgXWJwkbrjPCe+DeuvhvejxR7uoewRKzwpXD9HUmKUrvUVYEDNs6BbHiV+N7MSXYFS0A==
+"@vtex/gatsby-plugin-thumbor@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-plugin-thumbor/-/gatsby-plugin-thumbor-1.6.21.tgz#a0023ec15bf6aeb05ea8436dedaaae3bb3808230"
+  integrity sha512-3+baCMz1Fe60cpHvpCKRwJBtCElxdTeCb9bWb2v4Vsh6/1Ip8epgqx3MaEnx2tZcuBZPVZqZJQTn06mXTUvvvQ==
 
-"@vtex/gatsby-source-store@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.6.16.tgz#3124358e45f21cce3c1208350039e654b53a18cd"
-  integrity sha512-q6uFIpKHBAulpeS0/vdH3sFK4HDVNgVo1dutcDtTBH7L3Vnmt5EDhK2Z/MLo+F4J5y0bDEbmDrKJmkAngKGpgA==
+"@vtex/gatsby-source-store@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@vtex/gatsby-source-store/-/gatsby-source-store-1.6.21.tgz#c48f172b6201568943ac6525d8b36e9e02d003dc"
+  integrity sha512-4Zoe7NjeJTu9OAzLZpFnFxZFkBOIEaXYTBRNjEx8hWc5DbYMZ7jQLQQCgRuya2PYpQdgefaG60KX8Lt/h2aUNg==
   dependencies:
     gatsby-graphql-source-toolkit "^2.0.1"
 
-"@vtex/graphql-utils@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.6.16.tgz#97170bd1575a201cb3f9ae9a68c64839f96e4edb"
-  integrity sha512-ol9EohdifVQoC+Y+h9tiyptoxC5DB/pw4Osl/+DCFduTKEyQYp3zB7yMz/k+mJltWmU0dJFqBI5PatrVXqsd+Q==
+"@vtex/graphql-utils@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.6.21.tgz#bfc08e2e58a3af3c1e38abce29417fe38e49ee3f"
+  integrity sha512-akBK7pW8mTCL4vn9G1joeH+TEUTmUZkPqVQl9LCUceJT6kDuQAxmKvpzpI0eKoV9jOh9cmgDVdlrW6VBWW5fMg==
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
-"@vtex/lighthouse-config@^1.6.16":
-  version "1.6.16"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.6.16.tgz#161eac485641029cb34e03d9f2e7a3a62867320a"
-  integrity sha512-zzqZTMx7Nv3mTyhm5Zoj0m9NZAXjl5p1hOBeoX+QQ+3BsVMvog8ZIICfOCxoI+CHXd4k7NdB69hg8FQY+3AAPw==
+"@vtex/lighthouse-config@^1.6.21":
+  version "1.6.21"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.6.21.tgz#38a7e60db24e63fb959db51ffc174d5b1458626b"
+  integrity sha512-5RAcda+zEMUPkPpe0utJsS7MCyfQ+5yH9ykC2zzohnclJKlnmHFqyH5Hr1j40KCxDrfUMW7jti+gUHsOeDGKGw==
 
 "@vtex/prettier-config@1.0.0":
   version "1.0.0"
