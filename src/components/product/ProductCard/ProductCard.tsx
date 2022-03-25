@@ -16,7 +16,7 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import './product-card.scss'
 
-type Variant = 'horizontal' | 'vertical'
+type Variant = 'wide' | 'default'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -39,7 +39,7 @@ const imgOptions = {
 function ProductCard({
   product,
   index,
-  variant = 'vertical',
+  variant = 'default',
   bordered = false,
   aspectRatio = 1,
   buyButton,
@@ -60,8 +60,8 @@ function ProductCard({
   return (
     <UICard
       className="product-card"
-      data-card-variant={variant}
-      data-card-bordered={bordered}
+      data-fs-product-card-variant={variant}
+      data-fs-product-card-bordered={bordered}
       data-card-out-of-stock={outOfStock}
       data-fs-product-card
       {...otherProps}
