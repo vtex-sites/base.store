@@ -1,13 +1,13 @@
-import { usePagination, useSearch } from '@faststore/sdk'
+import { usePagination as useSDKPagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { lazy, Suspense, useState } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
-import Filter from 'src/components/search/Filter'
-import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import Sort from 'src/components/search/Sort'
+import Filter from 'src/components/search/Filter'
 
 import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
@@ -24,8 +24,30 @@ interface Props {
   searchTerm?: string
 }
 
+/**
+ * The idea behind this hook is to split the rendering of ProductGallery in two.
+ * A first render where UI specific components render, like Filters, GalleryPage etc,
+ * and a second one where secondary components get executed, like preloading, next/prev
+ * links etc.
+ *
+ * This was necessary to decrease the HUGE TBT this component has. Maybe we can find
+ * a better solution in the future with React 18 and server components
+ */
+const usePagination = (totalCount: number) => {
+  const sdkPagination = useSDKPagination(totalCount)
+  const [pagination, setPagination] = useState(sdkPagination)
+
+  useEffect(() => {
+    if (sdkPagination !== pagination) {
+      setPagination(sdkPagination)
+    }
+  }, [pagination, sdkPagination])
+
+  return pagination
+}
+
 function ProductGallery({ title, searchTerm }: Props) {
-  const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
+  const [isFilterOpen, setIsFilterOpen] = useState(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)

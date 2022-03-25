@@ -47,13 +47,13 @@ function GalleryPage({
     [productList]
   )
 
-  const productsSponsored = products?.slice(0, 2)
-
-  const middleItemIndex = Math.ceil(itemsPerPage / 2)
-
   if (display === false || products == null) {
     return null
   }
+
+  const productsSponsored = products?.slice(0, 2)
+
+  const middleItemIndex = Math.ceil(itemsPerPage / 2)
 
   const shouldDisplaySponsoredProducts =
     showSponsoredProducts &&
