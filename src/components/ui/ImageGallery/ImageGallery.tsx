@@ -29,7 +29,7 @@ function ImageGallery({ images }: ImageGalleryProps) {
   const currentImage = images[selectedImageIdx]
 
   return (
-    <section data-image-gallery>
+    <section data-image-gallery={images.length > 1 ? 'has-selector' : 'true'}>
       <ImageZoom>
         <Image
           src={currentImage.url}

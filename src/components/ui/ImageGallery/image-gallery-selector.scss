@@ -44,6 +44,7 @@
 
     @include media(">=notebook") {
       flex-direction: column;
+      padding: 0 var(--space-0);
       overflow-y: scroll;
       row-gap: var(--space-2);
     }

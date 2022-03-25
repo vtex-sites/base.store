@@ -8,8 +8,6 @@
   width: calc(100% + (2 * var(--fs-grid-padding)));
   row-gap: var(--space-2);
 
-  // max-height: rem(450px);
-
   @include media(">=notebook") {
     display: flex;
     flex-direction: row-reverse;
@@ -32,4 +30,15 @@
   }
 
   @include media(">=notebook") { grid-column: span 8; }
+}
+
+[data-image-gallery="has-selector"] {
+  @include media(">notebook") {
+    // TODO: Define this aspect ratio as token so we can apply to differnt ratios of images;
+    aspect-ratio: 4.57/3;
+
+    // This max-height is defined as a fallback for browsers
+    // that does not support the aspect-ratio property
+    max-height: rem(600px);
+  }
 }
