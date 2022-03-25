@@ -23,11 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Suggestions` component.
 - `SearchHistory` component.
 - `Badge` interactive variation.
-<<<<<<< HEAD
 - New folder `styles/global` containing all global styles.
-=======
-- Session mutation when user enter a new postal code.
->>>>>>> e688d78f (Add session mutation and mutate session after change postal code)
+- Session mutation when the user enters a new postal code.
 
 ### Changed
 
