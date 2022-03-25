@@ -33,7 +33,7 @@ const imgOptions = {
   layout: 'constrained' as const,
   loading: 'lazy' as const,
   sizes: '(max-width: 768px) 25vw, 30vw',
-  breakpoints: [360, 480, 720, 1024],
+  breakpoints: [240, 300, 360, 480, 720, 1024],
 }
 
 function ProductCard({
