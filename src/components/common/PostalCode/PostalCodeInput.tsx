@@ -15,7 +15,7 @@ export default function PostalCodeInput() {
     const value = ref.current?.value
 
     if (event.key === 'Enter' && typeof value === 'string') {
-      // comment setSession({ postalCode: value })
+      // setSession({ postalCode: value })
     }
   }
 
