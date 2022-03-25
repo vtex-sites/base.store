@@ -27,7 +27,7 @@
     "@envelop/graphql-jit": "^1.1.1",
     "@envelop/parser-cache": "^2.2.0",
     "@envelop/validation-cache": "^2.2.0",
-    "@faststore/api": "^1.6.16",
+    "@faststore/api": "https://pkg.csb.dev/vtex/faststore/commit/60cdb1f2/@faststore/api",
     "@faststore/sdk": "^1.6.16",
     "@faststore/ui": "^1.6.16",
     "@vtex/gatsby-plugin-nginx": "^1.6.16",

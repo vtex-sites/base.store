@@ -63,6 +63,12 @@ describe('React rendering performance', () => {
     }
   })
 
+  it('Renders ProductGallery component once on PLP', () => {
+    const mark = 'ProductGallery'
+
+    testMark(pages.collection, mark)
+  })
+
   it('Renders toplevel component once', () => {
     const testPage = (path) => {
       cy.visit(path, options)
