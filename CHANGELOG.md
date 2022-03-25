@@ -26,7 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New folder `styles/global` containing all global styles.
 
 ### Changed
-
+- Split `ProductGallery` rendering component into multiple tasks
 - Move inline styles to external stylesheet to improve TBT
 - Changed ProductGallery and EmptyGallery styles to make the search results page
 - Moved all icons to use Icon component
