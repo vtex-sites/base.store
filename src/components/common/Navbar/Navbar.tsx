@@ -5,7 +5,7 @@ import CartToggle from 'src/components/cart/CartToggle'
 import PostalCodeInput from 'src/components/common/PostalCode'
 import SearchInput from 'src/components/common/SearchInput'
 import Icon from 'src/components/ui/Icon'
-import { ButtonIcon, ButtonSignIn } from 'src/components/ui/Button'
+import Button, { ButtonIcon, ButtonSignIn } from 'src/components/ui/Button'
 import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
 import SlideOver from 'src/components/ui/SlideOver'
@@ -13,6 +13,8 @@ import { mark } from 'src/sdk/tests/mark'
 import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
 import type { StoreCollectionQuery } from '@generated/graphql'
+// TODO: remove `Button` import and the one below  when `RegionalizationModal` review is done
+import RegionalizationModal from 'src/components/regionalization/RegionalizationModal'
 
 type Callback = () => unknown
 
@@ -60,6 +62,9 @@ function Navbar() {
   const dismissTransition = useRef<Callback | undefined>()
   const handleCloseSlideOver = () => setShowMenu(false)
 
+  // TODO: remove this state when `RegionalizationModal` review is done
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const handlerExpandSearch = () => {
     setSearchExpanded(true)
     searchMobileRef.current?.inputRef?.focus()
@@ -106,6 +111,14 @@ function Navbar() {
               testId="store-input-mobile"
               buttonTestId="store-input-mobile-button"
               onSearchClick={handlerExpandSearch}
+            />
+            {/* TODO: remove both components below when `RegionalizationModal` review is done */}
+            <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+              Open modal
+            </Button>
+            <RegionalizationModal
+              isOpen={isModalOpen}
+              onDismiss={() => setIsModalOpen(false)}
             />
             <ButtonSignIn />
             <CartToggle />
