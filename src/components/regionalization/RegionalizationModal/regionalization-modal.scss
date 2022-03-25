@@ -1,0 +1,78 @@
+@import "src/styles/scaffold";
+
+[data-modal-overlay] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  background-color: var(--color-black-transparent-20);
+}
+
+[data-regionalization-modal] {
+  position: fixed;
+  top: 30vh;
+  right: rem(24px);
+  left: rem(24px);
+  max-width: calc(var(--breakpoint-notebook) / 3);
+  margin: auto;
+  background-color: var(--bg-neutral-lightest);
+  border-radius: var(--space-0);
+
+  @include media(">=tablet") {
+    width: calc(100vw / 3);
+    min-width: calc(var(--breakpoint-notebook) / 3);
+  }
+
+  &[data-regionalization-modal-state="in"] {
+    transform: translateY(0);
+    transition: transform .2s ease-in;
+  }
+
+  &[data-regionalization-modal-state="out"] {
+    transform: translateY(50%);
+    transition: transform .2s ease-out;
+  }
+
+  .regionalization-modal__header {
+    padding: var(--space-4) var(--space-7) var(--space-4) var(--space-4);
+
+    [data-regionalization-modal-title] {
+      margin-bottom: 10px;
+    }
+
+    [data-regionalization-modal-description] {
+      color: var(--color-text-subtle);
+    }
+
+    .regionalization-modal__button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: transparent;
+    }
+  }
+
+  .regionalization-modal__body {
+    padding: var(--space-1) var(--space-4) var(--space-5);
+
+    [data-regionalization-modal-input] {
+      margin-bottom: var(--space-6);
+    }
+
+    [data-store-link] {
+      display: flex;
+      flex-direction: row;
+      align-content: flex-start;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0;
+      color: var(--color-link);
+
+      [data-regionalization-modal-link] {
+        margin-right: var(--space-0);
+      }
+    }
+  }
+}
