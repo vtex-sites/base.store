@@ -22,24 +22,35 @@
 
   [data-carousel-track] {
     display: flex;
-    overflow: auto;
+    padding: var(--space-0) 0;
+    overflow-x: auto;
     column-gap: var(--space-1);
     scroll-behavior: smooth;
 
     [data-store-button] {
+      padding: 0;
+      overflow: hidden;
       background-color: transparent;
-      border: 0;
+      border: 2px solid transparent;
+      border-radius: var(--border-radius-default);
+
+      &[data-thumbnail-button="selected"] {
+        @include focus-ring;
+
+        border-color: var(--color-border-input-selected);
+        border-width: var(--border-width-1);
+      }
     }
 
     @include media(">=notebook") {
       flex-direction: column;
+      overflow-y: scroll;
       row-gap: var(--space-2);
     }
   }
 
   [data-gatsby-image-wrapper] {
     width: rem(56px);
-    border-radius: var(--border-radius-default);
     transform: translate3d(0, 0, 0);
 
     @include media(">=notebook") {
