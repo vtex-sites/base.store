@@ -3,7 +3,7 @@ const {
   envelop,
   useExtendContext,
   useMaskedErrors,
-  useSchema,
+  useAsyncSchema,
 } = require('@envelop/core')
 const { useGraphQlJit } = require('@envelop/graphql-jit')
 const { useParserCache } = require('@envelop/parser-cache')
@@ -20,11 +20,13 @@ const apiOptions = {
   platform: storeConfig.platform,
   account: storeConfig.api.storeId,
   environment: storeConfig.api.environment,
-  channel: storeConfig.channel,
+  // TODO: the API should handle this sales channel as string
+  channel: JSON.parse(storeConfig.channel).salesChannel,
   hideUnavailableItems: storeConfig.api.hideUnavailableItems,
 }
 
 const apiSchema = getSchema(apiOptions)
+
 const apiContextFactory = getContextFactory(apiOptions)
 
 const isBadRequestError = (err) => {
@@ -44,7 +46,7 @@ const formatError = (err) => {
 const getEnvelop = async () =>
   envelop({
     plugins: [
-      useSchema(await apiSchema),
+      useAsyncSchema(apiSchema),
       useExtendContext(apiContextFactory),
       useMaskedErrors({ formatError }),
       useGraphQlJit(),
