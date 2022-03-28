@@ -59,9 +59,9 @@ function ProductCard({
 
   return (
     <UICard
+      data-fs-product-card
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
-      data-fs-product-card
       {...otherProps}
     >
       <UICardImage>
