@@ -12,6 +12,8 @@
 }
 
 [data-store-out-of-stock-input] {
+  @include input-focus-ring;
+
   width: 100%;
   margin-top: var(--fs-spacing-3);
   margin-bottom: var(--fs-spacing-3);
@@ -24,8 +26,6 @@
     border-color: var(--fs-border-color-default-active);
     box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
   }
-
-  @include input-focus-ring;
 }
 
 [data-store-out-of-stock-button] {
