@@ -29,7 +29,7 @@ export const useProduct = <T extends BrowserProductQueryQuery>(
     return {
       locator: [
         { key: 'id', value: productID },
-        { key: 'channel', value: channel },
+        { key: 'channel', value: JSON.parse(channel).salesChannel },
       ],
     }
   }, [channel, productID])

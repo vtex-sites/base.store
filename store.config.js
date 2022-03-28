@@ -10,7 +10,7 @@ module.exports = {
   },
 
   // Default channel
-  channel: '1',
+  channel: '{"salesChannel":"1"}',
 
   // Production URLs
   storeUrl: 'https://vtexfaststore.com',
