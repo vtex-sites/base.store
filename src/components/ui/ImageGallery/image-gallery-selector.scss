@@ -1,28 +1,61 @@
 @import "src/styles/scaffold";
 
 [data-image-gallery-selector] {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 
   > [data-store-button] {
-    background-color: var(--bg-neutral-lightest);
-    border-radius: var(--border-radius-circle);
-    box-shadow: var(--box-shadow);
+    position: absolute;
+    z-index: 1;
+    flex-shrink: 0;
+    background: linear-gradient(90deg, #ffffff 55.67%, rgb(255 255 255 / 0%) 88.53%);
+    background-color: transparent;
+
+    span {
+      padding: var(--space-1);
+      background-color: var(--bg-neutral-lightest);
+      border-radius: var(--border-radius-circle);
+      box-shadow: var(--box-shadow);
+    }
+
+    @include media("<notebook") {
+      height: 100%;
+
+      &:first-child {
+        left: 0;
+      }
+
+      &:last-child {
+        right: 0;
+        transform: scaleX(-1);
+      }
+    }
+
+    @include media(">=notebook") {
+      width: 100%;
+      background: linear-gradient(180deg, #ffffff 55.67%, rgb(255 255 255 / 0%) 88.53%);
+
+      span {
+        transform: rotate(90deg);
+      }
+
+      &:last-child {
+        bottom: 0;
+        transform: scaleY(-1);
+      }
+    }
   }
 
   @include media(">=notebook") {
     flex-direction: column;
     justify-content: space-between;
-
-    [data-store-icon] {
-      transform: rotate(90deg);
-    }
   }
 
   [data-carousel-track] {
     display: flex;
-    padding: var(--space-0) 0;
+    padding: var(--space-0) var(--space-5);
     overflow-x: auto;
     column-gap: var(--space-1);
     scroll-behavior: smooth;
@@ -44,7 +77,7 @@
 
     @include media(">=notebook") {
       flex-direction: column;
-      padding: 0 var(--space-0);
+      padding: var(--space-4) var(--space-0);
       overflow-y: scroll;
       row-gap: var(--space-2);
     }

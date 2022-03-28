@@ -29,7 +29,7 @@ function ImageGallerySelector({
       {elementCount > itemsPerPage && (
         <IconButton
           aria-label="backward slide image selector"
-          icon={<Icon name="ArrowLeft" />}
+          icon={<Icon name="ArrowLeft" width={24} height={24} />}
           onClick={() => {
             const container = document.getElementById('myScrollSlider')
 
@@ -51,7 +51,7 @@ function ImageGallerySelector({
       {elementCount > itemsPerPage && (
         <IconButton
           aria-label="forward slide image selector"
-          icon={<Icon name="ArrowRight" />}
+          icon={<Icon name="ArrowLeft" width={24} height={24} />}
           onClick={() => {
             const container = document.getElementById('myScrollSlider')
 
