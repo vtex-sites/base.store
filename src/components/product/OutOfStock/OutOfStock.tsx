@@ -15,7 +15,7 @@ export interface OutOfStockProps {
   /**
    * The text tha goes inside the notification button.
    */
-  buttonTxt?: string
+  buttonText?: string
   /**
    * Message describing how the user will be notified.
    */
@@ -41,12 +41,12 @@ export interface OutOfStockProps {
 }
 
 function OutOfStock(props: OutOfStockProps) {
-  const defaultButtonTxt = 'Notify me'
+  const defaultButtonText = 'Notify me'
   const defaultIcon = (
     <Icon name="BellRinging" weight="bold" width={16} height={16} />
   )
 
-  const [btTxt, setBtTxt] = useState(defaultButtonTxt)
+  const [btText, setBtText] = useState(defaultButtonText)
   const [disabled, setDisabled] = useState(false)
   const [iconButton, setIconButton] = useState(defaultIcon)
   const [email, setEmail] = useState('')
@@ -54,7 +54,7 @@ function OutOfStock(props: OutOfStockProps) {
   const {
     title = 'Out of Stock',
     notificationMsg = 'Notify me when available',
-    buttonTxt = btTxt,
+    buttonText = btText,
     icon = iconButton,
     notificationIcon = defaultIcon,
     onSubmit,
@@ -63,7 +63,7 @@ function OutOfStock(props: OutOfStockProps) {
 
   const reset = () => {
     setIconButton(defaultIcon)
-    setBtTxt(defaultButtonTxt)
+    setBtText(defaultButtonText)
     setDisabled(false)
 
     setEmail('')
@@ -78,13 +78,13 @@ function OutOfStock(props: OutOfStockProps) {
       setIconButton(
         <Icon name="Checked" weight="bold" width={16} height={16} />
       )
-      setBtTxt('Subscribed successfully')
+      setBtText('Subscribed successfully')
 
       // Return to original state after 2s
       await new Promise((r) => setTimeout(r, 2000)).then(reset)
     } catch (err) {
       // TODO: Display error below Input component
-      console.error(err.Message)
+      console.error(err.message)
       reset()
     }
   }
@@ -111,7 +111,7 @@ function OutOfStock(props: OutOfStockProps) {
           iconPosition="left"
           onClick={() => handleSubmit()}
         >
-          {buttonTxt}
+          {buttonText}
         </Button>
       </div>
     </div>

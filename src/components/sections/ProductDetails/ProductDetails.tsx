@@ -178,8 +178,8 @@ function ProductDetails({ product: staleProduct }: Props) {
           )}
           {!availability && (
             <OutOfStock
-              onSubmit={() => {
-                console.info('test')
+              onSubmit={(email) => {
+                console.info(email)
               }}
             />
           )}
