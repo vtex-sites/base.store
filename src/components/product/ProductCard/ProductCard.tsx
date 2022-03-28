@@ -61,7 +61,6 @@ function ProductCard({
     <UICard
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
-      data-card-out-of-stock={outOfStock}
       data-fs-product-card
       {...otherProps}
     >
