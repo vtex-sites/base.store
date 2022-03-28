@@ -115,7 +115,7 @@ function Navbar() {
           </div>
         </section>
         <NavLinks />
-        <PostalCodeBar />
+        <PostalCodeBar content="Rua das Palmeiras, 14" />
       </div>
 
       <SlideOver
