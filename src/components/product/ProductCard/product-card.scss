@@ -51,7 +51,7 @@
   position: relative;
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: auto;
+  grid-template-rows: minmax(0, max-content);
   min-width: var(--fs-product-card-min-width);
   height: 100%;
   padding: var(--fs-product-card-padding);
@@ -86,6 +86,8 @@
 
 [data-fs-product-card-content] {
   padding: var(--fs-product-card-content-padding);
+  display: grid;
+  grid-template-rows: 1fr auto;
 
   a[href] {
     min-height: 100%;
@@ -173,6 +175,7 @@
   [data-fs-product-card-content] {
     @include media(">=notebook") {
       display: grid;
+      grid-template-rows: auto;
       grid-template-columns: 1fr auto;
       gap: var(--fs-product-card-gap);
     }
