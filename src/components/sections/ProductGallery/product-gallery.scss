@@ -124,7 +124,7 @@
     background-color: unset;
   }
 
-  .product-card[data-store-card] { min-width: 100%; }
+  [data-fs-product-card] { min-width: 100%; }
 }
 
 .product-listing__results-sponsored {
