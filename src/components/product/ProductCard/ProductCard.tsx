@@ -32,13 +32,13 @@ const imgOptions = {
   backgroundColor: '#f0f0f0',
   layout: 'constrained' as const,
   loading: 'lazy' as const,
-  sizes: '(max-width: 768px) 50vw, 20vw',
+  sizes: '(max-width: 768px) 25vw, 20vw',
   breakpoints: [240, 300, 360, 480, 720, 1024],
 }
 
 const imgOptionsForBigAspectRatio = {
   ...imgOptions,
-  sizes: '(max-width: 768px) 100vw, 30vw',
+  sizes: '(max-width: 768px) 50vw, 30vw',
 }
 
 function ProductCard({
