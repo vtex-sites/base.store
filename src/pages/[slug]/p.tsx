@@ -22,7 +22,7 @@ export type Props = PageProps<
   ProductPageQueryQueryVariables,
   unknown,
   ServerProductPageQueryQuery
->
+> & { slug: string }
 
 function Page(props: Props) {
   const { locale, currency } = useSession()
@@ -30,7 +30,7 @@ function Page(props: Props) {
     data: { site },
     serverData: { product, allProducts },
     location: { host },
-    params: { slug },
+    slug,
   } = props
 
   const youMightAlsoLikeProducts = useMemo(
