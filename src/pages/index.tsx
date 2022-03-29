@@ -9,7 +9,6 @@ import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeade
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
-import { execute } from 'src/server'
 import type { PageProps } from 'gatsby'
 import type {
   HomePageQueryQuery,
@@ -145,6 +144,7 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
+    const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
       variables: { slug },

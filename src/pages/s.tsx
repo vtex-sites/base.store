@@ -78,7 +78,10 @@ function Page(props: Props) {
   )
 }
 
-export const query = graphql`
+/**
+ * This query is run during SSG
+ * */
+export const querySSG = graphql`
   query SearchPageQuery {
     site {
       siteMetadata {
