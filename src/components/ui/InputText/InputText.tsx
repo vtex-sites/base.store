@@ -2,6 +2,8 @@ import React from 'react'
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import type { InputProps } from '@faststore/ui'
 
+import './input-text.scss'
+
 export type InputTextProps = {
   id: string
   label: string
@@ -15,12 +17,11 @@ const InputText = ({
   label,
   type = 'text',
   variant,
-  placeholder,
-  ...otherProps
+  placeholder = ' ', // needed to style float label using `placeholder-shown`
 }: Props) => {
   return (
-    <div>
-      <UIInput type={type} id={id} placeholder={placeholder} {...otherProps} />
+    <div data-fs-input-text data-fs-input-text-variant={variant}>
+      <UIInput type={type} id={id} placeholder={placeholder} />
       <UILabel htmlFor={id}>{label}</UILabel>
     </div>
   )

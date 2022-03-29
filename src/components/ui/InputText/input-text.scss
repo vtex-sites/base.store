@@ -1,0 +1,37 @@
+[data-fs-input-text] {
+  display: flex;
+  flex-flow: column-reverse;
+  padding: 1rem; // TODO: remove
+
+  label {
+    font-size: var(--fs-text-size-2);
+  }
+
+  input {
+    font-size: var(--fs-text-size-2);
+    border: 1px solid var(--fs-border-color-default);
+    border-radius: var(--fs-border-radius-default);
+
+    &:placeholder-shown + label {
+      overflow: hidden;
+      transform: translate(0, 5px);
+      transform-origin: left bottom;
+    }
+
+    &:-webkit-input-placeholder {
+      opacity: 0;
+      transition: inherit;
+    }
+
+    &:focus:-webkit-input-placeholder {
+      opacity: 1;
+    }
+
+    &:not(:placeholder-shown) + label,
+    &:focus + label {
+      font-size: var(--fs-text-size-0);
+      transform: translate(0, 0);
+      cursor: pointer;
+    }
+  }
+}
