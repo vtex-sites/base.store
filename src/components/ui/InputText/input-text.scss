@@ -79,6 +79,11 @@
 
     @include input-focus-ring($outline: #{var(--fs-color-focus-ring-danger)},
     $border: #{var(--fs-color-danger-border)});
+
+    &:hover:not(:disabled) {
+      border-color: var(--fs-color-danger-border);
+      box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-color-danger-border);
+    }
   }
 
   [data-fs-input-text-message] {
