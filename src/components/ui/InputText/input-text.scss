@@ -41,7 +41,7 @@
 
     &:not(:placeholder-shown) + label,
     &:focus + label {
-      top: 6px;
+      top: rem(6px);
       font-size: var(--fs-text-size-tiny);
     }
 
@@ -68,7 +68,7 @@
 }
 
 [data-fs-input-text-message] {
-  margin-top: 2px;
+  margin-top: rem(2px);
   font-size: var(--fs-text-size-legend);
   line-height: 1.5;
 }
@@ -93,21 +93,22 @@
 
 [data-fs-input-text-button="true"] {
   input {
-    padding-right: 75px;
+    padding-right: var(--fs-spacing-10);
   }
 
   [data-store-button] {
     position: absolute;
-    top: 4px;
-    right: 4px;
-    min-height: 40px;
+    top: var(--fs-spacing-1);
+    right: var(--fs-spacing-1);
+    min-height: rem(32px);
+    font-size: var(--fs-text-size-legend);
 
     &::before {
       position: absolute;
-      left: -4px;
+      left: calc(-1 * var(--fs-spacing-1));
       width: 1px;
       height: 70%;
-      background: var(--fs-border-color-default);
+      background-color: var(--fs-border-color-default);
       content: "";
     }
   }
