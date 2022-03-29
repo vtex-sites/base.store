@@ -13,27 +13,27 @@ export interface OutOfStockProps {
    */
   testId?: string
   /**
-   * The text tha goes inside the notification button.
-   */
-  buttonText?: string
-  /**
-   * Message describing how the user will be notified.
-   */
-  notificationMsg?: string
-  /**
    * The Out of Stock Section's title.
    */
   title?: string
   /**
-   * Notification icon.
-   * @default <Icon name="BellRinging" />
+   * The button text.
    */
-  icon?: ReactElement
+  buttonText?: string
   /**
-   * Notification icon.
+   * Icon displayed inside the button.
    * @default <Icon name="BellRinging" />
    */
-  notificationIcon?: ReactElement
+  buttonIcon?: ReactElement
+  /**
+   * Message describing when the user will be notified.
+   */
+  notificationMsg?: string
+  /**
+   * Icon displayed inside the message.
+   * @default <Icon name="BellRinging" />
+   */
+  notificationMsgIcon?: ReactElement
   /**
    *
    */
@@ -42,28 +42,28 @@ export interface OutOfStockProps {
 
 function OutOfStock(props: OutOfStockProps) {
   const defaultButtonText = 'Notify me'
-  const defaultIcon = (
-    <Icon name="BellRinging" weight="bold" width={16} height={16} />
-  )
+  const defaultIconName = 'BellRinging'
 
-  const [btText, setBtText] = useState(defaultButtonText)
+  const [btnText, setBtnText] = useState(defaultButtonText)
+  const [buttonIconName, setButtonIconName] = useState(defaultIconName)
   const [disabled, setDisabled] = useState(false)
-  const [iconButton, setIconButton] = useState(defaultIcon)
   const [email, setEmail] = useState('')
 
   const {
     title = 'Out of Stock',
     notificationMsg = 'Notify me when available',
-    buttonText = btText,
-    icon = iconButton,
-    notificationIcon = defaultIcon,
+    buttonText = btnText,
+    buttonIcon = <Icon name={buttonIconName} width={16} height={16} />,
+    notificationMsgIcon = (
+      <Icon name={defaultIconName} width={16} height={16} />
+    ),
     onSubmit,
     testId = 'store-out-of-stock',
   } = props
 
   const reset = () => {
-    setIconButton(defaultIcon)
-    setBtText(defaultButtonText)
+    setButtonIconName(defaultIconName)
+    setBtnText(defaultButtonText)
     setDisabled(false)
 
     setEmail('')
@@ -73,14 +73,12 @@ function OutOfStock(props: OutOfStockProps) {
     event.preventDefault()
 
     setDisabled(true)
-    setIconButton(<Icon name="Ellipsis" weight="bold" width={16} height={16} />)
+    setButtonIconName('Ellipsis')
 
     try {
       onSubmit(email)
-      setIconButton(
-        <Icon name="Checked" weight="bold" width={16} height={16} />
-      )
-      setBtText('Subscribed successfully')
+      setButtonIconName('Checked')
+      setBtnText('Subscribed successfully')
 
       // Return to original state after 2s
       await new Promise((r) => setTimeout(r, 2000)).then(reset)
@@ -96,7 +94,7 @@ function OutOfStock(props: OutOfStockProps) {
       <Form data-out-of-stock-form onSubmit={handleSubmit}>
         <div className="text__title-subsection">{title}</div>
         <div data-store-out-of-stock-subtitle>
-          {notificationIcon} {notificationMsg}
+          {notificationMsgIcon} {notificationMsg}
         </div>
         <div>
           <Input
@@ -111,7 +109,7 @@ function OutOfStock(props: OutOfStockProps) {
             disabled={disabled}
             data-store-out-of-stock-button
             variant="primary"
-            icon={icon}
+            icon={buttonIcon}
             iconPosition="left"
           >
             {buttonText}
