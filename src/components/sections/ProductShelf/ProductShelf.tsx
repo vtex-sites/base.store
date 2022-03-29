@@ -7,7 +7,7 @@ import Section from '../Section'
 
 import './product-shelf.scss'
 
-interface ProductShelfProps {
+export interface ProductShelfProps {
   products: ProductSummary_ProductFragment[]
   title: string | JSX.Element
   withDivisor?: boolean

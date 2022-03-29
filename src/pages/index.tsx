@@ -2,38 +2,14 @@ import { useSession } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React, { lazy, Suspense, useMemo } from 'react'
+import React, { useMemo } from 'react'
+import Sections from 'src/components/sections'
 import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type {
   HomePageQueryQuery,
   ServerHomePageQueryQuery,
 } from '@generated/graphql'
-
-const BannerText = lazy(
-  () => import(/* webpackMode: "eager" */ 'src/components/sections/BannerText')
-)
-
-const Hero = lazy(
-  () => import(/* webpackMode: "eager" */ 'src/components/sections/Hero')
-)
-
-const ProductShelf = lazy(
-  () =>
-    import(/* webpackMode: "eager" */ 'src/components/sections/ProductShelf')
-)
-
-const ProductTiles = lazy(
-  () =>
-    import(/* webpackMode: "eager" */ 'src/components/sections/ProductTiles')
-)
-
-const IncentivesHeader = lazy(
-  () =>
-    import(
-      /* webpackMode: "eager" */ 'src/components/sections/Incentives/IncentivesHeader'
-    )
-)
 
 export type Props = PageProps<
   HomePageQueryQuery,
@@ -98,44 +74,38 @@ function Page(props: Props) {
         If needed, wrap your component in a <Section /> component
         (not the HTML tag) before rendering it here.
       */}
-      <Suspense fallback={null}>
-        <Hero
-          title="New Products Available"
-          subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
-          linkText="See all"
-          link="/"
-          imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
-          imageAlt="Quest 2 Controller on a table"
-        />
-      </Suspense>
+      <Sections.Hero
+        title="New Products Available"
+        subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
+        linkText="See all"
+        link="/"
+        imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
+        imageAlt="Quest 2 Controller on a table"
+      />
 
-      <Suspense fallback={null}>
-        <IncentivesHeader />
-      </Suspense>
+      <Sections.IncentivesHeader />
 
-      <Suspense fallback={null}>
-        <ProductShelf products={products?.slice(0, 5)} title="Most Wanted" />
-      </Suspense>
+      <Sections.ProductShelf
+        products={products?.slice(0, 5)}
+        title="Most Wanted"
+      />
 
-      <Suspense fallback={null}>
-        <ProductTiles products={products?.slice(5, 8)} title="Just Arrived" />
-      </Suspense>
+      <Sections.ProductTiles
+        products={products?.slice(5, 8)}
+        title="Just Arrived"
+      />
 
-      <Suspense fallback={null}>
-        <BannerText
-          title="Receive our news and promotions in advance."
-          caption="Enjoy and get 10% off on your first purchase."
-          actionPath="/"
-          actionLabel="Call to action"
-        />
-      </Suspense>
+      <Sections.BannerText
+        title="Receive our news and promotions in advance."
+        caption="Enjoy and get 10% off on your first purchase."
+        actionPath="/"
+        actionLabel="Call to action"
+      />
 
-      <Suspense fallback={null}>
-        <ProductShelf
-          products={products?.slice(9, 14)}
-          title="Deals & Promotions"
-        />
-      </Suspense>
+      <Sections.ProductShelf
+        products={products?.slice(9, 14)}
+        title="Deals & Promotions"
+      />
     </>
   )
 }

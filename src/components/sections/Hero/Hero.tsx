@@ -12,7 +12,7 @@ import Section from '../Section'
 
 type Variant = 'default' | 'small'
 
-interface HeroProps {
+export interface HeroProps {
   title: string
   subtitle: string
   variant?: Variant

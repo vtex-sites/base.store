@@ -6,7 +6,7 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import Section from '../Section'
 
-interface TilesProps {
+export interface TilesProps {
   products: ProductSummary_ProductFragment[]
   title: string | JSX.Element
 }
