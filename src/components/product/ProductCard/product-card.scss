@@ -146,7 +146,7 @@
   }
 }
 
-[data-fs-product-card-bordered=true] {
+[data-fs-product-card-bordered="true"] {
   @include media(">=notebook") {
     border: var(--fs-border-width-default) solid var(--fs-border-color-light);
   }
