@@ -1,21 +1,29 @@
 [data-fs-input-text] {
+  --fs-input-text-padding-horizontal: var(--fs-spacing-2);
+
+  position: relative;
   display: flex;
   flex-flow: column-reverse;
-  padding: 1rem; // TODO: remove
+  margin: 1rem; // TODO: remove
 
+  input,
   label {
-    font-size: var(--fs-text-size-2);
+    transition: var(--fs-transition-property) 0.2s var(--fs-transition-function);
   }
 
   input {
+    height: var(--fs-control-tap-size);
+
+    // padding: 14px var(--fs-spacing-2) 0;
+    padding: var(--fs-spacing-2) var(--fs-input-text-padding-horizontal) 0;
     font-size: var(--fs-text-size-2);
+    line-height: 1.25;
     border: 1px solid var(--fs-border-color-default);
     border-radius: var(--fs-border-radius-default);
 
     &:placeholder-shown + label {
+      top: calc(50% - (1.25 * var(--fs-text-size-2) / 2));
       overflow: hidden;
-      transform: translate(0, 5px);
-      transform-origin: left bottom;
     }
 
     &:-webkit-input-placeholder {
@@ -29,9 +37,16 @@
 
     &:not(:placeholder-shown) + label,
     &:focus + label {
+      top: 6px;
       font-size: var(--fs-text-size-0);
-      transform: translate(0, 0);
       cursor: pointer;
     }
+  }
+
+  label {
+    position: absolute;
+    padding: 0 var(--fs-input-text-padding-horizontal);
+    font-size: var(--fs-text-size-2);
+    line-height: 1.5;
   }
 }
