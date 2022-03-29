@@ -22,8 +22,9 @@ function Link<T extends ElementType = typeof GatsbyLink>({
   return (
     <UILink
       as={GatsbyLink}
-      data-link-variant={variant}
-      data-link-inverse={inverse}
+      data-fs-link
+      data-fs-link-variant={variant}
+      data-fs-link-inverse={inverse}
       to={to}
       {...props}
     />

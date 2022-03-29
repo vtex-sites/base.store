@@ -29,11 +29,11 @@ function LinkButton({
     <UILink
       as={GatsbyLink}
       innerRef={linkRef}
-      data-store-button
-      data-button-link
-      data-button-variant={variant}
-      data-button-inverse={inverse}
-      data-button-disabled={disabled}
+      data-fs-button
+      data-fs-button-link
+      data-fs-button-variant={variant}
+      data-fs-button-inverse={inverse}
+      data-fs-button-disabled={disabled}
       onFocus={(e: FocusEvent) => {
         e.preventDefault()
 
