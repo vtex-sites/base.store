@@ -85,7 +85,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Filter Button specificity on desktop
 - Filter facets are not being selected on mobile
 - `CartItem` image size and truncate long product's title
-- entrusting the definition of the cursor property to the browser
+- Entrusting the definition of the cursor property to the browser
+- Enable Stylelint for some files and apply the rules after the Theme structure.
 
 ### Security
 
