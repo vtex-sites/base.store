@@ -30,7 +30,7 @@ function LinkButton({
       as={GatsbyLink}
       innerRef={linkRef}
       data-store-button
-      className={`link-button ${className}`}
+      data-button-link
       data-button-variant={variant}
       data-button-inverse={inverse}
       data-button-disabled={disabled}

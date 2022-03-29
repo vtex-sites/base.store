@@ -27,7 +27,6 @@ function Button({
 }: Props) {
   return (
     <UIButton
-      className="button"
       data-button-variant={variant}
       data-button-inverse={inverse}
       {...props}
