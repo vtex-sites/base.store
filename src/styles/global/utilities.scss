@@ -43,6 +43,32 @@ $base: 16px !default;
   }
 }
 
+@mixin input-focus-ring-error {
+  @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
+    @supports (-webkit-appearance:none) {         // Use `focus` instead of `focus-visible`
+      &:hover:focus,                              // due to Safari's lack of support
+      &:focus {
+        border-color: var(--fs-color-danger-text);
+        outline: none;
+        box-shadow:
+          0 0 0 1px var(--fs-color-body-bkg),
+          0 0 0 var(--fs-border-width-thickest) var(--fs-color-danger-bkg),
+          inset 0 0 0 var(--fs-border-width-default) var(--fs-color-danger-text);
+      }
+    }
+  }
+
+  &:focus-visible,
+  &:hover:focus-visible {
+    border-color: var(--fs-color-danger-text);
+    outline: none;
+    box-shadow:
+      0 0 0 1px var(--fs-color-body-bkg),
+      0 0 0 var(--fs-border-width-thickest) var(--fs-color-danger-bkg),
+      inset 0 0 0 var(--fs-border-width-default) var(--fs-color-danger-text);
+  }
+}
+
 @mixin focus-ring {
   outline: none;
   box-shadow: 0 0 0 1px var(--fs-color-body-bkg), 0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring);
