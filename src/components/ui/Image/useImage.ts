@@ -25,9 +25,9 @@ export const useImage = ({
     const builder = urlBuilder(baseUrl, options)
 
     const srcs = FACTORS.map((factor) => {
-      const w = width * factor
+      const rescaledWidth = width * factor
 
-      return `${builder(w, height * factor)} ${w}w`
+      return `${builder(rescaledWidth, height * factor)} ${rescaledWidth}w`
     })
 
     return {

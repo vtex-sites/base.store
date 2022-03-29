@@ -10,8 +10,8 @@ interface Props extends ImageOptions {
   preload?: boolean
 }
 
-function Image({ preload = false, ...rest }: Props) {
-  const imgProps = useImage(rest)
+function Image({ preload = false, ...otherProps }: Props) {
+  const imgProps = useImage(otherProps)
   const { src, sizes = '100vw', srcSet } = imgProps
 
   return (
