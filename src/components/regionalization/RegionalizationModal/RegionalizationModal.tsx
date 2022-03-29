@@ -34,12 +34,6 @@ function RegionalizationModal({
     return () => layout?.classList.remove('no-scroll')
   }, [isOpen, layout, setFade])
 
-  const onTransitionEnd = () => {
-    if (fade === 'out') {
-      onDismiss()
-    }
-  }
-
   return (
     <UIModal
       data-regionalization-modal
@@ -49,7 +43,7 @@ function RegionalizationModal({
         e.preventDefault()
         closeModal()
       }}
-      onTransitionEnd={onTransitionEnd}
+      onAnimationEnd={() => fade === 'out' && onDismiss()}
     >
       <header className="regionalization-modal__header">
         <IconButton

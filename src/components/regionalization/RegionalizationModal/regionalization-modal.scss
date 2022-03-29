@@ -26,13 +26,11 @@
   }
 
   &[data-regionalization-modal-state="in"] {
-    transform: translateY(0);
-    transition: transform .2s ease-in;
+    animation: motion-in .2s ease-in;
   }
 
   &[data-regionalization-modal-state="out"] {
-    transform: translateY(50%);
-    transition: transform .2s ease-out;
+    animation: motion-out .2s ease-out;
   }
 
   .regionalization-modal__header {
@@ -74,5 +72,29 @@
         margin-right: var(--fs-spacing-0);
       }
     }
+  }
+}
+
+@keyframes motion-in {
+  from {
+    transform: translate3d(0, 50%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-out {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(0, 50%, 0);
+    opacity: 0;
   }
 }
