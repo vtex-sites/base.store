@@ -17,29 +17,29 @@ $base: 16px !default;
   @return #{$rem}rem;
 }
 
-@mixin input-focus-ring {
+@mixin input-focus-ring($outline: #{var(--fs-color-focus-ring)}, $border: #{var(--fs-border-color-default-active)}) {
   @media not all and (min-resolution: .001dpcm) { // Target only Safari browsers
     @supports (-webkit-appearance:none) {         // Use `focus` instead of `focus-visible`
       &:hover:focus,                              // due to Safari's lack of support
       &:focus {
-        border-color: var(--fs-border-color-default-active);
+        border-color: $border;
         outline: none;
         box-shadow:
           0 0 0 1px var(--fs-color-body-bkg),
-          0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring),
-          inset 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
+          0 0 0 var(--fs-border-width-thickest) $outline,
+          inset 0 0 0 var(--fs-border-width-default) $border;
       }
     }
   }
 
   &:focus-visible,
   &:hover:focus-visible {
-    border-color: var(--fs-border-color-default-active);
+    border-color: $border;
     outline: none;
     box-shadow:
       0 0 0 1px var(--fs-color-body-bkg),
-      0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring),
-      inset 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
+      0 0 0 var(--fs-border-width-thickest) $outline,
+      inset 0 0 0 var(--fs-border-width-default) $border;
   }
 }
 
