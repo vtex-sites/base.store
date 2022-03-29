@@ -46,7 +46,7 @@ module.exports = {
     'property-case': 'lower',
     'value-list-max-empty-lines': 0,
     'declaration-colon-space-after': 'always-single-line',
-    'declaration-colon-space-before': 'never',
+    'declaration-colon-space-before': null,
     'block-closing-brace-space-before': 'always-single-line',
     'block-opening-brace-space-after': 'always-single-line',
     'block-opening-brace-space-before': 'always',
