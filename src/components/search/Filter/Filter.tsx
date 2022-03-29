@@ -1,16 +1,14 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React, { useEffect, useMemo, useReducer, useRef } from 'react'
+import React, { useRef } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
-import type {
-  IStoreSelectedFacet,
-  Filter_FacetsFragment,
-} from '@generated/graphql'
+import type { Filter_FacetsFragment } from '@generated/graphql'
 
 import Facets from './Facets'
+import { useFilter } from './useFilter'
 
 import './filter.scss'
 
@@ -34,100 +32,20 @@ interface Props {
 
 type Callback = () => unknown
 
-interface State {
-  expanded: Set<number>
-  selected: IStoreSelectedFacet[]
-}
-
-type Action =
-  | {
-      type: 'toggleExpanded'
-      payload: number
-    }
-  | {
-      type: 'selectFacets'
-      payload: IStoreSelectedFacet[]
-    }
-  | {
-      type: 'toggleFacet'
-      payload: IStoreSelectedFacet
-    }
-
-const reducer = (state: State, action: Action) => {
-  const { expanded, selected } = state
-  const { type, payload } = action
-
-  if (type === 'toggleExpanded') {
-    if (expanded.has(payload)) {
-      expanded.delete(payload)
-    } else {
-      expanded.add(payload)
-    }
-
-    return {
-      ...state,
-      expanded: new Set(expanded),
-    }
-  }
-
-  if (type === 'selectFacets' && payload !== selected) {
-    return {
-      ...state,
-      selected: payload,
-    }
-  }
-
-  if (type === 'toggleFacet') {
-    const index = state.selected.findIndex(
-      (facet) => facet.key === payload.key && facet.value === payload.value
-    )
-
-    if (index > -1) {
-      state.selected.splice(index, 1)
-
-      return {
-        ...state,
-        selected: [...state.selected],
-      }
-    }
-
-    return {
-      ...state,
-      selected: [...state.selected, payload],
-    }
-  }
-
-  return state
-}
-
 function Filter({
   facets: allFacets,
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
 }: Props) {
-  const { setFacets, toggleFacet, state: searchState } = useSearch()
-
-  const [state, dispatch] = useReducer(reducer, null, () => ({
-    expanded: new Set([]),
-    selected: searchState.selectedFacets,
-  }))
-
-  const facets = useMemo(
-    () => allFacets.filter((facet) => facet.type === 'BOOLEAN'),
-    [allFacets]
-  )
-
-  const { expanded, selected } = state
-
   const dismissTransition = useRef<Callback | undefined>()
+  const {
+    setFacets,
+    toggleFacet,
+    state: { selectedFacets },
+  } = useSearch()
 
-  useEffect(() => {
-    dispatch({
-      type: 'selectFacets',
-      payload: searchState.selectedFacets,
-    })
-  }, [searchState.selectedFacets])
+  const { facets, selected, expanded, dispatch } = useFilter(allFacets)
 
   return (
     <>
@@ -135,7 +53,6 @@ function Filter({
         <Facets
           facets={facets}
           testId={`desktop-${testId}`}
-          selectedFacets={selected}
           indicesExpanded={expanded}
           onFacetChange={toggleFacet}
           onAccordionChange={(index) =>
@@ -165,7 +82,7 @@ function Filter({
               onClick={() => {
                 dispatch({
                   type: 'selectFacets',
-                  payload: searchState.selectedFacets,
+                  payload: selectedFacets,
                 })
 
                 dismissTransition.current?.()
@@ -175,7 +92,6 @@ function Filter({
           <Facets
             facets={facets}
             testId={`mobile-${testId}`}
-            selectedFacets={selected}
             indicesExpanded={expanded}
             onFacetChange={(facet) =>
               dispatch({ type: 'toggleFacet', payload: facet })
@@ -196,7 +112,7 @@ function Filter({
             variant="primary"
             data-testid="filter-modal-button-apply"
             onClick={() => {
-              setFacets(state.selected)
+              setFacets(selected)
               onDismiss?.()
             }}
           >

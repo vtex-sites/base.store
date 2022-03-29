@@ -1501,23 +1501,16 @@
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
 
-"@faststore/sdk@^1.6.22":
-  version "1.6.22"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.6.22.tgz#cbbe30a22cc1d3e8722bc4c6c2e954896b45e3b6"
-  integrity sha512-Vkd0P45c2gv19eXd5xnAY9PpqW0GiE7YNo4ugJFAOU9ARKtqG7O8pRnNUriFzbVqMZhSKacYRbjOunzRVK0U+A==
-  dependencies:
-    idb-keyval "^5.1.3"
-
 "@faststore/sdk@https://pkg.csb.dev/vtex/faststore/commit/50d70cc2/@faststore/sdk":
   version "1.6.20"
   resolved "https://pkg.csb.dev/vtex/faststore/commit/50d70cc2/@faststore/sdk#ba56b77131c252c64fba189c26825d33b4bed877"
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.6.21":
-  version "1.6.21"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.6.21.tgz#ef4d603dcb3f91802bcd24194c0b95dc90cd71b1"
-  integrity sha512-+5tj1kFOT3Z3m1aKKDr6DXxsYjwdVACgUgZ3kNulTjgPkEx00/3B0D9gzmafgHb0rhQvBYOC+NFGcVOu7xkRnA==
+"@faststore/ui@^1.6.22":
+  version "1.6.24"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.6.24.tgz#35747a309b6cc78d220e62ccaa96143d115f6203"
+  integrity sha512-yQGQdlu9tJ1RlIZlCpHn6CRh1y6FiRl6txANwnlFtPhUHsaffmhdnnL0WxHSnj0iD+oRIHHDkIFQJpoL6M6ZpQ==
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
