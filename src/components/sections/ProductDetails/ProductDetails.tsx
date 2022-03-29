@@ -22,16 +22,6 @@ interface Props {
   product: ProductDetailsFragment_ProductFragment
 }
 
-const imgOptions = {
-  sourceWidth: 1024,
-  backgroundColor: '#f0f0f0',
-  layout: 'constrained' as const,
-  loading: 'eager' as const,
-  sizes: '(max-width: 768px) 25vw, 50vw',
-  breakpoints: [360, 720, 1024],
-  aspectRatio: 4 / 3,
-}
-
 function ProductDetails({ product: staleProduct }: Props) {
   const { currency } = useSession()
   const [addQuantity, setAddQuantity] = useState(1)
@@ -130,9 +120,13 @@ function ProductDetails({ product: staleProduct }: Props) {
 
         <section className="product-details__image">
           <Image
-            baseUrl={productImages[0].url}
+            preload
+            loading="eager"
+            src={productImages[0].url}
             alt={productImages[0].alternateName}
-            {...imgOptions}
+            width={360}
+            height={270}
+            sizes="(max-width: 768px) 25vw, 50vw"
           />
         </section>
 
