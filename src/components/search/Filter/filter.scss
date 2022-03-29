@@ -28,8 +28,8 @@
   }
 
   [data-accordion-item] [data-store-button] {
-    font-weight: var(--fs-text-weight-regular);
     font-size: var(--fs-text-size-3);
+    font-weight: var(--fs-text-weight-regular);
     line-height: 1.5;
 
     @include media(">=notebook") {

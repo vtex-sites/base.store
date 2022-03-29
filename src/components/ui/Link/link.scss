@@ -19,13 +19,13 @@ a, [data-store-link] {
 // Links ////////////////////////////
 
 [data-link-variant="default"] {
-  color: var(--fs-color-link);
   line-height: 1.5;
+  color: var(--fs-color-link);
 }
 
 [data-link-variant="display"] {
-  color: var(--fs-color-text-display);
   line-height: 1.5;
+  color: var(--fs-color-text-display);
   &:visited { color: var(--fs-color-text-display); }
 }
 
@@ -36,8 +36,8 @@ a, [data-store-link] {
 }
 
 [data-link-variant="footer"] {
-  color: var(--fs-color-text);
   font-size: var(--fs-text-size-1);
+  color: var(--fs-color-text);
 
   @include media(">=notebook") { padding: var(--fs-spacing-1) var(--fs-spacing-0); }
 }
