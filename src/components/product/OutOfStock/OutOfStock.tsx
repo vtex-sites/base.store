@@ -92,7 +92,7 @@ function OutOfStock(props: OutOfStockProps) {
   return (
     <div data-store-out-of-stock data-testid={testId} aria-live="polite">
       <div className="text__title-subsection">{title}</div>
-      <div data-store-out-of-stock-description>
+      <div data-store-out-of-stock-subtitle>
         {notificationIcon} {notificationMsg}
       </div>
       <div>
