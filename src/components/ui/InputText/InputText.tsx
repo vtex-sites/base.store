@@ -18,10 +18,11 @@ const InputText = ({
   type = 'text',
   variant,
   placeholder = ' ', // needed to style float label using `placeholder-shown`
+  ...otherProps
 }: Props) => {
   return (
     <div data-fs-input-text data-fs-input-text-variant={variant}>
-      <UIInput type={type} id={id} placeholder={placeholder} />
+      <UIInput type={type} id={id} placeholder={placeholder} {...otherProps} />
       <UILabel htmlFor={id}>{label}</UILabel>
     </div>
   )

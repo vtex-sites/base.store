@@ -37,18 +37,25 @@
       opacity: 1;
     }
 
+    @include input-focus-ring;
+
     &:not(:placeholder-shown) + label,
     &:focus + label {
       top: 6px;
       font-size: var(--fs-text-size-0);
     }
 
-    &:hover {
+    &:hover:not(:disabled) {
       border-color: var(--fs-border-color-default-active);
       box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
     }
 
-    @include input-focus-ring;
+    &:disabled {
+      background-color: var(--fs-color-disabled-bkg);
+      border: 0;
+      cursor: not-allowed;
+      + label { cursor: not-allowed; }
+    }
   }
 
   label {
