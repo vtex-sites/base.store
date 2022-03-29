@@ -195,7 +195,7 @@ function Filter({
       >
         <div className="filter-modal__body">
           <header className="filter-modal__header">
-            <h2 className="title-display">Filters</h2>
+            <h2 className="text__lead">Filters</h2>
             <IconButton
               data-testid="filter-modal-button-close"
               classes="filter-modal__button"

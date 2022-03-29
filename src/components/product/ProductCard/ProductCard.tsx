@@ -5,7 +5,7 @@ import {
   CardImage as UICardImage,
 } from '@faststore/ui'
 import { graphql, Link } from 'gatsby'
-import React, { memo, useMemo } from 'react'
+import React, { memo } from 'react'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
@@ -16,13 +16,12 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import './product-card.scss'
 
-type Variant = 'horizontal' | 'vertical'
+type Variant = 'wide' | 'default'
 
 interface Props {
   product: ProductSummary_ProductFragment
   index: number
   bordered?: boolean
-  outOfStock?: boolean
   variant?: Variant
   aspectRatio?: number
   buyButton?: ReactNode
@@ -40,44 +39,29 @@ const imgOptions = {
 function ProductCard({
   product,
   index,
-  variant = 'vertical',
+  variant = 'default',
   bordered = false,
   aspectRatio = 1,
-  outOfStock = false,
   buyButton,
   ...otherProps
 }: Props) {
   const {
     isVariantOf: { name },
     image: [img],
-    offers: { lowPrice: spotPrice, offers },
+    offers: {
+      lowPrice: spotPrice,
+      offers: [{ listPrice, availability }],
+    },
   } = product
 
-  // TODO: Move this computation to the backend
-  const selectedOffer = useMemo(() => {
-    const lowestPriceOffer = offers.findIndex((x) => x.price === spotPrice)
-
-    if (lowestPriceOffer === -1) {
-      console.error(
-        'Could not find the lowest price product offer. Showing the first offer provided.'
-      )
-
-      return 0
-    }
-
-    return lowestPriceOffer
-  }, [spotPrice, offers])
-
-  const { listPrice } = offers[selectedOffer]
-
-  const linkProps = useProductLink({ product, selectedOffer, index })
+  const linkProps = useProductLink({ product, selectedOffer: 0, index })
+  const outOfStock = availability !== 'https://schema.org/InStock'
 
   return (
     <UICard
-      className="product-card"
-      data-card-variant={variant}
-      data-card-bordered={bordered}
-      data-card-out-of-stock={outOfStock}
+      data-fs-product-card
+      data-fs-product-card-variant={variant}
+      data-fs-product-card-bordered={bordered}
       {...otherProps}
     >
       <UICardImage>
@@ -88,21 +72,22 @@ function ProductCard({
           {...imgOptions}
         />
       </UICardImage>
-      <UICardContent>
-        <div className="product-card__heading">
-          <h3 className="product-card__title / title-small">
+
+      <UICardContent data-fs-product-card-content>
+        <div data-fs-product-card-heading>
+          <h3 data-fs-product-card-title>
             <Link {...linkProps} title={name}>
               {name}
             </Link>
           </h3>
-          <div className="product-card__prices">
+          <div data-fs-product-card-prices>
             <Price
               value={listPrice}
               formatter={useFormattedPrice}
               testId="list-price"
               data-value={listPrice}
               variant="listing"
-              classes="text-body-small"
+              classes="text__legend"
               SRText="Original price:"
             />
             <Price
@@ -111,7 +96,7 @@ function ProductCard({
               testId="price"
               data-value={spotPrice}
               variant="spot"
-              classes="text-body"
+              classes="text__body"
               SRText="Sale Price:"
             />
           </div>

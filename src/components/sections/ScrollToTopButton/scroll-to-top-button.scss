@@ -4,9 +4,9 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-bottom: var(--space-10);
+  padding-bottom: var(--fs-spacing-10);
 
   @include media(">=notebook") {
-    padding-bottom: var(--space-8);
+    padding-bottom: var(--fs-spacing-8);
   }
 }

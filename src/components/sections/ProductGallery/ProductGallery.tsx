@@ -1,13 +1,14 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { lazy, Suspense, useState } from 'react'
-import ProductGrid from 'src/components/product/ProductGrid'
+import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import { mark } from 'src/sdk/tests/mark'
 
 import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
@@ -17,13 +18,14 @@ import { useGalleryQuery } from './useGalleryQuery'
 import './product-gallery.scss'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
-const GalleryPageSkeleton = <ProductGrid page={0} pageSize={0} products={[]} />
+const GalleryPageSkeleton = <ProductGridSkeleton loading />
 
 interface Props {
   title: string
+  searchTerm?: string
 }
 
-function ProductGallery({ title }: Props) {
+function ProductGallery({ title, searchTerm }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
@@ -33,15 +35,22 @@ function ProductGallery({ title }: Props) {
 
   if (data && totalCount === 0) {
     return (
-      <Section className="product-listing / grid-content">
+      <Section className="product-listing layout__content">
         <EmptyGallery />
       </Section>
     )
   }
 
   return (
-    <Section className="product-listing / grid-content-full">
-      <div className="product-listing__content-grid / grid-content">
+    <Section className="product-listing layout__content-full">
+      {searchTerm && (
+        <header className="product-listing__search-term layout__content">
+          <h1>
+            Showing results for: <span>{searchTerm}</span>
+          </h1>
+        </header>
+      )}
+      <div className="product-listing__content-grid layout__content">
         <div className="product-listing__filters">
           <FilterSkeleton loading={facets?.length === 0}>
             <Filter
@@ -165,4 +174,5 @@ function ProductGallery({ title }: Props) {
   )
 }
 
-export default ProductGallery
+ProductGallery.displayName = 'ProductGallery'
+export default mark(ProductGallery)

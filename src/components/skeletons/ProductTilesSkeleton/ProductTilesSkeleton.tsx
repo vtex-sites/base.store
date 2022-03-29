@@ -4,18 +4,18 @@ import Tiles, { Tile } from 'src/components/ui/Tiles'
 
 import ProductTileSkeleton from './ProductTileSkeleton'
 
-// TODO: // Replace it when items number be dinamically defined
+// TODO: // Replace it when items number become dynamically defined
 const DEFAULT_ITEMS_NUMBER = 3
 
 interface Props {
   loading?: boolean
-  variant?: 'vertical' | 'horizontal'
+  variant?: 'wide' | 'default'
 }
 
 function ProductTilesSkeleton({
   children,
   loading = true,
-  variant = 'vertical',
+  variant = 'default',
 }: PropsWithChildren<Props>) {
   return loading ? (
     <Tiles>

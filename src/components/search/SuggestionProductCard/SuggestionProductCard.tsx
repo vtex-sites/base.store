@@ -51,10 +51,7 @@ function SuggestionProductCard({
           <Image baseUrl={img.url} alt={img.alternateName} {...imgOptions} />
         </CardImage>
         <div data-suggestion-product-card-summary>
-          <p
-            className="title-sub-subsection"
-            data-suggestion-product-card-title
-          >
+          <p className="text__title-mini" data-suggestion-product-card-title>
             {name}
           </p>
           <span data-suggestion-product-card-prices>
@@ -64,7 +61,7 @@ function SuggestionProductCard({
               testId="list-price"
               data-value={listPrice}
               variant="listing"
-              classes="text-body-small"
+              classes="text__legend"
               SRText="Original price:"
             />
             <Price
@@ -73,7 +70,7 @@ function SuggestionProductCard({
               testId="price"
               data-value={price}
               variant="spot"
-              classes="title-sub-subsection"
+              classes="text__title-mini"
               SRText="Price:"
             />
           </span>

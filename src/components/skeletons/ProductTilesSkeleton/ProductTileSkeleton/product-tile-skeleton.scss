@@ -16,12 +16,12 @@
     @include media(">=tablet") { height: 28rem; }
   }
 
-  &[data-variant="horizontal"] {
+  &[data-variant="wide"] {
     [data-product-tile-skeleton-content] {
-      background-color: var(--bg-neutral-light);
+      background-color: var(--fs-color-neutral-bkg);
 
       @include media(">=tablet") {
-        padding: var(--space-2) var(--space-3) var(--space-3);
+        padding: var(--fs-spacing-2) var(--fs-spacing-3) var(--fs-spacing-3);
       }
     }
   }
@@ -29,7 +29,7 @@
   [data-product-tile-skeleton-image] {
     height: 60%;
     min-height: 60%;
-    border-radius: var(--border-radius-default) var(--border-radius-default) 0 0;
+    border-radius: var(--fs-border-radius-default) var(--fs-border-radius-default) 0 0;
 
     @include media(">=tablet") {
       height: 70%;
@@ -70,9 +70,9 @@
     flex-direction: row;
     align-items: flex-start;
     height: 40%;
-    padding: var(--space-3);
-    border-bottom-right-radius: var(--border-radius-default);
-    border-bottom-left-radius: var(--border-radius-default);
+    padding: var(--fs-spacing-3);
+    border-bottom-right-radius: var(--fs-border-radius-default);
+    border-bottom-left-radius: var(--fs-border-radius-default);
 
     @include media(">=tablet") {
       flex-flow: row wrap;
@@ -86,7 +86,7 @@
 
     &[data-tile-index="1"] {
       height: 20%;
-      padding: var(--space-2) var(--space-3);
+      padding: var(--fs-spacing-2) var(--fs-spacing-3);
 
       @include media(">=tablet") {
         flex-flow: row wrap;
@@ -113,7 +113,7 @@
         &[data-tile-index="3"] { width: 60%; }
       }
 
-      [data-element-variant="text"] { margin-bottom: var(--space-1); }
+      [data-element-variant="text"] { margin-bottom: var(--fs-spacing-1); }
 
       [data-product-tile-skeleton-price] {
         width: 60%;
@@ -124,27 +124,27 @@
 
     [data-product-tile-skeleton-badge] {
       position: absolute;
-      right: var(--space-1);
+      right: var(--fs-spacing-1);
       width: 20%;
 
       @include media(">=tablet") { width: 20%; }
 
       &[data-tile-index="2"],
       &[data-tile-index="3"] {
-        bottom: var(--space-2);
-        left: var(--space-3);
+        bottom: var(--fs-spacing-2);
+        left: var(--fs-spacing-3);
         width: 30%;
 
         @include media(">=tablet") {
           position: relative;
           bottom: 0;
-          left: var(--space-2);
+          left: var(--fs-spacing-2);
           width: 50%;
         }
 
         @include media(">=notebook") {
           position: absolute;
-          right: var(--space-1);
+          right: var(--fs-spacing-1);
           bottom: unset;
           left: unset;
           width: 30%;
@@ -153,16 +153,16 @@
 
       [data-element-variant="badge"] {
         width: 100%;
-        height: var(--space-4);
+        height: var(--fs-spacing-4);
 
         @include media(">=tablet") {
           position: absolute;
-          right: var(--space-1);
+          right: var(--fs-spacing-1);
         }
 
         @include media(">=notebook") {
           position: relative;
-          right: var(--space-0);
+          right: var(--fs-spacing-0);
         }
       }
     }

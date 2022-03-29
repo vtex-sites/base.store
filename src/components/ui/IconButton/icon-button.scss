@@ -4,12 +4,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--tap-min-size);
-  height: var(--tap-min-size);
-  color: var(--color-text);
+  width: var(--fs-control-tap-size);
+  height: var(--fs-control-tap-size);
+  color: var(--fs-color-text);
   background-color: transparent;
   border: 0;
-  border-radius: var(--border-radius-button);
+  border-radius: var(--fs-border-radius-default);
   transition: background-color .5s ease;
 
   span {
@@ -20,15 +20,15 @@
 
   @include focus-ring-visible;
 
-  &:hover, &:focus { background-color: var(--bg-secondary-light); }
+  &:hover, &:focus { background-color: var(--fs-color-primary-bkg-light); }
 
   &:active {
-    color: var(--color-text-display);
-    background-color: var(--color-secondary-1);
+    color: var(--fs-color-text-display);
+    background-color: var(--fs-color-main-1);
   }
 
   &:disabled, &[data-button-disabled="true"] {
-    color: var(--color-text-disabled);
-    background-color: var(--bg-disabled);
+    color: var(--fs-color-disabled-text);
+    background-color: var(--fs-color-disabled-bkg);
   }
 }

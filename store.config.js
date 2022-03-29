@@ -6,10 +6,11 @@ module.exports = {
   api: {
     storeId: 'storeframework',
     environment: 'vtexcommercestable',
+    hideUnavailableItems: true,
   },
 
   // Default channel
-  channel: '1',
+  channel: '{"salesChannel":"1"}',
 
   // Production URLs
   storeUrl: 'https://vtexfaststore.com',

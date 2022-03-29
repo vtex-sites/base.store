@@ -7,13 +7,13 @@
   bottom: 0;
   left: 0;
   z-index: 3;
-  background-color: var(--color-black-transparent-20);
+  background-color: rgb(0 0 0 / 20%);
 }
 
 [data-slide-over] {
   position: fixed;
   height: 100vh;
-  background-color: var(--bg-neutral-lightest);
+  background-color: var(--fs-color-neutral-0);
 }
 
 [data-slide-over-size="full"] {
@@ -27,7 +27,7 @@
 
   @include media(">=notebook") {
     width: calc(100% / 3);
-    max-width: calc(var(--breakpoint-notebook) / 3);
+    max-width: calc(var(--fs-grid-breakpoint-notebook) / 3);
   }
 }
 

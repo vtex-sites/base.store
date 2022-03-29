@@ -4,35 +4,12 @@
   </a>
 </p>
 <h1 align="center">
-  A starter powered by Faststore and Gatsby
+  A starter powered by FastStore and Gatsby
 </h1>
-
-Kickoff your store with this boilerplate. This starter ships with the main Faststore configuration files you might need to get up and running blazing fast with the blazing-fast store for React.
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
 asdf
-adsf
-asdfasdf
-asdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdf
-asdfasdf
-asdfasdf
-asdfasdf
-asdfasdf
 ## ⚠️ Before you start
 
-As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarise what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
+As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarize what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
 
 1. Support up to 2.5K SKUs. If you have more than 2.5K SKUs, you have two options. Either reduce the number of skus on your catalog to fall below 2.5K SKUs or use Client Side Rendering (CSR) for all SKUs. (Note that CSR makes your SKUs not indexable by Search Engines and harms performance considerably)
 2. Multiple CMS Previews. Only one user is allowed to preview content from the CMS at a time. If two users preview any content from any page at the CMS, the previews are not consistent and one user may see data from the other.
@@ -46,7 +23,7 @@ As of Dec, 22, 2021, this starter is still far from covering most basic cases fo
 10. Sitemap
 11. Sku selector on PDP
 12. Promotions via utm
-13. Produt specifications
+13. Product specifications
 
 ## 🚀 Quick start
 
@@ -181,7 +158,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 22. **`pull_request_template.md`**: Template used when creating your Pull Requests
 
-23. **`renovate.json`**: Renovate configuration file to keep your store always fresh with Faststore's latest versions
+23. **`renovate.json`**: Renovate configuration file to keep your store always fresh with FastStore's latest versions
 
 24. **`.prettierignore`**: Ignore listed files when applying prettier rules
 
@@ -236,7 +213,7 @@ function Button(props: Props) {
 export default Button
 ```
 
-And, that's it! Now you have a working button that you can use anywhere on your project. Faststore, however, brings a handy library called `@faststore/ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
+And, that's it! Now you have a working button that you can use anywhere on your project. FastStore, however, brings a handy library called `@faststore/ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
 
 ```tsx
 import React from 'react'
@@ -409,7 +386,7 @@ This project uses SVGs from [Phosphor icons](https://phosphoricons.com/).
 
 Our customized themes are based on [Design Tokens](https://css-tricks.com/what-are-design-tokens/) using [CSS Variables](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) or a CSS class for each token. Today, we have the following files in the `src/styles` folder:
 
-### `theme.scss`
+### `tokens.scss`
 
 Here you'll find the basic structure to build your theme (font base, color palette, spacing, color-text, body background color...), feel free to update it with your brand guidelines.
 
@@ -419,41 +396,41 @@ We suggest using a color palette of 3 colors and its gradation: `primary`, `seco
 
 We also listed a couple of customizable tokens so you can easily change your body background, for example.
 
-If you feel the need to edit some of the color decisions, you can enter `colors.scss` and update the semantical tokens. E.g.:
+If you feel the need to edit some of the color decisions, you can enter `tokens.scss` and update the semantical tokens. E.g.:
 
 ```scss
---color-border-input: var(--color-neutral-4); // Current
---color-border-input: var(--color-neutral-5); // Updated
+--fs-border-color-default: var(--fs-color-neutral-4); // Current
+--fs-border-color-default: var(--fs-color-neutral-5); // Updated
 ```
 
 #### <b>Typography</b>
 
-We use the [Modular Scale](https://www.modularscale.com/) setting to create our text-sizes. If you want to change it, just set the `base-font-size` and the `scale` ratio.
+We use the [Modular Scale](https://www.modularscale.com/) setting to create our text-sizes. If you want to change it, just set the `--fs-text-size-base` and the `scale` ratio.
 
 #### <b>Spacing</b>
 
-The spacing scale is based on `rem` sizes, so it will remain consistent if you change the `base-font-size`.
+The spacing scale is based on `rem` sizes, so it will remain consistent if you change the `--fs-text-size-base`.
 
-### `grid.scss`
+### `layout.scss`
 
 List of classes used to create default page grid.
 
 ```scss
-.grid-content-full // Should be used for sections that are side to side, generally with a colored background.
-.grid-content // Should be used for sections that fit centered on the grid.
-.grid-section // This class only adds default vertical margins for page sections.
+.layout__content-full // Should be used for sections that are side to side, generally with a colored background.
+.layout__content // Should be used for sections that fit centered on the grid.
+.layout__section // This class only adds default vertical margins for page sections.
 ```
 
 ![grid-example-image](https://user-images.githubusercontent.com/3356699/150801221-4027dc6a-1cc4-40a7-a323-8be7a148458d.png)
 
 ### `typography.scss`
 
-For the typography-related tokens, we decided to use classes to add extra stylings like `font-weight` and `line-height`. In this file, you'll see all the classes for titles, paragraphs, and default settings on the body. You can create new ones here if needed.
+For the typography-related styles, we decided to use classes to add extra stylings like `font-weight` and `line-height`. In this file, you'll see all the classes for titles, paragraphs, and default settings on the body. You can create new ones here if needed.
 
 ## 🍒 Adding queries
 
 We use [graphql-codegen](https://www.graphql-code-generator.com/) to pre-process GraphQL queries. This compilation generates TypeScript typings and configurations for our graphql server under the folder `@generated/graphql`.
-This means we can staticaly analyse your code in search of bugs and secure your graphql server before each deploy. If, however you need to change any GraphQL Fragment, Query or Mutation, you will need to regenerate the whole thing. To do this, open your terminal and type
+This means we can statically analyse your code in search of bugs and secure your graphql server before each deploy. If, however you need to change any GraphQL Fragment, Query or Mutation, you will need to regenerate the whole thing. To do this, open your terminal and type
 
 ```sh
 $ yarn develop
@@ -471,7 +448,7 @@ That's it! you have just regenerated all graphql queries/fragments for your appl
 
 ## 🎓 Learning the Frameworks
 
-Looking for more guidance? Full documentation for Faststore lives [on this GitHub repository](https://github.com/vtex/faststore). Also, for learning Gatsby, take a look at the [Gatsby Website](https://www.gatsbyjs.com/), they have plenty of tutorials and examples in there.
+Looking for more guidance? Full documentation for FastStore lives [on this GitHub repository](https://github.com/vtex/faststore). Also, for learning Gatsby, take a look at the [Gatsby Website](https://www.gatsbyjs.com/), they have plenty of tutorials and examples in there.
 
 ## ⚡ Performance & QA
 

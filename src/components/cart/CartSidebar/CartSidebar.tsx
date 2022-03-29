@@ -39,7 +39,7 @@ function CartSidebar() {
     >
       <header data-testid="cart-sidebar">
         <div className="cart-sidebar__title">
-          <p className="title-display">Your Cart</p>
+          <p className="text__lead">Your Cart</p>
           <Badge variant="info" small>
             {totalItems}
           </Badge>
@@ -52,7 +52,7 @@ function CartSidebar() {
         />
       </header>
       <Alert icon={<Icon name="Truck" width={24} height={24} />}>
-        Free shiping starts at $300
+        Free shipping starts at $300
       </Alert>
 
       {isEmpty ? (
