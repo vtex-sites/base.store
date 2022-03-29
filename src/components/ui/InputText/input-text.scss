@@ -77,7 +77,8 @@
   input {
     border-color: var(--fs-color-danger-text);
 
-    @include input-focus-ring-error;
+    @include input-focus-ring($outline: #{var(--fs-color-focus-ring-danger)},
+    $border: #{var(--fs-color-danger-border)});
   }
 
   [data-fs-input-text-message] {

@@ -68,6 +68,7 @@ body {
 
   --fs-color-focus-ring             : #8db6fa;
   --fs-color-focus-ring-outline     : #8db6fa80;
+  --fs-color-focus-ring-danger      : #fee1e1;
 
   // SITUATIONS
   --fs-color-success-text           : #368369;
@@ -79,7 +80,7 @@ body {
   --fs-color-warning-border         : var(--fs-color-warning-text);
 
   --fs-color-danger-text            : #cb4242;
-  --fs-color-danger-bkg             : #fee1e1;
+  --fs-color-danger-bkg             : var(--fs-color-focus-ring-danger);
   --fs-color-danger-border          : var(--fs-color-danger-text);
 
   --fs-color-info-text              : var(--fs-color-text);
