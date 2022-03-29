@@ -18,13 +18,13 @@
 
     // padding: 14px var(--fs-spacing-2) 0;
     padding: var(--fs-spacing-2) var(--fs-input-text-padding-horizontal) 0;
-    font-size: var(--fs-text-size-2);
+    font-size: var(--fs-text-size-body);
     line-height: 1.25;
     border: var(--fs-border-width-default) solid var(--fs-border-color-default);
     border-radius: var(--fs-border-radius-default);
 
     &:placeholder-shown + label {
-      top: calc(1.5 * (var(--fs-text-size-2) / 2));
+      top: calc(1.5 * (var(--fs-text-size-body) / 2));
       overflow: hidden;
     }
 
@@ -42,7 +42,7 @@
     &:not(:placeholder-shown) + label,
     &:focus + label {
       top: 6px;
-      font-size: var(--fs-text-size-0);
+      font-size: var(--fs-text-size-tiny);
     }
 
     &:hover:not(:disabled) {
@@ -61,8 +61,8 @@
   label {
     position: absolute;
     padding: 0 var(--fs-input-text-padding-horizontal);
-    color: var(--fs-color-neutral-6);
-    font-size: var(--fs-text-size-2);
+    color: var(--fs-color-text-light);
+    font-size: var(--fs-text-size-body);
     line-height: 1.5;
   }
 }
