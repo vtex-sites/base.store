@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Replace `stylelint-config-rational-order` with `stylelint-config-recess-order`
 - Move inline styles to external stylesheet to improve TBT
 - Changed ProductGallery and EmptyGallery styles to make the search results page
 - Moved all icons to use Icon component
@@ -52,6 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `postalCode` from storage to Session context.
 - Updates all tokens naming and simplifies the global styles.
 - Changes `theme.scss` file to `global/tokens.scss`.
+- Applies new local tokens to `ProductCard`.
 
 ### Deprecated
 

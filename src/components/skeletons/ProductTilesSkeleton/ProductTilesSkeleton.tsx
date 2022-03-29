@@ -9,13 +9,13 @@ const DEFAULT_ITEMS_NUMBER = 3
 
 interface Props {
   loading?: boolean
-  variant?: 'vertical' | 'horizontal'
+  variant?: 'wide' | 'default'
 }
 
 function ProductTilesSkeleton({
   children,
   loading = true,
-  variant = 'vertical',
+  variant = 'default',
 }: PropsWithChildren<Props>) {
   return loading ? (
     <Tiles>
