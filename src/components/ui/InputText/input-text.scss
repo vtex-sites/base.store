@@ -1,3 +1,5 @@
+@import "src/styles/scaffold";
+
 [data-fs-input-text] {
   --fs-input-text-padding-horizontal: var(--fs-spacing-2);
 
@@ -18,7 +20,7 @@
     padding: var(--fs-spacing-2) var(--fs-input-text-padding-horizontal) 0;
     font-size: var(--fs-text-size-2);
     line-height: 1.25;
-    border: 1px solid var(--fs-border-color-default);
+    border: var(--fs-border-width-default) solid var(--fs-border-color-default);
     border-radius: var(--fs-border-radius-default);
 
     &:placeholder-shown + label {
@@ -39,13 +41,20 @@
     &:focus + label {
       top: 6px;
       font-size: var(--fs-text-size-0);
-      cursor: pointer;
     }
+
+    &:hover {
+      border-color: var(--fs-border-color-default-active);
+      box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
+    }
+
+    @include input-focus-ring;
   }
 
   label {
     position: absolute;
     padding: 0 var(--fs-input-text-padding-horizontal);
+    color: var(--fs-color-neutral-6);
     font-size: var(--fs-text-size-2);
     line-height: 1.5;
   }
