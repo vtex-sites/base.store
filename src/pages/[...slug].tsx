@@ -12,7 +12,6 @@ import Icon from 'src/components/ui/Icon'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
-import { execute } from 'src/server'
 import type {
   CollectionPageQueryQuery,
   ServerCollectionPageQueryQuery,
@@ -209,6 +208,7 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
+    const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
       variables: { slug },

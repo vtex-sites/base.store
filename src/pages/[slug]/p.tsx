@@ -10,7 +10,6 @@ import React, { useEffect, useMemo } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import { mark } from 'src/sdk/tests/mark'
-import { execute } from 'src/server'
 import type { PageProps } from 'gatsby'
 import type {
   ProductPageQueryQuery,
@@ -220,6 +219,7 @@ export const getServerData = async ({
   try {
     const id = slug.split('-').pop()
 
+    const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
       variables: { id },
