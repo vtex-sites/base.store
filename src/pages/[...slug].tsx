@@ -169,7 +169,7 @@ export const querySSG = graphql`
 `
 
 /**
- * This query is run during SSG
+ * This query is run during SSR
  * */
 export const querySSR = gql`
   query ServerCollectionPageQuery($slug: String!) {
