@@ -1,6 +1,6 @@
-import type { ReactElement } from 'react'
+import type { ReactElement, FormEvent } from 'react'
 import React, { useState } from 'react'
-import { Input } from '@faststore/ui'
+import { Form, Input } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
@@ -69,7 +69,9 @@ function OutOfStock(props: OutOfStockProps) {
     setEmail('')
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault()
+
     setDisabled(true)
     setIconButton(<Icon name="Ellipsis" weight="bold" width={16} height={16} />)
 
@@ -90,31 +92,33 @@ function OutOfStock(props: OutOfStockProps) {
   }
 
   return (
-    <div data-store-out-of-stock data-testid={testId} aria-live="polite">
-      <div className="text__title-subsection">{title}</div>
-      <div data-store-out-of-stock-subtitle>
-        {notificationIcon} {notificationMsg}
-      </div>
-      <div>
-        <Input
-          data-store-out-of-stock-input
-          aria-label="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-        />
-        <Button
-          disabled={disabled}
-          data-store-out-of-stock-button
-          variant="primary"
-          icon={icon}
-          iconPosition="left"
-          onClick={handleSubmit}
-        >
-          {buttonText}
-        </Button>
-      </div>
-    </div>
+    <section data-store-out-of-stock data-testid={testId} aria-live="polite">
+      <Form data-out-of-stock-form onSubmit={handleSubmit}>
+        <div className="text__title-subsection">{title}</div>
+        <div data-store-out-of-stock-subtitle>
+          {notificationIcon} {notificationMsg}
+        </div>
+        <div>
+          <Input
+            data-store-out-of-stock-input
+            aria-label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email"
+          />
+          <Button
+            type="submit"
+            disabled={disabled}
+            data-store-out-of-stock-button
+            variant="primary"
+            icon={icon}
+            iconPosition="left"
+          >
+            {buttonText}
+          </Button>
+        </div>
+      </Form>
+    </section>
   )
 }
 
