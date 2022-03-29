@@ -43,3 +43,9 @@
   border: 0;
   cursor: default;
 }
+
+[data-store-out-of-stock-description] {
+  display: flex;
+  align-items: center;
+  column-gap: var(--fs-spacing-0);
+}

@@ -92,7 +92,7 @@ function OutOfStock(props: OutOfStockProps) {
   return (
     <div data-store-out-of-stock data-testid={testId} aria-live="polite">
       <div className="text__title-subsection">{title}</div>
-      <div>
+      <div data-store-out-of-stock-description>
         {notificationIcon} {notificationMsg}
       </div>
       <div>
@@ -109,7 +109,7 @@ function OutOfStock(props: OutOfStockProps) {
           variant="primary"
           icon={icon}
           iconPosition="left"
-          onClick={() => handleSubmit()}
+          onClick={handleSubmit}
         >
           {buttonText}
         </Button>
