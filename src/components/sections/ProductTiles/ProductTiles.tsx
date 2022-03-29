@@ -33,10 +33,7 @@ const ProductTiles = ({ products, title }: TilesProps) => {
     <Section className="layout__section layout__content">
       <h2 className="text__title-section">{title}</h2>
       <div>
-        <ProductTilesSkeleton
-          variant="horizontal"
-          loading={products.length === 0}
-        >
+        <ProductTilesSkeleton variant="wide" loading={products.length === 0}>
           <Tiles>
             {products.map((product, idx) => (
               <Tile key={product.id}>
@@ -44,7 +41,7 @@ const ProductTiles = ({ products, title }: TilesProps) => {
                   data-testid="tile-card"
                   product={product}
                   index={idx + 1}
-                  variant="horizontal"
+                  variant="wide"
                   aspectRatio={getRatio(products.length, idx)}
                 />
               </Tile>
