@@ -6,13 +6,15 @@ import {
 } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
-import React from 'react'
+import React, { useState } from 'react'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
 } from '@faststore/ui'
 import useSearchHistory from 'src/sdk/search/useSearchHistory'
 import Icon from 'src/components/ui/Icon'
+import { SearchHistory } from 'src/components/search/History'
+import { SuggestionsTopSearch } from 'src/components/search/Suggestions'
 
 import './search-input.scss'
 
@@ -42,6 +44,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
     ref
   ) {
+    const [openDropdown, setOpenDropdown] = useState(false)
     const { addToSearchHistory } = useSearchHistory()
     const handleSearch = (term: string) => {
       addToSearchHistory(term)
@@ -49,7 +52,10 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     }
 
     return (
-      <>
+      <div
+        data-store-search-input-wrapper
+        data-store-search-input-dropdown-open={openDropdown}
+      >
         <UISearchInput
           ref={ref}
           icon={
@@ -61,9 +67,30 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
           }
           placeholder="Search everything at the store"
           onSubmit={handleSearch}
+          onFocus={() => setOpenDropdown(true)}
           {...props}
         />
-      </>
+        {openDropdown && (
+          <div data-store-search-input-dropdown-wrapper>
+            <div data-store-search-input-dropdown>
+              <SearchHistory
+                onClear={() => {
+                  console.warn('Implement `onClear`.')
+                }}
+              />
+              <SuggestionsTopSearch
+                searchedItems={[
+                  { href: '/s/?q=monitor', name: 'Monitor' },
+                  { href: '/s/?q=headphone', name: 'Headphone' },
+                  { href: '/s/?q=headset', name: 'Headset' },
+                  { href: '/s/?q=magic+mouse', name: 'Magic mouse' },
+                  { href: '/s/?q=smart+speaker', name: 'Smart speaker' },
+                ]}
+              />
+            </div>
+          </div>
+        )}
+      </div>
     )
   }
 )
