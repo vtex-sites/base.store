@@ -75,6 +75,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `main::store::postalCode` value from storage.
 
 ### Fixed
+- CSS Warnings
 - Unnecessary app rerender after login feature
 - Fix typos found across the codebase
 - Fix border style for Product Card and its skeleton on mobile
