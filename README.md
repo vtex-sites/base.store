@@ -249,7 +249,7 @@ Now, on `button.scss`:
 
 This `data-store-button` is a CSS data attribute selector. To know which selectors are available, check [FastStore UI docs](https://faststoreui.netlify.app/).
 
-Now, include the component's CSS into the Store's CSS. open `src/styles/global/components.scss` and import this CSS with:
+Now, include the component's CSS into the Store's CSS. Open `src/styles/global/components.scss` and import this CSS with:
 
 ```scss
 @import "src/components/ui/Button/button.scss";
