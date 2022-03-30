@@ -132,8 +132,8 @@ function Navbar() {
           <header className="navbar__modal-header">
             <LinkGatsby
               to="/"
-              aria-label="Go to Faststore home"
-              title="Go to Faststore home"
+              aria-label="Go to FastStore home"
+              title="Go to FastStore home"
               className="navbar__logo"
               onClick={() => dismissTransition.current?.()}
             >

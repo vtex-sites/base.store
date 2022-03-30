@@ -8,7 +8,7 @@
   // --------------------------------------------------------
 
   // Default properties
-  --fs-button-padding                              : var(--fs-spacing-1) var(--fs-spacing-3);
+  --fs-button-padding                              : calc(var(--fs-spacing-1) - (var(--fs-button-border-width) * 2)) var(--fs-spacing-3);
   --fs-button-padding-small                        : 0 var(--fs-spacing-1);
   --fs-button-height                               : var(--fs-control-tap-size);
   --fs-button-gap                                  : var(--fs-spacing-2);
@@ -341,7 +341,7 @@
     &[data-fs-button-variant] {
       width: var(--fs-button-height);
       height: var(--fs-button-height);
-      padding: 0 var(--fs-spacing-1);
+      padding: var(--fs-button-padding-small);
       border-width: 0;
     }
   }
