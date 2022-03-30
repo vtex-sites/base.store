@@ -252,7 +252,9 @@ This `data-store-button` is a CSS data attribute selector. To know which selecto
 Now, include the component's CSS into the Store's CSS. Open `src/styles/global/components.scss` and import this CSS with:
 
 ```scss
+// ...
 @import "src/components/ui/Button/button.scss";
+// ...
 ```
 
 For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and secondary variants. To add variants to the component, update `Button.tsx`:
