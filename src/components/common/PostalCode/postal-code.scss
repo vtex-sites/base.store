@@ -18,17 +18,23 @@
 }
 
 .postal-code-bar {
-  [data-store-button] {
+  width: 100%;
+
+  .button[data-store-button] {
+    width: 100%;
+    padding: 0 16px 0 24px;
     color: var(--fs-color-text-display);
     background-color: var(--fs-color-neutral-0);
   }
 
   span {
     &:first-of-type {
+      margin-right: auto;
       font-weight: var(--fs-text-weight-regular);
     }
 
     &:not(:first-of-type) {
+      margin-left: auto;
       text-decoration: underline;
     }
   }
