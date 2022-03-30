@@ -4,8 +4,6 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../ProductCard'
 
-import './product-grid.scss'
-
 interface Props {
   products: ProductSummary_ProductFragment[]
   page: number

@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
-import type { ReactNode, HTMLAttributes } from 'react'
 import { Modal as UIModal } from '@faststore/ui'
-
-import './slide-over.scss'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
+import type { ReactNode, HTMLAttributes } from 'react'
 
 type Direction = 'leftSide' | 'rightSide'
 type WidthSize = 'full' | 'partial'

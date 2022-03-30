@@ -8,8 +8,6 @@ import type {
   Filter_FacetsFragment,
 } from '@generated/graphql'
 
-import './filter.scss'
-
 interface FacetsProps {
   testId: string
   facets: Filter_FacetsFragment[]

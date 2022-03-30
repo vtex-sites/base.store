@@ -1,10 +1,8 @@
-import type { HTMLAttributes } from 'react'
-import React, { forwardRef } from 'react'
 import { List as UIList } from '@faststore/ui'
+import React, { forwardRef } from 'react'
 import { Badge } from 'src/components/ui/Badge'
 import Link from 'src/components/ui/Link'
-
-import './suggestions.scss'
+import type { HTMLAttributes } from 'react'
 
 export interface SuggestionsTopSearchProps
   extends HTMLAttributes<HTMLDivElement> {
