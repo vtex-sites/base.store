@@ -27,8 +27,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Session mutation when the user enters a new postal code.
 
 ### Changed
-
+- Drop gatsby-plugin-image in favor of custom/simpler component
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order`
+- Simplify filters component by using `useReducer` instead of multiple `useState`
 - Move inline styles to external stylesheet to improve TBT
 - Changed ProductGallery and EmptyGallery styles to make the search results page
 - Moved all icons to use Icon component

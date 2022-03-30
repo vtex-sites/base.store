@@ -16,15 +16,6 @@ interface Props {
   item: ICartItem
 }
 
-const imgOptions = {
-  sourceWidth: 360,
-  aspectRatio: 1,
-  width: 72,
-  breakpoints: [50, 100, 150],
-  layout: 'constrained' as const,
-  backgroundColor: '#f0f0f0',
-}
-
 function CartItem({ item }: Props) {
   const btnProps = useRemoveButton(item)
   const { updateItemQuantity } = useCart()
@@ -39,9 +30,10 @@ function CartItem({ item }: Props) {
       <CardContent>
         <CardImage>
           <Image
-            baseUrl={item.itemOffered.image[0].url}
+            src={item.itemOffered.image[0].url}
             alt={item.itemOffered.image[0].alternateName}
-            {...imgOptions}
+            width={72}
+            height={72}
           />
         </CardImage>
         <div data-cart-item-summary>
