@@ -22,18 +22,10 @@ type ContextValue = Record<string, unknown> & BaseContextValue
 const ModalContext = createContext<ContextValue | undefined>(undefined)
 
 function ModalProvider({ children }: PropsWithChildren<unknown>) {
-  const [scroll, setScroll] = useState<boolean>(true)
-  const [fade, setFade] = useState<FadeType>()
+  const [fade, setFade] = useState<FadeType>('out')
 
-  const onModalOpen = useCallback(() => {
-    setFade('in')
-    setScroll(false)
-  }, [])
-
-  const onModalClose = useCallback(() => {
-    setFade('out')
-    setScroll(true)
-  }, [])
+  const onModalOpen = useCallback(() => setFade('in'), [])
+  const onModalClose = useCallback(() => setFade('out'), [])
 
   const value = useMemo(
     () => ({
@@ -46,7 +38,7 @@ function ModalProvider({ children }: PropsWithChildren<unknown>) {
 
   return (
     <ModalContext.Provider value={value}>
-      <div data-scroll={scroll}>{children}</div>
+      <div data-scroll={fade === 'out'}>{children}</div>
     </ModalContext.Provider>
   )
 }
