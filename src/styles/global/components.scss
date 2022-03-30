@@ -1,17 +1,26 @@
+// Cart
 @import "src/components/cart/CartItem/cart-item.scss";
 @import "src/components/cart/CartSidebar/cart-sidebar.scss";
 @import "src/components/cart/CartToggle/cart-toggle.scss";
 @import "src/components/cart/OrderSummary/order-summary.scss";
+
+// Common
 @import "src/components/common/Footer/footer.scss";
 @import "src/components/common/PostalCode/postal-code-input.scss";
 @import "src/components/common/SearchInput/search-input.scss";
 @import "src/components/common/Navbar/navbar.scss";
+
+// Product
 @import "src/components/product/ProductCard/product-card.scss";
 @import "src/components/product/ProductGrid/product-grid.scss";
+
+// Search
 @import "src/components/search/Filter/filter.scss";
 @import "src/components/search/History/search-history.scss";
 @import "src/components/search/SuggestionProductCard/suggestion-product-card.scss";
 @import "src/components/search/Suggestions/suggestions.scss";
+
+// Sections
 @import "src/components/sections/BannerText/banner-text.scss";
 @import "src/components/sections/Breadcrumb/breadcrumb.scss";
 @import "src/components/sections/Incentives/incentives.scss";
@@ -24,6 +33,8 @@
 @import "src/components/skeletons/ProductCardSkeleton/product-card-skeleton.scss";
 @import "src/components/skeletons/ProductTilesSkeleton/ProductTileSkeleton/product-tile-skeleton.scss";
 @import "src/components/skeletons/Shimmer/shimmer.scss";
+
+// UI
 @import "src/components/ui/Accordion/accordion.scss";
 @import "src/components/ui/Alert/alert.scss";
 @import "src/components/ui/Badge/badge.scss";
