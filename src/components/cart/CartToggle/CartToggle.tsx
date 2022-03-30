@@ -10,10 +10,10 @@ function CartToggle() {
 
   return (
     <IconButton
-      {...btnProps}
-      className="cart-toggle"
+      data-fs-button-cart="true"
       aria-label={`Cart with ${btnProps['data-items']} items`}
       icon={<Icon name="ShoppingCart" width={32} height={32} />}
+      {...btnProps}
     />
   )
 }

@@ -2,18 +2,17 @@ import React from 'react'
 import { IconButton as UIIconButton } from '@faststore/ui'
 import type { IconButtonProps as UIIconButtonProps } from '@faststore/ui'
 
-import './icon-button.scss'
+import '../Button/buttons.scss'
 
-interface IconButtonProps {
-  classes?: string
-}
+type Props = UIIconButtonProps
 
-type Props = IconButtonProps & UIIconButtonProps
-
-function IconButton({ icon, classes, ...otherProps }: Props) {
+function IconButton({ icon, ...otherProps }: Props) {
   return (
     <UIIconButton
-      className={`icon-button ${classes}`}
+      data-fs-button="true"
+      data-fs-button-icon="true"
+      data-fs-button-variant="primary"
+      data-fs-button-inverse="true"
       icon={icon}
       {...otherProps}
     />

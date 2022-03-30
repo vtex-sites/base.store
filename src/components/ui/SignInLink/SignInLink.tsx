@@ -9,7 +9,7 @@ const SignInLink: React.FC = () => {
 
   return (
     <LinkButton
-      data-button-signin-link
+      data-fs-button-signin-link
       to={person?.id ? '/account' : '/login'}
       className="text__title-mini signin-link"
       variant="tertiary"

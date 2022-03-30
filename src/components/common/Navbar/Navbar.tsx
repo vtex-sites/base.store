@@ -75,7 +75,7 @@ function Navbar() {
           {!searchExpanded && (
             <>
               <IconButton
-                classes="navbar__menu"
+                data-fs-button-menu
                 aria-label="Open Menu"
                 icon={<Icon name="List" width={32} height={32} />}
                 onClick={() => setShowMenu(true)}
@@ -97,7 +97,7 @@ function Navbar() {
           >
             {searchExpanded && (
               <IconButton
-                classes="navbar__collapse"
+                data-fs-button-collapse
                 aria-label="Collapse search bar"
                 icon={<Icon name="CaretLeft" width={32} height={32} />}
                 onClick={() => setSearchExpanded(false)}
@@ -141,7 +141,6 @@ function Navbar() {
             </LinkGatsby>
 
             <IconButton
-              classes="navbar__button"
               aria-label="Close Menu"
               icon={<Icon name="X" width={32} height={32} />}
               onClick={() => dismissTransition.current?.()}

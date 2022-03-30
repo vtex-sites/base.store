@@ -198,7 +198,6 @@ function Filter({
             <h2 className="text__lead">Filters</h2>
             <IconButton
               data-testid="filter-modal-button-close"
-              classes="filter-modal__button"
               aria-label="Close Filters"
               icon={<Icon name="X" width={32} height={32} />}
               onClick={() => {

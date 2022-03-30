@@ -336,12 +336,23 @@
       outline: none;
     }
   }
+
+  &[data-fs-button-icon] {
+    &[data-fs-button-variant] {
+      width: var(--fs-button-height);
+      height: var(--fs-button-height);
+      padding: 0 var(--fs-spacing-1);
+      border-width: 0;
+    }
+  }
+
+
+  &[data-fs-button-link] {
+    &:hover { text-decoration: none; }
+
+    &[data-button-disabled="true"] { pointer-events: none; }
+  }
 }
 
-[data-fs-button-link] {
-  &:hover { text-decoration: none; }
-
-  &[data-button-disabled="true"] { pointer-events: none; }
-}
 
 /* stylelint-enable */
