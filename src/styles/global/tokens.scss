@@ -116,7 +116,7 @@ body {
   // ensure consistency throughout the project.
   // Access https://type-scale.com and pick a scale that
   // suits the store's branding.
-  --fs-text-scale-mobile            : 1.25;
+  --fs-text-scale-mobile            : 1.18;
   --fs-text-scale-desk              : 1.25;
 
   --fs-scale                        : var(--fs-text-scale-mobile);
@@ -143,7 +143,7 @@ body {
   --fs-text-size-title-section      : var(--fs-text-size-4);
   --fs-text-size-title-subsection   : var(--fs-text-size-4);
   --fs-text-size-title-mini         : var(--fs-text-size-4);
-  --fs-text-size-lead               : var(--fs-text-size-4);
+  --fs-text-size-lead               : var(--fs-text-size-3);
   --fs-text-size-menu               : var(--fs-text-size-base);
   --fs-text-size-body               : var(--fs-text-size-base);
   --fs-text-size-legend             : var(--fs-text-size-1);
