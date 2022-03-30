@@ -35,13 +35,13 @@ const Hero = ({
 }: HeroProps) => {
   return (
     <Section>
-      <UIHero data-hero-variant={variant}>
-        <HeroContent aria-labelledby="hero-heading">
-          <div data-hero-wrapper className="layout__content">
-            <div data-hero-info>
+      <UIHero data-fs-hero data-fs-hero-variant={variant}>
+        <HeroContent data-fs-hero-content aria-labelledby="hero-heading">
+          <div data-fs-hero-wrapper className="layout__content">
+            <div data-fs-hero-info>
               <h1 id="hero-heading">{title}</h1>
 
-              <p data-hero-text-body>{subtitle}</p>
+              <p data-fs-hero-text-body>{subtitle}</p>
               {!!link && (
                 <HeroLink>
                   <LinkButton to={link} inverse>
@@ -50,10 +50,10 @@ const Hero = ({
                 </HeroLink>
               )}
             </div>
-            {!!icon && <div data-hero-icon>{icon}</div>}
+            {!!icon && <div data-fs-hero-icon>{icon}</div>}
           </div>
         </HeroContent>
-        <HeroImage>
+        <HeroImage data-fs-hero-image>
           <Image
             preload
             loading="eager"
