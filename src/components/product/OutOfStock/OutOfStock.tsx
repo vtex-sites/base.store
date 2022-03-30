@@ -69,7 +69,7 @@ function OutOfStock(props: OutOfStockProps) {
     setEmail('')
   }
 
-  const handleSubmit = async (event: FormEvent) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
 
     setDisabled(true)
@@ -79,13 +79,12 @@ function OutOfStock(props: OutOfStockProps) {
       onSubmit(email)
       setButtonIconName('Checked')
       setBtnText('Subscribed successfully')
-
-      // Return to original state after 2s
-      await new Promise((r) => setTimeout(r, 2000)).then(reset)
     } catch (err) {
-      // TODO: Display error below Input component
+      // TODO: Display error below Input component when Input is ready for that
       console.error(err.message)
-      reset()
+    } finally {
+      // Return to original state after 2s
+      setTimeout(reset, 2000)
     }
   }
 
