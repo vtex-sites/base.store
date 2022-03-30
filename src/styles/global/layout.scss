@@ -52,6 +52,7 @@ main,
 // Avoids double scroll issue on the page when overlay is open
 .no-scroll {
   overflow: hidden;
+  touch-action: none;
 }
 
 // Helper class
