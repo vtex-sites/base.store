@@ -6,7 +6,7 @@ import {
 } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
@@ -44,17 +44,40 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
     ref
   ) {
+    const wrapperRef = useRef<HTMLDivElement>(null)
     const [openDropdown, setOpenDropdown] = useState(false)
     const { addToSearchHistory } = useSearchHistory()
+
     const handleSearch = (term: string) => {
       addToSearchHistory(term)
       doSearch(term)
+      setOpenDropdown(false)
     }
+
+    useEffect(() => {
+      if (!openDropdown) {
+        return undefined
+      }
+
+      const closeIfClickedOutside = (event: MouseEvent) => {
+        if (
+          wrapperRef.current &&
+          !wrapperRef.current.contains(event.target as Node)
+        ) {
+          setOpenDropdown(false)
+        }
+      }
+
+      document.addEventListener('click', closeIfClickedOutside)
+
+      return () => document.removeEventListener('click', closeIfClickedOutside)
+    }, [openDropdown])
 
     return (
       <div
         data-store-search-input-wrapper
         data-store-search-input-dropdown-open={openDropdown}
+        ref={wrapperRef}
       >
         <UISearchInput
           ref={ref}
@@ -77,6 +100,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
                 onClear={() => {
                   console.warn('Implement `onClear`.')
                 }}
+                onLinkClick={() => setOpenDropdown(false)}
               />
               <SuggestionsTopSearch
                 searchedItems={[
@@ -86,6 +110,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
                   { href: '/s/?q=magic+mouse', name: 'Magic mouse' },
                   { href: '/s/?q=smart+speaker', name: 'Smart speaker' },
                 ]}
+                onLinkClick={() => setOpenDropdown(false)}
               />
             </div>
           </div>
