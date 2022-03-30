@@ -8,6 +8,7 @@ import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import { mark } from 'src/sdk/tests/mark'
 
 import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
@@ -173,4 +174,5 @@ function ProductGallery({ title, searchTerm }: Props) {
   )
 }
 
-export default ProductGallery
+ProductGallery.displayName = 'ProductGallery'
+export default mark(ProductGallery)

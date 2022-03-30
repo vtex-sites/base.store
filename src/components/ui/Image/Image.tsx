@@ -1,58 +1,38 @@
-import { useGetThumborImageData } from '@vtex/gatsby-plugin-thumbor'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import React, { memo, useMemo } from 'react'
-import type { ThumborImageOptions } from '@vtex/gatsby-plugin-thumbor'
-import type { GatsbyImageProps } from 'gatsby-plugin-image'
+import './image.scss'
 
-interface Props extends Omit<GatsbyImageProps, 'image'>, ThumborImageOptions {}
+import React, { memo } from 'react'
+import { Helmet } from 'react-helmet-async'
 
-function Image({
-  baseUrl,
-  width,
-  height,
-  sourceWidth,
-  sourceHeight,
-  aspectRatio,
-  layout,
-  placeholderURL,
-  backgroundColor,
-  breakpoints,
-  options,
-  ...imgProps
-}: Props) {
-  const getImage = useGetThumborImageData()
-  const image = useMemo(
-    () =>
-      getImage({
-        baseUrl,
-        width,
-        height,
-        sourceWidth,
-        sourceHeight,
-        aspectRatio,
-        layout,
-        placeholderURL,
-        backgroundColor,
-        breakpoints,
-        options,
-      }),
-    [
-      aspectRatio,
-      backgroundColor,
-      baseUrl,
-      breakpoints,
-      getImage,
-      height,
-      layout,
-      options,
-      placeholderURL,
-      sourceHeight,
-      sourceWidth,
-      width,
-    ]
-  )
+import { useImage } from './useImage'
+import type { ImageOptions } from './useImage'
 
-  return <GatsbyImage {...imgProps} image={image} />
+interface Props extends ImageOptions {
+  preload?: boolean
 }
 
+function Image({ preload = false, ...otherProps }: Props) {
+  const imgProps = useImage(otherProps)
+  const { src, sizes = '100vw', srcSet } = imgProps
+
+  return (
+    <>
+      {preload && (
+        <Helmet
+          link={[
+            {
+              as: 'image',
+              rel: 'preload',
+              href: src,
+              imagesrcset: srcSet,
+              imagesizes: sizes,
+            } as any,
+          ]}
+        />
+      )}
+      <img data-store-image {...imgProps} alt={imgProps.alt} />
+    </>
+  )
+}
+
+Image.displayName = 'Image'
 export default memo(Image)
