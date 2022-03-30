@@ -11,7 +11,6 @@ export default function PostalCodeInput({ content }: PostalCodeBarProps) {
   return (
     <div className="postal-code-bar">
       <Button
-        data-store-alert
         onClick={() => {
           window.scrollTo(0, 1000)
         }}
@@ -19,7 +18,8 @@ export default function PostalCodeInput({ content }: PostalCodeBarProps) {
         {content ? (
           <>
             <Icon name="MapPin" width={24} height={24} />
-            {content}
+            <span>{content}</span>
+            <span>Edit</span>
             <Icon name="CaretRight" width={24} height={24} />
           </>
         ) : (

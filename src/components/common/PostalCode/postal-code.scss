@@ -18,13 +18,18 @@
 }
 
 .postal-code-bar {
-  [data-store-alert] {
-    align-items: center;
+  [data-store-button] {
+    color: var(--fs-color-text-display);
     background-color: var(--fs-color-neutral-0);
   }
 
-  [data-alert-content] {
-    display: flex;
-    align-items: center;
+  span {
+    &:first-of-type {
+      font-weight: var(--fs-text-weight-regular);
+    }
+
+    &:not(:first-of-type) {
+      text-decoration: underline;
+    }
   }
 }
