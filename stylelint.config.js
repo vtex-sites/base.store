@@ -3,7 +3,7 @@ module.exports = {
 
   plugins: ['stylelint-scss', 'stylelint-order'],
   rules: {
-    'max-line-length': 150,
+    'max-line-length': null,
     'color-hex-length': null,
     'number-leading-zero': null,
     'selector-list-comma-newline-after': null,
