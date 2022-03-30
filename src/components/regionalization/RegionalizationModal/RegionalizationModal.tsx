@@ -4,7 +4,7 @@ import PostalCodeInput from 'src/components/common/PostalCode'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
-import useModal from 'src/sdk/ui/useModal'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 import './regionalization-modal.scss'
 
@@ -21,18 +21,11 @@ function RegionalizationModal({
   isOpen,
   onDismiss,
 }: RegionalizationModalProps) {
-  const { fade, setFade, closeModal, layout } = useModal()
+  const { fade, onModalOpen, onModalClose } = useModal()
 
   useEffect(() => {
-    if (isOpen) {
-      setFade('in')
-
-      // Avoids double scroll issue on the page
-      layout?.classList.add('no-scroll')
-    }
-
-    return () => layout?.classList.remove('no-scroll')
-  }, [isOpen, layout, setFade])
+    isOpen && onModalOpen()
+  }, [isOpen, onModalOpen])
 
   return (
     <UIModal
@@ -41,13 +34,13 @@ function RegionalizationModal({
       isOpen={isOpen}
       onDismiss={(e) => {
         e.preventDefault()
-        closeModal()
+        onModalClose()
       }}
       onAnimationEnd={() => fade === 'out' && onDismiss()}
     >
       <header className="regionalization-modal__header">
         <IconButton
-          onClick={closeModal}
+          onClick={onModalClose}
           classes="regionalization-modal__button"
           aria-label="Close Regionalization Modal"
           data-testid="regionalization-modal-button-close"
