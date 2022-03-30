@@ -91,9 +91,9 @@
   }
 }
 
-[data-fs-input-text-button="true"] {
+[data-fs-input-text-actionable="true"] {
   input {
-    padding-right: var(--fs-spacing-10);
+    padding-right: var(--fs-spacing-13);
   }
 
   [data-store-button] {
@@ -107,7 +107,7 @@
       position: absolute;
       left: calc(-1 * var(--fs-spacing-1));
       width: 1px;
-      height: 70%;
+      height: 80%;
       background-color: var(--fs-border-color-default);
       content: "";
     }

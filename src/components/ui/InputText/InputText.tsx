@@ -8,9 +8,9 @@ import './input-text.scss'
 export type InputTextProps = {
   id: string
   label: string
-  placeholder?: string
   errorMessage?: string
-  buttonLabel?: string
+  buttonActionLabel?: string
+  actionable?: boolean
 }
 
 type Props = InputTextProps & InputProps
@@ -20,7 +20,9 @@ const InputText = ({
   label,
   type = 'text',
   errorMessage,
-  buttonLabel = 'Apply',
+  actionable = true,
+  buttonActionLabel = 'Apply',
+  // buttonIcon,
   placeholder = ' ', // needed to style float label using `placeholder-shown`
   ...otherProps
 }: Props) => {
@@ -28,13 +30,14 @@ const InputText = ({
     <div
       data-fs-input-text
       data-fs-input-text-error={!!errorMessage}
-      data-fs-input-text-button={!!buttonLabel}
+      data-fs-input-text-actionable={actionable}
     >
       <UIInput type={type} id={id} placeholder={placeholder} {...otherProps} />
       <UILabel htmlFor={id}>{label}</UILabel>
-      {buttonLabel && (
+
+      {actionable && (
         <Button variant="tertiary" data-fs-input-text-button>
-          {buttonLabel}
+          {buttonActionLabel}
         </Button>
       )}
       {errorMessage && <span data-fs-input-text-message>{errorMessage}</span>}
