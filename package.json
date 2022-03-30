@@ -6,8 +6,8 @@
   "browserslist": "supports es6-module and not dead",
   "scripts": {
     "generate": "graphql-codegen",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "yarn partytown && gatsby build",
+    "develop": "yarn partytown && gatsby develop",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
     "test": "cypress open",
@@ -16,13 +16,14 @@
     "lint": "eslint --ext js,ts,jsx,tsx .",
     "stylelint": "stylelint \"**/*.scss\"",
     "stylelint:fix": "stylelint \"**/*.scss\" --fix",
-    "postinstall": "is-ci || husky install"
+    "postinstall": "is-ci || husky install",
+    "partytown": "partytown copylib ./public/~partytown"
   },
   "engines": {
     "node": ">=14"
   },
   "dependencies": {
-    "@builder.io/partytown": "^0.3.2",
+    "@builder.io/partytown": "^0.5.1",
     "@envelop/core": "^1.2.0",
     "@envelop/graphql-jit": "^1.1.1",
     "@envelop/parser-cache": "^2.2.0",
