@@ -6,9 +6,11 @@ import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
 import useSearchHistory from 'src/sdk/search/useSearchHistory'
 import { formatSearchState, initSearchState } from '@faststore/sdk'
+import type { AnchorHTMLAttributes } from 'react'
 
 interface SearchHistoryProps {
   onClear: () => void
+  onLinkClick?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
 }
 
 const doSearch = (term: string) => {
@@ -22,7 +24,7 @@ const doSearch = (term: string) => {
   return `${pathname}${search}`
 }
 
-const SearchHistory = ({ onClear }: SearchHistoryProps) => {
+const SearchHistory = ({ onClear, onLinkClick }: SearchHistoryProps) => {
   const { searchHistory } = useSearchHistory()
 
   return (
@@ -41,6 +43,7 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
               to={doSearch(item)}
               target="_blank"
               rel="noreferrer"
+              onClick={onLinkClick}
             >
               <UIIcon
                 component={<Icon name="Clock" width={18} height={18} />}
