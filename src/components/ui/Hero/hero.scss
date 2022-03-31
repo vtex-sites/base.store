@@ -8,16 +8,14 @@
 
   // Default properties
   --fs-hero-bkg-color          : var(--fs-color-primary-bkg);
-  --fs-hero-text-color         : var(--fs-color-text-inverse);
 
-  --fs-hero-title-color        : var(--fs-hero-text-color);
   --fs-hero-title-size         : var(--fs-text-size-7);
   --fs-hero-title-small-size   : var(--fs-text-size-6);
   --fs-hero-title-line         : 1.1;
 
-  --fs-hero-paragraph-color    : var(--fs-hero-text-color);
-  --fs-hero-paragraph-size     : var(--fs-text-size-lead);
-  --fs-hero-paragraph-line     : 1.33;
+  --fs-hero-text-color         : var(--fs-color-text-inverse);
+  --fs-hero-text-size          : var(--fs-text-size-lead);
+  --fs-hero-text-line          : 1.33;
   /* stylelint-enable */
 
   // Structural Styles
@@ -38,7 +36,7 @@
 [data-fs-hero-content] {
   width: 100%;
   padding: var(--fs-spacing-5) 0 var(--fs-spacing-6);
-  color: var(--fs-hero-title-color);
+  color: var(--fs-hero-text-color);
 
   h1 {
     font-size: var(--fs-hero-title-size);
@@ -48,8 +46,8 @@
 
   p {
     margin-top: var(--fs-spacing-2);
-    font-size: var(--fs-hero-paragraph-size);
-    line-height: var(--fs-hero-paragraph-line);
+    font-size: var(--fs-hero-text-size);
+    line-height: var(--fs-hero-text-line);
 
     @include media(">=tablet") { margin-top: var(--fs-spacing-4); }
   }
