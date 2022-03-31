@@ -1,6 +1,7 @@
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
-import React, { memo, useEffect, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import Icon from 'src/components/ui/Icon'
+import type { FormEvent } from 'react'
 
 interface QuantitySelectorProps {
   max?: number
@@ -38,7 +39,7 @@ export function QuantitySelector({
     return max ? Math.min(maxValue, max) : maxValue
   }
 
-  function validateInput(e: React.FormEvent<HTMLInputElement>) {
+  function validateInput(e: FormEvent<HTMLInputElement>) {
     const val = e.currentTarget.value
 
     if (!Number.isNaN(Number(val))) {

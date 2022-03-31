@@ -1,5 +1,4 @@
 import { useSearch } from '@faststore/sdk'
-import React from 'react'
 import ProductGrid from 'src/components/product/ProductGrid'
 import Sentinel from 'src/sdk/search/Sentinel'
 import type { ProductsQueryQuery } from '@generated/graphql'

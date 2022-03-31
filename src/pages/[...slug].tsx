@@ -2,7 +2,7 @@ import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
@@ -53,17 +53,14 @@ const useSearchParams = (props: Props): SearchState => {
 
 function Page(props: Props) {
   const {
-    data: { site, collection },
+    data: { site },
+    serverData: { collection },
     location: { host },
     slug,
   } = props
 
   const { locale } = useSession()
   const searchParams = useSearchParams(props)
-  const youMightAlsoLikeProducts = useMemo(
-    () => allProducts?.edges.map((edge) => edge.node),
-    [allProducts]
-  )
 
   const { page } = searchParams
   const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''

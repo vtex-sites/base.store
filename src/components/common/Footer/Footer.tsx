@@ -3,7 +3,6 @@ import {
   List as UIList,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
-import React from 'react'
 import IncentivesFooter from 'src/components/sections/Incentives/IncentivesFooter'
 import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'

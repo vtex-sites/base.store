@@ -1,4 +1,3 @@
-import React, { memo } from 'react'
 import {
   Breadcrumb as UIBreadcrumb,
   Dropdown as UIDropdown,
@@ -6,9 +5,10 @@ import {
   DropdownItem as UIDropdownItem,
   DropdownMenu as UIDropdownMenu,
 } from '@faststore/ui'
+import { memo } from 'react'
+import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
-import Icon from 'src/components/ui/Icon'
 import { navigate } from 'gatsby'
 
 type ItemElement = {

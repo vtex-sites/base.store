@@ -1,6 +1,5 @@
 import { Link as UILink } from '@faststore/ui'
 import { Link as GatsbyLink } from 'gatsby'
-import React from 'react'
 import type { ElementType } from 'react'
 import type { LinkProps } from '@faststore/ui'
 

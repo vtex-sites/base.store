@@ -1,5 +1,5 @@
-import React, { forwardRef } from 'react'
-import type { HTMLAttributes } from 'react'
+import { forwardRef } from 'react'
+import type { HTMLAttributes, ReactNode } from 'react'
 
 export interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   /**
@@ -7,7 +7,7 @@ export interface HeroProps extends HTMLAttributes<HTMLDivElement> {
    * testing-library, and jest).
    */
   testId?: string
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const Hero = forwardRef<HTMLDivElement, HeroProps>(function Hero(

@@ -6,7 +6,6 @@ import './src/styles/global/layout.scss'
 import './src/styles/global/components.scss'
 
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
-import React from 'react'
 import type { GatsbyBrowser } from 'gatsby'
 
 import Layout from './src/Layout'

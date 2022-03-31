@@ -1,9 +1,9 @@
 import { useSession } from '@faststore/sdk'
-import type { ReactElement, FormEvent } from 'react'
-import React, { useState } from 'react'
 import { Form, Input } from '@faststore/ui'
+import { useState } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import type { ReactElement, FormEvent } from 'react'
 
 export interface OutOfStockProps {
   /**
