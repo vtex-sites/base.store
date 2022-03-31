@@ -14,8 +14,8 @@ import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
+import OutOfStock from 'src/components/product/OutOfStock'
 
-import './product-details.scss'
 import Section from '../Section'
 
 interface Props {
@@ -168,6 +168,13 @@ function ProductDetails({ product: staleProduct }: Props) {
             <BuyButton disabled={buyDisabled} {...buyProps}>
               Add to Cart
             </BuyButton>
+          )}
+          {!availability && (
+            <OutOfStock
+              onSubmit={(email) => {
+                console.info(email)
+              }}
+            />
           )}
         </section>
 

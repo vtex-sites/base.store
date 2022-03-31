@@ -1,12 +1,10 @@
-import type { HTMLAttributes } from 'react'
-import React, { forwardRef } from 'react'
 import { List as UIList } from '@faststore/ui'
+import React, { forwardRef } from 'react'
 import Button from 'src/components/ui/Button'
 import Link from 'src/components/ui/Link'
+import type { HTMLAttributes } from 'react'
 
 import SuggestionProductCard from '../SuggestionProductCard'
-
-import './suggestions.scss'
 
 const MAX_SUGGESTIONS = 10
 const MAX_SUGGESTIONS_WITH_PRODUCTS = 5

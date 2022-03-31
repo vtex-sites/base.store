@@ -249,22 +249,12 @@ Now, on `button.scss`:
 
 This `data-store-button` is a CSS data attribute selector. To know which selectors are available, check [FastStore UI docs](https://faststoreui.netlify.app/).
 
-Now, open `Button.tsx` and import this CSS with:
+Now, include the component's CSS into the Store's CSS. Open `src/styles/global/components.scss` and import this CSS with:
 
-```tsx
-import React from 'react'
-import { Button as UIButton } from '@faststore/ui'
-import type { ButtonProps } from '@faststore/ui'
-
-import './button.scss'
-
-interface Props extends ButtonProps {}
-
-function Button(props: Props) {
-  return <UIButton {...props} />
-}
-
-export default Button
+```scss
+// ...
+@import "src/components/ui/Button/button.scss";
+// ...
 ```
 
 For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and secondary variants. To add variants to the component, update `Button.tsx`:
@@ -273,8 +263,6 @@ For most components, you would stop here. However, buttons can have different va
 import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
-
-import './button.scss'
 
 interface Props extends ButtonProps {
   variant: 'secondary' | 'primary'

@@ -1,10 +1,10 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import React, { lazy, Suspense, useState } from 'react'
-import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
+import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
 import Button, { LinkButton } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
@@ -14,8 +14,6 @@ import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
-
-import './product-gallery.scss'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
