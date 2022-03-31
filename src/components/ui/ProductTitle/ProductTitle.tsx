@@ -1,7 +1,5 @@
-import type { ReactNode } from 'react'
 import React, { memo } from 'react'
-
-import './product-title.scss'
+import type { ReactNode } from 'react'
 
 interface ProductTitleProp {
   /**

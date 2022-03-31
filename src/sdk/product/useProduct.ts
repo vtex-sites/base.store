@@ -23,13 +23,13 @@ export const useProduct = <T extends BrowserProductQueryQuery>(
   const { channel } = useSession()
   const variables = useMemo(() => {
     if (!channel) {
-      throw new Error(`useProduct: 'channel' from session is 'null'.`)
+      throw new Error(`useProduct: 'channel' from session is an empty string.`)
     }
 
     return {
       locator: [
         { key: 'id', value: productID },
-        { key: 'channel', value: JSON.parse(channel).salesChannel },
+        { key: 'channel', value: channel },
       ],
     }
   }, [channel, productID])

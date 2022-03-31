@@ -1,8 +1,6 @@
-import React from 'react'
 import { IconButton as UIIconButton } from '@faststore/ui'
+import React from 'react'
 import type { IconButtonProps as UIIconButtonProps } from '@faststore/ui'
-
-import './icon-button.scss'
 
 interface IconButtonProps {
   classes?: string
