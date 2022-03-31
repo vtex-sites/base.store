@@ -57,14 +57,12 @@ const InputText = ({
   ...otherProps
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>('')
-  const [error, setError] = useState<string | undefined>(
-    errorMessage ?? undefined
-  )
+  const [hasError, setHasError] = useState<boolean>(!!errorMessage)
 
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    errorMessage && setError(errorMessage)
+    errorMessage && setHasError(false)
   }, [errorMessage])
 
   const onClear = () => {
@@ -75,7 +73,7 @@ const InputText = ({
   return (
     <div
       data-fs-input-text
-      data-fs-input-text-error={error && inputValue !== ''}
+      data-fs-input-text-error={hasError && inputValue !== ''}
       data-fs-input-text-actionable={actionable}
     >
       <UIInput
@@ -85,7 +83,7 @@ const InputText = ({
         placeholder={placeholder}
         value={inputValue}
         onInput={(e) => {
-          error && setError(undefined)
+          hasError && setHasError(false)
           setInputValue(e.currentTarget.value)
         }}
         {...otherProps}
@@ -94,7 +92,7 @@ const InputText = ({
 
       {actionable &&
         inputValue !== '' &&
-        (error ? (
+        (hasError ? (
           <IconButton
             data-fs-input-text-button
             aria-label="Clear Field"
@@ -110,8 +108,8 @@ const InputText = ({
             {buttonActionText}
           </Button>
         ))}
-      {error && inputValue !== '' && (
-        <span data-fs-input-text-message>{error}</span>
+      {hasError && inputValue !== '' && (
+        <span data-fs-input-text-message>{errorMessage}</span>
       )}
     </div>
   )
