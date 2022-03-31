@@ -16,6 +16,12 @@ main,
   display: flex;
   flex-wrap: wrap;
   background-color: var(--fs-color-body-bkg);
+
+  > [data-postal-code-bar] {
+    @include media(">=notebook") {
+      display: none;
+    }
+  }
 }
 
 .layout__section {
@@ -43,10 +49,10 @@ main,
   box-sizing: border-box;
   width: 100%;
   max-width: var(--fs-grid-breakpoint-notebook);
-  margin-right: auto;
-  margin-left: auto;
   padding-right: var(--fs-grid-padding);
   padding-left: var(--fs-grid-padding);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 // Avoids double scroll issue on the page when overlay is open

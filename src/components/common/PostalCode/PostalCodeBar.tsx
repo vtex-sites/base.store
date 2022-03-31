@@ -9,7 +9,7 @@ interface PostalCodeBarProps {
 
 export default function PostalCodeInput({ content }: PostalCodeBarProps) {
   return (
-    <div className="postal-code-bar">
+    <div data-postal-code-bar>
       <Button
         onClick={() => {
           window.scrollTo(0, 1000)
