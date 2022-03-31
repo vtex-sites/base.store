@@ -10,8 +10,6 @@ import type { Filter_FacetsFragment } from '@generated/graphql'
 import Facets from './Facets'
 import { useFilter } from './useFilter'
 
-import './filter.scss'
-
 interface Props {
   facets: Filter_FacetsFragment[]
   /*

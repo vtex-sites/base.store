@@ -1,5 +1,3 @@
-import './image.scss'
-
 import React, { memo } from 'react'
 import { Helmet } from 'react-helmet-async'
 

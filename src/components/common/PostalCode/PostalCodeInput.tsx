@@ -1,15 +1,13 @@
 import { useSession } from '@faststore/sdk'
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
-import React, { useRef } from 'react'
-import type { KeyboardEvent } from 'react'
 import { gql } from '@vtex/graphql-utils'
+import React, { useRef } from 'react'
 import { request } from 'src/sdk/graphql/request'
+import type { KeyboardEvent } from 'react'
 import type {
   UpdateSessionMutationMutation,
   UpdateSessionMutationMutationVariables,
 } from '@generated/graphql'
-
-import './postal-code-input.scss'
 
 const POSTAL_CODE_INPUT_ID = 'postal-code-input'
 

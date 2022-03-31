@@ -1,6 +1,7 @@
 import { Card, CardActions, CardContent, CardImage } from '@faststore/ui'
 import React from 'react'
 import Button from 'src/components/ui/Button'
+import Icon from 'src/components/ui/Icon'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import QuantitySelector from 'src/components/ui/QuantitySelector'
@@ -8,9 +9,6 @@ import { useCart } from 'src/sdk/cart/useCart'
 import { useRemoveButton } from 'src/sdk/cart/useRemoveButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { CartItem as ICartItem } from 'src/sdk/cart/validate'
-import Icon from 'src/components/ui/Icon'
-
-import './cart-item.scss'
 
 interface Props {
   item: ICartItem

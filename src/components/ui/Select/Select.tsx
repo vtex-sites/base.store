@@ -1,9 +1,7 @@
-import React from 'react'
 import { Select as UISelect } from '@faststore/ui'
-import type { SelectProps } from '@faststore/ui'
+import React from 'react'
 import Icon from 'src/components/ui/Icon'
-
-import './select.scss'
+import type { SelectProps } from '@faststore/ui'
 
 interface UISelectProps extends SelectProps {
   /*
