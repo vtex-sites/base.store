@@ -51,9 +51,9 @@
     }
 
     &:disabled {
+      cursor: not-allowed;
       background-color: var(--fs-color-disabled-bkg);
       border: 0;
-      cursor: not-allowed;
       + label { cursor: not-allowed; }
     }
   }
@@ -61,9 +61,9 @@
   label {
     position: absolute;
     padding: 0 var(--fs-input-text-padding-horizontal);
-    color: var(--fs-color-text-light);
     font-size: var(--fs-text-size-body);
     line-height: 1.5;
+    color: var(--fs-color-text-light);
   }
 }
 
@@ -108,8 +108,8 @@
       left: calc(-1 * var(--fs-spacing-1));
       width: 1px;
       height: 80%;
-      background-color: var(--fs-border-color-default);
       content: "";
+      background-color: var(--fs-border-color-default);
     }
   }
 
