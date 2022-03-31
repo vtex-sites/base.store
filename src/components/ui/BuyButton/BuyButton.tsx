@@ -12,7 +12,7 @@ function BuyButton({ children, ...props }: Props) {
     <UIButton
       data-fs-button
       data-store-buy-button
-      data-fs-button-variant="cta"
+      data-fs-button-variant="buy"
       {...props}
     >
       <Icon name="ShoppingCart" width={18} height={18} weight="bold" />

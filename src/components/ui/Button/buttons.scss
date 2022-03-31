@@ -96,17 +96,17 @@
   --fs-button-tertiary-inverse-border-color-active : var(--fs-button-tertiary-border-color);
   --fs-button-tertiary-inverse-shadow-hover        : var(--fs-button-shadow-hover);
 
-  // CTA
-  --fs-button-cta-text-color                       : var(--fs-color-action-text);
-  --fs-button-cta-text-color-hover                 : var(--fs-color-action-text);
-  --fs-button-cta-text-color-active                : var(--fs-color-action-text);
-  --fs-button-cta-bkg-color                        : var(--fs-color-action-bkg);
-  --fs-button-cta-bkg-color-hover                  : var(--fs-color-action-bkg-hover);
-  --fs-button-cta-bkg-color-active                 : var(--fs-color-action-bkg-active);
-  --fs-button-cta-border-color                     : var(--fs-button-action-text-color);
-  --fs-button-cta-border-color-hover               : var(--fs-button-action-border-color);
-  --fs-button-cta-border-color-active              : var(--fs-button-action-border-color-hover);
-  --fs-button-cta-shadow-hover                     : var(--fs-button-shadow-hover);
+  // Buy (Main CTA)
+  --fs-button-buy-text-color                       : var(--fs-color-action-text);
+  --fs-button-buy-text-color-hover                 : var(--fs-color-action-text);
+  --fs-button-buy-text-color-active                : var(--fs-color-action-text);
+  --fs-button-buy-bkg-color                        : var(--fs-color-action-bkg);
+  --fs-button-buy-bkg-color-hover                  : var(--fs-color-action-bkg-hover);
+  --fs-button-buy-bkg-color-active                 : var(--fs-color-action-bkg-active);
+  --fs-button-buy-border-color                     : var(--fs-button-action-text-color);
+  --fs-button-buy-border-color-hover               : var(--fs-button-action-border-color);
+  --fs-button-buy-border-color-active              : var(--fs-button-action-border-color-hover);
+  --fs-button-buy-shadow-hover                     : var(--fs-button-shadow-hover);
 
   --fs-button-disabled-bkg-color                   : var(--fs-color-disabled-bkg);
   --fs-button-disabled-text-color                  : var(--fs-color-disabled-text);
@@ -134,6 +134,7 @@
   [data-store-icon] {
     display: flex;
     align-items: center;
+    justify-content: center;
   }
 
   // --------------------------------------------------------
@@ -312,27 +313,27 @@
     }
   }
 
-  &[data-fs-button-variant="cta"] {
-    color: var(--fs-button-cta-text-color);
-    background-color: var(--fs-button-cta-bkg-color);
-    border: var(--fs-button-border-width) solid var(--fs-button-cta-border-color);
+  &[data-fs-button-variant="buy"] {
+    color: var(--fs-button-buy-text-color);
+    background-color: var(--fs-button-buy-bkg-color);
+    border: var(--fs-button-border-width) solid var(--fs-button-buy-border-color);
 
     &:hover {
-      color: var(--fs-button-cta-text-color-hover);
-      background-color: var(--fs-button-cta-bkg-color-hover);
-      border-color: var(--fs-button-cta-border-color-hover);
-      box-shadow: var(--fs-button-cta-shadow-hover);
+      color: var(--fs-button-buy-text-color-hover);
+      background-color: var(--fs-button-buy-bkg-color-hover);
+      border-color: var(--fs-button-buy-border-color-hover);
+      box-shadow: var(--fs-button-buy-shadow-hover);
     }
 
     &:focus, &:focus-visible {
-      color: var(--fs-button-cta-text-color-hover);
-      background-color: var(--fs-button-cta-bkg-color-hover);
+      color: var(--fs-button-buy-text-color-hover);
+      background-color: var(--fs-button-buy-bkg-color-hover);
     }
 
     &:active {
-      color: var(--fs-button-cta-text-color-hover);
-      background-color: var(--fs-button-cta-bkg-color-active);
-      border-color: var(--fs-button-cta-border-color-active);
+      color: var(--fs-button-buy-text-color-hover);
+      background-color: var(--fs-button-buy-bkg-color-active);
+      border-color: var(--fs-button-buy-border-color-active);
       outline: none;
     }
   }
@@ -353,6 +354,5 @@
     &[data-button-disabled="true"] { pointer-events: none; }
   }
 }
-
 
 /* stylelint-enable */
