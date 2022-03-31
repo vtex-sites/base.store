@@ -4,8 +4,6 @@ import { Form, Input } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
-import './out-of-stock.scss'
-
 export interface OutOfStockProps {
   /**
    * ID to find this component in testing tools (e.g.: cypress,
