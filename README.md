@@ -370,18 +370,19 @@ An example adding Bell icon:
 ```tsx
 // src/components/ui/MyIconButton/MyIconButton.tsx
 import React from 'react'
-import IconSVG from 'src/components/common/IconSVG' // this path can be outdated.
+import Icon from 'src/components/ui/Icon' // this path can be outdated.
 
 function IconButton() {
   return (
     <button>
-      <IconSVG name="<<symbol_id>>" weight="thin" />
+      <Icon name="<<symbol_id>>" weight="thin" />
     </button>
   )
 }
 
 export default IconButton
 ```
+
 This project uses SVGs from [Phosphor icons](https://phosphoricons.com/).
 
 ## 🖊️ Styling Components
