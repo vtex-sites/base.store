@@ -62,7 +62,7 @@ const InputText = ({
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    errorMessage && setHasError(false)
+    errorMessage && setHasError(true)
   }, [errorMessage])
 
   const onClear = () => {
