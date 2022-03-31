@@ -59,31 +59,6 @@ const doSearch = async (term: string) => {
   navigate(`${pathname}${search}`)
 }
 
-// const SUGGESTED_PRODUCTS = [
-//   {
-//     name: 'Ergonomic Wooden Bacon',
-//     listPrice: 72.06,
-//     price: 46.26,
-//     image: [
-//       {
-//         alternateName: 'rerum',
-//         url: 'http://storeframework.vtexassets.com/arquivos/ids/167285/ut.jpg?v=637753017045600000',
-//       },
-//     ],
-//   },
-//   {
-//     name: 'Handcrafted Rubber Sausages',
-//     listPrice: 59.57,
-//     price: 32.83,
-//     image: [
-//       {
-//         alternateName: 'ea',
-//         url: 'http://storeframework.vtexassets.com/arquivos/ids/155949/voluptas.jpg?v=637752878341070000',
-//       },
-//     ],
-//   },
-// ]
-
 const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
   function SearchInput(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
