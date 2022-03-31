@@ -10,14 +10,14 @@
   --fs-hero-bkg-color          : var(--fs-color-primary-bkg);
   --fs-hero-text-color         : var(--fs-color-text-inverse);
 
-  --fs-hero-text-title-color        : var(--fs-hero-text-color);
-  --fs-hero-text-title-size         : var(--fs-text-size-7);
-  --fs-hero-text-title-small-size   : var(--fs-text-size-6);
-  --fs-hero-text-title-line         : 1.1;
+  --fs-hero-title-color        : var(--fs-hero-text-color);
+  --fs-hero-title-size         : var(--fs-text-size-7);
+  --fs-hero-title-small-size   : var(--fs-text-size-6);
+  --fs-hero-title-line         : 1.1;
 
-  --fs-hero-text-paragraph-color    : var(--fs-hero-text-color);
-  --fs-hero-text-paragraph-size     : var(--fs-text-size-lead);
-  --fs-hero-text-paragraph-line     : 1.33;
+  --fs-hero-paragraph-color    : var(--fs-hero-text-color);
+  --fs-hero-paragraph-size     : var(--fs-text-size-lead);
+  --fs-hero-paragraph-line     : 1.33;
   /* stylelint-enable */
 
   // Structural Styles
@@ -38,18 +38,18 @@
 [data-fs-hero-content] {
   width: 100%;
   padding: var(--fs-spacing-5) 0 var(--fs-spacing-6);
-  color: var(--fs-hero-text-title-color);
+  color: var(--fs-hero-title-color);
 
   h1 {
-    font-size: var(--fs-hero-text-title-size);
+    font-size: var(--fs-hero-title-size);
     font-weight: var(--fs-text-weight-black);
-    line-height: var(--fs-hero-text-title-line);
+    line-height: var(--fs-hero-title-line);
   }
 
   p {
     margin-top: var(--fs-spacing-2);
-    font-size: var(--fs-hero-text-paragraph-size);
-    line-height: var(--fs-hero-text-paragraph-line);
+    font-size: var(--fs-hero-paragraph-size);
+    line-height: var(--fs-hero-paragraph-line);
 
     @include media(">=tablet") { margin-top: var(--fs-spacing-4); }
   }
@@ -90,7 +90,7 @@
 
 [data-fs-hero-variant="default"] {
   [data-fs-hero-content] {
-    @include media(">=tablet") { padding: var(--fs-spacing-13) 0; }
+    @include media(">=tablet") { padding: var(--fs-spacing-12) 0; }
   }
 
   [data-store-button] {
@@ -107,9 +107,9 @@
 }
 
 [data-fs-hero-variant="small"] {
-  @include media(">=tablet") { min-height: rem(250px); }
+  @include media(">=tablet") { min-height: rem(227px); }
 
-  h1 { font-size: var(--fs-hero-text-title-small-size); }
+  h1 { font-size: var(--fs-hero-title-small-size); }
 
   [data-fs-hero-content] {
     padding: var(--fs-spacing-4) 0 var(--fs-spacing-5);
