@@ -1,4 +1,4 @@
-@import "src/styles/scaffold";
+@import 'src/styles/scaffold';
 
 .suggestions__title {
   margin-bottom: var(--fs-spacing-1);
@@ -12,7 +12,8 @@
   background-color: var(--fs-color-neutral-0);
 
   &:not(:last-child) {
-    border-bottom: var(--fs-border-width-default) solid var(--fs-border-color-light);
+    border-bottom: var(--fs-border-width-default) solid
+      var(--fs-border-color-light);
   }
 }
 
@@ -46,6 +47,8 @@
 }
 
 [data-store-suggestions] {
+  width: 100%;
+
   .suggestions__item-bold {
     color: var(--fs-color-neutral-7);
     font-weight: var(--fs-text-weight-bold);
@@ -59,6 +62,9 @@
     line-height: 1.25;
     background-color: transparent;
     cursor: pointer;
+    width: 100%;
+    text-align: left;
+    display: block;
   }
 
   [data-store-link] {
