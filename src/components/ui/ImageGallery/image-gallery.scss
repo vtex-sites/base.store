@@ -5,16 +5,16 @@
   left: calc(-1 * var(--fs-grid-padding));
   display: flex;
   flex-direction: column;
+  row-gap: var(--fs-spacing-2);
   width: calc(100% + (2 * var(--fs-grid-padding)));
-  row-gap: var(--space-2);
 
   @include media(">=notebook") {
     display: flex;
     flex-direction: row-reverse;
-    column-gap: var(--space-3);
+    column-gap: var(--fs-spacing-3);
   }
 
-  [data-gatsby-image-wrapper] {
+  [data-store-image] {
     @include media(">=tablet") {
       border-radius: var(--fs-border-radius-default);
       transform: translate3d(0, 0, 0);
@@ -34,11 +34,11 @@
 
 [data-image-gallery="has-selector"] {
   @include media(">notebook") {
-    // TODO: Define this aspect ratio as token so we can apply to differnt ratios of images;
-    aspect-ratio: 4.57/3;
 
     // This max-height is defined as a fallback for browsers
     // that does not support the aspect-ratio property
     max-height: rem(600px);
+    // TODO: Define this aspect ratio as token so we can apply to differnt ratios of images;
+    aspect-ratio: 4.57/3;
   }
 }

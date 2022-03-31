@@ -14,10 +14,10 @@
     background-color: transparent;
 
     span {
-      padding: var(--space-1);
-      background-color: var(--bg-neutral-lightest);
-      border-radius: var(--border-radius-circle);
-      box-shadow: var(--box-shadow);
+      padding: var(--fs-spacing-1);
+      background-color: var(--fs-control-bkg-default);
+      border-radius: var(--fs-border-radius-circle);
+      box-shadow: var(--fs-shadow);
     }
 
     @include media("<notebook") {
@@ -55,9 +55,9 @@
 
   [data-carousel-track] {
     display: flex;
-    padding: var(--space-0) var(--space-5);
+    column-gap: var(--fs-spacing-1);
+    padding: var(--fs-spacing-0) var(--fs-spacing-5);
     overflow-x: auto;
-    column-gap: var(--space-1);
     scroll-behavior: smooth;
 
     [data-store-button] {
@@ -65,25 +65,25 @@
       overflow: hidden;
       background-color: transparent;
       border: 2px solid transparent;
-      border-radius: var(--border-radius-default);
+      border-radius: var(--fs-border-radius-default);
 
       &[data-thumbnail-button="selected"] {
         @include focus-ring;
 
         border-color: var(--color-border-input-selected);
-        border-width: var(--border-width-1);
+        border-width: var(--fs-border-color-default);
       }
     }
 
     @include media(">=notebook") {
       flex-direction: column;
-      padding: var(--space-4) var(--space-0);
+      row-gap: var(--fs-spacing-2);
+      padding: var(--fs-spacing-4) var(--fs-spacing-0);
       overflow-y: scroll;
-      row-gap: var(--space-2);
     }
   }
 
-  [data-gatsby-image-wrapper] {
+  [data-store-image] {
     width: rem(56px);
     transform: translate3d(0, 0, 0);
 
