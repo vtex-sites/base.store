@@ -15,8 +15,11 @@
 @import "src/components/product/ProductGrid/product-grid.scss";
 @import "src/components/product/OutOfStock/out-of-stock.scss";
 
-// Search
-@import "src/components/search/Filter/filter.scss";
+// Regionalization
+@import "src/components/regionalization/RegionalizationModal/regionalization-modal.scss"
+
+
+  @import "src/components/search/Filter/filter.scss";
 @import "src/components/search/History/search-history.scss";
 @import "src/components/search/SuggestionProductCard/suggestion-product-card.scss";
 @import "src/components/search/Suggestions/suggestions.scss";

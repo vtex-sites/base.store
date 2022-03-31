@@ -6,8 +6,6 @@ import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
 import { useModal } from 'src/sdk/ui/modal/Provider'
 
-import './regionalization-modal.scss'
-
 interface RegionalizationModalProps {
   isOpen: boolean
   /**
