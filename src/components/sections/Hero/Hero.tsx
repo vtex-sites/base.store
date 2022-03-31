@@ -10,7 +10,7 @@ import Icon from 'src/components/ui/Icon'
 
 import Section from '../Section'
 
-type Variant = 'default' | 'small'
+type Variant = 'primary' | 'secondary'
 
 interface HeroProps {
   title: string
@@ -26,7 +26,7 @@ interface HeroProps {
 const Hero = ({
   title,
   subtitle,
-  variant = 'default',
+  variant = 'primary',
   linkText,
   link,
   icon,
