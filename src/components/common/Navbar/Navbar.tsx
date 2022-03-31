@@ -16,6 +16,8 @@ import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
 import type { StoreCollectionQuery } from '@generated/graphql'
 
+import PostalCodeBar from '../PostalCode/PostalCodeBar'
+
 type Callback = () => unknown
 
 interface NavLinksProps {
@@ -43,6 +45,9 @@ function NavLinks({ onClickLink }: NavLinksProps) {
   return (
     <nav className="navlinks__list">
       <UIList>
+        <li>
+          <PostalCodeBar />
+        </li>
         {links.map(({ node: link }) => (
           <li key={link.seo.title}>
             <Link variant="display" to={`/${link.slug}`} onClick={onClickLink}>

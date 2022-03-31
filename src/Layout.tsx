@@ -6,6 +6,8 @@ import Toast from 'src/components/common/Toast'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
+import PostalCodeBar from './components/common/PostalCode/PostalCodeBar'
+
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
@@ -19,7 +21,10 @@ function Layout({ children }: PropsWithChildren<unknown>) {
 
       <Navbar />
 
-      <main>{children}</main>
+      <main>
+        <PostalCodeBar />
+        {children}
+      </main>
 
       <Footer />
 
