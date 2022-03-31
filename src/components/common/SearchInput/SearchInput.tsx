@@ -44,6 +44,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
     ref
   ) {
+    const [searchTerm, setSearchTerm] = useState('')
     const wrapperRef = useRef<HTMLDivElement>(null)
     const [openDropdown, setOpenDropdown] = useState(false)
     const { addToSearchHistory } = useSearchHistory()
@@ -51,6 +52,11 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
     const handleSearch = (term: string) => {
       addToSearchHistory(term)
       doSearch(term)
+      setOpenDropdown(false)
+    }
+
+    const handleLinkClick = (term: string) => {
+      setSearchTerm(term)
       setOpenDropdown(false)
     }
 
@@ -91,6 +97,8 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
           placeholder="Search everything at the store"
           onSubmit={handleSearch}
           onFocus={() => setOpenDropdown(true)}
+          onChange={(event) => setSearchTerm(event.target.value)}
+          value={searchTerm}
           {...props}
         />
         {openDropdown && (
@@ -100,7 +108,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
                 onClear={() => {
                   console.warn('Implement `onClear`.')
                 }}
-                onLinkClick={() => setOpenDropdown(false)}
+                onLinkClick={handleLinkClick}
               />
               <SuggestionsTopSearch
                 searchedItems={[
@@ -110,7 +118,7 @@ const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
                   { href: '/s/?q=magic+mouse', name: 'Magic mouse' },
                   { href: '/s/?q=smart+speaker', name: 'Smart speaker' },
                 ]}
-                onLinkClick={() => setOpenDropdown(false)}
+                onLinkClick={handleLinkClick}
               />
             </div>
           </div>

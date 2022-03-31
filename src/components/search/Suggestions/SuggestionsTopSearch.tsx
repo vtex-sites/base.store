@@ -1,4 +1,4 @@
-import type { HTMLAttributes, AnchorHTMLAttributes } from 'react'
+import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 import { List as UIList } from '@faststore/ui'
 import { Badge } from 'src/components/ui/Badge'
@@ -20,7 +20,7 @@ export interface SuggestionsTopSearchProps
   /**
    * Additional click handler for the links (e.g. for closing the dropdown).
    */
-  onLinkClick?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
+  onLinkClick?: (searchTerm: string) => void
 }
 
 type LinkItem = {
@@ -47,7 +47,11 @@ const SuggestionsTopSearch = forwardRef<
       <UIList variant="ordered">
         {searchedItems.map((item, index) => (
           <li key={index} className="suggestions__item">
-            <Link variant="display" to={item.href} onClick={onLinkClick}>
+            <Link
+              variant="display"
+              to={item.href}
+              onClick={() => onLinkClick?.(item.name)}
+            >
               <Badge variant="info" small>
                 {index + 1}
               </Badge>
