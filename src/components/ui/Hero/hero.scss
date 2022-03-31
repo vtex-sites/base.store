@@ -87,8 +87,14 @@
 }
 
 [data-fs-hero-variant="default"] {
+  @include media(">=tablet") { min-height: rem(464px); }
+
   [data-fs-hero-content] {
-    @include media(">=tablet") { padding: var(--fs-spacing-12) 0; }
+    @include media(">=tablet") {
+      display: flex;
+      align-items: center;
+      padding: var(--fs-spacing-9) 0;
+    }
   }
 
   [data-store-button] {
