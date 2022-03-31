@@ -1,40 +1,11 @@
 import { List as UIList } from '@faststore/ui'
+import type { HTMLAttributes } from 'react'
 import React, { forwardRef } from 'react'
 import Button from 'src/components/ui/Button'
 import Link from 'src/components/ui/Link'
-import type { HTMLAttributes } from 'react'
 
 import SuggestionProductCard from '../SuggestionProductCard'
-
-const MAX_SUGGESTIONS = 10
-const MAX_SUGGESTIONS_WITH_PRODUCTS = 5
-const MAX_SUGGESTED_PRODUCTS = 4
-const SUGGESTED_PRODUCTS = [
-  {
-    name: 'Ergonomic Wooden Bacon',
-    listPrice: 72.06,
-    price: 46.26,
-    image: [
-      {
-        alternateName: 'rerum',
-        url: 'http://storeframework.vtexassets.com/arquivos/ids/167285/ut.jpg?v=637753017045600000',
-      },
-    ],
-  },
-  {
-    name: 'Handcrafted Rubber Sausages',
-    listPrice: 59.57,
-    price: 32.83,
-    image: [
-      {
-        alternateName: 'ea',
-        url: 'http://storeframework.vtexassets.com/arquivos/ids/155949/voluptas.jpg?v=637752878341070000',
-      },
-    ],
-  },
-]
-
-const SUGGESTIONS = ['Sony MX', 'Sony MV-100 Headphone', 'Sony M2000 Earbuds']
+import './suggestions.scss'
 
 function formatSearchTerm(
   indexSubstring: number,
@@ -88,18 +59,40 @@ export interface SuggestionsProps extends HTMLAttributes<HTMLDivElement> {
    * Search term
    */
   term?: string
+  /**
+   * List of suggestions to be displayed in the suggestions list.
+   *
+   * @type {string[]}
+   * @memberof SuggestionsProps
+   */
+  terms: string[]
+  /**
+   * List of products to be displayed in the suggestions list.
+   *
+   * @type {any[]}
+   * @memberof SuggestionsProps
+   */
+  products: any[]
+  /**
+   * Callback to be executed when a suggestion is selected.
+   *
+   * @memberof SuggestionsProps
+   */
+  onSearch: (term: string) => void
 }
 
 const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
   function Suggestions(
-    { testId = 'suggestions', term = '', ...otherProps },
+    {
+      testId = 'suggestions',
+      term = '',
+      terms,
+      products,
+      onSearch,
+      ...otherProps
+    },
     ref
   ) {
-    const suggestions =
-      SUGGESTED_PRODUCTS.length > 0
-        ? SUGGESTIONS.slice(0, MAX_SUGGESTIONS_WITH_PRODUCTS)
-        : SUGGESTIONS.slice(0, MAX_SUGGESTIONS)
-
     return (
       <section
         ref={ref}
@@ -108,11 +101,11 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
         className="suggestions"
         {...otherProps}
       >
-        {suggestions.length > 0 && (
+        {terms.length > 0 && (
           <UIList data-suggestions-list className="suggestions__section">
-            {suggestions?.map((suggestion, index) => (
-              <li key={index} className="suggestions__item">
-                <Button onClick={() => null}>
+            {terms?.map((suggestion) => (
+              <li key={suggestion} className="suggestions__item">
+                <Button onClick={() => onSearch(suggestion)}>
                   {handleSuggestions(suggestion, term)}
                 </Button>
               </li>
@@ -120,19 +113,17 @@ const Suggestions = forwardRef<HTMLDivElement, SuggestionsProps>(
           </UIList>
         )}
 
-        {SUGGESTED_PRODUCTS.length > 0 && (
+        {products.length > 0 && (
           <div className="suggestions__section">
             <p className="suggestions__title">Suggested Products</p>
             <UIList>
-              {SUGGESTED_PRODUCTS.slice(0, MAX_SUGGESTED_PRODUCTS).map(
-                (product, index) => (
-                  <li key={index} className="suggestions__item">
-                    <Link to="/" variant="display">
-                      <SuggestionProductCard product={product} />
-                    </Link>
-                  </li>
-                )
-              )}
+              {products.map((product) => (
+                <li key={product.name} className="suggestions__item">
+                  <Link to="/" variant="display">
+                    <SuggestionProductCard product={product} />
+                  </Link>
+                </li>
+              ))}
             </UIList>
           </div>
         )}

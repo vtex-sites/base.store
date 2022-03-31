@@ -5,6 +5,7 @@ import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'
 import useSearchHistory from 'src/sdk/search/useSearchHistory'
+import './search-history.scss'
 
 interface SearchHistoryProps {
   onClear: () => void
@@ -33,8 +34,8 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
         </Button>
       </div>
       <UIList variant="ordered">
-        {searchHistory.map((item, index) => (
-          <li data-store-search-history-item key={index}>
+        {searchHistory.map((item) => (
+          <li data-store-search-history-item key={item}>
             <Link
               variant="display"
               to={doSearch(item)}

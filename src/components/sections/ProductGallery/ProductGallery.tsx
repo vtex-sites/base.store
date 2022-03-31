@@ -28,7 +28,7 @@ function ProductGallery({ title, searchTerm }: Props) {
   const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
-  const totalCount = data?.search.products.pageInfo.totalCount ?? 0
+  const totalCount = data?.search?.products?.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
 
   if (data && totalCount === 0) {
