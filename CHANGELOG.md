@@ -26,8 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New folder `styles/global` containing all global styles.
 - Session mutation when the user enters a new postal code.
 - Send channel string as search facet
+- `InputText` component.
 
 ### Changed
+
 - Drop gatsby-plugin-image in favor of custom/simpler component
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order`
 - Simplify filters component by using `useReducer` instead of multiple `useState`
