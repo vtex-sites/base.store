@@ -1,5 +1,5 @@
 import { List as UIList } from '@faststore/ui'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import PostalCodeInput from 'src/components/common/PostalCode'
@@ -86,14 +86,14 @@ function Navbar() {
                 icon={<Icon name="List" width={32} height={32} />}
                 onClick={() => setShowMenu(true)}
               />
-              <Link
+              <LinkGatsby
                 to="/"
                 aria-label="Go to Faststore home"
                 title="Go to Faststore home"
                 className="navbar__logo"
               >
                 <Logo />
-              </Link>
+              </LinkGatsby>
             </>
           )}
           <SearchInput />
@@ -141,7 +141,7 @@ function Navbar() {
       >
         <div className="navbar__modal-body">
           <header className="navbar__modal-header">
-            <Link
+            <LinkGatsby
               to="/"
               aria-label="Go to FastStore home"
               title="Go to FastStore home"
@@ -149,7 +149,7 @@ function Navbar() {
               onClick={onModalClose}
             >
               <Logo />
-            </Link>
+            </LinkGatsby>
 
             <ButtonIcon
               aria-label="Close Menu"
