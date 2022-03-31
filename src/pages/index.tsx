@@ -82,10 +82,10 @@ function Page(props: Props) {
         imageAlt="Quest 2 Controller on a table"
       />
 
-      <InputText id="test" label="Zip Code" />
+      <InputText id="test" label="Default" />
       <InputText
         id="input"
-        label="Zip Code"
+        label="Input With Button"
         actionable
         errorMessage={errorMessageTxt}
         onSubmit={handleSubmit}
