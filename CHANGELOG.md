@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Badge` interactive variation.
 - New folder `styles/global` containing all global styles.
 - Session mutation when the user enters a new postal code.
+- Send channel string as search facet
 
 ### Changed
 - Drop gatsby-plugin-image in favor of custom/simpler component
