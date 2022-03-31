@@ -2,7 +2,6 @@ import React from 'react'
 
 import Shimmer from '../Shimmer'
 import SkeletonElement from '../SkeletonElement'
-import './product-card-skeleton.scss'
 
 interface Props {
   bordered?: boolean

@@ -21,7 +21,7 @@ const apiOptions = {
   account: storeConfig.api.storeId,
   environment: storeConfig.api.environment,
   // TODO: the API should handle this sales channel as string
-  channel: JSON.parse(storeConfig.channel).salesChannel,
+  channel: storeConfig.channel,
   hideUnavailableItems: storeConfig.api.hideUnavailableItems,
 }
 

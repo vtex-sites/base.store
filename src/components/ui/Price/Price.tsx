@@ -1,10 +1,8 @@
-import React, { memo } from 'react'
 import { Price as UIPrice } from '@faststore/ui'
+import React, { memo } from 'react'
 import type { PriceProps } from '@faststore/ui'
 
 import SROnly from '../SROnly'
-
-import './price.scss'
 
 type Props = PriceProps & {
   /**

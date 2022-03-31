@@ -4,8 +4,6 @@ import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 
 import Section from '../Section'
 
-import './breadcrumb.scss'
-
 interface BreadcrumbWrapperProps
   extends Partial<Pick<BreadcrumbProps, 'breadcrumbList'>> {
   name: string

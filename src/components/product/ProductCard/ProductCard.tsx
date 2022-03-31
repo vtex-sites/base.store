@@ -14,8 +14,6 @@ import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import './product-card.scss'
-
 type Variant = 'wide' | 'default'
 
 interface Props {

@@ -14,7 +14,6 @@ import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
-import './product-details.scss'
 import OutOfStock from 'src/components/product/OutOfStock'
 
 import Section from '../Section'

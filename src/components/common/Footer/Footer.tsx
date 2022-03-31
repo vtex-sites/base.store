@@ -1,18 +1,16 @@
-import React from 'react'
 import {
-  List as UIList,
   Icon as UIIcon,
+  List as UIList,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
-import { mark } from 'src/sdk/tests/mark'
+import React from 'react'
 import IncentivesFooter from 'src/components/sections/Incentives/IncentivesFooter'
-import SROnly from 'src/components/ui/SROnly'
-import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
+import Link from 'src/components/ui/Link'
+import SROnly from 'src/components/ui/SROnly'
+import { mark } from 'src/sdk/tests/mark'
 
 import FooterLinks from './FooterLinks'
-
-import './footer.scss'
 
 function Footer() {
   return (
