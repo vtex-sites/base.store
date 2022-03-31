@@ -3,8 +3,6 @@ import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
 import Badge from './Badge'
 
-import './badge.scss'
-
 type Props = {
   listPrice: number
   spotPrice: number

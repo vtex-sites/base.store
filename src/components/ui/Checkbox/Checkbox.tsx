@@ -1,8 +1,6 @@
-import React from 'react'
 import { Checkbox as UICheckbox } from '@faststore/ui'
+import React from 'react'
 import type { CheckboxProps as UICheckboxProps } from '@faststore/ui'
-
-import './checkbox.scss'
 
 type CheckboxProps = {
   partial?: boolean

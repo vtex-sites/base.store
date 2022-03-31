@@ -1,11 +1,9 @@
 import React from 'react'
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import ProductCard from '../../product/ProductCard'
 import Section from '../Section'
-
-import './product-shelf.scss'
 
 interface ProductShelfProps {
   products: ProductSummary_ProductFragment[]
