@@ -6,7 +6,7 @@ import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
-import Button, { LinkButton } from 'src/components/ui/Button'
+import Button, { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import { mark } from 'src/sdk/tests/mark'
 
@@ -91,7 +91,7 @@ function ProductGallery({ title, searchTerm }: Props) {
           {prev !== false && (
             <div className="product-listing__pagination product-listing__pagination--top">
               <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-              <LinkButton
+              <ButtonLink
                 onClick={(e) => {
                   e.currentTarget.blur()
                   e.preventDefault()
@@ -106,7 +106,7 @@ function ProductGallery({ title, searchTerm }: Props) {
                 }
               >
                 Previous Page
-              </LinkButton>
+              </ButtonLink>
             </div>
           )}
 
@@ -153,7 +153,7 @@ function ProductGallery({ title, searchTerm }: Props) {
           {next !== false && (
             <div className="product-listing__pagination product-listing__pagination--bottom">
               <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
-              <LinkButton
+              <ButtonLink
                 data-testid="show-more"
                 onClick={(e) => {
                   e.currentTarget.blur()
@@ -165,7 +165,7 @@ function ProductGallery({ title, searchTerm }: Props) {
                 variant="secondary"
               >
                 Load more products
-              </LinkButton>
+              </ButtonLink>
             </div>
           )}
         </div>

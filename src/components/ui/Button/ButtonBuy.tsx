@@ -3,11 +3,11 @@ import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 import Icon from 'src/components/ui/Icon'
 
-import '../Button/buttons.scss'
+import './button.scss'
 
 type Props = ButtonProps
 
-function BuyButton({ children, ...props }: Props) {
+function ButtonBuy({ children, ...props }: Props) {
   return (
     <UIButton
       data-fs-button
@@ -21,4 +21,4 @@ function BuyButton({ children, ...props }: Props) {
   )
 }
 
-export default BuyButton
+export default ButtonBuy

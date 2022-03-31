@@ -2,11 +2,11 @@ import React from 'react'
 import { IconButton as UIIconButton } from '@faststore/ui'
 import type { IconButtonProps as UIIconButtonProps } from '@faststore/ui'
 
-import '../Button/buttons.scss'
+import './button.scss'
 
 type Props = UIIconButtonProps
 
-function IconButton({ icon, ...otherProps }: Props) {
+function ButtonIcon({ icon, ...otherProps }: Props) {
   return (
     <UIIconButton
       data-fs-button="true"
@@ -19,4 +19,4 @@ function IconButton({ icon, ...otherProps }: Props) {
   )
 }
 
-export default IconButton
+export default ButtonIcon

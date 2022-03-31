@@ -1,5 +1,5 @@
 import React from 'react'
-import IconButton from 'src/components/ui/IconButton'
+import { ButtonIcon } from 'src/components/ui/Button'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import Icon from 'src/components/ui/Icon'
 
@@ -9,7 +9,7 @@ function CartToggle() {
   const btnProps = useCartToggleButton()
 
   return (
-    <IconButton
+    <ButtonIcon
       data-fs-button-cart="true"
       aria-label={`Cart with ${btnProps['data-items']} items`}
       icon={<Icon name="ShoppingCart" width={32} height={32} />}

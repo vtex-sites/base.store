@@ -1,7 +1,7 @@
 import { Badge as UIBadge } from '@faststore/ui'
 import type { ReactNode } from 'react'
 import React from 'react'
-import IconButton from 'src/components/ui/IconButton'
+import { ButtonIcon } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
 import './badge.scss'
@@ -44,7 +44,7 @@ const Badge = ({
     >
       <span>{children}</span>
       {interactive && (
-        <IconButton
+        <ButtonIcon
           onClick={onClose}
           aria-label="Remove badge"
           icon={

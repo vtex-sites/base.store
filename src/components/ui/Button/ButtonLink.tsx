@@ -6,14 +6,14 @@ import { Link as GatsbyLink } from 'gatsby'
 
 import type { UIButtonProps } from './Button'
 
-import './buttons.scss'
+import './button.scss'
 
 type Props = {
   disabled?: boolean
 } & UIButtonProps &
   LinkProps<typeof GatsbyLink>
 
-function LinkButton({
+function ButtonLink({
   variant = 'primary',
   inverse,
   icon,
@@ -50,4 +50,4 @@ function LinkButton({
   )
 }
 
-export default LinkButton
+export default ButtonLink

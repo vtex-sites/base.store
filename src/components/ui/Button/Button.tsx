@@ -3,7 +3,7 @@ import React from 'react'
 import { Button as UIButton, Icon as UIIcon } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
-import './buttons.scss'
+import './button.scss'
 
 export type Variant = 'primary' | 'secondary' | 'tertiary'
 export type IconPosition = 'left' | 'right'

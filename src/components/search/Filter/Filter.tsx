@@ -1,8 +1,7 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import Button from 'src/components/ui/Button'
-import IconButton from 'src/components/ui/IconButton'
+import Button, { ButtonIcon } from 'src/components/ui/Button'
 import SlideOver from 'src/components/ui/SlideOver'
 import type {
   IStoreSelectedFacet,
@@ -196,7 +195,7 @@ function Filter({
         <div className="filter-modal__body">
           <header className="filter-modal__header">
             <h2 className="text__lead">Filters</h2>
-            <IconButton
+            <ButtonIcon
               data-testid="filter-modal-button-close"
               aria-label="Close Filters"
               icon={<Icon name="X" width={32} height={32} />}
