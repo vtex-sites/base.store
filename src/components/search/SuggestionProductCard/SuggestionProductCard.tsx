@@ -1,10 +1,8 @@
-import React from 'react'
 import { Card, CardContent, CardImage } from '@faststore/ui'
+import React from 'react'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-
-import './suggestion-product-card.scss'
 
 // TODO: Remove it when integration is complete
 const PRODUCTS = [

@@ -3,8 +3,6 @@ import type { HTMLAttributes, ReactElement } from 'react'
 
 import Tile from './Tile'
 
-import './tiles.scss'
-
 export interface TilesProps extends HTMLAttributes<HTMLUListElement> {
   /**
    * ID to find this component in testing tools (e.g.: cypress,

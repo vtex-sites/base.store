@@ -1,9 +1,7 @@
+import { Label, RadioGroup, RadioOption } from '@faststore/ui'
 import React, { useState } from 'react'
-import type { ChangeEventHandler } from 'react'
 import { Image } from 'src/components/ui/Image'
-import { RadioGroup, RadioOption, Label } from '@faststore/ui'
-
-import './sku-selector.scss'
+import type { ChangeEventHandler } from 'react'
 
 interface DefaultSkuProps {
   /**

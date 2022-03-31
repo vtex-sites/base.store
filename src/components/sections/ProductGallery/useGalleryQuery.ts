@@ -1,4 +1,4 @@
-import { useSearch } from '@faststore/sdk'
+import { useSearch, useSession } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import type {
@@ -43,16 +43,22 @@ export const query = gql`
 `
 
 export const useGalleryQuery = () => {
+  const { channel } = useSession()
   const {
     state: { term, sort, selectedFacets, page },
     itemsPerPage,
   } = useSearch()
+
+  const selectedFacetsWithExtraFacets = [
+    ...selectedFacets,
+    { key: 'channel', value: channel ?? '' },
+  ]
 
   return useQuery<Query, Variables>(query, {
     first: itemsPerPage,
     after: (itemsPerPage * page).toString(),
     sort,
     term: term ?? '',
-    selectedFacets,
+    selectedFacets: selectedFacetsWithExtraFacets,
   })
 }

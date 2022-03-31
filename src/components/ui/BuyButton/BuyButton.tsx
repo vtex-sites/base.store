@@ -1,9 +1,7 @@
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
-import type { ButtonProps } from '@faststore/ui'
+import React from 'react'
 import Icon from 'src/components/ui/Icon'
-
-import './buy-button.scss'
+import type { ButtonProps } from '@faststore/ui'
 
 type Props = ButtonProps
 
