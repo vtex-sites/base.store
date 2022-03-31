@@ -92,6 +92,8 @@
 }
 
 [data-fs-input-text-actionable="true"] {
+  --fs-input-text-button-size: var(--fs-spacing-5); // 32px
+
   input {
     padding-right: var(--fs-spacing-13);
   }
@@ -100,7 +102,7 @@
     position: absolute;
     top: var(--fs-spacing-1);
     right: var(--fs-spacing-1);
-    min-height: rem(32px);
+    min-height: var(--fs-input-text-button-size);
     font-size: var(--fs-text-size-legend);
 
     &::before {
@@ -114,8 +116,8 @@
   }
 
   [data-store-icon-button] {
-    width: rem(32px);
-    height: rem(32px);
+    width: var(--fs-input-text-button-size);
+    height: var(--fs-input-text-button-size);
 
     &::before {
       left: calc(-1 * var(--fs-spacing-3));
