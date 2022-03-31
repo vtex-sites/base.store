@@ -5,7 +5,6 @@ import Button from 'src/components/ui/Button'
 import Link from 'src/components/ui/Link'
 
 import SuggestionProductCard from '../SuggestionProductCard'
-import './suggestions.scss'
 
 function formatSearchTerm(
   indexSubstring: number,
