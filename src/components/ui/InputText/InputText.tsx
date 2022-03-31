@@ -11,11 +11,21 @@ export type InputTextProps = {
   id: string
   label: string
   errorMessage?: string
-  buttonActionLabel?: string // max 9 char
-  actionable?: boolean
 }
 
-type Props = InputTextProps & InputProps
+type ActionableInputText =
+  | {
+      actionable: true
+      onSubmit?: () => void
+      buttonActionLabel?: string // max 9 char
+    }
+  | {
+      actionable?: false
+      onSubmit?: never
+      buttonActionLabel?: string // max 9 char
+    }
+
+type Props = InputTextProps & InputProps & ActionableInputText
 
 const InputText = ({
   id,
@@ -24,6 +34,7 @@ const InputText = ({
   errorMessage = 'Error',
   actionable = true,
   buttonActionLabel = 'Apply',
+  onSubmit,
   placeholder = ' ', // needed to style float label using `placeholder-shown`
   ...otherProps
 }: Props) => {
@@ -61,7 +72,11 @@ const InputText = ({
             onClick={onClear}
           />
         ) : (
-          <Button variant="tertiary" data-fs-input-text-button>
+          <Button
+            variant="tertiary"
+            data-fs-input-text-button
+            onClick={onSubmit}
+          >
             {buttonActionLabel}
           </Button>
         ))}
