@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import type { PropsWithChildren } from 'react'
 
-import './provider.scss'
+import './modal-provider.scss'
 
 type FadeType = 'in' | 'out' | undefined
 
