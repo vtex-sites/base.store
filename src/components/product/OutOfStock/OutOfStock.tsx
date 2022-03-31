@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Input } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'

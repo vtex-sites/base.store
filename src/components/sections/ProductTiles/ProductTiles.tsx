@@ -1,4 +1,3 @@
-import React from 'react'
 import Tiles, { Tile } from 'src/components/ui/Tiles'
 import ProductCard from 'src/components/product/ProductCard'
 import ProductTilesSkeleton from 'src/components/skeletons/ProductTilesSkeleton'

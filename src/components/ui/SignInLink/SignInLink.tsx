@@ -1,10 +1,10 @@
-import React from 'react'
 import Icon from 'src/components/ui/Icon'
 import usePersonQuery from 'src/sdk/person/usePersonQuery'
+import type { FC } from 'react'
 
 import { LinkButton } from '../Button'
 
-const SignInLink: React.FC = () => {
+const SignInLink: FC = () => {
   const person = usePersonQuery()
 
   return (

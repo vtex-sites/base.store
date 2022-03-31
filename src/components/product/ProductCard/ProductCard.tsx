@@ -5,7 +5,7 @@ import {
   CardImage as UICardImage,
 } from '@faststore/ui'
 import { graphql, Link } from 'gatsby'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'

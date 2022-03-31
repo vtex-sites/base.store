@@ -2,6 +2,7 @@ import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import { useCallback } from 'react'
 import type { CurrencyCode, RemoveFromCartEvent } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 
 import { useCart } from './useCart'
 import type { CartItem } from './validate'
@@ -13,7 +14,7 @@ export const useRemoveButton = (item: CartItem | null) => {
   } = useSession()
 
   const onClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    (e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.preventDefault()
 
       if (!item) {

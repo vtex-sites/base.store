@@ -1,4 +1,3 @@
-import React from 'react'
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 

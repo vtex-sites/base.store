@@ -1,5 +1,4 @@
 import { Button as UIButton, Icon as UIIcon } from '@faststore/ui'
-import React from 'react'
 import type { ReactNode } from 'react'
 import type { ButtonProps } from '@faststore/ui'
 

@@ -1,5 +1,4 @@
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
-import React from 'react'
 import type { GatsbySSR } from 'gatsby'
 
 import ThirdPartyScripts from './src/components/ThirdPartyScripts'

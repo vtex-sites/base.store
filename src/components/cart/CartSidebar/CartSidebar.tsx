@@ -1,5 +1,5 @@
 import { List } from '@faststore/ui'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import Alert from 'src/components/ui/Alert'
 import { Badge } from 'src/components/ui/Badge'
 import Button from 'src/components/ui/Button'

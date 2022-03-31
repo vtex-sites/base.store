@@ -6,7 +6,7 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React, { useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import { mark } from 'src/sdk/tests/mark'

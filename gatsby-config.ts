@@ -18,6 +18,7 @@ const isProduction = ENV === 'production'
 const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
 const gatsbyConfig: GatsbyConfig = {
+  jsxRuntime: 'automatic',
   siteMetadata: {
     title: 'FastStore',
     description: 'Fast Demo Store',

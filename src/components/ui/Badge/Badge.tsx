@@ -1,5 +1,4 @@
 import { Badge as UIBadge } from '@faststore/ui'
-import React from 'react'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
 import type { ReactNode } from 'react'

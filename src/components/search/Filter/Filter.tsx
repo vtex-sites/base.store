@@ -1,6 +1,6 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'

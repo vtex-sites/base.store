@@ -1,4 +1,3 @@
-import React from 'react'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
 import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'

@@ -1,5 +1,5 @@
 import { Breadcrumb as UIBreadcrumb } from '@faststore/ui'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'

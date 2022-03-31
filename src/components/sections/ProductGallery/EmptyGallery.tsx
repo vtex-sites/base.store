@@ -1,4 +1,3 @@
-import React from 'react'
 import { LinkButton } from 'src/components/ui/Button'
 import EmptyState from 'src/components/ui/EmptyState'
 import Icon from 'src/components/ui/Icon'

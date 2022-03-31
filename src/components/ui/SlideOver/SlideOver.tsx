@@ -1,5 +1,5 @@
 import { Modal as UIModal } from '@faststore/ui'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import type { ReactNode, HTMLAttributes } from 'react'
 
 type Direction = 'leftSide' | 'rightSide'
