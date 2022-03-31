@@ -24,13 +24,14 @@
 
   .button[data-store-button] {
     width: 100%;
-    padding: 0 16px 0 24px;
+    padding: 0 var(--fs-spacing-3) 0 var(--fs-spacing-4);
     color: var(--fs-color-text-display);
     background-color: var(--fs-color-neutral-0);
     border-radius: 0;
 
     @include media(">=notebook") {
       min-height: var(--fs-spacing-5);
+      padding: var(--fs-spacing-0) var(--fs-spacing-3) var(--fs-spacing-0) 0;
       border-right: 1px solid var(--fs-border-color-light);
     }
   }
