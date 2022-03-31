@@ -10,11 +10,7 @@ interface PostalCodeBarProps {
 export default function PostalCodeInput({ content }: PostalCodeBarProps) {
   return (
     <div data-postal-code-bar>
-      <Button
-        onClick={() => {
-          window.scrollTo(0, 1000)
-        }}
-      >
+      <Button onClick={() => {}}>
         {content ? (
           <>
             <Icon name="MapPin" width={24} height={24} />
