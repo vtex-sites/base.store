@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import type { InputProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
@@ -8,21 +8,39 @@ import Icon from 'src/components/ui/Icon'
 import './input-text.scss'
 
 export type InputTextProps = {
+  /**
+   * ID to identify input and corresponding label.
+   */
   id: string
+  /**
+   * The text displayed to identify input text.
+   */
   label: string
+  /**
+   * The error message is displayed when an error occurs.
+   */
   errorMessage?: string
 }
 
 type ActionableInputText =
   | {
+      /**
+       * Adds a Button to the component.
+       */
       actionable: true
-      onSubmit?: () => void
-      buttonActionLabel?: string // max 9 char
+      /**
+       * Callback function when button is clicked.
+       */
+      onSubmit: (value: string) => void
+      /**
+       * The text displayed on the Button. Suggestion: maximum 9 characters.
+       */
+      buttonActionText?: string
     }
   | {
       actionable?: false
       onSubmit?: never
-      buttonActionLabel?: string // max 9 char
+      buttonActionText?: string
     }
 
 type Props = InputTextProps & InputProps & ActionableInputText
@@ -31,28 +49,33 @@ const InputText = ({
   id,
   label,
   type = 'text',
-  errorMessage = 'Error',
-  actionable = true,
-  buttonActionLabel = 'Apply',
+  errorMessage,
+  actionable,
+  buttonActionText = 'Apply',
   onSubmit,
-  placeholder = '', // initializes with an empty string to style float label using `placeholder-shown`
+  placeholder = ' ', // initializes with an empty space to style float label using `placeholder-shown`
   ...otherProps
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>('')
-  const [messageError, setMessageError] = useState<string>(errorMessage)
+  const [error, setError] = useState<string | undefined>(
+    errorMessage ?? undefined
+  )
 
   const inputRef = useRef<HTMLInputElement>(null)
 
+  useEffect(() => {
+    errorMessage && setError(errorMessage)
+  }, [errorMessage])
+
   const onClear = () => {
     setInputValue('')
-    setMessageError('')
     inputRef.current?.focus()
   }
 
   return (
     <div
       data-fs-input-text
-      data-fs-input-text-error={messageError && inputValue !== ''}
+      data-fs-input-text-error={error && inputValue !== ''}
       data-fs-input-text-actionable={actionable}
     >
       <UIInput
@@ -61,14 +84,17 @@ const InputText = ({
         ref={inputRef}
         placeholder={placeholder}
         value={inputValue}
-        onInput={(e) => setInputValue(e.currentTarget.value)}
+        onInput={(e) => {
+          error && setError(undefined)
+          setInputValue(e.currentTarget.value)
+        }}
         {...otherProps}
       />
       <UILabel htmlFor={id}>{label}</UILabel>
 
       {actionable &&
         inputValue !== '' &&
-        (messageError ? (
+        (error ? (
           <IconButton
             data-fs-input-text-button
             aria-label="Clear Field"
@@ -77,15 +103,15 @@ const InputText = ({
           />
         ) : (
           <Button
-            variant="tertiary"
             data-fs-input-text-button
-            onClick={onSubmit}
+            variant="tertiary"
+            onClick={() => onSubmit(inputValue)}
           >
-            {buttonActionLabel}
+            {buttonActionText}
           </Button>
         ))}
-      {messageError && inputValue !== '' && (
-        <span data-fs-input-text-message>{messageError}</span>
+      {error && inputValue !== '' && (
+        <span data-fs-input-text-message>{error}</span>
       )}
     </div>
   )
