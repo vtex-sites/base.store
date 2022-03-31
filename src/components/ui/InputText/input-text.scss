@@ -6,7 +6,8 @@
   position: relative;
   display: flex;
   flex-flow: column;
-  margin: 1rem; // TODO: remove
+  width: rem(250px); // TODO: remove after testing
+  margin: 1rem; // TODO: remove after testing
 
   input,
   label {
@@ -15,8 +16,6 @@
 
   input {
     height: var(--fs-control-tap-size);
-
-    // padding: 14px var(--fs-spacing-2) 0;
     padding: var(--fs-spacing-2) var(--fs-input-text-padding-horizontal) 0;
     font-size: var(--fs-text-size-body);
     line-height: 1.25;

@@ -1,7 +1,7 @@
 import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React from 'react'
+import React, { useState } from 'react'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
@@ -25,6 +25,13 @@ function Page(props: Props) {
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
   const products = allStoreProduct?.nodes
+
+  // TODO: remove after testing
+  const [errorMessageTxt, setErrorMessageTxt] = useState('')
+
+  const handleSubmit = () => {
+    setTimeout(() => setErrorMessageTxt('Error Message'), 1000)
+  }
 
   return (
     <>
@@ -75,7 +82,14 @@ function Page(props: Props) {
         imageAlt="Quest 2 Controller on a table"
       />
 
-      <InputText id="test" label="Zip Code" placeholder="Placeholder" />
+      <InputText id="test" label="Zip Code" />
+      <InputText
+        id="input"
+        label="Zip Code"
+        actionable
+        errorMessage={errorMessageTxt}
+        onSubmit={handleSubmit}
+      />
 
       <IncentivesHeader />
 
