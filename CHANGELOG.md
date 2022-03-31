@@ -57,6 +57,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changes `theme.scss` file to `global/tokens.scss`.
 - Applies new local tokens to `ProductCard`.
 - `OutOfStock` style and success message.
+- `OutOfStock` integrated with regionalization
 
 ### Deprecated
 
