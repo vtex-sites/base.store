@@ -24,6 +24,11 @@ interface SlideOverProps extends HTMLAttributes<HTMLDivElement> {
   onDismissTransition: (callback: () => unknown) => unknown
 }
 
+// prevent scroll on Safari iOS
+function handleTouchMove(e: TouchEvent) {
+  e.preventDefault()
+}
+
 const SlideOver = ({
   isOpen,
   onDismiss,
@@ -39,6 +44,7 @@ const SlideOver = ({
   const handleClose = useCallback(() => {
     setFadeType('out')
     layout.current?.classList.remove('no-scroll')
+    layout.current?.removeEventListener('touchmove', handleTouchMove)
   }, [layout])
 
   useEffect(() => {
@@ -51,10 +57,12 @@ const SlideOver = ({
 
       // Avoids double scroll issue on the page
       layout.current?.classList.add('no-scroll')
+      layout.current?.addEventListener('touchmove', handleTouchMove, false)
     }
 
     return () => {
       layout.current?.classList.remove('no-scroll')
+      layout.current?.removeEventListener('touchmove', handleTouchMove)
     }
   }, [isOpen, layout])
 
