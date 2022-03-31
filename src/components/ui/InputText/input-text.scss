@@ -28,12 +28,12 @@
       overflow: hidden;
     }
 
-    &:-webkit-input-placeholder {
+    &::placeholder {
       opacity: 0;
       transition: inherit;
     }
 
-    &:focus:-webkit-input-placeholder {
+    &:focus::placeholder {
       opacity: 1;
     }
 

@@ -27,8 +27,6 @@ type ActionableInputText =
 
 type Props = InputTextProps & InputProps & ActionableInputText
 
-// Omit placeholder?
-
 const InputText = ({
   id,
   label,
@@ -37,7 +35,7 @@ const InputText = ({
   actionable = true,
   buttonActionLabel = 'Apply',
   onSubmit,
-  placeholder = ' ', // needed to style float label using `placeholder-shown`
+  placeholder = '', // initializes with an empty string to style float label using `placeholder-shown`
   ...otherProps
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>('')
