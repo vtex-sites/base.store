@@ -21,19 +21,24 @@ const InputText = ({
   id,
   label,
   type = 'text',
-  errorMessage,
+  errorMessage = 'Error',
   actionable = true,
   buttonActionLabel = 'Apply',
   placeholder = ' ', // needed to style float label using `placeholder-shown`
   ...otherProps
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>('')
-  const showError = errorMessage && inputValue !== ''
+  const [messageError, setMessageError] = useState<string>(errorMessage)
+
+  const onClear = () => {
+    setInputValue('')
+    setMessageError('')
+  }
 
   return (
     <div
       data-fs-input-text
-      data-fs-input-text-error={showError}
+      data-fs-input-text-error={messageError && inputValue !== ''}
       data-fs-input-text-actionable={actionable}
     >
       <UIInput
@@ -48,18 +53,21 @@ const InputText = ({
 
       {actionable &&
         inputValue !== '' &&
-        (errorMessage ? (
+        (messageError ? (
           <IconButton
             data-fs-input-text-button
-            aria-label="?"
+            aria-label="Clear Field"
             icon={<Icon name="XCircle" width={20} height={20} />}
+            onClick={onClear}
           />
         ) : (
           <Button variant="tertiary" data-fs-input-text-button>
             {buttonActionLabel}
           </Button>
         ))}
-      {showError && <span data-fs-input-text-message>{errorMessage}</span>}
+      {messageError && inputValue !== '' && (
+        <span data-fs-input-text-message>{messageError}</span>
+      )}
     </div>
   )
 }
