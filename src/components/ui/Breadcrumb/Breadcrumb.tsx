@@ -29,30 +29,6 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
 
   const isDesktop = isBrowser ? window?.outerWidth >= NOTEBOOK_WIDTH : false
 
-  breadcrumbList = [
-    { item: 'item1', name: 'Computer and Software', position: 1 },
-    {
-      item: 'item2',
-      name: 'Aedle VK-1 L Headphone',
-      position: 2,
-    },
-    {
-      item: 'item3',
-      name: 'Oculus VR Headset',
-      position: 3,
-    },
-    {
-      item: 'item4',
-      name: 'Apple Magic Mouse',
-      position: 4,
-    },
-    {
-      item: 'item5',
-      name: 'Echo Dot Smart Speaker',
-      position: 5,
-    },
-  ]
-
   const firstItem = isDesktop ? breadcrumbList[0] : null
   const mediumItems = isDesktop
     ? breadcrumbList.slice(1, -2)
