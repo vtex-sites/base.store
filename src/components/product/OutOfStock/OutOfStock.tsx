@@ -91,10 +91,10 @@ function OutOfStock(props: OutOfStockProps) {
   return (
     <section data-store-out-of-stock data-testid={testId} aria-live="polite">
       <Form data-out-of-stock-form onSubmit={handleSubmit}>
-        <div className="text__title-subsection">{title}</div>
-        <div data-store-out-of-stock-subtitle>
+        <p className="text__title-subsection">{title}</p>
+        <p data-store-out-of-stock-subtitle>
           {notificationMsgIcon} {notificationMsg}
-        </div>
+        </p>
         <div>
           <Input
             data-store-out-of-stock-input
@@ -104,9 +104,9 @@ function OutOfStock(props: OutOfStockProps) {
             placeholder="Email"
           />
           <Button
+            data-store-out-of-stock-button
             type="submit"
             disabled={disabled}
-            data-store-out-of-stock-button
             variant="primary"
             icon={buttonIcon}
             iconPosition="left"

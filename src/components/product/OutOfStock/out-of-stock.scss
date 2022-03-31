@@ -3,7 +3,6 @@
 [data-store-out-of-stock] {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   margin-top: var(--fs-spacing-4);
 
   .text__title-subsection {
@@ -31,17 +30,7 @@
 }
 
 [data-store-out-of-stock-button] {
-  display: inline-flex;
-  column-gap: var(--fs-spacing-2);
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  min-height: var(--fs-control-tap-size);
-  padding: var(--fs-spacing-1)  var(--fs-spacing-3);
-  font-weight: var(--fs-text-weight-bold);
-  text-decoration: none;
-  cursor: default;
-  border: 0;
 }
 
 [data-store-out-of-stock-subtitle] {
