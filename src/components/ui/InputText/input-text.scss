@@ -94,6 +94,8 @@
 [data-fs-input-text-actionable="true"] {
   --fs-input-text-button-size: var(--fs-spacing-5); // 32px
 
+  min-width: rem(250px);
+
   input {
     padding-right: var(--fs-spacing-13);
   }
