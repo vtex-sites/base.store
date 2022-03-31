@@ -1,3 +1,5 @@
+import type { MouseEvent as ReactMouseEvent } from 'react'
+
 import { useCart } from './useCart'
 import * as storeConfig from '../../../store.config'
 
@@ -6,7 +8,7 @@ const { checkoutUrl } = storeConfig
 export const useCheckoutButton = () => {
   const { isValidating, id } = useCart()
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onClick = (e: ReactMouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
 
     if (!isValidating && id) {

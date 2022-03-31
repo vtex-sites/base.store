@@ -6,7 +6,7 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import React, { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import { mark } from 'src/sdk/tests/mark'
@@ -28,15 +28,11 @@ export type Props = PageProps<
 function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
-    data: { product, site },
+    data: { site },
+    serverData: { product },
     location: { host },
     slug,
   } = props
-
-  const youMightAlsoLikeProducts = useMemo(
-    () => allProducts?.edges.map((edge) => edge.node),
-    [allProducts]
-  )
 
   const notFound = !product
   const title = product?.seo.title ?? site?.siteMetadata?.title ?? ''

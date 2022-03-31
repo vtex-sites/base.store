@@ -1,9 +1,9 @@
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
 import { Link } from 'gatsby'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
-import type { ReactNode, MouseEvent } from 'react'
+import type { ReactNode, MouseEvent as ReactMouseEvent } from 'react'
 import type { AlertProps } from '@faststore/ui'
 
 type Props = AlertProps & {
@@ -13,7 +13,7 @@ type Props = AlertProps & {
     to: string
     text: string
   }
-  onClose?: (event: MouseEvent<HTMLElement>) => void
+  onClose?: (event: ReactMouseEvent<HTMLElement>) => void
 }
 
 function Alert({
@@ -25,7 +25,7 @@ function Alert({
   ...otherProps
 }: Props) {
   const handleClose = useCallback(
-    (event: MouseEvent<HTMLElement>) => {
+    (event: ReactMouseEvent<HTMLElement>) => {
       if (event.defaultPrevented) {
         return
       }
