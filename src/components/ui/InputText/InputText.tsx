@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import type { InputProps } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
@@ -27,6 +27,8 @@ type ActionableInputText =
 
 type Props = InputTextProps & InputProps & ActionableInputText
 
+// Omit placeholder?
+
 const InputText = ({
   id,
   label,
@@ -41,9 +43,12 @@ const InputText = ({
   const [inputValue, setInputValue] = useState<string>('')
   const [messageError, setMessageError] = useState<string>(errorMessage)
 
+  const inputRef = useRef<HTMLInputElement>(null)
+
   const onClear = () => {
     setInputValue('')
     setMessageError('')
+    inputRef.current?.focus()
   }
 
   return (
@@ -55,6 +60,7 @@ const InputText = ({
       <UIInput
         type={type}
         id={id}
+        ref={inputRef}
         placeholder={placeholder}
         value={inputValue}
         onInput={(e) => setInputValue(e.currentTarget.value)}
