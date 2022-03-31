@@ -10,6 +10,7 @@ import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
+import InputText from 'src/components/ui/InputText'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -73,6 +74,8 @@ function Page(props: Props) {
         imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
         imageAlt="Quest 2 Controller on a table"
       />
+
+      <InputText id="test" label="Zip Code" placeholder="Placeholder" />
 
       <IncentivesHeader />
 
