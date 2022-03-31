@@ -1,12 +1,10 @@
-import type { ReactNode, MouseEvent } from 'react'
-import React, { useCallback } from 'react'
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
-import type { AlertProps } from '@faststore/ui'
-import Button from 'src/components/ui/Button'
 import { Link } from 'gatsby'
+import React, { useCallback } from 'react'
+import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
-
-import './alert.scss'
+import type { ReactNode, MouseEvent } from 'react'
+import type { AlertProps } from '@faststore/ui'
 
 type Props = AlertProps & {
   icon?: ReactNode

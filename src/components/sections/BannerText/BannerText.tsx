@@ -5,8 +5,6 @@ import type { InputHTMLAttributes } from 'react'
 
 import Section from '../Section'
 
-import './banner-text.scss'
-
 export interface BannerTextProps extends InputHTMLAttributes<HTMLDivElement> {
   /**
    * The content for the h2 tag.

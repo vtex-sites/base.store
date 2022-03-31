@@ -1,10 +1,8 @@
-import type { ElementType } from 'react'
-import React from 'react'
 import { Link as UILink } from '@faststore/ui'
-import type { LinkProps } from '@faststore/ui'
 import { Link as GatsbyLink } from 'gatsby'
-
-import './link.scss'
+import React from 'react'
+import type { ElementType } from 'react'
+import type { LinkProps } from '@faststore/ui'
 
 type Variant = 'default' | 'display' | 'inline' | 'footer'
 

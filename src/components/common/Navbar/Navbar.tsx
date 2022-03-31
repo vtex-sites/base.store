@@ -1,5 +1,3 @@
-import './navbar.scss'
-
 import { List as UIList } from '@faststore/ui'
 import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'

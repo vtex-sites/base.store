@@ -14,8 +14,6 @@ import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import './product-card.scss'
-
 type Variant = 'wide' | 'default'
 
 interface Props {
@@ -25,15 +23,6 @@ interface Props {
   variant?: Variant
   aspectRatio?: number
   ButtonBuy?: ReactNode
-}
-
-const imgOptions = {
-  sourceWidth: 1024,
-  backgroundColor: '#f0f0f0',
-  layout: 'constrained' as const,
-  loading: 'lazy' as const,
-  sizes: '(max-width: 768px) 25vw, 30vw',
-  breakpoints: [360, 480, 720, 1024],
 }
 
 function ProductCard({
@@ -66,10 +55,12 @@ function ProductCard({
     >
       <UICardImage>
         <Image
-          baseUrl={img.url}
+          src={img.url}
           alt={img.alternateName}
-          aspectRatio={aspectRatio}
-          {...imgOptions}
+          width={360}
+          height={360 / aspectRatio}
+          sizes="(max-width: 768px) 25vw, 30vw"
+          loading="lazy"
         />
       </UICardImage>
 

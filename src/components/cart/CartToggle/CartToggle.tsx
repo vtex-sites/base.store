@@ -1,9 +1,7 @@
 import React from 'react'
 import { ButtonIcon } from 'src/components/ui/Button'
-import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 import Icon from 'src/components/ui/Icon'
-
-import './cart-toggle.scss'
+import { useCartToggleButton } from 'src/sdk/cart/useCartToggleButton'
 
 function CartToggle() {
   const btnProps = useCartToggleButton()

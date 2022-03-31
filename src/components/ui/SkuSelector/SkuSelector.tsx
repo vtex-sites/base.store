@@ -1,9 +1,7 @@
+import { Label, RadioGroup, RadioOption } from '@faststore/ui'
 import React, { useState } from 'react'
-import type { ChangeEventHandler } from 'react'
 import { Image } from 'src/components/ui/Image'
-import { RadioGroup, RadioOption, Label } from '@faststore/ui'
-
-import './sku-selector.scss'
+import type { ChangeEventHandler } from 'react'
 
 interface DefaultSkuProps {
   /**
@@ -73,15 +71,6 @@ export interface SkuSelectorProps {
   onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
-const imgOptions = {
-  sourceWidth: 720,
-  aspectRatio: 1,
-  width: 40,
-  breakpoints: [20, 40, 80],
-  layout: 'constrained' as const,
-  backgroundColor: '#f0f0f0',
-}
-
 function SkuSelector({
   label,
   variant,
@@ -128,7 +117,13 @@ function SkuSelector({
                 </span>
               )}
               {variant === 'image' && 'src' in option && (
-                <Image baseUrl={option.src} alt={option.alt} {...imgOptions} />
+                <Image
+                  src={option.src}
+                  alt={option.alt}
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
               )}
             </RadioOption>
           )

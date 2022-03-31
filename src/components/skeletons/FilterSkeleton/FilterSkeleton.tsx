@@ -3,7 +3,6 @@ import type { PropsWithChildren } from 'react'
 
 import Shimmer from '../Shimmer'
 import SkeletonElement from '../SkeletonElement'
-import './filter-skeleton.scss'
 
 interface Props {
   loading?: boolean
