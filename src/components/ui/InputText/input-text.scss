@@ -112,4 +112,13 @@
       content: "";
     }
   }
+
+  [data-store-icon-button] {
+    width: rem(32px);
+    height: rem(32px);
+
+    &::before {
+      left: calc(-1 * var(--fs-spacing-3));
+    }
+  }
 }
