@@ -1,7 +1,7 @@
 import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React, { useState } from 'react'
+import React from 'react'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
@@ -10,7 +10,6 @@ import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
-import InputText from 'src/components/ui/InputText'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -25,13 +24,6 @@ function Page(props: Props) {
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
   const products = allStoreProduct?.nodes
-
-  // TODO: remove after testing
-  const [errorMessageTxt, setErrorMessageTxt] = useState('')
-
-  const handleSubmit = () => {
-    setTimeout(() => setErrorMessageTxt('Error Message'), 1000)
-  }
 
   return (
     <>
@@ -80,15 +72,6 @@ function Page(props: Props) {
         link="/"
         imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
         imageAlt="Quest 2 Controller on a table"
-      />
-
-      <InputText id="test" label="Default" />
-      <InputText
-        id="input"
-        label="Input With Button"
-        actionable
-        errorMessage={errorMessageTxt}
-        onSubmit={handleSubmit}
       />
 
       <IncentivesHeader />
