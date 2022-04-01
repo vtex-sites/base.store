@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- Add preloadQuery function
 - Add hideUnavailableItems at store.config
 - Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
@@ -24,10 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `SearchHistory` component.
 - `Badge` interactive variation.
 - New folder `styles/global` containing all global styles.
+- New file `styles/global/tokens.scss` containing all global design tokens.
 - Session mutation when the user enters a new postal code.
 - Send channel string as search facet
 
 ### Changed
+- Move ProductShelf and ProductTiles to the client side
 - Drop gatsby-plugin-image in favor of custom/simpler component
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order`
 - Simplify filters component by using `useReducer` instead of multiple `useState`
@@ -57,6 +59,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changes `theme.scss` file to `global/tokens.scss`.
 - Applies new local tokens to `ProductCard`.
 - `OutOfStock` style and success message.
+- Apply new local tokens to `Button`
+- Gather all `Button` variants in the folder (`ButtonBuy`, `ButtonLink`, `ButtonIcon`, `ButtonSignIn`)
 
 ### Deprecated
 
@@ -88,7 +92,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Filter Button specificity on desktop
 - Filter facets are not being selected on mobile
 - `CartItem` image size and truncate long product's title
-- entrusting the definition of the cursor property to the browser
+- Entrusting the definition of the cursor property to the browser
+- Fix alert banner colors
 
 ### Security
 

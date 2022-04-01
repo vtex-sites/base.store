@@ -6,7 +6,7 @@ import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
 import ProductGridSkeleton from 'src/components/skeletons/ProductGridSkeleton'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
-import Button, { LinkButton } from 'src/components/ui/Button'
+import Button, { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import { mark } from 'src/sdk/tests/mark'
 
@@ -14,6 +14,7 @@ import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
+import { useProductsPrefetch } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
@@ -25,11 +26,15 @@ interface Props {
 
 function ProductGallery({ title, searchTerm }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-  const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
+  const { pages, addNextPage, addPrevPage, state: searchState } = useSearch()
+
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
+
+  useProductsPrefetch(prev ? prev.cursor : null)
+  useProductsPrefetch(next ? next.cursor : null)
 
   if (data && totalCount === 0) {
     return (
@@ -88,8 +93,8 @@ function ProductGallery({ title, searchTerm }: Props) {
           {/* Add link to previous page. This helps on SEO */}
           {prev !== false && (
             <div className="product-listing__pagination product-listing__pagination--top">
-              <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
-              <LinkButton
+              <GatsbySeo defer linkTags={[{ rel: 'prev', href: prev.link }]} />
+              <ButtonLink
                 onClick={(e) => {
                   e.currentTarget.blur()
                   e.preventDefault()
@@ -104,7 +109,7 @@ function ProductGallery({ title, searchTerm }: Props) {
                 }
               >
                 Previous Page
-              </LinkButton>
+              </ButtonLink>
             </div>
           )}
 
@@ -125,33 +130,11 @@ function ProductGallery({ title, searchTerm }: Props) {
             GalleryPageSkeleton
           )}
 
-          {/* Prefetch Previous and Next pages */}
-          {prev !== false && (
-            <Suspense fallback={null}>
-              <GalleryPage
-                showSponsoredProducts={false}
-                page={prev.cursor}
-                display={false}
-                title={title}
-              />
-            </Suspense>
-          )}
-          {next !== false && (
-            <Suspense fallback={null}>
-              <GalleryPage
-                showSponsoredProducts={false}
-                page={next.cursor}
-                display={false}
-                title={title}
-              />
-            </Suspense>
-          )}
-
           {/* Add link to next page. This helps on SEO */}
           {next !== false && (
             <div className="product-listing__pagination product-listing__pagination--bottom">
-              <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
-              <LinkButton
+              <GatsbySeo defer linkTags={[{ rel: 'next', href: next.link }]} />
+              <ButtonLink
                 data-testid="show-more"
                 onClick={(e) => {
                   e.currentTarget.blur()
@@ -163,7 +146,7 @@ function ProductGallery({ title, searchTerm }: Props) {
                 variant="secondary"
               >
                 Load more products
-              </LinkButton>
+              </ButtonLink>
             </div>
           )}
         </div>

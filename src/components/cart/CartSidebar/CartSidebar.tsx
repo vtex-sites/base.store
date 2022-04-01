@@ -2,9 +2,8 @@ import { List } from '@faststore/ui'
 import React, { useRef } from 'react'
 import Alert from 'src/components/ui/Alert'
 import { Badge } from 'src/components/ui/Badge'
-import Button from 'src/components/ui/Button'
+import Button, { ButtonIcon } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
-import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
@@ -42,7 +41,7 @@ function CartSidebar() {
             {totalItems}
           </Badge>
         </div>
-        <IconButton
+        <ButtonIcon
           data-testid="cart-sidebar-button-close"
           aria-label="Close Cart"
           icon={<Icon name="X" width={32} height={32} />}
