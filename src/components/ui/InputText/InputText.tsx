@@ -5,8 +5,6 @@ import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/IconButton'
 import Icon from 'src/components/ui/Icon'
 
-import './input-text.scss'
-
 export type InputTextProps = {
   /**
    * ID to identify input and corresponding label.
