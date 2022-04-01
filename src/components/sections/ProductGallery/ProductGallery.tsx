@@ -93,7 +93,7 @@ function ProductGallery({ title, searchTerm }: Props) {
           {/* Add link to previous page. This helps on SEO */}
           {prev !== false && (
             <div className="product-listing__pagination product-listing__pagination--top">
-              <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
+              <GatsbySeo defer linkTags={[{ rel: 'prev', href: prev.link }]} />
               <ButtonLink
                 onClick={(e) => {
                   e.currentTarget.blur()
@@ -133,7 +133,7 @@ function ProductGallery({ title, searchTerm }: Props) {
           {/* Add link to next page. This helps on SEO */}
           {next !== false && (
             <div className="product-listing__pagination product-listing__pagination--bottom">
-              <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
+              <GatsbySeo defer linkTags={[{ rel: 'next', href: next.link }]} />
               <ButtonLink
                 data-testid="show-more"
                 onClick={(e) => {
