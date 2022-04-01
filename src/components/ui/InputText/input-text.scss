@@ -119,7 +119,7 @@
     height: var(--fs-input-text-button-size);
 
     &::before {
-      left: calc(-1 * var(--fs-spacing-3));
+      left: calc(-1 * var(--fs-spacing-1));
     }
   }
 }
