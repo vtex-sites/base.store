@@ -5,7 +5,7 @@ import Sentinel from 'src/sdk/search/Sentinel'
 import type { ProductsQueryQuery } from '@generated/graphql'
 
 import ProductTiles from '../ProductTiles'
-import { usePageProducts } from './usePageProducts'
+import { useProducts } from './usePageProducts'
 
 /* If showSponsoredProducts is true, a ProductTiles will be displayed in between two blocks of ProductGrid on the page 0 */
 interface Props {
@@ -21,7 +21,7 @@ function GalleryPage({
   fallbackData,
   showSponsoredProducts = true,
 }: Props) {
-  const products = usePageProducts(page, fallbackData)
+  const products = useProducts(page, fallbackData)
   const { itemsPerPage } = useSearch()
 
   if (products == null) {
@@ -60,7 +60,10 @@ function GalleryPage({
               Sections should be self contained and should not import other sections.
               We should remove/refactor this section from here
             */}
-            <ProductTiles products={productsSponsored.slice(0, 2)} title="" />
+            <ProductTiles
+              selectedFacets={[{ key: 'productClusterIds', value: '141' }]}
+              title=""
+            />
           </div>
           <ProductGrid
             products={products.slice(middleItemIndex, itemsPerPage)}

@@ -14,7 +14,7 @@ import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
-import { usePrefetchPageProducts } from './usePageProducts'
+import { useProductsPrefetch } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
@@ -33,8 +33,8 @@ function ProductGallery({ title, searchTerm }: Props) {
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
 
-  usePrefetchPageProducts(prev ? prev.cursor : null)
-  usePrefetchPageProducts(next ? next.cursor : null)
+  useProductsPrefetch(prev ? prev.cursor : null)
+  useProductsPrefetch(next ? next.cursor : null)
 
   if (data && totalCount === 0) {
     return (
