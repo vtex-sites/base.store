@@ -31,8 +31,8 @@
 
       &:not(:first-child) {
         overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
+        white-space: nowrap;
 
         @include media("<=tablet") { max-width: 30%; }
       }
@@ -56,8 +56,8 @@
       display: block;
       width: 100%;
       overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      white-space: nowrap;
 
       svg {
         color: var(--fs-color-text);
@@ -80,15 +80,14 @@
 
     [data-store-dropdown-button] {
       display: inline;
-      margin: calc(var(--fs-spacing-0) / 4);
-      padding: 0;
       padding: 0 calc(var(--fs-spacing-0) / 2);
+      margin: calc(var(--fs-spacing-0) / 4);
       color: var(--fs-color-link);
       letter-spacing: var(--fs-spacing-0);
+      cursor: pointer;
       background-color: #0000;
       border-width: 0;
       border-radius: var(--fs-spacing-0);
-      cursor: pointer;
 
       &:focus, &:focus-visible {
         @include focus-ring;
@@ -96,8 +95,8 @@
 
       span {
         display: inline-block;
-        font-weight: bold;
         font-size: var(--fs-text-size-3);
+        font-weight: bold;
         transform: translate(rem(1px), rem(-6px));
       }
     }
@@ -117,8 +116,6 @@
   overflow: hidden;
   background: var(--fs-color-tertiary-bkg);
   border-radius: var(--fs-border-radius-default);
-
-  /* Drop Shadow */
   box-shadow: var(--fs-shadow);
 
   [data-store-dropdown-item] {
@@ -126,14 +123,14 @@
     align-items: center;
     width: 100%;
     padding: var(--fs-spacing-1) var(--fs-text-size-1);
-    color: var(--fs-color-link);
-    font-weight: var(--fs-text-weight-regular);
     font-size: var(--fs-text-size-1);
     font-size: var(--fs-text-size-base);
     font-style: normal;
+    font-weight: var(--fs-text-weight-regular);
+    color: var(--fs-color-link);
+    cursor: pointer;
     background-color: #0000;
     border-width: 0;
-    cursor: pointer;
 
     @include media(">=notebook") {
       &:focus, &:hover {
@@ -146,8 +143,8 @@
     span {
       width: 100%;
       overflow: hidden;
-      white-space: nowrap;
       text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     svg {
