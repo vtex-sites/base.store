@@ -5,7 +5,7 @@ import UIHero, {
   HeroLink,
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
-import { LinkButton } from 'src/components/ui/Button'
+import { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
 import Section from '../Section'
@@ -44,9 +44,9 @@ const Hero = ({
               <p data-hero-text-body>{subtitle}</p>
               {!!link && (
                 <HeroLink>
-                  <LinkButton to={link} inverse>
+                  <ButtonLink to={link} inverse>
                     {linkText} <Icon name="ArrowRight" width={24} height={24} />
-                  </LinkButton>
+                  </ButtonLink>
                 </HeroLink>
               )}
             </div>

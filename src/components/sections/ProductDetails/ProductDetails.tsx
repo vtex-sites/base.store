@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { DiscountBadge } from 'src/components/ui/Badge'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
-import BuyButton from 'src/components/ui/BuyButton'
+import { ButtonBuy } from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import ProductTitle from 'src/components/ui/ProductTitle'
@@ -165,9 +165,9 @@ function ProductDetails({ product: staleProduct }: Props) {
           {isValidating ? (
             <AddToCartLoadingSkeleton />
           ) : (
-            <BuyButton disabled={buyDisabled} {...buyProps}>
+            <ButtonBuy disabled={buyDisabled} {...buyProps}>
               Add to Cart
-            </BuyButton>
+            </ButtonBuy>
           )}
           {!availability && (
             <OutOfStock

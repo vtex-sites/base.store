@@ -22,7 +22,7 @@ interface Props {
   bordered?: boolean
   variant?: Variant
   aspectRatio?: number
-  buyButton?: ReactNode
+  ButtonBuy?: ReactNode
 }
 
 function ProductCard({
@@ -31,7 +31,7 @@ function ProductCard({
   variant = 'default',
   bordered = false,
   aspectRatio = 1,
-  buyButton,
+  ButtonBuy,
   ...otherProps
 }: Props) {
   const {
@@ -101,7 +101,7 @@ function ProductCard({
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
       </UICardContent>
-      {!!buyButton && <UICardActions>{buyButton}</UICardActions>}
+      {!!ButtonBuy && <UICardActions>{ButtonBuy}</UICardActions>}
     </UICard>
   )
 }
