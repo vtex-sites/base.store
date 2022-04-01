@@ -9,7 +9,7 @@
 
   input,
   label {
-    transition: var(--fs-transition-property) 0.2s var(--fs-transition-function);
+    transition: var(--fs-transition-property) var(--fs-transition-timing) var(--fs-transition-function);
   }
 
   input {
