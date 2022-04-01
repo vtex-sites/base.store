@@ -51,7 +51,7 @@ function OutOfStock(props: OutOfStockProps) {
   const [email, setEmail] = useState('')
 
   const {
-    title = postalCode ? 'Unavailable in your location' : 'Out of Stock',
+    title = postalCode ? 'Unavailable in Your Location' : 'Out of Stock',
     notificationMsg = 'Notify me when available',
     buttonText = btnText,
     buttonIcon = <Icon name={buttonIconName} width={16} height={16} />,
