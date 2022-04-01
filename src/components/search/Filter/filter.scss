@@ -102,13 +102,13 @@
   background-color: var(--fs-color-neutral-0);
   box-shadow: 0 0 6px rgb(0 0 0 / 20%);
 
-  .button {
-    &[data-button-variant="secondary"] {
+  [data-fs-button] {
+    &[data-fs-button-variant="secondary"] {
       width: 40%;
       margin-right: var(--fs-spacing-3);
     }
 
-    &[data-button-variant="primary"] {
+    &[data-fs-button-variant="primary"] {
       width: 60%;
     }
   }

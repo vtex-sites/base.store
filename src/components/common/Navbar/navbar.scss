@@ -32,10 +32,10 @@
       display: none;
     }
   }
-}
 
-[data-fs-button-menu] {
-  @include media(">=notebook") { display: none; }
+  [data-fs-button-menu] {
+    @include media(">=notebook") { display: none; }
+  }
 }
 
 .navbar__buttons {
