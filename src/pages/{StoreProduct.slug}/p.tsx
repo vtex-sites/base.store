@@ -14,6 +14,7 @@ import type {
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
+import { ITEMS_PER_SECTION } from 'src/constants'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -23,11 +24,7 @@ export type Props = PageProps<
 function Page(props: Props) {
   const { locale, currency } = useSession()
   const {
-    data: {
-      product,
-      site,
-      allStoreProduct: { nodes: youMightAlsoLikeProducts },
-    },
+    data: { product, site },
     location: { host },
     params: { slug },
   } = props
@@ -103,13 +100,12 @@ function Page(props: Props) {
 
       <ProductDetails product={product} />
 
-      {youMightAlsoLikeProducts?.length > 0 && (
-        <ProductShelf
-          products={youMightAlsoLikeProducts.slice(0, 5)}
-          title="You might also like"
-          withDivisor
-        />
-      )}
+      <ProductShelf
+        first={ITEMS_PER_SECTION}
+        term={product.brand.name}
+        title="You might also like"
+        withDivisor
+      />
     </>
   )
 }
@@ -174,12 +170,6 @@ export const querySSG = graphql`
       }
 
       ...ProductDetailsFragment_product
-    }
-
-    allStoreProduct(limit: 5) {
-      nodes {
-        ...ProductSummary_product
-      }
     }
   }
 `
