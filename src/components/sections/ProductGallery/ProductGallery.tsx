@@ -14,6 +14,7 @@ import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
+import { usePrefetchPageProducts } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
@@ -25,11 +26,15 @@ interface Props {
 
 function ProductGallery({ title, searchTerm }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-  const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
+  const { pages, addNextPage, addPrevPage, state: searchState } = useSearch()
+
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
+
+  usePrefetchPageProducts(prev ? prev.cursor : null)
+  usePrefetchPageProducts(next ? next.cursor : null)
 
   if (data && totalCount === 0) {
     return (
@@ -88,7 +93,7 @@ function ProductGallery({ title, searchTerm }: Props) {
           {/* Add link to previous page. This helps on SEO */}
           {prev !== false && (
             <div className="product-listing__pagination product-listing__pagination--top">
-              <GatsbySeo linkTags={[{ rel: 'prev', href: prev.link }]} />
+              <GatsbySeo defer linkTags={[{ rel: 'prev', href: prev.link }]} />
               <ButtonLink
                 onClick={(e) => {
                   e.currentTarget.blur()
@@ -125,32 +130,10 @@ function ProductGallery({ title, searchTerm }: Props) {
             GalleryPageSkeleton
           )}
 
-          {/* Prefetch Previous and Next pages */}
-          {prev !== false && (
-            <Suspense fallback={null}>
-              <GalleryPage
-                showSponsoredProducts={false}
-                page={prev.cursor}
-                display={false}
-                title={title}
-              />
-            </Suspense>
-          )}
-          {next !== false && (
-            <Suspense fallback={null}>
-              <GalleryPage
-                showSponsoredProducts={false}
-                page={next.cursor}
-                display={false}
-                title={title}
-              />
-            </Suspense>
-          )}
-
           {/* Add link to next page. This helps on SEO */}
           {next !== false && (
             <div className="product-listing__pagination product-listing__pagination--bottom">
-              <GatsbySeo linkTags={[{ rel: 'next', href: next.link }]} />
+              <GatsbySeo defer linkTags={[{ rel: 'next', href: next.link }]} />
               <ButtonLink
                 data-testid="show-more"
                 onClick={(e) => {

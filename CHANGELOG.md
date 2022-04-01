@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
+- Add preloadQuery function
 - Add hideUnavailableItems at store.config
 - Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
