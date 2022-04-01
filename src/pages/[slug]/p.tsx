@@ -16,6 +16,7 @@ import type {
   ServerProductPageQueryQuery,
   ProductPageQueryQueryVariables,
 } from '@generated/graphql'
+import fetch from 'isomorphic-unfetch'
 
 export type Props = PageProps<
   ProductPageQueryQuery,
@@ -43,8 +44,12 @@ function Page(props: Props) {
   const description =
     product?.seo.description ?? site?.siteMetadata?.description ?? ''
 
+  const splitted = slug?.split('-')
+  const sliced = splitted?.slice(0, splitted.length - 1)
+  const joined = sliced?.join('-')
+
   const canonical =
-    host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
+    host !== undefined ? `https://${host}/${joined}/p` : `/${joined}/p`
 
   useEffect(() => {
     if (notFound) {
@@ -217,12 +222,30 @@ export const getServerData = async ({
   params: Record<string, string>
 }) => {
   try {
-    const id = slug.split('-').pop()
+    const id1 = slug?.split('-')?.pop()
+
+    const response = await fetch(
+      `https://storeframework.vtexcommercestable.com.br/api/catalog_system/pub/products/search/${slug}/p`
+    )
+
+    const [productData] = await response.json()
+
+    const id2 = productData?.items?.[0]?.itemId
+    // if (productData) {
+    //   return {
+    //     status: 301,
+    //     props: {},
+    //     headers: {
+    //       'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
+    //       location: `/${slug}-${id}/p`,
+    //     },
+    //   }
+    // }
 
     const { execute } = await import('src/server')
     const { data } = await execute({
       operationName: querySSR,
-      variables: { id },
+      variables: { id: id2 ?? id1 },
     })
 
     return {

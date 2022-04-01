@@ -45,8 +45,12 @@ export const useProductLink = ({
     })
   }, [code, product, index, selectedOffer])
 
+  const splitted = slug.split('-')
+  const sliced = splitted.slice(0, splitted.length - 1)
+  const joined = sliced.join('-')
+
   return {
-    to: `/${slug}/p`,
+    to: `/${joined}/p`,
     onClick,
     'data-testid': 'product-link',
   }
