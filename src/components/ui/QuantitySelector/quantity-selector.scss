@@ -7,9 +7,10 @@
   // Design Tokens for Quantity Selector
   // --------------------------------------------------------
 
+  // Default properties
   --fs-qty-selector-width                    : calc(var(--fs-control-tap-size) * 2.7);
   --fs-qty-selector-height                   : calc(var(--fs-control-tap-size) + (var(--fs-qty-selector-border-width) * 2));
-  --fs-qty-selector-shadow                   : none;
+  --fs-qty-selector-shadow                   : 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
 
   --fs-qty-selector-bkg-color                : var(--fs-color-body-bkg);
 
@@ -89,6 +90,7 @@
   [data-quantity-selector-button] {
     position: absolute;
     min-width: var(--fs-control-tap-size);
+    height: 100%;
     min-height: var(--fs-control-tap-size);
     padding: var(--fs-spacing-1);
     background-color: var(--fs-qty-selector-button-bkg-color);
@@ -144,7 +146,7 @@
   &:hover {
     [data-quantity-selector-input] {
       border-color: var(--fs-border-color-default-active);
-      box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
+      box-shadow: var(--fs-qty-selector-shadow);
     }
   }
 }
