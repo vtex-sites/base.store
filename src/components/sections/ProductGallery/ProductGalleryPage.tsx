@@ -28,15 +28,14 @@ function GalleryPage({
     return null
   }
 
-  const productsSponsored = products?.slice(0, 2)
+  const productsSponsored = showSponsoredProducts
+    ? products.slice(0, 2)
+    : undefined
 
   const middleItemIndex = Math.ceil(itemsPerPage / 2)
 
   const shouldDisplaySponsoredProducts =
-    showSponsoredProducts &&
-    page === 0 &&
-    productsSponsored !== undefined &&
-    productsSponsored.length > 1
+    page === 0 && productsSponsored && productsSponsored.length > 1
 
   return (
     <>
