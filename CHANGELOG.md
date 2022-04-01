@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Styled the `SearchInput` dropdown.
+- Add preloadQuery function
 - Add hideUnavailableItems at store.config
 - Sections component with `content-visibility: auto`
 - Webpack Bundle analyzer
