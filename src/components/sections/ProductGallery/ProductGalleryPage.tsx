@@ -24,13 +24,13 @@ function GalleryPage({
   const products = usePageProducts(page, fallbackData)
   const { itemsPerPage } = useSearch()
 
-  const productsSponsored = products?.slice(0, 2)
-
-  const middleItemIndex = Math.ceil(itemsPerPage / 2)
-
   if (products == null) {
     return null
   }
+
+  const productsSponsored = products?.slice(0, 2)
+
+  const middleItemIndex = Math.ceil(itemsPerPage / 2)
 
   const shouldDisplaySponsoredProducts =
     showSponsoredProducts &&
