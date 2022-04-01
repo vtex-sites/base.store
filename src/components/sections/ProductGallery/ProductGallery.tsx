@@ -14,6 +14,7 @@ import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
+import { usePreloadPageProducts } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
@@ -25,11 +26,15 @@ interface Props {
 
 function ProductGallery({ title, searchTerm }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-  const { pages, state: searchState, addNextPage, addPrevPage } = useSearch()
+  const { pages, addNextPage, addPrevPage, state: searchState } = useSearch()
+
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
+
+  usePreloadPageProducts(prev ? prev.cursor : null)
+  usePreloadPageProducts(next ? next.cursor : null)
 
   if (data && totalCount === 0) {
     return (
@@ -123,28 +128,6 @@ function ProductGallery({ title, searchTerm }: Props) {
             </Suspense>
           ) : (
             GalleryPageSkeleton
-          )}
-
-          {/* Prefetch Previous and Next pages */}
-          {prev !== false && (
-            <Suspense fallback={null}>
-              <GalleryPage
-                showSponsoredProducts={false}
-                page={prev.cursor}
-                display={false}
-                title={title}
-              />
-            </Suspense>
-          )}
-          {next !== false && (
-            <Suspense fallback={null}>
-              <GalleryPage
-                showSponsoredProducts={false}
-                page={next.cursor}
-                display={false}
-                title={title}
-              />
-            </Suspense>
           )}
 
           {/* Add link to next page. This helps on SEO */}
