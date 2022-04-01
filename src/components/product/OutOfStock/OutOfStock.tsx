@@ -1,3 +1,4 @@
+import { useSession } from '@faststore/sdk'
 import type { ReactElement, FormEvent } from 'react'
 import React, { useState } from 'react'
 import { Form, Input } from '@faststore/ui'
@@ -39,6 +40,8 @@ export interface OutOfStockProps {
 }
 
 function OutOfStock(props: OutOfStockProps) {
+  const { postalCode } = useSession()
+
   const defaultButtonText = 'Notify me'
   const defaultIconName = 'BellRinging'
 
@@ -48,7 +51,7 @@ function OutOfStock(props: OutOfStockProps) {
   const [email, setEmail] = useState('')
 
   const {
-    title = 'Out of Stock',
+    title = postalCode ? 'Unavailable in your location' : 'Out of Stock',
     notificationMsg = 'Notify me when available',
     buttonText = btnText,
     buttonIcon = <Icon name={buttonIconName} width={16} height={16} />,
