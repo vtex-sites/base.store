@@ -11,8 +11,7 @@
   --fs-qty-selector-height                   : calc(var(--fs-control-tap-size) + (var(--fs-qty-selector-border-width) * 2));
   --fs-qty-selector-shadow                   : none;
 
-  --fs-qty-selector-bkg-color                : var(--fs-input-bkg-color);
-  // --fs-qty-selector-bkg-color                : var(--input-bkg-color) should I create --input;
+  --fs-qty-selector-bkg-color                : var(--fs-color-body-bkg);
 
   --fs-qty-selector-text-size                : var(--fs-text-size-base);
   --fs-qty-selector-text-color               : var(--fs-color-text);
@@ -34,7 +33,7 @@
   // Interactive states
   // --------------------------------------------------------
 
-  --fs-qty-selector-hover-shadow             : var(--fs-shadow-hover);
+  --fs-qty-selector-hover-shadow             : none;
   --fs-qty-selector-hover-bkg-color          : var(--fs-input-hover-bkg-color);
   --fs-qty-selector-hover-text-color         : var(--fs-qty-selector-text-color);
   --fs-qty-selector-hover-icon-color         : var(--fs-border-color-default-active);
@@ -54,20 +53,13 @@
 
   // Structural Styles
   // --------------------------------------------------------
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   width: var(--fs-qty-selector-width);
   height: var(--fs-qty-selector-height);
-  background-color: var(--fs-qty-selector-bkg-color);
-  border: var(--fs-qty-selector-border-width) solid var(--fs-qty-selector-border-color);
-  border-radius: var(--fs-qty-selector-border-radius);
-  box-shadow: var(--fs-qty-selector-shadow);
-  transition:
-    var(--fs-qty-selector-transition-property)
-    var(--fs-qty-selector-transition-timing)
-    var(--fs-qty-selector-transition-function);
 
   [data-store-icon] {
     margin: 0;
@@ -83,17 +75,22 @@
     font-size: var(--fs-qty-selector-text-size);
     color: var(--fs-qty-selector-text-color);
     text-align: center;
-    background-color: transparent;
-    border-width: 0;
-    &:focus-visible { outline: 0; }
+    background-color: var(--fs-qty-selector-bkg-color);
+    border: var(--fs-qty-selector-border-width) solid var(--fs-qty-selector-border-color);
+    border-radius: var(--fs-qty-selector-border-radius);
+    transition:
+      var(--fs-qty-selector-transition-property)
+      var(--fs-qty-selector-transition-timing)
+      var(--fs-qty-selector-transition-function);
+
+    @include input-focus-ring;
   }
 
   [data-quantity-selector-button] {
-    position: relative;
+    position: absolute;
     min-width: var(--fs-control-tap-size);
     min-height: var(--fs-control-tap-size);
-    padding: var(--fs-spacing-0);
-    cursor: pointer;
+    padding: var(--fs-spacing-1);
     background-color: var(--fs-qty-selector-button-bkg-color);
     border: 0;
     border-radius: var(--fs-qty-selector-button-border-radius);
@@ -112,6 +109,10 @@
         var(--fs-qty-selector-transition-timing)
         var(--fs-qty-selector-transition-function);
     }
+
+    &:first-of-type { left: 0; }
+
+    &:last-of-type { right: 0; }
 
     &:hover:not(:disabled) [data-store-icon] {
       color: var(--fs-qty-selector-hover-icon-color);
@@ -141,15 +142,11 @@
   }
 
   &:hover {
-    background-color: var(--fs-qty-selector-hover-bkg-color);
-    border-color: var(--fs-qty-selector-hover-border-color);
-
-    // border-width: var(--fs-qty-selector-hover-border-width);
-    outline: 1px solid var(--fs-qty-selector-hover-border-color);
-    box-shadow: var(--fs-qty-selector-hover-shadow);
+    [data-quantity-selector-input] {
+      border-color: var(--fs-border-color-default-active);
+      box-shadow: 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
+    }
   }
-
-  &:focus-within, &:hover:focus-within { @include focus-ring; }
 }
 
 [data-fs-quantity-selector="disabled"] {
