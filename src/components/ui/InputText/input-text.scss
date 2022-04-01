@@ -97,7 +97,7 @@
     padding-right: var(--fs-spacing-13);
   }
 
-  [data-store-button] {
+  [data-fs-button] {
     position: absolute;
     top: var(--fs-spacing-1);
     right: var(--fs-spacing-1);
@@ -114,7 +114,7 @@
     }
   }
 
-  [data-store-icon-button] {
+  [data-fs-button][data-store-icon-button] {
     width: var(--fs-input-text-button-size);
     height: var(--fs-input-text-button-size);
 
