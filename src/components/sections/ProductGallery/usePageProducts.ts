@@ -6,7 +6,7 @@ import {
 } from 'src/sdk/product/useProductsQuery'
 import type { ProductsQueryQuery } from '@generated/graphql'
 
-export const usePreloadPageProducts = (page: number | null) => {
+export const usePrefetchPageProducts = (page: number | null) => {
   const {
     itemsPerPage,
     state: { sort, term, selectedFacets },
