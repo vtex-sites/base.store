@@ -261,6 +261,11 @@ body {
   --fs-shadow                       : 0 1px 4px rgb(0 0 0 / 10%), 0 6px 8px rgb(0 0 0 / 10%);
   --fs-shadow-darker                : 0 0 10px rgb(0 0 0 / 20%);
   --fs-shadow-hover                 : var(--fs-shadow);
+
+
+  // INPUTS (?)
+  --fs-input-hover-bkg-color:       : var(--fs-color-neutral-0);
+
 }
 
 /* stylelint-enable */
