@@ -360,7 +360,7 @@ An example adding Bell icon:
 import React from 'react'
 import Icon from 'src/components/ui/Icon' // this path can be outdated.
 
-function IconButton() {
+function ButtonIcon() {
   return (
     <button>
       <Icon name="<<symbol_id>>" weight="thin" />
@@ -368,7 +368,7 @@ function IconButton() {
   )
 }
 
-export default IconButton
+export default ButtonIcon
 ```
 
 This project uses SVGs from [Phosphor icons](https://phosphoricons.com/).

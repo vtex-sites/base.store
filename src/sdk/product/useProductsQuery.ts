@@ -4,6 +4,7 @@ import type {
   ProductsQueryQueryVariables,
 } from '@generated/graphql'
 
+import { prefetchQuery } from '../graphql/prefetchQuery'
 import { useQuery } from '../graphql/useQuery'
 import type { QueryOptions } from '../graphql/useQuery'
 
@@ -51,3 +52,8 @@ export const useProductsQuery = (
 
   return data?.search.products
 }
+
+export const prefetchProductsQuery = (
+  variables: ProductsQueryQueryVariables,
+  options?: QueryOptions
+) => prefetchQuery(query, variables, options)
