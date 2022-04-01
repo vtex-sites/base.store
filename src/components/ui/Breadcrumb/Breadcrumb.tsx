@@ -11,10 +11,6 @@ import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
 import Icon from 'src/components/ui/Icon'
 import { navigate } from 'gatsby'
 
-import './breadcrumb.scss'
-
-const NOTEBOOK_WIDTH = 1280
-
 type ItemElement = {
   item: string
   name: string
@@ -24,11 +20,14 @@ export interface BreadcrumbProps extends UIBreadcrumbProps {
   breadcrumbList: ItemElement[]
 }
 
-function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
-  const isBrowser = typeof window !== 'undefined'
+interface BaseBreadcrumbProps extends BreadcrumbProps {
+  isDesktop?: boolean
+}
 
-  const isDesktop = isBrowser ? window?.outerWidth >= NOTEBOOK_WIDTH : false
-
+function BaseBreadcrumb({
+  breadcrumbList,
+  isDesktop = false,
+}: BaseBreadcrumbProps) {
   const firstItem = isDesktop ? breadcrumbList[0] : null
   const mediumItems = isDesktop
     ? breadcrumbList.slice(1, -2)
@@ -39,7 +38,10 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
   const shouldUseDropdown = breadcrumbList.length > 4
 
   return (
-    <UIBreadcrumb divider="">
+    <UIBreadcrumb
+      divider=""
+      className={isDesktop ? 'hidden-mobile' : 'display-mobile'}
+    >
       <Link aria-label="home" to="/">
         <Icon name="House" width={18} height={18} weight="bold" />
       </Link>
@@ -91,5 +93,12 @@ function Breadcrumb({ breadcrumbList }: BreadcrumbProps) {
     </UIBreadcrumb>
   )
 }
+
+const Breadcrumb = ({ breadcrumbList }: BreadcrumbProps) => (
+  <>
+    <BaseBreadcrumb breadcrumbList={breadcrumbList} />
+    <BaseBreadcrumb breadcrumbList={breadcrumbList} isDesktop />
+  </>
+)
 
 export default memo(Breadcrumb)
