@@ -120,8 +120,8 @@ module.exports = {
         getSchema,
         getContextFactory,
         // Source less products is development for better DX
-        maxNumProducts: 10, // isProduction ? 2500 : 100,
-        maxNumCollections: 10, // isProduction ? 2500 : 100,
+        maxNumProducts: isProduction ? 2500 : 100,
+        maxNumCollections: isProduction ? 2500 : 100,
       },
     },
     {
