@@ -713,22 +713,6 @@ export type FloatQueryOperatorInput = {
   nin: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
 }
 
-export type GatsbyImageFormat =
-  | 'AUTO'
-  | 'AVIF'
-  | 'JPG'
-  | 'NO_CHANGE'
-  | 'PNG'
-  | 'WEBP'
-
-export type GatsbyImageLayout = 'CONSTRAINED' | 'FIXED' | 'FULL_WIDTH'
-
-export type GatsbyImagePlaceholder =
-  | 'BLURRED'
-  | 'DOMINANT_COLOR'
-  | 'NONE'
-  | 'TRACED_SVG'
-
 export type IStoreCart = {
   order: IStoreOrder
 }
@@ -862,7 +846,7 @@ export type Query = {
   collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
-  person: StorePerson
+  person: Maybe<StorePerson>
   product: StoreProduct
   search: StoreSearchResult
   site: Maybe<Site>
@@ -2032,7 +2016,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___pluginOptions___reportFilename'
-  | 'pluginCreator___pluginOptions___server'
   | 'pluginCreator___pluginOptions___serverOptions'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___showSpinner'
@@ -2298,7 +2281,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___path'
   | 'pluginOptions___pathCheck'
   | 'pluginOptions___reportFilename'
-  | 'pluginOptions___server'
   | 'pluginOptions___serverOptions'
   | 'pluginOptions___short_name'
   | 'pluginOptions___showSpinner'
@@ -2461,7 +2443,6 @@ export type SitePluginPluginOptions = {
   path: Maybe<Scalars['String']>
   pathCheck: Maybe<Scalars['Boolean']>
   reportFilename: Maybe<Scalars['String']>
-  server: Maybe<Scalars['String']>
   serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
   short_name: Maybe<Scalars['String']>
   showSpinner: Maybe<Scalars['Boolean']>
@@ -2584,7 +2565,6 @@ export type SitePluginPluginOptionsFilterInput = {
   path: InputMaybe<StringQueryOperatorInput>
   pathCheck: InputMaybe<BooleanQueryOperatorInput>
   reportFilename: InputMaybe<StringQueryOperatorInput>
-  server: InputMaybe<StringQueryOperatorInput>
   serverOptions: InputMaybe<StringQueryOperatorInput>
   short_name: InputMaybe<StringQueryOperatorInput>
   showSpinner: InputMaybe<BooleanQueryOperatorInput>
@@ -3180,6 +3160,7 @@ export type StoreProductEdge = {
 export type StoreProductFieldsEnum =
   | 'additionalProperty'
   | 'additionalProperty___name'
+  | 'additionalProperty___remoteTypeName'
   | 'additionalProperty___value'
   | 'aggregateRating___ratingValue'
   | 'aggregateRating___remoteTypeName'
@@ -3249,10 +3230,12 @@ export type StoreProductFieldsEnum =
   | 'internal___type'
   | 'isVariantOf___additionalProperty'
   | 'isVariantOf___additionalProperty___name'
+  | 'isVariantOf___additionalProperty___remoteTypeName'
   | 'isVariantOf___additionalProperty___value'
   | 'isVariantOf___hasVariant'
   | 'isVariantOf___hasVariant___additionalProperty'
   | 'isVariantOf___hasVariant___additionalProperty___name'
+  | 'isVariantOf___hasVariant___additionalProperty___remoteTypeName'
   | 'isVariantOf___hasVariant___additionalProperty___value'
   | 'isVariantOf___hasVariant___aggregateRating___ratingValue'
   | 'isVariantOf___hasVariant___aggregateRating___remoteTypeName'
@@ -3475,11 +3458,13 @@ export type StoreProductSortInput = {
 
 export type StorePropertyValue = {
   name: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   value: Scalars['String']
 }
 
 export type StorePropertyValueFilterInput = {
   name: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
   value: InputMaybe<StringQueryOperatorInput>
 }
 
@@ -3690,28 +3675,6 @@ export type HomePageQueryQuery = {
       titleTemplate: string | null
     } | null
   } | null
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
 }
 
 export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
@@ -3745,28 +3708,6 @@ export type CollectionPageQueryQuery = {
     }
     meta: { selectedFacets: Array<{ key: string; value: string }> }
   } | null
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
 }
 
 export type ProductPageQueryQueryVariables = Exact<{
@@ -3811,28 +3752,6 @@ export type ProductPageQueryQuery = {
     }
     isVariantOf: { productGroupID: string; name: string }
   } | null
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
 }
 
 export type ValidateCartMutationMutationVariables = Exact<{
@@ -3882,7 +3801,12 @@ export type CartItemFragment = {
 export type PersonQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type PersonQueryQuery = {
-  person: { id: string; email: string; givenName: string; familyName: string }
+  person: {
+    id: string
+    email: string
+    givenName: string
+    familyName: string
+  } | null
 }
 
 export type BrowserProductQueryQueryVariables = Exact<{
@@ -3916,7 +3840,7 @@ export type BrowserProductQueryQuery = {
 
 export type ProductsQueryQueryVariables = Exact<{
   first: Scalars['Int']
-  after: Scalars['String']
+  after: InputMaybe<Scalars['String']>
   sort: StoreSort
   term: Scalars['String']
   selectedFacets: Array<IStoreSelectedFacet> | IStoreSelectedFacet

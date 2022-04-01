@@ -30,7 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `InputText` component (#440)
 
 ### Changed
-
+- Move ProductShelf and ProductTiles to the client side
 - Drop gatsby-plugin-image in favor of custom/simpler component
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order`
 - Simplify filters component by using `useReducer` instead of multiple `useState`
