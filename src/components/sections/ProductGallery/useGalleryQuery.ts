@@ -6,6 +6,8 @@ import type {
   ProductGalleryQueryQueryVariables as Variables,
 } from '@generated/graphql'
 
+import { useLocalizedVariables } from '../../../sdk/product/useProductsQuery'
+
 /**
  * This query is run on the browser and contains
  * the current search state of the user
@@ -48,11 +50,13 @@ export const useGalleryQuery = () => {
     itemsPerPage,
   } = useSearch()
 
-  return useQuery<Query, Variables>(query, {
+  const localizedVariables = useLocalizedVariables({
     first: itemsPerPage,
     after: (itemsPerPage * page).toString(),
     sort,
     term: term ?? '',
     selectedFacets,
   })
+
+  return useQuery<Query, Variables>(query, localizedVariables)
 }

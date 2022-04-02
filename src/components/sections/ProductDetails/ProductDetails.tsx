@@ -3,7 +3,7 @@ import { graphql } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { DiscountBadge } from 'src/components/ui/Badge'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
-import BuyButton from 'src/components/ui/BuyButton'
+import { ButtonBuy } from 'src/components/ui/Button'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import ProductTitle from 'src/components/ui/ProductTitle'
@@ -14,22 +14,12 @@ import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
 import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
+import OutOfStock from 'src/components/product/OutOfStock'
 
-import './product-details.scss'
 import Section from '../Section'
 
 interface Props {
   product: ProductDetailsFragment_ProductFragment
-}
-
-const imgOptions = {
-  sourceWidth: 1024,
-  backgroundColor: '#f0f0f0',
-  layout: 'constrained' as const,
-  loading: 'eager' as const,
-  sizes: '(max-width: 768px) 25vw, 50vw',
-  breakpoints: [360, 720, 1024],
-  aspectRatio: 4 / 3,
 }
 
 function ProductDetails({ product: staleProduct }: Props) {
@@ -130,9 +120,13 @@ function ProductDetails({ product: staleProduct }: Props) {
 
         <section className="product-details__image">
           <Image
-            baseUrl={productImages[0].url}
+            preload
+            loading="eager"
+            src={productImages[0].url}
             alt={productImages[0].alternateName}
-            {...imgOptions}
+            width={360}
+            height={270}
+            sizes="(max-width: 768px) 25vw, 50vw"
           />
         </section>
 
@@ -171,9 +165,16 @@ function ProductDetails({ product: staleProduct }: Props) {
           {isValidating ? (
             <AddToCartLoadingSkeleton />
           ) : (
-            <BuyButton disabled={buyDisabled} {...buyProps}>
+            <ButtonBuy disabled={buyDisabled} {...buyProps}>
               Add to Cart
-            </BuyButton>
+            </ButtonBuy>
+          )}
+          {!availability && (
+            <OutOfStock
+              onSubmit={(email) => {
+                console.info(email)
+              }}
+            />
           )}
         </section>
 

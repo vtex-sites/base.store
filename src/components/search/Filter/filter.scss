@@ -28,8 +28,8 @@
   }
 
   [data-accordion-item] [data-store-button] {
-    font-weight: var(--fs-text-weight-regular);
     font-size: var(--fs-text-size-3);
+    font-weight: var(--fs-text-weight-regular);
     line-height: 1.5;
 
     @include media(">=notebook") {
@@ -79,7 +79,7 @@
   align-items: center;
   justify-content: space-between;
 
-  .filter-modal__button {
+  [data-fs-button-icon] {
     margin-right: calc(-1 * var(--fs-spacing-1));
   }
 }
@@ -102,13 +102,13 @@
   background-color: var(--fs-color-neutral-0);
   box-shadow: 0 0 6px rgb(0 0 0 / 20%);
 
-  .button {
-    &[data-button-variant="secondary"] {
+  [data-fs-button] {
+    &[data-fs-button-variant="secondary"] {
       width: 40%;
       margin-right: var(--fs-spacing-3);
     }
 
-    &[data-button-variant="primary"] {
+    &[data-fs-button-variant="primary"] {
       width: 60%;
     }
   }

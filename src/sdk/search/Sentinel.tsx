@@ -9,7 +9,7 @@ interface Props {
   page: number
   pageSize: number
   title: string
-  products: ProductSummary_ProductFragment[]
+  products: Array<{ node: ProductSummary_ProductFragment }>
 }
 
 // Adds/Replaces ?page= to the querystring of the page

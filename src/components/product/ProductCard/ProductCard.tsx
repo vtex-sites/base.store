@@ -14,8 +14,6 @@ import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import './product-card.scss'
-
 type Variant = 'wide' | 'default'
 
 interface Props {
@@ -24,16 +22,7 @@ interface Props {
   bordered?: boolean
   variant?: Variant
   aspectRatio?: number
-  buyButton?: ReactNode
-}
-
-const imgOptions = {
-  sourceWidth: 1024,
-  backgroundColor: '#f0f0f0',
-  layout: 'constrained' as const,
-  loading: 'lazy' as const,
-  sizes: '(max-width: 768px) 25vw, 30vw',
-  breakpoints: [360, 480, 720, 1024],
+  ButtonBuy?: ReactNode
 }
 
 function ProductCard({
@@ -42,7 +31,7 @@ function ProductCard({
   variant = 'default',
   bordered = false,
   aspectRatio = 1,
-  buyButton,
+  ButtonBuy,
   ...otherProps
 }: Props) {
   const {
@@ -66,10 +55,12 @@ function ProductCard({
     >
       <UICardImage>
         <Image
-          baseUrl={img.url}
+          src={img.url}
           alt={img.alternateName}
-          aspectRatio={aspectRatio}
-          {...imgOptions}
+          width={360}
+          height={360 / aspectRatio}
+          sizes="(max-width: 768px) 25vw, 30vw"
+          loading="lazy"
         />
       </UICardImage>
 
@@ -110,7 +101,7 @@ function ProductCard({
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
       </UICardContent>
-      {!!buyButton && <UICardActions>{buyButton}</UICardActions>}
+      {!!ButtonBuy && <UICardActions>{ButtonBuy}</UICardActions>}
     </UICard>
   )
 }

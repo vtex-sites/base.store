@@ -1,10 +1,8 @@
-import React from 'react'
 import { Card, CardContent, CardImage } from '@faststore/ui'
+import React from 'react'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
-
-import './suggestion-product-card.scss'
 
 // TODO: Remove it when integration is complete
 const PRODUCTS = [
@@ -20,15 +18,6 @@ const PRODUCTS = [
     ],
   },
 ]
-
-const imgOptions = {
-  width: 56,
-  sourceWidth: 360,
-  aspectRatio: 1,
-  breakpoints: [50, 100, 150],
-  layout: 'constrained' as const,
-  backgroundColor: '#f0f0f0',
-}
 
 function SuggestionProductCard({
   // TODO: Add Props interface and define `product` type
@@ -48,7 +37,7 @@ function SuggestionProductCard({
     >
       <CardContent>
         <CardImage>
-          <Image baseUrl={img.url} alt={img.alternateName} {...imgOptions} />
+          <Image src={img.url} alt={img.alternateName} width={56} height={56} />
         </CardImage>
         <div data-suggestion-product-card-summary>
           <p className="text__title-mini" data-suggestion-product-card-title>

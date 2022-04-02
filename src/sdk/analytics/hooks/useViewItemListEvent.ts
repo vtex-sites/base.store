@@ -6,7 +6,7 @@ import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import type { AnalyticsItem } from '../types'
 
 type Props = {
-  products: ProductSummary_ProductFragment[]
+  products: Array<{ node: ProductSummary_ProductFragment }>
   title: string
   page: number
   pageSize: number
@@ -28,7 +28,7 @@ export const useViewItemListEvent = ({
       params: {
         item_list_name: title,
         item_list_id: title,
-        items: products.map((product, index) => ({
+        items: products.map(({ node: product }, index) => ({
           item_id: product.isVariantOf.productGroupID,
           item_name: product.isVariantOf.name,
           item_brand: product.brand.name,

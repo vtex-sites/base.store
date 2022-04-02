@@ -1,7 +1,5 @@
 import React from 'react'
 
-import './shimmer.scss'
-
 function Shimmer() {
   return (
     <div data-store-shimmer>

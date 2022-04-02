@@ -5,7 +5,7 @@ import UIHero, {
   HeroLink,
 } from 'src/components/ui/Hero'
 import Image from 'src/components/ui/Image/Image'
-import { LinkButton } from 'src/components/ui/Button'
+import { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
 import Section from '../Section'
@@ -21,15 +21,6 @@ interface HeroProps {
   icon?: JSX.Element
   imageSrc: string
   imageAlt: string
-}
-
-const imgProps = {
-  aspectRatio: 3 / 2,
-  layout: 'fullWidth' as const,
-  loading: 'eager' as const,
-  sizes: '(max-width: 768px) 70vw, 50vw',
-  backgroundColor: '#f0f0f0',
-  breakpoints: [720, 1080, 1440, 1920],
 }
 
 const Hero = ({
@@ -53,9 +44,9 @@ const Hero = ({
               <p data-hero-text-body>{subtitle}</p>
               {!!link && (
                 <HeroLink>
-                  <LinkButton to={link} inverse>
+                  <ButtonLink to={link} inverse>
                     {linkText} <Icon name="ArrowRight" width={24} height={24} />
-                  </LinkButton>
+                  </ButtonLink>
                 </HeroLink>
               )}
             </div>
@@ -63,7 +54,15 @@ const Hero = ({
           </div>
         </HeroContent>
         <HeroImage>
-          <Image baseUrl={imageSrc} alt={imageAlt} {...imgProps} />
+          <Image
+            preload
+            loading="eager"
+            src={imageSrc}
+            alt={imageAlt}
+            width={360}
+            height={240}
+            sizes="(max-width: 768px) 70vw, 50vw"
+          />
         </HeroImage>
       </UIHero>
     </Section>

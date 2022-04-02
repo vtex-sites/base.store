@@ -3,8 +3,6 @@ import type { PropsWithChildren } from 'react'
 
 import Shimmer from '../Shimmer'
 
-import './skeleton-element.scss'
-
 type ElementVariant = 'text' | 'button' | 'image' | 'badge'
 
 interface Props {

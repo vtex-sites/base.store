@@ -5,8 +5,6 @@ import Button from '../../ui/Button'
 import Section from '../Section'
 import type { UIButtonProps } from '../../ui/Button'
 
-import './scroll-to-top-button.scss'
-
 interface ScrollToTopButtonProps {
   /**
    * Button copy.
