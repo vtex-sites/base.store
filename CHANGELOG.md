@@ -61,12 +61,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `OutOfStock` style and success message.
 - Apply new local tokens to `Button`
 - Gather all `Button` variants in the folder (`ButtonBuy`, `ButtonLink`, `ButtonIcon`, `ButtonSignIn`)
+- Apply new local tokens to `Quantity Selector`
 
 ### Deprecated
 
 - useWindowDimensions hook
 
 ### Removed
+
 - Frontend computation in favor of backend processing
 - Removing hooks folder and migrating these hooks to sdk ou inline them on components
 - gatsby-plugin-offline due to CLS on recurrent users
