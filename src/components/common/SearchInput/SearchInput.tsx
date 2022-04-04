@@ -1,4 +1,3 @@
-import type { SearchEvent } from '@faststore/sdk'
 import {
   formatSearchState,
   initSearchState,
@@ -7,14 +6,13 @@ import {
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
 import React from 'react'
+import Icon from 'src/components/ui/Icon'
+import useSearchHistory from 'src/sdk/search/useSearchHistory'
+import type { SearchEvent } from '@faststore/sdk'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
 } from '@faststore/ui'
-import useSearchHistory from 'src/sdk/search/useSearchHistory'
-import Icon from 'src/components/ui/Icon'
-
-import './search-input.scss'
 
 declare type SearchInputProps = {
   onSearchClick?: () => void

@@ -8,42 +8,32 @@ import type {
   Filter_FacetsFragment,
 } from '@generated/graphql'
 
-import './filter.scss'
-
 interface FacetsProps {
   testId: string
-  selectedFacets: IStoreSelectedFacet[]
-  filteredFacets: Filter_FacetsFragment[]
+  facets: Filter_FacetsFragment[]
   indicesExpanded: Set<number>
   onFacetChange: (item: IStoreSelectedFacet) => void
   onAccordionChange: (index: number) => void
-  onAccordionItemMount: (
-    index: number,
-    values: Filter_FacetsFragment['values']
-  ) => void
 }
 
 function Facets({
   testId,
-  selectedFacets,
-  filteredFacets,
+  facets,
   indicesExpanded,
   onFacetChange,
   onAccordionChange,
-  onAccordionItemMount,
 }: FacetsProps) {
   return (
     <div className="filter" data-store-filter data-testid={testId}>
       <h2 className="text__title-mini-alt">Filters</h2>
       <Accordion expandedIndices={indicesExpanded} onChange={onAccordionChange}>
-        {filteredFacets.map(({ label, values, key }, index) => (
+        {facets.map(({ label, values, key }, index) => (
           <AccordionItem
             key={`${label}-${index}`}
             prefixId={testId}
             testId={`${testId}-accordion`}
             isExpanded={indicesExpanded.has(index)}
             buttonLabel={label}
-            ref={(_) => onAccordionItemMount(index, values)}
           >
             <UIList>
               {values.map((item) => {
@@ -53,9 +43,7 @@ function Facets({
                   <li key={id} className="filter__item">
                     <Checkbox
                       id={id}
-                      checked={selectedFacets.some(
-                        (facet) => facet.value === item.value
-                      )}
+                      checked={item.selected}
                       onChange={() => onFacetChange({ key, value: item.value })}
                       data-testid={`${testId}-accordion-panel-checkbox`}
                       data-value={item.value}

@@ -3,7 +3,7 @@ const {
   envelop,
   useExtendContext,
   useMaskedErrors,
-  useSchema,
+  useAsyncSchema,
 } = require('@envelop/core')
 const { useGraphQlJit } = require('@envelop/graphql-jit')
 const { useParserCache } = require('@envelop/parser-cache')
@@ -25,6 +25,7 @@ const apiOptions = {
 }
 
 const apiSchema = getSchema(apiOptions)
+
 const apiContextFactory = getContextFactory(apiOptions)
 
 const isBadRequestError = (err) => {
@@ -44,7 +45,7 @@ const formatError = (err) => {
 const getEnvelop = async () =>
   envelop({
     plugins: [
-      useSchema(await apiSchema),
+      useAsyncSchema(apiSchema),
       useExtendContext(apiContextFactory),
       useMaskedErrors({ formatError }),
       useGraphQlJit(),

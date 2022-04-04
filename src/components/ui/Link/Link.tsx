@@ -1,10 +1,8 @@
-import type { ElementType } from 'react'
-import React from 'react'
 import { Link as UILink } from '@faststore/ui'
-import type { LinkProps } from '@faststore/ui'
 import { Link as GatsbyLink } from 'gatsby'
-
-import './link.scss'
+import React from 'react'
+import type { ElementType } from 'react'
+import type { LinkProps } from '@faststore/ui'
 
 type Variant = 'default' | 'display' | 'inline' | 'footer'
 
@@ -22,8 +20,9 @@ function Link<T extends ElementType = typeof GatsbyLink>({
   return (
     <UILink
       as={GatsbyLink}
-      data-link-variant={variant}
-      data-link-inverse={inverse}
+      data-fs-link
+      data-fs-link-variant={variant}
+      data-fs-link-inverse={inverse}
       to={to}
       {...props}
     />

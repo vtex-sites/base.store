@@ -18,7 +18,7 @@ const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
 
 module.exports = {
   siteMetadata: {
-    title: 'FastStore',
+    title: 'BaseStore',
     description: 'Fast Demo Store',
     titleTemplate: '%s | FastStore',
     author: 'Store Framework',
@@ -39,7 +39,7 @@ module.exports = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Fast Demo Store',
-        short_name: 'FastStore',
+        short_name: 'BaseStore',
         start_url: '/',
         icon: 'src/images/icon.png',
         background_color: '#E31C58',
@@ -75,15 +75,6 @@ module.exports = {
       resolve: 'gatsby-plugin-next-seo',
       options: {
         defer: true,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-image',
-    },
-    {
-      resolve: '@vtex/gatsby-plugin-thumbor',
-      options: {
-        server: 'https://thumbor-server.vtex.io',
       },
     },
     {

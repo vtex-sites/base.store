@@ -13,15 +13,6 @@ interface ImageGalleryProps {
   images: ImageElementData[]
 }
 
-const detailsImage = {
-  sourceWidth: 720,
-  aspectRatio: 1,
-  width: 720,
-  breakpoints: [250, 360, 480, 720],
-  layout: 'constrained' as const,
-  backgroundColor: '#f0f0f0',
-}
-
 function ImageGallery({ images }: ImageGalleryProps) {
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const currentImage = images[selectedImageIdx]
@@ -30,10 +21,10 @@ function ImageGallery({ images }: ImageGalleryProps) {
     <div>
       <ImageZoom>
         <Image
-          baseUrl={currentImage.url}
+          src={currentImage.url}
           alt={currentImage.alternateName}
-          loading="eager"
-          {...detailsImage}
+          width={250}
+          height={250}
         />
       </ImageZoom>
       <ImageGallerySelector itemsPerPage={4}>
@@ -52,10 +43,11 @@ function ImageGallery({ images }: ImageGalleryProps) {
               }}
             >
               <Image
-                baseUrl={image.url}
+                src={image.url}
                 alt={image.alternateName}
                 loading={idx === 0 ? 'eager' : 'lazy'}
-                {...detailsImage}
+                width={250}
+                height={250}
               />
             </Button>
           )

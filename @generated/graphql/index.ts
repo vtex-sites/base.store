@@ -713,22 +713,6 @@ export type FloatQueryOperatorInput = {
   nin: InputMaybe<Array<InputMaybe<Scalars['Float']>>>
 }
 
-export type GatsbyImageFormat =
-  | 'AUTO'
-  | 'AVIF'
-  | 'JPG'
-  | 'NO_CHANGE'
-  | 'PNG'
-  | 'WEBP'
-
-export type GatsbyImageLayout = 'CONSTRAINED' | 'FIXED' | 'FULL_WIDTH'
-
-export type GatsbyImagePlaceholder =
-  | 'BLURRED'
-  | 'DOMINANT_COLOR'
-  | 'NONE'
-  | 'TRACED_SVG'
-
 export type IStoreCart = {
   order: IStoreOrder
 }
@@ -766,6 +750,12 @@ export type IStoreSelectedFacet = {
   value: Scalars['String']
 }
 
+export type IStoreSession = {
+  channel: InputMaybe<Scalars['String']>
+  country: InputMaybe<Scalars['String']>
+  postalCode: InputMaybe<Scalars['String']>
+}
+
 export type IntQueryOperatorInput = {
   eq: InputMaybe<Scalars['Int']>
   gt: InputMaybe<Scalars['Int']>
@@ -800,7 +790,12 @@ export type InternalFilterInput = {
 }
 
 export type Mutation = {
+  updateSession: StoreSession
   validateCart: Maybe<StoreCart>
+}
+
+export type MutationUpdateSessionArgs = {
+  session: IStoreSession
 }
 
 export type MutationValidateCartArgs = {
@@ -851,7 +846,7 @@ export type Query = {
   collection: StoreCollection
   directory: Maybe<Directory>
   file: Maybe<File>
-  person: StorePerson
+  person: Maybe<StorePerson>
   product: StoreProduct
   search: StoreSearchResult
   site: Maybe<Site>
@@ -2021,7 +2016,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___path'
   | 'pluginCreator___pluginOptions___pathCheck'
   | 'pluginCreator___pluginOptions___reportFilename'
-  | 'pluginCreator___pluginOptions___server'
   | 'pluginCreator___pluginOptions___serverOptions'
   | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___showSpinner'
@@ -2287,7 +2281,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___path'
   | 'pluginOptions___pathCheck'
   | 'pluginOptions___reportFilename'
-  | 'pluginOptions___server'
   | 'pluginOptions___serverOptions'
   | 'pluginOptions___short_name'
   | 'pluginOptions___showSpinner'
@@ -2450,7 +2443,6 @@ export type SitePluginPluginOptions = {
   path: Maybe<Scalars['String']>
   pathCheck: Maybe<Scalars['Boolean']>
   reportFilename: Maybe<Scalars['String']>
-  server: Maybe<Scalars['String']>
   serverOptions: Maybe<Array<Maybe<Array<Maybe<Scalars['String']>>>>>
   short_name: Maybe<Scalars['String']>
   showSpinner: Maybe<Scalars['Boolean']>
@@ -2573,7 +2565,6 @@ export type SitePluginPluginOptionsFilterInput = {
   path: InputMaybe<StringQueryOperatorInput>
   pathCheck: InputMaybe<BooleanQueryOperatorInput>
   reportFilename: InputMaybe<StringQueryOperatorInput>
-  server: InputMaybe<StringQueryOperatorInput>
   serverOptions: InputMaybe<StringQueryOperatorInput>
   short_name: InputMaybe<StringQueryOperatorInput>
   showSpinner: InputMaybe<BooleanQueryOperatorInput>
@@ -3169,6 +3160,7 @@ export type StoreProductEdge = {
 export type StoreProductFieldsEnum =
   | 'additionalProperty'
   | 'additionalProperty___name'
+  | 'additionalProperty___remoteTypeName'
   | 'additionalProperty___value'
   | 'aggregateRating___ratingValue'
   | 'aggregateRating___remoteTypeName'
@@ -3238,10 +3230,12 @@ export type StoreProductFieldsEnum =
   | 'internal___type'
   | 'isVariantOf___additionalProperty'
   | 'isVariantOf___additionalProperty___name'
+  | 'isVariantOf___additionalProperty___remoteTypeName'
   | 'isVariantOf___additionalProperty___value'
   | 'isVariantOf___hasVariant'
   | 'isVariantOf___hasVariant___additionalProperty'
   | 'isVariantOf___hasVariant___additionalProperty___name'
+  | 'isVariantOf___hasVariant___additionalProperty___remoteTypeName'
   | 'isVariantOf___hasVariant___additionalProperty___value'
   | 'isVariantOf___hasVariant___aggregateRating___ratingValue'
   | 'isVariantOf___hasVariant___aggregateRating___remoteTypeName'
@@ -3464,11 +3458,13 @@ export type StoreProductSortInput = {
 
 export type StorePropertyValue = {
   name: Scalars['String']
+  remoteTypeName: Maybe<Scalars['String']>
   value: Scalars['String']
 }
 
 export type StorePropertyValueFilterInput = {
   name: InputMaybe<StringQueryOperatorInput>
+  remoteTypeName: InputMaybe<StringQueryOperatorInput>
   value: InputMaybe<StringQueryOperatorInput>
 }
 
@@ -3521,6 +3517,12 @@ export type StoreSeoFilterInput = {
   titleTemplate: InputMaybe<StringQueryOperatorInput>
 }
 
+export type StoreSession = {
+  channel: Maybe<Scalars['String']>
+  country: Maybe<Scalars['String']>
+  postalCode: Maybe<Scalars['String']>
+}
+
 export type StoreSort =
   | 'discount_desc'
   | 'name_asc'
@@ -3540,6 +3542,22 @@ export type StringQueryOperatorInput = {
   ne: InputMaybe<Scalars['String']>
   nin: InputMaybe<Array<InputMaybe<Scalars['String']>>>
   regex: InputMaybe<Scalars['String']>
+}
+
+export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
+
+export type StoreCollectionQuery = {
+  allStoreCollection: {
+    edges: Array<{ node: { slug: string; seo: { title: string } } }>
+  }
+}
+
+export type UpdateSessionMutationMutationVariables = Exact<{
+  session: IStoreSession
+}>
+
+export type UpdateSessionMutationMutation = {
+  updateSession: { channel: string | null }
 }
 
 export type ProductSummary_ProductFragment = {
@@ -3647,70 +3665,28 @@ export type ProductGalleryQueryQuery = {
   }
 }
 
-export type StoreCollectionQueryVariables = Exact<{ [key: string]: never }>
-
-export type StoreCollectionQuery = {
-  allStoreCollection: {
-    edges: Array<{ node: { slug: string; seo: { title: string } } }>
-  }
-}
-
 export type HomePageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type HomePageQueryQuery = {
-  site:
-    | {
-        siteMetadata:
-          | {
-              title: string | null | undefined
-              description: string | null | undefined
-              titleTemplate: string | null | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
+  site: {
+    siteMetadata: {
+      title: string | null
+      description: string | null
+      titleTemplate: string | null
+    } | null
+  } | null
 }
 
 export type SearchPageQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type SearchPageQueryQuery = {
-  site:
-    | {
-        siteMetadata:
-          | {
-              titleTemplate: string | null | undefined
-              title: string | null | undefined
-              description: string | null | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
+  site: {
+    siteMetadata: {
+      titleTemplate: string | null
+      title: string | null
+      description: string | null
+    } | null
+  } | null
 }
 
 export type CollectionPageQueryQueryVariables = Exact<{
@@ -3718,55 +3694,20 @@ export type CollectionPageQueryQueryVariables = Exact<{
 }>
 
 export type CollectionPageQueryQuery = {
-  site:
-    | {
-        siteMetadata:
-          | {
-              titleTemplate: string | null | undefined
-              title: string | null | undefined
-              description: string | null | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-  collection:
-    | {
-        seo: { title: string; description: string }
-        breadcrumbList: {
-          itemListElement: Array<{
-            item: string
-            name: string
-            position: number
-          }>
-        }
-        meta: { selectedFacets: Array<{ key: string; value: string }> }
-      }
-    | null
-    | undefined
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
+  site: {
+    siteMetadata: {
+      titleTemplate: string | null
+      title: string | null
+      description: string | null
+    } | null
+  } | null
+  collection: {
+    seo: { title: string; description: string }
+    breadcrumbList: {
+      itemListElement: Array<{ item: string; name: string; position: number }>
+    }
+    meta: { selectedFacets: Array<{ key: string; value: string }> }
+  } | null
 }
 
 export type ProductPageQueryQueryVariables = Exact<{
@@ -3774,78 +3715,43 @@ export type ProductPageQueryQueryVariables = Exact<{
 }>
 
 export type ProductPageQueryQuery = {
-  site:
-    | {
-        siteMetadata:
-          | {
-              title: string | null | undefined
-              description: string | null | undefined
-              titleTemplate: string | null | undefined
-              siteUrl: string | null | undefined
-            }
-          | null
-          | undefined
-      }
-    | null
-    | undefined
-  product:
-    | {
-        slug: string
-        sku: string
-        gtin: string
-        name: string
-        description: string
-        id: string
-        seo: { title: string; description: string }
-        brand: { name: string }
-        breadcrumbList: {
-          itemListElement: Array<{
-            item: string
-            name: string
-            position: number
-          }>
-        }
-        image: Array<{ url: string; alternateName: string }>
-        offers: {
-          lowPrice: number
-          highPrice: number
-          priceCurrency: string
-          offers: Array<{
-            availability: string
-            price: number
-            priceValidUntil: string
-            priceCurrency: string
-            itemCondition: string
-            listPrice: number
-            seller: { identifier: string }
-          }>
-        }
-        isVariantOf: { productGroupID: string; name: string }
-      }
-    | null
-    | undefined
-  allStoreProduct: {
-    nodes: Array<{
-      slug: string
-      sku: string
-      name: string
-      gtin: string
-      id: string
-      brand: { name: string; brandName: string }
-      isVariantOf: { productGroupID: string; name: string }
-      image: Array<{ url: string; alternateName: string }>
-      offers: {
-        lowPrice: number
-        offers: Array<{
-          availability: string
-          price: number
-          listPrice: number
-          quantity: number
-          seller: { identifier: string }
-        }>
-      }
-    }>
-  }
+  site: {
+    siteMetadata: {
+      title: string | null
+      description: string | null
+      titleTemplate: string | null
+      siteUrl: string | null
+    } | null
+  } | null
+  product: {
+    slug: string
+    sku: string
+    gtin: string
+    name: string
+    description: string
+    id: string
+    seo: { title: string; description: string }
+    brand: { name: string }
+    breadcrumbList: {
+      itemListElement: Array<{ item: string; name: string; position: number }>
+    }
+    image: Array<{ url: string; alternateName: string }>
+    offers: {
+      lowPrice: number
+      highPrice: number
+      priceCurrency: string
+      offers: Array<{
+        availability: string
+        price: number
+        priceValidUntil: string
+        priceCurrency: string
+        itemCondition: string
+        listPrice: number
+        seller: { identifier: string }
+      }>
+    }
+    isVariantOf: { productGroupID: string; name: string }
+  } | null
 }
 
 export type ValidateCartMutationMutationVariables = Exact<{
@@ -3853,29 +3759,26 @@ export type ValidateCartMutationMutationVariables = Exact<{
 }>
 
 export type ValidateCartMutationMutation = {
-  validateCart:
-    | {
-        order: {
-          orderNumber: string
-          acceptedOffer: Array<{
-            quantity: number
-            price: number
-            listPrice: number
-            seller: { identifier: string }
-            itemOffered: {
-              sku: string
-              name: string
-              gtin: string
-              image: Array<{ url: string; alternateName: string }>
-              brand: { name: string }
-              isVariantOf: { productGroupID: string; name: string }
-            }
-          }>
+  validateCart: {
+    order: {
+      orderNumber: string
+      acceptedOffer: Array<{
+        quantity: number
+        price: number
+        listPrice: number
+        seller: { identifier: string }
+        itemOffered: {
+          sku: string
+          name: string
+          gtin: string
+          image: Array<{ url: string; alternateName: string }>
+          brand: { name: string }
+          isVariantOf: { productGroupID: string; name: string }
         }
-        messages: Array<{ text: string; status: StoreStatus }>
-      }
-    | null
-    | undefined
+      }>
+    }
+    messages: Array<{ text: string; status: StoreStatus }>
+  } | null
 }
 
 export type CartMessageFragment = { text: string; status: StoreStatus }
@@ -3898,7 +3801,12 @@ export type CartItemFragment = {
 export type PersonQueryQueryVariables = Exact<{ [key: string]: never }>
 
 export type PersonQueryQuery = {
-  person: { id: string; email: string; givenName: string; familyName: string }
+  person: {
+    id: string
+    email: string
+    givenName: string
+    familyName: string
+  } | null
 }
 
 export type BrowserProductQueryQueryVariables = Exact<{
@@ -3932,7 +3840,7 @@ export type BrowserProductQueryQuery = {
 
 export type ProductsQueryQueryVariables = Exact<{
   first: Scalars['Int']
-  after: Scalars['String']
+  after: InputMaybe<Scalars['String']>
   sort: StoreSort
   term: Scalars['String']
   selectedFacets: Array<IStoreSelectedFacet> | IStoreSelectedFacet

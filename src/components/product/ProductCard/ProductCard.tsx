@@ -14,9 +14,7 @@ import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
-import './product-card.scss'
-
-type Variant = 'horizontal' | 'vertical'
+type Variant = 'wide' | 'default'
 
 interface Props {
   product: ProductSummary_ProductFragment
@@ -24,25 +22,16 @@ interface Props {
   bordered?: boolean
   variant?: Variant
   aspectRatio?: number
-  buyButton?: ReactNode
-}
-
-const imgOptions = {
-  sourceWidth: 1024,
-  backgroundColor: '#f0f0f0',
-  layout: 'constrained' as const,
-  loading: 'lazy' as const,
-  sizes: '(max-width: 768px) 25vw, 30vw',
-  breakpoints: [360, 480, 720, 1024],
+  ButtonBuy?: ReactNode
 }
 
 function ProductCard({
   product,
   index,
-  variant = 'vertical',
+  variant = 'default',
   bordered = false,
   aspectRatio = 1,
-  buyButton,
+  ButtonBuy,
   ...otherProps
 }: Props) {
   const {
@@ -59,28 +48,30 @@ function ProductCard({
 
   return (
     <UICard
-      className="product-card"
-      data-card-variant={variant}
-      data-card-bordered={bordered}
-      data-card-out-of-stock={outOfStock}
+      data-fs-product-card
+      data-fs-product-card-variant={variant}
+      data-fs-product-card-bordered={bordered}
       {...otherProps}
     >
       <UICardImage>
         <Image
-          baseUrl={img.url}
+          src={img.url}
           alt={img.alternateName}
-          aspectRatio={aspectRatio}
-          {...imgOptions}
+          width={360}
+          height={360 / aspectRatio}
+          sizes="(max-width: 768px) 25vw, 30vw"
+          loading="lazy"
         />
       </UICardImage>
-      <UICardContent>
-        <div className="product-card__heading">
-          <h3 className="product-card__title / text__title-mini-alt">
+
+      <UICardContent data-fs-product-card-content>
+        <div data-fs-product-card-heading>
+          <h3 data-fs-product-card-title>
             <Link {...linkProps} title={name}>
               {name}
             </Link>
           </h3>
-          <div className="product-card__prices">
+          <div data-fs-product-card-prices>
             <Price
               value={listPrice}
               formatter={useFormattedPrice}
@@ -110,7 +101,7 @@ function ProductCard({
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
       </UICardContent>
-      {!!buyButton && <UICardActions>{buyButton}</UICardActions>}
+      {!!ButtonBuy && <UICardActions>{ButtonBuy}</UICardActions>}
     </UICard>
   )
 }
