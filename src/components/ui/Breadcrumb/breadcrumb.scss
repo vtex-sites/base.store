@@ -88,6 +88,7 @@
       background-color: transparent;
       border-width: 0;
       border-radius: var(--fs-spacing-0);
+      transition: var(--fs-transition-property) var(--fs-transition-timing) var(--fs-transition-function);
 
       &:focus, &:focus-visible {
         @include focus-ring;
@@ -141,6 +142,7 @@
     span {
       width: 100%;
       overflow: hidden;
+      text-align: left;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
