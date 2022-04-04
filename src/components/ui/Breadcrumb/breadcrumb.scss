@@ -88,6 +88,7 @@
       background-color: transparent;
       border-width: 0;
       border-radius: var(--fs-spacing-0);
+      transition: var(--fs-transition-property) var(--fs-transition-timing) var(--fs-transition-function);
 
       &:focus, &:focus-visible {
         @include focus-ring;
