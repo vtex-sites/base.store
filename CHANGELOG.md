@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add the brand new BaseStore logo
 
 ### Changed
-
+- `OutOfStock` integrated with regionalization
 - Move ProductShelf and ProductTiles to the client side (#431)
 - Drop gatsby-plugin-image in favor of custom/simpler component (#401)
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order` (#415)
