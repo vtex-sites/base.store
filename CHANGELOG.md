@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `RegionalizationModal` component (#426)
+- Add stale while revalidate headers (#207)
+- Uses new JSX Runtime to automatic (#207)
 - Add preloadQuery function (#445)
 - New file `styles/global/tokens.scss` containing all global design tokens. (#442)
 - Send channel string as search facet (#428)
@@ -37,6 +39,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaces `onDismissTransition` callback by a Provider that handles opening/closing of modal/slide over's behavior (#426)
 - # `OutOfStock` integrated with regionalization
 - `OutOfStock` integrated with regionalization (#441)
+- Migrate to Gatsby v4 (#207)
+- Upgrade React from 17.x to 18.x (#207)
+- Migrates Gatsby config files from JS to TS (#373)
 - Move ProductShelf and ProductTiles to the client side (#431)
 - Drop gatsby-plugin-image in favor of custom/simpler component (#401)
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order` (#415)
