@@ -27,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New file `styles/global/tokens.scss` containing all global design tokens.
 - Session mutation when the user enters a new postal code.
 - Send channel string as search facet
+- Add the brand new BaseStore logo
 
 ### Changed
 - Move ProductShelf and ProductTiles to the client side
