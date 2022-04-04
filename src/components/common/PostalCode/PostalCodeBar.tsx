@@ -22,7 +22,6 @@ export default function PostalCodeInput({ content }: PostalCodeBarProps) {
         )}
         <Icon name="CaretRight" width={24} height={24} />
       </Button>
-      </Button>
     </div>
   )
 }
