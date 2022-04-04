@@ -20,7 +20,7 @@ module.exports = {
   siteMetadata: {
     title: 'BaseStore',
     description: 'Fast Demo Store',
-    titleTemplate: '%s | BaseStore',
+    titleTemplate: '%s | FastStore',
     author: 'Store Framework',
     siteUrl,
   },
