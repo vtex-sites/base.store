@@ -35,18 +35,18 @@ function BaseBreadcrumb({
 
   const lastItems = breadcrumbList.slice(-2)
 
-  const shouldUseDropdown = breadcrumbList.length > 4
+  const collapseBreadcrumb = breadcrumbList.length > 4
 
   return (
     <UIBreadcrumb
       divider=""
       className={isDesktop ? 'hidden-mobile' : 'display-mobile'}
     >
-      <Link aria-label="home" to="/">
+      <Link aria-label="Go to homepage" to="/">
         <Icon name="House" width={18} height={18} weight="bold" />
       </Link>
 
-      {!shouldUseDropdown &&
+      {!collapseBreadcrumb &&
         breadcrumbList.map(({ item, name }, index) => {
           return breadcrumbList.length === index + 1 ? (
             <span key={String(index)}>{name}</span>
@@ -57,11 +57,11 @@ function BaseBreadcrumb({
           )
         })}
 
-      {shouldUseDropdown && firstItem && (
+      {collapseBreadcrumb && firstItem && (
         <Link to={firstItem.item}>{firstItem.name}</Link>
       )}
 
-      {shouldUseDropdown && (
+      {collapseBreadcrumb && (
         <UIDropdown>
           <UIDropdownButton>
             <span>...</span>
@@ -80,7 +80,7 @@ function BaseBreadcrumb({
         </UIDropdown>
       )}
 
-      {shouldUseDropdown &&
+      {collapseBreadcrumb &&
         lastItems.map(({ item, name }, index) => {
           return lastItems.length === index + 1 ? (
             <span key={String(index)}>{name}</span>
