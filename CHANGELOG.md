@@ -9,16 +9,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deprecated
+
+### Removed
+
+### Fixed
+
+### Security
+
+## [0.2.1] - 2022-04-04
+
+### Added
+
 - `RegionalizationModal` component (#426)
 - Add preloadQuery function (#445)
 - New file `styles/global/tokens.scss` containing all global design tokens. (#442)
 - Send channel string as search facet (#428)
-- Add the brand new BaseStore logo
+- Add the brand new BaseStore logo (#447)
 
 ### Changed
 
 - Replaces `onDismissTransition` callback by a Provider that handles opening/closing of modal/slide over's behavior (#426)
-- `OutOfStock` integrated with regionalization
+- # `OutOfStock` integrated with regionalization
+- `OutOfStock` integrated with regionalization (#441)
 - Move ProductShelf and ProductTiles to the client side (#431)
 - Drop gatsby-plugin-image in favor of custom/simpler component (#401)
 - Replace `stylelint-config-rational-order` with `stylelint-config-recess-order` (#415)
@@ -28,16 +43,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Apply new local tokens to `Button` (#442)
 - Gather all `Button` variants in the folder (`ButtonBuy`, `ButtonLink`, `ButtonIcon`, `ButtonSignIn`) (#442)
 
-### Deprecated
-
-### Removed
-
 ### Fixed
 
 - CSS Warnings (#434)
 - Fix alert banner colors (#442)
-
-### Security
 
 ## [0.2.0] - 2022-04-01
 
