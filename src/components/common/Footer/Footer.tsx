@@ -89,7 +89,7 @@ function Footer() {
         <UIIcon
           component={
             <img
-              src="/BaseStore.png"
+              src="/BaseStore.svg"
               alt="BaseStore logo"
               width="124px"
               height="32px"
