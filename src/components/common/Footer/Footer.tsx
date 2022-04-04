@@ -90,7 +90,7 @@ function Footer() {
           component={
             <img
               src="/BaseStore.png"
-              alt="BaseStore icon"
+              alt="BaseStore logo"
               width="124px"
               height="32px"
               loading="lazy"
