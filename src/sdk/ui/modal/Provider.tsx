@@ -7,8 +7,6 @@ import React, {
 } from 'react'
 import type { PropsWithChildren } from 'react'
 
-import './modal-provider.scss'
-
 type FadeType = 'in' | 'out' | undefined
 
 interface BaseContextValue {
