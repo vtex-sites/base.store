@@ -38,7 +38,7 @@
       color: var(--fs-color-text-light);
     }
 
-    .regionalization-modal__button {
+    [data-fs-regionalization-modal-button] {
       position: absolute;
       top: 0;
       right: 0;
@@ -70,24 +70,24 @@
 
 @keyframes motion-in {
   from {
-    transform: translate3d(0, 50%, 0);
     opacity: 0;
+    transform: translate3d(0, 50%, 0);
   }
 
   to {
-    transform: translate3d(0, 0, 0);
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 @keyframes motion-out {
   from {
-    transform: translate3d(0, 0, 0);
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 
   to {
-    transform: translate3d(0, 50%, 0);
     opacity: 0;
+    transform: translate3d(0, 50%, 0);
   }
 }

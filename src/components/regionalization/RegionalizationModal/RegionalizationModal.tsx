@@ -3,7 +3,7 @@ import { Modal as UIModal } from '@faststore/ui'
 import PostalCodeInput from 'src/components/common/PostalCode'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
-import IconButton from 'src/components/ui/IconButton'
+import { ButtonIcon } from 'src/components/ui/Button'
 import { useModal } from 'src/sdk/ui/modal/Provider'
 
 interface RegionalizationModalProps {
@@ -37,9 +37,9 @@ function RegionalizationModal({
       onAnimationEnd={() => fade === 'out' && onDismiss()}
     >
       <header className="regionalization-modal__header">
-        <IconButton
+        <ButtonIcon
           onClick={onModalClose}
-          classes="regionalization-modal__button"
+          data-fs-regionalization-modal-button
           aria-label="Close Regionalization Modal"
           data-testid="regionalization-modal-button-close"
           icon={<Icon name="X" width={30} height={30} />}
