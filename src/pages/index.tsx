@@ -67,7 +67,7 @@ function Page(props: Props) {
       */}
       <Hero
         title="New Products Available"
-        subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
+        subtitle="At BaseStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
         linkText="See all"
         link="/"
         imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"

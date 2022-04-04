@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add preloadQuery function (#445)
 - New file `styles/global/tokens.scss` containing all global design tokens. (#442)
 - Send channel string as search facet (#428)
+- Add the brand new BaseStore logo
 
 ### Changed
 - `OutOfStock` integrated with regionalization

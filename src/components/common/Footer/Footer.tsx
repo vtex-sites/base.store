@@ -89,10 +89,10 @@ function Footer() {
         <UIIcon
           component={
             <img
-              src="/FastStore.png"
-              alt="FastStore icon"
+              src="/BaseStore.svg"
+              alt="BaseStore logo"
               width="124px"
-              height="34px"
+              height="32px"
               loading="lazy"
             />
           }
