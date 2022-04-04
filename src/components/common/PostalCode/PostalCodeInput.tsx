@@ -9,8 +9,6 @@ import type {
   UpdateSessionMutationMutationVariables,
 } from '@generated/graphql'
 
-import './postal-code.scss'
-
 const POSTAL_CODE_INPUT_ID = 'postal-code-input'
 
 export const UpdateSessionMutation = gql`
