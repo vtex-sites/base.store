@@ -66,9 +66,10 @@ function BaseBreadcrumb({
           <UIDropdownButton>
             <span>...</span>
           </UIDropdownButton>
-          <UIDropdownMenu data-menu-height>
+          <UIDropdownMenu data-store-breadcrumb-dropdown-menu>
             {mediumItems.map(({ item, name }, index) => (
               <UIDropdownItem
+                data-store-dropdown-menu-item
                 onClick={() => navigate(item)}
                 key={String(index)}
               >

@@ -107,7 +107,7 @@
   }
 }
 
-[data-store-dropdown-menu] {
+[data-store-breadcrumb-dropdown-menu] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -118,7 +118,7 @@
   border-radius: var(--fs-border-radius-default);
   box-shadow: var(--fs-shadow);
 
-  [data-store-dropdown-item] {
+  [data-store-dropdown-menu-item] {
     display: flex;
     align-items: center;
     width: 100%;
@@ -127,7 +127,7 @@
     font-weight: var(--fs-text-weight-regular);
     color: var(--fs-color-link);
     cursor: pointer;
-    background-color: transparent;
+    background-color: var(--fs-color-tertiary-bkg-light);
     border-width: 0;
 
     @include media(">=notebook") {
