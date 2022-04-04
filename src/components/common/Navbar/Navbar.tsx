@@ -2,6 +2,7 @@ import { List as UIList } from '@faststore/ui'
 import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
+import PostalCodeBar from 'src/components/common/PostalCode/PostalCodeBar'
 import SearchInput from 'src/components/common/SearchInput'
 import Icon from 'src/components/ui/Icon'
 import IconButton from 'src/components/ui/IconButton'
@@ -13,8 +14,6 @@ import { mark } from 'src/sdk/tests/mark'
 import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
 import type { StoreCollectionQuery } from '@generated/graphql'
-
-import PostalCodeBar from '../PostalCode/PostalCodeBar'
 
 type Callback = () => unknown
 
