@@ -8,48 +8,46 @@
   // --------------------------------------------------------
 
   // Default properties
-  --fs-qty-selector-width                    : calc(var(--fs-control-tap-size) * 2.7);
-  --fs-qty-selector-height                   : calc(var(--fs-control-tap-size) + (var(--fs-qty-selector-border-width) * 2));
-  --fs-qty-selector-shadow                   : 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
+  --fs-qty-selector-width                     : calc(var(--fs-control-tap-size) * 2.7);
+  --fs-qty-selector-height                    : calc(var(--fs-control-tap-size) + (var(--fs-qty-selector-border-width) * 2));
 
-  --fs-qty-selector-bkg-color                : var(--fs-color-body-bkg);
+  --fs-qty-selector-shadow                    : none;
+  --fs-qty-selector-shadow-hover              : 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
 
-  --fs-qty-selector-text-size                : var(--fs-text-size-base);
-  --fs-qty-selector-text-color               : var(--fs-color-text);
+  --fs-qty-selector-bkg-color                 : var(--fs-color-body-bkg);
+  --fs-qty-selector-bkg-color-hover           : var(--fs-input-hover-bkg-color);
 
-  --fs-qty-selector-icon-color               : var(--fs-color-link);
+  --fs-qty-selector-text-size                 : var(--fs-text-size-base);
+  --fs-qty-selector-text-color                : var(--fs-color-text);
+  --fs-qty-selector-text-color-hover          : var(--fs-qty-selector-text-color);
 
-  --fs-qty-selector-border-radius            : var(--fs-border-radius-default);
-  --fs-qty-selector-border-width             : var(--fs-border-width-default);
-  --fs-qty-selector-border-color             : var(--fs-border-color-default);
+  --fs-qty-selector-icon-color                : var(--fs-color-link);
+  --fs-qty-selector-icon-color-hover          : var(--fs-border-color-default-active);
 
-  --fs-qty-selector-button-shadow            : none;
-  --fs-qty-selector-button-bkg-color         : transparent;
-  --fs-qty-selector-button-border-radius     : var(--fs-qty-selector-border-radius);
+  --fs-qty-selector-border-radius             : var(--fs-border-radius-default);
+  --fs-qty-selector-border-width              : var(--fs-border-width-default);
+  --fs-qty-selector-border-width-hover        : var(--fs-border-width-default);
+  --fs-qty-selector-border-color              : var(--fs-border-color-default);
+  --fs-qty-selector-border-color-hover        : var(--fs-border-color-default-active);
 
-  --fs-qty-selector-transition-function      : var(--fs-transition-function);
-  --fs-qty-selector-transition-property      : var(--fs-transition-property);
-  --fs-qty-selector-transition-timing        : var(--fs-transition-timing);
+  --fs-qty-selector-button-shadow             : none;
+  --fs-qty-selector-button-shadow-hover       : none;
+  --fs-qty-selector-button-bkg-color          : transparent;
+  --fs-qty-selector-button-bkg-color-hover    : var(--fs-color-primary-bkg-light);
+  --fs-qty-selector-button-bkg-color-focus    : var(--fs-qty-selector-button-bkg-color-hover);
+  --fs-qty-selector-button-border-radius      : var(--fs-qty-selector-border-radius);
 
-  // Interactive states
-  // --------------------------------------------------------
+  --fs-qty-selector-transition-function       : var(--fs-transition-function);
+  --fs-qty-selector-transition-property       : var(--fs-transition-property);
+  --fs-qty-selector-transition-timing         : var(--fs-transition-timing);
 
-  --fs-qty-selector-hover-shadow             : none;
-  --fs-qty-selector-hover-bkg-color          : var(--fs-input-hover-bkg-color);
-  --fs-qty-selector-hover-text-color         : var(--fs-qty-selector-text-color);
-  --fs-qty-selector-hover-icon-color         : var(--fs-border-color-default-active);
-  --fs-qty-selector-hover-border-color       : var(--fs-border-color-default-active);
-  --fs-qty-selector-hover-border-width       : var(--fs-border-width-thick);
-  --fs-qty-selector-hover-button-shadow      : none;
-  --fs-qty-selector-hover-button-bkg-color   : var(--fs-color-primary-bkg-light);
+  // Disabled properties
+  --fs-qty-selector-disabled-bkg-color        : var(--fs-color-disabled-bkg);
+  --fs-qty-selector-disabled-text-color       : var(--fs-color-disabled-text);
+  --fs-qty-selector-disabled-icon-color       : var(--fs-color-disabled-text);
+  --fs-qty-selector-disabled-border-color     : var(--fs-qty-selector-disabled-bkg-color);
+  --fs-qty-selector-disabled-button-bkg-color : var(--fs-qty-selector-button-bkg-color-hover);
 
-  --fs-qty-selector-focus-button-bkg-color   : var(--fs-qty-selector-hover-button-bkg-color);
-
-  --fs-qty-selector-disabled-bkg-color       : transparent;
-  --fs-qty-selector-disabled-text-color      : var(--fs-color-disabled-text);
-  --fs-qty-selector-disabled-icon-color      : var(--fs-color-disabled-text);
-  --fs-qty-selector-disabled-border-color    : var(--fs-border-color-default-disabled);
-  --fs-qty-selector-disabled-button-bkg-color: var(--fs-qty-selector-button-hover-bkg-color);
   /* stylelint-enable */
 
   // Structural Styles
@@ -61,6 +59,7 @@
   justify-content: center;
   width: var(--fs-qty-selector-width);
   height: var(--fs-qty-selector-height);
+  box-shadow: var(--fs-qty-selector-shadow);
 
   [data-store-icon] {
     margin: 0;
@@ -117,9 +116,9 @@
     &:last-of-type { right: 0; }
 
     &:hover:not(:disabled) [data-store-icon] {
-      color: var(--fs-qty-selector-hover-icon-color);
-      background-color: var(--fs-qty-selector-hover-button-bkg-color);
-      box-shadow: var(--fs-qty-selector-hover-button-shadow);
+      color: var(--fs-qty-selector-icon-color-hover);
+      background-color: var(--fs-qty-selector-button-bkg-color-hover);
+      box-shadow: var(--fs-qty-selector-button-shadow-hover);
     }
 
     &:disabled {
@@ -127,8 +126,6 @@
 
       [data-store-icon] {
         color: var(--fs-qty-selector-disabled-icon-color);
-        background-color: var(--fs-qty-selector-disabled-bkg-color);
-        border-color: var(--fs-qty-selector-disabled-border-color);
       }
     }
 
@@ -138,21 +135,26 @@
       [data-store-icon] {
         @include focus-ring;
 
-        background-color: var(--fs-qty-selector-focus-button-bkg-color);
+        background-color: var(--fs-qty-selector-button-bkg-color-focus);
       }
     }
   }
 
   &:hover {
-    [data-quantity-selector-input] {
-      border-color: var(--fs-border-color-default-active);
-      box-shadow: var(--fs-qty-selector-shadow);
+    [data-quantity-selector-input]:not(:disabled):not(:focus) {
+      color: var(--fs-qty-selector-text-color-hover);
+      background-color: var(--fs-qty-selector-bkg-color-hover);
+      border-color: var(--fs-qty-selector-border-color-hover);
+      border-width: var(--fs-qty-selector-border-width-hover);
+      box-shadow: var(--fs-qty-selector-shadow-hover);
     }
   }
 }
 
 [data-fs-quantity-selector="disabled"] {
-  background-color: var(--fs-qty-selector-disabled-bkg-color);
-  border-color: var(--fs-qty-selector-disabled-border-color);
+  [data-quantity-selector-input] {
+    background-color: var(--fs-qty-selector-disabled-bkg-color);
+    border-color: var(--fs-qty-selector-disabled-border-color);
+  }
   [data-quantity-selector-button]:hover [data-store-icon] { background-color: transparent; }
 }
