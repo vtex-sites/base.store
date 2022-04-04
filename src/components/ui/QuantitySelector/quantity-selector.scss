@@ -15,7 +15,7 @@
   --fs-qty-selector-shadow-hover              : 0 0 0 var(--fs-border-width-default) var(--fs-border-color-default-active);
 
   --fs-qty-selector-bkg-color                 : var(--fs-color-body-bkg);
-  --fs-qty-selector-bkg-color-hover           : var(--fs-input-hover-bkg-color);
+  --fs-qty-selector-bkg-color-hover           : var(--fs-qty-selector-bkg-color);
 
   --fs-qty-selector-text-size                 : var(--fs-text-size-base);
   --fs-qty-selector-text-color                : var(--fs-color-text);
