@@ -169,16 +169,6 @@
 }
 
 .navlinks__list {
-  [data-postal-code-bar] {
-    #postal-code-bar-edit, #postal-code-bar-caret {
-      display: block;
-
-      @include media(">=notebook") {
-        display: none;
-      }
-    }
-  }
-
   li {
     display: flex;
     align-items: center;
