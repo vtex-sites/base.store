@@ -2,7 +2,7 @@ import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
 import { graphql } from 'gatsby'
 import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
@@ -69,21 +69,6 @@ function Page(props: Props) {
     host !== undefined
       ? `https://${host}/${slug}/${pageQuery}`
       : `/${slug}/${pageQuery}`
-
-  const notFound = !collection
-
-  useEffect(() => {
-    if (notFound) {
-      window.location.href = `/404/?from=${encodeURIComponent(
-        window.location.pathname
-      )}`
-    }
-  }, [notFound])
-
-  // Collection not found
-  if (notFound) {
-    return null
-  }
 
   return (
     <SearchProvider
@@ -200,6 +185,19 @@ export const getServerData = async ({
       operationName: querySSR,
       variables: { slug },
     })
+
+    if (data === null) {
+      const originalUrl = `/${slug}`
+
+      return {
+        status: 301,
+        props: {},
+        headers: {
+          'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
+          location: `/404/?from=${encodeURIComponent(originalUrl)}`,
+        },
+      }
+    }
 
     return {
       status: 200,

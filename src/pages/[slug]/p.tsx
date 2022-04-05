@@ -6,7 +6,6 @@ import {
   GatsbySeo,
   ProductJsonLd,
 } from 'gatsby-plugin-next-seo'
-import { useEffect } from 'react'
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import { mark } from 'src/sdk/tests/mark'
@@ -34,25 +33,12 @@ function Page(props: Props) {
     slug,
   } = props
 
-  const notFound = !product
   const title = product?.seo.title ?? site?.siteMetadata?.title ?? ''
   const description =
     product?.seo.description ?? site?.siteMetadata?.description ?? ''
 
   const canonical =
     host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
-
-  useEffect(() => {
-    if (notFound) {
-      window.location.href = `/404/?from=${encodeURIComponent(
-        window.location.pathname
-      )}`
-    }
-  }, [notFound])
-
-  if (notFound) {
-    return null
-  }
 
   return (
     <>
@@ -211,6 +197,19 @@ export const getServerData = async ({
       operationName: querySSR,
       variables: { id },
     })
+
+    if (data === null) {
+      const originalUrl = `/${slug}/p`
+
+      return {
+        status: 301,
+        props: {},
+        headers: {
+          'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
+          location: `/404/?from=${encodeURIComponent(originalUrl)}`,
+        },
+      }
+    }
 
     return {
       status: 200,
