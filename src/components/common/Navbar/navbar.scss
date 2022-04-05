@@ -185,6 +185,11 @@
     }
   }
 
+  li {
+    display: flex;
+    align-items: center;
+  }
+
   a {
     display: block;
     width: 100%;
