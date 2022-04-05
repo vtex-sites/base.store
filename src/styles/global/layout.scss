@@ -55,15 +55,6 @@ main,
   margin-left: auto;
 }
 
-// Avoids double scroll issue on the page when overlay is open
-#layout.no-scroll {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
-}
-
 // Helper class
 .display-mobile {
   @include media(">=notebook") {
