@@ -2,7 +2,7 @@
 
 .postal-code-input {
   // Lighthouse
-  margin-top: 1rem;
+  margin-top: var(--fs-spacing-3);
 
   [data-store-label] {
     font-family: Arial; /* stylelint-disable-line */ // Prevent layout shift
@@ -14,7 +14,7 @@
 
     // Lighthouse
     height: var(--fs-control-tap-size); /* stylelint-disable-line */
-    margin-left: 1rem;
+    margin-left: var(--fs-spacing-3);
     font-family: Arial; /* stylelint-disable-line */ // prevent layout shift
   }
 }

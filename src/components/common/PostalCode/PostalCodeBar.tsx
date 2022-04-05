@@ -3,19 +3,20 @@ import RegionalizationModal from 'src/components/regionalization/Regionalization
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
-interface PostalCodeBarProps {
+interface PostalCodeBarProps extends HTMLAttributes<HTMLDivElement> {
   content?: string
   classes: string
 }
 
-export default function PostalCodeInput({
+export default function PostalCodeBar({
   content,
   classes,
+  ...otherProps
 }: PostalCodeBarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div data-postal-code-bar className={classes}>
+    <div data-postal-code-bar className={classes} {...otherProps}>
       <Button
         variant="tertiary"
         icon={<Icon name="MapPin" width={24} height={24} />}

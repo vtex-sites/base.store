@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Modal as UIModal } from '@faststore/ui'
-import PostalCodeInput from 'src/components/common/PostalCode/PostalCodeInput'
+import { PostalCodeInput } from 'src/components/common/PostalCode'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
 import { ButtonIcon } from 'src/components/ui/Button'
