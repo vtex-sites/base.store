@@ -8,7 +8,7 @@ import ProductGallery from 'src/components/sections/ProductGallery'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/sections/ScrollToTopButton'
 import Icon from 'src/components/ui/Icon'
-import { ITEMS_PER_PAGE } from 'src/constants'
+import { ITEMS_PER_PAGE, ITEMS_PER_SECTION } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
 import type {
@@ -49,11 +49,7 @@ const useSearchParams = (props: Props): SearchState => {
 
 function Page(props: Props) {
   const {
-    data: {
-      site,
-      collection,
-      allStoreProduct: { nodes: youMightAlsoLikeProducts },
-    },
+    data: { site, collection },
     location: { host },
     params: { slug },
   } = props
@@ -119,13 +115,12 @@ function Page(props: Props) {
 
       <ProductGallery title={title} />
 
-      {youMightAlsoLikeProducts?.length > 0 && (
-        <ProductShelf
-          products={youMightAlsoLikeProducts.slice(0, 5)}
-          title="You might also like"
-          withDivisor
-        />
-      )}
+      <ProductShelf
+        first={ITEMS_PER_SECTION}
+        sort="score_desc"
+        title="You might also like"
+        withDivisor
+      />
 
       <ScrollToTopButton />
     </SearchProvider>
@@ -162,12 +157,6 @@ export const query = graphql`
           key
           value
         }
-      }
-    }
-
-    allStoreProduct(limit: 5) {
-      nodes {
-        ...ProductSummary_product
       }
     }
   }

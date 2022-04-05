@@ -43,19 +43,10 @@ main,
   box-sizing: border-box;
   width: 100%;
   max-width: var(--fs-grid-breakpoint-notebook);
-  margin-right: auto;
-  margin-left: auto;
   padding-right: var(--fs-grid-padding);
   padding-left: var(--fs-grid-padding);
-}
-
-// Avoids double scroll issue on the page when overlay is open
-#layout.no-scroll {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  overflow: hidden;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 // Helper class

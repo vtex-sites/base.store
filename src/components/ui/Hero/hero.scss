@@ -61,7 +61,7 @@
     @include media(">=tablet") { margin-top: var(--fs-spacing-4); }
   }
 
-  [data-store-button] {
+  [data-fs-button] {
     justify-content: space-between;
     min-width: 11.25rem;
     margin-top: var(--fs-spacing-6);
@@ -106,7 +106,7 @@
     }
   }
 
-  [data-store-button] {
+  [data-fs-button] {
     @include media(">=tablet") { margin-top: var(--fs-spacing-8); }
   }
 

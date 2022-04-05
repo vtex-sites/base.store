@@ -29,7 +29,7 @@ function Page(props: Props) {
 
   const { locale } = useSession()
   const searchParams = useSearchParams(props.location)
-  const title = 'Search Results | FastStore'
+  const title = 'Search Results | BaseStore'
 
   if (!searchParams) {
     return null
