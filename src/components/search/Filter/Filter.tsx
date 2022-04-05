@@ -105,7 +105,7 @@ function Filter({
             data-testid="filter-modal-button-apply"
             onClick={() => {
               setFacets(selected)
-              onDismiss?.()
+              onModalClose()
             }}
           >
             Apply
