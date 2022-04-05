@@ -1,3 +1,4 @@
+/* eslint-disable cypress/no-unnecessary-waiting */
 // eslint-disable-next-line spaced-comment
 /// <reference types="cypress" />
 /**
@@ -34,6 +35,11 @@ describe('Search page Filters and Sorting options', () => {
 
         cy.getById('filter-modal-button-apply')
           .click()
+
+          // TODO: remove this unnecessary waiting.
+          // We should wait for gatsby to commit navigation instead
+          .wait(500)
+
           .then(() => {
             // Check if the filter applied actually ended up in the URL
             cy.location('href').should((loc) => {
@@ -145,7 +151,6 @@ describe('Infinite Scroll pagination', () => {
         // Number of products before showMore is clicked
         const before = $links.length
 
-        // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.getById('show-more')
           .should('exist')
           .click()
@@ -174,7 +179,7 @@ describe('Infinite Scroll pagination', () => {
               .should('have.length.gte', before)
               .last()
               .then(($card) => {
-                skuIdBeforeNavigate = $card.attr('data-sku')
+                skuIdBeforeNavigate = $card.attr('data-fs-product-card-sku')
               })
               .click()
               .then(() => {
@@ -188,7 +193,9 @@ describe('Infinite Scroll pagination', () => {
                   .get('[data-testid=product-gallery] [data-testid=store-card]')
                   .last()
                   .then(($card) => {
-                    const skuIdAfterNavigate = $card.attr('data-sku')
+                    const skuIdAfterNavigate = $card.attr(
+                      'data-fs-product-card-sku'
+                    )
 
                     expect(skuIdBeforeNavigate).to.eq(skuIdAfterNavigate)
                     expect(skuIdAfterNavigate).to.exist
@@ -203,7 +210,6 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.getById('show-more')
       .should('exist')
       .click()
