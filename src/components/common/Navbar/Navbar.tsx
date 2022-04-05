@@ -2,7 +2,7 @@ import { List as UIList } from '@faststore/ui'
 import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
 import React, { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
-import PostalCodeBar from 'src/components/common/PostalCode/PostalCodeBar'
+import PostalCodeButton from 'src/components/common/PostalCode/PostalCodeButton'
 import SearchInput from 'src/components/common/SearchInput'
 import Icon from 'src/components/ui/Icon'
 import { ButtonIcon, ButtonSignIn } from 'src/components/ui/Button'
@@ -41,7 +41,7 @@ function NavLinks({ onClickLink }: NavLinksProps) {
     <nav className="navlinks__list">
       <UIList>
         <li>
-          <PostalCodeBar classes="hidden-mobile" />
+          <PostalCodeButton classes="hidden-mobile" />
         </li>
         {links.map(({ node: link }) => (
           <li key={link.seo.title}>

@@ -17,18 +17,21 @@ export default function PostalCodeBar({
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div data-fs-postal-code-bar className={classes} {...otherProps}>
-      <Button onClick={() => setIsModalOpen(true)}>
-        <Icon name="MapPin" width={24} height={24} />
+    <div data-fs-postal-code-button className={classes} {...otherProps}>
+      <Button
+        variant="tertiary"
+        size="small"
+        icon={<Icon name="MapPin" width={24} height={24} />}
+        iconPosition="left"
+        onClick={() => setIsModalOpen(true)}
+      >
         {content ? (
           <>
             <span>{content}</span>
-            <span>Edit</span>
           </>
         ) : (
           <span>Set your location</span>
         )}
-        <Icon name="CaretRight" width={24} height={24} />
       </Button>
       <RegionalizationModal
         isOpen={isModalOpen}

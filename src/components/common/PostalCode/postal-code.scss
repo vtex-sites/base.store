@@ -19,34 +19,32 @@
   }
 }
 
-[data-postal-code-bar] {
+[data-fs-postal-code-bar] {
   width: 100%;
 
-  [data-fs-button][data-fs-button-variant="tertiary"] {
+  [data-fs-button] {
     width: 100%;
-    padding: 0 var(--fs-spacing-3) 0 var(--fs-spacing-4);
     color: var(--fs-color-text-display);
-    border-radius: 0;
-
-    @include media(">=notebook") {
-      min-height: var(--fs-spacing-5);
-      padding: var(--fs-spacing-0) var(--fs-spacing-3) var(--fs-spacing-0) 0;
-      border-right: var(--fs-border-width-default) solid var(--fs-border-color-light);
-    }
+    background-color: var(--fs-color-neutral-0);
+    border: 0;
   }
 
   span {
-    &:nth-of-type(2) {
+    &:first-of-type {
       margin-right: auto;
       font-weight: var(--fs-text-weight-regular);
-
-      @include media(">=notebook") {
-        font-weight: var(--fs-text-weight-bold);
-      }
     }
 
-    &:nth-of-type(3) {
+    &:not(:first-of-type) {
+      margin-left: auto;
       text-decoration: underline;
     }
   }
+}
+
+[data-fs-postal-code-button] {
+  padding-right: var(--fs-spacing-1);
+  margin-left: calc(-1 * var(--fs-spacing-2));
+  border-right: var(--fs-border-width-default) solid var(--fs-border-color-light);
+  span:nth-of-type(2) { font-weight: var(--fs-text-weight-bold); }
 }
