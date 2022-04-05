@@ -10,11 +10,10 @@ import Link from 'src/components/ui/Link'
 import Logo from 'src/components/ui/Logo'
 import SlideOver from 'src/components/ui/SlideOver'
 import { mark } from 'src/sdk/tests/mark'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
 import type { StoreCollectionQuery } from '@generated/graphql'
-
-type Callback = () => unknown
 
 interface NavLinksProps {
   onClickLink?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
@@ -54,11 +53,16 @@ function NavLinks({ onClickLink }: NavLinksProps) {
 }
 
 function Navbar() {
+  const { onModalClose } = useModal()
+  const searchMobileRef = useRef<SearchInputRef>(null)
+
   const [showMenu, setShowMenu] = useState(false)
   const [searchExpanded, setSearchExpanded] = useState(false)
-  const searchMobileRef = useRef<SearchInputRef>(null)
-  const dismissTransition = useRef<Callback | undefined>()
-  const handleCloseSlideOver = () => setShowMenu(false)
+
+  const handleCloseSlideOver = () => {
+    onModalClose()
+    setShowMenu(false)
+  }
 
   const handlerExpandSearch = () => {
     setSearchExpanded(true)
@@ -118,9 +122,6 @@ function Navbar() {
       <SlideOver
         isOpen={showMenu}
         onDismiss={handleCloseSlideOver}
-        onDismissTransition={(callback) => {
-          dismissTransition.current = callback
-        }}
         size="full"
         direction="leftSide"
         className="navbar__modal-content"
@@ -132,7 +133,7 @@ function Navbar() {
               aria-label="Go to FastStore home"
               title="Go to FastStore home"
               className="navbar__logo"
-              onClick={() => dismissTransition.current?.()}
+              onClick={onModalClose}
             >
               <Logo />
             </LinkGatsby>
@@ -140,7 +141,7 @@ function Navbar() {
             <ButtonIcon
               aria-label="Close Menu"
               icon={<Icon name="X" width={32} height={32} />}
-              onClick={() => dismissTransition.current?.()}
+              onClick={onModalClose}
             />
           </header>
           <div className="navlinks">
