@@ -170,12 +170,6 @@
 
 .navlinks__list {
   [data-postal-code-bar] {
-    display: none;
-
-    @include media(">=notebook") {
-      display: block;
-    }
-
     #postal-code-bar-edit, #postal-code-bar-caret {
       display: block;
 

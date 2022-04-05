@@ -22,7 +22,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
       <Navbar />
 
       <main>
-        <PostalCodeBar />
+        <PostalCodeBar classes="display-mobile" />
         {children}
       </main>
 

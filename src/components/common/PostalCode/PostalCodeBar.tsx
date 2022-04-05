@@ -5,13 +5,17 @@ import Icon from 'src/components/ui/Icon'
 
 interface PostalCodeBarProps {
   content?: string
+  classes: string
 }
 
-export default function PostalCodeInput({ content }: PostalCodeBarProps) {
+export default function PostalCodeInput({
+  content,
+  classes,
+}: PostalCodeBarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div data-postal-code-bar>
+    <div data-postal-code-bar className={classes}>
       <Button
         variant="tertiary"
         icon={<Icon name="MapPin" width={24} height={24} />}

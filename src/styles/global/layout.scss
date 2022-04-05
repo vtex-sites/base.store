@@ -16,12 +16,6 @@ main,
   display: flex;
   flex-wrap: wrap;
   background-color: var(--fs-color-body-bkg);
-
-  > [data-postal-code-bar] {
-    @include media(">=notebook") {
-      display: none;
-    }
-  }
 }
 
 .layout__section {

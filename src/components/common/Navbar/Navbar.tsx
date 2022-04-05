@@ -41,7 +41,7 @@ function NavLinks({ onClickLink }: NavLinksProps) {
     <nav className="navlinks__list">
       <UIList>
         <li>
-          <PostalCodeBar />
+          <PostalCodeBar classes="hidden-mobile" />
         </li>
         {links.map(({ node: link }) => (
           <li key={link.seo.title}>
