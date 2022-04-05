@@ -10,12 +10,12 @@ import { cypress } from '../../store.config'
 
 const { pages } = cypress
 
-describe.skip('Search page Filters and Sorting options', () => {
+describe('Search page Filters and Sorting options', () => {
   beforeEach(() => {
     cy.clearIDB()
   })
 
-  it('Applies filters after click', () => {
+  it.skip('Applies filters after click', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -35,10 +35,6 @@ describe.skip('Search page Filters and Sorting options', () => {
 
         cy.getById('filter-modal-button-apply')
           .click()
-
-          // TODO: remove this unnecessary waiting.
-          // We should wait for gatsby to commit navigation instead
-          .wait(500)
 
           .then(() => {
             // Check if the filter applied actually ended up in the URL
@@ -140,7 +136,7 @@ describe.skip('Infinite Scroll pagination', () => {
     })
   })
 
-  it('Sticks to last seen page on plp pagination', () => {
+  it.skip('Sticks to last seen page on plp pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -158,10 +154,6 @@ describe.skip('Infinite Scroll pagination', () => {
           .get('[data-testid=product-gallery] [data-testid=store-card]')
           .first()
           .scrollIntoView({ duration: 1000 })
-
-          // TODO: remove this unnecessary waiting.
-          // We should wait for gatsby to commit navigation instead
-          .wait(500)
 
           // Go down the page
           .get('[data-testid=product-gallery] [data-testid=store-card]')
@@ -206,7 +198,7 @@ describe.skip('Infinite Scroll pagination', () => {
   })
 
   // Tests: https://developers.google.com/search/blog/2014/02/infinite-scroll-search-friendly
-  it('Changes the page being viewed on scroll', () => {
+  it.skip('Changes the page being viewed on scroll', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -218,10 +210,6 @@ describe.skip('Infinite Scroll pagination', () => {
       .scrollIntoView({ duration: 1000 })
       .location('search')
       .should('match', /page=0$/)
-
-      // TODO: remove this unnecessary waiting.
-      // We should wait for gatsby to commit navigation instead
-      .wait(500)
 
       .get('[data-testid=product-gallery] [data-testid=store-card]')
       .last()
