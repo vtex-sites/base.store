@@ -9,12 +9,15 @@ interface PostalCodeBarProps {
 export default function PostalCodeInput({ content }: PostalCodeBarProps) {
   return (
     <div data-postal-code-bar>
-      <Button>
-        <Icon name="MapPin" width={24} height={24} />
+      <Button
+        variant="tertiary"
+        icon={<Icon name="MapPin" width={24} height={24} />}
+        iconPosition="left"
+      >
         {content ? (
           <>
             <span>{content}</span>
-            <span>Edit</span>
+            <span id="postal-code-bar-edit">Edit</span>
           </>
         ) : (
           <span>Set your location</span>
