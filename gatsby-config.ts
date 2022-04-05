@@ -7,16 +7,6 @@ import config from './store.config'
 
 dotenv.config({ path: 'vtex.env' })
 
-const {
-  NODE_ENV,
-  URL = config.storeUrl,
-  DEPLOY_PRIME_URL = URL,
-  CONTEXT: ENV = NODE_ENV,
-} = process.env
-
-const isProduction = ENV === 'production'
-const siteUrl = isProduction ? URL : DEPLOY_PRIME_URL
-
 const gatsbyConfig: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
@@ -24,7 +14,7 @@ const gatsbyConfig: GatsbyConfig = {
     description: 'Fast Demo Store',
     titleTemplate: '%s | FastStore',
     author: 'Store Framework',
-    siteUrl,
+    siteUrl: config.storeUrl,
   },
   flags: {
     FAST_DEV: true,
@@ -49,7 +39,7 @@ const gatsbyConfig: GatsbyConfig = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        resolveEnv: () => ENV,
+        resolveEnv: () => process.env.NODE_ENV ?? 'development',
         env: {
           production: {
             policy: [
@@ -60,10 +50,7 @@ const gatsbyConfig: GatsbyConfig = {
               },
             ],
           },
-          'branch-deploy': {
-            policy: [{ userAgent: '*', disallow: ['/'] }],
-          },
-          'deploy-preview': {
+          development: {
             policy: [{ userAgent: '*', disallow: ['/'] }],
           },
         },

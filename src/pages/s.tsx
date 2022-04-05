@@ -88,9 +88,6 @@ function Page(props: Props) {
   )
 }
 
-/**
- * This query is run during SSG
- * */
 export const querySSG = graphql`
   query SearchPageQuery {
     site {

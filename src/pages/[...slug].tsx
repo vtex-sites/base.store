@@ -132,9 +132,6 @@ function Page(props: Props) {
   )
 }
 
-/**
- * This query is run during SSG
- * */
 export const querySSG = graphql`
   query CollectionPageQuery {
     site {
@@ -147,9 +144,6 @@ export const querySSG = graphql`
   }
 `
 
-/**
- * This query is run during SSR
- * */
 export const querySSR = gql`
   query ServerCollectionPageQuery($slug: String!) {
     collection(slug: $slug) {
