@@ -175,6 +175,14 @@
     @include media(">=notebook") {
       display: block;
     }
+
+    #postal-code-bar-edit, #postal-code-bar-caret {
+      display: block;
+
+      @include media(">=notebook") {
+        display: none;
+      }
+    }
   }
 
   a {
