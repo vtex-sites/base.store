@@ -15,7 +15,7 @@ describe('Search page Filters and Sorting options', () => {
     cy.clearIDB()
   })
 
-  it.skip('Applies filters after click', () => {
+  it('Applies filters after click', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -104,7 +104,7 @@ describe('Search page Filters and Sorting options', () => {
   })
 })
 
-describe.skip('Infinite Scroll pagination', () => {
+describe('Infinite Scroll pagination', () => {
   beforeEach(() => {
     cy.clearIDB()
   })
