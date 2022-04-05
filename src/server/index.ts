@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /**
- * Polyfill for dataloader. Remove it once this is fixed: https://github.com/graphql/dataloader/issues/249
+ * Polyfill for dataloader.
+ * TODO: Remove it once this is fixed: https://github.com/graphql/dataloader/issues/249
  * */
 import 'setimmediate'
 
