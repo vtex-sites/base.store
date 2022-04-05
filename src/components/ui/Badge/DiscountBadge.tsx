@@ -34,7 +34,7 @@ const DiscountBadge = ({
       : 'high'
 
   return (
-    <Badge small={small} data-store-discount-badge-variant={discountVariant}>
+    <Badge small={small} data-fs-discount-badge-variant={discountVariant}>
       {discountPercent}% off
     </Badge>
   )

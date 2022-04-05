@@ -34,10 +34,9 @@ const Badge = ({
 }: Props) => {
   return (
     <UIBadge
-      className="badge"
-      data-store-badge={small ? 'small' : ''}
-      data-store-badge-variant={variant}
-      data-store-badge-interactive={interactive}
+      data-fs-badge={small ? 'small' : ''}
+      data-fs-badge-variant={variant}
+      data-fs-badge-interactive={interactive}
       {...otherProps}
     >
       <span>{children}</span>
