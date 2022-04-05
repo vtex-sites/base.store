@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- `SearchInput` margin left on mobile (#457)
 - Fixed BaseStore logo right margin on mobile devices (#455)
 - Fix PLP scroll bug after applying filters for the mobile version (#454)
 
