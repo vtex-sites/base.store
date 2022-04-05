@@ -3,10 +3,9 @@ import Alert from 'src/components/common/Alert'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import Toast from 'src/components/common/Toast'
+import PostalCodeBar from 'src/components/common/PostalCode/PostalCodeBar'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
-
-import PostalCodeBar from './components/common/PostalCode/PostalCodeBar'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 

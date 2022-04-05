@@ -44,9 +44,9 @@
         font-weight: var(--fs-text-weight-bold);
       }
     }
-  }
 
-  #postal-code-bar-edit {
-    text-decoration: underline;
+    &:nth-of-type(3) {
+      text-decoration: underline;
+    }
   }
 }

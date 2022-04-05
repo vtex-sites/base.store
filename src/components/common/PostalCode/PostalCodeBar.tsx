@@ -25,13 +25,13 @@ export default function PostalCodeInput({
         {content ? (
           <>
             <span>{content}</span>
-            <span id="postal-code-bar-edit">Edit</span>
+            <span className="display-mobile">Edit</span>
           </>
         ) : (
           <span>Set your location</span>
         )}
         <Icon
-          id="postal-code-bar-caret"
+          className="display-mobile"
           name="CaretRight"
           width={24}
           height={24}
