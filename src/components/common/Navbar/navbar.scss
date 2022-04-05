@@ -136,6 +136,10 @@
     width: 100%;
     height: 100%;
   }
+
+  @include media("<tablet") {
+    margin-right: var(--fs-spacing-5);
+  }
 }
 
 .navbar__modal-body {
