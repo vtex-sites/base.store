@@ -1,9 +1,8 @@
 import Icon from 'src/components/ui/Icon'
 import usePersonQuery from 'src/sdk/person/usePersonQuery'
 import { ButtonLink } from 'src/components/ui/Button'
-import type { FC } from 'react'
 
-const ButtonSignIn: FC = () => {
+const ButtonSignIn = () => {
   const person = usePersonQuery()
 
   return (

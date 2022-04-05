@@ -1694,7 +1694,7 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.6.26":
+"@faststore/api@^1.7.5":
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.7.5.tgz#283004f8a20076802d5235366b0d22371e8306aa"
   integrity sha512-agWkKDXZvs7C6cyKX5DYZubr6nF5g98+NA0tFs83n5srxDLYe9pu3DkqpQncSg1H2CqXG2QBlLG8oLazogy1Pw==
@@ -1707,14 +1707,14 @@
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
 
-"@faststore/sdk@^1.6.26":
+"@faststore/sdk@^1.7.5":
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.7.5.tgz#e9c71f53a8860a0b4a95a291b12eef00c4e4e01d"
   integrity sha512-kT/vUq3Ady8GJGb7eks6SMR1wwKM10yi/eGuAKEErOHFs+zJ+s+60ua7sDj3ulApogyCCUdMyRFFyVjyBozHUg==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.6.26":
+"@faststore/ui@^1.7.5":
   version "1.7.5"
   resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.7.5.tgz#5101b60b6b2b834ac81480dd6a84b91100bfae05"
   integrity sha512-eqxvSvWZeEPPzTY1jHHSoGLw9sVtmhuPq4nlXVwNB+uafptUSnropz/KjFbnWorLjsu2Rtk/57R+GH2FM145kw==
