@@ -104,7 +104,7 @@ describe('Search page Filters and Sorting options', () => {
   })
 })
 
-describe('Infinite Scroll pagination', () => {
+describe.skip('Infinite Scroll pagination', () => {
   beforeEach(() => {
     cy.clearIDB()
   })
@@ -136,7 +136,7 @@ describe('Infinite Scroll pagination', () => {
     })
   })
 
-  it.skip('Sticks to last seen page on plp pagination', () => {
+  it('Sticks to last seen page on plp pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
@@ -198,7 +198,7 @@ describe('Infinite Scroll pagination', () => {
   })
 
   // Tests: https://developers.google.com/search/blog/2014/02/infinite-scroll-search-friendly
-  it.skip('Changes the page being viewed on scroll', () => {
+  it('Changes the page being viewed on scroll', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
