@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import RegionalizationModal from 'src/components/regionalization/RegionalizationModal'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
@@ -7,12 +8,15 @@ interface PostalCodeBarProps {
 }
 
 export default function PostalCodeInput({ content }: PostalCodeBarProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <div data-postal-code-bar>
       <Button
         variant="tertiary"
         icon={<Icon name="MapPin" width={24} height={24} />}
         iconPosition="left"
+        onClick={() => setIsModalOpen(true)}
       >
         {content ? (
           <>
@@ -29,6 +33,10 @@ export default function PostalCodeInput({ content }: PostalCodeBarProps) {
           height={24}
         />
       </Button>
+      <RegionalizationModal
+        isOpen={isModalOpen}
+        onDismiss={() => setIsModalOpen(false)}
+      />
     </div>
   )
 }
