@@ -52,7 +52,7 @@ function ProductCard({
       data-fs-product-card
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
-      data-sku={sku}
+      data-fs-product-card-sku={sku}
       {...otherProps}
     >
       <UICardImage>
