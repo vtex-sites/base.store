@@ -1,6 +1,6 @@
-import type { DetailedHTMLProps } from 'react'
+import type { DetailedHTMLProps, HTMLAttributes } from 'react'
 
-type Props = DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 
 function Section({ className = '', ...otherProps }: Props) {
   return <section className={`section ${className}`} {...otherProps} />
