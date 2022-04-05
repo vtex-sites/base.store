@@ -145,6 +145,7 @@ describe('Infinite Scroll pagination', () => {
         // Number of products before showMore is clicked
         const before = $links.length
 
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.getById('show-more')
           .should('exist')
           .click()
@@ -152,6 +153,11 @@ describe('Infinite Scroll pagination', () => {
           .get('[data-testid=product-gallery] [data-testid=store-card]')
           .first()
           .scrollIntoView({ duration: 1000 })
+
+          // TODO: remove this unnecessary waiting.
+          // We should wait for gatsby to commit navigation instead
+          .wait(500)
+
           // Go down the page
           .get('[data-testid=product-gallery] [data-testid=store-card]')
           .last()
@@ -197,15 +203,19 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
+    // eslint-disable-next-line cypress/no-unnecessary-waiting
     cy.getById('show-more')
       .should('exist')
       .click()
 
-      .get('[data-testid=product-gallery] [data-testid=store-card]')
-      .first()
+      .getById('total-product-count')
       .scrollIntoView({ duration: 1000 })
       .location('search')
       .should('match', /page=0$/)
+
+      // TODO: remove this unnecessary waiting.
+      // We should wait for gatsby to commit navigation instead
+      .wait(500)
 
       .get('[data-testid=product-gallery] [data-testid=store-card]')
       .last()
