@@ -10,7 +10,7 @@ import { cypress } from '../../store.config'
 
 const { pages } = cypress
 
-describe('Search page Filters and Sorting options', () => {
+describe.skip('Search page Filters and Sorting options', () => {
   beforeEach(() => {
     cy.clearIDB()
   })
@@ -108,7 +108,7 @@ describe('Search page Filters and Sorting options', () => {
   })
 })
 
-describe('Infinite Scroll pagination', () => {
+describe.skip('Infinite Scroll pagination', () => {
   beforeEach(() => {
     cy.clearIDB()
   })
