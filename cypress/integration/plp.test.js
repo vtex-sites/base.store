@@ -104,7 +104,7 @@ describe('Search page Filters and Sorting options', () => {
   })
 })
 
-describe.skip('Infinite Scroll pagination', () => {
+describe('Infinite Scroll pagination', () => {
   beforeEach(() => {
     cy.clearIDB()
   })

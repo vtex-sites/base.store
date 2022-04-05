@@ -56,7 +56,7 @@ function Page(props: Props) {
     data: { site },
     serverData: { collection },
     location: { host },
-    params: { slug },
+    slug,
   } = props
 
   const { locale } = useSession()

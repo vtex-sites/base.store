@@ -23,7 +23,7 @@ export type Props = PageProps<
   ProductPageQueryQueryVariables,
   unknown,
   ServerProductPageQueryQuery
->
+> & { slug: string }
 
 function Page(props: Props) {
   const { locale, currency } = useSession()
@@ -31,7 +31,7 @@ function Page(props: Props) {
     data: { site },
     serverData: { product },
     location: { host },
-    params: { slug },
+    slug,
   } = props
 
   const title = product?.seo.title ?? site?.siteMetadata?.title ?? ''
