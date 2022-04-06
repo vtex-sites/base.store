@@ -1,3 +1,4 @@
+import type { BadgeProps } from '@faststore/ui'
 import React from 'react'
 import { Badge } from 'src/components/ui/Badge'
 
@@ -6,7 +7,7 @@ export default {
   title: 'Components/Badge',
 }
 
-const Template = ({ children, ...args }: any) => (
+const Template = ({ children, ...args }: BadgeProps) => (
   <Badge {...args}>{children}</Badge>
 )
 
