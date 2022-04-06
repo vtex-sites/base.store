@@ -38,7 +38,6 @@
     "gatsby-plugin-netlify": "^4.2.0",
     "gatsby-plugin-next-seo": "^1.10.0",
     "gatsby-plugin-nprogress": "^4.7.0",
-    "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-robots-txt": "^1.7.0",
     "gatsby-plugin-root-import": "^2.0.8",
     "gatsby-plugin-sass": "^5.11.1",
