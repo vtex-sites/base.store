@@ -1,5 +1,5 @@
 import type { ComponentPropsWithRef, FormEvent, ReactNode } from 'react'
-import React, { forwardRef, useRef } from 'react'
+import { forwardRef, useRef } from 'react'
 import { Form, Label, Input, Button } from '@faststore/ui'
 
 export interface NewsletterProps

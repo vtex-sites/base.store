@@ -1,6 +1,6 @@
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
 import { Link } from 'gatsby'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import type { ReactNode, MouseEvent } from 'react'

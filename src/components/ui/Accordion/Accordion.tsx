@@ -1,5 +1,5 @@
 import { Accordion as UIAccordion } from '@faststore/ui'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import type { AccordionProps } from '@faststore/ui'
 
 interface Props extends Omit<AccordionProps, 'indices'> {

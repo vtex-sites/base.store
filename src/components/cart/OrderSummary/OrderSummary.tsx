@@ -1,5 +1,4 @@
 import { List } from '@faststore/ui'
-import React from 'react'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import type { ReactNode } from 'react'
 
