@@ -204,8 +204,6 @@ export { default } from './Button'
 The real thing happens on `Button.tsx`. On this file let's define the component like:
 
 ```tsx
-import React from 'react'
-
 interface Props {}
 
 function Button(props: Props) {
@@ -218,7 +216,6 @@ export default Button
 And, that's it! Now you have a working button that you can use anywhere on your project. FastStore, however, brings a handy library called `@faststore/ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
 
 ```tsx
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
@@ -260,7 +257,6 @@ Now, include the component's CSS into the Store's CSS. Open `src/styles/global/c
 For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and secondary variants. To add variants to the component, update `Button.tsx`:
 
 ```tsx
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
@@ -357,7 +353,6 @@ An example adding Bell icon:
 
 ```tsx
 // src/components/ui/MyIconButton/MyIconButton.tsx
-import React from 'react'
 import Icon from 'src/components/ui/Icon' // this path can be outdated.
 
 function ButtonIcon() {
