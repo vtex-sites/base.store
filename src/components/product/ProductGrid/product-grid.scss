@@ -8,7 +8,7 @@
   gap: var(--gap);
 
   @include media(">=notebook") {
-    --gap: var(--fs-grid-gap-0);
+    --gap: var(--fs-grid-gap-3);
 
     $pagination-start-index: 2;
 
