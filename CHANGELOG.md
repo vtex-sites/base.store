@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Applies new local tokens to `ProductShelf` component. (#464)
 
 ### Changed
+- Uses new Automatic JSX runtime (#460)
 - Migrates Gatsby config files to TypeScript (#373)
 - Migrates to Gatsby v4 (#456)
 
@@ -36,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Send channel string as search facet (#428)
 - Add the brand new BaseStore logo (#447)
 - Add `Dropdown` component in `Breadcrumb` component (#436)
+- Add `InputText` component (#440)
 
 ### Changed
 

@@ -1,6 +1,6 @@
 import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import PostalCodeInput from 'src/components/common/PostalCode'
 import SearchInput from 'src/components/common/SearchInput'

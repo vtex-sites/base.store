@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 
 import storeConfig from '../../store.config'

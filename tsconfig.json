@@ -2,6 +2,8 @@
   "extends": "@vtex/tsconfig",
   "compilerOptions": {
     "moduleResolution": "node",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "resolveJsonModule": true,
     "module": "ESNext",
     "rootDir": ".",

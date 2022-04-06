@@ -1,5 +1,4 @@
 import { List } from '@faststore/ui'
-import React from 'react'
 import Alert from 'src/components/ui/Alert'
 import { Badge } from 'src/components/ui/Badge'
 import Button, { ButtonIcon } from 'src/components/ui/Button'
