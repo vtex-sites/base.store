@@ -10,12 +10,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+- Migrates Gatsby config files to TypeScript (#373)
+- Migrates to Gatsby v4 (#456)
 
 ### Deprecated
 
 ### Removed
 
 ### Fixed
+
+- Fix `SlideOver` scroll background behavior (#420)
+- `SearchInput` margin left on mobile (#457)
+- Fixed BaseStore logo right margin on mobile devices (#455)
+- Fix PLP scroll bug after applying filters for the mobile version (#454)
 
 ### Security
 
@@ -46,7 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix `SlideOver` scroll background behavior (#420)
 - CSS Warnings (#434)
 - Fix alert banner colors (#442)
 
