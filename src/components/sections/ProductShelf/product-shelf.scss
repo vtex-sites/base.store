@@ -1,6 +1,25 @@
 @import "src/styles/scaffold";
 
-[data-product-shelf-items] {
+[data-fs-product-shelf] {
+  // --------------------------------------------------------
+  // Design Tokens for Product Shelf
+  // --------------------------------------------------------
+
+  // Default properties
+
+  // --------------------------------------------------------
+  // Template Styles
+  // --------------------------------------------------------
+
+  min-height: 21.06rem;
+
+  @include media(">=notebook") {
+    margin-top: calc(-1 * var(--fs-spacing-0));
+    margin-bottom: calc(-1 * var(--fs-spacing-3));
+  }
+}
+
+[data-fs-product-shelf-items] {
   display: flex;
   align-items: stretch;
   overflow-x: scroll;
@@ -11,19 +30,10 @@
   }
 
   @include media(">=tablet") {
+    column-gap: var(--fs-spacing-2);
     padding-top: var(--fs-spacing-0);
     padding-bottom: var(--fs-spacing-3);
     overflow-x: auto;
-    column-gap: var(--fs-spacing-2);
-  }
-}
-
-[data-product-shelf-content] {
-  min-height: 21.06rem;
-
-  @include media(">=notebook") {
-    margin-top: calc(-1 * var(--fs-spacing-0));
-    margin-bottom: calc(-1 * var(--fs-spacing-3));
   }
 }
 
