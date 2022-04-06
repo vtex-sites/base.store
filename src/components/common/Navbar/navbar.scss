@@ -98,6 +98,7 @@
     [data-store-search-input] {
       flex: 1 1;
       margin-right: 0.625rem;
+      margin-left: var(--fs-spacing-9);
 
       [data-store-input] {
         width: calc(100% - var(--fs-spacing-7));
