@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- Applies new local tokens to `ProductShelf` component. (#464)
 
 ### Changed
 - Migrates Gatsby config files to TypeScript (#373)
