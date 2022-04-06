@@ -1,4 +1,4 @@
-import { Children } from 'react'
+import { Children, useRef } from 'react'
 import type { HTMLAttributes, PropsWithChildren } from 'react'
 import { IconButton } from '@faststore/ui'
 import Icon from 'src/components/ui/Icon'
@@ -16,8 +16,16 @@ function ImageGallerySelector({
   const elements = Children.toArray(children)
   const elementCount = elements.length
 
-  if (!elementCount) {
-    return null
+  const elementsRef = useRef<HTMLDivElement>(null)
+
+  const moveScroll = (container: HTMLDivElement | null, value: number) => {
+    if (container) {
+      if (container.scrollHeight > container.clientHeight) {
+        container.scrollTop += value
+      } else {
+        container.scrollLeft += value
+      }
+    }
   }
 
   return (
@@ -30,20 +38,10 @@ function ImageGallerySelector({
         <IconButton
           aria-label="backward slide image selector"
           icon={<Icon name="ArrowLeft" width={24} height={24} />}
-          onClick={() => {
-            const container = document.getElementById('myScrollSlider')
-
-            if (container) {
-              if (container.scrollHeight > container.clientHeight) {
-                container.scrollTop -= 200
-              } else {
-                container.scrollLeft -= 200
-              }
-            }
-          }}
+          onClick={() => moveScroll(elementsRef.current, -200)}
         />
       )}
-      <div id="myScrollSlider" data-carousel-track>
+      <div data-carousel-track ref={elementsRef}>
         {elements.map((el, idx) => {
           return <div key={idx}>{el}</div>
         })}
@@ -52,17 +50,7 @@ function ImageGallerySelector({
         <IconButton
           aria-label="forward slide image selector"
           icon={<Icon name="ArrowLeft" width={24} height={24} />}
-          onClick={() => {
-            const container = document.getElementById('myScrollSlider')
-
-            if (container) {
-              if (container?.scrollHeight > container?.clientHeight) {
-                container.scrollTop += 200
-              } else {
-                container.scrollLeft += 200
-              }
-            }
-          }}
+          onClick={() => moveScroll(elementsRef.current, +200)}
         />
       )}
     </section>
