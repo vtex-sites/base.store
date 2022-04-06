@@ -45,15 +45,16 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({
 // Gatsby types the returned elements from `getHeadComponents` as
 // `React.ReactNode`, but this is inaccurate. The attributes defined below
 // are present in those elements.
-type HeadComponent = ReactNode & {
-  type: string
-  key: string
-  props?: Record<string, unknown>
+type StyleComponent = {
+  type: 'style'
+  props?: {
+    'data-href'?: 'string'
+    href: 'string'
+  }
 }
 
-const isHeadComponent = (node: ReactNode): node is HeadComponent =>
-  typeof (node as any).type === 'string' &&
-  typeof (node as any).key === 'string'
+const isStyleComponent = (node: ReactNode): node is StyleComponent =>
+  typeof node === 'object' && node != null && (node as any).type === 'style'
 
 /**
  * Gatsby inlines all styles from the app inside a `<style/>` tag. This decreases
@@ -71,28 +72,24 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
     return
   }
 
-  const transformedHeadComponents = getHeadComponents()
-    .filter(isHeadComponent)
-    .map((node) => {
-      if (node.type === 'style') {
-        const globalStyleHref = node.props['data-href']
+  const transformedHeadComponents = getHeadComponents().map((node) => {
+    if (isStyleComponent(node)) {
+      const globalStyleHref = node.props?.['data-href'] ?? node.props?.href
 
-        if (globalStyleHref) {
-          return (
-            <link
-              href={globalStyleHref}
-              rel="stylesheet"
-              type="text/css"
-              media="screen"
-            />
-          )
-        }
-
-        return node
+      if (globalStyleHref) {
+        return (
+          <link
+            href={globalStyleHref}
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+          />
+        )
       }
+    }
 
-      return node
-    })
+    return node
+  })
 
   replaceHeadComponents(transformedHeadComponents)
 }
