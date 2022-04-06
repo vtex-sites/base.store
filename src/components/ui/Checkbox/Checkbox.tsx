@@ -1,5 +1,4 @@
 import { Checkbox as UICheckbox } from '@faststore/ui'
-import React from 'react'
 import type { CheckboxProps as UICheckboxProps } from '@faststore/ui'
 
 type CheckboxProps = {

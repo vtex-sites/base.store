@@ -1,4 +1,3 @@
-import React from 'react'
 import type { ComponentType } from 'react'
 
 export const mark = <P,>(Component: ComponentType<P>): ComponentType<P> =>
