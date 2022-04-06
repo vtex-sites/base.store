@@ -1,10 +1,13 @@
-require('dotenv').config({ path: 'vtex.env' })
+import { join, resolve } from 'path'
 
-const { join, resolve } = require('path')
+import dotenv from 'dotenv'
+import type { GatsbyConfig } from 'gatsby'
 
-const config = require('./store.config')
+import config from './store.config'
 
-module.exports = {
+dotenv.config({ path: 'vtex.env' })
+
+const gatsbyConfig: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
     title: 'BaseStore',
@@ -104,3 +107,5 @@ module.exports = {
     },
   ],
 }
+
+export default gatsbyConfig
