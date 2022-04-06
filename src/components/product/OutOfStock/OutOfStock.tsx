@@ -1,9 +1,10 @@
 import { useSession } from '@faststore/sdk'
 import type { ReactElement, FormEvent } from 'react'
 import React, { useState } from 'react'
-import { Form, Input } from '@faststore/ui'
+import { Form } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import InputText from 'src/components/ui/InputText'
 
 export interface OutOfStockProps {
   /**
@@ -97,12 +98,12 @@ function OutOfStock(props: OutOfStockProps) {
           {notificationMsgIcon} {notificationMsg}
         </p>
         <div>
-          <Input
-            data-store-out-of-stock-input
-            aria-label="Email"
+          <InputText
+            id="out-of-stock-email"
             value={email}
+            label="Email"
+            aria-label="Email"
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
           />
           <Button
             data-store-out-of-stock-button
