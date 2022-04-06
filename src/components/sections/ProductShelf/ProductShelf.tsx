@@ -24,7 +24,7 @@ function ProductShelf({
 
   return (
     <Section
-      className={`layout__section ${withDivisor ? 'shelf__divisor' : ''}`}
+      className={`layout__section ${withDivisor ? 'section__divisor' : ''}`}
     >
       <h2 className="text__title-section layout__content">{title}</h2>
       <div data-fs-product-shelf>
