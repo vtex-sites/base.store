@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import {
   Breadcrumb as UIBreadcrumb,
   Dropdown as UIDropdown,

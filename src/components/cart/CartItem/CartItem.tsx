@@ -1,5 +1,4 @@
 import { Card, CardActions, CardContent, CardImage } from '@faststore/ui'
-import React from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import { Image } from 'src/components/ui/Image'

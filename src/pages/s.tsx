@@ -1,7 +1,7 @@
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import SROnly from 'src/components/ui/SROnly'

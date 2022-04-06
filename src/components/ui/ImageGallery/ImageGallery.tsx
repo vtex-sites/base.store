@@ -1,5 +1,5 @@
 import { Button } from '@faststore/ui'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Image } from 'src/components/ui/Image'
 
 import { ImageGallerySelector, ImageZoom } from '.'

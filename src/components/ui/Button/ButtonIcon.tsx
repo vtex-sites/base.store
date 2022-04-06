@@ -1,4 +1,3 @@
-import React from 'react'
 import { IconButton as UIIconButton } from '@faststore/ui'
 import type { IconButtonProps as UIIconButtonProps } from '@faststore/ui'
 
