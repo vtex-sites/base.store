@@ -1,5 +1,6 @@
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
+import type { ReactNode } from 'react'
 import type { GatsbySSR } from 'gatsby'
 
 import ThirdPartyScripts from './src/components/ThirdPartyScripts'
@@ -41,6 +42,19 @@ export const onRenderBody: GatsbySSR['onRenderBody'] = ({
   setHeadComponents([<ThirdPartyScripts key="ThirdPartyScripts" />])
 }
 
+// Gatsby types the returned elements from `getHeadComponents` as
+// `React.ReactNode`, but this is inaccurate. The attributes defined below
+// are present in those elements.
+type HeadComponent = ReactNode & {
+  type: string
+  key: string
+  props?: Record<string, unknown>
+}
+
+const isHeadComponent = (node: ReactNode): node is HeadComponent =>
+  typeof (node as any).type === 'string' &&
+  typeof (node as any).key === 'string'
+
 /**
  * Gatsby inlines all styles from the app inside a `<style/>` tag. This decreases
  * FCP, but increases TBT. Since we are having trouble with TBT, replacing `<style/>`
@@ -57,26 +71,28 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
     return
   }
 
-  const transformedHeadComponents = getHeadComponents().map((node: any) => {
-    if (node.type === 'style') {
-      const globalStyleHref = node.props['data-href']
+  const transformedHeadComponents = getHeadComponents()
+    .filter(isHeadComponent)
+    .map((node) => {
+      if (node.type === 'style') {
+        const globalStyleHref = node.props['data-href']
 
-      if (globalStyleHref) {
-        return (
-          <link
-            href={globalStyleHref}
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-          />
-        )
+        if (globalStyleHref) {
+          return (
+            <link
+              href={globalStyleHref}
+              rel="stylesheet"
+              type="text/css"
+              media="screen"
+            />
+          )
+        }
+
+        return node
       }
 
       return node
-    }
-
-    return node
-  })
+    })
 
   replaceHeadComponents(transformedHeadComponents)
 }
