@@ -1,5 +1,4 @@
 import { Select as UISelect } from '@faststore/ui'
-import React from 'react'
 import Icon from 'src/components/ui/Icon'
 import type { SelectProps } from '@faststore/ui'
 

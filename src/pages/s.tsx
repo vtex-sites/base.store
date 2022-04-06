@@ -1,26 +1,36 @@
 import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { useMemo } from 'react'
+import { useEffect, useState } from 'react'
+import Breadcrumb from 'src/components/sections/Breadcrumb'
 import ProductGallery from 'src/components/sections/ProductGallery'
 import SROnly from 'src/components/ui/SROnly'
 import { ITEMS_PER_PAGE } from 'src/constants'
 import { applySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
+import type { SearchState } from '@faststore/sdk'
 import type { PageProps } from 'gatsby'
 import type {
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables,
 } from '@generated/graphql'
-import Breadcrumb from 'src/components/sections/Breadcrumb'
 
 export type Props = PageProps<
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables
 >
 
-const useSearchParams = ({ href }: Location) =>
-  useMemo(() => href && parseSearchState(new URL(href)), [href])
+const useSearchParams = ({ href }: Location) => {
+  const [params, setParams] = useState<SearchState | null>(null)
+
+  useEffect(() => {
+    const url = new URL(href)
+
+    setParams(parseSearchState(url))
+  }, [href])
+
+  return params
+}
 
 function Page(props: Props) {
   const {
@@ -78,7 +88,7 @@ function Page(props: Props) {
   )
 }
 
-export const query = graphql`
+export const querySSG = graphql`
   query SearchPageQuery {
     site {
       siteMetadata {

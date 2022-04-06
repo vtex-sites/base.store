@@ -1,4 +1,3 @@
-import React from 'react'
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import type { ProductsQueryQueryVariables } from '@generated/graphql'
