@@ -1,6 +1,6 @@
 import type { BadgeProps } from '@faststore/ui'
-import React from 'react'
-import { Badge } from 'src/components/ui/Badge'
+
+import { Badge } from '.'
 
 export default {
   component: Badge,
@@ -12,6 +12,10 @@ const Template = ({ children, ...args }: BadgeProps) => (
 )
 
 export const Default = Template.bind({})
+
 Default.args = {
   children: 'Something',
+  small: false,
+  interactive: false,
+  variant: 'highlighted',
 }
