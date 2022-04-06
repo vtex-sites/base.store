@@ -35,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Send channel string as search facet (#428)
 - Add the brand new BaseStore logo (#447)
 - Add `Dropdown` component in `Breadcrumb` component (#436)
+- Add `InputText` component (#440)
 
 ### Changed
 
