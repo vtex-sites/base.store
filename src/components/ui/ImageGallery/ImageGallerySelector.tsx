@@ -1,10 +1,14 @@
-import { Children, useRef } from 'react'
-import type { HTMLAttributes, PropsWithChildren } from 'react'
-import { IconButton } from '@faststore/ui'
+import { useRef } from 'react'
+import { Button, IconButton } from '@faststore/ui'
 import Icon from 'src/components/ui/Icon'
+import { Image } from 'src/components/ui/Image'
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  itemsPerPage: number
+import type { ImageElementData } from './ImageGallery'
+
+interface Props {
+  images: ImageElementData[]
+  onSelect: React.Dispatch<React.SetStateAction<number>>
+  currentImageIdx: number
 }
 
 const moveScroll = (container: HTMLDivElement | null, value: number) => {
@@ -17,13 +21,7 @@ const moveScroll = (container: HTMLDivElement | null, value: number) => {
   }
 }
 
-function ImageGallerySelector({
-  itemsPerPage,
-  children,
-}: PropsWithChildren<Props>) {
-  const elements = Children.toArray(children)
-  const elementCount = elements.length
-
+function ImageGallerySelector({ images, onSelect, currentImageIdx }: Props) {
   const elementsRef = useRef<HTMLDivElement>(null)
 
   return (
@@ -32,7 +30,7 @@ function ImageGallerySelector({
       aria-roledescription="carousel"
       aria-label="Product images"
     >
-      {elementCount > itemsPerPage && (
+      {true && (
         <IconButton
           aria-label="backward slide image selector"
           icon={<Icon name="ArrowLeft" width={24} height={24} />}
@@ -40,11 +38,30 @@ function ImageGallerySelector({
         />
       )}
       <div data-fs-image-gallery-selector-elements ref={elementsRef}>
-        {elements.map((el, idx) => {
-          return <div key={idx}>{el}</div>
+        {images.map((image, idx) => {
+          return (
+            <Button
+              key={idx}
+              data-thumbnail-button={
+                idx === currentImageIdx ? 'selected' : 'true'
+              }
+              aria-label={`Load ${image.alternateName} - Image ${idx + 1} of ${
+                images.length
+              }`}
+              onClick={() => onSelect(idx)}
+            >
+              <Image
+                src={image.url}
+                alt={image.alternateName}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                width={250}
+                height={250}
+              />
+            </Button>
+          )
         })}
       </div>
-      {elementCount > itemsPerPage && (
+      {true && (
         <IconButton
           aria-label="forward slide image selector"
           icon={<Icon name="ArrowLeft" width={24} height={24} />}
