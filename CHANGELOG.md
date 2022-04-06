@@ -46,9 +46,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix `SlideOver` scroll background behavior (#420)
 - CSS Warnings (#434)
 - Fix alert banner colors (#442)
-- Fix `SlideOver` scroll background behavior (#420)
 
 ## [0.2.0] - 2022-04-01
 
