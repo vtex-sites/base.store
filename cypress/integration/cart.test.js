@@ -24,7 +24,7 @@ describe('Cart Sidebar', () => {
     cy.getById('cart-sidebar').should('not.exist')
   })
 
-  context('when open the cart sidebar', () => {
+  context('when opening the cart sidebar', () => {
     it('should not scroll the background page', () => {
       cy.visit(pages.home, options)
       cy.waitForHydration()
