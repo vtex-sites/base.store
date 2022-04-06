@@ -20,6 +20,10 @@ module.exports = {
       require.resolve('babel-plugin-remove-graphql-queries')
     )
 
+    config.module.rules[0].use[0].options.plugins.push(
+      require.resolve('@vtex/graphql-utils/babel')
+    )
+
     // config.resolve.modules = [
     //   ...(config.resolve.modules || []),
     //   resolve(__dirname, "../src"),
