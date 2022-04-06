@@ -6,7 +6,6 @@ module.exports = {
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
   ],
   framework: '@storybook/react',
   core: {
@@ -24,11 +23,6 @@ module.exports = {
     config.module.rules[0].use[0].options.plugins.push(
       require.resolve('@vtex/graphql-utils/babel')
     )
-
-    // config.resolve.modules = [
-    //   ...(config.resolve.modules || []),
-    //   resolve(__dirname, "../src"),
-    // ];
 
     config.resolve.plugins = [
       ...(config.resolve.plugins || []),
