@@ -1,6 +1,6 @@
 @import "src/styles/scaffold";
 
-[data-image-gallery] {
+[data-fs-image-gallery] {
   position: relative;
   left: calc(-1 * var(--fs-grid-padding));
   display: flex;
@@ -32,12 +32,12 @@
   @include media(">=notebook") { grid-column: span 8; }
 }
 
-[data-image-gallery="has-selector"] {
+[data-fs-image-gallery="has-selector"] {
   @include media(">notebook") {
-
     // This max-height is defined as a fallback for browsers
     // that does not support the aspect-ratio property
     max-height: rem(600px);
+
     // TODO: Define this aspect ratio as token so we can apply to differnt ratios of images;
     aspect-ratio: 4.57/3;
   }

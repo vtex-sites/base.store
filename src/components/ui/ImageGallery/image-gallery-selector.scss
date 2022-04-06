@@ -1,6 +1,6 @@
 @import "src/styles/scaffold";
 
-[data-image-gallery-selector] {
+[data-fs-image-gallery-selector] {
   position: relative;
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@
     justify-content: space-between;
   }
 
-  [data-carousel-track] {
+  [data-fs-image-gallery-selector-elements] {
     display: flex;
     column-gap: var(--fs-spacing-1);
     padding: var(--fs-spacing-0) var(--fs-spacing-5);
