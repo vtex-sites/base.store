@@ -6,6 +6,8 @@ import '!style-loader!css-loader!sass-loader!../src/styles/global/layout.scss'
 import '!style-loader!css-loader!sass-loader!../src/styles/global/components.scss'
 
 import { action } from '@storybook/addon-actions'
+import SBTheme from './theme'
+
 // Gatsby's Link overrides:
 // Gatsby Link calls the `enqueue` & `hovering` methods on the global variable ___loader.
 // This global object isn't set in storybook context, requiring you to override it to empty functions (no-op),
@@ -25,9 +27,9 @@ window.___navigate = (pathname) => {
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
   controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
+    theme: SBTheme,
+  },
+  docs: {
+    theme: SBTheme,
   },
 }

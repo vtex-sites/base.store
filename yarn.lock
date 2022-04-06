@@ -3408,24 +3408,6 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-interactions@^6.4.20":
-  version "6.4.20"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-interactions/-/addon-interactions-6.4.20.tgz#c54fa5389bf464a8512933f04bc951b58b3c4bcc"
-  integrity sha512-m+Cw8AYfPb3vgQ93b65fxv0kk8jwtdrxTtJiA3oF9QGt9sjYUazd3JVgtdUsPkD5XLk3CCZ5fh35DOcU+sEh2w==
-  dependencies:
-    "@storybook/addons" "6.4.20"
-    "@storybook/api" "6.4.20"
-    "@storybook/components" "6.4.20"
-    "@storybook/core-common" "6.4.20"
-    "@storybook/core-events" "6.4.20"
-    "@storybook/csf" "0.0.2--canary.87bc651.0"
-    "@storybook/instrumenter" "6.4.20"
-    "@storybook/theming" "6.4.20"
-    global "^4.4.0"
-    jest-mock "^27.0.6"
-    polished "^4.0.5"
-    ts-dedent "^2.2.0"
-
 "@storybook/addon-links@^6.4.20":
   version "6.4.20"
   resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-6.4.20.tgz#7e845a20deece65e7e684433d4c66a6ad61da52c"
@@ -4046,7 +4028,7 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/instrumenter@6.4.20", "@storybook/instrumenter@^6.4.0 || >=6.5.0-0":
+"@storybook/instrumenter@^6.4.0 || >=6.5.0-0":
   version "6.4.20"
   resolved "https://registry.yarnpkg.com/@storybook/instrumenter/-/instrumenter-6.4.20.tgz#54405d588ed8ff22114a44c05a79d364b489bef4"
   integrity sha512-eexBNKG+G1hTdh35VlwaZR/BXg+TCWKfMlydDpJbFdYit+QfmSBNhbCslR2ILoSbdzhmpKfRGSBsGpg3JM/YMw==
