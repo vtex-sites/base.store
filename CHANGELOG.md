@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Applies new local tokens to `ProductShelf` component. (#464)
 
 ### Changed
+- Upgrades to React18 (#461)
 - Uses new Automatic JSX runtime (#460)
 - Migrates Gatsby config files to TypeScript (#373)
 - Migrates to Gatsby v4 (#456)
