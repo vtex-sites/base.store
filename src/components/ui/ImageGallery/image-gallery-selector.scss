@@ -9,9 +9,9 @@
   > [data-store-button] {
     position: absolute;
     z-index: 1;
-    flex-shrink: 0;
     background: linear-gradient(90deg, #ffffff 55.67%, rgb(255 255 255 / 0%) 88.53%);
     background-color: transparent;
+    border: none;
 
     span {
       padding: var(--fs-spacing-1);
@@ -61,6 +61,8 @@
     scroll-behavior: smooth;
 
     [data-store-button] {
+      flex-shrink: 0;
+      width: rem(56px);
       padding: 0;
       overflow: hidden;
       background-color: transparent;
@@ -70,8 +72,12 @@
       &[data-thumbnail-button="selected"] {
         @include focus-ring;
 
-        border-color: var(--color-border-input-selected);
+        border-color: var(--fs-border-color-default-active);
         border-width: var(--fs-border-color-default);
+      }
+
+      @include media(">=notebook") {
+        width: rem(72px);
       }
     }
 
@@ -79,16 +85,7 @@
       flex-direction: column;
       row-gap: var(--fs-spacing-2);
       padding: var(--fs-spacing-4) var(--fs-spacing-0);
-      overflow-y: scroll;
-    }
-  }
-
-  [data-store-image] {
-    width: rem(56px);
-    transform: translate3d(0, 0, 0);
-
-    @include media(">=notebook") {
-      width: rem(72px);
+      overflow-y: hidden;
     }
   }
 }

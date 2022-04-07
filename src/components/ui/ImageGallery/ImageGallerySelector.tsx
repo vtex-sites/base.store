@@ -54,8 +54,8 @@ function ImageGallerySelector({ images, onSelect, currentImageIdx }: Props) {
                 src={image.url}
                 alt={image.alternateName}
                 loading={idx === 0 ? 'eager' : 'lazy'}
-                width={250}
-                height={250}
+                width={112}
+                height={112}
               />
             </Button>
           )
