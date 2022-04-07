@@ -5,26 +5,19 @@
   // Design Tokens for Product Shelf
   // --------------------------------------------------------
 
-  --fs-product-shelf-height                : 21.06rem;
-  --fs-product-shelf-margin-top            : calc(-1 * var(--fs-spacing-0));
-  --fs-product-shelf-margin-bottom         : calc(-1 * var(--fs-spacing-3));
+  --fs-product-shelf-min-height             : 21.06rem;
 
-  --fs-product-shelf-items-gap             : var(--fs-grid-gap-2);
-  --fs-product-shelf-items-padding-top     : var(--fs-spacing-0);
-  --fs-product-shelf-items-padding-bottom  : var(--fs-spacing-3);
+  --fs-product-shelf-items-gap              : var(--fs-grid-gap-2);
+  --fs-product-shelf-items-padding-top      : 0;
+  --fs-product-shelf-items-padding-bottom   : var(--fs-spacing-3);
 
-  --fs-product-shelf-first-item-margin-left: calc(-1 * var(--fs-spacing-1));
+  --fs-product-shelf-first-item-margin-left : calc(-1 * var(--fs-spacing-1));
 
   // --------------------------------------------------------
   // Template Styles
   // --------------------------------------------------------
 
-  min-height: var(--fs-product-shelf-height);
-
-  @include media(">=notebook") {
-    margin-top: var(--fs-product-shelf-margin-top);
-    margin-bottom: var(--fs-product-shelf-margin-bottom);
-  }
+  min-height: var(--fs-product-shelf-min-height);
 }
 
 [data-fs-product-shelf-items] {
