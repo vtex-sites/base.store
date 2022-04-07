@@ -25,11 +25,11 @@ const collections = [
   },
   {
     name: 'Home Appliances',
-    href: '/kitchen-and-home-appliances',
+    href: '/kitchen---home-appliances',
   },
   {
     name: 'Computer and Software',
-    href: '/computer-and-software',
+    href: '/computer---software',
   },
   {
     name: 'Technology',
