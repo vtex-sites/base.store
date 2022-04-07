@@ -11,10 +11,10 @@
   }
 
   @include media(">=tablet") {
+    column-gap: var(--fs-spacing-2);
     padding-top: var(--fs-spacing-0);
     padding-bottom: var(--fs-spacing-3);
     overflow-x: auto;
-    column-gap: var(--fs-spacing-2);
   }
 }
 

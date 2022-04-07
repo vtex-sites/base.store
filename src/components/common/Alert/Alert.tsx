@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import UIAlert from 'src/components/ui/Alert'
 import { mark } from 'src/sdk/tests/mark'
 import type { PropsWithChildren } from 'react'

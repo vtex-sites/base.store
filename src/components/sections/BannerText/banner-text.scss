@@ -20,8 +20,8 @@
   }
 
   [data-banner-text] {
-    font-weight: var(--fs-text-weight-bold);
     font-size: var(--fs-text-size-3);
+    font-weight: var(--fs-text-weight-bold);
     line-height: 1.25;
 
     @include media(">=notebook") { font-size: var(--fs-text-size-6); }
@@ -32,8 +32,8 @@
     margin-top: var(--fs-spacing-5);
 
     @include media(">=notebook") {
-      margin-top: var(--fs-spacing-7);
       padding: var(--fs-spacing-2) var(--fs-spacing-4);
+      margin-top: var(--fs-spacing-7);
     }
   }
 

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
 import type { PageProps } from 'gatsby'
 

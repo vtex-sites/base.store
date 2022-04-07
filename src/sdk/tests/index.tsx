@@ -4,7 +4,7 @@
  * expected side effects on the UI. We add this markup to the
  * document so we can wait for it before running our tests
  */
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { PropsWithChildren } from 'react'
 
 let renders = 0

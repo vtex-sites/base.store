@@ -5,7 +5,7 @@ import {
   CardImage as UICardImage,
 } from '@faststore/ui'
 import { graphql, Link } from 'gatsby'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
@@ -35,6 +35,7 @@ function ProductCard({
   ...otherProps
 }: Props) {
   const {
+    sku,
     isVariantOf: { name },
     image: [img],
     offers: {
@@ -51,6 +52,7 @@ function ProductCard({
       data-fs-product-card
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
+      data-fs-product-card-sku={sku}
       {...otherProps}
     >
       <UICardImage>

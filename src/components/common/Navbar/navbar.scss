@@ -98,6 +98,7 @@
     [data-store-search-input] {
       flex: 1 1;
       margin-right: 0.625rem;
+      margin-left: var(--fs-spacing-9);
 
       [data-store-input] {
         width: calc(100% - var(--fs-spacing-7));
@@ -135,6 +136,10 @@
   img {
     width: 100%;
     height: 100%;
+  }
+
+  @include media("<tablet") {
+    margin-right: var(--fs-spacing-5);
   }
 }
 

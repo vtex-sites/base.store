@@ -1,5 +1,4 @@
 import { Label as UILabel, List as UIList } from '@faststore/ui'
-import React from 'react'
 import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
 import { Badge } from 'src/components/ui/Badge'
 import Checkbox from 'src/components/ui/Checkbox'

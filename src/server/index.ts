@@ -1,38 +1,51 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-const {
+/**
+ * Polyfill for dataloader.
+ * TODO: Remove it once this is fixed: https://github.com/graphql/dataloader/issues/249
+ * */
+import 'setimmediate'
+import {
   envelop,
   useExtendContext,
   useMaskedErrors,
   useAsyncSchema,
-} = require('@envelop/core')
-const { useGraphQlJit } = require('@envelop/graphql-jit')
-const { useParserCache } = require('@envelop/parser-cache')
-const { useValidationCache } = require('@envelop/validation-cache')
-const { getContextFactory, getSchema } = require('@faststore/api')
-const { GraphQLError } = require('graphql')
+} from '@envelop/core'
+import type { FormatErrorHandler } from '@envelop/core'
+import { useGraphQlJit } from '@envelop/graphql-jit'
+import { useParserCache } from '@envelop/parser-cache'
+import { useValidationCache } from '@envelop/validation-cache'
+import { getContextFactory, getSchema } from '@faststore/api'
+import type { Options as APIOptions } from '@faststore/api'
+import { GraphQLError } from 'graphql'
 
-const persisted = require('../../@generated/graphql/persisted.json')
-const storeConfig = require('../../store.config')
+import persisted from '../../@generated/graphql/persisted.json'
+import storeConfig from '../../store.config'
+
+interface ExecuteOptions {
+  operationName: string
+  variables: Record<string, unknown>
+  query?: string | null
+}
 
 const persistedQueries = new Map(Object.entries(persisted))
 
-const apiOptions = {
-  platform: storeConfig.platform,
+const apiOptions: APIOptions = {
+  platform: storeConfig.platform as APIOptions['platform'],
   account: storeConfig.api.storeId,
-  environment: storeConfig.api.environment,
+  environment: storeConfig.api.environment as APIOptions['environment'],
   channel: storeConfig.channel,
   hideUnavailableItems: storeConfig.api.hideUnavailableItems,
 }
 
-const apiSchema = getSchema(apiOptions)
+export const apiSchema = getSchema(apiOptions)
 
 const apiContextFactory = getContextFactory(apiOptions)
 
-const isBadRequestError = (err) => {
+const isBadRequestError = (err: GraphQLError) => {
   return err.originalError && err.originalError.name === 'BadRequestError'
 }
 
-const formatError = (err) => {
+const formatError: FormatErrorHandler = (err) => {
   console.error(err)
 
   if (err instanceof GraphQLError && isBadRequestError(err)) {
@@ -56,9 +69,13 @@ const getEnvelop = async () =>
 
 const envelopPromise = getEnvelop()
 
-const execute = async (options, envelopContext = {}) => {
+export const execute = async (
+  options: ExecuteOptions,
+  envelopContext = { req: { headers: {} } }
+) => {
   const { operationName, variables, query: maybeQuery } = options
-  const query = maybeQuery || persistedQueries.get(operationName)
+  const query = maybeQuery ?? persistedQueries.get(operationName)
+
   const {
     req: { headers },
   } = envelopContext
@@ -82,10 +99,4 @@ const execute = async (options, envelopContext = {}) => {
     contextValue: await contextFactory({ headers }),
     operationName,
   })
-}
-
-module.exports = {
-  execute,
-  getSchema: () => apiSchema,
-  getContextFactory: () => apiContextFactory,
 }

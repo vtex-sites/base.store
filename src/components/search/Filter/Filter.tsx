@@ -1,6 +1,5 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React from 'react'
 import Button, { ButtonIcon } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import SlideOver from 'src/components/ui/SlideOver'
@@ -105,7 +104,7 @@ function Filter({
             data-testid="filter-modal-button-apply"
             onClick={() => {
               setFacets(selected)
-              onDismiss?.()
+              onModalClose()
             }}
           >
             Apply
