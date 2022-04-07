@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+
+- Enable Stylelint for some files and apply the rules after the Theme structure (#430)
 - Upgrades to React18 (#461)
 - Uses new Automatic JSX runtime (#460)
 - Migrates Gatsby config files to TypeScript (#373)

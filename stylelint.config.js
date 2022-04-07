@@ -3,6 +3,7 @@ module.exports = {
 
   plugins: ['stylelint-scss', 'stylelint-order'],
   rules: {
+    'max-line-length': null,
     'color-hex-length': null,
     'number-leading-zero': null,
     'selector-list-comma-newline-after': null,
@@ -46,7 +47,7 @@ module.exports = {
     'property-case': 'lower',
     'value-list-max-empty-lines': 0,
     'declaration-colon-space-after': 'always-single-line',
-    'declaration-colon-space-before': 'never',
+    'declaration-colon-space-before': null,
     'block-closing-brace-space-before': 'always-single-line',
     'block-opening-brace-space-after': 'always-single-line',
     'block-opening-brace-space-before': 'always',
@@ -74,6 +75,7 @@ module.exports = {
     'scss/selector-no-redundant-nesting-selector': true,
     'scss/at-rule-no-unknown': true,
     'scss/at-import-partial-extension': null,
+    'scss/no-global-function-names': null,
     'selector-class-pattern':
       '^(?:(?:o|c|u|t|s|is|has|_|js|qa)-)?[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$',
   },
