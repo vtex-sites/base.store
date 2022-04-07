@@ -46,5 +46,9 @@
   padding-right: var(--fs-spacing-1);
   margin-left: calc(-1 * var(--fs-spacing-2));
   border-right: var(--fs-border-width-default) solid var(--fs-border-color-light);
-  span:nth-of-type(2) { font-weight: var(--fs-text-weight-bold); }
+
+  [data-fs-button][data-fs-button-variant="tertiary"] {
+    font-weight: var(--fs-text-weight-bold);
+    color: var(--fs-color-text-display);
+  }
 }
