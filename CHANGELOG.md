@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Apply new local tokens to `Hero` (#435)
+
 ### Changed
+
 - Migrates to Gatsby v4 (#456)
 
 ### Deprecated
@@ -101,7 +104,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `postalCode` from storage to Session context. (#388)
 - Updates all tokens naming and simplifies the global styles. (#407)
 - Changes `theme.scss` file to `global/tokens.scss`. (#407)
-- Apply new local tokens to `Hero` (#435)
 
 ### Deprecated
 
