@@ -1,5 +1,3 @@
-/* stylelint-disable */
-
 [data-fs-badge] {
   // --------------------------------------------------------
   // Design Tokens for Badges
@@ -64,8 +62,6 @@
   --fs-badge-small-text-size              : var(--fs-text-size-tiny);
   --fs-badge-small-padding                : var(--fs-spacing-0) var(--fs-spacing-2);
 
-  /* stylelint-enable */
-
   // --------------------------------------------------------
   // Template Styles
   // --------------------------------------------------------
@@ -77,6 +73,7 @@
   line-height: 1;
   color: var(--fs-badge-text-color);
   text-transform: uppercase;
+  white-space: nowrap;
   border-radius: var(--fs-badge-border-radius);
 }
 
