@@ -1,7 +1,7 @@
 import { useSession } from '@faststore/sdk'
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import { gql } from '@vtex/graphql-utils'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import { request } from 'src/sdk/graphql/request'
 import type { KeyboardEvent } from 'react'
 import type {

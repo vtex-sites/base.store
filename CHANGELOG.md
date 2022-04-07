@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 ### Changed
+- Uses new Automatic JSX runtime (#460)
+- Migrates Gatsby config files to TypeScript (#373)
 - Migrates to Gatsby v4 (#456)
 - Reduces the padding of `Breadcrumb`component (#453)
 
@@ -35,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Send channel string as search facet (#428)
 - Add the brand new BaseStore logo (#447)
 - Add `Dropdown` component in `Breadcrumb` component (#436)
+- Add `InputText` component (#440)
 
 ### Changed
 
@@ -49,6 +52,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `OutOfStock` style and success message. (#399)
 - Apply new local tokens to `Button` (#442)
 - Gather all `Button` variants in the folder (`ButtonBuy`, `ButtonLink`, `ButtonIcon`, `ButtonSignIn`) (#442)
+- Reduces the padding of `Breadcrumb`component (#453)
 
 ### Fixed
 
