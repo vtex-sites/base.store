@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Migrates to Gatsby v4 (#456)
+- Reduces the padding of `Breadcrumb`component (#453)
 
 ### Deprecated
 
@@ -48,7 +49,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `OutOfStock` style and success message. (#399)
 - Apply new local tokens to `Button` (#442)
 - Gather all `Button` variants in the folder (`ButtonBuy`, `ButtonLink`, `ButtonIcon`, `ButtonSignIn`) (#442)
-- Reduces the padding of `Breadcrumb`component (#453)
 
 ### Fixed
 
