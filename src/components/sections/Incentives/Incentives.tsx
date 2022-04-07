@@ -1,5 +1,4 @@
 import { Incentive as UIIncentive, List as UIList } from '@faststore/ui'
-import React from 'react'
 import type { ReactNode } from 'react'
 
 interface Incentive {

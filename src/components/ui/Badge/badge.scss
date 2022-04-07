@@ -4,11 +4,11 @@
   align-items: stretch;
   width: fit-content;
   height: fit-content;
-  color: var(--fs-color-text);
-  font-weight: var(--fs-text-weight-bold);
   font-size: var(--fs-text-size-2);
-  white-space: nowrap;
+  font-weight: var(--fs-text-weight-bold);
+  color: var(--fs-color-text);
   text-transform: uppercase;
+  white-space: nowrap;
   border-radius: var(--fs-border-radius-pill);
 
   > span {

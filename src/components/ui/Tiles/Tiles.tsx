@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import { Children, forwardRef } from 'react'
 import type { HTMLAttributes, ReactElement } from 'react'
 
 import Tile from './Tile'
@@ -20,7 +20,7 @@ const Tiles = forwardRef<HTMLUListElement, TilesProps>(function Tiles(
   { testId = 'store-tiles', children, ...otherProps },
   ref
 ) {
-  const childrenCount = React.Children.count(children)
+  const childrenCount = Children.count(children)
 
   if (process.env.NODE_ENV === 'development') {
     const isOutOfBounds =
@@ -34,7 +34,7 @@ const Tiles = forwardRef<HTMLUListElement, TilesProps>(function Tiles(
   }
 
   if (process.env.NODE_ENV === 'development') {
-    React.Children.forEach(children as ReactElement, (child) => {
+    Children.forEach(children as ReactElement, (child) => {
       if (child.type !== Tile) {
         throw new Error('Only Tile components allowed as children.')
       }

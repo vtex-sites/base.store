@@ -32,9 +32,9 @@
   > [data-store-list] {
     display: flex;
     flex-direction: column;
+    row-gap: var(--fs-spacing-2);
     padding: var(--fs-spacing-3);
     overflow: auto;
-    row-gap: var(--fs-spacing-2);
   }
 
   > footer {

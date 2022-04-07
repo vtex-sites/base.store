@@ -19,9 +19,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- Fix PLP scroll bug after applying filters for the mobile version (#454)
-
 ### Security
+
+## [0.2.2] - 2022-04-07
+
+### Added
+
+- Add `InputText` component (#440)
+
+### Changed
+
+- Enable Stylelint for some files and apply the rules after the Theme structure (#430)
+- Upgrades to React18 (#461)
+- Uses new Automatic JSX runtime (#460)
+- Migrates Gatsby config files to TypeScript (#373)
+- Migrates to Gatsby v4 (#456)
+- Reduces the padding of `Breadcrumb`component (#453)
+
+### Fixed
+
+- `SearchInput` margin left on mobile (#457)
+- Fixed BaseStore logo right margin on mobile devices (#455)
+- Fix PLP scroll bug after applying filters for the mobile version (#454)
 
 ## [0.2.1] - 2022-04-04
 

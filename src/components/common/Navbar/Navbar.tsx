@@ -1,6 +1,6 @@
 import { List as UIList } from '@faststore/ui'
-import { graphql, Link as LinkGatsby, useStaticQuery } from 'gatsby'
-import React, { useRef, useState } from 'react'
+import { Link as LinkGatsby } from 'gatsby'
+import { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import PostalCodeButton from 'src/components/common/PostalCode/PostalCodeButton'
 import SearchInput from 'src/components/common/SearchInput'
@@ -13,40 +13,41 @@ import { mark } from 'src/sdk/tests/mark'
 import { useModal } from 'src/sdk/ui/modal/Provider'
 import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
-import type { StoreCollectionQuery } from '@generated/graphql'
 
 interface NavLinksProps {
   onClickLink?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
 }
 
-function NavLinks({ onClickLink }: NavLinksProps) {
-  const {
-    allStoreCollection: { edges: links },
-  } = useStaticQuery<StoreCollectionQuery>(graphql`
-    query StoreCollection {
-      allStoreCollection(filter: { type: { eq: Department } }) {
-        edges {
-          node {
-            slug
-            seo {
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
+const collections = [
+  {
+    name: 'Office',
+    href: '/office',
+  },
+  {
+    name: 'Home Appliances',
+    href: '/kitchen---home-appliances',
+  },
+  {
+    name: 'Computer and Software',
+    href: '/computer---software',
+  },
+  {
+    name: 'Technology',
+    href: '/technology',
+  },
+]
 
+function NavLinks({ onClickLink }: NavLinksProps) {
   return (
     <nav className="navlinks__list">
       <UIList>
         <li>
           <PostalCodeButton classes="hidden-mobile" />
         </li>
-        {links.map(({ node: link }) => (
-          <li key={link.seo.title}>
-            <Link variant="display" to={`/${link.slug}`} onClick={onClickLink}>
-              {link.seo.title}
+        {collections.map(({ href, name }) => (
+          <li key={name}>
+            <Link variant="display" to={href} onClick={onClickLink}>
+              {name}
             </Link>
           </li>
         ))}

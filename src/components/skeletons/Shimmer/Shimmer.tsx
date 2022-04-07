@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Shimmer() {
   return (
     <div data-store-shimmer>
