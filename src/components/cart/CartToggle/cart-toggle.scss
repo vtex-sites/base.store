@@ -1,6 +1,6 @@
 @import "src/styles/scaffold";
 
-.cart-toggle[data-store-icon-button] {
+[data-fs-button-cart] {
   position: relative;
 
   &::after {

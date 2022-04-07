@@ -204,8 +204,6 @@ export { default } from './Button'
 The real thing happens on `Button.tsx`. On this file let's define the component like:
 
 ```tsx
-import React from 'react'
-
 interface Props {}
 
 function Button(props: Props) {
@@ -218,7 +216,6 @@ export default Button
 And, that's it! Now you have a working button that you can use anywhere on your project. FastStore, however, brings a handy library called `@faststore/ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
 
 ```tsx
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
@@ -249,32 +246,19 @@ Now, on `button.scss`:
 
 This `data-store-button` is a CSS data attribute selector. To know which selectors are available, check [FastStore UI docs](https://faststoreui.netlify.app/).
 
-Now, open `Button.tsx` and import this CSS with:
+Now, include the component's CSS into the Store's CSS. Open `src/styles/global/components.scss` and import this CSS with:
 
-```tsx
-import React from 'react'
-import { Button as UIButton } from '@faststore/ui'
-import type { ButtonProps } from '@faststore/ui'
-
-import './button.scss'
-
-interface Props extends ButtonProps {}
-
-function Button(props: Props) {
-  return <UIButton {...props} />
-}
-
-export default Button
+```scss
+// ...
+@import "src/components/ui/Button/button.scss";
+// ...
 ```
 
 For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and secondary variants. To add variants to the component, update `Button.tsx`:
 
 ```tsx
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
-
-import './button.scss'
 
 interface Props extends ButtonProps {
   variant: 'secondary' | 'primary'
@@ -369,10 +353,9 @@ An example adding Bell icon:
 
 ```tsx
 // src/components/ui/MyIconButton/MyIconButton.tsx
-import React from 'react'
 import Icon from 'src/components/ui/Icon' // this path can be outdated.
 
-function IconButton() {
+function ButtonIcon() {
   return (
     <button>
       <Icon name="<<symbol_id>>" weight="thin" />
@@ -380,7 +363,7 @@ function IconButton() {
   )
 }
 
-export default IconButton
+export default ButtonIcon
 ```
 
 This project uses SVGs from [Phosphor icons](https://phosphoricons.com/).

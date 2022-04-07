@@ -1,14 +1,9 @@
-import './section.scss'
+import type { DetailedHTMLProps, HTMLAttributes } from 'react'
 
-import React from 'react'
-import type { PropsWithChildren } from 'react'
+type Props = DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>
 
-interface Props {
-  className?: string
-}
-
-function Section({ children, className = '' }: PropsWithChildren<Props>) {
-  return <section className={`section ${className}`}>{children}</section>
+function Section({ className = '', ...otherProps }: Props) {
+  return <section className={`section ${className}`} {...otherProps} />
 }
 
 export default Section

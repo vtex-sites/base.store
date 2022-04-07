@@ -1,28 +1,23 @@
 import { List } from '@faststore/ui'
-import React, { useRef } from 'react'
 import Alert from 'src/components/ui/Alert'
 import { Badge } from 'src/components/ui/Badge'
-import Button from 'src/components/ui/Button'
-import IconButton from 'src/components/ui/IconButton'
+import Button, { ButtonIcon } from 'src/components/ui/Button'
+import Icon from 'src/components/ui/Icon'
 import SlideOver from 'src/components/ui/SlideOver'
 import { useCart } from 'src/sdk/cart/useCart'
 import { useCheckoutButton } from 'src/sdk/cart/useCheckoutButton'
 import { useUI } from 'src/sdk/ui'
-import Icon from 'src/components/ui/Icon'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 import CartItem from '../CartItem'
 import EmptyCart from '../EmptyCart'
 import OrderSummary from '../OrderSummary'
 
-import './cart-sidebar.scss'
-
-type Callback = () => unknown
-
 function CartSidebar() {
   const btnProps = useCheckoutButton()
   const cart = useCart()
   const { displayMinicart, closeMinicart } = useUI()
-  const dismissTransition = useRef<Callback | undefined>()
+  const { onModalClose } = useModal()
 
   const { items, totalItems, isValidating, subTotal, total } = cart
 
@@ -32,7 +27,6 @@ function CartSidebar() {
     <SlideOver
       isOpen={displayMinicart}
       onDismiss={closeMinicart}
-      onDismissTransition={(callback) => (dismissTransition.current = callback)}
       size="partial"
       direction="rightSide"
       className="cart-sidebar"
@@ -44,11 +38,11 @@ function CartSidebar() {
             {totalItems}
           </Badge>
         </div>
-        <IconButton
+        <ButtonIcon
           data-testid="cart-sidebar-button-close"
           aria-label="Close Cart"
           icon={<Icon name="X" width={32} height={32} />}
-          onClick={() => dismissTransition.current?.()}
+          onClick={onModalClose}
         />
       </header>
       <Alert icon={<Icon name="Truck" width={24} height={24} />}>
@@ -56,7 +50,7 @@ function CartSidebar() {
       </Alert>
 
       {isEmpty ? (
-        <EmptyCart onDismiss={() => dismissTransition.current?.()} />
+        <EmptyCart onDismiss={onModalClose} />
       ) : (
         <>
           <List>

@@ -1,11 +1,9 @@
-import React from 'react'
+import { formatSearchState, initSearchState } from '@faststore/sdk'
 import { Icon as UIIcon, List as UIList } from '@faststore/ui'
 import Button from 'src/components/ui/Button'
-import './search-history.scss'
-import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
+import Link from 'src/components/ui/Link'
 import useSearchHistory from 'src/sdk/search/useSearchHistory'
-import { formatSearchState, initSearchState } from '@faststore/sdk'
 
 interface SearchHistoryProps {
   onClear: () => void

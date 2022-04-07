@@ -1,13 +1,13 @@
 import { useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
-import React from 'react'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
 import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
+import { ITEMS_PER_SECTION } from 'src/constants'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 
@@ -15,7 +15,7 @@ export type Props = PageProps<HomePageQueryQuery>
 
 function Page(props: Props) {
   const {
-    data: { site, allStoreProduct },
+    data: { site },
     location: { pathname, host },
   } = props
 
@@ -23,7 +23,6 @@ function Page(props: Props) {
 
   const title = site?.siteMetadata?.title ?? ''
   const siteUrl = `https://${host}${pathname}`
-  const products = allStoreProduct?.nodes
 
   return (
     <>
@@ -67,7 +66,7 @@ function Page(props: Props) {
       */}
       <Hero
         title="New Products Available"
-        subtitle="At FastStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
+        subtitle="At BaseStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase."
         linkText="See all"
         link="/"
         imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
@@ -76,9 +75,17 @@ function Page(props: Props) {
 
       <IncentivesHeader />
 
-      <ProductShelf products={products?.slice(0, 5)} title="Most Wanted" />
+      <ProductShelf
+        first={ITEMS_PER_SECTION}
+        selectedFacets={[{ key: 'productClusterIds', value: '140' }]}
+        title="Most Wanted"
+      />
 
-      <ProductTiles products={products?.slice(5, 8)} title="Just Arrived" />
+      <ProductTiles
+        first={3}
+        selectedFacets={[{ key: 'productClusterIds', value: '141' }]}
+        title="Just Arrived"
+      />
 
       <BannerText
         title="Receive our news and promotions in advance."
@@ -88,14 +95,15 @@ function Page(props: Props) {
       />
 
       <ProductShelf
-        products={products?.slice(9, 14)}
+        first={ITEMS_PER_SECTION}
+        selectedFacets={[{ key: 'productClusterIds', value: '142' }]}
         title="Deals & Promotions"
       />
     </>
   )
 }
 
-export const query = graphql`
+export const querySSG = graphql`
   query HomePageQuery {
     site {
       siteMetadata {
@@ -104,15 +112,8 @@ export const query = graphql`
         titleTemplate
       }
     }
-
-    allStoreProduct(limit: 14) {
-      nodes {
-        ...ProductSummary_product
-      }
-    }
   }
 `
 
 Page.displayName = 'Page'
-
 export default mark(Page)

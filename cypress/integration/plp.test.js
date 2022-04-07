@@ -1,3 +1,4 @@
+/* eslint-disable cypress/no-unnecessary-waiting */
 // eslint-disable-next-line spaced-comment
 /// <reference types="cypress" />
 /**
@@ -34,25 +35,21 @@ describe('Search page Filters and Sorting options', () => {
 
         cy.getById('filter-modal-button-apply')
           .click()
+
           .then(() => {
             // Check if the filter applied actually ended up in the URL
             cy.location('href').should((loc) => {
               expect(loc).to.include(value)
             })
+          })
+          // Check if the filter applied actually brought the number of products it said it would
+          .getById('total-product-count')
+          .should('exist')
+          .parent()
+          .then(($countDiv) => {
+            const count = $countDiv.attr('data-count')
 
-            // Check if the filter applied actually brought the number of products it said it would
-
-            cy.waitUntil(() => {
-              return cy.getById('total-product-count').should('exist')
-            }).then(() => {
-              cy.getById('total-product-count')
-                .parent()
-                .then(($countDiv) => {
-                  expect(Number($countDiv.attr('data-count'))).to.eq(
-                    Number(quantity)
-                  )
-                })
-            })
+            expect(Number(count)).to.eq(Number(quantity))
           })
       })
   })
@@ -63,21 +60,23 @@ describe('Search page Filters and Sorting options', () => {
 
     const priceId = '.product-grid [data-testid="price"]'
 
-    cy.getById('search-sort')
-      .should('exist')
-      .select('price_asc')
-      .then(() => {
-        cy.get(priceId).should(($prices) => {
-          const prices = Cypress._.map($prices, (price) =>
-            Number(price.attributes['data-value'].value)
-          )
+    cy.getById('product-gallery').within(() => {
+      cy.getById('search-sort')
+        .should('exist')
+        .select('price_asc')
+        .then(() => {
+          cy.get(priceId).should(($prices) => {
+            const prices = Cypress._.map($prices, (price) =>
+              Number(price.attributes['data-value'].value)
+            )
 
-          const sorted = Cypress._.sortBy(prices, Cypress._.identity)
+            const sorted = Cypress._.sortBy(prices, Cypress._.identity)
 
-          expect(prices).to.have.length.gt(0)
-          expect(prices).to.deep.equal(sorted)
+            expect(prices).to.have.length.gt(0)
+            expect(prices).to.deep.equal(sorted)
+          })
         })
-      })
+    })
   })
 
   it('Sort products by price_desc', () => {
@@ -85,21 +84,23 @@ describe('Search page Filters and Sorting options', () => {
     cy.waitForHydration()
     const priceId = '.product-grid [data-testid="price"]'
 
-    cy.getById('search-sort')
-      .should('exist')
-      .select('price_desc')
-      .then(() => {
-        cy.get(priceId).should(($prices) => {
-          const prices = Cypress._.map($prices, (price) =>
-            Number(price.attributes['data-value'].value)
-          )
+    cy.getById('product-gallery').within(() => {
+      cy.getById('search-sort')
+        .should('exist')
+        .select('price_desc')
+        .then(() => {
+          cy.get(priceId).should(($prices) => {
+            const prices = Cypress._.map($prices, (price) =>
+              Number(price.attributes['data-value'].value)
+            )
 
-          const sorted = Cypress._.sortBy(prices, (x) => -x)
+            const sorted = Cypress._.sortBy(prices, (x) => -x)
 
-          expect(prices).to.have.length.gt(0)
-          expect(prices).to.deep.equal(sorted)
+            expect(prices).to.have.length.gt(0)
+            expect(prices).to.deep.equal(sorted)
+          })
         })
-      })
+    })
   })
 })
 
@@ -112,32 +113,34 @@ describe('Infinite Scroll pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('store-card')
-      .should('exist')
-      .should('have.length.gt', 0)
-      .then(($links) => {
-        const before = $links.length
+    cy.getById('product-gallery').within(() => {
+      cy.getById('store-card')
+        .should('exist')
+        .should('have.length.gt', 0)
+        .then(($links) => {
+          const before = $links.length
 
-        cy.getById('show-more')
-          .should('exist')
-          .click()
-          .then(() => {
-            cy.getById('store-card')
-              .should('have.length.gte', before)
-              .then(($products) => {
-                const after = $products.length
+          cy.getById('show-more')
+            .should('exist')
+            .click()
+            .then(() => {
+              cy.getById('store-card')
+                .should('have.length.gte', before)
+                .then(($products) => {
+                  const after = $products.length
 
-                expect(before).to.be.lte(after)
-              })
-          })
-      })
+                  expect(before).to.be.lte(after)
+                })
+            })
+        })
+    })
   })
 
   it('Sticks to last seen page on plp pagination', () => {
     cy.visit(pages.collection, options)
     cy.waitForHydration()
 
-    cy.getById('store-card')
+    cy.get('[data-testid=product-gallery] [data-testid=store-card]')
       .should('exist')
       .should('have.length.gt', 0)
       .then(($links) => {
@@ -146,8 +149,16 @@ describe('Infinite Scroll pagination', () => {
 
         cy.getById('show-more')
           .should('exist')
-          .scrollIntoView({ offset: { top: 50 }, duration: 100 })
-          .click({ force: true })
+          .click()
+          // Go up the page
+          .get('[data-testid=product-gallery] [data-testid=store-card]')
+          .first()
+          .scrollIntoView({ duration: 1000 })
+
+          // Go down the page
+          .get('[data-testid=product-gallery] [data-testid=store-card]')
+          .last()
+          .scrollIntoView({ duration: 1000 })
           .then(() => {
             // Ensure it waits for the new page after clicking "show more"
             cy.location('search').should('match', /page=1$/)
@@ -155,26 +166,31 @@ describe('Infinite Scroll pagination', () => {
             // The skuId of the last product on the page
             let skuIdBeforeNavigate
 
-            cy.getById('store-card')
+            cy.get('[data-testid=product-gallery] [data-testid=store-card]')
               // Number of products after showMore is clicked should be higher
               .should('have.length.gte', before)
               .last()
               .then(($card) => {
-                skuIdBeforeNavigate = $card.attr('data-sku')
+                skuIdBeforeNavigate = $card.attr('data-fs-product-card-sku')
               })
               .click()
               .then(() => {
                 // make sure we are on the pdp
                 cy.location('pathname').should('match', /\/p$/)
+                // make sure pdp is fully iteractive
+                cy.getById('buy-button').should('exist')
               })
               .then(() => {
                 cy.go('back')
-                  .getById('store-card')
+                  .get('[data-testid=product-gallery] [data-testid=store-card]')
                   .last()
                   .then(($card) => {
-                    const skuIdAfterNavigate = $card.attr('data-sku')
+                    const skuIdAfterNavigate = $card.attr(
+                      'data-fs-product-card-sku'
+                    )
 
                     expect(skuIdBeforeNavigate).to.eq(skuIdAfterNavigate)
+                    expect(skuIdAfterNavigate).to.exist
                   })
               })
           })
@@ -188,23 +204,17 @@ describe('Infinite Scroll pagination', () => {
 
     cy.getById('show-more')
       .should('exist')
-      .click({ force: true })
-      .then(() => {
-        // Scroll to the last product and confirm that we are on page 1
-        cy.get('.product-grid [data-testid=store-card]')
-          .last()
-          .scrollIntoView({ offset: { top: 50 } })
-          .then(() => {
-            cy.location('search').should('match', /page=1$/)
-          })
+      .click()
 
-        // Scroll back to the first product and confirm that we are on page 0
-        cy.get('.product-grid [data-testid=store-card]')
-          .first()
-          .scrollIntoView({ offset: { top: -50 } })
-          .then(() => {
-            cy.location('search').should('match', /page=0$/)
-          })
-      })
+      .getById('total-product-count')
+      .scrollIntoView({ duration: 1000 })
+      .location('search')
+      .should('match', /page=0$/)
+
+      .get('[data-testid=product-gallery] [data-testid=store-card]')
+      .last()
+      .scrollIntoView({ duration: 1000 })
+      .location('search')
+      .should('match', /page=1$/)
   })
 })

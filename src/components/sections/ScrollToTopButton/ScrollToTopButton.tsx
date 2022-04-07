@@ -1,11 +1,8 @@
-import React from 'react'
 import Icon from 'src/components/ui/Icon'
 
 import Button from '../../ui/Button'
 import Section from '../Section'
 import type { UIButtonProps } from '../../ui/Button'
-
-import './scroll-to-top-button.scss'
 
 interface ScrollToTopButtonProps {
   /**

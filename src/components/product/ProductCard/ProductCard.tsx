@@ -5,7 +5,7 @@ import {
   CardImage as UICardImage,
 } from '@faststore/ui'
 import { graphql, Link } from 'gatsby'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
@@ -13,8 +13,6 @@ import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
 import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
-
-import './product-card.scss'
 
 type Variant = 'wide' | 'default'
 
@@ -24,7 +22,7 @@ interface Props {
   bordered?: boolean
   variant?: Variant
   aspectRatio?: number
-  buyButton?: ReactNode
+  ButtonBuy?: ReactNode
 }
 
 function ProductCard({
@@ -33,10 +31,11 @@ function ProductCard({
   variant = 'default',
   bordered = false,
   aspectRatio = 1,
-  buyButton,
+  ButtonBuy,
   ...otherProps
 }: Props) {
   const {
+    sku,
     isVariantOf: { name },
     image: [img],
     offers: {
@@ -53,6 +52,7 @@ function ProductCard({
       data-fs-product-card
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
+      data-fs-product-card-sku={sku}
       {...otherProps}
     >
       <UICardImage>
@@ -103,7 +103,7 @@ function ProductCard({
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}
       </UICardContent>
-      {!!buyButton && <UICardActions>{buyButton}</UICardActions>}
+      {!!ButtonBuy && <UICardActions>{ButtonBuy}</UICardActions>}
     </UICard>
   )
 }

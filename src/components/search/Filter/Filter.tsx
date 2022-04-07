@@ -1,16 +1,13 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React, { useRef } from 'react'
-import Button from 'src/components/ui/Button'
+import Button, { ButtonIcon } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
-import IconButton from 'src/components/ui/IconButton'
 import SlideOver from 'src/components/ui/SlideOver'
 import type { Filter_FacetsFragment } from '@generated/graphql'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 import Facets from './Facets'
 import { useFilter } from './useFilter'
-
-import './filter.scss'
 
 interface Props {
   facets: Filter_FacetsFragment[]
@@ -30,21 +27,19 @@ interface Props {
   testId?: string
 }
 
-type Callback = () => unknown
-
 function Filter({
   facets: allFacets,
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
 }: Props) {
-  const dismissTransition = useRef<Callback | undefined>()
   const {
     setFacets,
     toggleFacet,
     state: { selectedFacets },
   } = useSearch()
 
+  const { onModalClose } = useModal()
   const { facets, selected, expanded, dispatch } = useFilter(allFacets)
 
   return (
@@ -64,9 +59,6 @@ function Filter({
       <SlideOver
         isOpen={isOpen}
         onDismiss={onDismiss}
-        onDismissTransition={(callback) =>
-          (dismissTransition.current = callback)
-        }
         size="partial"
         direction="rightSide"
         className="filter-modal__content"
@@ -74,9 +66,8 @@ function Filter({
         <div className="filter-modal__body">
           <header className="filter-modal__header">
             <h2 className="text__lead">Filters</h2>
-            <IconButton
+            <ButtonIcon
               data-testid="filter-modal-button-close"
-              classes="filter-modal__button"
               aria-label="Close Filters"
               icon={<Icon name="X" width={32} height={32} />}
               onClick={() => {
@@ -85,7 +76,7 @@ function Filter({
                   payload: selectedFacets,
                 })
 
-                dismissTransition.current?.()
+                onModalClose()
               }}
             />
           </header>
@@ -113,7 +104,7 @@ function Filter({
             data-testid="filter-modal-button-apply"
             onClick={() => {
               setFacets(selected)
-              onDismiss?.()
+              onModalClose()
             }}
           >
             Apply

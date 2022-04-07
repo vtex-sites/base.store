@@ -1,7 +1,4 @@
 import type { ElementType } from 'react'
-import React from 'react'
-
-import './sr-only.scss'
 
 interface Props {
   text: string

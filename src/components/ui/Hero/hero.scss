@@ -93,10 +93,7 @@
   }
 
   [data-hero-link] a {
-    @include media(">=tablet") {
-      padding: var(--fs-spacing-2) var(--fs-spacing-4);
-      margin-top: var(--fs-spacing-8);
-    }
+    @include media(">=tablet") { margin-top: var(--fs-spacing-8); }
   }
 
   [data-hero-image] {

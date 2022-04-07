@@ -1,6 +1,6 @@
-/* eslint-disable react/jsx-filename-extension */
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
-import React from 'react'
+import type { ReactNode } from 'react'
+import type { GatsbySSR } from 'gatsby'
 
 import ThirdPartyScripts from './src/components/ThirdPartyScripts'
 import Layout from './src/Layout'
@@ -9,9 +9,10 @@ import { validateCart } from './src/sdk/cart/validate'
 import ErrorBoundary from './src/sdk/error/ErrorBoundary'
 import TestProvider from './src/sdk/tests'
 import { uiActions, uiEffects, uiInitialState } from './src/sdk/ui'
+import { ModalProvider } from './src/sdk/ui/modal'
 import storeConfig from './store.config'
 
-export const wrapRootElement = ({ element }) => (
+export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => (
   <ErrorBoundary>
     <AnalyticsHandler />
     <TestProvider>
@@ -22,7 +23,7 @@ export const wrapRootElement = ({ element }) => (
       >
         <SessionProvider initialState={{ channel: storeConfig.channel }}>
           <CartProvider mode="optimistic" onValidateCart={validateCart}>
-            {element}
+            <ModalProvider>{element}</ModalProvider>
           </CartProvider>
         </SessionProvider>
       </UIProvider>
@@ -30,13 +31,29 @@ export const wrapRootElement = ({ element }) => (
   </ErrorBoundary>
 )
 
-export const wrapPageElement = ({ element }) => {
+export const wrapPageElement: GatsbySSR['wrapPageElement'] = ({ element }) => {
   return <Layout>{element}</Layout>
 }
 
-export const onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody: GatsbySSR['onRenderBody'] = ({
+  setHeadComponents,
+}) => {
   setHeadComponents([<ThirdPartyScripts key="ThirdPartyScripts" />])
 }
+
+// Gatsby types the returned elements from `getHeadComponents` as
+// `React.ReactNode`, but this is inaccurate. The attributes defined below
+// are present in those elements.
+type StyleComponent = {
+  type: 'style'
+  props?: {
+    'data-href'?: 'string'
+    href: 'string'
+  }
+}
+
+const isStyleComponent = (node: ReactNode): node is StyleComponent =>
+  typeof node === 'object' && node != null && (node as any).type === 'style'
 
 /**
  * Gatsby inlines all styles from the app inside a `<style/>` tag. This decreases
@@ -46,7 +63,7 @@ export const onRenderBody = ({ setHeadComponents }) => {
  * A workaround described in https://github.com/gatsbyjs/gatsby/issues/1526 is
  * implemented below
  */
-export const onPreRenderHTML = ({
+export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
   getHeadComponents,
   replaceHeadComponents,
 }) => {
@@ -55,8 +72,8 @@ export const onPreRenderHTML = ({
   }
 
   const transformedHeadComponents = getHeadComponents().map((node) => {
-    if (node.type === 'style') {
-      const globalStyleHref = node.props['data-href']
+    if (isStyleComponent(node)) {
+      const globalStyleHref = node.props?.['data-href'] ?? node.props?.href
 
       if (globalStyleHref) {
         return (
@@ -68,8 +85,6 @@ export const onPreRenderHTML = ({
           />
         )
       }
-
-      return node
     }
 
     return node

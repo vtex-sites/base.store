@@ -1,7 +1,5 @@
+import { forwardRef } from 'react'
 import type { HTMLAttributes } from 'react'
-import React, { forwardRef } from 'react'
-
-import './hero.scss'
 
 export interface HeroProps extends HTMLAttributes<HTMLDivElement> {
   /**

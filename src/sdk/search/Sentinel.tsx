@@ -1,5 +1,5 @@
 import { useSearch } from '@faststore/sdk'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
@@ -9,7 +9,7 @@ interface Props {
   page: number
   pageSize: number
   title: string
-  products: ProductSummary_ProductFragment[]
+  products: Array<{ node: ProductSummary_ProductFragment }>
 }
 
 // Adds/Replaces ?page= to the querystring of the page

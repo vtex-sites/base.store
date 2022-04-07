@@ -1,9 +1,7 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
 import Badge from './Badge'
-
-import './badge.scss'
 
 type Props = {
   listPrice: number

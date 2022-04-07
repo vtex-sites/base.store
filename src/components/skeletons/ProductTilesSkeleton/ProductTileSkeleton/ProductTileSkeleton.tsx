@@ -1,7 +1,5 @@
-import React from 'react'
 import Shimmer from 'src/components/skeletons/Shimmer'
 import SkeletonElement from 'src/components/skeletons/SkeletonElement'
-import './product-tile-skeleton.scss'
 
 interface Props {
   tileIndex: number

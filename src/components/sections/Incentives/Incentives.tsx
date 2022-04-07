@@ -1,8 +1,5 @@
-import React from 'react'
-import type { ReactNode } from 'react'
 import { Incentive as UIIncentive, List as UIList } from '@faststore/ui'
-
-import './incentives.scss'
+import type { ReactNode } from 'react'
 
 interface Incentive {
   icon: ReactNode

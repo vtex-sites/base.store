@@ -4,8 +4,8 @@
   min-height: var(--fs-spacing-7);
   padding-left: var(--fs-spacing-3);
   font-size: var(--fs-text-size-1);
-  color: var(--fs-color-main-4);
-  background-color: var(--fs-color-secondary-bkg-light);
+  color: var(--fs-color-highlight-text);
+  background-color: var(--fs-color-highlight-bkg);
 
   [data-store-icon] {
     padding-right: var(--fs-spacing-1);
@@ -44,7 +44,7 @@
     min-width: var(--fs-spacing-7);
     min-height: var(--fs-spacing-7);
     margin-left: auto;
-    color: var(--fs-color-main-4);
+    color: var(--fs-color-highlight-text);
     background-color: transparent;
     border: none;
 

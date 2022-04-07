@@ -1,8 +1,10 @@
-import type { ReactElement } from 'react'
-import React, { useState } from 'react'
-import { Input } from '@faststore/ui'
+import { useSession } from '@faststore/sdk'
+import { Form } from '@faststore/ui'
+import { useState } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import InputText from 'src/components/ui/InputText'
+import type { ReactElement, FormEvent } from 'react'
 
 export interface OutOfStockProps {
   /**
@@ -11,22 +13,27 @@ export interface OutOfStockProps {
    */
   testId?: string
   /**
-   * The text tha goes inside the notification button.
-   */
-  buttonTxt?: string
-  /**
-   * Message describing how the user will be notified.
-   */
-  notificationMsg?: string
-  /**
    * The Out of Stock Section's title.
    */
   title?: string
   /**
-   * Notification icon.
-   * @default <Icon name="Bell" />
+   * The button text.
    */
-  icon?: ReactElement
+  buttonText?: string
+  /**
+   * Icon displayed inside the button.
+   * @default <Icon name="BellRinging" />
+   */
+  buttonIcon?: ReactElement
+  /**
+   * Message describing when the user will be notified.
+   */
+  notificationMsg?: string
+  /**
+   * Icon displayed inside the message.
+   * @default <Icon name="BellRinging" />
+   */
+  notificationMsgIcon?: ReactElement
   /**
    *
    */
@@ -34,39 +41,83 @@ export interface OutOfStockProps {
 }
 
 function OutOfStock(props: OutOfStockProps) {
+  const { postalCode } = useSession()
+
+  const defaultButtonText = 'Notify me'
+  const defaultIconName = 'BellRinging'
+
+  const [btnText, setBtnText] = useState(defaultButtonText)
+  const [buttonIconName, setButtonIconName] = useState(defaultIconName)
+  const [disabled, setDisabled] = useState(false)
+  const [email, setEmail] = useState('')
+
   const {
-    title = 'Out of Stock',
+    title = postalCode ? 'Unavailable in Your Location' : 'Out of Stock',
     notificationMsg = 'Notify me when available',
-    buttonTxt = 'Send',
-    icon = <Icon name="Bell" />,
+    buttonText = btnText,
+    buttonIcon = <Icon name={buttonIconName} width={16} height={16} />,
+    notificationMsgIcon = (
+      <Icon name={defaultIconName} width={16} height={16} />
+    ),
     onSubmit,
     testId = 'store-out-of-stock',
   } = props
 
-  const [email, setEmail] = useState('')
+  const reset = () => {
+    setButtonIconName(defaultIconName)
+    setBtnText(defaultButtonText)
+    setDisabled(false)
+
+    setEmail('')
+  }
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault()
+
+    setDisabled(true)
+    setButtonIconName('Ellipsis')
+
+    try {
+      onSubmit(email)
+      setButtonIconName('Checked')
+      setBtnText('Subscribed successfully')
+    } catch (err) {
+      // TODO: Display error below Input component when Input is ready for that
+      console.error(err.message)
+    } finally {
+      // Return to original state after 2s
+      setTimeout(reset, 2000)
+    }
+  }
 
   return (
-    <div data-store-out-of-stock data-testid={testId} aria-live="polite">
-      <p>{title}</p>
-      <p>
-        {icon} {notificationMsg}
-      </p>
-      <Input
-        aria-label="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <Button
-        variant="primary"
-        icon={<Icon name="Bell" width={16} height={16} />}
-        iconPosition="left"
-        onClick={() => onSubmit(email)}
-      >
-        {buttonTxt}
-      </Button>
-      {/* TODO: Display success alert if onSubmit succeed */}
-    </div>
+    <section data-store-out-of-stock data-testid={testId} aria-live="polite">
+      <Form data-out-of-stock-form onSubmit={handleSubmit}>
+        <p className="text__title-subsection">{title}</p>
+        <p data-store-out-of-stock-subtitle>
+          {notificationMsgIcon} {notificationMsg}
+        </p>
+        <div>
+          <InputText
+            id="out-of-stock-email"
+            value={email}
+            label="Email"
+            aria-label="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Button
+            data-store-out-of-stock-button
+            type="submit"
+            disabled={disabled}
+            variant="primary"
+            icon={buttonIcon}
+            iconPosition="left"
+          >
+            {buttonText}
+          </Button>
+        </div>
+      </Form>
+    </section>
   )
 }
 
