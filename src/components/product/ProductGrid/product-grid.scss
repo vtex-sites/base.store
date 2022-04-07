@@ -9,6 +9,7 @@
     $pagination-start-index: 2;
 
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--fs-grid-gap-2);
 
     &:nth-of-type(n + #{$pagination-start-index}) {
       margin-top: var(--fs-grid-gap-2);
