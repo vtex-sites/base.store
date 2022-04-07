@@ -49,6 +49,11 @@ main,
   margin-left: auto;
 }
 
+.no-scroll {
+  overflow: hidden;
+  touch-action: none;
+}
+
 // Helper class
 .display-mobile {
   @include media(">=notebook") {
