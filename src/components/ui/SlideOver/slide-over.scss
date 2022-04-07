@@ -36,13 +36,13 @@
 }
 
 [data-slide-over-direction="leftSide"][data-slide-over-state="in"] {
-  transform: translateX(0);
   transition: transform .25s ease-in;
+  transform: translateX(0);
 }
 
 [data-slide-over-direction="leftSide"][data-slide-over-state="out"] {
-  transform: translateX(-100%);
   transition: transform .25s ease-out;
+  transform: translateX(-100%);
 }
 
 [data-slide-over-direction="rightSide"] {
@@ -50,11 +50,11 @@
 }
 
 [data-slide-over-direction="rightSide"][data-slide-over-state="in"] {
-  transform: translateX(0);
   transition: transform .25s ease-in;
+  transform: translateX(0);
 }
 
 [data-slide-over-direction="rightSide"][data-slide-over-state="out"] {
-  transform: translateX(100%);
   transition: transform .25s ease-out;
+  transform: translateX(100%);
 }

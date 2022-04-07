@@ -6,8 +6,8 @@
 
 .product-title__header {
   display: flex;
-  justify-content: space-between;
   column-gap: var(--fs-spacing-2);
+  justify-content: space-between;
   [data-store-badge] { white-space: nowrap; }
 
   @include media(">=tablet", "<notebook") {

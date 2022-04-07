@@ -5,8 +5,6 @@
 
 @import "../vendors/include-media";
 
-/* stylelint-disable */
-
 // --------------------------------------------------------
 // Colors (Branding Core)
 // --------------------------------------------------------
@@ -110,14 +108,11 @@ body {
 
   --fs-color-disabled-text             : var(--fs-color-neutral-6);
   --fs-color-disabled-bkg              : var(--fs-color-neutral-2);
-}
 
+  // --------------------------------------------------------
+  // Typography (Branding Core)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Typography (Branding Core)
-// --------------------------------------------------------
-
-body {
   // FACE
   --fs-text-face-body                  : "Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --fs-text-face-title                 : var(--fs-text-face-body);
@@ -137,6 +132,7 @@ body {
   --fs-text-scale-desk                 : 1.25;
 
   --fs-scale                           : var(--fs-text-scale-mobile);
+
   @include media(">=notebook") {
     --fs-scale                         : var(--fs-text-scale-desk);
   }
@@ -165,14 +161,11 @@ body {
   --fs-text-size-body                  : var(--fs-text-size-base);
   --fs-text-size-legend                : var(--fs-text-size-1);
   --fs-text-size-tiny                  : var(--fs-text-size-0);
-}
 
+  // --------------------------------------------------------
+  // Spacing (UI Essentials)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Spacing (UI Essentials)
-// --------------------------------------------------------
-
-body {
   // NUMERIC SCALE
   --fs-spacing-0                       : .25rem; //  4px
   --fs-spacing-1                       : .5rem;  //  8px
@@ -188,19 +181,18 @@ body {
   --fs-spacing-11                      : 5rem;   // 80px
   --fs-spacing-12                      : 5.5rem; // 88px
   --fs-spacing-13                      : 6rem;   // 96px
-}
 
+  // --------------------------------------------------------
+  // Grid & Layout (UI Essentials)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Grid & Layout (UI Essentials)
-// --------------------------------------------------------
-
-body {
   // PADDING
   --fs-grid-padding                    : var(--fs-spacing-3);
+
   @include media(">=tablet") {
     --fs-grid-padding                  : var(--fs-spacing-4);
   }
+
   @include media(">=notebook") {
     --fs-grid-padding                  : var(--fs-spacing-5);
   }
@@ -219,17 +211,15 @@ body {
   --fs-grid-breakpoint-tablet          : #{map-get($breakpoints, "tablet")};
   --fs-grid-breakpoint-notebook        : #{map-get($breakpoints, "notebook")};
   --fs-grid-breakpoint-desktop         : #{map-get($breakpoints, "desktop")};
-}
 
+  // --------------------------------------------------------
+  // Interactive Controls (UI Essentials)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Interactive Controls (UI Essentials)
-// --------------------------------------------------------
-
-body {
   // TAP
   --fs-control-tap-size-smallest       : calc(var(--fs-control-tap-size) / 2);
   --fs-control-tap-size                : var(--fs-spacing-7); // 3rem = 48px
+
   @include media(">=notebook") {
     --fs-control-tap-size              : var(--fs-spacing-7); // This value can be smaller on desktops
   }
@@ -242,14 +232,11 @@ body {
 
   // SIZING
   --fs-control-min-height              : var(--fs-control-tap-size);
-}
 
+  // --------------------------------------------------------
+  // Refinements
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Refinements
-// --------------------------------------------------------
-
-body {
   // TRANSITION
   --fs-transition-timing               : .2s;
   --fs-transition-property             : all;
@@ -279,5 +266,3 @@ body {
   --fs-shadow-darker                   : 0 0 10px rgb(0 0 0 / 20%);
   --fs-shadow-hover                    : var(--fs-shadow);
 }
-
-/* stylelint-enable */
