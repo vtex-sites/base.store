@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from 'react'
-import React, { useState } from 'react'
-import RegionalizationModal from 'src/components/regionalization/RegionalizationModal'
+import React from 'react'
+import { useRegionalization } from 'src/components/regionalization/RegionalizationProvider'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
@@ -14,7 +14,7 @@ export default function PostalCodeBar({
   classes,
   ...otherProps
 }: PostalCodeBarProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { setIsModalOpen } = useRegionalization()
 
   return (
     <div data-fs-postal-code-bar className={classes} {...otherProps}>
@@ -30,10 +30,6 @@ export default function PostalCodeBar({
         )}
         <Icon name="CaretRight" width={24} height={24} />
       </Button>
-      <RegionalizationModal
-        isOpen={isModalOpen}
-        onDismiss={() => setIsModalOpen(false)}
-      />
     </div>
   )
 }

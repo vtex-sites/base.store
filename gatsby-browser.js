@@ -8,6 +8,7 @@ import './src/styles/global/components.scss'
 import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import React from 'react'
 
+import RegionalizationProvider from './src/components/regionalization/RegionalizationProvider'
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
 import { validateCart } from './src/sdk/cart/validate'
@@ -28,7 +29,9 @@ export const wrapRootElement = ({ element }) => (
       >
         <SessionProvider initialState={{ channel: storeConfig.channel }}>
           <CartProvider mode="optimistic" onValidateCart={validateCart}>
-            <ModalProvider>{element}</ModalProvider>
+            <RegionalizationProvider>
+              <ModalProvider>{element}</ModalProvider>
+            </RegionalizationProvider>
           </CartProvider>
         </SessionProvider>
       </UIProvider>

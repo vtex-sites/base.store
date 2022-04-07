@@ -6,35 +6,44 @@ import Toast from 'src/components/common/Toast'
 import PostalCodeBar from 'src/components/common/PostalCode/PostalCodeBar'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
+import RegionalizationModal from 'src/components/regionalization/RegionalizationModal'
+import { useRegionalization } from 'src/components/regionalization/RegionalizationProvider'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart } = useUI()
+  const { isModalOpen, setIsModalOpen } = useRegionalization()
 
   return (
-    <div id="layout">
-      <Alert>
-        Get 10% off today:&nbsp;<span>NEW10</span>
-      </Alert>
+    <>
+      <div id="layout">
+        <Alert>
+          Get 10% off today:&nbsp;<span>NEW10</span>
+        </Alert>
 
-      <Navbar />
+        <Navbar />
 
-      <main>
-        <PostalCodeBar classes="display-mobile" />
-        {children}
-      </main>
+        <main>
+          <PostalCodeBar classes="display-mobile" />
+          {children}
+        </main>
 
-      <Footer />
+        <Footer />
 
-      <Toast />
+        <Toast />
 
-      {displayMinicart && (
-        <Suspense fallback={null}>
-          <CartSidebar />
-        </Suspense>
-      )}
-    </div>
+        {displayMinicart && (
+          <Suspense fallback={null}>
+            <CartSidebar />
+          </Suspense>
+        )}
+      </div>
+      <RegionalizationModal
+        isOpen={isModalOpen}
+        onDismiss={() => setIsModalOpen(false)}
+      />
+    </>
   )
 }
 
