@@ -94,9 +94,7 @@ function ProductCard({
         </div>
 
         {outOfStock ? (
-          <Badge small variant="neutral">
-            Out of stock
-          </Badge>
+          <Badge small>Out of stock</Badge>
         ) : (
           <DiscountBadge small listPrice={listPrice} spotPrice={spotPrice} />
         )}

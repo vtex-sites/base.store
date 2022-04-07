@@ -4,7 +4,7 @@ import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import type { ReactNode } from 'react'
 
-export type BadgeVariants = 'info' | 'highlighted' | 'neutral' | 'success'
+export type BadgeVariants = 'info' | 'highlighted' | 'success'
 
 type InteractiveBadge =
   | {
