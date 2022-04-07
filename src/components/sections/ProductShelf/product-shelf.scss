@@ -1,27 +1,23 @@
 @import "src/styles/scaffold";
 
-/* stylelint-disable */
-
 [data-fs-product-shelf] {
   // --------------------------------------------------------
   // Design Tokens for Product Shelf
   // --------------------------------------------------------
 
-  --fs-product-shelf-height:                      21.06rem;
-  --fs-product-shelf-margin-top:                  calc(-1 * var(--fs-spacing-0));
-  --fs-product-shelf-margin-bottom:               calc(-1 * var(--fs-spacing-3));
+  --fs-product-shelf-height                : 21.06rem;
+  --fs-product-shelf-margin-top            : calc(-1 * var(--fs-spacing-0));
+  --fs-product-shelf-margin-bottom         : calc(-1 * var(--fs-spacing-3));
 
-  --fs-product-shelf-items-gap:                   var(--fs-grid-gap-2);
-  --fs-product-shelf-items-padding-top:           var(--fs-spacing-0);
-  --fs-product-shelf-items-padding-bottom:        var(--fs-spacing-3);
+  --fs-product-shelf-items-gap             : var(--fs-grid-gap-2);
+  --fs-product-shelf-items-padding-top     : var(--fs-spacing-0);
+  --fs-product-shelf-items-padding-bottom  : var(--fs-spacing-3);
 
-  --fs-product-shelf-first-item-margin-left:      calc(-1 * var(--fs-spacing-1));
+  --fs-product-shelf-first-item-margin-left: calc(-1 * var(--fs-spacing-1));
 
   // --------------------------------------------------------
   // Template Styles
   // --------------------------------------------------------
-
-  /* stylelint-enable */
 
   min-height: var(--fs-product-shelf-height);
 
