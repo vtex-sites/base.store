@@ -1,4 +1,3 @@
-import React from 'react'
 import Icon from 'src/components/ui/Icon'
 
 import Incentives from './Incentives'

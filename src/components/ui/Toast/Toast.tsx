@@ -1,5 +1,5 @@
 import Button from 'src/components/ui/Button'
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
 
 const state = {

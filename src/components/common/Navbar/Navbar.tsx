@@ -1,6 +1,6 @@
 import { List as UIList } from '@faststore/ui'
 import { Link as LinkGatsby } from 'gatsby'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import CartToggle from 'src/components/cart/CartToggle'
 import PostalCodeInput from 'src/components/common/PostalCode'
 import SearchInput from 'src/components/common/SearchInput'
@@ -25,11 +25,11 @@ const collections = [
   },
   {
     name: 'Home Appliances',
-    href: '/kitchen-and-home-appliances',
+    href: '/kitchen---home-appliances',
   },
   {
     name: 'Computer and Software',
-    href: '/computer-and-software',
+    href: '/computer---software',
   },
   {
     name: 'Technology',

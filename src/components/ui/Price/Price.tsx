@@ -1,5 +1,5 @@
 import { Price as UIPrice } from '@faststore/ui'
-import React, { memo } from 'react'
+import { memo } from 'react'
 import type { PriceProps } from '@faststore/ui'
 
 import SROnly from '../SROnly'

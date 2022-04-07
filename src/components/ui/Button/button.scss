@@ -1,7 +1,5 @@
 @import "src/styles/scaffold";
 
-/* stylelint-disable */
-
 [data-fs-button] {
   // --------------------------------------------------------
   // Design Tokens for Buttons
@@ -51,16 +49,16 @@
   --fs-button-primary-inverse-shadow-hover         : var(--fs-button-shadow-hover);
 
   // Secondary
-  --fs-button-secondary-text-color                 :  var(--fs-color-secondary-text);
-  --fs-button-secondary-text-color-hover           :  var(--fs-color-text-inverse);
-  --fs-button-secondary-text-color-active          :  var(--fs-color-text-inverse);
-  --fs-button-secondary-bkg-color                  :  var(--fs-color-secondary-bkg);
-  --fs-button-secondary-bkg-color-hover            :  var(--fs-color-secondary-bkg-hover);
-  --fs-button-secondary-bkg-color-active           :  var(--fs-color-secondary-bkg-active);
-  --fs-button-secondary-border-color               :  var(--fs-color-secondary-text);
-  --fs-button-secondary-border-color-hover         :  var(--fs-button-secondary-bkg-color-hover);
-  --fs-button-secondary-border-color-active        :  var(--fs-button-secondary-bkg-color-active);
-  --fs-button-secondary-shadow-hover               :  var(--fs-button-shadow-hover);
+  --fs-button-secondary-text-color                 : var(--fs-color-secondary-text);
+  --fs-button-secondary-text-color-hover           : var(--fs-color-text-inverse);
+  --fs-button-secondary-text-color-active          : var(--fs-color-text-inverse);
+  --fs-button-secondary-bkg-color                  : var(--fs-color-secondary-bkg);
+  --fs-button-secondary-bkg-color-hover            : var(--fs-color-secondary-bkg-hover);
+  --fs-button-secondary-bkg-color-active           : var(--fs-color-secondary-bkg-active);
+  --fs-button-secondary-border-color               : var(--fs-color-secondary-text);
+  --fs-button-secondary-border-color-hover         : var(--fs-button-secondary-bkg-color-hover);
+  --fs-button-secondary-border-color-active        : var(--fs-button-secondary-bkg-color-active);
+  --fs-button-secondary-shadow-hover               : var(--fs-button-shadow-hover);
 
   --fs-button-secondary-inverse-text-color         : var(--fs-color-text-inverse);
   --fs-button-secondary-inverse-text-color-hover   : var(--fs-color-secondary-text);
@@ -116,19 +114,19 @@
   // --------------------------------------------------------
 
   display: inline-flex;
+  column-gap: var(--fs-button-gap);
   align-items: center;
   justify-content: center;
   min-height: var(--fs-button-height);
   padding: var(--fs-button-padding);
-  font-weight: var(--fs-button-text-weight);
   font-size: var(--fs-button-text-size);
+  font-weight: var(--fs-button-text-weight);
   text-decoration: none;
-  column-gap: var(--fs-button-gap);
+  cursor: pointer;
   border: var(--fs-button-border-width) solid var(--fs-button-border-color);
   border-radius: var(--fs-button-border-radius);
   outline: none;
   box-shadow: var(--fs-button-shadow);
-  cursor: pointer;
   transition: var(--fs-button-transition-property) var(--fs-button-transition-timing) var(--fs-button-transition-function);
 
   [data-store-icon] {
@@ -146,10 +144,10 @@
 
     &:disabled, &[data-button-disabled="true"] {
       color: var(--fs-button-disabled-text-color);
+      cursor: not-allowed;
       background-color: var(--fs-button-disabled-bkg-color);
       border: 0;
       box-shadow: none;
-      cursor: not-allowed;
       svg { color: var(--fs-color-neutral-5); }
 
       &:hover {
@@ -287,7 +285,6 @@
       border-color: var(--fs-button-tertiary-border-color-active);
     }
 
-
     &[data-fs-button-inverse] {
       color: var(--fs-button-tertiary-inverse-text-color);
       background-color: var(--fs-button-tertiary-inverse-bkg-color);
@@ -347,12 +344,9 @@
     }
   }
 
-
   &[data-fs-button-link] {
     &:hover { text-decoration: none; }
 
     &[data-button-disabled="true"] { pointer-events: none; }
   }
 }
-
-/* stylelint-enable */
