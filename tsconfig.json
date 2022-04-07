@@ -1,6 +1,7 @@
 {
   "extends": "@vtex/tsconfig",
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
