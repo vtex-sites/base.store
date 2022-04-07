@@ -19,12 +19,12 @@ main,
 }
 
 .layout__section {
-  margin-top: var(--fs-spacing-4);
-  margin-bottom: var(--fs-spacing-4);
+  padding-top: var(--fs-spacing-4);
+  padding-bottom: var(--fs-spacing-4);
 
   @include media(">=notebook") {
-    margin-top: var(--fs-grid-padding);
-    margin-bottom: var(--fs-grid-padding);
+    padding-top: var(--fs-grid-padding);
+    padding-bottom: var(--fs-grid-padding);
   }
 }
 
