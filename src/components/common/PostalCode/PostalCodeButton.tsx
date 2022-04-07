@@ -3,12 +3,12 @@ import { useRegionalization } from 'src/components/regionalization/Regionalizati
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
-interface PostalCodeBarProps extends HTMLAttributes<HTMLDivElement> {
+interface PostalCodeButtonProps extends HTMLAttributes<HTMLDivElement> {
   content?: string
   classes: string
 }
 
-export default function PostalCodeBar({
+export default function PostalCodeButton({
   content,
   classes,
   ...otherProps
