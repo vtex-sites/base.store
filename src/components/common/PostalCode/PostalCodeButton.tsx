@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react'
-import React from 'react'
 import { useRegionalization } from 'src/components/regionalization/RegionalizationProvider'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'

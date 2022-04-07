@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useContext, createContext } from 'react'
+import { useMemo, useState, useContext, createContext } from 'react'
 import type { PropsWithChildren } from 'react'
 
 interface RegionalizationContextValue {
