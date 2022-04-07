@@ -1,10 +1,10 @@
 import { Badge as UIBadge } from '@faststore/ui'
 import React from 'react'
-import { ButtonIcon } from 'src/components/ui/Button'
+import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import type { ReactNode } from 'react'
 
-export type BadgeVariants = 'info' | 'highlighted' | 'neutral'
+export type BadgeVariants = 'info' | 'highlighted' | 'neutral' | 'success'
 
 type InteractiveBadge =
   | {
@@ -39,21 +39,17 @@ const Badge = ({
       data-fs-badge-interactive={interactive}
       {...otherProps}
     >
-      <span>{children}</span>
       {interactive && (
-        <ButtonIcon
+        <Button
+          data-fs-badge-button="true"
           onClick={onClose}
-          aria-label="Remove badge"
-          icon={
-            <Icon
-              name="X"
-              weight="bold"
-              width={small ? 12 : 16}
-              height={small ? 12 : 16}
-            />
-          }
+          icon={<Icon name="X" width={18} height={18} weight="bold" />}
+          iconPosition="left"
         />
       )}
+      <div data-fs-badge-wrapper>
+        <span>{children}</span>
+      </div>
     </UIBadge>
   )
 }
