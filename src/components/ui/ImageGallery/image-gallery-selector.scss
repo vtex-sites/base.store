@@ -64,20 +64,19 @@
     overflow-x: auto;
     scroll-behavior: smooth;
 
-    [data-store-button] {
+    > [data-store-button] {
       flex-shrink: 0;
       width: rem(56px);
       padding: 0;
       overflow: hidden;
       background-color: transparent;
-      border: 2px solid transparent;
+      border-color: transparent;
       border-radius: var(--fs-border-radius-default);
 
       &[data-thumbnail-button="selected"] {
         @include focus-ring;
 
-        border-color: var(--fs-border-color-default-active);
-        border-width: var(--fs-border-color-default);
+        border-color: var(--fs-color-primary-bkg-active);
       }
 
       @include media(">=notebook") {

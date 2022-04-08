@@ -14,10 +14,9 @@
     column-gap: var(--fs-spacing-3);
   }
 
-  [data-store-image] {
+  > [data-store-image] {
     @include media(">=tablet") {
       border-radius: var(--fs-border-radius-default);
-      transform: translate3d(0, 0, 0);
     }
   }
 
@@ -38,7 +37,7 @@
     // that does not support the aspect-ratio property
     max-height: rem(600px);
 
-    // TODO: Define this aspect ratio as token so we can apply to differnt ratios of images;
+    // TODO: Define this aspect ratio as token
     aspect-ratio: 4.57/3;
   }
 }
