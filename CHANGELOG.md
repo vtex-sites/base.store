@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Applies new local tokens to `ProductShelf` component (#464)
+
 ### Deprecated
 
 ### Removed
@@ -38,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fix `SlideOver` scroll background behavior (#420)
 - `SearchInput` margin left on mobile (#457)
 - Fixed BaseStore logo right margin on mobile devices (#455)
 - Fix PLP scroll bug after applying filters for the mobile version (#454)

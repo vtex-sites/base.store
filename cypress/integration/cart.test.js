@@ -23,6 +23,24 @@ describe('Cart Sidebar', () => {
     cy.getById('cart-sidebar-button-close').first().click()
     cy.getById('cart-sidebar').should('not.exist')
   })
+
+  context('when opening the cart sidebar', () => {
+    it('should not scroll the background page', () => {
+      cy.visit(pages.home, options)
+      cy.waitForHydration()
+
+      // window scrolls to keep cart-toggle on the screen initially
+      cy.getById('cart-toggle').click()
+      cy.getById('cart-sidebar').should('exist')
+
+      // simulate touch scroll. Do not use window.scrollTo
+      cy.get('.empty-state')
+        .trigger('touchstart', 0, 50)
+        .trigger('touchmove', 0, 150)
+        .trigger('touchend', 0, 150)
+      cy.window().its('scrollY').should('not.equal', 0)
+    })
+  })
 })
 
 describe('On product description pages', () => {
