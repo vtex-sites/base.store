@@ -27,7 +27,7 @@
   @include media(">=notebook") {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--fs-grid-gap-1);
+    column-gap: var(--fs-grid-gap-3);
   }
 
   &::before {
@@ -63,7 +63,7 @@
   }
 
   @include media(">=notebook") {
-    row-gap: var(--fs-grid-gap-2);
+    row-gap: var(--fs-grid-gap-4);
     padding-top: 0;
   }
 
@@ -105,7 +105,7 @@
       justify-content: space-between;
 
       @include media("<notebook") {
-        column-gap: var(--fs-grid-gap-0);
+        column-gap: var(--fs-grid-gap-2);
       }
     }
   }
@@ -196,7 +196,7 @@
 .footer__links-columns {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: var(--fs-grid-gap-1);
+  grid-gap: var(--fs-grid-gap-3);
 
   .text__title-mini {
     margin-bottom: var(--fs-spacing-1);

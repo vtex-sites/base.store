@@ -6,7 +6,7 @@
   [data-card-content] {
     display: grid;
     grid-template-columns: rem(56px) repeat(4, 1fr);
-    column-gap: var(--fs-grid-gap-0);
+    column-gap: var(--fs-grid-gap-2);
     align-items: center;
   }
 

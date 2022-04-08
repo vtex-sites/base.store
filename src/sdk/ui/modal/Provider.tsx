@@ -2,7 +2,9 @@ import {
   createContext,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react'
 import type { PropsWithChildren } from 'react'
@@ -21,9 +23,25 @@ const ModalContext = createContext<ContextValue | undefined>(undefined)
 
 function ModalProvider({ children }: PropsWithChildren<unknown>) {
   const [fade, setFade] = useState<FadeType>('out')
+  const layout = useRef<HTMLElement | null>(null)
 
-  const onModalOpen = useCallback(() => setFade('in'), [])
-  const onModalClose = useCallback(() => setFade('out'), [])
+  const onModalOpen = useCallback(() => {
+    setFade('in')
+    layout.current?.classList.add('no-scroll')
+  }, [])
+
+  const onModalClose = useCallback(() => {
+    setFade('out')
+    layout.current?.classList.remove('no-scroll')
+  }, [])
+
+  useEffect(() => {
+    layout.current = document.body
+
+    return () => {
+      layout.current?.classList.remove('no-scroll')
+    }
+  }, [])
 
   const value = useMemo(
     () => ({
@@ -34,11 +52,7 @@ function ModalProvider({ children }: PropsWithChildren<unknown>) {
     [fade, onModalOpen, onModalClose]
   )
 
-  return (
-    <ModalContext.Provider value={value}>
-      <div data-scroll={fade === 'out'}>{children}</div>
-    </ModalContext.Provider>
-  )
+  return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>
 }
 
 export function useModal() {
