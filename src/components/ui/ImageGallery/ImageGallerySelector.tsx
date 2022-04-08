@@ -21,6 +21,17 @@ const moveScroll = (container: HTMLDivElement | null, value: number) => {
   }
 }
 
+const hasScroll = (container: HTMLDivElement | null): boolean => {
+  if (container) {
+    return (
+      container.scrollHeight > container.clientHeight ||
+      container.scrollWidth > container.clientWidth
+    )
+  }
+
+  return false
+}
+
 function ImageGallerySelector({ images, onSelect, currentImageIdx }: Props) {
   const elementsRef = useRef<HTMLDivElement>(null)
 
@@ -30,7 +41,7 @@ function ImageGallerySelector({ images, onSelect, currentImageIdx }: Props) {
       aria-roledescription="carousel"
       aria-label="Product images"
     >
-      {true && (
+      {hasScroll(elementsRef.current) && (
         <IconButton
           aria-label="backward slide image selector"
           icon={<Icon name="ArrowLeft" width={24} height={24} />}
@@ -61,7 +72,7 @@ function ImageGallerySelector({ images, onSelect, currentImageIdx }: Props) {
           )
         })}
       </div>
-      {true && (
+      {hasScroll(elementsRef.current) && (
         <IconButton
           aria-label="forward slide image selector"
           icon={<Icon name="ArrowLeft" width={24} height={24} />}
