@@ -16,10 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adds Storybook configs (#463)
 - Adds vtex search tracking script. With this we will populate TopSearches and Autocomplete indices (#389)
 - Add `RegionalizationBar`, `RegionalizationButton` components and integrates it on Mobile and Desktop devices (#424).
+- Integrates and styles ImageGallery component at the PDP (#409)
 
 ### Changed
+
 - Applies new local tokens to `BannerText` (#470)
 - Update the Incentives component to handle CMS data (#474)
+- Refactors ImageGallery component to not use the useSlider component (#409)
 
 ### Deprecated
 
@@ -29,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removes CSS imports of components that are not being used (#476)
 
 ### Fixed
+
 - Fix styling issue on Regionalization Modal by adding the missing imports in layout.scss (#488)
 - Fix unused CSS problem by separating imports into different files for each page (#473)
 - Potential layout shift on Hero section fixed (#472)
