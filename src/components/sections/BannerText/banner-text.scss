@@ -16,15 +16,14 @@
   --fs-banner-text-link-margin-mobile          : var(--fs-spacing-5) 0 0 0;
   --fs-banner-text-link-margin-desktop         : var(--fs-spacing-7) 0 0 0;
 
+  --fs-banner-text-title-size                  : var(--fs-text-size-lead);
   --fs-banner-text-title-weight                : var(--fs-text-weight-bold);
 
   // Primary properties
-  --fs-banner-text-primary-title-size-mobile   : var(--fs-text-size-3);
-  --fs-banner-text-primary-title-size-desktop  : var(--fs-text-size-6);
+  --fs-banner-text-primary-title-size-desktop  : var(--fs-text-size-title-page);
   --fs-banner-text-primary-title-line          : 1.2;
 
   // Secondary properties
-  --fs-banner-text-secondary-title-size-mobile  : var(--fs-text-size-3);
   --fs-banner-text-secondary-title-size-desktop : var(--fs-text-size-4);
   --fs-banner-text-secondary-title-line         : 1.2;
   --fs-banner-text-secondary-caption-size       : var(--fs-text-size-base);
@@ -66,7 +65,7 @@
 
 [data-fs-banner-text-variant="primary"] {
   h2 {
-    font-size: var(--fs-banner-text-primary-title-size-mobile);
+    font-size: var(--fs-banner-text-title-size);
     font-weight: var(--fs-banner-text-title-weight);
     line-height: var(--fs-banner-text-primary-title-line);
     color: var(--fs-banner-text-text-color);
@@ -81,7 +80,7 @@
 [data-fs-banner-text-variant="secondary"] {
   h2 {
     margin-bottom: var(--fs-spacing-2);
-    font-size: var(--fs-banner-text-secondary-title-size-mobile);
+    font-size: var(--fs-banner-text-title-size);
     font-weight: var(--fs-banner-text-title-weight);
     line-height: var(--fs-banner-text-secondary-title-line);
     color: var(--fs-banner-text-text-color);
