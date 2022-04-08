@@ -29,9 +29,9 @@
     width: 100%;
     padding: var(--fs-spacing-3) 0;
     color: var(--fs-color-text);
+    cursor: pointer;
     background-color: transparent;
     border: 0;
-    cursor: pointer;
 
     @include media(">=notebook") {
       padding-right: var(--fs-spacing-4);
