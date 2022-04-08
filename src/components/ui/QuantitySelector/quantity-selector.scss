@@ -46,8 +46,10 @@
   --fs-qty-selector-disabled-border-color     : var(--fs-qty-selector-disabled-bkg-color);
   --fs-qty-selector-disabled-button-bkg-color : var(--fs-qty-selector-button-bkg-color-hover);
 
+  // --------------------------------------------------------
   // Structural Styles
   // --------------------------------------------------------
+
   position: relative;
   display: flex;
   flex-direction: row;
@@ -55,6 +57,7 @@
   justify-content: center;
   width: var(--fs-qty-selector-width);
   height: var(--fs-qty-selector-height);
+  border-radius: var(--fs-qty-selector-border-radius);
   box-shadow: var(--fs-qty-selector-shadow);
 
   [data-store-icon] {
@@ -143,6 +146,10 @@
     }
   }
 }
+
+// --------------------------------------------------------
+// Variants Styles
+// --------------------------------------------------------
 
 [data-fs-quantity-selector="disabled"] {
   [data-quantity-selector-input] {
