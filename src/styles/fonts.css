@@ -3,7 +3,7 @@
   font-weight: 400;
   font-family: "Lato";
   font-style: normal;
-  font-display: fallback;
+  font-display: swap;
   src: url("../fonts/lato-v20-latin-regular.eot"); /* IE9 Compat Modes */
   src: local(""),
     url("../fonts/lato-v20-latin-regular.eot?#iefix") format("embedded-opentype"),
@@ -18,7 +18,7 @@
   font-weight: 700;
   font-family: "Lato";
   font-style: normal;
-  font-display: fallback;
+  font-display: swap;
   src: url("../fonts/lato-v20-latin-700.eot"); /* IE9 Compat Modes */
   src: local(""),
     url("../fonts/lato-v20-latin-700.eot?#iefix") format("embedded-opentype"),
@@ -33,7 +33,7 @@
   font-weight: 900;
   font-family: "Lato";
   font-style: normal;
-  font-display: fallback;
+  font-display: swap;
   src: url("../fonts/lato-v20-latin-900.eot"); /* IE9 Compat Modes */
   src: local(""),
     url("../fonts/lato-v20-latin-900.eot?#iefix") format("embedded-opentype"),
