@@ -18,7 +18,7 @@
   // Primary properties
   --fs-hero-primary-img-height-mob     : #{rem(240px)};
   --fs-hero-primary-img-height-desk    : #{rem(464px)};
-  --fs-hero-primary-title-size         : var(--fs-text-size-7);
+  --fs-hero-primary-title-size         : var(--fs-text-size-title-huge);
 
   // Secondary properties
   --fs-hero-secondary-img-height-mob   : #{rem(180px)};
@@ -48,7 +48,6 @@
   color: var(--fs-hero-text-color);
 
   h1 {
-    font-size: var(--fs-hero-primary-title-size);
     font-weight: var(--fs-text-weight-black);
     line-height: var(--fs-hero-title-line);
   }
@@ -81,10 +80,6 @@
 
 [data-fs-hero-icon] { color: var(--fs-hero-text-color); }
 
-[data-fs-hero-info] {
-  @include media(">=tablet") { width: 42%; }
-}
-
 [data-fs-hero-image] {
   @include media(">=tablet") {
     position: absolute;
@@ -97,6 +92,8 @@
 
 [data-fs-hero-variant="primary"] {
   @include media(">=tablet") { min-height: var(--fs-hero-primary-img-height-desk); }
+
+  h1 { font-size: var(--fs-hero-primary-title-size); }
 
   [data-fs-hero-content] {
     @include media(">=tablet") {
@@ -115,7 +112,10 @@
   }
 
   [data-fs-hero-info] {
-    @include media(">=tablet") { padding-right: var(--fs-spacing-9); }
+    @include media(">=tablet") {
+      width: 46%;
+      padding-right: var(--fs-spacing-9);
+    }
   }
 }
 
@@ -123,6 +123,12 @@
   @include media(">=tablet") { min-height: var(--fs-hero-secondary-img-height-desk); }
 
   h1 { font-size: var(--fs-hero-secondary-title-size); }
+
+  [data-fs-hero-info] {
+    @include media(">=tablet") {
+      width: 42%;
+    }
+  }
 
   [data-fs-hero-content] {
     padding: var(--fs-spacing-4) 0 var(--fs-spacing-5);
