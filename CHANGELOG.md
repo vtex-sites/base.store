@@ -9,12 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Applies new local tokens to `Quantity Selector` (#448)
+- Applies new local tokens to `ProductShelf` component (#464)
+
 ### Changed
+
 - Upgrades to React18 (#461)
 - Uses new Automatic JSX runtime (#460)
 - Migrates Gatsby config files to TypeScript (#373)
 - Migrates to Gatsby v4 (#456)
-- Apply new local tokens to `Quantity Selector` (#448)
 
 ### Deprecated
 
@@ -22,11 +25,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+### Security
+
+## [0.2.2] - 2022-04-07
+
+### Added
+
+- Add `InputText` component (#440)
+
+### Changed
+
+- Enable Stylelint for some files and apply the rules after the Theme structure (#430)
+- Upgrades to React18 (#461)
+- Uses new Automatic JSX runtime (#460)
+- Migrates Gatsby config files to TypeScript (#373)
+- Migrates to Gatsby v4 (#456)
+- Reduces the padding of `Breadcrumb`component (#453)
+
+### Fixed
+
+- Fix `SlideOver` scroll background behavior (#420)
 - `SearchInput` margin left on mobile (#457)
 - Fixed BaseStore logo right margin on mobile devices (#455)
 - Fix PLP scroll bug after applying filters for the mobile version (#454)
-
-### Security
 
 ## [0.2.1] - 2022-04-04
 
@@ -38,7 +59,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Send channel string as search facet (#428)
 - Add the brand new BaseStore logo (#447)
 - Add `Dropdown` component in `Breadcrumb` component (#436)
-- Add `InputText` component (#440)
 
 ### Changed
 

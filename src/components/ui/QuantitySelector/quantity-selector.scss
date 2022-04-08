@@ -116,7 +116,11 @@
     &:last-of-type { right: 0; }
 
     &:hover:not(:disabled) [data-store-icon] {
-      color: var(--fs-qty-selector-icon-color-hover);
+      color: var(
+        
+        
+        
+        -hover);
       background-color: var(--fs-qty-selector-button-bkg-color-hover);
       box-shadow: var(--fs-qty-selector-button-shadow-hover);
     }
