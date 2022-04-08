@@ -5,7 +5,6 @@
   flex-direction: column-reverse;
   width: 100%;
   background-color: var(--fs-color-primary-bkg);
-  font-family: Arial; /* stylelint-disable-line */ // Prevent layout shift
 
   @include media(">=tablet") {
     position: relative;
