@@ -17,15 +17,13 @@ function ImageGallery({ images }: ImageGalleryProps) {
   const currentImage = images[selectedImageIdx]
 
   return (
-    <section
-      data-fs-image-gallery={images.length > 1 ? 'has-selector' : 'true'}
-    >
+    <section data-fs-image-gallery>
       <ImageZoom>
         <Image
           src={currentImage.url}
           alt={currentImage.alternateName}
-          width={250}
-          height={250}
+          width={712}
+          height={450}
           loading="eager"
         />
       </ImageZoom>

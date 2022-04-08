@@ -30,14 +30,3 @@
 
   @include media(">=notebook") { grid-column: span 8; }
 }
-
-[data-fs-image-gallery="has-selector"] {
-  @include media(">notebook") {
-    // This max-height is defined as a fallback for browsers
-    // that does not support the aspect-ratio property
-    max-height: rem(600px);
-
-    // TODO: Define this aspect ratio as token
-    aspect-ratio: 4.57/3;
-  }
-}

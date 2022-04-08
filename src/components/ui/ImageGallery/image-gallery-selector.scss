@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-height: rem(450px);
 
   > [data-store-button] {
     position: absolute;
