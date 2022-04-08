@@ -5,46 +5,42 @@
   // Design Tokens for Banner Text
   // --------------------------------------------------------
 
-  --fs-banner-text-padding-mob                 : var(--fs-spacing-6) 0;
-  --fs-banner-text-padding-desk                : var(--fs-spacing-9) 0;
+  --fs-banner-text-padding-mobile              : var(--fs-spacing-6) 0;
+  --fs-banner-text-padding-desktop             : var(--fs-spacing-9) 0;
 
   --fs-banner-text-bkg-color                   : var(--fs-color-main-4);
   --fs-banner-text-text-color                  : var(--fs-color-text-inverse);
 
   --fs-banner-text-link-width                  : 11.25rem;
   --fs-banner-text-link-padding                : var(--fs-spacing-2) var(--fs-spacing-4);
-  --fs-banner-text-link-margin-mob             : var(--fs-spacing-5) 0 0 0;
-  --fs-banner-text-link-margin-desk            : var(--fs-spacing-7) 0 0 0;
+  --fs-banner-text-link-margin-mobile          : var(--fs-spacing-5) 0 0 0;
+  --fs-banner-text-link-margin-desktop         : var(--fs-spacing-7) 0 0 0;
+
+  --fs-banner-text-title-weight                : var(--fs-text-weight-bold);
 
   // Primary properties
-  --fs-banner-text-primary-title-size-mob      : var(--fs-text-size-3);
-  --fs-banner-text-primary-title-weight-mob    : var(--fs-text-weight-bold);
-  --fs-banner-text-primary-title-line-mob      : 1.2;
-  --fs-banner-text-primary-title-size-desk     : var(--fs-text-size-6);
-  --fs-banner-text-primary-title-weight-desk   : var(--fs-text-weight-bold);
-  --fs-banner-text-primary-title-line-desk     : 1.25;
+  --fs-banner-text-primary-title-size-mobile   : var(--fs-text-size-3);
+  --fs-banner-text-primary-title-size-desktop  : var(--fs-text-size-6);
+  --fs-banner-text-primary-title-line          : 1.2;
 
   // Secondary properties
-  --fs-banner-text-secondary-title-size-mob    : var(--fs-text-size-3);
-  --fs-banner-text-secondary-title-weight-mob  : var(--fs-text-weight-bold);
-  --fs-banner-text-secondary-title-line-mob    : 1.2;
-  --fs-banner-text-secondary-title-size-desk   : var(--fs-text-size-4);
-  --fs-banner-text-secondary-title-weight-desk : var(--fs-text-weight-bold);
-  --fs-banner-text-secondary-title-line-desk   : 1.12;
-  --fs-banner-text-secondary-caption-size      : var(--fs-text-size-base);
-  --fs-banner-text-secondary-caption-weight    : var(--fs-text-weight-regular);
-  --fs-banner-text-secondary-caption-line      : 1.5;
+  --fs-banner-text-secondary-title-size-mobile  : var(--fs-text-size-3);
+  --fs-banner-text-secondary-title-size-desktop : var(--fs-text-size-4);
+  --fs-banner-text-secondary-title-line         : 1.2;
+  --fs-banner-text-secondary-caption-size       : var(--fs-text-size-base);
+  --fs-banner-text-secondary-caption-weight     : var(--fs-text-weight-regular);
+  --fs-banner-text-secondary-caption-line       : 1.5;
 
   // --------------------------------------------------------
   // Structural Styles
   // --------------------------------------------------------
 
-  padding: var(--fs-banner-text-padding-mob);
+  padding: var(--fs-banner-text-padding-mobile);
   text-align: center;
   background-color: var(--fs-banner-text-bkg-color);
 
   @include media(">=notebook") {
-    padding: var(--fs-banner-text-padding-desk);
+    padding: var(--fs-banner-text-padding-desktop);
   }
 
   [data-fs-banner-text-content] {
@@ -55,11 +51,11 @@
 
   [data-fs-banner-text-link] a {
     width: var(--fs-banner-text-link-width);
-    margin: var(--fs-banner-text-link-margin-mob);
+    margin: var(--fs-banner-text-link-margin-mobile);
 
     @include media(">=notebook") {
       padding: var(--fs-banner-text-link-padding);
-      margin: var(--fs-banner-text-link-margin-desk);
+      margin: var(--fs-banner-text-link-margin-desktop);
     }
   }
 }
@@ -70,16 +66,14 @@
 
 [data-fs-banner-text-variant="primary"] {
   h2 {
-    font-size: var(--fs-banner-text-primary-title-size-mob);
-    font-weight: var(--fs-banner-text-primary-title-weight-mob);
-    line-height: var(--fs-banner-text-primary-title-line-mob);
+    font-size: var(--fs-banner-text-primary-title-size-mobile);
+    font-weight: var(--fs-banner-text-title-weight);
+    line-height: var(--fs-banner-text-primary-title-line);
     color: var(--fs-banner-text-text-color);
 
     @include media(">=notebook") {
       display: block;
-      font-size: var(--fs-banner-text-primary-title-size-desk);
-      font-weight: var(--fs-banner-text-primary-title-weight-desk);
-      line-height: var(--fs-banner-text-primary-title-line-desk);
+      font-size: var(--fs-banner-text-primary-title-size-desktop);
     }
   }
 }
@@ -87,16 +81,14 @@
 [data-fs-banner-text-variant="secondary"] {
   h2 {
     margin-bottom: var(--fs-spacing-2);
-    font-size: var(--fs-banner-text-secondary-title-size-mob);
-    font-weight: var(--fs-banner-text-secondary-title-weight-mob);
-    line-height: var(--fs-banner-text-secondary-title-line-mob);
+    font-size: var(--fs-banner-text-secondary-title-size-mobile);
+    font-weight: var(--fs-banner-text-title-weight);
+    line-height: var(--fs-banner-text-secondary-title-line);
     color: var(--fs-banner-text-text-color);
 
     @include media(">=notebook") {
       display: block;
-      font-size: var(--fs-banner-text-secondary-title-size-desk);
-      font-weight: var(--fs-banner-text-secondary-title-weight-desk);
-      line-height: var(--fs-banner-text-secondary-title-line-desk);
+      font-size: var(--fs-banner-text-secondary-title-size-desktop);
     }
   }
 
