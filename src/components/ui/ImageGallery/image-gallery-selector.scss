@@ -9,11 +9,13 @@
   > [data-store-button] {
     position: absolute;
     z-index: 1;
-    background: linear-gradient(90deg, #ffffff 55.67%, rgb(255 255 255 / 0%) 88.53%);
+    background: linear-gradient(90deg, var(--fs-color-body-bkg) 55%, transparent);
     background-color: transparent;
     border: none;
 
     span {
+      display: flex;
+      height: fit-content;
       padding: var(--fs-spacing-1);
       background-color: var(--fs-control-bkg-default);
       border-radius: var(--fs-border-radius-circle);
@@ -34,8 +36,10 @@
     }
 
     @include media(">=notebook") {
+      display: flex;
+      justify-content: center;
       width: 100%;
-      background: linear-gradient(180deg, #ffffff 55.67%, rgb(255 255 255 / 0%) 88.53%);
+      background: linear-gradient(180deg, var(--fs-color-body-bkg) 55%, transparent);
 
       span {
         transform: rotate(90deg);
