@@ -65,7 +65,6 @@
 
   [data-quantity-selector-input] {
     width: 100%;
-    min-width: rem(28px);
     height: 100%;
     padding: 0;
     font-size: var(--fs-qty-selector-text-size);
@@ -91,7 +90,6 @@
     background-color: var(--fs-qty-selector-button-bkg-color);
     border: 0;
     border-radius: var(--fs-qty-selector-button-border-radius);
-    box-shadow: none;
 
     [data-store-icon] {
       display: flex;
