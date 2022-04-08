@@ -1,7 +1,5 @@
 @import "src/styles/scaffold";
 
-/* stylelint-disable */
-
 [data-fs-quantity-selector] {
   // --------------------------------------------------------
   // Design Tokens for Quantity Selector
@@ -47,8 +45,6 @@
   --fs-qty-selector-disabled-icon-color       : var(--fs-border-color-light-disabled);
   --fs-qty-selector-disabled-border-color     : var(--fs-qty-selector-disabled-bkg-color);
   --fs-qty-selector-disabled-button-bkg-color : var(--fs-qty-selector-button-bkg-color-hover);
-
-  /* stylelint-enable */
 
   // Structural Styles
   // --------------------------------------------------------
@@ -116,11 +112,6 @@
     &:last-of-type { right: 0; }
 
     &:hover:not(:disabled) [data-store-icon] {
-      color: var(
-        
-        
-        
-        -hover);
       background-color: var(--fs-qty-selector-button-bkg-color-hover);
       box-shadow: var(--fs-qty-selector-button-shadow-hover);
     }
