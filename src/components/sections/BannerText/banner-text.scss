@@ -5,35 +5,35 @@
   // Design Tokens for Banner Text
   // --------------------------------------------------------
 
-  --fs-banner-text-padding-mob      : var(--fs-spacing-6) 0;
-  --fs-banner-text-padding-desk     : var(--fs-spacing-9) 0;
+  --fs-banner-text-padding-mob                 : var(--fs-spacing-6) 0;
+  --fs-banner-text-padding-desk                : var(--fs-spacing-9) 0;
 
-  --fs-banner-text-bkg-color        : var(--fs-color-main-4);
-  --fs-banner-text-text-color       : var(--fs-color-text-inverse);
+  --fs-banner-text-bkg-color                   : var(--fs-color-main-4);
+  --fs-banner-text-text-color                  : var(--fs-color-text-inverse);
 
-  --fs-banner-text-link-width       : 11.25rem;
-  --fs-banner-text-link-padding     : var(--fs-spacing-2) var(--fs-spacing-4);
-  --fs-banner-text-link-margin-mob  : var(--fs-spacing-5) 0 0 0;
-  --fs-banner-text-link-margin-desk : var(--fs-spacing-7) 0 0 0;
+  --fs-banner-text-link-width                  : 11.25rem;
+  --fs-banner-text-link-padding                : var(--fs-spacing-2) var(--fs-spacing-4);
+  --fs-banner-text-link-margin-mob             : var(--fs-spacing-5) 0 0 0;
+  --fs-banner-text-link-margin-desk            : var(--fs-spacing-7) 0 0 0;
 
   // Primary properties
-  --fs-banner-text-primary-title-size-mob   : var(--fs-text-size-3);
-  --fs-banner-text-primary-title-weight-mob : var(--fs-text-weight-bold);
-  --fs-banner-text-primary-title-line-mob   : 1.2;
-  --fs-banner-text-primary-title-size-desk   : var(--fs-text-size-6);
-  --fs-banner-text-primary-title-weight-desk : var(--fs-text-weight-bold);
-  --fs-banner-text-primary-title-line-desk   : 1.25;
+  --fs-banner-text-primary-title-size-mob      : var(--fs-text-size-3);
+  --fs-banner-text-primary-title-weight-mob    : var(--fs-text-weight-bold);
+  --fs-banner-text-primary-title-line-mob      : 1.2;
+  --fs-banner-text-primary-title-size-desk     : var(--fs-text-size-6);
+  --fs-banner-text-primary-title-weight-desk   : var(--fs-text-weight-bold);
+  --fs-banner-text-primary-title-line-desk     : 1.25;
 
   // Secondary properties
-  --fs-banner-text-secondary-title-size-mob   : var(--fs-text-size-3);
-  --fs-banner-text-secondary-title-weight-mob : var(--fs-text-weight-bold);
-  --fs-banner-text-secondary-title-line-mob   : 1.2;
+  --fs-banner-text-secondary-title-size-mob    : var(--fs-text-size-3);
+  --fs-banner-text-secondary-title-weight-mob  : var(--fs-text-weight-bold);
+  --fs-banner-text-secondary-title-line-mob    : 1.2;
   --fs-banner-text-secondary-title-size-desk   : var(--fs-text-size-4);
   --fs-banner-text-secondary-title-weight-desk : var(--fs-text-weight-bold);
   --fs-banner-text-secondary-title-line-desk   : 1.12;
-  --fs-banner-text-secondary-caption-size   : var(--fs-text-size-base);
-  --fs-banner-text-secondary-caption-weight : var(--fs-text-weight-regular);
-  --fs-banner-text-secondary-caption-line   : 1.5;
+  --fs-banner-text-secondary-caption-size      : var(--fs-text-size-base);
+  --fs-banner-text-secondary-caption-weight    : var(--fs-text-weight-regular);
+  --fs-banner-text-secondary-caption-line      : 1.5;
 
   // --------------------------------------------------------
   // Structural Styles
