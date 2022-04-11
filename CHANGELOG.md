@@ -21,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 
 ### Fixed
+- Potential layout shift on Hero section fixed (#472)
 - Fix layout section spacings style (#469)
 
 ### Security
