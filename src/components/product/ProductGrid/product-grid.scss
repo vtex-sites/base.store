@@ -1,21 +1,18 @@
 @import "src/styles/scaffold";
 
 .product-grid {
-  --gap: 2px;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap);
+  gap: var(--fs-grid-gap-0);
 
   @include media(">=notebook") {
-    --gap: var(--fs-grid-gap-0);
-
     $pagination-start-index: 2;
 
     grid-template-columns: repeat(4, 1fr);
+    gap: var(--fs-grid-gap-2);
 
     &:nth-of-type(n + #{$pagination-start-index}) {
-      margin-top: var(--gap);
+      margin-top: var(--fs-grid-gap-2);
     }
   }
 
