@@ -9,11 +9,11 @@
   // Default properties
   --fs-hero-bkg-color                  : var(--fs-color-primary-bkg);
 
-  --fs-hero-title-line                 : 1.1;
+  --fs-hero-title-line-height          : 1.1;
 
   --fs-hero-text-color                 : var(--fs-color-text-inverse);
   --fs-hero-text-size                  : var(--fs-text-size-lead);
-  --fs-hero-text-line                  : 1.33;
+  --fs-hero-text-line-height           : 1.33;
 
   // Primary properties
   --fs-hero-primary-img-height-mob     : #{rem(240px)};
@@ -49,13 +49,13 @@
 
   h1 {
     font-weight: var(--fs-text-weight-black);
-    line-height: var(--fs-hero-title-line);
+    line-height: var(--fs-hero-title-line-height);
   }
 
   p {
     margin-top: var(--fs-spacing-2);
     font-size: var(--fs-hero-text-size);
-    line-height: var(--fs-hero-text-line);
+    line-height: var(--fs-hero-text-line-height);
 
     @include media(">=tablet") { margin-top: var(--fs-spacing-4); }
   }
