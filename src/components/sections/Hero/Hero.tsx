@@ -1,11 +1,11 @@
+import { ButtonLink } from 'src/components/ui/Button'
 import UIHero, {
   HeroContent,
   HeroImage,
   HeroLink,
 } from 'src/components/ui/Hero'
-import Image from 'src/components/ui/Image/Image'
-import { ButtonLink } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import Image from 'src/components/ui/Image/Image'
 
 import Section from '../Section'
 
@@ -35,6 +35,17 @@ const Hero = ({
   return (
     <Section>
       <UIHero data-hero-variant={variant}>
+        <HeroImage>
+          <Image
+            preload
+            loading="eager"
+            src={imageSrc}
+            alt={imageAlt}
+            width={360}
+            height={240}
+            sizes="(max-width: 768px) 70vw, 50vw"
+          />
+        </HeroImage>
         <HeroContent aria-labelledby="hero-heading">
           <div data-hero-wrapper className="layout__content">
             <div data-hero-info>
@@ -52,17 +63,6 @@ const Hero = ({
             {!!icon && <div data-hero-icon>{icon}</div>}
           </div>
         </HeroContent>
-        <HeroImage>
-          <Image
-            preload
-            loading="eager"
-            src={imageSrc}
-            alt={imageAlt}
-            width={360}
-            height={240}
-            sizes="(max-width: 768px) 70vw, 50vw"
-          />
-        </HeroImage>
       </UIHero>
     </Section>
   )
