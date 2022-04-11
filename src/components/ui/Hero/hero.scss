@@ -2,13 +2,13 @@
 
 [data-store-hero] {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   width: 100%;
   background-color: var(--fs-color-primary-bkg);
 
   @include media(">=tablet") {
     position: relative;
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: flex-end;
   }
 }
