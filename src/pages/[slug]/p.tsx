@@ -17,6 +17,8 @@ import type {
 } from '@generated/graphql'
 import { ITEMS_PER_SECTION } from 'src/constants'
 
+import 'src/styles/pages/pdp.scss'
+
 export type Props = PageProps<
   ProductPageQueryQuery,
   ProductPageQueryQueryVariables,
