@@ -1,6 +1,6 @@
 @import "src/styles/scaffold";
 
-.postal-code-input {
+.regionalization-input {
   // Lighthouse
   margin-top: var(--fs-spacing-3);
 
@@ -19,7 +19,7 @@
   }
 }
 
-[data-fs-postal-code-bar] {
+[data-fs-regionalization-bar] {
   width: 100%;
 
   [data-fs-button] {
@@ -43,7 +43,7 @@
   }
 }
 
-[data-fs-postal-code-button] {
+[data-fs-regionalization-button] {
   padding-right: var(--fs-spacing-1);
   margin-left: calc(-1 * var(--fs-spacing-2));
   border-right: var(--fs-border-width-default) solid var(--fs-border-color-light);

@@ -3,10 +3,10 @@ import Alert from 'src/components/common/Alert'
 import Footer from 'src/components/common/Footer'
 import Navbar from 'src/components/common/Navbar'
 import Toast from 'src/components/common/Toast'
-import PostalCodeBar from 'src/components/common/PostalCode/PostalCodeBar'
+import RegionalizationBar from 'src/components/regionalization/RegionalizationComponents'
+import RegionalizationModal from 'src/components/regionalization/RegionalizationModal'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
-import RegionalizationModal from 'src/components/regionalization/RegionalizationModal'
 import { useRegionalization } from 'src/components/regionalization/RegionalizationProvider'
 
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
@@ -25,7 +25,7 @@ function Layout({ children }: PropsWithChildren<unknown>) {
         <Navbar />
 
         <main>
-          <PostalCodeBar classes="display-mobile" />
+          <RegionalizationBar classes="display-mobile" />
           {children}
         </main>
 

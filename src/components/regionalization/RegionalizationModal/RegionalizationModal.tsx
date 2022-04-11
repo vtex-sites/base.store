@@ -2,9 +2,9 @@ import { Modal as UIModal } from '@faststore/ui'
 import Link from 'src/components/ui/Link'
 import Icon from 'src/components/ui/Icon'
 import { useEffect } from 'react'
-import { PostalCodeInput } from 'src/components/common/PostalCode'
 import { ButtonIcon } from 'src/components/ui/Button'
 import { useModal } from 'src/sdk/ui/modal/Provider'
+import { RegionalizationInput } from 'src/components/regionalization/RegionalizationComponents'
 
 interface RegionalizationModalProps {
   isOpen: boolean
@@ -54,7 +54,7 @@ function RegionalizationModal({
       <div className="regionalization-modal__body">
         {/* TODO: Remove this div when PostalCodeInput be styled */}
         <div data-regionalization-modal-input>
-          <PostalCodeInput />
+          <RegionalizationInput />
         </div>
         <Link to="/">
           <span data-regionalization-modal-link>
