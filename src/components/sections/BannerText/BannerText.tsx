@@ -34,6 +34,11 @@ interface BaseProps extends HTMLAttributes<HTMLDivElement> {
    * The label used at the link
    */
   actionLabel: string
+  /**
+   * Color variant combinations
+   * @default: 'main'
+   */
+  colorVariant?: 'main' | 'light' | 'accent'
 }
 
 export type BannerTextProps = BaseProps & BannerTextVariant
@@ -44,17 +49,29 @@ function BannerText({
   actionPath,
   actionLabel,
   variant = 'primary',
+  colorVariant = 'main',
 }: BannerTextProps) {
   return (
     <Section className="layout__section">
-      <Banner data-fs-banner-text data-fs-banner-text-variant={variant}>
+      <Banner
+        data-fs-banner-text
+        data-fs-banner-text-variant={variant}
+        data-fs-banner-text-color-variant={colorVariant}
+      >
         <BannerContent data-fs-banner-text-content className="layout__content">
-          <div>
+          <div
+            data-fs-banner-text-heading
+            data-fs-banner-text-color-variant={colorVariant}
+          >
             <h2>{title}</h2>
             {variant === 'secondary' && caption && <p>{caption}</p>}
           </div>
           <BannerLink data-fs-banner-text-link>
-            <ButtonLink to={actionPath} inverse>
+            <ButtonLink
+              to={actionPath}
+              variant={variant}
+              inverse={colorVariant === 'main'}
+            >
               {actionLabel}
             </ButtonLink>
           </BannerLink>
