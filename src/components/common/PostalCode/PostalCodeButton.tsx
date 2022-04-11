@@ -12,7 +12,7 @@ export default function PostalCodeButton({
   content,
   classes,
   ...otherProps
-}: PostalCodeBarProps) {
+}: PostalCodeButtonProps) {
   const { setIsModalOpen } = useRegionalization()
 
   return (
