@@ -6,6 +6,8 @@ import Toast from 'src/components/common/Toast'
 import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 
+import 'src/styles/pages/layout.scss'
+
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
