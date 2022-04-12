@@ -14,8 +14,8 @@ const Template = ({ children, ...args }: BadgeProps) => (
 export const Default = Template.bind({})
 
 Default.args = {
-  children: 'Something',
-  small: false,
+  children: '50% off',
+  small: true,
   interactive: false,
-  variant: 'highlighted',
+  variant: 'neutral	',
 }
