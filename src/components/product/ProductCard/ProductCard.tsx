@@ -16,7 +16,7 @@ import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 type Variant = 'wide' | 'default'
 
-interface Props {
+export interface ProductCardProps {
   product: ProductSummary_ProductFragment
   index: number
   bordered?: boolean
@@ -33,7 +33,7 @@ function ProductCard({
   aspectRatio = 1,
   ButtonBuy,
   ...otherProps
-}: Props) {
+}: ProductCardProps) {
   const {
     sku,
     isVariantOf: { name },
