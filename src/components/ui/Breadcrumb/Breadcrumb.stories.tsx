@@ -35,8 +35,8 @@ WithDropdown.args = {
   breadcrumbList: [
     ...breadcrumbList,
     {
-      item: 'item5',
-      name: 'item5 There are many variations of passages of Lorem',
+      item: 'technology/electronics/audio-and-video/headphones/headphonesaedle-vk1-headphone',
+      name: 'Aedle VK-1 L Headphone',
       position: 5,
     },
   ],
