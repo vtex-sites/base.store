@@ -3,7 +3,7 @@ import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
 import Badge from './Badge'
 
-type Props = {
+export type DiscountBadgeProps = {
   listPrice: number
   spotPrice: number
   small?: boolean
@@ -19,7 +19,7 @@ const DiscountBadge = ({
   small = false,
   thresholdLow = 15,
   thresholdHigh = 40,
-}: Props) => {
+}: DiscountBadgeProps) => {
   const discountPercent = useDiscountPercent(listPrice, spotPrice)
 
   if (discountPercent === 0) {
