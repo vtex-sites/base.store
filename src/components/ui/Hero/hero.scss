@@ -1,6 +1,7 @@
 @import "src/styles/scaffold";
 
 [data-fs-hero] {
+  // --------------------------------------------------------
   // Design Tokens for Hero Section
   // --------------------------------------------------------
 
@@ -23,6 +24,7 @@
   --fs-hero-secondary-img-height-desk  : #{rem(227px)};
   --fs-hero-secondary-title-size       : var(--fs-text-size-title-page);
 
+  // --------------------------------------------------------
   // Structural Styles
   // --------------------------------------------------------
 
@@ -85,6 +87,10 @@
     overflow: hidden;
   }
 }
+
+// --------------------------------------------------------
+// Variants Styles
+// --------------------------------------------------------
 
 [data-fs-hero-variant="primary"] {
   @include media(">=tablet") { min-height: var(--fs-hero-primary-img-height-desk); }
