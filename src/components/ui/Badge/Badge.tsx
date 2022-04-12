@@ -3,7 +3,7 @@ import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import type { ReactNode } from 'react'
 
-export type BadgeVariants = 'info' | 'highlighted' | 'success'
+export type BadgeVariants = 'info' | 'highlighted' | 'success' | 'neutral'
 
 type InteractiveBadge =
   | {
@@ -24,7 +24,7 @@ type Props = {
 } & InteractiveBadge
 
 const Badge = ({
-  variant,
+  variant = 'neutral',
   children,
   onClose,
   small = false,
@@ -41,6 +41,7 @@ const Badge = ({
       {interactive && (
         <Button
           data-fs-badge-button="true"
+          aria-label="Remove"
           onClick={onClose}
           icon={<Icon name="X" width={18} height={18} weight="bold" />}
           iconPosition="left"

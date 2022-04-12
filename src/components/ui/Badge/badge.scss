@@ -20,6 +20,11 @@
   --fs-badge-transition-property          : var(--fs-transition-property);
   --fs-badge-transition-timing            : var(--fs-transition-timing);
 
+  // Neutral
+  --fs-badge-neutral-bkg-color            : var(--fs-color-neutral-bkg);
+  --fs-badge-neutral-text-color           : var(--fs-badge-text-color);
+  --fs-badge-neutral-border-color         : var(--fs-color-neutral-bkg);
+
   // Success
   --fs-badge-success-bkg-color            : var(--fs-color-success-bkg);
   --fs-badge-success-text-color           : var(--fs-badge-text-color);
@@ -80,13 +85,7 @@
 [data-fs-badge-wrapper] {
   padding: var(--fs-badge-padding);
   overflow: hidden;
-  background-color: var(--fs-badge-bkg-color);
-  border: var(--fs-badge-border-width) solid var(--fs-badge-border-color);
   border-radius: var(--fs-badge-border-radius);
-
-  &::after {
-    background-color: var(--fs-badge-bkg-color);
-  }
 
   span {
     display: block;
@@ -102,7 +101,7 @@
 }
 
 // --------------------------------------------------------
-// Structure Variants
+// Variants Styles
 // --------------------------------------------------------
 
 [data-fs-badge="small"] {
@@ -144,6 +143,19 @@
 // --------------------------------------------------------
 // Template Variants
 // --------------------------------------------------------
+
+[data-fs-badge-variant="neutral"] {
+  color: var(--fs-badge-neutral-text-color);
+
+  [data-fs-badge-wrapper] {
+    background-color: var(--fs-badge-neutral-bkg-color);
+    border-color: var(--fs-badge-neutral-border-color);
+
+    &::after {
+      background-color: var(--fs-badge-neutral-bkg-color);
+    }
+  }
+}
 
 [data-fs-badge-variant="success"] {
   color: var(--fs-badge-success-text-color);
