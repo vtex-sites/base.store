@@ -10,7 +10,6 @@ interface Incentive {
 
 interface Props {
   incentives: Incentive[]
-  classes?: string
 }
 
 function IncentivesHeader({ incentives }: Props) {
