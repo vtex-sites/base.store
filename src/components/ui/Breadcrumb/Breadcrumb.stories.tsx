@@ -7,20 +7,20 @@ export default {
 }
 
 const breadcrumbList = [
-  { item: 'item1', name: 'item1 Contrary to popular belief', position: 1 },
+  { item: 'technlogy', name: 'Technology', position: 1 },
   {
-    item: 'item2',
-    name: 'item2 There are many variations of passages of Lorem',
+    item: 'technology/electronics',
+    name: 'Electronics',
     position: 2,
   },
   {
-    item: 'item3',
-    name: 'item3 There are many variations of passages of Lorem',
+    item: 'technology/electronics/audio-and-video',
+    name: 'Audio & Video',
     position: 3,
   },
   {
-    item: 'item4',
-    name: 'item4 There are many variations of passages of Lorem',
+    item: 'technology/electronics/audio-and-video/headphones',
+    name: 'Headphones',
     position: 4,
   },
 ]
