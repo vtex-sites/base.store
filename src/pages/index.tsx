@@ -10,6 +10,7 @@ import { mark } from 'src/sdk/tests/mark'
 import { ITEMS_PER_SECTION } from 'src/constants'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
+import IncentivesMock from 'src/components/sections/Incentives/incentivesMock'
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -73,7 +74,7 @@ function Page(props: Props) {
         imageAlt="Quest 2 Controller on a table"
       />
 
-      <IncentivesHeader />
+      <IncentivesHeader incentives={IncentivesMock} />
 
       <ProductShelf
         first={ITEMS_PER_SECTION}
