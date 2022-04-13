@@ -1,8 +1,8 @@
 @import "src/styles/scaffold";
 
 .suggestions__title {
-  margin-bottom: var(--fs-spacing-1);
   padding: 0 var(--fs-spacing-3);
+  margin-bottom: var(--fs-spacing-1);
   font-size: var(--fs-text-size-3);
   line-height: 1.5;
 }
@@ -47,18 +47,18 @@
 
 [data-store-suggestions] {
   .suggestions__item-bold {
-    color: var(--fs-color-neutral-7);
     font-weight: var(--fs-text-weight-bold);
+    color: var(--fs-color-neutral-7);
   }
 
   .button[data-store-button] {
     padding: var(--fs-spacing-2) 0;
-    color: var(--fs-color-text-light);
-    font-weight: var(--fs-text-weight-regular);
     font-size: var(--fs-text-size-2);
+    font-weight: var(--fs-text-weight-regular);
     line-height: 1.25;
-    background-color: transparent;
+    color: var(--fs-color-text-light);
     cursor: pointer;
+    background-color: transparent;
   }
 
   [data-store-link] {

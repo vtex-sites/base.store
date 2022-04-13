@@ -5,8 +5,6 @@
 
 @import "../vendors/include-media";
 
-/* stylelint-disable */
-
 // --------------------------------------------------------
 // Colors (Branding Core)
 // --------------------------------------------------------
@@ -81,16 +79,20 @@ body {
 
   --fs-color-focus-ring                : #8db6fa;
   --fs-color-focus-ring-outline        : #8db6fa80;
+  --fs-color-focus-ring-danger         : #fee1e1;
 
   // SITUATIONS
   --fs-color-success-text              : #368369;
   --fs-color-success-bkg               : #cee8de;
+  --fs-color-success-border            : var(--fs-color-success-text);
 
   --fs-color-warning-text              : var(--fs-color-text);
   --fs-color-warning-bkg               : #f6e0ba;
+  --fs-color-warning-border            : var(--fs-color-warning-text);
 
-  --fs-color-danger-text               : var(--fs-color-text);
-  --fs-color-danger-bkg                : #fee1e1;
+  --fs-color-danger-text               : #cb4242;
+  --fs-color-danger-bkg                : var(--fs-color-focus-ring-danger);
+  --fs-color-danger-border             : var(--fs-color-danger-text);
 
   --fs-color-info-text                 : var(--fs-color-text);
   --fs-color-info-bkg                  : var(--fs-color-main-1);
@@ -106,14 +108,11 @@ body {
 
   --fs-color-disabled-text             : var(--fs-color-neutral-6);
   --fs-color-disabled-bkg              : var(--fs-color-neutral-2);
-}
 
+  // --------------------------------------------------------
+  // Typography (Branding Core)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Typography (Branding Core)
-// --------------------------------------------------------
-
-body {
   // FACE
   --fs-text-face-body                  : "Lato", -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
   --fs-text-face-title                 : var(--fs-text-face-body);
@@ -133,6 +132,7 @@ body {
   --fs-text-scale-desk                 : 1.25;
 
   --fs-scale                           : var(--fs-text-scale-mobile);
+
   @include media(">=notebook") {
     --fs-scale                         : var(--fs-text-scale-desk);
   }
@@ -161,14 +161,11 @@ body {
   --fs-text-size-body                  : var(--fs-text-size-base);
   --fs-text-size-legend                : var(--fs-text-size-1);
   --fs-text-size-tiny                  : var(--fs-text-size-0);
-}
 
+  // --------------------------------------------------------
+  // Spacing (UI Essentials)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Spacing (UI Essentials)
-// --------------------------------------------------------
-
-body {
   // NUMERIC SCALE
   --fs-spacing-0                       : .25rem; //  4px
   --fs-spacing-1                       : .5rem;  //  8px
@@ -184,19 +181,18 @@ body {
   --fs-spacing-11                      : 5rem;   // 80px
   --fs-spacing-12                      : 5.5rem; // 88px
   --fs-spacing-13                      : 6rem;   // 96px
-}
 
+  // --------------------------------------------------------
+  // Grid & Layout (UI Essentials)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Grid & Layout (UI Essentials)
-// --------------------------------------------------------
-
-body {
   // PADDING
   --fs-grid-padding                    : var(--fs-spacing-3);
+
   @include media(">=tablet") {
     --fs-grid-padding                  : var(--fs-spacing-4);
   }
+
   @include media(">=notebook") {
     --fs-grid-padding                  : var(--fs-spacing-5);
   }
@@ -205,9 +201,11 @@ body {
   --fs-grid-max-width                  : var(--fs-grid-breakpoint-notebook);
 
   // GAPS
-  --fs-grid-gap-0                      : var(--fs-spacing-3);
-  --fs-grid-gap-1                      : var(--fs-spacing-4);
-  --fs-grid-gap-2                      : var(--fs-spacing-5);
+  --fs-grid-gap-0                      : calc(var(--fs-spacing-0) / 2);
+  --fs-grid-gap-1                      : var(--fs-spacing-2);
+  --fs-grid-gap-2                      : var(--fs-spacing-3);
+  --fs-grid-gap-3                      : var(--fs-spacing-4);
+  --fs-grid-gap-4                      : var(--fs-spacing-5);
 
   // BREAKPOINTS
   --fs-grid-breakpoint-phone           : #{map-get($breakpoints, "phone")};
@@ -215,17 +213,15 @@ body {
   --fs-grid-breakpoint-tablet          : #{map-get($breakpoints, "tablet")};
   --fs-grid-breakpoint-notebook        : #{map-get($breakpoints, "notebook")};
   --fs-grid-breakpoint-desktop         : #{map-get($breakpoints, "desktop")};
-}
 
+  // --------------------------------------------------------
+  // Interactive Controls (UI Essentials)
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Interactive Controls (UI Essentials)
-// --------------------------------------------------------
-
-body {
   // TAP
   --fs-control-tap-size-smallest       : calc(var(--fs-control-tap-size) / 2);
   --fs-control-tap-size                : var(--fs-spacing-7); // 3rem = 48px
+
   @include media(">=notebook") {
     --fs-control-tap-size              : var(--fs-spacing-7); // This value can be smaller on desktops
   }
@@ -238,14 +234,11 @@ body {
 
   // SIZING
   --fs-control-min-height              : var(--fs-control-tap-size);
-}
 
+  // --------------------------------------------------------
+  // Refinements
+  // --------------------------------------------------------
 
-// --------------------------------------------------------
-// Refinements
-// --------------------------------------------------------
-
-body {
   // TRANSITION
   --fs-transition-timing               : .2s;
   --fs-transition-property             : all;
@@ -275,5 +268,3 @@ body {
   --fs-shadow-darker                   : 0 0 10px rgb(0 0 0 / 20%);
   --fs-shadow-hover                    : var(--fs-shadow);
 }
-
-/* stylelint-enable */

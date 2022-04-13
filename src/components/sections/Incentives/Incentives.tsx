@@ -1,9 +1,8 @@
 import { Incentive as UIIncentive, List as UIList } from '@faststore/ui'
-import React from 'react'
-import type { ReactNode } from 'react'
+import Icon from 'src/components/ui/Icon'
 
 interface Incentive {
-  icon: ReactNode
+  icon: string
   title?: string
   firstLineText: string
   secondLineText?: string
@@ -21,7 +20,7 @@ function Incentives({ incentives, classes = '' }: Props) {
         {incentives.map((incentive, index) => (
           <li key={String(index)}>
             <UIIncentive>
-              {incentive.icon}
+              <Icon name={incentive.icon} width={32} height={32} />
               <div data-incentive-content>
                 {incentive.title && <p>{incentive.title}</p>}
                 <span>{incentive.firstLineText}</span>

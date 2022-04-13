@@ -4,13 +4,13 @@
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  row-gap: var(--fs-grid-gap-0);
-  column-gap: var(--fs-grid-gap-0);
+  row-gap: var(--fs-grid-gap-2);
+  column-gap: var(--fs-grid-gap-2);
 
   @include media(">=tablet") {
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: repeat(4, 1fr);
-    column-gap: var(--fs-grid-gap-1);
+    column-gap: var(--fs-grid-gap-3);
   }
 }
 

@@ -1,6 +1,6 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
@@ -38,14 +38,20 @@ function ProductGallery({ title, searchTerm }: Props) {
 
   if (data && totalCount === 0) {
     return (
-      <Section className="product-listing layout__content">
+      <Section
+        data-testid="product-gallery"
+        className="product-listing layout__content"
+      >
         <EmptyGallery />
       </Section>
     )
   }
 
   return (
-    <Section className="product-listing layout__content-full">
+    <Section
+      data-testid="product-gallery"
+      className="product-listing layout__content-full"
+    >
       {searchTerm && (
         <header className="product-listing__search-term layout__content">
           <h1>

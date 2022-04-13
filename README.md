@@ -26,19 +26,18 @@ asdfasdf
 
 As of Dec, 22, 2021, this starter is still far from covering most basic cases found on VTEX. To summarize what we still do not support that is considered basic on the VTEX commerce platform, we prepared the list below. If the feature you want is listed, you can either wait for us to add support to the feature, or fork the repo and implement on your own. Note that, by forking the repo, you will miss new features and improvements we do in this repo and you will need a developer to backport the feature to your store. Finally, this list is a work in progress, so some features may be missing from both base.store starter and this list.
 
-1. Support up to 2.5K SKUs. If you have more than 2.5K SKUs, you have two options. Either reduce the number of skus on your catalog to fall below 2.5K SKUs or use Client Side Rendering (CSR) for all SKUs. (Note that CSR makes your SKUs not indexable by Search Engines and harms performance considerably)
-2. Multiple CMS Previews. Only one user is allowed to preview content from the CMS at a time. If two users preview any content from any page at the CMS, the previews are not consistent and one user may see data from the other.
-3. Price Table
-4. Regionalization
-5. Internationalization
-6. Shared Cart (Carrinho compartilhado)
-7. Clear products that are our of stock from cart
-8. GDPR (LGDP)
-9. Shipping simulation
-10. Sitemap
-11. Sku selector on PDP
-12. Promotions via utm
-13. Product specifications
+1. Multiple CMS Previews. Only one user is allowed to preview content from the CMS at a time. If two users preview any content from any page at the CMS, the previews are not consistent and one user may see data from the other.
+2. Price Table
+3. Regionalization
+4. Internationalization
+5. Shared Cart (Carrinho compartilhado)
+6. Clear products that are our of stock from cart
+7. GDPR (LGDP)
+8. Shipping simulation
+9. Sitemap
+10. Sku selector on PDP
+11. Promotions via utm
+12. Product specifications
 
 ## 🚀 Quick start
 
@@ -217,8 +216,6 @@ export { default } from './Button'
 The real thing happens on `Button.tsx`. On this file let's define the component like:
 
 ```tsx
-import React from 'react'
-
 interface Props {}
 
 function Button(props: Props) {
@@ -231,7 +228,6 @@ export default Button
 And, that's it! Now you have a working button that you can use anywhere on your project. FastStore, however, brings a handy library called `@faststore/ui` with built-in components to help you speed up your development. To use it, just change `Button.tsx` to:
 
 ```tsx
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
@@ -273,7 +269,6 @@ Now, include the component's CSS into the Store's CSS. Open `src/styles/global/c
 For most components, you would stop here. However, buttons can have different variants. For instance, suppose you want to have a button component with primary and secondary variants. To add variants to the component, update `Button.tsx`:
 
 ```tsx
-import React from 'react'
 import { Button as UIButton } from '@faststore/ui'
 import type { ButtonProps } from '@faststore/ui'
 
@@ -370,7 +365,6 @@ An example adding Bell icon:
 
 ```tsx
 // src/components/ui/MyIconButton/MyIconButton.tsx
-import React from 'react'
 import Icon from 'src/components/ui/Icon' // this path can be outdated.
 
 function ButtonIcon() {
