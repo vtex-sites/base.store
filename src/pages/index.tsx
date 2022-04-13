@@ -4,15 +4,17 @@ import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
-import ProductShelf from 'src/components/sections/ProductShelf'
 import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
 import { ITEMS_PER_SECTION } from 'src/constants'
 import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import IncentivesMock from 'src/components/sections/Incentives/incentivesMock'
+import { lazy, Suspense } from 'react'
 
 import 'src/styles/pages/homepage.scss'
+
+const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
 
 export type Props = PageProps<HomePageQueryQuery>
 
@@ -78,17 +80,21 @@ function Page(props: Props) {
 
       <IncentivesHeader incentives={IncentivesMock} />
 
-      <ProductShelf
-        first={ITEMS_PER_SECTION}
-        selectedFacets={[{ key: 'productClusterIds', value: '140' }]}
-        title="Most Wanted"
-      />
+      <Suspense fallback={null}>
+        <ProductShelf
+          first={ITEMS_PER_SECTION}
+          selectedFacets={[{ key: 'productClusterIds', value: '140' }]}
+          title="Most Wanted"
+        />
+      </Suspense>
 
-      <ProductTiles
-        first={3}
-        selectedFacets={[{ key: 'productClusterIds', value: '141' }]}
-        title="Just Arrived"
-      />
+      <Suspense fallback={null}>
+        <ProductTiles
+          first={3}
+          selectedFacets={[{ key: 'productClusterIds', value: '141' }]}
+          title="Just Arrived"
+        />
+      </Suspense>
 
       <BannerText
         title="Receive our news and promotions in advance. Enjoy and get 10% off on your first purchase."
@@ -96,11 +102,13 @@ function Page(props: Props) {
         actionLabel="Call to action"
       />
 
-      <ProductShelf
-        first={ITEMS_PER_SECTION}
-        selectedFacets={[{ key: 'productClusterIds', value: '142' }]}
-        title="Deals & Promotions"
-      />
+      <Suspense fallback={null}>
+        <ProductShelf
+          first={ITEMS_PER_SECTION}
+          selectedFacets={[{ key: 'productClusterIds', value: '142' }]}
+          title="Deals & Promotions"
+        />
+      </Suspense>
     </>
   )
 }
