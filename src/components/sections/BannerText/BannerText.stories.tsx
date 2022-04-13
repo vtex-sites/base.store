@@ -4,6 +4,27 @@ import BannerText from '.'
 export default {
   component: BannerText,
   title: 'Components/BannerText',
+  argTypes: {
+    variant: {
+      name: 'variant',
+      defaultValue: 'primary',
+    },
+    title: {
+      name: 'title',
+      type: { name: 'string', required: true },
+      control: {
+        type: 'text',
+      },
+    },
+    colorVariant: {
+      name: 'colorVariant',
+      defaultValue: 'main',
+      type: { name: 'string' },
+      control: {
+        type: 'text',
+      },
+    },
+  },
 }
 
 const Template = ({ ...args }: BannerTextProps) => <BannerText {...args} />
