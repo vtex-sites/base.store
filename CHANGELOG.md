@@ -11,17 +11,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Applies new local tokens to `Quantity Selector` (#448)
 - Applies new local tokens to `ProductShelf` component (#464)
+- Adds Storybook configs (#463)
 
 ### Changed
 
-- Upgrades to React18 (#461)
-- Uses new Automatic JSX runtime (#460)
-- Migrates Gatsby config files to TypeScript (#373)
-- Migrates to Gatsby v4 (#456)
+- Update the Incentives component to handle CMS data (#474)
 
 ### Deprecated
 
 ### Removed
+- Removes CSS imports of components that are not being used (#476)
 
 ### Fixed
 - Potential layout shift on Hero section fixed (#472)
