@@ -62,6 +62,8 @@ const isStyleComponent = (node: ReactNode): node is StyleComponent =>
  * Gatsby.
  * A workaround described in https://github.com/gatsbyjs/gatsby/issues/1526 is
  * implemented below
+ *
+ * We also need to ensure the global style as the first file to prevent break the style
  */
 export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
   getHeadComponents,
@@ -71,24 +73,35 @@ export const onPreRenderHTML: GatsbySSR['onPreRenderHTML'] = ({
     return
   }
 
-  const transformedHeadComponents = getHeadComponents().map((node) => {
-    if (isStyleComponent(node)) {
-      const globalStyleHref = node.props?.['data-href'] ?? node.props?.href
+  const transformedHeadComponents = getHeadComponents()
+    .sort((node) => {
+      if (isStyleComponent(node)) {
+        const styleHref = node.props?.['data-href'] ?? node.props?.href ?? ''
+        const isGlobalStyle = /^\/styles.[a-zA-Z0-9]*.css$/.test(styleHref) // global style regex
 
-      if (globalStyleHref) {
-        return (
-          <link
-            href={globalStyleHref}
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-          />
-        )
+        return isGlobalStyle ? -1 : 1
       }
-    }
 
-    return node
-  })
+      return 1
+    })
+    .map((node) => {
+      if (isStyleComponent(node)) {
+        const styleHref = node.props?.['data-href'] ?? node.props?.href
+
+        if (styleHref) {
+          return (
+            <link
+              href={styleHref}
+              rel="stylesheet"
+              type="text/css"
+              media="screen"
+            />
+          )
+        }
+      }
+
+      return node
+    })
 
   replaceHeadComponents(transformedHeadComponents)
 }
