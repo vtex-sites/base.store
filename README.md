@@ -11,6 +11,7 @@ Kickoff your store with this boilerplate. This starter ships with the main FastS
 
 asdfasdfasdf
 aaaaaaa
+asdf
 
 ## ⚠️ Before you start
 
