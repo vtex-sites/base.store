@@ -110,7 +110,7 @@
   --fs-button-disabled-text-color                  : var(--fs-color-disabled-text);
 
   // --------------------------------------------------------
-  // Template Styles
+  // Structural Styles
   // --------------------------------------------------------
 
   display: inline-flex;
@@ -136,7 +136,7 @@
   }
 
   // --------------------------------------------------------
-  // Structure Variants
+  // Variants Styles
   // --------------------------------------------------------
 
   &[data-fs-button-variant] {
