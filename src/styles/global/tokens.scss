@@ -151,6 +151,7 @@ body {
   --fs-text-size-8                     : calc(var(--fs-text-size-7) * var(--fs-scale)); // 33px   61px
 
   // HIERARCHY SCALE
+  --fs-text-size-title-huge            : var(--fs-text-size-7);
   --fs-text-size-title-page            : var(--fs-text-size-6);
   --fs-text-size-title-product         : var(--fs-text-size-4);
   --fs-text-size-title-section         : var(--fs-text-size-4);
