@@ -1,9 +1,9 @@
 import { Badge as UIBadge } from '@faststore/ui'
-import { ButtonIcon } from 'src/components/ui/Button'
+import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import type { ReactNode } from 'react'
 
-export type BadgeVariants = 'info' | 'highlighted' | 'neutral'
+export type BadgeVariants = 'info' | 'highlighted' | 'success' | 'neutral'
 
 type InteractiveBadge =
   | {
@@ -16,7 +16,7 @@ type InteractiveBadge =
     }
 
 type Props = {
-  small?: boolean
+  big?: boolean
   variant?: BadgeVariants
   children: ReactNode
   onClose?: () => void
@@ -24,36 +24,32 @@ type Props = {
 } & InteractiveBadge
 
 const Badge = ({
-  variant,
+  variant = 'neutral',
   children,
   onClose,
-  small = false,
+  big = false,
   interactive = false,
   ...otherProps
 }: Props) => {
   return (
     <UIBadge
-      className="badge"
-      data-store-badge={small ? 'small' : ''}
-      data-store-badge-variant={variant}
-      data-store-badge-interactive={interactive}
+      data-fs-badge={big ? 'big' : ''}
+      data-fs-badge-variant={variant}
+      data-fs-badge-interactive={interactive}
       {...otherProps}
     >
-      <span>{children}</span>
       {interactive && (
-        <ButtonIcon
+        <Button
+          data-fs-badge-button="true"
+          aria-label="Remove"
           onClick={onClose}
-          aria-label="Remove badge"
-          icon={
-            <Icon
-              name="X"
-              weight="bold"
-              width={small ? 12 : 16}
-              height={small ? 12 : 16}
-            />
-          }
+          icon={<Icon name="X" width={18} height={18} weight="bold" />}
+          iconPosition="left"
         />
       )}
+      <div data-fs-badge-wrapper>
+        <span>{children}</span>
+      </div>
     </UIBadge>
   )
 }
