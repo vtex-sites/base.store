@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+- Apply new local tokens to `Hero` (#435)
+- Applies new local tokens to `Quantity Selector` (#448)
+- Applies new local tokens to `ProductShelf` component (#464)
 - Adds Storybook configs (#463)
 
 - Add `RegionalizationBar`, `RegionalizationButton` components and integrates it on Mobile and Desktop devices (#424).
@@ -15,7 +19,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Update the Incentives component to handle CMS data (#474)
-- Applies new local tokens to `ProductShelf` component (#464)
 
 ### Deprecated
 
