@@ -2,7 +2,6 @@ import { CartProvider, SessionProvider, UIProvider } from '@faststore/sdk'
 import type { ReactNode } from 'react'
 import type { GatsbySSR } from 'gatsby'
 
-import RegionalizationProvider from './src/components/regionalization/RegionalizationProvider'
 import ThirdPartyScripts from './src/components/ThirdPartyScripts'
 import Layout from './src/Layout'
 import AnalyticsHandler from './src/sdk/analytics'
@@ -24,9 +23,7 @@ export const wrapRootElement: GatsbySSR['wrapRootElement'] = ({ element }) => (
       >
         <SessionProvider initialState={{ channel: storeConfig.channel }}>
           <CartProvider mode="optimistic" onValidateCart={validateCart}>
-            <RegionalizationProvider>
-              <ModalProvider>{element}</ModalProvider>
-            </RegionalizationProvider>
+            <ModalProvider>{element}</ModalProvider>
           </CartProvider>
         </SessionProvider>
       </UIProvider>
