@@ -8,12 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+- Applies new local tokens to `Quantity Selector` (#448)
+- Applies new local tokens to `ProductShelf` component (#464)
 - Adds Storybook configs (#463)
 
 ### Changed
 
 - Update the Incentives component to handle CMS data (#474)
-- Applies new local tokens to `ProductShelf` component (#464)
 
 ### Deprecated
 
