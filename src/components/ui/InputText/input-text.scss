@@ -72,7 +72,7 @@
 
 [data-fs-input-text-error="true"] {
   input {
-    border-color: var(--fs-color-danger-text);
+    border-color: var(--fs-color-danger-border);
 
     @include input-focus-ring($outline: #{var(--fs-color-focus-ring-danger)},
     $border: #{var(--fs-color-danger-border)});
@@ -84,7 +84,7 @@
   }
 
   [data-fs-input-text-message] {
-    color: var(--fs-color-danger-border);
+    color: var(--fs-color-danger-text);
   }
 }
 

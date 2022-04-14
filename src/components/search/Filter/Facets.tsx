@@ -49,10 +49,7 @@ function Facets({
                       data-quantity={item.quantity}
                     />
                     <UILabel htmlFor={id} className="text__title-mini-alt">
-                      {item.label}{' '}
-                      <Badge variant="neutral" small>
-                        {item.quantity}
-                      </Badge>
+                      {item.label} <Badge>{item.quantity}</Badge>
                     </UILabel>
                   </li>
                 )
