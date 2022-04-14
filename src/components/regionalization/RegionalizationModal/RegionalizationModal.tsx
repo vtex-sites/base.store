@@ -4,7 +4,7 @@ import Icon from 'src/components/ui/Icon'
 import { useEffect } from 'react'
 import { ButtonIcon } from 'src/components/ui/Button'
 import { useModal } from 'src/sdk/ui/modal/Provider'
-import { RegionalizationInput } from 'src/components/regionalization/RegionalizationComponents'
+import RegionalizationInput from 'src/components/regionalization/RegionalizationInput'
 
 interface RegionalizationModalProps {
   isOpen: boolean
