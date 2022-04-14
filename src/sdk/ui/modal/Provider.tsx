@@ -15,9 +15,8 @@ interface BaseContextValue {
   fade: FadeType
   onModalOpen: () => void
   onModalClose: () => void
-  isModalOpen: boolean
-  openModal: () => void
-  closeModal: () => void
+  isRegionalizationModalOpen: boolean
+  setIsRegionalizationModalOpen: (state: boolean) => void
 }
 
 type ContextValue = Record<string, unknown> & BaseContextValue
@@ -25,7 +24,9 @@ type ContextValue = Record<string, unknown> & BaseContextValue
 const ModalContext = createContext<ContextValue | undefined>(undefined)
 
 function ModalProvider({ children }: PropsWithChildren<unknown>) {
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isRegionalizationModalOpen, setIsRegionalizationModalOpen] =
+    useState(false)
+
   const [fade, setFade] = useState<FadeType>('out')
   const layout = useRef<HTMLElement | null>(null)
 
@@ -37,14 +38,6 @@ function ModalProvider({ children }: PropsWithChildren<unknown>) {
   const onModalClose = useCallback(() => {
     setFade('out')
     layout.current?.classList.remove('no-scroll')
-  }, [])
-
-  const openModal = useCallback(() => {
-    setIsModalOpen(true)
-  }, [])
-
-  const closeModal = useCallback(() => {
-    setIsModalOpen(false)
   }, [])
 
   useEffect(() => {
@@ -60,11 +53,16 @@ function ModalProvider({ children }: PropsWithChildren<unknown>) {
       fade,
       onModalOpen,
       onModalClose,
-      isModalOpen,
-      openModal,
-      closeModal,
+      isRegionalizationModalOpen,
+      setIsRegionalizationModalOpen,
     }),
-    [fade, onModalOpen, onModalClose, isModalOpen, openModal, closeModal]
+    [
+      fade,
+      onModalOpen,
+      onModalClose,
+      isRegionalizationModalOpen,
+      setIsRegionalizationModalOpen,
+    ]
   )
 
   return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>

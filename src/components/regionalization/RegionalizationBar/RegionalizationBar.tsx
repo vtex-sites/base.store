@@ -13,11 +13,11 @@ export default function RegionalizationBar({
   classes,
   ...otherProps
 }: RegionalizationBarProps) {
-  const { openModal } = useModal()
+  const { setIsRegionalizationModalOpen } = useModal()
 
   return (
     <div data-fs-regionalization-bar className={classes} {...otherProps}>
-      <Button onClick={() => openModal()}>
+      <Button onClick={() => setIsRegionalizationModalOpen(true)}>
         <Icon name="MapPin" width={24} height={24} />
         {content ? (
           <>

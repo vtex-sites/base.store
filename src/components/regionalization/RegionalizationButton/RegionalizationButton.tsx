@@ -13,7 +13,7 @@ export default function RegionalizationButton({
   classes,
   ...otherProps
 }: RegionalizationButtonProps) {
-  const { openModal } = useModal()
+  const { setIsRegionalizationModalOpen } = useModal()
 
   return (
     <div data-fs-regionalization-button className={classes} {...otherProps}>
@@ -22,7 +22,7 @@ export default function RegionalizationButton({
         size="small"
         icon={<Icon name="MapPin" width={24} height={24} />}
         iconPosition="left"
-        onClick={() => openModal()}
+        onClick={() => setIsRegionalizationModalOpen(true)}
       >
         {content ? (
           <>

@@ -13,7 +13,8 @@ const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {
   const { displayMinicart } = useUI()
-  const { isModalOpen, closeModal } = useModal()
+  const { isRegionalizationModalOpen, setIsRegionalizationModalOpen } =
+    useModal()
 
   return (
     <>
@@ -40,8 +41,8 @@ function Layout({ children }: PropsWithChildren<unknown>) {
         )}
       </div>
       <RegionalizationModal
-        isOpen={isModalOpen}
-        onDismiss={() => closeModal()}
+        isOpen={isRegionalizationModalOpen}
+        onDismiss={() => setIsRegionalizationModalOpen(false)}
       />
     </>
   )
