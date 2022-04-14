@@ -9,13 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Apply new local tokens to `Hero` (#435)
+- Applies new local tokens to `Quantity Selector` (#448)
+- Applies new local tokens to `ProductShelf` component (#464)
+- Adds Storybook configs (#463)
+
 ### Changed
 
-- Applies new local tokens to `ProductShelf` component (#464)
+- Update the Incentives component to handle CMS data (#474)
 
 ### Deprecated
 
 ### Removed
+- Removes CSS imports of components that are not being used (#476)
 
 ### Fixed
 - Fix unused CSS problem by separating imports into different files for each page (#473)

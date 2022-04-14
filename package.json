@@ -17,7 +17,9 @@
     "stylelint": "stylelint \"**/*.scss\"",
     "stylelint:fix": "stylelint \"**/*.scss\" --fix",
     "postinstall": "is-ci || husky install",
-    "partytown": "partytown copylib ./public/~partytown"
+    "partytown": "partytown copylib ./public/~partytown",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "engines": {
     "node": ">=14"
@@ -52,12 +54,20 @@
     "swr": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.8",
     "@cypress/code-coverage": "^3.9.10",
     "@graphql-codegen/cli": "^2.2.1",
     "@graphql-codegen/typescript": "^2.2.4",
     "@graphql-codegen/typescript-operations": "^2.1.8",
     "@lhci/cli": "^0.9.0",
     "@netlify/plugin-gatsby": "^2.0.0-beta",
+    "@storybook/addon-a11y": "^6.4.20",
+    "@storybook/addon-actions": "^6.4.20",
+    "@storybook/addon-essentials": "^6.4.20",
+    "@storybook/addon-links": "^6.4.20",
+    "@storybook/builder-webpack5": "^6.4.20",
+    "@storybook/manager-webpack5": "^6.4.20",
+    "@storybook/react": "^6.4.20",
     "@testing-library/cypress": "^8.0.0",
     "@types/cypress": "^1.1.3",
     "@vtex/lighthouse-config": "^1.7.14",
@@ -65,6 +75,8 @@
     "@vtex/tsconfig": "0.6.0",
     "autoprefixer": "^10.4.0",
     "axe-core": "^4.3.3",
+    "babel-loader": "^8.2.4",
+    "babel-plugin-remove-graphql-queries": "^4.11.1",
     "cypress": "6.6.0",
     "cypress-axe": "^0.13.0",
     "cypress-wait-until": "^1.7.2",
@@ -78,12 +90,14 @@
     "lint-staged": "^10.5.4",
     "postcss": "^8.4.4",
     "prettier": "^2.2.0",
+    "storybook-addon-gatsby": "^0.0.5",
     "stylelint": "^14.6.0",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-standard": "^24.0.0",
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.1",
+    "tsconfig-paths-webpack-plugin": "^3.5.2",
     "typescript": "^4.5.2"
   },
   "resolutions": {

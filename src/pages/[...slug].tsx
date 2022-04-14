@@ -112,7 +112,7 @@ function Page(props: Props) {
       />
 
       <Hero
-        variant="small"
+        variant="secondary"
         title={title}
         subtitle={`All the amazing ${title} from the brands we partner with.`}
         imageSrc="https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg"
