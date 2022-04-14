@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add `RegionalizationBar`, `RegionalizationButton` components and integrates it on Mobile and Desktop devices (#424).
 
 ### Changed
-
+- Applies new local tokens to `BannerText` (#470)
 - Update the Incentives component to handle CMS data (#474)
 
 ### Deprecated
