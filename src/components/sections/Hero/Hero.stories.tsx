@@ -7,6 +7,11 @@ import Hero from '.'
 export default {
   component: Hero,
   title: 'Components/Hero',
+  argTypes: {
+    link: { table: { disable: true } },
+    imageAlt: { table: { disable: true } },
+    variant: { table: { disable: true } },
+  },
 }
 
 const Template = ({ ...args }: HeroProps) => (
@@ -15,9 +20,9 @@ const Template = ({ ...args }: HeroProps) => (
   </HelmetProvider>
 )
 
-export const Default = Template.bind({})
+export const Primary = Template.bind({})
 
-Default.args = {
+Primary.args = {
   title: 'New Products Available',
   subtitle:
     'At BaseStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase.',
@@ -27,6 +32,21 @@ Default.args = {
     'https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg',
   imageAlt: 'Quest 2 Controller on a table',
   variant: 'primary',
+  colorVariant: 'main',
+}
+
+export const Secondary = Template.bind({})
+
+Secondary.args = {
+  title: 'New Products Available',
+  subtitle:
+    'At BaseStore you can shop the best tech of 2022. Enjoy and get 10% off on your first purchase.',
+  link: '/',
+  linkText: 'See all',
+  imageSrc:
+    'https://storeframework.vtexassets.com/arquivos/ids/190897/Photo.jpg',
+  imageAlt: 'Quest 2 Controller on a table',
+  variant: 'secondary',
   colorVariant: 'light',
   icon: <Icon name="Headphones" width={48} height={48} weight="thin" />,
 }
