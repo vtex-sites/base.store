@@ -4,7 +4,7 @@ import { Badge } from '.'
 
 export default {
   component: Badge,
-  title: 'Components/Badge',
+  title: 'Molecules/Badge',
 }
 
 const Template = ({ children, ...args }: BadgeProps) => (

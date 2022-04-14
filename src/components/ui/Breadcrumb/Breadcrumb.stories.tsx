@@ -3,7 +3,7 @@ import Breadcrumb from '.'
 
 export default {
   component: Breadcrumb,
-  title: 'Components/Breadcrumb',
+  title: 'Molecules/Breadcrumb',
 }
 
 const breadcrumbList = [

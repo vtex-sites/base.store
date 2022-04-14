@@ -3,7 +3,7 @@ import BannerText from '.'
 
 export default {
   component: BannerText,
-  title: 'Components/BannerText',
+  title: 'Organisms/BannerText',
   argTypes: {
     variant: { table: { disable: true } },
     actionPath: { table: { disable: true } },

@@ -6,7 +6,7 @@ import Hero from '.'
 
 export default {
   component: Hero,
-  title: 'Components/Hero',
+  title: 'Organisms/Hero',
   argTypes: {
     link: { table: { disable: true } },
     imageAlt: { table: { disable: true } },

@@ -6,7 +6,7 @@ import ProductCard from '.'
 
 export default {
   component: ProductCard,
-  title: 'Components/ProductCard',
+  title: 'Molecules/ProductCard',
 }
 
 const product = {
