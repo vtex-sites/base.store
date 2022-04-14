@@ -13,7 +13,7 @@ const TemplateDiscount = ({ ...args }: DiscountBadgeProps) => (
 export const Discount = TemplateDiscount.bind({})
 
 Discount.args = {
-  small: true,
+  big: false,
   listPrice: 45,
   spotPrice: 40,
 }

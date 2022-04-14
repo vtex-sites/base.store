@@ -4,7 +4,7 @@
   // --------------------------------------------------------
 
   // Default properties
-  --fs-badge-padding                      : var(--fs-spacing-1) var(--fs-spacing-2);
+  --fs-badge-padding                      : var(--fs-spacing-0) var(--fs-spacing-2);
 
   --fs-badge-border-radius                : var(--fs-border-radius-pill);
   --fs-badge-border-width                 : var(--fs-border-width-default);
@@ -13,7 +13,7 @@
   --fs-badge-bkg-color                    : var(--fs-color-neutral-bkg);
 
   --fs-badge-text-color                   : var(--fs-color-text);
-  --fs-badge-text-size                    : var(--fs-text-size-legend);
+  --fs-badge-text-size                    : var(--fs-text-size-tiny);
   --fs-badge-text-weight                  : var(--fs-text-weight-bold);
 
   --fs-badge-transition-function          : var(--fs-transition-function);
@@ -63,9 +63,9 @@
   --fs-badge-discount-high-text-color     : var(--fs-badge-danger-text-color);
   --fs-badge-discount-high-border-color   : var(--fs-badge-danger-border-color);
 
-  // Small
-  --fs-badge-small-text-size              : var(--fs-text-size-tiny);
-  --fs-badge-small-padding                : var(--fs-spacing-0) var(--fs-spacing-2);
+  // Big
+  --fs-badge-big-text-size              : var(--fs-text-size-legend);
+  --fs-badge-big-padding                : var(--fs-spacing-1) var(--fs-spacing-2);
 
   // --------------------------------------------------------
   // Template Styles
@@ -104,11 +104,11 @@
 // Variants Styles
 // --------------------------------------------------------
 
-[data-fs-badge="small"] {
-  font-size: var(--fs-badge-small-text-size);
+[data-fs-badge="big"] {
+  font-size: var(--fs-badge-big-text-size);
 
   [data-fs-badge-wrapper] {
-    padding: var(--fs-badge-small-padding);
+    padding: var(--fs-badge-big-padding);
   }
 }
 

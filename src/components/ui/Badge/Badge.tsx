@@ -16,7 +16,7 @@ type InteractiveBadge =
     }
 
 type Props = {
-  small?: boolean
+  big?: boolean
   variant?: BadgeVariants
   children: ReactNode
   onClose?: () => void
@@ -27,13 +27,13 @@ const Badge = ({
   variant = 'neutral',
   children,
   onClose,
-  small = false,
+  big = false,
   interactive = false,
   ...otherProps
 }: Props) => {
   return (
     <UIBadge
-      data-fs-badge={small ? 'small' : ''}
+      data-fs-badge={big ? 'big' : ''}
       data-fs-badge-variant={variant}
       data-fs-badge-interactive={interactive}
       {...otherProps}
