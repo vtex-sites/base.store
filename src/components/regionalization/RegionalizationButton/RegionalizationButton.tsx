@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react'
-import { useRegionalization } from 'src/components/regionalization/RegionalizationProvider'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 
@@ -13,7 +13,7 @@ export default function RegionalizationButton({
   classes,
   ...otherProps
 }: RegionalizationButtonProps) {
-  const { setIsModalOpen } = useRegionalization()
+  const { setIsRegionalizationModalOpen } = useModal()
 
   return (
     <div data-fs-regionalization-button className={classes} {...otherProps}>
@@ -22,7 +22,7 @@ export default function RegionalizationButton({
         size="small"
         icon={<Icon name="MapPin" width={24} height={24} />}
         iconPosition="left"
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => setIsRegionalizationModalOpen(true)}
       >
         {content ? (
           <>
