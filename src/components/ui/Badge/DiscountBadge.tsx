@@ -3,10 +3,10 @@ import { useDiscountPercent } from 'src/sdk/product/useDiscountPercent'
 
 import Badge from './Badge'
 
-type Props = {
+export type DiscountBadgeProps = {
   listPrice: number
   spotPrice: number
-  small?: boolean
+  big?: boolean
   // Set limit percentage value to consider a low discount.
   thresholdLow?: number
   // Set limit percentage value to consider a high discount
@@ -16,10 +16,10 @@ type Props = {
 const DiscountBadge = ({
   listPrice,
   spotPrice,
-  small = false,
+  big = false,
   thresholdLow = 15,
   thresholdHigh = 40,
-}: Props) => {
+}: DiscountBadgeProps) => {
   const discountPercent = useDiscountPercent(listPrice, spotPrice)
 
   if (discountPercent === 0) {
@@ -34,7 +34,7 @@ const DiscountBadge = ({
       : 'high'
 
   return (
-    <Badge small={small} data-store-discount-badge-variant={discountVariant}>
+    <Badge big={big} data-fs-discount-badge-variant={discountVariant}>
       {discountPercent}% off
     </Badge>
   )
