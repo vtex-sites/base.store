@@ -18,7 +18,6 @@ function ButtonLink({
   iconPosition,
   children,
   disabled = false,
-  className = '',
   ...otherProps
 }: Props) {
   const linkRef = useRef<HTMLAnchorElement | null>(null)
