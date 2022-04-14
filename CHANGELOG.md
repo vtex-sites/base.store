@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Applies new local tokens to `Badge` (#462)
 - Applies new local tokens to `Quantity Selector` (#448)
 - Applies new local tokens to `ProductShelf` component (#464)
 - Adds Storybook configs (#463)
@@ -74,7 +75,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `OutOfStock` style and success message. (#399)
 - Apply new local tokens to `Button` (#442)
 - Gather all `Button` variants in the folder (`ButtonBuy`, `ButtonLink`, `ButtonIcon`, `ButtonSignIn`) (#442)
-- Apply new local tokens to `Badge` (#462)
 
 ### Fixed
 
