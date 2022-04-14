@@ -12,7 +12,7 @@ import Section from '../Section'
 type Variant = 'primary' | 'secondary'
 type ColorVariant = 'main' | 'light' | 'accent'
 
-interface HeroProps {
+export interface HeroProps {
   title: string
   subtitle: string
   variant?: Variant
