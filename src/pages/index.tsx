@@ -89,8 +89,7 @@ function Page(props: Props) {
       />
 
       <BannerText
-        title="Receive our news and promotions in advance."
-        caption="Enjoy and get 10% off on your first purchase."
+        title="Receive our news and promotions in advance. Enjoy and get 10% off on your first purchase."
         actionPath="/"
         actionLabel="Call to action"
       />
