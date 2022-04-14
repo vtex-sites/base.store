@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Apply new local tokens to `Hero` (#435)
 - Applies new local tokens to `Quantity Selector` (#448)
 - Applies new local tokens to `ProductShelf` component (#464)
 - Adds Storybook configs (#463)
