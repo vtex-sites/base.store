@@ -20,11 +20,13 @@
   }
 
   &[data-regionalization-modal-state="in"] {
-    animation: motion-in .2s ease-in;
+    transition: transform .2s ease-in;
+    transform: translate3d(0, 0, 0);
   }
 
   &[data-regionalization-modal-state="out"] {
-    animation: motion-out .2s ease-out;
+    transition: transform .2s ease-out;
+    transform: translate3d(0, 50%, 0);
   }
 
   .regionalization-modal__header {

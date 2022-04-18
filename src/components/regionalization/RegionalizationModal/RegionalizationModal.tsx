@@ -34,7 +34,7 @@ function RegionalizationModal({
         e.preventDefault()
         onModalClose()
       }}
-      onAnimationEnd={() => fade === 'out' && onDismiss()}
+      onTransitionEnd={() => fade === 'out' && onDismiss()}
     >
       <header className="regionalization-modal__header">
         <ButtonIcon
