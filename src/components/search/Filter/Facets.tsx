@@ -1,5 +1,4 @@
 import { Label as UILabel, List as UIList } from '@faststore/ui'
-import React from 'react'
 import Accordion, { AccordionItem } from 'src/components/ui/Accordion'
 import { Badge } from 'src/components/ui/Badge'
 import Checkbox from 'src/components/ui/Checkbox'
@@ -50,10 +49,7 @@ function Facets({
                       data-quantity={item.quantity}
                     />
                     <UILabel htmlFor={id} className="text__title-mini-alt">
-                      {item.label}{' '}
-                      <Badge variant="neutral" small>
-                        {item.quantity}
-                      </Badge>
+                      {item.label} <Badge>{item.quantity}</Badge>
                     </UILabel>
                   </li>
                 )

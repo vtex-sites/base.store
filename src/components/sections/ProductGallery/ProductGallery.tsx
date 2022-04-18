@@ -1,6 +1,6 @@
 import { usePagination, useSearch } from '@faststore/sdk'
 import { GatsbySeo } from 'gatsby-plugin-next-seo'
-import React, { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useState } from 'react'
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
@@ -14,7 +14,7 @@ import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
 import { useGalleryQuery } from './useGalleryQuery'
-import { usePrefetchPageProducts } from './usePageProducts'
+import { useProductsPrefetch } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
 const GalleryPageSkeleton = <ProductGridSkeleton loading />
@@ -33,19 +33,25 @@ function ProductGallery({ title, searchTerm }: Props) {
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
 
-  usePrefetchPageProducts(prev ? prev.cursor : null)
-  usePrefetchPageProducts(next ? next.cursor : null)
+  useProductsPrefetch(prev ? prev.cursor : null)
+  useProductsPrefetch(next ? next.cursor : null)
 
   if (data && totalCount === 0) {
     return (
-      <Section className="product-listing layout__content">
+      <Section
+        data-testid="product-gallery"
+        className="product-listing layout__content"
+      >
         <EmptyGallery />
       </Section>
     )
   }
 
   return (
-    <Section className="product-listing layout__content-full">
+    <Section
+      data-testid="product-gallery"
+      className="product-listing layout__content-full"
+    >
       {searchTerm && (
         <header className="product-listing__search-term layout__content">
           <h1>

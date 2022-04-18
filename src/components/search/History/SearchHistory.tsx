@@ -1,6 +1,5 @@
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 import { Icon as UIIcon, List as UIList } from '@faststore/ui'
-import React from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'

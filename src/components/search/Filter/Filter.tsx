@@ -1,10 +1,10 @@
 import { useSearch } from '@faststore/sdk'
 import { graphql } from 'gatsby'
 import Button, { ButtonIcon } from 'src/components/ui/Button'
-import React, { useRef } from 'react'
 import Icon from 'src/components/ui/Icon'
 import SlideOver from 'src/components/ui/SlideOver'
 import type { Filter_FacetsFragment } from '@generated/graphql'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 import Facets from './Facets'
 import { useFilter } from './useFilter'
@@ -27,21 +27,19 @@ interface Props {
   testId?: string
 }
 
-type Callback = () => unknown
-
 function Filter({
   facets: allFacets,
   onDismiss,
   isOpen = false,
   testId = 'store-filter',
 }: Props) {
-  const dismissTransition = useRef<Callback | undefined>()
   const {
     setFacets,
     toggleFacet,
     state: { selectedFacets },
   } = useSearch()
 
+  const { onModalClose } = useModal()
   const { facets, selected, expanded, dispatch } = useFilter(allFacets)
 
   return (
@@ -61,9 +59,6 @@ function Filter({
       <SlideOver
         isOpen={isOpen}
         onDismiss={onDismiss}
-        onDismissTransition={(callback) =>
-          (dismissTransition.current = callback)
-        }
         size="partial"
         direction="rightSide"
         className="filter-modal__content"
@@ -81,7 +76,7 @@ function Filter({
                   payload: selectedFacets,
                 })
 
-                dismissTransition.current?.()
+                onModalClose()
               }}
             />
           </header>
@@ -109,7 +104,7 @@ function Filter({
             data-testid="filter-modal-button-apply"
             onClick={() => {
               setFacets(selected)
-              onDismiss?.()
+              onModalClose()
             }}
           >
             Apply

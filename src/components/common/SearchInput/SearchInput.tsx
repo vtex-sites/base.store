@@ -5,7 +5,7 @@ import {
 } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
 import { navigate } from 'gatsby'
-import React, { useEffect, useRef, useState } from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 import { SearchHistory } from 'src/components/search/History'
 import { SuggestionsTopSearch } from 'src/components/search/Suggestions'
 import Icon from 'src/components/ui/Icon'
@@ -37,7 +37,7 @@ const doSearch = async (term: string) => {
   navigate(`${pathname}${search}`)
 }
 
-const SearchInput = React.forwardRef<SearchInputRef, SearchInputProps>(
+const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
   function SearchInput(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
     ref

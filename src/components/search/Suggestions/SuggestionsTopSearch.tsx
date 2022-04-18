@@ -1,5 +1,5 @@
 import { List as UIList } from '@faststore/ui'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { Badge } from 'src/components/ui/Badge'
 import Link from 'src/components/ui/Link'
 import type { HTMLAttributes } from 'react'
@@ -50,9 +50,7 @@ const SuggestionsTopSearch = forwardRef<
               to={item.href}
               onClick={() => onLinkClick?.(item.name)}
             >
-              <Badge variant="info" small>
-                {index + 1}
-              </Badge>
+              <Badge variant="info">{index + 1}</Badge>
               {item.name}
             </Link>
           </li>

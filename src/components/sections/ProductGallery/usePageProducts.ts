@@ -1,31 +1,33 @@
 import { useSearch } from '@faststore/sdk'
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import {
-  prefetchProductsQuery,
+  useProductsQueryPrefetch,
   useProductsQuery,
 } from 'src/sdk/product/useProductsQuery'
 import type { ProductsQueryQuery } from '@generated/graphql'
 
-export const usePrefetchPageProducts = (page: number | null) => {
+export const useProductsPrefetch = (page: number | null) => {
   const {
     itemsPerPage,
     state: { sort, term, selectedFacets },
   } = useSearch()
 
+  const prefetch = useProductsQueryPrefetch({
+    first: itemsPerPage,
+    after: (itemsPerPage * (page ?? 0)).toString(),
+    sort,
+    term: term ?? '',
+    selectedFacets,
+  })
+
   useEffect(() => {
     if (page !== null) {
-      prefetchProductsQuery({
-        first: itemsPerPage,
-        after: (itemsPerPage * page).toString(),
-        sort,
-        term: term ?? '',
-        selectedFacets,
-      })
+      prefetch()
     }
-  }, [itemsPerPage, page, selectedFacets, sort, term])
+  }, [page, prefetch])
 }
 
-export const usePageProducts = (
+export const useProducts = (
   page: number,
   fallbackData?: ProductsQueryQuery
 ) => {
@@ -48,10 +50,5 @@ export const usePageProducts = (
     }
   )
 
-  const products = useMemo(
-    () => productList?.edges.map((edge) => edge.node),
-    [productList]
-  )
-
-  return products
+  return productList?.edges
 }

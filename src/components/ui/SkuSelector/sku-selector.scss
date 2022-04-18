@@ -24,9 +24,9 @@
 [data-store-sku-selector] {
   display: flex;
   flex-wrap: wrap;
-  font-size: var(--fs-text-size-1);
-  column-gap: var(--fs-spacing-1);
   row-gap: var(--fs-spacing-1);
+  column-gap: var(--fs-spacing-1);
+  font-size: var(--fs-text-size-1);
 
   [data-sku-selector-label] {
     width: 100%;
@@ -83,10 +83,10 @@
             position: absolute;
             width: var(--fs-border-width-default);
             height: 160%;
+            content: "";
             background-color: var(--fs-border-color-default-disabled);
             transform: rotate(45deg);
             transform-origin: center;
-            content: "";
           }
         }
       }
@@ -103,8 +103,8 @@
       width: var(--fs-spacing-6);
       height: var(--fs-spacing-6);
       border-radius: var(--fs-border-radius-small);
-      transform-origin: center center;
       transition: transform .2s ease;
+      transform-origin: center center;
     }
 
     input {

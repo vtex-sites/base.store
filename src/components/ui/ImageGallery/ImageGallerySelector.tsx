@@ -1,8 +1,8 @@
+import { IconButton, useSlider } from '@faststore/ui'
+import { Children } from 'react'
 import type { HTMLAttributes, PropsWithChildren } from 'react'
-import React from 'react'
-import { useSlider, IconButton } from '@faststore/ui'
 
-import { ForwardArrowIcon, BackwardArrowIcon } from './Icons'
+import { BackwardArrowIcon, ForwardArrowIcon } from './Icons'
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   itemsPerPage: number
@@ -28,7 +28,7 @@ function ImageGallerySelector({
   children,
   ...otherProps
 }: PropsWithChildren<Props>) {
-  const elements = React.Children.toArray(children)
+  const elements = Children.toArray(children)
   const elementCount = elements.length
 
   const { handlers, slide, sliderState, sliderDispatch } = useSlider({

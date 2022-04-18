@@ -1,10 +1,10 @@
 import { Modal as UIModal } from '@faststore/ui'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 import type { ReactNode, HTMLAttributes } from 'react'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 type Direction = 'leftSide' | 'rightSide'
 type WidthSize = 'full' | 'partial'
-type FadeType = 'in' | 'out'
 
 interface SlideOverProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean
@@ -16,74 +16,34 @@ interface SlideOverProps extends HTMLAttributes<HTMLDivElement> {
    * the modal content
    */
   onDismiss?: () => void
-  /**
-   * This callback function enables the transition effect on children "close" button
-   */
-  onDismissTransition: (callback: () => unknown) => unknown
 }
 
 const SlideOver = ({
   isOpen,
   onDismiss,
-  onDismissTransition,
   direction = 'leftSide',
   size = 'full',
   children,
   ...otherProps
 }: SlideOverProps) => {
-  const [fadeType, setFadeType] = useState<FadeType>()
-  const layout = useRef<HTMLElement | null>(null)
-
-  const handleClose = useCallback(() => {
-    setFadeType('out')
-    if (layout.current) {
-      layout.current.classList.remove('no-scroll')
-    }
-  }, [layout])
+  const { fade, onModalOpen, onModalClose } = useModal()
 
   useEffect(() => {
-    layout.current = document.getElementById('layout')
-  }, [])
-
-  useEffect(() => {
-    if (isOpen) {
-      setFadeType('in')
-
-      // Avoids double scroll issue on the page
-      if (layout.current) {
-        layout.current.classList.add('no-scroll')
-      }
-    }
-
-    return () => {
-      if (layout.current) {
-        layout.current.classList.remove('no-scroll')
-      }
-    }
-  }, [isOpen, layout])
-
-  useEffect(() => {
-    onDismissTransition(() => handleClose())
-  }, [handleClose, onDismissTransition])
-
-  const handleTransitionEnd = () => {
-    if (fadeType === 'out') {
-      onDismiss?.()
-    }
-  }
+    isOpen && onModalOpen()
+  }, [isOpen, onModalOpen])
 
   return (
     <UIModal
       isOpen={isOpen}
       onDismiss={(e) => {
         e.preventDefault()
-        handleClose()
+        onModalClose()
       }}
       data-slide-over
       data-slide-over-direction={direction}
       data-slide-over-size={size}
-      data-slide-over-state={fadeType}
-      onTransitionEnd={handleTransitionEnd}
+      data-slide-over-state={fade}
+      onTransitionEnd={() => fade === 'out' && onDismiss?.()}
       {...otherProps}
     >
       {children}

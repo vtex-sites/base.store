@@ -1,6 +1,6 @@
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
 import { graphql } from 'gatsby'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DiscountBadge } from 'src/components/ui/Badge'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import { ButtonBuy } from 'src/components/ui/Button'
@@ -113,7 +113,9 @@ function ProductDetails({ product: staleProduct }: Props) {
         <header className="product-details__title">
           <ProductTitle
             title={<h1 className="text__title-product">{name}</h1>}
-            label={<DiscountBadge listPrice={listPrice} spotPrice={lowPrice} />}
+            label={
+              <DiscountBadge listPrice={listPrice} spotPrice={lowPrice} big />
+            }
             refNumber={productId}
           />
         </header>

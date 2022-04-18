@@ -1,8 +1,10 @@
-import type { ReactElement, FormEvent } from 'react'
-import React, { useState } from 'react'
-import { Form, Input } from '@faststore/ui'
+import { useSession } from '@faststore/sdk'
+import { Form } from '@faststore/ui'
+import { useState } from 'react'
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import InputText from 'src/components/ui/InputText'
+import type { ReactElement, FormEvent } from 'react'
 
 export interface OutOfStockProps {
   /**
@@ -39,6 +41,8 @@ export interface OutOfStockProps {
 }
 
 function OutOfStock(props: OutOfStockProps) {
+  const { postalCode } = useSession()
+
   const defaultButtonText = 'Notify me'
   const defaultIconName = 'BellRinging'
 
@@ -48,7 +52,7 @@ function OutOfStock(props: OutOfStockProps) {
   const [email, setEmail] = useState('')
 
   const {
-    title = 'Out of Stock',
+    title = postalCode ? 'Unavailable in Your Location' : 'Out of Stock',
     notificationMsg = 'Notify me when available',
     buttonText = btnText,
     buttonIcon = <Icon name={buttonIconName} width={16} height={16} />,
@@ -94,12 +98,12 @@ function OutOfStock(props: OutOfStockProps) {
           {notificationMsgIcon} {notificationMsg}
         </p>
         <div>
-          <Input
-            data-store-out-of-stock-input
-            aria-label="Email"
+          <InputText
+            id="out-of-stock-email"
             value={email}
+            label="Email"
+            aria-label="Email"
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
           />
           <Button
             data-store-out-of-stock-button

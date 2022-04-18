@@ -1,32 +1,37 @@
-import React from 'react'
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
+import type { ProductsQueryQueryVariables } from '@generated/graphql'
 
 import ProductCard from '../../product/ProductCard'
 import Section from '../Section'
 
-interface ProductShelfProps {
-  products: ProductSummary_ProductFragment[]
+interface ProductShelfProps extends Partial<ProductsQueryQueryVariables> {
   title: string | JSX.Element
   withDivisor?: boolean
 }
 
 function ProductShelf({
-  products,
   title,
   withDivisor = false,
+  ...variables
 }: ProductShelfProps) {
+  const products = useProductsQuery(variables)
+
+  if (products?.edges.length === 0) {
+    return null
+  }
+
   return (
     <Section
-      className={`layout__section ${withDivisor ? 'shelf__divisor' : ''}`}
+      className={`layout__section ${withDivisor ? 'section__divisor' : ''}`}
     >
       <h2 className="text__title-section layout__content">{title}</h2>
-      <div data-product-shelf-content>
-        <ProductShelfSkeleton loading={products.length === 0}>
-          <ul data-product-shelf-items className="layout__content">
-            {products.map((product, idx) => (
-              <li key={`${product.id}`}>
-                <ProductCard product={product} index={idx + 1} />
+      <div data-fs-product-shelf>
+        <ProductShelfSkeleton loading={products === undefined}>
+          <ul data-fs-product-shelf-items className="layout__content">
+            {products?.edges.map((product, idx) => (
+              <li key={`${product.node.id}`}>
+                <ProductCard product={product.node} index={idx + 1} />
               </li>
             ))}
           </ul>
