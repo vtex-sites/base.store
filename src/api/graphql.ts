@@ -15,7 +15,7 @@ const parseRequest = (req: GatsbyFunctionRequest) => {
   return {
     operationName,
     variables,
-    // Do not allow queries in production, only for devMode so we can use graphql tools
+    // test Do not allow queries in production, only for devMode so we can use graphql tools
     // like introspection etc. In production, we only accept known queries for better
     // security
     query: process.env.NODE_ENV !== 'production' ? query : undefined,
