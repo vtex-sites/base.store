@@ -2418,38 +2418,6 @@ export type UpdateSessionMutationMutation = {
   updateSession: { channel: string | null }
 }
 
-export type SearchSuggestionsQueryQueryVariables = Exact<{
-  term: Scalars['String']
-}>
-
-export type SearchSuggestionsQueryQuery = {
-  search: {
-    suggestions: {
-      terms: Array<string> | null
-      products: Array<{
-        slug: string
-        sku: string
-        name: string
-        gtin: string
-        id: string
-        brand: { name: string; brandName: string }
-        isVariantOf: { productGroupID: string; name: string }
-        image: Array<{ url: string; alternateName: string }>
-        offers: {
-          lowPrice: number
-          offers: Array<{
-            availability: string
-            price: number
-            listPrice: number
-            quantity: number
-            seller: { identifier: string }
-          }>
-        }
-      }> | null
-    } | null
-  }
-}
-
 export type ProductSummary_ProductFragment = {
   slug: string
   sku: string
@@ -2481,6 +2449,38 @@ export type Filter_FacetsFragment = {
     selected: boolean
     quantity: number
   }>
+}
+
+export type SearchSuggestionsQueryQueryVariables = Exact<{
+  term: Scalars['String']
+}>
+
+export type SearchSuggestionsQueryQuery = {
+  search: {
+    suggestions: {
+      terms: Array<string> | null
+      products: Array<{
+        slug: string
+        sku: string
+        name: string
+        gtin: string
+        id: string
+        brand: { name: string; brandName: string }
+        isVariantOf: { productGroupID: string; name: string }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          offers: Array<{
+            availability: string
+            price: number
+            listPrice: number
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }> | null
+    } | null
+  }
 }
 
 export type ProductDetailsFragment_ProductFragment = {
