@@ -30,7 +30,7 @@ function ProductGallery({ title, searchTerm }: Props) {
 
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
-  const totalCount = data?.search.products.pageInfo.totalCount ?? 0
+  const totalCount = data?.search?.products?.pageInfo.totalCount ?? 0
   const { next, prev } = usePagination(totalCount)
 
   useProductsPrefetch(prev ? prev.cursor : null)

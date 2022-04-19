@@ -1,32 +1,25 @@
 import { Card, CardContent, CardImage } from '@faststore/ui'
+import { Link } from 'gatsby'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
+import { useProductLink } from 'src/sdk/product/useProductLink'
 
-// TODO: Remove it when integration is complete
-const PRODUCTS = [
-  {
-    price: 46.26,
-    listPrice: 72.06,
-    name: 'Ergonomic Wooden Bacon',
-    image: [
-      {
-        alternateName: 'rerum',
-        url: 'http://storeframework.vtexassets.com/arquivos/ids/167285/ut.jpg?v=637753017045600000',
-      },
-    ],
-  },
-]
+type SuggestionProductCardProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  product: any
+  index: number
+}
 
-function SuggestionProductCard({
-  // TODO: Add Props interface and define `product` type
-  product = PRODUCTS[0],
-}) {
+function SuggestionProductCard({ product, index }: SuggestionProductCardProps) {
+  const linkProps = useProductLink({ product, selectedOffer: 0, index })
   const {
-    name,
-    listPrice,
-    price,
+    isVariantOf: { name },
     image: [img],
+    offers: {
+      lowPrice: spotPrice,
+      offers: [{ listPrice }],
+    },
   } = product
 
   return (
@@ -34,36 +27,44 @@ function SuggestionProductCard({
       className="suggestion-product-card"
       data-testid="suggestion-product-card"
     >
-      <CardContent>
-        <CardImage>
-          <Image src={img.url} alt={img.alternateName} width={56} height={56} />
-        </CardImage>
-        <div data-suggestion-product-card-summary>
-          <p className="text__title-mini" data-suggestion-product-card-title>
-            {name}
-          </p>
-          <span data-suggestion-product-card-prices>
-            <Price
-              value={listPrice}
-              formatter={useFormattedPrice}
-              testId="list-price"
-              data-value={listPrice}
-              variant="listing"
-              classes="text__legend"
-              SRText="Original price:"
+      {' '}
+      <Link {...linkProps} title={name}>
+        <CardContent>
+          <CardImage>
+            <Image
+              src={img.url}
+              alt={img.alternateName}
+              width={56}
+              height={56}
             />
-            <Price
-              value={price}
-              formatter={useFormattedPrice}
-              testId="price"
-              data-value={price}
-              variant="spot"
-              classes="text__title-mini"
-              SRText="Price:"
-            />
-          </span>
-        </div>
-      </CardContent>
+          </CardImage>
+          <div data-suggestion-product-card-summary>
+            <p className="text__title-mini" data-suggestion-product-card-title>
+              {name}
+            </p>
+            <span data-suggestion-product-card-prices>
+              <Price
+                value={listPrice}
+                formatter={useFormattedPrice}
+                testId="list-price"
+                data-value={listPrice}
+                variant="listing"
+                classes="text__legend"
+                SRText="Original price:"
+              />
+              <Price
+                value={spotPrice}
+                formatter={useFormattedPrice}
+                testId="price"
+                data-value={spotPrice}
+                variant="spot"
+                classes="text__title-mini"
+                SRText="Price:"
+              />
+            </span>
+          </div>
+        </CardContent>
+      </Link>
     </Card>
   )
 }

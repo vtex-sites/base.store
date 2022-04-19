@@ -46,3 +46,34 @@
     color: var(--fs-color-neutral-7);
   }
 }
+
+.suggestion-product-card a {
+  color: var(--fs-color-neutral-7);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.search__wrapper {
+  position: relative;
+}
+
+.suggestions__wrapper {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  padding: var(--fs-spacing-0) 0;
+  margin-top: var(--fs-spacing-1);
+  background-color: #fff;
+  border: var(--fs-border-width-default) solid var(--fs-border-color-default);
+  border-radius: var(--fs-border-radius-default);
+}
+
+.suggestions__item button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+}

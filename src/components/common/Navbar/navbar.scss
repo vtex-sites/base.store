@@ -119,7 +119,6 @@
 .navbar__header {
   padding-top: var(--fs-spacing-1);
   padding-bottom: var(--fs-spacing-2);
-  overflow: hidden;
 
   @include media(">=notebook") {
     padding-top: var(--fs-spacing-1);

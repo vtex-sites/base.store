@@ -1000,7 +1000,7 @@ export type QueryProductArgs = {
 
 export type QuerySearchArgs = {
   after: InputMaybe<Scalars['String']>
-  first: Scalars['Int']
+  first: InputMaybe<Scalars['Int']>
   selectedFacets: InputMaybe<Array<IStoreSelectedFacet>>
   sort?: InputMaybe<StoreSort>
   term?: InputMaybe<Scalars['String']>
@@ -2366,8 +2366,9 @@ export type StoreReviewRating = {
 }
 
 export type StoreSearchResult = {
-  facets: Array<StoreFacet>
-  products: StoreProductConnection
+  facets: Maybe<Array<StoreFacet>>
+  products: Maybe<StoreProductConnection>
+  suggestions: Maybe<StoreSuggestions>
 }
 
 export type StoreSeo = {
@@ -2395,6 +2396,11 @@ export type StoreSort =
 
 export type StoreStatus = 'ERROR' | 'INFO' | 'WARNING'
 
+export type StoreSuggestions = {
+  products: Maybe<Array<StoreProduct>>
+  terms: Maybe<Array<Scalars['String']>>
+}
+
 export type StringQueryOperatorInput = {
   eq: InputMaybe<Scalars['String']>
   glob: InputMaybe<Scalars['String']>
@@ -2410,6 +2416,38 @@ export type UpdateSessionMutationMutationVariables = Exact<{
 
 export type UpdateSessionMutationMutation = {
   updateSession: { channel: string | null }
+}
+
+export type SearchSuggestionsQueryQueryVariables = Exact<{
+  term: Scalars['String']
+}>
+
+export type SearchSuggestionsQueryQuery = {
+  search: {
+    suggestions: {
+      terms: Array<string> | null
+      products: Array<{
+        slug: string
+        sku: string
+        name: string
+        gtin: string
+        id: string
+        brand: { name: string; brandName: string }
+        isVariantOf: { productGroupID: string; name: string }
+        image: Array<{ url: string; alternateName: string }>
+        offers: {
+          lowPrice: number
+          offers: Array<{
+            availability: string
+            price: number
+            listPrice: number
+            quantity: number
+            seller: { identifier: string }
+          }>
+        }
+      }> | null
+    } | null
+  }
 }
 
 export type ProductSummary_ProductFragment = {
@@ -2502,7 +2540,7 @@ export type ProductGalleryQueryQuery = {
           }
         }
       }>
-    }
+    } | null
     facets: Array<{
       key: string
       label: string
@@ -2513,7 +2551,7 @@ export type ProductGalleryQueryQuery = {
         selected: boolean
         quantity: number
       }>
-    }>
+    }> | null
   }
 }
 
@@ -2734,6 +2772,6 @@ export type ProductsQueryQuery = {
           }
         }
       }>
-    }
+    } | null
   }
 }
