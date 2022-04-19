@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deprecated
 
 ### Removed
+
+- The GitHub Action that was running Lighthouse, as it was frequently failing and WebOps already runs it (#484).
 - Removes CSS imports of components that are not being used (#476)
 
 ### Fixed
