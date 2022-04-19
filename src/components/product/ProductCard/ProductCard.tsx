@@ -100,8 +100,12 @@ function ProductCard({
         ) : (
           <DiscountBadge listPrice={listPrice} spotPrice={spotPrice} />
         )}
+        {!!ButtonBuy && (
+          <UICardActions data-fs-product-card-actions>
+            {ButtonBuy}
+          </UICardActions>
+        )}
       </UICardContent>
-      {!!ButtonBuy && <UICardActions>{ButtonBuy}</UICardActions>}
     </UICard>
   )
 }

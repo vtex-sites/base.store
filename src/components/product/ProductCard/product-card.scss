@@ -104,7 +104,8 @@
     }
   }
 
-  [data-store-badge] { margin-top: var(--fs-spacing-2); }
+  [data-store-badge],
+  [data-fs-product-card-actions] { margin-top: var(--fs-spacing-2); }
 }
 
 [data-fs-product-card-title] {
@@ -143,15 +144,15 @@
   }
 }
 
+// --------------------------------------------------------
+// Variants Styles
+// --------------------------------------------------------
+
 [data-fs-product-card-bordered="true"] {
   @include media(">=notebook") {
     border: var(--fs-border-width-default) solid var(--fs-border-color-light);
   }
 }
-
-// --------------------------------------------------------
-// Variants Styles
-// --------------------------------------------------------
 
 [data-fs-product-card-variant="wide"] {
   --fs-product-card-padding: 0;
