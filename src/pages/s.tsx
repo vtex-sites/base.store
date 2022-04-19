@@ -15,6 +15,8 @@ import type {
   SearchPageQueryQueryVariables,
 } from '@generated/graphql'
 
+import 'src/styles/pages/search.scss'
+
 export type Props = PageProps<
   SearchPageQueryQuery,
   SearchPageQueryQueryVariables

@@ -12,6 +12,8 @@ import type { PageProps } from 'gatsby'
 import type { HomePageQueryQuery } from '@generated/graphql'
 import IncentivesMock from 'src/components/sections/Incentives/incentivesMock'
 
+import 'src/styles/pages/homepage.scss'
+
 export type Props = PageProps<HomePageQueryQuery>
 
 function Page(props: Props) {

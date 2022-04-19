@@ -9,6 +9,8 @@ import { useUI } from 'src/sdk/ui'
 import type { PropsWithChildren } from 'react'
 import { useModal } from 'src/sdk/ui/modal/Provider'
 
+import 'src/styles/pages/layout.scss'
+
 const CartSidebar = lazy(() => import('src/components/cart/CartSidebar'))
 
 function Layout({ children }: PropsWithChildren<unknown>) {

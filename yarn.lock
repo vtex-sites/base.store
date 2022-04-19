@@ -1981,10 +1981,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@faststore/api@^1.7.16":
-  version "1.7.16"
-  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.7.16.tgz#7b22f433c54526009d70121ea55c6591a56ffca3"
-  integrity sha512-hS+6ZlrnR69axXzASUYWO+ETchlcmKib+W3LzenAy1G/nhH6H65UPpA8b2AVtjy1ef91WujfLO5ZcJIRU6gMlg==
+"@faststore/api@^1.7.26":
+  version "1.7.26"
+  resolved "https://registry.yarnpkg.com/@faststore/api/-/api-1.7.26.tgz#f3b103569f6237696e7d5569be4fbc0197c538dc"
+  integrity sha512-mij34Sxg8wEvsGfoWgTZyywylsAqQdAUT7hIit+haTutc2ue9DkU95FUA5quPACQ9P3/jCOLOJgQx7s2oI7xeg==
   dependencies:
     "@graphql-tools/schema" "^8.2.0"
     "@rollup/plugin-graphql" "^1.0.0"
@@ -1993,17 +1993,17 @@
     isomorphic-unfetch "^3.1.0"
     p-limit "^3.1.0"
 
-"@faststore/sdk@^1.7.16":
-  version "1.7.16"
-  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.7.16.tgz#cbc7edee12971537f7c5dc61ec019a49f3cc0261"
-  integrity sha512-1o59iM5dplTqIenhXIIyiHzXuWXxCkjdAxpkglp8diklUGoFxiYM9kQdVfMZ//caNRVK5asT2/6nJtCg4/24sQ==
+"@faststore/sdk@^1.7.26":
+  version "1.7.26"
+  resolved "https://registry.yarnpkg.com/@faststore/sdk/-/sdk-1.7.26.tgz#16c8370ca4fa3092043be9f9f290fdfc994f6406"
+  integrity sha512-/gWh8S4e47livdQyLElphHKqoSG1bcMWVt0S1awO2QyA2RlVyfbFEip1mgKuH3K+rT1sBTb6n5DpHR/y1Q06Tg==
   dependencies:
     idb-keyval "^5.1.3"
 
-"@faststore/ui@^1.7.16":
-  version "1.7.16"
-  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.7.16.tgz#53a04567aaae98f8123869c2db39529dda094ba4"
-  integrity sha512-Dqssu/PvKLp21WXjFgR69LNY2PE7hprAkU+OiiYBSXr3w7F97wOO/8uAMfZNyk2FYhI6kg20HJg8FWjaSjBSTQ==
+"@faststore/ui@^1.7.26":
+  version "1.7.26"
+  resolved "https://registry.yarnpkg.com/@faststore/ui/-/ui-1.7.26.tgz#478d6bae7b55d1263ff89c9078d9e1ba6785bcf6"
+  integrity sha512-aUpQgQrSnwOCjoYWKUkaTeoag1NvZXg6lVnx0po0MMUCwPyT5cKZ1+4Gbu9qCS0PwQ5m+dkPXfwPJAorOfOkZQ==
   dependencies:
     "@reach/popover" "^0.16.0"
     "@storybook/addon-a11y" "^6.4.4"
@@ -5277,20 +5277,20 @@
   resolved "https://registry.yarnpkg.com/@vercel/webpack-asset-relocator-loader/-/webpack-asset-relocator-loader-1.7.0.tgz#d3b707e0aba3111719f941dacb2408eff3c27319"
   integrity sha512-1Dy3BdOliDwxA7VZSIg55E1d/us2KvsCQOZV25fgufG//CsnZBGiSAL7qewTQf7YVHH0A9PHgzwMmKIZ8aFYVw==
 
-"@vtex/graphql-utils@^1.7.14":
-  version "1.7.14"
-  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.7.14.tgz#366706becc5c2cef3cd7f93270140d48004dba8b"
-  integrity sha512-NQvSUZbBAQDzoJALxxI/GFPep+LuR8hYOGtZPs8/aSJ9dQi+mUu+t5kaFBZXYd0AuDNzfBEerRFJhyIZ7fowdw==
+"@vtex/graphql-utils@^1.7.26":
+  version "1.7.26"
+  resolved "https://registry.yarnpkg.com/@vtex/graphql-utils/-/graphql-utils-1.7.26.tgz#9a47d91d86a82b55503c10b541168e9817c5bcaf"
+  integrity sha512-JPdKBJqCfyJLD6Nltwt/313gXFydEDy/br+Kp2GEtkLGMLinTZgoyQ1qBQ8uv+uSq1iJ/GCWPMjXDzqMb8WY0Q==
   dependencies:
     "@babel/traverse" "^7.15.4"
     "@babel/types" "^7.15.6"
     "@graphql-codegen/plugin-helpers" "^2.2.0"
     "@graphql-tools/relay-operation-optimizer" "^6.4.0"
 
-"@vtex/lighthouse-config@^1.7.25":
-  version "1.7.25"
-  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.7.25.tgz#6d757235ec7e2b2cb56294f6d6d22d762d0f275e"
-  integrity sha512-xyDp6gGhLncEQM5lFucNdsq9nEkcsggSRu7MydW6hoNlwEK5ENNO+Pb0z5FHC5tuMS+X/94mgOD5+Z0+uZ7j5g==
+"@vtex/lighthouse-config@^1.7.26":
+  version "1.7.26"
+  resolved "https://registry.yarnpkg.com/@vtex/lighthouse-config/-/lighthouse-config-1.7.26.tgz#7ddd432b411fd255c6dc9fe5d21ccf9ded8df330"
+  integrity sha512-8Us9UWXr7nq+Dcf2g1+z79nWVQpyO5akXYjOqr5kBXfLdPoyDkePdeLRYX6NJ0mI39Pnl2MNG0ycGqiFzPlamA==
 
 "@vtex/prettier-config@1.0.0":
   version "1.0.0"
@@ -19926,7 +19926,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.5.2:
+typescript@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.2.tgz#fe12d2727b708f4eef40f51598b3398baa9611d4"
   integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
