@@ -37,6 +37,8 @@
   --fs-product-card-text-subtitle-color      : var(--fs-color-text-light);
   --fs-product-card-text-subtitle-size       : var(--fs-text-size-tiny);
 
+  --fs-product-card-text-max-lines           : var(--fs-text-max-lines);
+
   --fs-product-card-transition-function      : var(--fs-transition-function);
   --fs-product-card-transition-property      : var(--fs-transition-property);
   --fs-product-card-transition-timing        : var(--fs-transition-timing);
@@ -113,6 +115,8 @@
   font-weight: var(--fs-product-card-text-title-weight);
   line-height: 1.25;
   color: var(--fs-product-card-text-title-color);
+
+  @include truncate-title(var(--fs-product-card-text-max-lines));
 }
 
 [data-fs-product-card-prices] {
