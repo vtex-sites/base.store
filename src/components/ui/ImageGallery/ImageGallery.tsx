@@ -22,8 +22,9 @@ function ImageGallery({ images }: ImageGalleryProps) {
         <Image
           src={currentImage.url}
           alt={currentImage.alternateName}
-          width={712}
-          height={450}
+          sizes="(max-width: 804px) 25vw, 30vw"
+          width={804}
+          height={804 * (3 / 4)}
           loading="eager"
         />
       </ImageZoom>
