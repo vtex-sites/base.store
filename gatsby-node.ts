@@ -8,15 +8,36 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
 }) => {
   const isProfilingEnabled = process.env.GATSBY_STORE_PROFILING === 'true'
 
-  if (stage === 'build-javascript' && isProfilingEnabled) {
-    setWebpackConfig({
-      optimization: {
-        minimize: false,
-        moduleIds: 'named',
-        chunkIds: 'named',
-        concatenateModules: false,
-      },
-    })
+  if (stage === 'build-javascript') {
+    if (isProfilingEnabled) {
+      setWebpackConfig({
+        optimization: {
+          minimize: false,
+          moduleIds: 'named',
+          chunkIds: 'named',
+          concatenateModules: false,
+        },
+      })
+    } else {
+      setWebpackConfig({
+        optimization: {
+          runtimeChunk: {
+            name: `webpack-runtime`,
+          },
+          splitChunks: {
+            name: false,
+            cacheGroups: {
+              styles: {
+                name: `styles`,
+                test: /\.(css|scss)$/,
+                chunks: `initial`,
+                enforce: true,
+              },
+            },
+          },
+        },
+      })
+    }
   }
 }
 
