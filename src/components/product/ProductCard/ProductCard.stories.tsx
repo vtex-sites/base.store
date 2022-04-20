@@ -10,16 +10,22 @@ export default {
   component: ProductCard,
   title: 'Molecules/ProductCard',
   argTypes: {
-    variant: { table: { disable: true } },
+    variant: {
+      defaultValue: 'default',
+      table: { defaultValue: 'default' },
+    },
     product: { table: { disable: true } },
     index: { table: { disable: true } },
     aspectRatio: {
       defaultValue: 1,
+      description: 'ProductCard Image aspect ratio',
       options: [0.75, 1.5, 1],
       control: { type: 'radio' },
+      table: { defaultValue: '1' },
     },
     ButtonBuy: {
       control: 'boolean',
+      table: { defaultValue: false },
     },
   },
 }
