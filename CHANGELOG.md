@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix unused CSS problem by separating imports into different files for each page (#473)
 - Potential layout shift on Hero section fixed (#472)
 - Fix layout section spacings style (#469)
+- Fix styling issue on Regionalization Modal by adding the missing imports in layout.scss (#488)
 
 ### Security
 
