@@ -20,7 +20,7 @@ const FACTORS = [1, 2, 3]
 export const useSources = (
   sourcesOptions: SourceOptions[]
 ): Array<SourceHTMLAttributes<HTMLSourceElement>> => {
-  const sources = useMemo(() => {
+  return useMemo(() => {
     return sourcesOptions.map((sourceOption) => {
       const { src: baseUrl, width, height, media, options = {} } = sourceOption
 
@@ -35,6 +35,4 @@ export const useSources = (
       return { media, srcSet: srcs.join(', ') }
     })
   }, [sourcesOptions])
-
-  return sources
 }
