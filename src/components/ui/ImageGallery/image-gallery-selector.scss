@@ -71,14 +71,25 @@
       padding: 0;
       overflow: hidden;
       background-color: transparent;
-      border-color: transparent;
+      border: var(--fs-border-width-thick) solid transparent;
       border-radius: var(--fs-border-radius-default);
+      transition: all var(--fs-transition-timing) var(--fs-transition-function);
+
+      &:hover:not([data-thumbnail-button="selected"]) {
+        border-color: var(--fs-border-color-default-active);
+      }
 
       &[data-thumbnail-button="selected"] {
-        @include focus-ring;
-
-        border-color: var(--fs-color-primary-bkg-active);
+        border-color: var(--fs-border-color-default-active);
+        box-shadow: 0 0 0 var(--fs-border-width-thickest) var(--fs-color-focus-ring-outline);
       }
+
+      [data-store-image] {
+        border: var(--fs-border-width-thick) solid var(--fs-color-body-bkg);
+        border-radius: var(--fs-border-radius-default);
+      }
+
+      @include focus-ring-visible;
 
       @include media(">=notebook") {
         width: rem(72px);
