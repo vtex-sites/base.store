@@ -46,5 +46,4 @@ function Picture({
   )
 }
 
-Picture.displayName = 'Picture'
 export default memo(Picture)
