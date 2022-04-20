@@ -15,11 +15,16 @@ export interface SourceOptions extends SourceProps {
   options?: ThumborOptions
 }
 
+export interface SourceHTMLAttributesPreload
+  extends SourceHTMLAttributes<HTMLSourceElement> {
+  preloadLinks: string[]
+}
+
 const FACTORS = [1, 2, 3]
 
 export const useSources = (
   sourcesOptions: SourceOptions[]
-): Array<SourceHTMLAttributes<HTMLSourceElement>> => {
+): SourceHTMLAttributesPreload[] => {
   return useMemo(() => {
     return sourcesOptions.map((sourceOption) => {
       const { src: baseUrl, width, height, media, options = {} } = sourceOption
@@ -32,7 +37,9 @@ export const useSources = (
         return `${builder(rescaledWidth, height * factor)} ${rescaledWidth}w`
       })
 
-      return { media, srcSet: srcs.join(', ') }
+      const preloadLinks = srcs.map((src) => src.split(' ')[0])
+
+      return { media, srcSet: srcs.join(', '), preloadLinks }
     })
   }, [sourcesOptions])
 }
