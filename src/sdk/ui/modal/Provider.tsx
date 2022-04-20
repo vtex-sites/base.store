@@ -15,6 +15,8 @@ interface BaseContextValue {
   fade: FadeType
   onModalOpen: () => void
   onModalClose: () => void
+  isRegionalizationModalOpen: boolean
+  setIsRegionalizationModalOpen: (state: boolean) => void
 }
 
 type ContextValue = Record<string, unknown> & BaseContextValue
@@ -22,6 +24,9 @@ type ContextValue = Record<string, unknown> & BaseContextValue
 const ModalContext = createContext<ContextValue | undefined>(undefined)
 
 function ModalProvider({ children }: PropsWithChildren<unknown>) {
+  const [isRegionalizationModalOpen, setIsRegionalizationModalOpen] =
+    useState(false)
+
   const [fade, setFade] = useState<FadeType>('out')
   const layout = useRef<HTMLElement | null>(null)
 
@@ -48,8 +53,16 @@ function ModalProvider({ children }: PropsWithChildren<unknown>) {
       fade,
       onModalOpen,
       onModalClose,
+      isRegionalizationModalOpen,
+      setIsRegionalizationModalOpen,
     }),
-    [fade, onModalOpen, onModalClose]
+    [
+      fade,
+      onModalOpen,
+      onModalClose,
+      isRegionalizationModalOpen,
+      setIsRegionalizationModalOpen,
+    ]
   )
 
   return <ModalContext.Provider value={value}>{children}</ModalContext.Provider>

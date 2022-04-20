@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Applies new local tokens to `ProductShelf` component (#464)
 - Adds Storybook configs (#463)
 - Adds vtex search tracking script. With this we will populate TopSearches and Autocomplete indices (#389)
+- Add `RegionalizationBar`, `RegionalizationButton` components and integrates it on Mobile and Desktop devices (#424).
 
 ### Changed
 - Applies new local tokens to `BannerText` (#470)
