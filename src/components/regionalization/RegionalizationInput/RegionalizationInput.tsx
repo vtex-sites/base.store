@@ -19,7 +19,7 @@ export const UpdateSessionMutation = gql`
   }
 `
 
-export default function PostalCodeInput() {
+export default function RegionalizationInput() {
   const ref = useRef<HTMLInputElement>(null)
   const { country, setSession, ...partialSession } = useSession()
 
@@ -50,7 +50,7 @@ export default function PostalCodeInput() {
   }
 
   return (
-    <div className="postal-code-input">
+    <div className="regionalization-input">
       <UILabel htmlFor={POSTAL_CODE_INPUT_ID}>Postal Code: </UILabel>
       <UIInput
         id={POSTAL_CODE_INPUT_ID}

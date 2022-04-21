@@ -20,6 +20,8 @@ import type {
 import type { PageProps } from 'gatsby'
 import type { SearchState } from '@faststore/sdk'
 
+import 'src/styles/pages/plp.scss'
+
 type Props = PageProps<
   CollectionPageQueryQuery,
   CollectionPageQueryQueryVariables,

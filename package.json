@@ -30,10 +30,11 @@
     "@envelop/graphql-jit": "^1.1.1",
     "@envelop/parser-cache": "^2.2.0",
     "@envelop/validation-cache": "^2.2.0",
-    "@faststore/api": "^1.7.16",
-    "@faststore/sdk": "^1.7.16",
-    "@faststore/ui": "^1.7.16",
-    "@vtex/graphql-utils": "^1.7.14",
+    "@faststore/api": "^1.7.26",
+    "@faststore/sdk": "^1.7.26",
+    "@faststore/ui": "^1.7.26",
+    "@reach/router": "^1.3.4",
+    "@vtex/graphql-utils": "^1.7.26",
     "gatsby": "^4.11.1",
     "gatsby-plugin-gatsby-cloud": "^4.11.1",
     "gatsby-plugin-manifest": "^4.11.1",
@@ -70,7 +71,7 @@
     "@storybook/react": "^6.4.20",
     "@testing-library/cypress": "^8.0.0",
     "@types/cypress": "^1.1.3",
-    "@vtex/lighthouse-config": "^1.7.14",
+    "@vtex/lighthouse-config": "^1.7.26",
     "@vtex/prettier-config": "1.0.0",
     "@vtex/tsconfig": "0.6.0",
     "autoprefixer": "^10.4.0",
@@ -98,7 +99,7 @@
     "stylelint-order": "^5.0.0",
     "stylelint-scss": "^4.0.1",
     "tsconfig-paths-webpack-plugin": "^3.5.2",
-    "typescript": "^4.5.2"
+    "typescript": "^4.6.2"
   },
   "resolutions": {
     "@typescript-eslint/parser": "^4",

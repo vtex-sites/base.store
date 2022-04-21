@@ -1,0 +1,16 @@
+// Product
+@import "src/components/product/ProductCard/product-card.scss";
+@import "src/components/product/ProductGrid/product-grid.scss";
+
+// Search
+@import "src/components/search/Filter/filter.scss";
+
+// Sections
+@import "src/components/sections/Breadcrumb/breadcrumb.scss";
+@import "src/components/sections/ProductGallery/product-gallery.scss";
+
+// Skeletons
+@import "src/components/skeletons/FilterSkeleton/filter-skeleton.scss";
+@import "src/components/skeletons/ProductCardSkeleton/product-card-skeleton.scss";
+@import "src/components/skeletons/Shimmer/shimmer.scss";
+@import "src/components/skeletons/SkeletonElement/skeleton-element.scss";

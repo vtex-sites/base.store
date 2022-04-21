@@ -1,0 +1,20 @@
+// Product
+@import "src/components/product/OutOfStock/out-of-stock.scss";
+@import "src/components/product/ProductCard/product-card.scss";
+
+// Sections
+@import "src/components/sections/ProductDetails/product-details.scss";
+@import "src/components/sections/ProductShelf/product-shelf.scss";
+@import "src/components/sections/Section/section.scss";
+
+// Skeletons
+@import "src/components/skeletons/ProductCardSkeleton/product-card-skeleton.scss";
+@import "src/components/skeletons/Shimmer/shimmer.scss";
+@import "src/components/skeletons/SkeletonElement/skeleton-element.scss";
+
+// UI
+@import "src/components/ui/Breadcrumb/breadcrumb.scss";
+@import "src/components/ui/Image/image.scss";
+@import "src/components/ui/Price/price.scss";
+@import "src/components/ui/ProductTitle/product-title.scss";
+@import "src/components/ui/QuantitySelector/quantity-selector.scss";
