@@ -1,7 +1,8 @@
-import type { IStoreSelectedFacet } from '@faststore/api'
 import { useSearch } from '@faststore/sdk'
+import { useEffect, useMemo, useReducer } from 'react'
+import type { IStoreSelectedFacet } from '@faststore/api'
+
 import type { Filter_FacetsFragment } from '@generated/graphql'
-import { useReducer, useMemo, useEffect } from 'react'
 
 interface State {
   expanded: Set<number>

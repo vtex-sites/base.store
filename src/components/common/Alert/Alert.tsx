@@ -1,7 +1,8 @@
 import { useCallback, useState } from 'react'
+import type { PropsWithChildren } from 'react'
+
 import UIAlert from 'src/components/ui/Alert'
 import { mark } from 'src/sdk/tests/mark'
-import type { PropsWithChildren } from 'react'
 import Icon from 'src/components/ui/Icon'
 
 function Alert({ children }: PropsWithChildren<unknown>) {

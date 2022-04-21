@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
 import { gql } from '@vtex/graphql-utils'
+import { useSession } from '@faststore/sdk'
+
 import type {
   PersonQueryQuery,
   PersonQueryQueryVariables,
 } from '@generated/graphql'
-import { useSession } from '@faststore/sdk'
 
 import { useQuery } from '../graphql/useQuery'
 import type { QueryOptions } from '../graphql/useQuery'

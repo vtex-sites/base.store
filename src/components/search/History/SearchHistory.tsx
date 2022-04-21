@@ -1,5 +1,6 @@
 import { formatSearchState, initSearchState } from '@faststore/sdk'
 import { Icon as UIIcon, List as UIList } from '@faststore/ui'
+
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'
@@ -36,7 +37,7 @@ const SearchHistory = ({ onClear }: SearchHistoryProps) => {
           <li data-store-search-history-item key={index}>
             <Link
               variant="display"
-              to={doSearch(item)}
+              href={doSearch(item)}
               target="_blank"
               rel="noreferrer"
             >

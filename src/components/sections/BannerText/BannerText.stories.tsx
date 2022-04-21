@@ -1,7 +1,7 @@
 import type { BannerTextProps } from '.'
 import BannerText from '.'
 
-export default {
+const story = {
   component: BannerText,
   title: 'Components/BannerText',
   argTypes: {
@@ -47,3 +47,5 @@ Secondary.args = {
   actionPath: '/',
   actionLabel: 'Call to action',
 }
+
+export default story

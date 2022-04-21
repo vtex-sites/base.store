@@ -4,35 +4,45 @@ import {
   sendAnalyticsEvent,
 } from '@faststore/sdk'
 import { SearchInput as UISearchInput } from '@faststore/ui'
-import { navigate } from 'gatsby'
-import { forwardRef } from 'react'
-import Icon from 'src/components/ui/Icon'
-import useSearchHistory from 'src/sdk/search/useSearchHistory'
+import { forwardRef, useCallback } from 'react'
 import type { SearchEvent } from '@faststore/sdk'
 import type {
   SearchInputProps as UISearchInputProps,
   SearchInputRef,
 } from '@faststore/ui'
+import { useRouter } from 'next/router'
+
+import useSearchHistory from 'src/sdk/search/useSearchHistory'
+import Icon from 'src/components/ui/Icon'
 
 declare type SearchInputProps = {
   onSearchClick?: () => void
   buttonTestId?: string
 } & Omit<UISearchInputProps, 'onSubmit'>
 
-const doSearch = async (term: string) => {
-  const { pathname, search } = formatSearchState(
-    initSearchState({
-      term,
-      base: '/s',
-    })
+const useSearchHanlder = () => {
+  const router = useRouter()
+  const { addToSearchHistory } = useSearchHistory()
+
+  return useCallback(
+    (term: string) => {
+      const { pathname, search } = formatSearchState(
+        initSearchState({
+          term,
+          base: '/s',
+        })
+      )
+
+      sendAnalyticsEvent<SearchEvent>({
+        name: 'search',
+        params: { search_term: term },
+      })
+
+      addToSearchHistory(term)
+      router.push(`${pathname}${search}`)
+    },
+    [addToSearchHistory, router]
   )
-
-  sendAnalyticsEvent<SearchEvent>({
-    name: 'search',
-    params: { search_term: term },
-  })
-
-  navigate(`${pathname}${search}`)
 }
 
 const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
@@ -40,11 +50,7 @@ const SearchInput = forwardRef<SearchInputRef, SearchInputProps>(
     { onSearchClick, buttonTestId = 'store-search-button', ...props },
     ref
   ) {
-    const { addToSearchHistory } = useSearchHistory()
-    const handleSearch = (term: string) => {
-      addToSearchHistory(term)
-      doSearch(term)
-    }
+    const handleSearch = useSearchHanlder()
 
     return (
       <UISearchInput

@@ -1,8 +1,9 @@
 import { List as UIList } from '@faststore/ui'
 import { forwardRef } from 'react'
+import type { HTMLAttributes } from 'react'
+
 import { Badge } from 'src/components/ui/Badge'
 import Link from 'src/components/ui/Link'
-import type { HTMLAttributes } from 'react'
 
 export interface SuggestionsTopSearchProps
   extends HTMLAttributes<HTMLDivElement> {
@@ -41,7 +42,7 @@ const SuggestionsTopSearch = forwardRef<
       <UIList variant="ordered">
         {searchedItems.map((item, index) => (
           <li key={index} className="suggestions__item">
-            <Link variant="display" to={item.href}>
+            <Link variant="display" href={item.href}>
               <Badge variant="info">{index + 1}</Badge>
               {item.name}
             </Link>

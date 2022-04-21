@@ -1,6 +1,7 @@
 import { Modal as UIModal } from '@faststore/ui'
 import { useEffect } from 'react'
 import type { ReactNode, HTMLAttributes } from 'react'
+
 import { useModal } from 'src/sdk/ui/modal/Provider'
 
 type Direction = 'leftSide' | 'rightSide'

@@ -1,10 +1,11 @@
 import { useSearch } from '@faststore/sdk'
-import { graphql } from 'gatsby'
+import { gql } from '@vtex/graphql-utils'
+
 import Button, { ButtonIcon } from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
 import SlideOver from 'src/components/ui/SlideOver'
-import type { Filter_FacetsFragment } from '@generated/graphql'
 import { useModal } from 'src/sdk/ui/modal/Provider'
+import type { Filter_FacetsFragment } from '@generated/graphql'
 
 import Facets from './Facets'
 import { useFilter } from './useFilter'
@@ -115,7 +116,7 @@ function Filter({
   )
 }
 
-export const fragment = graphql`
+export const fragment = gql`
   fragment Filter_facets on StoreFacet {
     key
     label

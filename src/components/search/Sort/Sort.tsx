@@ -1,4 +1,5 @@
 import { useSearch } from '@faststore/sdk'
+
 import Select from 'src/components/ui/Select'
 
 const OptionsMap = {

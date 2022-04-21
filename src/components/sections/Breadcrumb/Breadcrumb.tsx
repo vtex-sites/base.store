@@ -1,4 +1,5 @@
 import { memo } from 'react'
+
 import UIBreadcrumb from 'src/components/ui/Breadcrumb'
 import type { BreadcrumbProps } from 'src/components/ui/Breadcrumb'
 

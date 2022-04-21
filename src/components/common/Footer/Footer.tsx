@@ -3,6 +3,7 @@ import {
   List as UIList,
   PaymentMethods as UIPaymentMethods,
 } from '@faststore/ui'
+
 import IncentivesFooter from 'src/components/sections/Incentives/IncentivesFooter'
 import Icon from 'src/components/ui/Icon'
 import Link from 'src/components/ui/Link'
@@ -87,6 +88,7 @@ function Footer() {
       <div className="footer__note layout__content">
         <UIIcon
           component={
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src="/BaseStore.svg"
               alt="BaseStore logo"

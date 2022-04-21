@@ -4,14 +4,16 @@ import {
   CardContent as UICardContent,
   CardImage as UICardImage,
 } from '@faststore/ui'
-import { graphql, Link } from 'gatsby'
+import { gql } from '@vtex/graphql-utils'
 import { memo } from 'react'
+import type { ReactNode } from 'react'
+
+import FrameworkLink from 'src/components/common/Link'
 import { Badge, DiscountBadge } from 'src/components/ui/Badge'
 import { Image } from 'src/components/ui/Image'
 import Price from 'src/components/ui/Price'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProductLink } from 'src/sdk/product/useProductLink'
-import type { ReactNode } from 'react'
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 type Variant = 'wide' | 'default'
@@ -69,9 +71,9 @@ function ProductCard({
       <UICardContent data-fs-product-card-content>
         <div data-fs-product-card-heading>
           <h3 data-fs-product-card-title>
-            <Link {...linkProps} title={name}>
+            <FrameworkLink {...linkProps} title={name}>
               {name}
-            </Link>
+            </FrameworkLink>
           </h3>
           <div data-fs-product-card-prices>
             <Price
@@ -106,7 +108,7 @@ function ProductCard({
   )
 }
 
-export const fragment = graphql`
+export const fragment = gql`
   fragment ProductSummary_product on StoreProduct {
     id: productID
     slug

@@ -1,10 +1,11 @@
 import { Alert as UIAlert, Icon as UIIcon } from '@faststore/ui'
-import { Link } from 'gatsby'
 import { useCallback } from 'react'
-import Button from 'src/components/ui/Button'
-import Icon from 'src/components/ui/Icon'
 import type { ReactNode, MouseEvent } from 'react'
 import type { AlertProps } from '@faststore/ui'
+
+import FrameworkLink from 'src/components/common/Link'
+import Button from 'src/components/ui/Button'
+import Icon from 'src/components/ui/Icon'
 
 type Props = AlertProps & {
   icon?: ReactNode
@@ -43,7 +44,7 @@ function Alert({
 
       {link && (
         <div data-alert-link>
-          <Link to={link.to}>{link.text}</Link>
+          <FrameworkLink href={link.to}>{link.text}</FrameworkLink>
         </div>
       )}
 

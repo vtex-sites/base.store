@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import {
   Breadcrumb as UIBreadcrumb,
   Dropdown as UIDropdown,
@@ -6,10 +5,12 @@ import {
   DropdownItem as UIDropdownItem,
   DropdownMenu as UIDropdownMenu,
 } from '@faststore/ui'
-import Link from 'src/components/ui/Link'
+import { useRouter } from 'next/router'
+import { memo } from 'react'
 import type { BreadcrumbProps as UIBreadcrumbProps } from '@faststore/ui'
+
 import Icon from 'src/components/ui/Icon'
-import { navigate } from 'gatsby'
+import Link from 'src/components/ui/Link'
 
 type ItemElement = {
   item: string
@@ -28,6 +29,7 @@ function BaseBreadcrumb({
   breadcrumbList,
   isDesktop = false,
 }: BaseBreadcrumbProps) {
+  const router = useRouter()
   const firstItem = isDesktop ? breadcrumbList[0] : null
   const mediumItems = isDesktop
     ? breadcrumbList.slice(1, -2)
@@ -42,7 +44,7 @@ function BaseBreadcrumb({
       divider=""
       className={isDesktop ? 'hidden-mobile' : 'display-mobile'}
     >
-      <Link aria-label="Go to homepage" to="/">
+      <Link aria-label="Go to homepage" href="/">
         <Icon name="House" width={18} height={18} weight="bold" />
       </Link>
 
@@ -51,14 +53,14 @@ function BaseBreadcrumb({
           return breadcrumbList.length === index + 1 ? (
             <span key={String(index)}>{name}</span>
           ) : (
-            <Link to={item} key={String(index)}>
+            <Link href={item} key={String(index)}>
               {name}
             </Link>
           )
         })}
 
       {collapseBreadcrumb && firstItem && (
-        <Link to={firstItem.item}>{firstItem.name}</Link>
+        <Link href={firstItem.item}>{firstItem.name}</Link>
       )}
 
       {collapseBreadcrumb && (
@@ -70,7 +72,7 @@ function BaseBreadcrumb({
             {mediumItems.map(({ item, name }, index) => (
               <UIDropdownItem
                 data-store-dropdown-menu-item
-                onClick={() => navigate(item)}
+                onClick={() => router.push(item)}
                 key={String(index)}
               >
                 <Icon name="ArrowElbowDownRight" width={24} height={24} />
@@ -86,7 +88,7 @@ function BaseBreadcrumb({
           return lastItems.length === index + 1 ? (
             <span key={String(index)}>{name}</span>
           ) : (
-            <Link to={item} key={String(index)}>
+            <Link href={item} key={String(index)}>
               {name}
             </Link>
           )

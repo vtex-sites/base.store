@@ -2,7 +2,7 @@ import type { BadgeProps } from '@faststore/ui'
 
 import { Badge } from '.'
 
-export default {
+const story = {
   component: Badge,
   title: 'Components/Badge',
 }
@@ -19,3 +19,5 @@ Default.args = {
   interactive: true,
   variant: 'info',
 }
+
+export default story

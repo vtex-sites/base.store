@@ -1,6 +1,7 @@
 import { useSession } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
 import { useCallback, useMemo } from 'react'
+
 import { ITEMS_PER_SECTION } from 'src/constants'
 import type {
   ProductsQueryQuery,
@@ -60,7 +61,7 @@ export const useLocalizedVariables = ({
       after: after ?? '0',
       sort: sort ?? ('score_desc' as const),
       term: term ?? '',
-      selectedFacets: [...facets, { key: 'channel', value: channel! }],
+      selectedFacets: [...facets, { key: 'channel', value: channel ?? '' }],
     }
   }, [first, after, sort, term, selectedFacets, channel])
 }

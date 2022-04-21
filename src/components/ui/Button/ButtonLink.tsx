@@ -1,15 +1,16 @@
 import { Icon as UIIcon, Link as UILink } from '@faststore/ui'
-import { Link as GatsbyLink } from 'gatsby'
 import { useRef } from 'react'
 import type { LinkProps } from '@faststore/ui'
 import type { FocusEvent } from 'react'
+
+import FrameworkLink from 'src/components/common/Link'
 
 import type { UIButtonProps } from './Button'
 
 type Props = {
   disabled?: boolean
 } & UIButtonProps &
-  LinkProps<typeof GatsbyLink>
+  LinkProps<typeof FrameworkLink>
 
 function ButtonLink({
   variant = 'primary',
@@ -24,8 +25,7 @@ function ButtonLink({
 
   return (
     <UILink
-      as={GatsbyLink}
-      innerRef={linkRef}
+      as={FrameworkLink}
       data-fs-button
       data-fs-button-link
       data-fs-button-variant={variant}

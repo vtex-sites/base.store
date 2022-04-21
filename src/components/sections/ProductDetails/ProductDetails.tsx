@@ -1,6 +1,9 @@
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
-import { graphql } from 'gatsby'
+import { gql } from '@vtex/graphql-utils'
 import { useEffect, useState } from 'react'
+import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
+
+import OutOfStock from 'src/components/product/OutOfStock'
 import { DiscountBadge } from 'src/components/ui/Badge'
 import Breadcrumb from 'src/components/ui/Breadcrumb'
 import { ButtonBuy } from 'src/components/ui/Button'
@@ -12,9 +15,7 @@ import { useBuyButton } from 'src/sdk/cart/useBuyButton'
 import { useFormattedPrice } from 'src/sdk/product/useFormattedPrice'
 import { useProduct } from 'src/sdk/product/useProduct'
 import type { ProductDetailsFragment_ProductFragment } from '@generated/graphql'
-import type { CurrencyCode, ViewItemEvent } from '@faststore/sdk'
 import type { AnalyticsItem } from 'src/sdk/analytics/types'
-import OutOfStock from 'src/components/product/OutOfStock'
 
 import Section from '../Section'
 
@@ -249,7 +250,7 @@ function AddToCartLoadingSkeleton() {
   )
 }
 
-export const fragment = graphql`
+export const fragment = gql`
   fragment ProductDetailsFragment_product on StoreProduct {
     id: productID
     sku

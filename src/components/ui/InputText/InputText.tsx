@@ -1,9 +1,10 @@
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
 import { useEffect, useRef, useState } from 'react'
+import type { InputProps } from '@faststore/ui'
+
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/Button/ButtonIcon'
 import Icon from 'src/components/ui/Icon'
-import type { InputProps } from '@faststore/ui'
 
 export type InputTextProps = {
   /**

@@ -1,7 +1,8 @@
 import type { HTMLAttributes } from 'react'
-import { useModal } from 'src/sdk/ui/modal/Provider'
+
 import Button from 'src/components/ui/Button'
 import Icon from 'src/components/ui/Icon'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 interface RegionalizationBarProps extends HTMLAttributes<HTMLDivElement> {
   content?: string

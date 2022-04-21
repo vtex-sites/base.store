@@ -1,8 +1,8 @@
-import { useCallback } from 'react'
 import { sendAnalyticsEvent, useSession } from '@faststore/sdk'
-import { useLocation } from '@reach/router'
-import type { ProductSummary_ProductFragment } from '@generated/graphql'
+import { useCallback } from 'react'
 import type { CurrencyCode, SelectItemEvent } from '@faststore/sdk'
+
+import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import type { AnalyticsItem, SearchSelectItemEvent } from '../analytics/types'
 
@@ -18,7 +18,6 @@ export const useProductLink = ({
   selectedOffer,
 }: ProductLinkOptions) => {
   const { slug } = product
-  const { href } = useLocation()
   const {
     currency: { code },
   } = useSession()
@@ -49,7 +48,7 @@ export const useProductLink = ({
     sendAnalyticsEvent<SearchSelectItemEvent>({
       name: 'search_select_item',
       params: {
-        url: href,
+        url: window.location.href,
         items: [
           {
             item_id: product.isVariantOf.productGroupID,
@@ -59,10 +58,10 @@ export const useProductLink = ({
         ],
       },
     })
-  }, [code, product, index, selectedOffer, href])
+  }, [code, product, index, selectedOffer])
 
   return {
-    to: `/${slug}/p`,
+    href: `/${slug}/p`,
     onClick,
     'data-testid': 'product-link',
   }

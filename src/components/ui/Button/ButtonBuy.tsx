@@ -1,6 +1,7 @@
 import { Button as UIButton } from '@faststore/ui'
-import Icon from 'src/components/ui/Icon'
 import type { ButtonProps } from '@faststore/ui'
+
+import Icon from 'src/components/ui/Icon'
 
 type Props = ButtonProps
 

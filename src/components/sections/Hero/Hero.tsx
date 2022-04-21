@@ -61,7 +61,7 @@ const Hero = ({
               <p data-fs-hero-text-body>{subtitle}</p>
               {!!link && (
                 <HeroLink>
-                  <ButtonLink to={link} inverse={colorVariant === 'main'}>
+                  <ButtonLink href={link} inverse={colorVariant === 'main'}>
                     {linkText} <Icon name="ArrowRight" width={24} height={24} />
                   </ButtonLink>
                 </HeroLink>

@@ -1,5 +1,6 @@
 import { useSearch } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
+
 import { useQuery } from 'src/sdk/graphql/useQuery'
 import type {
   ProductGalleryQueryQuery as Query,
@@ -31,11 +32,6 @@ export const query = gql`
         pageInfo {
           totalCount
         }
-        edges {
-          node {
-            ...ProductSummary_product
-          }
-        }
       }
       facets {
         ...Filter_facets
@@ -46,13 +42,13 @@ export const query = gql`
 
 export const useGalleryQuery = () => {
   const {
-    state: { term, sort, selectedFacets, page },
+    state: { term, sort, selectedFacets },
     itemsPerPage,
   } = useSearch()
 
   const localizedVariables = useLocalizedVariables({
     first: itemsPerPage,
-    after: (itemsPerPage * page).toString(),
+    after: '0',
     sort,
     term: term ?? '',
     selectedFacets,

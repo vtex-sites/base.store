@@ -1,6 +1,9 @@
 import { useSearch } from '@faststore/sdk'
 import { useEffect, useRef } from 'react'
 import { useInView } from 'react-intersection-observer'
+import type { NextRouter } from 'next/router'
+import { useRouter } from 'next/router'
+
 import type { ProductSummary_ProductFragment } from '@generated/graphql'
 
 import { useViewItemListEvent } from '../analytics/hooks/useViewItemListEvent'
@@ -13,16 +16,17 @@ interface Props {
 }
 
 // Adds/Replaces ?page= to the querystring of the page
-const replacePagination = (page: number) => {
-  const searchParams = new URLSearchParams(window.location.search)
+const replacePagination = (page: string, router: NextRouter) => {
+  const url = new URL(window.location.href)
 
-  searchParams.set('page', page.toString())
+  // In case the page argument already matches the target page
+  if (url.searchParams.get('page') === page) {
+    return
+  }
 
-  window.history.replaceState(
-    undefined,
-    '',
-    `${window.location.pathname}?${searchParams}`
-  )
+  // Set ?page= parameter and replace route
+  url.searchParams.set('page', page)
+  router.replace(url, undefined, { shallow: true, scroll: false })
 }
 
 /**
@@ -37,7 +41,9 @@ const replacePagination = (page: number) => {
 function Sentinel({ page, pageSize, products, title }: Props) {
   const viewedRef = useRef(false)
   const { ref, inView } = useInView()
-  const { state: searchState, pages } = useSearch()
+  const { pages } = useSearch()
+
+  const router = useRouter()
 
   const { sendViewItemListEvent } = useViewItemListEvent({
     products,
@@ -50,14 +56,14 @@ function Sentinel({ page, pageSize, products, title }: Props) {
     // Only replace pagination state when infinite scroll
     // state has more than one page being rendered to the screen
     if (inView && pages.length > 1) {
-      replacePagination(page)
+      replacePagination(page.toString(), router)
     }
 
     if (inView && !viewedRef.current) {
       sendViewItemListEvent()
       viewedRef.current = true
     }
-  }, [inView, page, pages.length, searchState, sendViewItemListEvent])
+  }, [pages.length, inView, page, router, sendViewItemListEvent])
 
   return <div ref={ref} />
 }

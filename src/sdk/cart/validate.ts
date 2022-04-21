@@ -1,12 +1,13 @@
 import { gql } from '@vtex/graphql-utils'
 import type { CartItem as SDKCartItem, Cart as SDKCart } from '@faststore/sdk'
+import type { IStoreOffer } from '@faststore/api'
+
 import type {
   ValidateCartMutationMutation,
   ValidateCartMutationMutationVariables,
   CartItemFragment,
   CartMessageFragment,
 } from '@generated/graphql'
-import type { IStoreOffer } from '@faststore/api'
 
 import { request } from '../graphql/request'
 

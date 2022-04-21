@@ -1,7 +1,11 @@
-import { navigate } from 'gatsby'
+import { useCallback } from 'react'
+import { useRouter } from 'next/router'
 
-export const applySearchState = (url: URL) => {
-  const link = `${url.pathname}${url.search}`
+export const useApplySearchState = () => {
+  const router = useRouter()
 
-  navigate(link)
+  return useCallback(
+    (url: URL) => router.push(`${url.pathname}${url.search}`),
+    [router]
+  )
 }

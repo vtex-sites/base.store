@@ -15,15 +15,15 @@ import { useGraphQlJit } from '@envelop/graphql-jit'
 import { useParserCache } from '@envelop/parser-cache'
 import { useValidationCache } from '@envelop/validation-cache'
 import { getContextFactory, getSchema } from '@faststore/api'
-import type { Options as APIOptions } from '@faststore/api'
 import { GraphQLError } from 'graphql'
+import type { Options as APIOptions } from '@faststore/api'
 
 import persisted from '../../@generated/graphql/persisted.json'
 import storeConfig from '../../store.config'
 
-interface ExecuteOptions {
+interface ExecuteOptions<V = Record<string, unknown>> {
   operationName: string
-  variables: Record<string, unknown>
+  variables: V
   query?: string | null
 }
 
@@ -69,10 +69,10 @@ const getEnvelop = async () =>
 
 const envelopPromise = getEnvelop()
 
-export const execute = async (
-  options: ExecuteOptions,
+export const execute = async <V, D>(
+  options: ExecuteOptions<V>,
   envelopContext = { req: { headers: {} } }
-) => {
+): Promise<{ data: D; errors: unknown[] }> => {
   const { operationName, variables, query: maybeQuery } = options
   const query = maybeQuery ?? persistedQueries.get(operationName)
 
@@ -98,5 +98,5 @@ export const execute = async (
     variableValues: variables,
     contextValue: await contextFactory({ headers }),
     operationName,
-  })
+  }) as Promise<{ data: D; errors: unknown[] }>
 }

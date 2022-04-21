@@ -6,7 +6,7 @@ const { checkoutUrl } = storeConfig
 export const useCheckoutButton = () => {
   const { isValidating, id } = useCart()
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     if (!isValidating && id) {

@@ -1,6 +1,7 @@
 import { Banner, BannerContent, BannerLink } from '@faststore/ui'
-import { ButtonLink } from 'src/components/ui/Button'
 import type { HTMLAttributes } from 'react'
+
+import { ButtonLink } from 'src/components/ui/Button'
 
 import Section from '../Section'
 
@@ -68,7 +69,7 @@ function BannerText({
           </div>
           <BannerLink data-fs-banner-text-link>
             <ButtonLink
-              to={actionPath}
+              href={actionPath}
               variant={variant}
               inverse={colorVariant === 'main'}
             >

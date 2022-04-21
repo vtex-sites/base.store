@@ -1,28 +1,29 @@
 import { Link as UILink } from '@faststore/ui'
-import { Link as GatsbyLink } from 'gatsby'
 import type { ElementType } from 'react'
 import type { LinkProps } from '@faststore/ui'
 
+import FrameworkLink from 'src/components/common/Link'
+
 type Variant = 'default' | 'display' | 'inline' | 'footer'
 
-type Props<T extends ElementType = typeof GatsbyLink> = LinkProps<T> & {
+type Props<T extends ElementType = typeof FrameworkLink> = LinkProps<T> & {
   variant?: Variant
   inverse?: boolean
 }
 
-function Link<T extends ElementType = typeof GatsbyLink>({
+function Link<T extends ElementType = typeof FrameworkLink>({
   variant = 'default',
   inverse,
-  to,
+  href,
   ...props
 }: Props<T>) {
   return (
     <UILink
-      as={GatsbyLink}
+      as={FrameworkLink}
       data-fs-link
       data-fs-link-variant={variant}
       data-fs-link-inverse={inverse}
-      to={to}
+      href={href}
       {...props}
     />
   )

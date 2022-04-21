@@ -6,6 +6,7 @@ import {
   AccordionButton as UIAccordionButton,
 } from '@faststore/ui'
 import type { AccordionItemProps } from '@faststore/ui'
+
 import Icon from 'src/components/ui/Icon'
 
 interface Props extends AccordionItemProps {

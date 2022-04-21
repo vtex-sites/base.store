@@ -1,10 +1,11 @@
 import { useSession } from '@faststore/sdk'
 import { useMemo } from 'react'
+import { gql } from '@vtex/graphql-utils'
+
 import type {
   BrowserProductQueryQuery,
   BrowserProductQueryQueryVariables,
 } from '@generated/graphql'
-import { gql } from '@vtex/graphql-utils'
 
 import { useQuery } from '../graphql/useQuery'
 

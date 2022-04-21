@@ -12,7 +12,7 @@ function EmptyGallery() {
       </header>
 
       <ButtonLink
-        to="/office"
+        href="/office"
         variant="secondary"
         icon={
           <Icon name="CircleWavyWarning" width={18} height={18} weight="bold" />
@@ -22,7 +22,7 @@ function EmptyGallery() {
         Browse Offers
       </ButtonLink>
       <ButtonLink
-        to="/technology"
+        href="/technology"
         variant="secondary"
         icon={<Icon name="RocketLaunch" width={18} height={18} weight="bold" />}
         iconPosition="left"

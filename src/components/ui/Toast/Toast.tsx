@@ -1,5 +1,6 @@
-import Button from 'src/components/ui/Button'
 import { useEffect, useRef } from 'react'
+
+import Button from 'src/components/ui/Button'
 import { useUI } from 'src/sdk/ui'
 
 const state = {

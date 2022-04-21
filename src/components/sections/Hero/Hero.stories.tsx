@@ -1,10 +1,11 @@
 import { HelmetProvider } from 'react-helmet-async'
+
 import Icon from 'src/components/ui/Icon'
 
 import type { HeroProps } from '.'
 import Hero from '.'
 
-export default {
+const story = {
   component: Hero,
   title: 'Components/Hero',
   argTypes: {
@@ -50,3 +51,5 @@ Secondary.args = {
   colorVariant: 'light',
   icon: <Icon name="Headphones" width={48} height={48} weight="thin" />,
 }
+
+export default story

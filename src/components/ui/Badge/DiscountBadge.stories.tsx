@@ -1,7 +1,7 @@
 import { DiscountBadge } from '.'
 import type { DiscountBadgeProps } from './DiscountBadge'
 
-export default {
+const story = {
   component: DiscountBadge,
   title: 'Components/Badge',
 }
@@ -17,3 +17,5 @@ Discount.args = {
   listPrice: 45,
   spotPrice: 40,
 }
+
+export default story

@@ -1,6 +1,7 @@
-import { usePagination, useSearch } from '@faststore/sdk'
-import { GatsbySeo } from 'gatsby-plugin-next-seo'
+import { useSearch } from '@faststore/sdk'
+import { NextSeo } from 'next-seo'
 import { lazy, Suspense, useState } from 'react'
+
 import Filter from 'src/components/search/Filter'
 import Sort from 'src/components/search/Sort'
 import FilterSkeleton from 'src/components/skeletons/FilterSkeleton'
@@ -13,11 +14,11 @@ import { mark } from 'src/sdk/tests/mark'
 import Section from '../Section'
 import EmptyGallery from './EmptyGallery'
 import { useDelayedFacets } from './useDelayedFacets'
+import { useDelayedPagination } from './useDelayedPagination'
 import { useGalleryQuery } from './useGalleryQuery'
 import { useProductsPrefetch } from './usePageProducts'
 
 const GalleryPage = lazy(() => import('./ProductGalleryPage'))
-const GalleryPageSkeleton = <ProductGridSkeleton loading />
 
 interface Props {
   title: string
@@ -26,12 +27,11 @@ interface Props {
 
 function ProductGallery({ title, searchTerm }: Props) {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false)
-  const { pages, addNextPage, addPrevPage, state: searchState } = useSearch()
-
+  const { pages, addNextPage, addPrevPage } = useSearch()
   const { data } = useGalleryQuery()
   const facets = useDelayedFacets(data)
   const totalCount = data?.search.products.pageInfo.totalCount ?? 0
-  const { next, prev } = usePagination(totalCount)
+  const { next, prev } = useDelayedPagination(totalCount)
 
   useProductsPrefetch(prev ? prev.cursor : null)
   useProductsPrefetch(next ? next.cursor : null)
@@ -99,14 +99,16 @@ function ProductGallery({ title, searchTerm }: Props) {
           {/* Add link to previous page. This helps on SEO */}
           {prev !== false && (
             <div className="product-listing__pagination product-listing__pagination--top">
-              <GatsbySeo defer linkTags={[{ rel: 'prev', href: prev.link }]} />
+              <NextSeo
+                additionalLinkTags={[{ rel: 'prev', href: prev.link }]}
+              />
               <ButtonLink
                 onClick={(e) => {
                   e.currentTarget.blur()
                   e.preventDefault()
                   addPrevPage()
                 }}
-                to={prev.link}
+                href={prev.link}
                 rel="prev"
                 variant="secondary"
                 iconPosition="left"
@@ -121,25 +123,26 @@ function ProductGallery({ title, searchTerm }: Props) {
 
           {/* Render ALL products */}
           {data ? (
-            <Suspense fallback={GalleryPageSkeleton}>
+            <Suspense fallback={<ProductGridSkeleton loading />}>
               {pages.map((page) => (
                 <GalleryPage
                   key={`gallery-page-${page}`}
                   showSponsoredProducts={false}
-                  fallbackData={page === searchState.page ? data : undefined}
                   page={page}
                   title={title}
                 />
               ))}
             </Suspense>
           ) : (
-            GalleryPageSkeleton
+            <ProductGridSkeleton loading />
           )}
 
           {/* Add link to next page. This helps on SEO */}
           {next !== false && (
             <div className="product-listing__pagination product-listing__pagination--bottom">
-              <GatsbySeo defer linkTags={[{ rel: 'next', href: next.link }]} />
+              <NextSeo
+                additionalLinkTags={[{ rel: 'next', href: next.link }]}
+              />
               <ButtonLink
                 data-testid="show-more"
                 onClick={(e) => {
@@ -147,7 +150,7 @@ function ProductGallery({ title, searchTerm }: Props) {
                   e.preventDefault()
                   addNextPage()
                 }}
-                to={next.link}
+                href={next.link}
                 rel="next"
                 variant="secondary"
               >

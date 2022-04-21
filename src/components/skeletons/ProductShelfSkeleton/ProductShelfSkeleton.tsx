@@ -1,5 +1,6 @@
-import { ITEMS_PER_SECTION } from 'src/constants'
 import type { PropsWithChildren } from 'react'
+
+import { ITEMS_PER_SECTION } from 'src/constants'
 
 import ProductCardSkeleton from '../ProductCardSkeleton'
 

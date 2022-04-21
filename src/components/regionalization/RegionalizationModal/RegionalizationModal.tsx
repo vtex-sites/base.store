@@ -1,10 +1,11 @@
 import { Modal as UIModal } from '@faststore/ui'
-import Link from 'src/components/ui/Link'
-import Icon from 'src/components/ui/Icon'
 import { useEffect } from 'react'
-import { ButtonIcon } from 'src/components/ui/Button'
-import { useModal } from 'src/sdk/ui/modal/Provider'
+
 import RegionalizationInput from 'src/components/regionalization/RegionalizationInput'
+import { ButtonIcon } from 'src/components/ui/Button'
+import Icon from 'src/components/ui/Icon'
+import Link from 'src/components/ui/Link'
+import { useModal } from 'src/sdk/ui/modal/Provider'
 
 interface RegionalizationModalProps {
   isOpen: boolean
@@ -56,7 +57,7 @@ function RegionalizationModal({
         <div data-regionalization-modal-input>
           <RegionalizationInput />
         </div>
-        <Link to="/">
+        <Link href="/">
           <span data-regionalization-modal-link>
             {"Don't know my Postal Code"}
           </span>

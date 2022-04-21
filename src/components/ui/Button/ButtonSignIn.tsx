@@ -8,7 +8,7 @@ const ButtonSignIn = () => {
   return (
     <ButtonLink
       data-fs-button-signin-link
-      to={person?.id ? '/account' : '/login'}
+      href={person?.id ? '/account' : '/login'}
       className="text__title-mini signin-link"
       variant="tertiary"
     >

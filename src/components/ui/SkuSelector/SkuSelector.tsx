@@ -1,7 +1,8 @@
 import { Label, RadioGroup, RadioOption } from '@faststore/ui'
 import { useState } from 'react'
-import { Image } from 'src/components/ui/Image'
 import type { ChangeEventHandler } from 'react'
+
+import { Image } from 'src/components/ui/Image'
 
 interface DefaultSkuProps {
   /**

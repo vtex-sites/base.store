@@ -1,5 +1,6 @@
 import { QuantitySelector as UIQuantitySelector } from '@faststore/ui'
 import { memo, useEffect, useState } from 'react'
+
 import Icon from 'src/components/ui/Icon'
 
 interface QuantitySelectorProps {

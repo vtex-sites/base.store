@@ -1,6 +1,7 @@
 import { Select as UISelect } from '@faststore/ui'
-import Icon from 'src/components/ui/Icon'
 import type { SelectProps } from '@faststore/ui'
+
+import Icon from 'src/components/ui/Icon'
 
 interface UISelectProps extends SelectProps {
   /*

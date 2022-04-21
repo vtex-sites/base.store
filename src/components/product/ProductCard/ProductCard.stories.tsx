@@ -1,11 +1,12 @@
 import { SessionProvider } from '@faststore/sdk'
+
 import storeConfig from 'store.config'
 import { LocationProvider } from '@reach/router'
 
 import type { ProductCardProps } from '.'
 import ProductCard from '.'
 
-export default {
+const story = {
   component: ProductCard,
   title: 'Components/ProductCard',
 }
@@ -57,3 +58,5 @@ Default.args = {
   product,
   index: 1,
 }
+
+export default story

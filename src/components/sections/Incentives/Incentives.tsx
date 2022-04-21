@@ -1,4 +1,5 @@
 import { Incentive as UIIncentive, List as UIList } from '@faststore/ui'
+
 import Icon from 'src/components/ui/Icon'
 
 interface Incentive {
