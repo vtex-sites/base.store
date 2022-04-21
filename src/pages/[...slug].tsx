@@ -1,4 +1,8 @@
-import { parseSearchState, SearchProvider } from '@faststore/sdk'
+import {
+  formatSearchState,
+  parseSearchState,
+  SearchProvider,
+} from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
 import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
 import { useRouter } from 'next/router'
@@ -40,15 +44,20 @@ const useSearchParams = ({ collection }: Props): SearchState => {
 
   useEffect(() => {
     const url = new URL(asPath, 'http://localhost')
-    const state = parseSearchState(url)
+    const newState = parseSearchState(url)
 
-    // no facets were chosen. We need at least one
-    if (state.selectedFacets.length === 0) {
-      return
+    // In case we are in an incomplete url
+    if (newState.selectedFacets.length === 0) {
+      newState.selectedFacets = selectedFacets
     }
 
-    setParams(state)
-  }, [asPath])
+    setParams((oldState) => {
+      const newURL = formatSearchState(newState).href
+      const oldURL = formatSearchState(oldState).href
+
+      return newURL === oldURL ? oldState : newState
+    })
+  }, [asPath, selectedFacets])
 
   return params
 }
