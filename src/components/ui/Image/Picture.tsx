@@ -1,6 +1,6 @@
-import type { HTMLAttributes } from 'react'
-import { memo } from 'react'
+import React, { memo } from 'react'
 import { Helmet } from 'react-helmet'
+import type { HTMLAttributes } from 'react'
 
 import { useSources } from './useSources'
 import type { SourceOptions } from './useSources'
@@ -23,7 +23,7 @@ function Picture({
     <picture>
       {sources.map(({ srcSet, media, preloadLinks }, index) => {
         return (
-          <>
+          <React.Fragment key={index}>
             {preload && (
               <Helmet
                 link={preloadLinks.map(
@@ -38,7 +38,7 @@ function Picture({
               />
             )}
             <source key={index} srcSet={srcSet} media={media} />
-          </>
+          </React.Fragment>
         )
       })}
       <img {...imgProps} alt={imgProps.alt} />
