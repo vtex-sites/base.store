@@ -1,58 +1,40 @@
 import { useSession } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
-import { graphql } from 'gatsby'
-import {
-  BreadcrumbJsonLd,
-  GatsbySeo,
-  ProductJsonLd,
-} from 'gatsby-plugin-next-seo'
+import { BreadcrumbJsonLd, NextSeo, ProductJsonLd } from 'next-seo'
+import { useRouter } from 'next/router'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+
 import ProductDetails from 'src/components/sections/ProductDetails'
 import ProductShelf from 'src/components/sections/ProductShelf'
-import { mark } from 'src/sdk/tests/mark'
-import type { PageProps } from 'gatsby'
-import type {
-  ProductPageQueryQuery,
-  ServerProductPageQueryQuery,
-  ProductPageQueryQueryVariables,
-} from '@generated/graphql'
 import { ITEMS_PER_SECTION } from 'src/constants'
+import { mark } from 'src/sdk/tests/mark'
+import { execute } from 'src/server'
+import type {
+  ServerProductPageQueryQuery,
+  ServerProductPageQueryQueryVariables,
+} from '@generated/graphql'
 
-import 'src/styles/pages/pdp.scss'
+import storeConfig from '../../../store.config'
 
-export type Props = PageProps<
-  ProductPageQueryQuery,
-  ProductPageQueryQueryVariables,
-  unknown,
-  ServerProductPageQueryQuery
-> & { slug: string }
+type Props = ServerProductPageQueryQuery
 
-function Page(props: Props) {
-  const { locale, currency } = useSession()
-  const {
-    data: { site },
-    serverData: { product },
-    location: { host },
-    slug,
-  } = props
-
-  const title = product?.seo.title ?? site?.siteMetadata?.title ?? ''
-  const description =
-    product?.seo.description ?? site?.siteMetadata?.description ?? ''
-
-  const canonical =
-    host !== undefined ? `https://${host}/${slug}/p` : `/${slug}/p`
+function Page({ product }: Props) {
+  const { currency } = useSession()
+  const router = useRouter()
+  const title = product?.seo.title ?? storeConfig.seo.title
+  const description = product?.seo.description ?? storeConfig.seo.description
+  const canonical = `${storeConfig.storeUrl}/${router.query.slug}/p`
 
   return (
     <>
       {/* SEO */}
-      <GatsbySeo
+      <NextSeo
         title={title}
         description={description}
         canonical={canonical}
-        language={locale}
         openGraph={{
           type: 'og:product',
-          url: `${site?.siteMetadata?.siteUrl}${slug}`,
+          url: canonical,
           title,
           description,
           images: product.image.map((img) => ({
@@ -60,7 +42,7 @@ function Page(props: Props) {
             alt: img.alternateName,
           })),
         }}
-        metaTags={[
+        additionalMetaTags={[
           {
             property: 'product:price:amount',
             content: product.offers.lowPrice?.toString() ?? undefined,
@@ -75,7 +57,7 @@ function Page(props: Props) {
         itemListElements={product.breadcrumbList.itemListElement ?? []}
       />
       <ProductJsonLd
-        name={product.name}
+        productName={product.name}
         description={product.description}
         brand={product.brand.name}
         sku={product.sku}
@@ -112,20 +94,7 @@ function Page(props: Props) {
   )
 }
 
-export const querySSG = graphql`
-  query ProductPageQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        titleTemplate
-        siteUrl
-      }
-    }
-  }
-`
-
-export const querySSR = gql`
+const query = gql`
   query ServerProductPageQuery($id: String!) {
     product(locator: [{ key: "id", value: $id }]) {
       id: productID
@@ -180,50 +149,35 @@ export const querySSR = gql`
   }
 `
 
-export const getServerData = async ({
-  params: { slug },
-}: {
-  params: Record<string, string>
-}) => {
-  try {
-    const id = slug.split('-').pop()
+export const getStaticProps: GetStaticProps<
+  ServerProductPageQueryQuery,
+  { slug: string }
+> = async ({ params }) => {
+  const id = params?.slug.split('-').pop() ?? ''
 
-    const { execute } = await import('src/server/index')
-    const { data } = await execute({
-      operationName: querySSR,
-      variables: { id },
-    })
+  const { data } = await execute<
+    ServerProductPageQueryQueryVariables,
+    ServerProductPageQueryQuery
+  >({
+    variables: { id },
+    operationName: query,
+  })
 
-    if (data === null) {
-      const originalUrl = `/${slug}/p`
-
-      return {
-        status: 301,
-        props: {},
-        headers: {
-          'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
-          location: `/404/?from=${encodeURIComponent(originalUrl)}`,
-        },
-      }
-    }
-
+  if (data === null) {
     return {
-      status: 200,
-      props: data ?? {},
-      headers: {
-        'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
-      },
+      notFound: true,
     }
-  } catch (err) {
-    console.error(err)
+  }
 
-    return {
-      status: 500,
-      props: {},
-      headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
-      },
-    }
+  return {
+    props: data,
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
 

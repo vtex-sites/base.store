@@ -1,8 +1,11 @@
-import { parseSearchState, SearchProvider, useSession } from '@faststore/sdk'
+import { parseSearchState, SearchProvider } from '@faststore/sdk'
 import { gql } from '@vtex/graphql-utils'
-import { graphql } from 'gatsby'
-import { BreadcrumbJsonLd, GatsbySeo } from 'gatsby-plugin-next-seo'
-import { useMemo } from 'react'
+import { BreadcrumbJsonLd, NextSeo } from 'next-seo'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import type { SearchState } from '@faststore/sdk'
+import type { GetStaticPaths, GetStaticProps } from 'next'
+
 import Breadcrumb from 'src/components/sections/Breadcrumb'
 import Hero from 'src/components/sections/Hero'
 import ProductGallery from 'src/components/sections/ProductGallery'
@@ -10,67 +13,58 @@ import ProductShelf from 'src/components/sections/ProductShelf'
 import ScrollToTopButton from 'src/components/sections/ScrollToTopButton'
 import Icon from 'src/components/ui/Icon'
 import { ITEMS_PER_PAGE, ITEMS_PER_SECTION } from 'src/constants'
-import { applySearchState } from 'src/sdk/search/state'
+import { useApplySearchState } from 'src/sdk/search/state'
 import { mark } from 'src/sdk/tests/mark'
+import { execute } from 'src/server'
 import type {
-  CollectionPageQueryQuery,
   ServerCollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables,
+  ServerCollectionPageQueryQueryVariables,
 } from '@generated/graphql'
-import type { PageProps } from 'gatsby'
-import type { SearchState } from '@faststore/sdk'
 
-import 'src/styles/pages/plp.scss'
+import storeConfig from '../../store.config'
 
-type Props = PageProps<
-  CollectionPageQueryQuery,
-  CollectionPageQueryQueryVariables,
-  unknown,
-  ServerCollectionPageQueryQuery
-> & { slug: string }
+type Props = ServerCollectionPageQueryQuery
 
-const useSearchParams = (props: Props): SearchState => {
-  const {
-    location: { href, pathname },
-    serverData: { collection },
-  } = props
-
+const useSearchParams = ({ collection }: Props): SearchState => {
   const selectedFacets = collection?.meta.selectedFacets
-
-  return useMemo(() => {
-    const maybeState = href ? parseSearchState(new URL(href)) : null
+  const { asPath } = useRouter()
+  const [params, setParams] = useState<SearchState>(() => {
+    const state = parseSearchState(new URL(asPath, 'http://localhost'))
 
     return {
-      page: maybeState?.page ?? 0,
-      base: maybeState?.base ?? pathname,
+      ...state,
       selectedFacets:
-        maybeState && maybeState.selectedFacets.length > 0
-          ? maybeState.selectedFacets
-          : selectedFacets ?? [],
-      term: maybeState?.term ?? null,
-      sort: maybeState?.sort ?? 'score_desc',
+        state.selectedFacets.length > 0 ? state.selectedFacets : selectedFacets,
     }
-  }, [href, pathname, selectedFacets])
+  })
+
+  useEffect(() => {
+    const url = new URL(asPath, 'http://localhost')
+    const state = parseSearchState(url)
+
+    // no facets were chosen. We need at least one
+    if (state.selectedFacets.length === 0) {
+      return
+    }
+
+    setParams(state)
+  }, [asPath])
+
+  return params
 }
 
 function Page(props: Props) {
-  const {
-    data: { site },
-    serverData: { collection },
-    location: { host },
-    slug,
-  } = props
-
-  const { locale } = useSession()
+  const { collection } = props
+  const router = useRouter()
+  const applySearchState = useApplySearchState()
   const searchParams = useSearchParams(props)
 
   const { page } = searchParams
-  const title = collection?.seo.title ?? site?.siteMetadata?.title ?? ''
+  const title = collection?.seo.title ?? storeConfig.seo.title
+  const description = collection?.seo.description ?? storeConfig.seo.title
   const pageQuery = page !== 0 ? `?page=${page}` : ''
-  const canonical =
-    host !== undefined
-      ? `https://${host}/${slug}/${pageQuery}`
-      : `/${slug}/${pageQuery}`
+  const [pathname] = router.asPath.split('?')
+  const canonical = `${storeConfig.storeUrl}${pathname}${pageQuery}`
 
   return (
     <SearchProvider
@@ -79,16 +73,15 @@ function Page(props: Props) {
       {...searchParams}
     >
       {/* SEO */}
-      <GatsbySeo
+      <NextSeo
         title={title}
-        titleTemplate={site?.siteMetadata?.titleTemplate ?? ''}
-        description={site?.siteMetadata?.description ?? ''}
+        description={description}
+        titleTemplate={storeConfig.seo.titleTemplate}
         canonical={canonical}
-        language={locale}
         openGraph={{
           type: 'website',
           title,
-          description: site?.siteMetadata?.description ?? '',
+          description,
         }}
       />
       <BreadcrumbJsonLd
@@ -134,19 +127,7 @@ function Page(props: Props) {
   )
 }
 
-export const querySSG = graphql`
-  query CollectionPageQuery {
-    site {
-      siteMetadata {
-        titleTemplate
-        title
-        description
-      }
-    }
-  }
-`
-
-export const querySSR = gql`
+const query = gql`
   query ServerCollectionPageQuery($slug: String!) {
     collection(slug: $slug) {
       seo {
@@ -170,48 +151,35 @@ export const querySSR = gql`
   }
 `
 
-export const getServerData = async ({
-  params: { slug },
-}: {
-  params: Record<string, string>
-}) => {
-  try {
-    const { execute } = await import('src/server/index')
-    const { data } = await execute({
-      operationName: querySSR,
-      variables: { slug },
-    })
+export const getStaticProps: GetStaticProps<
+  ServerCollectionPageQueryQuery,
+  { slug: string[] }
+> = async ({ params }) => {
+  const slug = params?.slug.join('/') ?? ''
 
-    if (data === null) {
-      const originalUrl = `/${slug}`
+  const { data } = await execute<
+    ServerCollectionPageQueryQueryVariables,
+    ServerCollectionPageQueryQuery
+  >({
+    variables: { slug },
+    operationName: query,
+  })
 
-      return {
-        status: 301,
-        props: {},
-        headers: {
-          'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
-          location: `/404/?from=${encodeURIComponent(originalUrl)}`,
-        },
-      }
-    }
-
+  if (data === null) {
     return {
-      status: 200,
-      props: data ?? {},
-      headers: {
-        'cache-control': 'public, max-age=0, stale-while-revalidate=31536000',
-      },
+      notFound: true,
     }
-  } catch (err) {
-    console.error(err)
+  }
 
-    return {
-      status: 500,
-      props: {},
-      headers: {
-        'cache-control': 'public, max-age=0, must-revalidate',
-      },
-    }
+  return {
+    props: data,
+  }
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking',
   }
 }
 

@@ -7,7 +7,7 @@
  */
 
 import { options } from '../global'
-import { cypress } from '../../store.config'
+import { cypress, storeUrl } from '../../store.config'
 
 const { pages } = cypress
 
@@ -27,15 +27,10 @@ describe('Home Page Seo', () => {
       .should(($el) => {
         expect($el.attr('content')).to.eq('index,follow')
       })
-    cy.get('meta[name="googlebot"]')
-      .should('exist')
-      .should(($el) => {
-        expect($el.attr('content')).to.eq('index,follow')
-      })
     cy.get('link[rel="canonical"]')
       .should('exist')
       .should(($link) => {
-        expect($link.attr('href')).to.eq(`https://${window.location.host}/`)
+        expect($link.attr('href')).to.eq(storeUrl)
       })
   })
 
@@ -93,17 +88,10 @@ describe('Product Page Seo', () => {
       .should(($el) => {
         expect($el.attr('content')).to.eq('index,follow')
       })
-    cy.get('meta[name="googlebot"]')
-      .should('exist')
-      .should(($el) => {
-        expect($el.attr('content')).to.eq('index,follow')
-      })
     cy.get('link[rel="canonical"]')
       .should('exist')
       .should(($link) => {
-        expect($link.attr('href')).to.eq(
-          `https://${window.location.host}${pages.pdp}`
-        )
+        expect($link.attr('href')).to.eq(`${storeUrl}${pages.pdp}`)
       })
   })
 
@@ -185,17 +173,10 @@ describe('Collection Page Seo', () => {
       .should(($el) => {
         expect($el.attr('content')).to.eq('index,follow')
       })
-    cy.get('meta[name="googlebot"]')
-      .should('exist')
-      .should(($el) => {
-        expect($el.attr('content')).to.eq('index,follow')
-      })
     cy.get('link[rel="canonical"]')
       .should('exist')
       .should(($link) => {
-        expect($link.attr('href')).to.eq(
-          `https://${window.location.host}${pages.collection}/`
-        )
+        expect($link.attr('href')).to.eq(`${storeUrl}${pages.collection}`)
       })
   })
 
@@ -250,9 +231,7 @@ describe('Filtered Collection Page Seo', () => {
     cy.get('link[rel="canonical"]')
       .should('exist')
       .should(($link) => {
-        expect($link.attr('href')).to.eq(
-          `https://${window.location.host}${pages.collection}/`
-        )
+        expect($link.attr('href')).to.eq(`${storeUrl}${pages.collection}`)
       })
   })
 
@@ -307,11 +286,6 @@ describe('Search Page Seo', () => {
     cy.title().should('exist')
     cy.get('meta[name="description"]').should('exist')
     cy.get('meta[name="robots"]')
-      .should('exist')
-      .should(($el) => {
-        expect($el.attr('content')).to.eq('noindex,follow')
-      })
-    cy.get('meta[name="googlebot"]')
       .should('exist')
       .should(($el) => {
         expect($el.attr('content')).to.eq('noindex,follow')

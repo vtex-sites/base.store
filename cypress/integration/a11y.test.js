@@ -13,14 +13,6 @@ describe('Accessibility tests', () => {
     cy.clearIDB()
   })
 
-  it('checks a11y for home page', () => {
-    cy.visit(pages.home)
-    cy.waitForHydration()
-
-    cy.injectAxe()
-    cy.checkA11y()
-  })
-
   it('checks a11y for collection page', () => {
     cy.visit(pages.collection)
     cy.waitForHydration()
@@ -38,6 +30,14 @@ describe('Accessibility tests', () => {
 
     // Wait for product to be available and page to be interactive
     cy.getById('buy-button').should('exist')
+
+    cy.injectAxe()
+    cy.checkA11y()
+  })
+
+  it('checks a11y for home page', () => {
+    cy.visit(pages.home)
+    cy.waitForHydration()
 
     cy.injectAxe()
     cy.checkA11y()

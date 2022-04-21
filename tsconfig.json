@@ -3,26 +3,23 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "jsxImportSource": "react",
     "resolveJsonModule": true,
-    "module": "ESNext",
-    "rootDir": ".",
-    "baseUrl": ".",
+    "module": "esnext",
+    "rootDir": "./",
+    "baseUrl": "./",
     "noEmit": true,
     "allowJs": true,
     "paths": {
       "src/*": ["src/*"],
       "@generated/*": ["@generated/*"]
     },
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "strict": false,
+    "incremental": true,
+    "isolatedModules": true
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "gatsby-*.ts",
-    "gatsby-*.tsx",
-    "@generated/**/*.ts"
-  ],
+  "include": ["*.d.ts", "src/**/*.ts", "src/**/*.tsx", "@generated/**/*.ts"],
   "exclude": ["node_modules", "public"]
 }

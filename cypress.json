@@ -1,10 +1,9 @@
 {
-  "baseUrl": "http://localhost:8000/",
-  "integrationFolder": "cypress/integration",
-  "defaultCommandTimeout": 20000,
+  "baseUrl": "http://localhost:3000/",
+  "retries": 0,
   "video": true,
-  "retries": 2,
-  "chromeWebSecurity": false,
+  "trashAssetsBeforeRuns": true,
+  "screenshotOnRunFailure": true,
   "viewportWidth": 1000,
   "viewportHeight": 600
 }

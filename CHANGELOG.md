@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-
 - Applies new local tokens to `Badge` (#462)
 - Applies new local tokens to `Hero` (#435)
 - Applies new local tokens to `Quantity Selector` (#448)
+
+### Changed
+- Migrates to Next.JS (#475)
 - Applies new local tokens to `ProductShelf` component (#464)
 - Adds Storybook configs (#463)
 - Adds vtex search tracking script. With this we will populate TopSearches and Autocomplete indices (#389)

@@ -31,7 +31,11 @@ Cypress.Commands.add('getById', (selector, ...args) => {
 })
 
 Cypress.Commands.add('waitForHydration', () => {
-  return cy.get(`[data-testid=react-hydrated]`).should('exist')
+  return cy.window().should((win) => {
+    expect(
+      win.performance.getEntriesByName('Next.js-hydration')
+    ).to.have.length(1)
+  })
 })
 
 Cypress.Commands.add('clearIDB', () => {

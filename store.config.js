@@ -1,4 +1,11 @@
 module.exports = {
+  seo: {
+    title: 'BaseStore',
+    description: 'Fast Demo Store',
+    titleTemplate: '%s | FastStore',
+    author: 'Store Framework',
+  },
+
   // Ecommerce Platform
   platform: 'vtex',
 

@@ -54,9 +54,9 @@ src/typings/
 # dotenv environment variable files
 .env*
 
-# gatsby files
-.cache/
-public
+# nextjs files
+.next
+.cache
 
 # Mac files
 .DS_Store
@@ -71,4 +71,8 @@ yarn-error.log
 # lighthouse CI autogen files
 .lighthouseci
 
-static/~partytown
+# Partytown
+public/~partytown
+
+# TypeScript
+tsconfig.tsbuildinfo
