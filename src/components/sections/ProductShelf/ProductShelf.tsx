@@ -1,6 +1,7 @@
 import ProductShelfSkeleton from 'src/components/skeletons/ProductShelfSkeleton'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import type { ProductsQueryQueryVariables } from '@generated/graphql'
+import { mark } from 'src/sdk/tests/mark'
 
 import ProductCard from '../../product/ProductCard'
 import Section from '../Section'
@@ -41,4 +42,6 @@ function ProductShelf({
   )
 }
 
-export default ProductShelf
+ProductShelf.displayName = 'ProductShelf'
+
+export default mark(ProductShelf)

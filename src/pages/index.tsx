@@ -4,7 +4,6 @@ import { GatsbySeo, JsonLd } from 'gatsby-plugin-next-seo'
 import BannerText from 'src/components/sections/BannerText'
 import Hero from 'src/components/sections/Hero'
 import IncentivesHeader from 'src/components/sections/Incentives/IncentivesHeader'
-import ProductTiles from 'src/components/sections/ProductTiles'
 import { mark } from 'src/sdk/tests/mark'
 import { ITEMS_PER_SECTION } from 'src/constants'
 import type { PageProps } from 'gatsby'
@@ -15,6 +14,7 @@ import { lazy, Suspense } from 'react'
 import 'src/styles/pages/homepage.scss'
 
 const ProductShelf = lazy(() => import('src/components/sections/ProductShelf'))
+const ProductTiles = lazy(() => import('src/components/sections/ProductTiles'))
 
 export type Props = PageProps<HomePageQueryQuery>
 

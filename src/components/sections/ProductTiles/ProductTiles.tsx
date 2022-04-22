@@ -3,6 +3,7 @@ import ProductCard from 'src/components/product/ProductCard'
 import ProductTilesSkeleton from 'src/components/skeletons/ProductTilesSkeleton'
 import { useProductsQuery } from 'src/sdk/product/useProductsQuery'
 import type { ProductsQueryQueryVariables } from '@generated/graphql'
+import { mark } from 'src/sdk/tests/mark'
 
 import Section from '../Section'
 
@@ -58,4 +59,6 @@ const ProductTiles = ({ title, ...variables }: TilesProps) => {
   )
 }
 
-export default ProductTiles
+ProductTiles.displayName = 'ProductTiles'
+
+export default mark(ProductTiles)
