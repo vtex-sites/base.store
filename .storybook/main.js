@@ -7,13 +7,12 @@ module.exports = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
-    'storybook-addon-gatsby',
   ],
   framework: '@storybook/react',
   core: {
     builder: 'webpack5',
   },
-  staticDirs: ['../static'],
+  staticDirs: ['../public'],
   webpackFinal: async (config) => {
     config.module.rules[0].use[0].options.plugins.push(
       require.resolve('@vtex/graphql-utils/babel')

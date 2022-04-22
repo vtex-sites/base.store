@@ -1,7 +1,6 @@
 import { SessionProvider } from '@faststore/sdk'
 
 import storeConfig from 'store.config'
-import { LocationProvider } from '@reach/router'
 
 import type { ProductCardProps } from '.'
 import ProductCard from '.'
@@ -43,13 +42,11 @@ const product = {
 }
 
 const Template = (args: ProductCardProps) => (
-  <LocationProvider>
-    <SessionProvider initialState={{ channel: storeConfig.channel }}>
-      <div style={{ width: 300 }}>
-        <ProductCard {...args} />
-      </div>
-    </SessionProvider>
-  </LocationProvider>
+  <SessionProvider initialState={{ channel: storeConfig.channel }}>
+    <div style={{ width: 300 }}>
+      <ProductCard {...args} />
+    </div>
+  </SessionProvider>
 )
 
 export const Default = Template.bind({})
