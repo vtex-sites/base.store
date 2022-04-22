@@ -24,7 +24,7 @@ export default function RegionalizationInput() {
   const handleSubmit = async () => {
     const value = inputRef.current?.value
 
-    if (!(typeof value === 'string')) {
+    if (typeof value !== 'string') {
       return
     }
 
