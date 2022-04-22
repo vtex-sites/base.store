@@ -18,6 +18,9 @@ export type InputTextProps = {
    * The error message is displayed when an error occurs.
    */
   errorMessage?: string
+  /**
+   * Component's ref.
+   */
   inputRef?: React.RefObject<HTMLInputElement>
 }
 
