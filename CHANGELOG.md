@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Update Regionalization input to use the `TextInput` component (#494)
 - Applies new local tokens to `BannerText` (#470)
 - Update the Incentives component to handle CMS data (#474)
 
