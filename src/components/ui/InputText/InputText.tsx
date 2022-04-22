@@ -18,6 +18,7 @@ export type InputTextProps = {
    * The error message is displayed when an error occurs.
    */
   errorMessage?: string
+  inputRef?: React.RefObject<HTMLInputElement>
 }
 
 type ActionableInputText =
@@ -52,12 +53,12 @@ const InputText = ({
   buttonActionText = 'Apply',
   onSubmit,
   placeholder = ' ', // initializes with an empty space to style float label using `placeholder-shown`
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  inputRef = useRef<HTMLInputElement>(null),
   ...otherProps
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>('')
   const [hasError, setHasError] = useState<boolean>(!!errorMessage)
-
-  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     errorMessage && setHasError(true)
