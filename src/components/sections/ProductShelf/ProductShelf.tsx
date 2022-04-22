@@ -16,7 +16,7 @@ function ProductShelf({
   withDivisor = false,
   ...variables
 }: ProductShelfProps) {
-  const products = useProductsQuery(variables)
+  const products = useProductsQuery(variables, { suspense: true })
 
   if (products?.edges.length === 0) {
     return null
