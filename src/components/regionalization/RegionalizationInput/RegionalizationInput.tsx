@@ -52,13 +52,15 @@ export default function RegionalizationInput() {
   }
 
   return (
-    <InputText
-      inputRef={inputRef}
-      id="postal-code-input"
-      errorMessage={errorMessage}
-      label="Zip Code"
-      actionable
-      onSubmit={handleSubmit}
-    />
+    <div className="regionalization-input">
+      <InputText
+        inputRef={inputRef}
+        id="postal-code-input"
+        errorMessage={errorMessage}
+        label="Zip Code"
+        actionable
+        onSubmit={handleSubmit}
+      />
+    </div>
   )
 }
