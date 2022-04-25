@@ -13,6 +13,6 @@ export default create({
   appBorderRadius: 4,
 
   brandTitle: `BaseStore UI`,
-  brandUrl: 'https://github.com/vtex-sites/base.store',
+  brandUrl: 'https://github.com/vtex-sites/gatsby.store',
   brandImage: Logo,
 })

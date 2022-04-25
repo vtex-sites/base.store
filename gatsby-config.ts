@@ -10,7 +10,7 @@ dotenv.config({ path: 'vtex.env' })
 const gatsbyConfig: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata: {
-    title: 'BaseStore',
+    title: 'GatsbyStore',
     description: 'Fast Demo Store',
     titleTemplate: '%s | FastStore',
     author: 'Store Framework',
@@ -26,7 +26,7 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Fast Demo Store',
-        short_name: 'BaseStore',
+        short_name: 'GatsbyStore',
         start_url: '/',
         icon: 'src/images/icon.png',
         background_color: '#E31C58',
