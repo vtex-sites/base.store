@@ -1,6 +1,6 @@
 module.exports = {
   seo: {
-    title: 'BaseStore',
+    title: 'NextJSStore',
     description: 'Fast Demo Store',
     titleTemplate: '%s | FastStore',
     author: 'Store Framework',
