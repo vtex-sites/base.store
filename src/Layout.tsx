@@ -19,11 +19,12 @@ function Layout({ children }: PropsWithChildren<unknown>) {
 
       <Navbar />
 
+      {/* TODO Toast temporarily placed here, see if this is the final location */}
+      <Toast />
+
       <main>{children}</main>
 
       <Footer />
-
-      <Toast />
 
       {displayMinicart && (
         <Suspense fallback={null}>

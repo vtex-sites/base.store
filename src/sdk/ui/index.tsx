@@ -3,8 +3,11 @@ import type { UIActions } from '@faststore/sdk'
 import type { Dispatch } from 'react'
 
 export interface Toast {
-  message: string
-  status: 'ERROR' | 'WARNING' | 'INFO'
+  icon: string
+  title: string
+  description?: string
+  // TODO Status was added just because cart warnings have status and are using Toast to display them. See if it is really necessary.
+  status?: string
 }
 
 interface InitialState {

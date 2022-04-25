@@ -1,0 +1,71 @@
+[data-fs-toast] {
+  // --------------------------------------------------------
+  // Design Tokens for Toast
+  // --------------------------------------------------------
+
+  // Default properties
+  --fs-toast-padding                      : var(--fs-spacing-0) var(--fs-spacing-2);
+  --fs-toast-margin                       : var(--fs-spacing-3) var(--fs-spacing-3) 0 var(--fs-spacing-3);
+
+  --fs-toast-border-radius                : var(--fs-border-radius-medium);
+  --fs-toast-border-width                 : var(--fs-border-width-default);
+  --fs-toast-border-color                 : transparent;
+
+  --fs-toast-bkg-color                    : var(--fs-color-neutral-0);
+
+  --fs-toast-text-color                   : var(--fs-color-text);
+  --fs-toast-text-size                    : var(--fs-text-size-body);
+  --fs-toast-text-weight                  : var(--fs-text-weight-regular);
+
+  --fs-toast-transition-function          : var(--fs-transition-function);
+  --fs-toast-transition-property          : var(--fs-transition-property);
+  --fs-toast-transition-timing            : var(--fs-transition-timing);
+
+  --fs-toast-shadow                       : var(--fs-shadow);
+
+  // --------------------------------------------------------
+  // Template Styles
+  // --------------------------------------------------------
+
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: calc(100% - (2 * var(--fs-spacing-3)));
+  padding: var(--fs-spacing-1);
+  margin: var(--fs-toast-margin);
+  font-size: var(--fs-toast-text-size);
+  background-color: var(--fs-toast-bkg-color);
+  border-radius: var(--fs-toast-border-radius);
+  box-shadow: var(--fs-toast-shadow);
+
+  @include media(">=tablet") {
+    top: 110px;
+    right: 25px;
+    max-width: 398px;
+  }
+}
+
+[data-fs-toast-wrapper] {
+  display: block;
+  padding: var(--fs-toast-padding);
+  overflow: hidden;
+}
+
+[data-fs-toast-icon] {
+  left: 0;
+  min-width: 48px;
+}
+
+[data-fs-toast-title] {
+  font-weight: var(--fs-text-weight-bold);
+}
+
+// --------------------------------------------------------
+// Variants Styles
+// --------------------------------------------------------
+
+// --------------------------------------------------------
+// Template Variants
+// --------------------------------------------------------

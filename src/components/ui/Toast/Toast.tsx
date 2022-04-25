@@ -1,12 +1,6 @@
-import Button from 'src/components/ui/Button'
 import { useEffect, useRef } from 'react'
 import { useUI } from 'src/sdk/ui'
-
-const state = {
-  ERROR: 'bg-red',
-  WARNING: 'bg-yellow',
-  INFO: 'bg-green',
-}
+import Icon from 'src/components/ui/Icon'
 
 function Toast() {
   const { toasts, popToast } = useUI()
@@ -26,10 +20,11 @@ function Toast() {
   }
 
   return (
-    <div>
-      <Button onClick={popToast}>Close</Button>
-      <div className={`h-36 text-white ${state[toast.status]}`}>
-        message: {toast.message}
+    <div data-fs-toast>
+      <Icon data-fs-toast-icon name={toast.icon} width={48} height={48} />
+      <div data-fs-toast-wrapper>
+        <p data-fs-toast-title>{toast.title}</p>
+        <p>{toast.description}</p>
       </div>
     </div>
   )

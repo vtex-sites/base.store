@@ -18,8 +18,11 @@ function Toast() {
     }
 
     messages.forEach((message) =>
+      // TODO see how we are going to handle cart warnings with Toasts,
+      // since Cart does not not provide neither icons nor descriptions.
       pushToast({
-        message: message.text,
+        icon: 'ToastCartUpdated', // Temp icon because it's required
+        title: message.text,
         status: message.status,
       })
     )
