@@ -24,7 +24,7 @@ module.exports = {
     server: process.env.BASE_SITE_URL || 'http://localhost:9000',
     pages: {
       home: '/',
-      pdp: '/apple-magic-mouse-99988212/p',
+      pdp: '/awesome-wooden-bike-sleek-47501742/p',
       collection: '/office',
     },
   },
@@ -33,7 +33,7 @@ module.exports = {
   cypress: {
     pages: {
       home: '/',
-      pdp: '/apple-magic-mouse-99988212/p',
+      pdp: '/awesome-wooden-bike-sleek-47501742/p',
       collection: '/office',
       collection_filtered:
         '/office/?category-1=office&marca=acer&facets=category-1%2Cmarca',
