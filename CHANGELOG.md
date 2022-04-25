@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Integrates and styles ImageGallery component at the PDP (#409)
 - Applies new local tokens to `Badge` (#462)
 - Applies new local tokens to `Hero` (#435)
 - Applies new local tokens to `Quantity Selector` (#448)
@@ -16,13 +17,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Adds Storybook configs (#463)
 - Adds vtex search tracking script. With this we will populate TopSearches and Autocomplete indices (#389)
 - Add `RegionalizationBar`, `RegionalizationButton` components and integrates it on Mobile and Desktop devices (#424).
-- Integrates and styles ImageGallery component at the PDP (#409)
 
 ### Changed
 
+- Refactors ImageGallery component to not use the useSlider component (#409)
 - Applies new local tokens to `BannerText` (#470)
 - Update the Incentives component to handle CMS data (#474)
-- Refactors ImageGallery component to not use the useSlider component (#409)
 
 ### Deprecated
 
