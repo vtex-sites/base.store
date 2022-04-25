@@ -13,6 +13,7 @@ import { mark } from 'src/sdk/tests/mark'
 import { useModal } from 'src/sdk/ui/modal/Provider'
 import type { AnchorHTMLAttributes } from 'react'
 import type { SearchInputRef } from '@faststore/ui'
+import { useUI } from 'src/sdk/ui'
 
 interface NavLinksProps {
   onClickLink?: AnchorHTMLAttributes<HTMLAnchorElement>['onClick']
@@ -70,8 +71,28 @@ function Navbar() {
     searchMobileRef.current?.inputRef?.focus()
   }
 
+  const { pushToast } = useUI()
+
   return (
     <header className="navbar layout__content-full">
+      {/* TODO remove this button and create a proper Toast example in Storybook */}
+      <button
+        style={{
+          position: 'absolute',
+          width: '100px',
+          top: '10px',
+          right: '10%',
+        }}
+        onClick={() => {
+          pushToast({
+            icon: 'ToastCartUpdated',
+            title: 'Your cart was updated',
+            description: 'Some products are not available in your location',
+          })
+        }}
+      >
+        add toast
+      </button>
       <div className="navbar__header layout__content">
         <section className="navbar__row">
           {!searchExpanded && (
