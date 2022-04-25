@@ -52,6 +52,7 @@ function ProductCard({
       data-fs-product-card
       data-fs-product-card-variant={variant}
       data-fs-product-card-bordered={bordered}
+      data-fs-product-card-actionabled={!!ButtonBuy}
       data-fs-product-card-sku={sku}
       {...otherProps}
     >

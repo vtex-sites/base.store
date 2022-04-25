@@ -100,7 +100,7 @@ const TemplateWide = ({ ButtonBuy, ...args }: ProductCardProps) => {
   return (
     <LocationProvider>
       <SessionProvider initialState={{ channel: storeConfig.channel }}>
-        <div style={{ width: 500 }}>
+        <div style={{ width: 400 }}>
           <ProductCard ButtonBuy={button} {...args} />
         </div>
       </SessionProvider>
