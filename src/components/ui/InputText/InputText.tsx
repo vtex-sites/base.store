@@ -1,5 +1,6 @@
 import { Input as UIInput, Label as UILabel } from '@faststore/ui'
-import { useEffect, useRef, useState } from 'react'
+import type { MutableRefObject } from 'react'
+import { useEffect, useState } from 'react'
 import Button from 'src/components/ui/Button'
 import IconButton from 'src/components/ui/Button/ButtonIcon'
 import Icon from 'src/components/ui/Icon'
@@ -68,7 +69,7 @@ const InputText = ({
 
   const onClear = () => {
     setInputValue('')
-    inputRef.current?.focus()
+    inputRef?.current?.focus()
   }
 
   return (
