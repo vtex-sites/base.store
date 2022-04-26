@@ -21,7 +21,7 @@ export type InputTextProps = {
   /**
    * Component's ref.
    */
-  inputRef?: React.RefObject<HTMLInputElement>
+  inputRef?: MutableRefObject<HTMLInputElement | null>
 }
 
 type ActionableInputText =
@@ -56,8 +56,7 @@ const InputText = ({
   buttonActionText = 'Apply',
   onSubmit,
   placeholder = ' ', // initializes with an empty space to style float label using `placeholder-shown`
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  inputRef = useRef<HTMLInputElement>(null),
+  inputRef,
   ...otherProps
 }: Props) => {
   const [inputValue, setInputValue] = useState<string>('')
